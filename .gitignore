@@ -1,0 +1,34 @@
+# Personal and working media never go in git
+media/
+renders/
+exports/
+*.jpg
+*.jpeg
+*.png
+*.heic
+*.tif
+*.tiff
+*.webp
+*.psd
+*.psb
+*.raw
+*.dng
+*.cr2
+*.nef
+*.arw
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.wav
+*.aiff
+*.mp3
+*.m4a
+
+# Third-party source clones used for research
+vendor/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
