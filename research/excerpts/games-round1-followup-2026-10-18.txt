@@ -1,0 +1,44 @@
+Dated evidence excerpts for research/games.md, "Follow-up research (round 1)"
+Captured 2026-10-18 (Sunday) by a Sonnet researcher in the cloud container (Linux), not on the maker's Windows PC.
+Quotes are short and verbatim; everything else is a note. Hashes are of the files as fetched, for later change detection.
+
+== 1. Eurogamer [3] (article date 2022-04-12, author Ed Nightingale) ==
+URL: https://www.eurogamer.net/the-creators-of-unpacking-on-developing-a-weird-queer-bafta-winning-game
+HTTP 200, 244576 bytes, sha256 of raw HTML fe37fe0de27ade2d81bf18e09af8d29f96d1fa919b8a94fcb3dff8ac25edcb49
+(a) Foley, journalist's voice (not a developer quote): "there are 14,000 foley sounds in the game comprising different objects and surface types."
+    Same paragraph names Witchbeam sound designer Jeff van Dyck as the recorder.
+(b) Spreadsheet method, journalist's voice: "much of development took place in spreadsheets." Dawson automated cataloguing of sprites and sounds.
+    Brier, verbatim: "We had spreadsheets keeping track of what items showed up in which levels, which items were new in each level, and which items were repeat items, which ones were variants on existing items."
+(c) Origin, Brier verbatim: "There's a song called The Bed Song by Amanda Palmer," and it goes through "snapshots in this couple's life, just depicted through the different beds that they've had over the years."
+(d) Clones, Brier verbatim: "So you end up with this sort of hollow experience." (said about clones that copy the look; Brier alone, not Dawson)
+
+== 2. Minecraft Usage Guidelines [42] snapshot ==
+URL: https://www.minecraft.net/en-us/usage-guidelines
+Fetched 2026-10-18 04:48 GMT. HTTP 200. Page shows no visible date; meta article:published_time is empty.
+HTTP header: last-modified: Fri, 16 Oct 2026 17:56:11 GMT (server file stamp; NOT a policy revision date).
+sha256 raw HTML 97b4b57c97b60e5ad3bb20493da5dfa5f00123de068e530fafa9ab9313381deb (contains dynamic parts, may not be stable)
+sha256 of my extracted text 6c00e29237a4d3b5ff8833fec2a68580126f39c1c1b0146521287c89e2dff7c5
+"physical locations" bullet, verbatim (a condition on the video/stream permission): "The gameplay is not displayed or projected publicly within physical locations, for example:"
+   - "Promoting or advertising big-screen Minecraft gameplay inside any commercial venue like restaurants"
+   - "Charging money for Minecraft gameplay, leagues, or competitions in theaters where gameplay is projected onto movie screens"
+"Personal use": "We are very relaxed about things you create for yourself."
+Sharing: "When you decide to share your content with the community (whether you plan to make money off it or not), you are doing what we consider to be a commercial thing."
+In-person events section: limit "no more than approximately 150 participants"; "You may not accept sponsorships for purposes of profit"; example "Hosting a casual meet up in your favorite pizza place to talk about and play Minecraft (we're cool with this)".
+Change clause: "We reserve the right to change our mind at any time".
+EULA [43] text sha256 301308d30c31e5737889f0b8781893bb90b0ecc57351a364734b26285ccb5f90 (also no visible date).
+
+== 3. MagicaVoxel 0.99.7.2 (Windows) ==
+Zip: https://github.com/ephtracy/ephtracy.github.io/releases/download/0.99.7/MagicaVoxel-0.99.7.2-win64.zip
+3794277 bytes, sha256 58320b90be00742cac2984ac6ddcc2cdd773d0b18a4212a1560b52b082e4d873, 70 entries.
+Contains NO LICENSE.txt (nor in 0.99.7.1 or 0.99.6.4 zips). Only readme.txt (version/credits: "date : 10/31/2025", "version : 0.99.7.2").
+Licence text lives on the website fragment https://ephtracy.github.io/mv_main.html (sha256 7a86415f712d34394b1b9c198c6f452abfdbb82e7a26d9da83b6e06eb0b375f9):
+  "Free to use for any project."
+  "Credits to the software are appreciated."
+  "Selling or distributing the software (original or modified) in other packages are disallowed."
+Commands page https://ephtracy.github.io/mv_commands.html (sha256 8c764e9b19d840620b577a4b73c0ed71ca24c573a62c7b595eecc66a608ace14):
+  "Press TAB to Enable/Enter Commands"; rows include "o [file type]" export model, "odir [file type]" export all models in current folder displayed in model list, "xs [option] [shader name]" custom voxel shader.
+
+== 4. Mineways scripting page (page footer: "Last updated 9/1/2026") ==
+URL: https://erich.realtimerendering.com/minecraft/public/mineways/scripting.html  sha256 3a25e2e64ce3229f6fff215b0d86ba86011ef930b90dce390f06a7fd42f6d586
+Syntax line, verbatim: mineways.exe [-headless] [-w X Y] [-m] [-s UserSaveDirectory|none] [-t terrainExtYourfile.png] [-l mineways_exec.log] [-suppress] [-zl #] [file1.mwscript|obj|wrl [file2.mwscript [...]]]
+"Run Mineways without displaying any window, for fully automated command-line operation. BEWARE! This is all a bit experimental and can be wifty!"

@@ -4,7 +4,7 @@ description: Builder for the Life Journey project. Use in the build phases to pr
 model: sonnet
 ---
 
-You implement approved plans for the Life Journey project (see `life-journey/CHARTER.md` and `life-journey/ROADMAP.md`).
+You implement approved plans for the Life Journey project (see `CHARTER.md` and `ROADMAP.md`).
 
 Rules:
 - Build only what an approved plan or review asked for; note anything else as a suggestion.

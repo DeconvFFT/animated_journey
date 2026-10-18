@@ -1,0 +1,16 @@
+{
+  "format": "lightcraft.preset",
+  "version": 1,
+  "presets": [
+    {
+      "id": "lj-faded-print-a",
+      "name": "LJ faded print A",
+      "group": "Life Journey",
+      "settings": {
+        "light": { "exposure": 0.2, "contrast": 18, "whites": 10, "blacks": -14 },
+        "color": { "vibrance": 24, "saturation": 8 },
+        "curve": { "shadows": -6, "highlights": 4 }
+      }
+    }
+  ]
+}

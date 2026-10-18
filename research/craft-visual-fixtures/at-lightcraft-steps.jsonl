@@ -1,0 +1,5 @@
+{"command":"library.import","params":{"paths":["C:\\lj\\at\\prints"],"mode":"add"}}
+{"command":"preset.import","params":{"paths":["C:\\lj\\at\\faded-print-a.lcpreset"]}}
+{"command":"library.selectAll","params":{}}
+{"command":"preset.apply","params":{"id":"lj-faded-print-a","amount":100}}
+{"command":"app.export","params":{"dir":"C:\\lj\\at\\out","format":"jpg","quality":92,"naming":"{name}-{seq:2}","conflict":"skip"}}

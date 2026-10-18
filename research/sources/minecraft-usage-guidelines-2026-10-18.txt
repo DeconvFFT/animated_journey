@@ -1,0 +1,43 @@
+Dated excerpt: Minecraft Usage Guidelines (personal use, sharing, physical locations)
+For research/format.md "Follow-up research (round 1)" source [92]; shared with research/games.md (its source [42] and its own excerpt file research/excerpts/games-round1-followup-2026-10-18.txt).
+Captured by a Sonnet researcher in the cloud container (Linux), not on the maker's Windows PC.
+
+URL: https://www.minecraft.net/en-us/usage-guidelines
+Fetched: Sunday 2026-10-18, about 05:16-05:17 GMT, curl over HTTP/1.1 (HTTP/2 failed with INTERNAL_ERROR on the first try; HTTP/1.1 returned 200 on the first retry).
+HTTP 200, 407,781 bytes. Page <title>: "Minecraft Usage Guidelines for Fans and Creators | Minecraft | Minecraft".
+The page shows no visible revision date and article:published_time is empty. HTTP header Last-Modified: Fri, 16 Oct 2026 17:56:11 GMT is a server file stamp, NOT a policy revision date.
+sha256 of raw HTML as fetched: 74f87974782977abf66a7c52901c31559d4b680377d9dd17732ee72d43cb8741 (page has dynamic parts, so it may not be stable).
+sha256 of my extracted text (tags, scripts and styles stripped, blank lines dropped): 2956f5897a3ae5fa5894298bd8736b2ac8922a9692e6367a6f5ea60071085202
+
+Quotes below are short and verbatim. Notes in square brackets are mine.
+
+1. Section "Personal use":
+   "We are very relaxed about things you create for yourself. Pretty much anything goes there - so go for it and have fun, just remember the policies and don't do anything illegal or infringing on others."
+   "When you decide to share your content with the community (whether you plan to make money off it or not), you are doing what we consider to be a commercial thing. When you do commercial things, you must follow the Commercial Use guidelines."
+   [Reading: making a world or video for yourself is relaxed; the page treats "share with the community" as commercial use. Whether showing a film to a room of relatives counts as "sharing with the community" is not defined on the page. UNVERIFIED, and this is not legal advice.]
+
+2. Section "Commercial use", definition:
+   "commercial use means any uses of our name, brand, or assets that you use and share with others (regardless of whether you receive payment or provide it for free). This can be through videos and streams you create, merchandise you make, or even a server you host."
+
+3. Section "Videos, streams, and screenshots", the "physical locations" bullet. It is one of the conditions that follow the sentence "You are allowed to put footage of our game on YouTube, Twitch, or any other website and make money from them so long as:":
+   "The gameplay is not displayed or projected publicly within physical locations, for example:"
+     - "Promoting or advertising big-screen Minecraft gameplay inside any commercial venue like restaurants"
+     - "Charging money for Minecraft gameplay, leagues, or competitions in theaters where gameplay is projected onto movie screens"
+   Same section, other conditions that matter to us: "All videos (in their entirety) are free to view"; "You don't sell copies of the videos or streams"; "You place any title card, end credits, sponsorship notices, and other callouts outside of the actual game content."
+   Its scenario list: making a video and distributing it through services like iTunes or Amazon Prime Video for a fee is "(we're not cool with this)".
+   [Reading: both examples are commercial venues. A private family showing is not one of the listed examples, but the word "publicly" and the venue question (a hired hall, a restaurant) are not defined. UNVERIFIED.]
+
+4. Section "In-person events":
+   "So, you're free to organize live in-person events if you follow these guidelines:"
+   "The event must be limited to no more than approximately 150 participants (events with more than 150 participants tend to be commercialized and sponsored by companies)"
+   "You may not accept sponsorships for purposes of profit"
+
+5. Section "Subject to change":
+   "These guidelines may change as time goes by. We reserve the right to change our mind at any time ..."
+   "It's up to you to occasionally check back here to see if these guidelines have changed ..."
+   [Re-check the page, and re-save this excerpt, in the week before the event.]
+
+6. Section "All uses": "You may not use the Minecraft name as the primary or dominant name or title."
+   [For a film or world, do not make "Minecraft" the title.]
+
+The page says the guidelines "do not form part of the policies" (the EULA and terms); the policies are the legal agreements. Not read by me in this round: the EULA text.

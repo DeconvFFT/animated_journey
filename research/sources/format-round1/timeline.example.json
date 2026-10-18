@@ -1,0 +1,11 @@
+{
+  "fps": 25, "width": 1920, "height": 1080,
+  "crossfade": 1.0,
+  "audio": {"voice": "assets/voice.wav", "music": "assets/music.wav", "music_gain_db": -18},
+  "shots": [
+    {"id": "s1", "file": "assets/p1.jpg", "dur": 5.0, "move": "zoom_in"},
+    {"id": "s2", "file": "assets/p2.jpg", "dur": 5.0, "move": "pan_right"},
+    {"id": "s3", "file": "assets/p3.jpg", "dur": 5.0, "move": "zoom_out"},
+    {"id": "s4", "file": "assets/p4.jpg", "dur": 5.0, "move": "zoom_in"}
+  ]
+}

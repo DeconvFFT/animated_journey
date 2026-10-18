@@ -1,0 +1,11 @@
+# FilmCraft v0.8.0 headless, run on 2026-10-18 in the Linux container (4 vCPU, no GPU).
+# Step 1:  filmcraft-cli --save-as /abs/path/t3.fcproj run filmcraft_headless.jsonl      (replace <ABS> with absolute paths)
+# Step 2:  filmcraft-cli --project /abs/path/t3.fcproj --save run captions.jsonl           (see next block)
+# Step 3:  filmcraft-cli --project /abs/path/t3.fcproj export /abs/path/out.mp4 --preset "High Quality 1080p HD" --settings '{"burnCaptions":true}'
+# Note: --project needs an EXISTING file; to start from nothing use --save-as with run (a first attempt with --project on a missing file failed with "No such file or directory").
+{"id":"file.newProject","params":{"name":"lj"}}
+{"id":"file.import","params":{"paths":["<ABS>/out.otio"]}}
+# --- captions.jsonl (separate file in the run above) ---
+# {"id":"captions.newTrack","params":{"format":"Subtitle","name":"EN","language":"en"}}
+# {"id":"captions.import","params":{"path":"<ABS>/captions.srt"}}
+# {"id":"captions.list","params":{}}
