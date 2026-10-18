@@ -14,7 +14,7 @@ Tell us your reliable hours a week by Sunday 15 November: 16 or more means a 12-
 
 1. **Real stays real.** No invented events, faces or words; no cloned voice of anyone; no AI animation of a real face. Anything drawn is marked.
 2. **Never record her without her knowing, and never lie.** A visible recorder and her spoken yes, or no recording. If she asks, the answer is yes, with the details kept until the day.
-3. **Her photos stay home.** No family photo, audio or video ever enters the cloud, a hosted tool or the code repository. They live only on the encrypted drive and its second copy, unless you yourself raise a photo set to "preview", which lets a small 768-pixel copy reach the agents' review packs after the model-improvement setting is off; nothing full-size, ever.
+3. **Her photos stay home.** No family photo, audio or video ever enters the cloud, a hosted tool or the code repository, and the repo, which is public, never holds names either. They live only on the encrypted drive and its second copy, unless you yourself raise a photo set to "preview", which lets a small 768-pixel copy reach the agents' review packs after the model-improvement setting is off; nothing full-size, ever.
 4. **If in doubt, it's out of the public cut.** Every hard chapter gets two decisions from you, 72 hours apart, with the advisor's flag read first. Out by default; her own say after the premiere is the only way back in.
 5. **Nothing critical depends on a half-finished app, and nothing new happens in the last week.** Every step has a free, proven fallback; the apps are pinned; the film is locked on 6 February.
 
@@ -28,7 +28,7 @@ Tell us your reliable hours a week by Sunday 15 November: 16 or more means a 12-
 
 *Rewritten every Sunday by the orchestrator; the dates below are always the next fourteen days.*
 
-- **Mon 19 Oct.** Start logging your real hours (seven days). Start five minutes a day of "I remember" notes about her into your own phone, never synced. Make the GitHub repo private. Create a code name and a project email only you read.
+- **Mon 19 Oct.** Start logging your real hours (seven days). Start five minutes a day of "I remember" notes about her into your own phone, never synced. Create a code name and a project email only you read.
 - **Tue 20 Oct.** Run the PC inventory script and paste the report. Check every shared device, account and photo library for anything that could tip her off.
 - **Wed 21 Oct.** Record yourself humming the song she sang to you, uncleaned. Write one line per stage of her life: what did her hands do most? Find that material in the house.
 - **Thu 22 Oct.** Photograph three to five candidates for the object that followed her everywhere, on an unsynced phone, in the light they live in.

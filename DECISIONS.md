@@ -54,6 +54,7 @@ Decisions the maker has actually made (verbatim intent, 2026-10-18) and the oper
 | D-23 | Game-world language | Welcome only where a mechanic says something true about the life (the swap-the-subject test); never decoration. No Mojang textures, sounds, UI or footage in the public cut; original voxel assets only; the name at most as a secondary description with the disclaimer. Playable pieces are an optional companion keepsake, never the main event. | 2026-10-18 | `CHARTER.md` Principle 2; `playbooks/games.md` Decisions 1, 3, 9 |
 | D-24 | Finish beats sprawl | One great sequence first (the vertical slice), then expand. 45- and 90-minute runtimes are killed; nothing above 12 minutes is planned before the slice speaks. | 2026-10-18 | `CHARTER.md` Principle 8; `playbooks/production-scale.md` Kill-or-cut |
 | D-25 | Prefer scriptable tools | Anything repeatable runs from the command line so agents can help without driving GUIs. The maker's hands and eyes are for judgment calls, Craft touch-ups, and anything that touches real family material on the PC. | 2026-10-18 | `CHARTER.md` Principle 9; `ROADMAP-ADDENDUM.md` §1.1 |
+| D-26 | Repo visibility | `DeconvFFT/animated_journey` stays **public** ("family won't access GitHub"). It holds only text, scripts and ID-keyed manifests; never names, photos, audio, video or other identifying details; the ID key stays offline. | 2026-10-18 | Maker, in chat |
 
 ---
 
@@ -156,7 +157,7 @@ Questions only the maker can answer, ordered by deadline. The team's recommendat
 | O-10 | Sun 25 Oct | Family profile: languages she and each close relative speak, scripts, observances actually kept, where relatives live. | Ten lines now; it sets transcription, captions, the holiday rules and the travel plan. |
 | O-11 | Sun 25 Oct | Would she hate being the centre of a public room, a speech, or being filmed? Is 27 Feb her birthday or a chosen date? | Answer from your own knowledge (there is no insider); if she dislikes surprises, use the two-step reveal (private first, then the room). |
 | O-12 | Sun 25 Oct | Which Claude plan are you on, and what does the usage bar read before and after the slice week? | Note it in `decisions.csv`; it bounds the agents' render and review budget. |
-| O-13 | Sun 25 Oct | Has the repo `DeconvFFT/animated_journey` been made private? | Flip it today and confirm; nothing personal is committed until it is. |
+| O-13 | answered Sun 18 Oct | Has the repo `DeconvFFT/animated_journey` been made private? | Answered: it stays public (D-26). |
 | O-14 | Sun 1 Nov | Sign the settings card (TD-1 to TD-4: 1080p, 24 fps, Rec.709/BT.1886, 48 kHz 24-bit, ProRes 422 HQ, burned-in captions, Flat SMPTE DCP if any). | Sign it as proposed; 24 fps is the one rate DCP-o-matic calls safe everywhere. |
 | O-15 | Sun 1 Nov | Language(s) of the film and the room. | One language with subtitles; her found voice in its own language; a few words untranslated where the picture explains them. |
 | O-16 | Sun 1 Nov | The sealed-envelope emergency contact (who holds "where the drive and the ID key are, and who may be told"). | Name one trusted person who learns nothing else; it brings nobody in. |

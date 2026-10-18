@@ -6,6 +6,7 @@ This repo holds the production of a surprise animated film about the maker's mot
 
 - **Secrecy.** It's a surprise and only the maker knows. Never contact anyone, post anything, or put project details anywhere outside this repo and the maker's own machine.
 - **Privacy.** Personal media (photos, scans, home video, letters, interview audio) is never committed to git and never uploaded to a third-party service without the maker's explicit OK for that service. Keep it in `media/` (git-ignored) or the maker's own storage.
+- **The repo is public** (the maker's choice). Use person IDs, never names, addresses or other identifying details; the ID key stays offline on the maker's machine.
 - **Real memories stay real.** Restore, restyle, animate and connect real material. Never invent events, fabricate people, or clone voices. Reconstructions must read as reconstructions.
 - **Theatrical bar and rights.** Every shot must hold up on a big screen, and everything shown in public must be cleared (music, other people's photos, footage, fonts, voices).
 

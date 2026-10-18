@@ -15,7 +15,7 @@
 - **Maker's computer:** Windows. The Claude desktop app uses too much memory there, so heavy work (research, generation, rendering) happens in the cloud wherever possible.
 - **Production approach: agents generate, apps refine.** Claude and the agent team are the primary engine: generation, scripted pipelines, code-driven animation. The maker's ArtCraft "Crafting Apps" (getartcraft.com, source at github.com/storytold: PhotoCraft, VectorCraft, FilmCraft, EffectCraft, LightCraft, SoundCraft and others) are refinement layers for fast human touch-ups and iteration. They are free, open-source and early alpha, so every step needs a proven fallback and nothing critical may depend on one alpha app.
 - **Material exists:** printed and digital photos, home videos, letters, and people to interview. Collection starts once the pipeline is locked.
-- **Project repo:** github.com/DeconvFFT/animated_journey (private working home for everything).
+- **Project repo:** github.com/DeconvFFT/animated_journey, public by the maker's choice (the family doesn't use GitHub). Because it's public, it holds only text, scripts and manifests keyed by person IDs: never names, photos, recordings or anything that identifies her or the family.
 
 ## Principles
 
@@ -80,6 +80,6 @@ Approve only when every score is 4 or higher and nothing critical is open.
 ## Constraints
 
 - Windows PC with the ArtCraft Crafting Apps installed; desktop-app memory use is a concern.
-- The cloud session's container is temporary: everything worth keeping goes to the private GitHub repo.
+- The cloud session's container is temporary: everything worth keeping goes to the GitHub repo (public, so text and IDs only).
 - GUI control of the maker's apps isn't connected; plan around agent generation, scriptable tools, and the maker's own hands in the Craft apps.
 - Personal material stays private. Nothing personal is published or uploaded to a third-party service without the maker's explicit say.
