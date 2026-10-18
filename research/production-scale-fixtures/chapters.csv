@@ -1,0 +1,5 @@
+chapter,module,title_code,target_s,priority,cut_order,material_in_hand_pct,status,approved_pct_of_runtime,rolling_lock_date,locked,hard_flag,note
+C01,M1,"slice chapter (choose a mid-life, non-hard chapter)",100,must,99,,slice_in_progress,,,0,0,"vertical slice; includes sound, grade, captions, master test"
+C02,M2,,100,must,98,,not_started,,,0,0,
+C03,M3,,100,should,3,,not_started,,,0,0,cut_order: 1 is cut first
+C04,M4,,100,nice,1,,not_started,,,0,0,private-cut module

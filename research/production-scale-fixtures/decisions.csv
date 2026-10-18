@@ -1,0 +1,2 @@
+date,gate_id,runtime_before_min,runtime_after_min,trigger,measured_value,hours_per_week_H,decision_text,who
+2026-12-20,G-SLICE,,,h_slice vs threshold table,,,"(fill in at the gate: continue, continue with levers, or cut)",maker

@@ -1,0 +1,45 @@
+r7_era_looks.txt
+Source: research/toolchain.md, recipe R7 (revised in round 1: the unit is the album, not the decade).
+Tested: ffmpeg 6.1.1 (Ubuntu 24.04 sandbox), 2026-10-18 [RUN]. Both stock chains below produced the intended
+look on a TEST CHART, not on her prints. Not yet run on the maker's PC: TODO(verify on the maker's PC).
+
+=====================================================================
+PART 1. THE RULE
+=====================================================================
+The look is taken from one real album, not from a decade. Pick three prints from that album (after the
+pipeline is locked). In each print, sample a known-white object and a skin midtone. Derive the lift, cast
+and grain from those samples. Save the result as that album's look, named after her chapter, and apply the
+same string to every photo from that album. The same string applied twice must give identical output.
+
+=====================================================================
+PART 2. STOCK PRACTICE, NOT FOR THE FILM
+=====================================================================
+These two chains are generic era looks. They are kept only as exercise material. They must not be used in
+the film, because they carry no information about her albums.
+
+STOCK PRACTICE, NOT FOR THE FILM. Chain 1: warm, lifted, softly desaturated, grain, vignette.
+  Use: ffmpeg -i in.jpg -vf "<chain>" out.jpg
+  Chain: curves=preset=lighter,colorbalance=rs=.12:gs=.02:bs=-.15:rm=.08:bm=-.08,eq=saturation=0.85:contrast=0.92,noise=alls=14:allf=t+u,vignette=PI/5
+
+STOCK PRACTICE, NOT FOR THE FILM. Chain 2: black and white, lifted blacks, rolled-off whites, grain.
+  Use: ffmpeg -i in.jpg -vf "<chain>" out.jpg
+  Chain: format=gray,curves=all='0/0.04 0.5/0.5 1/0.94',noise=alls=18:allf=t+u,vignette=PI/4
+
+STOCK PRACTICE, NOT FOR THE FILM. Any film look you are licensed to use, as a 3D LUT:
+  Use: -vf "lut3d=file.cube"
+
+=====================================================================
+PART 3. ALBUM LOOK TEMPLATE (one filled copy per album, saved as looks/<chapter name>.txt)
+=====================================================================
+status:           NOT FILLED. TODO(research): the step from sampled values to filter settings is not written yet.
+album:            <name of her album>
+chapter:          <her chapter this album belongs to>   (name the look after the chapter, not the decade)
+source prints:    <print 1>, <print 2>, <print 3>       (three prints from this one album)
+white sample:     <RGB from a known-white object, each print, and the mean>
+skin midtone:     <RGB from a skin midtone, each print, and the mean>
+lift (blacks):    <TODO: derived from the samples>
+cast:             <TODO: derived from the samples>
+grain:            <TODO: derived from the samples>
+filter string:    <TODO: the ffmpeg -vf string built from the values above>
+tested on:        <chart or stock image, ffmpeg version, date>
+rule:             the same string gives identical output on every photo from this album

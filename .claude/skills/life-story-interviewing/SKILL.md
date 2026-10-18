@@ -7,7 +7,7 @@ description: Plans, runs, logs and checks life-story interviews with relatives (
 
 ## Purpose
 
-Gather and shape the texture and milestones of one 50+ year life for the Life Journey piece, without inventing anything. The work produces three things. First, logged and timestamped source material. Second, an inventory of milestone and texture rows, each with a source, a confidence grade and a consent status. Third, a through-line that has passed its checks. The method is in `playbooks/story.md`. The evidence is in `research/story.md`. This file is the procedure.
+Gather and shape the texture and milestones of one 50+ year life for the Life Journey piece, without inventing anything. The work produces three things. First, logged and timestamped source material. Second, an inventory of milestone and texture rows, each with a source, a confidence grade and a consent status. Third, a through-line that has passed its checks. The method is in `playbooks/story.md`. The evidence is in `research/story.md`. This folder is the procedure: this file, plus the standalone files listed under References.
 
 ## When to use
 
@@ -28,34 +28,51 @@ Gather and shape the texture and milestones of one 50+ year life for the Life Jo
 
 ## Procedure
 
-1. Read the known facts in `CHARTER.md` before anything else. If they have changed (for example, the subject now knows about the project), stop and ask the maker which mode applies.
-2. Check the gate. The charter says real photos and stories are gathered only after the pipeline and process are locked. If the maker has not confirmed that, you may run only tests, using the maker's own voice or a practice partner who agrees. Do not schedule real sessions.
-3. Write down the mode and the proxy: who is the proxy for hard chapters, and who knows about the project. In surprise mode the subject is not interviewed. Work through relatives, documents, objects and found audio.
-4. Choose one life stage and 5 to 10 questions from Recipe 1 of `research/story.md`. Choose 1 to 3 prompts (object, photo, song, map) and keep the rest in reserve. Evidence for the prompts: smell cues bring back older, vivid memories, but rarely [41]. Songs from about ages 12 to 30 work best, and in one older-adult study about 70% of such songs evoked a memory, as reported in [46]. Use six photos, not sixty, with two that are not celebrations [58].
-5. Brief each relative before the session. Give the honest script from Recipe 4: the piece is a gift, it is a secret until a stated date, they can skip anything, nothing is used without their OK, and please do not mention it to the subject. Do not invent a cover story that asks the subject to act on camera. Tell the relative that remembering can hurt, and let them ask questions first [33]. Keep the pre-talk to logistics and consent, so the story is not told before recording starts [11].
-6. Set up the room and the recorder. Use a quiet, soft room. Put the phone on Do Not Disturb, plugged in, set to lossless or at least 128 kbps, on a stand or a folded cloth, 6 to 12 inches from the nearest mouth (5 to 6 inches for one speaker). Run a backup phone. Keep hands off the microphone [10][37].
-7. Open with a slate: names, full date, place ("narrator's home", not a street address), session number, topic [8][10].
+1. Read the known facts in `CHARTER.md` before anything else. Surprise mode is fixed there (2026-10-18). If the facts have changed (for example, the subject now knows about the project), stop and ask the maker which mode applies.
+2. Check the gate. Recorded sessions with real people wait for the gate date the maker sets in writing (playbook Decision 11), or for a Door A relative under a written decision to pull the gate earlier (`surprise-runbook.md`). Track A work can run now: the relative list, the consent script, the found-voice list and practice. Before the gate you may run only tests, with the maker's own voice or a practice partner who agrees. Do not schedule real sessions.
+3. Write down the mode and the proxy: who is the proxy for hard chapters, and who knows about the project. In surprise mode the subject is not interviewed. Work through relatives, documents, objects and **found voice**: existing audio and video of her (voicemails, answering-machine tapes, home video, clips on relatives' phones). Found voice is a source class of its own, and in surprise mode it is her only route to her own voice. Ask every relative: "Do you have any video or voice message of her on your phone? Please don't delete anything." Log each item with its holder, format and rough date. Copy only once the file plan is written.
+4. Choose one life stage and 5 to 10 questions from `question-bank.md` in this folder. Choose 1 to 3 prompts (object, photo, song, map) and keep the rest in reserve. Evidence for the prompts: smell cues bring back older, vivid memories, but rarely [41]. Songs from ages 15 to 30 work best, per [46]; we extend the lower bound to 12 to catch first records (inference). In one older-adult study about 70% of such songs evoked a memory, against 44% of other songs [46]. Use six photos, not sixty, with two that are not celebrations [58]. The cultural life script expects the middle years (about 35 to 55) to be grey, not empty [47], so ask for their ordinary good texture as well as their events.
+5. Brief each relative before the session, using the script below. Keep the pre-talk to logistics and consent, so the story is not told before recording starts [11]. Do not invent a cover story that asks the subject to act on camera [30]. Tell the relative that remembering can hurt, and let them ask questions first [33]. Sort them into Door A or Door B on the people tab (`surprise-runbook.md`).
+
+   **Relative script (honest; no cover story):**
+   > "I'm making a piece about [NAME]'s life as a gift. It is a secret from [NAME] until [date]. I'd love 45 minutes of your memories; you can skip anything, and nothing you say will be used without your OK. Please don't mention it to [NAME] or anyone who might."
+
+   Then the found-voice question, in the same conversation:
+   > "Do you have any video or voice message of her on your phone? Please don't delete anything. Please don't forward it to me or post it; just tell me what you have and roughly when it was made."
+
+6. Set up the room and the recorder. Use a quiet, soft room. Put the phone on Do Not Disturb, plugged in, set to lossless (iPhone) or at least 128 kbps (Android) [37]. Stand it on a table, a stand or a folded cloth, not in the hand [37]. For one speaker: 5 to 6 inches from the mouth [37], or 6 to 12 inches [89]. For two speakers the distance is inference, to be settled in Exercise 2 of the playbook. Run a backup phone [10]. Test: speak, play back, adjust [10].
+7. Open with the slate, said on tape: names, full date, place, session number, topic. Say the place as "narrator's home", not a street address [8][10]. Template:
+   > "This is [your name], recording [narrator's name] at the narrator's home, [full date]. Session [NN]. Topic: [topic]. The recorder is running."
 8. Run the session. Keep it to 45 to 60 minutes, with a break [10][35]. Open with an easy, present-tense or object question. Go in order at first, then let the relative wander [11]. Ask one question, then wait, and count to ten if needed [10]. Nod; do not say "uh-huh" [11]. Follow up with "tell me more", "what happened then?", "what did it look, smell or sound like?", or repeat their last words [3][36]. Ask for the scene: "Tell me about one time."
 9. Do not correct the narrator. Note each contradiction with its timestamp, to check later [10]. Note unusual names and words, and check spellings afterwards [10].
 10. Watch for tiredness: fidgeting, repetition, flat answers. Wrap up [35].
-11. If someone cries or goes quiet: stay, say nothing for a few seconds, and offer a tissue. Say something plain ("That's a lot."), not "How do you feel?" [32]. Offer three doors: stay with it, take a break, or move on. Do not change the subject for them [36]. Keep recording unless they ask you to stop, and note the time [32]. Afterwards, ask whether the passage is kept, restricted or removed [8].
-12. Close with a reflective question: "What was it like to talk about this today?" [5] Thank them. Keep recording until they have left the room.
-13. Within 24 hours: copy the original to two places and never edit it. Rename it `YYYY-MM-DD_person_sessionNN.wav`. Make a time-coded index, every five minutes or less, and a spellings list [10][38]. Run the transcript locally, so the audio stays on the maker's machine [39][40]. Mark unclear words as unclear. Do not guess.
-14. Propose inventory rows from transcripts and documents only. Each row needs a source, with a quote and a timestamp. Never invent a sensory detail or a date. Leave unknown cells empty. If two accounts conflict, make two rows and do not average them. The maker confirms the confidence grade and the consent status (Recipe 2).
-15. Grade each row's confidence. A: a dated original record, and at least one person agrees. B: two or more independent people agree, with no record. C: one first-hand memory. D: second-hand, a family legend, or conflicting accounts [79].
-16. Check the texture quota for each life stage. Include at least six texture rows from at least four categories (morning routine, meals, transport, sound and music, home layout, sayings, money, pets, clothes, work, weekly rhythm, annual ritual). Include at least one texture row per decade each for a place, an object, a saying and a smell or sound. Aim for more texture rows than milestone rows (Recipe 2; inference).
-17. Triage each milestone on six tests: Turn, Motif, Scene, Voice, Dignity, Variety (Recipe 5). Give it one treatment. Dramatise needs a 45 to 120 second scene and a sensory detail. Glimpse is 3 to 10 seconds. Mention is a label, a date or a line. Hold means left out for now. Write one reason per decision that points to a test. This procedure is untested, so test it on the vertical-slice chapter.
+11. If someone cries or goes quiet: stay, say nothing for a few seconds, and offer a tissue. Say something plain ("That's a lot."), not "How do you feel?" [32]. Offer three doors, in these words:
+    > "We can stay with it, take a break, or move on. Your choice."
+
+    Do not change the subject for them [36]. Keep recording unless they ask you to stop, and note the time [32]. Afterwards, ask whether the passage is kept, restricted or removed [8]. If they seem far away or overwhelmed, stop [32].
+12. Close. Ask a reflective question: "What was it like to talk about this today?" [5]. Then say the recorder is still running and ask if that is all right, or stop it visibly. Never record someone who believes they are off-tape; that breaks the consent they gave [8]. If they agree, ask the last question, S10.4 or R10.2 from `question-bank.md`. It is the likeliest place for an unguarded remark (inference). Then thank them.
+13. Within 24 hours: copy the original to two places and never edit it. Rename it `YYYY-MM-DD_person_sessionNN.wav`. Make a time-coded index, every five minutes or less, and a spellings list [10][38]. Run the transcript locally, so the audio stays on the maker's machine [39][40]. Mark unclear words as unclear. Do not guess. The full after-session steps are in `session-protocol.md`.
+14. Propose inventory rows from transcripts and documents only. Each row needs a source code, with a quote and a timestamp. Never invent a sensory detail or a date. Leave unknown cells empty. If two accounts conflict, make two rows and do not average them. The maker confirms the confidence grade and the consent status. Columns and rules are in `inventory-rules.md`; the template is `inventory-template.csv`. The CSV header, for copying:
+
+    ```
+    id,type,date,date_precision,age,place,people,what_happened_or_repeats,objects,sensory_detail,recurrence,source,confidence,consent_status,drawer,treatment,motif_tags,who_can_verify,notes
+    ```
+
+    Source codes: `S` subject, `R` relative, `D` document, `O` object, `P` photo, `V` found voice.
+15. Grade each row's confidence. A: a dated original record, and at least one person agrees. B: two or more independent people agree, with no record. C: one first-hand memory. D: second-hand, family legend, or conflicting accounts [79].
+16. Check the texture quota for each life stage. Include at least six texture rows from at least four categories (morning routine, meals, transport, sound and music, home layout, sayings, money, pets, clothes, work, weekly rhythm, annual ritual). Include at least one texture row per decade each for a place, an object, a saying and a smell or sound. Aim for more texture rows than milestone rows (`inventory-rules.md`; inference).
+17. Triage each milestone on six tests: Turn, Motif, Scene, Voice, Dignity, Variety. Give it one treatment. Dramatise needs a 45 to 120 second scene and a sensory detail. Glimpse is 3 to 10 seconds. Mention is a label, a date or a line. Hold means left out for now. Write one reason per decision that points to a test. The method and the treatment tiers are in `beat-sheet.md`. It is untested, so test it on the vertical-slice chapter.
 18. Find the through-line. Harvest recurring verbs and objects, the narrator's own chapter titles [5][6], and traits named unprompted by two or more relatives with different scenes. Write three candidates. Each is one sentence, with three timestamped quotes and one counter-example.
-19. Test each candidate. Own words: the key words appear in the transcripts. Independence: two witnesses with different scenes. Counter-example: you found one (if not, keep looking). Would-they-say-it: ask the subject if the mode allows it, otherwise the closest insider [53]. No default redemption arc: the pattern is common, its link to well-being is mixed, and it is not a template [7].
-20. Build a beat sheet: time, description, emotion, recurring image, what is withheld, and a mood graph [17]. Check the time budget from Recipe 5: cold open about 60 seconds; five or six chapters of about 3 minutes; three interludes of about 40 seconds; present-day close about 90 seconds; thanks about 60 seconds. Keep the first hard beat no earlier than about a quarter to a third of the way in [17]. The budget is untested.
+19. Test each candidate. Own words: the key words appear in the transcripts. Independence: two witnesses with different scenes. Counter-example: you found one (if not, keep looking). Would-they-say-it: in surprise mode, the closest insider [53]. No default redemption arc: the pattern is common, its link to well-being is mixed, and it is not a template [7].
+20. Build a beat sheet: time, description, emotion, recurring image, what is withheld, and a mood graph [17]. Check the time budget in `beat-sheet.md`: cold open about 60 seconds; five or six chapters of about 3 minutes; three interludes of about 40 seconds; present-day close about 90 seconds; thanks about 60 seconds. Keep the first hard beat no earlier than about a quarter to a third of the way in [17]. The budget is untested.
 21. Set the consent checkpoints. Re-confirm at the rough cut and at the lock. In surprise mode, the closest insider sees the piece first. After the reveal, the subject has a veto window, and nothing is shared beyond the room until she agrees (inference) [8][32].
 
 ## Checklists
 
 ### Before a session
-- [ ] Charter gate passed for real sessions
+- [ ] Charter gate passed for this recorded session (gate date, or a written Door A decision)
 - [ ] Mode and proxy written down
-- [ ] Relative briefed with the honest script, and has agreed
+- [ ] Relative briefed with the honest script, has agreed, and was asked the found-voice question
 - [ ] Stage, 5 to 10 questions and 1 to 3 prompts chosen; reserve list ready
 - [ ] Level check done; backup recorder running
 - [ ] Slate line ready; off-limits topics known
@@ -77,7 +94,7 @@ Gather and shape the texture and milestones of one 50+ year life for the Life Jo
 
 ### Each inventory row
 - [ ] type, date and date_precision set; ranges and anchors preferred over guessed exact dates
-- [ ] source with timestamp
+- [ ] source code with timestamp
 - [ ] texture rows: one concrete sensory detail
 - [ ] confidence graded A to D; conflicts split into separate rows
 - [ ] consent_status and drawer set
@@ -110,19 +127,24 @@ Gather and shape the texture and milestones of one 50+ year life for the Life Jo
 - Do not use a cover story that makes the subject do something on camera [30].
 - Keep recordings and transcripts local unless the maker gives explicit approval for a service. Do not use the StoryCorps app or archive for private material [4].
 - Do not let the subject find out through group chats, shared photo libraries or shared devices (charter).
-- Tell narrators that AI tools transcribe and may restyle real photos. No voice cloning or synthetic voice without explicit agreement (inference).
+- Tell narrators that AI tools transcribe and may restyle real photos. No cloned or synthetic voice of any real person, living or dead, even with their consent (the lean; an open charter decision for the maker, playbook Decision 10) (inference).
+- Never record someone who believes they are off-tape [8].
 - Do not treat tears or anger as material. Ask before using any emotional moment [32].
 - Respect breaks and stops. Do not push anyone to tell their story [34][35]. If distress is serious, stop and point to appropriate help.
 
 ## References
 
 ### Key files
-- `playbooks/story.md`: the learner playbook, with principles, steps, exercises and decisions.
-- `research/story.md`: the research notes. Recipe 1 holds the question banks, Recipe 2 the inventory, Recipe 3 the session protocol, Recipe 4 the surprise-mode runbook, Recipe 5 the treatment tiers and beat sheet, and Recipe 6 the through-line workshop.
+- `playbooks/story.md`: the learner playbook, with principles, steps, exercises, decisions and the two-track timeline.
+- `skills/life-story-interviewing/question-bank.md`: question banks by life stage, prompt kits, résumé cut list, surprise-mode adaptation (research Recipe 1).
+- `skills/life-story-interviewing/inventory-rules.md` and `inventory-template.csv`: column rules, texture quota, AI handling rules, and the CSV template (research Recipe 2).
+- `skills/life-story-interviewing/session-protocol.md`: the one-page interview protocol, before, during, after and close (research Recipe 3).
+- `skills/life-story-interviewing/surprise-runbook.md`: gates, the relative script, found voice, the people tab and door triage (research Recipe 4).
+- `skills/life-story-interviewing/beat-sheet.md`: treatment tiers, the time budget, the beat sheet and the through-line workshop (research Recipes 5 and 6).
+- `research/story.md`: the evidence for every method (Q1 to Q9, exemplars, sources).
 - `CHARTER.md`: known facts, principles and open decisions.
 
 ### Sources
-
 
 - [3] StoryCorps, "Tips for a Great Conversation" — https://storycorps.org/?p=99902 — undated; fetched — ten tips incl. sensory details, context, reflective close.
 - [4] StoryCorps Archive, Terms of Use — https://archive.storycorps.org/?p=35 — last modified 2023-09-14; fetched — licence and retention terms.
@@ -139,12 +161,14 @@ Gather and shape the texture and milestones of one 50+ year life for the Life Jo
 - [34] McKeown, J., Ryan, T., Ingleton, C. and Clarke, A., "'You have to be mindful of whose story it is'", *Dementia* 14(2) — https://eprints.whiterose.ac.uk/96489/8/WRRO_96489.pdf — 2015; fetched via PDF — private disclosures; Brooker's chest of drawers.
 - [35] Storii, "Tips for Doing Life Story Work With Someone Who Has Dementia" — https://storii.com/blog/tips-for-doing-life-story-work-with-someone-who-has-dementia — undated; fetched — 30-45 minute sessions, prompts, fatigue (vendor).
 - [36] Institute of Southern Jewish Life, "Oral History: Technique" — https://www.isjl.org/oral-history-guide---technique.html — undated; fetched — specific questions, silence, handling emotion.
-- [37] University of Dayton Libraries, "Oral history recording: phone tips" — https://libguides.udayton.edu/oral-history-recording/phone-tips — undated; fetched — phone settings, placement, room.
+- [37] University of Dayton Libraries, "Oral history recording: phone tips" — https://libguides.udayton.edu/oral-history-recording/phone-tips — undated; fetched — phone settings, placement on a table, room; 5 to 6 inches for one speaker.
 - [38] Library of Congress, Personal Digital Archiving: audio — https://www.digitalpreservation.gov/personalarchiving/audio.html — undated; fetched — two copies, yearly checks.
 - [39] OpenAI Whisper README — https://github.com/openai/whisper — fetched 2026-10-18 — MIT, install, CLI, models.
 - [40] whisper.cpp README — https://github.com/ggml-org/whisper.cpp — fetched 2026-10-18 — MIT, CPU/Apple Silicon, WAV requirement.
 - [41] Larsson, M., Willander, J., Karlsson, K. and Arshamian, A., "Olfactory LOVER", *Frontiers in Psychology* — https://www.frontiersin.org/articles/10.3389/fpsyg.2014.00312/full — 2014; fetched — odour-evoked memories: limbic, old, vivid, emotional, rare.
-- [46] Martinez-Saez, M. C. et al., songs from the reminiscence bump as autobiographical memory cues in aging (EEG), *Frontiers in Neuroscience* 17 — https://frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1300751/full — 2024; fetched (introduction) — bump songs evoke memories: about 70% vs 44% (López-Cano et al., 2020).
+- [46] Martinez-Saez, M. C. et al., songs from the reminiscence bump as autobiographical memory cues in aging (EEG), *Frontiers in Neuroscience* 17 — https://frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2023.1300751/full — 2024; fetched (introduction) — bump (15-30) songs evoke memories: about 70% vs 44% (López-Cano et al., 2020).
+- [47] Janssen, S. M. J. and Rubin, D. C., "Age effects in cultural life scripts", *Applied Cognitive Psychology* — https://pmc.ncbi.nlm.nih.gov/articles/PMC3972131 — 2010; fetched — few positive events expected after 30 (8.4%); events expected after 35 rated negative on average; about half of negative and neutral script events at 31+ (51.7%).
 - [53] Birt, L. et al., "Member Checking: A Tool to Enhance Trustworthiness or Merely a Nod to Validation?", *Qualitative Health Research* 26(13) — https://ueaeprints.uea.ac.uk/id/eprint/59602/ — 2016; snippet only (abstract) — synthesized member checking.
 - [58] West, N. M., *Kodak and the Lens of Nostalgia* (University Press of Virginia, 2000) — https://upress.virginia.edu/title/1967/ — 2000; snippet only — snapshots and nostalgia.
 - [79] BYU Family History Library, evidence analysis handout — https://fh.lib.byu.edu/wp-content/uploads/2023/07/Evidence-Analysis_-Handout-July-2023-.pdf — 2023-07; snippet only — original vs derivative, primary vs secondary, direct vs indirect.
+- [89] GoTranscript, "Transcribe interviews recorded on a phone" — https://gotranscript.com/blog/transcribe-interviews-recorded-on-a-phone — undated; fetched — "6-12 inches from the speaker's mouth"; vendor.

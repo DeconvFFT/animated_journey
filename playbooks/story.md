@@ -1,6 +1,6 @@
 # Life-Story Craft: Gathering and Shaping a 50+ Year Life
 
-*Track: story · Version 0.1 (draft) · Written 2026-10-18 · Built from `research/story.md` (researcher notes, 2026-10-18) and `CHARTER.md`.*
+*Track: story · Version 0.2 (draft; Fable round 1 applied) · Written 2026-10-18 · Built from `research/story.md` (researcher notes, 2026-10-18) and `CHARTER.md`.*
 
 *Reading key: [17] points to a source in the Sources list at the end. "(inference)" marks our own suggestion, not something a source says. "UNVERIFIED" means we could not confirm a fact from a source we opened. "snippet only" means we saw the source in search results but did not open it. "TODO(research)" marks a gap that still needs filling.*
 
@@ -27,36 +27,45 @@ This playbook covers how to gather that material and shape it into something tha
 
 ## How to do it, step by step
 
-**The gate comes first.** The charter says real photos and stories are gathered only after the pipeline and process are locked. Before any recorded session with a real person, confirm that the gate is passed. Practice tests with your own voice, or with a friend who agrees to practise, are fine before then.
+**The gate comes first, and it splits gathering in two.** The charter says real photos and stories are gathered only after the pipeline and process are locked, and the Learn phase runs to about mid-November (Fable round-1 review, C1). Gathering has two tracks:
+
+- **Track A, locate and protect (starts now; no recording).** Make the relative list, oldest first, with age, health, hearing, distance and language. List the documents and where they physically are. Make the found-voice list (her voicemails, tapes, home video, clips on relatives' phones), because phones get replaced and this is the only route to her own voice in surprise mode. Write the consent script. Run the practice exercises. Nothing in Track A records a real person.
+- **Track B, recorded sessions (behind the gate).** No recorded session with a real person until the gate is passed. The maker sets the gate date in writing (Decision 11). Reasons to pull it earlier are named in advance: a relative in Door A (Step 6), a serious illness, or a relative who is only in town at Christmas. Pulling it early is the maker's written decision, and the Fable advisor reviews it.
+
+Practice tests with your own voice, or with a friend who agrees to practise, are fine before the gate.
 
 **Step 1. Confirm the mode and the proxy.** Write down the mode the charter sets: a surprise. Name the one close relative who will act as proxy for hard chapters. See Decisions 1 and 2.
 
-**Step 2. Set up the recording.** Use a quiet room with soft things in it: rugs, curtains, cushions. Turn off the fridge and any chiming clocks if you can [10][37]. Put the phone on Do Not Disturb and plug it in. Stand it on a table or a folded cloth, 6 to 12 inches from the nearest mouth, or 5 to 6 inches from one speaker. Keep your hand off the microphone [37]. Use lossless recording (iPhone: Settings > Voice Memos > Audio Quality > Lossless) or at least 128 kbps on Android [37]. Run a second phone as a backup [10].
+**Step 2. Set up the recording.** Use a quiet room with soft things in it: rugs, curtains, cushions. Turn off the fridge and any chiming clocks if you can [10][37]. Put the phone on Do Not Disturb and plug it in. Stand it on a table, a stand or a folded cloth, not in your hand. For one speaker, 5 to 6 inches from the mouth [37], or 6 to 12 inches [89]. For two speakers no source gives a distance: the layout is inference, and Exercise 2 settles it. A table keeps handling noise off the recording [37]. Use lossless recording (iPhone: Settings > Voice Memos > Audio Quality > Lossless) or at least 128 kbps on Android [37]. Run a second phone as a backup [10].
 
-**Step 3. Set up local transcription.** Keep private audio on your own computer. Two free options are OpenAI's Whisper (MIT licence; install with `pip install -U openai-whisper`; needs ffmpeg) [39], and whisper.cpp (MIT licence; runs on the CPU; takes 16-bit WAV) [40]. Test both on one recording before you rely on either (Exercise 3). The Windows install steps and the speed on your PC are UNVERIFIED. TODO(research): accuracy on older voices, accents and non-English speech is untested.
+**Step 3. Set up local transcription.** Keep private audio on your own computer. Two free options are OpenAI's Whisper (MIT licence; install with `pip install -U openai-whisper`; needs ffmpeg) [39], and whisper.cpp (MIT licence; runs on the CPU; takes 16-bit WAV) [40]. Test both on one recording before you rely on either (Exercise 3). Which one fits depends on your PC. With an NVIDIA graphics card that has about 6 GB of video memory, Whisper's `turbo` model is the simplest route (inference from the research notes' Q1 table) [39]. Without one, whisper.cpp on the CPU is the likely fit [40]. The notes' published timings put `small` on a fast desktop CPU at about 1.5 minutes per 10 minutes of audio; a slow CPU can take several times longer (our own slow-CPU bracket with faster-whisper was about nine minutes [100]). Prebuilt Windows builds of whisper.cpp were not confirmed [83]. Cloud transcription is not an option without the maker's explicit say (charter). TODO(research): accuracy on older voices, accents and non-English speech is untested.
 
-**Step 4. Build the inventory sheet.** Use one table, saved as CSV so any spreadsheet app opens it. It has two kinds of row. A `milestone` is a one-off event. A `texture` row is a repeated pattern: a routine, a meal, a saying, a car, the kitchen table. The full column list is in Recipe 2 of the notes. Four rules matter most:
+**Step 4. Build the inventory sheet.** Use one table, saved as CSV so any spreadsheet app opens it. It has two kinds of row. A `milestone` is a one-off event. A `texture` row is a repeated pattern: a routine, a meal, a saying, a car, the kitchen table. The full column list is in `skills/life-story-interviewing/inventory-rules.md`, and the CSV template is `inventory-template.csv` beside it. Four rules matter most:
 
-- Every row has a source: who or what, plus a timestamp such as `@00:14:30`. No source, no row.
+- Every row has a source code: `S` subject, `R` relative, `D` document, `O` object, `P` photo, `V` found voice (existing audio or video of her). Name the person or item, and add a timestamp such as `@00:14:30`. No source, no row.
 - Every texture row has one concrete sensory detail: a smell, a sound, a texture, a taste or a light.
 - Every row has a confidence grade. **A**: a dated original record, and at least one person agrees. **B**: two or more independent people agree, with no record. **C**: one first-hand memory. **D**: second-hand, a family legend, or conflicting accounts. The grades follow standard genealogy practice [79] (snippet only).
 - Every row has a consent status and a drawer. Consent values: `asked-ok`, `asked-ok-with-limits`, `not-asked (surprise hold)`, `declined`, `third-party-needs-check`, `bottom-drawer (do not use)`.
 
+**Found voice is a source class of its own (Track A).** In surprise mode it is the only route to her own voice, and phones get replaced, so start the list now. Her voicemails, answering-machine tapes, home video and clips on relatives' phones are where her voice may be. Ask each relative: "Do you have any video or voice message of her on your phone? Please don't delete anything." Ask them not to forward it or post it: they should just tell you what exists and roughly when it was made. For each item, record who holds it, the device or format, a rough date, who speaks, the length, the quality, whether the original is in hand, and the consent status of everyone heard. Copy the originals once the file plan is written, and never edit them [38]. Found voice may be restored and used as itself. It may not be extended or imitated (Decision 10).
+
 **Step 5. Choose the vertical-slice chapter.** Pick one chapter from one life stage that you can make in full. Every method in this playbook gets tested on it first. The charter asks for one great chapter before expansion (charter, principle 6).
 
-**Step 6. Plan the order.** Interview the oldest relatives first, since their memories and their time are the most at risk (inference). Her middle years, roughly 35 to 55, will be thin in memory and rich in routine and documents. A study of cultural life scripts found that people name few anchor events after about age 35, and most of those are negative [47]. This is a pattern across people, not a finding about her, so treat it as a reason to check, not a conclusion (inference). Use a life-history calendar, a grid of years by where she lived, work, relationships and children, to pin down dates. It improves recall in research [67] (snippet only).
+**Step 6. Plan the order.** List the relatives oldest first, since their memories and their time are the most at risk (inference). Sort each one into a door. **Door A (protect now):** aged 75 or older; a serious or progressive illness or any memory change; a hearing or speech problem that makes a later phone call impractical; or reachable in person only at one gathering before mid-November, or only abroad. **Door B:** everyone else, who waits for the gate. These thresholds are judgement calls (inference). Keep the people tab, with its health notes, private to the maker. The full door rule and people-tab fields are in `skills/life-story-interviewing/surprise-runbook.md`.
 
-**Step 7. Prepare each session.** Choose one life stage and 5 to 10 questions from Recipe 1 of the notes. Choose 1 to 3 prompts and keep the rest in reserve. StoryCorps itself advises 5 to 10 starter questions for a session of about 40 minutes [2]. The prompts, with the evidence we have:
+Her middle years, roughly 35 to 55, are where the cultural life script expects the fewest positive events. Janssen and Rubin report that few positive events are expected after age 30 (8.4%), that events expected after 35 are rated negative on average, and that about half of the negative and neutral script events (51.7%) fall at 31 or later [47]. This is a pattern across people, not a finding about her (inference). It does not mean those years are empty: the script expects them to be grey. So do not read a thin memory of those years as a thin life. Ask relatives for the ordinary good texture of those years: the routines, the good Sundays, the jokes (`question-bank.md`, R7.1, R7.4 and R7.8). Use a life-history calendar, a grid of years by where she lived, work, relationships and children, to pin down dates. It improves recall in research [67] (snippet only).
+
+**Step 7. Prepare each session.** Choose one life stage and 5 to 10 questions from `skills/life-story-interviewing/question-bank.md`. Choose 1 to 3 prompts and keep the rest in reserve. StoryCorps itself advises 5 to 10 starter questions for a session of about 40 minutes [2]. The prompts, with the evidence we have:
 
 - **Smell.** Memories cued by smell are older, more vivid and more emotional than other memories, but they are rare [41]. Ask "what did it smell like?" in words.
-- **Songs.** Music from about ages 12 to 30 works best. In one older-adult study, about 70% of those songs evoked a memory, against 44% of other songs (as reported in [46]). Use 20 to 30 second clips, and ask "where were you?"
+- **Songs.** Music from ages 15 to 30 works best, per [46]. We extend the lower bound to 12 to catch first records (inference). In one older-adult study, about 70% of those songs evoked a memory, against 44% of other songs (as reported in [46]). Use 20 to 30 second clips, and ask "where were you?"
 - **Photos.** Pick six, not sixty. Ask what is outside the frame, who took it, and what happened just before and after. Include two photos that are not celebrations, because family photos over-represent celebration [58].
 - **Objects and maps.** Ask each relative to bring one object and say where it lived. For a memory map, draw your own childhood street first, then ask them to draw theirs and mark "where something memorable happened" [65] (snippet only).
 - **The Tuesday walkthrough.** Ask for one ordinary day, from the alarm to lights out. This adapts Mass-Observation's day diaries, which asked volunteers to record everything they did on 12 May 1937 [50] (snippet only). It fits the middle years best, but no experiment has tested it against other prompts.
 - **"I remember" lists.** Ten short fragments in five minutes, with no explanation [52] (snippet only).
 - **House tour.** Walking with relatives in their seventies or eighties may not be practical. Do the tour at their kitchen table instead (inference, adapted from the go-along method [44]).
 
-**Step 8. Brief each relative first.** In surprise mode, every relative must know about the secret before the session. Use the honest script from Recipe 4: the piece is a gift; it is a secret from your mother until a set date; they can skip anything; nothing they say will be used without their OK; please do not mention it to her or to anyone who might. Do not invent a cover story. Tell them that remembering can hurt, and let them ask questions first [33]. Keep the pre-talk to logistics and consent. If the story is told before the recorder starts, there is little left to record [11].
+**Step 8. Brief each relative first.** In surprise mode, every relative must know about the secret before the session. Use the honest script in `skills/life-story-interviewing/surprise-runbook.md`: the piece is a gift; it is a secret from your mother until a set date; they can skip anything; nothing they say will be used without their OK; please do not mention it to her or to anyone who might. Then ask the found-voice question (Step 4). Do not invent a cover story. Tell them that remembering can hurt, and let them ask questions first [33]. Keep the pre-talk to logistics and consent. If the story is told before the recorder starts, there is little left to record [11].
 
 **Step 9. Run the session.** Keep it to 45 to 60 minutes, with a break [10][35].
 
@@ -72,7 +81,7 @@ This playbook covers how to gather that material and shape it into something tha
 
 **Step 10. If someone cries or goes quiet.** Stay. Say nothing for a few seconds. Offer a tissue. Say something plain, such as "That's a lot.", not "How do you feel?" [32]. Offer three doors: stay with it, take a break, or move on. Do not change the subject for them [36]. Keep recording unless they ask you to stop, and note the time [32]. Afterwards, ask whether that passage should be kept, restricted or removed [8]. If they seem far away or overwhelmed, stop [32].
 
-**Step 11. Close well.** Ask a reflective question, such as "What was it like to talk about this today?" [5]. Thank them. Keep recording until they have left the room. Aim to leave them no worse off than when you met them [54].
+**Step 11. Close well.** Ask a reflective question, such as "What was it like to talk about this today?" [5]. Then say the recorder is still running and ask if that is all right, or stop it visibly. Never record someone who believes they are off-tape: that breaks the consent they gave [8]. If they agree, ask the last question, S10.4 ("What have you never been asked that you wish someone would?") or R10.2 ("What do they always do that shows who they are?"). It is the likeliest place for an unguarded remark (inference). Then thank them. Aim to leave them no worse off than when you met them [54].
 
 **Step 12. Within 24 hours.**
 
@@ -121,26 +130,26 @@ Write three candidate through-lines. Each is one sentence, with three timestampe
 4. **Would she say it?** Ask her, if the mode allows. In surprise mode, ask the closest insider: "Does this sound like her? What's missing?" [53]
 5. **No default redemption arc.** Many people narrate a move from hardship to gain, and in some studies that pattern is linked to well-being. The evidence is mixed, and it is not a template. Her life may not run that way [7].
 
-**Step 16. Build the beat sheet and check the time budget.** Watch a reference piece with a stopwatch. For each beat, log the time, what happens, the emotion, the recurring image, and what is withheld. Then draw a mood graph, with time across and mood up and down [17]. For a 25-minute piece, the notes give a starting budget. It is our heuristic and untested: cold open about 60 seconds; five or six chapters of about 3 minutes, each with one dramatised scene, two or three glimpses, one texture sequence and a chapter card; three "Tuesday" interludes of about 40 seconds; present-day close about 90 seconds; thanks about 60 seconds. Keep the first hard beat no earlier than about a quarter to a third of the way in. This comes from the timing of *Up*'s first blow [17] (inference).
+**Step 16. Build the beat sheet and check the time budget.** Watch a reference piece with a stopwatch. For each beat, log the time, what happens, the emotion, the recurring image, and what is withheld. Then draw a mood graph, with time across and mood up and down [17]. For a 25-minute piece, the starting budget is in `skills/life-story-interviewing/beat-sheet.md`. It is our heuristic and untested: cold open about 60 seconds; five or six chapters of about 3 minutes, each with one dramatised scene, two or three glimpses, one texture sequence and a chapter card; three "Tuesday" interludes of about 40 seconds; present-day close about 90 seconds; thanks about 60 seconds. Keep the first hard beat no earlier than about a quarter to a third of the way in. This comes from the timing of *Up*'s first blow [17] (inference).
 
 **Step 17. Check consent at each stage, then run the veto window.** Re-confirm consent at the rough cut and again at the lock. In surprise mode, the closest insider sees the piece first. At the reveal, your mother sees it somewhere she can say "stop", and nothing goes beyond that room until she agrees (inference, from the notes' runbook) [8][32].
 
 ### Timeline (19 weeks, draft)
 
-These dates come from the researcher's plan. The week numbers in the notes overlap, so use the dates. The plan is valid only after the charter gate is passed. In surprise mode, drop the sessions with your mother that the notes plan for the hybrid or together modes.
+These dates come from the researcher's plan, adjusted in round 1 (Fable review, C1). The week numbers in the notes overlap, so use the dates. Track A starts now. Track B waits for the gate, unless the maker pulls the gate earlier for a Door A relative in writing (Decision 11). In surprise mode there are no sessions with your mother: the notes' hybrid and together sessions are dropped.
 
-| Dates | Work |
-|---|---|
-| Oct 18 – Oct 24 | Decide the mode and the proxy. List relatives, oldest first. Write the consent script. Test recording and transcription on your own voice (tests, not gathering). |
-| Oct 25 – Nov 7 | First two relative interviews, once the gate is passed. Fix problems. Log and transcribe. |
-| Nov 1 – Dec 12 | Relative interviews: six to ten at about 45 minutes, some together and some alone. One object, photo or map session. Place visits. |
-| Nov 15 – Dec 12 | Inventory v1. Through-line workshop. Pick the vertical-slice chapter. |
-| Dec 20 – Jan 2 | Visits to the oldest relatives, one at a time (inference). Freeze inventory v1. |
-| Jan 3 – Feb 6 | Hard-chapter conversations with relatives, under the proxy rule. Corrections, gaps, second interviews. Consent check at the rough cut. |
-| Feb 7 – Feb 20 | Review with the proxy. Veto window. Lock. |
-| Feb 21 – Feb 27 | Final consent confirmations. Premiere preparation. |
+| Dates | Track A: locate and protect (no recording) | Track B: recorded sessions (only after the gate) |
+|---|---|---|
+| Oct 18 – Oct 24 | Decide the mode (surprise, fixed by the charter) and the proxy. Start the relative list, oldest first, with age, health, hearing, distance and language. Write the consent script. Test recording and transcription on your own voice (tests, not gathering). | Set the gate date in writing (Decision 11). |
+| Oct 25 – Nov 7 | Finish the people tab and the Door A and Door B sort. Start the found-voice list, asking each relative the found-voice question. Do the practice exercises (2, 3, 5, 7). Ask the closest insider the suitability question. | Door A only, and only if the maker has pulled the gate for that relative in writing: one short, audio-only session each, with the consent script. Log and transcribe it. |
+| Nov 1 – Dec 12 | Document inventory: where the photos, letters and records physically are. Complete the found-voice list. Copy originals once the file plan is written. | Recorded relative interviews after the gate: six to ten at about 45 minutes, some together and some alone. One object, photo or map session. Place visits. |
+| Nov 15 – Dec 12 | Draft inventory v1 from documents and found voice. | Inventory v1 from the recorded sessions. Through-line workshop. Pick the vertical-slice chapter. |
+| Dec 20 – Jan 2 | Visits to the oldest relatives, one at a time (inference): documents, found-voice copies, the consent script. | Recorded sessions with the oldest relatives in the holiday window, only where the gate has passed for them. Freeze inventory v1. |
+| Jan 3 – Feb 6 | Check facts against documents. Corrections and gaps. | Hard-chapter conversations with relatives, under the proxy rule. Second interviews. Consent check at the rough cut. |
+| Feb 7 – Feb 20 | Review with the proxy. Veto window. | Lock. |
+| Feb 21 – Feb 27 | Final consent confirmations. | Premiere preparation. |
 
-The notes' minimum for full surprise is 8 to 12 relatives, 2 insiders, and document work. Documents to look for in the middle years include wall calendars, diaries, address books, school reports, phone camera rolls, receipts, car papers, holiday brochures and work ID photos (the notes' list, marked as inference).
+The minimum for full surprise (the operating mode) is 8 to 12 relatives, 2 insiders, document work and a found-voice inventory. Documents to look for in the middle years include wall calendars, diaries, address books, school reports, phone camera rolls, receipts, car papers, holiday brochures and work ID photos (the notes' list, marked as inference).
 
 ## Learn-by-doing exercises
 
@@ -154,16 +163,25 @@ The notes' minimum for full surprise is 8 to 12 relatives, 2 insiders, and docum
 ### Exercise 2: Record a practice conversation
 
 - **Goal.** Find a setup where every word, from the furthest speaker, is clear.
-- **Steps.** Pair up with a friend who agrees to practise. Record two minutes of talk at a table three ways: phone on a stand, 6 to 12 inches from each mouth; phone on a folded towel between you; the same, with a second phone running. Listen on headphones. Note hiss, echo and any speaker who fades. Write your placement rule.
+- **Steps.** Pair up with a friend who agrees to practise. Both of you read the same 60-second passage, alternating sentences, with the phone on a folded towel between you, centred, at about 6, 12 and 24 inches from the nearer mouth. Then try one phone each, about 6 inches from each mouth, which is the one-phone-per-person ideal [90]. Say a slate before each take ("test A, 6 inches"). Listen on headphones. Note hiss, echo and any speaker who fades. Write your placement rule. This exercise settles the two-speaker distance, which is inference until then (Step 2).
 - **Time.** About 90 minutes.
 - **What good looks like.** You can state the placement rule in one sentence, and the backup file plays back as cleanly as the main one.
 
 ### Exercise 3: Transcribe one recording on your own computer
 
 - **Goal.** Get one working transcription command on your PC, and measure its speed and its errors.
-- **Steps.** Install Whisper [39] or whisper.cpp [40] by following its README. If you need to convert audio, the whisper.cpp README gives this example: `ffmpeg -i in.mp3 -ar 16000 -ac 1 -c:a pcm_s16le out.wav` [40]. Time a run on a 10-minute recording. Check ten random lines of the transcript against the audio.
+- **Steps.** First, inventory the PC. In PowerShell, run these and keep the output:
+
+  ```
+  Get-CimInstance Win32_Processor | Select-Object Name,NumberOfCores,NumberOfLogicalProcessors
+  [math]::Round((Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory/1GB,1)
+  Get-CimInstance Win32_VideoController | Select-Object Name,DriverVersion
+  nvidia-smi --query-gpu=name,memory.total --format=csv
+  ```
+
+  Task Manager's GPU tab also shows dedicated video memory, and DxDiag ("dxdiag" in the search box, then Save All Information) is the fallback [85]. Then install Whisper [39] or whisper.cpp [40] by its README. On Windows the Whisper README suggests `choco install ffmpeg` or `scoop install ffmpeg` [39]. If you need to convert audio, the whisper.cpp README gives this example: `ffmpeg -i in.mp3 -ar 16000 -ac 1 -c:a pcm_s16le out.wav` [40]. Set the language explicitly rather than trusting auto-detect (inference; check `whisper --help`). Run it in the family's language, on the hardest voice you have. Time a run on a 10-minute recording. Check ten random lines of the transcript against the audio and count the wrong words. If the language has high error on the Whisper paper's read-speech test (for example Hindi 21.5% and Arabic 16.0% word error for `large-v2` [82]), or the family switches languages mid-sentence, budget a human correction pass for every transcript.
 - **Time.** Two to three hours, mostly installation.
-- **What good looks like.** You have one command that works, a timed run, and a list of the errors it made. The notes' example commands are for Mac or Linux shells. The Windows steps are UNVERIFIED until you do this. The Whisper README says the `turbo` model needs about 6 GB of video memory [39], so check what your graphics card has. Whisper's speed on your PC is UNVERIFIED (TODO(research)).
+- **What good looks like.** You have one command that works, a timed run, and a list of the errors it made. The Windows steps stay untested until you have run them. The Whisper README says the `turbo` model needs about 6 GB of video memory [39]; the PowerShell lines above tell you what your graphics card has. Your PC's speed is a result of this exercise, not an assumption (TODO(research): record it as a project finding).
 
 ### Exercise 4: Triage your own milestones
 
@@ -175,21 +193,21 @@ The notes' minimum for full surprise is 8 to 12 relatives, 2 insiders, and docum
 ### Exercise 5: Build the inventory sheet
 
 - **Goal.** Fill a CSV with real rows, from your own early childhood or from a family photo you own, and feel the rules.
-- **Steps.** Create the CSV with the header from Recipe 2 of the notes. Enter six texture rows and two milestone rows. For each, set the source with a timestamp, the confidence grade, and the consent status. Enter one event that you remember in two different ways, as two separate rows.
+- **Steps.** Create the CSV with the header in `skills/life-story-interviewing/inventory-template.csv`. Enter six texture rows and two milestone rows. For each, set the source with a timestamp, the confidence grade, and the consent status. Enter one event that you remember in two different ways, as two separate rows.
 - **Time.** About 60 minutes.
 - **What good looks like.** No row lacks a source. Every texture row has one concrete sensory detail. The two versions of the event are two rows, linked in the notes column, and neither is averaged away.
 
 ### Exercise 6: Run a practice session and draft three through-lines
 
 - **Goal.** Run one 45-minute session with the Tuesday walkthrough, then test a through-line against what you heard.
-- **Steps.** With the friend from Exercise 2, run the Tuesday walkthrough from Recipe 1: "It's a Tuesday in [year]. Start from the alarm, or whatever woke you..." Use silence, "tell me about one time", and no "why" questions. Afterwards, count your "why" questions, your interruptions, and any silence you filled too early. Then write three candidate through-lines from what you heard. Give each three timestamped quotes and one counter-example.
+- **Steps.** With the friend from Exercise 2, run the Tuesday walkthrough from `skills/life-story-interviewing/question-bank.md`: "It's a Tuesday in [year]. Start from the alarm, or whatever woke you..." Use silence, "tell me about one time", and no "why" questions. Afterwards, count your "why" questions, your interruptions, and any silence you filled too early. Then write three candidate through-lines from what you heard. Give each three timestamped quotes and one counter-example.
 - **Time.** A 45-minute session, plus 90 minutes of review.
 - **What good looks like.** Your friend described a specific morning, with at least three sensory details. You waited a full ten seconds at least once. Each through-line has a counter-example you found in the transcript.
 
 ### Exercise 7: Dry-run the consent paragraph and the relative script
 
 - **Goal.** Write the consent paragraph and the relative script, then check them for honesty.
-- **Steps.** Write a one-paragraph release. It should say what the piece is for, who will see it, that AI tools will transcribe and may help tidy or restyle real photos but will not invent events or voices, that the relative can skip, stop, restrict or withdraw, and until when they can withdraw (Recipe 3, steps 2 and 3, and [8]). Then write the relative script from Recipe 4. Give both to a friend who has not read this playbook, and ask them, in their own words, what they would do after reading.
+- **Steps.** Write a one-paragraph release. It should say what the piece is for, who will see it, that AI tools will transcribe and may help tidy or restyle real photos but will not invent events or voices, that the relative can skip, stop, restrict or withdraw, and until when they can withdraw (`skills/life-story-interviewing/session-protocol.md`, steps 2 and 3, and [8]). Then write the relative script from `skills/life-story-interviewing/surprise-runbook.md`. Give both to a friend who has not read this playbook, and ask them, in their own words, what they would do after reading.
 - **Time.** About 60 minutes.
 - **What good looks like.** The script contains no cover story that needs your mother to act on camera. It says the relative can skip anything. Your friend can say, in their own words, what happens to the recording and what they can stop.
 
@@ -205,7 +223,7 @@ Each decision lists the options, then our current lean. A lean is a suggestion f
   - *Together:* she knows everything and takes part in the telling.
 - **Our current lean: full surprise.** The charter records it as a known fact: she does not know, and all gathering is covert. The research notes recommend the hybrid, because her own voice and her consent for hard chapters are the strongest assets, and surprise cannot provide them. That is a fair point. But the hybrid means telling her that a project exists, which changes a fact the charter already sets. We are not adopting it. If you decide to change that fact, use the hybrid column in the notes and ask the Fable advisor to re-check the plan.
 - **The cost of full surprise.** It needs more relatives and more checking. It also carries the highest risk that she will dislike being the centre of attention. The notes cite a live programme where the subject walked away [30].
-- TODO(research): the researcher wrote the hybrid recommendation without the surprise fact in view. Re-check it at the next gate.
+- Resolved in round 1: the notes now carry a dated addendum, and their mode table puts full surprise first. Re-check the hybrid only if the maker reopens the decision.
 
 ### 2. Who is in on it, and who is the proxy for hard chapters
 
@@ -253,7 +271,14 @@ Each decision lists the options, then our current lean. A lean is a suggestion f
 ### 10. Consent for AI processing of voices and photos
 
 - **Options.** Tell each narrator that AI is used, and get their agreement. Or do not mention it. For voices: no synthetic voice at all, or voice cloning only with explicit agreement.
-- **Our current lean.** Tell every narrator, in the pre-talk, that AI tools will transcribe and may help tidy and restyle real photos, and that the tools will not invent events or voices. No voice cloning or synthetic voice unless that person explicitly agrees (inference, from charter principle 4). TODO(research): the legal position is unresolved. This is not legal advice.
+- **Our current lean.** Tell every narrator, in the pre-talk, that AI tools will transcribe and may help tidy and restyle real photos, and that the tools will not invent events or voices. No synthetic voice of any real person, living or dead, even with their consent: no cloned voice and no voice generated to sound like someone. This is stricter than "unless that person explicitly agrees". The charter's principle 4 says "no cloned voices", and the charter review sharpens it to cover any synthetic voice and consent (`reviews/00-charter-review.md`, Principle 4), because an audience cannot tell consent from fakery and the piece will outlive its context (inference).
+- **Open charter decision for the maker:** whether consent could ever permit a synthetic voice of a real person in the piece. Until the maker decides, the lean above stands.
+- TODO(research): the legal position is unresolved. This is not legal advice.
+
+### 11. When the gate for recorded sessions opens
+
+- **Options.** One fixed gate date, which the maker sets in writing. Or a separate, earlier date for a relative whose situation requires it (Door A).
+- **Our current lean: not chosen; the maker sets the date.** The Learn phase runs to about mid-November (`reviews/story-round1.md`, C1). If the maker has no reason to decide otherwise, the end of week 4, Saturday 2026-11-14, is a reasonable latest date (inference). Reasons to pull it earlier, named in advance: a Door A relative; a serious illness; a relative who is only in town at Christmas. Any early pull is the maker's written decision, and the Fable advisor reviews it.
 
 ## Pitfalls
 
@@ -278,7 +303,7 @@ Each decision lists the options, then our current lean. A lean is a suggestion f
 - **No survey of family-tribute failures.** The failure list in the notes is our synthesis from vendor guides, oral-history manuals and memoir-ethics writing [70][71].
 - **Our own method.** The milestone tests, the time budget and the through-line checks are our own assembly. Test them on the vertical slice.
 - **Timings.** The *Up* timings come from a student essay. Re-time them on your own copy (TODO(research)).
-- **Tools on your PC.** Whisper speed and accuracy on your PC, with older voices and non-English speech, are untested. The Windows steps for whisper.cpp are not in the notes (TODO(research)).
+- **Tools on your PC.** Whisper speed and accuracy on your PC, with older voices and non-English speech, are untested. Prebuilt Windows builds of whisper.cpp were not confirmed [83], so the build route is the likeliest hard step for a learner (inference) (TODO(research)).
 - **Legal.** Reuse terms for the StoryCorps question lists, the Dignity Therapy and McAdams wording, music rights, and consent for AI processing are unresolved (TODO(research)). This is not legal advice.
 - **Sources not opened.** Several primary sources were not opened. The McAdams interview page returned a 404, and the Library of Congress field kit returned a 403. Where a source is marked "snippet only", treat its claim as unconfirmed.
 - **Craft texts.** We did not retrieve craft texts by biographers (Lee, Holmes, Hamilton, Caro). We have only Strachey and Woolf commentary (TODO(research)).
@@ -354,7 +379,14 @@ Tool READMEs are linked from Step 3: Whisper [39] and whisper.cpp [40].
 - [76] Family History Interviewing Tips (Idaho GenWeb) — https://idaho.idgenweb.org/Genealogy/family_history_interviewing_tips.htm — undated; snippet only — fatigue, timelines.
 - [77] uDiscover Music, "'Remember Me': The Song That Gave Coco Its Heart" — https://www.udiscovermusic.com/stories/remember-me-coco-song-feature/ — undated; fetched — four performances, writers' intent.
 - [79] BYU Family History Library, evidence analysis handout — https://fh.lib.byu.edu/wp-content/uploads/2023/07/Evidence-Analysis_-Handout-July-2023-.pdf — 2023-07; snippet only — original vs derivative, primary vs secondary, direct vs indirect.
+- [82] Radford, A. et al., "Robust Speech Recognition via Large-Scale Weak Supervision" (the Whisper paper) — https://arxiv.org/pdf/2212.04356 — 2022; fetched as a PDF — FLEURS word error rates by language (Table 13, read speech). The researcher recovered the column order from the PDF text; spot-check any figure you rely on.
+- [83] whisper.cpp releases page — https://github.com/ggml-org/whisper.cpp/releases — fetched 2026-10-18 — asset file names not shown; prebuilt Windows builds not confirmed.
+- [85] Microsoft Support, "Open and run DxDiag.exe" — https://support.microsoft.com/en-us/windows/open-and-run-dxdiag-exe-dad7792c-2ad5-f6cd-5a37-bf92228dfd85 — undated; fetched — how to open and save the report.
+- [89] GoTranscript, "Transcribe interviews recorded on a phone" — https://gotranscript.com/blog/transcribe-interviews-recorded-on-a-phone — undated; fetched — "6-12 inches from the speaker's mouth"; vendor.
+- [90] Marquette University Libraries, podcasting DIY guide — https://libguides.marquette.edu/podcasting/diy — undated; fetched — "a few inches" from the mouth; one phone per person.
+- [100] Own measurement, 2026-10-18 (not a web source) — faster-whisper, `small` model, int8, on a 4-vCPU cloud VM with 10 minutes of synthetic test audio (looped sample speech); about nine minutes of processing; one run; not Windows; no family audio used.
 
 ## Changelog
 
 - 2026-10-18, v0.1: First draft, written by the Haiku scribe from `research/story.md` (researcher notes, 2026-10-18) and the charter. The charter's surprise fact is used. The notes' hybrid recommendation is flagged as a conflict, not adopted. The gate on real gathering is kept. Not yet tested on the vertical-slice chapter.
+- 2026-10-18, v0.2: Fable round-1 review applied. Gathering split into Track A (locate and protect, now) and Track B (recorded sessions behind a gate the maker sets, Decision 11), with a two-track timeline; Janssen and Rubin [47] restated and the middle years framed as grey, not empty; song ages 15 to 30 per [46]; placement distances sourced for one speaker, two-speaker layout left to Exercise 2; the record-to-close rule changed; found voice made a source class; voice line stricter (Decision 10); Recipes 1 to 6 moved to `skills/life-story-interviewing/`.

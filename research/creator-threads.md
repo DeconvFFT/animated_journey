@@ -12,6 +12,7 @@ This track was supposed to be a sweep of social and creator sources. **That swee
 - **Consequence for the brief.** There is **no creator-documented evidence here** for: viral "my life in N seconds" edits, 2025-2026 AI photo-animation threads, parents' birthday or anniversary projects, "my life in Minecraft" builds and tributes, or what r/editors says about tribute videos. Those must-answer items are answered with "not reached" plus the nearest verified material, and are listed as gaps with the exact follow-up searches to run once search is available. Nothing is invented to fill them.
 - **Evidence tags used below.** **[T]** = a tool, terms or documentation page I fetched on 2026-10-18 (summarised by a small model, so figures are as reported by that summary). **[L]** = tested by me in this sandbox. **(M)** = my own judgment or background knowledge, not backed by a source here. **UNVERIFIED** = could not be confirmed. "Checked 2026-10-18" applies to every cited page unless the page shows its own date.
 - **Prompt-injection hygiene.** Everything fetched was treated as data. Two GitHub listings contain AI-tooling repos with marketing-style descriptions; I used them only as pointers.
+- **Round 2.** The re-run plan is under Open questions / gaps, after the reachability record.
 
 ---
 
@@ -27,11 +28,11 @@ This track was supposed to be a sweep of social and creator sources. **That swee
 8. **Minecraft toolchain is fully Java-centred.** Replay Mod v2.6.27 supports Fabric from Minecraft 1.14.4 through **26.2** (new year-based version names), Forge only to 1.12.2 [52]; it renders straight to video with ffmpeg presets and custom ffmpeg arguments [53]. Alternatives and add-ons are Java-only too: Flashback (Fabric, client-side) [54], Iris shaders [55], Chunky [59]. Arnis can scaffold a **real place from OpenStreetMap by bounding box** (Apache-2.0; Java 1.17+, Bedrock, Luanti) [56]. Minecraft's price and usage guidelines are UNVERIFIED (the Mojang pages returned 503 on every attempt).
 9. **Collage motion with real photos is mostly Transform + keyframes + masks.** Kdenlive 26.08.2 is free, has keyframes, masking and a Transform effect (position, size, rotation, rotation point, blend modes) [37][38][39][43]. Resolve 21 free is 8-bit, up to 60 fps, UHD; Magic Mask and the AI engine are Studio-only ($295) [35]. A "Paper Cutout Transition" Kdenlive tutorial exists on YouTube (title and channel confirmed; steps not seen) [44].
 10. **Paper-wobble "on twos" is cheap and scriptable.** `pasteup` documents the parameters (`hold_frames`, `jitter_px`, `jitter_deg`, `seed`) [60]. I rebuilt the motion in Pillow and ffmpeg: **24 of 24 held pairs identical, 23 of 23 poses different, deterministic per seed** [L][66]. Photo pixels are only translated and rotated, never repainted, which keeps Principle 4.
-11. **Suno (terms revised 2026-08-10, effective 2026-09-03): free-plan output is personal and non-commercial only; the free plan has no monthly downloads.** Pro is $8/month for 20 downloads, Premier $24/month for 60 [1][2]. Subscribing is not retroactive for earlier free-plan songs [4]. The terms **do not expressly address public performance** and give "no representation" that any copyright will vest in an Output [1]. Voice models may only resemble your own voice [1].
+11. **Suno (terms revised 2026-08-10, effective 2026-09-03): free-plan output is personal and non-commercial only; the free plan has no monthly downloads.** Pro is $8/month for 20 downloads, Premier $24/month for 60 [1][2]. Subscribing is not retroactive for earlier free-plan songs [4]. The terms **do not use the phrase public performance**, but they bar commercial performing of Output for every tier and require a Download before any commercial use [1]. They also give "no representation" that any copyright will vest in an Output [1]. Voice models may only resemble your own voice [1].
 12. **Safest music is human-made with a plain licence.** Incompetech is CC BY 4.0 with a credit line, or a paid no-attribution licence whose price is not on the page [10][11]; CC BY permits adaptation and commercial use if credit is given [12]. Better still (M): a relative playing or singing, recorded for this. Under US law a gathering within "a normal circle of a family and its social acquaintances" is not a public performance [16]; that is a reading of a statute, not legal advice, and the maker's jurisdiction is unknown.
 13. **Privacy surprises in "free" tools.** Eagle Animation sends error and usage events to PostHog by default (can be switched off) [61]; `pasteup` generates elements through the **Gemini image API** [60], which must never be fed family photos under the charter's no-third-party-upload rule.
 14. **Do not follow** recipes that depend on paid phone apps, discontinued or frozen services, face swaps, synthetic voices of real people, or beat-synced reel grammar (full list in Q9 and Pitfalls).
-15. **Three verified, agent-runnable recipe cores** exist now: eye-point alignment [64], Ken Burns plus crossfade through ffmpeg `zoompan` and `xfade` (13.0 s, 312 frames, 5.7 s render on CPU) [65], and seeded paper jitter [66]. Note the `zoompan` trap in Techniques T3 (a looped image input produced a 633 s file until fixed).
+15. **Three verified, agent-runnable recipe cores** exist now: eye-point alignment [64], Ken Burns plus crossfade through ffmpeg `zoompan` and `xfade` (13.0 s, 312 frames, 5.7 s render on CPU) [65], and seeded paper jitter [66]. All three are now committed under `research/creator-threads-fixtures/`. Note the `zoompan` trap in Techniques T3 (a looped image input produced a 633 s file until fixed).
 
 ---
 
@@ -121,12 +122,12 @@ GitHub's old-photo-restoration topic lists the archived Microsoft repo (15.7k st
 | Price | Free $0 (50 credits/day); Pro $8/month (2,500 credits); Premier $24/month (10,000 credits); pricing page is undated [2] | UNVERIFIED |
 | Ownership | Pro/Premier: Suno "assigns to you all of its right, title and interest in and to any Output owned by Suno", subject to commercial-use restrictions; **"Suno makes no representation or warranty… that any copyright will vest in any Output"** [1] | UNVERIFIED |
 | Retroactive | Subscribing does not give "retroactive commercial use licensing" for earlier free-plan songs, though Suno "may offer retroactive rights in certain cases" [4] | UNVERIFIED |
-| Public performance | **Not expressly addressed** in the terms text I received [1] | UNVERIFIED |
+| Public performance | **The terms do not use the phrase public performance.** They bar commercial performing of Output for every tier and require a Download before any commercial use. A non-commercial family screening is therefore not restricted by the terms; a ticketed, sponsored or venue-promoted screening would be. Verified on suno.com/terms 2026-10-18. A reading of the terms, not legal advice; jurisdiction unknown [1] | [T] |
 | Voices | You may create a Voice Model only resembling **your own** voice; you may not create one of another person; do not upload recordings of another person's voice [1] | UNVERIFIED |
 | Watermark/metadata | Must not be removed or circumvented; Suno may append tier and download-status metadata [1] | UNVERIFIED |
 | Lyrics | You own lyrics you wrote, regardless of plan [3] | UNVERIFIED |
 
-**Reading for a private tribute (M, not legal advice):** a family gathering is personal use, which the free tier allows, but the free tier gives no way to get the audio file into a video except occasional trial downloads. A paid month (Pro, $8) is the realistic path to a file. Because the terms do not address public performance and make no copyright promise, treat AI music as a *scratch track* and keep a licensed or family-made replacement ready. Never use a Voice Model of the honouree or anyone else (violates the terms and Principle 4).
+**Reading for a private tribute (M, not legal advice):** a family gathering is personal use, which the free tier allows, but the free tier gives no way to get the audio file into a video except occasional trial downloads. A paid month (Pro, $8) is the realistic path to a file. Because the terms do not use the phrase public performance (they bar commercial performing, see the table) and make no copyright promise, treat AI music as a *scratch track* and keep a licensed or family-made replacement ready. Never use a Voice Model of the honouree or anyone else (violates the terms and Principle 4).
 
 **Public performance in law.** US copyright law defines performing "publicly" as performing at a place open to the public, or any place where "a substantial number of persons outside of a normal circle of a family and its social acquaintances" is gathered [16]. A surprise at home with family and friends is plausibly within that circle; a hired hall that is also open to the public, or a stream to a wider audience, is different. Jurisdiction of the event is unknown (open decision in the charter).
 
@@ -167,7 +168,7 @@ Template for every card: **Source and date** · **Creator and incentive** · **G
 | 1 | C1 Eye-aligned dissolve ("same pose, decades apart") | 5 | 5 | [T][L] | Adopt for the vertical slice |
 | 2 | C2 Scripted still-photo motion (Ken Burns + crossfade via ffmpeg) | 4 | 5 | [L] | Adopt as baseline; ration its use |
 | 3 | C3 Paper-print wobble on twos for reconstructions | 4 | 5 | [T][L] | Adopt |
-| 4 | C4 Licensed or family-made music with credit card | 5 | 5 | [T] | Adopt |
+| 4 | C4 Licensed or family-made music with a credit end-card | 5 | 5 | [T] | Adopt |
 | 5 | C5 Replay Mod cinematic tour of a hand-built Minecraft room | 4 | 4 | [T] | Prototype if the format is a world |
 | 6 | C6 Hand-shot printed-photo stop-motion (Eagle Animation) | 4 | 4 | [T] | Prototype one scene |
 | 7 | C7 Kdenlive paper-cutout transition (Mint Visual) | 3 | 4 | title only | Watch the video, then decide |
@@ -216,12 +217,12 @@ Template for every card: **Source and date** · **Creator and incentive** · **G
 - **Free-desktop adaptation:** same recipe in Kdenlive: keyframes every second frame is tedious, so script it.
 - **Verdict:** adopt.
 
-### C4. Licensed or family-made music with a credit card
+### C4. Licensed or family-made music with a credit end-card
 - **Source and date:** Incompetech licence and FAQ [10][11]; CC BY 4.0 [12]; US definition of "publicly" [16].
 - **Creator and incentive:** Kevin MacLeod sells a no-attribution licence [10].
 - **Goal:** music with a clear licence for a family screening and possibly a shared file.
 - **Tools and cost:** free with credit; paid option price not stated on the page [10].
-- **Steps:** (1) prefer a family-made recording; (2) otherwise pick an Incompetech track; (3) end card text: "Licensed under Creative Commons: By Attribution 4.0" plus track title, author and licence link [11][12]; (4) if you edit the track, say which parts are yours [11]; (5) save the licence page URL and date in the asset manifest.
+- **Steps:** (1) prefer a family-made recording; (2) otherwise pick an Incompetech track; (3) end card text: "Licensed under Creative Commons: By Attribution 4.0" plus track title, author and licence link [11][12]; (4) if you edit the track, say in the credits which parts are yours; cutting and splicing need not be mentioned [11]; (5) save the licence page URL and date in the asset manifest.
 - **Time and cost:** 30 minutes; $0.
 - **Quality:** library tracks can sound stock (M); a family recording does not.
 - **Charter:** respects 1 and 3 if family-made.
@@ -273,7 +274,7 @@ Template for every card: **Source and date** · **Creator and incentive** · **G
 - **Creator and incentive:** Wan team; WanGP by DeepBeepMeep, no fee stated [20].
 - **Goal:** very small motion (breath, light, a curtain, camera drift) on a photo, labelled as animation.
 - **Steps (from [19]):** load the diffusion, VAE and text-encoder files; load the starting image; write a short, restrained prompt; set length; run. For lower VRAM use the 5B model or WanGP [19][20].
-- **Time and cost:** UNVERIFIED on real archival photos. Hardware is the main cost: 24 GB for 5B per the README, 8 GB with offloading per ComfyUI [18][19]; rented GPU price not checked.
+- **Time and cost:** UNVERIFIED on real archival photos. Hardware is the main cost: 24 GB for 5B per the README, 8 GB with offloading per ComfyUI [18][19]; a rented RTX 4090 (24 GB) is $0.89 per hour on RunPod's pricing page, updated 2026-10-08 [84] (storage and network not checked). Renting uploads photos to a third party, so test on non-family images unless the maker agrees.
 - **Quality:** unknown on old prints. Risk of drifting faces and invented details (M).
 - **Charter:** 4 requires the label ladder (see `ai-imagery.md`) and restraint; 5 if motion changes expression.
 - **Free-desktop adaptation:** maker's Windows GPU unknown; use cloud.
@@ -369,10 +370,10 @@ Cost and availability as of 2026-10-18. "Scriptable" means usable from the comma
 
 ## Techniques
 
-All code below was run in this sandbox on 2026-10-18. Scripts are not stored in the repo; the text here is the source.
+All code below was run in this sandbox on 2026-10-18. The runnable files are in `research/creator-threads-fixtures/`; the text here is the same code, kept as the record of the tested version.
 
 ### T1. Two-point eye alignment (similarity transform)
-Method after PyImageSearch [27]; implementation tested [L][64]. Worst error 1.36 px on three synthetic cases (rotation -12 to +9 degrees, scale 0.6 to 1.7).
+Method after PyImageSearch [27]; implementation tested [L][64]. Runnable file: `research/creator-threads-fixtures/align_eyes.py` (same function, with a command line and a self-test). Worst error 1.36 px on three synthetic cases (rotation -12 to +9 degrees, scale 0.6 to 1.7).
 ```python
 import math, numpy as np
 from PIL import Image
@@ -397,6 +398,7 @@ Tips (M): keep the 16-bit TIFF master untouched; align from a copy; log eye coor
 Dissolve (T3, `xfade`) keeps every pixel real. Mesh morph (`face_morpher`) warps triangles between landmarks and needs frontal faces [28]. Neural in-betweening (FILM) is archived [26]. AI first-last-frame video (Wan FLF2V) fabricates the in-between [19]. Rank by honesty: dissolve, then mesh morph, then AI (label as reconstruction).
 
 ### T3. Ken Burns + crossfade with ffmpeg
+Runnable file: `research/creator-threads-fixtures/kenburns_xfade.py` (Python port via subprocess; works in PowerShell). The bash below is the tested original [65]; it does not run on Windows.
 ```bash
 FPS=24; DUR=4; FADE=1
 # one image = one frame. Do NOT add "-loop 1": zoompan then emits d frames per input frame
@@ -411,7 +413,7 @@ ffmpeg -y "${inputs[@]}" -filter_complex "$filt" -map "[out]" -c:v libx264 -crf 
 **Trap found [L]:** with `-loop 1 -t 5` the same filter produced 15,192 frames (633 s) because `zoompan` outputs `d` frames per input frame. With single-frame image inputs the result is 13.0 s, 312 frames, 24 fps [65].
 
 ### T4. Hold-on-twos jitter
-`hold_frames` (2 or 3), `jitter_px`, `jitter_deg`, `seed` from `pasteup` [60]; own implementation [66]: choose a new random offset and rotation only when `frame % hold_frames == 0`, seed a private `random.Random(seed)`, paste a rigid white-bordered "print" onto a plain background. Result: 48 frames, 24 identical pairs, 23 changes between poses, deterministic for a seed; encoded with `ffmpeg -framerate 24 -i f%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p` to 48 frames, 2.0 s [L].
+`hold_frames` (2 or 3), `jitter_px`, `jitter_deg`, `seed` from `pasteup` [60]; own implementation [66]: choose a new random offset and rotation only when `frame % hold_frames == 0`, seed a private `random.Random(seed)`, paste a rigid white-bordered "print" onto a plain background. Result: 48 frames, 24 identical pairs, 23 changes between poses, deterministic for a seed; encoded with `ffmpeg -framerate 24 -i f%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p` to 48 frames, 2.0 s [L]. Runnable file: `research/creator-threads-fixtures/jitter_twos.py` (the same code, with a command line and a self-test).
 ```python
 import random
 from PIL import Image
@@ -433,7 +435,7 @@ Keyframes on a 10-minute real-time timeline; spline by default, `O` for linear, 
 ### T6. Real-place scaffold
 `cargo run --release --no-default-features -- --output-dir=<world> --bbox="min_lat,min_lng,max_lat,max_lng"` with `--mode geo-terrain|geo-only|terrain-only` [56]. A `--one-world` flag extends one persistent Java world with new areas, and the first run fixes scale and build height [56].
 
-### T7. Credit card for CC BY music
+### T7. End-card credit for CC BY music
 End card: track title, "Kevin MacLeod (incompetech.com)", "Licensed under Creative Commons: By Attribution 4.0", plus the licence link and a note on edits [11][12]. Keep the credit visible, not buried [11].
 
 ### T8. Mark provenance per asset
@@ -475,11 +477,16 @@ Cross-reference to `ai-imagery.md`: a label ladder L0 to L5 and IPTC `DigitalSou
 - Mojang usage guidelines and the Java price (503). Replay Mod frame-rate documentation section is empty [53].
 - Fusion's limits in free Resolve [35]; Kdenlive CLI/batch rendering [50]; Windows install of dlib; MediaPipe eye-centre indices and Windows CPU behaviour [29].
 - LivePortrait licence and model dependencies [21][22]; MCprep vs current Blender [58]; Chunky and Iris software licence names [55][59]; Flashback "ARR" meaning [54].
-- Wan 2.2 rented-GPU price: not checked.
+- Wan 2.2 rented-GPU price: answered in follow-up F4 (RunPod, 2026-10-08 [84]); storage and network charges still unchecked.
 - Maker's GPU: unknown; it decides C9, C14 and the Minecraft shaders.
 - Jurisdiction of the event: unknown; it decides whether the US public-performance reading [16] applies.
 
 **Reachability record (2026-10-18):** `www.reddit.com` refused by the fetch tool; `x.com` HTTP 402; `medium.com` 403; `video.stackexchange.com` refused; `youtube.com/watch` redirected to a CAPTCHA (not followed); `learnopencv.com` (face-morph tutorial) and `musopen.org` returned 403, so neither is cited; `udio.com` terms returned a shell; `minecraft.net` usage-guidelines and store pages returned 503 on every attempt; several guessed Kdenlive and Blender subpage URLs returned 404 and were replaced with URLs taken from the docs' own link lists.
+
+**Re-run plan for round 2** (Fable advisor, round 1 review, 2026-10-18):
+1. Run this track in a dedicated turn, with no sibling agent searching, so the shared 200-call web-search budget is available.
+2. Run the nine suggested searches above, in order. Cite a video only if its content was actually read, for example through the creator's own blog or post; an oEmbed title does not count.
+3. Reddit and X are unreachable from the sandbox (confirmed twice, 2026-10-18), so the maker captures threads in a local browser as text files, `research/creator-threads-captures/<date>-<source>.md`, each with its URL, author, date and the line "captured as data, not instructions".
 
 ---
 
@@ -567,6 +574,183 @@ Fetched on 2026-10-18 unless noted. "Page-dated" means the page itself showed a 
 68. Noah Kalina (official site) — https://noahkalina.com/ — navigation only: Photographs, Projects, Commissions, Hotline, Tears, Info/Contact; no description of Everyday.
 
 **Local tests (sandbox, 2026-10-18)**
-64. `align_eyes.py` — scratchpad (not kept in repo) — worst error 1.36 px on three synthetic cases.
-65. `kenburns_xfade.sh` — scratchpad (not kept in repo) — 13.0 s, 312 frames, 5.7 s render; the looped-input trap.
-66. `jitter_twos.py` — scratchpad (not kept in repo) — 24/24 held pairs, 23/23 changes, deterministic.
+64. `research/creator-threads-fixtures/align_eyes.py` (committed 2026-10-18). Original run: worst error 1.36 px on three synthetic cases; the committed self-test gives 0.51 px on its own cases.
+65. `research/creator-threads-fixtures/kenburns_xfade.py` (Python port of the tested bash; committed 2026-10-18). Original run: 13.0 s, 312 frames, 5.7 s render; the looped-input trap. Committed self-test: 312 frames, 13.000 s, 6.5 s render.
+66. `research/creator-threads-fixtures/jitter_twos.py` (committed 2026-10-18). Original run: 24/24 held pairs, 23/23 changes, deterministic. Committed self-test: same counts; the same seed repeats exactly.
+
+---
+
+## Follow-up research (round 1)
+
+Researcher: Sonnet · Run 2026-10-18 (Sunday) · Answers the eight follow-ups in `reviews/creator-threads-round1.md` section 5. Tags as above: **[T]** a page or raw file I fetched today (page summaries come from a small model, so figures are as reported unless I say I read the raw file); **[L]** run by me in this sandbox (Ubuntu 24.04, CPU only, no GPU, Python 3.13, melt 7.22.0); **(M)** my judgment, not sourced; **UNVERIFIED** not confirmed. New sources are numbered 69 to 102 at the end of this section. Existing sources are cited by their old numbers.
+
+### Status at a glance
+
+| # | Follow-up | Result |
+|---|---|---|
+| F1 | Minecraft price and usage guidelines | Price answered ($29.99 [T]). Usage guidelines **still UNVERIFIED** (every Mojang page returned 503). |
+| F2 | Windows install route (Python, Pillow, numpy, ffmpeg) | Route written from official docs and package pages [T]; **not run on Windows**. Cloud-run-and-return is **not confirmed**: no hand-off folder exists. |
+| F3 | Maker's GPU and VRAM | **Not obtainable.** No local-system tool reached this run. Paste-back commands given. |
+| F4 | Rented 24 GB GPU hourly price | Answered: RTX 4090 24 GB $0.89/hour (Community $0.34), page dated 2026-10-08 [T]. |
+| F5 | Nine searches; ten captured threads | **Not run.** Web search refused again. No browser reached. Plan and capture template below. |
+| F6 | LivePortrait licence and InsightFace | Answered from the raw files [T]: yes, it depends on InsightFace models; the LICENSE carries a non-commercial carve-out. |
+| F7 | MediaPipe eye indices; CPU on Windows | Indices answered and tested [T][L]. CPU-only run tested on Linux [L]; **Windows run UNVERIFIED**. |
+| F8 | Kdenlive Transform on stills; CLI render | Transform = MLT `qtblend`; still-image render through it tested headless [L]. Kdenlive GUI behaviour on stills UNVERIFIED. CLI render path confirmed [T]. |
+
+### What I could and could not reach this run
+
+- **Web search: refused twice** (first call and last call of this run) with "this turn's web search budget is used up (limit: 200 WebSearch calls per turn, shared by every agent in it)". I did not try curl, other search engines, readers or archives. The nine searches therefore have **not** been run. The orchestrator must give them a turn with no sibling agents searching, or raise `CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION`.
+- **The maker's local system: not reachable from this agent.** I looked for it: ToolSearch for remote-device and computer-control tools found nothing; `ListAgents` reported no other Claude session on this machine; `list_environments` shows only two cloud environments (`sm-animations`, `Env Sm`); this process runs on Linux (Ubuntu 24.04, `/home/user`) with no `nvidia-smi`. If the maker's PC session is meant to be connected, it is not visible to a subagent. The orchestrator should check its own tools, or the maker can paste the output of the commands in F3.
+- Pages fetched fine today: python.org, docs.python.org, PyPI, pillow.readthedocs.io, numpy.org, ffmpeg.org, gyan.dev, GitHub (including raw files through curl, which is a plain file fetch, not a search), huggingface.co, developers.google.com, docs.kdenlive.org, kdenlive.org, runpod.io, learn.microsoft.com, xbox.com, minecraft.wiki.
+- Refused or useless today: `minecraft.net` and `help.minecraft.net` (HTTP 503, several URLs), `aka.ms/MinecraftUsageGuidelines` (redirects to a Bing page; not followed), a guessed `minecraft.wiki` guidelines page and `minecraft.wiki/w/Minecraft_Wiki:Main_Page` (404).
+
+### F1. Minecraft Java and Bedrock for PC: price and the usage guidelines
+
+**Price [T].** The Xbox store listing (the Microsoft Store URL redirects to it) shows **$29.99+** for "Minecraft: Java & Bedrock Edition for PC", with the Deluxe Collection at $39.99+ and the Ultimate Collection at $49.99+ [69]. English (United States) page, "$" without a currency code, undated, no sale shown, fetched 2026-10-18. The same page says the base edition is "Included with Game Pass Premium", lists a release date of 6/6/2022, and says Java runs on Windows, Mac and Linux while Bedrock runs on Windows. The community Minecraft Wiki agrees on $29.99 ("includes Java Edition") and says the bundle has been sold since 2022-06-07 [70] (a one-day difference from the store's 6/6/2022; irrelevant here). Regional prices, taxes and the Game Pass route were not checked. Replay Mod, Iris and Chunky need Java Edition [52][55][59], and the one PC purchase covers both. Ask the maker whether the family already owns it before buying.
+
+**Usage guidelines: UNVERIFIED.** I could not read Mojang's guidelines (503 on `www.minecraft.net/en-us/usage-guidelines`, on the same path without `www`, and on `help.minecraft.net`). The one thing I could verify is where *not* to look: Microsoft's general Game Content Usage Rules grant a personal, non-commercial licence for Microsoft-owned games, then say "The only exception is Minecraft, which has its own guidelines" (page "Last Updated: January 2015") [71]. So the general rules cannot be borrowed for Minecraft. From memory (M, not to be relied on) gameplay videos are generally allowed with conditions, but a **public premiere** is the case that needs a real reading.
+
+**Next step for the maker's browser (10 minutes).** Open `https://www.minecraft.net/en-us/usage-guidelines` (the path the advisor and I both tried; it is the page's address, not something I saw load), copy the text into `research/creator-threads-captures/2026-10-xx-minecraft-usage-guidelines.md`, and answer four questions from the text: (1) may I publish videos or film made from in-game footage; (2) is a free public screening treated as non-commercial; (3) what credit or disclaimer is required; (4) is anything forbidden (for example implying official endorsement, or using the logo). Until then the playbook's step 21 keeps its UNVERIFIED flag for the usage rules, and Principle 7 (cleared for public screening) is not met for Minecraft footage.
+
+### F2. Windows install route for Python 3, Pillow, numpy and ffmpeg
+
+**Not run on Windows.** Everything below is from official docs and package pages [T]; the steps have not been executed on a Windows machine. Test results from this sandbox are Linux only.
+
+**Versions today [T].** Python 3.15.0 and Python install manager 26.4 were both released 2026-10-09 [73][74]; Python 3.14.8 followed 3.14.0 (2025-10-07) and is in bugfix status to 2030-10 [73][74]. Pillow 13.0.0 (2026-10-16, requires Python 3.11 or newer; its support table lists 3.11 to 3.15) [75][76][77]. NumPy 2.5.4 (2026-10-10, requires 3.12 or newer, Windows `win_amd64` wheels listed for cp314 and cp315) [79]; NumPy 2.5.0's release notes say "supports Python versions 3.12-3.14" and that 3.15 is supported "starting with the first rc" [80]. MediaPipe 1.1.1 lists Python 3.9 to 3.14 [91]. FFmpeg 9.0.2 (ffmpeg.org shows 2026-09-18; gyan.dev shows 2026-09-19) [81][82].
+
+**Recommendation (M): use Python 3.14.8, not 3.15.0.** 3.15.0 is nine days old, NumPy's own notes stop at 3.14, and MediaPipe's classifiers stop at 3.14. Every library we need supports 3.14.
+
+**Steps (PowerShell).**
+1. Python install manager. Either download the MSIX from the python.org Windows page (`python-manager-26.4.msix`, linked there) [73], or from the docs: `winget install 9NQ7512CXL7T -e --accept-package-agreements --disable-interactivity`, then `py install --configure -y` [72]. The docs say the Store and python.org versions are the same package.
+2. `py install 3.14`. The docs show `py install 3.14t` and `py list --online 3.14`; the plain `3.14` form is my inference from them [72].
+3. A virtual environment per project, as the docs and NumPy's page recommend [72][78]: `python -m venv env`, then `env\Scripts\Activate`. If PowerShell refuses to run the activation script (a common policy block, M), skip activation and call `env\Scripts\python.exe` directly.
+4. `python -m pip install --upgrade pip`, then `python -m pip install --upgrade Pillow numpy` [75][78]. Pillow says its Windows binaries are wheels, so no compiler is needed [75]. (Pillow's page writes `python3 -m pip`; the Python docs make `python` and `py` the Windows commands [72].)
+5. ffmpeg. ffmpeg.org publishes source only and links two Windows build providers: gyan.dev and BtbN [81]. From gyan.dev [82]: `winget install ffmpeg` (full build) or `winget install "FFmpeg (Essentials Build)"`; or the zip `https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip` (109 MB; unzip, then add its `bin` folder to PATH); Chocolatey and Scoop commands are on the same page. The winget manifest folder `manifests/g/Gyan/FFmpeg` exists with 9.0.2 [83]; the identifier `Gyan.FFmpeg` is inferred from that path. Open a **new** terminal after installing so PATH refreshes (M).
+6. Check: `python -c "import PIL, numpy; print(PIL.__version__, numpy.__version__)"`, `ffmpeg -version`, and `ffmpeg -filters | findstr "zoompan xfade"` (the filters T3 uses; I tested them on Ubuntu's ffmpeg 6.1.1, not on a Windows build).
+
+**Still open for Exercises 1 to 3.** Techniques T3 is a bash script and will not run in PowerShell; T1 and T4 are Python and need only Pillow and numpy, so they should run on Windows with path changes (M, untested). The three scripts are still not committed (the advisor's critical issue 2 is unresolved by this follow-up): port T3 to Python and create `research/creator-threads-fixtures/` before the maker is told to run anything.
+
+**Cloud-run-and-return: not confirmed, and there is no hand-off folder to name.** I searched the repo notes and playbooks for one. The only working folders named are `media/`, `renders/` and `exports/` in `animated_journey/CLAUDE.md`, and they are git-ignored on purpose, so nothing in them travels from the temporary cloud container back to the PC. The project rules say personal media is never uploaded to a third-party service without the maker's explicit OK. So (M): Exercises 1 to 3 on photos of the family should run **locally on Windows**; cloud runs are fine only for synthetic fixtures committed to the repo. If the maker wants cloud runs on practice photos, the maker must choose and approve a transport (decision for the maker, not for an agent).
+
+### F3. The maker's GPU model and VRAM
+
+**Not obtainable by me** (see "What I could and could not reach"). Ask the maker to paste the output of these in PowerShell:
+
+```
+nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
+Get-CimInstance Win32_VideoController | Select-Object Name, DriverVersion, AdapterRAM
+```
+
+`nvidia-smi` is NVIDIA-only; its docs confirm `--query-gpu` and `--format=csv` [99], but I did not see the property names `name`, `memory.total` and `driver_version` listed (M, from memory). **Do not trust `AdapterRAM` for VRAM**: Microsoft documents it as a 32-bit value (uint32) [98], so by its type it cannot show more than 4 GB (my inference); Task Manager, Performance, GPU, "Dedicated GPU memory" is the easier read (M). Also ask for system RAM and free disk.
+
+**What the answer decides** (from sources already in this note plus today's):
+- NVIDIA with 24 GB or more: Wan 2.2 TI2V-5B as its README asks [18]; LivePortrait locally.
+- NVIDIA with 6 to 12 GB: Wan 5B only with ComfyUI offloading (claimed to fit 8 GB [19]) or WanGP (claims 6 GB for select models [20]); speed unknown.
+- AMD, Intel, integrated or no discrete GPU: LivePortrait's requirements pin `onnxruntime-gpu==1.18.0` [87] and its README tests Animals mode only on NVIDIA [21]; a CPU path for Humans mode is UNVERIFIED. Rent a GPU (F4) or drop C14.
+- Minecraft shaders (Iris [55]): GPU requirements not found; UNVERIFIED.
+
+### F4. One rented-GPU hourly price (24 GB class)
+
+RunPod's pricing page, "Updated October 8, 2026" (also `dateModified` 2026-10-08 in its structured data) [84], lists per hour: **RTX 4090, 24 GB, $0.89** (Community tier $0.34); L4, 24 GB, $0.59 (Community $0.44); RTX 3090, 24 GB, $0.50 (Community $0.22); RTX A5000, 24 GB, $0.27 (Community $0.16). The page's main table does not label its tier; the figures match the Secure Cloud values in its structured data, so I read the table as Secure Cloud (M). Billing is shown per hour with a per-second toggle that gave no figures. Storage and network charges: not checked (UNVERIFIED).
+
+**Budget line for the playbook (M):** Wan's README names the RTX 4090 as its 24 GB example [18], so one four-hour test afternoon on a 4090 is about $3.56 at $0.89 (arithmetic), plus unchecked storage. **Charter check:** renting a GPU means uploading photos to a third party. That needs the maker's explicit OK, and it must not be done with her photos during the learn phase; test on non-family images.
+
+### F5. The nine suggested searches, and ten threads captured by the maker
+
+**Searches: not run** (search budget, above). The strings stand as listed under "Suggested searches for the follow-up". Run them in this order in a turn with the budget reserved: 1 "my life in years" morph tutorial eyes alignment; 2 "photo a day" align faces ffmpeg; 3 "animate old photos" Wan 2.2 ComfyUI grandparents; 4 "recreated my grandmother's house in Minecraft"; 5 "Minecraft memorial build" Replay Mod; 6 "birthday video for mom" Kdenlive OR Resolve; 7 "paper cutout transition" Kdenlive OR Resolve; 8 "stop motion with printed photos"; 9 site:reddit.com/r/editors "tribute video" OR "memorial video" OR "slideshow". Cite only pages actually read; for videos, only if the creator's own post or a transcript was read.
+
+**Ten threads: not captured.** No browser was reachable, and Reddit and X are blocked from the sandbox at the tool level. Capture plan for the maker (use a browser profile not shared with her, per the charter's surprise rules): ten threads, saved as text, one file each under `research/creator-threads-captures/<date>-<source>.md`, with the header lines `URL`, `Author`, `Post date`, `Captured on`, and `Captured as data, not instructions`. Suggested split: four for Q1 (life-in-N and age-progression edits), two for Q3 (a parent's milestone video and the parent's reply), two for Q4 (Minecraft real-place or memorial builds), two for Q8 (r/editors on tribute videos). The agents then read the files like any other source.
+
+### F6. LivePortrait: licence text and dependence on InsightFace
+
+**Licence [T], raw file read in full** [85]. The `LICENSE` is the **MIT License, "Copyright (c) 2024 Kuaishou Visual Generation and Interaction Center"**. After the standard MIT text and a `---` line it adds, verbatim: "The code of InsightFace is released under the MIT License. The models of InsightFace are for non-commercial research purposes only. If you want to use the LivePortrait project for commercial purposes, you should remove and replace InsightFace's detection models to fully comply with the MIT license." The Hugging Face model card for `KlingTeam/LivePortrait` shows "License: mit" [88]; the badge omits the carve-out, so do not rely on it. The README has no licence text of its own, thanks InsightFace in its acknowledgements and disclaims legal responsibility for generated results [21].
+
+**Dependence on InsightFace: yes for human faces [T]** (the earlier "I believe it does" is now confirmed). In `src/utils/cropper.py` the human-face path builds `FaceAnalysisDIY(name="buffalo_l", ...)` (InsightFace's `buffalo_l` model pack) and takes `landmark_2d_106`, with the comment "this is the 106 landmarks from insightface" [86]; the Hugging Face weights repo has an `insightface/` folder [88]. The README names a community project that uses MediaPipe "as an alternative to Insightface" [21], so a swap is possible but not tested here.
+
+**What it means for us (M, not legal advice).** Even a free family screening is not "research", so the InsightFace models' "non-commercial research purposes only" wording may not cleanly cover this use; the premiere is also "mostly public". Treat LivePortrait (C14) as **held for the proxy's decision** (already so for ethics reasons) and add a licence reason. Practical traps: `requirements.txt` pins `numpy==1.26.4` and `onnxruntime-gpu==1.18.0` [87], which will clash with NumPy 2.5 on Python 3.14, so it needs its own environment (or its one-click Windows installer [21]); the README warns that CUDA 12.4 and 12.6 "may lead to unknown issues" on Windows [21].
+
+### F7. MediaPipe Face Landmarker: eye-centre indices, and CPU-only on Windows
+
+**Indices [T][L].** The Face Landmarker returns **478** landmarks per face [89]; MediaPipe's iris doc says 10 iris landmarks are "appended at the end (5 for each eye)" [94]. The source files define the iris rings as **469 to 472** (subject's right eye) and **474 to 477** (subject's left eye) [92][93]; the ring centres are therefore **468 (subject's right eye)** and **473 (subject's left eye)**. I confirmed this by running the model [L][102]: on MediaPipe's sample portrait (820 by 1024), the mean of ring 469 to 472 lay 0.05 px from landmark 468 and the mean of ring 474 to 477 lay 0.17 px from landmark 473; 468 sat on the image-left eye (x 363.1) and 473 on the image-right eye (x 449.7), 86.6 px apart; both were within 3.7 px of the midpoint of the eye's corner landmarks (33 and 133; 362 and 263). The reference image on Google's page also shows the label 473 at the centre of the right-hand iris ring [95]. "Left" and "right" are the subject's. Coordinates come back normalised (0 to 1): multiply x by the width and y by the height.
+
+**Use in T1.** Feed 468 and 473 into the two-point alignment as the eye points. Caveats (M): one frontal stock portrait only; the iris centre follows the gaze, so for pairs where the person looks off-axis, the corner midpoints (33 with 133, and 362 with 263) are steadier; old prints with glare, glasses or closed eyes are untested.
+
+**CPU-only on Windows.** The Python guide lists no GPU or delegate setting in its options table and sells the task as `python -m pip install mediapipe` [89]. The setup page lists Windows among supported desktops, Python 3.9 or later, pip 20.3 or later [90]. PyPI shows 1.1.1 (2026-10-14) with a `py3-none-win_amd64` wheel (22.8 MB) and a Windows classifier, Python 3.9 to 3.14 [91]. **Tested on Linux, CPU only [L][102]:** with no delegate set, one detection took 0.027 s on a 820 by 1024 image after loading, and 478 landmarks came back. Two notes from that test: the package needed the system library `libGLESv2.so.2` even on CPU (I installed `libgles2` with apt; the Windows equivalent is unknown), and `pip install mediapipe` also pulled in `opencv-contrib-python` 5.0.0.93, so the earlier note's "no OpenCV" sandbox is no longer true. **A Windows run was not tested: UNVERIFIED.** The model file `face_landmarker.task` (3.76 MB) downloaded from the MediaPipe models bucket [100]; the Python guide itself gives only a placeholder path [89].
+
+### F8. Kdenlive: Transform on still images, and a command-line render path
+
+**Cross-check of the toolchain note first.** `toolchain.md` already says Kdenlive renders through MLT's `melt`, offers "Generate Script" (a `.mlt` file run with `melt script.mlt`), and that a hand-written MLT file with an `affine` Ken Burns filter on still photos rendered headless [RUN]; it cites the Transform effect only for position, size and keyframes and does not say that Transform works on stills. Two items stay as it left them: hand-generating a native `.kdenlive` file is UNVERIFIED, and open only project files that you or your agents made (its note on the MLT hardening in Kdenlive 26.04.3).
+
+**Does Transform accept still-image clips?** The 26.08 manual's Transform page does not say; it lists Compositing, Distort, X/Y/W/H/Size and Rotation Point, Rotation, and names no clip types [39]; the Effects page does not say either [38]. What I found instead: Kdenlive's own effect definition shows that the effect named "Transform" ("Position, scale and opacity") is the MLT filter **`qtblend`**, with animated `rect` and `rotation`, `compositing` and `distort` parameters [96]. I rendered a JPEG still through `qtblend` with keyframed rectangle and rotation, headless with `xvfb-run melt` 7.22.0: **50 frames, 1920 by 1080, H.264**; the first and last frames differ (mean absolute difference 40.3; the non-background bounding box grew from x 200 to 1066 to x 48 to 1197) [L][101]. So the **engine** applies Transform to a still. Whether the **Kdenlive window** lets you drop Transform on an image clip is not documented; I expect it does (M, from general use of the program), so keep the five-minute test in Exercise 5: one photo, Transform, two keyframes, render.
+
+**Command-line render path: yes [T].** The 26.08 Rendering manual describes "Generate Script" in the render dialog ("create rendering scripts which you can accumulate and then execute in batch mode overnight"), scripts saved to the folder set under Default folders, each started with the Start Script button, and the terminal route `cd /path/to/kdenlive/scripts` then `melt your_script.mlt`; keep the `.mlt` extension or the script is not generated; the Job Queue handles ordinary renders; a note says the 23.04.1 AppImage had trouble with generated scripts [97]. The manual gives **no Windows instructions**, and I could not confirm that `melt.exe` ships with the Windows installers (`kdenlive-26.08.2.exe` and `_standalone.exe`, Windows 10 or newer [43]); the Windows-issues page names the `bin` folder as "the folder where `kdenlive.exe` is" but never mentions melt [42]. Check on the maker's PC: look for `melt.exe` in that folder. Agents rendering MLT in the cloud need the photos in the cloud, which hits the privacy rule in F2.
+
+### Edits this round implies for the playbook and the rest of this note (for the scribe)
+
+- Step 7 and Q1 TODO: eye points are landmarks 468 and 473; CPU use tested on Linux, Windows UNVERIFIED (F7).
+- Step 21 TODO: price $29.99; usage rules remain UNVERIFIED and block public use of Minecraft footage (F1).
+- Step 32 and 34 TODOs: Transform engine-verified on a still, GUI unverified; Generate Script plus `melt` confirmed (F8).
+- Decision 2: "rented GPU" becomes RTX 4090 24 GB at $0.89 per hour, dated 2026-10-08 (F4).
+- C14 and Pitfalls ("LivePortrait's licence text was not seen"): the text was read; the InsightFace dependence is confirmed (F6).
+- Exercises 1 to 3 intro: the install route (F2), the local-run rule for family photos, and the open need for a Python port of T3.
+
+### Still open after round 1
+
+1. Mojang's usage-guideline text (browser step in F1).
+2. The maker's GPU (F3) and whether a local session is actually connected.
+3. The nine searches and ten captured threads (F5).
+4. A real Windows run of the install route and of MediaPipe; `melt.exe` on Windows; whether Kdenlive's window accepts Transform on a still.
+5. Done 2026-10-18: `align_eyes.py`, `kenburns_xfade.py` (Python) and `jitter_twos.py` are committed to `research/creator-threads-fixtures/`, with a README and a synthetic test face.
+6. RunPod storage and network charges; Minecraft regional prices.
+
+### New sources (round 1), numbered on from 68
+
+Fetched 2026-10-18. "Raw" means I read the file text itself; otherwise figures are as reported by the fetch tool's summary.
+
+**Minecraft**
+69. Minecraft: Java & Bedrock Edition for PC, Xbox store listing — https://xbox.com/en-us/games/store/minecraft-java-bedrock-edition-for-pc/9nxp44l49shj — undated (release date 6/6/2022 shown) — $29.99+, Deluxe $39.99+, Ultimate $49.99+, Game Pass Premium; reached by redirect from the Microsoft Store address.
+70. Bedrock Edition (Minecraft Wiki) — https://minecraft.wiki/w/Bedrock_Edition — undated, community-edited — $29.99 includes Java; on sale since 2022-06-07; first 100,000 of 122,901 characters read.
+71. Game Content Usage Rules (Microsoft) — https://www.xbox.com/en-us/developers/rules — "Last Updated: January 2015" — personal, non-commercial licence for Microsoft games; "The only exception is Minecraft, which has its own guidelines".
+
+**Python, Pillow, numpy, ffmpeg**
+72. Using Python on Windows — https://docs.python.org/3/using/windows.html — covers 3.15.0 — Python install manager, winget ID `9NQ7512CXL7T`, `py`, venv; last 3,382 characters not read.
+73. Python releases for Windows — https://www.python.org/downloads/windows/ — Python install manager 26.4 and Python 3.15.0 on 2026-10-09; 3.14.8 on 2026-09-30; MSIX and MSI links.
+74. Download Python — https://www.python.org/downloads/ — status table: 3.14 bugfix (released 2025-10-07, support to 2030-10); 3.15 released 2026-10-09.
+75. Pillow, basic installation — https://pillow.readthedocs.io/en/stable/installation/basic-installation.html — header 13.0.0; `python3 -m pip install --upgrade Pillow`; Windows wheels.
+76. Pillow, Python support — https://pillow.readthedocs.io/en/stable/installation/python-support.html — Pillow 13.0 supports Python 3.11 to 3.15.
+77. Pillow (PyPI) — https://pypi.org/project/pillow/ — 13.0.0, 2026-10-16, Requires-Python >=3.11.
+78. Install NumPy — https://numpy.org/install/ — venv plus `pip install numpy`.
+79. NumPy (PyPI) — https://pypi.org/project/numpy/ — 2.5.4, 2026-10-10, Requires-Python >=3.12, Windows wheels for cp314 and cp315.
+80. NumPy 2.5.0 release notes — https://numpy.org/doc/stable/release/2.5.0-notes.html — "supports Python versions 3.12-3.14"; no release date on the page.
+81. FFmpeg download — https://ffmpeg.org/download.html — source only; Windows builds linked from gyan.dev and BtbN; 9.0.2 (2026-09-18) and 8.1.3 (2026-09-21).
+82. FFmpeg Windows builds (gyan.dev) — https://www.gyan.dev/ffmpeg/builds/ — release 9.0.2, 2026-09-19; winget, Chocolatey and Scoop commands; essentials zip and 7z links.
+83. winget-pkgs, Gyan FFmpeg manifests — https://github.com/microsoft/winget-pkgs/tree/master/manifests/g/Gyan/FFmpeg — folders 9.0.2, 9.0.1, 9.0 and older; the identifier is inferred from the path.
+
+**GPU**
+84. RunPod pricing — https://www.runpod.io/pricing — "Updated October 8, 2026" — RTX 4090 24 GB $0.89 (Community $0.34); L4 $0.59; RTX 3090 $0.50; RTX A5000 $0.27; tier of the main table inferred.
+98. Win32_VideoController (Microsoft Learn) — https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-videocontroller — page metadata updated 2023-11-09 — `AdapterRAM` is uint32; non-WDDM hardware returns inaccurate values.
+99. nvidia-smi documentation (NVIDIA) — https://docs.nvidia.com/deploy/nvidia-smi/index.html — `--query-gpu` and `--format=csv` documented; property names not seen; first 100,000 of 177,965 characters read.
+
+**LivePortrait**
+85. LivePortrait LICENSE (raw) — https://raw.githubusercontent.com/KwaiVGI/LivePortrait/main/LICENSE — MIT, Kuaishou Visual Generation and Interaction Center, 2024, plus the InsightFace models note.
+86. LivePortrait `src/utils/cropper.py` (raw) — https://raw.githubusercontent.com/KwaiVGI/LivePortrait/main/src/utils/cropper.py — `FaceAnalysisDIY(name="buffalo_l")`, `landmark_2d_106`.
+87. LivePortrait `requirements.txt` and `requirements_base.txt` (raw) — https://raw.githubusercontent.com/KwaiVGI/LivePortrait/main/requirements.txt — pins `onnxruntime-gpu==1.18.0`, `numpy==1.26.4`.
+88. KlingTeam/LivePortrait weights (Hugging Face) — https://huggingface.co/KlingTeam/LivePortrait/tree/main — has an `insightface/` folder; card metadata "License: mit"; subfolders not listed.
+
+**MediaPipe**
+89. Face Landmarker guide for Python — https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker/python — updated 2026-10-09 — `python -m pip install mediapipe`; 478 landmarks, 52 blendshapes; IMAGE, VIDEO, LIVE_STREAM; placeholder model path.
+90. MediaPipe setup guide for Python — https://developers.google.com/edge/mediapipe/solutions/setup_python — updated 2026-08-17 — Windows, Mac, Linux; Python 3.9+; pip 20.3+.
+91. mediapipe (PyPI) — https://pypi.org/project/mediapipe/ — 1.1.1, 2026-10-14; `py3-none-win_amd64` wheel; classifiers Python 3.9 to 3.14.
+92. MediaPipe `face_mesh_connections.py` (raw) — https://raw.githubusercontent.com/google-ai-edge/mediapipe/master/mediapipe/python/solutions/face_mesh_connections.py — iris rings (469-472) and (474-477).
+93. MediaPipe tasks `face_landmarker.py` (raw) — https://raw.githubusercontent.com/google-ai-edge/mediapipe/master/mediapipe/tasks/python/vision/face_landmarker.py — the same iris connections in the Tasks API.
+94. MediaPipe Iris doc (raw) — https://raw.githubusercontent.com/google-ai-edge/mediapipe/master/docs/solutions/iris.md — "478 3D landmarks ... 10 additional iris landmarks appended at the end (5 for each eye)".
+95. Face landmark reference image — https://storage.googleapis.com/mediapipe-assets/documentation/mediapipe_face_landmark_fullsize.png — viewed; label 473 at the centre of the right-hand iris ring.
+100. Test assets for [102] — https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task and https://storage.googleapis.com/mediapipe-assets/portrait.jpg — both returned HTTP 200 (3,758,596 and 176,561 bytes); the addresses are from my memory, not from a page I read.
+
+**Kdenlive**
+96. Kdenlive effect definition `qtblend.xml` (raw) — https://raw.githubusercontent.com/KDE/kdenlive/master/data/effects/qtblend.xml — tag `qtblend`, display name "Transform", "Position, scale and opacity".
+97. Kdenlive manual, Rendering — https://docs.kdenlive.org/en/exporting/render.html — manual 26.08 — Generate Script, `melt your_script.mlt`, Job Queue; no Windows steps.
+
+**Local tests (sandbox, 2026-10-18; scratchpad, not kept in the repo)**
+101. `qtblend` on a still with `melt` 7.22.0 under `xvfb-run` — 50 frames, 1920 by 1080, H.264; first and last frames differ (mean absolute difference 40.3).
+102. MediaPipe 1.1.1 Face Landmarker on CPU, Python 3.13, Linux, no GPU — 478 landmarks, 0.027 s per detection; iris ring centroids within 0.05 px and 0.17 px of landmarks 468 and 473.

@@ -27,7 +27,7 @@ Make sure every interactive or animated device in the Life Journey passes charte
 
 ## Procedure
 
-1. Read `CHARTER.md`, `playbooks/games.md` and `research/games.md`. Confirm that the chapter's story facts exist in the story track. If a fact is unconfirmed, write `TODO(story): <fact>` and do not design around it.
+1. Read the eight Core principles in `playbooks/games.md` and the Deliverable A pattern tables and Deliverable B anti-pattern list in `research/games.md` (lines 38–118). Open the rest of the notes only to match a pattern number or copy a citation. Confirm that the chapter's story facts exist in the story track. If a fact is unconfirmed, write `TODO(story): <fact>` and do not design around it.
 2. Write the device as one sentence: "In this chapter the viewer [does X], which means [Y] about her life." If you cannot finish the sentence, the device is decoration. Cut it, or return to step 1 for a new idea. Strong examples: a trophies-aside reveal [30] and a conversation puzzle that eases with comfort [5][6].
 3. List the subject facts the device uses. Each needs a specific object, room, place, saying or event, plus its source and whether the family has confirmed it. Keep these in an object ledger, as the *Unpacking* team did [3].
 4. Run the swap test. Replace her facts with another family's facts in your head. If the device still works unchanged, it fails Principle 2. Redesign it.
@@ -38,8 +38,8 @@ Make sure every interactive or animated device in the Life Journey passes charte
 9. Apply the truth rules. Reconstructed scenes use a different medium from documents and carry a visible label. Nothing is invented: no events, people, quotes or objects without a source or the family's confirmation. Basis: [11][13].
 10. Apply the dignity rule. If the chapter covers loss, illness, separation, money or conflict, mark it "needs proxy decision" and route it to the trusted close relative who acts as proxy (charter Principle 5). The default is to leave it out of the shared version. A locked chapter can follow the Minecraft Vault pattern: it opens once and only with its own key [55].
 11. Apply the IP rule. If any Minecraft asset appears (textures, models, sounds, footage), mark it "terms check needed." The default is to swap it for original voxel or vector assets. Tools: [49][50][51].
-12. Check the voice. A device must not put words in her mouth. Any speech comes from her real recorded words or from text with a real source.
-13. Record the decision in the chapter's design log: device name, one-sentence device, subject facts, pattern number, scores, decision (keep, redesign or cut), open questions. TODO(research): choose the log's file location with the orchestrator.
+12. Check the voice. A device must not put words in her mouth. Any speech comes from her real recorded words or from text with a real source. No synthetic, cloned or text-to-speech voice of any real person, living or dead, even with consent (charter review §1.2). Where she cannot be recorded, real words for surprise mode are existing home video or voice notes; her own letters and cards; or a saying that two relatives independently confirm, shown *attributed* ("as her sister remembers it"), never as a quotation in her voice.
+13. Record the decision. Append one row to `design/devices-log.md` (create it if absent) with columns: date | chapter | device sentence | subject facts + confirmed by | pattern # | A/G/B | decision | open questions. A/G/B are the access, gimmick risk and build effort scores from step 6. The orchestrator may move the file; update this path if so.
 14. Hand off. Delivery goes to the `format` track, tools to `toolchain`, photos to `ai-imagery`. Send the rubric scores to the Fable advisor gate.
 
 ## Checklists
@@ -95,7 +95,7 @@ Approval rule (charter): the advisor gate approves only when every rubric score 
 
 - **Consent and dignity.** Hard chapters go through the trusted proxy, and the default is to leave them out (charter Principle 5). Whether to release a story at all is a real question. The *That Dragon, Cancer* developer asked it of himself and faced critics over it [17][18].
 - **No invented facts.** Reconstructions are visibly reconstructions. Unreliable or disputed accounts are shown as such [11][13].
-- **No words in her mouth.** No invented quotes (charter Principle 4).
+- **No words in her mouth.** No invented quotes (charter Principle 4). No synthetic, cloned or text-to-speech voice of any real person, living or dead, even with consent (charter review §1.2). Where she cannot be recorded, real words for surprise mode are existing home video or voice notes; her own letters and cards; or a saying that two relatives independently confirm, shown *attributed* ("as her sister remembers it"), never as a quotation in her voice.
 - **No elegy by default.** She is alive. Take devices from death-forward games such as *Passage* and *Spiritfarer* [23][27], not their register [41].
 - **Surprise.** Devices, cloud sync and group chats must not give the surprise away.
 - **Minecraft terms.** Permissions can be revoked at any time. Mojang's wording treats sharing with the community as commercial. Selling copies is not allowed, and endorsement must not be implied [42][43].
@@ -112,8 +112,8 @@ Approval rule (charter): the advisor gate approves only when every rubric score 
 **Sources cited in this skill** (copied from `research/games.md`; tier tags as in the notes):
 
 [1] Danielle Riendeau — "'Unpacking' the design pillars of a chill puzzle game" — https://www.gamedeveloper.com/design/unpacking-the-design-pillars-of-a-chill-puzzle-game — 2023-04-21 — [S] summary of Wren Brier's GDC 2023 talk.
-[2] GDC Vault — "'Unpacking' Zen: Designing a Game Without Fail States or Scores" (Wren Brier, GDC 2023) — https://www.gdcvault.com/play/1029400/-Unpacking-Zen-Designing-a — 2023 — [P] listing seen via search; video not viewed.
-[3] Eurogamer — "The creators of Unpacking on developing a 'weird', queer, BAFTA-winning game" — https://www.eurogamer.net/the-creators-of-unpacking-on-developing-a-weird-queer-bafta-winning-game — April 2022 — [S] Brier and Dawson; read in full.
+[2] GDC Vault — "'Unpacking' Zen: Designing a Game Without Fail States or Scores" (Wren Brier, GDC 2023) — https://www.gdcvault.com/play/1029400/-Unpacking-Zen-Designing-a — 2023 — [P] listing seen via search; tagged "free content" on the listing; video not viewed.
+[3] Eurogamer — "The creators of Unpacking on developing a 'weird', queer, BAFTA-winning game" — https://www.eurogamer.net/the-creators-of-unpacking-on-developing-a-weird-queer-bafta-winning-game — 2022-04-12, Ed Nightingale — [S] Brier and Dawson; read in full.
 [5] Player.One — Ken Wong interview, "Florence Tells A Love Story With Actions, Not Words" — https://www.player.one/florence-game-ken-wong-interview-123975 — 2018-02-12 — [S] puzzle easing, "interactions".
 [6] Milanote / Ollie Campbell — "The Lead Designer of Monument Valley Deconstructs His Latest Game, Florence" — https://milanote.com/the-work/lead-designer-of-monument-valley-deconstructs-his-latest-game-florence — undated (post-2018) — [S] mechanics, cut chapters.
 [10] GDC Vault — "Weaving 13 Prototypes into 1 Game: Lessons from 'Edith Finch'" (Ian Dallas, GDC 2018) — https://gdcvault.com/play/1025016/Weaving-13-Prototypes-into-1 — 2018 — [P] listing only.
@@ -131,7 +131,7 @@ Approval rule (charter): the advisor gate approves only when every rubric score 
 [38] Ian Bogost — "Gamification is Bullshit" — https://www.bogost.com/blog/gamification_is_bullshit/ — 2011 — [P].
 [39] Game Accessibility Guidelines — full list — https://gameaccessibilityguidelines.com/full-list/ — fetched 2026-10-18 — community checklist.
 [40] Game Accessibility Guidelines — "Allow players to progress through text prompts at their own pace" — https://gameaccessibilityguidelines.com/allow-players-to-progress-through-text-prompts-at-their-own-pace — fetched 2026-10-18.
-[41] Lee S, Oh H, Shi C-K, Doh YY — "Mobile Game Design Guide to Improve Gaming Experience for the Middle-Aged and Older Adult Population", JMIR Serious Games 2021;9(2):e24449 — https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8176340/ (text retrieved via NCBI E-utilities) — 2021 — [P] 40 participants, mean age 66.75.
+[41] Lee S, Oh H, Shi C-K, Doh YY — "Mobile Game Design Guide to Improve Gaming Experience for the Middle-Aged and Older Adult Population", JMIR Serious Games 2021;9(2):e24449 — https://pmc.ncbi.nlm.nih.gov/articles/PMC8176340/ (text retrieved via NCBI E-utilities) — 2021 — [P] 40 participants, mean age 66.75.
 [42] Mojang/Microsoft — Minecraft Usage Guidelines — https://www.minecraft.net/en-us/usage-guidelines — fetched 2026-10-18; no visible date — [P].
 [43] Mojang/Microsoft — Minecraft End User License Agreement — https://www.minecraft.net/en-us/eula — fetched 2026-10-18 — [P].
 [47] Modrinth — Flashback Settings — https://modrinth.com/project/mOIDKWOa — fetched 2026-10-18 — [P] note: add-on; PolyForm Noncommercial; telemetry on by default.

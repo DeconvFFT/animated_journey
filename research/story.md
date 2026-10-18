@@ -18,17 +18,17 @@ Contents: Summary · Findings by question (Q1–Q9) · Exemplars / recipes (incl
 1. **Free question sets exist but are small tools, not scripts.** StoryCorps' Great Questions page has no licence text and says "We encourage you to use the ones you like and to come up with your own" [1]; StoryCorps itself says a ~40-minute session cannot cover a life and advises 5-10 questions per session [2]. The genuinely texture-producing items are the sensory, ritual, object and "what did it look/smell/sound like" ones (StoryCorps' own tip 8 is "What did your kitchen smell like when you were growing up?") [3]. The work/achievement items are résumé questions and are cut or transformed in Deliverable 1.
 2. **McAdams' Life Story Interview is borrowable as structure, not as script.** Its skeleton is: 2-7 titled life chapters; key scenes (peak, nadir, turning point, earliest memory, childhood, adolescent, adult, one more); a life challenge; positive and negative influences; positive and negative futures; a life theme [6]. The official Northwestern URL returned 404 on 2026-10-18, so I worked from a public Northwestern summary [6] and a published adaptation [5]. "Redemption" is a finding about how many people narrate, with a mixed evidence base on well-being [7]; it must not become a template we force a life into.
 3. **Prompt types, ranked by evidence.** Strongest lab evidence: smell (odour-cued memories are older, vivid, emotional, but rare) [41]; music from about ages 15-30 (about 70% of "bump" songs evoked a memory vs 44% of others in one older-adult study) [46]. Moderate: photo elicitation (argument is neurological and comes to me second-hand) [45], go-along walks [44]. Practitioner consensus without experiments: open-ended "tell me about", silence, "tell me more", asking for sensory detail, objects and photos as prompts [3][10][11][36]. Ordinary-day methods have good provenance (Mass-Observation day diaries, life-history calendars) but no head-to-head test against other prompts [50][66].
-4. **The middle decades are the hardest to recall (inference from a cultural life-script study).** People share a "life script" with few anchor events after about age 35 and those are mostly negative [47]. Expect the subject's 35-55 era to be thin in memory and rich in documents, relatives' observations and routine. Use the Tuesday walkthrough, a life-history calendar and records there.
+4. **The middle decades are culturally expected to be grey (inference from a cultural life-script study).** Janssen and Rubin report that the cultural life script expects few *positive* events after age 30 (8.4%), that events expected after 35 are rated negative on average, and that about half of the negative and neutral script events (51.7%) fall at 31 or later [47]. The script does not leave those years empty; it expects them to be grey. So do not read a thin memory of the subject's 35-55 era as a thin life. Ask relatives for the ordinary good texture of those years (routines, good Sundays, jokes: R7.1, R7.4, R7.8), and use the Tuesday walkthrough, a life-history calendar and records there.
 5. **Surprise mode has a 70-year precedent with documented failure modes.** "This Is Your Life" built a life from spouse, relatives and friends under secrecy: code names, small circles, feasibility reports weighing "points for and against" each subject, memos shredded [28][29]. It still had leaks (a grandson, a note with a phone number), a walk-out (Danny Blanchflower, 1961), a subject who suspected an affair because his wife was being secretive, relatives with second thoughts, and over 80% of proposed subjects rejected at the production conference [28][29][30][31].
 6. **Half the literature does not apply in surprise mode.** Without the subject: no LSI, no subject photo/object elicitation, no go-along, no narrator consent or narrator review before recording, no ethical-will or dignity-therapy style prompts. What still applies: relative interviews, documents, objects, recorded voice already in existence, triangulation, the inventory, and a post-reveal veto window (inference).
 7. **Choosing which milestones to dramatise.** Biographers sample rather than exhaust (Strachey: "a brevity which excludes everything that is redundant and nothing that is significant") [48]; Woolf separated vivid "moments of being" from the "nondescript cotton wool" of ordinary days [49]; editors protect emotional truth first (Murch's Rule of Six weights emotion 51%) [56]; Pixar whittled 30-40 minutes of material to about 4.5 minutes and cut a slapstick beat that tested badly [14][13]. I propose four treatments: dramatise / glimpse / mention / hold.
 8. **Up "Married Life" at beat level (from a student's timecoded table [17]).** About 4:05 from wedding flash to fade. The audience gets 77 seconds of accumulation before the first blow. The first blow lasts about 10 seconds, then Carl immediately brings the Adventure book. Three jar-breaking setbacks take about 8 seconds. The longest quiet beat (24 s, Carl at the window, then the painting) is a thought, not an event. Ellie's death is never shown; the cut goes from the hospital to the church steps. The kiss appears three times, the hill twice, "watching her" repeatedly, and the same music theme changes tempo and timbre [17][14][16].
 9. **Second exemplar: StoryCorps' Danny & Annie.** Two rituals set up in the 2004 interview (a proposal call every April 22, answered yes 25 times; a daily handwritten "romantic weather report") are inverted in the 2006 final interview (Annie reads his Valentine's letter; she will walk out behind the casket alone). After Danny died, Annie read one listener condolence letter each day in place of his daily note [20][21][22]. Hard chapter told by the people living it, in their words, with their consent, and with texture first.
 10. **Hard chapters: use a gate, not a vibe.** Brooker's "chest of drawers" (top: freely shared; middle: shared inside trust; bottom: family secrets, trauma, not for public work) is the clearest published sorting tool [34]. Add: pre-talk about the pain of remembering [33], subject controls order and pace, breaks, review before publication, "don't leave them worse off than when you met them" [54], and a no-push rule from life-story work with older people [35][36].
-11. **Recording for a non-technical maker.** A phone is enough if: quiet soft room, phone on a stand or folded cloth 6-12 inches from each mouth (5-6 inches if single speaker), Do Not Disturb, iPhone Voice Memos set to Lossless or Android at least 128 kbps, a spoken slate at the start, two copies straight away, and a time-coded log [10][37][38]. Transcribe locally with Whisper (MIT licence) so private audio does not go to a third party [39][40]. Do not use the StoryCorps app/archive for private material: their terms say private interviews can still be retained and accessed by StoryCorps, partners and the Library of Congress [4].
+11. **Recording for a non-technical maker.** A phone is enough if: quiet soft room, phone on a table, stand or folded cloth, not in the hand [37]: 5 to 6 inches from one speaker's mouth [37], or 6 to 12 inches for one speaker [89] (two-speaker distance is inference, to be settled in Exercise 2), Do Not Disturb, iPhone Voice Memos set to Lossless or Android at least 128 kbps, a spoken slate at the start, two copies straight away, and a time-coded log [10][37][38]. Transcribe locally with Whisper (MIT licence) so private audio does not go to a third party [39][40]. Do not use the StoryCorps app/archive for private material: their terms say private interviews can still be retained and accessed by StoryCorps, partners and the Library of Congress [4].
 12. **What goes wrong in family tributes (thin evidence).** I found no systematic survey. The recurring items in vendor and practitioner guidance are: too long, only photos and no stories, same effect on every photo, skipping family review ("hard feelings"), uneven coverage of family members, unlicensed music [70][71]. From oral-history and memoir sources: no consent trail, tiring elderly narrators, equipment failure, disputes about "whose story it is" [10][11][55][34]. Surprise adds leaks and suspicion [28][30].
 13. **Photo asymmetry (few childhood photos, thousands recent) is a design input, not a defect.** Family photo archives skew toward nostalgic, celebratory moments and away from sorrow and routine [58]. Cover early years with places, objects, voices and maps; sample recent photos by theme, not volume; clearly mark any reconstruction (charter principle 4). Animated documentaries (Flee, the StoryCorps shorts) show that research-grounded reconstruction works [24][26].
-14. **The decision that gates everything is surprise vs together.** My recommended default is a hybrid ("consent-light": the subject knows a project exists and agrees to a few story sessions; the form and content stay secret), with a full-surprise runbook ready if the maker chooses it. The reasoning is in "What this means for Life Journey".
+14. **Surprise mode is fixed by the charter (2026-10-18).** The operating mode is full surprise, run with the surprise runbook (`skills/life-story-interviewing/surprise-runbook.md`). The hybrid ("consent-light") that the first draft recommended is kept only as the fallback if the maker reopens the decision. See "What this means for Life Journey".
 
 ---
 
@@ -73,7 +73,7 @@ Prompt types, evidence and use:
 | Prompt | Evidence / consensus | Notes for a 50+ subject and 70-80s relatives |
 |---|---|---|
 | **Smell** | Lab evidence: odour-cued autobiographical memories are limbic, old (mostly first decade), vivid, emotional, and rare (fewer memories than word or picture cues); naming the odour helps recall [41]. | Ask "what did it smell like?" in words rather than hoping a sniff works. Real smell kits are optional and can surprise someone emotionally (inference). |
-| **Music / songs** | Music-evoked memories cluster in the reminiscence bump (about ages 15-30); in a study with older adults about 70% of bump-period songs evoked a memory against 44% of non-bump songs [46]. | Use 20-30 second clips from about ages 12-30; ask "where were you?" Songs the subject has played to death since may carry later memories (inference). |
+| **Music / songs** | Music-evoked memories cluster in the reminiscence bump (about ages 15-30); in a study with older adults about 70% of bump-period songs evoked a memory against 44% of non-bump songs [46]. | Use 20-30 second clips from ages 15 to 30 per [46], with the lower bound extended to 12 to catch first records (inference); ask "where were you?" Songs the subject has played to death since may carry later memories (inference). |
 | **Photos** | Photo elicitation is an established social-science method; Harper's argument is that visual processing is evolutionarily older than verbal, so photos surface different material (I saw this second-hand, not Harper's own text) [45]. Veterans History Project guidance: showing photos and documents can jog memory (snippet only) [12]. | Pick 6, not 60. Ask what is outside the frame, who took it, what happened just before and after. Warning: family photos over-represent celebration and nostalgia and under-represent sorrow and routine [58]. |
 | **Objects** | Practitioner consensus in life-story work: use photos, videos, music and objects as icebreakers [35]; VHP archives scans of objects and documents with logs [11]. | Ask each relative to bring one object and say where it lived. |
 | **Place / go-along** | Kusenbach (2003) argues go-alongs access meanings of place that sit-down interviews miss: environmental perception, spatial practices, biographies, social architecture, social realms [44]. | Walking with 70-80s relatives may not be feasible: do the house tour at their kitchen table, or use a sketched map. |
@@ -85,7 +85,7 @@ Prompt types, evidence and use:
 
 Date anchoring (separate from prompting): the life history calendar, a grid of years by domains (where lived, work, relationships, children), improved recall of dates in longitudinal research (snippet only) [67]. Landmark public events and age anchors serve the same purpose (inference).
 
-Two cautions: (a) the memory "bump" means the subject will be vivid for ages 10-30 and thin for 35-55 [46][47]; (b) interviewing a couple or siblings together can raise recall for shared memories but outcomes vary with how the pair talks (snippet only) [59]. Practical rule (inference): interview relatives separately first for facts and contradictions, then together for banter and texture.
+Two cautions: (a) the memory "bump" is about ages 15 to 30 [46], and the cultural life script expects few positive events after 30 (8.4%) and rates events after 35 as negative on average, with about half of the negative and neutral script events at 31 or later (51.7%) [47]. The 35-55 years are expected to be grey, not empty, so ask relatives for their ordinary good texture (R7.1, R7.4, R7.8), not only for events; (b) interviewing a couple or siblings together can raise recall for shared memories but outcomes vary with how the pair talks (snippet only) [59]. Practical rule (inference): interview relatives separately first for facts and contradictions, then together for banter and texture.
 
 ### Q3. If the project is a surprise, what is the proven method and what goes wrong?
 
@@ -218,7 +218,7 @@ See "Exemplars / recipes" for the full beat table, the rules and the Danny & Ann
 Setup (sources: [10], [11], [37], [38]; my edits are marked):
 - **Room.** Small, soft furnishings (rugs, curtains, sofa, pillows); "closets can be excellent recording studios" [37]. Turn off the fridge if you can, stop clocks, close windows; Baylor lists "chiming clocks, humming refrigerators, clattering dishes" as hazards [10]. Avoid big bare rooms [37]. Do not seat anyone with a window behind them if you are also filming [11].
 - **Device.** A smartphone is workable; an external clip or lavalier microphone is the biggest single upgrade (several guides; snippet only) [73]. Model recommendations: UNVERIFIED. If you can, record on two devices (a second phone) because repositories and professionals advise redundancy [10][38].
-- **Placement.** Phone on a table or stand, not in the hand; keep your hand off the mic; for two speakers place it as close to both as possible; without an external mic, 5-6 inches from one speaker's mouth [37]. For a seated two-person interview at a table, a phone on a folded towel midway, mic end pointed between you, is the practical compromise (inference; Baylor: "Place the microphone... between you and the narrator. Test... play back" [10]).
+- **Placement.** Phone on a table or stand, not in the hand. UDayton advises a table, to avoid handling noise [37]. One speaker: 5 to 6 inches from the mouth [37]; 6 to 12 inches from the mouth [89]; "a few inches" [90]. No source gives a two-speaker distance. For a seated two-person interview at a table, a phone on a folded towel midway, mic end pointed between you, is the practical compromise (inference; Baylor: "Place the microphone... between you and the narrator. Test... play back" [10]).
 - **Phone settings.** Do Not Disturb or airplane mode; plugged in or charged; iPhone: Settings > Voice Memos > Audio Quality > Lossless; Android: a bitrate of 128 kbps or higher [37].
 - **Format.** Uncompressed PCM WAV (16-bit 44.1 kHz or better) is the oral-history norm [10]; one gigabyte holds about 3 h 13 min of mono 16-bit 44.1 kHz WAV [10]; higher-quality 24-bit 96 kHz is common among archives for oral history with music, with 48 kHz/24-bit cited as suitable for speech-only (university guidelines in search results) [74]. For this project, a lossless phone recording is enough (inference).
 - **Slate.** Start every session by saying names, full date, place ("narrator's home" rather than a street address), and subject of the session [8][10].
@@ -319,23 +319,26 @@ Evidence quality: I found no study or professional survey. The list below is fro
 
 ### Exemplar 2: StoryCorps animated short *Danny & Annie* (Mike and Tim Rauch with StoryCorps; POV premiere 2010 per PBS, StoryCorps page dated 2012-08-12)
 
-- **What it is.** An animated short built from StoryCorps interview audio recorded by Danny and Annie Perasa of Brooklyn (Danny a horse-betting clerk, Annie a nurse): the first-date story recorded in 2004 and a final interview recorded in January or February 2006 a few weeks after Danny's terminal-cancer diagnosis [20][21][22]. Original format was two parts [23]. Running time of the single short: UNVERIFIED (the PBS page lists 37 minutes, which looks like the package) [23].
+- **What it is.** An animated short built from StoryCorps interview audio recorded by Danny and Annie Perasa of Brooklyn (Danny a horse-betting clerk, Annie a nurse): the first-date story recorded in 2004 and a final interview recorded in January or February 2006 a few weeks after Danny's terminal-cancer diagnosis [20][21][22]. It was first made in two parts [23]. StoryCorps' page now shows a combined version: "Originally an animation in two parts, here you'll see a special version that combines both parts of their story" [92]. Running time: UNVERIFIED. The PBS page lists 37 minutes for the two-part package [23]; the length of the combined cut is not stated.
+- **Credits ([92]).** Directed by The Rauch Brothers; produced by Mike Rauch and Lizzie Jacobs; animation by Tim Rauch; audio produced by Michael Garofalo and Sarah Kramer; facilitated by Sarah Kramer; original music by Fredrik; publisher House of Hassle. Audio and music are credited as roles separate from direction and animation, which matters for the `sound-and-voice` proposal.
+- **Combined structure and text cards ([92]; the cards are inferred, not watched).** The page's transcript has three labelled text elements: "Intro Text", "Introduction for 2nd part" and "End text". I infer them as on-screen cards: (1) context: Brooklyn, a horse-betting clerk and a nurse, married 1978, "they told the story of their very first date"; (2) between the parts: "twenty-seven happy years together", a diagnosis in January 2006, and "a few weeks later" one last interview "from the living room"; (3) close: broadcast a week after recording, Danny died that same day, and Annie "reads one each day in place of her love letter from Danny" after receiving thousands of letters. No narrator speaks on the cards; the recorded voices carry everything between them.
 - **Why it works (beat map from the radio transcripts; I did not watch the animation, so visual choices are UNVERIFIED).**
 
-| # | Audio beat | Device |
-|---|---|---|
-| 1 | Danny describes proposing on the first date, with a joke about love as a "dirty four letter word" (transcripts vary: "34-letter") | His voice, comic |
-| 2 | He phones early next morning to check she has not changed her mind | A small human detail |
-| 3 | Every April 22 he calls to ask whether she would marry him again; 25 yeses | Annual ritual |
-| 4 | Daily handwritten note on the kitchen table, a "romantic weather report"; Annie reads one | Object plus routine plus a joke |
-| 5 | Marriage like colour television: "you never want to go back to black and white" | His own metaphor |
-| 6 | 2006: Annie says the illness is hard mainly because of its finality | Pivot, in her words |
-| 7 | They try to give each other hope | Restraint |
-| 8 | The funeral: "I walked in with you alone, I'm walking out with you alone" | Callback to the wedding |
-| 9 | Annie reads his Valentine's letter | The daily-note ritual returns, now as legacy |
-| 10 | Danny: there will never be another Annie | Close |
-| coda | Danny died the day it aired (24 Feb 2006 per NHPR's link); Annie received thousands of condolence letters and read one each day; she died on 14 Aug 2021 of COVID aged 79 | Real-world coda, one line each |
+| # | Audio beat (transcript [21][92]) | Audio device | Time (stopwatch) | Visual device |
+|---|---|---|---|---|
+| 1 | Danny describes proposing on the first date, with a joke about love as a "dirty four letter word" (transcripts vary: "34-letter") | His voice, comic | TODO | TODO |
+| 2 | He phones early next morning to check she has not changed her mind | A small human detail | TODO | TODO |
+| 3 | Every April 22 he calls to ask whether she would marry him again; 25 yeses | Annual ritual | TODO | TODO |
+| 4 | Daily handwritten note on the kitchen table, a "romantic weather report"; Annie reads one | Object plus routine plus a joke | TODO | TODO |
+| 5 | Marriage like colour television: "you never want to go back to black and white" | His own metaphor | TODO | TODO |
+| 6 | 2006: Annie says the illness is hard mainly because of its finality | Pivot, in her words | TODO | TODO |
+| 7 | They try to give each other hope | Restraint | TODO | TODO |
+| 8 | The funeral: "I walked in with you alone, I'm walking out with you alone" | Callback to the wedding | TODO | TODO |
+| 9 | Annie reads his Valentine's letter | The daily-note ritual returns, now as legacy | TODO | TODO |
+| 10 | Danny: there will never be another Annie | Close | TODO | TODO |
+| coda | Danny died the day it aired (24 Feb 2006 per NHPR's link); Annie received thousands of condolence letters and read one each day; she died on 14 Aug 2021 of COVID aged 79 | Real-world coda, one line each | TODO | TODO |
 
+- **Status of the beat map (round 1).** The time and visual columns are open. The scribe could not watch video in this session, so every TODO is unfilled, and no timing or visual claim above is verified. The maker (or a researcher with video access) watches the short on StoryCorps' page [20] (canonical [92]) once with a stopwatch, and fills the columns: each ritual's drawing (the April 22 call, the kitchen note), whether the style changes at the illness, what the Valentine's letter shows, and whether the last card plays over silence or music. If that has not happened by the next gate, swap in a viewable documentary short and say why.
 - **How it was made.** The Rauchs animate StoryCorps audio that first aired on NPR; they "visit the storytellers whenever possible", gather family photos, photograph landmarks, make character designs and storyboards, then colour and composite in After Effects; "Our guide for that balance is always character and story" (naturalistic vs cartoonish) [24]. Influence: John Hubley's *Moonbird*, built on recordings of his children [24][25].
 - **What we can reuse.** (a) Put rituals first so the audience wants them kept before they are threatened. (b) Let the hard chapter be spoken by the people living it. (c) Let objects (the note, the letter) be the carriers. (d) A one-line real-world coda instead of an explanation. (e) Audio-first: design the visuals around the strongest recordings, not the reverse.
 - **Caution.** The couple chose to record a final interview and had StoryCorps release arrangements I could not see; a family project needs its own consent trail (Deliverable 3).
@@ -366,339 +369,17 @@ What, why, how: see Q3. **Reusable:** the feasibility report ("points for and ag
 
 ---
 
-### Recipe 1 (Deliverable 1): Question banks by life stage, two versions
+## Recipes 1 to 6 (moved in round 1)
 
-**How to use**
-- Choose 5-10 questions for a 40-45 minute session, drawn from 2-3 stages; the rest are reserve [2]. Start with a warm-up; end with a reflective question [3][5].
-- `[S]` = ask the subject directly (collaborative mode). `[R]` = ask a relative about the subject (works in both modes; in surprise mode the relative is briefed about the secret first).
-- In `[R]`, "you" is the relative and "they" is [NAME]. The relatives are narrators of their own lives too (they were adults then), so let them answer about their own day, prices, jobs and fears.
-- Codes at the end of each line are the texture categories the inventory uses: R routine/ritual · S sense (smell, sound, touch, taste, light) · O object · P people · W words/sayings/jokes · L place · M money/work · B body/health · X scene (a one-time event).
-- Tone rules for 50+ subjects and 70-80s relatives (sources: [10][11][32][35][36]; some inference): one question at a time; short sentences; anchor to a concrete image ("the first home you remember") rather than abstract ("what was your childhood like"); wait; do not correct; avoid asking "why" (it can read as blame; inference); no more than 45-60 minutes, with a break; follow tears per Deliverable 3.
-- Do not rush: answer by the narrator's habit ("we always...") counts as texture; follow with "tell me about one time it wasn't like that".
-- Gate: Stage 8 is opt-in and run only after the boundaries conversation in Stage 0 (or the proxy equivalent in surprise mode).
+The deliverables were moved out of this file so that the skill can run without loading the evidence. Each recipe now lives beside the skill, with the same content, corrected where round 1 required (Song set ages, Stage 7 wording, placement distances, the record-to-close rule, found voice):
 
-**Prompt kits (bring these; they work across stages)**
-- *Tuesday walkthrough* (best for stages 5-7): "It's a Tuesday in [year]. Start from the alarm, or whatever woke you. What does your foot touch first? What do you hear? What's in your hand? What do you eat? What do you wear? How do you get out of the door, and what's the first thing you notice outside? Walk me through to lights-out." Follow-ups: "What was different on a Friday?" "What always went wrong?" For relatives: "Walk me through a normal Sunday visit: parking, door, who answers, where you sit, what's cooked, how it ends."
-- *Memory map:* paper and pen; the interviewer draws their own childhood street first, then asks the narrator to draw theirs and label "where something memorable happened" [65]; photograph the drawing with the audio running.
-- *Photo set (6, not 60):* "What's outside the frame? Who took it? What happened just before and after? What did that room smell like? Who's missing?" Include 2 non-celebration photos [58].
-- *Song set:* 8-10 clips (20-30 seconds) from ages 12-30 plus 2-3 from the last decade [46]; ask "where were you?" and "who was there?"
-- *Object:* ask each relative to bring one object and tell where it lived and who touched it.
-- *"I remember" list:* ten fragments in five minutes, no explanation [52].
-- *Smell (optional):* ask "what did it smell like?" first; real smell items only if the narrator is game [41].
-- *House inventory:* the kitchen table (who sat where, what lived on it), the fridge door, the hall table, the glovebox, the junk drawer, the shed.
-- *Era hooks (adapt to the subject's country and decade):* the family car, the phone (where it hung, how long the cord), the TV (who held the dial), the radio station, the first music they owned and how they played it, brands on the shelves, what a school lunch cost.
+- Recipe 1, question banks, prompt kits, résumé cut list and surprise adaptation: `skills/life-story-interviewing/question-bank.md`
+- Recipe 2, inventory column rules, texture quota and AI handling rules: `skills/life-story-interviewing/inventory-rules.md`; CSV template: `skills/life-story-interviewing/inventory-template.csv`
+- Recipe 3, one-page interview protocol: `skills/life-story-interviewing/session-protocol.md`
+- Recipe 4, surprise-mode runbook, relative script, found-voice fields and people tab with door triage: `skills/life-story-interviewing/surprise-runbook.md`
+- Recipes 5 and 6, treatment tiers, time budget, beat sheet and through-line workshop: `skills/life-story-interviewing/beat-sheet.md`
 
-**Stage 0. Starting and boundaries (collaborative mode)**
-- [S0.1] Before we start: is there anything I should never ask about, and anything we can talk about that stays off the record or out of the piece? (limits)
-- [S0.2] Would you rather we do this in your kitchen, the living room, or somewhere else? Who should not be in the room? (L, P)
-- [S0.3] Who remembers things about you better than you do? Who should I be sure to talk to, and who should I leave alone? (P)
-- [S0.4] What is a smell, a song, or an object that gets you straight back to being a kid? (S, O)
-- [S0.5] Is there a chapter of your life you would want told, one you'd want left out, and one you'd rather decide later? (limits; drawers [34])
-- [S0.6] You will be able to hear or read everything before anyone else does. What would make you say "take that out"? (control [8][32])
-
-**Stage 1. Before they remember (origins, family lore)**
-- [S1.1] What story were you told about the day you were born or came home? Who told it, and how did they tell it? (X, W)
-- [S1.2] How did you get your name, and what else have people called you? Which one still makes you turn your head? (W, P)
-- [S1.3] What do your family always say about you that you cannot remember yourself? Do you believe it? (W, X)
-- [S1.4] Which grandparent do you picture first, and what do you see, hear or smell? (P, S)
-- [S1.5] What is the oldest thing in the family that you have held, and who handed it down? (O)
-- [S1.6] What did your family make, cook, say or avoid talking about, that you only understood much later? (W; middle-drawer, ask only with an exit [34])
-- [R1.1] Tell me about the day [NAME] was born or arrived: where you were, who rang whom, the weather, what was on the radio. (X, L)
-- [R1.2] How was the name chosen, and who argued for what? Any nicknames, and who started them? (W, P)
-- [R1.3] What was the first home like: rooms, smells, who slept where? (L, S)
-- [R1.4] What was your own life like then: work, rent or prices, what you worried about? (R, M)
-- [R1.5] What was [NAME] like as a baby, the thing everybody mentions: a habit, a sound, how they were held? (B, P)
-- [R1.6] Which family stories about [NAME]'s early years get told differently by different people? Which version do you believe, and why? (W) [catches legends]
-- [R1.7] Who minded them when the parents were out? What did that person cook, sound like, smell like? (P, S)
-
-**Stage 2. Early childhood (about 3-7)**
-- [S2.1] Walk me through the first home you remember, starting at the front door. Which room do you go to first? (L, S)
-- [S2.2] What does the kitchen smell like, where does everybody sit, and what is on the table on an ordinary morning? (S, R)
-- [S2.3] What did you love to eat, hate to eat, get made to finish? Who made it? (S, P)
-- [S2.4] What did the house sound like at night? What scared you, and what made it better? (S, B)
-- [S2.5] Where did you go to be alone: under the table, up a tree, behind a chair? What was in your hand? (L, O)
-- [S2.6] What did the grown-ups say all the time? Say it in the voice you hear it in. (W)
-- [S2.7] What toy, blanket or thing can you still feel in your hands? Where did it end up? (O)
-- [S2.8] What is your earliest memory? What do you see, hear and feel in your body? How old do you think you were? Who else was there? (X) [adapted from McAdams [6]]
-- [S2.9] What was a normal Saturday morning? (R)
-- [R2.1] What did [NAME] do every single day at that age, a routine, a game, a thing they carried? (R, O)
-- [R2.2] What did they say that made everybody laugh? What word did they get wrong? (W)
-- [R2.3] What were they afraid of, and what calmed them? (B)
-- [R2.4] Describe the first home you saw them in: front door, rooms, smells, where the TV or radio was. (L, S)
-- [R2.5] What did they eat, and who argued about it at the table? (S, R)
-- [R2.6] What was a normal Saturday? A normal Sunday? (R)
-- [R2.7] Who was always around: neighbours, aunts, family friends? What did each do? (P)
-- [R2.8] Tell me about one time you thought "that is exactly who they are going to be." What happened, scene by scene? (X) [asks for the scene, not the label]
-
-**Stage 3. School years (about 7-12)**
-- [S3.1] Draw me how you got to school: what you passed, what you avoided, who you walked with. (L, P, S) [memory map [65]]
-- [S3.2] What was in your lunchbox, or what could you buy, and who gave you the money? (S, M)
-- [S3.3] Which teacher can you still hear? What did they say or do, a gesture, a smell of chalk? (P, S, W)
-- [S3.4] What did you and your friends play, collect, trade or get into trouble for? Where? (R, O)
-- [S3.5] What did you wear, and what did you hate wearing? Whose clothes did you inherit? (O, M)
-- [S3.6] Walk me through a normal day in the summer holidays. (R)
-- [S3.7] What happened when you were ill and home from school? (B, S)
-- [S3.8] Family trips: what was the car, who sat where, what did it smell like, what did people sing or say? (O, S, P)
-- [S3.9] What rule at home did you break once? What happened? (X)
-- [R3.1] Who did [NAME] walk to school with, and what did they come home saying? (R, P)
-- [R3.2] What was their room like: the walls, the floor, the shelves, what you were not allowed to touch? (L, O)
-- [R3.3] What was dinner like on a school night? Who talked, who didn't, what was said? (R, P, W)
-- [R3.4] Who were their friends, where did they hang out, what did the other parents think? (P)
-- [R3.5] What trouble did they get into, and what did you do about it? (X)
-- [R3.6] What did the family do on holidays and Sundays that no one else did? (R)
-- [R3.7] What did they collect or obsess about, and where did it live in the house? (O)
-- [R3.8] What was the family going through then (money, moves, work, illness) that a child would not have noticed? (M; middle-drawer, ask only with an exit)
-
-**Stage 4. Teens (about 13-19)**
-- [S4.1] What was the first music that was yours? How did you get hold of it, and where were you when you first played it loud? (S, O, L)
-- [S4.2] What did your room look like at fifteen: the walls, the objects, the smell? What did you hide there? (L, O, S)
-- [S4.3] Where did you go when you wanted to be away from everybody? (L)
-- [S4.4] Who were the three people you spent most time with? What did you do on a normal Friday night? (P, R)
-- [S4.5] Tell me about your first job: the first day, the smell, what you were paid, what you spent it on. (S, M) [résumé question rebuilt as a scene]
-- [S4.6] What did you argue about at home, and where did the arguments happen? (X, L)
-- [S4.7] What was a first (first time away, first time driving, first heartbreak)? What happened, scene by scene? (X)
-- [S4.8] What did you believe then that you would be embarrassed by now? (W)
-- [R4.1] How did [NAME] change as a teenager: hair, clothes, noise, silence? What did you see? (B, O)
-- [R4.2] What music came out of their room, and what did you think of it? (S)
-- [R4.3] What was the argument you had most often? Where did it happen, and how did it end? (X, L)
-- [R4.4] Who were their friends and what did they get up to when you weren't looking? (P)
-- [R4.5] What was their first job, how did they get there, what did they do with the money? (R, M)
-- [R4.6] What worried you about them that you never said? (X)
-- [R4.7] When did you first see them as a grown person, separate from you? What was happening? (X)
-
-**Stage 5. Leaving and early adulthood (about 19-30)**
-- [S5.1] Tell me about the day you left home or first moved out: what you took, who helped, what the car looked like, who cried. (X, O, P)
-- [S5.2] Describe your first place that was only yours: the front door, the smell, what was on the table. (L, S, O)
-- [S5.3] What did you really eat that year? What did you cook badly? (S, M)
-- [S5.4] Who were your people then, where did you meet, what ritual did you share? (P, R)
-- [S5.5] Walk me through a normal Tuesday when you were about 24. (R) [Tuesday walkthrough]
-- [S5.6] What did you spend money on, and what could you not afford? (M, O)
-- [S5.7] What did you get wrong, and who warned you? (X, P)
-- [S5.8] Which place you moved to or travelled to changed what you thought was possible? What did it smell and sound like? (L, S)
-- [S5.9] What did you carry from place to place: a bag, a book, a photo? (O)
-- [R5.1] When [NAME] left, what did the house feel like? What did you do with their room? (L, B)
-- [R5.2] What did you see the first time you visited their place? (L, S, O)
-- [R5.3] How often did they ring or write? What did they say? Do you still have a letter or postcard? (O, W)
-- [R5.4] Who did they bring home, and what did you think? (P)
-- [R5.5] What advice did you give that they ignored? (X)
-- [R5.6] What were they like at family gatherings then: the entrance, the leaving? (R, P)
-- [R5.7] When did they first come home "different"? What did you notice? (X)
-
-**Stage 6. Partnership, family, home (about 25-45; adapt to the actual life)**
-- [S6.1] How did you meet [PARTNER]? Tell me the first conversation: who spoke first, what they wore, where you were standing. (P, X)
-- [S6.2] The day you decided, or the day you married or committed: the weather, the food, what went wrong, who cried. (X)
-- [S6.3] The first home together: what did you fix, break, argue about? What objects came from whom? (L, O)
-- [S6.4] The first night or day with a child, or the first time you thought of children: sounds, smells, who was there. (X, S)
-- [S6.5] What was a normal weekday breakfast when the children were small? (R)
-- [S6.6] What were the sayings, rules and private jokes of your house? (W)
-- [S6.7] When did you catch yourself doing what your own parents did? (P)
-- [S6.8] If there was no partner or no children: who or what did you build your life around, and what did an ordinary evening look like? (P, R) [adaptation]
-- [R6.1] When did you first hear about [PARTNER]? What was your first impression, what did you see and hear? (P, X)
-- [R6.2] What do you remember of the wedding or commitment day: where you stood, what you ate, who was missing? (X)
-- [R6.3] What were their first homes like: smell, furniture, who gave what? (L, O)
-- [R6.4] What was [NAME] like as a new partner or parent: how they held, spoke, cooked? (B, R)
-- [R6.5] What did you bring when you visited, and what did you do there? (R, O)
-- [R6.6] Which family sayings and jokes began in this period? (W)
-- [R6.7] Did your relationship with them change after they started a family? How? (P)
-- [R6.8] What were Sundays like? (R)
-
-**Stage 7. The long middle (about 35-55; the thin-memory decades, rely on routines and records)**
-- [S7.1] Pick a year, say 1998, and a Tuesday in it. Walk me through from the alarm to bed: what woke you, what you ate, what you drove, what you heard on the way, who you saw, what you brought home. (R, O, S) [Tuesday walkthrough]
-- [S7.2] Where did you work, not what did you do: what did the building smell like, who sat nearest, what was the food, what was the joke you had? (S, P, W, M)
-- [S7.3] What was the car then? What was in the glovebox, what did you listen to in it? (O, S)
-- [S7.4] Which year was tight, and how could you tell (what you stopped buying)? (M, O)
-- [S7.5] What was the house project you never finished, the room that was always a mess, the corner where people gathered? (L, O)
-- [S7.6] What did you do for yourself: a hobby, a sport, a walk, the garden? Show me the tool or the spot. (R, O)
-- [S7.7] Who did you look after (children, parents, a friend)? What did an ordinary day of that look like? (P, R)
-- [S7.8] When did you feel most alive, and when most tired? (X, B) [adapted from the Dignity Therapy "most alive" prompt [61]]
-- [S7.9] What changed in you that nobody saw? (X; reflective, optional)
-- [R7.1] Describe a normal visit to their home in those years: arriving, parking, who answered, where you sat, what was cooked, how it ended. (R, L, S)
-- [R7.2] What phrases did they use all the time (weather, money, children, politics), and what did they never say? (W)
-- [R7.3] What was their car like, and their driving? (O)
-- [R7.4] What did they do at weekends? (R)
-- [R7.5] How did they talk about work: what did they enjoy or hate at the table? (W, M)
-- [R7.6] What was their role in the family: peacemaker, joker, organiser? Give me the scene that shows it. (P, X)
-- [R7.7] When did you see them tired, fed up, or happier than you'd ever seen them? What was going on? (X)
-- [R7.8] What did they do for you that nobody noticed? (P)
-- [R7.9] What did the family do each year (a holiday ritual), and what part did they play? (R)
-- Documents for this stage (inference): wall calendars, diaries, address books, school reports of the children, phone camera rolls, receipts, car papers, holiday brochures, work ID photos.
-
-**Stage 8. Hard chapters (opt-in; loss, illness, separation, money, conflict). Run only after Stage 0, one topic at a time, with exits.**
-- Opening line (any version): "There may be parts of this that are hard. We can stay on it, take a break, skip it, or come back another day. You choose, and you can say stop at any point." [32][33]
-- [S8.1] Is there a hard chapter you want included, and how should it be told: in your own words, in a single line, or not named but felt? (control [34])
-- [S8.2] Who should see this part before anyone else? (consent)
-- [S8.3] What was an ordinary day like in the middle of it: what you ate, who rang, what helped? (R, S) [texture inside hardship]
-- [S8.4] Is there something small that carries that time: a song, a chair, a recipe, a smell? (O, S)
-- [S8.5] What do you want people to understand about how you got through it, rather than about what happened? Or is it simply something that happened, with no lesson? (agency; allow "no redemption" [7])
-- [S8.6] What would you ask us never to show? (limits)
-- [R8.1] Is there something about [NAME]'s life that you think needs to be handled with care? We will not use it without checking with the right person. (consent)
-- [R8.2] When [shared loss] happened, what did you see them do that helped? (X)
-- [R8.3] What do you picture of [the person who died] with [NAME]: a place, a gesture? (X, P)
-- [R8.4] Is there anything you would prefer I leave out, even if you tell me? (limits)
-- Hard rule: do not ask relatives for bottom-drawer material (secrets, trauma, the cause of an estrangement). If volunteered, log it with consent_status = `bottom-drawer (do not use)` and move on [34].
-
-**Stage 9. Now (the present, 50+)**
-- [S9.1] Walk me through this morning. (R)
-- [S9.2] What is within arm's reach of your favourite chair? (O)
-- [S9.3] What has changed in your body, your senses, your patience since you were thirty? (B)
-- [S9.4] What do you do now that younger-you would laugh at? (R)
-- [S9.5] What does the house sound like at six in the evening? (S)
-- [S9.6] Who do you talk to most, and about what? (P)
-- [S9.7] What is on your list for next summer? What is the next chapter? (future) [5][6]
-- [R9.1] What do they do with their hands now? What do they say when they walk into a room? (B, W)
-- [R9.2] What do they do that is exactly like their parent? (P)
-- [R9.3] What do they love that people would not guess? (W)
-- [R9.4] What drives you up the wall, and what would you miss if it stopped? (W)
-- [R9.5] What is the image of them that persists in your mind? (X) [adapted from StoryCorps [1]]
-- [R9.6] What do you hope for them?
-
-**Stage 10. The whole (meaning and shape)**
-- [S10.1] If your life were a book, how many chapters, and what would each be called? How does one flow into the next? (two to seven; ask in session 1 and again at the end to see what shifts) [5][6]
-- [S10.2] One high point, one low point, one turning point: where were you, who was there, what could you see, hear and feel, and why does it matter? [6] (the low point is opt-in)
-- [S10.3] Who made the biggest difference in your story, for better or for harder? (P)
-- [S10.4] What have you never been asked that you wish someone would? 
-- [S10.5] If your life were a house we could walk through, what rooms would it have, and what would be on the table in each? (design question for the piece)
-- [S10.6] What do you hope someone feels at the end of this?
-- [S10.7] What was it like to talk about all this today? [5] (closing reflection)
-- [R10.1] If you had to pick three scenes to show someone who never met them, which?
-- [R10.2] What do they always do that shows who they are?
-- [R10.3] What do you want their grandchildren to know about them that isn't on a certificate?
-- [R10.4] Is there a story that should not be told? Why?
-- [R10.5] What would they hate about this project? What would they love? (suitability check; essential in surprise mode)
-- [R10.6] Who else should I talk to, and who should I leave alone?
-
-**Résumé cut list (questions removed or transformed; test: "could this appear in a job interview or on a CV?")**
-
-| Résumé question (where found) | Why cut | Texture rewrite |
-|---|---|---|
-| "Describe the work that you do" / "Tell me about how you got into your line of work" [1] | Yields a title and a path | S7.2: building, smell, who sat nearest, the lunch, the joke |
-| "What did you study, where did you go to school?" | A credential | S3.1 draw the route; S3.3 the teacher you can still hear |
-| "What are you proudest of?" in its bare form [1] | Highlight reel | "Tell me about a time you felt proud and nobody clapped." |
-| "What are your strengths and weaknesses?" | HR | R7.6 the scene that shows their role; R9.4 what drives you up the wall |
-| "What were your major accomplishments in that role?" | CV | "What did you bring home from work, on your clothes or in your head?" |
-| "Where do you see yourself in ten years?" | HR | S9.7 the list for next summer |
-| "List where and when you lived" | Timeline | Fill the inventory from documents and a life-history calendar [67] |
-| "What is your religion?" asked cold [1] | A category | Only if the subject opens it: "What happened in your house on Sundays or holy days, and what was the food?" |
-| Dignity Therapy: "most important accomplishments" [61] | CV register | S7.8 most alive/most tired; S10.2 key scenes |
-
-**Surprise-mode adaptation of the banks.** Use only `[R]` and `[S0.3 -> R10.6]` equivalents; brief each relative first (script in Recipe 4); ask relatives to bring objects and photos; replace subject-led prompts with relative-led ones (ask the relative to narrate a photo's "outside the frame"); ask "what would they hate about this?" early (R10.5) because it is the suitability check.
-
----
-
-### Recipe 2 (Deliverable 2): Milestone-plus-texture inventory template
-
-**Purpose.** One table with two row types: `milestone` (a one-off event) and `texture` (a repeated pattern: routine, saying, smell, car, pet, the kitchen table). The template forces texture by (a) a mandatory `sensory_detail`, (b) a `recurrence` field, and (c) a quota (below). Columns required by the brief are first-class: date, place, people, objects, sensory detail, source, confidence, consent status.
-
-**CSV (copy into any spreadsheet app; one header row)**
-
-```csv
-id,type,date,date_precision,age,place,people,what_happened_or_repeats,objects,sensory_detail,recurrence,source,confidence,consent_status,drawer,treatment,motif_tags,who_can_verify,notes
-M-001,milestone,1978-06,month,~8,[town],"[NAME];[parent]",moved house across town,"blue suitcase; cardboard boxes","smell of fresh paint in the new hallway",once,"R: [relative] session 2 @00:14:30; photo IMG_0231 (date on back)",B,asked-ok,top,dramatise,"home;leaving",[sibling],"ILLUSTRATIVE ROW - not real data"
-T-001,texture,1983-1985,range,~13-15,[kitchen],"[NAME];[parent]","Sunday breakfast: eggs and the radio sports results","yellow radio; chipped enamel mug","radio static between stations; burnt toast",weekly,"S: [NAME] session 1 @00:21:10",C,asked-ok,top,glimpse,"kitchen;radio",[sibling],"ILLUSTRATIVE ROW - sibling remembers a different radio"
-T-002,texture,1994-1999,range,~28-33,[car],"[NAME]","the drive to work with the same cassette on repeat","green hatchback; glovebox of tapes","gear-stick rattle at 40 mph",daily,"R: [PARTNER] session 4 @00:08:05",C,not-asked (surprise hold),top,mention,"cars;music",[PARTNER],"ILLUSTRATIVE ROW"
-M-014,milestone,2003,year,~38,[hospital],"[NAME];[PARTNER]",[withheld],,,once,"R: not solicited",D,bottom-drawer (do not use),bottom,hold,,,"ILLUSTRATIVE ROW - shows how a held row is logged without detail"
-```
-
-**Column rules**
-- `type`: `milestone` or `texture`.
-- `date` + `date_precision`: `exact | month | year | range | decade | relative` (relative = "the summer after the move"). Prefer ranges and anchors (age, house, landmark public event) over guessed exact dates; a life-history calendar (years by domains: where lived, work, relationships, children) cross-references and helps dates [67].
-- `people`: use names or roles; one cell per name separated by `;`.
-- `sensory_detail`: exactly one concrete, specific detail (a smell, sound, texture, taste, light). Mandatory. If none is known the row cannot be marked `dramatise`.
-- `recurrence` (texture): `daily | weekly | monthly | seasonal | annual | once`.
-- `source`: who/what and where: `S` subject, `R` relative, `D` document, `O` object, `P` photo, `V` existing audio/video; add session id and timestamp (`@hh:mm:ss`) or file name. No source, no row.
-- `confidence` (informed by genealogical evidence analysis: original vs derivative, primary vs secondary information [79]; and oral-history practice that "errors" are data [64]):
-  - **A**: a dated original record (certificate, dated letter, dated photo) and at least one person agrees.
-  - **B**: two or more independent people agree, no record.
-  - **C**: one first-hand memory.
-  - **D**: second-hand, family legend, or conflicting accounts. Keep conflicting versions as separate rows linked in `notes`; do not average them.
-- `consent_status`: `asked-ok | asked-ok-with-limits | not-asked (surprise hold) | declined | third-party-needs-check | bottom-drawer (do not use)`.
-- `drawer`: `top | middle | bottom` [34].
-- `treatment`: `dramatise | glimpse | mention | hold`.
-- `motif_tags`: free tags that build the through-line (objects, places, phrases).
-- `who_can_verify`: person, not a source.
-
-**Texture quota (inference)**: for each life stage, at least 6 texture rows from at least 4 categories (morning routine; meals; transport; sound and music; home layout; sayings and jokes; money; pets; clothes; the workplace; the weekly rhythm; the annual ritual), plus at least one texture row per decade for each of: a place, an object, a saying, a smell or sound. Count milestone and texture rows separately; target more texture rows than milestone rows.
-
-**AI handling rules for the inventory (inference, from charter principle 4):** an AI may propose a row only from a transcript line or a document, and must put the quote and timestamp in `source`; it must not invent a sensory detail or a date; unknown cells stay empty; any conflicts become two rows; the human confirms `confidence` and `consent_status`.
-
----
-
-### Recipe 3 (Deliverable 3): One-page interview protocol (v0.1)
-
-**BEFORE (a week out)**
-1. Pick one stage (Deliverable 1) and 5-10 questions; choose 1-3 prompts (object, photo, song, map) [2]. Reserve the rest.
-2. Pre-talk (not recorded; do not let them tell the whole story yet) [11]: why you are doing it; who will hear it; that AI tools will be used to transcribe and tidy audio and may be used to restore or animate real photos but will not invent events or voices (charter); they can skip any question, stop, restrict a passage, review it before use, and withdraw it until a lock date [8]. Promise only what you will do [10]. Hearing and comfort: ask where they want to sit; speak up for hard-of-hearing narrators [11].
-3. Consent: spoken consent on the recording plus a short written release, signed at the end if possible (many oral historians prefer signing after the interview so they can address anything sensitive) [8].
-4. Length: 45-60 minutes with a break (Baylor average 60-90; frail or memory-affected narrators 30-45) [10][35]; book a two-hour slot with time for tea [11].
-
-**SET-UP (10 minutes)**
-5. Quiet, soft room; fridge and clocks off; phone on Do Not Disturb; lossless setting; plugged in [10][37]. Phone on a stand or folded cloth, between you, 6-12 inches from the nearest mouth, 5-6 inches if one speaker, hands off the mic [37]. Second device if possible.
-6. Test: speak, play back, adjust [10].
-7. Slate on tape: names, full date, place ("narrator's home"), session number, topic [8][10].
-
-**DURING**
-8. Open with an easy present-tense or object question. Chronological order at the start, then wander [11].
-9. One question at a time. Then wait. Count to ten in silence [10]. Nod; no "uh-huh" [11][12].
-10. Follow up: "Tell me more", "And then what happened?", "What did it look/smell/sound like?", repeat their last words [3][36][60].
-11. Ask for the scene, not the summary: "Tell me about one time."
-12. Do not correct. Note contradictions to check later [10].
-13. Jot unusual words and names to spell afterwards [10]. Watch for fatigue: fidgeting, repeating yourself, flat answers; wrap up [35].
-
-**IF SOMEONE CRIES OR GOES QUIET** (assembled from [32][36][11][35]; ordering is my edit)
-14. Stay. Say nothing for a few seconds. Offer a tissue.
-15. Say something plain ("That's a lot."), not "How do you feel?" [32].
-16. Offer three doors: stay with it, take a break, or move on [32]. Do not change the subject for them [36]; follow their lead if they ask to move on [11].
-17. Keep recording unless they ask you to stop [32]; mark the time. Afterwards ask whether that passage should be kept, restricted or removed [8].
-18. If they seem to be far away or overwhelmed, stop [32]. Finish with an easy present-tense question (what's for dinner?) (inference).
-
-**CLOSE**
-19. Ask a reflective question ("What was it like to talk about this today?") [5]; thank them.
-20. Check the recorder is still running until they have left the room; say goodbye off-tape (inference).
-
-**AFTER (within 24 hours)**
-21. Copy to two places; name files `YYYY-MM-DD_person_session##.wav`; never edit the original [10][38].
-22. Make a time-coded index (every 5 minutes or less) and a list of spellings [10]. Run Whisper locally for a transcript [39][40].
-23. Send a thank-you; give a date for when they will hear or read it [10][32].
-24. Populate inventory rows with source and timestamps. Put anything hard in `drawer` and `consent_status`.
-25. Review: Did they get tired? What did we miss? Next session's stage and prompts.
-
----
-
-### Recipe 4: Surprise-mode runbook
-
-| Gate | Actions |
-|---|---|
-| 0 Suitability | Write a one-page "points for and against" (the "feeza") [28]. Ask the closest insider: would they love it or hate it? Have they ever said they hate surprises, speeches, being photographed? Record yes/no/unsure. If "hate", stop or switch to collaborative [30]. |
-| 1 Circle | Keep the circle as small as the work allows. Neutral project name; one shared folder; no group chats; no notes with the project name on paper the subject might find [28][29]. Brief everyone, including the spouse, with one scripted line for if they are asked. Brief young children only if essential. |
-| 2 Sources | Relative interviews (R banks); documents; objects; existing audio and video of the subject; photos. Track who knows. |
-| 3 Hard material | Bottom-drawer material is not solicited, not used [34]. Named third parties are checked with the right person. Any relative with a difficult history with the subject: ask an insider before approaching (cf. the reported Mullard case) [30]. |
-| 4 Facts | Inventory with confidence. Triangulate. Prepare a list of ten items only the subject can confirm. |
-| 5 Reveal | Show it first privately to the closest insider. Reveal to the subject in a setting where they can say "stop". Give a veto window: nothing is shared beyond the room until they say so; they can ask for cuts [8][32] (inference). |
-| 6 Contingency | If it leaks, tell the subject and convert to collaborative. If they refuse, stop [30]. |
-
-Script for relatives (honest, no false pretext): "I'm making a piece about [NAME]'s life as a gift. It is a secret from [NAME] until [date]. I'd love 45 minutes of your memories; you can skip anything, and nothing you say will be used without your OK. Please don't mention it to [NAME] or anyone who might." Avoid inventing a cover story that requires the subject to do something on camera: the Blanchflower approach used a false pretext and it failed live [30].
-
-### Recipe 5: Treatment tiers and beat-sheet worksheet
-
-**Scoring (per milestone)**: Turn / Motif / Scene / Voice / Dignity / Variety (Q4). Mark `dramatise`, `glimpse`, `mention`, `hold`.
-
-**Starting time budget for a ~25 minute piece (our heuristic, to be tested on the vertical slice; not from a source):**
-- Cold open or present-day frame: 60 s
-- 5-6 chapters averaging ~3 min: each one dramatised scene (60-120 s) + 2-3 glimpses (5-10 s each) + one texture sequence (30-60 s) + a chapter card (5-8 s)
-- 3 "Tuesday" interludes of ~40 s (repetition with variation)
-- First hard beat not before ~25-30% of the runtime (see Up) [17]
-- Present-day close: 90 s
-- Thanks: 60 s
-
-**Beat sheet** (adapted from Wozny's Appendix 1 [17]): columns `time | description | emotion | recurring image | what is withheld`. Fill one for the final cut and one for each reference piece (Up, Danny & Annie) while you watch with a stopwatch, then draw the mood graph (x = time, y = mood) [17]. A good rhythm check: does the piece contain one long quiet beat, three or more repeats of a motif, and one withheld beat?
-
-### Recipe 6: Through-line workshop (three sessions, ~1 hour each; AI can assemble the packets)
-1. *Harvest*: from transcripts, list verbs and objects that recur; list the subject's own chapter titles and key scenes [5][6]; list traits named by two or more relatives.
-2. *Three candidates*: write three through-lines, each in one sentence, each with three timestamped quotes and one counter-example.
-3. *Test*: apply the five checks in Q4; pick one; name what it excludes.
-4. *Check with a person who loves them* (the subject if collaborative; the closest insider if not): "Does this sound like them? What's missing?" [53].
-
----
+The evidence for each method stays in Q1 to Q9 and in the Exemplars above.
 
 ## Tools
 
@@ -735,7 +416,7 @@ Named techniques, with where to find the how-to in this file.
 8. **Tuesday walkthrough** (Mass-Observation day diary method adapted) [50]. Kit in Recipe 1.
 9. **Memory map** (sketch-map elicitation; interviewer draws first) [65]. Kit in Recipe 1.
 10. **Photo elicitation** with six photos, "outside the frame" questions [45][58].
-11. **Song set from the reminiscence bump** (ages ~12-30) [46].
+11. **Song set from the reminiscence bump** (ages 15 to 30 per [46]; the lower bound of 12 is inference).
 12. **Go-along / house tour** (Kusenbach) [44], adapted to a kitchen-table tour for frail narrators (inference).
 13. **Eyes-closed present-tense recall** (Rasmussen via NPR snippet) [27]. Use only if the subject chooses.
 14. **"I remember" list** (Brainard, Perec) [52].
@@ -761,7 +442,7 @@ Named techniques, with where to find the how-to in this file.
 1. **Treating the LSI as a script.** It is a research instrument; the "redemption sequence" is how many people narrate, with an inconsistent link to well-being in the literature, not a template [7]. Let the subject's chapters stand even if they do not resolve.
 2. **Therapy framing vs entertainment craft.** Reminiscence and life-review work has care ethics: do not push on painful memory; life story work "should not be assumed" wanted and can be emotional (focus groups, snippet only) [35][34]; the Cochrane review for dementia reports small, inconsistent effects (snippet only) [43]. Borrow prompts, respect limits. We are making a gift, not providing therapy; if distress is serious, stop and get appropriate help (inference).
 3. **Consent.** Informed consent before recording, narrator right to refuse and to restrict, narrator approval before release where possible, and honesty about what you cannot guarantee [8]. Some oral historians sign legal releases after the interview to handle sensitive material [8]. The OHA also asks users of interviews to avoid "manipulations of the narrator's words" and to retain "the integrity of the narrator's perspective" [8]. In this project: the narrator's words are quoted exactly; no AI-edited speech.
-4. **AI use on real memories.** The charter forbids invented events, fake people, or words in anyone's mouth. Add to consent: tell each narrator that AI will transcribe and may help tidy and restyle real photos; no voice cloning or synthetic voice unless that person explicitly agrees (inference, aligned to charter principle 4). Keep full recordings and transcripts local where possible; if a cloud AI is used for transcripts, narrators should know (inference).
+4. **AI use on real memories.** The charter forbids invented events, fake people, or words in anyone's mouth. Add to consent: tell each narrator that AI will transcribe and may help tidy and restyle real photos. Lean: no cloned or synthetic voice of any real person, living or dead, even with their consent. The charter review (reviews/00-charter-review.md, Principle 4) sharpens the charter's "no cloned voices" this way; it is also an open charter decision for the maker. Keep full recordings and transcripts local where possible; if a cloud AI is used for transcripts, narrators should know (inference).
 5. **Third parties.** Family memoir cases show people can feel exposed and dispute accounts; practices: share drafts with family, honour explicit requests to be left out, keep the account as a single point of view [55]. Named third parties in hard chapters need a check.
 6. **Bottom-drawer material.** Do not solicit it; if volunteered, log and do not use [34]. McKeown's case study: the nurse listened but did not put it in the book [34].
 7. **Hard chapters as exploitation.** Do not treat tears or rage as material: The Dart tip sheet's section on handling distress (my paraphrase) says to expect anger, rage or tears and not to treat them as material to exploit, and notes that filming vulnerable moments can make the memory harder to process [32]. Ask permission before using any emotional moment.
@@ -779,33 +460,37 @@ Named techniques, with where to find the how-to in this file.
 
 ## What this means for Life Journey
 
-**1. The first decision to make: surprise or together (by about 2026-11-01 for the plan below to work).**
+**Addendum, 2026-10-18 (round 1).** The charter fixed surprise mode on Oct 18 (CHARTER.md, Known facts: she does not know; all gathering is covert). The recommendation that follows was written before that fact was in view. It now sits in a note for the case where the maker reopens the decision, and the operating column of the mode table is full surprise. The playbook's Decision 1 already follows the charter. Same-day scribe pass: the Fable round-1 nudges and the scribe items of the follow-up were applied to the playbook and the skill, and Recipes 1 to 6 moved to `skills/life-story-interviewing/` (this file keeps the evidence).
 
-| | Together (collaborative) | Hybrid ("consent-light") | Full surprise |
+**1. Mode: full surprise (fixed by the charter); hybrid or together only if the maker reopens it.**
+
+| | Full surprise (operating mode) | If the maker reopens the decision: hybrid ("consent-light") | Together (collaborative) |
 |---|---|---|---|
-| What the subject knows | Everything | A project exists; they give 2-3 story sessions; form and content secret | Nothing |
-| Their own voice and chapter titles | Yes (LSI chapters, key scenes) [5][6] | Yes, partly | Only existing recordings (voicemails, home video, letters) (inference) |
-| Hard-chapter consent | Direct [34] | Direct, on topics they choose | Proxy plus veto after reveal (inference) |
-| Leak risk | None | Low-moderate (subject asked) | High, documented in This Is Your Life [28] |
-| Fit to 19 weeks | Fastest to gather | Fast | Slowest: needs more relatives, more triangulation |
-| Risk of the subject disliking it | Lowest | Low | Highest (Blanchflower, Barker) [30] |
+| What the subject knows | Nothing | A project exists; they give 2-3 story sessions; form and content secret | Everything |
+| Their own voice and chapter titles | Only existing recordings (voicemails, home video, letters) (inference) | Yes, partly | Yes (LSI chapters, key scenes) [5][6] |
+| Hard-chapter consent | Proxy plus veto after reveal (inference) | Direct, on topics they choose | Direct [34] |
+| Leak risk | High, documented in This Is Your Life [28] | Low-moderate (subject asked) | None |
+| Fit to 19 weeks | Slowest: needs more relatives, more triangulation | Fast | Fastest to gather |
+| Risk of the subject disliking it | Highest (Blanchflower, Barker) [30] | Low | Lowest |
 
-Recommended default (a recommendation, the maker decides): hybrid. Reason: the subject's own voice and consent for hard chapters are the two strongest assets and the two things surprise mode cannot provide; the surprise is kept for the form, the music and the reveal. If the maker chooses full surprise, run Recipe 4 and expect to rely on relatives, documents and found audio.
+**Operating mode: full surprise.** Run the surprise runbook (`skills/life-story-interviewing/surprise-runbook.md`) and expect to rely on relatives, documents and found voice.
 
-**2. Suggested schedule for the story track (19 weeks from 2026-10-18).** Dates are week starts.
+**If the maker reopens the decision: hybrid.** The first draft's reasoning still applies to that case. The subject's own voice and consent for hard chapters are the two strongest assets, and surprise mode cannot provide them; the surprise would then be kept for the form, the music and the reveal. Reopening the charter's fact is the maker's decision. If it happens, re-check the plan with the Fable advisor (playbook Decision 1).
+
+**2. Suggested schedule for the story track (19 weeks from 2026-10-18).** Dates are week starts. **Gating note (round 1, C1):** recorded sessions wait for the gate date the maker sets in writing, or for a Door A decision (surprise-runbook.md). Track A work (the relative list, consent script, found-voice list and practice) starts now. The two-track timeline in `playbooks/story.md` is the controlling plan; the table below gives its recording track in outline.
 
 | Weeks | Dates | Work |
 |---|---|---|
 | 1 | Oct 18 | Decide mode; list relatives (oldest first); consent script; test recording setup and Whisper on one recording; inventory sheet created |
-| 2-3 | Oct 25 - Nov 7 | First two relative interviews (oldest first); fix problems; log and transcribe |
-| 3-8 | Nov 1 - Dec 12 | Interviews: subject 3 sessions if hybrid or together; 6-10 relatives at 45 minutes (some together, some alone); one object/photo/map session; place visits |
+| 2-3 | Oct 25 - Nov 7 | Track A: relative list (oldest first), consent script, found-voice list, practice exercises. Recorded: only for gate-passed or Door A relatives (oldest first) |
+| 3-8 | Nov 1 - Dec 12 | Recorded relative interviews (after the gate): 6-10 relatives at 45 minutes (some together, some alone); one object/photo/map session; place visits. Subject sessions: none in full surprise |
 | 6-9 | Nov 15 - Dec 12 | Inventory v1; through-line workshop; pick the vertical-slice chapter |
 | 10-11 | Dec 20 - Jan 2 | Holiday visits for the oldest relatives (one at a time, not a noisy gathering) (inference); freeze inventory v1 |
 | 12-16 | Jan 3 - Feb 6 | Hard-chapter conversations (opt-in), corrections, gaps; second interviews; consent re-confirmation at rough cut |
 | 17-18 | Feb 7 - Feb 20 | Review round with the subject or closest insider; veto window; lock |
 | 19 | Feb 21 - Feb 27 | Final consent confirmations; premiere preparation |
 
-**3. Minimum viable gather.** Three 45-60 minute sessions with the subject (hybrid or together), plus 6-10 relatives, plus one object/photo/map session, plus 2-3 place visits, plus a populated inventory with at least 6 texture rows per stage. In full surprise mode: 8-12 relatives, 2 insiders, document archaeology.
+**3. Minimum viable gather (full surprise, the operating mode).** 8-12 relatives, 2 insiders, document work, a found-voice inventory (her existing voicemails, tapes, home video and clips), 2-3 place visits, and a populated inventory with at least 6 texture rows per stage. Only if the maker reopens the decision to hybrid or together: add three 45-60 minute sessions with the subject, and one object/photo/map session.
 
 **4. How the kit feeds the other tracks.**
 - *Games:* "mechanics must mean something". The repeated-object rule is a mechanic: a collectible that returns at different ages and changes meaning (Up's jar, book, balloon) [17]. "Rooms of a house" (Skeleton C) is a natural world map; the Tuesday walkthrough is a repeatable level (same kitchen across decades).
@@ -821,9 +506,9 @@ Recommended default (a recommendation, the maker decides): hybrid. Reason: the s
 
 Things the maker must decide or tell us
 1. Who is the subject, birth decade, country(ies), language(s)? Question banks use placeholders; era hooks and music need that.
-2. Surprise, hybrid or together? Which relatives (ages, health, hearing, memory), and who can act as insiders?
+2. Surprise mode is fixed by the charter (2026-10-18); reopen it only if the maker decides to. Which relatives (ages, health, hearing, memory), and who can act as insiders?
 3. Which hard chapters exist? Who may speak to them?
-4. Public screening or private gift? That changes music licensing and consent scope.
+4. Public screening or private gift? That changes music licensing and consent scope. See Q7: owner and decision due Sat 2026-11-14; the cue sheet is there.
 5. Consent for AI processing of voice and photos.
 6. Which free apps are installed? (affects transcription UI and how the inventory is kept)
 
@@ -838,7 +523,7 @@ Things I could not verify or open (2026-10-18)
 14. Evidence gaps: no experiment compares prompt types for 50+ narrators; no systematic survey of family tribute failures; the Tuesday walkthrough has method provenance but no head-to-head evidence.
 15. Whisper performance on the maker's machine, with elderly voices, accents and non-English: UNVERIFIED; test before the interview schedule depends on it.
 16. Cultural fit of "redemption" and of chapter-title questions for the subject: UNVERIFIED.
-17. Legal: StoryCorps list reuse is an invitation, not a licence; Dignity Therapy and McAdams verbatim reuse; music rights for private vs public screening. I am not giving legal advice.
+17. Legal: StoryCorps list reuse is an invitation, not a licence; Dignity Therapy and McAdams verbatim reuse; music rights for private vs public screening. I am not giving legal advice. Music rights: see Q7 (owner by Sat 2026-11-14; cue sheet).
 
 ---
 
@@ -1104,6 +789,8 @@ Belongs to the proposed `sound-and-voice` track. **Proposed owner: the maker dec
 
 ### What this changes in the playbook and notes (for the scribe)
 
+*Applied in round 1 (2026-10-18): items 1 to 4 are in the playbook (changelog v0.2) and the skill folder; item 5 is in Exemplar 2, with its time and visual columns still open (TODO); item 6 is in Open questions 4 and 17.*
+
 1. `playbooks/story.md` Step 3 and Exercise 3: replace "Whisper speed UNVERIFIED" with the Q1 table, the PowerShell inventory and the rule "run it in the family's language on the hardest voice". Keep Windows steps marked untested.
 2. Q8 "Placement", Summary 11, Recipe 3 step 5, playbook Step 2, `SKILL.md` step 6: state the sourced single-speaker distances ([37] 5 to 6 in; [90] a few in; [89] 6 to 12 in) and mark two-speaker placement as "inference, settle in Exercise 2" (Q5).
 3. Recipe 4 relative script and the inventory `source` codes: add the found-voice ask-line and the item fields from Q4.
@@ -1141,3 +828,290 @@ Belongs to the proposed `sound-and-voice` track. **Proposed owner: the maker dec
 [98] Wikipedia, "Music licensing" — https://en.wikipedia.org/wiki/Music_licensing — fetched — tertiary; sync, master use, PRO blanket licences; cites a 2016 CRS report.
 [99] YouTube Help page on the Audio Library — https://support.google.com/youtube/answer/3376882 — undated; fetched (page title not shown) — copyright-safe Audio Library; credit for CC tracks; no responsibility for other "royalty-free" music.
 [100] Own measurement, 2026-10-18 (not a web source) — faster-whisper 1.2.1 in a scratch virtualenv on the 4 vCPU cloud VM; test audio is the whisper.cpp sample https://raw.githubusercontent.com/ggml-org/whisper.cpp/master/samples/jfk.wav (11 s, fetched) looped 55 times with ffmpeg; results `base` int8 220 s, `small` int8 547 s for 605 s of audio. No family or personal audio was used.
+
+## Follow-up research (round 2)
+
+Written Sunday 2026-10-18 (week 1 of 19), answering the seven follow-ups in `reviews/story-round2.md` section 6. Source numbers continue from [100]. Labels as in round 1: "fetched" = I opened the page this session; "UNVERIFIED" = not confirmed; "inference" = my reasoning from the sources named.
+
+**Three limits that shape every answer below.**
+1. **The "local system" is not visible to this researcher.** The request said the session is now open on the maker's own machine. From where I run, it is not: the environment is still the cloud Linux VM (`CLAUDE_CODE_REMOTE=true`, environment type `cloud_default`), `/mnt/c` does not exist, `/mnt/user-data/uploads` and `/mnt/attach` exist but are empty, there is no `powershell`, `pwsh` or `cmd.exe`, and none of my tools is a remote-device or computer-use tool. If a connection to the maker's PC exists, it is attached to the orchestrator session, not to this researcher. It would need to run the inventory below itself or relay the output. Q1 to Q4 are facts only the maker holds in any case.
+2. **The web-search budget was used up again** (every WebSearch call was refused: 200 per turn, shared by all agents). I did not use a search engine, reader or archive to get around it. Everything below comes from direct fetches of specific pages, plus read-only shallow clones of three public GitHub repositories (the session's git proxy serves public reads) so I could read source code and workflow files instead of a release page that does not render. The clones are at `/home/user/ggml-org/whisper.cpp`, `/home/user/openai/whisper` and `/home/user/systran/faster-whisper`, outside the project folder; they hold no project or personal material. Several URLs I guessed returned 404 or 403; those topics are marked.
+3. Nothing here is legal advice (Q4).
+
+### Answers at a glance
+
+| # | Question | Status | Who closes it |
+|---|---|---|---|
+| 1 | Bring anyone in, and whom first | Maker's decision. Options, a "whom first" rule, a decision record and five questions ready. | Maker, in writing, by Sat 2026-11-14 at the latest |
+| 2 | Windows hardware | Still unreachable. Three no-install ways to read it, and a pasteable block. | Maker, 10 minutes |
+| 3 | Family language(s), code-switching | Facts missing. New, code-level facts on how each Whisper tool picks the language; Exercise 3 rule revised. | Maker |
+| 4 | Jurisdiction of the premiere | Maker's one-line answer needed. Country-neutral frame and a US / UK / other comparison ready. | Maker, one line |
+| 5 | whisper.cpp v1.9.5 asset names | **Answered.** The v1.9.5 release has only the two source archives. Prebuilt Windows zips are on a paired pre-release, b5454. No cmake build needed for x64 Windows. | Closed; maker can confirm in one look |
+| 6 | *Danny & Annie* visual beats | The 13-row table is built from the full transcript. The viewing is still the maker's. | Maker, about 15 minutes |
+| 7 | Tape and voicemail how-tos | Cassette, microcassette, answering-machine tape, VHS, VHS-C, Hi8 / Video8, Digital8 and MiniDV: answered from sources. Phone voicemail and chat voice-note export: first-party steps NOT found. | Maker, when the first item arrives |
+
+### Q1. Whether the maker brings anyone in, and whom first
+
+**What I cannot supply:** the names. The Door A list lives only with the maker. What follows is the decision laid out so it can be made in ten minutes once the list is in front of the maker.
+
+**Where the charter and the review leave it.** Only the maker knows (charter). Relatives can still be Tier 1 sources through ordinary, unrecorded asks. A recorded session is itself bringing that person in, because nothing recorded for a public film can come from someone who was not told what it is for (review C1, C2; OHA [8]). So the first recorded relative is a written maker decision under the charter's open decision "whether to bring anyone else in later".
+
+**Evidence on who goes first.** One documented surprise video, from Colorado State University's communications team, used "at least 10 people" over its life. Its one fully informed insider was the subject's mother, whom the author relied on to judge how the subject would react; the subject herself was told something else for over a month [117]. The author states no rule for who to tell first, calls the deception "probably my riskiest piece of advice", and reports no actual leak [117]. This is one blog post about a graduation surprise, a different kind of event. It supports one thing only (inference): the first person told should be someone close enough to judge her reaction. The notes in `research/surprise-ops.md` add that a current partner is both the strongest leak path and the likeliest proxy for hard chapters (internal cross-reference; not re-fetched).
+
+**The options** (inference; the trade-offs follow from the charter and review C2):
+
+| Option | What it means | What it costs | What it buys |
+|---|---|---|---|
+| A. Nobody yet | Tier 1 asks only. The maker writes up what relatives say as `R` rows with `consent_status = not-asked (surprise hold)` and never quotes them in the film without later consent. | No recorded relative voice in the film. No relative second check. A Door A relative is not recorded at all. | Smallest leak surface. Fully inside the charter as written. |
+| B. One person, a Door A relative | Told the purpose, the Feb 27 public screening, that any part can be restricted, and that no synthetic voice is used. Recorded once, before the gate. | One more person who can slip. | The most at-risk voice is on tape. Their story is in the film in their own words. |
+| C. Door A relatives only, each told | Each Door A relative is a dated line in the people tab (`told_on`, `scripted_line_if_asked`). Door B waits for the gate. | N people who know. | Everything at risk is protected. Door B stays quiet until the gate. |
+| D. A helper who is not a narrator | One trusted person told only to help find albums and tapes. | A leak path with no recording benefit. | Access to physical material. Often not needed if Tier 1 asks work. |
+
+**Rule for "whom first"** (a rule of thumb, inference; change the order if the facts differ):
+1. If the Door A list is empty, choose A and revisit at the gate (Saturday 2026-11-14).
+2. If it is not empty, the first person is the Door A relative with the highest urgency (age, illness, hearing, distance) who does not live with the mother and does not see her most days. Urgency decides first; discretion is the tie-breaker among equals.
+3. If the most urgent Door A relative is her partner or lives with her, record them only when she is out, after a spoken consent that names the use, and give them one scripted line for "what are you two up to".
+4. Before telling anyone, ask them the test question out loud: "If she asks you what I am up to, what do you say?" Do not tell a second person until the first has answered it well.
+5. Never bring in someone only because they are easy to ask. Every brought-in person is a leak path for 19 weeks.
+
+**Decision record** (one dated line in the people tab, reviewed by the advisor like a gate pull): date | who (initials) | why (which Door A condition) | what they were told | scripted line | who must not be told | revisit date.
+
+**Five questions for the maker:**
+1. Who is on the Door A list (age 75 or over, serious illness or memory change, hearing or speech problem, reachable in person only once before mid-November, or abroad)? Initials are enough here.
+2. Which of them live with the mother or see her most days?
+3. Which of them has ever kept a surprise from her?
+4. Is the maker willing to record any of them before Saturday 2026-11-14, with the honest script?
+5. If nobody is brought in, is the maker content that the film has no recorded relative voices, only found voice and the maker's own "I remember" fragments (advisor insight, review section 7)?
+
+### Q2. The maker's Windows hardware
+
+**Status: still unreachable** (limit 1 above). New this round: three ways to read the facts that need no install, so the maker can answer in ten minutes without PowerShell if that is easier.
+
+1. **Settings > System > About** shows Windows edition and version, and under Device specifications the processor, installed RAM and whether Windows is 32-bit or 64-bit; `ms-settings:about` opens it directly [109]. One set of steps covers Windows 10 and 11 [109].
+2. **Task Manager > Performance > GPU** shows "Dedicated memory" and "Shared memory" [108]. Dedicated memory is exclusively reserved for the GPU; on a discrete card it is the VRAM. Shared memory is ordinary system RAM the GPU may borrow, and Windows lets the GPU use at most half of physical memory at once [108]. GPU data needs a WDDM 2.0 or newer driver; `dxdiag`, Display tab, Drivers shows the model [108]. The post is from 2017-07-21 and I did not check the screens on a current Windows build.
+3. **PowerShell**, one paste (untested on Windows; `Get-ComputerInfo` was introduced in Windows PowerShell 5.1 and its `-Property` parameter takes property names such as `WindowsVersion` and `OsVersion`, as the Microsoft example output shows [110]; the CIM lines are from round 1 and [84]):
+
+```
+Get-ComputerInfo -Property WindowsVersion,OsVersion
+Get-CimInstance Win32_Processor | Select-Object Name,NumberOfCores,NumberOfLogicalProcessors
+[math]::Round((Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory/1GB,1)
+Get-CimInstance Win32_VideoController | Select-Object Name,DriverVersion
+nvidia-smi --query-gpu=name,memory.total --format=csv
+Get-PSDrive C | Select-Object Used,Free
+```
+
+If `nvidia-smi` is "not recognized", there is no NVIDIA driver; say so. Do not trust `AdapterRAM` for VRAM (round 1, [84]); read VRAM from Task Manager. Free disk matters more now: the CUDA build of whisper.cpp is a 653 MB download [103] and the model is 547 MiB (`large-v3-turbo-q5_0`) to 1.5 GiB (`large-v3-turbo`) [105], before any audio.
+
+**What the answers decide.** The round 1 recommendation table (Q1) stands. Q5 below adds the Windows download for each row.
+
+### Q3. The family's language(s) and any code-switching
+
+**Facts only the maker has:** which language each of the 8 to 12 key relatives speaks with the mother; whether they mix two in one sentence; the regional accent; the language of the finished piece. (Questions as in round 1 Q2.)
+
+**New, checked in the source code and model card** (commits named in [105][106][107]):
+- **openai/whisper (command line `whisper`).** With no `--language`, it detects the language once, "using up to the first 30 seconds", then uses that language for the whole file [106, `whisper/transcribe.py` lines 143 to 159]. A file that opens in one language and switches to another is therefore decoded in the first (inference from the code; real mixed audio untested: UNVERIFIED).
+- **whisper.cpp (`whisper-cli`).** `-l auto` detects once at the start (the code calls the detector at offset 0); `-l xx` fixes the language; `-dl` exits after detecting [105, `src/whisper.cpp`, `examples/cli/cli.cpp`]. Same limit as above (inference).
+- **faster-whisper.** Has a `multilingual` option, default off, documented as "Perform language detection on every segment" [107, `faster_whisper/transcribe.py`]. In the code each 30-second chunk gets its own language token [107]. It is per chunk, not per word or sentence (inference). It is the only one of the three with this built in at these commits.
+- **Language ID is imperfect.** The Whisper paper reports that the best model reaches 80.3% language-ID accuracy on the 82 Fleurs languages it has training data for (read speech), and that Whisper's language ID is "not competitive with prior supervised work" [82, section 3.6]. Pin the language whenever you know it; use auto only to find out.
+- **Older voices.** The model card says the models "exhibit disparate performance on different accents and dialects of particular languages, which may include a higher word error rate across speakers of different genders, races, ages, or other demographic criteria", and "strongly recommend[s]" testing in the actual context and domain before relying on them [106, `model-card.md`]. I found no published error rate for older adults or for code-switched family speech: UNVERIFIED (not searched; budget).
+
+**Exercise 3, revised rule** (inference):
+1. Cut a 3-minute clip of the hardest voice, in the language spoken at home.
+2. Run it three times: language pinned to the main language; pinned to the second language; automatic (or faster-whisper with `multilingual=True` if the family mixes languages).
+3. Check ten random lines of each run against the audio and count wrong words (round 1 rule). Keep the run with the fewest errors per stretch of speech.
+4. If the switching happens inside sentences, transcribe pinned to the main language, then correct the other-language stretches by ear or with a family member. No agent quotes an uncorrected line.
+5. Subtitles in another language: transcribe, correct, then translate the corrected text; `turbo` does not translate [39].
+
+### Q4. Jurisdiction of the premiere (music and image rights beyond the US)
+
+**What I need from the maker, one line:** the country (and state or province) of the venue, and whether it is a licensed hall (hotel, community centre, church, restaurant, theatre) or a private room.
+
+**What does not change by country** (my synthesis of [111][112][95][98]):
+- Under the Berne Convention, protection is automatic and "national treatment" applies: a work gets, in each member country, the same protection that country gives its own nationals [111]. In practice (inference): the law of the country where the film is shown governs the screening, whatever the song's or photo's country of origin.
+- The Berne rights the notes rely on are all there: public performance of musical works, reproduction, adaptation, and using a work as the basis of an audiovisual work and then performing it [111]. So the three layers from round 1 Q7 (the composition, the recording, the public performance) are a world structure, not a US one. Who issues each, and what exceptions exist, differs.
+- "Credited the owner" and "it is for a family" are not exceptions. The US Copyright Office says that for a movie shown for entertainment "you need to get a clearance or license for its performance", and that "in cases of doubt, the Copyright Office recommends that permission be obtained" [112].
+
+**What differs** (UNVERIFIED wherever a cell says so; I could reach only some pages):
+
+| Question | United States | United Kingdom | Canada | Elsewhere |
+|---|---|---|---|---|
+| Who licenses public performance of music | ASCAP, BMI, SESAC; one body's licence does not cover another's catalogue [98] (tertiary) | PPL PRS Ltd (TheMusicLicence) "when music is played in public" [113] | SOCAN handles performing rights; its AV Post-Sync page calls reproduction "a distinct right" from performing rights and is a royalties page for rights holders, so it does not tell a family producer what to obtain [115] | UNVERIFIED |
+| Putting a recording in a film | Sync licence (composition) plus master use licence (recording) [98] | MCPS collects "mechanical (or reproduction)" royalties [113]; the GOV.UK page does not name synchronisation: UNVERIFIED | UNVERIFIED | UNVERIFIED |
+| Who owns a photo | "Generally the photographer"; even a hired wedding photographer owns it [112] | The creator is generally the first owner; life plus 70 years; permission generally needed to copy or share [114] | UNVERIFIED (the guide URL I tried returned 404) | Berne minimum for photographs: 25 years from creation [111]; many countries longer [114] |
+| Credit and objection | No general moral right in this source: UNVERIFIED | Creators have moral rights: credit (if asserted) and objection to derogatory treatment [114] | UNVERIFIED | UNVERIFIED |
+| A person's image | State-law "right of publicity", aimed at commercial use; artistic works have had First Amendment protection [116] (tertiary) | The GOV.UK photo notice does not cover people in photos [114]: UNVERIFIED | Quebec's Civil Code protects image and likeness; common-law provinces are narrower [116] | France (Civil Code art. 9), Germany (right to one's own picture), Denmark and Portugal need consent in many cases; Australia has no separate right and uses passing off [116] |
+
+**What this means for Life Journey** (inference):
+- A gathering that is "mostly public" is public under the US statute's own definition (a place where a substantial number of people outside a normal circle of family and social acquaintances is gathered) [95]. Other countries define it their own way (UNVERIFIED), but do not rely on any home or family exemption for the Feb 27 screening anywhere.
+- Treat photographers as rights holders. Family photos taken by a hired photographer (weddings, school portraits) belong to that photographer in the US [112]. The cue-sheet idea for music applies to photos: add `photographer`, `rights_holder`, `permission_text_saved` and `allowed_use` columns. Where the law gives a credit right (UK [114]), a name in the credits is cheap and fits the project.
+- Every identifiable living person in the film needs a consent line in the people tab (`appears_in_film`, `consent_note`). In several countries consent is the law, not courtesy [116].
+- Venue questions to ask before booking (answers UNVERIFIED until the venue replies): Does the venue hold a licence for recorded music in public, and does it cover video played from a laptop or projector? Who holds it? Does the venue need a copy of the cue sheet? How a venue licence treats played-back film: UNVERIFIED.
+- The round 1 US-only answer (Q7) stays as the US row. Do not apply it abroad.
+
+### Q5. whisper.cpp v1.9.5: are there prebuilt Windows files? (answered)
+
+**Answer: not on the v1.9.5 release itself, yes on its paired pre-release. No cmake build is needed for an x64 Windows PC.**
+
+What I found (all fetched or read from source this session):
+- The v1.9.5 release (06 Oct 2026) has exactly two assets: "Source code (zip)" and "Source code (tar.gz)", both stamped 2026-10-06T17:39:13Z [101]. The release page's "Assets 2" counts those two archives, which is why the round 1 fetch could not list any file names: there are none besides the source. (The address I fetched is the fragment the release page loads into its Assets list; that a browser shows the same two is an inference.)
+- The releases index shows a pattern: each `v` release (v1.9.5, v1.9.4, v1.9.3) has 2 assets, and a `b####` entry on the same day has 14 (b5454, b5130) or 11 (b4938) [102]. v1.9.2 itself carried 11 assets, so the habit changed after that (inference).
+- The `b5454` entry (06 Oct) is labelled Pre-release; its body reads "whisper : bump version to 1.9.5 (#4102)" [104]. Its asset timestamps (16:51 to 16:52 UTC) are before the v1.9.5 source archives (17:39 UTC) [103][101], so the binaries are built from the version-bump commit (inference).
+- The repository's `release.yml` says it "Builds dev releases (b* tags)" and `make-release.yml` makes the `v*` tags; "Pushing a v* tag does not trigger this workflow" [105]. That explains the split.
+
+The 14 assets of b5454 [103] (sizes as shown):
+
+| File | Size | Use |
+|---|---|---|
+| `whisper-bin-win-cuda-12.4.0-x64.zip` | 653 MB | **Windows x64 with an NVIDIA GPU** (first choice) |
+| `whisper-bin-win-cuda-11.8.0-x64.zip` | 272 MB | Same, built with CUDA 11.8 (try if the 12.4 one will not start) |
+| `whisper-bin-x64.zip` | 8.52 MB | **Windows x64, CPU only** (AMD or Intel graphics, no discrete GPU, or an NVIDIA card too small) |
+| `whisper-blas-bin-x64.zip` | 20.7 MB | CPU with OpenBLAS; whether it is faster for Whisper here: UNVERIFIED |
+| `whisper-bin-Win32.zip`, `whisper-blas-bin-Win32.zip` | 5.27 MB, 12 MB | 32-bit Windows (unlikely) |
+| `whisper-bin-win-cpu-arm64.zip`, `whisper-bin-win-cuda-13.4-arm64.zip`, `whisper-bin-win-opencl-adreno-arm64.zip` | 4.17 MB, 278 MB, 4.72 MB | Windows on ARM (unlikely) |
+| `whisper-bin-ubuntu-x64.tar.gz`, `whisper-bin-ubuntu-arm64.tar.gz`, `whisper-b5454-xcframework.zip` | | Linux and Apple; not for this PC |
+
+Notes:
+- The name the review expected, `whisper-bin-win-*.zip`, exists for the CUDA, ARM and OpenCL files. The plain CPU build is `whisper-bin-x64.zip`, with no "win" in the name [103].
+- **No CUDA Toolkit install should be needed.** The workflow's "Copy CUDA DLLs" step copies the toolkit's runtime DLLs into the output folder before zipping [105], which is why the CUDA zip is hundreds of megabytes. An NVIDIA driver is still required (inference). Which GPU generations and driver versions the zips support: UNVERIFIED; if the CUDA zip will not start, use the CPU zip and report the error.
+- **No Vulkan Windows zip is in the list** [103], so AMD or Intel graphics use the CPU zip; a Vulkan build would need cmake (round 1, [40]).
+- I cannot see inside the zips. That the command-line program is `whisper-cli.exe` is from the README's `whisper-cli` and the Windows build step packing the whole build folder [105]: UNVERIFIED until the maker opens a zip.
+- The `b` releases are the project's own CI output, not a separate fork [105]. They are marked Pre-release, so treat them as the same code as v1.9.5 (inference) and note the tag in the notes.
+
+**Steps for Exercise 3 on Windows** (untested; from [105]):
+1. Open https://github.com/ggml-org/whisper.cpp/releases and pick the `b####` entry on or after 06 Oct 2026 (b5454 or newer). Click "Assets" to expand it.
+2. Download the zip from the table. Right-click, Extract All.
+3. Get a model. The repository ships `models/download-ggml-model.cmd` (in the source zip), which lists `large-v3-turbo`, `large-v3-turbo-q5_0` and `large-v3-turbo-q8_0` among its choices [105]; the models README sizes are 1.5 GiB (`large-v3-turbo`) and 547 MiB (`large-v3-turbo-q5_0`) and point to https://huggingface.co/ggerganov/whisper.cpp/tree/main [105]. For a first test on a modest PC, `small` or `base` ([40], round 1 table).
+4. Convert the clip to 16-bit WAV: the README says `whisper-cli` "currently runs only with 16-bit WAV files" unless built with FFmpeg support [105]. A common command is `ffmpeg -i clip.m4a -ar 16000 -ac 1 -c:a pcm_s16le clip.wav` (16 kHz mono is my prior knowledge, not checked here).
+5. Run: `whisper-cli.exe -m ggml-large-v3-turbo-q5_0.bin -f clip.wav -l <language code>` (flags `-m`, `-f`, `-l` as in [105]; the `ggml-<name>.bin` file name follows the README's `ggml-base.en.bin` example).
+
+### Q6. *Danny & Annie* visual beats (table ready; the viewing is the maker's)
+
+**Cannot be done by me.** I cannot play video, and YouTube redirected my automated request for the watch page to a Google verification page, which I did not follow [94]. The 5:52 running time is the advisor's reading of the YouTube metadata (`reviews/story-round2.md`, nudge 3); I could not verify it, and the StoryCorps page itself gives no running time [92].
+
+**What I could add:**
+- I re-read the StoryCorps page source this session and have the full transcript in order [92]. Below, the 13 rows (10 beats plus 3 cards) are cut from it, with the exact opening words of each as the cue to watch for. The grouping is mine; regroup freely.
+- The Rauch brothers' interview [24] does not mention *Danny & Annie*; it covers three other StoryCorps shorts (*Eyes on the Stars*, *Facundo the Great*, *Sundays at Rocco's*). So the round 1 use of [24] is a statement about the team's general method, not this film. From it: they research first, visit the storytellers when possible, gather family photos and snapshots of landmarks; design and storyboard; colour is added "at the very end"; everything is composited in After Effects; the look draws on 1940s and 1950s animation (UPA, John Hubley) and classic American TV, ranging from "a subtler feature animation approach" to "a more humorous TV cartoon sensibility" [24]. That fits the cartoon still [93] (inference).
+
+**The table to fill** (one viewing with a stopwatch for the first column, a second with the table in hand; about 15 minutes in all):
+
+| # | Cue (opening words, from [92]) | Time in | On screen | Emotion | Recurring image | What is withheld |
+|---|---|---|---|---|---|---|
+| 1 | CARD "Intro Text": "Danny and Annie Perasa live in Brooklyn, NY. He's a horse-betting clerk. She's a nurse." | | | | | |
+| 2 | Danny: "She started to talk and I said, 'Listen, I'm gonna deliver a speech.'" (the 34-letter word; "Oh, of course I'll marry you") | | | | | |
+| 3 | Danny: "Then the next morning I called her as early as I possibly could…" (Annie: "And he always gets up early.") | | | | | |
+| 4 | Danny: "every year on April 22 around 3:00, I call her…" / Annie: "Yeah, 25 times yes" | | | | | |
+| 5 | Danny: "You see the thing of it is I always feel guilty when I say I love you to you…" (the busted old radio) | | | | | |
+| 6 | Annie: "If I don't have a note on the kitchen table I think there's something wrong." / "To my princess, the weather out today is extremely rainy…" | | | | | |
+| 7 | Danny: "When a guy is happily married, no matter what happens at work…" (the colour television) | | | | | |
+| 8 | CARD "Introduction for 2nd part": "Danny and Annie spent twenty-seven happy years together." | | | | | |
+| 9 | Annie: "The illness is not hard on me; it's just, you know, the finality of it…" | | | | | |
+| 10 | Danny: "Listen, even downhill, a car doesn't roll unless it's pushed…" (hope; "he has everything planned"; "I walked in with you alone") | | | | | |
+| 11 | Danny: "There's a thing in life where you have to come to terms with dyin'…" / "Do you have the Valentine's Day letter there?" / Annie reads: "My dearest wife, this is a very special day." | | | | | |
+| 12 | Danny (crying): "I could write on and on about her…" … "another Annie." | | | | | |
+| 13 | CARD "End text": "A week after this conversation was recorded, StoryCorps broadcast it on public radio. Danny died that same day." | | | | | |
+
+(Row 10 merges three short exchanges that I cut as one beat; row 6 merges the kitchen note and the weather letter. If the picture changes inside a row, split it.)
+
+**Things to note while watching** (carried from round 1, sharpened): how the April 22 call and the kitchen note are each drawn; whether the cartoon style changes at the card in row 8 or stays comic; what the picture shows while Annie reads the Valentine's letter; whether the end card sits over silence or music; whether the cards are hand-lettered or plain type; and whether any frame is a real photograph. Send the filled table back and Exemplar 2 can be completed. If it is not done by the gate (Saturday 2026-11-14), swap to one of the other StoryCorps shorts whose durations the page lists: 3:21 (*Our Paul*), 1:47 (*Threads of Love*), 3:23 (*Twelve Feet From a Bomb*) [92], and say so in a dated line (review nudge 3).
+
+### Q7. Transferring tapes and saved voicemails on Windows
+
+**Ground rules** (from the sources; the project rules are in nudge 6 and the charter):
+- A transfer is a copy. The Library of Congress procedure is: locate the files, gather them in one folder, back them up, and migrate the collection about every five years; "never modify the original video file" [125]. Analogue copies of copies lose quality ("generational decay"), so make one good digital copy and edit that [125].
+- Each play wears a fragile tape, so plan **one careful play per tape that is also the transfer** (inference from [125], which says the more you play it the more you wear it down).
+- Do it on the maker's own PC. The charter bars sending personal material to a third-party service without the maker's explicit say. The week-2 plan in `research/surprise-ops.md` ships a pilot tape to a mail-in lab; under the charter that is a third-party service and needs the maker's explicit yes. The routes below avoid it but cost the maker's time and some risk to a fragile tape; that trade is the maker's.
+- Before playing any tape: let it reach room temperature if it was stored cold; hold cassettes by the outer shell and do not touch the spools; rewind just before playing [124]. If a tape sheds oxide, squeals, jams or smells of vinegar, stop: the Library of Congress page lists sticky-shed (moisture breaking down the binder; the tape can "jam in the recorder"), says tape cleaning "should be carried out only by a preservation specialist", and points to a temporary method without giving steps [124]. I do not recommend improvising it (inference). If the tape is mangled, switch the machine off at once, flatten and rewind it by hand, and clean the deck afterwards [119].
+- Name every file by the manifest line (holder, format, date, who speaks, checksum), keep two copies on two drives in two places (nudge 6; [88]).
+
+**A. Compact cassettes and standard cassette answering-machine tapes**
+1. Equipment: a working cassette deck or a USB cassette player (the Audacity tutorial lists "USB cassette decks" as a case [118][121]), a cable with two red/white RCA plugs at one end and a stereo 3.5 mm plug at the other, and a computer line-in or a USB audio interface [120].
+2. Connect the deck's line-out, tape-out or record-out to the line-in, not the microphone port; the microphone port can over-amplify and distort. A headphone jack is a fallback and adds a low-quality amplifier stage. Do not use a USB hub; it "is almost certain to cause audio dropouts" [120].
+3. Windows: USB devices appear as "microphones". In Audacity's audio settings pick that device as the recording device (not "stereo mix") [121]. If recording is silent, check Settings > Privacy & security > Microphone > "Let desktop apps access your microphone" (Windows 11; Settings > Privacy > Microphone on Windows 10) [132]; that this causes silence is my inference.
+4. Level: aim for a peak around -6 dB [121]. Record to WAV first and keep it untouched (my practice, not from these pages).
+5. Deck care: oxide builds up on the heads and the pinch roller, which costs treble and adds hiss; clean with a lint-free cloth and ethyl or isopropyl alcohol, not rubbing alcohol; do not clean helical-scan video heads this way [119]. Wrong head azimuth also costs treble; adjust the sprung screw on the play head while listening [119]. Fast-forwarding and rewinding once can cure unsteady speed and retension a long-stored tape [119]. A hand demagnetiser is "rarely needed" and usually too weak to work [122]. Dual-capstan decks help with damaged tapes and shells [119].
+
+**B. Microcassettes and answering-machine microcassettes**
+- Facts [126]: the standard MC60 gives 30 minutes a side at 2.4 cm/s and double that at 1.2 cm/s; many recorders offered a choice of recording speeds; microcassettes were "commonly used in dictation machines and answering machines"; the tape spools right to left; and the Mini-Cassette is "similar but incompatible". Variable-speed players were common [126].
+- What this means (inference): a tape recorded at 1.2 cm/s and played at 2.4 sounds too fast and too high. Use a player with a speed switch, try both speeds on a few seconds, and keep the one that sounds natural. Audacity's Change Speed shifts speed and pitch together and has "from" and "to" menus [123]; Change Tempo keeps pitch [123].
+- Answering machines [127]: older dual-cassette machines used a looped outgoing-message tape separate from the cassette that records callers; the incoming-message cassette must be rewound before playback; most modern machines use solid-state memory, so there is no tape. For a solid-state machine the only route I know is to play the messages from the machine into the line-in or a microphone (inference).
+- Player and connection: ideally the original machine or a microcassette player with a headphone or line-out jack. From a headphone jack to the computer's line-in, use a stereo 3.5 mm to 3.5 mm cable and keep the volume low [120]. Where to get a working player, and what one costs: UNVERIFIED.
+
+**C. Camcorder and VHS tapes**
+- Know the format first [128]: VHS-C, Video8 and Hi8 are analogue; Digital8 and MiniDV are digital. VHS-C plays in a VHS recorder with an adapter. Digital8 camcorders play Hi8 tapes and, for most, Video8. MiniDV outputs over IEEE 1394 (FireWire). Wikipedia says Digital8 and MiniDV "have no longer been manufactured in consumer camcorders since 2006" [128]; that date looks early to me, so treat it as UNVERIFIED. Either way, the family's own camcorder is the best player, so look for it.
+- Analogue tape, four methods [125]: (1) VCR to a digital video camera, record, then copy from the camera; (2) a camcorder as a pass-through device while capturing to the computer in real time; (3) a VCR-to-computer converter that digitises in real time; (4) a VCR/DVD combination or DVD burner, then copy the VOB files off the DVD. Copy-protected VHS may come out blurry, dark or scrambled [125]. Every method runs in real time: an hour of tape takes an hour.
+- OBS Studio as the capture program for an analogue-to-USB device: add a Video Capture Device source and pick the device (it must support DirectShow); if Resolution/FPS Type fails, set Custom, and values the device does not support give a blank source; Buffering set to Disable can cure a delay [131]. Which dongles work well on Windows 11: UNVERIFIED.
+- MiniDV over FireWire: Windows has not included IEEE 1394 drivers by default since Windows 10 [129], and most consumer makers dropped the port in the 2010s [129]. Whether a current Windows 11 PC can do this, and with which card or adapter: UNVERIFIED. DVRescue is archivist-made, free software for moving DV tape into preservation files; it runs on Windows, macOS and Linux from the command line, but its graphical interface is only fully working on macOS, and its README does not list hardware [130].
+- Keep the tape afterwards in a cool (about 65 F), low-humidity (about 45%) room, out of sunlight, in a sleeve [125]; upright and away from motors, loudspeakers and televisions [124]. Slide or break the tape's record-protect tab before playing (my prior knowledge; not checked).
+
+**D. Saved voicemail and chat voice messages: NOT DONE**
+I could not find first-party steps for saving a voicemail as an audio file on iPhone or Android, for exporting voice messages from chat apps, or for how long carriers keep voicemail. The Apple user-guide table of contents did not show the Phone section, my guessed Apple and Google help addresses returned 404, the WhatsApp help page returned only its title, and the Wikipedia article on visual voicemail says nothing about export. All UNVERIFIED. What the maker can do now, safely:
+1. On the maker's own phone, leave a throwaway voicemail and look for a share or save control on the message. Whether it exists depends on the phone and carrier (UNVERIFIED). If it does, the relative could do the same, but see point 3.
+2. Fallback that always works but loses some quality (inference): play the message on the speaker in a quiet room and record it with a second device or with Audacity from a microphone.
+3. Keep the round 1 rule: do not ask a relative to forward the file through a chat app (recompression, and a trail). Add "please don't delete it" to the Tier 1 ask-line; for a voicemail the first goal is that it still exists.
+4. Re-run this item when search budget is available, with the maker's phone model and carrier.
+
+**Quick reference** (inference from the above):
+
+| Format | Needs | Connect | Software | Biggest watch-out |
+|---|---|---|---|---|
+| Compact cassette, answering-machine cassette | Deck, RCA to 3.5 mm cable | Line-in or USB audio interface | Audacity | Dirty heads, sticky shed, azimuth [119][124] |
+| Microcassette | Player with speed switch | Headphone or line-out to line-in | Audacity | Recorded speed (2.4 or 1.2 cm/s) [126] |
+| Solid-state answering machine | The machine | Speaker or output to line-in | Audacity | No tape; real-time only [127] |
+| VHS, VHS-C | VCR (plus adapter), converter | Composite or S-video to USB capture | OBS Studio | Real time; protected tapes [125][131] |
+| Video8, Hi8 | Camcorder or Digital8 camcorder | Composite or S-video out | OBS Studio | Player is the old camcorder [128] |
+| MiniDV, Digital8 | Camcorder or deck | FireWire (IEEE 1394) | DVRescue or other DV capture | Windows 10+ has no default 1394 driver [129][130] |
+| Phone voicemail, chat voice notes | The phone | Share control or speaker fallback | Audacity | First-party steps not found |
+
+### What this changes in the playbook and notes (for the scribe)
+
+1. `playbooks/story.md` Exercise 3 and Step 3: replace "needs a cmake build?" with Q5: no build on x64 Windows; download from the `b####` pre-release; table of files; the five steps. Mark all Windows steps untested.
+2. Exercise 3 and Decision 7: add the revised language rule (three runs: pinned main, pinned second, auto or faster-whisper `multilingual`), and the one-line fact that the three tools detect the language once per file (or per chunk for faster-whisper).
+3. Decision 2: add the option table and the "whom first" rule from Q1; the decision record fields; the five questions.
+4. Charter open decision "country": add the one-line question from Q4 and the comparison table; add `photographer`, `rights_holder`, `permission_text_saved`, `allowed_use` columns to the cue-sheet idea, and `appears_in_film`, `consent_note` to the people tab.
+5. Exemplar 2: insert the 13-row table; correct the [24] attribution (the interview does not mention this film); keep runtime 5:52 as "advisor-read, unverified by the researcher".
+6. Step 4 (found voice) and the runbook "Found voice": add a "Transfers" box from Q7 (ground rules, the quick-reference table); note the surprise-ops mail-in lab pilot needs the maker's explicit yes.
+7. Planning: Q2 and Q3 and Q4 and Q1 are four facts from one 20-minute conversation with the maker. Ask them together.
+
+### Not done / still UNVERIFIED after round 2
+- The four maker facts (Q1 to Q4) and the *Danny & Annie* viewing (Q6).
+- Any published accuracy figure for Whisper on older speakers or code-switched family speech; behaviour of the three tools on real mixed-language audio.
+- First-party steps to save phone voicemail or export chat voice messages; carrier retention.
+- Where to buy a working microcassette player; which USB capture dongles and FireWire adapters work on current Windows.
+- Which GPUs and drivers the prebuilt CUDA zips support; the zips' file lists.
+- Non-US synchronisation and venue-licence rules (the PRS, ASCAP and APRA pages did not load; the Canadian copyright guide address returned 404); how a venue's blanket licence treats a played-back film; moral-rights and image-right rules for the actual country.
+- A verified running time for the combined *Danny & Annie* cut (YouTube verification page).
+
+### Sources (continuing)
+
+[101] GitHub, whisper.cpp release v1.9.5, expanded assets — https://github.com/ggml-org/whisper.cpp/releases/expanded_assets/v1.9.5 — fetched 2026-10-18 — exactly two assets, "Source code (zip)" and "Source code (tar.gz)", 2026-10-06T17:39:13Z.
+[102] GitHub, whisper.cpp releases index — https://github.com/ggml-org/whisper.cpp/releases — fetched 2026-10-18 — v1.9.5 (2 assets, 06 Oct), b5454 (14, 06 Oct), v1.9.4 (2, 11 Sep), b5130 (14, 11 Sep), b5127 (14, 10 Sep), v1.9.3 (2, 20 Aug), b4938 (11, 20 Aug), v1.9.2 (11, 04 Aug).
+[103] GitHub, whisper.cpp release b5454, expanded assets — https://github.com/ggml-org/whisper.cpp/releases/expanded_assets/b5454 — fetched 2026-10-18 — 14 assets with names and sizes (table in Q5).
+[104] GitHub, whisper.cpp release b5454 — https://github.com/ggml-org/whisper.cpp/releases/tag/b5454 — fetched 2026-10-18 — labelled Pre-release; body "whisper : bump version to 1.9.5 (#4102)".
+[105] ggml-org/whisper.cpp repository, shallow clone at commit 0c7be696 (2026-10-12) — https://github.com/ggml-org/whisper.cpp — read locally 2026-10-18: `.github/workflows/release.yml` and `make-release.yml` (which tags build which zips; CUDA DLL copy), `README.md` (`whisper-cli`, 16-bit WAV, FFmpeg option), `models/README.md` (model sizes), `models/download-ggml-model.cmd`, `examples/cli/cli.cpp` (`-l`, `-dl`), `src/whisper.cpp` (language detection at offset 0).
+[106] openai/whisper repository, shallow clone at commit 86098128 (2026-08-31) — https://github.com/openai/whisper — read locally 2026-10-18: `whisper/transcribe.py` lines 143 to 159 (language detected once from the first 30 seconds), `model-card.md` (accents, dialects, ages; "robust evaluations"), `README.md` (sliding 30-second window).
+[107] SYSTRAN/faster-whisper repository, shallow clone at commit 9e472ae8 (2026-10-16) — https://github.com/SYSTRAN/faster-whisper — read locally 2026-10-18: `faster_whisper/transcribe.py` (`multilingual`: "Perform language detection on every segment", default False).
+[108] Microsoft DirectX Developer Blog, "GPUs in the Task Manager" — https://devblogs.microsoft.com/directx/gpus-in-the-task-manager/ — 2017-07-21; fetched, and the quoted definitions checked against the raw page — dedicated vs shared memory; half of physical memory; WDDM 2.0.
+[109] Microsoft Support, "Find information about your Windows device" — https://support.microsoft.com/en-us/windows/which-version-of-windows-operating-system-am-i-running-628bec99-476a-2c13-5296-9dd081cdd808 — undated; fetched — Settings > System > About; `ms-settings:about`.
+[110] Microsoft Learn, Get-ComputerInfo — https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-computerinfo — page date 2023-01-12; fetched — introduced in Windows PowerShell 5.1; `-Property`; example output with `WindowsVersion` and `OsVersion`.
+[111] WIPO, Summary of the Berne Convention — https://www.wipo.int/treaties/en/ip/berne/summary_berne.html — undated; fetched — national treatment, automatic protection, independence, minimum terms (photographs 25 years), exclusive rights.
+[112] U.S. Copyright Office, Fair Use (FAQ) — https://www.copyright.gov/help/faq/faq-fairuse.html — undated; fetched, and the quoted lines checked against the raw page — photographer owns; "you need to get a clearance or license for its performance"; "in cases of doubt... permission be obtained".
+[113] GOV.UK, Licensing bodies and collective management organisations — https://www.gov.uk/guidance/licensing-bodies-and-collective-management-organisations — published 2016-04-11, updated 2024-01-23; fetched — PRS, PPL, PPL PRS Ltd (TheMusicLicence), MCPS.
+[114] GOV.UK (IPO), Copyright notice: digital images, photographs and the internet — https://www.gov.uk/government/publications/copyright-notice-digital-images-photographs-and-the-internet/copyright-notice-digital-images-photographs-and-the-internet — published 2014-06-24, updated 2021-01-04; fetched — creator as first owner; life plus 70 years; moral rights; does not cover people in photos.
+[115] SOCAN, "AV Post-Sync" page — https://www.socan.com/rr_av_post-sync/ — undated; fetched — AV post-sync reproduction is "a distinct right" from performing rights; paid by the broadcaster or platform; aimed at rights holders.
+[116] Wikipedia, "Personality rights" — https://en.wikipedia.org/wiki/Personality_rights — fetched (first 100,000 of 131,700 characters) — tertiary; US state right of publicity; Quebec, France, Germany, Denmark, Portugal, Australia.
+[117] CSU Social (Ashley Schroeder), "How to Pull Off a Surprise Video" — https://social.colostate.edu/strategy/how-to-pull-off-a-surprise-video/ — 2019-01-04; fetched — at least 10 helpers; the subject's mother the critical ally; "probably my riskiest piece of advice"; no leak reported.
+[118] Audacity Manual, "Tutorial - Digitizing LPs, tapes or MiniDiscs" — https://manual.audacityteam.org/man/tutorial_copying_tapes_lps_or_minidiscs_to_cd.html — undated; fetched — overview; USB cassette decks; links to head cleaning, azimuth, demagnetising.
+[119] Audacity Manual, "Tips for recording from cassette tape" — https://manual.audacityteam.org/man/tips_for_recording_from_cassette_tape.html — undated; fetched — head and pinch-roller cleaning, azimuth, retensioning, shedding, mangled tape.
+[120] Audacity Manual, "How to connect your equipment" — https://manual.audacityteam.org/man/how_to_connect_your_equipment.html — undated; fetched — RCA to 3.5 mm, line-in not mic-in, USB interface, no hub, headphone fallback.
+[121] Audacity Manual, "Recording with USB turntables" — https://manual.audacityteam.org/man/recording_with_usb_turntables.html — undated; fetched — Windows lists USB devices as microphones; pick the device, not stereo mix; peak near -6 dB.
+[122] Audacity Manual, "Cassette deck de-magnetization" — https://manual.audacityteam.org/man/cassette_deck_de_magnetization.html — undated; fetched — "rarely needed".
+[123] Audacity Manual, "Change Speed and Pitch" — https://manual.audacityteam.org/man/change_speed.html — undated; fetched — speed and pitch together; "from" and "to"; Change Tempo keeps pitch.
+[124] Library of Congress, "Care, Handling, and Storage of Audio Visual Materials" — https://www.loc.gov/preservation/care/record.html — undated; fetched, and quoted lines checked against the raw page — handle cassettes by the outer shell; acclimate; sticky-shed bibliography; cleaning by a specialist.
+[125] Library of Congress, Personal Digital Archiving series, "Transferring Video from Tape, DVD or Camera to Your Computer" — https://www.digitalpreservation.gov/personalarchiving/documents/video-transfer.pdf — undated; fetched as a PDF and text-extracted locally (the loc.gov address given on the video page returned 404) — four steps; generational decay; VCR-to-camera, pass-through, converter, DVD burner; storage conditions.
+[126] Wikipedia, "Microcassette" — https://en.wikipedia.org/wiki/Microcassette — fetched, and the speed facts checked against the raw page — tertiary; 2.4 and 1.2 cm/s; dictation and answering machines; variable speed; incompatible with Mini-Cassette.
+[127] Wikipedia, "Answering machine" — https://en.wikipedia.org/wiki/Answering_machine — fetched — tertiary; looped tapes, cassettes, microcassettes, solid-state; rewind before playback.
+[128] Wikipedia, "Camcorder" — https://en.wikipedia.org/wiki/Camcorder — fetched — tertiary; VHS-C, Video8, Hi8, Digital8, MiniDV; outputs; no consumer Digital8 or MiniDV since 2006.
+[129] Wikipedia, "IEEE 1394" — https://en.wikipedia.org/wiki/IEEE_1394 — fetched (first 100,000 of 132,930 characters) — tertiary; no default 1394 drivers since Windows 10; ports phased out in the 2010s.
+[130] mipops, DVRescue README — https://github.com/mipops/dvrescue — fetched — DV tape migration; Windows, macOS, Linux; GUI fully functional only on macOS; no hardware list.
+[131] OBS Project, Knowledge Base, "Video Capture Sources" — https://obsproject.com/kb/video-capture-sources — undated; fetched — DirectShow devices, Custom resolution, Buffering.
+[132] Microsoft Support, "Windows camera, microphone, and privacy" — https://support.microsoft.com/en-us/windows/windows-camera-microphone-and-privacy-a83257bc-e990-d54a-d212-b5e41beba857 — undated; fetched — Settings > Privacy & security > Microphone; "Let desktop apps access your microphone".

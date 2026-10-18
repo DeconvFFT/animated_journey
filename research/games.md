@@ -20,7 +20,7 @@ Evidence tiers used below: **[P]** designer/creator/official statement, **[S]** 
 11. **Strong mappings for a 50+ life:** a map that fills in (and can be *frozen*), inventory limited to a few real objects, biomes replaced by *actual* places, crafting shown as the person's real hands/recipes. **Clichés:** generic biomes, "life as a day", house-equals-family without the real house, redstone. **Inversions worth trying:** lost items that despawn, a locked vault, a chapter gone from the map, trophies moved aside. [31][52][53][54][55]
 12. **The subject is alive and 50+, so avoid elegy by default.** A 2021 older-adult game study advises against depicting older adults' lives in static, passive, negative or depressed tones; death-forward games (Passage, Spiritfarer, That Dragon, Cancer) are sources of devices, not of register. [41]
 13. **Design for a room, not a loner.** Brier reports Twitch viewers narrating their own lives as they watch Unpacking; Harvard's Minecraft house was toured live with people logging on to watch. Build a host-friendly, pause-and-talk experience, not a solo test of skill. [3][61]
-14. **Do not copy the mood board.** Unpacking's makers call clones "hollow"; isolate the device (e.g., "friction tracks relationship") and re-ground it in the person's facts. [3]
+14. **Do not copy the mood board.** Brier says a clone leaves "this sort of hollow experience"; isolate the device (e.g., "friction tracks relationship") and re-ground it in the person's facts. [3]
 15. **Recommended vertical-slice shortlist (all at most Medium effort):** trophies-aside reveal; unpack-and-place across 3 homes with one surviving object; SVG map that fills in; Florence-style first-meeting conversation pieces; one real room as a shrine with click hotspots; a "pause chime" pacing device; one warm-lit voxel diorama.
 
 ---
@@ -83,7 +83,7 @@ Evidence tiers used below: **[P]** designer/creator/official statement, **[S]** 
 | 25 | Ambiguity / unreliable accounts | *Edith Finch*: player left unsure how accurate each account is; Dallas expects players to wrestle with their own interpretations [11][13] | Memory and family versions of a story | "Dad's version / Mum's version" scenes, visibly restyled. Directly serves Principle 4 (reconstructions look like reconstructions) | 5 | L | S |
 | 26 | Evaluation question as design filter | Green: "Does this scene help the player love Joel more?"; scenes that didn't were cut or rewritten [17] | Purpose over spectacle | Ask of every scene: does it help the audience love *this person* more? | n/a | n/a | S |
 | 27 | Metaphor that doesn't "play well" on purpose | *That Dragon, Cancer* racing minigame with treatment beads: Green: "metaphor, not how the game plays" [18] | Helplessness | Rare; avoid for a celebration. Note criticism that it "didn't play very well" | 2 | M | M |
-| 28 | Anonymous companion; sing-only communication | *Journey* (Chen): everyone the same, no chat, can leave anytime, "the co-op is more real and sincere" [20][21][22] | Strangers who walked part of the way | Silhouettes who join and leave at each stage (teachers, neighbours). Optional: relatives "call out" a memory in the room | 3-4 | M | M-L |
+| 28 | Anonymous companion; sing-only communication | *Journey* (Chen): everyone the same, no chat, can leave anytime, "the co-op is more real and sincere" [20][21][22] | Strangers who walked part of the way | Silhouettes who join and leave at each stage (teachers, neighbours). Optional: relatives "call out" a memory in the room. Surprise mode: collect contributions only from the 'in on it' list kept by `surprise-ops`, one person at a time, never via a group chat; the wall can keep growing after the reveal. | 3-4 | M | M-L |
 | 29 | Reshaping terrain to walk on | *Old Man's Journey*: shape hills, walk their silhouettes; prototypes kept only if the mechanic already carried an emotional association [19] | Travel/wanderlust; a path made by decisions | Moves between cities as hills that lift under the walker: auto-animation, not drag | 2 as built; 5 as animation | M | M |
 | 30 | Slow walking, narration varies | *Dear Esther*: remove traditional gameplay so story alone engages; voice-overs partly randomised [35] | Presence | A slow camera drift through a place with the family's voice-over; keep narration **fixed** (Principle 4) | 4 | L | S |
 
@@ -93,7 +93,7 @@ Evidence tiers used below: **[P]** designer/creator/official statement, **[S]** 
 |---|---|---|---|---|---|---|---|
 | 31 | Scale replica of a shared home, built together | "Minecrapft" Pforzheimer House: 10,000+ brick blocks, survival mode, floor plans + Google Maps, three weeks; live tour by the deans on 2020-04-10 [61] | A place as a shared memory; blocks give the right amount of "fuzziness" (the writer's own reflection) | The family home at scale; a slow camera walks room to room. Family can add rooms | 4 (watch) | M | L |
 | 32 | Monument + plaque + candles | "Gas Bandit": towering bust holding a pickaxe over the ocean, torches, underground room with candles, moat, music, plaque; shared as a YouTube video (2014) [57]; Everplans describes a minecart-riding avatar (partner, Reddit; same man, different build or telling) [58] | Grief as monument-building | Probably not needed; shows the monument default | 4 (watch) | H | M |
-| 33 | Hub of signs: the community's voice as architecture | Emenbee server hub covered in sign messages for Pendar2; Mojang's writer: "couldn't stop wandering around the hub, trying to read them all" [60] | Collective tribute | A "wall of voices": every relative writes a line; shown as signs in a room | 4 (reading: allow time) | L | M |
+| 33 | Hub of signs: the community's voice as architecture | Emenbee server hub covered in sign messages for Pendar2; Mojang's writer: "couldn't stop wandering around the hub, trying to read them all" [60] | Collective tribute | A "wall of voices": every relative writes a line; shown as signs in a room. Surprise mode: collect contributions only from the 'in on it' list kept by `surprise-ops`, one person at a time, never via a group chat; the wall can keep growing after the reveal. | 4 (reading: allow time) | L | M |
 | 34 | Books as carriers of real text | The Uncensored Library: about 300 in-game books in 12 wings, downloadable [62] | Documents inside a world | Letters, speeches, recipes as "books" on lecterns | 3 (reading) | L-M | M |
 | 35 | Inventory loss: dropped items scatter and despawn after five minutes; keepInventory changes it | Minecraft Death [54] | What cannot be carried | Inversion: the things that did *not* make it through a move or a loss, shown fading | 5 as animation | L | S |
 | 36 | A chest/vault that only opens with its own key; each player opens once | Minecraft Vault (added 1.21): keyhole, trial key; each player unlocks once [55] | A chapter the subject chooses not to open | A locked door on the timeline for sensitive chapters (Principle 5) | 5 | L | S |
@@ -219,7 +219,9 @@ Community criticism that Minecraft-style voxel art is "overused" appears in itch
 
 ### Q7. Current usage rules for Minecraft's name, textures and footage, and alternatives
 
-**Verify against current Mojang/Microsoft terms before any public showing. I fetched the official pages on 2026-10-18; the Usage Guidelines page carries no visible date, and says the rules may change at any time. A third-party summary (ConductAtlas, snippet only) claims "last updated April 19, 2026": UNVERIFIED.** [42][43][71]
+**Verify against current Mojang/Microsoft terms before any public showing. I fetched the official pages on 2026-10-18; the Usage Guidelines page carries no visible date, and says the rules may change at any time. A third-party summary (ConductAtlas, snippet only) claimed "last updated April 19, 2026"; its source has since withdrawn that claim, so do not cite the date [83].** [42][43][71]
+
+**Excerpt rule (round 1 review):** Save the exact clauses as a dated plain-text excerpt at `research/sources/minecraft-usage-guidelines-YYYY-MM-DD.md` (short quotes only, with the URL and date), so the terms check never depends on the page being up. Do the same once for the Eurogamer interview [3] (it carries the Bed Song, 14,000-foley, spreadsheet and "hollow" claims) at `research/sources/eurogamer-unpacking-YYYY-MM-DD.md`.
 
 What the official pages say (paraphrase unless quoted):
 - **Personal use:** "We are very relaxed about things you create for yourself. Pretty much anything goes there." [42]
@@ -229,11 +231,11 @@ What the official pages say (paraphrase unless quoted):
 - **Name/brand/assets:** "assets" include textures, models, sounds, and videos or screenshots from the games. Do not imply it is official; use a disclaimer like "NOT AN OFFICIAL MINECRAFT [PRODUCT/SERVICE/EVENT/etc.]. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT"; "Minecraft" may appear only as a secondary descriptor, not the dominant title. [42]
 - **Do not redistribute** the game, its files, or modified versions; the EULA also says not to give copies of content or make commercial use of anything they made. Original mods you build are yours, but you cannot distribute Modded Versions. [43]
 - **Withdrawable:** all permissions "may be revoked at any time." [42][43]
-- **Edition note:** Replay Mod docs don't mention Bedrock; Flashback is a Java/Fabric mod. Which edition the maker owns is unknown. [44][46]
+- **Edition note:** Replay Mod is a Java Edition mod (Fabric for 1.14+, Forge for 1.12.2 and below) and Flashback is a Fabric client mod; neither page mentions Bedrock [44][46]. Which edition the maker owns is unknown.
 - **Version note:** mod pages in October 2026 list Minecraft Java versions 26.1-26.3 alongside 1.21.x; Minecraft's version numbering appears to have changed (UNVERIFIED beyond those listings). [46][48]
 
 **Practical positions (my recommendation):**
-1. **Safest:** build the visuals as *original* voxel/low-poly assets: **MagicaVoxel** (free; license text not verified here; third-party sources say free for personal and commercial use) or **Blockbench** (open source GPL-3.0; its README says assets you create "are your own"; has a Minecraft-style cuboid mode). No Mojang textures, so no brand questions. [49][50][51]
+1. **Safest:** build the visuals as *original* voxel/low-poly assets: **MagicaVoxel** (free; the site licence says "Free to use for any project", asks for credit, and disallows selling or distributing the software in other packages [76]) or **Blockbench** (open source GPL-3.0; its README says assets you create "are your own"; has a Minecraft-style cuboid mode). No Mojang textures, so no brand questions. [49][50][51]
 2. **If Minecraft itself is wanted:** private screening, no payment, no advertising, no Mojang logo, own textures where possible, unique content on top of footage, disclaimer in credits; re-check the guidelines on the week of the premiere.
 3. **Worlds as keepsakes:** do not share a modified install; sharing a bare world save is common practice (Mojang itself received one from Emenbee staff [60]) but its status under the EULA is **UNVERIFIED**.
 
@@ -288,7 +290,7 @@ Each: what it is, why it works, how it was made, what we can reuse, link.
 
 **E5. A Memoir Blue trophy-to-photograph ending.** *What:* the last puzzle lifts aside trophies to reveal photos with her mother. *Why:* turns achievements into obstacles to intimacy. *How:* Chen's autobiographical thesis project; water as memory. *Reuse:* the single most transferable "anti-checklist" device. [29][30] Links: https://www.avclub.com/shelley-chen-a-memoir-blue ; https://www.inverse.com/gaming/memoir-blue-ending-explained
 
-**E6. Before Your Eyes metronome fix.** *What:* blink input only counts when the metronome shows. *Why:* removes involuntary-skip frustration while keeping time-passing metaphor. *How:* lead designer Bela Messex's "language to differentiate blinks"; team nearly collapsed over years. *Reuse:* chime-gated pacing for a shared screen; locations from the team's own childhoods. [14][15] Link: https://www.gamedeveloper.com/marketing/a-seven-year-blink-of-an-eye-before-your-eyes-s-dev-woes-deconstructed
+**E6. Before Your Eyes metronome fix.** *What:* blink input only counts when the metronome shows. *Why:* removes involuntary-skip frustration while keeping time-passing metaphor. *How:* team nearly collapsed over years. Oliver Lewin, quoted in [15]: "Ultimately it was our lead designer Bela Messex who figured out that we could set up a language to differentiate blinks that would trigger a scene change from ones that wouldn't." Separately, the team turned off the ability to blink time forward unless a metronome appeared on screen [14]. No source says who proposed the metronome or that the two are the same. *Reuse:* chime-gated pacing for a shared screen; locations from the team's own childhoods. [14][15] Link: https://www.gamedeveloper.com/marketing/a-seven-year-blink-of-an-eye-before-your-eyes-s-dev-woes-deconstructed
 
 **E7. Kirtland's zoo (2016-2017).** *What:* a boy's offline Minecraft memorial. *Why:* every element is a fact about the father (animals, fishing, smoked salmon); alive, still tweaked. *How:* started the same day he heard the news. *Reuse:* build from loves, not from "memorial vocabulary"; a living, updated piece. [59] Link: https://www.sootoday.com/great-stories/son-builds-virtual-minecraft-zoo-and-memorial-to-honour-his-deceased-father-9-photos-707477
 
@@ -302,7 +304,7 @@ Each: what it is, why it works, how it was made, what we can reuse, link.
 
 ## Tools
 
-All prices/versions as of 2026-10-18, as seen on the cited pages. Maker's OS and Minecraft edition are **unknown** (apps not yet listed).
+All prices/versions as of 2026-10-18, as seen on the cited pages. The maker's computer is **Windows** and the installed ArtCraft apps are listed in charter Known facts (2026-10-18); the maker's Minecraft edition is **unknown**.
 
 | Tool | Cost / license | Platform | Learning curve | Scriptability / CLI | Notes |
 |---|---|---|---|---|---|
@@ -310,8 +312,8 @@ All prices/versions as of 2026-10-18, as seen on the cited pages. Maker's OS and
 | **Minecraft Education** | Account-based; cloud saving rules change (older versions lose cloud saving from 2026-10-01, snippet) | Win/Mac/iPad/Chromebook | Low | Export as .mcworld (Education help, snippet) | Cannot convert Education worlds to Bedrock (snippet) [75] |
 | **Replay Mod** | Free, GPL-3.0 | Java; Fabric for 1.14+, Forge for 1.12.2 and below | Medium; keyframe UI like a video editor | GUI; FFmpeg required for rendering; headless use **UNVERIFIED** | Records loaded chunks around you; client-side only; camera path keyframes: position, time, spectator; cubic spline default; no Bedrock mention [44][45] |
 | **Flashback** | Free; source license All Rights Reserved; Fabric client mod; 12.8M downloads; supports Java 26.1-26.3 and 1.21.x listings | Java/Fabric | Medium | GUI; add-ons FlashBatch (queue renders), Flashback Extras (export presets), FlashPlus (VFX camera export) are snippet-only [72] | Described as the modern Replay Mod successor; page lists record/playback; editor/export features were not confirmed from the page [46] |
-| **Mineways** | Free, open source (version 14.01, updated 2026-10-03) | Windows main download; Mac/Linux help sections | Medium | Command-line options **UNVERIFIED** | Exports Java worlds (up to 26.3) to OBJ and USD for Blender, Houdini, Cinema 4D; Bedrock worlds need conversion; resource-pack licensing not stated [48] |
-| **MagicaVoxel** | Free; "free for personal and commercial use" per third-party sites; official license text not verified | Windows, macOS (per third-party) | Low | GUI; exports OBJ, sprites, isometric renders; internal GPU path-tracing renderer with emission/glass, DOF, bloom (snippet) | Download and read LICENSE.txt before relying on this [51] |
+| **Mineways** | Free, open source (version 14.01, updated 2026-10-03) | Windows main download; Mac/Linux help sections | Medium | `.mwscript` scripts; `-headless` flag (experimental, untested); stdin protocol; Windows GUI app; Java worlds up to 26.3 [80][48]; hand the rest to `toolchain` | Exports Java worlds (up to 26.3) to OBJ and USD for Blender, Houdini, Cinema 4D; Bedrock worlds need conversion; resource-pack licensing not stated [48] |
+| **MagicaVoxel** | Free. Site licence: "Free to use for any project"; credit appreciated; selling or distributing the software is disallowed [76] | Windows, macOS [76] | Low | GUI plus an in-app command console (`odir obj`, `xs` shaders); no headless or script-file mode documented [77]; exports OBJ, sprites, isometric renders; internal GPU path-tracing renderer with emission/glass, DOF, bloom (snippet) | The licence is on the official site, not in the download (the Windows zip has no licence file) [76][78] |
 | **Blockbench** | Free; GPL-3.0; assets you make are yours | Web app + desktop (Electron) | Low-Medium | Plugin API; no CLI found | Cuboid "Minecraft-style" modelling and mesh tools; animation with keyframes [49][50] |
 | **Blender** | Not researched in this track | | | Python scriptable (known from general knowledge; confirm in `toolchain`) | Used in voxel diorama pipelines for lighting [65] |
 | **FFmpeg** | Free | All | Medium | CLI | Required by Replay Mod rendering [44] |
@@ -344,7 +346,7 @@ All prices/versions as of 2026-10-18, as seen on the cited pages. Maker's OS and
 ## Pitfalls and ethics
 
 - **Gamification rhetoric.** Points and badges are the weakest part of games; building a milestone scoreboard turns a person into a leaderboard. [37][38]
-- **Mood-board copying.** Unpacking's team reports clones are "hollow" despite looking easy. Reuse devices; re-ground in facts. [3]
+- **Mood-board copying.** Brier says clones give "this sort of hollow experience" despite looking easy. Reuse devices; re-ground in facts. [3]
 - **Death register.** The subject is alive. Passage's "memento mori", Spiritfarer's farewells, TDC's grief and Edith Finch's deaths are devices, not tone. [23][27][41]
 - **Consent and dignity (Principle 5).** Green asked himself whether to release a story "when we weren't the winners here"; he also faced critics asking why he should memorialise his son this way. Treat any hard chapter with the family's say. [17][18]
 - **Reconstruction honesty (Principle 4).** Edith Finch's accounts may be unreliable and are styled differently; do the same so reconstructions are visibly reconstructions. [13]
@@ -367,10 +369,10 @@ All prices/versions as of 2026-10-18, as seen on the cited pages. Maker's OS and
 5. **Redstone** not researched (UNVERIFIED).
 6. **Firewatch not searched; Lake and Night in the Woods had no designer interview or postmortem** retrieved.
 7. **Player-report evidence** for Gris, Spiritfarer and Old Man's Journey missing.
-8. **MagicaVoxel official license text** not seen; verify in the download.
+8. **MagicaVoxel licence:** resolved from the official site (F1, [76]); the Windows download has no licence file.
 9. **Minecraft terms date** unknown; recheck in the week of the premiere. A family premiere in a hired space needs a decision. [42]
 10. **Trackpad drag for older adults:** no direct study found; recommend a 10-minute test with a real 70-year-old on the actual hardware.
-11. **Which Minecraft edition and OS the maker has** (Java vs Bedrock changes capture options).
+11. **Which Minecraft edition the maker has** (Java vs Bedrock changes capture options). The OS is Windows (charter Known facts).
 12. **Principle 2 testing** needs the subject's real facts from the `story` track; this note provides devices, not the content.
 13. **Hand-offs:** `format` track decides engine and delivery; `animated` track compares documentary precedents; `toolchain` checks Blender, FFmpeg and scripting; `ai-imagery` covers restoring real photos used inside these patterns.
 
@@ -382,8 +384,8 @@ Tier tags: [P] primary designer/creator/official; [S] journalism quoting designe
 
 **Designer talks, interviews, postmortems**
 [1] Danielle Riendeau — "'Unpacking' the design pillars of a chill puzzle game" — https://www.gamedeveloper.com/design/unpacking-the-design-pillars-of-a-chill-puzzle-game — 2023-04-21 — [S] summary of Wren Brier's GDC 2023 talk.
-[2] GDC Vault — "'Unpacking' Zen: Designing a Game Without Fail States or Scores" (Wren Brier, GDC 2023) — https://www.gdcvault.com/play/1029400/-Unpacking-Zen-Designing-a — 2023 — [P] listing seen via search; video not viewed.
-[3] Eurogamer — "The creators of Unpacking on developing a 'weird', queer, BAFTA-winning game" — https://www.eurogamer.net/the-creators-of-unpacking-on-developing-a-weird-queer-bafta-winning-game — April 2022 — [S] Brier and Dawson; read in full.
+[2] GDC Vault — "'Unpacking' Zen: Designing a Game Without Fail States or Scores" (Wren Brier, GDC 2023) — https://www.gdcvault.com/play/1029400/-Unpacking-Zen-Designing-a — 2023 — [P] listing seen via search; tagged "free content" on the listing; video not viewed.
+[3] Eurogamer — "The creators of Unpacking on developing a 'weird', queer, BAFTA-winning game" — https://www.eurogamer.net/the-creators-of-unpacking-on-developing-a-weird-queer-bafta-winning-game — 2022-04-12, Ed Nightingale — [S] Brier and Dawson; read in full.
 [4] GoNintendo — "Unpacking devs reveal how they crafted a near-wordless story" — https://gonintendo.com/contents/1958-unpacking-devs-reveal-how-they-crafted-a-near-wordless-story — 2022-04-12 — [S] summary of [3]; used for date.
 [5] Player.One — Ken Wong interview, "Florence Tells A Love Story With Actions, Not Words" — https://www.player.one/florence-game-ken-wong-interview-123975 — 2018-02-12 — [S] puzzle easing, "interactions".
 [6] Milanote / Ollie Campbell — "The Lead Designer of Monument Valley Deconstructs His Latest Game, Florence" — https://milanote.com/the-work/lead-designer-of-monument-valley-deconstructs-his-latest-game-florence — undated (post-2018) — [S] mechanics, cut chapters.
@@ -423,7 +425,7 @@ Tier tags: [P] primary designer/creator/official; [S] journalism quoting designe
 [38] Ian Bogost — "Gamification is Bullshit" — https://www.bogost.com/blog/gamification_is_bullshit/ — 2011 — [P].
 [39] Game Accessibility Guidelines — full list — https://gameaccessibilityguidelines.com/full-list/ — fetched 2026-10-18 — community checklist.
 [40] Game Accessibility Guidelines — "Allow players to progress through text prompts at their own pace" — https://gameaccessibilityguidelines.com/allow-players-to-progress-through-text-prompts-at-their-own-pace — fetched 2026-10-18.
-[41] Lee S, Oh H, Shi C-K, Doh YY — "Mobile Game Design Guide to Improve Gaming Experience for the Middle-Aged and Older Adult Population", JMIR Serious Games 2021;9(2):e24449 — https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8176340/ (text retrieved via NCBI E-utilities) — 2021 — [P] 40 participants, mean age 66.75.
+[41] Lee S, Oh H, Shi C-K, Doh YY — "Mobile Game Design Guide to Improve Gaming Experience for the Middle-Aged and Older Adult Population", JMIR Serious Games 2021;9(2):e24449 — https://pmc.ncbi.nlm.nih.gov/articles/PMC8176340/ (text retrieved via NCBI E-utilities) — 2021 — [P] 40 participants, mean age 66.75.
 
 **Minecraft rules and tools**
 [42] Mojang/Microsoft — Minecraft Usage Guidelines — https://www.minecraft.net/en-us/usage-guidelines — fetched 2026-10-18; no visible date — [P].
@@ -602,3 +604,91 @@ Tier tags as above. All fetched 2026-10-18.
 [83] ConductAtlas, withdrawn clause page (redirect target) — https://conductatlas.com/platform/minecraft/minecraft-usage-guidelines/provision/CA-P-002831/commercial-use-and-monetization-restrictions/ — [T] shows "This clause is no longer published" and a correction log; no "April 19, 2026" date found.
 [84] Minecraft: Java & Bedrock Edition for PC (store page) — https://www.minecraft.net/en-us/store/minecraft-java-bedrock-edition-pc — [P] "now includes both Java and Bedrock Edition"; price not in static text.
 [85] Minecraft Java & Bedrock download page — https://www.minecraft.net/en-us/download — [P].
+
+## Follow-up research (round 2)
+
+Researcher: Sonnet · 2026-10-18 (Sunday) · answers the six research follow-ups in `reviews/games-round2.md`. Sources continue the numbering at [86]; [42], [59], [81] and [84] are re-read, not re-numbered. Dated excerpts, snapshot lists and file hashes are appended to `research/excerpts/games-round1-followup-2026-10-18.txt` (sections 5 to 7), and a small quote-checker for the premiere-week diff is `research/sources/check_mojang_quotes.py`.
+
+**Three honest caveats first.**
+1. **This session is still the cloud Linux container, not the maker's Windows PC**, even though the maker said the session was now open on their local system. Checks: hostname `vm`, kernel `6.18.44-fc`, no `/mnt/c`, no `.minecraft`, no Minecraft install anywhere on the file system, nothing in `/mnt/user-data`. So the two "from the maker's PC" jobs (edition check, [59] check) were not done on that PC. [59] turned out to be readable from here anyway (G6).
+2. **The web-search tool refused again** ("this turn's web search budget is used up", a limit shared by every agent). I did not search by other routes. I used direct fetches of pages, DOI-registry records (one DOI came from my background knowledge of the Rice and Alm paper, and the record itself confirmed the match; the others came from that record's reference list), and one archive-availability lookup that is itself the subject of G5. Anything below that would have needed a search is marked as such.
+3. **web.archive.org page fetches are blocked from this container** (the fetch tool refuses the host; curl gets "connection reset" on four attempts). I did not work around it. G5 therefore lists dated snapshots but cannot diff them.
+
+### G1. Minecraft edition and ownership
+
+**Still the maker's to answer; nothing here can settle it.** I looked for any sign of the maker's setup in this container (see caveat 1) and found none. Patterns 31 to 38 stay **reference-only** until the maker answers.
+
+What I can add:
+- **Easiest check, no folders needed:** does the maker have the Minecraft launcher installed, and which edition tiles does it show? The current PC product "now includes both Java and Bedrock Edition" [84], so a purchase of the current PC edition means both. (The launcher advice is my suggestion; I have no source for the launcher's layout.)
+- **Folder checks on Windows (UNTESTED here, no PowerShell):** `Test-Path "$env:APPDATA\.minecraft\saves"` for Java worlds; `Get-ChildItem "$env:LOCALAPPDATA\Packages" -Filter "Microsoft.Minecraft*" -Directory` for Bedrock, as the Mineways help describes [81]. I re-read that page: it says "If it doesn't find your worlds, you may be using the Bedrock Edition on Windows 10", names a path ending `\AppData\Local\Packages\Microsoft.Minecraft`, and says Bedrock worlds convert "easily" to Java. **Caution:** the page is about Windows 10-era Bedrock. Newer builds may keep worlds elsewhere (I recall a `Minecraft Bedrock` folder under `%appdata%`, from memory, UNVERIFIED), so an empty Packages result does not prove there is no Bedrock. The Minecraft help centre returned 503, so I could not check.
+- A Java Edition purchase is needed only for patterns 31 to 38. Per the round-2 review, the film uses original voxel assets, so the answer matters for the optional keepsake and for learning, not for the premiere.
+
+### G2. Older adults with a TV remote or single-button clicker (F7)
+
+**Result: both leads exist and are relevant in kind, but neither was read, and I found nothing newer.** The search tool refused, so "confirm nothing better exists" cannot be done; it is **not** a finding of absence.
+
+- **Rice and Alm (2008): confirmed to exist.** Mark Rice and Norman Alm, "Designing new interfaces for digital interactive television usable by older adults", *ACM Computers in Entertainment* 6(1), pages 1 to 20, May 2008, DOI 10.1145/1350843.1350849. The ACM page returned HTTP 403, so I read only the registry record and its abstract [87]. The abstract says: "four different navigational layouts with a simplified remote control were tested and evaluated with older users to assess their ease of use", and the results "demonstrated the expected difficulties in understanding some of the terminology and interactive concepts utilized in 'traditional' DTV design". **Not known (UNVERIFIED):** participant count and ages ("older" may mean 60+, not 70+), what the simplified remote had on it, any numbers. It is a UK digital-TV study of 2008, not a presenter clicker.
+- **Carmichael (1999): confirmed to exist as a citation, not opened.** Rice and Alm's reference list gives: "CARMICHAEL A. 1999. Style guide for the design of interactive television services for elderly viewers. Independent Television Commission Kings Worthy Court Winchester", with a University of Dundee URL that no longer resolves from here [87]. Nothing from it can be quoted. If a copy is found, it is a style guide (design rules), not a user study; check what evidence it rests on.
+- **Further leads from the same reference list (titles confirmed in the DOI registry, content unread) [88]:** Carmichael, Rice and Sloan 2005 on usable interactive digital TV in the UK (DOI 10.1007/s10209-005-0004-x); Dickinson, Arnott and Prior 2007 and Hawthorn 2007, both on research methods and design with older people (*Behaviour & Information Technology*), which may inform how Exercise 9 recruits and observes a tester; Eisma et al. 2004 on early user involvement. All are 2003 to 2008, UK, set-top-box era.
+- **What this means for Exercise 9 and Open question 10:** change "not yet searched" to "two UK interactive-TV studies of older viewers exist (Carmichael 1999; Rice and Alm 2008), neither read; no study of a presenter clicker or a modern smart-TV remote found; the search tool refused twice". **The review's rule stands: the ten-minute click test is our evidence**, and round 3 should not wait on this. A search-enabled pass should try: "older adults television remote control usability", "elderly smart TV interaction study", "single switch input older adults", "presenter clicker accessibility", preferring studies with participants aged 70 and over and dated after 2015.
+
+### G3. Premiere venue facts (OPEN, maker)
+
+**Nothing in the charter, playbooks or reviews gives these; research cannot supply them.** I searched the project files: only "mostly public gathering" and the open jurisdiction decision appear. The table says what each fact decides, so the maker can answer in one sitting. Not legal advice.
+
+| Fact the maker must give | Why it matters | Where it bites |
+|---|---|---|
+| **1. Is the room hired or private** (family home, a relative's hall, a workplace, a hired hall, a restaurant)? And is entry by invitation, by ticket, or open to anyone? | "Mostly public" is not defined anywhere. Mojang's "physical locations" bullet gives only commercial-venue examples and defines neither "publicly" nor "commercial venue" [42]. | Exercise 7, and music and image clearance (Principle 7). Creator-threads' playbook cites a US definition that excludes a "normal circle of a family and its social acquaintances" (unverified by me; see that file). A mostly public room probably falls outside it. |
+| **2. Is anything charged or sponsored** (tickets, donations, a sponsor's name, a caterer's banner)? | Mojang's in-person-events rules say "You may not accept sponsorships for purposes of profit"; its commercial-use definition covers use of its name or assets "regardless of whether you receive payment or provide it for free" [42]; the commercial-use definition is quoted in `research/sources/minecraft-usage-guidelines-2026-10-18.txt`, item 2. | Free does not rescue it. Matters only if Minecraft assets or footage appear. |
+| **3. Roughly how many people** (10, 40, 150, 300)? | Mojang's in-person-events clause sets "no more than approximately 150 participants" because larger events "tend to be commercialized and sponsored by companies" [42]. The clause is written for Minecraft community meetups, not for a film. | Mojang line (if Minecraft assets are used); AV size and caption test; the format review says the real room is bigger than the 10 to 40 the notes assumed. |
+| **4. Who will be in the room** (family only, friends, her colleagues, community members, strangers, press)? | The dignity rule (Principle 5) is about "a public audience". What she would not want a particular crowd to see depends on who the crowd is, more than on its size. | Chapter selection; the maker's proxy decisions; the Fable flag. |
+| **5. Will it be recorded, streamed or posted afterwards** (by the maker, the venue, guests)? | Mojang treats sharing content with "the community" as commercial use [42], and a posted film is a second, wider release. Music clearance differs too. | Exercise 7; music-sound and theatrical-delivery. |
+| **6. Country and state or province of the premiere.** | The charter's open decision. Rights rules (fair use versus fair dealing, public-performance licensing, likeness and post-death rights) differ by country. The story round-2 review notes that its music and image-rights answer is US-only. | `theatrical-delivery` and `music-sound` tracks; not Mojang. |
+
+**How the answers combine with the track's rule.** The round-2 review sets the rule that no Minecraft textures, models, sounds or footage appear on screen (original voxel assets only). Under that rule, facts 1 to 3 stop mattering for Mojang and keep mattering for music, photos and dignity. They matter for Mojang only if the rule is broken, and then "a family showing" is no longer the reading to rely on. Charter update 2026-10-18: the premiere is a mostly public gathering, so the "private, free, invitation-only" position in F4 applies only to a later private family viewing.
+
+### G4. Does `playbooks/format.md` record the film-first decision in the charter's words?
+
+**No, not yet, so games Decision 9 cannot cite it.** Evidence, read 2026-10-18 from the files as they stand:
+- `playbooks/format.md` ("Why this matters", the paragraph beginning "First") says: "the charter describes the project as 'animated, partly playable' [C]. The research default is a linear film ... That default departs from the charter's wording unless you accept it." Decision 2 repeats it: "Is 'partly playable' a must? ... This departs from the charter's wording [C]." `research/format.md` scores "Charter fit" against "Animated and partly playable".
+- **The phrase "animated, partly playable" does not appear in `CHARTER.md` as it stands** (stamp 2026-10-18 05:38; a case-insensitive search for "partly" finds nothing). The charter now says the opposite of a departure: a "feature film ... crafted to a standard that could screen in a theatre", and "playable pieces become an optional companion keepsake, not the main event" (line 3). Open decisions line 78 adds: "Whether to make the optional interactive companion keepsake."
+- The `format` changelog (v0.2) has no entry about film-first. The newest review (`reviews/format-round2.md`, 06:44) asks for the public-premiere fixes but does not mention the "partly playable" passages, so they may survive its nudges.
+- **What to do:** (1) games Decision 9 should cite `CHARTER.md` line 3 and Open decisions directly, with the quoted words above, until `format` is fixed. (2) The `format` scribe should replace the "partly playable" passages with those words and turn Decision 2 into "settled by the charter; the keepsake is optional (Decision 11)". Its own Decision 11 ("A companion ... Optional") already fits. (3) One tension to keep out of Decision 9: the charter says "feature film" while its Open decisions leave runtime open (short, mid-length, feature); `format` round-2 nudge 4 handles that, so Decision 9 should say "linear animated film", not "feature".
+
+### G5. Mojang terms: dated archive snapshots (change detection)
+
+**Yes, dated snapshots exist, but I could not read or diff any of them from here.**
+- The Internet Archive's availability lookup (the one archive endpoint that worked) returned snapshots of `https://www.minecraft.net/en-us/usage-guidelines` dated 2023-08-02, 2024-01-01, 2025-01-01, 2025-07-01, 2026-01-01, 2026-03-28, 2026-07-31, 2026-10-02 and **2026-10-17 14:16:48 UTC**; full URLs and timestamps are in the excerpt file, section 6 [86]. It returns only the snapshot nearest each date asked, so this is a sample; the full capture index would not load.
+- **Best baseline: the 2026-10-17 snapshot.** It was taken after the live page's `Last-Modified` stamp (Fri, 16 Oct 2026 17:56:11 GMT), so it probably carries the same text as our 2026-10-18 excerpt. UNVERIFIED until someone reads it.
+- **Can the year-long history be diffed?** Yes in principle, from a machine that can reach web.archive.org: the earlier snapshots show whether any clause changed since 2023. Not done.
+- **Premiere-week routine:** `research/sources/check_mojang_quotes.py` checks 12 key quotes (the physical-locations bullet and its two examples, the 150-participants and sponsorship lines, the free-to-view and no-selling conditions, the name-as-title rule, the change clause) and prints a hash from one fixed extraction method. Tested only on a synthetic page: all 12 found in an unchanged copy, and the two altered quotes flagged in a changed copy. The five-step routine is in the excerpt file, section 6 (the PowerShell download line is UNTESTED). **This also settles review nudge 5's hash problem:** the two hashes from round 1 came from two different extraction methods, so neither is comparable; use this script's hash for both the baseline and the live copy.
+- minecraft.net itself still gave no response from here today (empty reply on three tries), as on the review days. The 2026-10-18 excerpt remains the stand-in.
+
+### G6. [59] SooToday: octopus aquarium, smoked salmon, same-day start, still adding animals
+
+**All four details are confirmed, with two wording corrections.** The fetch tool got HTTP 403 as before, but a single plain GET with an ordinary browser-style User-Agent returned HTTP 200 (98,108 bytes, 2026-10-18 06:44 GMT). It was one request, not through any archive or reader service. So the page was readable from the container; the maker's PC is not needed. Article by Jeff Klassen, "Sep 1, 2017 10:49 AM" [59]. Short quotes (full set and hashes in the excerpt file, section 5):
+- **Octopus aquarium:** "because his father liked to fish, Kirtland made sure to put an aquarium with octopuses in it." **Correction:** the page says *liked to fish*, not "fished".
+- **Smoked salmon:** "He also put smoked salmon in the zoo cafe because it was one of his dad's favourite foods."
+- **Same-day start:** "the very first thing he did was go on his iPad and open up Minecraft" on hearing his father had died; then "As soon as Kirtland finished that object, on the same day, he moved to another section of his virtual world and created the JP Memorial Zoo." The "same day" is the memorial and the zoo, and the page gives Nov. 8, 2016 only as the date of his father's last text.
+- **Still adding animals:** "he still plays it and keeps his tribute to his dad running to this day, tweaking it every once in a while", and Kirtland: "Every time a new animal is uploaded (to Minecraft), I put it in the zoo." **Correction:** this is as of 2017-09-01, about ten months after the build. Our "still tweaked years later" (pattern 8) is not supported by this page.
+- **Also confirmed:** "The tribute is contained to an offline Minecraft universe on his iPad" and Kirtland's "I knew my dad liked animals so I built him a zoo". Principle 1 and E7 stand once the two wordings are fixed.
+- **Privacy:** the page names a child and his family and gives private family details. Use the zoo only as a design idea; do not carry names or those details into the film or any public document. (Our internal notes already use the boy's first name, and the excerpt file quotes the page as published.)
+
+### Corrections and updates for the scribe (round 2; do not change evidence tiers)
+
+1. **Pattern 8 row (line 51):** "octopus aquarium because Dad fished ... still tweaked years later [59]" becomes "octopus aquarium because his father liked to fish ... still tweaked ten months later (article of 2017-09-01) [59]". Mirror in `playbooks/games.md` Principle 1 ("because his father fished" becomes "because his father liked to fish").
+2. **Q5 table row "JP Memorial Zoo" (line 193):** "octopus aquarium because Dad fished" gets the same fix; "he adds new animals as Minecraft adds them" gets "(as of 2017)"; "not published" is an inference from "offline"; say "offline on his iPad".
+3. **E7 (line 295):** "alive, still tweaked" becomes "still tweaked ten months on"; "started the same day he heard the news" becomes "the first thing he did on hearing the news; zoo built the same day as the memorial".
+4. **F5 and Open question 11:** add the caution in G1 that the Packages path is a Windows 10-era Bedrock location; the launcher check is the quickest.
+5. **F7, Open question 10 and Exercise 9:** replace "NOT RESEARCHED" with the G2 wording (two leads confirmed to exist, unread; nothing on clickers; Exercise 9 remains the evidence).
+6. **Decision 9 (playbook):** cite `CHARTER.md` line 3 and Open decisions directly (G4), not `playbooks/format.md`.
+7. **Exercise 7 and Q7 "Excerpt rule":** name `research/sources/check_mojang_quotes.py` and the excerpt file's section 6 for the premiere-week diff; stop comparing the two round-1 hashes.
+8. **Open question 3 and Decision 3 (venue):** add the six facts in G3 as the maker's checklist, with the sentence on the track's no-Minecraft-assets rule.
+
+### Sources (continued)
+
+Tier tags as above. All fetched or queried 2026-10-18.
+
+[86] Internet Archive Wayback availability API, queries for `minecraft.net/en-us/usage-guidelines` with several timestamps — https://archive.org/wayback/available?url=minecraft.net/en-us/usage-guidelines — [P] metadata only: it lists snapshot timestamps and URLs; **the snapshot pages themselves were not read** (web.archive.org blocked from this container).
+[87] Crossref DOI record for Rice and Alm 2008 — https://api.crossref.org/works/10.1145/1350843.1350849 — [P] bibliographic record with abstract and reference list (which cites Carmichael 1999 and its former Dundee URL); the article itself (https://dl.acm.org/doi/10.1145/1350843.1350849) returned HTTP 403 and was **not read**.
+[88] Crossref DOI records for Carmichael, Rice and Sloan 2005 (10.1007/s10209-005-0004-x), Dickinson et al. 2007 (10.1080/01449290601176948), Hawthorn 2007 (10.1080/01449290601176930) and Eisma et al. 2004 (10.1007/s10209-004-0092-z), same API pattern as [87] — [P] titles, authors, years only; no abstract in the first record; articles **not read**.

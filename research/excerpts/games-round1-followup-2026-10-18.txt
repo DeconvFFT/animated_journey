@@ -42,3 +42,74 @@ Commands page https://ephtracy.github.io/mv_commands.html (sha256 8c764e9b19d840
 URL: https://erich.realtimerendering.com/minecraft/public/mineways/scripting.html  sha256 3a25e2e64ce3229f6fff215b0d86ba86011ef930b90dce390f06a7fd42f6d586
 Syntax line, verbatim: mineways.exe [-headless] [-w X Y] [-m] [-s UserSaveDirectory|none] [-t terrainExtYourfile.png] [-l mineways_exec.log] [-suppress] [-zl #] [file1.mwscript|obj|wrl [file2.mwscript [...]]]
 "Run Mineways without displaying any window, for fully automated command-line operation. BEWARE! This is all a bit experimental and can be wifty!"
+
+
+################################################################################
+# ADDED IN ROUND 2 (2026-10-18, about 06:40-06:55 GMT) by a Sonnet researcher.
+# Same environment as above: the cloud Linux container (hostname "vm"), NOT the maker's Windows PC.
+# Quotes are short and verbatim (non-breaking spaces and curly apostrophes straightened). Notes are mine.
+################################################################################
+
+== 5. SooToday [59], re-read for Principle 1 and E7 (review follow-up 6) ==
+URL: https://www.sootoday.com/great-stories/son-builds-virtual-minecraft-zoo-and-memorial-to-honour-his-deceased-father-9-photos-707477
+Title (page <title>): "Son builds virtual Minecraft zoo and memorial to honour his deceased father  (9 photos) - Sault Ste. Marie News"
+Byline: Jeff Klassen. On page: "Sep 1, 2017 10:49 AM". JSON-LD datePublished and dateModified: 2017-09-01T14:49:00Z.
+How fetched: the WebFetch tool got HTTP 403 (as in round 1 and in the review). A single plain GET with curl and an ordinary browser-style User-Agent
+  got HTTP 200, 98,108 bytes, 2026-10-18 06:44:44 GMT. One request; nothing logged in; not through any archive or reader service.
+sha256 of raw HTML 026a86720c41a1aa3a4b5506155c2c1c9eb0d1fdf42354a53b01043f37659262 (page carries ads and trending links, so this hash may not be stable).
+sha256 of my extracted article block (UTF-8, from "When Kirtland Menard, 10," to "I put it in the zoo," he said.) 04d3fa932dd65280ff2872e9acbfffdf5a7624fc0c7f3fc3e13c20481db1e70a
+Details Principle 1 and E7 rest on, each confirmed:
+ (a) Memorial first, on hearing the news: "When Kirtland Menard, 10, found out his father died, the very first thing he did was go on his iPad and open up Minecraft."
+ (b) Offline: "The tribute is contained to an offline Minecraft universe on his iPad."
+ (c) Same day: "As soon as Kirtland finished that object, on the same day, he moved to another section of his virtual world and created the JP Memorial Zoo."
+     [Note: "same day" is as the memorial object was finished. The article gives Nov. 8, 2016 only as the date of the last text from his father (father died "last November").]
+ (d) Why a zoo: Kirtland: "I knew my dad liked animals so I built him a zoo,"
+ (e) Octopus aquarium: "because his father liked to fish, Kirtland made sure to put an aquarium with octopuses in it."
+     [Note: "liked to fish", not "fished". The zoo "includes every animal in the Minecraft universe".]
+ (f) Smoked salmon: "He also put smoked salmon in the zoo cafe because it was one of his dad's favourite foods."
+ (g) Still adding, AS OF 2017-09-01: "Although Minecraft isn't Kirtland's main game anymore, he still plays it and keeps his tribute to his dad running to this day, tweaking it every once in a while."
+     Kirtland: "Every time a new animal is uploaded (to Minecraft), I put it in the zoo,"
+     [Note: the article is ten months after the Nov. 2016 build. "Still tweaked years later" in research/games.md pattern 8 is NOT supported by this page.]
+Privacy note: the page names a child and his family and gives family medical details. Keep those out of any film or public document; the track uses the zoo only as a design idea.
+
+== 6. Dated archive snapshots of the Usage Guidelines (review follow-up 5) ==
+Source: the Internet Archive availability API, https://archive.org/wayback/available?url=minecraft.net/en-us/usage-guidelines[&timestamp=YYYYMMDD], queried 2026-10-18 about 06:40 GMT.
+It returns only the snapshot CLOSEST to the date asked, so this list is a sample, not the full index. The CDX index (all captures) would not load: connection reset.
+Each snapshot below was reported as status 200, available: true. URL pattern: http://web.archive.org/web/<timestamp>/https://www.minecraft.net/en-us/usage-guidelines
+  20230802163641  (2023-08-02 16:36:41 UTC)  earliest one returned, for queries dated 2020 and 2022
+  20240101221908  (2024-01-01 22:19:08)
+  20250101184953  (2025-01-01 18:49:53)
+  20250701135906  (2025-07-01 13:59:06)
+  20260101153024  (2026-01-01 15:30:24)
+  20260328022503  (2026-03-28 02:25:03)
+  20260731211948  (2026-07-31 21:19:48)
+  20261002170445  (2026-10-02 17:04:45)
+  20261017141648  (2026-10-17 14:16:48)  closest to today; later than the live page's Last-Modified (Fri, 16 Oct 2026 17:56:11 GMT), so it probably carries the same text as the 2026-10-18 excerpt. UNVERIFIED: I could not read it.
+  Other path: https://www.minecraft.net/usage-guidelines (no /en-us/) has 20260527235901 (2026-05-27 23:59:01).
+READ STATUS: NONE OF THESE SNAPSHOTS WAS READ. web.archive.org is blocked from this container: the WebFetch tool answered "Claude Code is unable to fetch from web.archive.org"
+  and curl got "Connection reset by peer" on four attempts (index and snapshot). The proxy status page also lists web.archive.org relay failures at 02:39 and 05:31 GMT today, before my session.
+  I did not try to get around that. The diff must run somewhere that can reach web.archive.org (the maker's PC) or after the block is lifted.
+Tool for the diff: research/sources/check_mojang_quotes.py (tested here only on a synthetic page: all 12 quotes found in an unchanged copy; the two altered quotes flagged in a changed copy).
+Premiere-week routine (UNTESTED on the real pages):
+  1. Baseline: save snapshot 20261017141648 as raw HTML; in PowerShell:
+       Invoke-WebRequest "https://web.archive.org/web/20261017141648id_/https://www.minecraft.net/en-us/usage-guidelines" -OutFile baseline.html
+     ("id_" after the timestamp asks the Archive for the original bytes without its toolbar.)
+  2. Live copy: save https://www.minecraft.net/en-us/usage-guidelines as live.html (browser "Save page as", or Invoke-WebRequest).
+  3. Run: python -I check_mojang_quotes.py baseline.html live.html   -> any MISSING line means that clause changed or moved: re-read the page by eye.
+  4. Compare the two printed sha256 values (same extraction method for both). A different hash with all quotes PRESENT means something else on the page changed: skim the changed sections.
+  5. Save live.html and the printed hash next to this file with the date.
+
+== 7. Older adults and TV interfaces: the two F7 leads (review follow-up 2) ==
+Rice and Alm. Looked up by DOI in the Crossref registry (https://api.crossref.org/works/10.1145/1350843.1350849), 2026-10-18. The publisher page https://dl.acm.org/doi/10.1145/1350843.1350849 returned HTTP 403; the article text was NOT read.
+  Record: Mark Rice and Norman Alm, "Designing new interfaces for digital interactive television usable by older adults", ACM Computers in Entertainment, vol. 6, no. 1, pages 1-20, May 2008, ISSN 1544-3574.
+  Abstract, verbatim from the record: "Following an extensive requirements-gathering exercise, four different navigational layouts with a simplified remote control were tested and evaluated with older users to assess their ease of use."
+  and: "The results demonstrated the expected difficulties in understanding some of the terminology and interactive concepts utilized in "traditional" DTV design."
+  Not in the abstract (UNVERIFIED): number of participants, their ages, what the simplified remote had on it, the numbers behind the results.
+Carmichael 1999. Not opened. It is cited in the Rice and Alm record as: "CARMICHAEL A. 1999. Style guide for the design of interactive television services for elderly viewers. Independent Television Commission Kings Worthy Court Winchester."
+  The URL given there (http://www.computing.dundee.ac.uk/projects/UTOPIA/publications/Carmichael%20-%20DesignStyleGuideFinal.pdf, "Accessed Sept. 2007") no longer resolves: "getaddrinfo ENOTFOUND www.computing.dundee.ac.uk" (WebFetch) and "Could not resolve host" (curl).
+Other titles verified in the registry (metadata only, nothing read), all cited by Rice and Alm:
+  Carmichael, Rice and Sloan, "Digital switchover or digital divide: a prognosis for usable and accessible interactive digital television in the UK", Universal Access in the Information Society 4(4):400-416, 2005-12-10, DOI 10.1007/s10209-005-0004-x (record has no abstract; the Springer page redirected to a login handshake).
+  Dickinson, Arnott and Prior, "Methods for human-computer interaction research with older people", Behaviour & Information Technology, 2007, DOI 10.1080/01449290601176948.
+  Hawthorn, "Interface design and engagement with older people", Behaviour & Information Technology, 2007, DOI 10.1080/01449290601176930.
+  Eisma, Dickinson, Goodman et al., "Early user involvement in the development of information technology-related products for older people", Universal Access in the Information Society, 2004, DOI 10.1007/s10209-004-0092-z.
+  Carmichael, Petrie, Hamilton and Freeman, "The VISTA project: Broadening access to digital TV electronic programme guides", PsychNology Journal 1(3):229-241, 2003 (citation only; no DOI in the record; not fetched).

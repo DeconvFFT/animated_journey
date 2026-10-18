@@ -1,13 +1,13 @@
 ---
 name: animated-biography-patterns
-description: Plans, reviews or cuts the visual devices for animated and documentary-style Life Journey scenes, including honest reconstruction of unphotographed moments, photo-to-parallax shots, portrait ladders and morphs, time-passing devices, era cues and title sequences. Use it whenever a chapter needs invented, drawn or animated imagery, when someone proposes a Flee, Tower, Missing Picture, Up or Kid Stays-style device, or when a scene must pass the disclosure, consent, reveal and delivery checks.
+description: Use when a Life Journey chapter needs drawn, built, animated or photo-animated imagery — reconstruction of an unphotographed moment, Ken Burns or parallax on a real photo, a portrait ladder or morph, a time-passing device, an era cue, a title card — or when such a scene is reviewed at a gate. Produces a scene card and runs the disclosure, proxy, reveal, motion, era and delivery checklists; design only, no code in the LEARN phase.
 ---
 
 # Animated Biography Patterns
 
 ## Purpose
 
-Make every animated or documentary-style scene in the Life Journey pass charter rule 4 (real memories stay real, and reconstructions are visibly reconstructions) and principle 7 (prefer scriptable, plain-file delivery), while still carrying the feeling. This skill turns `research/animated.md` into a repeatable procedure. The human-readable version is `playbooks/animated.md`.
+Make every animated or documentary-style scene in the Life Journey pass charter rule 4 (real memories stay real, and reconstructions are visibly reconstructions) and principle 7 (prefer scriptable tools) and the longevity rules from research Q6 (plain-file, self-contained delivery), while still carrying the feeling. This skill turns `research/animated.md` into a repeatable procedure. The human-readable version is `playbooks/animated.md`.
 
 ## When to use
 
@@ -30,6 +30,25 @@ Make every animated or documentary-style scene in the Life Journey pass charter 
 1. Read `CHARTER.md` and `playbooks/animated.md`. Confirm the phase. In LEARN, use practice material only. Do not open, process or describe family photographs or interview notes. Family material comes in only after the charter's lock.
 2. Check consent and proxy status for the chapter. If the chapter touches loss, illness, separation, money or conflict, and no trusted proxy is named, mark it `HOLD: proxy needed` and stop imagery design for that chapter.
 3. Write a scene card with these fields: chapter; one sentence, "This scene shows [what], so the viewer feels [what] about her life"; source inventory (each photo, letter, recording or object, with its date and place); what is photographed and what is invented; time-passing device; reconstruction material; motion; duration; disclosure text; reveal target; consent status; citations as [n]; fallback; open items. Write `TODO(story):` or `TODO(research):` in any empty field. Do not guess.
+
+Example scene card (practice only: an invented chapter and a public-domain photograph, not her life):
+
+```text
+Chapter: First flat (INVENTED FOR PRACTICE; not a chapter of her life)
+Sentence: This scene shows an ordinary street corner outside a first home, so the viewer feels how a new start can look like any other day.
+Source inventory: one public-domain street photograph (TODO(research): record its source URL, date, place and licence). No letters, recordings or objects. TODO(story): no real facts exist for "First flat"; this card is practice only.
+Photographed or invented: photographed = everything visible in the photograph. Invented = nothing in this practice version.
+Time-passing device: one strong photograph, one long hold, used once in the chapter [37][38].
+Reconstruction material: none, because nothing is invented. If an invented element is added later, use the piece's one material (TODO(story): not yet chosen; see the playbook's Decision 1).
+Motion: still photo, one slow push of 3 to 5 percent of frame width; no parallax unless the photo passes the Exercise 5 spike [28][29].
+Duration: 8 seconds.
+Disclosure text: "Practice piece. The street is a public-domain photograph. The chapter 'First flat' is invented for this exercise."
+Reveal target: none, because the chapter is invented. Any real chapter needs a named real photo, voice or object, or its stand-in stays labelled.
+Consent status: not applicable if no identifiable person is visible. If one is, crop them out, or use not-asked-omit (vocabulary from research follow-up F9, not yet agreed).
+Citations: [1] [28] [29] [37] [38]
+Fallback: if the parallax spike fails, a flat slow push with no depth (TODO(toolchain): name the tool once confirmed). If the photo cannot be licensed, drop it and use no image for this practice scene.
+Open items: TODO(research): licence and source of the street photograph. TODO(story): no real facts for the practice chapter. Never use this card for family material.
+```
 4. If the sentence in step 3 cannot be finished, the scene has no job. Cut it, or return to the story track for a new idea.
 5. Choose the time-passing device from the material you have:
    - An object that recurs across years: an object with a clock [56][57].
@@ -43,7 +62,7 @@ Make every animated or documentary-style scene in the Life Journey pass charter 
 8. Write the reveal. For each reconstructed person or place, name the real photograph, voice or object that replaces it, and where it appears. If none is known, write `TODO(story): no real item known` and keep the stand-in labelled [13][16].
 9. Set the motion. The default is a still with one slow move of about 3 to 5 percent of frame width, held for 8 to 10 seconds or less [28][29]. Alternate still and moving shots. Use parallax only on photographs that passed the spike (playbook, Exercise 5). Never put the same move on every photo [79]. No whip pans, beat-synced zooms or trending transitions.
 10. Set era cues on new material only: title cards, reconstructions and graphics. Use the medium (grain, frame shape, tint, crop) before any colour filter [88][91]. Sample the palette from her own scans of that decade once they exist, and use the decade table only as a sanity check [89]. Do not age material that is already aged. Do not add fake date stamps.
-11. Check the audio. A recorded voice exists or is scheduled. The scene works with voice and room sound alone. Dialogue and effects are dropped where the picture carries the feeling [56][58]. Any song has a recorded licence [65].
+11. Check the audio. A recorded relative's voice exists or is scheduled (the subject's own voice is unavailable in surprise mode; never substitute a synthetic one). The scene works with voice and room sound alone. Dialogue and effects are dropped where the picture carries the feeling [56][58]. Any song has a recorded licence [65].
 12. Score the scene against the charter rubric (meaning, specificity, accuracy, feasibility, ethics, craft), 1 to 5 each. Send the scores and open items to the advisor at the gate. Approve only when every score is 4 or higher and nothing critical is open.
 13. Set delivery. Export H.264 MP4 at 1080p [78]. Any web version is a self-contained folder with no external scripts, fonts, video hosts or analytics [39][46]. Include a static fallback [100]. Archive masters separately with a rebuild README. Test any web version in a current browser before calling it finished [39].
 14. Log every `TODO(research)` item and every unverified claim in the scene card. Never state an unverified fact in the film, the disclosure card or any guide.
@@ -58,7 +77,7 @@ Make every animated or documentary-style scene in the Life Journey pass charter 
 - [ ] Disclosure text written and placed at the start.
 - [ ] One reconstruction material used for every invented element.
 - [ ] Every real event, person and place in the scene has a source in the scene card.
-- [ ] No invented speech. No animated face of a dead person.
+- [ ] No invented speech. No AI animation of any real person's face, and no synthetic voice (team rule, see Ethics guardrails).
 - [ ] Duration fits the chapter budget.
 
 ### Per photo-animation shot
@@ -113,7 +132,7 @@ Any "mediocre" entry in the first two rows is a critical open item at the gate.
 
 - Charter rule 4: no invented events, people or words. Reconstructions are visibly reconstructions.
 - Charter rule 5: a trusted proxy decides for hard chapters. Anything she might not want shown in front of others stays out of the shared version.
-- Never animate a dead person's face, and never invent speech. Until AI face-animation tools are researched (TODO(research)), do not use them on any real person's face.
+- Charter principle 4 forbids invented events, fake people and invented speech. Our team rule, from the charter review, adds: no AI animation of any real person's face and no synthetic voice of any real person, living or dead, until the ai-imagery track has ruled on labelling.
 - AI restoration must not invent facial detail. If a scan is faded or soft, say so on screen [89][93].
 - Never leave a reconstruction unlabelled, even when it looks like archive. Stories We Tell shows how convincing an unlabelled fake can be, and how it divides audiences [66][67].
 - Never select photographs automatically by popularity, recency or detected faces. Select by hand, with the proxy's input [81][82].

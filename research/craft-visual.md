@@ -14,11 +14,11 @@ Track `craft-visual`. Researcher: Sonnet. Date of research: 2026-10-18 (Sunday).
 
 ## Summary
 
-1. **The whole suite is 18 days old.** First commit 2026-09-30 in all three repos. Tags: PhotoCraft 11 (2026-10-01 to 2026-10-14), VectorCraft 14 (10-02 to 10-16), LightCraft 9 (10-02 to 10-14). "Release cadence over eight weeks" is therefore the entire history: a tag every 1 to 2 days, then a pause (PhotoCraft and LightCraft have had no tag for 4 days; `main` is 301, 476 and 576 commits past the newest tags). [43]
-2. **Newest tags today (2026-10-18):** PhotoCraft `v0.9.0` (10-14), VectorCraft `v0.12.0` (10-16), LightCraft `v0.8.0` (10-14). getartcraft.com still shows 0.7.0, 0.9.0 and 0.6.0, and its Windows download lists the CLI only as a macOS zip. If the maker installed from the website, they have those older builds. [43][44]
+1. **The whole suite is 18 days old.** First commit 2026-09-30 in all three repos. Tags: PhotoCraft 11 (2026-10-01 to 2026-10-14), VectorCraft 14 (10-02 to 10-16), LightCraft 9 (10-02 to 10-14). "Release cadence over eight weeks" is therefore the entire history: a tag every 1 to 2 days (at the first pass, `main` was 301, 476 and 576 commits past the newest tags then; see the addendum below for newer tags). [43]
+2. **Newest tags at the first pass (2026-10-18; superseded, see the addendum below):** PhotoCraft `v0.9.0` (10-14), VectorCraft `v0.12.0` (10-16), LightCraft `v0.8.0` (10-14). getartcraft.com still shows 0.7.0, 0.9.0 and 0.6.0, and its Windows download lists the CLI only as a macOS zip. If the maker installed from the website, they have those older builds. [43][44]
 3. **The Windows MSI and the portable zip of all three apps ship the CLI** (`photocraft-cli.exe`, `vectorcraft-cli.exe`, `lightcraft-cli.exe`, console subsystem, statically linked CRT, no VC++ redistributable). Not on PATH. Cited from the WiX files and `package.ps1`. [11][29][41]
 4. **Best agent-to-PhotoCraft layered contract: OpenRaster (.ora).** It is a zip of PNGs plus `stack.xml` that any script can write with the standard library; PhotoCraft reads and writes names, visibility, opacity, blend modes, nested groups, offsets (also off-canvas) and 8/16-bit; and it is the only layered format with a recorded third-party check (Krita 5.2.9, 2026-10-09: 32 of 35 files within 3/255; Krita rendered 33 of 34 PhotoCraft re-exports identically). It cannot carry adjustment layers, layer styles, vector masks, live text or non-sRGB profiles. [T][4]
-5. **PSD is a fallback input and a private save format, not the pipeline's contract.** PhotoCraft's PSD reader is broad (groups, pixel and vector masks, 16 adjustment kinds, type, shapes, smart objects, 8/16/32-bit, ICC) but the vendor's own gap list says "PSDs we write are not always accepted by Photoshop" and no test opens its exports in a third-party editor (FILE-216-4). Against Photoshop-authored oracles PhotoCraft's render matches the file's own merged image for only **145 of about 256** files (56 percent; the vendor docs print both 256 and 258 as the total), 236 of 309 for the psd-tools set (76 percent). The README's "307 of 309" is a different thing: export-then-reimport self-consistency. [T][2][3][13]
+5. **PSD is a fallback input and a private save format, not the pipeline's contract.** PhotoCraft's PSD reader is broad (groups, pixel and vector masks, 16 adjustment kinds, type, shapes, smart objects, 8/16/32-bit, ICC) but the vendor's own gap list says "PSDs we write are not always accepted by Photoshop" and no test opens its exports in a third-party editor (FILE-216-4). Against Photoshop-authored oracles PhotoCraft's render matches the file's own merged image for only **145 of about 256** files (56 percent; the vendor docs print both 256 and 258 as the total), 236 of 309 for the psd-tools set (76 percent). In v0.10.0 the vendor reports 188 of 256 for the Photoshop oracles (73 percent; release notes, vendor figure [V][65]); the PSD conclusion stands. The README's "307 of 309" is a different thing: export-then-reimport self-consistency. [T][2][3][13]
 6. **`photocraft-cli` can assemble and save a layered document headless, no GPU.** `run --new '{...}' --cmd file.placeEmbedded` with `"smartObject":false` places a PNG as a plain pixel layer named after the file; `layer.setProps` sets name, opacity and blend; `layer.newAdjustmentLayer.curves` adds an adjustment layer; `--out x.psd` or `x.ora` saves by extension. The engine, io and compositor crates have no wgpu dependency. [C][9][10]
 7. **VectorCraft keeps ids, nested named groups and `data-*` attributes through an import/re-export, and loses `class`, `<style>` text, most filters, SMIL/CSS animation and transform attributes.** Ids become object names and are rewritten from names (hyphens, underscores, dots and letters survive; other characters become `_`; duplicates get `-2`). `data-*` (up to 64 per element, on g/a/use/path/rect/circle/ellipse/line/polyline/polygon/image only) is tested by an "animation rig" test, first shipped in v0.8.0. Classes are not kept: export can only generate `cls-1, cls-2...`. The export always rewrites `viewBox` to `0 0 W H`. [T][19][20][21][22]
 8. **For GSAP/CSS animation the contract is: animate by `id` and `[data-*]`, add classes and `<style>` after the touch-up, and put pivots in `data-pivot` (transforms are baked).** Run `check_ids.py` (fixture provided) after every VectorCraft save.
@@ -26,9 +26,18 @@ Track `craft-visual`. Researcher: Sonnet. Date of research: 2026-10-18 (Sunday).
 10. **LightCraft preset path is agent-friendly and scriptable:** `.lcpreset` is JSON (`{"format":"lightcraft.preset","version":1,"presets":[{id,name,group,settings}]}`); `lightcraft-cli run --script steps.jsonl` or `render in.tif -o out.jpg --preset ID --settings look.json --set light.exposure=0.3`; export naming templates `{name}`, `{seq:N}`, `{date:%Y-%m-%d}`. XMP `crs:` is read (approximate), never written; exact round trip is `lc:settings` JSON. [T][C][33][34][42]
 11. **Recommended ~300 scans path:** LightCraft on the maker's PC (CLI script + `.lcpreset` + per-print white-balance pick in the GUI), gated on a 10-print pilot against darktable. Run the batch with `LIGHTCRAFT_GPU=0` to avoid DX12 driver risk. The scans should be processed locally: **scripts travel to the PC, scans never go to the cloud container** (Charter: personal material stays private).
 12. **Stability is uneven and mostly unproven on Windows.** PhotoCraft has Windows CI (windows-latest) and the most safety plumbing (atomic saves, 10-minute autosave on by default, GPU start marker with Vulkan to DX12 to CPU fallback, `--safe-gpu`). VectorCraft and LightCraft have no workflow in the tree that runs the full test suite (VectorCraft: only an Affinity-corpus job on Ubuntu and a printing test job on windows-2022; LightCraft: none; the agents run `cargo xtask ci` locally), and their own docs say "Windows/Linux/browser QA" (VectorCraft) and "Windows installer UI unverified... DX12 unverified" (LightCraft gaps #27) are missing. [13][14][17][27][30][37]
-13. **Data-loss guards landed late.** ORA "never overwrite an .ora with less than the document has" is first in `v0.9.0`; "Save: ask before overwriting a file another app changed" and "refuse to replace a read-only file" are only on `main` after `v0.9.0`. The website's 0.7.0 build has ORA but not the guard. [43]
+13. **Data-loss guards landed late.** ORA "never overwrite an .ora with less than the document has" is first in `v0.9.0`; "Save: ask before overwriting a file another app changed" and "refuse to replace a read-only file" are only on `main` after `v0.9.0` (in v0.10.0, see addendum). The website's 0.7.0 build has ORA but not the guard. [43]
 14. **Privacy: no telemetry code path found in any of the three.** PhotoCraft links no HTTP client at runtime (reqwest appears in `Cargo.lock` only as a build-dependency of a Windows printing crate). VectorCraft has no HTTP client at all. LightCraft has its own rustls downloader used for opt-in model and place-name downloads. Control channels: PhotoCraft uses a bearer token; **VectorCraft and LightCraft have no authentication** on their loopback port. No source references `app.getartcraft.com`. [16][26][34][39]
 15. **Web builds are real but are not the right learning route.** All three ship static wasm sites (PhotoCraft 23 MiB, VectorCraft 13 MB, LightCraft 13.5 MB raw); none needs COOP/COEP; PhotoCraft has `?cpu` and `?webgl`; VectorCraft's README documents `?cpu` but its code reads only `?webgl`; LightCraft is WebGL2 only and exposes `globalThis.lightcraft.command()`. The CLI/MCP route is strictly better for agents; use the web build only for UI screenshots. [12][29][38]
+
+**Addendum, 2026-10-18 (later the same day; supersedes the tag values in items 1 and 2, the section 1 table and the pin rule).** `git ls-remote --tags` and the tag commits show newer releases than the first pass recorded (round-1 review, `reviews/craft-visual-round1.md`, row 14): PhotoCraft `v0.10.0` (2026-10-17, commit `8407d9c`), VectorCraft `v0.13.1` (2026-10-18, commit `904f0fe`; there is no `v0.13.0` tag), LightCraft `v0.9.1` (2026-10-17, commit `4f0b110`). [79] The earlier statement that PhotoCraft and LightCraft had no tag for 4 days is withdrawn. What changes for the pipeline:
+- **Autosaves out of the roaming profile (#5648):** in v0.10.0. `docs/control-protocol.md` line 249 at v0.10.0 gives the Windows recovery location as `%LOCALAPPDATA%\Photocraft\Recovery`. The first pass listed this as "only on `main`".
+- **LightCraft GPU loss (#1337):** in v0.9.1, `docs/gpu-pipeline.md` line 108 documents the Windows device-lost case.
+- **SVG id contract:** `sanitize_id`, the `viewBox="0 0 W H"` rewrite, `OBJECT_ELEMENTS` and `MAX_DATA` (64) are unchanged at v0.13.1 (see R3b). CSS classes are still lost (#2414).
+- **ORA:** `docs/ora.md` changed by 12 lines and `crates/io/src/ora.rs` by 37 lines between v0.9.0 and v0.10.0 (see R3a for the group-isolation change). Re-read both before relying on ORA groups.
+- **Save guards:** the PhotoCraft v0.10.0 release notes list "ask before overwriting a file another app changed" (#6652) and "refuse to replace a read-only file" (#6643), which the first pass listed as "only on `main`" ([65], vendor claim [V]).
+- **Provisional pins, pending the acceptance test and the 2026-10-25 re-check:** PhotoCraft `v0.10.0`, VectorCraft `v0.13.1`, LightCraft `v0.9.1` (R3d). The first-pass pins below are history.
+- **Launcher:** the instruction to "switch the Launcher's updater off" is withdrawn. The Launcher README documents no setting, flag or file that disables updates (round-1 review, row 15; [81]). The pin rule below is amended to match.
 
 ---
 
@@ -44,6 +53,8 @@ Track `craft-visual`. Researcher: Sonnet. Date of research: 2026-10-18 (Sunday).
 | VectorCraft | `v0.12.0` | 2026-10-16 | 14 | 0.1.0 (10-02), 0.1.1 (10-03), 0.2.0 (10-05), 0.3.0 and 0.3.1 (10-06), 0.4.0 (10-07), 0.5.0 and 0.6.0 (10-08), 0.7.0 (10-09), 0.8.0 and 0.9.0 (10-10), 0.10.0 (10-12), 0.11.0 (10-14), 0.12.0 (10-16) | 0.9.0, "In development" [44] | 476 |
 | LightCraft | `v0.8.0` | 2026-10-14 | 9 | 0.1.0 (10-02), 0.1.1 (10-03), 0.2.0 (10-05), 0.2.1 (10-06), 0.4.0 (10-08), 0.5.0 (10-09), 0.6.0 (10-10), 0.7.1 (10-12), 0.8.0 (10-14) | 0.6.0, "In development" [44] | 576 |
 
+**Addendum, 2026-10-18 (later the same day).** The table above is the first-pass snapshot. Its "Newest tag" and "Commits on `main` after tag" columns are superseded: newest tags are PhotoCraft `v0.10.0` (2026-10-17), VectorCraft `v0.13.1` (2026-10-18) and LightCraft `v0.9.1` (2026-10-17). [79] See the addendum after the summary.
+
 - Some minor versions never appear as tags on the remote (PhotoCraft 0.4.0, 0.8.0, 0.8.1; LightCraft 0.3.0, 0.7.0). Whether they exist as releases is **[U]** (release pages were 403).
 - Commit rate is extreme (hundreds per day; PhotoCraft 2,498 commits, VectorCraft 3,889, LightCraft 2,913 in 18 days). The vendor says so itself: PhotoCraft's `docs/target-app-parity.md` records "about 1,230 issues filed since the first release (579 open on 2026-10-10)". [13]
 - No `CHANGELOG.md` exists in any of the three trees. LightCraft keeps a user-facing `docs/whats-new.md` (entries 2026-10-02 to 10-14). For cadence I used tags and commit subjects. [40][43]
@@ -58,7 +69,7 @@ Track `craft-visual`. Researcher: Sonnet. Date of research: 2026-10-18 (Sunday).
 - **GPU backends:** wgpu on DX12 first. PhotoCraft: Windows order Vulkan, DX12, CPU (WARP) with a start marker `gpu-starting.json`, `--safe-gpu`, `WGPU_BACKEND=dx12`; "With auto, Intel adapters on Windows use DX12". VectorCraft: DX12 then OpenGL, **no Vulkan unless `WGPU_BACKEND=vulkan` asks for it** (Intel `igvk64.dll` crash, #806); adapter that crashed at start is skipped next start (`graphics-start.json`). LightCraft: DX12, Vulkan, GL, then glow; `LIGHTCRAFT_GPU_BACKEND=dx12|vulkan|gl|glow|off` or `LIGHTCRAFT_GPU=0`. [14][27][37]
 - **The "documented AMD driver crash with a `WGPU_BACKEND` workaround" is FilmCraft's, not these three.** Searching all three repos' docs for AMD/Radeon found only performance rows. Documented vendor-specific problems in our three: Intel (VectorCraft #806 Vulkan, #2243 UHD 605 DX12; PhotoCraft "black line on Intel HD #2426", "Rgba32Float panic #2020") and NVIDIA "Shader Cache Size = Disabled" hangs the window for minutes (LightCraft #374; the doc says PhotoCraft hangs the same way). `WGPU_BACKEND` is documented in all three. [27][37][13]
 
-**Pin recommendation (single tag per app).** Provisional pins as of today are `v0.9.0`, `v0.12.0` and `v0.8.0`, but **do not freeze today**: each `main` is 300 to 600 commits ahead and the post-tag commits include exactly the save-safety and Windows fixes we care about (PhotoCraft: ask before overwriting a file another app changed #6596; refuse to replace a read-only file #6600; keep crash-recovery autosaves out of the roaming profile #5648 on Windows; VectorCraft: Save/Export ask before replacing a file, Windows file-name rules; LightCraft: turn GPU rendering off after GPU loss #1337). **Rule: pin the newest tag that exists on the day the maker passes the five-minute test below, no later than 2026-10-25, record it plus the `SHA256SUMS.txt` hash of the installer in the repo, install the portable zip, switch the Launcher's updater off, and change it only at a deliberate gate.** If no newer tag appears, pin the three tags above and add the save rules in Risks. [43]
+**Pin recommendation (single tag per app; amended 2026-10-18, see the addendum above).** First-pass provisional pins were `v0.9.0`, `v0.12.0` and `v0.8.0`; these are superseded by `v0.10.0`, `v0.13.1` and `v0.9.1`. Do not freeze before the acceptance test: each `main` is 300 to 600 commits ahead of the first-pass tags and the post-tag commits include the save-safety and Windows fixes we care about (PhotoCraft: ask before overwriting a file another app changed #6596; refuse to replace a read-only file #6600; keep crash-recovery autosaves out of the roaming profile #5648 on Windows, **now in v0.10.0** (`docs/control-protocol.md` line 249: `%LOCALAPPDATA%\Photocraft\Recovery`); VectorCraft: Save/Export ask before replacing a file, Windows file-name rules; LightCraft: turn GPU rendering off after GPU loss #1337, **documented in v0.9.1** (`docs/gpu-pipeline.md` line 108)). **Rule: pin the newest tag that exists on the day the maker passes the five-minute test below, no later than 2026-10-25, record it plus the SHA-256 hash of the portable zip, and check that hash against the `SHA256SUMS.txt` in the same GitHub release. Install the portable zip. Do not install or run the Launcher in production: its README documents no off switch for updates, so the pinned build is kept by not using the Launcher, not by switching it off. Change the pin only at a deliberate gate.** If no newer tag appears, pin the three addendum tags and add the save rules in Risks. [43]
 
 ### 2. PhotoCraft layered import, feature by feature
 
@@ -72,8 +83,8 @@ Track `craft-visual`. Researcher: Sonnet. Date of research: 2026-10-18 (Sunday).
 | Opacity | P | P | P | P | [T] ora tests; `automation/tests/openraster.rs` |
 | Fill opacity | P (`iOpa`) | P | n/a | D: folded into pixels | [T] ora tests; [C] docs/ora.md |
 | Blend modes | P: 27 modes plus pass-through; unknown keys kept raw | P | P: `svg:*`, `svg:plus`, `krita:*`; Krita Soft Light and Hard Mix open as Photoshop's with a warning | D: `svg:*` where the spec has it else `krita:*`; Xor and Paint.NET Color Burn/Dodge variants saved as Normal | [T] ora tests "every blend mode at 8 and 16 bit"; Krita corpus 32/35 |
-| Visibility, locks | P | P | P (`edit-locked`, `alpha-preserve`) | P | [T] |
-| Nested groups | P (`lsct`, open/closed, max depth 100) | P | P, pass-through when no blend and not `isolation="isolate"` | P | [T] psd layer-tree tests; ora tests |
+| Visibility, locks | P | P | P (`edit-locked`, `alpha-preserve`); locks do not round-trip exactly (#7018, R3a) | P | [T] |
+| Nested groups | P (`lsct`, open/closed, max depth 100) | P | P, pass-through when no blend and not `isolation="isolate"`; from v0.10.0, files declaring version 0.0.6 or newer follow the explicit `isolation` attribute, so write it on every group (R3a) | P | [T] psd layer-tree tests; ora tests |
 | Pixel (raster) masks | P (20/36-byte forms, real mask) | P | not an ORA concept | D: mask applied to the layer's pixels | [T] psd crate tests; [C] docs/ora.md |
 | Vector masks and shape layers | P for PhotoCraft-readable (`vmsk`, `vsms`, `vscg`); agent libraries cannot author them easily | P | L | L: rasterised, vector masks left out | [C]; [V] "116 of 116 shape layers match Photoshop's pixels" (README, corpus in a separate repo) |
 | Adjustment layers | P for 16 kinds (levl, curv, hue2, brit, nvrt, thrs, post, expA, vibA, blnc, mixr, grdm, phfl, selc, blwh, clrL); other blocks kept as `Unsupported` raw | P | L | L; **and PhotoCraft refuses to overwrite the .ora with less than the document has** (from v0.9.0) | [T] `adjust_map.rs` + `adjust_blend_roundtrip.rs`; `openraster.rs` test |
@@ -101,8 +112,8 @@ Track `craft-visual`. Researcher: Sonnet. Date of research: 2026-10-18 (Sunday).
 
 | Library | Version, date | Writes layered PSD? | Limits | Source |
 |---|---|---|---|---|
-| ag-psd (JS/TS, MIT) | 31.0.3, 2026-10-07 | Yes: `writePsd`/`writePsdBuffer` from a `children` tree with names, nested groups, opacity, blend mode, masks, text | RGB only; **no 16-bit**; no PSB; text layers carry no redrawn bitmap (Photoshop prompts); does not regenerate composite or layer bitmaps; works in Node without a browser (canvas only needed for image data and thumbnails) | [45][46] |
-| psd-tools (Python) | 1.25.0, 2026-10-14 | Yes, "limited": `PSDImage.new(mode, size, depth)`, `create_group`, `create_pixel_layer(pil_image, name, opacity=255)`, `save()`; 16/32-bit via `create_pixel_layer_from_array` | Creating layers from PIL is "experimental"; blend mode not documented on the usage page; type, shape and smart-object editing "not supported"; rendered output "likely different from Photoshop's" | [47][48] |
+| ag-psd (JS/TS, MIT) | 31.0.3, 2026-10-07 (npm registry operational timestamp 1791400618745 = 2026-10-07 19:16:58 UTC) | Yes: `writePsd`/`writePsdBuffer` from a `children` tree with names, nested groups, opacity, blend mode, masks, text | RGB only; **no 16-bit**; no PSB; text layers carry no redrawn bitmap (Photoshop prompts); does not regenerate composite or layer bitmaps; works in Node without a browser (canvas only needed for image data and thumbnails) | [45][46] |
+| psd-tools (Python, MIT: PyPI `license_expression` is `MIT`, fetched 2026-10-18) | 1.25.0, 2026-10-14 | Yes, "limited": `PSDImage.new(mode, size, depth)`, `create_group`, `create_pixel_layer(pil_image, name, opacity=255)`, `save()`; 16/32-bit via `create_pixel_layer_from_array` | Creating layers from PIL is "experimental"; blend mode not documented on the usage page; type, shape and smart-object editing "not supported"; rendered output "likely different from Photoshop's" | [47][48] |
 | pytoshop (Python) | 1.2.1, 2018-11-30 | Writes PSD from scratch (per its summary) | Unmaintained since 2018: do not use | [49] |
 | ImageMagick | n/a | PSD is "RW" on its formats page | ORA is **read-only**; XCF read-only; I did not verify multi-layer PSD output behaviour (**[U]**) | [50] |
 | Krita | n/a | `krita file.ora --export --export-filename out.png` converts; ORA is its native layered interchange | The manual page does not describe a no-GUI mode or batch flag | [52] |
@@ -153,6 +164,8 @@ Yes, **[C]** for the exact sequence, **[T]** for its parts (`crates/automation/t
 | `<pattern>`, `<image>`, `<a href>` | Pattern swatch; raster images stay linked or embedded (external SVGs become art without text); `<a href>` becomes an object URL | Back out | Yes | [C] lib.rs |
 | Editing round trip | `preserveEditing` (SVG option, default **false**) embeds the whole native document in `<metadata>` (namespace `urn:vectorcraft:editing`) | `.ai` always embeds; SVG only when asked | Leave it **off** for pipeline SVGs (it bloats the file and carries a second copy of the art) | [C] svg.rs options |
 
+**v0.13.1 additions (R3b; [59][71]).** Event attributes (`onclick`, `onmouseover` and similar) are read on g, a, use, path, rect, circle, ellipse, line, polyline, polygon, image and text, kept as text, never run, and written back. A linked `<script xlink:href="x.js"/>` is kept; inline `<script>` text is dropped with a warning. `class` and `<style>` are still lost (#2414; fix PR #2480 not merged).
+
 **What this means for the animator:** ids and `data-*` are the stable hooks; classes, `<style>`, gradient ids, transforms and any animation are not. "Property-tested file round trips" (README) means own-export-then-own-import with a perceptual render comparison on documents VectorCraft generates (`prop_svg.rs`, `prop_format.rs`); the vendor itself writes "There is no real-world Illustrator corpus" and "no field record and no real-world file corpus yet" (`docs/file-format-parity.md`, `docs/target-app-parity.md`). The 88 percent figure is "menu items, tools, effects and formats **exist**" (353 of 375 menu items wired, 94.1 percent), not behaviour. [T][V][30]
 
 **The `.vectorcraft` JSON format.** Documented only in the module comment of `crates/format/src/lib.rs`: UTF-8 JSON (optionally gzip), `{format:"vectorcraft", version:4, generator, preview, profiles, pdf, document:{...}, images}`; v4 may put large blobs after the JSON behind a `\n\0VCBLOBS\0` marker; unknown keys are kept (`Document::extra`); newer-version files are rejected. The `document` object is a verbose serde dump of the internal model (the 134 KB `examples/dusk-poster.vectorcraft` for a one-poster scene). **An agent could write it, but should not**: no field-level schema exists beyond the examples and Rust types, and every node carries ids and appearance structure that SVG import generates for free. Generate SVG (or call the command API), let VectorCraft make the `.vectorcraft`. Use `vectorcraft-cli convert in.svg out.vectorcraft` if a native file is wanted. [23]
@@ -174,7 +187,7 @@ Yes, **[C]** for the exact sequence, **[T]** for its parts (`crates/automation/t
 - **Crash-safe op-log library, and external or shared drives:** `catalog.snap` (atomic temp+fsync+rename) plus `catalog.log` (JSON lines `{"seq","crc","op"}`, **fsynced before append returns**); a torn final record is dropped and the file cut back; a failed append (disk full, "a dropped network share") is cut back to the last whole record before the retry; a bad record **followed by good ones** is real damage: replay stops, the log is kept as `catalog.log.damaged-<seq>`, and a fresh snapshot is written. One process per library by `LockFileEx`/`flock` on `catalog.lock`; the lock is released by the OS on a crash. **File systems without lock support (some network shares): the library opens unlocked with a warning**, and SMB/NFS locks are advisory: "two computers on a shared folder" can silently drop each other's edits. Recommendation: keep the library on a **local NTFS** disk, keep the **scans** wherever they live (the library only references them with `add`), back up the library folder. [T] `tests_journal.rs`, `tests_torn_append.rs`, `tests_lock.rs`, `tests_repair.rs`. [36]
 - **Comparison for ~300 faded prints on a modest Windows PC:**
 
-| | LightCraft 0.8.0 | darktable (`darktable-cli`) | RawTherapee (`rawtherapee-cli`) | ImageMagick (`magick`/`mogrify`) |
+| | LightCraft 0.9.1 (cells written for 0.8.0; changes in R3c) | darktable (`darktable-cli`) | RawTherapee (`rawtherapee-cli`) | ImageMagick (`magick`/`mogrify`) |
 |---|---|---|---|---|
 | Non-raw TIFF/JPEG input | Yes, same pipeline | Yes: JPEG, 8/16-bit PNG and TIFF, float TIFF, EXR [54]; which modules apply to non-raw is not stated on that page | Man page says it processes non-raw photos; no explicit CLI example seen [55] | Yes |
 | Agent-authorable look | `.lcpreset` JSON, `--settings` JSON, `--set control=value` | XMP sidecar with `--style`, needs a config dir and `data.db` for styles [53] | `.pp3` profile(s), several `-p` allowed, applied in order, partial profiles fine [55] | Operators only: `-auto-level`, `-auto-gamma`, `-contrast-stretch` (per-channel with `-channel`), `-color-matrix`, `-clut` [51] |
@@ -183,12 +196,16 @@ Yes, **[C]** for the exact sequence, **[T]** for its parts (`crates/automation/t
 | Windows maturity | **Unverified** (gaps #27: Windows installer UI and DX12 unverified; GPU proven on Apple and one AMD GPU on Linux) | Mature | Mature | Mature |
 | Weight on a modest PC | Pure Rust, memory budget default min(25 percent of RAM, 1.5 GiB), `LIGHTCRAFT_MEMORY_MB` overrides; M4 Pro measurement 0.83-0.99 GB peak RSS (14 raws) | Heavier install and database | Moderate | Light |
 
+`render --settings` with a `.lcpreset` file works only from `v0.9.1` (#1730, R3c). In `v0.8.0` it applied nothing and gave no error, so do not pin `v0.8.0`. [60]
+
   **Recommended single path:** LightCraft, run on the maker's PC by a script Claude writes, as: create library; import prints with `mode: add`; apply one `.lcpreset` per batch of similarly faded prints (cluster by film stock/year); per print, `develop.wbPick` on a neutral patch (the unprinted paper border works if the scanner crop leaves it) or a manual pick in the GUI; export 16-bit TIFF masters (`format: tif, bitDepth: 16, colorSpace: srgb`) and JPEGs with `naming: "{date:%Y}-{seq:3}"`. **Gate:** a 10-print pilot processed the same way in darktable; choose by eye and by the measured mean RGB of the paper border. Fallbacks: darktable (XMP/style) then an ImageMagick `-channel RGB -auto-level` pre-pass. Run with `LIGHTCRAFT_GPU=0` for deterministic, driver-independent output (the CPU and GPU paths agree within 1/255, but DX12 is unverified on Windows). [37]
+
+**Scan strip limit (round 2; R4 and R12).** LightCraft refuses a TIFF whose single strip or tile exceeds 128 MiB of compressed bytes (`StripByteCounts`). A 16-bit 8x10 inch scan at 600 ppi (172.8 MB) fails as one strip. Check the largest scan's strip layout before the first album is borrowed.
 
 ### 7. Stability and performance
 
 **PhotoCraft** (most plumbing, most evidence):
-- Autosave: **yes**. `autosave: true`, `autosave_minutes: 10`, `recover_on_launch: true` by default; `crates/format/src/autosave.rs` writes snapshots to a Recovery folder (`%APPDATA%\Photocraft\Recovery`, or `PhotoCraftData\` beside the exe in portable mode) on a background thread; an entry is deleted only when the document is saved or closed. Windows autosaves used to go to the roaming profile (fixed on `main` after the tag, #5648). **No autosave or crash recovery in the web build** ("save/download before closing or reloading"). [C][11][12][15]
+- Autosave: **yes**. `autosave: true`, `autosave_minutes: 10`, `recover_on_launch: true` by default; `crates/format/src/autosave.rs` writes snapshots to a Recovery folder (`%APPDATA%\Photocraft\Recovery`, or `PhotoCraftData\` beside the exe in portable mode) on a background thread; an entry is deleted only when the document is saved or closed. Windows autosaves used to go to the roaming profile (fixed in v0.10.0, #5648; `docs/control-protocol.md` line 249). **No autosave or crash recovery in the web build** ("save/download before closing or reloading"). [C][11][12][15]
 - Atomic saves: `atomic_write` (same-directory temp, `sync_all`, rename; seven Windows `PermissionDenied` retries from 10 ms; original untouched on any failure; failure-injection tests, BUG-203-x) [T]. Panic net: command dispatch and import/export catch panics and keep the document unchanged [T]. "Never-crash" lints on 28 of 28 crate roots plus a `panic_hunt` test that runs every command with adversarial parameters [T]. [13]
 - GPU: start marker, device-loss to CPU compositor, `--safe-gpu`. Known: NVIDIA Shader Cache Size Disabled hang; "Intel HD black line"; PSB larger than 4 GB fails on Windows (#375). [14][13]
 - **Memory:** default "Memory Usage" budget in preferences is **8192 MB** for document plus History, then scratch-disk spill (`ScratchDisks` default: system temp). Vendor baseline (macOS, Apple M4 Pro 48 GB, 2026-10-05): opening a 20 MP layered PSD 1.75 s, **2.2 GB peak RSS and 1.9 GB GPU**; pasting a 12 MP layer 1.3 GB. Nearly every interactive scenario is "over budget (target not met yet)". On an 8 GB PC lower the Memory Usage preference and keep working canvases around 8.6 MP (3600x2400) rather than 20 MP. **[U]** no Windows or low-RAM measurement exists. [13][15]
@@ -236,7 +253,7 @@ Method: searched each tree for HTTP client crates (`Cargo.lock` + `Cargo.toml`),
 | Links to the hosted ArtCraft studio (`app.getartcraft.com`) | None in source; Help menu opens `getartcraft.com/apps/photocraft`, Discord and GitHub in the browser | Same pattern | Same; plus a map link `openstreetmap.org/?mlat=..` opened in the browser from a photo's GPS |
 | Verdict on "no telemetry" | **Confirmed from code (negative search)** | **Confirmed from code (negative search)** | **Confirmed for telemetry**; outbound traffic exists only for opt-in downloads and optional remote denoise |
 
-Caveats: "confirmed" means I found no code path, from static search; dependencies (git deps `craft-libs`, `winprint.rs`) were read for the print stack only; I did not run network captures. The Launcher (`storytold/craft-launcher`) polls GitHub releases and is out of this track's scope but must be off in production. [39][16]
+Caveats: "confirmed" means I found no code path, from static search; dependencies (git deps `craft-libs`, `winprint.rs`) were read for the print stack only; I did not run network captures. The Launcher (`storytold/craft-launcher`) polls GitHub releases and is out of this track's scope; it is not to be installed or run in production, because its README documents no off switch (round-1 review, row 15; [81]). [39][16]
 
 ---
 
@@ -289,13 +306,13 @@ All paths below assume a project folder `C:\lj\` on the maker's PC. **Rule: real
 
 ### Five-minute acceptance tests (the maker, on their PC)
 
-Record `--version` of each CLI first. Fixtures are in `research/craft-visual-fixtures/` (copy to `C:\lj\at\`). Any step that fails is a finding; do not fix by hand.
+Record `--version` of each CLI first. Step 0: run the PowerShell block in R2 and record its output. Fixtures are in `research/craft-visual-fixtures/` (copy to `C:\lj\at\`). Any step that fails is a finding; do not fix by hand.
 
 **PhotoCraft (about 5 min).** 1) `& "C:\Program Files\PhotoCraft\photocraft-cli.exe" --version`; right-click `photocraft.exe` > Properties > Digital Signatures (record signed/unsigned). 2) File > Open `at-layers.ora`: expect two layers, "Photo" (bottom) and "Title tint" (top, 60 percent, Multiply, offset 24,24) and no warning. 3) Set Title tint to 40 percent, add Layer > New Adjustment Layer > Curves, press Save. **Pass:** PhotoCraft refuses to overwrite the .ora and offers a PSD naming adjustment layers. **Fail (silent overwrite): the build predates the #3806 guard (< v0.9.0); upgrade before any ORA work.** 4) Save As `at-layers-edited.psd`, close, reopen: layers and Curves present. 5) File > Export (Quick Export) PNG; then in PowerShell `photocraft-cli info C:\lj\at\at-layers-edited.psd --compact` prints the layer tree and `photocraft-cli convert C:\lj\at\at-layers-edited.psd C:\lj\at\out.png` produces a PNG with no GPU activity.
 
 **VectorCraft (about 5 min).** 1) `vectorcraft-cli --version`. 2) `vectorcraft-cli convert C:\lj\at\at-rig.svg C:\lj\at\at-rig.rt.svg`; read `importWarnings`: expect the `feColorMatrix` filter named as ignored; then `python check_ids.py at-rig.svg at-rig.rt.svg` (or open both in a text editor): **Pass:** no lost ids, `data-pivot` and `data-z` unchanged; `viewBox` changed from `100 50 400 300` to `0 0 400 300` (expected); classes `glow` gone or `cls-N` (expected). 3) Open `at-rig.svg` in VectorCraft, drag the sun a little, Save As SVG with the settings above to `at-rig.touchup.svg`; run the checker again (**Pass:** exit 0). 4) `vectorcraft-cli run --in C:\lj\at\at-rig.svg --export C:\lj\at\at-rig.png --export C:\lj\at\at-rig.pdf --scale 2`: both files open.
 
-**LightCraft (about 5 min).** 1) `lightcraft-cli --version`; `set LIGHTCRAFT_GPU=0`. 2) Put any JPEG you own (not a family photo) at `C:\lj\at\print.jpg`. `lightcraft-cli render C:\lj\at\print.jpg -o C:\lj\at\print.out.jpg --set light.exposure=0.3 --set color.vibrance=25 --size 2048 --quality 92`. **Pass:** the file is written, brighter, 2048 px long edge. 3) Put two or three of your own non-family JPEGs in `C:\lj\at\prints\`, then `lightcraft-cli run --library C:\lj\at\lib --script C:\lj\at\at-lightcraft-steps.jsonl` (the JSON-lines file avoids Windows quoting; it imports with `mode: add`, imports the preset, applies `lj-faded-print-a`, exports `out\<name>-01.jpg`...). Read the JSON result lines: each must have `"ok": true`; an `id` clash on the preset import would make the apply step fail, which is a finding. 4) Start `lightcraft.exe` on the same library folder (File > Open Recent Library or the folder argument) while a CLI run is **not** active; edit one photo's white balance; quit; run the export again and check that the picture changed (catalog edits reached the CLI). **Pass:** all four. Then try the CLI while the app holds the library: **expected:** a clear "library in use" error, not corruption.
+**LightCraft (about 5 min).** 1) `lightcraft-cli --version`; `set LIGHTCRAFT_GPU=0`. 2) Put any JPEG you own (not a family photo) at `C:\lj\at\print.jpg`. `lightcraft-cli render C:\lj\at\print.jpg -o C:\lj\at\print.out.jpg --set light.exposure=0.3 --set color.vibrance=25 --size 2048 --quality 92`. **Pass:** the file is written, brighter, 2048 px long edge. 3) Put two or three of your own non-family JPEGs in `C:\lj\at\prints\`, then `lightcraft-cli run --library C:\lj\at\lib --script C:\lj\at\at-lightcraft-steps.jsonl` (the JSON-lines file avoids Windows quoting; it imports with `mode: add`, imports the preset, applies `lj-faded-print-a`, exports a JPEG and a 16-bit TIFF per print; once the scanner is set up, include the largest planned scan and read its strip layout first (R12)). Read the JSON result lines: each must have `"ok": true`; an `id` clash on the preset import would make the apply step fail, which is a finding. 4) Start `lightcraft.exe` on the same library folder (File > Open Recent Library or the folder argument) while a CLI run is **not** active; edit one photo's white balance; quit; run the export again and check that the picture changed (catalog edits reached the CLI). **Pass:** all four. Then try the CLI while the app holds the library: **expected:** a clear "library in use" error, not corruption.
 
 ---
 
@@ -305,16 +322,16 @@ Cost and platform as of 2026-10-18: all three apps are free, open source (MIT or
 
 | Tool / format | Version | Maturity | Scriptability | Notes |
 |---|---|---|---|---|
-| PhotoCraft | v0.9.0 (website 0.7.0) | "Early alpha"; ready-for-real-work ~45 percent (vendor) | CLI `convert info run batch droplet commands mcp serve`; loopback JSON-lines control with bearer token; MCP | PSD/PSB/ORA/.pcraft/layered TIFF/Kra read; SVG read as shape layers (no SVG export) |
-| VectorCraft | v0.12.0 (website 0.9.0) | Alpha; ~65 percent ready (vendor) | CLI `mcp run commands convert info bench perf`; control port without auth; MCP; no scripting language | SVG/PDF/.ai/EPS in and out; PSD out (merged image only on read) |
-| LightCraft | v0.8.0 (website 0.6.0) | Alpha; ~61 percent of Lightroom (vendor) | CLI `run mcp render snapshot merge denoise-serve commands controls calibrate`; control port without auth | RAW + JPEG/TIFF/PNG/WebP/PSD composite/JXL/HEIC in; JPEG/PNG/TIFF/WebP/AVIF/JXL/DNG/PSD out |
+| PhotoCraft | v0.10.0 (first pass v0.9.0; website 0.7.0) | "Early alpha"; ready-for-real-work ~45 percent (vendor) | CLI `convert info run batch droplet commands mcp serve`; loopback JSON-lines control with bearer token; MCP | PSD/PSB/ORA/.pcraft/layered TIFF/Kra read; SVG read as shape layers (no SVG export) |
+| VectorCraft | v0.13.1 (first pass v0.12.0; website 0.9.0) | Alpha; ~65 percent ready (vendor) | CLI `mcp run commands convert info bench perf`; control port without auth; MCP; no scripting language | SVG/PDF/.ai/EPS in and out; PSD out (merged image only on read) |
+| LightCraft | v0.9.1 (first pass v0.8.0; website 0.6.0) | Alpha; ~61 percent of Lightroom (vendor) | CLI `run mcp render snapshot merge denoise-serve commands controls calibrate`; control port without auth | RAW + JPEG/TIFF/PNG/WebP/PSD composite/JXL/HEIC in; JPEG/PNG/TIFF/WebP/AVIF/JXL/DNG/PSD out |
 | OpenRaster `.ora` | spec 0.0.x | Stable, simple | zip + XML + PNG, stdlib-writable | Agent to PhotoCraft contract |
 | `.pcraft` | v-manifest | Native | Not agent-writable | Working format only |
-| PSD via ag-psd 31.0.3 / psd-tools 1.25.0 | 2026-10-07 / 2026-10-14 | MIT / MIT (psd-tools license not stated in PyPI metadata I read) | Node / Python | Fallback input |
+| PSD via ag-psd 31.0.3 / psd-tools 1.25.0 | 2026-10-07 (npm timestamp 1791400618745) / 2026-10-14 | MIT / MIT (psd-tools: PyPI `license_expression` is `MIT`, fetched 2026-10-18) | Node / Python | Fallback input |
 | `.vectorcraft` | format version 4 | Native JSON | Writable but not advised | Maker's working file |
 | `.lcpreset` | version 1 | Native JSON | Agent-writable | Apply by `preset.apply` / `render --preset` |
 | XMP sidecar `lc:settings` | n/a | Native | Read/merge safe | `crs:` read-only, approximate |
-| Krita, GIMP, Inkscape, darktable, RawTherapee, ImageMagick | n/a | Mature (Inkscape and Krita not researched beyond the CLI page) | Krita export CLI; darktable-cli; rawtherapee-cli; `magick` | Fallbacks |
+| Krita, GIMP, Inkscape, darktable, RawTherapee, ImageMagick | n/a | Mature (Inkscape 1.2.2 and 1.4.4 tested on the fixture, R5 and R15; Krita: CLI page only) | Krita export CLI; darktable-cli; rawtherapee-cli; `magick` | Fallbacks |
 
 ---
 
@@ -324,9 +341,9 @@ Risk rating scale: Low / Medium / High for "a learner on a modest Windows PC dep
 
 | App | Rating | Why | Mitigation | Fallback |
 |---|---|---|---|---|
-| PhotoCraft | **Medium** for ORA in, PNG out (v0.9.0+); **High** for PSD interchange with anything else | Alpha; 56 percent match to Photoshop oracles; PSD export untested in other editors; GPU and low-RAM behaviour unproven on Windows; save-over guards on `main` only | Pin by the acceptance test; work on copies in `work\`; ORA for hand-off; flatten via CLI; `--safe-gpu` if the window misbehaves; lower Memory Usage | **Krita** (ORA is its native interchange; verified by the vendor's own test, 2026-10-09); GIMP weaker (3.0.x ORA export bug report) |
-| VectorCraft | **Medium** (SVG touch-ups with the checker), **High** if animation depends on classes, filters, SMIL | Alpha; no real-world SVG corpus; Windows/browser QA missing; ids survive by test but rely on naming; no full-suite CI | `check_ids.py` gate on every save; ids/`data-*` only; keep agent source SVG as truth; export via Save As for hidden alternates | **Inkscape** (not researched here) |
-| LightCraft | **Medium-High** | Youngest and fastest-moving; DX12/NVIDIA/Intel and installer unverified on Windows; no scan corpus; unauthenticated control port; face-recognition feature | Pilot of 10 prints vs darktable; CPU mode `LIGHTCRAFT_GPU=0`; library on local NTFS; references with `mode: add` only; turn off Faces and any model download | **darktable** (`darktable-cli` + styles) or **RawTherapee** (`.pp3`), ImageMagick for a crude pre-pass |
+| PhotoCraft | **Medium** for ORA in, PNG out (v0.9.0+); **High** for PSD interchange with anything else | Alpha; 56 percent match to Photoshop oracles; PSD export untested in other editors; GPU and low-RAM behaviour unproven on Windows; save-over guards in v0.10.0 per release notes [65] (vendor claim [V]); stripped-Windows start-up crash #6249 | Pin by the acceptance test; work on copies in `work\`; ORA for hand-off; flatten via CLI; `--safe-gpu` if the window misbehaves; lower Memory Usage | **Krita** (ORA is its native interchange; verified by the vendor's own test, 2026-10-09); GIMP weaker (3.0.x ORA export bug report) |
+| VectorCraft | **Medium** (SVG touch-ups with the checker), **High** if animation depends on classes, filters, SMIL | Alpha; no real-world SVG corpus; Windows/browser QA missing; ids survive by test but rely on naming; no full-suite CI | `check_ids.py` gate on every save; ids/`data-*` only; keep agent source SVG as truth; export via Save As for hidden alternates | **Inkscape** 1.2.2 and 1.4.4 Plain SVG kept all 11 ids, `data-pivot`, `data-z`, `class`, `<style>` and the viewBox on the fixture; Optimized SVG drops `leaf-1` and `leaf-2` [63][92] (R5, R15) |
+| LightCraft | **Medium-High** | Youngest and fastest-moving; DX12/NVIDIA/Intel and installer unverified on Windows; no scan corpus and a known 128 MiB strip limit (per strip, compressed bytes; R12); unauthenticated control port; face-recognition feature | Pilot of 10 prints vs darktable; CPU mode `LIGHTCRAFT_GPU=0`; library on local NTFS; references with `mode: add` only; turn off Faces and any model download | **darktable** (`darktable-cli` + styles) or **RawTherapee** (`.pp3`), ImageMagick for a crude pre-pass |
 
 **Pitfalls worth a line each**
 - **Silent loss on old builds:** PhotoCraft 0.7.0 (the website build) has ORA but not the no-overwrite guard; a Save after adding an adjustment layer could drop it.
@@ -345,15 +362,15 @@ Risk rating scale: Low / Medium / High for "a learner on a modest Windows PC dep
 ## Open questions / gaps
 
 1. **Nothing here was executed.** Every "works" is from reading code, docs and tests. The week-1 acceptance test and the Design-phase spike (Linux CLIs in the container) are what convert [C] to proven. The exact `serve`/`run` assembly sequence for a layered PSD/ORA is assembled from the registry and tests; confirm it.
-2. **Issue trackers, release notes, Discord: unreachable** from this container (403; the API needs an attached repo with push access, which I did not request). No statement about open crash or data-loss issues can be made. If the orchestrator attaches the repos with API access, re-run Q7.
-3. **Maker's installed versions and build type** (Launcher table or Help > About) and the **hardware inventory** are unknown; PhotoCraft memory and LightCraft DX12 behaviour depend on them.
+2. **Issue trackers, release notes, Discord: unreachable** from this container (403; the API needs an attached repo with push access, which I did not request). No statement about open crash or data-loss issues can be made. If the orchestrator attaches the repos with API access, re-run Q7. **See R4** (round 1): WebFetch reached the trackers and release notes; the counts and the issues on our path are listed there.
+3. **Maker's installed versions and build type** (Launcher table or Help > About) and the **hardware inventory** are unknown; PhotoCraft memory and LightCraft DX12 behaviour depend on them. **See R2 and R16:** the read-only collection block and the questions for the maker; the answers are still missing.
 4. **Release notes for 0.8.0/0.4.0 etc. and tags missing from the remote** are unknown.
 5. **Windows code signing status** of the actual MSI (README says signed; vendor gap doc says not obtained).
 6. **usvg grouping:** nested plain groups without an id are not guaranteed to survive; I could not read the pinned usvg source (not vendored); named groups survive by test.
 7. **Headless Chromium + web builds:** whether `?cpu`/`?webgl` runs under SwiftShader was not tested; VectorCraft's `?cpu` is documented but not read by the code.
 8. **LightCraft versus darktable on faded prints:** no objective comparison exists; the pilot must make it. No evidence about LightCraft's behaviour on very large (600 dpi, 16-bit) TIFFs beyond "60 MP+ renders on the CPU".
-9. **Krita as the ORA fallback** is evidenced only by the vendor's own corpus note; MyPaint and GIMP "have not been checked yet" (docs/ora.md).
-10. **Inkscape** was not researched (no URL seen); treat the VectorCraft fallback as an assumption until the spike tests the same `at-rig.svg` in it.
+9. **Krita as the ORA fallback** is evidenced only by the vendor's own corpus note; MyPaint and GIMP "have not been checked yet" (docs/ora.md). **See R7 and R14:** GIMP 3.0.4 had a reproduced ORA export bug (R7); Krita 5.2.x writes ORA version 0.0.1 with an explicit `isolation`, so the v0.10.0 group rule does not change its files (R14). The corpus check was not re-run.
+10. **Inkscape** was not researched (no URL seen); treat the VectorCraft fallback as an assumption until the spike tests the same `at-rig.svg` in it. **See R5 and R15:** Inkscape 1.2.2 and 1.4.4 were run on the fixture; 1.3.x and the Windows install were not.
 11. **Fixtures** in `research/craft-visual-fixtures/`: `at-layers.ora`, `at-rig.svg`, `faded-print-a.lcpreset`, `at-lightcraft-steps.jsonl`, `check_ids.py` and `make_ora.py` were created and checked for well-formedness only (zip/XML/JSON parse, checker self-test); not opened in the Craft apps.
 
 What this means for Life Journey: use the Craft apps as **three narrow, verifiable hand-offs**: ORA for layered stills, SVG with ids and `data-*` for animation art, and `.lcpreset` plus the LightCraft CLI for the scan batch. Pin versions after the acceptance test, keep every step reproducible by script, keep family material on the maker's PC, and keep Krita, Inkscape and darktable one step away.
@@ -409,8 +426,9 @@ Repo files: `<repo>/<path>` at the pinned tag (PhotoCraft `v0.9.0` = `c699e3cda6
 [43] `git ls-remote --tags` and blobless bare clones of storytold/{photocraft,vectorcraft,lightcraft} — 2026-10-18 — tag list, tag dates, commit counts, commit subjects, `git tag --contains` (commit subjects are untrusted data).
 [44] https://getartcraft.com/apps/photocraft , /vectorcraft , /lightcraft — 2026-10-18 — versions 0.7.0 / 0.9.0 / 0.6.0, status badges, file names, "134 of 135" claim.
 [45] https://raw.githubusercontent.com/Agamnentzar/ag-psd/master/README.md — 2026-10-18 — ag-psd limitations.
-[46] https://registry.npmjs.org/ag-psd — 2026-10-18 — version 31.0.3 (2026-10-07), MIT.
-[47] https://pypi.org/pypi/psd-tools/json — 2026-10-18 — version 1.25.0 (2026-10-14), supported/limited/not-supported list.
+[46] https://registry.npmjs.org/ag-psd — 2026-10-18 — version 31.0.3 (2026-10-07), MIT. Date evidence: operational timestamp 1791400618745 = 2026-10-07 19:16:58 UTC (read by the round-1 review, row 12).
+[47] https://pypi.org/pypi/psd-tools/json — 2026-10-18 — version 1.25.0 (2026-10-14), supported/limited/not-supported list. Licence: `license_expression` is `MIT` (read by the round-1 review, row 12; this replaces "license not stated").
+[81] https://raw.githubusercontent.com/storytold/craft-launcher/main/README.md — read 2026-10-18 by the round-1 review (row 15), not re-opened for this addendum. The README documents no setting, flag or file that disables updates; the only related variable is a local-mirror development aid. It confirms that every release has a `SHA256SUMS.txt`.
 [48] https://psd-tools.readthedocs.io/en/latest/usage.html — 2026-10-18 — `PSDImage.new`, `create_group`, `create_pixel_layer`, caveats.
 [49] https://pypi.org/pypi/pytoshop/json ; https://pypi.org/pypi/pyora/json — 2026-10-18 — pytoshop 1.2.1 (2018-11-30), pyora 0.3.11 (2021-03-19).
 [50] https://imagemagick.org/formats/ — 2026-10-18 — PSD RW, ORA and XCF read-only.
@@ -461,7 +479,7 @@ What each answer changes:
 | Unknown | Why it matters | Source of the concern |
 |---|---|---|
 | Version of each app | If installed from the website: PhotoCraft 0.7.0 (has ORA, no no-overwrite guard #3806), VectorCraft 0.9.0, LightCraft 0.6.0. The ORA guard and the save guards are only in `v0.9.0`/`v0.10.0`. | [43][44][73] |
-| MSI or portable zip; Launcher or website | Portable builds keep recovery and settings beside the exe (`PhotoCraftData`) and leave fewer traces on a shared PC. The Launcher polls GitHub for updates and must be off in production. LightCraft's install page names `C:\Program Files\LightCraft` and the Launcher as options. | [11][80] |
+| MSI or portable zip; Launcher or website | Portable builds keep recovery and settings beside the exe (`PhotoCraftData`) and leave fewer traces on a shared PC. The Launcher polls GitHub for updates and is not to be run in production (no off switch is documented; [81]). LightCraft's install page names `C:\Program Files\LightCraft` and the Launcher as options. | [11][80] |
 | CPU architecture (x64, x86, arm64) | Do not use the x86 builds (PhotoCraft caps decode memory at 2 GiB on 32-bit). arm64 is a separate build. | [6][73] |
 | Windows edition and whether it is a stock install | PhotoCraft's `photocraft.exe` **and** `photocraft-cli.exe` import `Windows.Data.Pdf.dll` at load time; Windows images stripped with tools such as NTLite lack it and the app will not start. Fix PR #6395 is open, not in `v0.10.0`. Workaround: keep the Windows PDF component, or use a stock install. | [70] |
 | GPU, VRAM, driver | VectorCraft crashes at start on Intel UHD 605 under DX12 (#2243, open; a skip-the-crashed-adapter fix has landed, first start may still crash). PhotoCraft has a red-block bug on Intel Iris Xe DX12 (#6790, open) and a Windows black-window fix that prefers WARP over GL (in `v0.10.0` notes). LightCraft has no Windows crash issue in the critical list, but gaps #27 still says DX12, NVIDIA and Intel are unverified. | [64][70][71][72] |
@@ -731,3 +749,258 @@ Repo files are read from local clones at the stated tags (GitHub HTML is reachab
 [78] Web search results (snippets only, pages not read): GIMP 3.0.6 news (https://www.gimp.org/news/2025/10/06/gimp-3-0-6-released/), GIMP 3.0.8 and 3.2 coverage — used only to say that no ORA fix note was seen; dates **UNVERIFIED**.
 [79] `git ls-remote --tags --refs https://github.com/storytold/{photocraft,vectorcraft,lightcraft}` — 2026-10-18 05:26 UTC — newest tags `v0.10.0`, `v0.13.1`, `v0.9.1`.
 [80] storytold/lightcraft at `v0.9.1`: `docs/user/getting-started/install.md`, `docs/user/faq/{free-and-private,supported-files}.md`, `docs/user/AGENTS.md` — Windows 11 install steps, Launcher, default library path, no-telemetry statement (pages say `verified: 0.7.1`).
+
+---
+
+## Follow-up research (round 2)
+
+Researcher: Sonnet, second targeted follow-up on track `craft-visual`. Date: 2026-10-18 (Sunday), about 06:30 UTC. Evidence tags as before: [T] test I ran, [C] code or docs read, [V] vendor claim, [U] unverified. New sources are numbered from [82] and listed at the end of this section. Pins unchanged: PhotoCraft `v0.10.0`, VectorCraft `v0.13.1`, LightCraft `v0.9.1` (`git ls-remote` was not repeated; tags were one day old this morning). I built and ran no Craft app. Third-party tools I did run, on synthetic fixtures only: the Rust `tiff` 0.11.3 library (through a 25-line harness), ImageMagick 6.9.12, Pillow 12.3.0, Inkscape 1.2.2 and Inkscape 1.4.4.
+
+**Method notes.**
+1. `curl` reaches `invent.kde.org`, `gitlab.com` (raw files and the API), `gitlab.kitware.com` and `static.crates.io` from this container, so Krita, Inkscape, CMake and `tiff` crate sources below were read as files, not through WebFetch's summariser. `github.com` HTML still needs WebFetch (summarised, so second-hand). `inkscape.org` and `gitlab.gnome.org` pages were refused or down (502, 503, 403).
+2. Operational warning for the orchestrator: the container's root disk was at 97 percent, with 73 MB free at one point (other work in the shared scratchpad holds about 25 GB). I deleted my own 1.2 GB of test TIFFs and ran Inkscape 1.4.4 from a RAM disk that I have removed. A parallel job writing to disk may hit "disk full".
+3. No fetched page this round carried text aimed at an agent, as far as I noticed. Page bodies, forum posts and workflow files are treated as data.
+
+---
+
+### R10. Summary of what I found
+
+1. **LightCraft Faces (Q1).** Face recognition is **off by default and nothing needs to be set**. The switch is Settings, tab **Faces**, checkbox **"Recognise faces (experimental)"**. It is stored as `"enabled": false` (default) in `settings.json` inside the face-models folder, `%APPDATA%\LightCraft\models\settings.json` on a normal Windows install. The checkbox is greyed out until a recognition model is installed and chosen, and the engine also refuses `faces.enable` without one. The only code path that starts a face-model download is the command `faces.models.download`, which refuses unless `acknowledged: true`, and the only UI that sends it is the OK button of the terms dialog, which does nothing until "I accept" is ticked. `known.rs` is pure data (manifests and pinned addresses) with no network code. Trap: **Photo > Detect Faces** with no detector installed opens that terms dialog; press Escape. [C] [82]
+2. **TIFF limit (Q2): the 128 MiB cap is on the on-disk (compressed) byte count of one strip or tile, as recorded in `StripByteCounts`, not on the decoded size.** The crate checks `compressed_bytes > 128 MiB` per chunk. I tested it: an 8-bit gray 12000 x 12000 image (144 MB decoded) **fails** as an uncompressed single strip, **passes** as a smooth-content single-strip LZW (15.3 MB on disk) or Deflate (1.0 MB on disk) file, **fails** as a noisy single-strip Deflate file (144.04 MB on disk, compression gained nothing), and **passes** with 64-row strips whether uncompressed or Deflate. The boundary is exact: a strip of 134,217,728 bytes opens, one more row does not. So LZW or ZIP scans avoid the cap only to the extent that a strip compresses below 128 MiB; photo scans often do not compress that well, so do not rely on it. [T][C] [83]
+3. **Scanner front-end defaults (Q2, second half): UNVERIFIED for all four.** I found no public document or sample that states the `RowsPerStrip` that Epson Scan 2, VueScan, NAPS2 or SilverFast write. NAPS2 on Windows saves TIFF through GDI+ (`System.Drawing`) and only sets the compression (LZW by default, CCITT4 for black and white, or none), no strip option. One ImageMagick forum thread about a VueScan file could not be re-opened (404) and the two search summaries of it contradict each other on which value is VueScan's. Decision rule instead: **measure the pilot scan** (R12), and use the table of pixel budgets in R12. [85][86]
+4. **Windows CI (Q3).** **PhotoCraft: yes.** CI run #11593 on `main` for commit `8407d9c` "Release 0.10.0 (#7192)" ended **Success** (2 h 46 m); the `test` matrix includes `test (windows-latest, unit)` and `test (windows-latest, integration)`, and a gate job named `test (windows-latest)` fails unless the whole matrix passed. **VectorCraft v0.13.1 and LightCraft v0.9.1 have no hosted job that runs their full test suite on Windows** (their gate is `cargo xtask ci`, run by contributors). VectorCraft does have three narrow Windows jobs (`print.yml`, `windows7.yml`, `windows-arm64.yml`); LightCraft has an MSI install-folder test and an ARM64 install smoke test. The shared release pipeline runs no tests at all. [C][87][88][89][90]
+5. **Krita and the v0.10.0 ORA rule (Q4): no change for Krita files.** Every Krita version I sampled (5.2.0, 5.2.2, 5.2.6, 5.2.9, 5.2.11, 5.2.16 and 6.0.0) writes `image@version="0.0.1"` (never 0.0.6) and an explicit `isolation` on every group (`"auto"` for pass-through, else `"isolate"`). PhotoCraft `v0.10.0` therefore uses its unchanged legacy rule for Krita files, so Krita-authored ORAs render the same in `v0.9.0` and `v0.10.0`. Fallback is safe. [C] [91]
+6. **Inkscape (Q5).** Inkscape **1.4.4** Plain SVG gives the same result as 1.2.2 on `at-rig.svg`: after dropping auto-generated ids the two outputs are identical; all 11 authored ids, `data-pivot`, `data-z`, `class`, `<style>` text and the original `viewBox` survive, and there are no `sodipodi:`/`inkscape:` attributes. The preference is **Preferences > Behavior > Transforms > "Store transformation": "Optimized" (default) or "Preserved"**, stored at `/options/preservetransform/value` (0 or 1). It does **not** stop a moved group from getting a `transform`: groups always do. Optimized SVG output (scour) still strips `leaf-1` and `leaf-2` in 1.4.4 (run, not only read). **The Windows installers do not put Inkscape on PATH by default**, and the console executable is **`inkscape.com`**, not `inkscape.exe`. 1.3.x was not run. [T][C] [92][93][94]
+7. **From the maker (Q6):** nothing came back yet; the questions to relay are in R15.
+
+---
+
+### R11. LightCraft v0.9.1: keeping face recognition and the AuraFace download off (Q1)
+
+**Where the switch lives.**
+| Item | Value | Evidence |
+|---|---|---|
+| Menu path | Settings dialog, tab **Faces** (the tab list in `crates/ui-egui/src/panels/settings.rs` has `("faces", "Faces")`), checkbox **"Recognise faces (experimental)"**, widget id `check:settings.facesEnabled` | `panels/faces.rs` `settings_tab` (about lines 240 to 262) [C] |
+| Default | **Off.** The checkbox is `add_enabled(on \|\| (runtime && usable), ...)`, so it is greyed out until a recognition model is installed and chosen; hover text "Choose a model below (Use) to start." | same |
+| Engine guard | `faces.enable {enabled: true}` returns "choose a recognition model first (Settings > Faces > Use)" when no recogniser is chosen and installed | `cmd/face_models.rs` `fn enable` (about lines 504 to 523) [C] |
+| Stored key | `"enabled"` (boolean, default `false`), beside `"embedder"` (chosen model id, default null) and `"cpuOnly"`, in **`settings.json` in the face-models folder**. A missing or unparseable file reads as all defaults (off). | `struct FaceSettings` (line 28 onward), `read_settings` (lines 50 to 52), `write_settings` (lines 70 to 73) [C] |
+| Where that folder is | Windows: `%APPDATA%\LightCraft\models\` (so `%APPDATA%\LightCraft\models\settings.json`). Portable mode (a `portable.txt` or `LightCraft.portable` marker beside the exe): `<exe folder>\LightCraftData\models\`. `LIGHTCRAFT_FACE_MODELS` overrides the models folder; `LIGHTCRAFT_CONFIG_DIR` overrides the whole config folder. | `crates/engine/src/config.rs` `config_dir`, `default_face_models_dir` [C] |
+| Background scan | `faces.pump` runs every frame but returns `{"active": false}` straight away when `enabled` is false | `cmd/face_recognize.rs` lines 628 to 640 [C] |
+
+So the answer to "which key keeps it off" is: leave `enabled` at `false` (the default) and install no recognition model. There is nothing to configure on a fresh install. To check later: open `%APPDATA%\LightCraft\models\settings.json` if it exists (it is only written when something in Faces changes), and confirm there is no model folder other than the optional `.downloads` staging folder.
+
+**Confirmation that no face-model fetch runs without an explicit command or dialog.**
+1. `crates/faces/src/known.rs` has no network code. It holds three manifests (YuNet 2023mar, SFace 2021dec, AuraFace v1), their SHA-256 values, and a constant table `SOURCES` of pinned addresses (YuNet and SFace on `github.com` at an `opencv_zoo` commit, AuraFace on `huggingface.co/fal/AuraFace-v1` at a commit). `download(id)` returns the pinned address only for a known id, and refuses models marked non-commercial. Its unit test insists on https, a commit pin, and that nothing is typed in. [C]
+2. `crates/engine/src/face_download.rs` is the only file that fetches a face model (`lightcraft_fetch::download`, on a thread named `face-model-download`). Its header comment: only a model listed in `known::download` can be fetched, "the address is a pinned constant, never something typed or passed in, and no token is ever sent with it". The thread is created only by `Downloads::start`. [C]
+3. `Downloads::start` has **one caller in the whole tree**: `cmd/face_models.rs` line 377, inside `faces.models.download`. That command requires `acknowledged: true` ("the licence has not been accepted ..." error otherwise) and a model id with a pinned address. `git grep` for `face_downloads` and `faces.models.download` at `v0.9.1` shows the callers are: the Faces tab's terms dialog (`panels/faces.rs::install`, line 559, which first refuses with "Tick the box to accept the model's terms first"), and nothing at start-up. `finish_downloads` (run by `faces.pump` and `faces.models.downloads`) only installs jobs that this session already started; with none, it does nothing. [C]
+4. UI tests in `crates/ui-egui/src/headless.rs` (about lines 1158 to 1220) assert the behaviour: `faces.detect` with no detector opens the terms dialog; "OK without accepting the terms starts nothing", no download job exists, and the `.downloads` folder is not created; cancelling leaves it so. `docs/faces.md` says the same: "Download stays disabled until you tick ... Nothing is fetched before that." [C]
+5. The web build downloads no models (`face_download.rs` wasm `fetch` returns an error; `faces.models.download` returns "the web build downloads no models"). [C]
+
+**What can still start a fetch (all are deliberate acts).** (a) Tick "I accept" in the terms dialog and press OK. (b) **Photo > Detect Faces** (command `faces.detect`) when no detector is installed: it only *opens* the terms dialog for YuNet (the 232 KB detector, not AuraFace); press Escape. (c) A control-port or MCP client that sends `faces.models.download {id, acknowledged: true}`: off unless the maker starts `lightcraft --control PORT` or the MCP server. (d) Dropping a `.onnx` file on the window *installs* a model (docs: "Adding a model is how you say you want it ... chosen and recognition is switched on"); never drop one.
+
+**Hard off, optional.** Setting the environment variable `LIGHTCRAFT_CONFIG_DIR` to an *empty* value disables the config folder; with no `LIGHTCRAFT_FACE_MODELS` either, `face_models_dir` is `None` and `faces.models.download` returns "this build has nowhere to keep face models" (`config.rs` docs and `face_models.rs` `models_dir`). It also stops LightCraft keeping its other settings. I did not test that on Windows and would not use it unless the default path ever misbehaves (**UNVERIFIED** side effects).
+
+**Limits of this answer.** Static search of the `v0.9.1` source, not a network capture. I did not trace LightCraft's *other* opt-in downloads (denoise model via `model_download.rs`, GeoNames via `cmd/geocode.rs`, SAM 3 weights); round 1 recorded them as explicit-command downloads. Windows Firewall rules for `lightcraft.exe` are a cheap extra layer if the maker wants one (general knowledge, not from a source).
+
+---
+
+### R12. TIFF limit semantics and the scanner setting (Q2)
+
+**What the limit is.** LightCraft `v0.9.1` calls `Decoder::with_limits(limits(opts))` and then `read_image()` (`crates/codecs/src/tiff_codec.rs` lines 18 and 95 to 100). `limits()` starts from `Limits::default()` and only overrides `decoding_buffer_size` (`max_pixels * 32`, with `max_pixels` defaulting to `1 << 30`) and `ifd_value_size` (32 MiB). It leaves `intermediate_buffer_size` at the crate default of **128 MiB** (`tiff` 0.11.3, `src/decoder/mod.rs` lines 468 to 503). The workspace `Cargo.lock` of `v0.9.1` pins `tiff` 0.11.3. In that crate, `src/decoder/image.rs` (about lines 886 to 896) does:
+
+```
+let compressed_bytes = self.chunk_bytes.get(chunk_index)...;   // StripByteCounts / TileByteCounts entry
+if *compressed_bytes > limits.intermediate_buffer_size as u64 { return Err(TiffError::LimitsExceeded); }
+```
+and `LimitsExceeded` prints as "decoder limits exceeded", the message in the LightCraft reports. So: **per strip or tile; measured in compressed (on-disk) bytes as the file declares them; checked before decompressing.** The decoded image as a whole is bounded separately by `decoding_buffer_size` (32 GiB at LightCraft's setting, so never the problem for a scan).
+
+**Test [T].** Harness `research/craft-visual-fixtures/tiff-limit/` (Cargo project plus `make_fixtures.py`; see its README): `tiff` 0.11.3 with LightCraft's limit shape, `read_image()` on 8-bit gray fixtures made with Pillow:
+
+| Fixture | Compression | RowsPerStrip | Largest strip on disk | Result |
+|---|---|---|---|---|
+| 12000 x 12000, noise | none | 12000 (one strip) | 144,000,000 B | **ERR decoder limits exceeded** |
+| 12000 x 12000, smooth gradient | none | 12000 | 144,000,000 B | **ERR** |
+| 12000 x 12000, noise | none | 64 (188 strips) | 768,000 B | OK |
+| 12000 x 12000, smooth | LZW | 12000 | 15,266,855 B | **OK** (decoded strip is 144 MB) |
+| 12000 x 12000, smooth | Deflate | 12000 | 1,010,339 B | **OK** |
+| 12000 x 12000, noise | Deflate | 12000 | 144,043,936 B | **ERR** (nothing compressed) |
+| 12000 x 12000, noise | Deflate | 64 | 768,241 B | OK |
+| 16384 x 8192, noise | none | 8192 | **134,217,728 B (exactly 128 MiB)** | **OK** |
+| 16384 x 8193, noise | none | 8193 | 134,234,112 B | **ERR** |
+
+This used the library directly, not the LightCraft binary; the call (`read_image` with the same limits) is the same, and `Cargo.lock` agrees on the version. Residual risk: a different feature set or a later patch of the crate. Pillow was used only to write the fixtures. 8-bit gray was used to keep files small; the rule depends on bytes per strip, not bit depth.
+
+**Which scans are at risk.** Single-strip, uncompressed, bytes = width x height x bytes per pixel. The cap is 134,217,728 B, which is 22.37 megapixels at 48-bit RGB, 44.74 megapixels at 24-bit RGB:
+
+| Scan | Pixels | Single-strip size | Verdict |
+|---|---|---|---|
+| 4 x 6 in print, 600 ppi, 48-bit | 2400 x 3600 | 51.8 MB | ok |
+| 5 x 7 in, 600 ppi, 48-bit | 3000 x 4200 | 75.6 MB | ok |
+| 8 x 10 in, 600 ppi, 48-bit | 4800 x 6000 | **172.8 MB** | **fails if single strip** |
+| 8 x 10 in, 600 ppi, 24-bit | 4800 x 6000 | 86.4 MB | ok |
+| 8 x 10 in, 400 ppi, 48-bit | 3200 x 4000 | 76.8 MB | ok |
+| 4 x 6 in, 1200 ppi, 48-bit | 4800 x 7200 | **207.4 MB** | **fails** |
+| 4 x 6 in, 1200 ppi, 24-bit | 4800 x 7200 | 103.7 MB | ok |
+| 35 mm frame, 4000 dpi, 48-bit | 5669 x 3780 | 128.6 MB | ok, 4.4 percent under the cap |
+| 35 mm frame, 4800 dpi, 48-bit | 6803 x 4535 | **185.1 MB** | **fails** |
+
+(Arithmetic done in the container; 35 mm frame taken as 36 x 24 mm.) The #1983 file in the first-round table (138.3 MB) is consistent with this rule.
+
+**Scanner front-ends: the strip layout each writes is UNVERIFIED.**
+| Software | What I found | Status |
+|---|---|---|
+| NAPS2 (Windows) | `NAPS2.Images.Gdi/GdiTiffWriter.cs` uses GDI+ (`ImageCodecInfo` "TIFF", `EncoderParameters` with `Encoder.Compression` and `Encoder.SaveFlag`); `TiffCompressionType` Auto = CCITT4 for 1-bit, else LZW; None is selectable; no strip option in the code. GDI+ decides the strip layout and Microsoft's GDI+ pages I found do not document it. [86] | **UNVERIFIED** `RowsPerStrip`. LZW default means the compressed-size rule applies. |
+| VueScan | A search summary says an ImageMagick forum thread ("Extract RGBI image from multipage TIFF") shows a VueScan 9 file with `RowsPerStrip` equal to the image height (3944) in one summary and `1` in another; the thread URLs returned 404 on fetch, so I could not read it. [85] | **UNVERIFIED**, contradictory. Do not cite. |
+| Epson Scan 2, SilverFast | No source found. Epson's guide only says TIFF is recommended for editing and mentions a Multi-TIFF option. | **UNVERIFIED** |
+| Background (general) | libtiff's own default targets about 8 KB per strip; the TIFF specification says a missing `RowsPerStrip` means one strip for the whole image. Writers on libtiff therefore give many small strips; hand-written writers often give one. Search results only. [85] | context only |
+
+**What to do before the first album is borrowed (scanner setting).**
+1. Do not trust a default. Scan **one worst-case item** (the largest print at the planned ppi and bit depth, and one 35 mm frame if films exist) and read the layout: `exiftool -RowsPerStrip -StripByteCounts -Compression -ImageSize -BitsPerSample file.tif` (exiftool has a portable Windows download that needs no installer; the tag names are standard ExifTool names; both are general knowledge, and I did not run exiftool here). Pass if the **largest `StripByteCounts` value is below 134,217,728**. Put the file into the LightCraft pilot as well.
+2. If it fails, in order of preference: (a) lower the pixel count: a 4K frame is only 8.3 megapixels, so 4 x 6 prints at 600 ppi (8.6 MP) already cover a full-frame 4K shot, and an 8 x 10 at 300 to 400 ppi (7.2 to 12.8 MP) does too; keep the higher setting only for prints that need a 2x push-in or a crop (general reasoning, not a source); (b) 24-bit instead of 48-bit for prints in good condition (halves the size; keep 48-bit for faded prints, general practice); (c) look in the scanner software for a TIFF "strip" or "tile" option, or "multi-strip"; I found none documented for the four programs; (d) rewrite the strips after scanning into a *copy*: ImageMagick `convert in.tif -define tiff:rows-per-strip=64 -compress None out.tif` **[T]** turned a one-strip 108 MB RGB TIFF into 94 strips of at most 1.15 MB (ImageMagick 6.9.12-98; Windows ImageMagick 7 uses `magick` instead of `convert`, same define). Caveat: on a 134 MB single-strip input, `convert` aborted here (exit 134) under this container's 1 GiB memory policy, cause not diagnosed, so test on the maker's PC with the real worst-case file. Never overwrite the master scan.
+3. LZW or Deflate output is a partial remedy only: it helps exactly when each strip compresses below 128 MiB, which photo scans (grain, noise) often fail to do by the margin needed. In the test, noise gained nothing from Deflate.
+4. Only LightCraft's own importer has this limit. Agent-side tools that read the master are not bound by it; this matters only for the human touch-up path.
+
+---
+
+### R13. Windows CI at the three tags (Q3)
+
+**What "at the tag" means here.** No workflow in these repos runs on a tag push. PhotoCraft `ci.yml` runs on `push` to `main`, pull requests and manual dispatch; `release.yml` (all three apps) runs on push to the `release` branch and calls a shared workflow. So the question is answered for the **tagged commit as it was tested on `main`** (PhotoCraft) or on its release pull request (VectorCraft). [88]
+
+**PhotoCraft v0.10.0: yes, green.**
+- Tag commit `8407d9c` "Release 0.10.0 (#7192)". The Actions list for `ci.yml` on `main` shows CI **run #11593 for that commit: Success, 2 h 46 m 4 s, pushed 2026-10-18** (WebFetch of the workflow page, then of the run page `.../actions/runs/39086586974`) [87].
+- On a push to `main`, `platforms` selects Linux plus **two Windows legs on `windows-latest`** (`unit`: `cargo nextest run --workspace --lib --bins`; `integration`: `--test '*'`) [88]. The run page's annotations name `test (windows-latest, unit)` and `test (windows-latest, integration)`, and show `Matrix: test` with 3 jobs completed.
+- `windows-gate`, named `test (windows-latest)` (2 s on the run page), exits non-zero unless the whole `test` matrix and the Linux variants passed (`ci.yml`, `windows-gate` job). The workflow has no `continue-on-error`. A run-level Success therefore means both Windows legs passed. The run page did not print each leg's own result, so per-leg status is **second-hand through the gate logic**, not read.
+- Caveat: `main` is not always green. Nearby runs: #11533 (2026-10-17) Success; #11520 and #11492 (2026-10-17) Failure; #11287 Failure; several Cancelled when a newer merge arrived. The release commit itself passed. A later push is not covered.
+- Test coverage reminder: the Windows legs run the Rust test suites on a hosted runner (no GPU). They do not prove the app starts on a stripped Windows image (#6249) or on a given GPU.
+
+**VectorCraft v0.13.1: no hosted job runs the full suite on Windows.**
+- `.github/workflows` at the tag: `affinity-corpus`, `freebsd`, `nix`, `packaging-lint`, `print`, `release`, `windows-arm64`, `windows7`. There is **no `ci.yml`**. WebFetch of `tree/main/.github/workflows` shows the same eight [90]. The `ci`, `Rust`, `docs-check` and `Copilot` entries in the Actions sidebar are not in `main`'s workflow folder; they appear to come from contributors' pull-request branches (the `ci` workflow page shows 3 runs, all on contributor PRs, failed or cancelled; I did not open the other three). The repo's own gate is `cargo xtask ci` run by the author (`AGENTS.md`: "Quality gates before every commit: `cargo xtask ci` (fmt, clippy ..., tests, layers, wasm)").
+- Narrow Windows jobs: `print.yml` (`windows-2022`; `cargo clippy` and `cargo test --locked -p vectorcraft`, plus `cargo test -p vectorcraft-ui-egui tests_printps`; on PRs touching printing code or `Cargo.toml`/`Cargo.lock`, and manual); `windows7.yml` (`windows-2022`; `cargo +nightly test -Z build-std` for `-p vectorcraft -p vectorcraft-cli` with the experimental `windows7` feature; PRs touching listed paths, weekly, manual; its own header says a modern runner "proves compilation and host smoke tests only"); `windows-arm64.yml` (installs the cross-built MSI on a native `windows-11-arm` runner). [88]
+- Results seen: the release pull request #2848 "Release 0.13.1: retry the macOS stapler steps" ran `Windows 7 x64 compatibility` #147 (**Success**, 55 m 12 s) and `Desktop printing` #140 (**Success**, 46 m 14 s). Whether that PR's head is exactly tag commit `904f0fe` is **UNVERIFIED** (the titles differ). [90]
+
+**LightCraft v0.9.1: no hosted test job at all.** Workflows at the tag and on `main`: `freebsd`, `nix`, `packaging-lint`, `release`, `windows-arm64`. Windows jobs: `packaging-lint.yml` `windows-install-folder` (`windows-latest`; installs WiX and runs `packaging/windows/test-install-folder.ps1` for x64 and x86, described in the workflow as a real MSI AppSearch test; triggered by changes under `.github/workflows`, `packaging` or `assets/app-icon`) and `windows-arm64.yml` (installer smoke test). The `CI`, `Print`, `macOS`, `Audit` and other entries in its Actions sidebar are not in `main`'s workflow folder; the runs listed for them were all on pull request #722 from a fork, so they appear to come from contributor branches. The gate is `cargo xtask ci` run locally. [88][90]
+
+**The release pipeline tests nothing.** All three apps call `storytold/craft-common-actions/.github/workflows/release.yml@main`, which builds, signs and packages (macOS, Windows x64/x86/ARM64, Linux, Flatpak, Arch, FreeBSD, web, server) and drafts the GitHub Release; WebFetch of that file reports no test job and no `cargo test` step, only non-failing smoke steps [89]. Because it is tracked at `@main`, it can change under a pinned tag.
+
+**Meaning for the plan.** For PhotoCraft the Windows CI evidence is good for the tag. For VectorCraft and LightCraft, "tests pass" rests on the authors' local `cargo xtask ci`; on Windows, only the installer and a few targeted jobs run. This strengthens the rule already in the plan: every step has a fallback and gets a five-minute acceptance test on the maker's PC.
+
+---
+
+### R14. Krita and the v0.10.0 ORA isolation rule (Q4)
+
+Read directly from Krita's source with `curl` (not through a summariser) [91]: `plugins/impex/ora/kis_open_raster_stack_save_visitor.cpp`.
+
+| Krita tag | `image@version` written | `isolation` on `<stack>` |
+|---|---|---|
+| v5.2.0 | `"0.0.1"` | written (`"isolate"`; `"auto"` when `passThroughMode()`) |
+| v5.2.2, v5.2.6, v5.2.9, v5.2.11 | `"0.0.1"` (file byte-identical for these four) | written |
+| v5.2.16 (newest 5.2 tag listed by the API) | `"0.0.1"` | written |
+| v6.0.0, master | `"0.0.1"` | written |
+
+(The v5.2.0 to v5.2.2 difference is the alpha-preserve handling only.) Group code, `visit(KisGroupLayer*)`: `isolate = "isolate"; if (layer->passThroughMode()) isolate = "auto"; elt.setAttribute("isolation", isolate);`, then `imageElt.setAttribute("version", "0.0.1")`. Layers (`<layer>`) get no `isolation`. Krita's own importer (`kis_open_raster_stack_load_visitor.cpp` lines 201 to 205) treats everything except `isolation="isolate"` as pass-through.
+
+PhotoCraft `v0.10.0` `crates/io/src/ora.rs` (diff against `v0.9.0` read in full): `uses_explicit_group_isolation(version)` is true only for `x.y.z >= 0.0.6`. "0.0.1" gives false, so the **legacy branch** runs: `pass_through = isolation != Some("isolate") && layer.blend == Normal`, which is byte-for-byte the `v0.9.0` rule. [C][58]
+
+**Answer.** Krita 5.2.x does **not** write 0.0.6 or newer, and it writes an explicit `isolation` anyway. Krita-authored ORAs, blended layers inside groups included, **render the same in PhotoCraft `v0.10.0` as in `v0.9.0`**. The worry (version 0.0.6 or newer without `isolation`) applies to other writers; I did not check GIMP's, MyPaint's or Photoshop-side tools (the GitLab page for GIMP's exporter was not reachable). One residual case, unchanged from `v0.9.0`: a Krita pass-through group (`auto`) with a non-Normal composite-op becomes an isolated group in PhotoCraft; Krita does not offer a blend mode on pass-through groups as far as I know (general knowledge, UNVERIFIED). The Krita 5.2.9 corpus result (32 of 35 and 33 of 34 on `v0.9.0`) was not re-run on `v0.10.0`, but the code path it exercises is unchanged, so I expect the same numbers. [U for the re-run]
+
+For agents writing ORA for PhotoCraft the round-1 rule stands: write `isolation` explicitly on every group, keep `version` at `0.0.3` or write `0.0.6` with explicit `isolation`, and prefer flat layer lists.
+
+---
+
+### R15. Inkscape 1.3 and 1.4 on Windows (Q5)
+
+**Plain SVG on `at-rig.svg` [T].** Fixture and `check_ids.py` from `research/craft-visual-fixtures/`. Inkscape **1.4.4 (dcaf3e7d9e, 2026-05-05)**, nixpkgs build, run in the container (Linux; the Plain SVG save path is not Windows-specific code, but I did not run a Windows build), with a clean profile, and Inkscape 1.2.2 as the control with the same commands:
+
+```
+inkscape at-rig.svg --export-plain-svg --export-filename=out144-plain.svg
+inkscape at-rig.svg --export-type=svg --export-filename=out144-inkscape.svg
+python3 -I check_ids.py at-rig.svg out144-plain.svg       # exit 0
+python3 -I check_ids.py at-rig.svg out144-inkscape.svg    # exit 0
+```
+
+| Check | 1.2.2 (round 1) | 1.4.4 (now) |
+|---|---|---|
+| 11 authored ids, `data-pivot`, `data-z` | all kept | all kept |
+| `class="glow"` and `<style>` text | kept verbatim | kept verbatim |
+| Root `viewBox` | `100 50 400 300` unchanged | unchanged |
+| `sodipodi:` / `inkscape:` attributes in Plain SVG | none | none (0 matches) |
+| Filters, `mask`, `clipPath`, `symbol`/`use`, live `<text>` | present | present |
+| Ids added to elements that had none | `svg37`, `style2`, `defs24`, `stop4`, ... | `svg3`, `style1`, `defs3`, `stop1`, ... |
+| Whole output after removing those auto ids | | **identical to 1.2.2** (checked by script) |
+| Optimized SVG (scour, `org.inkscape.output.scour_inkscape`) | not run (scour missing); input read | **run:** `leaf-1` and `leaf-2` removed (`check_ids.py` exit 1); other ids kept |
+
+Do not compare raw outputs across versions (the auto-id numbering differs); compare authored ids. 1.3.x was **not run** (only 1.2.2 and 1.4.4). Source-level, the preference code and the installer configuration are identical across 1.2.2, 1.3, 1.3.2, 1.4 and 1.4.2 (below).
+
+**"Store transformation" [C][T].**
+- Exact name: in **Preferences > Behavior > Transforms**, group header **"Store transformation"** with two radio buttons, **"Optimized"** ("If possible, apply transformation to objects without adding a transform= attribute") and **"Preserved"** ("Always store transformation as a transform= attribute on objects"). `src/ui/dialog/inkscape-preferences.cpp` at INKSCAPE_1_2_2 (lines 2423 to 2441), 1_3_2 (2557 to 2573) and 1_4_2 (2581 to 2599): same labels, key `/options/preservetransform/value` (0 = Optimized, the default; 1 = Preserved). On Windows the preferences file is `%APPDATA%\inkscape\preferences.xml` (general knowledge; I set the key through a profile folder in the container).
+- **Behaviour, tested on 1.4.4** (select, translate by (12,7), export Plain SVG; the key set through `preferences.xml`):
+
+| Moved object | Optimized (default) | Preserved |
+|---|---|---|
+| a leaf element, `rect#trunk` | `x="207" y="247"`, **no** transform | `x="195" y="240" transform="translate(12,7)"` |
+| a leaf element, `circle#sun` | `cx="312" cy="127"`, no transform | `cx="300" cy="120" transform="translate(12,7)"` |
+| **a group, `g#sun-group`** | `transform="translate(12,7)"` | `transform="translate(12,7)"` |
+
+All 11 ids and the `data-*` attributes survived every case, and `data-pivot="300,120"` was left unchanged on the moved group. **Correction to R5:** the preference does not remove the `transform` from a moved group (groups always keep it), so it is not a cure for the "no transform on animated groups" rule. The rule for the rig is: never move or scale an animated group in Inkscape; move its children (Optimized rewrites their coordinates) or re-author the group, and re-check `data-pivot` after any edit.
+
+**PATH and the command name on Windows [C], not run on Windows.**
+- Inkscape builds **two executables per tool on Windows**: `inkscape.exe` (a GUI-subsystem program) and **`inkscape.com`** (the same sources linked with `-mconsole`, "GUI applications can't print to the console"); both are installed (`src/CMakeLists.txt` at INKSCAPE_1_4_2 lines 375 to 390 and 445 to 446). For scripted export from PowerShell or cmd, **use `inkscape.com`** (output is shown and the shell waits). R5's `inkscape.exe in.svg ...` line should become `inkscape.com`.
+- **MSI installer:** the WiX template and its patch files (`packaging/wix/WIX.template.in`, `app_registration.xml`) write the registry key `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\inkscape.exe` (value `Path` = the `bin` folder) and contain no PATH or `Environment` entry. **Not on PATH.**
+- **NSIS `.exe` installer:** `CMakeScripts/ConfigCPack.cmake` sets `CPACK_NSIS_MODIFY_PATH "ON"` (comment: "while the name does not suggest it, this also provides the possibility to add desktop icons") and writes the same `App Paths` key. CMake's NSIS template offers a page with three radio buttons and the default `State=1` is **"Do not add ... to the system PATH"** (CMake 3.31.0 `NSIS.InstallOptions.ini.in`; the CMake version Inkscape's CI uses was not checked, and Inkscape may customise the text). So the `.exe` installer lets you add it, but **by default does not**. [94] The same `ConfigCPack.cmake` settings appear at INKSCAPE_1_3 and 1_4. The actual installer pages were **not seen**: UNVERIFIED on a real Windows install.
+- Default install folder per the MSI template: `C:\Program Files\Inkscape`, so `C:\Program Files\Inkscape\bin\inkscape.com`. Call it by full path, or read the registry key in PowerShell: `(Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\inkscape.exe' -ErrorAction SilentlyContinue).Path` (a per-user NSIS install writes the same key under `HKCU`, because the script uses `SHCTX`). A search result also mentions Inkscape 1.1.2 users who fixed command-line failures by adding `C:\Program Files\Inkscape\bin` to the system PATH, which agrees with "not added by default" (forum summary only, page not opened). [95]
+- Whether 1.4.4 is the newest stable release at the time of reading: UNVERIFIED (`inkscape.org` was down to my fetches). It is the version the binary reported.
+
+---
+
+### R16. From the maker (ask, not research) (Q6)
+
+Nothing new could be learned from this container; these need the maker. Suggested wording, one message:
+
+1. Run the PowerShell block in **R2** (read-only, prints to the screen) and paste the output.
+2. Answer by hand, one line each: **(a)** Did you install the Craft apps through the Launcher or from the website? **(b)** MSI installer or portable zip? **(c)** Is Windows a normal install (not trimmed down with a debloat tool)? **(d)** Scanner make and model, and which scanning software you use (Epson Scan 2, VueScan, NAPS2, SilverFast, other). **(e)** Is the PC, or the room it sits in, used by your mother or anyone who might open a recent-files list?
+3. New from this round, only when a scanner is to hand: scan **one** print at the largest size and resolution you plan, in the format you plan, and send me the output of `exiftool -RowsPerStrip -StripByteCounts -Compression -ImageSize -BitsPerSample` on it (or the file's name and size and I will tell you what to look for). No personal photo is needed: a blank page or a magazine page at the same size and settings gives the same layout.
+4. Whether Inkscape is installed, and which version (optional; only for the fallback).
+
+---
+
+### R17. Changes to make in the earlier sections and recipes
+
+1. Section 9 privacy table, LightCraft column: add "face-model downloads: explicit only (R11); Faces is off by default; do not use Photo > Detect Faces".
+2. Section 6 / LightCraft recipe and acceptance test 3: replace "128 MiB cap, semantics unknown" with the R12 rule (per strip, compressed bytes as declared, exact 134,217,728 B boundary), the pixel-budget table and the exiftool check; replace R4 action (3)'s untested define with the tested one (R12), keeping the caveat about the large-file abort.
+3. R5 (Inkscape fallback): use `inkscape.com`; the "Store transformation" paragraph is wrong about groups (R15); add 1.4.4 results; note that 1.3.x was not run.
+4. R3a: the sentence "The Krita 5.2.9 corpus check was not repeated for the new rule (UNVERIFIED for v0.10.0)" becomes "Krita files take the unchanged legacy branch (R14); corpus not re-run".
+5. R6 item 3: "I did not check whether that job was green at v0.10.0" becomes "run #11593 on `main` for the tag commit succeeded (R13)".
+6. Risks table: VectorCraft and LightCraft cells: add "no hosted full-suite Windows test job (R13)"; PhotoCraft cell: add "Windows CI green at the tag (R13)".
+7. Open questions: 2 (TIFF semantics), 6 (Krita rule), 7 (Windows CI) and the Inkscape items are answered or narrowed here.
+
+### R18. Still open or UNVERIFIED after this round
+
+- The maker's PC (R2, R16).
+- Nothing was run on Windows. Every Windows statement is from source, a hosted-CI page, or a Linux run of cross-platform code.
+- `RowsPerStrip` written by Epson Scan 2, VueScan, NAPS2 (GDI+) and SilverFast (R12).
+- Per-leg Windows results of PhotoCraft run #11593 (read through the gate job, not directly); whether VectorCraft's release PR head equals tag commit `904f0fe`.
+- Inkscape 1.3.x behaviour (not run); the real Windows installer pages and the NSIS PATH default; whether 1.4.4 is the latest stable.
+- GIMP's and other ORA writers' `image@version` values.
+- Whether LightCraft's other opt-in downloads are all explicit (not traced).
+- A real LightCraft run on a failing TIFF: my test used the same library and limits, not the app.
+
+---
+
+### Sources (round 2)
+
+Repo files are read from the local clones at the stated tags (`git show <tag>:<path>`); web pages were fetched 2026-10-18.
+
+[82] storytold/lightcraft at `v0.9.1` (commit `4f0b110`): `crates/engine/src/face_download.rs`, `crates/faces/src/known.rs`, `crates/engine/src/cmd/face_models.rs`, `crates/engine/src/cmd/face_recognize.rs` (`faces.pump`), `crates/engine/src/config.rs`, `crates/ui-egui/src/panels/faces.rs`, `crates/ui-egui/src/headless.rs` (face tests), `docs/faces.md`, `docs/parity-checklist.md` row `LR-PREF-PEOPLE`; plus `git grep` for `face_downloads`, `faces.models.download`, `lightcraft_fetch::` across `crates/` and `apps/`.
+[83] First-hand test, 2026-10-18: Rust `tiff` crate 0.11.3 (source from `https://static.crates.io/crates/tiff/0.11.3/download`, read: `src/decoder/image.rs`, `src/decoder/mod.rs`) with the harness in `research/craft-visual-fixtures/tiff-limit/`; LightCraft side from `crates/codecs/src/tiff_codec.rs` and `Cargo.lock` at `v0.9.1` (`tiff` 0.11.3). Fixtures written with Pillow 12.3.0.
+[84] First-hand test, 2026-10-18: ImageMagick 6.9.12-98 Q16 `convert -define tiff:rows-per-strip=64`, result read with Pillow tags (108 MB RGB single strip to 94 strips); abort (exit 134) on a 134 MB single-strip input under the container's policy.
+[85] Web search results, snippets only (pages not opened, or 404 when opened): query results for VueScan/Epson/SilverFast/NAPS2/GDI+ and `RowsPerStrip`: https://linux.die.net/man/3/tiffstrip , https://www.awaresystems.be/imaging/tiff/tifftags/rowsperstrip.html , https://jqmagick.imagemagick.org/discourse-server/viewtopic.php?p=142442 (and `p=142443`, `142452`, `142428`; all 404 on fetch), https://exiftool.org/forum/index.php?msg=25494 .
+[86] https://github.com/cyanfish/naps2 , `/tree/master/NAPS2.Images.Gdi` , `/blob/master/NAPS2.Images.Gdi/GdiTiffWriter.cs` — WebFetch (summarised): TIFF through `System.Drawing` encoder, compression and multi-frame flags only.
+[87] https://github.com/storytold/photocraft/actions/workflows/ci.yml?query=branch%3Amain and https://github.com/storytold/photocraft/actions/runs/39086586974 — WebFetch (summarised): run #11593, commit `8407d9c`, Success, 2 h 46 m 4 s; neighbouring runs; job and matrix names. The run id in the second URL was returned by the first fetch and then opened successfully. https://github.com/storytold/photocraft/commit/8407d9c — WebFetch: shows no checks (lazy-loaded).
+[88] `.github/workflows/*` at the tags (local clones): PhotoCraft `v0.10.0` `ci.yml`, `release.yml`; VectorCraft `v0.13.1` `print.yml`, `windows7.yml`, `windows-arm64.yml`, `packaging-lint.yml`, `release.yml`, `packaging/windows/windows7.ps1`, `AGENTS.md`; LightCraft `v0.9.1` `packaging-lint.yml`, `windows-arm64.yml`, `release.yml`, `AGENTS.md`.
+[89] https://github.com/storytold/craft-common-actions/blob/main/.github/workflows/release.yml — WebFetch (summarised): jobs, runners, no tests.
+[90] https://github.com/storytold/vectorcraft/actions , `/actions/workflows/ci.yml` , `/actions/workflows/windows7.yml` , `/actions/workflows/print.yml` , `/tree/main/.github/workflows` ; https://github.com/storytold/lightcraft/actions , `/tree/main/.github/workflows` — WebFetch (summarised).
+[91] https://invent.kde.org/graphics/krita/-/raw/v5.2.9/plugins/impex/ora/kis_open_raster_stack_save_visitor.cpp (same path at v5.2.0, v5.2.2, v5.2.6, v5.2.11, v5.2.16, v6.0.0, master), and `.../kis_open_raster_stack_load_visitor.cpp` at v5.2.9; tag list from `https://invent.kde.org/api/v4/projects/graphics%2Fkrita/repository/tags` — read with `curl`. PhotoCraft side: `git diff v0.9.0 v0.10.0 -- crates/io/src/ora.rs`.
+[92] First-hand run, 2026-10-18: Inkscape 1.4.4 (dcaf3e7d9e, 2026-05-05) from nixpkgs (binary cache), Inkscape 1.2.2 (apt) as control; commands in R15; fixture `research/craft-visual-fixtures/at-rig.svg` and `check_ids.py`; clean profile folders; the Optimized SVG run used `--export-extension=org.inkscape.output.scour_inkscape`.
+[93] https://gitlab.com/inkscape/inkscape/-/raw/INKSCAPE_1_2_2/src/ui/dialog/inkscape-preferences.cpp (also INKSCAPE_1_3, 1_3_2, 1_4, 1_4_2); `CMakeScripts/ConfigCPack.cmake` (1_3, 1_4_2); `packaging/wix/WIX.template.in`, `app_registration.xml`, `feature_attributes.xml`, `src/CMakeLists.txt` (1_4_2) — read with `curl`.
+[94] https://gitlab.kitware.com/cmake/cmake/-/raw/v3.31.0/Modules/Internal/CPack/NSIS.InstallOptions.ini.in and `NSIS.template.in` — read with `curl`: three PATH radio buttons, default "Do not add ... to the system PATH".
+[95] Web search result (snippet only): https://lists.inkscape.org/hyperkitty/list/inkscape-user@lists.inkscape.org/thread/ZTGVEXOCJISJLU4I3P65GCLIMPO4T2FD/ and https://inkscape.org/forums/questions/during-installation-what-does-add-to-system-path-mean (403 on fetch) — user reports that `C:\Program Files\Inkscape\bin` had to be added to PATH for command-line use; `inkscape.com` is the console wrapper. Not authoritative.

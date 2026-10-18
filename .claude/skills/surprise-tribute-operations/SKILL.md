@@ -14,7 +14,7 @@ Get the material for a surprise tribute without the honoree finding out, and wit
 - Drafting or checking a contributor brief, a reminder, a pretext card or a consent card.
 - Auditing devices, accounts, speakers, calendars or purchase histories for leaks.
 - Logging a borrow, a scan batch, a return or a lab order.
-- Building the lab receive-by table, the holiday rules or the secrecy checklist.
+- Building the lab ship-by table, the holiday rules or the secrecy checklist.
 - Preparing a hard-chapter decision sheet, a consent ledger or a corrections ledger.
 - Planning or running the reveal, or the steps after it.
 - Handling a slip, or a direct question from her ("are you making something about me?").
@@ -35,10 +35,10 @@ Get the material for a surprise tribute without the honoree finding out, and wit
 3. **Use the code name.** Every file name, folder name, subject line and contact uses `[CODE]`. Never put her name in anything that might sync to a shared device.
 4. **Draft, do not send.** Any contributor message needs: one sentence of purpose; the deadline; exactly what to send and how; the secret rules; the one truthful line for her; what happens to their words and how to withdraw; and a phone contact. Base it on Version A or B in the playbook. Use plain language, and 14 pt or larger if printed. Give the draft to the maker to send.
 5. **Test each pretext card against six conditions.** It is real: the task is done, and she gets the result. Nothing said is untrue. She can stop, and you stop. Nothing said under it goes into a hard chapter without the proxy and her later OK. It is disclosed at the reveal. There is no recording of her without her knowledge. Card E also needs an announced recorder that everyone can see [9].
-6. **Log every interview before it is filed.** The consent card is read aloud, and a spoken yes is captured on the file [8]. Name the file `YYYY-MM-DD_[relation]-[initials]_kit##`. Keep a text sidecar with the consent status, the drawer (top, middle or bottom) and the withdrawal date. Tag anything from the middle or bottom drawer as `drawer: middle/bottom`. It stays out of the shared cut unless the proxy decides.
+6. **Log every interview before it is filed.** The consent card is read aloud, and a spoken yes is captured on the file [8]. Name the file `YYYY-MM-DD_[relation]-[initials]_kit##`. Keep a text sidecar with the consent status, the contributor's country (for the law guardrail), the drawer (top, middle or bottom), the withdrawal date, and `told_by_candidate` (yes, maybe or no, plus the chapter): could this be the one story this person tells, in their voice, as the spine of a chapter? Tag anything from the middle or bottom drawer as `drawer: middle/bottom`. It stays out of the shared cut unless the proxy decides.
 7. **Keep the chain of custody for every object.** Photograph it as found: the shelf or drawer, each cover and spine, and each spread. Change nothing. Keep loose items in labelled envelopes outside the album. Log time out, destination, time back and handler. Return in reverse order, and compare with the as-found photos. Legal originals never leave the house. Magnetic-album adhesive can weld to prints and tear them on removal [55], so photograph in place first.
 8. **Run the Mum-test on every shared device and account.** Do it before collection starts, and monthly after that. Open each one the way she would. Search the code name and the lab names. Ask each speaker about the calendar, recent orders and the shopping list [29]. Check family calendars [31][32], purchase histories, and shared libraries or albums [18][19]. Report each finding together with its fix.
-9. **Set the lab dates in writing.** For each lab, log the written turnaround, holiday closures, return and storage terms, and the receive-by date from the playbook's table, which uses the Friday on or before the calculated date. Mark any date not confirmed in writing as provisional. Send a pilot first, to a mid or fast lab. Send only items she will not miss, and never a legal or irreplaceable original. The notes give no 2026 holiday cut-offs, so ask each lab (TODO(research)).
+9. **Set the lab dates in writing.** For each lab, log the written turnaround, holiday closures, return and storage terms, and the ship-by date from the playbook's table, which uses the Friday on or before the calculated date. Ship-by is the Friday the parcel leaves. Log the lab's receipt date when the lab confirms it. Mark any date not confirmed in writing as provisional. Send a pilot first, to a mid or fast lab. Send only items she will not miss, and never a legal or irreplaceable original. Audio cassettes and microcassettes count as lab items; a tape that squeals, sheds or smells musty is not played [123]. The notes give no 2026 holiday cut-offs, so ask each lab (TODO(research)).
 10. **Decide hard chapters with two keys.** Fill in one decision sheet per candidate chapter. Ask each key the standard question, "what would she choose, and what have you seen or heard her say or do that tells you?", which is substituted judgment [61]. Apply the rules. Any OUT on the shared cut stays out. A disagreement on PRIVATE means HOLD. A key who is part of the story steps back on that item. The maker never overrules a key towards inclusion.
 11. **Build the reveal run sheet from the playbook.** Include the two cold-start tests, the room brief, the quiet word, the fallback ladder and the pause. Check each line against the rules: nobody asks her to speak; no close-up without her yes; nobody records the screen; nothing goes online.
 12. **Keep the ledgers current after the reveal.** The corrections ledger and the consent ledger record what the film says, what she says, the action and the status. Every row is "pending her review" until she decides. Nothing from the film leaves the room without her decision recorded.
@@ -52,6 +52,7 @@ Get the material for a surprise tribute without the honoree finding out, and wit
 - [ ] Rings and the two proxy keys written down, with the partner's role
 - [ ] Project email and `[CODE]` set up
 - [ ] Mum-test done on each shared device and account; fixes logged
+- [ ] External project drive holds a VeraCrypt container created from the administrator account; the project account mounts it only while working and dismounts before leaving the desk or switching users; mount, copy, dismount, unplug tested once [93][97][98]
 - [ ] One truthful side-project chosen; the one line agreed with the co-keeper
 
 ### Before each interview
@@ -69,7 +70,7 @@ Get the material for a surprise tribute without the honoree finding out, and wit
 
 ### Before each lab order
 - [ ] Written turnaround, holiday dates, and return and storage terms in the project email
-- [ ] Receive-by date computed; provisional if not confirmed in writing
+- [ ] Ship-by date computed; lab's receipt date logged when confirmed; provisional if not confirmed in writing
 - [ ] Only items she will not miss; no legal or irreplaceable originals
 
 ### Before the reveal
@@ -97,7 +98,7 @@ Get the material for a surprise tribute without the honoree finding out, and wit
 - **Dignity.** Describe a difficult person by trait, not by one incident, and follow each honest line with warmth [56]. Do not name a cause of death without the closest family's say.
 - **Images and voices of the dead.** Some cultures restrict images, voices and names of the dead [65]. Treat the cultural checklist as questions for the proxy and an elder. None of it is a rule.
 - **Storage.** Audio stays on storage the maker controls, unless the maker decides otherwise and the consent card says so.
-- **Law.** Do not conclude. The US guide is a baseline, and says it is not legal advice [14]. Apple's built-in call recording is consent-by-design, with a repeating notice, and is not available everywhere [15]. Third-party call recorders are not used in this project. UK, EU and cross-border rules are unverified (TODO(research)).
+- **Law.** Do not conclude. The US guide is a baseline, and says it is not legal advice [14]. Apple's built-in call recording is consent-by-design, with a repeating notice, and is not available everywhere [15]. Third-party call recorders are not used in this project. UK: a participant's own recording is unlikely to be unlawful interception under IPA 2016 s.3/s.4 (the notes' reading, inference) [117][118]; Germany: StGB §201 makes an unauthorised recording of private speech an offence with no participant exception, so a spoken yes is mandatory [119]; EU: GDPR Art. 2(2)(c) household exemption is likely but untested [120]; other countries and non-US cross-border calls UNVERIFIED (TODO(research)).
 - **Her decisions override everyone's.** After the reveal, her decisions override the maker's and the proxies'.
 
 ## References
@@ -117,7 +118,7 @@ Numbers match `research/surprise-ops.md`. Status: **fetched** = the researcher o
 
 [9] Smithsonian, Family Folklore (interviewing) — https://www.smithsonianeducation.org/migrations/seek2/iview2.html — undated — fetched — natural settings (dinners, reunions, holidays), "induced" gatherings, group conversations, avoid broad prompts, props, "the speaker, not the tape owner, holds all rights"
 
-[12] Baylor News (Baylor Institute for Oral History), "Seven simple tips to begin recording your family's oral history" — https://news.web.baylor.edu/news/story/2023/family-reunion-month-seven-simple-tips-begin-recording-your-familys-oral-history — page shows "Published June 24, 2026" — fetched — confirm the relative wants to be recorded; patience with older narrators
+[12] Baylor News (Baylor Institute for Oral History), "Seven simple tips to begin recording your family's oral history" — https://news.web.baylor.edu/news/story/2023/family-reunion-month-seven-simple-tips-begin-recording-your-familys-oral-history — page shows "Published June 24, 2026"; page shows a 2026 publish date on a 2023 URL; date unknown — fetched — confirm the relative wants to be recorded; patience with older narrators
 
 [13] Iowa State University Office of Research Ethics, "IRB Review of Research Using Deception" (3/7/2008; reproduces APA Ethical Principles 8.07 and 8.08, effective 2003) — https://compliance.iastate.edu/wp-content/uploads/sites/4/2023/03/deception.pdf — fetched (PDF) — minor deception (withholding) versus misleading; debriefing; withdraw data
 
@@ -143,7 +144,7 @@ Numbers match `research/surprise-ops.md`. Status: **fetched** = the researcher o
 
 [56] Bruce Hallmark, "The Toughest Eulogy" (Substack) — https://brucehallmark.substack.com/p/the-toughest-eulogy — 2026-04-09 — fetched — first-hand; trait not incident; honest then warm; "velvet glove"
 
-[60] Shalowitz, Garrett-Mayer and Wendler, "The accuracy of surrogate decision makers: a systematic review", Archives of Internal Medicine 166(5):493–497, 2006 — https://pubmed.ncbi.nlm.nih.gov/16534034/ — snippet only (cookie wall); summary via Pallimed https://www.pallimed.org/2006/03/accuracy-of-surrogate-decision-making.html — 2006-03-13 — fetched — 16 studies; about 68% agreement; designated surrogates no better; prior discussion did not help
+[60] Shalowitz, Garrett-Mayer and Wendler, "The accuracy of surrogate decision makers: a systematic review", Archives of Internal Medicine 166(5):493–497, 2006 — https://pubmed.ncbi.nlm.nih.gov/16534034/ — snippet only (cookie wall); summary via Pallimed https://www.pallimed.org/2006/03/accuracy-of-surrogate-decision-making.html — 2006-03-13 — fetched — 16 studies; about 68% agreement; designated surrogates no better; prior discussion did not help; Pallimed notes that the discussion-does-not-help finding rests on two uncontrolled trials
 
 [61] Braun, Naik and McCullough, Annals of Family Medicine 7(3):249, 2009 — https://www.annfammed.org/content/7/3/249 — 2009 — fetched — substituted judgment versus best interests
 
@@ -162,3 +163,19 @@ Numbers match `research/surprise-ops.md`. Status: **fetched** = the researcher o
 [73] ChinaTravel, Chinese New Year 2027 — https://www.chinatravel.com/chinese-new-year/date — undated — snippet only — Lunar New Year Sat Feb 6, 2027
 
 [78] Queensland Family History Society, Code of Ethics — https://mms.qfhs.org.au/code-of-ethics/ — © 2026 — fetched — sensitivity to family hurt; specific consent from living people; tell providers how information will be used
+
+[93] VeraCrypt, Downloads — https://veracrypt.io/en/Downloads.html — page shows "Tuesday June 9th, 2026" — fetched — 1.26.29 latest stable; EXE x64 and ARM64, MSI, portable; PGP signature links
+
+[97] VeraCrypt, Using VeraCrypt Without Administrator Privileges — https://veracrypt.io/en/Using%20VeraCrypt%20Without%20Administrator%20Privileges.html — undated — fetched — what a standard user can and cannot do; admin must install; unsafe on systems you do not administer
+
+[98] VeraCrypt, Multi-User Environment — https://veracrypt.io/en/Multi-User%20Environment.html — undated — fetched — mounted volume visible to all logged-on users; Fast User Switching does not unmount; shared password cache; non-admin can mount partition/device volumes and unmount only their own
+
+[117] legislation.gov.uk, Investigatory Powers Act 2016 section 3 — https://www.legislation.gov.uk/ukpga/2016/25/section/3 — "up to date ... on or before 18 October 2026" — fetched — offence of unlawful interception
+
+[118] legislation.gov.uk, Investigatory Powers Act 2016 section 4 — https://www.legislation.gov.uk/ukpga/2016/25/section/4 — same status line — fetched — meaning of interception, subsection (1)
+
+[119] Federal Ministry of Justice (Germany), Criminal Code, English translation, section 201 — https://www.gesetze-im-internet.de/englisch_stgb/englisch_stgb.html — translation current to the amendment of 7 November 2024 — fetched (downloaded and text-extracted locally) — violation of the privacy of the spoken word
+
+[120] GDPR Article 2 (unofficial reproduction) — https://gdpr-info.eu/art-2-gdpr/ — undated — fetched — Article 2(2)(c) personal or household activity
+
+[123] US National Archives, "Magnetic Media Audio Condition Assessment" — https://archives.gov/files/preservation/formats/pdf/audio-magnetic-media-condition-assessment-table.pdf — October 2014 — fetched (PDF text extracted locally) — sticky shed, soft binder, vinegar syndrome, mould; "Do not bake"; do not handle mould

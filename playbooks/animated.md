@@ -1,6 +1,6 @@
 # Animated and documentary exemplars: how to make a life look honest and alive
 
-Track: animated · Draft v0.1 · 2026-10-18 · For the maker (a motivated learner)
+Track: animated · Draft v0.2 · 2026-10-18 · For the maker (a motivated learner)
 Built from research/animated.md (Sonnet researcher, 2026-10-18) and CHARTER.md. Numbers in brackets, like [1], point to the Sources list at the end. Anything marked TODO(research) is still open. The research team read written breakdowns, not the films, so no beat-level claim here has been checked against footage.
 
 ## Why this matters for our life journey
@@ -29,15 +29,17 @@ Some methods are expensive. Flee had about fifty people working on its animation
 
 8. **Change the medium, not just the filter. Build it to last.** Era shows most in grain, frame shape, tint and crop, more than in palette alone [88][91]. Snow Fall's own files still resolved fourteen years after launch, while its third-party video script had been redirected [39]. Plan for a self-contained build and a plain video file.
 
+9. **Routines are chapters too.** A repeated ordinary shot (the same kitchen table, the same route, the same Sunday) is a time-passing device in its own right. Fixed-frame repetition works on faces, as Kalina and Hofmeester show [70][74]. Our judgment is that it works on places and objects too; the research found no sourced fixed-frame example on a place. Up's montage also keeps objects that come back across the years, such as the ties and the house repainted [56][57].
+
 ## How to do it, step by step
 
 Steps 1 to 4 can start now. Steps 5 to 11 are the production pattern. The exercises in the next section teach each step on practice material.
 
-**Tools.** We do not yet know which free editors are installed on your PC. TODO(research): confirm the exact apps and versions you have. The notes name these options: Inkscape for vector cut-outs, GIMP or Krita for photo layers, DaVinci Resolve for editing and its Fusion 3D tools, Blender for camera projection, and ffmpeg for converting files. Their free status is background knowledge and was not re-checked this session. TODO(research): confirm licences and download links from each official site. The Blackmagic page lists DaVinci Resolve Studio 21 at $295 [34]. The page does not say whether the free edition includes Fusion's 3D tools. TODO(research): confirm that.
+**Tools.** Your PC runs Windows and has limited memory, so heavy work (research, generation, rendering) happens in the cloud wherever it can. The ArtCraft Crafting Apps are installed; the charter names PhotoCraft, VectorCraft, FilmCraft, EffectCraft, LightCraft and SoundCraft. Use them as refinement layers for quick hand touch-ups. Agents do the generating. The Craft apps are free, open-source and early alpha, so every step has a fallback, and no alpha app is on the critical path. TODO(research): confirm which Craft apps and versions are installed (Launcher, table view). Fallback tools named in the notes: GIMP or Krita for photo layers, Inkscape for vector cut-outs, a free video editor for assembly (TODO(toolchain)), and ffmpeg for converting files. Their free status and download links were not re-checked (TODO(research)). DaVinci Resolve is optional and not on the critical path; see the appendix.
 
 1. **Check the rules before you touch any material.** We are still in the LEARN phase. Use practice images only: public-domain pictures, or your own photos that have nothing to do with her. Family photographs wait until the pipeline is locked, as the charter requires. Keep practice and family files off shared computers, phones and auto-syncing photo libraries, because family members may see them.
 
-2. **Inventory each chapter.** For each chapter, list what exists: photographs (with date and place), letters, messages, recordings, objects, and who can confirm each fact. Mark the gaps. This list is the input to every choice below. The story gathering itself belongs to the story and surprise-ops tracks, and it stays covert.
+2. **Inventory each chapter.** For each chapter, list what exists: photographs (with date and place), letters, messages, recordings, objects, and who can confirm each fact. Mark the gaps. This list is the input to every choice below. The story gathering itself belongs to the story and surprise-ops tracks, and it stays covert. Add a texture column: routines, places and objects that could carry a fixed frame (principle 9). TODO(story): ask the story track to add that column.
 
 3. **Record the voices, later and carefully.** When gathering starts, record the people who knew her. Use the closed-eyes method: the speaker lies back, closes their eyes and describes a place in the present tense, covering materials, colours, light, sounds and feelings [2]. Keep the original audio untouched. Do not start any real interviews until the surprise-ops track has set the covert process.
 
@@ -48,28 +50,36 @@ Steps 1 to 4 can start now. Steps 5 to 11 are the production pattern. The exerci
    - Letters, messages or other written words: show them, one line per year [49][54].
    - Eight or more portraits across years: a portrait ladder, with the eyes aligned in the same frame [70][72].
    - Places but no people: a scale zoom, or a model of the place [6][43].
+   - A routine with a known place, such as the kitchen table or the route to school: fixed frame on the place, one frame per era, with the people and objects changing [70][74][56]. Our judgment; the research found no sourced example of this device on a place.
    - One strong photograph: one long, slow hold, used once per chapter at most [37][38].
    - Nothing at all: show the gap with a black frame or a single object [62].
    Every device must say something true about her life. If it does not, cut it.
 
 6. **Set the reconstruction look.** Choose one material for every invented image. The options are cut paper drawn in a vector editor, clay or paper sets photographed [6][21], or simple blocks. Write a one-page art bible with three "good" and three "not good" examples, and a rule for how hands and faces are drawn [1][2]. Flee's team kept a document like this, down to how to draw a hand or an eye [1][2].
 
-7. **Animate with restraint.** The default is a still photo with one slow move (a push, a pull or a pan) across about 3 to 5 percent of the frame width, held for no more than 8 to 10 seconds. These limits are the researcher's judgment from the notes, not a tested rule. Alternate still and moving shots so the motion keeps its meaning. For depth, use one of two routes:
-   - Manual layers, the classic method. Outline each element with the pen tool, feather the edge slightly, expand the selection by 10 to 15 pixels, fill the gap behind it with content-aware fill or cloning, place the layers in 3D with a 28mm-style camera, and keyframe a slow push [28][29]. Free routes in the same spirit include Fusion's 3D tools in Resolve [33] and Blender camera projection [104].
-   - Automatic depth parallax. DepthFlow is free and open source under AGPL-3.0. It runs locally, needs Python 3.10 or newer, adds no watermark, and uses a depth map so near things move faster [30][31]. Its documentation was blocked for the researcher. TODO(research): confirm the command syntax and the Windows setup.
-   Use parallax only on your best photographs (see Exercise 5).
+7. **Animate with restraint.** The default is a still photo with one slow move (a push, a pull or a pan) across about 3 to 5 percent of the frame width, held for no more than 8 to 10 seconds. These limits are the researcher's judgment from the notes, not a tested rule. Alternate still and moving shots so the motion keeps its meaning. For each operation, choose the route in the table below: the agent team generates, you refine in a Craft app, and a named fallback catches any failure. The manual layer method (pen-tool outline, content-aware fill, a 28mm-style camera, a slow push) is the fallback for cutouts [28][29]. The Fusion 3D and Blender routes are in the appendix [33][104]. Use parallax only on your best photographs (see Exercise 5).
 
-8. **Prepare the sources.** Old prints are soft and grainy. The 110 film of 1972 was small and is often "rather grainy and unsharp" [93]. Scan small prints at 600 ppi. The handout minimum is 400 ppi for prints, and slides and film need 2000 to 3000 dpi [96]. By the notes' arithmetic, a 3.5 by 5 inch print at 600 ppi gives about 3,000 pixels on the long side, which is enough for a 1080p push-in. Dye fades unevenly, and shadows and cyan lose the most [89]. Correct each colour channel separately rather than with one filter, and keep the print's own character.
+8. **Prepare the sources.** Old prints are soft and grainy. The 110 film of 1972 was small and is often "rather grainy and unsharp" [93]. Scan small prints at 600 ppi. The handout minimum is 400 ppi for prints, and slides and film need 2000 to 3000 dpi [96][127]. By the notes' arithmetic, a 3.5 by 5 inch print at 600 ppi gives about 3,000 pixels on the long side, which is enough for a 1080p push-in. Dye fades unevenly, and shadows and cyan lose the most [89]. Correct each colour channel separately rather than with one filter, and keep the print's own character. Batch clean-up is an agent job, not a hand job (see the table below).
 
-9. **Put the era on the new layer only.** Apply grain, a 4:3 crop or a tint to title cards and reconstructions, not to the family photographs themselves. Blue Spill filmed a hand-cut title card on real Super 8 stock so it would sit with the family's cine film [64]. A typical Super 8 look uses 12 to 18 frames a second, a 4:3 frame, reduced sharpness, grain and a slight colour tint, with stabilisation turned off [88]. Do not add fake date stamps. Do not age material that is already aged [89].
+**Steps 7 and 8, by operation.** Heavy generation runs in the cloud session on practice images only. Family photographs stay on the PC until the maker decides otherwise, because the charter forbids uploading personal material to a third party without the maker's explicit say. The Craft-app cells come from the research team's reading of the apps' source and docs, not from running them on Windows, so each stays TODO until the maker has tested it.
+
+| Operation | Agent generates | You refine in | Fallback |
+|---|---|---|---|
+| Cutout and fill | SAM with LaMa to fill the holes [32] | PhotoCraft: Select Subject, then Content-Aware Fill. The vendor calls the fill basic and non-generative (TODO(craft-visual)) [124] | GIMP or Krita by hand: pen-tool outline, feather, expand 10 to 15 px, fill [28][29] |
+| Depth parallax | DepthFlow [30][31] in the cloud session or on a GPU. A plain CLI render holds the camera still, so motion needs a short script, which the agent writes in the build phase [113] | FilmCraft keyframes for a push, or EffectCraft's 3D camera for orbit, pan or dolly (TODO(craft-motion)) [123][126] | A flat slow push of 3 to 5 percent of frame width, keyframed on the still with no depth (TODO(craft-motion); name the tool once toolchain confirms it) |
+| Eye alignment (portrait ladder) | dlib five-landmark script [72], or OpenCV YuNet [122]. Windows install untested (Exercise 6) | Nudge the eye positions in PhotoCraft (TODO(craft-visual)) [124] | Manual grid: mark both eyes by hand on each portrait [71] |
+| Batch scan clean-up | ImageMagick and ffmpeg scripts, one pass over each folder (TODO(toolchain)) | Spot-check a sample in PhotoCraft (TODO(craft-visual)) | Manual clean-up in GIMP, one print at a time |
+| Title cards | Batch export of card text and layout from a script (TODO(toolchain)) | VectorCraft for drawn lettering and art export, or FilmCraft's Type tool inside the edit (TODO(craft-visual); TODO(craft-motion)) [123][125] | Inkscape for vector title cards (free status not re-checked) |
+
+9. **Put the era on the new layer only.** Apply grain, a 4:3 crop or a tint to title cards and reconstructions, not to the family photographs themselves. Set grain and the 4:3 crop in the Craft apps: EffectCraft's Add Grain, and a 1440 x 1080 FilmCraft sequence (TODO(craft-motion)) [123][126]. Blue Spill filmed a hand-cut title card on real Super 8 stock so it would sit with the family's cine film [64]. A typical Super 8 look uses 12 to 18 frames a second, a 4:3 frame, reduced sharpness, grain and a slight colour tint, with stabilisation turned off [88]. Do not add fake date stamps. Do not age material that is already aged [89].
 
 10. **Build the honesty layer.** Write the disclosure card: one short paragraph at the start that names which scenes are reconstructed and what material marks them [1]. For each reconstructed person or place, write the reveal: which real photo, voice or object replaces it, and at which point in the piece. If no real item exists, the stand-in stays labelled.
 
-11. **Test, deliver, and check it works.** Watch on the screen she will actually use, such as a TV, tablet or laptop. Ask a viewer who has not been briefed to name the reconstructed scenes. Export H.264 MP4 at 1080p [78]. Keep a plain video file as the master delivery, even if an interactive version also exists. Interactives that died in the research died through a runtime or a third party, not through their files [46][47]. For any web version, build a self-contained folder: no content-delivery-network scripts, no third-party video host and no analytics [39][46]. Offer a static fallback [100]. Keep masters separate, with a README that explains how to rebuild the delivery files. Test any web version in a current browser, because an HTTP 200 response does not prove that it plays [39]. TODO(research): run that browser test on the Snow Fall page.
+11. **Test, deliver, and check it works.** Watch on the screen she will actually use, such as a TV, tablet or laptop. Ask a viewer who has not been briefed to name the reconstructed scenes. Export H.264 MP4 at 1080p [78], from FilmCraft's exporter, with an ffmpeg fallback in the cloud (TODO(craft-motion); TODO(toolchain)). Keep a plain video file as the master delivery, even if an interactive version also exists. Interactives that died in the research died through a runtime or a third party, not through their files [46][47]. For any web version, build a self-contained folder: no content-delivery-network scripts, no third-party video host and no analytics [39][46]. Offer a static fallback [100]. Keep masters separate, with a README that explains how to rebuild the delivery files. Test any web version in a current browser, because an HTTP 200 response does not prove that it plays [39]. TODO(research): run that browser test on the Snow Fall page.
 
 ## Learn-by-doing exercises
 
-Every exercise uses practice material. The time estimates are ours, not sourced. Each exercise ends with a "good" line you can check yourself. If your PC struggles with memory, run practice renders in the cloud session, but only with practice images.
+Every exercise uses practice material. The time estimates are ours, not sourced. Each exercise ends with a "good" line you can check yourself. If your PC struggles with memory, run practice renders in the cloud session, but only with practice images. One editor per type, for every exercise: PhotoCraft for photos, VectorCraft for vector, FilmCraft for video, all as installed. The fallbacks are GIMP, Inkscape and a free video editor, pending toolchain (TODO(toolchain)). Do not add a second editor.
 
 ### Exercise 1: Watch one beat sheet with a stopwatch
 
@@ -88,35 +98,36 @@ Every exercise uses practice material. The time estimates are ours, not sourced.
 ### Exercise 3: Audio-first cut
 
 - **Goal:** let the voice set the picture.
-- **Steps:** Using the recording from Exercise 2, or a public-domain speech clip, cut a 60-second piece that keeps its pauses. Write six storyboard frames, one for each phrase. Add one object that appears twice.
+- **Steps:** Using the recording from Exercise 2, or a public-domain speech clip, cut a 60-second piece that keeps its pauses, in FilmCraft with the audio track only (TODO(craft-motion): the notes do not cover audio cutting in FilmCraft or SoundCraft). Write six storyboard frames, one for each phrase, on paper or in VectorCraft. Add one object that appears twice.
 - **Time estimate:** 3 hours.
 - **Good:** the 60 seconds stand up without music. The frames follow the phrasing. The repeated object appears twice and changes between the two appearances.
 
 ### Exercise 4: One material, one disclosure card
 
 - **Goal:** build an invented scene in one visible material and disclose it.
-- **Steps:** Invent a small room or street and label it clearly as invented. Make it in cut paper drawn in a vector editor, or as a simple block build. Film a slow move of about 8 seconds across it. Write a three-sentence disclosure card that names what is invented.
+- **Steps:** Invent a small room or street and label it clearly as invented. Make it in cut paper drawn in VectorCraft (fallback: Inkscape), or as a simple block build. Animate a slow move of about 8 seconds across it in FilmCraft (TODO(craft-motion)). Write a three-sentence disclosure card that names what is invented.
 - **Time estimate:** 4 hours.
 - **Good:** a viewer can tell the scene is drawn or built without being told. The card names what is invented. Every invented scene in the piece uses this same material.
 
 ### Exercise 5: Parallax spike on practice snapshots
 
 - **Goal:** find out what photo animation can do with small, soft prints.
-- **Steps:** Pick three small, soft practice snapshots that are public-domain or otherwise non-personal. Scan each at 600 ppi [96]. Method A: outline three layers in GIMP or Krita, fill the gaps, bring the layers into Resolve (Fusion) or Blender, place them in depth, and keyframe a push of 3 to 5 percent over about eight seconds [28][29][33]. Method B: run DepthFlow, if your PC has Python 3.10 or newer and a suitable graphics card [30][31]. TODO(research): confirm the DepthFlow syntax and Windows setup. Compare both methods at 1080p on a full screen.
+- **Prerequisites:** a flatbed scanner, or a phone on a tripod or copy stand (which one you have is unknown: TODO(toolchain)). By the research team's arithmetic, a phone shot of a 4 x 6 print at about 4,000 px on the long edge clears the roughly 3,300 px push-in need, so a flatbed is not required for this exercise [127]. A GPU for DepthFlow on the PC, or run it in the cloud session with practice images only; the cloud route was checked only on a GPU-less Linux container, and Windows is untested [113]. A scripted flat-push fallback, named once toolchain confirms the tool (TODO(toolchain)).
+- **Steps:** Pick three small, soft practice snapshots that are public-domain or otherwise non-personal. Scan each at 600 ppi [96], or photograph it on the phone rig. Method A (manual): cut out three layers in PhotoCraft (fallback: GIMP), fill the gaps, place the layers in depth, and keyframe a push of 3 to 5 percent over about eight seconds in EffectCraft's 3D camera or FilmCraft (TODO(craft-visual); TODO(craft-motion)) [28][29][123][126]. Method B (automatic): run DepthFlow, if your PC has Python 3.10 or newer and a suitable graphics card, or run it in the cloud session [30][31]. A plain CLI render holds the camera still, so motion needs a short script, which the agent team writes in the build phase, not in LEARN [113]. Compare both methods at 1080p on a full screen.
 - **Time estimate:** 6 to 8 hours for the first pass.
 - **Good:** no gaps show at 1080p, and faces are clean at the push-in. You can name the snapshot that fails and say why. If only a slow flat push works for a snapshot, that is a valid result, and the notes suggest it (researcher's judgment). The spike on her own photographs is a production step, to be done after the lock.
 
 ### Exercise 6: Portrait ladder with practice portraits
 
 - **Goal:** learn alignment and rhythm across years.
-- **Steps:** Gather eight portraits of one practice person taken across several years. Mark both eyes on each one. Align every portrait to the same eye positions and the same crop, using a grid in your photo editor, the same idea as the overlay grid in the Everyday app [71]. Hold each portrait for one to two seconds, with a short dissolve of about half a second (our judgment). Keep the total under 30 seconds. Automatic five-point landmark alignment, as used on Kalina's "7777 Days", is free to run with dlib, but its setup was not tested [72][77].
+- **Steps:** Gather eight portraits of one practice person taken across several years. Mark both eyes on each one. Align every portrait to the same eye positions and the same crop, using a grid in PhotoCraft (fallback: GIMP), the same idea as the overlay grid in the Everyday app [71]. Hold each portrait for one to two seconds, with a short dissolve of about half a second (our judgment). Keep the total under 30 seconds. Automatic five-point landmark alignment, as used on Kalina's "7777 Days" [72][77], is free with dlib, but dlib's Windows installation is untested; if it fails, align eight portraits by hand and log the time. dlib ships on PyPI as source only, and building it needs CMake and a C++ compiler [117][119]. OpenCV's YuNet detector returns the same five points from one wheel and is the other option to test; its accuracy on faded prints is untested [122].
 - **Time estimate:** 3 hours.
 - **Good:** the eyes do not jump between frames. The rhythm changes once. You can explain why you cut rather than morphed.
 
 ### Exercise 7: A title card on paper
 
 - **Goal:** make an era cue physically, then film it.
-- **Steps:** Print or hand-letter a title card on paper. Film it with a phone, held by hand, with stabilisation off, in ordinary room light [88]. Grade it to a 4:3 frame with grain and a slight tint, using Resolve or another free editor. Put it side by side with a digital title card and compare.
+- **Steps:** Print or hand-letter a title card on paper. Film it with a phone, held by hand, with stabilisation off, in ordinary room light [88]. Grade it to a 4:3 frame with grain and a slight tint in FilmCraft (a 1440 x 1080 sequence). Take the grain from EffectCraft's Add Grain; FilmCraft's Noise effect is not a film-grain emulation, as far as the notes found, so test it before relying on it (TODO(craft-motion)) [123][126]. Put it side by side with a digital title card and compare.
 - **Time estimate:** 2 hours.
 - **Good:** the card looks filmed, not added. The grade touches only this card.
 
@@ -173,7 +184,7 @@ For each decision, the options come first, then our current lean. A lean is a st
 - **Selection by popularity.** Facebook's 2014 Year in Review put a photo of Eric Meyer's late six-year-old daughter under party graphics, because it had many likes and comments [81][82]. Select her photographs by hand, with the proxy.
 - **Stacked era filters.** Avocado appliances, Cooper Black and heavy grain on every frame look like a costume [87][90]. Change the medium on the new layer only, and do not age scans that are already aged [89].
 - **Faces at small sizes.** Depth maps and interpolation fail first on thin objects and on faces [27][77]. Keep push-ins gentle near faces, or cut instead.
-- **AI face animation and restoration.** Not researched. TODO(research): research AI face-animation reactions, such as Deep Nostalgia, before any such tool is considered. Until then, do not use AI on any real person's face, and do not let restoration invent facial detail. The charter forbids animating a dead person's face and inventing speech (principle 4).
+- **AI face animation and restoration.** Charter principle 4 forbids invented events, fake people and invented speech. Our team rule, from the charter review, adds: no AI animation of any real person's face and no synthetic voice of any real person, living or dead, until the ai-imagery track has ruled on labelling. Restoration must not invent facial detail. Not researched: AI face-animation reactions, such as Deep Nostalgia (TODO(research)).
 - **Runtime dependencies.** Flash-based interactives from several news sites broke when Flash support ended on 31 December 2020 [47]. Shared resources and third-party scripts also rot [46]. Self-contain the build.
 - **Music clearance.** The Wonder Years' theme song disappeared from Netflix because relicensing was costly (search snippet) [105]. Check every song before you use it.
 - **Surprise leaks.** Relatives' group chats, shared computers and cloud photo libraries can show her the work too early. The charter names all three. Keep drafts off them.
@@ -197,6 +208,10 @@ For each decision, the options come first, then our current lean. A lean is a st
 7. **Noah Kalina, "Everyday" and "7777 Days".** Watch the video at https://www.youtube.com/watch?v=6B26asyGKDo [69]. Read Laughing Squid at https://laughingsquid.com/noah-kalina-ages-over-7777-days/ [73] and kottke at https://kottke.org/21/07/half-a-life-in-2-minutes [72]. Worth your time for alignment on five face points, averaging the last 60 frames, and how the rhythm changes across 21 years. The original app's alignment grid is covered by TechCrunch at https://techcrunch.com/2011/03/21/everyday-iphone-app [71].
 
 8. **Snow Fall (The New York Times, 2012).** Read the project at https://www.nytimes.com/projects/2012/snow-fall/index.html [39] and OpenNews's account at https://source.opennews.org/articles/how-we-made-snow-fall/ [40]. Worth your time for how a long web piece pauses for its media, and for where it broke: third-party video and analytics. TODO(research): test the page in a current browser. An HTTP 200 response is not proof of playback.
+
+## Appendix: If you already know Resolve or Blender
+
+DaVinci Resolve's Fusion page has 3D nodes (Image Plane 3D, Camera 3D, Merge 3D and Renderer3D). The Resolve 21 manual lists them without a Studio tag [109]. The Blackmagic product page says Studio "adds tons of additional effects, 3D and more" [34][106], so whether the free edition includes these nodes is probable but not confirmed. A five-minute check on your PC settles it. Fusion's 3D tools also need a working OpenGL driver [109], and Resolve's memory and GPU needs on Windows are not confirmed (see research/animated.md, follow-up F2). A tutorial covers faking perspective on a still with these tools [33] (snippet only). The free edition handles virtually all 8-bit formats up to 60fps and Ultra HD [34][106]; Studio is listed at $295 [34]. Blender camera projection is the other route; a 2020 article covers camera mapping (snippet only) [104]. Neither route is used in the exercises or on the main production path.
 
 ## Sources
 
@@ -272,6 +287,7 @@ Tier key: [P] creator, official or academic statement; [S] journalism, review or
 ## Changelog
 
 - v0.1 · 2026-10-18 · First draft, written by the Haiku scribe from research/animated.md. Not yet reviewed by the advisor or by the maker.
+- v0.2 · 2026-10-18 · Advisor round 1 applied (Haiku scribe): Tools and steps 7 to 11 now name the agent, Craft-app and fallback route per operation; one editor per type; Resolve and Blender moved to an appendix; texture added as principle 9 and a step 5 device; team rule on AI faces and voices; Exercises 3 to 7 updated; research and skill edited to match.
 
 ### Open TODO(research) items at v0.1
 

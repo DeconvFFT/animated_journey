@@ -18,7 +18,7 @@ Where things stand: the research reads the code, the vendors' claims and public 
 2. **Pin a version by testing it, not by its date.** A newer FilmCraft can open files saved by an older one, but not the reverse [3]. Choose a tag, run the five-minute test, write down the tag and its SHA-256, and do not upgrade in the middle of a chapter.
 3. **Prepare media before an app touches it.** FilmCraft decodes each still whole into 8-bit colour and does not read EXIF rotation or ICC colour profiles [10]. So stills are rotated, converted to 8-bit sRGB and sized to the sequence before import. Phone and camcorder video is converted first.
 4. **Learn on test cards.** Until the pipeline is locked, use generated test cards (grids with numbers), not family photos. Real material comes in only after the pipeline is locked (charter).
-5. **Every step has a fallback without a Craft app.** A Ken Burns move can be baked into plain video. Cuts and markers travel in OTIO, which Resolve and Kdenlive can read. Basic dissolves survive into Resolve [56]. The Kdenlive documentation does not mention transitions [51].
+5. **Every step has a fallback without a Craft app.** A Ken Burns move can be baked into plain video. Cuts and markers travel in OTIO, which Resolve and Kdenlive can read. Basic dissolves survive into Resolve [56]. In Kdenlive, cuts, gaps, markers and dissolves (as luma mixes, by code) survive; effects, metadata and image sequences do not; `file://` URLs are not decoded; the project profile is taken from the first still's pixel size [72]. Resolve's manual says FCP 7 XML Opacity, Position, Scale and Rotation keyframes import, with FilmCraft's numbers untested [74].
 6. **Know what each format drops, and read the import report every time.** Plain OTIO carries no Ken Burns moves, no opacity and no audio gain [6]. FilmCraft's own metadata inside an OTIO file keeps them, but only FilmCraft reads that part.
 7. **Keep the work private.** FilmCraft and EffectCraft write auto-save copies, caches and recent-file lists, next to the project or under AppData [2][31][33][38]. Use the portable zips, keep one encrypted working folder that does not sync to the cloud, and never run the Launcher on a shared machine.
 8. **Real memories stay real.** You can restyle, animate and connect real photos. You cannot invent events or people, or put words in anyone's mouth. Reconstructed scenes are visibly labelled. No synthetic voice is ever used for a relative (charter, principle 4).
@@ -28,12 +28,12 @@ Where things stand: the research reads the code, the vendors' claims and public 
 Steps 1 to 6 are set-up, for weeks 1 and 2. Steps 7 to 12 are the chapter loop, repeated for each chapter.
 
 **Step 1. Make the folders.** Suggested layout on the Windows PC, on one encrypted drive if you have one:
-- `C:\LifeJourney\tools\` holds one folder per app and tag, such as `filmcraft-v0.8.0`.
+- `C:\LifeJourney\tools\` holds one folder per app and tag, named `filmcraft-<tag>`, for example `filmcraft-v0.9.0`.
 - `C:\LifeJourney\work\stills\` and `C:\LifeJourney\work\audio\` hold the media the agents hand you. Keep these paths, because the OTIO files point to them.
 - `C:\LifeJourney\projects\` holds your FilmCraft project files. (Our suggestion.)
 - `C:\LifeJourney\exports\` holds renders. (Our suggestion.)
 
-**Step 2. Download the pinned version.** Get the portable x64 zip for the tag you are testing from that tag's GitHub release page. Do not use the ArtCraft Launcher for production, because it installs and updates the apps on its own [63]. Do not use the MSI installer for production either. Its command-line tool is not on the PATH [14], and its data goes to AppData [2].
+**Step 2. Download the pinned version.** Get the portable x64 zip for the tag you are testing (v0.9.0 first, then v0.8.0; see Template A) from that tag's GitHub release page. Do not use the ArtCraft Launcher for production, because it installs and updates the apps on its own [63]. Do not use the MSI installer for production either. Its command-line tool is not on the PATH [14], and its data goes to AppData [2].
 
 **Step 3. Check the download.** In PowerShell, run:
 
@@ -41,7 +41,7 @@ Steps 1 to 6 are set-up, for weeks 1 and 2. Steps 7 to 12 are the chapter loop, 
 
 Compare the result with the pin table in the Templates section. If it does not match, do not run the file. Download it again. If it still differs, tell the agent team. Optionally, run `Get-AuthenticodeSignature` on the `.exe`. TODO(research): whether the downloaded portable binaries are code-signed as the release implies.
 
-**Step 4. Unzip.** Unzip into `C:\LifeJourney\tools\filmcraft-v0.8.0\`. The zip holds `filmcraft.exe`, `filmcraft-cli.exe` and a file called `portable.txt` [15]. That file keeps the data folder beside the program, not in AppData [2].
+**Step 4. Unzip.** Unzip into `C:\LifeJourney\tools\filmcraft-<tag>\`. The zip holds `filmcraft.exe`, `filmcraft-cli.exe` and a file called `portable.txt` [15]. That file keeps the data folder beside the program, not in AppData [2].
 
 **Step 5. Start it, and fall back if needed.** Double-click `filmcraft.exe`. If the window appears and closes at once, open PowerShell in that folder and try these in order. Write down the one that works.
 1. `$env:WGPU_BACKEND="vulkan"` and then `.\filmcraft.exe`
@@ -59,18 +59,26 @@ The last option draws on the processor instead of the graphics card, so it is sl
 - `build_info.json` (tool tags, hashes, and the frame rate and size used)
 - the spec file (the plain-text description of the chapter)
 
-Copy it into `C:\LifeJourney\work\`. Keep the folder layout exactly as delivered. The files point to absolute `file:///C:/LifeJourney/...` locations [5]. If you must move the folder, ask the agents first.
+If spike S1 fails, the bundle has no `ch01.xml`. After Step 8 the maker makes both interchange files from FilmCraft, each saved into the bundle folder: File > Export > Final Cut Pro XML… (`file.exportFcp7Xml`) writes the FCP7 XML as `ch01.xml`, and File > Export > OpenTimelineIO… (`file.exportOtio`) writes the OTIO as `ch01.otio`. FCPXML… and EDL… sit beside them in the same menu and are not part of this hand-off (Pitfall 8 covers FCPXML). The FCP7 XML is what goes into Resolve in Exercise 6.
 
-**Step 8. Import and read the report.** In FilmCraft, choose File > Import and open `ch01.otio`. Read the import report before you touch anything [9]. Look for three things: no red "MEDIA NOT FOUND" slates, the Ken Burns keyframes present, and no unexpected "not supported" lines. Write any problem in your change list and tell the agents.
+Copy it into `C:\LifeJourney\work\`. Keep the folder layout exactly as delivered. The OTIO points to its media with relative paths (`media/ch01_s01.png`), resolved against the `.otio` file's own folder [5]. Kdenlive does not decode `file://` URLs, so the OTIO must never carry one [72]. The FCP7 XML keeps absolute `file://localhost/C:/...` paths [8]. Keep `media/` beside `ch01.otio`. If you must move the folder, ask the agents first.
 
-**Step 9. Refine what FilmCraft is good at.** Work in this order:
+**Step 8. Import and read the report.** First make the sequence yourself, as Template B says, and never drop a still onto an empty timeline. Then, in FilmCraft, choose File > Import and open `ch01.otio`. Read the import report before you touch anything [9]. Look for three things: no red "MEDIA NOT FOUND" slates, the Ken Burns keyframes present, and no unexpected "not supported" lines. Write any problem in your change list and tell the agents.
+
+**Step 9. Refine what FilmCraft is good at.**
+
+**Story pass first.** Before you touch a keyframe, watch the chapter once with the voice track playing. Then ask four things. (a) Which photo carries this chapter? It is the weight-3 shot the agents marked (see below). Check they chose the right photo, then decide whether it needs more time than the full voice line gives it. (b) Is there a hard moment, such as a loss or a leaving? Cut there, do not dissolve. A dissolve softens the moment, and a cut states it. (c) Does every move end before the sentence it sits under ends? If not, shorten the move, not the sentence. (d) Is any face partly cropped? Check it against the crop decision recorded for that shot in the manifest (Template C).
+
+By default the agents set each still's time and move from its `weight`, unless the spec overrides it. Weight 1: 3 to 4 seconds, with a 6 to 8 percent push. Weight 2: 5 to 6 seconds, with a 10 to 12 percent push that alternates between push-in and drift. Weight 3 (the photo that carries the chapter, at most one per chapter): the full voice line about it, at least 7 seconds, with no move or a push under 4 percent, and hard cuts on both sides. Every move ends on or before the end of the voice line under it. The agents mark the weight-3 shot in the spec; your first job is to check they chose the right photo.
+
+Then work in this order:
 - **Ken Burns moves.** Drag the scale and position keyframes in Effect Controls. Use the value and velocity graphs to check the easing.
 - **Dissolves.** Retime them, or re-centre them on the cut.
 - **Titles.** Use the Type tool for simple titles and lower thirds.
 - **Music under voice.** Use Essential Sound > Music > Ducking against Dialogue. It writes volume keyframes [17].
 - **Save** into the project folder. At the end of each session, choose File > Save a Copy as a second copy [2].
 
-**Step 10. Hand back the changes.** Export the interchange files (OTIO and FCP7 XML) and the marker list. Return them with a short change list: shot number, what you changed and why. The agents read the file, compare it with the spec, and update only the parts you did not touch. TODO(research): exact menu path for the marker-list export.
+**Step 10. Hand back the changes.** Export the interchange files (File > Export > OpenTimelineIO… and File > Export > Final Cut Pro XML…) and the marker list (Markers > Export Markers as CSV…, command `markers.exportCsv`, which needs an open sequence; the code places it under the Markers menu [83], so confirm the location on first use). Return them with a short change list: shot number, what you changed and why. The agents read the file, compare it with the spec, and update only the parts you did not touch.
 
 **Step 11. Make the final files.** Who runs this depends on Decision 1.
 - **Archive master.** Export with the preset "Apple ProRes 422 HQ", at the sequence size and frame rate, with 48 kHz 24-bit audio [11]. Use "Apple ProRes 4444" only if the film has transparency or smooth gradients that band.
@@ -87,9 +95,9 @@ Times are our estimates, not measurements. Do Exercises 1 to 6 in order. Exercis
 
 - **Goal:** a verified, running portable copy of the candidate FilmCraft tag, with a log entry.
 - **Steps:**
-  1. Download the portable x64 zip of v0.8.0 from its release page.
+  1. Download the portable x64 zip of v0.9.0 (the candidate) from its release page. If it fails the five-minute test, use v0.8.0 (Template A).
   2. Run the hash check in Step 3 and compare it with the pin table.
-  3. Unzip into `C:\LifeJourney\tools\filmcraft-v0.8.0\`.
+  3. Unzip into `C:\LifeJourney\tools\filmcraft-<tag>\`, for example `filmcraft-v0.9.0`.
   4. Start `filmcraft.exe`. If needed, try the graphics fallbacks in Step 5.
   5. Run `filmcraft-cli.exe --version`.
   6. Open an empty project and note the RAM use.
@@ -101,7 +109,7 @@ Times are our estimates, not measurements. Do Exercises 1 to 6 in order. Exercis
 - **Goal:** learn the scale numbers that make a still fill the frame.
 - **Steps:**
   1. Ask the agents for two test cards: a 3600x2400 gridded still, and its 2880x1620 conformed copy.
-  2. Start a new sequence at 1920x1080 and 25 fps. The CLI's default frame rate is 23.976, so check it.
+  2. In the New Sequence dialog, set Timebase to 25 frames/second and keep 1920 x 1080. The dialog has no preset list. Read the frame rate back before you press OK. The engine's default for a new sequence is 23.976 (`file.newSequence` @v0.8.0), so never accept a default.
   3. Place the 3600x2400 still. Set Motion scale to 53.3 (the cover value). Play it.
   4. Set scale to 100 and play again. Note the crop.
   5. Back at 53.3, add an end keyframe at 112 percent of cover (about 59.7) with EaseOut. Play it.
@@ -148,13 +156,14 @@ Times are our estimates, not measurements. Do Exercises 1 to 6 in order. Exercis
 
 - **Goal:** fill in the "what survives" table for DaVinci Resolve (free).
 - **Steps:**
-  1. In DaVinci Resolve (free), import `ch01.otio`, then `ch01.xml`, using File > Import > Timeline. Do each one once.
+  1. If the agents did not deliver `ch01.xml`, export it first as Step 7 says (File > Export > Final Cut Pro XML…). In DaVinci Resolve (free), choose File > Import Timeline (Media Pool right-click > Timelines > Import also works) and import `ch01.xml` first. In the dialog, tick **Use sizing information** and leave **Mixed frame rate format** on **DaVinci Resolve**. Check: the stills are online; each still is 5 seconds (not one frame, not 29.97-based); Inspector > Edit Sizing shows Zoom and Position keyframes at the right frames; Opacity keyframes appear in Composite; dissolves are present. Then import `ch01.otio` and note what is lost (motion is expected to be lost). Record the version in Help > About.
   2. Fill in Template F, one row per feature.
   3. Note any warnings Resolve shows, and copy them in.
   4. Open the OTIO in Kdenlive too. Note whether the still-image clips arrive.
-  5. Send the table to the agents. They use your result for Decision 2.
+  5. Copy `ch01.otio` alone into an empty folder and import it. Note whether Resolve asks for the media folder. This tests how Resolve reads the relative paths (TODO(research): Resolve's handling of relative `target_url`s is unverified; the manual documents the folder prompt for OTIO [74]). If it cannot link them, a Resolve-only `chNN.otioz` bundle is the candidate fallback, not yet part of the hand-off.
+6. Send the table to the agents. They use your result for Decision 2.
 - **Time (estimate):** 1.5 to 2 hours.
-- **What good looks like:** a complete table, with yes, partial or no in each cell, and any warnings copied in. The research could not read Resolve's manual pages, so this test is the only real check we have [55][56]. If Ken Burns does not survive into Resolve, the baked-motion fallback becomes the plan for every chapter.
+- **What good looks like:** a complete table, with yes, partial or no in each cell, and any warnings copied in. The Resolve 21 manual says FCP 7 XML keyframes for Opacity, Position, Scale and Rotation import when 'Use sizing information' is ticked [74], but FilmCraft's numbers in Resolve are untested, so this test is the only real check we have [55][74]. If Ken Burns does not survive into Resolve, the baked-motion fallback becomes the plan for every chapter.
 
 ### Exercise 7 (optional). Duck music under a voice in Essential Sound
 
@@ -175,7 +184,7 @@ Times are our estimates, not measurements. Do Exercises 1 to 6 in order. Exercis
   2. Open the `.ecproj`. Check the font in the text layer's properties is the one you intended. If it shows Inter, the font is missing and was replaced [47][23]. Install the font first.
   3. Render 5 seconds as an RGBA PNG sequence, into a new folder name. Never reuse an old output name [47].
   4. Check that the PNGs have alpha.
-  5. Import the sequence into FilmCraft as an image sequence. TODO(research): exact menu path for the image-sequence import in the FilmCraft GUI.
+  5. Import the sequence into FilmCraft as an image sequence: File > Import Image Sequence…, then pick the first numbered frame (or tick Import as Image Sequence in the Media Browser) [83]. Before the import, set Edit > Preferences > Media > Indeterminate Media Timebase to the comp's frame rate, because that setting, not the comp's rate, sets the imported rate. Keep 'Import numbered stills as image sequences' off for the stills chapters (Pitfall 23).
 - **Time (estimate):** 2 hours.
 - **What good looks like:** the right font, a transparent background, and the sequence plays over a colour in FilmCraft.
 
@@ -183,12 +192,13 @@ Times are our estimates, not measurements. Do Exercises 1 to 6 in order. Exercis
 
 ### A. Version pin record
 
-Hashes are copied from each release's `SHA256SUMS.txt`, read on 2026-10-18 [40]. Check them against the release page again before you rely on them.
+Hashes are copied from each release's `SHA256SUMS.txt`, read on 2026-10-18 [40] (the v0.9.0 hashes from its own file [66]). Check them against the release page again before you rely on them.
 
 | App | Tag | Use | Windows x64 portable zip SHA-256 | Tested on | Result | RAM observed |
 |---|---|---|---|---|---|---|
-| FilmCraft | v0.8.0 | candidate for production | `0119afd59dfd6ecb94470ba6b3a48108ade87dabd4972898dd6c04e1db396b0b` | | | |
-| FilmCraft | v0.7.2 | fallback | `8e22fabdf2f802573d3af4ad9993c05212dead5e933efda0fa290e825313cde7` | | | |
+| FilmCraft | v0.9.0 | candidate for production (test first) | `d370cac8ed2edd729c8129aa55f75d0123716ba3cddbf9c5e4e3f0fdaa101a5e` | | | |
+| FilmCraft | v0.8.0 | fallback | `0119afd59dfd6ecb94470ba6b3a48108ade87dabd4972898dd6c04e1db396b0b` | | | |
+| FilmCraft | v0.7.2 | retired (not pinned) | `8e22fabdf2f802573d3af4ad9993c05212dead5e933efda0fa290e825313cde7` | | | |
 | EffectCraft | v0.11.1 | titles and line-drawing only | `78bd7f63c6bd814bc33f07bd523b003a5f8d095244c5f67bd70e902448fd6e34` | | | |
 
 SoundCraft is not pinned for delivery. Do not use it for finished audio.
@@ -198,6 +208,9 @@ SoundCraft is not pinned for delivery. Do not use it for finished audio.
 - [ ] The zip hash matches the pin table.
 - [ ] `filmcraft.exe` starts. The working graphics setting is written down.
 - [ ] `filmcraft-cli.exe --version` prints the expected tag.
+- [ ] Create the sequence first: File > New > Sequence. Write down what the dialog shows (expected 23.976, 1920 x 1080, 48000 Hz). Set Timebase to 25 frames/second, keep 1920 x 1080 and 48000 Hz, name it `ch01`, OK.
+- [ ] Never drop the first clip on an empty timeline. A still makes a sequence at its own pixel size and at 29.97 fps.
+- [ ] Set Edit > Preferences > Media > Indeterminate Media Timebase to 25 before importing stills, then check that Sequence Settings still says 25.
 - [ ] The test-card OTIO imports with no MEDIA NOT FOUND slate, and the motion keyframes are present (metadata version).
 - [ ] Play 10 seconds. The Ken Burns move and the dissolve both work.
 - [ ] Change a scale keyframe, press Ctrl+S, close, reopen. The change persists, and an `Auto-Save` folder exists next to the project.
@@ -212,6 +225,7 @@ SoundCraft is not pinned for delivery. Do not use it for finished audio.
 - [ ] Metadata stripped on the working copy. The untouched master is kept.
 - [ ] A manifest row: file, source, size, crop decision, SHA-256.
 - [ ] Motion scale computed: cover = max(W/w, H/h) x 100.
+- [ ] Working copies named by shot id (`chNN_sNN.png`). No original file name appears in the working files.
 
 ### D. Video conversion checklist (phone, camcorder, VHS capture)
 
@@ -233,7 +247,7 @@ SoundCraft is not pinned for delivery. Do not use it for finished audio.
 
 The "Expected" columns come from the code and its tests. They are not verified in Resolve or Kdenlive. Fill in the result columns during Exercise 3 and Exercise 6.
 
-| Feature | Plain OTIO (expected) | OTIO with FilmCraft metadata (expected) | FCP7 XML (expected) | Resolve free (your result) | Kdenlive (your result) |
+| Feature | Plain OTIO (expected) | OTIO with FilmCraft metadata (expected) | FCP7 XML (expected) | Resolve free (manual says supported; your result) | Kdenlive (your result) |
 |---|---|---|---|---|---|
 | Still clips with duration | kept | kept | kept | | |
 | Ken Burns (scale and position keyframes) | lost | kept, with easing | kept (easing handles not preserved) | | |
@@ -244,7 +258,7 @@ The "Expected" columns come from the code and its tests. They are not verified i
 | Titles and graphic clips | lost | lost | lost | | |
 | Image sequences | degraded | degraded | degraded | | |
 
-Sources: [6] for OTIO, [8] for FCP7 XML, [51] and [52] for Kdenlive, [55] and [56] for Resolve. Resolve's FCP7 and FCPXML results are the open question, and only your test can answer them [57] (search summary only). TODO(research): whether Resolve keeps Ken Burns keyframes from FCP7 XML.
+Sources: [6] for OTIO, [8] for FCP7 XML, [51], [52] and [72] for Kdenlive, [55], [56] and [74] for Resolve. The Resolve 21 manual says FCP 7 XML Opacity, Position, Scale and Rotation keyframes import with 'Use sizing information' ticked [74]; whether FilmCraft's own numbers survive is untested, and your Exercise 6 test answers it. Resolve's FCPXML results remain open (TODO(research); [57] is a search summary only).
 
 ### G. Export checklist
 
@@ -262,6 +276,8 @@ Sources: [6] for OTIO, [8] for FCP7 XML, [51] and [52] for Kdenlive, [55] and [5
 - [ ] The recent-file list is cleared before anyone else uses the PC.
 - [ ] No family names or file names in any bug report or forum post.
 - [ ] No cloud photo library connected to the working folder.
+- [ ] Working copies are named by shot id. The id-to-original map stays in the private repo only.
+- [ ] From v0.9.0, FilmCraft opens stored media paths only on local drives or the document's own share. Do not put the project on a NAS or UNC path [65].
 
 ## Decisions you'll need to make
 
@@ -280,8 +296,8 @@ Each decision lists the options and our current lean. The lean can change after 
 
 ### Decision 3. Which second editor to test
 
-- **Options:** DaVinci Resolve (free), which reads OTIO, FCPXML, FCP7 XML and EDL [55][56]; or Kdenlive, which reads OTIO and, per its file menu, carries tracks, clips and markers, not effects or transitions [51].
-- **Our lean:** Resolve (free) for the one-time test in Exercise 6, and Kdenlive as a cut-only backup. The free edition's import limits are not stated anywhere the research could read. TODO(research). The current Kdenlive release is 26.08.2 [49]. OTIO support in Kdenlive dates from version 25.04 per search summaries [64].
+- **Options:** DaVinci Resolve (free), which reads OTIO, FCPXML, FCP7 XML and EDL [55][56][74]; or Kdenlive, which reads OTIO. In Kdenlive, cuts, gaps, markers and dissolves (as luma mixes, by code) survive; effects, metadata and image sequences do not; `file://` URLs are not decoded; the project profile is taken from the first still's pixel size [51][72].
+- **Our lean:** Resolve (free) for the one-time test in Exercise 6, and Kdenlive as a cut-and-dissolve backup without motion. The Resolve 21 manual marks no XML, OTIO or EDL import as Studio-only, but it has no free-versus-Studio table, so that is an absence of a restriction, not a statement that none exists [74]. TODO(research) for any free-edition limit on import. The current Kdenlive release is 26.08.2 [49]. OTIO support in Kdenlive dates from version 25.04 per search summaries [64].
 
 ### Decision 4. Frame size and rate for the whole film
 
@@ -295,13 +311,13 @@ Each decision lists the options and our current lean. The lean can change after 
 
 ### Decision 6. Which FilmCraft tag to pin
 
-- **Options:** v0.8.0 (the latest tag at the time of the research); v0.7.2 (the fallback).
-- **Our lean:** v0.8.0 if the five-minute test passes. Otherwise v0.7.2. Test again before any upgrade.
+- **Options:** v0.9.0 (the newest tag, released 2026-10-18); v0.8.0 (the fallback); v0.7.2 (retired, not pinned).
+- **Our lean:** test v0.9.0 first (per the v0.9.0 diff, its interchange code is unchanged and it fixes a UTF-8 `file:` prefix panic that Unicode paths can hit [65]); v0.8.0 as the fallback; v0.7.2 retired. Test again before any upgrade.
 
 ### Decision 7. How much EffectCraft to use
 
 - **Options:** none; titles only; titles and one line-drawn sequence; 3D parallax as well.
-- **Our lean:** FilmCraft's own graphic clips for static titles and lower thirds. EffectCraft only for one SVG line-drawn sequence, and for text with expressions if it is needed. Skip classic 3D parallax for now, because there are no CPU timings for it and there is a known memory issue [47][22].
+- **Our lean:** FilmCraft's own graphic clips for static titles and lower thirds. EffectCraft only for one SVG line-drawn sequence, and for text with expressions if it is needed. Skip classic 3D parallax for now, because there are no CPU timings for it and there is a known memory issue [47][22]. Any EffectCraft render uses the thread procedure in Pitfall 10, not `RAYON_NUM_THREADS=2`.
 
 ### Decision 8. Who cleans up voice recordings
 
@@ -325,11 +341,11 @@ Each decision lists the options and our current lean. The lean can change after 
 3. **Render previews fill the disk.** One report of a 1080x1920 timeline gave 0.7 to 1.1 GB of preview per 30 to 47 seconds. Budget several GB. Do not play the Program monitor during an export; one reported export ran out of RAM and disk this way [45].
 4. **Plain OTIO drops features without a loud error.** Ken Burns, opacity and audio gain disappear. Read the import report every time [6].
 5. **Malformed metadata is dropped silently.** If the agent's motion data has the wrong shape, FilmCraft imports a plain cut with no motion. Check after each import that the keyframes exist [6].
-6. **Kdenlive aborts on missing media.** It also flipped the video tracks when its OTIO went to Resolve, in one reported bug [54]. Keep the folder layout fixed.
+6. **Kdenlive aborts on missing media, and does not decode `file://` URLs.** An OTIO whose media is missing aborts the import, and Kdenlive flipped the video tracks when its OTIO went to Resolve, in one reported bug [54]. By code reading (`otioimport.cpp` lines 390-399 at v26.08.2; not run), a `file:///` `target_url` is treated as a path, so every clip is reported missing [72][73]. Agent-written OTIO therefore uses relative `target_url`s, and the folder layout stays fixed.
 7. **Scale means different things in other editors.** FilmCraft's Scale 100 is native pixels. Resolve and Final Cut use 1.0 for fitted. Stills conformed to exactly the sequence size agree at 100 [11][7].
-8. **FCPXML `<video>` items are skipped by FilmCraft.** Final Cut often writes stills as `<video>`, and FilmCraft's tests use only its own output and hand-written examples [7]. Whether Resolve accepts stills written as FCPXML asset-clips is TODO(research).
+8. **FCPXML `<video>` items are skipped by FilmCraft.** FilmCraft skips an FCPXML `<video>` or `<title>` that sits directly in a storyline (`fcpxml.rs` @v0.8.0 line 402), but reads a `<video ref=…>` nested inside a `<clip>` (line 386) [7][69]. One FCPXML 1.13 sample from a third-party repository shows Final Cut writing a still as a bare `<video>` [76], so FilmCraft would skip Final Cut's stills in that form. Whether Resolve writes stills the skipped way is unverified, and FilmCraft's tests use only its own output and hand-written examples [7]. Do not plan a return path through FCPXML; use FCP7 XML. Whether Resolve accepts stills written as FCPXML asset-clips is TODO(research).
 9. **The project format changes often.** FilmCraft's project schema moved from 13 to 15 in five days, and older builds refuse newer files [2][3]. Do not hand-write project files. Let the tool write them.
-10. **EffectCraft's CPU renders have no memory cap.** In one reported case, an out-of-memory crash left an MP4 without its index, so it would not play [47]. Limit threads with `RAYON_NUM_THREADS=2`, render one job at a time, and check each output with ffprobe [30]. One search summary, not opened by the research, reports heavy memory use on Windows 11 with an Intel Arc card [60].
+10. **EffectCraft's CPU renders have no memory cap.** In one reported case, an out-of-memory crash left an MP4 without its index, so it would not play [47]. `RAYON_NUM_THREADS=2` is not a bound: the #1615 reporter measured 6.8 GB with it in their project [71]. Start every new comp at `RAYON_NUM_THREADS=1`. Render a 30-frame sample under `/usr/bin/time -v` (Task Manager on Windows) and record its peak memory. Raise the thread count only while peak memory stays under half of free RAM. Where that is too slow, render frame by frame with `render-frame` to PNG and encode with ffmpeg, which is what the reporter did [71]. `EFFECTCRAFT_CPU_INFLIGHT` exists only in open PR #1763 (no reviews on 2026-10-18) and does nothing in v0.11.1 [70]. Render one job at a time, and check each output with ffprobe [30]. One search summary, not opened by the research, reports heavy memory use on Windows 11 with an Intel Arc card [60].
 11. **EffectCraft can overwrite the previous output.** A cancelled or failed overwrite destroyed the previous file, in one open issue [47]. Always use a new file name.
 12. **Fonts fall back silently.** If a font is not installed, EffectCraft uses Inter instead [47][23].
 13. **EffectCraft's ProRes 4444 output is tagged as BT.709 but encoded as sRGB** (open issue #340) [22]. Use RGBA PNG sequences for alpha instead.
@@ -342,6 +358,7 @@ Each decision lists the options and our current lean. The lean can change after 
 20. **Files you did not expect are kept on the PC.** Auto-saves, recovery copies, previews and recent lists are written to the project folder or AppData [2][31][33][38]. Check them before the PC is shared. No telemetry was found in the default builds. The optional model downloads are off by default [19].
 21. **Versions and numbers disagree across sources.** The website shows FilmCraft 0.6.0 while GitHub has v0.8.0. Feature counts also differ between the website and the README [41][1]. Quote tags and tests, not marketing numbers.
 22. **Numbers from issue pages are summaries.** The research read them through a summarising tool. Re-read the linked issue before you quote a number [45][46][47][48].
+23. **Image sequences need care in FilmCraft.** Our stills end in digit runs (`ch01_s01.png`). With Edit > Preferences > Media > 'Import numbered stills as image sequences' on, importing one still alone is taken as a sequence, so keep that preference off for the stills chapters [83].
 
 ## Best references
 
@@ -351,7 +368,7 @@ Each decision lists the options and our current lean. The lean can change after 
 4. **EffectCraft issue 1615** (github.com/storytold/effectcraft/issues/1615). The clearest published numbers for CPU render memory and the out-of-memory risk [47]. Re-read it before quoting.
 5. **SoundCraft gaps list** (github.com/storytold/soundcraft, `docs/gaps.md`). Read it to see why SoundCraft is not in the delivery path [34].
 6. **Kdenlive file menu documentation** (docs.kdenlive.org/user_interface/menu/file_menu.html). What Kdenlive does with OTIO files [51]. Pair it with the KDE forum post on OTIO metadata being dropped (discuss.kde.org/t/opentimelineio-metadata-and-effects/45813) [52].
-7. **DaVinci Resolve product page** (blackmagicdesign.com/products/davinciresolve). The free edition's limits, such as 8-bit video up to UHD at 60 fps [55]. Resolve's own manual was not reachable for the research, so use this page as the starting point and test the rest yourself.
+7. **DaVinci Resolve product page** (blackmagicdesign.com/products/davinciresolve). The free edition's limits, such as 8-bit video up to UHD at 60 fps [55]. The Resolve 21 Reference Manual is the primary source for the import dialogs and the supported-effects tables [74]: read its pages 482, 484 and 521-523 first, then test the rest yourself.
 8. **ArtCraft app page for FilmCraft** (getartcraft.com/apps/filmcraft). The vendor's own description [41]. Read the claims, not the version number, which lags GitHub.
 
 ## Sources
@@ -407,7 +424,22 @@ Copied from the Sources list of `research/craft-motion.md`. The research read th
 - [63] `reviews/01-addendum-briefs-review.md` (Part 0 and Part 2.2) and `CHARTER.md`, as cited in the research note. The review file was not re-opened for this playbook.
 - [64] Search result only, not opened: Kdenlive 25.04.0 release notes (https://ubuntuhandbook.org/index.php/2025/04/kdenlive-25-04-0-released/). OTIO import and export rewritten in 25.04.0.
 - [39] `git ls-remote --tags` and `git fetch` for each tag of the three repositories, run by the researcher on 2026-10-18. Release cadence.
+- [68] github.com/storytold/filmcraft, `crates/ui-egui/src/panels/sequence_settings.rs`, `crates/ui-egui/tests/sequence_ui.rs` and `crates/engine/src/commands.rs` @v0.8.0 and @v0.9.0. New Sequence dialog defaults (23.976, no preset list). Research follow-up F5.
+- [69] github.com/storytold/filmcraft, `crates/interchange/src/fcpxml.rs` lines 383-406 @v0.8.0. FCPXML elements read and skipped. Research follow-up F1.
+- [76] github.com/andrewarrow/cutlass at commit `4dbe20d` (2025-07-06), `samples/png.fcpxml`. Third-party FCPXML 1.13 sample with a bare `<video>` still; provenance inferred, not stated. Research follow-up F1.
+
+- [65] github.com/storytold/filmcraft at tag `v0.9.0` (commit `4a69a038`, 2026-10-17 21:43 -04:00): `git diff --stat` against v0.8.0 and the interchange, engine and project-file diffs. Stored media-path restriction; interchange importers unchanged. Research follow-up F7.
+- [66] `https://github.com/storytold/filmcraft/releases/download/v0.9.0/SHA256SUMS.txt` (curl, HTTP 200, 2026-10-18). Hashes of the v0.9.0 assets. Research follow-up F7.
+- [70] `https://github.com/storytold/effectcraft/pull/1763` and `git ls-remote` of the EffectCraft tags, 2026-10-18 about 05:20-05:30 UTC. PR open, no reviews, not in any tag. Research follow-ups F4 and G6.
+- [71] `https://github.com/storytold/effectcraft/issues/1615`, read through a summarising tool on 2026-10-18: the reporter's 6.8 GB figure with `RAYON_NUM_THREADS=2` and the frame-by-frame workaround. Research follow-up F4.
+- [72] Kdenlive source at tag `v26.08.2` (`https://invent.kde.org/multimedia/kdenlive.git`): `src/otio/otioimport.cpp` (`resolveFile`, lines 390-399), `clipcreator.cpp`, `kdenlivesettings.kcfg`. Read as code, not run. Research follow-up F3.
+- [73] `https://doc.qt.io/qt-6/qurl.html`: `QUrl::fromLocalFile` "expects path, not url with scheme" (summarised by a small model; re-read the exact wording). Research follow-up F3.
+- [74] DaVinci Resolve 21 Reference Manual, `https://documents.blackmagicdesign.com/UserManuals/DaVinci_Resolve_21_Reference_Manual.pdf` (187,277,990 bytes, 4,444 pages; searched as text). Pages 168, 482, 484, 486, 521-523 and 544-547. Research follow-ups F2 and G2.
+- [83] FilmCraft v0.9.0 `README.md`, `docs/agents.md`, `crates/engine/src/commands.rs` (`markers.exportCsv`, `file.importImageSequence`) and `crates/ui-egui/src/menus.rs`: menu locations. Research follow-up G3.
+- [84] FilmCraft v0.9.0 `crates/engine/src/{autosave.rs, settings.rs}` and `apps/filmcraft-cli/src/main.rs`: the Indeterminate Media Timebase key and value type; headless CLI runs do not load or save preferences. Research follow-up G4.
 
 ## Changelog
 
 - **2026-10-18, v1 draft.** First version, written by a Haiku scribe from `research/craft-motion.md` and `CHARTER.md`. Not yet reviewed. Open items are marked TODO(research): maker's hardware and export speed; minimum system requirements (none published); whether DaVinci Resolve (free) limits imports; whether Resolve keeps Ken Burns keyframes from FCP7 XML or FCPXML; whether Resolve accepts stills as FCPXML asset-clips; how Kdenlive treats still-image OTIO clips; proxies and memory release for stills in FilmCraft (spike S1); EffectCraft CPU timings for 3D, text animators and Trim Paths; Lottie in a real player; code signing of the downloads; colour management end to end; sync status of the maker's PC; the marker-list and image-sequence menu paths; release cadence over eight weeks (repos were 17 days old at the time of the research).
+- **2026-10-18, v1.1 (round 1 review nudges applied).** Added a story pass to Step 9; added the S1-failure fallback for `ch01.xml` to Step 7; corrected Exercise 2 sequence setup (no preset list, engine default 23.976); rewrote Pitfall 8 from the FCPXML evidence; working copies named by shot id (Templates C and H); Sources [68], [69] and [76] added.
+- **2026-10-18, v1.2 (round 2 review nudges applied).** Replaced the absolute `file:///` OTIO paths with relative ones and recorded Kdenlive's `file://` limit (Step 7, Pitfall 6, Core principle 5, Decision 3); replaced `RAYON_NUM_THREADS=2` with the thread-measure procedure and the 6.8 GB and PR #1763 facts (Pitfall 10, Decision 7); pinned FilmCraft v0.9.0 (test first, v0.8.0 fallback, v0.7.2 retired) with `filmcraft-<tag>` folder names (Steps 1 and 4, Exercise 1, Templates A and H, Decision 6); replaced the TODO export paths with File > Export > Final Cut Pro XML… and OpenTimelineIO… and the marker CSV under Markers (Steps 7 and 10); replaced the Resolve test with the 'Use sizing information' test, changed Template F's Resolve header and removed the 'manual not reachable' sentences (Exercise 6, Best references 7, Decision 3); added the sequence-first steps and the Indeterminate Media Timebase check to Template B and Step 8; added the default weight mapping and the weight-3 photo check to the Step 9 story pass; closed the Exercise 8 image-sequence TODO from the code (Exercise 8, Pitfall 23).

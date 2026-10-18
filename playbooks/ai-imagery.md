@@ -12,24 +12,34 @@ The main risk is that these tools make things look finished. Almost every tool t
 
 Three facts shape the plan.
 
-- **Nobody has tested these tools on the kind of photo we have.** The research found clean, modern demo portraits. It found no tests on faded, low-resolution or black-and-white family prints. So in week 1 we run a five-photo bake-off, judged by relatives who knew her.
-- **Most of the work is hands-on.** The research note estimates about 40 to 80 human hours for 300 photos, mostly scanning and hand clean-up, not computer time. The note's summary and its table differ slightly, and this is an estimate, not a measurement.
+- **Nobody has tested these tools on the kind of photo we have.** The research found clean, modern demo portraits. It found no tests on faded, low-resolution or black-and-white family prints. So in week 1 we run a five-photo bake-off on stand-in photos with the same defects, judged by the maker and confirmed insiders. Her own photos wait for the vertical slice.
+- **Most of the work is hands-on.** The research note estimates about 40 to 80 human hours for 300 photos, mostly scanning and hand clean-up, not computer time. This is an estimate, not a measurement. The research note's summary and its table now agree.
 - **We start small.** One chapter, a 30-photo vertical slice, comes before the rest of the archive (charter principle 6).
 
 ## Core principles
 
-1. **If it looks like a photograph, it is a photograph, possibly restored. Anything invented is drawn.** The research note proposes this as a house rule. It needs your approval before we rely on it.
+1. **If it looks like a photograph, it is a photograph, possibly restored. Anything invented is drawn.** The research note proposes this as a house rule. It needs your approval before we rely on it. At L2, generative repair is allowed on non-face regions only. Faces get non-generative fixes, or CodeFormer or GFPGAN with blend-back. A generative change to a face moves the image to L3, where it must look drawn, or the image is rejected (Step 6).
 2. **Keep the original untouched.** Every change is a labelled copy. The master scan never changes [1][2].
 3. **Fix the photo without AI first.** Levels, colour cast, dust and cropping come first. Escalate only if the photo is still unusable.
 4. **Restoration is generation.** Upscalers, face restorers, colourisers and frame makers all invent something. Find out what each tool invents, and write it down.
-5. **Judge likeness with people who knew her.** A sharpness score does not tell you whether the face is still her. Ask a relative: "Does this look like your mother at that age?" (charter principle 5).
+5. **Judge likeness with people who knew her.** A sharpness score does not tell you whether the face is still her. Ask a confirmed insider, someone on the insiders list in `GATHER.md` (not yet written; see Known gaps): "Does this look like your mother at that age?" (charter principle 5).
 6. **Morph only between real photos.** A classic morph or a dissolve adds no new faces. A tool that generates in-between frames is labelled, and it is never shown as a record.
 7. **Leave the faces of people who have died alone**, unless the family has said yes first. Motion in the environment, such as light, leaves or parallax, is the safe default.
 8. **Small first, then scale.** One photo, then the 30-photo slice, then the rest.
+9. **Show the original.** Keep an untouched L0 or L1 version of every hero photo, and show it beside the restoration at least once. See "When not to restore" below.
+
+## When not to restore
+
+Restoration is a story choice, not a default. What a tool can fix does not decide what should be fixed.
+
+- **Decide the level per chapter from what the story needs,** not from what the tool can do. Use one restoration level for each chapter, so the look holds (Pitfall 15).
+- **Treat the era signals as content.** Fade, grain, Polaroid borders, the scalloped edge, date stamps and handwriting on the back tell the viewer when a photo was taken. Keep them unless the chapter's story needs them gone. This is charter principle 3, texture over checklist, applied to the photos.
+- **Keep an untouched L0 or L1 version of every hero photo** in the timeline.
+- **Show the untouched original beside the restoration at least once,** and say plainly what was added: colour, sound, motion. The lesson of *They Shall Not Grow Old* is that critics said it erased the original filmmakers and implied the archive was in disrepair [100].
 
 ## How to do it, step by step
 
-Each step names the research recipe it comes from (R1 to R6 in the note). Commands were tested on Linux only. Windows set-up is not yet researched (see Pitfalls). Check each command's own help text before you rely on its flags.
+Each step names the research recipe it comes from (R1 to R6 in the note). Commands were tested on Linux only (research sandbox, 2026-10-18). Each command that differs on Windows has its Windows form beside it, and every Windows form is **untested on Windows** until the maker runs it. The install route is in Step 0. Check each command's own help text before you rely on its flags.
 
 ### Step 0: Set up the folders and the records (R1)
 
@@ -39,10 +49,21 @@ Give every scan an ID such as `LJ-B03-0042-F`. B03 is the box, 0042 the sequence
 
 Keep two plain CSV files:
 
-- `manifest.csv`, one row per scan. Columns: id, box, medium, scan_date, device, ppi, bit_depth, profile, date_est, date_confidence, people, place, caption_source, consent_note, sha256, notes.
+- `manifest.csv`, one row per scan. Columns: id, box, medium, scan_date, device, ppi, bit_depth, profile, date_est, date_confidence, people, place, caption_source, interview_date, consent_note, sha256, notes. `interview_date` is filled when a caption cites an interview, as the L5 caption does.
 - `steps.csv`, one row per change. Columns: derivative_id, parent_id, step_no, tool, version, settings, seed, invents (none, texture, colour, frames or faces), label_level, reviewer, approved.
 
 The National Archives asks for who, what, where and when [2]. The manifest does that job.
+
+**Install route on the Windows PC (untested on Windows).** Native Windows is the default. WSL is a fallback, needed only if the PC has no working Vulkan driver, in which case the Real-ESRGAN `.exe` prints `invalid gpu device` [104]. Whether WSL fixes that is UNVERIFIED. The only tested commands are the Linux runs in the research sandbox [102][104][105].
+
+- **ffmpeg:** `winget install ffmpeg`, or `winget install "FFmpeg (Essentials Build)"` [121][122].
+- **ImageMagick 7:** `winget install ImageMagick.Q16-HDRI` [120]. It runs as `magick`, not `convert`, because Windows ships its own `convert.exe`, a disk utility [120].
+- **Real-ESRGAN (ncnn):** download `realesrgan-ncnn-vulkan-20220424-windows.zip` from release v0.2.5.0 [110], unzip it, and run `.\realesrgan-ncnn-vulkan.exe`.
+- **rembg:** needs Python 3.11 to 3.13 [123]. Make a virtual environment with `py -3.12 -m venv .venv` and install with `pip install "rembg[cpu,cli]"` [123] (the venv commands are judgment, untested).
+- **Depth Anything V2 Small:** install CPU PyTorch from `https://download.pytorch.org/whl/cpu`, then `pip install transformers pillow` [124][125][106].
+- **ExifTool:** unzip `exiftool-13.59_64.zip`, rename `exiftool(-k).exe` to `exiftool.exe`, keep the `exiftool_files` folder beside it, and put both on PATH [118].
+- **WSL:** `wsl --install` from an administrator PowerShell, then restart. It needs Windows 10 build 19041 or later, or Windows 11 [126]. SAM 2 also notes WSL as the route for Windows [56].
+- **Cloud container for CPU steps:** it runs Linux and is temporary. Family photos would leave the PC, so use it only with the maker's explicit yes (charter, Constraints).
 
 ### Step 1: Clean the print and the glass
 
@@ -74,6 +95,8 @@ Check each scan at 100% zoom. Look for cut-off corners, blur and glare the scan 
 
 `sha256sum 01_masters/*.tif > checksums.txt` (from R1)
 
+Windows (PowerShell, untested on Windows; `sha256sum` does not exist there): `Get-FileHash 01_masters\*.tif -Algorithm SHA256 | Export-Csv checksums.csv -NoTypeInformation`. This writes CSV rather than the `sha256sum` text format, with the same SHA-256 hashes.
+
 Back up 3-2-1: three copies, on two kinds of media, with one copy off-site [2].
 
 ### Step 4: Make the cleaned copy (L1)
@@ -91,9 +114,14 @@ Count the pixels before you upscale. A 4x6 print scanned at 600 ppi is 3600 by 2
 Work through the tools in this order.
 
 1. **Non-AI fixes** (Step 4).
-2. **Plain upscale, if needed.** Real-ESRGAN is free, licensed BSD-3, and has portable builds for Intel, AMD and Nvidia graphics [18]. The note's example is `realesrgan-ncnn-vulkan -i in.png -o out.png -n realesr-general-x4v3 -s 2`. Check the flags with `-h` first.
+2. **Plain upscale, if needed.** Real-ESRGAN is free, licensed BSD-3, and has portable builds for Intel, AMD and Nvidia graphics [18]. Use `realesrgan-ncnn-vulkan -i in.png -o out.png -n realesrgan-x4plus -s 2` (`-s` takes 2, 3 or 4) [104][110][112]. Windows (untested on Windows): `.\realesrgan-ncnn-vulkan.exe -i in.png -o out.png -n realesrgan-x4plus -s 2`. The name `realesr-general-x4v3` does not work with the portable build. It exits 0 and writes an all-black image, so check each output's file size and look at it [104]. Check the flags with `-h` first.
 3. **Face restoration, only if your bake-off says it helps.** CodeFormer has a fidelity dial, `w`, from 0 to 1. Higher is more faithful [15]. Try 0.7 to 1.0, then blend the result 40 to 60 percent back over the plain upscale, using a layer mask (practice from the note).
 4. **Heavy damage only.** SeedVR2 [24] or SUPIR [21][22]. SUPIR is non-commercial [21]. SeedVR warns that it "can over-generate detail" on lightly degraded input [23].
+
+**What L2 permits (house rule, made operational in round 1).**
+- Generative repair on non-face regions only: tears, stains and backgrounds.
+- Faces at L2: non-generative fixes, or CodeFormer at `w` 0.7 or higher, or GFPGAN, each with blend-back. The sources give GFPGAN no `w` dial, so its strength setting is TODO(research).
+- Any generative change to a face moves the image to L3, where it must look drawn, or the image is rejected.
 
 **Warnings about face tools.**
 
@@ -103,7 +131,7 @@ Work through the tools in this order.
 - Do not restore faces narrower than about 64 px. This is the note's rule of thumb (judgment).
 - Reject any result with new teeth, new eyelids or a changed jaw.
 
-**Colour, for black-and-white prints.** Treat colourising as costume design. DDColor [28] and DeOldify [29] guess every colour. DeOldify is known for "orange skin and overly red lips" [29]. Check clothes, rooms and cars against family memory or other colour photos. Keep skin tones muted. Caption the result "colours estimated."
+**Colour, for black-and-white prints.** Treat colourising as costume design. DDColor [28] and DeOldify [29] guess every colour. DeOldify is known for "orange skin and overly red lips" [29]. Check clothes, rooms and cars against family memory or other colour photos. Keep skin tones muted. Caption the result "colours estimated." TODO(review): under the L2 rule above, does colourising a face count as a generative change to the face? This is an open question for the Fable advisor.
 
 **Label and log.** This step is L2. If a generative model repaired content, the IPTC value is `compositeWithTrainedAlgorithmicMedia` [89]. Log each tool, version, setting, seed and what it invents in `steps.csv`.
 
@@ -111,7 +139,9 @@ Work through the tools in this order.
 
 **Classic morph (no invented frames, L4a).** Align the eyes first. Mark 10 to 20 landmarks on each photo: eyes, brows, nose, mouth, jaw, hairline and shoulders. Build Delaunay triangles. For each frame, warp both photos toward the in-between shape and cross-dissolve them, using 24 to 48 frames with ease in and out [65]. LearnOpenCV's FaceMorph is a reference example in Python and C++. Its folder shows code and landmark files only, so check its licence before reuse (not shown on the page) [65].
 
-**Dissolve (no invented frames).** For a quick baseline, `convert a.png b.png -morph 14 frames/m_%02d.png` makes a morph sequence, and ffmpeg can assemble it. An `xfade` dissolve in ffmpeg also works. The research team confirmed these commands run in a Linux sandbox. They did not judge the results on real faces [102].
+**Dissolve (no invented frames).** For a quick baseline, create a folder called `frames`, then run `convert a.png b.png -morph 14 frames/m_%02d.png` (ImageMagick 6 on Linux) [102]. Assemble the frames with `ffmpeg -framerate 24 -i frames/m_%02d.png -c:v libx264 -pix_fmt yuv420p morph.mp4` [102]. An `xfade` dissolve in ffmpeg also works: `ffmpeg -loop 1 -t 2 -framerate 24 -i a.png -loop 1 -t 2 -framerate 24 -i b.png -filter_complex "[0][1]xfade=transition=fade:duration=1:offset=1,format=yuv420p" xfade.mp4` [102]. The research team confirmed these commands run in a Linux sandbox. They did not judge the results on real faces.
+
+Windows (untested on Windows): `magick a.png b.png -morph 14 frames\m_%02d.png`. ImageMagick 7 on Windows is `magick`, and the folder can be made with `New-Item -ItemType Directory frames`. The ffmpeg lines run unchanged in PowerShell with backslash paths. Keep the xfade filter in double quotes, as shown.
 
 **Best design.** Chain morphs through real intermediate photos, such as ages 6, 12 and 18. Each segment then joins two real images. A paper-turn or block-build transition says "time passed" without implying that a face existed.
 
@@ -121,7 +151,7 @@ Work through the tools in this order.
 
 **Parallax (L4a).** A still becomes a slow camera move, as if the camera were drifting past layers.
 
-1. **Cut out the subject.** `rembg i -m u2net in.png fg.png` [55]. Use `-a`, `-vm` and `-dc` for hair edges. Never use the cloud back-ends, which "send images to their servers" [55].
+1. **Cut out the subject.** `rembg i -m u2net in.png fg.png` [55]. Name the model with `-m`: rembg 2.0.85 defaults to `bria-rmbg`, a 1 GB download whose weights need a paid agreement for commercial use [55][106][123]. Windows (untested on Windows): the same command inside the venv from Step 0. Use `-a`, `-vm` and `-dc` for hair edges. Never use the cloud back-ends, which "send images to their servers" [55].
 2. **Make a depth map.** Depth Anything V2 Small is Apache-2.0 and falls back to CPU [58]. Blur or flatten the depth across faces, because depth maps bulge faces (judgment).
 3. **Render.** Choose one: DepthFlow [60] (AGPL-3.0, GPU implied, its CLI docs were not read), a displaced plane in Blender (judgment), or layered cut-outs in Kdenlive or DaVinci Resolve (judgment).
 4. **Keep the move small.** Orbit 2 to 3 degrees and push in 3 to 8 percent. Fill any gaps with cloned background, which stays L1. If you use generative fill, the clip becomes L4b and needs an "invents" note.
@@ -131,6 +161,8 @@ Work through the tools in this order.
 **Pure 2D push-in (sandbox-tested).** This 4-second move comes from the note [102]:
 
 `ffmpeg -loop 1 -i in.png -vf "zoompan=z='min(zoom+0.0007,1.08)':d=96:s=960x720:fps=24,format=yuv420p" -t 4 kb.mp4`
+
+Windows (PowerShell, untested on Windows): the same command. Keep the whole filter in double quotes, as shown. The single quotes inside it are literal. Do not wrap the whole filter in single quotes.
 
 **Generated image-to-video (L4b).** Use only with these rules.
 
@@ -142,9 +174,11 @@ Work through the tools in this order.
 - Compare the first and last frames with a face-similarity script, and reject a take that drifts. This approach is unverified (TODO(research): choose and test a tool).
 - Never ask for speech, lip movement or sound.
 
-**Local options (need a graphics card).** Wan2.2 TI2V-5B: ComfyUI says it fits 8 GB with offloading [70], while the README says 24 GB [69]. FramePack needs 6 GB, and runs only on RTX 30, 40 and 50 series cards [72]. WanGP runs select models on 6 GB and was updated 2026-10-15 [77]. LTX-2 needs 32 GB or more [75].
+**Local options (need a graphics card).** Wan2.2 TI2V-5B: ComfyUI says it fits 8 GB with offloading [70], while the README says 24 GB [69]. FramePack needs 6 GB. Its README tests RTX 30, 40 and 50 series cards. Older cards are untested, not excluded [72]. WanGP runs select models on 6 GB and was updated 2026-10-15 [77]. LTX-2 needs 32 GB or more [75].
 
 **Cloud options (privacy rules first; see Decision 6).** A 5-second Veo 3.1 clip costs $0.25 on Lite, $0.50 on Fast and $2.00 on Standard, at 720p with audio [51]. Kling 2.5 Turbo Pro via fal is about $0.35 for 5 seconds [52]. Luma Ray3.2 is about $0.30 at 720p on its Plus plan [81]. Whether Kling, Runway and Luma support first-and-last-frame generation is unconfirmed (TODO(research)). Runway's pricing page is internally inconsistent [80].
+
+**Photos with a child in them: no cloud image-to-video.** Veo's image-to-video accepts only `allow_adult` [82]. Google's Vertex AI page says it rejects requests to generate content depicting children when `personGeneration` is not `allow_all` [116]. For these photos, use parallax or a local model only. Local image-to-video needs a graphics card. A paid test of what Veo returns is TODO(research), and it must use a public-domain child photo, never a family photo.
 
 **Faces of people who have died.** No face or expression animation (principle 7 and Decision 4). Parallax or environment motion only, and ask the family first. MyHeritage's Deep Nostalgia made nearly 100 million animations [101]. The research did not read any reaction to animating the dead (TODO(research)).
 
@@ -159,7 +193,7 @@ Pick one look for the whole chapter, and write a two-line style bible: palette, 
 
 The Kontext style LoRAs, such as Clay Toy, Origami and Paper Cutting, have no stated licence [45]. Check it before use.
 
-**Line-up test.** Show five stylised faces to relatives who knew her. Ask who is who, and at what age. Adjust the attributes, not the faces. The pass mark is set during the vertical slice (TODO(research)).
+**Line-up test.** Show five stylised faces to confirmed insiders (`GATHER.md`). Ask who is who, and at what age. Adjust the attributes, not the faces. Run this on her real photos in the vertical slice, after the "who is in on it" decision, not before. The pass mark is set during the vertical slice (TODO(research)).
 
 ### Step 10: Label what you made
 
@@ -170,26 +204,28 @@ Every derivative gets a level. The ladder below is the research note's proposal 
 | L0 Scan | Unaltered digitisation | Flatbed or camera scan | `print`, `negativeFilm` or `positiveFilm` | Plain photo frame |
 | L1 Cleaned | Human, non-generative fixes | Crop, deskew, levels, healing brush | `humanEdits` | Plain photo frame |
 | L2 Enhanced | Algorithmic restoration that invents texture or colour | Upscale, face restore, colourise, diffusion repair | `algorithmicallyEnhanced`; use `compositeWithTrainedAlgorithmicMedia` if a generative model repaired content | Small "R" tag; colourised shots add "colours estimated" |
-| L3 Restyled | Real photo redrawn in the house look | Edit model with style LoRA; hand-built character from the photo | `compositeWithTrainedAlgorithmicMedia` (AI) or `humanEdits` / `composite` (hand) | Obviously stylised |
+| L3 Restyled | Real photo redrawn in the house look | Edit model with style LoRA; hand-built character from the photo | `compositeWithTrainedAlgorithmicMedia` (AI edit on a real photo); `digitalCreation` (hand-drawn from scratch); `composite` (hand-drawn over a real photo) | Obviously stylised |
 | L4 Animated | Motion added to a real photo | 4a parallax or classic morph (no generated frames); 4b image-to-video; 4c generated in-between | 4a `humanEdits` or `algorithmicallyEnhanced`; 4b and 4c `compositeWithTrainedAlgorithmicMedia` | Tag on the clip: "moved", "frames invented" |
-| L5 Reconstruction | Scene never photographed, built from testimony | Stylised scene in the house look | `trainedAlgorithmicMedia` (AI) | Always stylised; caption "Reconstructed from [name]'s memory, 2026" |
+| L5 Reconstruction | Scene never photographed, built from testimony | Stylised scene in the house look | `digitalCreation` (hand-built); `trainedAlgorithmicMedia` (AI-built); `compositeSynthetic` (mixed) | Always stylised; caption "Reconstructed from [name]'s memory, [interview date]" |
 
-The IPTC values come from the Digital Source Type vocabulary [89]. The IPTC user guide says to write the URI, not the label, and to store it in XMP only [90].
+The IPTC values come from the Digital Source Type vocabulary [89]. The IPTC user guide says to write the URI, not the label, and to store it in XMP only [90]. `humanEdits` is only for non-generative edits to captured media. A hand-built voxel, clay or other scene made from scratch is `digitalCreation`, which means "created by a human using non-generative tools" and was added on 2024-09-17 [89]. `composite` is for hand work layered over a real photo, and `compositeSynthetic` is for mixed work. Checked against [89] on 2026-10-18.
 
 Carry the label in four places: the file-name suffix (`__L2`), `steps.csv`, the embedded XMP, and the end-credit cue sheet [96]. The research note suggests the Archival Producers Alliance cue-sheet idea [95][96]. For how to disclose, Partnership on AI separates direct disclosure (labels on screen) from indirect disclosure (metadata, C2PA) [94].
 
-**Metadata command (UNVERIFIED).** The research team did not run ExifTool, because it was not installed in the sandbox. The note's example is:
+**Metadata command.** ExifTool 13.59 was run on Linux in the research sandbox, and writing the tag and reading it back worked [105]. Windows is untested. The tag needs the full URI. A label sentence written into the tag is stored as plain text, and readers will not recognise it [105]. The command is:
 
-`exiftool -XMP-iptcExt:DigitalSourceType=http://cv.iptc.org/newscodes/digitalsourcetype/print LJ-B03-0042-F.tif`
+`exiftool -overwrite_original "-XMP-iptcExt:DigitalSourceType=http://cv.iptc.org/newscodes/digitalsourcetype/print" LJ-B03-0042-F.tif`
 
-Test it on a copy first. TODO(research): confirm the tag syntax on Windows, and check what survives in MP4 files. Video containers may drop IPTC fields (judgment, unverified). So the manifest and the credits are the real record.
+Windows (untested on Windows): the same command in PowerShell, with the tag in double quotes as shown. Read it back with `exiftool -G1 -a -s -XMP-iptcExt:DigitalSourceType LJ-B03-0042-F.tif` [105].
+
+`-overwrite_original` rewrites the file in place, so test on a copy first. For video, ffmpeg stream copy and re-encode both strip the tag from MP4. ExifTool writes it into MP4 and MOV and reads it back [105]. So write the tag as the last step, after the final export. Whether the maker's editor or a phone player keeps the tag is UNVERIFIED (TODO(research)). The manifest and the credits are the real record.
 
 C2PA (Content Credentials) is an open standard [91][92]. Signing needs certificates, and the research did not cover signing for a private project (TODO(research)). Google's image and video outputs carry SynthID watermarks [50][82].
 
 ### Step 11: Review before anything is shown
 
 - Flick between the original and the result at 100%, both ways.
-- Ask one relative who knew her: "Does this look like her at that age?" Record the answer in the manifest.
+- Ask one confirmed insider who knew her (on the insiders list in `GATHER.md`): "Does this look like her at that age?" Record the answer in the manifest.
 - Check the label, the manifest row and the `steps.csv` entry.
 - Check that the end credits name every AI tool used.
 - Send anything sensitive, such as loss, illness, separation, money or conflict, to the trusted proxy first (charter principle 5).
@@ -268,11 +304,11 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 
 **Steps.**
 1. Create the four folders from Step 0.
-2. Clean the scanner glass. Scan five prints at 600 ppi, colour, 16-bit.
+2. Clean the scanner glass. Scan five stand-in prints (from the Exercise 3 list, not her albums; scanning her albums this week would be gathering before the gate opens) at 600 ppi, colour, 16-bit.
 3. Scan the back of any print with writing on it.
 4. Name the files with the LJ pattern.
 5. Fill in five rows of `manifest.csv`.
-6. Run `sha256sum` and save `checksums.txt`.
+6. Run `sha256sum` and save `checksums.txt`. On Windows, use the `Get-FileHash` line in Step 3 (untested on Windows).
 7. Make an L1 copy of one print.
 
 **Time.** About 2 hours (estimate).
@@ -287,21 +323,21 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 
 **Time.** 1 to 2 hours (estimate).
 
-**What good looks like.** Skin looks like skin, not orange or grey. Nothing new appears in the picture. A relative recognises the print as the same photo, only cleaner.
+**What good looks like.** Skin looks like skin, not orange or grey. Nothing new appears in the picture. The maker, or a confirmed insider, recognises the print as the same photo, only cleaner.
 
 ### Exercise 3: Five-photo bake-off (week 1)
 
-**Goal.** Find out whether any tool helps on the kinds of photo we really have.
+**Goal.** Find out whether any tool helps on the kinds of photo we really have, without using her archive for the test. Judges are the maker and confirmed insiders only. Right now the insiders list is empty, because the charter says only the maker knows about the project. So the maker judges alone until someone is confirmed.
 
 **Steps.**
-1. Pick five photos: a faded colour print, a small black-and-white print, a soft group snapshot with small faces, a torn print, and a 1990s low-resolution digital file [research note, open question 1].
-2. For each photo, make four versions: (a) the L1 fix only; (b) Real-ESRGAN at 2x [18]; (c) CodeFormer at `w` 0.7, 0.8 and 1.0, blended 50% back [15]; (d) one edit model run locally, if your graphics card allows. If not, skip it and say so.
+1. Pick five **stand-in** photos, none from her archive, with these defects: a faded colour print, a small black-and-white print, a soft group snapshot with small faces, a torn print, and a 1990s low-resolution digital file [research note, open question 1]. Sources: the maker's own prints; a consenting relative's print, only if that relative is a confirmed insider; or public-domain archival prints. Candidates from the research follow-up (Q6; licences read on each Commons page, re-check before use): NARA 546220, a faded colour print [132]; US Navy 80-G-27208, a creased print [131]; the State Archives of North Carolina's 1952 black-and-white snapshot with cracks and a torn corner [134]; and "1971-12-John Call Cook", a faded colour snapshot under CC BY-SA 3.0 [133]. Files [133] and [134] show named people, and [134] names a child who may still be alive, so keep tests with them private and publish nothing from them. No candidate yet for the soft group snapshot or the 1990s digital file (TODO(research)).
+2. For each photo, make four versions: (a) the L1 fix only; (b) Real-ESRGAN at 2x with `-n realesrgan-x4plus -s 2` [18][104]; (c) CodeFormer at `w` 0.7, 0.8 and 1.0, blended 50% back [15]; (d) one edit model run locally, if your graphics card allows. If not, skip it and say so.
 3. Look at each version at 100%. Note what it invents: teeth, eyelids, jaw, hair, background.
-4. Show the versions, unlabelled, to relatives who knew her. Record who they recognise, and at what age.
+4. Show the versions unlabelled to the judges (the maker, plus confirmed insiders if any). For each version, ask whether it still looks like the same person and the same photo as the original, and what it added. A result on a stand-in is evidence about the defect, not about her photos.
 
 **Time.** 1 to 2 days, spread across the week (estimate).
 
-**What good looks like.** A table with one row per photo and tool. Columns: "what it invents," "does it look like her," and a verdict. A chosen route for each photo type. Keep the photos on your machine. Show relatives only the people who are in on the surprise, because showing family photos is story gathering under the charter's covert rules.
+**What good looks like.** A table with one row per stand-in and tool. Columns: "what it invents," "same person and same photo as the original," and a verdict. A chosen route for each defect type. Keep the stand-ins and their versions on your machine. Only the judges named above see them. Her own photos are not used in this exercise, because gathering them waits for the charter's gathering gate.
 
 ### Exercise 4: The face dial
 
@@ -317,7 +353,7 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 
 **Goal.** A 4-second move on one photo, with no GPU and no invented pixels.
 
-**Steps.** Pick a photo with a clear subject and background. Cut the subject out by hand in GIMP or Krita, or with `rembg` if it is installed. Make three layers: background, subject, and a foreground object if one exists. Add soft shadows. Move the layers with small transforms in Kdenlive or DaVinci Resolve. Or run the `zoompan` command from Step 8. Keep the move to a 3 to 8% push-in.
+**Steps.** Pick a photo with a clear subject and background. Cut the subject out by hand in GIMP or Krita, or with `rembg` if it is installed. Make three layers: background, subject, and a foreground object if one exists. Add soft shadows. Move the layers with small transforms in Kdenlive or DaVinci Resolve. Or run the `zoompan` command from Step 8 (on Windows, the same command, untested on Windows). Keep the move to a 3 to 8% push-in.
 
 **Time.** 2 to 3 hours (estimate).
 
@@ -327,7 +363,7 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 
 **Goal.** A transition that says "time passed" with no generated frames.
 
-**Steps.** Choose two real photos of the same person at different ages, cleared by a relative. Align the eyes by scaling and rotating. Run the ImageMagick morph (14 frames), and assemble it with ffmpeg. Make an `xfade` dissolve for comparison. If time allows, add landmarks using the LearnOpenCV example [65].
+**Steps.** Choose two real photos of the same person at different ages, cleared by a relative. Align the eyes by scaling and rotating. Run the ImageMagick morph (14 frames; `magick` on Windows, see Step 7), and assemble it with ffmpeg. Make an `xfade` dissolve for comparison. If time allows, add landmarks using the LearnOpenCV example [65].
 
 **Time.** About 2 hours (estimate).
 
@@ -337,7 +373,7 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 
 **Goal.** A labelled reconstruction with the right caption and metadata.
 
-**Steps.** Write a one-page brief: what is known, what is invented, and which invented parts are generic. Choose the look (Route A). Write the caption "Reconstructed from [name]'s memory, 2026." Add a manifest row and a `steps.csv` entry with label L5. Add a line to the cue sheet. Optional, and unverified: test the ExifTool command on a copy of one TIFF, then read the tag back with ExifTool.
+**Steps.** Write a one-page brief: what is known, what is invented, and which invented parts are generic. Choose the look (Route A). Write the caption "Reconstructed from [name]'s memory, [interview date]." Add a manifest row and a `steps.csv` entry with label L5. Add a line to the cue sheet. Optional: test the ExifTool command from Step 10 on a copy of one TIFF, then read the tag back. This was run on Linux only [105].
 
 **Time.** 1 to 2 hours (estimate), not counting drawing.
 
@@ -375,7 +411,7 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 
 ### Known gaps (TODO(research))
 
-- **No archival-photo evidence** for any generative edit tool. The week 1 bake-off closes this.
+- **No archival-photo evidence** for any generative edit tool. The week 1 bake-off on stand-ins tests the defects, not her photos. The real-photo line-up in the vertical slice tests her photos.
 - **Restraint prompts** are the research note's synthesis, not tested by creators. The creator threads, YouTube and Reddit were not reached, because the search budget ran out.
 - **Terms pages not read:** see Pitfall 8.
 - **FADGI numbers.** The third-edition guidance on ppi, bit depth and colour sits in a PDF the research could not read [4]. The 600 ppi and 3200 to 4000 ppi figures are partly judgment.
@@ -383,11 +419,12 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 - **VRAM** for FLUX.1 Kontext dev, Qwen-Image-Edit-2511, Wan FLF2V and Wan2.2 14B is not stated in any source read.
 - **First-and-last-frame support and pricing** for Kling, Runway and Luma are unconfirmed.
 - **Gemini 2.5 Flash Image.** The pricing page says deprecated with a 2026-10-02 shutdown; the image docs say only "legacy." The sources conflict.
-- **ExifTool syntax, C2PA signing and MP4 handling** were not run. ExifTool was not installed in the sandbox.
+- **C2PA signing** was not researched. ExifTool syntax and MP4 handling were run on Linux [105]. Windows runs are not done.
 - **MagicaVoxel and Blockbench** licence and price are unverified.
 - **DepthFlow's CLI documentation** (depth.tremeschin.com) was not fetched.
-- **Windows set-up** for ffmpeg, ImageMagick, Real-ESRGAN and CodeFormer was not researched. The commands were tested on Linux. SAM 2 notes WSL for Windows [56]. Check each tool's Windows build or use WSL.
-- **Budget figures.** The note's summary says 40 to 75 human hours, and its table says 40 to 80 (45 to 80 with no GPU). Use the table.
+- **Windows set-up** for ffmpeg, ImageMagick, Real-ESRGAN, rembg, Depth Anything V2 and ExifTool is researched from vendor pages (Step 0), not run on Windows. CodeFormer's Windows route is not researched (TODO(research)).
+- **Budget figures.** Resolved in round 1: the research summary now matches its table, 40 to 80 human hours (45 to 80 with no GPU).
+- **Insiders list (`GATHER.md`)** does not exist in the repo yet. The charter says only the maker knows about the project, so the list is empty. Relatives may judge likeness only once they are on it. TODO: write `GATHER.md` before anyone judges a likeness.
 - **ArtCraft apps** (PhotoCraft, LightCraft and the rest) are outside this track. TODO(research): see the craft-visual and craft-motion tracks.
 - **Open family and maker decisions:** whether the family accepts any animation of relatives who have died, and whether the work is a private gift or a public or ticketed showing (Decisions 3 and 4).
 
@@ -484,8 +521,28 @@ Numbers match the research note's Sources list at `research/ai-imagery.md`. The 
 [98] Roadrunner: A Film About Anthony Bourdain (Wikipedia) — https://en.wikipedia.org/wiki/Roadrunner:_A_Film_About_Anthony_Bourdain — undated — AI voice controversy.
 [99] What Jennifer Did (Wikipedia) — https://en.wikipedia.org/wiki/What_Jennifer_Did — undated — suspected AI images.
 [101] MyHeritage (Wikipedia) — https://en.wikipedia.org/wiki/MyHeritage — undated — Deep Nostalgia launch and scale.
+[104] Local tests of the Real-ESRGAN ncnn Ubuntu build (2026-10-18) — `-h` text, missing-model behaviour, timings under Mesa llvmpipe software Vulkan, "invalid gpu device" without Vulkan.
+[105] Local tests of ExifTool 13.59, ffmpeg 6.1.1 and ImageMagick 6.9.12 metadata handling (2026-10-18) — TIFF, MP4, MOV, sidecars.
+[106] Local tests of rembg 2.0.85 (onnxruntime 1.31.0) and Depth Anything V2 Small via transformers 5.20.1, torch 2.14.1+cpu, Python 3.13.16 (2026-10-18).
+[110] realesrgan-ncnn-vulkan-20220424-windows.zip — https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-windows.zip — 45,474,481 bytes; contents listed.
+[112] Real-ESRGAN README — https://raw.githubusercontent.com/xinntao/Real-ESRGAN/master/README.md — four portable models; general-x4v3 in Updates only.
+[116] Veo responsible AI and usage guidelines (Vertex) — https://docs.cloud.google.com/vertex-ai/generative-ai/docs/video/responsible-ai-and-usage-guidelines — last updated 2026-10-15 UTC — Child category support codes; input-image rejection text.
+[118] ExifTool install — https://exiftool.org/install.html — Windows executable steps; no Perl needed.
+[120] ImageMagick download — https://imagemagick.org/download/ — 7.1.2-34; winget ids; portable; `vcomp140.dll` note; `magick` command; no release date shown.
+[121] FFmpeg download — https://ffmpeg.org/download.html — 9.0.2 (2026-09-18), 8.1.3 (2026-09-21); Windows builds by gyan.dev and BtbN.
+[122] Gyan.dev FFmpeg builds — https://www.gyan.dev/ffmpeg/builds/ — release 9.0.2, 2026-09-19; choco, scoop and winget commands.
+[123] rembg — https://github.com/danielgatis/rembg — Python `>=3.11,<3.14`; pip extras; models download to `~/.rembg/models`; no Windows notes.
+[124] Depth-Anything-V2 — https://github.com/DepthAnything/Depth-Anything-V2 — `run.py --encoder vits`; Small is Apache-2.0; no Windows notes.
+[125] Depth-Anything-V2-Small-hf — https://huggingface.co/depth-anything/Depth-Anything-V2-Small-hf — Apache-2.0; 24.8M parameters; pipeline snippet.
+[126] Install WSL, Microsoft Learn — https://learn.microsoft.com/en-us/windows/wsl/install — updated_at 2026-06-02; `wsl --install`; Windows 10 build 19041 or later.
+[131] Commons file 80-G-27208 — https://commons.wikimedia.org/wiki/File:80-G-27208_(31323126572).jpg — US Navy, Nov 1942; public domain (federal work).
+[132] Commons file NARA 546220 — https://commons.wikimedia.org/wiki/File:CHEMICAL_PLANTS_ON_SHORE_ARE_CONSIDERED_PRIME_SOURCE_OF_POLLUTION_-_NARA_-_546220.jpg — EPA DOCUMERICA, June 1972; public domain.
+[133] Commons file 1971-12-John Call Cook — https://commons.wikimedia.org/wiki/File:1971-12-John_Call_Cook.jpg — CC BY-SA 3.0; 3,007x3,971.
+[134] Commons file Clara MEEKINS 1952 — https://commons.wikimedia.org/wiki/File:Clara_MEEKINS,_1_year_old,_1952,_in_front_of_the_house_on_South_Street,_Raleigh,_NC,_where_she_was_born._People_visible_sitting_on_the_porch_of_the_house_are_all_family._Clara_remembers_they_would_(26480797321).jpg — State Archives of North Carolina via Flickr Commons; "No known copyright restrictions".
+[100] They Shall Not Grow Old (Wikipedia) — https://en.wikipedia.org/wiki/They_Shall_Not_Grow_Old — undated — restoration, colourisation, criticisms.
 [102] Local sandbox test (this session, 2026-10-18) — ffmpeg 6.1.1 and ImageMagick `convert`; commands `convert a.png b.png -morph 14`, `ffmpeg ... xfade`, `zoompan`, `minterpolate=fps=48:mi_mode=mci`, and frame-sequence assembly ran without error on synthetic images; confirms the commands run, not that results are good on real faces.
 
 ## Changelog
 
 - 2026-10-18: Version 1, written by the haiku scribe from `research/ai-imagery.md` (sources read 2026-10-18) and `CHARTER.md`. Open gaps are listed under Pitfalls as TODO(research). Each decision lean is marked either "from the note" or "scribe's reading, confirm."
+- 2026-10-18, round 1 (Fable review applied by the Haiku scribe): added Windows forms and the install route (C1); moved the bake-off to stand-in photos judged by the maker and confirmed insiders, with real photos moved to the vertical slice (C2); fixed the IPTC mapping for hand-made work; made the L2 face rule operational and added "When not to restore"; corrected the Real-ESRGAN command, FramePack GPU wording, budget and metadata notes; added the child-photo cloud limit; replaced the fixed 2026 caption date with the interview date.

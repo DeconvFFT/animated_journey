@@ -1,6 +1,6 @@
 # Surprise Ops: Running a Surprise Tribute for Your Mother
 
-*Draft v1, 2026-10-18. Scribe draft from `research/surprise-ops.md` (researcher: Sonnet, 2026-10-18) and `CHARTER.md`. Not legal advice. Citation numbers match the research notes. Anything marked TODO(research) is still open.*
+*Draft v3, 2026-10-18. Scribe draft from `research/surprise-ops.md` (researcher: Sonnet, 2026-10-18) and `CHARTER.md`. Not legal advice. Citation numbers match the research notes. Anything marked TODO(research) is still open.*
 
 ## Why this matters for our life journey
 
@@ -10,7 +10,7 @@ So the secrecy is part of the craft, and the charter sets its limits. Principle 
 
 The deadline sets the dates. The reveal is Saturday 27 February 2027. Week 1 started on Sunday 18 October 2026. Week 15 starts on Sunday 24 January 2027, and by then all material should be back in hand. That leaves the last weeks for editing and rehearsal.
 
-This playbook is a learning path. Do the six exercises before you ask a real relative for anything. Then follow the steps in order. The ArtCraft apps are not covered in these notes; the craft-visual and craft-motion tracks cover them. TODO(research): decide whether any ArtCraft app has a place in covert scanning or the reveal.
+This playbook is a learning path. Exercises 1 and 4 come before the pilot tape. Exercises 2, 3, 5 and 6 come before the first real interview. Decision 0 comes first; then follow the steps in order. The ArtCraft apps are not covered in these notes; the craft-visual and craft-motion tracks cover them. TODO(research): decide whether any ArtCraft app has a place in covert scanning or the reveal.
 
 ## Core principles
 
@@ -18,7 +18,7 @@ This playbook is a learning path. Do the six exercises before you ask a real rel
 2. **Make every pretext real.** When you ask someone for help with a cover task, you actually do it, and she gets the result. You label the photos and give her a copy. You write the family page. A pretext that is not real is a lie with a delay (our inference).
 3. **Apply the no-lie floor.** If she sincerely asks whether something is being made about her, you do not deny it. You can say yes and keep the details until the date. The "If she asks" lines under the truthful pretext cards show the words.
 4. **Ask her directly only in truthful windows.** There are three. You can label and date old photos with her. You can hold a real family-history conversation that also covers her parents and grandparents. You can hold an announced family-stories recording at a gathering, where everyone, her included, can see the recorder [9][10][11]. Everything else comes from other people and from objects.
-5. **Get a spoken yes, at the time.** Read the consent card aloud at the start of every recording, and get a clear yes on the file. The research notes state the rule as "never any recording of her". Two planned moments do record her with her knowledge: a family-stories evening, and filming the room at the reveal. Settle the exact rule before the first interview (Decision 10).
+5. **Get a spoken yes, at the time.** Read the consent card aloud at the start of every recording, and get a clear yes on the file. The rule for recording her is: no recording of her without her knowledge and a spoken yes. The only planned cases are an announced recorder at a family-stories evening (Card E) and a wide shot of the room at the reveal, if she agrees in the quiet word. Decision 10 settles this as lean (b); write the choice into the consent card before the first interview.
 6. **The reveal is her first consent point, and she can change anything after.** Give her the review options: delete, restrict, redact, add clarifications, correct mistakes, or keep material closed until a date she picks [8]. Her decisions override ours.
 7. **Default to HOLD.** If we are unsure about a hard chapter, it stays out for now. You can add something later. You cannot un-show it (our inference).
 8. **Honest and warm, not raw.** Describe a hard person by trait, not by one incident. Follow each honest sentence with something kind [56]. Hint rather than detail. Do not invent a sunny ending. Use no synthetic voices [63]. Show no animated faces of the dead unless the closest family says yes explicitly [64].
@@ -29,11 +29,37 @@ This playbook is a learning path. Do the six exercises before you ask a real rel
 
 Work in order. Each step ends with a gate. Do not start a step until the gate before it is passed.
 
+### Decision 0: what starts now, and what waits for the pipeline
+
+You said that material gathering waits until the pipeline is locked. Some work cannot wait. The lab dates are fixed, and the secrecy set-up (Steps 2 to 4) has to exist before anyone is asked (our inference). Decide which column starts when. The maker decides.
+
+| Cannot wait (start in week 1) | Can wait for pipeline lock (starts in Decision 0's start week) |
+|---|---|
+| Insider check (Step 1) | Interviews proper (Step 6) |
+| Rings, code name and project email (Steps 2 and 3) | Album sessions (Step 7) |
+| The Mum-test (Step 4) | Contributor wave 1 (Step 6) |
+| Lab terms in writing, and the pilot tape, video or audio (Step 8) | |
+
+**Cost of waiting, one line per lab class** (ship-by dates from the table in Templates). Once a class's ship-by date has passed, that class drops out of the plan:
+
+- Unscheduled queue, 8 weeks: ship-by Fri 30 October 2026.
+- Slow, 6 weeks: ship-by Fri 13 November 2026.
+- Mid, 4 weeks: ship-by Fri 27 November 2026.
+- Mid-fast, 3 weeks: ship-by Fri 4 December 2026.
+- Fast, 1 to 2 weeks: ship-by Fri 11 to Fri 18 December 2026. After Fri 18 December nothing ships unless the lab confirms a return date in writing.
+
+**What waiting does to the interviews.** The notes' plan starts interviews in week 2 (Oct 25 to 31) and runs them to week 8 (research notes, Table C). A later start leaves fewer weeks before the gate for all media on Sunday 24 January 2027 (week 15), and the holiday rules take some of those weeks.
+
+**Steps 6 and 7 start from Decision 0's start week**, not from fixed weeks. Step 8 (the pilot and the lab terms) stays in week 2. The exercise order is in the Learn-by-doing section.
+
+Gate: the maker has written down which column starts in which week.
+
 ### Step 1. Establish the facts that decide everything (week 1)
 
 1. Ask one trusted insider, not her, whether she likes surprises, speeches, or being filmed. Reports of people who dislike surprises are opinion and anecdote, not research [81].
-2. Write down your country and region, and those of her and each key contributor. Recording law, holidays, labs and phone services depend on them. UK, EU and cross-border recording law is not checked (TODO(research)).
+2. Write down your country and region, and those of her and each key contributor. Recording law, holidays, labs and phone services depend on them. UK: a participant's own recording is unlikely to be unlawful interception under IPA 2016 s.3/s.4 (the notes' reading, inference) [117][118]; Germany: StGB §201 makes an unauthorised recording of private speech an offence with no participant exception, so a spoken yes is mandatory [119]; EU: GDPR Art. 2(2)(c) household exemption is likely but untested [120]; other countries and non-US cross-border calls UNVERIFIED (TODO(research)).
 3. Decide whether 27 February 2027 is her birthday, a named milestone, or a date chosen for another reason. The date also clashes with calendars. One projection puts Ramadan starting about 8 February 2027 [72], and Lunar New Year falls on Saturday 6 February [73]. Ask the proxy and an elder about any clash.
+4. Ask which observances the family keeps between November and February, such as Hanukkah, Christmas, Thanksgiving, Lunar New Year or Ramadan. Each one you keep gets the holiday rules on its own dates, and a row in the key dates. Hanukkah 2026, if kept, runs from sundown on Fri 4 December to Sat 12 December 2026 (see Holiday rules).
 
 Gate: a one-page note of what she would and would not want, with the insider named as the source for each line.
 
@@ -61,7 +87,7 @@ Run the Mum-test: open each shared device and account the way she would, and loo
 3. **Family calendars.** Joining an Apple family or setting up a Google family creates a shared Family calendar automatically [31][32]. Keep project dates on paper, or in your project account only.
 4. **Smart speakers.** When a child asked for recent orders, an Alexa+ device read a parent's recent Amazon orders aloud, including birthday gifts [29]. Turn off personal results on shared devices [30]. Turn off item titles in shopping notifications, and disable voice purchasing [29].
 5. **Your Windows PC.** Use a separate Windows account for the project. Keep project files on an external drive, in a folder that OneDrive does not back up. Check that Manage backup is off for Desktop, Documents and Pictures [25]. Set "Hide content when notifications are on lock screen" per app, and use Do Not Disturb [24]. Windows Recall exists only on Copilot+ PCs and is opt-in per user [23].
-6. **Encryption.** BitLocker is for Pro, Enterprise and Education editions, not Home [26]. Free encryption for Windows Home is TODO(research).
+6. **Encryption.** Windows Home lacks BitLocker Drive Encryption and BitLocker To Go [26], but has Device Encryption for the OS and fixed drives, turned on automatically on first sign-in with a Microsoft account and not for a local account [112]. Device Encryption does not cover USB drives [110], so the external project drive is the real gap, not the whole PC. A separate project user created as a local account does not get Device Encryption by itself. Device Encryption is theft protection, not family-privacy protection [110] (inference). For the external drive, the notes name VeraCrypt 1.26.29, which is free [93][95]. Decided (Fable advisor, round 2): a file container, not a whole-device volume. A standard user can mount it, an accidental format prompt is avoided (that prompt behaviour is (M), general knowledge, UNVERIFIED here), and the one visible large file is named with the code name. An administrator installs VeraCrypt and creates the container; the project account mounts and dismounts it [97][98]. A mounted volume is visible to every logged-on user, so dismount before you leave the desk or switch users (inference from [98]). The notes' rule: use VeraCrypt only for the external drive, never the Windows boot drive. Before real material goes in, test mount, copy, dismount and unplug once (inference).
 
 Gate: the Mum-test finds no project word on any shared screen, and each fix is written down.
 
@@ -69,11 +95,11 @@ Gate: the Mum-test finds no project word on any shared screen, and each fix is w
 
 1. Choose one cover task you will really finish. The options are Cards A to E in Templates. The notes list photo labelling first.
 2. Agree one line with your co-keeper. Everyone in Ring 1 says the same truthful thing if asked.
-3. Write the no-lie floor at the top of your card: you may leave things out; you may not lie; you may not record her; you stop when she says stop.
+3. Write the no-lie floor at the top of your card: you may leave things out; you may not lie; you may not record her without her knowledge and a spoken yes; you stop when she says stop.
 
 Gate: the side-project is on your paper plan, with a date you will keep.
 
-### Step 6. Collect stories from people (weeks 2 to 12)
+### Step 6. Collect stories from people (from Decision 0's start week, to about week 12)
 
 1. Make sure the relative wants to be recorded before you start. A reluctant relative derails the project [12].
 2. Send the contributor brief personally, never in a group chat she is in. Use Version A or B from Templates. It says what you want, by when, the secret rules, and what happens to their words. Do not ask older relatives to use a website they do not already use [37].
@@ -82,11 +108,11 @@ Gate: the side-project is on your paper plan, with a date you will keep.
 5. Keep it to 20 to 30 minutes. The notes cite StoryCorps for six to eight questions in about 40 minutes [1]. The 20 to 30 minute shape is our inference for a favour.
 6. Let the person choose how to record. A voice memo on their own phone is the default. The Oral History Association says audio-only is often the least stressful option, and calls a phone-based recording "likely the most secure remote option" [6]. Video calls are a last resort [7]. On an iPhone, Voice Memos can share a recording as one .m4a file [17].
 7. Ask the "only you" question once, with an exit (Templates).
-8. Log each person's consent, the drawer each piece came from (top, middle or bottom, after the notes' use of Brooker's drawers), and their withdrawal date.
+8. Log each person's consent, the drawer each piece came from (top, middle or bottom, after the notes' use of Brooker's drawers), their country (see Step 1.2), their withdrawal date, and `told_by_candidate` (yes, maybe or no, plus the chapter): could this be the one story this person tells, in their voice, as the spine of a chapter?
 
 Gate: each contributor has a clear yes, knows the secret rules, and knows how to withdraw.
 
-### Step 7. Borrow and digitise without tipping her off (weeks 2 to 13)
+### Step 7. Borrow and digitise without tipping her off (from Decision 0's start week, to about week 13)
 
 1. Choose items she will not miss. Ask the co-keeper to look, not ask her. Items in weekly use are photographed in place or left alone.
 2. Pick a window when she is reliably out, with at least twice as long as you need. Tell the co-keeper where you are.
@@ -103,14 +129,14 @@ Gate: every item has a log line, and everything is back or logged as out.
 
 ### Step 8. Send tapes and film to labs, with dates in writing (order by week 2)
 
-1. Send one pilot tape by Friday 30 October 2026, to a lab quoting about two weeks or less. The pilot tests the whole loop before any batch goes out (research notes, Table C).
-2. Use the receive-by table in Templates. The notes say the Friday is the date the lab must have the item. One table heading says "send-by", and a column shows items leaving her house about two days earlier. Confirm the meaning with each lab (TODO(research)).
+1. Send one pilot tape, video or audio, by Friday 30 October 2026, to a lab quoting about two weeks or less. The pilot tests the whole loop before any batch goes out (research notes, Table C).
+2. Use the ship-by table in Templates. Ship-by is the Friday the parcel leaves. Log the lab's confirmed receipt date when the lab gives it.
 3. Ask every lab in writing for: turnaround in weeks, holiday closures from November to January, handling of mould and sticky shed, return shipping, and what happens to film or tapes after completion. Pro8mm holds film for 30 days after completion, then recycles it unless storage is bought [46].
 4. Compare quotes. Most price pages are competitor-authored or undated, so treat them as rough. Examples: Legacy Digital at $19.95 on special or $28.50 regular per two-hour tape [44]; Perfect Image Camera at $28.99 for VHS and $22.99 for MiniDV [45]; Capture at $19.99, $29.99 and $39.99 for SD, FHD and 4K [43]. Capture ranks itself first, so weigh its ranking with care [43].
 5. Do not mail anything she would miss. A mail-in lab may keep an item away from her home for 4 to 10 weeks.
 6. No lab in the notes published a 2026 holiday cut-off. TODO(research): ask each lab in writing.
 
-Gate: each lab's written dates and terms are in the project email, and the receive-by date is checked against them.
+Gate: each lab's written dates and terms are in the project email, and the ship-by date is checked against them.
 
 ### Step 9. Decide the hard chapters with two keys (weeks 12 to 17)
 
@@ -174,7 +200,7 @@ Gate: she is not asked to speak, perform gratitude, or say what she thought.
 
 ## Learn-by-doing exercises
 
-Do these in order, before any real relative is asked for anything. Times are our estimates, not sourced figures.
+Exercises 1 and 4 come before the pilot tape (Step 8, Fri 30 October 2026). Exercises 2, 3, 5 and 6 come before the first real interview (Step 6). Times are our estimates, not sourced figures.
 
 ### Exercise 1. Mum-test one device of your own (45 to 60 minutes)
 
@@ -199,10 +225,10 @@ Do these in order, before any real relative is asked for anything. Times are our
 
 ### Exercise 4. Get lab dates in writing (1 hour of work, plus waiting)
 
-- **Goal:** learn to get the dates, terms and costs in writing, and check our receive-by table against them.
-- **Steps:** (1) From the project email, write to two labs, one fast and one slow. (2) Ask for turnaround in weeks, holiday closures (November to January), mould and sticky-shed policy, return shipping, what happens after completion, and the total price with shipping and tax. (3) Save each reply in the project email. (4) Recompute the receive-by date for each lab from the formula in Templates.
+- **Goal:** learn to get the dates, terms and costs in writing, and check our ship-by table against them.
+- **Steps:** (1) From the project email, write to two labs, one fast and one slow. (2) Ask for turnaround in weeks, holiday closures (November to January), mould and sticky-shed policy, return shipping, what happens after completion, and the total price with shipping and tax. (3) Save each reply in the project email. (4) Recompute the ship-by date for each lab from the formula in Templates.
 - **Time estimate:** 1 hour of work, plus waiting for replies.
-- **What good looks like:** two written replies with dates, costs and terms, and a receive-by date that matches the table or differs for a stated reason.
+- **What good looks like:** two written replies with dates, costs and terms, and a ship-by date that matches the table or differs for a stated reason.
 
 ### Exercise 5. Cold-start a reveal test (about 1 hour)
 
@@ -225,15 +251,16 @@ Do these in order, before any real relative is asked for anything. Times are our
 | Date | What |
 |---|---|
 | Sun 18 Oct 2026 | Week 1 starts |
-| Fri 30 Oct 2026 | Pilot tape to a fast lab; latest receive-by date for an 8-week lab |
+| Fri 30 Oct 2026 | Pilot tape (video or audio) to a fast lab; latest ship-by date for an 8-week lab |
 | Sun 1 Nov 2026 | Deadline to confirm full-surprise mode, as the notes give it from story.md (not checked by the scribe) |
-| Fri 13 Nov 2026 | Receive-by for slow-lab (6-week) items |
+| Fri 13 Nov 2026 | Ship-by for slow-lab (6-week) items |
 | Thu 26 Nov 2026 | US Thanksgiving: pause extraction that week, if you are in the US |
-| Fri 27 Nov 2026 | Receive-by for mid-lab (4-week) items |
-| Fri 4 Dec 2026 | Receive-by for 3-week lab items |
-| Fri 11 Dec 2026 | Contributor soft deadline; receive-by for 2-week lab items |
-| Fri 18 Dec 2026 | Receive-by for fast-lab (1-week) items; no shipping after this unless the lab confirms in writing |
-| Fri 25 Dec 2026 | Christmas (M). The notes also place Hanukkah in this week from memory; TODO(research): check its 2026 dates |
+| Fri 27 Nov 2026 | Ship-by for mid-lab (4-week) items |
+| Fri 4 Dec 2026 | Ship-by for 3-week lab items |
+| Fri 4 Dec 2026 (sundown) to Sat 12 Dec 2026 | Hanukkah, if the family keeps it (see Holiday rules). [169] Hebcal, Chanukah 2026 — https://www.hebcal.com/holidays/chanukah-2026 — fetched 2026-10-18 by the Fable advisor — begins at sundown on Friday, 4 December 2026; ends at nightfall on Saturday, 12 December 2026 |
+| Fri 11 Dec 2026 | Contributor soft deadline, which may move a week for a family that keeps Hanukkah; ship-by for 2-week lab items |
+| Fri 18 Dec 2026 | Ship-by for fast-lab (1-week) items; no shipping after this unless the lab confirms in writing |
+| Fri 25 Dec 2026 | Christmas (M) |
 | Fri 1 Jan 2027 | New Year (M) |
 | Fri 15 Jan 2027 | Contributor hard deadline |
 | Sun 24 Jan 2027 | Week 15 starts: all media back (the gate) |
@@ -256,11 +283,11 @@ Do these in order, before any real relative is asked for anything. Times are our
 | Sat 24 Apr 2027 | "Her version" delivered (about 8 weeks), if she wants one |
 | Feb 2032 | Next copies due (five-year refresh) [70] |
 
-### Receive-by dates for labs
+### Ship-by dates for labs
 
-Method: the latest receive-by Friday is Sun 24 January 2027, minus the lab's turnaround in weeks, minus two weeks for postage and handling, minus two weeks of holiday margin. The two-week allowances are the notes' assumptions, not sourced.
+Method: start from Sun 24 January 2027, minus the lab's turnaround in weeks, minus two weeks for transit and handling round trip, minus two weeks of holiday margin, then take the Friday on or before that date. That Friday is the ship-by date: the Friday the parcel leaves. The two-week allowances are the notes' assumptions, not sourced.
 
-| Lab class | Named labs and stated turnaround (source) | Latest receive-by |
+| Lab class | Named labs and stated turnaround (source) | Latest ship-by |
 |---|---|---|
 | Unscheduled queue (8 weeks) | Pro8mm unscheduled home-movie queue, 4 to 8 weeks [46] | Fri 30 Oct 2026 |
 | Slow (6 weeks) | Legacybox and Southtree, 4 to 6 weeks; Legacy Digital, about 6 [43][44] | Fri 13 Nov 2026 |
@@ -334,7 +361,7 @@ The full sets are in the notes (T1). This wording is the researcher's, not a pub
 
 ### Truthful pretext cards
 
-Rule: you may omit. You may not state anything untrue. You may not record her. You stop if she says stop.
+Rule: you may omit. You may not state anything untrue. You may not record her without her knowledge and a spoken yes. You stop if she says stop.
 
 - **Card A, photo labelling.** Say: "The old photos are fading and nobody has written on them. Will you help me put names and years on them? I'll keep the labels and give you a copy." Do: actually label the photos, keep them, give her a copy, and write your own notes afterwards. Disclose at the reveal that the labels fed the film.
 - **Card B, "tell me about Grandma".** Say: "I'd like to write a page about Grandma and Grandpa before we lose the details. What do you remember about them?" Do: write the page, give her a copy, and ask about the other ancestors too.
@@ -361,7 +388,7 @@ Test for any card, from the notes (inference), all six must hold: real (you do t
 
 **Costs, from the notes:** free fixes are previews off, Do Not Disturb, camera sharing off, no Family-calendar items, speaker settings, a separate Windows user, and the project email. A separate account is needed for the project email, the chat identity and any project cloud. A separate device or place is needed for the external drive, the scanning phone and a delivery address she does not see.
 
-### Holiday rules (weeks 10 and 11, and Thanksgiving week if it applies)
+### Holiday rules (weeks 10 and 11, Thanksgiving week, and any observance this family keeps (ask in Step 1))
 
 1. The room is not a studio. Do not extract, interview or scan in the middle of a meal. Listen, notice who is in the room, and note who might tell stories later.
 2. Quiet one-to-ones with the oldest relatives are the exception: a walk or a cup of tea, ten minutes, only if natural, and only with the consent card.
@@ -369,8 +396,10 @@ Test for any card, from the notes (inference), all six must hold: real (you do t
 4. Mute project people on any device the family shares. No project talk in a chat she is in.
 5. No new smart speaker, tablet or shared account as a gift. Each one is a leak path.
 6. Shared albums are fine. Shared libraries are not [18][19].
-7. If she asks what you are up to, use Card E's line or the no-lie floor.
+7. If she asks what you are up to, use the truthful line (the "If she asks" answers under the Truthful pretext cards) and the no-lie floor.
 8. Do not take anything out of her house in these two weeks, unless it is a short, planned, logged borrow.
+
+These rules apply on the dates of any observance the family keeps, not only in weeks 10 and 11. Hanukkah, if kept, runs from sundown on Fri 4 December 2026 to Sat 12 December 2026. That is weeks 7 and 8, so these rules apply then, and the Fri 11 December soft deadline may need to move a week ([169] Hebcal, Chanukah 2026 — https://www.hebcal.com/holidays/chanukah-2026 — fetched 2026-10-18 by the Fable advisor — begins at sundown on Friday, 4 December 2026; ends at nightfall on Saturday, 12 December 2026).
 
 ### Hard-chapter decision sheet (copy per item)
 
@@ -395,6 +424,19 @@ Test for any card, from the notes (inference), all six must hold: real (you do t
 Rules: any OUT on the shared cut means out. A disagreement on PRIVATE means HOLD. A key who is part of the story steps back on that item.
 
 ### Reveal-day run sheet
+
+**Living-room version (four to eight people; three roles at most).** Use this for a living room, which is the small room Decision 12 leans to. Roles: **MAKER**; **QUIET WORD** (the person she trusts most, if not the maker); **TECH and HOST** (one person). The timeline points are S minus 2 hours, S minus 30 minutes, S minus 20 minutes, S, end of film, and the pause, where S is the start of the viewing. The compression is our inference from the full sheet below. There is no camera role, so film the room only if a second person can take the camera.
+
+| When | Who | What |
+|---|---|---|
+| S minus 2 h | TECH and HOST | Set up sound with a spoken line; captions on; Do Not Disturb on; notifications hidden; mail and chat closed [24]. Play the whole file once, and check the first and last 30 seconds |
+| S minus 30 min | TECH and HOST | Guests seated, phones silent, older relatives near the speakers. She is brought in by a true plan. If she is late, HOST holds the room and TECH holds the first frame |
+| S minus 20 min | QUIET WORD | In a separate room, the quiet word (script below) |
+| S | MAKER | Welcome, 30 to 60 seconds: "This is a gift from all of us. There is nothing to say and nothing to do." TECH plays the shared cut |
+| End of film | MAKER | Hold silence for 20 seconds; lights up slowly; no cue to applaud; "No speech. There's food." |
+| Pause, S plus 10 to 25 min | TECH and HOST | Soft music, food, drinks; her companion beside her; no toasts; no questions about the film; she may step out. The private cut is handed over later, as in the full sheet |
+
+**Full sheet (seven roles, for the 30-plus setting).** Roles: MAKER, QUIET WORD, TECH, HOST, CAMERA, DISTRACTOR, PROXY. Use the living-room version for a small room.
 
 | When | Who | What |
 |---|---|---|
@@ -459,7 +501,13 @@ None of these is a sourced rule for any culture. Do not apply any of them as an 
 
 Each decision lists the options, then our current lean. A lean is the scribe's reading of the notes, or our inference where marked. The maker decides.
 
-1. **Country and region** (you, her, each key contributor). Options: none needed yet. Lean: find out in week 1. Recording law, holidays, labs and services depend on it. UK, EU and cross-border law is unverified (TODO(research)). Recording law outside the US is not checked here.
+**Decision 0 comes first, and its two columns are repeated here.** The cost of waiting, one line per lab class, is set out above Step 1.
+
+| Cannot wait (start in week 1) | Can wait for pipeline lock |
+|---|---|
+| Insider check; rings, code name and project email; the Mum-test; lab terms in writing and the pilot tape | Interviews proper; album sessions; contributor wave 1 |
+
+1. **Country and region** (you, her, each key contributor). Options: none needed yet. Lean: find out in week 1. Recording law, holidays, labs and services depend on it. UK: a participant's own recording is unlikely to be unlawful interception under IPA 2016 s.3/s.4 (the notes' reading, inference) [117][118]; Germany: StGB §201 makes an unauthorised recording of private speech an offence with no participant exception, so a spoken yes is mandatory [119]; EU: GDPR Art. 2(2)(c) household exemption is likely but untested [120]; other countries and non-US cross-border calls UNVERIFIED (TODO(research)).
 2. **Does she live with you?** Options: yes, or no. Lean: unknown. If yes, scan away from home (a friend's, your workplace, a library), or while she is out on a fixed routine. Scan on a phone with sharing off, never on a shared PC unless it has its own account. One commenter scanned their mother's photos at dawn while she was at her class, then made a book [41, snippet only].
 3. **Who organises the family accounts** (Apple Family, Google Family, Amazon, streaming, phone). Options: you, her, or another family member. Lean: find out in week 1. The organiser may see some purchases and bills [83 S][84 S]. Ship to a work address, a friend, or a locker.
 4. **Is Feb 27 her birthday?** Options: a birthday; a named milestone; a date chosen for other reasons. Lean: unknown. Use "Happy [birthday]" in the run sheet only once it is confirmed.
@@ -467,15 +515,16 @@ Each decision lists the options, then our current lean. A lean is the scribe's r
 6. **The rings: co-keeper and two proxy keys.** Options: one co-keeper; the partner as co-keeper, proxy, both or neither. Lean (scribe's reading): one co-keeper and two proxies. Keep the co-keeper and proxy roles separate if the relationship is fragile [notes, Pitfalls].
 7. **Which truthful side-project?** Options: Card A (photo labelling), B (family page), C (recipes or playlist), D (your own memory project), E (announced family-stories evening). Lean (scribe's reading): Card A first, because it is real, bounded and gives you a reason to handle the photos. Card E is the only one where she is recorded knowingly, so keep it for a gathering where you can announce the recorder.
 8. **Shared cut and private cut length.** Options: anything from 3 to 12 minutes for the shared cut. Lean (inference): shared 6 to 10 minutes with a hard cap of 12; private 20 to 30 minutes. Test it on a trusted person first (Exercise 5 and Step 10).
-9. **Where contributor audio lives, and which services touch it.** Options: local storage only, with transcription on your own machine; a private cloud workspace; any third-party service. Lean (inference from the notes): keep raw audio on storage you control, transcribe locally, and edit the consent card to match what really happens. The notes name story.md Q8 for the local transcription set-up; the tool is not named here (TODO(research)). Settle this before the first interview. The charter says nothing personal goes to a third-party service without your explicit say.
-10. **The recording rule.** Options: (a) the strict rule, "never any recording of her", which would drop the family-stories evening and filming the room at the reveal; (b) "record her only with her knowledge, a spoken yes on the spot, and an announced recorder", which keeps both planned moments. Lean (inference): (b), with the reveal room filmed only if she says yes in the quiet word, wide shot only, and footage handed to her to delete. The notes' summary and their own plan conflict here. You must pick one and write it in the consent card.
+9. **Where contributor audio lives, and which services touch it.** Options: local storage only, with transcription on your own machine; a private cloud workspace; any third-party service. Lean (inference from the notes): keep raw audio on storage you control, transcribe locally, and edit the consent card to match what really happens. The notes name story.md Q8 for the local transcription set-up: Whisper or whisper.cpp, per `research/story.md` Q8 and Recipe 3. Settle this before the first interview. The charter says nothing personal goes to a third-party service without your explicit say.
+10. **The recording rule.** Options: (a) the strict rule, no recording of her at all, which would drop the family-stories evening and filming the room at the reveal; (b) "no recording of her without her knowledge and a spoken yes; the only planned cases are an announced recorder at a family-stories evening (Card E) and a wide shot of the room at the reveal if she agrees in the quiet word", which keeps both planned moments. Lean (inference): (b). The reveal room is filmed only if she says yes in the quiet word, wide shot only, and the footage is handed to her to delete [42]. The notes' summary and their own plan conflicted here; the round 1 review closed the conflict in favour of (b). The consent card already matches (b). The maker decides, and writes the choice into the consent card before the first interview.
 11. **Default for hard chapters.** Options: HOLD (out until she decides after the reveal); SHARED-LIGHT by default. Lean: HOLD. Holding costs contributors their moment, and that cost is real. Choosing HOLD is the cheaper error, since you can add later (the notes' reasoning, inference). The notes raise this as an open question for the advisor.
-12. **Reveal format and room.** Options: a living room for four to eight; a family dinner for 10 to 20; a party for 30 or more; a two-step reveal; a private gift. Lean: the notes give no lean. The run sheet assumes a living room or a family dinner (inference). A party has the highest social load and is hardest to protect the hard chapters in.
+12. **Reveal format and room.** Options: a living room for four to eight; a family dinner for 10 to 20; a party for 30 or more; a two-step reveal; a private gift. Lean (inference): a small room, a living room for four to eight. The notes give no lean. The run sheet has a living-room version for that room, and the seven-role sheet is for the 30-plus setting. A party has the highest social load and is hardest to protect the hard chapters in.
 13. **Filming the reveal.** Options: no filming; a wide shot of the room only; close-ups with her yes. Lean: wide shot only, and close-ups only with her yes. Give her the footage and let her delete any of it [42].
 14. **The archive.** Options: family drives only; a copy placed in a local library or historical society, her call [85]; a StoryCorps-style recording, her choice only. Lean: avoid StoryCorps Connect by default. Its archive can be published, a Library of Congress copy persists whatever the privacy setting, and the session cannot be paused [1][2][3][4].
 15. **Keepsake form.** Options: a drive and disc; a printed book with QR codes; scanned originals returned with an index; a private web link. Lean: a drive and disc, plus a book whose chapters can be found without any QR code. Use static QR codes only [70][71].
 16. **Culture and faith checks.** Options: ask the proxy and an elder; a calendar check; a move of the viewing date. Lean: ask the proxy and an elder before week 16. Move the viewing if she needs it moved. The build deadline can stay.
 17. **Who may speak first, host or present.** Options: none set; the eldest; the maker; a relative. Lean: none set. Ask the cultural questions above before deciding.
+18. **Voices found on tapes and voicemails.** Options: her own voice, a family member's, a non-family caller's, the voice of someone who has died (real or synthetic). Lean (as stated; inference from research F5b): her own greeting or message is the strongest candidate and sits in the top drawer, but she has not agreed to its reuse, so it is listed in the T9 ledger (research notes) for her post-reveal decision and never opens a hard chapter. A family member's message: ask them as a contributor (consent card, withdrawal date). A non-family caller: private cut only, or out; never in the shared cut. The dead: a real voice only if the closest family says yes; never a synthetic version [63].
 
 ## Pitfalls
 
@@ -485,6 +534,7 @@ Each decision lists the options, then our current lean. A lean is the scribe's r
 - **Partner sharing shares photos as they are backed up.** The partner can save them to their own account, and they can appear in Memories and search [19]. A report says the "other apps" option has been off by default since November 2024 [20 S]. Fix: check the setting, or use a project-only account.
 - **Scanner apps back up without asking.** PhotoScan uploads depend on backup settings [21]. Photomyne's membership backs up everything to its cloud, and shares albums of more than five photos as a link [22] (vendor's claims). Fix: check backup settings before the first scan.
 - **OneDrive backs up Desktop, Documents and Pictures** once switched on [25]. Fix: keep project files on an external drive, outside those folders.
+- **Windows Home encryption gaps.** Device Encryption covers the OS and fixed drives, not USB drives, and it is not turned on automatically for a local account [110][112]. Fix: VeraCrypt on the external drive (Step 4.6), and check the PC's status in msinfo32 under "Device Encryption Support" [110].
 - **Dropbox emails the requester on every upload** [34]. Fix: use the project email as the only address.
 - **Notification previews show names and text** on shared screens [33 S]. Fix: set previews off for any shared device.
 - **Mail previews.** The USPS Informed Delivery service shows letter images and package status to the account holder [77 S]. Fix: check who holds the account, and send project mail to an address she does not see.
@@ -500,7 +550,7 @@ Each decision lists the options, then our current lean. A lean is the scribe's r
 - **Vendor bias.** Capture ranks its own service first [43]. Fix: get quotes from several labs, in writing.
 - **Holiday overload.** Fix: listen at holidays, and extract nothing mid-meal (holiday rules).
 - **Staging a reconciliation.** Fix: never. The proxy decides on any estranged person's place.
-- **Unverified law.** The US reporters' guide is a baseline, and it says it is not legal advice [14]. Apple's call recording is consent-by-design, with a repeating notice, and is available only in some regions [15]. Third-party call recorders may record silently [15]; this project does not use them. Fix: ask a lawyer where it matters.
+- **Unverified law.** The US reporters' guide is a baseline, and it says it is not legal advice [14]. Apple's call recording is consent-by-design, with a repeating notice, and is available only in some regions [15]. Third-party call recorders may record silently [15]; this project does not use them. UK: a participant's own recording is unlikely to be unlawful interception under IPA 2016 s.3/s.4 (the notes' reading, inference) [117][118]; Germany: StGB §201 makes an unauthorised recording of private speech an offence with no participant exception, so a spoken yes is mandatory [119]; EU: GDPR Art. 2(2)(c) household exemption is likely but untested [120]; other countries and non-US cross-border calls UNVERIFIED (TODO(research)). Fix: ask a lawyer where it matters.
 - **Remote recording tools.** Many video platforms save only MP3, and each re-save of a compressed file adds loss [6][7]. Audio is about 1 GB per hour, against 10 to 30 GB for video [7]. Fix: have the contributor record audio on their own phone, and keep the original file.
 - **Automatic calendar events.** In a 2012 forum thread, a Siri-created calendar event for a surprise party was emailed to the mother, who was not on the invitee list (snippet only) [79]. Fix: check what any assistant creates, and who it emails.
 - **Naming a death.** Funeral and suicide-loss guidance says the family decides how a death is described, and warns against an open platform where anyone may speak [57][91] (snippets only). Fix: never name a cause of death without the closest family's say.
@@ -527,12 +577,12 @@ Each decision lists the options, then our current lean. A lean is the scribe's r
 - **Turnaround range.** The notes' summary says one to ten weeks. The listed figures top out at eight weeks for Pro8mm's queue. Ten weeks is the notes' bound for a mail-away absence.
 - **Time per album by phone** is inference. Time your first album (Exercise 2).
 - **No study** exists on reveal length, attention in mixed-age rooms, or the honoree's comfort. Rehearse the reveal with one trusted person who is not a proxy.
-- **Recording law** was checked only against the US reporters' guide [14]. UK and EU rules, cross-state and cross-border calls, and Apple call-recording limits by region are unverified. The ICO page on the household exemption did not address call recording [87, snippet only].
+- **Recording law** was checked against the US reporters' guide [14]. UK: a participant's own recording is unlikely to be unlawful interception under IPA 2016 s.3/s.4 (the notes' reading, inference) [117][118]; Germany: StGB §201 makes an unauthorised recording of private speech an offence with no participant exception, so a spoken yes is mandatory [119]; EU: GDPR Art. 2(2)(c) household exemption is likely but untested [120]; other countries and non-US cross-border calls UNVERIFIED (TODO(research)). Apple call-recording limits by region are unverified. The ICO page on the household exemption did not address call recording [87, snippet only].
 - **Parfit's lecture** could not be opened [76].
-- **Platform controls seen only in snippets:** iOS Show Previews [33 S]; Signal's notification options [80 S]; the Amazon order-sharing setting [28 S]; Apple's purchase visibility [83 S][84 S]; Google Voice outside the US [88 S]; free drive encryption on Windows Home [26]. Check each on the real device.
-- **Audio cassettes, answering-machine tapes and old voicemails** were not researched. Found voice is valuable, so a next pass should cover them.
+- **Platform controls seen only in snippets:** iOS Show Previews [33 S]; Signal's notification options [80 S]; the Amazon order-sharing setting [28 S]; Apple's purchase visibility [83 S][84 S]; Google Voice outside the US [88 S]. Check each on the real device.
+- **Audio cassettes, answering-machine tapes and old voicemails:** covered in research F5b; audio-lab turnaround still UNVERIFIED.
 - **Ash Wednesday and Easter 2027** dates are from memory, not sourced.
-- **Hanukkah timing** in the notes' week-10 entry is from memory, and needs checking.
+- **Hanukkah timing.** The notes' week-10 entry was wrong. Hanukkah 2026 runs from sundown Fri 4 to Sat 12 December (weeks 7 and 8): [169] Hebcal, Chanukah 2026 — https://www.hebcal.com/holidays/chanukah-2026 — fetched 2026-10-18 by the Fable advisor — begins at sundown on Friday, 4 December 2026; ends at nightfall on Saturday, 12 December 2026.
 - **Film and tape care.** The notes' sources on sticky shed and mould are snippets [90 S].
 - **Scanning settings and file naming** are in `playbooks/ai-imagery.md`. The notes did not restate them.
 
@@ -562,7 +612,7 @@ Numbering matches `research/surprise-ops.md`. Status key: **fetched** = the rese
 
 [11] St. Louis County Library, "Interviewing Family Members: Oral History Basics" — https://www.slcl.org/sites/default/files/2023-07/P-03-Oral-History-Interveiwing-Family-Members-Guide.pdf — 2023 (per URL) — fetched (PDF) — ethics: do not surprise narrators with topics, do not mislead, offer review; phone recorder apps named
 
-[12] Baylor News (Baylor Institute for Oral History), "Seven simple tips to begin recording your family's oral history" — https://news.web.baylor.edu/news/story/2023/family-reunion-month-seven-simple-tips-begin-recording-your-familys-oral-history — page shows "Published June 24, 2026" — fetched — confirm the relative wants to be recorded; patience with older narrators
+[12] Baylor News (Baylor Institute for Oral History), "Seven simple tips to begin recording your family's oral history" — https://news.web.baylor.edu/news/story/2023/family-reunion-month-seven-simple-tips-begin-recording-your-familys-oral-history — page shows "Published June 24, 2026"; page shows a 2026 publish date on a 2023 URL; date unknown — fetched — confirm the relative wants to be recorded; patience with older narrators
 
 [13] Iowa State University Office of Research Ethics, "IRB Review of Research Using Deception" (3/7/2008; reproduces APA Ethical Principles 8.07 and 8.08, effective 2003) — https://compliance.iastate.edu/wp-content/uploads/sites/4/2023/03/deception.pdf — fetched (PDF) — minor deception (withholding) versus misleading; debriefing; withdraw data
 
@@ -624,7 +674,7 @@ Numbering matches `research/surprise-ops.md`. Status key: **fetched** = the rese
 
 [43] Capture, "Best Company to Digitize Home Movies: 8 Services Compared for 2026" — https://www.capture.com/blog/best-company-to-digitize-home-movies — article 2026-08-07; prices checked 2026-08-26 — fetched — vendor ranking itself first; prices and turnaround for eight services
 
-[44] Legacy Digital, "Legacy Video Transfer: Real Costs, Formats and File Sizes" — https://legacydigital.net/legacy-video-transfer/ — page updated 2026-09-05 — fetched — $19.95 special / $28.50 regular per tape; about 6 weeks; $50 minimum; kit $35
+[44] Legacy Digital, "Legacy Video Transfer: Real Costs, Formats and File Sizes" — https://legacydigital.net/legacy-video-transfer/ — page updated 2026-10-17; prices re-checked 2026-10-18, unchanged — fetched — $19.95 special / $28.50 regular per tape; about 6 weeks; $50 minimum; kit $35
 
 [45] Perfect Image Camera, Film and Video Transfers — https://perfectimagecamera.com/archiving/film-video-transfers/ — undated, © 2026 — fetched — VHS $28.99, MiniDV $22.99, 8 mm $0.34 and $0.59 per ft
 
@@ -650,7 +700,7 @@ Numbering matches `research/surprise-ops.md`. Status key: **fetched** = the rese
 
 [59] McKeown, Ryan, Ingleton and Clarke, "'You have to be mindful of whose story it is'…", Dementia 14(2), 2015 — https://researchportal.northumbria.ac.uk/en/publications/you-have-to-be-mindful-of-whose-story-it-is-the-challenges-of-und/ — 2015 — fetched (abstract page) — private memories not for any written product
 
-[60] Shalowitz, Garrett-Mayer and Wendler, "The accuracy of surrogate decision makers: a systematic review", Archives of Internal Medicine 166(5):493–497, 2006 — https://pubmed.ncbi.nlm.nih.gov/16534034/ — snippet only (cookie wall); summary via Pallimed https://www.pallimed.org/2006/03/accuracy-of-surrogate-decision-making.html — 2006-03-13 — fetched — 16 studies; about 68% agreement; designated surrogates no better; prior discussion did not help
+[60] Shalowitz, Garrett-Mayer and Wendler, "The accuracy of surrogate decision makers: a systematic review", Archives of Internal Medicine 166(5):493–497, 2006 — https://pubmed.ncbi.nlm.nih.gov/16534034/ — snippet only (cookie wall); summary via Pallimed https://www.pallimed.org/2006/03/accuracy-of-surrogate-decision-making.html — 2006-03-13 — fetched — 16 studies; about 68% agreement; designated surrogates no better; prior discussion did not help; Pallimed notes that the discussion-does-not-help finding rests on two uncontrolled trials
 
 [61] Braun, Naik and McCullough, Annals of Family Medicine 7(3):249, 2009 — https://www.annfammed.org/content/7/3/249 — 2009 — fetched — substituted judgment versus best interests
 
@@ -710,6 +760,31 @@ Numbering matches `research/surprise-ops.md`. Status key: **fetched** = the rese
 
 [91] NEAMI National (Australia), "Safety and Public Memorials following Suicide" — https://www.neaminational.org.au/wp-content/uploads/2023/10/Safety-and-Public-Memorials-following-Suicide-June-2024.pdf — June 2024 — snippet only — avoid an open platform where anyone may speak
 
+[93] VeraCrypt, Downloads — https://veracrypt.io/en/Downloads.html — page shows "Tuesday June 9th, 2026" — fetched — 1.26.29 latest stable; EXE x64 and ARM64, MSI, portable; PGP signature links
+
+[94] VeraCrypt, Release Notes — https://veracrypt.io/en/Release%20Notes.html — entries 1.26.7 (2023-10-01) to 1.26.29 (2026-06-09) — fetched — Windows 11 22H2 and 25H2 notes; hidden-volume flaw CVE-2026-54073; UEFI CA 2023 bootloaders; Windows 10 1809 minimum
+
+[95] VeraCrypt, License — https://veracrypt.io/en/VeraCrypt%20License.html — undated — fetched — multi-licensed Apache 2.0 and TrueCrypt License 3.0
+
+[97] VeraCrypt, Using VeraCrypt Without Administrator Privileges — https://veracrypt.io/en/Using%20VeraCrypt%20Without%20Administrator%20Privileges.html — undated — fetched — what a standard user can and cannot do; admin must install; unsafe on systems you do not administer
+
+[98] VeraCrypt, Multi-User Environment — https://veracrypt.io/en/Multi-User%20Environment.html — undated — fetched — mounted volume visible to all logged-on users; Fast User Switching does not unmount; shared password cache; non-admin can mount partition/device volumes and unmount only their own
+
+[110] Microsoft Learn, "BitLocker Overview" — https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/ — ms.date 2026-08-24, updated 2026-10-08 — fetched — device encryption section: OS and fixed drives only, not USB; clear key until an administrator signs in with a Microsoft account; local-only stays "unprotected even though the data is encrypted"; 24H2 prerequisites removed
+
+[112] Microsoft Support, "Device encryption in Windows" — https://support.microsoft.com/en-us/windows/device-encryption-in-windows-cf7e2b6f-3e70-4882-9532-18633605b7df — undated — fetched — available on Home; automatic with Microsoft or work/school account; not automatic with a local account; needs an administrator; no mention of multiple users
+[117] legislation.gov.uk, Investigatory Powers Act 2016 section 3 — https://www.legislation.gov.uk/ukpga/2016/25/section/3 — "up to date ... on or before 18 October 2026" — fetched — offence of unlawful interception
+
+[118] legislation.gov.uk, Investigatory Powers Act 2016 section 4 — https://www.legislation.gov.uk/ukpga/2016/25/section/4 — same status line — fetched — meaning of interception, subsection (1)
+
+[119] Federal Ministry of Justice (Germany), Criminal Code, English translation, section 201 — https://www.gesetze-im-internet.de/englisch_stgb/englisch_stgb.html — translation current to the amendment of 7 November 2024 — fetched (downloaded and text-extracted locally) — violation of the privacy of the spoken word
+
+[120] GDPR Article 2 (unofficial reproduction) — https://gdpr-info.eu/art-2-gdpr/ — undated — fetched — Article 2(2)(c) personal or household activity
+
+[169] Hebcal, Chanukah 2026 — https://www.hebcal.com/holidays/chanukah-2026 — fetched 2026-10-18 by the Fable advisor — begins at sundown on Friday, 4 December 2026; ends at nightfall on Saturday, 12 December 2026
+
 ## Changelog
 
 - 2026-10-18, v1: first draft by the scribe from `research/surprise-ops.md` (researcher: Sonnet, 2026-10-18) and `CHARTER.md`. Gaps are marked TODO(research). Conflicts are flagged, not resolved: the "never any recording of her" rule against two planned recordings (Decision 10); the "send-by" versus "receive-by" wording in the lab table (Step 8); magnetic versus sticky albums (Step 7); and the pilot date (Step 8).
+- 2026-10-18, v2: round 1 review applied (`reviews/surprise-ops-round1.md`). Hanukkah moved to weeks 7 and 8, and the holiday rules now follow any observance the family keeps; "receive-by" renamed "ship-by" throughout; Decision 0 added, with Steps 6 and 7 re-dated and the exercise order reconciled; the recording rule for her settled as lean (b) in Decision 10; Windows Home encryption corrected and VeraCrypt named; living-room run sheet added; Decision 9 names Whisper; sources [12], [44], [60] updated and [93], [94], [95], [97], [98], [110], [112] added; `told_by_candidate` added to the interview log.
+- 2026-10-18, v3: round 2 review applied (`reviews/surprise-ops-round2.md`). Audio cassettes and voicemail are in the plan (Decision 0, Step 8, Key dates, Gaps; research Tables A, C, D and F5b); UK, German and EU recording law from research F5a replaces the "unverified" wording in Step 1.2, Decision 1, Pitfalls, Gaps and the skill's Law guardrail; Decision 18 (voices found on tapes and voicemails) added; Step 4.6 decides a file container; Hanukkah cited as [169] (the review's [135] was already taken by round-2 research); Core principle 5 and Holiday rule 7 corrected.

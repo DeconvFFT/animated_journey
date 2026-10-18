@@ -12,7 +12,7 @@ Three things need your decision before anything else.
 
 First, the charter describes the project as "animated, partly playable" [C]. The research default is a linear film, with a playable interlude added only if an early gate passes. That default departs from the charter's wording unless you accept it. See Decision 2.
 
-Second, the charter says the piece is a surprise and that nothing may tip her off [C]. Some steps in the notes would reveal the piece to her, such as showing hard chapters to the subject first. Those steps have to change. See Decisions 5 and 6.
+Second, the charter says the piece is a surprise and that nothing may tip her off [C]. Some steps in the notes would reveal the piece to her, such as showing hard chapters to the subject first. Those steps have changed: hard chapters go to the proxy and to the relatives in them, and the subject sees nothing before the reveal. See Decisions 5 and 6.
 
 Third, time. From Sunday 2026-10-18 to Saturday 2027-02-27 is 132 days, about 19 weeks. At 10 hours a week that is about 190 hours. At 20 hours a week it is about 380 [J].
 
@@ -22,7 +22,7 @@ Third, time. From Sunday 2026-10-18 to Saturday 2027-02-27 is 132 days, about 19
 
 2. **Passive first.** The room should be able to watch without anyone holding a controller. Older players in one study found the rules hard and the time limits stressful [10]. W3C also notes reduced dexterity and short-term memory among older users [1]. A film asks nothing of anyone.
 
-3. **Captions are part of the picture.** Use burned-in captions, which are always on and cannot be turned off [4]. Also make a separate caption file for players that can use one. Netflix's adult guideline is 42 characters per line, two lines, and up to 20 characters per second [5]. For viewers aged 70 and over, aim slower and larger. No source tested that, so test it [J].
+3. **Captions are part of the picture.** Use burned-in captions, which are always on and cannot be turned off [4]. Also make a separate caption file for players that can use one. Netflix's adult guideline is 42 characters per line, two lines, and up to 20 characters per second [5]. For viewers aged 70 and over, aim slower and larger: the BBC recommends 160 to 180 words per minute and DCMP 130 to 160 by level, both for hearing audiences [105][107]. For a room with viewers over 70, aim for 130 to 145 words per minute, never above 160 [J]. No source tested older viewers, so test it.
 
 4. **Files outlive accounts.** The master should be a video file with a standards path, not a link on someone's account. For file-based video masters, the Library of Congress prefers FFV1 in Matroska or ProRes in QuickTime (IMF comes first on its list). It lists MP4 only as a viewing proxy [15]. Hosted links are a convenience, not an archive [34]. Keep three copies on two kinds of storage, with one copy off-site [22].
 
@@ -36,49 +36,62 @@ Third, time. From Sunday 2026-10-18 to Saturday 2027-02-27 is 132 days, about 19
 
 ## How to do it, step by step
 
-**Step 1. Answer six questions (week 1).** The format cannot be locked without these answers [notes]:
+**Step 1. Answer the open questions (week 1).** The format cannot be locked without these answers [notes]. The charter already settles the surprise, the premiere, Windows and the ArtCraft apps [C], so do not ask again:
 - How many hours a week can you give?
 - Where is the venue, and who runs its sound and projector?
 - How many people are expected, and what ages?
-- Surprise or made together? The charter says surprise [C].
 - Do you own Minecraft Java Edition, and does she play games?
 - Is "partly playable" a must?
 
-Also decide whether 2027-02-27 is the premiere or only the delivery date. If the event is earlier, move every date up by the same amount [notes].
+The charter names 2027-02-27 as the premiere, at a mostly public gathering [C]. If the event is earlier, move every date up by the same amount [notes].
 
-**Step 2. Lock the format (weeks 1 to 3).** Accept, change or reject the default: a linear, captioned, photo-forward film in chapters, each with room for one optional interlude. If "partly playable is a must," use the hybrid instead, a film with two or three host-driven interludes. The notes score the hybrid lower, at 3.95 against 4.45 for the film [J].
+**Step 2. Lock the format (weeks 1 to 3).** Accept, change or reject the default: a linear, captioned, photo-forward film in chapters, each with room for one optional interlude. If "partly playable is a must," use the hybrid instead, a film with two or three host-driven interludes. In the round-1 matrix the hybrid scores lower, at 3.80 against 4.55 for the film [J].
 
-**Step 3. Decide when the pipeline counts as locked (weeks 1 to 3).** The charter says real photos and stories are gathered only after the pipeline and process are locked [C]. The notes' plan starts recording voices in weeks 1 to 3. Settle this conflict before you record anyone.
+**Step 3. Define 'pipeline locked' (weeks 1 to 3).** The charter says real photos and stories are gathered only after the pipeline and process are locked [C]. Definition: 'pipeline locked' means Step 8 has passed on Chapter 1. The vertical slice uses only material the maker already possesses (their own digital photos and any existing home video), plus surprise-mode voices in Step 7. No new covert collection starts until G9 passes or the orchestrator opens GATHER.md.
 
-**Step 4. Set up the archive folder and the hash list (weeks 1 to 3).** Create folders for masters, access copies, captions, source photos and audio, and a README. Make a SHA-256 list of every file, and keep the list outside the folder [18]. The notes name `sha256sum`. You are on Windows, and the notes give no Windows equivalent. TODO(research): confirm which hash tool to use on Windows.
+**Step 4. Set up the archive folder and the hash list (weeks 1 to 3).** Create folders for masters, access copies, captions, source photos and audio, and a README. Make a SHA-256 list of every file, and keep the list outside the folder [18]. On Windows, use PowerShell `Get-FileHash`, which is built in and uses SHA-256 by default [100]. The notes' script `research/sources/format-round1/mk_manifest.ps1` writes a `sha256sum`-format list one level above the folder (lowercase hashes, LF line endings). It was tested on PowerShell 7.5.4 on Linux, not on Windows PowerShell 5.1, so check it there first (UNVERIFIED). Do not write the list with `>` or `Out-File`: Windows PowerShell 5.1 writes UTF-16LE, which `sha256sum -c` rejects [102].
 
 **Step 5. Run the look test (weeks 1 to 3).** The notes plan a "20-second look test" in these weeks but do not describe it. TODO(research): define the look test before anyone runs it.
 
 **Step 6. Build the chapter structure (weeks 1 to 3).** Each chapter runs 90 to 150 seconds, with a visible breath before the next one. Each chapter has a labelled slot of 60 to 90 seconds for an interlude. By default the slot holds a captured video [notes]. The durations are judgment [J].
 
-**Step 7. Make Chapter 1 as a vertical slice (weeks 4 to 6).** Aim for about two minutes at final quality, with real audio, music, captions and export. Use photos with simple movement, her real voice, and a little selective animation. Templates help, but avoid the floor-level slideshow look the charter rejects [C]. The notes list DaVinci Resolve as free for a film master [63]. Which editor you have is still unknown. TODO(research): confirm the installed editor. The notes estimate 6 to 10 hours per finished minute with templates, AI imagery and parallax [J]. StoryCorps' animators talked with the storytellers during production [77]. With a surprise, any such consultation has to go through the proxy. The format notes do not test the ArtCraft apps. See the craft-visual and craft-motion tracks [C].
+**Step 7. Make Chapter 1 as a vertical slice (weeks 4 to 6).** Aim for about two minutes at final quality, with real audio, music, captions and export. Use photos with simple movement, voices in surprise mode (below), and a little selective animation. Templates help, but avoid the floor-level slideshow look the charter rejects [C].
+
+**Toolchain.** FilmCraft is installed (ArtCraft, early alpha, Windows) [C]. It is a refinement layer, not the assembly engine, so the slice must also build from a scripted route with a fallback editor named by the `toolchain` track. The scripted route is the notes' route A: a Python script that writes one ffmpeg command from `timeline.json`, `captions.srt` and an `assets/` folder. It ran in the container: 9 s for a 20 s test film, and 63 s for a 30-shot, 120 s version (notes FQ2). OpenTimelineIO can carry the same cut into FilmCraft or Kdenlive for hand fixes. DaVinci Resolve is free for a film master [63], but the notes treat it as refinement and the final eye, not the assembly engine. The notes estimate 6 to 10 hours per finished minute with templates, AI imagery and parallax [J]. StoryCorps' animators talked with the storytellers during production [77]. With a surprise, any such consultation has to go through the proxy (Decision 6). The format notes do not test the ArtCraft apps. See the craft-visual and craft-motion tracks [C].
+
+**Voices in surprise mode.** The surprise rules out her real voice unless a recording already exists. Use, in this order of preference:
+- (i) her existing recorded voice from home video, voicemail or voice notes, if any survive and the proxy agrees;
+- (ii) relatives speaking about her, recorded one at a time from the people the maker has decided to bring in (OPEN (maker): nobody is in on it yet, so this source waits on that decision [C]);
+- (iii) her own letters and cards, read by a relative and shown attributed.
+
+No synthetic or cloned voice of anyone [C, principle 4].
+
+**Threshold (notes FQ1, [J]).** The slice needs about 45 to 90 seconds of clearly her speech per chapter, roughly 3 to 5 minutes in all, or one clip of 60 seconds or more. If the family can produce under about 2 minutes in all, F-0 uses sources (ii) and (iii) instead of her voice.
+
+**The six questions, for people the maker brings in.** Ask by phone or in person, and put nothing in writing that she could see. (1) Do you have any video or voice message of her, on your phone or on old tapes? Please do not delete anything, and do not forward it to me. (2) Roughly when was each made, and who else is speaking? (3) Is it still on a phone or card, or only on a tape, disc or old computer? Is the player still around? (4) Is she talking for a minute or more at a stretch, or only in short bits? (5) Who else might hold something? (6) Are you happy for me to copy it and use it privately, and is there anything on it she would not want shown? Record each answer with holder, device or format, rough date, who speaks, length, quality, whether the original is in hand, copies and consent. Do not clean or force a magnetic tape; one careful transfer pass, by a lab or a machine in good order [93].
 
 **Step 8. Harden the slice (weeks 7 to 9).**
 - Export the master (FFV1 in Matroska, or ProRes in QuickTime) and an H.264 MP4 at 1080p as the access copy [15][85].
 - Make three caption versions: burned-in, a clean picture, and `.srt` and `.vtt` sidecar files [4][5].
 - Check that nothing flashes more than three times a second [3].
+- Caption size: line height 7 to 8% of picture height (BBC [105]). In ffmpeg's subtitles filter, `FontSize=23` gives about 8.0% at 1080p (notes FQ2). Render FontSize 20, 23 and 26, and test them on the venue screen from three metres (notes FQ5).
 - Play the slice from a USB stick on a TV-class screen. Have a viewer aged 60 or over watch from three metres and say whether the text is comfortable to read [notes].
 
 **Step 9. Optional: prototype one interlude (weeks 7 to 9, at most 20 hours).** See Exercise 4.
 
 **Step 10. Gate G9, Sunday 2026-12-20.** Pass if Chapter 1 is at final quality, logged hours are at least 60% of plan, and the interlude prototype runs ten times in a row [notes]. On a pass, continue with the planned interludes. On a fail, switch to the fallback F-0 (below). TODO(research): the notes do not say whether the ten-run test still applies if you drop interludes.
 
-**Step 11. Rough-cut the other chapters (weeks 10 to 15, 2026-12-20 to 2027-01-30).** Add a second interlude only if G9 passed.
+**Step 11. Rough-cut the other chapters (weeks 12 to 15, 2027-01-03 to 2027-01-30).** Weeks 10 and 11 (2026-12-20 to 2027-01-02) are the holidays: interviews and gathering, with no production targets (charter review 1.3). Add a second interlude only if G9 passed.
 
-**Step 12. Gate G13, Sunday 2027-01-10.** If fewer than half the chapters are at rough cut, drop all live interludes and keep their captured videos as film scenes [notes]. An interlude that is not stable after ten consecutive dry runs by this date is dropped in the same way [notes].
+**Step 12. Gate G13, Sunday 2027-01-10.** At least two further chapters (beyond Chapter 1) must be at rough cut. If not, drop all live interludes and keep their captured videos as film scenes [notes]. An interlude that is not stable after ten consecutive dry runs by this date is dropped in the same way [notes].
 
 **Step 13. Picture lock, captions, music and mastering (weeks 16 and 17, 2027-01-31 to 2027-02-13).** Lock the picture. Finish the captions. Settle the music (Decision 12). Master the files.
 
-**Step 14. Rehearse and copy (week 18, 2027-02-14 to 2027-02-20).** Hold two rehearsals on the real screen and speakers. Make three archive copies, and check each one against the hash list [notes].
+**Step 14. Rehearse and copy (week 18, 2027-02-14 to 2027-02-20).** Hold two rehearsals on the real screen and speakers. Make three archive copies, and check each one against the hash list [notes]. One copy may be a BD-R: buy blanks in January 2027, rehearse a small burn in December, burn the real disc in February from the final `archive.iso`, and verify it by reading it back with `verify_manifest.ps1` (0 problems expected) [110][notes FQ7].
 
 **Step 15. Event kit and delivery (week 19, 2027-02-21 to 2027-02-27).**
 - Send the file to the venue a day before. Ask which format, resolution and aspect ratio they want [85].
-- Bring a USB stick and a cloud copy [85].
+- Bring a USB stick and, only with the maker's explicit yes, a cloud copy [85][C].
 - Have the laptop open at the start point, a second USB stick, and a printed running order [notes].
 - Keep this week as buffer.
 
@@ -90,7 +103,7 @@ Also decide whether 2027-02-27 is the premiere or only the delivery date. If the
 
 Rehearse each level once on the real screen [notes]. A host, never the subject, presses start, because web builds cannot play sound until someone clicks [11][12]. Expect talk from the room. Viewers of other people's play often narrate their own lives as they watch [83].
 
-**Fallback F-0, "voice and photos."** This is a 5 to 6 minute film of three or four chapters. It has restored photos with simple movement, her real voice, music, burned-in captions, and an optional timeline page for the private link [notes]. It is a strict subset of the default, so no work is wasted. Switch to it if the slice is not at final quality at G9, if logged hours are under 60% of plan at G9, or if any chapter costs more than twice its budget two times in a row [notes].
+**Fallback F-0, "voice and photos."** This is a 5 to 6 minute film of three or four chapters. It has restored photos with simple movement, voices in surprise mode (Step 7), music, burned-in captions, and an optional timeline page for the private link [notes]. It is a strict subset of the default, so no work is wasted. Switch to it if the slice is not at final quality at G9, if logged hours are under 60% of plan at G9, or if any chapter costs more than twice its budget two times in a row [notes].
 
 ## Learn-by-doing exercises
 
@@ -107,7 +120,7 @@ Rehearse each level once on the real screen [notes]. A host, never the subject, 
 
 **Time.** About 2 to 3 hours, mostly setting up the screen [J].
 
-**What good looks like.** The viewer reads every line without leaning in. The speed is under 20 characters per second, and slower if they struggle [5][J]. No source tests caption speed for older viewers, so this test is your only evidence. TODO(research): caption speed for viewers aged 70 and over is untested.
+**What good looks like.** The viewer reads every line without leaning in. The speed is under 20 characters per second, and slower if they struggle [5][J]. No controlled study of caption speed for hearing viewers over 70 was found (notes FQ5), so this test is the only evidence. Also try FontSize 20, 23 and 26.
 
 ### Exercise 2: The three-copy restore test
 
@@ -160,7 +173,7 @@ Rehearse each level once on the real screen [notes]. A host, never the subject, 
 **Goal.** Get reactions from three people of different ages, without tipping off the subject.
 
 **Steps.**
-1. Choose three people who are already in on the project. The charter leaves "who is in on it" open [C], so the choice is yours. Show them only what you are happy for them to see.
+1. Choose three people the maker has decided to bring in. Nobody is in on the project yet, and bringing anyone in is the maker's open decision [C]. Show them only what you are happy for them to see.
 2. Make a 60-second captured clip from the slice or the interlude.
 3. Show each person the clip on a real screen, one at a time or in a small group.
 4. Ask three questions: What did you notice? Who did you want to talk to? What was hard to see or follow? The first two come from the notes [notes]. The third is ours [J].
@@ -185,7 +198,7 @@ Rehearse each level once on the real screen [notes]. A host, never the subject, 
 
 **Time.** The notes estimate 8 to 15 hours for the diorama, plus capture and render time [notes][J].
 
-**What good looks like.** The 60-second render plays on a second computer without help. The archive holds the exact version list. The Mojang terms check is written down with its date. TODO(research): the Minecraft Usage Guidelines page could not be verified, so re-read it before any showing.
+**What good looks like.** The 60-second render plays on a second computer without help. The archive holds the exact version list. The Mojang terms check is written down with its date. The Usage Guidelines excerpt of 2026-10-18 is saved (notes FQ6). Re-save it before any showing, because the page reserves the right to change.
 
 ## Decisions you'll need to make
 
@@ -199,7 +212,7 @@ For each decision: the options, our current lean, and what would change it.
 - (c) A scroll story, such as a timeline page or a Closeread page.
 - (d) An explorable world (Minecraft, Godot or three.js) as the main piece.
 
-**Our lean.** (a) for the main piece. In the notes' decision matrix, the film scores 4.45 out of 5, the hybrid 3.95, and the explorable options between 2.65 and 3.15 [J]. The matrix weights are judgment. The scribe rechecked the totals and the four sensitivity tests, and the film stays first under each of them.
+**Our lean.** (a) for the main piece. In the round-1 decision matrix, the film scores 4.55 out of 5, the film plus companion 4.40, the hybrid 3.80, and the explorable options between 2.45 and 2.95 [J]. The matrix weights are judgment, and round 1 moved them: agent-generability and texture capacity now carry 10 each, and learning value carries none. The scribe rechecked the totals and the four sensitivity tests. The film stays first under each of them, and the hybrid overtakes it only if charter fit carries about 31% of the total weight. The middle of the table moves: the scroll story (3.55) now ties the Minecraft film (3.55).
 
 **Effort at 10 hours a week.** These are the notes' judgments, not measured hours [J].
 
@@ -232,25 +245,25 @@ For each decision: the options, our current lean, and what would change it.
 
 **Our lean.** Not decided. If the event is earlier than the deadline, move every date up by the difference [notes].
 
-### Decision 5: Surprise or made together
+### Decision 5: Surprise, and who is brought in
 
-**Options.** A surprise, as the charter says [C]. Or a project she knows about.
+**Options.** The surprise, as the charter says [C]. This is a Known fact, so it is settled, not a question. Still open: whether to bring anyone else in, for example to give a recording or a letter (charter open decisions).
 
-**Our lean.** The surprise, per the charter. This shapes Exercise 5, the venue rehearsals and the copies. All of them need people who are in on it.
+**Our lean.** Keep the surprise. Bring people in one at a time, only when the maker decides. Until then the in-on-it list is empty, so voice sources (ii) and the six-question ask in Step 7 wait on that decision. OPEN (maker).
 
 ### Decision 6: Who sees the hard chapters before the room?
 
-This needs care. The notes advise showing hard chapters to the subject and relevant family first [notes]. In a surprise, that step would reveal the piece to her. The charter's method is a trusted close relative who acts as her proxy for hard chapters [C].
+The notes advised showing hard chapters to the subject and relevant family first. In a surprise, that step would reveal the piece to her, so it is replaced. The charter names the maker as her proxy for hard chapters, with the Fable advisor flagging sensitive material for a deliberate decision [C, principle 5 and Known facts]. Hard chapters go to that proxy and to the relatives in them; the subject sees nothing before the reveal.
 
-**Options.** (i) A proxy decides for her. (ii) Show her the hard chapter in advance, and accept the spoiler. (iii) Leave the hard chapters out.
+**Options.** (i) The maker decides as proxy, with the advisor flagging sensitive material. (ii) Show her the hard chapter in advance, and accept the spoiler. (iii) Leave the hard chapters out.
 
-**Our lean.** (i), and (iii) for anything the proxy is unsure about [C]. Name the proxy in the plan.
+**Our lean.** (i), and (iii) for anything the proxy is unsure about [C]. Name the proxy in the plan: the maker.
 
-### Decision 7: Length
+### Decision 7: How many chapters, and which
 
-**Options.** 3 to 8 minutes, the usual range for funeral slideshows [85]. 8 to 12 minutes, the notes' plan. Longer.
+**Options.** Inventory every milestone first (the `story` track's template), then choose which to tell. Tell 4 to 8 chapters of 90 to 150 seconds each; the rest appear as texture or in the companion [C, review 1.1].
 
-**Our lean.** 8 to 12 minutes, decided with the room in mind [notes]. A full life will run longer than a standard tribute film [85], so this is a deliberate choice, not an accident.
+**Our lean.** 4 to 8 told chapters. Running time follows from the chapter count, not the other way round: 4 chapters run 6 to 10 minutes, and 8 chapters run 12 to 20 minutes [J]. The notes' 8 to 12 minute plan sits at the 90 to 120 second end of that range [notes]. The funeral-slideshow figure of 3 to 8 minutes [85] is the floor's convention, not evidence about a life story; the chapter count is the story track's call. A full life will run longer than a standard tribute film [85], so this is a deliberate choice, not an accident.
 
 ### Decision 8: Where it lives
 
@@ -258,20 +271,20 @@ Every hosting option has a single point of failure: one account, one card, or on
 
 | Option | Cost | Privacy | Watch out for |
 |---|---|---|---|
-| YouTube Private, with email invites | Free [34] | Invite by email; no comments [34] | One Google account; copyright review applies [34] |
+| YouTube Private, with email invites | Free [34] | Invite by email; no comments [34] | One Google account; YouTube systems and human reviewers may review private videos [34], so a third party sees family footage |
 | YouTube Unlisted | Free [34] | Anyone with the link can view it, and can reshare it [34] | Not private against forwarding |
 | Static page with StaticCrypt | Free [35] | One shared password per page [35] | Guessable offline if the password is weak [35]; not for large video |
-| Cloudflare Pages behind Access | Access Free plan: 50 users [28][29] | Email allow-list [30] | Pages caps each file at 25 MiB, so the film must live elsewhere [31] |
+| Cloudflare Pages behind Access | Access Free plan: $0; 50-user limit UNVERIFIED, one page [28]; a card is needed at onboarding even on Free [91] | Deny by default; email allow-list [30] | Pages caps each file at 25 MiB, so the film must live elsewhere [31] |
 | itch.io Restricted page | Free [36] | Password or download key [36] | Whether the password covers the HTML5 embed: TODO(research) |
 | GitHub Pages | Free, but public | Private sites need GitHub Enterprise Cloud [26] | Not suitable for family material |
 
-**Our lean.** YouTube Private for the film, plus a copy on a family drive, plus USB drives held by two or three relatives [J, from the notes]. Before any upload, get your own explicit yes. The charter says nothing personal goes to a third-party service without your explicit say [C]. Do not send the link through a family group chat, a shared device or a shared photo album [C].
+**Our lean.** YouTube Private only after the maker's explicit yes to Google reviewers seeing family footage; otherwise family drive plus USB only. The USB drives are held by two or three relatives [J, from the notes]. Before any upload, get your own explicit yes. The charter says nothing personal goes to a third-party service without your explicit say [C]. Do not send the link through a family group chat, a shared device or a shared photo album [C].
 
 ### Decision 9: Minecraft in the piece
 
 **Options.** None. One or two chapters rendered from Minecraft, which needs Java. A live Minecraft tour, which the notes do not recommend, because the room waits while someone drives.
 
-**Our lean.** None, unless Exercise 6 passes and its conditions are met. Mojang's rules for showing gameplay in venues are a grey area [50][88]. The researcher could not read the Usage Guidelines page (TODO(research)). Re-read them the week of any showing.
+**Our lean.** None, unless Exercise 6 passes and its conditions are met. Mojang's rules for showing gameplay in venues are a grey area [50][88]. The Usage Guidelines were read on 2026-10-18 (HTTP 200 on the second attempt; dated excerpt [92]). They say gameplay may not be displayed or projected publicly in physical locations in the two commercial cases quoted; whether a family showing counts as 'public' is not defined. They reserve the right to change at any time, so re-save the excerpt the week of any showing.
 
 ### Decision 10: The interlude engine (only if G9 passes)
 
@@ -299,9 +312,9 @@ The charter lists this as open [C]. The format notes do not cover translated or 
 
 - No creator threads (X, Reddit, YouTube), no learner-made life-journey films, and no Replay Mod or Flashback memorials were found. The search budget ran out. TODO(research): run this search when budget is available.
 - No reaction evidence from a mixed-age, non-gamer room exists for any explorable or hybrid format. Treat those formats as untested for this audience.
-- Caption speed for viewers aged 70 and over is untested. The "under 20 characters per second" aim is judgment.
+- Caption speed for viewers aged 70 and over is untested; the BBC and DCMP figures are for hearing audiences. The "under 20 characters per second" aim, and 130 to 145 words per minute for a room with 70+ viewers, are judgment.
 - Effort hours, week-9 probabilities and matrix scores are judgment. They depend on hours per week, the venue, the audience, the surprise, and whether "partly playable" is a must.
-- Could not be verified: the Minecraft Usage Guidelines (HTTP 503 and a timeout) [50]; Chunker (HTTP 429); Vimeo plan details; Canva; Kdenlive; PlayCanvas; the BBC subtitle guidelines; the Mozilla Hubs end-of-support page; VLC kiosk flags; Bitsy's export format; GDevelop's free HTML5 export; private-object handling in R2; and whether itch.io's Restricted password protects the HTML5 embed.
+- Could not be verified: Chunker (HTTP 429); Vimeo plan details; Canva; Kdenlive; PlayCanvas; the Mozilla Hubs end-of-support page; VLC kiosk flags; Bitsy's export format; GDevelop's free HTML5 export; private-object handling in R2; and whether itch.io's Restricted password protects the HTML5 embed. Read in round 1: the Minecraft Usage Guidelines (dated excerpt) and the BBC subtitle guidelines (v1.2.5). Ofcom's subtitle guidance was blocked (HTTP 403).
 - Whether the Late Shift cinema screenings used audience voting is unverified [69].
 - Snow Fall [80], Pine Point [82] and the TimelineJS example links were checked for liveness only. Nobody has checked that they render in a 2026 browser.
 - Prices are not verified for photo books, Vimeo, custom domains, or any paid hosting beyond the free tiers listed.
@@ -329,7 +342,7 @@ The charter lists this as open [C]. The format notes do not cover translated or 
 2. **NIST IR 8387** [18]. https://nvlpubs.nist.gov/nistpubs/ir/2022/NIST.IR.8387.pdf. How long unpowered drives hold data, the copy-every-20-years rule, and why hash lists live apart from the files.
 3. **Library of Congress, Software and Video Games** [16]. https://www.loc.gov/preservation/resources/rfs/software-videogames.html. Why every interactive piece needs a video of it.
 4. **Netflix English Timed Text Style Guide** [5]. https://partnerhelp.netflixstudios.com/hc/en-us/articles/217350977-English-Timed-Text-Style-Guide. Line length, number of lines and reading speed for captions. Use it as a starting point, then test with older viewers.
-5. **Lee et al., JMIR Serious Games (2021)** [10]. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8176340/. What 40 middle-aged and older players found hard. The researcher read it from a saved copy.
+5. **Lee et al., JMIR Serious Games (2021)** [10]. https://pmc.ncbi.nlm.nih.gov/articles/PMC8176340/. What 40 middle-aged and older players found hard. The researcher read it from a saved copy.
 6. **Black Mirror: Bandersnatch, Wikipedia** [68]. https://en.wikipedia.org/wiki/Black_Mirror:_Bandersnatch. A clear example of the default-path design and the linear fallback. Encyclopedic, so use it for the pattern, not for facts about the production.
 7. **Parting Stone, "How to Make a Slideshow for a Funeral"** [85]. https://blog.partingstone.com/how-to-make-a-slideshow-for-a-funeral/. A practical checklist for export, timing and venue checks. It is a vendor blog, and its licence figures are unverified.
 8. **Knight Lab, TimelineJS** [54]. https://timeline.knightlab.com/. The simplest companion timeline, and its warning about the public Google Sheet.
@@ -349,7 +362,7 @@ The scribe did not re-open any of these pages. Each entry is copied from the res
 [4] W3C — Understanding SC 1.2.2 Captions (Prerecorded) (WCAG 2.2) — https://www.w3.org/WAI/WCAG22/Understanding/captions-prerecorded.html — [P] open vs closed captions.
 [5] Netflix — English Timed Text Style Guide — https://partnerhelp.netflixstudios.com/hc/en-us/articles/217350977-English-Timed-Text-Style-Guide — undated — [P] 42 characters, two lines, 20 cps adult.
 [7] MDN — prefers-reduced-motion — https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion — [P] vestibular triggers.
-[10] Lee S, Oh H, Shi C-K, Doh YY — Mobile Game Design Guide to Improve Gaming Experience for the Middle-Aged and Older Adult Population, JMIR Serious Games 2021;9(2):e24449 — https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8176340/ — 2021 — [P][L] 40 participants; read from the sibling's saved text.
+[10] Lee S, Oh H, Shi C-K, Doh YY — Mobile Game Design Guide to Improve Gaming Experience for the Middle-Aged and Older Adult Population, JMIR Serious Games 2021;9(2):e24449 — https://pmc.ncbi.nlm.nih.gov/articles/PMC8176340/ — 2021 — [P][L] 40 participants; read from the sibling's saved text.
 [11] Chrome for Developers — Autoplay policy in Chrome — https://developer.chrome.com/blog/autoplay — last updated 2017-09-13 — [P] gesture, engagement, flag, enterprise policy.
 [12] WebKit — New video policies for iOS — https://webkit.org/blog/6784/new-video-policies-for-ios/ — 2016-07-25 — [P].
 
@@ -361,8 +374,8 @@ The scribe did not re-open any of these pages. Each entry is copied from the res
 [24] Wikipedia — Adobe Flash — https://en.wikipedia.org/wiki/Adobe_Flash — [T] end of life dates; Ruffle, Flashpoint.
 [25] Wikipedia — Glitch, Inc. — https://en.wikipedia.org/wiki/Glitch,_Inc. — [T] hosting ended 2025-07-08 (announced May 2025).
 [26] GitHub Docs — Changing the visibility of your GitHub Pages site — https://docs.github.com/en/pages/getting-started-with-github-pages/changing-the-visibility-of-your-github-pages-site — [P].
-[28] Cloudflare — Access product and pricing page — https://www.cloudflare.com/zero-trust/products/access/ — fetched with a plain HTTP request — [P] Free plan $0, 50-user limit.
-[29] Cloudflare Docs — Zero Trust account limits — https://developers.cloudflare.com/cloudflare-one/account-limits/ — updated 2026-10-16 — [P].
+[28] Cloudflare — Access product and pricing page — https://www.cloudflare.com/zero-trust/products/access/ — fetched with a plain HTTP request — [P] Free plan $0; the 50-user limit is on this page only (UNVERIFIED; notes FQ3).
+[29] Cloudflare Docs — Zero Trust account limits — https://developers.cloudflare.com/cloudflare-one/account-limits/ — updated 2026-10-16 — [P] 1,000 emails per rule; no 50-user cap found in its text (notes FQ3).
 [30] Cloudflare Docs — Access policies — https://developers.cloudflare.com/cloudflare-one/policies/access/ — [P] deny by default; email selectors.
 [31] Cloudflare Docs — Pages limits — https://developers.cloudflare.com/pages/platform/limits/ — [P] 25 MiB per file.
 [33] Netlify Docs — Password protection — https://docs.netlify.com/manage/security/secure-access-to-sites/password-protection/ — [P].
@@ -381,7 +394,7 @@ The scribe did not re-open any of these pages. Each entry is copied from the res
 [46] Minecraft Wiki — Commands/camera — https://minecraft.wiki/w/Commands/camera — [T] Bedrock and Education only; play_spline 26.0.
 [48] Minecraft Wiki — Java Edition 26.1 — https://minecraft.wiki/w/Java_Edition_26.1 — [T] released 2026-03-24; year-based naming.
 [49] Minecraft Wiki — Minecraft Launcher — https://minecraft.wiki/w/Minecraft_Launcher — [T] Microsoft account; offline after download.
-[50] Mojang/Microsoft — Minecraft Usage Guidelines — https://www.minecraft.net/en-us/usage-guidelines — **not fetched successfully by the researcher** (HTTP 503, timeout); contents taken from `games.md` Q7 [88] where it is source [42].
+[50] Mojang/Microsoft — Minecraft Usage Guidelines — https://www.minecraft.net/en-us/usage-guidelines — fetched 2026-10-18 on the second attempt (HTTP 200); quotes from the dated excerpt [92]. Earlier attempts returned HTTP 503 and a timeout.
 [53] Three.js Journey — https://threejs-journey.com/ — [P] 93 h, $95, JS prerequisite.
 [54] Knight Lab — TimelineJS — https://timeline.knightlab.com/ — [P] fetched with a plain HTTP request; tips, FAQ, privacy.
 [56] Closeread — https://closeread.dev/ — [P].
@@ -411,8 +424,24 @@ The scribe did not re-open any of these pages. Each entry is copied from the res
 [85] Parting Stone — How to Make a Slideshow for a Funeral — https://blog.partingstone.com/how-to-make-a-slideshow-for-a-funeral/ — undated (mentions 2026 prices) — [S] vendor blog; length, timing, export, venue tips; licensing figures UNVERIFIED.
 [88] Sibling notes — research/games.md — read 2026-10-18 — Minecraft terms (Q7, source [42] there), memorial worlds (Q5), design devices.
 
+**Round 1 additions (research notes, follow-up, 2026-10-18)**
+[90] Cloudflare — Zero Trust plans page — https://www.cloudflare.com/plans/zero-trust-services/ — [P][V] HTTP 200; no plan table in the served HTML.
+[91] Cloudflare Docs — Set up Cloudflare Zero Trust — https://developers.cloudflare.com/cloudflare-one/setup/ — dateModified 2026-10-12 — [P] Free plan still needs payment details.
+[92] Mojang/Microsoft — Minecraft Usage Guidelines (dated excerpt) — https://www.minecraft.net/en-us/usage-guidelines — [P] HTTP 200 over HTTP/1.1 at about 05:16 GMT; excerpt saved in research/sources/minecraft-usage-guidelines-2026-10-18.txt.
+[93] Library of Congress — Care, Handling, and Storage of Audio Visual Materials — https://www.loc.gov/preservation/care/record.html — undated — [P].
+[95] PyPI — OpenTimelineIO adapter packages — https://pypi.org/pypi/otio-kdenlive-adapter/json ; https://pypi.org/pypi/otio-mlt-adapter/json ; https://pypi.org/pypi/otio-cmx3600-adapter/json — [P] names, versions, homepages; installed and run in the container.
+[96] FilmCraft README at v0.8.0 — https://raw.githubusercontent.com/storytold/filmcraft/v0.8.0/README.md — [P] CLI, captions, interchange.
+[97] FilmCraft docs/project-files.md at v0.8.0 — https://raw.githubusercontent.com/storytold/filmcraft/v0.8.0/docs/project-files.md — [P] .fcproj is UTF-8 JSON.
+[99] FilmCraft Linux CLI release asset v0.8.0 — https://github.com/storytold/filmcraft/releases/download/v0.8.0/filmcraft-0.8.0-linux-x86_64.tar.gz — [P][RUN] SHA-256 b166877905ae8a1b5505066d6dde60d7ce05831cfb309bacd5d7970f4bb017e1.
+[100] Microsoft Learn — Get-FileHash (Windows PowerShell 5.1) — https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-5.1 — updated 2025-03-24 — [P].
+[102] Microsoft Learn — about_Character_Encoding (5.1) — https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_character_encoding?view=powershell-5.1 — updated 2025-09-29 — [P] > and Out-File write UTF-16LE.
+[105] BBC — Subtitle Guidelines, version 1.2.5, March 2026 — https://www.bbc.co.uk/accessibility/forproducts/guides/subtitles — [P] 160-180 wpm; line height 7-8% of picture height.
+[107] DCMP — Captioning Key, Presentation Rate — https://dcmp.org/learn/601-captioning-key---presentation-rate — [P] 130, 140 and 160 wpm by level.
+[110] Verbatim America — Blu-ray and M-DISC product pages — https://www.verbatim.com/en/blu-ray ; https://www.verbatim.com/en/m-disc/products/43825-m-disc-bd-r-25gb-4x-limited-archival-10pk — [P] catalogue entries; no prices shown.
+
 ## Changelog
 
 - **2026-10-18, v0.1.** First draft by the Haiku scribe, from `research/format.md` (the researcher's notes, same date) and `CHARTER.md`. The scribe recomputed the decision-matrix totals and sensitivity tests from the scores. They match the notes, except one rounding difference: the film under "room and access halved" recomputes to 4.18, and the notes say 4.17. The ranking is unchanged.
 - **2026-10-18, flags for the maker.** Three conflicts with the charter: (1) the film default against "partly playable" (Decision 2); (2) showing hard chapters to the subject first, against the surprise (Decision 6); (3) recording voices in weeks 1 to 3, against "gather only after the pipeline is locked" (Step 3).
 - **2026-10-18, gaps.** Open gaps are marked TODO(research) in the text and listed under "What the research could not settle."
+- **2026-10-18, v0.2, Fable round 1 applied.** Surprise propagated: hard chapters go to the proxy (the maker, per the charter, not a relative), voices in surprise mode replace "her real voice" in Step 7 and F-0, and who is brought in is OPEN (maker). Agent-generability and texture capacity added to the matrix (film 4.55, companion 4.40, hybrid 3.80, explorable 2.45-2.95). Cloudflare 50-user figure and YouTube Private lean restated. Holidays in weeks 10-11 with Step 11 from 2027-01-03; "pipeline locked" defined; Decision 7 rewritten as the chapter count; hashing, caption speed, Minecraft terms and the FilmCraft route closed from the round-1 follow-up; URL for [10] updated.

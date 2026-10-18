@@ -31,6 +31,8 @@ The ArtCraft apps have their own research tracks (craft-visual and craft-motion)
 
 Parts A to E are the main path. It builds one chapter for the vertical slice: one same-pose pair, one simple move, one reconstruction and one music bed. Parts F to J are branches. Use a branch only if the format needs it, and only after its gate is passed.
 
+The scripts in Parts B, C and D live in `research/creator-threads-fixtures/`. Either an agent runs them in the cloud session and sends you the output, or you run them on Windows after installing Python 3 and ffmpeg (install route: TODO(research)). Family photos never go to the cloud session; cloud runs use the synthetic test face only (charter).
+
 ### Part A: Get ready before you touch a photo
 
 1. **Check the gate.** Ask whether she would want this shown in front of others. If you are unsure, ask the proxy. Hard chapters (loss, illness, separation, money, conflict) stay out of the shared version unless the proxy says yes (charter principle 5). Real photos and stories are gathered only after the pipeline is locked (charter).
@@ -42,6 +44,8 @@ Parts A to E are the main path. It builds one chapter for the vertical slice: on
 ### Part B: The same-pose dissolve
 
 6. **Pick a same-pose pair.** Look for the same doorway, chair, hat, angle and light. Both eyes should be visible, and the face should be fairly straight to the camera (M). Frontal faces are what face_morpher needs [28].
+
+6a. **If the archive has no same-pose pair for a chapter, make the recent half.** Plan it now, but shoot it only after the gate in step 1 is passed, because the charter allows real photos only once the pipeline is locked. Then, over the coming weeks, casually photograph her in the real places and poses the old photos are likely to show: the kitchen chair, the front step, holding the mug she always holds. A phone photo of your mother at the table tips nobody off (M). Keep these shots out of any cloud library (step 4). Log each as a bookend in the manifest with the old photo it answers. Check the pairing with the proxy before use.
 7. **Mark both eye centres in each photo.** Click them in any image viewer. Or detect them with MediaPipe, which returns 478 landmarks [29]. TODO(research): the MediaPipe eye-centre landmark numbers, and its CPU use on Windows, are not confirmed.
 8. **Align the pair to one frame.** The method turns each photo so the eyes sit level, scales it so the eyes are the same distance apart, and moves it so the eye midpoint lands on a fixed target [27]. The tested script puts the eyes at 35% and 65% across and 40% down [64]. PyImageSearch's default uses 35% down [27]. Choose one value and use it for the whole set.
 9. **Check by flipping.** Flip between the aligned photos. The eyes should not jump. The tested script was about 1.4 px off on synthetic test images. It has not been tried on real faces [L][64].
@@ -49,7 +53,7 @@ Parts A to E are the main path. It builds one chapter for the vertical slice: on
 
 ### Part C: One simple move (use it sparingly)
 
-11. **Use the scripted move.** The tested recipe scales each still up to 3840 px, pushes in about 8% over the clip, adds a 1-second fade, runs at 24 frames per second and encodes H.264 at quality setting CRF 18 [65]. The script text is in the research note, Techniques T3.
+11. **Use the scripted move.** The tested recipe scales each still up to 3840 px, pushes in about 8% over the clip, adds a 1-second fade, runs at 24 frames per second and encodes H.264 at quality setting CRF 18 [65]. The script is `research/creator-threads-fixtures/kenburns_xfade.py`; the research note's Techniques T3 keeps the original bash [65].
 12. **Feed each still once.** Do not loop a single image as the input. In our test, a looped input turned a 5-second setting into a 633-second file, until we fixed it [65].
 13. **Push in on a detail.** Move toward the hands or the doorway, not on every photo. Write the "why this move" sentence (principle 2). Pan and zoom is built into most editors [46], so the default version looks generic. A Kdenlive pan-and-zoom tutorial exists. We saw only its title and channel [45].
 
@@ -63,7 +67,7 @@ Parts A to E are the main path. It builds one chapter for the vertical slice: on
 ### Part E: Music
 
 18. **Ask for a family recording first.** A relative plays or sings something she loves, recorded once. The family owns it, so there is no licence question (M).
-19. **If you use a library track, use a credited one.** Incompetech's free tier requires credit [10]. Its FAQ gives the credit wording "Licensed under Creative Commons: By Attribution 4.0" [11]. Under CC BY 4.0 you may adapt the track and use it commercially if you give credit, link the licence and say what you changed [12]. A paid licence without credit exists, but its price is not on the page [10].
+19. **If you use a library track, use a credited one.** Incompetech's free tier requires credit [10]. Its FAQ gives the credit wording "Licensed under Creative Commons: By Attribution 4.0" [11]. Under CC BY 4.0 you may adapt the track and use it commercially if you give credit, link the licence and say what you changed [12]. A paid licence without credit exists, but its price is not on the page [10]. The FAQ says there is no need to mention cutting and splicing; other changes must be made clear in the credits, saying which parts are yours [11] (checked 2026-10-18).
 20. **Keep a licence record.** Save the licence page address and the date you checked it in the manifest.
 
 ### Part F: Minecraft tour (only if the format includes a world)
@@ -94,7 +98,7 @@ Parts A to E are the main path. It builds one chapter for the vertical slice: on
 
 ### Part J: AI photo motion (hold until two decisions are made)
 
-35. **Decide the hardware first.** Wan 2.2's 5B model needs 24 GB of VRAM, according to its README [18]. ComfyUI says the 5B model should fit in 8 GB with offloading [19]. WanGP claims as little as 6 GB for select models [20]. The 14B models need at least 80 GB [18]. Your GPU is unknown. TODO(research): the rented-GPU price was not checked.
+35. **Decide the hardware first.** Wan 2.2's 5B model needs 24 GB of VRAM, according to its README [18]. ComfyUI says the 5B model should fit in 8 GB with offloading [19]. WanGP claims as little as 6 GB for select models [20]. The 14B models need at least 80 GB [18]. Your GPU is unknown. A rented RTX 4090 (24 GB) costs $0.89 per hour on RunPod's pricing page, updated 2026-10-08 [84]; storage and network charges are not checked.
 36. **Try one photo, gently.** Use restrained motion such as breath, light or a curtain. Compare it with the still, and label it as animation (principle 4). Do not use a first-and-last-frame method to fill the gap between two real photos. It invents the in-between [19].
 37. **Face animation waits for the proxy.** LivePortrait animates a still from a driving video, and its authors warn about deepfake misuse [21]. Hold it until the proxy has approved it and the ethics checklist is done. Its licence text was not seen (UNVERIFIED) [21].
 
@@ -111,19 +115,19 @@ If you do only one thing this week, do Exercise 1.
 
 **Exercise 1: Align three pairs of your own photos.**
 - **Goal:** learn eye alignment, by eye and by measurement.
-- **Steps:** Pick three pairs of same-pose photos of yourself, taken years apart. Mark both eye centres in each photo. Run the alignment script (research note, Techniques T1). Flip between each pair.
+- **Steps:** Pick three pairs of same-pose photos of yourself, taken years apart. Mark both eye centres in each photo. Run `python research/creator-threads-fixtures/align_eyes.py --image photo.jpg --left-eye 812,640 --right-eye 1180,652 --out aligned.png` for each photo, with your own eye coordinates. The left eye is the one on the picture's left. Flip between each pair.
 - **Time:** about 1 hour (M). The research note estimates about 1 hour for six pairs.
 - **Good looks like:** the eyes stay within a few pixels between flips. No hair or chin is cut off. You can say why each pair was chosen.
 
 **Exercise 2: One scripted move with three stills.**
 - **Goal:** run the scripted move and check its output.
-- **Steps:** Put three photos in one folder. Run the scripted move (research note, T3) with its default settings. Check the total length and frame count.
+- **Steps:** Put three photos in one folder. Run `python research/creator-threads-fixtures/kenburns_xfade.py still1.png still2.png still3.png --out move.mp4` with its default settings (4-second stills, 1-second fades, 24 fps). Check the total length and frame count.
 - **Time:** 30 to 45 minutes.
 - **Good looks like:** three clips with the 4-second setting and 1-second fades give about 13 seconds and 312 frames at 24 fps. That is what our sandbox test gave [65]. The move is slow, and no clip is looped.
 
 **Exercise 3: Make a paper wobble.**
 - **Goal:** make a hand-made feel without repainting a photo.
-- **Steps:** Make a transparent PNG of a printed photo with a white border. Run the wobble script (research note, T4) with a new pose every 2 frames, a shake of about 3 px, a tilt of about 0.6 degrees and seed 7. Encode at 24 fps. Place the clip on paper or wood.
+- **Steps:** Make a transparent PNG of a printed photo with a white border. Run `python research/creator-threads-fixtures/jitter_twos.py --card card.png --out-dir frames --hold 2 --jitter-px 3 --jitter-deg 0.6 --seed 7`, which gives a new pose every 2 frames, a shake of about 3 px, a tilt of about 0.6 degrees and seed 7. Then encode at 24 fps with `ffmpeg -framerate 24 -i frames/f%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p wobble.mp4`. Place the clip on paper or wood.
 - **Time:** about 30 minutes.
 - **Good looks like:** the card moves in small, steady jumps. Running it twice with the same seed gives the same clip. It looks like a hand moved it, not like a glitch (M).
 
@@ -166,13 +170,13 @@ Each decision gives the options and our current lean. A lean is not a decision. 
 - **Our lean:** start with a film. Add one Minecraft room only if the world says something true about her life. The charter leaves the format open.
 
 **2. Where AI photo motion runs.**
-- **Options:** your own GPU (its model is unknown); a rented GPU (price not checked); skip it.
-- **Our lean:** skip it for the vertical slice. If you need it, try one photo on a rented GPU, labelled as animation. Face animation waits for the proxy (principle 5).
+- **Options:** your own GPU (its model is unknown); a rented GPU (an RTX 4090 with 24 GB is $0.89 per hour on RunPod's pricing page, updated 2026-10-08 [84]); skip it.
+- **Our lean:** skip it for the vertical slice. If you need it, try one photo on a rented GPU, labelled as animation. Face animation waits for the proxy (principle 5). Renting a GPU uploads what you send to a third party, so use only non-family images unless the maker agrees.
 
 **3. Music source.**
 - **Options:** a family recording; a credited library track; AI-generated music.
 - **Our lean:** family recording first, credited library track second, AI only as a scratch track.
-- **Why not AI as the final track (M):** Suno's free-plan output is for personal, non-commercial use, and its songs cannot be monetized [5]. The free plan has no monthly downloads [2]. Pro, at $8 a month, allows 20 downloads [2]. Subscribing does not give retroactive commercial rights to earlier free songs [4]. Suno makes no promise that copyright will arise in an output [1]. Its terms do not address public performance [1]. A voice model may resemble only your own voice [1].
+- **Why not AI as the final track (M):** Suno's free-plan output is for personal, non-commercial use, and its songs cannot be monetized [5]. The free plan has no monthly downloads [2]. Pro, at $8 a month, allows 20 downloads [2]. Subscribing does not give retroactive commercial rights to earlier free songs [4]. Suno makes no promise that copyright will arise in an output [1]. The terms do not use the phrase public performance. They bar commercial performing of Output for every tier and require a Download before any commercial use. A non-commercial family screening is therefore not restricted by the terms; a ticketed, sponsored or venue-promoted screening would be [1]. This is a reading of the terms, not legal advice; the jurisdiction is unknown (checked 2026-10-18). A voice model may resemble only your own voice [1].
 - **Other AI options:** Udio's terms could not be read (UNVERIFIED) [7]. Its help centre lists no ownership articles in the visible titles [8]. ACE-Step is open and runs locally with about 8 GB of VRAM. It states no commercial terms and warns of infringement risk, so treat it as experimental [17].
 - **Library options:** Pixabay's summary allows free commercial use without attribution, but says nothing specific about music [13]. YouTube's Audio Library is not a safe default for a screening outside YouTube [14].
 
@@ -248,6 +252,7 @@ Cited in this playbook. Numbers are kept from the research note. Every URL below
 - [23] Bringing Old Photos Back to Life (Microsoft). https://github.com/microsoft/Bringing-Old-Photos-Back-to-Life. Archived 2026-10-03. MIT; academic research use only.
 - [25] MyHeritage (Wikipedia). https://en.wikipedia.org/wiki/MyHeritage. Deep Nostalgia launched February 2021; about 100 million animations.
 - [26] FILM: Frame Interpolation for Large Motion. https://github.com/google-research/frame-interpolation. Archived 2025-10-14. Apache-2.0; needs an NVIDIA GPU setup.
+- [84] RunPod pricing. https://www.runpod.io/pricing. Page says "Updated October 8, 2026". RTX 4090 24 GB at $0.89 per hour (Secure Cloud, from the page's structured data). Storage and network charges not checked.
 
 **Morph, alignment and timeline**
 - [27] Face Alignment with OpenCV and Python (PyImageSearch). https://pyimagesearch.com/2017/05/22/face-alignment-with-opencv-and-python/. Dated 2017-05-22. Eye-point alignment steps.
@@ -288,12 +293,13 @@ Cited in this playbook. Numbers are kept from the research note. Every URL below
 - [61] Eagle Animation. https://github.com/brick-a-brack/eagle-animation. Undated. GPL-3.0; error and usage events to PostHog by default, switchable off in Settings.
 - [62] Boats Animator. https://github.com/charlielee/boats-animator. Undated. GPLv3; main branch being rewritten.
 
-**Local tests (sandbox, 2026-10-18; not kept in the repo)**
-- [64] align_eyes.py. Scratchpad only. Worst error 1.36 px on three synthetic cases. Code in the research note, Techniques T1.
-- [65] kenburns_xfade.sh. Scratchpad only. 13.0 s, 312 frames, 5.7 s render; the looped-input trap. Code in T3.
-- [66] jitter_twos.py. Scratchpad only. 24 of 24 held pairs identical, 23 of 23 pose changes, deterministic for a seed. Code in T4.
+**Local tests (sandbox, 2026-10-18; kept in research/creator-threads-fixtures/)**
+- [64] research/creator-threads-fixtures/align_eyes.py, committed 2026-10-18. Original run: worst error 1.36 px on three synthetic cases. Same function as research note T1.
+- [65] research/creator-threads-fixtures/kenburns_xfade.py, committed 2026-10-18 (Python port of the tested bash). Original run: 13.0 s, 312 frames, 5.7 s render; the looped-input trap. Research note T3.
+- [66] research/creator-threads-fixtures/jitter_twos.py, committed 2026-10-18. Original run: 24 of 24 held pairs identical, 23 of 23 pose changes, deterministic for a seed. Research note T4.
 
 ## Changelog
 
 - **2026-10-18, v1.** Written by the Haiku scribe from the creator-threads research note (Sonnet, same date) and the charter. No creator threads, Reddit posts or watched tutorials were read. Gaps are marked TODO(research).
 - **Conflicts in the research note, kept visible:** (a) the tested alignment script puts the eyes at 40% down [64], while PyImageSearch's default is 35% [27]; (b) Replay's docs and download page disagree on Sodium [52][53]; (c) the MCprep page is dated both to a 2016 post and to 2024 material [58].
+- **2026-10-18, v2.** Applied the Fable round 1 review: runnable fixtures committed under research/creator-threads-fixtures/, step 6a added with a charter gate, Suno and Incompetech wording checked, RunPod price added, Exercises 1-3 given commands, Sources [64]-[66] repointed.

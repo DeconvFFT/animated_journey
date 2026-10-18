@@ -1,0 +1,19 @@
+<!-- r5_story.mlt: hand-written MLT project. Two photos; an affine Ken Burns move on the first; rendered by melt.
+     Source: research/toolchain.md, recipe R5. XML verbatim; this header added by the scribe.
+     Ran on: melt 7.22.0 (Ubuntu 24.04 sandbox). melt.exe 7.43.0 from the Kdenlive 26.08.2 Windows package and
+     melt.exe 7.41.0 from the Shotcut 26.9.27 Windows package, both under Wine 9.0 (research Follow-up F1).
+     Date run: 2026-10-18 [RUN]. Result: 200 frames, 1920x1080, 25 fps, H.264.
+     Put photoA.jpg and photoB.jpg in the same folder, cropped to 16:9 first (a 3:2 photo letterboxes otherwise).
+     Render (tested form): melt story.mlt -silent -profile atsc_1080p_25 -consumer avformat:story.mp4 vcodec=libx264 crf=20 pix_fmt=yuv420p an=1
+     Always pass -profile: without it melt uses the PAL standard-definition frame, 720x576.
+     Windows PowerShell and Git Bash forms: not run, TODO(verify on the maker's PC). -->
+<mlt LC_NUMERIC="C" version="7.0.0" profile="atsc_1080p_25">
+  <producer id="a" in="0" out="99"><property name="resource">photoA.jpg</property><property name="length">100</property></producer>
+  <producer id="b" in="0" out="99"><property name="resource">photoB.jpg</property><property name="length">100</property></producer>
+  <tractor id="kb_a" in="0" out="99">
+    <multitrack><track producer="a"/></multitrack>
+    <filter mlt_service="affine"><property name="transition.rect">0=0 0 1920 1080 1;99=-160 -100 2240 1260 1</property><property name="transition.distort">0</property></filter>
+  </tractor>
+  <playlist id="main"><entry producer="kb_a" in="0" out="99"/><entry producer="b" in="0" out="99"/></playlist>
+  <tractor id="final"><multitrack><track producer="main"/></multitrack></tractor>
+</mlt>

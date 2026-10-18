@@ -1,0 +1,54 @@
+# Surprise-mode runbook
+
+Standalone part of the `life-story-interviewing` skill. Moved from Recipe 4 of `research/story.md` in round 1 (2026-10-18), with the found-voice and people-tab sections added. The relative script is also inline in `SKILL.md`. The charter fixes surprise mode (CHARTER.md, Known facts, 2026-10-18). Evidence: `research/story.md`, Q3 and Q4.
+
+## Gates
+
+| Gate | Actions |
+|---|---|
+| 0 Suitability | Write a one-page "points for and against" (the "feeza") [28]. Ask the closest insider: would they love it or hate it? Have they ever said they hate surprises, speeches, being photographed? Record yes/no/unsure. If "hate", stop or switch to collaborative [30]. |
+| 1 Circle | Keep the circle as small as the work allows. Neutral project name; one shared folder; no group chats; no notes with the project name on paper the subject might find [28][29]. Brief everyone, including the spouse, with one scripted line for if they are asked. Brief young children only if essential. |
+| 2 Sources | Relative interviews (R banks); documents; objects; photos; **found voice**: her existing voicemails, answering-machine tapes, home video and clips on relatives' phones. In surprise mode this is the only route to her own voice, so it is a source class of its own (see the found-voice section below). Track who knows. |
+| 3 Hard material | Bottom-drawer material is not solicited, not used [34]. Named third parties are checked with the right person. Any relative with a difficult history with the subject: ask an insider before approaching (cf. the reported Mullard case) [30]. |
+| 4 Facts | Inventory with confidence. Triangulate. Prepare a list of ten items only the subject can confirm. |
+| 5 Reveal | Show it first privately to the closest insider. Reveal to the subject in a setting where they can say "stop". Give a veto window: nothing is shared beyond the room until they say so; they can ask for cuts [8][32] (inference). |
+| 6 Contingency | If it leaks, tell the subject and convert to collaborative. If they refuse, stop [30]. |
+
+Script for relatives (honest, no false pretext): "I'm making a piece about [NAME]'s life as a gift. It is a secret from [NAME] until [date]. I'd love 45 minutes of your memories; you can skip anything, and nothing you say will be used without your OK. Please don't mention it to [NAME] or anyone who might." Found-voice ask, in the same conversation: "Do you have any video or voice message of her on your phone? Please don't delete anything. Please don't forward it to me or post it; just tell me what you have and roughly when it was made." Avoid inventing a cover story that requires the subject to do something on camera: the Blanchflower approach used a false pretext and it failed live [30].
+
+## Found voice (a source class of its own)
+
+Found voice is existing audio or video of her: voicemails, answering-machine tapes, home video, and clips on relatives' phones. In surprise mode it is the only route to her own voice (Fable round-1 review, nudge 7). Locate it now and copy it once the file plan is written, because phones get replaced and tapes wear out. Do not collect by forwarding files through chat apps: forwarding can recompress the file and may leave a trail she could notice.
+
+Where her voice may be, and whom to ask (research Q4 checklist):
+
+| Where her voice may be | Ask whom | Risk if not copied now |
+|---|---|---|
+| Phone videos and voice notes on relatives' phones (birthdays, holidays, toasts, video calls) | Siblings, children, cousins, close friends | Phone replaced or storage cleared |
+| Saved voicemails on relatives' phones | Anyone who keeps them (often a parent or sibling) | Carrier retention rules: UNVERIFIED |
+| Chat voice messages (WhatsApp, iMessage, others) | Same | Disappearing messages, app changes |
+| Answering-machine tapes and microcassettes | Parents' or older relatives' homes | Tape wear; no player |
+| Camcorder tapes (VHS, VHS-C, Hi8, MiniDV) and film | Whoever filmed family events | Tape ages; need a working player |
+| Audio letters, cassettes sent between family | Older relatives | Same |
+| Work, school, church, club or community recordings; local radio or TV | Her friends and institutions | Archives purge |
+| Wedding video | The couple's families | Tape ages |
+
+Item fields for each item found (record them as `source` V rows in the inventory): who holds it; device or format; rough date; who speaks; length; quality (clear, muffled, noisy); original in hand (yes or no); copied (yes or no, how many copies); consent status of everyone heard.
+
+Handling: never edit the original. Keep at least two copies stored apart, and check them yearly; the Library of Congress advises refreshing media about every five years [38][88]. Found voice may be restored and used as itself. It may not be extended or imitated: no synthetic voice of any real person (playbook Decision 10). The Library of Congress pages do not cover cassette, answering-machine, voicemail or camcorder-tape transfer; a how-to is TODO(research).
+
+## People tab and door triage (research Q3)
+
+Keep a people tab with one row per relative: name; relationship to the mother; approximate age; health and hearing notes (only what the maker already knows); where they live and when next seen in person; language; whether they are in on it; likely sensitive topics; door (A or B). Health notes about relatives are private to the maker and do not go into any shared file.
+
+**Door A (protect now)** if any one of these holds (inference; the thresholds are judgement calls, change them if the facts differ):
+- aged 75 or older;
+- a serious or progressive illness, or any memory change;
+- a hearing or speech problem that makes a later phone call impractical;
+- reachable in person only at one gathering before mid-November, or only abroad.
+
+**Door B (wait for the gate):** everyone else.
+
+Door A sessions use the relative script above and this runbook, with a spoken consent that names what the audio may be used for. A Door A recording is a one-take rescue, not a polished interview: the voice may not make the final cut, but the memory exists. Door A relatives are recorded before the gate only by the maker's written decision to pull the gate earlier (playbook, Track B).
+
+For a hard-of-hearing relative the interviewer carries the load: face the person, speak up and slow down, pick a quiet place away from kitchens and music, and plan shorter sessions with printed question cards (NIDCD conversation tips [87]; the cards are inference).

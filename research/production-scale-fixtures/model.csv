@@ -1,0 +1,181 @@
+"LIFE JOURNEY - production-scale model v1 (2026-10-18). Edit only rows marked INPUT; everything else is formulas. Judgement values [J] are priors, not measurements.",,,,,
+HOW TO USE,"Open in Excel or Google Sheets (CSV formulas recalculate on open). 1) set H (hours per week you can reliably give), 2) pick case 1=prior 2=base 3=stress, 3) read the SCENARIO RESULTS block. After the vertical slice, put the measured slice hours in the SLICE CALIBRATION block and copy the suggested multiplier into mu.",,,,
+,,,,,
+GLOBAL INPUTS,value,,,,unit / note
+H hours per week (INPUT),20,,,,"maker hours per week you can reliably give. UNKNOWN: model 10, 20, 30"
+case index (INPUT),2,,,,"1=prior (agent-pipeline and format numbers as written), 2=base (evidence-adjusted), 3=stress"
+u utilisation (INPUT),0.85,,,,"share of H actually productive (job crunch, illness, fatigue) [J]"
+shots per minute (INPUT),12,,,,"agent-pipeline: about 120 shots per 10 min. Documentary pace 6-8, montage 15-20"
+"share of shots, class A photo move (INPUT)",0.6,,,,agent-pipeline R4 [J]
+"share of shots, class B designed graphic (INPUT)",0.25,,,,
+"share of shots, class C hero (INPUT)",0.1,,,,hero share is the biggest single lever
+"share of shots, class D title/caption (INPUT)",0.05,,,,
+check: shares sum to 1,"=IF(ABS($B$9+$B$10+$B$11+$B$12-1)<0.0001,""OK"",""FIX SHARES"")",,,,
+"chapter length, seconds (INPUT)",100,,,,"agent-pipeline: about 100 s, about 20 shots"
+weeks W1-W9 (2026-10-18 to 12-19) (INPUT),9,,,,learn + pipeline lock (W1-4) and slice/early chapters (W5-9)
+weeks W12-W16 (2027-01-03 to 02-06) (INPUT),5,,,,"production after holidays, up to picture lock Sat 2027-02-06"
+weeks W17-W18 (02-07 to 02-20) (INPUT),2,,,,finishing only: no picture changes
+week W19 (02-21 to 02-27) (INPUT),1,,,,buffer + rehearsals from Mon 02-22
+productive weeks total,=$B$15+$B$16+$B$17+$B$18,,,,W10-W11 (2026-12-20 to 2027-01-02) are dead time and excluded
+max share of production buildable before 12-20 (INPUT),0.4,,,,"material arrives from week 5, unevenly [J]; raise it by front-loading gathering"
+share of story+gathering hours done before 12-20 (INPUT),0.6,,,,[J]
+share of variable finishing done before picture lock via rolling chapter locks (INPUT),0.25,,,,[J]
+"share of fixed finishing pre-built in the slice (master chain, DCP test, QC) (INPUT)",0.5,,,,[J]
+mu calibration multiplier on shots+chapter+sound hours (INPUT),1.0,,,,1.0 until the slice has been measured
+frame rate (INPUT),24,,,,
+"Route B photo move fps, 1080p, per process (INPUT)",7.8,,,,"agent-pipeline M21 measured, container"
+"Route A SVG/DOM fps, 1080p (INPUT)",6.0,,,,"M10: 12.9 flat, 5.7 with wobble; 6 assumed"
+"Blender Cycles CPU s per 1080p frame, 24 spp + denoise, 4 vCPU (INPUT)",17.5,,,,M14 measured 17.4-19.0 on Suzanne scene; real scenes will be slower: UNVERIFIED
+Blender Workbench draft s per frame (INPUT),1.0,,,,M14 measured 0.72-1.16
+"render iterations, non-hero shots (INPUT)",4,,,,drafts + final [J]
+hero final render factor (INPUT),1.5,,,,partial re-renders [J]
+hero draft iterations (INPUT),4,,,,[J]
+"grain bake, grade, encodes, QC decodes, CPU-h per finished minute (INPUT)",0.1,,,,M4-M6 scaled [J]
+Cycles s per frame on a rented RTX 4090 (INPUT),5.0,,,,"UNVERIFIED: Renderjuice estimates 3.5-7.5 s on benchmark scenes, Blender 5.2"
+"RTX 4090 USD per hour, community (INPUT)",0.34,,,,RunPod page dated 2026-10-08
+"RTX 4090 USD per hour, secure (INPUT)",0.89,,,,RunPod page dated 2026-10-08
+"agent minutes per shot, class A (INPUT)",10,,,,agent-pipeline Step 6: 10 to 40 min per shot [J]
+"agent minutes per shot, class B (INPUT)",25,,,,
+"agent minutes per shot, class C (INPUT)",60,,,,
+"agent minutes per shot, class D (INPUT)",10,,,,
+agent rework factor (INPUT),1.5,,,,at most 3 fix loops and 2 revision rounds
+,,,,,
+CASE PARAMETERS (INPUT),prior,base,stress,SELECTED,note
+maker min per class A shot,2,7,10,"=INDEX(B44:D44,1,$B$6)","prior: agent-pipeline 2. base adds 20% of photos needing 25 min of hand prep (cutout, inpaint)"
+maker min per class B shot,12,15,18,"=INDEX(B45:D45,1,$B$6)",prior: 12
+maker min per class C hero shot,60,120,180,"=INDEX(B46:D46,1,$B$6)",prior: 60 only if the agent builds the scene; reused-set camera move
+maker min per class D shot,5,6,8,"=INDEX(B47:D47,1,$B$6)",prior: 5
+rework factor on shot minutes,1.0,1.25,1.4,"=INDEX(B48:D48,1,$B$6)",planning fallacy: actual/predicted 55.5/33.9 = 1.64 in the Buehler study
+"chapter pass hours per chapter (assembly, G4-G6, listening)",1.5,2.0,2.5,"=INDEX(B49:D49,1,$B$6)",agent-pipeline Step 13: 1 to 2 h
+story + animatic hours per finished minute,0.5,1.0,1.4,"=INDEX(B50:D50,1,$B$6)","treatment, narration, board, animatic; agents draft, maker decides"
+gathering hours per finished minute,0.6,1.2,1.8,"=INDEX(B51:D51,1,$B$6)","scans, low-key asks, labelling, clearances"
+sound integration hours per finished minute during production,0.3,0.6,0.8,"=INDEX(B52:D52,1,$B$6)","spotting, temp cues, VO edit, licensing paperwork"
+"learning multiplier, chapter 1",2.0,2.5,3.2,"=INDEX(B53:D53,1,$B$6)",first chapter takes this many times the steady-state hours [J]
+learning multiplier floor,1.1,1.15,1.25,"=INDEX(B54:D54,1,$B$6)",never below this
+learning rate per doubling of chapters,0.8,0.8,0.88,"=INDEX(B55:D55,1,$B$6)",0.80 = 20% faster per doubling (Wright's law; literature 0.75-0.90)
+"one-off reuse build hours (kitchen, title system, portrait ladder, map)",15,20,40,"=INDEX(B56:D56,1,$B$6)",pays back only above about 20 min unless used in 5+ shots
+one-off learning + pipeline-lock hours (W1-4),20,30,50,"=INDEX(B57:D57,1,$B$6)","exercises, spikes S1-S5, style frames G1"
+reuse saving on shot hours,0.15,0.1,0.03,"=INDEX(B58:D58,1,$B$6)",honest range 0.03-0.15
+"finishing hours per finished minute (grade, mix, captions, QC)",1.5,2.7,3.5,"=INDEX(B59:D59,1,$B$6)",audio post rule of thumb 1 to 6 h per minute (hearsay)
+"finishing fixed hours (master, DCP/file, verification, backups)",16,24,32,"=INDEX(B60:D60,1,$B$6)",
+rehearsal hours (W19),8,10,12,"=INDEX(B61:D61,1,$B$6)","playback rehearsal Mon 02-22, room brief, cold starts"
+risk reserve share of production+story+gathering,0.05,0.1,0.15,"=INDEX(B62:D62,1,$B$6)","alpha apps, PC trouble, hard-chapter decisions"
+,,,,,
+LEARNING CURVE (helper),L(k),cumulative average,,,"chapter k: L(k) = MAX(floor, L1 * k ^ LOG(phi,2))"
+1,"=MAX($E$54,$E$53*A65^LOG($E$55,2))",=AVERAGE(B$65:B65),,,
+2,"=MAX($E$54,$E$53*A66^LOG($E$55,2))",=AVERAGE(B$65:B66),,,
+3,"=MAX($E$54,$E$53*A67^LOG($E$55,2))",=AVERAGE(B$65:B67),,,
+4,"=MAX($E$54,$E$53*A68^LOG($E$55,2))",=AVERAGE(B$65:B68),,,
+5,"=MAX($E$54,$E$53*A69^LOG($E$55,2))",=AVERAGE(B$65:B69),,,
+6,"=MAX($E$54,$E$53*A70^LOG($E$55,2))",=AVERAGE(B$65:B70),,,
+7,"=MAX($E$54,$E$53*A71^LOG($E$55,2))",=AVERAGE(B$65:B71),,,
+8,"=MAX($E$54,$E$53*A72^LOG($E$55,2))",=AVERAGE(B$65:B72),,,
+9,"=MAX($E$54,$E$53*A73^LOG($E$55,2))",=AVERAGE(B$65:B73),,,
+10,"=MAX($E$54,$E$53*A74^LOG($E$55,2))",=AVERAGE(B$65:B74),,,
+11,"=MAX($E$54,$E$53*A75^LOG($E$55,2))",=AVERAGE(B$65:B75),,,
+12,"=MAX($E$54,$E$53*A76^LOG($E$55,2))",=AVERAGE(B$65:B76),,,
+13,"=MAX($E$54,$E$53*A77^LOG($E$55,2))",=AVERAGE(B$65:B77),,,
+14,"=MAX($E$54,$E$53*A78^LOG($E$55,2))",=AVERAGE(B$65:B78),,,
+15,"=MAX($E$54,$E$53*A79^LOG($E$55,2))",=AVERAGE(B$65:B79),,,
+16,"=MAX($E$54,$E$53*A80^LOG($E$55,2))",=AVERAGE(B$65:B80),,,
+17,"=MAX($E$54,$E$53*A81^LOG($E$55,2))",=AVERAGE(B$65:B81),,,
+18,"=MAX($E$54,$E$53*A82^LOG($E$55,2))",=AVERAGE(B$65:B82),,,
+19,"=MAX($E$54,$E$53*A83^LOG($E$55,2))",=AVERAGE(B$65:B83),,,
+20,"=MAX($E$54,$E$53*A84^LOG($E$55,2))",=AVERAGE(B$65:B84),,,
+21,"=MAX($E$54,$E$53*A85^LOG($E$55,2))",=AVERAGE(B$65:B85),,,
+22,"=MAX($E$54,$E$53*A86^LOG($E$55,2))",=AVERAGE(B$65:B86),,,
+23,"=MAX($E$54,$E$53*A87^LOG($E$55,2))",=AVERAGE(B$65:B87),,,
+24,"=MAX($E$54,$E$53*A88^LOG($E$55,2))",=AVERAGE(B$65:B88),,,
+25,"=MAX($E$54,$E$53*A89^LOG($E$55,2))",=AVERAGE(B$65:B89),,,
+26,"=MAX($E$54,$E$53*A90^LOG($E$55,2))",=AVERAGE(B$65:B90),,,
+27,"=MAX($E$54,$E$53*A91^LOG($E$55,2))",=AVERAGE(B$65:B91),,,
+28,"=MAX($E$54,$E$53*A92^LOG($E$55,2))",=AVERAGE(B$65:B92),,,
+29,"=MAX($E$54,$E$53*A93^LOG($E$55,2))",=AVERAGE(B$65:B93),,,
+30,"=MAX($E$54,$E$53*A94^LOG($E$55,2))",=AVERAGE(B$65:B94),,,
+31,"=MAX($E$54,$E$53*A95^LOG($E$55,2))",=AVERAGE(B$65:B95),,,
+32,"=MAX($E$54,$E$53*A96^LOG($E$55,2))",=AVERAGE(B$65:B96),,,
+33,"=MAX($E$54,$E$53*A97^LOG($E$55,2))",=AVERAGE(B$65:B97),,,
+34,"=MAX($E$54,$E$53*A98^LOG($E$55,2))",=AVERAGE(B$65:B98),,,
+35,"=MAX($E$54,$E$53*A99^LOG($E$55,2))",=AVERAGE(B$65:B99),,,
+36,"=MAX($E$54,$E$53*A100^LOG($E$55,2))",=AVERAGE(B$65:B100),,,
+37,"=MAX($E$54,$E$53*A101^LOG($E$55,2))",=AVERAGE(B$65:B101),,,
+38,"=MAX($E$54,$E$53*A102^LOG($E$55,2))",=AVERAGE(B$65:B102),,,
+39,"=MAX($E$54,$E$53*A103^LOG($E$55,2))",=AVERAGE(B$65:B103),,,
+40,"=MAX($E$54,$E$53*A104^LOG($E$55,2))",=AVERAGE(B$65:B104),,,
+41,"=MAX($E$54,$E$53*A105^LOG($E$55,2))",=AVERAGE(B$65:B105),,,
+42,"=MAX($E$54,$E$53*A106^LOG($E$55,2))",=AVERAGE(B$65:B106),,,
+43,"=MAX($E$54,$E$53*A107^LOG($E$55,2))",=AVERAGE(B$65:B107),,,
+44,"=MAX($E$54,$E$53*A108^LOG($E$55,2))",=AVERAGE(B$65:B108),,,
+45,"=MAX($E$54,$E$53*A109^LOG($E$55,2))",=AVERAGE(B$65:B109),,,
+46,"=MAX($E$54,$E$53*A110^LOG($E$55,2))",=AVERAGE(B$65:B110),,,
+47,"=MAX($E$54,$E$53*A111^LOG($E$55,2))",=AVERAGE(B$65:B111),,,
+48,"=MAX($E$54,$E$53*A112^LOG($E$55,2))",=AVERAGE(B$65:B112),,,
+49,"=MAX($E$54,$E$53*A113^LOG($E$55,2))",=AVERAGE(B$65:B113),,,
+50,"=MAX($E$54,$E$53*A114^LOG($E$55,2))",=AVERAGE(B$65:B114),,,
+51,"=MAX($E$54,$E$53*A115^LOG($E$55,2))",=AVERAGE(B$65:B115),,,
+52,"=MAX($E$54,$E$53*A116^LOG($E$55,2))",=AVERAGE(B$65:B116),,,
+53,"=MAX($E$54,$E$53*A117^LOG($E$55,2))",=AVERAGE(B$65:B117),,,
+54,"=MAX($E$54,$E$53*A118^LOG($E$55,2))",=AVERAGE(B$65:B118),,,
+,,,,,
+SCENARIO RESULTS,12 min,25 min,45 min,90 min,runtime in row below is INPUT
+"runtime, minutes (INPUT)",12,25,45,90,"film-story: floor 12, target 15 (cap 18), stretch 25"
+chapters,"=ROUND(B121*60/$B$14,0)","=ROUND(C121*60/$B$14,0)","=ROUND(D121*60/$B$14,0)","=ROUND(E121*60/$B$14,0)",
+average learning multiplier,"=INDEX($C$65:$C$118,B122,1)","=INDEX($C$65:$C$118,C122,1)","=INDEX($C$65:$C$118,D122,1)","=INDEX($C$65:$C$118,E122,1)",
+shots,=$B$8*B121,=$B$8*C121,=$B$8*D121,=$B$8*E121,
+weighted maker minutes per shot,=$B$9*$E$44+$B$10*$E$45+$B$11*$E$46+$B$12*$E$47,=$B$9*$E$44+$B$10*$E$45+$B$11*$E$46+$B$12*$E$47,=$B$9*$E$44+$B$10*$E$45+$B$11*$E$46+$B$12*$E$47,=$B$9*$E$44+$B$10*$E$45+$B$11*$E$46+$B$12*$E$47,
+"shot hours, steady state",=B124*B125/60*$E$48*(1-$E$58)*$B$24,=C124*C125/60*$E$48*(1-$E$58)*$B$24,=D124*D125/60*$E$48*(1-$E$58)*$B$24,=E124*E125/60*$E$48*(1-$E$58)*$B$24,
+shot hours incl. learning,=B126*B123,=C126*C123,=D126*D123,=E126*E123,
+chapter pass hours incl. learning,=B122*$E$49*B123*$B$24,=C122*$E$49*C123*$B$24,=D122*$E$49*D123*$B$24,=E122*$E$49*E123*$B$24,
+sound integration hours,=B121*$E$52*$B$24,=C121*$E$52*$B$24,=D121*$E$52*$B$24,=E121*$E$52*$B$24,
+PRODUCTION-SIDE HOURS,=B127+B128+B129,=C127+C128+C129,=D127+D128+D129,=E127+E128+E129,
+story + animatic hours,=B121*$E$50,=C121*$E$50,=D121*$E$50,=E121*$E$50,
+gathering hours,=B121*$E$51,=C121*$E$51,=D121*$E$51,=E121*$E$51,
+risk reserve hours,=$E$62*(B130+B131+B132),=$E$62*(C130+C131+C132),=$E$62*(D130+D131+D132),=$E$62*(E130+E131+E132),
+finishing hours,=B121*$E$59+$E$60,=C121*$E$59+$E$60,=D121*$E$59+$E$60,=E121*$E$59+$E$60,
+learning + pipeline lock hours,=$E$57,=$E$57,=$E$57,=$E$57,
+reuse build hours,=$E$56,=$E$56,=$E$56,=$E$56,
+rehearsal hours,=$E$61,=$E$61,=$E$61,=$E$61,
+TOTAL MAKER HOURS REQUIRED,=B130+B131+B132+B133+B134+B135+B136+B137,=C130+C131+C132+C133+C134+C135+C136+C137,=D130+D131+D132+D133+D134+D135+D136+D137,=E130+E131+E132+E133+E134+E135+E136+E137,
+maker hours available (H x u x productive weeks),=$B$5*$B$7*$B$19,=$B$5*$B$7*$B$19,=$B$5*$B$7*$B$19,=$B$5*$B$7*$B$19,
+"MARGIN (+) or SHORTFALL (-), hours",=B139-B138,=C139-C138,=D139-D138,=E139-E138,
+hours per week needed (total view),=B138/($B$7*$B$19),=C138/($B$7*$B$19),=D138/($B$7*$B$19),=E138/($B$7*$B$19),
+steady-state production-side hours per finished minute,=(B126+B122*$E$49*$B$24+B129)/B121,=(C126+C122*$E$49*$B$24+C129)/C121,=(D126+D122*$E$49*$B$24+D129)/D121,=(E126+E122*$E$49*$B$24+E129)/E121,
+pool W1-W9 hours,=$B$5*$B$7*$B$15,=$B$5*$B$7*$B$15,=$B$5*$B$7*$B$15,=$B$5*$B$7*$B$15,
+pool W12-W16 hours,=$B$5*$B$7*$B$16,=$B$5*$B$7*$B$16,=$B$5*$B$7*$B$16,=$B$5*$B$7*$B$16,
+pool W17-W18 hours,=$B$5*$B$7*$B$17,=$B$5*$B$7*$B$17,=$B$5*$B$7*$B$17,=$B$5*$B$7*$B$17,
+pool W19 hours,=$B$5*$B$7*$B$18,=$B$5*$B$7*$B$18,=$B$5*$B$7*$B$18,=$B$5*$B$7*$B$18,
+story + gathering hours,=B131+B132,=C131+C132,=D131+D132,=E131+E132,
+production hours possible before 12-20,"=MAX(0,B143-$E$57-$E$56-$B$21*B147-$B$23*$E$60)","=MAX(0,C143-$E$57-$E$56-$B$21*C147-$B$23*$E$60)","=MAX(0,D143-$E$57-$E$56-$B$21*D147-$B$23*$E$60)","=MAX(0,E143-$E$57-$E$56-$B$21*E147-$B$23*$E$60)",
+production + reserve hours to place,=B130+B133,=C130+C133,=D130+D133,=E130+E133,
+placed before 12-20,"=MIN(B149*$B$20,B148)","=MIN(C149*$B$20,C148)","=MIN(D149*$B$20,D148)","=MIN(E149*$B$20,E148)",
+must be placed in W12-W16,=B149-B150,=C149-C150,=D149-D150,=E149-E150,
+W12-W16 hours free for production,=B144-(1-$B$21)*B147-$B$22*B121*$E$59,=C144-(1-$B$21)*C147-$B$22*C121*$E$59,=D144-(1-$B$21)*D147-$B$22*D121*$E$59,=E144-(1-$B$21)*E147-$B$22*E121*$E$59,
+finishing hours that must fall in W17-W18,=(1-$B$22)*B121*$E$59+(1-$B$23)*$E$60,=(1-$B$22)*C121*$E$59+(1-$B$23)*$E$60,=(1-$B$22)*D121*$E$59+(1-$B$23)*$E$60,=(1-$B$22)*E121*$E$59+(1-$B$23)*$E$60,
+W19 hours left after rehearsals,=B146-$E$61,=C146-$E$61,=D146-$E$61,=E146-$E$61,
+CHECK total hours,"=IF(B140>=0,""OK"",""SHORT"")","=IF(C140>=0,""OK"",""SHORT"")","=IF(D140>=0,""OK"",""SHORT"")","=IF(E140>=0,""OK"",""SHORT"")",
+CHECK post-holiday production (dead zone + gathering lag),"=IF(B152>=B151,""OK"",""SHORT"")","=IF(C152>=C151,""OK"",""SHORT"")","=IF(D152>=D151,""OK"",""SHORT"")","=IF(E152>=E151,""OK"",""SHORT"")",
+CHECK finishing weeks (outsource or roll earlier if CRUNCH),"=IF(B145>=B153,""OK"",""CRUNCH"")","=IF(C145>=C153,""OK"",""CRUNCH"")","=IF(D145>=D153,""OK"",""CRUNCH"")","=IF(E145>=E153,""OK"",""CRUNCH"")",
+CHECK buffer week,"=IF(B154>=0,""OK"",""NO BUFFER"")","=IF(C154>=0,""OK"",""NO BUFFER"")","=IF(D154>=0,""OK"",""NO BUFFER"")","=IF(E154>=0,""OK"",""NO BUFFER"")",
+VERDICT,"=IF(AND(B155=""OK"",B156=""OK""),IF(B157=""OK"",""FEASIBLE"",""FEASIBLE ONLY IF FINISHING IS OUTSOURCED OR ROLLED EARLIER""),""NOT FEASIBLE AT THIS H"")","=IF(AND(C155=""OK"",C156=""OK""),IF(C157=""OK"",""FEASIBLE"",""FEASIBLE ONLY IF FINISHING IS OUTSOURCED OR ROLLED EARLIER""),""NOT FEASIBLE AT THIS H"")","=IF(AND(D155=""OK"",D156=""OK""),IF(D157=""OK"",""FEASIBLE"",""FEASIBLE ONLY IF FINISHING IS OUTSOURCED OR ROLLED EARLIER""),""NOT FEASIBLE AT THIS H"")","=IF(AND(E155=""OK"",E156=""OK""),IF(E157=""OK"",""FEASIBLE"",""FEASIBLE ONLY IF FINISHING IS OUTSOURCED OR ROLLED EARLIER""),""NOT FEASIBLE AT THIS H"")",
+,,,,,
+"RENDER, AGENT AND CASH (container = 4 vCPU, measured speeds)",12 min,25 min,45 min,90 min,
+total frames,=B121*60*$B$25,=C121*60*$B$25,=D121*60*$B$25,=E121*60*$B$25,
+hero (Cycles) frames,=B121*60*$B$25*$B$11,=C121*60*$B$25*$B$11,=D121*60*$B$25*$B$11,=E121*60*$B$25*$B$11,
+"container CPU hours, all classes",=B121*((60*$B$25*$B$9/$B$26+60*$B$25*($B$10+$B$12)/$B$27)*$B$30+60*$B$25*$B$11*($B$28*$B$31+$B$29*$B$32))/3600+B121*$B$33,=C121*((60*$B$25*$B$9/$B$26+60*$B$25*($B$10+$B$12)/$B$27)*$B$30+60*$B$25*$B$11*($B$28*$B$31+$B$29*$B$32))/3600+C121*$B$33,=D121*((60*$B$25*$B$9/$B$26+60*$B$25*($B$10+$B$12)/$B$27)*$B$30+60*$B$25*$B$11*($B$28*$B$31+$B$29*$B$32))/3600+D121*$B$33,=E121*((60*$B$25*$B$9/$B$26+60*$B$25*($B$10+$B$12)/$B$27)*$B$30+60*$B$25*$B$11*($B$28*$B$31+$B$29*$B$32))/3600+E121*$B$33,
+10-minute Cycles jobs for hero finals at about 1 process (frames per job = 600/cyc),"=ROUNDUP(B163*$B$31/(600/$B$28),0)","=ROUNDUP(C163*$B$31/(600/$B$28),0)","=ROUNDUP(D163*$B$31/(600/$B$28),0)","=ROUNDUP(E163*$B$31/(600/$B$28),0)",
+rented RTX 4090 hours if hero finals go to GPU,=B163*$B$34*$B$31/3600,=C163*$B$34*$B$31/3600,=D163*$B$34*$B$31/3600,=E163*$B$34*$B$31/3600,
+"GPU cash, low (USD)",=B166*$B$35,=C166*$B$35,=D166*$B$35,=E166*$B$35,
+"GPU cash, high (USD)",=B166*$B$36,=C166*$B$36,=D166*$B$36,=E166*$B$36,
+"agent session hours (wall clock, supervised)",=B124*($B$9*$B$37+$B$10*$B$38+$B$11*$B$39+$B$12*$B$40)/60*$B$41,=C124*($B$9*$B$37+$B$10*$B$38+$B$11*$B$39+$B$12*$B$40)/60*$B$41,=D124*($B$9*$B$37+$B$10*$B$38+$B$11*$B$39+$B$12*$B$40)/60*$B$41,=E124*($B$9*$B$37+$B$10*$B$38+$B$11*$B$39+$B$12*$B$40)/60*$B$41,
+"ProRes 422 HQ master size, GB (about 0.59 GB per minute, M5)",=B121*0.59,=C121*0.59,=D121*0.59,=E121*0.59,
+,,,,,
+SLICE CALIBRATION (fill after the vertical slice),value,,,,
+"measured maker hours for the slice chapter, brief to approved incl. sound and grade (INPUT)",,,,,leave blank until measured
+hours the selected case predicts for a chapter-1 build,=(($B$8*$B$14/60)*($B$9*$E$44+$B$10*$E$45+$B$11*$E$46+$B$12*$E$47)/60*$E$48*(1-$E$58)+$E$49+$E$52*$B$14/60)*$E$53,,,,"one chapter: shots + chapter pass + sound, times the chapter-1 learning multiplier (no mu)"
+suggested mu (measured / predicted),"=IF($B$173="""","""",$B$173/$B$174)",,,,"copy into mu in GLOBAL INPUTS, then read the verdicts again"
+,,,,,
+NOTES,,,,,
+1,"Calendar (Sunday-start weeks): W1-4 2026-10-18 to 11-14, lock Sun 11-15; W5-9 to 12-19; W10-11 dead 12-20 to 2027-01-02; W12-16 2027-01-03 to 02-06 (picture lock Sat 02-06); W17-18 finishing to 02-20; W19 buffer and rehearsals to Sat 02-27.",,,,
+2,"review 02 numbers the last weeks as 12-15, 16-17, 18-19. With Sunday-start weeks the production block is W12-16 and finishing W17-18. Dates are the authority.",,,,
+4,Levers to try (each is an INPUT above): hero share sC 0.10 to 0.05 (move the difference to sA); shots per minute 12 to 8; fin_var 2.7 to 0.8 by paying a mixer and colourist for the heavy lifting; mA 7 to 4.5 by triaging photos; pre_share 0.4 to 0.5 by front-loading gathering before 12-20. All five together cut the base 12-minute requirement from 19.6 to 13.9 h per week.,,,,
+3,Do not read this as a forecast. It is a way to see which assumption decides the runtime. The slice replaces the judgement values with measurements.,,,,

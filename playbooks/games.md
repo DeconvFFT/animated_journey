@@ -1,6 +1,6 @@
 # Games that tell life stories: mechanics that carry meaning
 
-Track: games · Draft v0.1 · 2026-10-18 · For the maker (a motivated learner)
+Track: games · Draft v0.2 · 2026-10-18 · For the maker (a motivated learner)
 Built from research/games.md and CHARTER.md. Numbers in brackets, like [1], point to the Sources list at the end. Anything marked TODO(research) is still open.
 
 ## Why this matters for our life journey
@@ -11,7 +11,7 @@ Most game mechanics are built for quick hands, points and fail states. Our viewe
 
 Minecraft sits in the middle. Some people will recognise it, and real memorials have been built in it. But its rules limit public showing and selling, and its default look reads as generic. That is why our default is original voxel assets, with Minecraft as a reference [42][49].
 
-The biggest risk is decoration: a points bar, or a copy of a famous game's look with none of her facts behind it. The *Unpacking* team calls clones "hollow" [3].
+The biggest risk is decoration: a points bar, or a copy of a famous game's look with none of her facts behind it. *Unpacking*'s designer Wren Brier says a clone leaves "this sort of hollow experience" [3].
 
 ## Core principles (8)
 
@@ -22,7 +22,7 @@ The biggest risk is decoration: a points bar, or a copy of a famous game's look 
 5. **Friction tracks the relationship.** Make a moment harder when the relationship is tense and easier when it is settled. This is *Florence*'s core trick [5][6].
 6. **Real things, few of them.** One object that survives every move is worth more than fifty props. Photograph the real thing, keep the set small, and log every object. In *Edith Finch*, one bedroom's decor was reportedly revised late, once the team saw that the room told its owner's story without narration. TODO(research): verify this detail against developer interviews [12][13].
 7. **Reconstructions look like reconstructions.** Rebuilt scenes use a visibly different medium from documents. Hard chapters follow the family's say (Principles 4 and 5). *Edith Finch* leaves the player unsure how accurate each account is, and we must make our reconstructions honest in the same way [11][13].
-8. **Design for a room.** Assume a host, a shared screen and mixed ages. Pause-and-talk beats solo skill. Viewers of *Unpacking* on Twitch narrate their own lives as they watch [3][61].
+8. **Design for a room.** Assume a host, a shared screen and mixed ages. Pause-and-talk beats solo skill. Viewers of *Unpacking* on Twitch narrate their own lives as they watch [3][61]. Surprise mode: collect contributions only from the 'in on it' list kept by `surprise-ops`, one person at a time, never via a group chat; the wall can keep growing after the reveal.
 
 ## How to do it, step by step
 
@@ -84,7 +84,7 @@ Times are our own estimates.
 **Goal:** build the most transferable device from *A Memoir Blue* [29][30] in a free tool.
 
 **Steps:**
-1. Open your vector editor. TODO(research): confirm which vector editor is installed and how it handles layers.
+1. Open **VectorCraft** (installed, early alpha). If it cannot do two layers and a PNG export, use **Inkscape** as the proven fallback, per the charter rule that nothing critical depends on one alpha app.
 2. Make two layers: a shelf of trophies in front, and a photograph behind. Use a placeholder photo, not any photo of her.
 3. Export two still frames: "before" (trophies in front) and "after" (trophies moved aside, photo visible).
 4. Write one line on how a viewer would know the trophies can move. Ask one person whether they knew what to do without being told.
@@ -107,7 +107,7 @@ Times are our own estimates.
 **Goal:** learn what makes a blocky object read as warm rather than generic [64][65].
 
 **Steps:**
-1. Before installing, read the licence text in the download. TODO(research): the official licence was not seen. Only third-party sites say "free for personal and commercial use" [51].
+1. Before using it, read the licence on the MagicaVoxel website. It says "Free to use for any project", asks for credit, and disallows selling or distributing the software in other packages [76]. The Windows download has no licence file [78].
 2. Model one object from your own home, such as a mug or a kettle, about 16 voxels across.
 3. Use 6 to 8 colours. Paint the shading into the colours. Keep one voxel size.
 4. Shrink the object to thumbnail size and check the silhouette. Remove stair-step diagonals.
@@ -120,21 +120,22 @@ Times are our own estimates.
 
 **Steps:**
 1. Read the Minecraft Usage Guidelines [42] and the End User Licence Agreement [43].
-2. Copy the clauses about sharing, public display, selling and endorsement into a one-page note. Write down the date you read them.
+2. Copy the clauses about sharing, public display, selling and endorsement into a one-page note. Write down the date you read them. Save the exact clauses as a dated plain-text excerpt at research/sources/minecraft-usage-guidelines-YYYY-MM-DD.md (short quotes, URL, date), so the terms check never depends on the page being up. Do the same once for the Eurogamer interview [3] (it carries the Bed Song, 14,000-foley, spreadsheet and "hollow" claims) at research/sources/eurogamer-unpacking-YYYY-MM-DD.md.
 3. List the questions a lawyer would need to answer, such as whether a private family screening in a hired room counts as public display.
 
-**Good looks like:** each clause has a quote or close paraphrase, a date and a source. The questions are written down. Mojang says it will not advise on a specific project, so the questions go to a lawyer [42]. TODO(research): the usage page has no visible date. A third-party summary claims a date of April 19, 2026, but that is unverified [71].
+**Good looks like:** each clause has a quote or close paraphrase, a date and a source. The questions are written down. Mojang says it will not advise on a specific project, so the questions go to a lawyer [42]. The usage page has no visible date, and no dated version has been found. A third-party "April 19, 2026" date [71] has been withdrawn by its source, so do not cite it [83]. Re-read the page on the day of any showing.
 
-### Exercise 8: Watch Gaynor's talk (about 1 hour)
+### Exercise 8: Watch Brier, then Gaynor (about 2 hours)
 
-**Goal:** hear a designer argue that interaction carries meaning.
+**Goal:** hear two designers argue that interaction carries meaning. Brier's talk is closer to our problem, so it comes first.
 
 **Steps:**
-1. Watch Steve Gaynor's GDC 2014 talk, "Why is Gone Home a game?" The notes say the video is free [36].
-2. Write three notes: one device, why it works, and one thing you would cut.
-3. Check each note against the eight principles.
+1. Watch Wren Brier's GDC 2023 talk, "'Unpacking' Zen: Designing a Game Without Fail States or Scores" [2]. GDC Vault tags it "free content".
+2. Watch Steve Gaynor's GDC 2014 talk, "Why is Gone Home a game?" The notes say the video is free [36].
+3. Write three notes: one device, why it works, and one thing you would cut.
+4. Check each note against the eight principles.
 
-**Good looks like:** three notes, each tied to a principle. TODO(research): Brier's 2023 talk [2] and Dallas's 2018 talk [10] have not been watched. Watch them next.
+**Good looks like:** three notes, each tied to a principle. TODO(research): Dallas's 2018 talk [10] has not been watched.
 
 ### Exercise 9: Ten-minute click test (about 1 hour, plus finding a tester)
 
@@ -151,7 +152,7 @@ Times are our own estimates.
 
 **1. Visual source.** Options: Minecraft's look and footage; original voxel or vector assets; a mix. *Our lean:* original assets in MagicaVoxel or Blockbench [49][50][51], with Minecraft as a reference only.
 
-**2. Minecraft edition and computer.** Options: Java; Bedrock; no Minecraft at all. Replay Mod and Flashback are Java-only [44][46]. Mineways exports Java worlds to OBJ and USD for Blender [48]. *Our lean:* no decision yet. TODO(research): ask the maker which edition and operating system they have.
+**2. Minecraft edition and computer.** Options: Java; Bedrock; no Minecraft at all. Replay Mod is a Java Edition mod (Fabric for 1.14+, Forge for 1.12.2 and below) and Flashback is a Fabric client mod; neither page mentions Bedrock [44][46]. Mineways exports Java worlds to OBJ and USD for Blender [48]. *Our lean:* no decision yet. The maker's computer is Windows (charter Known facts). TODO(research): Which Minecraft edition, if any, does the maker own? (Java is needed for Replay Mod, Flashback and Mineways.)
 
 **3. Showing it.** Options: a private family showing at home; a hired venue; online. *Our lean:* private, free, no advertising, no Minecraft logo, original assets. A hired venue is a grey area under Mojang's wording [42]. TODO(research): ask a lawyer, or choose original assets.
 
@@ -180,7 +181,7 @@ Times are our own estimates.
 - **Fail states and timers.** Older adults disliked time limits [41]. *Gris* has no fail state and was designed that way for accessibility [26].
 - **Drag, swipe, double-tap, long-press, blinking, webcams.** Older participants in one study slid in the wrong direction, forgot to lift their fingers and failed double taps [41]. Dragging terrain is the core of *Old Man's Journey* [19], so convert it to animation.
 - **Elegy by default.** She is alive. *Passage*, *Spiritfarer* and *Edith Finch* are about death. Borrow their devices, not their mood [23][27][41].
-- **Invented events, people or quotes.** This breaks Principle 4 [11][13].
+- **Invented events, people or quotes.** This breaks Principle 4 [11][13]. No synthetic, cloned or text-to-speech voice of any real person, living or dead, even with consent (charter review §1.2). Where she cannot be recorded, real words for surprise mode are existing home video or voice notes; her own letters and cards; or a saying that two relatives independently confirm, shown *attributed* ("as her sister remembers it"), never as a quotation in her voice.
 - **Cloning famous looks.** Copying *Florence*'s couch colours or *Unpacking*'s boxes without her facts [3].
 - **Minecraft UI cosplay.** Hotbars, hearts and achievement pop-ups look cheap and fall under Mojang's brand rules [42].
 - **Solo assumptions.** Design for a host and a room [3][61].
@@ -188,7 +189,7 @@ Times are our own estimates.
 - **Calibration and comfort.** Reviews of *Before Your Eyes* mention calibration trouble [69]. Reports of eye discomfort are unverified.
 - **A broken link.** The hideandseek.net copy of Robertson's essay now redirects to an unrelated gambling site. Use the Kotaku republication [37].
 - **Surprise leaks.** Test on a machine she does not use. Screen recordings must not sync to a cloud photo library, and test screenshots must not go into family group chats (charter, known facts).
-- **Add-on privacy.** The Flashback Settings add-on is listed as PolyForm Noncommercial, with telemetry on by default [47]. Read its settings before installing it on any computer that holds family material. TODO(research): verify on the add-on page.
+- **Add-on privacy.** The Flashback Settings add-on is listed as PolyForm Noncommercial, with telemetry on by default [47]. Read its settings before installing it on any computer that holds family material (confirmed on Modrinth 2026-10-18: "Anonymous usage statistics are enabled by default").
 - **A creator's reputation.** Wikipedia reports public allegations against Florence's director and an apology, but this was not checked against primary reporting [9]. If we credit *Florence* publicly, decide knowingly.
 - **Our numbers.** Ratings, time estimates and build effort are judgment. Check them before quoting.
 
@@ -196,7 +197,7 @@ Times are our own estimates.
 
 1. **Riendeau, "'Unpacking' the design pillars of a chill puzzle game" [1].** A short summary of Brier's GDC 2023 talk, covering subtractive design and the three pillars. Read it first.
 2. **Eurogamer interview with Brier and Dawson [3].** The most detailed account we have of how *Unpacking* was made: items and stories invented in both directions, the boyfriend's flat, the spreadsheets. Read it in full.
-3. **GDC Vault listing for Brier's 2023 talk, "Designing a Game Without Fail States or Scores" [2].** Not watched yet. Watch it next, especially the parts on fail states and scores.
+3. **GDC Vault listing for Brier's 2023 talk, "Designing a Game Without Fail States or Scores" [2].** Free to watch (GDC Vault tags it "free content"). Not watched yet. Watch it first, especially the parts on fail states and scores.
 4. **Gaynor, "Why is Gone Home a game?" (GDC 2014) [36].** Free, per the notes. Watch it for how interaction carries meaning.
 5. **Ken Wong's *Florence* interview [5].** "Interactions" rather than puzzles, and friction that eases with comfort.
 6. **Dallas on *Edith Finch* [11].** Room-first design, ambiguity, and playtesting for emotion.
@@ -210,8 +211,8 @@ Also required reading before any public showing: the Minecraft Usage Guidelines 
 Tier tags: [P] primary designer, creator or official; [S] journalism quoting designers; [T] Wikipedia or aggregator; [snippet] seen only in search results. Pages were fetched on 2026-10-18 unless the entry says otherwise.
 
 [1] Danielle Riendeau — "'Unpacking' the design pillars of a chill puzzle game" — https://www.gamedeveloper.com/design/unpacking-the-design-pillars-of-a-chill-puzzle-game — 2023-04-21 — [S] summary of Wren Brier's GDC 2023 talk.
-[2] GDC Vault — "'Unpacking' Zen: Designing a Game Without Fail States or Scores" (Wren Brier, GDC 2023) — https://www.gdcvault.com/play/1029400/-Unpacking-Zen-Designing-a — 2023 — [P] listing seen via search; video not viewed.
-[3] Eurogamer — "The creators of Unpacking on developing a 'weird', queer, BAFTA-winning game" — https://www.eurogamer.net/the-creators-of-unpacking-on-developing-a-weird-queer-bafta-winning-game — April 2022 — [S] Brier and Dawson; read in full.
+[2] GDC Vault — "'Unpacking' Zen: Designing a Game Without Fail States or Scores" (Wren Brier, GDC 2023) — https://www.gdcvault.com/play/1029400/-Unpacking-Zen-Designing-a — 2023 — [P] listing seen via search; tagged "free content"; video not viewed.
+[3] Eurogamer — "The creators of Unpacking on developing a 'weird', queer, BAFTA-winning game" — https://www.eurogamer.net/the-creators-of-unpacking-on-developing-a-weird-queer-bafta-winning-game — 2022-04-12, Ed Nightingale — [S] Brier and Dawson; read in full.
 [5] Player.One — Ken Wong interview, "Florence Tells A Love Story With Actions, Not Words" — https://www.player.one/florence-game-ken-wong-interview-123975 — 2018-02-12 — [S] puzzle easing, "interactions".
 [6] Milanote / Ollie Campbell — "The Lead Designer of Monument Valley Deconstructs His Latest Game, Florence" — https://milanote.com/the-work/lead-designer-of-monument-valley-deconstructs-his-latest-game-florence — undated (post-2018) — [S] mechanics, cut chapters.
 [9] Wikipedia — "Florence (video game)" — https://en.wikipedia.org/wiki/Florence_(video_game) — fetched 2026-10-18 — [T] chapters, packing mini-games, reception, allegations.
@@ -234,7 +235,7 @@ Tier tags: [P] primary designer, creator or official; [S] journalism quoting des
 [38] Ian Bogost — "Gamification is Bullshit" — https://www.bogost.com/blog/gamification_is_bullshit/ — 2011 — [P].
 [39] Game Accessibility Guidelines — full list — https://gameaccessibilityguidelines.com/full-list/ — fetched 2026-10-18 — community checklist.
 [40] Game Accessibility Guidelines — "Allow players to progress through text prompts at their own pace" — https://gameaccessibilityguidelines.com/allow-players-to-progress-through-text-prompts-at-their-own-pace — fetched 2026-10-18.
-[41] Lee S, Oh H, Shi C-K, Doh YY — "Mobile Game Design Guide to Improve Gaming Experience for the Middle-Aged and Older Adult Population", JMIR Serious Games 2021;9(2):e24449 — https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8176340/ (text retrieved via NCBI E-utilities) — 2021 — [P] 40 participants, mean age 66.75.
+[41] Lee S, Oh H, Shi C-K, Doh YY — "Mobile Game Design Guide to Improve Gaming Experience for the Middle-Aged and Older Adult Population", JMIR Serious Games 2021;9(2):e24449 — https://pmc.ncbi.nlm.nih.gov/articles/PMC8176340/ (text retrieved via NCBI E-utilities) — 2021 — [P] 40 participants, mean age 66.75.
 [42] Mojang/Microsoft — Minecraft Usage Guidelines — https://www.minecraft.net/en-us/usage-guidelines — fetched 2026-10-18; no visible date — [P].
 [43] Mojang/Microsoft — Minecraft End User License Agreement — https://www.minecraft.net/en-us/eula — fetched 2026-10-18 — [P].
 [44] Replay Mod documentation — https://www.replaymod.com/docs — fetched 2026-10-18 — [P].
@@ -256,7 +257,11 @@ Tier tags: [P] primary designer, creator or official; [S] journalism quoting des
 [66] 80.lv — Thibault Simar, "Voxel Dioramas: Tips and Tricks" — https://80.lv/articles/voxel-dioramas-tips-and-tricks/ — 2017-06-22.
 [69] Before Your Eyes reviews — https://fingerguns.net/reviews/2021/04/06/before-your-eyes-review-blink-back-tears/ ; https://www.thesixthaxis.com/2021/05/05/before-your-eyes-review/ ; https://gamingtrend.com/reviews/dont-blink-or-youll-miss-it-before-your-eyes-review/ — 2021 — [snippet] mouse alternative, calibration, emotional reactions.
 [71] ConductAtlas third-party summary of Minecraft Usage Guidelines — https://conductatlas.com/platform/minecraft/minecraft-usage-guidelines/commercial-use-and-monetization-restrictions/ — [snippet]; claims "last updated April 19, 2026": UNVERIFIED.
+[76] MagicaVoxel official site, main page fragment (licence block) — https://ephtracy.github.io/mv_main.html — 2026-10-18 — [P].
+[78] MagicaVoxel 0.99.7.2 Windows release zip (listed; no licence file) — https://github.com/ephtracy/ephtracy.github.io/releases/download/0.99.7/MagicaVoxel-0.99.7.2-win64.zip — 2026-10-18 — [P].
+[83] ConductAtlas, withdrawn clause page — https://conductatlas.com/platform/minecraft/minecraft-usage-guidelines/provision/CA-P-002831/commercial-use-and-monetization-restrictions/ — 2026-10-18 — [T] "This clause is no longer published"; no "April 19, 2026" date found.
 
 ## Changelog
 
 - **v0.1, 2026-10-18.** First draft by a Haiku scribe, built from research/games.md (Sonnet researcher, 2026-10-18) and CHARTER.md. Open items are marked TODO(research). Not yet reviewed at the advisor gate (rubric: meaning, specificity, accuracy, feasibility, ethics, usability).
+- **v0.2, 2026-10-18 (games round 1).** Applied the Fable round-1 review: Windows and VectorCraft (charter Known facts) replace the OS TODOs, with Inkscape as the named fallback; the Minecraft-edition TODO is the only one left in Decision 2; Replay Mod and Flashback described as Java Edition mods; Messex quote cited to [15] and metronome to [14]; Modrinth telemetry confirmed; Brier's talk tagged free and watched before Gaynor's; MagicaVoxel licence taken from the site (Exercise 6); the withdrawn April 19 date is no longer cited; [41] URL updated; synthetic-voice ban and surprise-mode real words added; surprise-safe contribution rule added to Principle 8; excerpt-saving step added to Exercise 7.

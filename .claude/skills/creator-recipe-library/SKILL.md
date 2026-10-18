@@ -23,21 +23,39 @@ Give Claude agents on the Life Journey project one repeatable way to use creator
 - Any request to use real family material before the pipeline is locked. The charter forbids it.
 - Giving legal conclusions. You may give a reading of a statute, but label it "not legal advice" and name the unknown jurisdiction.
 
+## Reachability (sandbox, verified 2026-10-18)
+
+Check this before any fetch. Do not retry these. Route them to the maker's browser, and cite only what was read.
+- `www.reddit.com` and `old.reddit.com`: refused by the fetch tool.
+- `x.com`: HTTP 402. `medium.com`: HTTP 403.
+- `youtube.com/watch`: redirects to a CAPTCHA. YouTube's oEmbed returns the title and channel only, which shows a video exists, not what it shows.
+- `minecraft.net`: HTTP 503 (usage guidelines and store pages).
+- Web search: the shared 200-call budget was used up at turn start; siblings in the same turn can exhaust it.
+
 ## Procedure
 
 1. Read `CHARTER.md`. Note principle 4 (real memories stay real), principle 5 (dignity and the proxy), and the rule that real photos are gathered only after the pipeline is locked.
 2. Read the Summary and the Ranked list in `research/creator-threads.md`. Find the card by its number (C1 to C15).
 3. Read the card's evidence tag. [T] means a tool or terms page was read. [L] means it was tested in the sandbox. (M) means judgment. UNVERIFIED means not confirmed.
-4. Before you say anything about creator practice, check the reachability record and the open-questions list in the note. If the answer is a listed gap, write "not reached" and add a TODO(research) line. Never fill a gap from memory.
+4. Before you say anything about creator practice, check the Reachability section above and the open-questions list in the note. If the answer is a listed gap, write "not reached" and add a TODO(research) line. Never fill a gap from memory.
 5. Check the gates the card depends on: the maker's GPU model, the event's jurisdiction, and the proxy's approval for face work or a hard chapter. If any gate is unknown, set the verdict to hold.
 6. Check each tool's status and record it in the card. Install editors and Minecraft helpers only from their official pages, for example Kdenlive [43] and Arnis [56]. Record whether the tool is archived (Microsoft Old Photos [23], FILM [26]), paid-only, telemetry on by default (Eagle Animation [61]), uploads family material (pasteup's Gemini API [60]), or licence limits.
-7. If the card has a scriptable part, test it. At the time of the note, the sandbox had CPU only, ffmpeg 6.1.1, Python 3.13, Pillow and numpy, and no GPU. Re-check your own environment. The tested recipes are [64][65][66]. Keep test scripts in a folder the team has agreed on. TODO(research): the note's scripts were scratchpad only, so the repo path is not set.
+7. If the card has a scriptable part, test it. At the time of the note, the sandbox had CPU only, ffmpeg 6.1.1, Python 3.13, Pillow and numpy, and no GPU. Re-check your own environment. The tested recipes are [64][65][66]. Keep test scripts in a folder the team has agreed on. The runnable scripts are committed at `research/creator-threads-fixtures/` (`align_eyes.py`, `kenburns_xfade.py`, `jitter_twos.py`), with a README.
 8. Write or update the card using this template: Source and date; Creator and incentive; Goal; Tools and cost (with the checked date); Steps; Time and cost; Quality (does it look generic?); Charter principles; Free-desktop adaptation; Verdict. Add two scores from 1 to 5: R (relevance to the project) and F (feasibility for a learner plus agents by 2027-02-27).
 9. Tag every claim and cite it by its Sources number. Copy each cited source into the document's Sources section. Never cite a URL you have not seen in a fetch or search result.
 10. Run the quality bar, then the ethics gate. Set one verdict: adopt, prototype, hold, watch or do not follow.
 11. Log the change in the playbook's changelog. Close a TODO(research) only with a source or a test result.
 
 ## Checklists
+
+### Judging a creator thread
+- [ ] The original post date is found, and the checked date is recorded.
+- [ ] The incentive is visible (a course, an app, an affiliate link, a sale) and recorded.
+- [ ] It shows the process and at least one failure, not only the result.
+- [ ] A paid phone app without a desktop equivalent makes the recipe not reproducible.
+- [ ] Reel grammar (beat-synced zooms, whip transitions, trending sounds): harvest the technique, discard the style.
+- [ ] Face swap, a synthetic voice or invented scenes: reject.
+- [ ] The result is shown on real old photos, not clean modern portraits.
 
 ### Before adopting a recipe
 - [ ] The source has a date and a checked date.
@@ -96,7 +114,7 @@ Give Claude agents on the Life Journey project one repeatable way to use creator
 - **Face animation needs the proxy.** LivePortrait-type tools need approval and a visible label. Its authors warn about deepfake misuse [21].
 - **Covert gathering.** No cloud photo libraries, shared devices or family group chats (charter).
 - **Uploading tools.** Check before use. pasteup sends prompts and images to the Gemini API [60]. Eagle Animation sends telemetry by default; switch it off [61].
-- **Music.** Family recording first. Credit library tracks as the licence requires [11][12]. AI music is a scratch track only. Suno's free-plan output is personal and non-commercial [1][5].
+- **Music.** Family recording first. Credit library tracks as the licence requires [11][12]. AI music is a scratch track only. Suno's free-plan output is personal and non-commercial [1][5]. The terms do not use the phrase public performance. They bar commercial performing of Output for every tier and require a Download before any commercial use. A non-commercial family screening is therefore not restricted by the terms; a ticketed, sponsored or venue-promoted screening would be. Verified on suno.com/terms 2026-10-18. Not legal advice; jurisdiction unknown [1].
 - **Public screening.** The US definition of "publicly" [16] is a reading of a statute, not legal advice. The jurisdiction is unknown.
 - **No reel grammar.** Do not copy beat-synced zooms, whip transitions or trending sounds.
 
@@ -136,6 +154,6 @@ Give Claude agents on the Life Journey project one repeatable way to use creator
 - [56] Arnis. https://github.com/louis-e/arnis. Copyright 2022-2026. Builds Minecraft worlds from OpenStreetMap; Apache-2.0; official sources are GitHub and arnismc.com only.
 - [60] pasteup. https://github.com/tmoody1973/pasteup. Copyright 2026; version 1.1.0. MIT; sends prompts and images to the Gemini image API.
 - [61] Eagle Animation. https://github.com/brick-a-brack/eagle-animation. Undated. GPL-3.0; telemetry to PostHog on by default, switchable off in Settings.
-- [64] align_eyes.py (local test, scratchpad only, not kept in the repo). Worst error 1.36 px on three synthetic cases. Code in the research note, T1.
-- [65] kenburns_xfade.sh (local test, scratchpad only). 13.0 s, 312 frames, 5.7 s render; the looped-input trap. Code in T3.
-- [66] jitter_twos.py (local test, scratchpad only). 24 of 24 held pairs identical, 23 of 23 pose changes, deterministic for a seed. Code in T4.
+- [64] `research/creator-threads-fixtures/align_eyes.py` (committed 2026-10-18). Original run: worst error 1.36 px on three synthetic cases. Same function as research note T1.
+- [65] `research/creator-threads-fixtures/kenburns_xfade.py` (Python port of the tested bash, committed 2026-10-18). Original run: 13.0 s, 312 frames, 5.7 s render; the looped-input trap. Research note T3.
+- [66] `research/creator-threads-fixtures/jitter_twos.py` (committed 2026-10-18). Original run: 24 of 24 held pairs identical, 23 of 23 pose changes, deterministic for a seed. Research note T4.

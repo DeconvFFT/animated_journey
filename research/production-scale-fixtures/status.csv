@@ -1,0 +1,5 @@
+shot_id,chapter,module,class,route,beat,target_s,actual_s,status,gate,ver,kind,inputs,cloud_max,consent,hard_flag,label_level,reuse_set,seed,maker_est_min,maker_act_min,agent_est_min,agent_act_min,render_s,render_where,rework_n,gens_tried,gens_kept,owner_next,priority,locked,updated,note
+LJ-C01-S001,C01,M1,D,A,"title card, film title, test",4.0,,approved,G2,v003,appr,,none,na,0,L1,titles,20261120,5,4,10,12,95,container,1,,,maker,must,0,2026-11-22,TEST ROW - delete
+LJ-C01-S002,C01,M1,A,B,"slow push on a kitchen photo, test",6.0,,in_review,G2,v002,draft,LJ-B00-0001-F__L1,none,pending,0,L2,kitchen,20261121,2,,10,11,40,container,0,,,maker,must,0,2026-11-23,TEST ROW - delete
+LJ-C01-S003,C01,M1,C,blender,"hero camera move through the kitchen set, test",8.0,,drafting,G1,v001,draft,LJ-S-KITCHEN-01,none,na,0,L4a,kitchen,20261122,60,,60,,2150,container,0,,,agent,should,0,2026-11-23,TEST ROW - delete
+LJ-C01-S004,C01,M1,B,A,"object clock, 1975 to 1985, test",5.0,,revise,G2,v004,draft,,none,na,0,L1,clock,20261123,12,20,25,30,180,container,2,,,agent,must,0,2026-11-24,TEST ROW - delete

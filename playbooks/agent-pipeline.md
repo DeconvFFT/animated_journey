@@ -44,7 +44,7 @@ The first real checkpoint is the one-chapter slice, reviewed in week 9 on Sunday
 - Sound: 48 kHz, 24-bit.
 - Master: ProRes 422 HQ. Access copy: H.264 (details in Templates).
 
-**Step 2. Learn your PC (week 1).** Do Exercise 1. Then install and test the tools on the Windows PC. The list is Git, ffmpeg with ffprobe, Python 3.13 or `uv`, and the Craft apps as portable zips pinned to a version [3][4]. The exact download steps and Windows package names are TODO(research); the package IDs for ffmpeg and Python were not verified. Run the five-minute tests described in `research/craft-visual.md` and `research/craft-motion.md` (R7) [3][4].
+**Step 2. Learn your PC (week 1).** Do Exercise 1. Then install and test the tools on the Windows PC. The list is Git, ffmpeg with ffprobe, Python 3.13 or `uv`, and the Craft apps as portable zips pinned to a version [3][4]. Install the first three from PowerShell with winget. These IDs were read from the winget manifests on 2026-10-18 and have not been run on Windows yet: `winget install --id Git.Git -e` (Git 2.55.0.5), `winget install --id Gyan.FFmpeg -e` (ffmpeg 9.0.2; this is not the 6.1.1 build the container uses, so the colour-patch test must run on it), and `winget install --id Python.Python.3.13 -e` (3.13.15) [69][70][71]. Open a new terminal afterwards so PATH refreshes. The Craft app download steps are TODO(research). Run the five-minute tests described in `research/craft-visual.md` and `research/craft-motion.md` (R7) [3][4].
 
 Optional: Claude Code can run natively on Windows with a PowerShell one-liner. It needs Windows 10 version 1809 or later and at least 4 GB of RAM. Sandboxing is not supported on native Windows [46]. Do not use the Claude desktop app for this work. The charter records that it uses too much memory on this PC [1].
 
@@ -57,13 +57,13 @@ Optional: Claude Code can run natively on Windows with a PowerShell one-liner. I
 
 A route that fails its spike is dropped, or moved to the PC. Do not argue with the result.
 
-**Step 4. Write the shot brief (gate G0).** The agent drafts one short brief per shot. It says what the shot is for, where the material comes from (an interview excerpt or a document ID), how long it lasts, which route builds it, each input and its `cloud` level, the palette, the motion family, the seed, the audio cues and the checks it must pass. You approve or comment in `feedback/<shot>.md`. A shot with an input at `cloud: none` cannot be built in the cloud until you change that level.
+**Step 4. Write the shot brief (gate G0).** The agent drafts one short brief per shot. It says what the shot is for, where the material comes from (an interview excerpt or a document ID), how long it lasts, which route builds it, each input and its `cloud` level, the palette, the motion family, the seed, the audio cues and the checks it must pass. You approve or comment in `feedback/<shot>.md`. If an input is `cloud: none`, the agent still writes the brief, the script and the expected `render.json`, commits them and marks the shot `pc-render`. You run `lj.ps1 run <shot>` on the PC and push the validator JSON and the preview; only the cloud render is skipped. Raising the level is never the agent's move.
 
 **Step 5. Approve three style frames (gate G1).** Before any motion, the agent makes three still frames that show the look. The palette is six colours or fewer, sampled from her prints. Type and textures are recorded with their licence files. You approve them. For a hard chapter, the trusted relative who acts as proxy can look too.
 
 **Step 6. Build and render a draft (agent, 10 to 40 minutes per shot).**
 - Route A: the scene exposes `seekTo(t)`. That function sets the picture for time `t` and does nothing else. A repo script captures the frames in sharded, resumable jobs of 10 minutes or less, writing each frame to disk as it goes [49][50].
-- Route B: a seeded generator picks direction, duration, easing, hold and drift for each photo, so no two photos move alike. Pillow moves each still. Grain and paper are pre-made overlays, not live filters, because live filters are slow and do not repeat exactly (M6, M10). ffmpeg does the grade, the dissolves and the encode.
+- Route B, a parameterised photo move: a seeded generator picks direction, duration, easing, hold and drift for each photo, so no two photos move alike. Pillow moves each still. Grain and paper are pre-made overlays, not live filters, because live filters are slow and do not repeat exactly (M6, M10). ffmpeg does the grade, the dissolves and the encode.
 
 **Step 7. Self-check (agent, at most three fix loops).** The validators in Templates run before anything is handed on. A failure goes into the shot's review file. It is never hidden.
 
@@ -98,7 +98,7 @@ Do these in order. Use only made-up or test material. No family photos until the
   3. Run `Get-CimInstance Win32_VideoController` to get the graphics card name. If it is an NVIDIA card, also run `nvidia-smi`. If not, run `dxdiag` [R10 in the research].
   4. In File Explorer, check the free space on the drive you plan to use.
   5. Ask: does anyone else use this PC? Write the answer down. A shared family device changes the surprise risk.
-  6. Save the answers in a text note. Later, the `lj.ps1 doctor` script is meant to write them to `maker-pc.json`. That script is designed but not written yet [TODO(research)].
+  6. Save the answers in a text note. Later, the `lj.ps1 doctor` script is meant to write them to `maker-pc.json`. That script is designed but not written yet [TODO(research)]. Its output must not contain your Windows user name or the PC's name, because `maker-pc.json` lives in the repo (Pitfall 10).
 - **Time:** 20 minutes.
 - **What good looks like:** five answers written down, each with the command that produced it. You can say whether the edition is Home or Pro. That matters because BitLocker needs Pro or higher, and Home's device encryption does not cover USB drives [61].
 
@@ -108,7 +108,7 @@ Do these in order. Use only made-up or test material. No family photos until the
   1. Open claude.ai/code in a browser tab. This needs a Pro, Max, Team or Enterprise plan [50].
   2. Start a session on a private repo that holds no personal files.
   3. Ask the agent: "Report the CPU count, total memory, free disk, the Playwright and Chromium versions and the ffmpeg version. Change nothing."
-  4. Close the tab. Come back after 10 minutes and check that the session and its files are still there.
+  4. Close the tab. Come back after 10 minutes and check that the session and its files are still there. Expect the files to be there. A background job that was running when the machine was reclaimed is gone, and whether a pause alone ends one is still open (spike S4).
 - **Time:** 30 minutes.
 - **What good looks like:** you can write down the four numbers. The research measured about 4 vCPU, 16 GB of RAM, 24 to 28 GB of free disk, Playwright 1.56.1, Chromium 141 and ffmpeg 6.1.1 on 2026-10-18 (M1 to M3) [67]. The numbers can change. You understand that idle sessions pause, and that a reclaimed machine does not restore background work that was still running [49][50].
 
@@ -173,7 +173,8 @@ Do these in order. Use only made-up or test material. No family photos until the
 | Colour | Rec. 709, sRGB | Tag BT.709 on every H.264 file |
 | Sound | 48 kHz, 24-bit WAV | Measure loudness with `ebur128` |
 | Master | ProRes 422 HQ | About 590 MB per minute on a test pattern (M5) |
-| Access copy | H.264 High, yuv420p, BT.709, limited range, faststart, CRF 16 to 18 | [3] |
+| Alpha overlay | ProRes 4444, yuva444p10le, BT.709 | Not a master. Encode with the ProRes 4444 chain in `skills/agent-first-production-pipeline/SKILL.md` step 8 (measured in research Q-F1). Tags are not enough: the colour-patch test must pass (Validator checklist). An RGBA PNG sequence from EffectCraft is preferred (`research/craft-motion.md`, issue #340) |
+| Access copy | H.264 High, yuv420p, BT.709, limited range, faststart, CRF 16 to 18 | [3]. Encode with the chain in SKILL step 8, then pass the colour-patch test (Validator checklist) |
 | Safety copy | 1080p H.264, CRF 20, High profile, level 4.1 | [3] |
 
 **Shot brief** (one file per shot, `brief.yaml`)
@@ -224,15 +225,16 @@ Severity words are `blocker`, `should` and `nice`. The agent answers each line i
 - **G1 style frames:** Could this be any family's film? Six colours or fewer, sampled from her prints? Every font and texture has a licence file? Reconstructions visibly stylised?
 - **G2 shot draft:** Validators green, with the JSON attached? Hold of 0.75 s or more after each payoff? No loops or stretches to fill a slot? Faces and type checked on full-resolution crops? Template-risk output reviewed? Open items listed, not hidden?
 - **G3 refine:** Your changes pass the hand-back validators? Nothing you did was lost? Labelled as yours?
-- **G4 chapter:** Varied move families, holds and silence? Palette and type continuous? Captions within the length and reading-speed limits in the format track [7]? Loudness plan?
+- **G4 chapter:** Varied move families, holds and silence? Palette and type continuous? Captions within the length and reading-speed limits in the format track [7]? Loudness plan? No more than three class-A shots in a row without a held still, a class B, C or D shot, or a voice-only beat? At least one shot per chapter where the photo does not move at all?
 - **G5 dignity (proxy):** Each hard topic (loss, illness, separation, money, conflict) is cleared or removed? Nothing she might not want seen in front of others is in the shared version?
 - **G6 technical:** Master is ProRes 422 HQ. Access copy is H.264, yuv420p, BT.709, limited range. Frame count, duration and 48 kHz audio are right. Loudness is in target. The file plays on the venue-class TV. Checksums are logged. Two backups are verified.
 
 A gate passes only when every score is 4 or higher and nothing critical is open [1].
 
 **Validator checklist** (before any hand-off)
-- **Video:** run `ffprobe -v error -show_entries stream=codec_name,profile,pix_fmt,width,height,r_frame_rate,avg_frame_rate,nb_frames,color_space,color_range,color_primaries -of json <file>`. The frame rate must equal the project rate. H.264 must show yuv420p, BT.709 and limited range. The frame count must equal duration times frame rate. Then run `ffmpeg -v error -i <file> -f null -`, which must print nothing. [R8]
+- **Video:** run `ffprobe -v error -show_entries stream=codec_name,profile,pix_fmt,width,height,r_frame_rate,avg_frame_rate,nb_frames,color_space,color_range,color_primaries,color_transfer -of json <file>`. The frame rate must equal the project rate. H.264 must show yuv420p, BT.709 and limited range. The frame count must equal duration times frame rate. Then run `ffmpeg -v error -i <file> -f null -`, which must print nothing. [R8]
 - **Alpha:** ProRes 4444 files must show an alpha pixel format (`yuva444p12le` was reported in testing, M12).
+- **Colour matrix (pixels, not tags):** encode a 3-patch frame (pure red 255,0,0; 50% grey 128,128,128; skin tone 224,172,140) through the shot's exact command line, decode it to `rgb24` with `scale=in_color_matrix=bt709:in_range=tv:out_range=pc,format=rgb24`, and require every channel within ±3/255. Run it once per command-line template, and again whenever the ffmpeg version differs (the PC build is ffmpeg 9.0.2 from winget, not 6.1.1). Tags alone are not evidence: a BT.601 matrix under BT.709 tags passes every tag check.
 - **SVG:** renders without being blank. Every ID survives. Do not run the default optimiser preset, because it strips every ID (M17).
 - **ORA:** the zip opens, `stack.xml` parses, every layer file exists, and names match the ID pattern.
 - **Timeline (OTIO):** parses, every media file exists, every clip sits inside its available range, and the rate matches the project.
@@ -252,12 +254,12 @@ A gate passes only when every score is 4 or higher and nothing critical is open 
 
 | Class | What it is | Share of a 10-minute film | Your time per shot |
 |---|---|---|---|
-| A | Templated photo move | about 60% | about 2 minutes |
+| A | Parameterised photo move (seeded; capped by gate G4) | about 60% | about 2 minutes |
 | B | Designed graphic | about 25% | about 12 minutes |
 | C | Hero shot (3D or Blender) | about 10% | about 60 minutes |
 | D | Title or caption | about 5% | about 5 minutes |
 
-A 10-minute film has about 120 shots, about 20 per chapter [R4 and Q7 in the research].
+A 10-minute film has about 120 shots, about 20 per chapter [R4 and Q7 in the research]. No more than three class-A shots in a row without a held still, a class B, C or D shot, or a voice-only beat. At least one shot per chapter where the photo does not move at all (gate G4).
 
 **Names**
 - Assets: `LJ-<set>-<seq>-<side>`, for example `LJ-B03-0042-F` [2].
@@ -279,7 +281,7 @@ For each decision: the options, then our current lean and why. The lean is a sta
 | 6 | Encryption on the drive | BitLocker (Windows Pro or higher) or VeraCrypt volume | VeraCrypt if the PC is Home. BitLocker if it is Pro. Decide after Exercise 1 [61][63]. |
 | 7 | Second copy off-site | Encrypted cloud copy (Backblaze B2 with rclone crypt, or Cryptomator [62]), Hetzner Storage Box, or a second SSD kept elsewhere | Lean: B2 at $6.95 per TB-month with names and contents encrypted [59][60], run from your PC. A second SSD kept elsewhere is simpler and avoids any cloud copy. Your call. Hetzner's prices were not shown on the page it was read from [64]. |
 | 8 | Git LFS for media | Yes or no | No. Media lives on the encrypted drive, with checksums in the repo. LFS rates for personal accounts are UNVERIFIED [54][57]. Plain Git warns above 50 MiB and blocks above 100 MiB [56]. |
-| 9 | Paid image and video generation | Gemini API paid tier, Replicate [66], none | Paid tier only, and only for photos you have cleared. Budget about $3 to $40 per chapter (ESTIMATE) [65]. Run the image batch before 2026-12-01, because the page announced increases then. Which models change is not clear, so re-read the page first [65]. |
+| 9 | Paid image and video generation | Gemini API paid tier, Replicate [66], none | Paid tier only, and only for photos you have cleared. Budget about $3 to $40 per chapter (ESTIMATE) [65]. No image or video model is named in the announced changes of 2026-12-01 and 2027-01-01, so no date forces the batch: run it when cleared photos exist, and re-read the page in the week it runs [65]. |
 | 10 | Local agent on your PC | None, a local Claude Code session with Remote Control [47], or only the script | Script only, plus cloud agents. A local session only for chapters that need live driving of a Craft app. Watch its memory: several GitHub reports describe `claude.exe` growing very large on Windows (search results only) [53]. |
 | 11 | Who is in on it, and the proxy for hard chapters | Names still open | A trusted close relative as proxy for hard chapters (charter principle 5) [1]. The name is yours to choose. |
 | 12 | Venue and screening | Party, private screening, or both | Still open (charter) [1]. Plan one playback test on a TV at about 3 metres from a USB-playable file [7]. |
@@ -291,15 +293,15 @@ For each decision: the options, then our current lean and why. The lean is a sta
 3. **Live filters are slow and not repeatable.** A full-frame grain filter ran at 1.2 frames per second, and two runs with two filters differed in 5 of 36 frames by 12 to 80 pixels (M10). Fix: bake grain and paper into overlays. The cause of the small differences is UNVERIFIED (TODO(research)).
 4. **The container pauses and can be reclaimed.** Work that was still running is not restored [49][50]. Whether a running job keeps it awake is unknown (spike S4). Fix: jobs of 10 minutes or less, resumable frames, state kept in Git. Fallback: run long jobs on the PC or on a rented machine.
 5. **Disks fill up.** A 10-minute film at 24 frames per second is about 14,400 frames. Textured PNG frames are about 2 MB each, so loose frames would need about 29 GB. The container has about 24 to 28 GB free (M1, M10). Fix: pipe frames straight into ffmpeg, or encode each chunk and delete its frames.
-6. **Colour range mistakes.** Remotion's default output was full-range and tagged `bt470bg` (M13). Fix: set BT.709 and limited range explicitly, and check with ffprobe.
+6. **Colour range mistakes.** Remotion's default output was full-range and tagged `bt470bg` (M13). Fix: set BT.709 and limited range explicitly, and check with ffprobe. The ffmpeg chains are not interchangeable across builds: the bare `-pix_fmt yuva444p10le` ProRes 4444 encode gave BT.601 pixels under BT.709 tags on ffmpeg 6.1.1 (10-bit luma 326 against 250) and correct pixels on 9.0.2 (Q-F1). On the Gyan 7.1.1, 8.1.2 and 9.0.2 builds tested, `-color_primaries` and `-color_trc` did not reach the stream, so the `setparams` filter restores them. Check the pixels with the colour-patch test, not only the tags. EffectCraft's ProRes 4444 is "tagged bt709 but sRGB-encoded" (open issue #340, `research/craft-motion.md`): prefer the RGBA PNG sequence, and use ProRes 4444 only after the colour-patch test passes.
 7. **Alpha software.** The Craft apps are early alpha and release often [3][4]. EffectCraft's command-line syntax is read from its source at tag v0.11.1 [68]. Fix: every step has a non-Craft fallback. Render to a new file name each time. Read the import report. Keep the source files regenerable.
 8. **Stills at the wrong size in FilmCraft.** FilmCraft reads neither EXIF rotation nor colour profiles, and it decodes whole files to 8-bit [3]. A 3600 by 2400 still in a 1080p sequence needs a scale of 53.3%, or a pre-made 2880 by 1620 copy. Fix: convert stills before import.
 9. **Cloud privacy.** Anything Claude sees in a session, including a photo, becomes part of the transcript [51]. Remote Control also stores the transcript on Anthropic's servers to sync it [51]. Fix: the `cloud` level and the setting in Templates.
-10. **Surprise leaks.** Phone notifications can show on a shared screen. So can repo names, commit messages, backup folder names and bucket names. Fix: innocuous names, notifications off on shared devices, a separate browser profile for this project [1][3].
+10. **Surprise leaks.** Phone notifications can show on a shared screen. So can repo names, commit messages, backup folder names and bucket names. Fix: innocuous names, notifications off on shared devices, a separate browser profile for this project [1][3]. The output of `lj.ps1 doctor` must not contain your user name or the PC's name, because `maker-pc.json` is in the repo.
 11. **The CLI cannot click apps on Windows.** Computer use in the CLI is macOS only. On Windows only the Desktop app can do it [48]. Fix: use the Craft apps' own control channels, or files, or your own hands.
 12. **Loopback control ports.** VectorCraft and LightCraft's `--control` ports have no authentication. Start them only for a session and close them afterwards [4].
 13. **Cost creep.** An unattended 22-agent run cost $207.58 and about 8 hours for a 90-second film [38]. Fix: no unattended multi-agent studios on this project. Use one shot per agent, at most three in parallel, and two revision rounds.
-14. **Licence and price drift.** Remotion says its licence changes in version 5.0 [9]. GSAP's licence may be revised, though earlier versions stay usable [15]. Gemini prices change on 2026-12-01 and 2027-01-01 [65]. Fix: pin versions, keep vendored copies with the licence files, and re-read each page before you upgrade.
+14. **Licence and price drift.** Remotion says its licence changes in version 5.0 [9]. GSAP's licence may be revised, though earlier versions stay usable [15]. Google's pricing page announces changes on 2026-12-01 and 2027-01-01 for Gemini 4 Argon, Gemini 3.8 and 3.6 Flash, the 3.8 TTS models and Robotics ER 2, and names no image or video model among them [65]. Fix: pin versions, keep vendored copies with the licence files, and re-read each page before you upgrade.
 15. **Memory on Windows.** Several reports describe the Claude Code process on Windows growing to very large sizes (search results only). One was closed as fixed in version 2.1.74, according to its reporter [53]. Fix: keep most work in the cloud, keep local sessions short, and watch Task Manager in week 1.
 16. **Words in her mouth.** Do not clone a voice, do not have an agent sing a relative's words, and do not type new sentences in her handwriting font. Her handwriting may be used only for words she actually wrote [2][1].
 
@@ -374,6 +376,9 @@ Generation prices
 First-hand
 - [67] Container measurements M1 to M21, 2026-10-18. Method and numbers are in the research notes, Findings Q3. Scratch files were not kept in the repo.
 - [68] EffectCraft v0.11.1 source (read only), https://github.com/storytold/effectcraft, tag `v0.11.1`, read 2026-10-18. Exact CLI syntax for render and template commands.
+- [69] winget manifest for Gyan.FFmpeg 9.0.2, https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/g/Gyan/FFmpeg/9.0.2/Gyan.FFmpeg.installer.yaml, read 2026-10-18. Package id and version only; not run on Windows.
+- [70] winget manifest for Python.Python.3.13 3.13.15, https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/p/Python/Python/3/13/3.13.15/Python.Python.3.13.installer.yaml, read 2026-10-18. Package id and version only; not run on Windows.
+- [71] winget manifest for Git.Git 2.55.0.5, https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/g/Git/Git/2.55.0.5/Git.Git.installer.yaml, read 2026-10-18. Package id and version only; not run on Windows.
 
 ## Changelog
 
@@ -384,3 +389,4 @@ First-hand
   - The Gemini 2.5 Flash Image shutdown date (2026-10-02) has passed [65].
   - Spike S1 is still the gate for any Craft command-line use inside the container.
 - **Open items (TODO(research)):** the maker's PC specifications; whether a running job keeps the cloud container awake (S4); whether cloud sessions accept image attachments; Remote Control on native Windows; memory of a browser tab and the local CLI; plan usage limits for 19 weeks; GitHub LFS personal rates; which Gemini models change price and whether Veo has a batch discount; prices for external SSDs, Hetzner Storage Box and Replicate editing models (Kontext, Qwen-Image-Edit); Remotion 5.0 licence text; the cause of SVG filter differences; cloud Cycles and EEVEE stability across container images; HyperFrames determinism rules; the Manim apt route; the Windows package IDs for ffmpeg and Python; `rclone` is not installed in the container, so backups run from the PC.
+- **2026-10-18, v2 (round-1 review nudges).** Colour chains replaced with the measured Q-F1 lines (the review's "`format=` before `scale=`" sentence was not applied, because the follow-up could not reproduce it); colour-patch validator added; M12 marked "tags verified, matrix not verified, corrected"; Gemini wording corrected (no image or video model named, no batch date forced); `cloud: none` now routes to the PC as `pc-render` instead of stopping the shot; class A renamed "parameterised photo move" with a G4 cap; winget ids added to Step 2; `lj.ps1 doctor` must not print user or machine names.

@@ -12,7 +12,7 @@ Track `ai-imagery` · Researcher: Sonnet · Written and verified 2026-10-18 (Sun
 
 ## Summary
 
-1. **Proposed house rule: "If it looks like a photograph, it is a photograph (possibly restored). Anything invented is drawn."** Photoreal generation of people, scenes or voices is banned; reconstructions are always in the stylised house look (voxel, paper, clay). This makes Principle 4 visible to the viewer, and pairs with a six-rung label ladder (L0 to L5, Q8), IPTC `DigitalSourceType` metadata [89][90] and a per-asset manifest.
+1. **Proposed house rule: "If it looks like a photograph, it is a photograph (possibly restored). Anything invented is drawn."** Photoreal generation of people, scenes or voices is banned; reconstructions are always in the stylised house look (voxel, paper, clay). This makes Principle 4 visible to the viewer, and pairs with a six-rung label ladder (L0 to L5, Q8), IPTC `DigitalSourceType` metadata [89][90] and a per-asset manifest. At L2, generative repair is permitted on non-face regions only. Faces at L2 get non-generative fixes, or CodeFormer or GFPGAN with blend-back. Any generative change to a face moves the image to L3, where it must look drawn, or the image is rejected (round 1 review).
 2. **Scanning.** Prints at 600 ppi (Library of Congress: 400 to 600 for enlargements, "above 600 may be unnecessary" [1]); 35 mm film at about 3200 to 4000 ppi (M, convention, not in any source I could read); always scan the backs; save a 16-bit TIFF master (M); use stable IDs rather than date-first names, because LoC's `yyyymmdd` naming [1] fails when the date is unknown; follow 3-2-1 backup [2]. A phone on a stand is fine for ordinary 4x6 prints; film wants a flatbed with film holders or a camera with a 1:1 macro lens [5][6].
 3. **Scanner supply has shifted.** Epson's own page lists the V600 as "Discontinued" [9]; the V850 Pro is $1,999 with an unclear cart state [10]; Google PhotoScan still installs but is frozen (last Android update 2023-07-24 [7]; "frozen in time" [6]); VueScan is alive (9.8.59 on 2026-09-26, 8,000+ scanners) and sidesteps old Epson drivers [11].
 4. **Restoration: non-generative first.** Face restorers invent skin and features. GFPGAN v1.3 "may slightly change identity" [17]; CodeFormer's fidelity weight `w` is the honesty dial (higher means more faithful) [15]; PULSE-style super-resolution invents "imaginary faces of people who do not exist" [30]. Diffusion restorers (SUPIR, SeedVR2) fit 8 to 16 GB with tricks [22][24] but invent detail, and SUPIR is non-commercial [21]. I found no evidence on faded 1970s to 90s prints specifically: **untested on archival photos**.
@@ -21,12 +21,12 @@ Track `ai-imagery` · Researcher: Sonnet · Written and verified 2026-10-18 (Sun
 7. **A per-person LoRA is not needed and is not the default.** Under Principle 4 it is conditionally acceptable (consent, local training, used only to restyle real photos, deleted afterwards, labelled). Prefer a style LoRA trained on the maker's own artwork.
 8. **Stylisation.** Edit models that start from the real photo (FLUX.1 Kontext dev, Qwen-Image-Edit-2511, FLUX.2 klein, Gemini image models) are the practical route. A Kontext style-LoRA pack includes Clay Toy, Origami, Paper Cutting, Pixel, LEGO and 3D Chibi, but states no licence [45]. Non-AI routes (hand-built voxel/pixel characters, posterise, Inkscape trace, MapartCraft palettes) keep likeness by construction and fit the no-GPU tier.
 9. **Morphing, ranked by honesty.** Classic landmark morph and plain cross-dissolve add no new content (CPU, tested commands in sandbox [102]). FILM/RIFE are built for near-duplicate frames [61][62], not 30-year gaps. First/last-frame video models (Wan2.1/2.2 FLF2V, Veo 3.1 `lastFrame`, LTX-2 keyframes) invent intermediate faces and motion [67][70][74][82]. Default: classic morph, or dissolve through real intermediate photos; first/last-frame generation only as a labelled "generated in-between".
-10. **Image-to-video.** Local: Wan2.2 TI2V-5B (ComfyUI says it fits 8 GB with offloading [70]; the README says 24 GB [69]), FramePack (6 GB, RTX 30/40/50 only [72]), WanGP (6 GB for select models, active 2026-10-15 [77]). LTX-2 needs 32 GB+ [75]. A 5-second cloud clip costs about $0.25 (Veo 3.1 Lite), $0.50 (Veo 3.1 Fast), $2.00 (Veo 3.1 Standard) [51]; $0.35 (Kling 2.5 Turbo Pro on fal) [52]; $0.30 (Luma Ray3.2 720p on the Plus plan) [81]. For people who have died, avoid face animation (Deep Nostalgia style, about 100 million animations made [101]); use environment motion and parallax.
+10. **Image-to-video.** Local: Wan2.2 TI2V-5B (ComfyUI says it fits 8 GB with offloading [70]; the README says 24 GB [69]), FramePack (6 GB; RTX 30/40/50 tested, older cards untested [72]), WanGP (6 GB for select models, active 2026-10-15 [77]). LTX-2 needs 32 GB+ [75]. A 5-second cloud clip costs about $0.25 (Veo 3.1 Lite), $0.50 (Veo 3.1 Fast), $2.00 (Veo 3.1 Standard) [51]; $0.35 (Kling 2.5 Turbo Pro on fal) [52]; $0.30 (Luma Ray3.2 720p on the Plus plan) [81]. For people who have died, avoid face animation (Deep Nostalgia style, about 100 million animations made [101]); use environment motion and parallax.
 11. **Privacy, from terms I could read.** Gemini consumer app with Keep Activity on: used to train; uploaded photos may get human review; reviewed chats kept up to 3 years [84]. Gemini API unpaid tier trains and tells you not to submit personal data; paid tier does not train [85]. Luma's privacy policy lists model training with no opt-out stated [86]. Adobe says Firefly is not trained on customer content [87]. Replicate API predictions are deleted after an hour [88]. OpenAI, Runway, Kling, Midjourney, MyHeritage and Remini terms were unreadable: treat as no. Everything open-weight runs offline (ComfyUI has `--offline` [49]).
 12. **Labelling that exists today.** IPTC Digital Source Type already has the terms we need: `print`, `negativeFilm`, `positiveFilm`, `humanEdits`, `algorithmicallyEnhanced`, `compositeWithTrainedAlgorithmicMedia` ("Edited using Generative AI"), `trainedAlgorithmicMedia` [89]. Google's image and video outputs carry SynthID watermarks [50][82]; BFL API outputs carry C2PA metadata [33]. Documentary practice (Archival Producers Alliance cue sheet and credit templates [96], Partnership on AI direct versus indirect disclosure [94]) maps cleanly onto our ladder.
 13. **A no-GPU path exists** for scan, clean, cutout, parallax, morph/dissolve and grading. Tested here: ImageMagick `-morph`, ffmpeg `xfade`, `zoompan`, `minterpolate` [102]. Generative steps then go to cloud or a rented RTX 4090 ($0.34 to $0.89 per hour on RunPod, updated 2026-10-08 [83]).
-14. **Budget (ESTIMATE) for 300 photos:** 40 to 75 human hours, dominated by scanning, hand cleanup and review, not compute; cloud spend about $0 to $40 (16 GB+), $0 to $60 (8 to 12 GB), $30 to $120 (no GPU, cloud-heavy), scanner purchase excluded. Run a 30-photo vertical slice first (Principle 6).
-15. **Biggest evidence gap:** no source I could reach shows any generative edit model on low-resolution, faded or black-and-white family photos. Week 1 should be a five-photo bake-off judged by relatives who knew the person.
+14. **Budget (ESTIMATE) for 300 photos:** 40 to 80 human hours (45 to 80 with no GPU; Q9 table), dominated by scanning, hand cleanup and review, not compute; cloud spend about $0 to $40 (16 GB+), $0 to $60 (8 to 12 GB), $30 to $120 (no GPU, cloud-heavy), scanner purchase excluded. Run a 30-photo vertical slice first (Principle 6).
+15. **Biggest evidence gap:** no source I could reach shows any generative edit model on low-resolution, faded or black-and-white family photos. Week 1 should be a five-photo bake-off on stand-in photos with the same defects, not from her archive, judged by the maker and confirmed insiders. Real-photo line-ups move to the vertical slice.
 
 ---
 
@@ -65,7 +65,7 @@ Each question is also a pipeline stage. Tool details (price, hardware, platform,
 
 **Naming and manifest convention (proposal).**
 - ID: `LJ-<box>-<seq>-<side>` such as `LJ-B03-0042-F` (front) and `LJ-B03-0042-B` (back); rescans add `-R2`. Date goes in the manifest, with a confidence field, because many photos are undated. This departs from LoC's date-first names [1] on purpose.
-- `manifest.csv`, one row per scan: `id, box, medium, scan_date, device, ppi, bit_depth, profile, date_est, date_confidence, people, place, caption_source, consent_note, sha256, notes`. NARA asks for who, what, where, when [2]; LoC suggests a printed inventory [1].
+- `manifest.csv`, one row per scan: `id, box, medium, scan_date, device, ppi, bit_depth, profile, date_est, date_confidence, people, place, caption_source, interview_date, consent_note, sha256, notes`. NARA asks for who, what, where, when [2]; LoC suggests a printed inventory [1].
 - `steps.csv`, one row per derivative step: `derivative_id, parent_id, step_no, tool, version, settings, seed, invents (none / texture / colour / frames / faces), label_level, reviewer, approved`.
 - Folders: `01_masters`, `02_work`, `03_exports`, `04_reconstructions`; checksums with `sha256sum`; 3-2-1 backup [2].
 
@@ -119,10 +119,13 @@ Each question is also a pipeline stage. Tool details (price, hardware, platform,
 2. Face restoration at high fidelity (CodeFormer `w` 0.7 to 1.0 [15]), then blend back 40 to 60 percent over the plain upscale in a layer mask.
 3. Compare original and result by flicking between them at 100 percent. Reject results with new teeth, new eyelids or a changed jaw.
 4. Do not restore faces under about 64 px wide; they cannot support a likeness.
-5. Ask a relative who knew the person: "Does this look like X at that age?" (Principle 5 doubles as quality control).
+5. Ask a confirmed insider who knew the person (on the `GATHER.md` list, not yet written): "Does this look like X at that age?" (Principle 5 doubles as quality control). Real-photo reviews wait for the vertical slice.
 6. Gate with a script: compare face-embedding similarity between original and restored crops (insightface-style; the AI team can write it; threshold set during the vertical slice). UNVERIFIED approach.
 7. Record every step in `steps.csv` with an `invents` field and label (Q8).
 8. Colour: for the black-and-white childhood prints, treat colourisation as costume design. Check clothes, rooms and cars against family memory or other colour photos; keep skin tones muted; caption "colours estimated".
+9. Decide the restoration level per chapter from what the story needs, not from what the tool can do (round 1 review). Use one level per chapter, so the look holds.
+10. Treat fade, grain, Polaroid borders, the scalloped edge, date stamps and back-of-print handwriting as era signals. They stay unless the story needs them gone (Principle 3, texture over checklist).
+11. Keep an untouched L0 or L1 version of every hero photo in the timeline, and show the untouched original beside the restoration at least once. This was E1's reuse note, promoted to a principle.
 
 **Faded 1970s to 90s colour prints (M).** Fade is dye loss, usually a magenta or yellow cast with reduced contrast. This is a levels problem, not a colourisation problem: fix per channel before any AI. **Untested on archival photos:** no source I reached shows any of the generative tools above on such prints. Plan the bake-off (Open questions).
 
@@ -165,7 +168,7 @@ Each question is also a pipeline stage. Tool details (price, hardware, platform,
 2. If you need a face at a new angle, choose a reference from the same age band (child, teen, young adult, adult, older).
 3. Do not ask one LoRA or one embedding to span eras. If a LoRA is used at all, train one per age band.
 4. Make ageing a design attribute: hair colour and style, glasses, facial hair, posture, signature clothing, height relative to others. A voxel or clay character reads as "the same person" through those attributes (M).
-5. Test with a line-up: show five stylised faces to relatives and ask who is who and at what age. Pass mark set in the vertical slice.
+5. Test with a line-up: show five stylised faces to confirmed insiders and ask who is who and at what age. Run it on her real photos in the vertical slice, after the "who is in on it" decision. Pass mark set there.
 
 **4c. Is a LoRA on a family member's face acceptable under Principle 4?** Conditionally, and not by default.
 - Allowed under Principle 4: restyling real photos ("restyle" and "connect real photos") when the person (or, if they have died, the family) consents, which also meets Principle 5 and the consent core of the Partnership on AI framework [94].
@@ -203,7 +206,7 @@ Each question is also a pipeline stage. Tool details (price, hardware, platform,
 | Model | Key facts | Hardware | Notes |
 |---|---|---|---|
 | Wan2.2 TI2V-5B / I2V-A14B (Apache-2.0, released 2025-07-28) [69] | README: 14B single GPU needs 80 GB; TI2V-5B "at least 24GB" at 720p 24 fps; ComfyUI doc: 5B "should fit well on 8GB vram with the ComfyUI native offloading" [69][70] | 8 GB (5B with offload) to 24 GB+ | Wan2.2-Lightning 4-step LoRAs claim about 20x speed-up but artefacts at "extremely large motion" [71] |
-| FramePack (Apache-2.0) [72] | 13B next-frame-section model; 6 GB minimum; RTX 30/40/50 only; 4090 about 2.5 s per frame (1.5 with TeaCache); laptops 4 to 8x slower; Windows one-click, over 30 GB downloads | 6 GB+ | README favours "large, dynamic motions" over subtle ones; fake sites exist [72] |
+| FramePack (Apache-2.0) [72] | 13B next-frame-section model; 6 GB minimum; RTX 30/40/50 tested, older cards untested (README: GTX 10XX/20XX "not tested", not excluded); 4090 about 2.5 s per frame (1.5 with TeaCache); laptops 4 to 8x slower; Windows one-click, over 30 GB downloads | 6 GB+ | README favours "large, dynamic motions" over subtle ones; fake sites exist [72] |
 | WanGP (free to use locally; licence unstated) [77] | Wan 2.1/2.2, LTX family, Hunyuan 1.5 and more; "as little as 6 GB" for select models; Windows and Linux; NVIDIA GTX 10+ and AMD RDNA; v18.17 on 2026-10-15 | 6 GB+ | Good single front-end for low VRAM |
 | LTX-Video 0.9.x and LTX-2.x [73][74][75] | LTX-2.5 recommended, 66 GiB download; ComfyUI-LTXVideo wants a CUDA GPU with 32 GB+ and 100 GB disk; community 8-bit LTX-Video run on 8 GB claimed | 8 GB (old) to 32 GB+ | LTX-2 generates synced audio: ignore, we do not generate sound from photos |
 | HunyuanVideo-1.5 (8.3B, 2025-11-20) [76] | I2V 480p and 720p; minimum 14 GB with offload | 14 GB+ | Licence terms not read |
@@ -213,7 +216,7 @@ Each question is also a pipeline stage. Tool details (price, hardware, platform,
 
 | Service | Price basis | 5 s clip | Notes |
 |---|---|---|---|
-| Google Veo 3.1 Lite / Fast / Standard (Gemini API, paid) | $0.05 / $0.10 / $0.40 per second at 720p (with audio) [51] | $0.25 / $0.50 / $2.00 | Input image is the first frame; `lastFrame` for Veo 3.1; durations 4, 6 or 8 s; I2V `personGeneration` accepts only `allow_adult`; SynthID; stored 2 days [82] |
+| Google Veo 3.1 Lite / Fast / Standard (Gemini API, paid) | $0.05 / $0.10 / $0.40 per second at 720p (with audio) [51] | $0.25 / $0.50 / $2.00 | Input image is the first frame; `lastFrame` for Veo 3.1; durations 4, 6 or 8 s; I2V `personGeneration` accepts only `allow_adult` [82]. So photos with children get no cloud image-to-video. The Gemini API page is silent on children, and Google's Vertex page rejects child content when `personGeneration` is not `allow_all` [116]. Expect a refusal, not an altered video (M, UNVERIFIED; a paid test with a public-domain child photo is TODO(research)). SynthID; stored 2 days [82] |
 | Kling 2.5 Turbo Pro / Kling v3 via fal | $0.07 / $0.14 per second [52] | $0.35 / $0.70 | fal page has no retention statement [52] |
 | Luma Ray3.2 | 100 credits for 720p 5 s; 400 for 1080p; Plus $30 per 10,000 credits [81] | $0.30 (720p), $1.20 (1080p) on Plus | Privacy policy: see Q7 |
 | Runway | Standard $15 (625 credits), Pro $35 (2,250); Gen-4 Turbo about 5 to 6 credits per second, Gen-4.5 12 per second (page inconsistent) [80] | about $0.60 to $0.72 (Turbo), about $1.44 (Gen-4.5) on Standard | Free plan: 125 one-time credits; training statement not on the page [80] |
@@ -263,7 +266,7 @@ Each question is also a pipeline stage. Tool details (price, hardware, platform,
 ### Q8. Labelling restored versus stylised versus generated
 
 **What others do**
-- IPTC `DigitalSourceType` vocabulary: `print` (scanned from an opaque medium), `negativeFilm`, `positiveFilm`, `humanEdits` (non-generative human edits; `minorHumanEdits` was retired 2024-09-17), `algorithmicallyEnhanced` (algorithmic change "without changing the main content", for example sharpening or denoise), `compositeWithTrainedAlgorithmicMedia` ("Edited using Generative AI", such as inpainting), `trainedAlgorithmicMedia` ("Created using Generative AI"), `composite` [89]. The IPTC user guide says to write the URI (not the label) into the field, stored in XMP only, and that ExifTool can script bulk updates [90].
+- IPTC `DigitalSourceType` vocabulary: `print` (scanned from an opaque medium), `negativeFilm`, `positiveFilm`, `humanEdits` (non-generative human edits; `minorHumanEdits` was retired 2024-09-17), `algorithmicallyEnhanced` (algorithmic change "without changing the main content", for example sharpening or denoise), `compositeWithTrainedAlgorithmicMedia` ("Edited using Generative AI", such as inpainting), `trainedAlgorithmicMedia` ("Created using Generative AI"), `composite` [89]. Round 1 check against [89] adds `digitalCreation` ("created by a human using non-generative tools", added 2024-09-17) and `compositeSynthetic`, which the ladder below uses. `humanEdits` is for non-generative edits to captured media only. The IPTC user guide says to write the URI (not the label) into the field, stored in XMP only, and that ExifTool can script bulk updates [90].
 - C2PA / Content Credentials: open standard, "nutrition label" for content [91][92]; the Rust SDK is beta and supports spec 2.4 [93]. Signing needs certificates; optional for a private project (M).
 - Machine marks: Gemini image and Veo outputs carry SynthID watermarks [50][82]; BFL API outputs carry C2PA metadata [33].
 - Documentary practice: Archival Producers Alliance guidelines (Sept 2024 PDF; not readable here) plus a toolkit with Transparency Tips, Crediting Suggestions, a GenAI Tracker/Cue Sheet and "10 Questions Before You Start" [95][96]. Partnership on AI: disclose when synthetic elements would change how viewers perceive the content; direct disclosure (labels, notes) versus indirect (metadata, C2PA); disclose how consent was obtained [94]. Wikimedia Commons: document the prompt, name the engine, list both human and AI as authors [97].
@@ -276,9 +279,11 @@ Each question is also a pipeline stage. Tool details (price, hardware, platform,
 | L0 Scan | Unaltered digitisation | Flatbed or camera scan | `print`, `negativeFilm` or `positiveFilm` | Plain photo frame |
 | L1 Cleaned | Human, non-generative fixes | Crop, deskew, levels, healing brush | `humanEdits` | Plain photo frame |
 | L2 Enhanced | Algorithmic restoration that invents texture or colour | Upscale, face restore, colourise, diffusion repair | `algorithmicallyEnhanced`; use `compositeWithTrainedAlgorithmicMedia` if a generative model repaired content | Photo frame plus small "R" tag; colourised ones add "colours estimated" |
-| L3 Restyled | Real photo redrawn in the house look | Edit model with style LoRA, hand-built voxel from photo | `compositeWithTrainedAlgorithmicMedia` (AI) or `humanEdits`/`composite` (hand) | Obviously stylised |
+| L3 Restyled | Real photo redrawn in the house look | Edit model with style LoRA, hand-built voxel from photo | `compositeWithTrainedAlgorithmicMedia` (AI edit on a real photo); `digitalCreation` (hand-drawn from scratch); `composite` (hand-drawn over a real photo) | Obviously stylised |
 | L4 Animated | Motion added to a real photo | 4a parallax or classic morph (no generated frames); 4b image-to-video; 4c generated in-between | 4a `humanEdits`/`algorithmicallyEnhanced`; 4b/4c `compositeWithTrainedAlgorithmicMedia` | Tag on the clip: "moved", "frames invented" |
-| L5 Reconstruction | Scene never photographed, built from testimony | Stylised scene in house look | `trainedAlgorithmicMedia` (AI) | Always stylised; caption "Reconstructed from [name]'s memory, 2026" |
+| L5 Reconstruction | Scene never photographed, built from testimony | Stylised scene in house look | `digitalCreation` (hand-built); `trainedAlgorithmicMedia` (AI-built); `compositeSynthetic` (mixed) | Always stylised; caption "Reconstructed from [name]'s memory, [interview date]" |
+
+**Round 1 operational rule at L2 (house rule).** Generative repair is permitted on non-face regions only (tears, stains, backgrounds). Faces at L2 are limited to non-generative fixes, or CodeFormer or GFPGAN with blend-back; CodeFormer's `w` should be 0.7 or higher, and GFPGAN has no `w` dial in the sources (TODO(research)). Any generative change to a face moves the image to L3, where it must look drawn, or the image is rejected. Open question for the Fable advisor: under this rule, does colourising a face count as a generative change?
 
 Carry the label in four places: filename suffix (`__L2`), `steps.csv`, embedded XMP, and the end credits as an APA-style cue sheet [96]. Video containers do not reliably carry IPTC fields (M, UNVERIFIED), so the manifest and credits are the authoritative record.
 
@@ -291,7 +296,7 @@ Carry the label in four places: filename suffix (`__L2`), `steps.csv`, embedded 
 | | No GPU | 8 to 12 GB NVIDIA | 16 GB+ |
 |---|---|---|---|
 | Human hours (scan 10 to 14, manifest 5, hand clean 10 to 25, labels 3 to 5; supervise AI and review 15 to 30 with no GPU, 12 to 25 with a GPU) | 45 to 80 | 40 to 70 | 40 to 65 |
-| Machine time | Real-ESRGAN on CPU about 1 to 7.5 h for 150 photos (0.5 to 3 min each, ESTIMATE); cloud jobs minutes each | Restore 2 to 8 h; stylise 3 to 12 h; FramePack clips 25 to 50 min each on laptop-class, so use cloud for hero clips | Restore 1 to 5 h; stylise 2 to 8 h; 75 clip takes at 5 to 6 min each is 6 to 8 h overnight |
+| Machine time | Real-ESRGAN on CPU measured at roughly 1,250 to 1,500 s per megapixel of input on a 4 vCPU VM with software Vulkan [104]. A 600 ppi scan of a 4x6 print is 8.6 MP, so CPU suits small crops or a handful of photos; send the rest to a GPU or cloud (real GPU speed unmeasured). Cloud jobs minutes each | Restore 2 to 8 h; stylise 3 to 12 h; FramePack clips 25 to 50 min each on laptop-class, so use cloud for hero clips | Restore 1 to 5 h; stylise 2 to 8 h; 75 clip takes at 5 to 6 min each is 6 to 8 h overnight |
 | Cloud spend | About $30 to $85: roughly 300 edits at $0.04 to $0.15 ($12 to $45) plus 75 clip takes at $0.25 to $0.50 ($19 to $38); up to about $120 with Pro-tier image models or Standard Veo. Renting a 4090 for 25 to 30 hours instead costs about $10 to $30 plus storage | $0 to $60 (cloud only for hero clips) | $0 to $40 |
 | Privacy exposure | High unless cloud limited to cleared photos | Low | Lowest |
 
@@ -304,7 +309,7 @@ Carry the label in four places: filename suffix (`__L2`), `steps.csv`, embedded 
 | 3 Cutout and depth | `rembg[cpu]`, Depth Anything V2 Small on CPU [55][58], manual masks, paper-theatre layers | Add SAM 2, DepthFlow | Add SAM 3 (CUDA) [57] |
 | 4 Stylise | Hand-built voxel/pixel/clay, posterise, Inkscape trace; or cloud edit | FLUX.2 klein 4B [38], Z-Image Turbo (fits 16 GB [39]; smaller GPUs via quantised builds, UNVERIFIED), Krita AI Diffusion (6 GB recommended [48]), fluxgym style LoRA (12 GB [47]) | Add Qwen-Image-Edit-2511, PuLID-FLUX 16 GB [41], InfiniteYou 16 GB with offload [42], USO 16 to 18 GB [43], ai-toolkit LoRA [46] |
 | 5 Morph | OpenCV Delaunay morph, ImageMagick, ffmpeg xfade [65][102] | Add RIFE and ComfyUI FILM [62][64] | Add Wan FLF2V (VRAM UNVERIFIED [67][70]); LTX-2 keyframes need 32 GB+ [75] |
-| 6 Image-to-video | Cloud only (Veo Lite or Fast, Kling) or parallax instead | Wan2.2 5B [70], FramePack [72], WanGP [77] | Add Wan2.2 14B with FP8 or GGUF plus Lightning (VRAM UNVERIFIED [71]), HunyuanVideo-1.5 (14 GB minimum [76]) |
+| 6 Image-to-video | Cloud only for photos without children (Veo Lite or Fast, Kling). Photos with children: parallax or local only (local image-to-video needs a GPU) | Wan2.2 5B [70], FramePack [72], WanGP [77] | Add Wan2.2 14B with FP8 or GGUF plus Lightning (VRAM UNVERIFIED [71]), HunyuanVideo-1.5 (14 GB minimum [76]) |
 | 6b Video upscale | ffmpeg scale or skip; Video2X needs Vulkan [79] | Video2X; SeedVR2 GGUF (slow) | SeedVR2 FP8/FP16 |
 | 7 Privacy | Cloud steps need the Q7 rules | Offline possible except big clips | Fully offline possible |
 
@@ -346,7 +351,7 @@ Creator-made exemplars on family archives were not reachable (no search budget);
 
 **E7. Paper-theatre parallax (our proposal, M).** Real cut-out layers with soft shadows instead of generative fill behind moving subjects. Honest, no-GPU, scriptable, fits a papercraft look. Test in the vertical slice.
 
-**E8. Attribute-based ageing character sheet (our proposal, M).** A hand-made voxel/pixel/clay character per age band, with identity carried by hair, glasses, clothes and posture rather than a synthesised face. Test with the relatives' line-up.
+**E8. Attribute-based ageing character sheet (our proposal, M).** A hand-made voxel/pixel/clay character per age band, with identity carried by hair, glasses, clothes and posture rather than a synthesised face. Test with an insiders' line-up in the vertical slice.
 
 ### Recipe R1. Scan and clean
 
@@ -367,11 +372,11 @@ Why it works: it separates the untouched record from every later choice.
 
 Goal: usable 1080p/4K source images without inventing faces. Label L2.
 1. Start from the `__L1` copy. Decide if upscaling is needed: a 4x6 print at 600 ppi is already 3600x2400 px (Q1), so skip.
-2. Upscale only where needed (wallet prints, 1990s digital files). Real-ESRGAN portable: `realesrgan-ncnn-vulkan -i in.png -o out.png -n realesr-general-x4v3 -s 2` (flags per the README; run `-h` to confirm; use `-t` for tiling) [18]. No GPU: use the Python script with `--tile`, slow (M).
+2. Upscale only where needed (wallet prints, 1990s digital files). Real-ESRGAN portable: `realesrgan-ncnn-vulkan -i in.png -o out.png -n realesrgan-x4plus -s 2` (`realesr-general-x4v3` is not in the portable zip; with it the tool exits 0 and writes an all-black image, so check file size and look at the output; run `-h` to confirm; use `-t` for tiling) [18][104][110]. No GPU: use the Python script with `--tile`, slow (M).
 3. Faces: `python inference_codeformer.py -w 0.8 --input_path in.png` (add `--bg_upsampler realesrgan --face_upsample` if wanted); higher `w` is more faithful [15]. Alternative: `python inference_gfpgan.py -i inputs -o results -v 1.3 -s 2` [17]. Blend the face result 40 to 60 percent over the plain upscale in a layer mask (M).
 4. Heavy damage only: SeedVR2 via ComfyUI node or `inference_cli.py` (3B GGUF for 8 GB, FP8 for 12 to 16 GB; LAB colour correction recommended for fidelity) [24], or SUPIR (non-commercial) [21][22].
 5. Colourise black-and-white only if the story needs it: `python scripts/infer.py --model_name ddcolor_modelscope --input ./bw_dir` [28]. Check colours against family memory; mute skin tones.
-6. Review: flick original versus result at 100 percent; a relative who knew the person approves or rejects; optional embedding-similarity gate (UNVERIFIED approach).
+6. Review: flick original versus result at 100 percent; a confirmed insider who knew the person approves or rejects; optional embedding-similarity gate (UNVERIFIED approach).
 7. Record tool, version, settings, seed and `invents` in `steps.csv`; save as `__L2`; write XMP `algorithmicallyEnhanced` (or `compositeWithTrainedAlgorithmicMedia` if a generative model repaired content) [89]; for colourised prints add the caption "colours estimated".
 
 Fallback for no GPU: do steps 1 and 7 by hand; use a cloud edit model on at most 10 to 20 cleared photos (Q7).
@@ -395,7 +400,7 @@ Goal: one coherent look that still reads as the same person at 6, 25 and 55. Lab
 3. Route B (AI on the real photo): input the L2 photo at about 1 MP [37]; use FLUX.1 Kontext dev with a style LoRA from [45], Qwen-Image-Edit-2511 [36], or FLUX.2 klein [38]. Prompt pattern from the Kontext guide: name the subject specifically and add "while maintaining the same facial features, hairstyle, and expression"; change one thing per step; English prompts [34]. Keep one seed, one LoRA strength and one prompt template per chapter. Batch with ComfyUI workflow JSON or its local API [49]. Pull four seeds and choose by line-up.
 4. Route C (only if a new angle is truly needed): InstantID/PuLID/InfiniteYou from a same-age reference, conditioned on the original composition [40][41][42]; otherwise it is an L5 reconstruction.
 5. Route D (optional style LoRA): train on the maker's own 10 to 30 hand-made frames with fluxgym (12/16/20 GB) or ai-toolkit [46][47]. Use a person LoRA only per Q4c.
-6. Line-up test: show five stylised faces to relatives; record who is recognised and at what age. Adjust attributes, not faces.
+6. Line-up test: show five stylised faces to confirmed insiders; record who is recognised and at what age. Adjust attributes, not faces. Real-photo line-ups run in the vertical slice.
 7. Log in `steps.csv`; XMP `compositeWithTrainedAlgorithmicMedia` for AI routes; credits mention the tools.
 
 ### Recipe R5. Morph between two photos
@@ -415,8 +420,8 @@ Use when a scene was never photographed but is remembered (the kitchen table in 
 1. Source it: whose testimony, which interview, which date; record in `manifest.csv`. Get the narrator's and the family's OK for sensitive scenes (Principle 5).
 2. Brief: write what is known versus what is invented (furniture colour, light) and keep invented elements generic.
 3. Make it only in the house stylised look (voxel, clay or paper); no photoreal people, no synthetic voices [98].
-4. Add the visible cue: a consistent frame treatment and the caption "Reconstructed from [name]'s memory, 2026".
-5. Embed metadata: `trainedAlgorithmicMedia` (fully generated) or `compositeWithTrainedAlgorithmicMedia` (generated elements over a real photo) [89]; add prompt, model, seed and testimony ID in `steps.csv`; add a line to the credits cue sheet [96].
+4. Add the visible cue: a consistent frame treatment and the caption "Reconstructed from [name]'s memory, [interview date]".
+5. Embed metadata: `trainedAlgorithmicMedia` (AI-built), `digitalCreation` (hand-built) or `compositeSynthetic` (mixed) [89]. Write the full URI, not the label text. For video, tag after the last export, because ffmpeg strips the tag [105]; add prompt, model, seed and testimony ID in `steps.csv`; add a line to the credits cue sheet [96].
 6. Review with the family; archive the brief.
 
 ---
@@ -507,7 +512,7 @@ Prices and statuses as shown on the linked pages on 2026-10-18 ("verified on" is
 | Wan2.1 FLF2V 14B [67][68] | First/last-frame to video, 720p only | Free, Apache-2.0 | VRAM not stated | High | `generate.py` | 2026-10-18 |
 | Wan2.2 (TI2V-5B, I2V-A14B) [69][70] | Open image-to-video | Free, Apache-2.0 | 8 GB (ComfyUI offload) to 80 GB | High | CLI, ComfyUI | 2026-10-18 |
 | Wan2.2-Lightning [71] | 4-step LoRAs | Apache-2.0 | As Wan2.2 | High | ComfyUI | 2026-10-18 |
-| FramePack [72] | Next-frame-section I2V | Free, Apache-2.0 | 6 GB; RTX 30/40/50 | Low | Gradio; Python | 2026-10-18 |
+| FramePack [72] | Next-frame-section I2V | Free, Apache-2.0 | 6 GB; RTX 30/40/50 tested, older cards untested | Low | Gradio; Python | 2026-10-18 |
 | LTX-Video / LTX-2.x [73][74][75] | I2V with keyframes and audio | Repo Apache-2.0; LTX-2 licence files not read | LTX-2 on ComfyUI: 32 GB+ VRAM | High | ComfyUI, Python | 2026-10-18 |
 | HunyuanVideo-1.5 [76] | 8.3B I2V | Licence not read | 14 GB minimum with offload | High | Python | 2026-10-18 |
 | WanGP [77] | One UI for many video and image models | Free locally; licence unstated | 6 GB+ select models | Low-medium | Browser UI | 2026-10-18 |
@@ -539,7 +544,7 @@ Prices and statuses as shown on the linked pages on 2026-10-18 ("verified on" is
 - **Style LoRA from the maker's own artwork** instead of a person LoRA: [46][47].
 - **Seed locking and multi-take selection**, picking the take with least change (M).
 - **Identity gate**: face-embedding similarity between source and output crops; scriptable QA (M, UNVERIFIED).
-- **Line-up test with relatives** for likeness (M).
+- **Line-up test with confirmed insiders** for likeness, in the vertical slice (M).
 - **Metadata labelling**: IPTC Digital Source Type URIs written to XMP; `steps.csv` cue sheet: [89][90][96].
 - **Fully offline run**: pre-download weights, then disconnect or use `--offline`: [49][55].
 
@@ -549,7 +554,7 @@ Prices and statuses as shown on the linked pages on 2026-10-18 ("verified on" is
 
 1. **Likeness theatre.** Demos use clean modern portraits. Nothing I reached shows these tools on faded, low-resolution or black-and-white family photos. Treat every quality claim as untested on archival photos until the bake-off.
 2. **Restoration is generation.** Upscalers, face restorers and colourisers invent texture, features and colours; morphs and image-to-video invent frames. Each tool row states what is invented so the maker can decide and label.
-3. **Plastic skin and identity drift.** GFPGAN may shift identity [17]; SeedVR2 had a "plastic" bug [24]; PULSE-style methods make fictional faces [30]. Face restore only at high fidelity, blend back, and check with a relative.
+3. **Plastic skin and identity drift.** GFPGAN may shift identity [17]; SeedVR2 had a "plastic" bug [24]; PULSE-style methods make fictional faces [30]. Face restore only at high fidelity, blend back, and check with a confirmed insider.
 4. **Stale tutorials.** FILM (archived 2025-10-14), Microsoft Old Photos (archived 2026-10-03) and DeOldify (archived 2024-10-19) are read-only [61][25][29]; IP-Adapter plus is maintenance-only [44]; InstantID, PuLID and CodeFormer show no dated activity after 2024, 2024 and 2023 respectively on the pages I read [40][41][15]; the first Nano Banana model is being retired [51]; Wan 2.1 posts are superseded by Wan 2.2 [69]. Check dates and licences before following a 2023 to 2025 guide.
 5. **Fake sites and affiliate listicles.** FramePack, DepthFlow and CodeFormer READMEs all warn that look-alike sites and apps are unofficial or fraudulent [72][60][15]. Use the GitHub repo or the vendor's own page only.
 6. **Licence traps.** Non-commercial: SUPIR [21], FLUX.1 Kontext dev [33], FLUX.2 dev and klein 9B [38], InfiniteYou model [42], Depth Anything V2 Base/Large [58], InstantID/insightface [40], rembg `bria-rmbg` weights [55]. Copyleft: Upscayl, DepthFlow, Video2X are AGPL; ComfyUI, chaiNNer and Krita plugin are GPL-3.0. Fine for a private gift; reassess if the work will be screened at a ticketed event.
@@ -567,7 +572,7 @@ Prices and statuses as shown on the linked pages on 2026-10-18 ("verified on" is
 
 ## Open questions / gaps
 
-1. **Archival-photo evidence is missing.** Plan a five-photo bake-off in week 1: faded colour print, small black-and-white print, soft group snapshot with small faces, torn print, 1990s low-resolution digital file. Run through R2 (Real-ESRGAN + CodeFormer, SeedVR2, Qwen-Image-Edit-2511 or Kontext, one cloud edit model) and have relatives judge likeness.
+1. **Archival-photo evidence is missing.** Plan a five-photo bake-off in week 1 on stand-in photos with the same defects, not from her archive: faded colour print, small black-and-white print, soft group snapshot with small faces, torn print, 1990s low-resolution digital file. Stand-in sources: the maker's own prints, a consenting relative's print (if that relative is a confirmed insider), or public-domain prints. The follow-up (Q6) found candidates for four of the five; none yet for the group snapshot or the 1990s digital file. Run through R2 (Real-ESRGAN + CodeFormer, SeedVR2, Qwen-Image-Edit-2511 or Kontext, one cloud edit model) and have the maker and confirmed insiders judge whether each version keeps the same person and photo. The insiders list (`GATHER.md`) does not exist yet, so the maker judges alone for now. The real-photo line-up moves to the vertical slice, after the "who is in on it" decision.
 2. **Creator threads, Reddit and YouTube** (restraint prompts for old-photo animation, colourisation practice, Minecraft-style conversions) could not be searched because the budget ran out. A follow-up search pass is needed.
 3. **Terms pages not read:** OpenAI (403), Runway terms (404), Midjourney (403), Kling, MyHeritage, Remini/Bending Spoons, fal.ai, Hugging Face Spaces, Adobe consumer terms, Topaz cloud processing. All UNVERIFIED and treated as "do not upload".
 4. **FADGI numbers** (3rd edition, 2023) for ppi, bit depth and colour were not readable [4]; the 600 and 3200 to 4000 ppi guidance is partly my judgment.
@@ -717,7 +722,7 @@ Researcher: Sonnet · Run 2026-10-18 (Sunday) · Answers eight follow-up questio
 | 7 | Creator evidence on archival inputs | **Not met (0 of 3)** | Needs a search pass. What I could reach (vendor and tool pages) shows no old-photo examples. |
 | 8 | Family reactions to animating the dead | **Partly met** | First-hand words exist only inside one vendor-curated post (11 named users). No independent first-hand account reached. A 2025 academic paper is the lead to chase. |
 
-### Corrections to earlier text in this note and the playbook
+### Corrections to earlier text in this note and the playbook (applied in the round 1 scribe pass)
 
 1. **Recipe R2 step 2 (line 370 above) is wrong.** `realesrgan-ncnn-vulkan ... -n realesr-general-x4v3 -s 2` does not work with the portable release (Q3). It writes an all-black image and exits 0. Use `-n realesrgan-x4plus` for photos. `playbooks/ai-imagery.md` line 94 quotes the same command and needs the same fix.
 2. **Q9 CPU time for Real-ESRGAN is too optimistic.** The table says "about 1 to 7.5 h for 150 photos (0.5 to 3 min each, ESTIMATE)". Measured on this VM through a software Vulkan driver (Q3 timings): 72 s for a 220x220 input and 241 s for a 440x440 input with the photo model, roughly 1,250 to 1,500 s per megapixel of input. A 600 ppi scan of a 4x6 print is 8.6 MP. Treat CPU-only Real-ESRGAN as "small crops or a handful of photos", and send the rest to a GPU or cloud. A real Vulkan GPU or iGPU will be far faster; that is unmeasured.

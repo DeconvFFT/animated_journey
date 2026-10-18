@@ -1,6 +1,6 @@
 # Free Desktop Toolchain: A Small Stack for the Life Journey
 
-Track: toolchain · Draft v0.1 · 2026-10-18 · For the maker (a motivated learner)
+Track: toolchain · Draft v0.2 · 2026-10-18 · For the maker (a motivated learner)
 Built from research/toolchain.md (Sonnet researcher, 2026-10-18) and CHARTER.md. Numbers in brackets, like [1], point to the Sources list at the end. Anything marked TODO(research) is still open.
 
 **Status: provisional.** We do not fix the plan until you return the app checklist in Step 0. Your computer and the apps you already have decide which tools make sense.
@@ -48,7 +48,7 @@ Two answers change the plan. MagicaVoxel runs only on Windows and macOS, and Ble
 
 The charter also names the ArtCraft Crafting Apps as refinement layers [1]. This track does not cover them. The craft-visual and craft-motion tracks do.
 
-**Shell warning.** The commands in this playbook use Unix-style syntax. The research ran them on Ubuntu in a sandbox, not on your computer [100]. Windows forms are untested. TODO(research): confirm which command shell you will use, then re-test the recipes there.
+**Shell.** The commands in this playbook use Unix-style syntax. The research ran them on Ubuntu in a sandbox, not on your computer [100]. Which shell you use is Decision 0 below. Windows forms are marked `TODO(verify on the maker's PC)` where they exist; the rest are not yet written.
 
 ### Step 1: Make the project folder
 
@@ -85,7 +85,7 @@ A five-second push-in at 25 frames a second is the tested command [100]:
 ffmpeg -loop 1 -i photoA.jpg -vf "crop=iw:iw*9/16,scale=6000:-1,zoompan=z='min(1+0.0008*on,1.2)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=125:s=1920x1080:fps=25,format=yuv420p" -t 5 -c:v libx264 -crf 18 kbA.mp4
 ```
 
-Join two clips with a one-second dissolve using ffmpeg's `xfade` filter [63]. Recipe R1 in the research notes has the full set [100].
+Join two clips with a one-second dissolve using ffmpeg's `xfade` filter [63]. `recipes/r1_kenburns.sh` has the full set [100].
 
 ### Step 5: Cut out layers for parallax
 
@@ -99,7 +99,7 @@ Filling in the background behind a cut-out invents pixels. Keep the fill minimal
 
 ### Step 6: Parallax in Blender by script
 
-Put each layer on a flat plane at its own distance, slide the camera, and render the frames. The near layers then move more than the far ones, which is parallax [71]. The tested script is recipe R2 in the research notes [100]. Three settings matter most:
+Put each layer on a flat plane at its own distance, slide the camera, and render the frames. The near layers then move more than the far ones, which is parallax [71]. The tested script is `recipes/r2_parallax.py` [100]. Three settings matter most:
 
 - **Set the view transform to Standard.** Blender's default, AgX, washed out the test photos. Standard kept their colours [100].
 - **Draft at 640×360 with four samples; finish at 1080p.** Fifty frames at 640×360 took about 64 to 66 seconds on four CPU cores with no graphics card [100]. A 1080p frame has about nine times the pixels. A 30-second shot at 25 frames a second, at about 12 seconds a frame, would take about 2.5 hours [100] (the research's extrapolation).
@@ -109,7 +109,7 @@ Turn the PNG frames into a movie with `ffmpeg -framerate 25 -i renders/p_%04d.pn
 
 ### Step 7: Draw lines that reveal (maps, routes, titles)
 
-To make a route or a signature draw itself, draw it in Inkscape as one stroked centre-line path [35][36]. Inkscape does not animate on its own [35], so a script does it. The script writes one SVG file per frame, with a dash pattern that shrinks from full length to nothing, then renders each frame [65]. Recipe R3 in the notes reads the path's real length from the file. Do not type the length in by hand. The renderer used in testing ignored `pathLength="1"`, so every frame looked finished until the length was computed [66][100].
+To make a route or a signature draw itself, draw it in Inkscape as one stroked centre-line path [35][36]. Inkscape does not animate on its own [35], so a script does it. The script writes one SVG file per frame, with a dash pattern that shrinks from full length to nothing, then renders each frame [65]. `recipes/r3_linedraw.py` reads the path's real length from the file. Do not type the length in by hand. The renderer used in testing ignored `pathLength="1"`, so every frame looked finished until the length was computed [66][100].
 
 Forty-eight frames at 1280×720 took 1.9 seconds on the research machine [100]. Titles set in outline fonts will not "write" with this method, because outline fonts are filled shapes, not single lines. Use a single-line font, or trace a handwritten title with Inkscape's tracing or calligraphy tools [36].
 
@@ -126,9 +126,11 @@ Two traps from the tests [100]:
 
 Do the final cut by hand: timing to music, framing and the last pass.
 
-### Step 9: Give each decade its own look
+### Step 9: Give each album its own look
 
-Every decade gets one saved colour recipe, so every photo from that decade matches. The research wrote two examples as ffmpeg filter chains [63][100]. One is a warm, lifted, slightly faded 1970s look with grain and a vignette. The other is a 1950s black-and-white look with lifted blacks and grain. Save the exact text of each recipe in `looks/`. Do not colourise black-and-white photos with AI unless you label the result as a reconstruction [1].
+Every album gets one saved colour look, so every photo from that album matches. The look comes from the album itself, not from a decade. Pick three prints from one of her real albums (after the pipeline is locked). In each print, sample a known-white object and a skin midtone. Derive the lift, cast and grain from those samples, save the result in `looks/`, and name it after her chapter. Apply that one look to every photo from the album [1].
+
+The research's two ffmpeg chains (a 1970s-style and a 1950s-style chain) are stock practice, not for the film. They are kept in `recipes/r7_era_looks.txt` for exercises only [63][100]. Do not colourise black-and-white photos with AI unless you label the result as a reconstruction [1]. TODO(research): the step that turns the sampled values into filter settings is not yet written.
 
 ### Step 10: Sound
 
@@ -150,7 +152,7 @@ From one master file, make three versions [91][95][92]:
 |---|---|---|
 | **Screening** (TV, USB stick, projector) | MP4, H.264 High profile | Level 4.1, yuv420p, 1080p, AAC-LC 48 kHz stereo, `+faststart`, BT.709 tags |
 | **Private web link** | MP4, H.264 High profile | CRF 20, 12 Mbps cap at 1080p. YouTube recommends 8 Mbps for 1080p at 24 to 30 frames a second [91] |
-| **Archive** | ProRes 422 HQ in `.mov`, and/or FFV1 version 3 in Matroska | Audio PCM 24-bit or FLAC. The Library of Congress lists both in its 2025–2026 preferred formats for moving images. An MP4 counts only as a viewing copy [92][93][94] |
+| **Archive** | ProRes 422 HQ in `.mov`, and/or FFV1 version 3 in Matroska | Audio PCM 24-bit or FLAC. The Library of Congress lists both in its current preferred formats for moving images (the statement is undated on the page; read 2026-10-18). An MP4 counts only as a viewing copy [92][93][94] |
 
 The screening command, as tested [100]:
 
@@ -190,6 +192,7 @@ Each exercise has a cap of about two hours, from the research notes. The researc
 - **Steps:** Fill in the Step 0 table. Install or locate ffmpeg and ImageMagick (Step 2). Batch-crop five stock photos to 3840×2160 (Step 3).
 - **Time:** Under 2 hours.
 - **Good looks like:** `ffmpeg -version` and `magick -version` both print. Every output reads 3840×2160, a 16:9 ratio.
+- **Self-check.** Bash (Git Bash or WSL2): `identify -format '%f %wx%h\n' photos_16x9/*.jpg` (on ImageMagick 7 use `magick identify`). PowerShell: `Get-ChildItem photos_16x9\*.jpg | ForEach-Object { magick identify -format '%f %wx%h\n' $_.FullName }`. TODO(verify on the maker's PC).
 
 ### Exercise 2: Ken Burns by script
 
@@ -197,6 +200,7 @@ Each exercise has a cap of about two hours, from the research notes. The researc
 - **Steps:** Make a push-in on one photo, a pan on another, and a third move of your choice, each about six seconds, using Step 4. Join them with one-second `xfade` dissolves.
 - **Time:** Under 2 hours.
 - **Good looks like:** ffprobe reports 1920×1080, 25 frames a second, H.264. A round object is not squashed. The slowest move shows no shimmer.
+- **Self-check.** `ffprobe -v error -show_entries "stream=width,height,r_frame_rate,codec_name" -of csv=p=0 ex02_kenburns.mp4` has no shell syntax, so it runs the same in Git Bash and PowerShell. The bash-only part is the three ffmpeg lines in `recipes/r1_kenburns.sh`; in PowerShell run them one at a time, since they use no shell variables. TODO(verify on the maker's PC).
 
 ### Exercise 3: The same in the editor, with easing
 
@@ -214,29 +218,30 @@ Each exercise has a cap of about two hours, from the research notes. The researc
 
 ### Exercise 5: Parallax in Blender by script
 
-- **Goal:** Run recipe R2 on the Exercise 4 layers.
-- **Steps:** Render a 480p draft, then a 1080p final. Set the view transform to Standard. Turn the frames into a movie with ffmpeg. Write the time per frame in your notes.
+- **Goal:** Run `recipes/r2_parallax.py` on the Exercise 4 layers.
+- **Steps:** Edit the resolution and frame range in `recipes/r2_parallax.py`, then render a 480p draft and a 1080p final. Keep the view transform at Standard. Turn the frames into a movie with ffmpeg. Write the time per frame in your notes.
 - **Time:** Up to 2 hours, plus render time.
 - **Good looks like:** A colour patch in the render matches the source photo. The render runs from a terminal with no window open. The time per frame is written down.
 
 ### Exercise 6: A line-draw route or title
 
 - **Goal:** Draw a route or a signature as one stroked centre-line path in Inkscape, then make it draw itself.
-- **Steps:** Draw the path. Copy its `d` attribute from Inkscape's XML editor. Run recipe R3 (or the Blender version, R3b). Add easing [65][100].
+- **Steps:** Draw the path. Copy its `d` attribute from Inkscape's XML editor into `recipes/r3_linedraw.py`. Run it. The Blender version, R3b, is still only in the research notes. Add easing [65][100].
 - **Time:** Under 2 hours.
 - **Good looks like:** The line starts, finishes and eases as designed. The last frame matches the static SVG exported from Inkscape. The script reads the length from the file, not from a number you typed.
+- **Self-check (rendering the frames).** Bash: `for f in frames/f_*.svg; do rsvg-convert -w 1280 "$f" -o "${f%.svg}.png"; done`. PowerShell: `Get-ChildItem frames\f_*.svg | ForEach-Object { $png = $_.FullName -replace '\.svg$', '.png'; rsvg-convert -w 1280 $_.FullName -o $png }`. TODO(verify on the maker's PC): `rsvg-convert` may not be installed on Windows; Inkscape's command line is the alternative.
 
-### Exercise 7: Era looks
+### Exercise 7: Album looks
 
-- **Goal:** One saved colour recipe for each of three decades.
-- **Steps:** Take three photos from three decades (or stock images) and one modern clip. Build a look for each decade with recipe R7 or the editor's colour page. Save each as a text file in `looks/`.
+- **Goal:** Derive one saved look from three prints of one album.
+- **Steps:** Take three prints from one album (or three stock images standing in for prints). Sample a known-white object and a skin midtone in each, and write the numbers down. Derive the lift, cast and grain from them, and fill in the template in `recipes/r7_era_looks.txt`. Save the filled file in `looks/`. Apply the look to one modern clip as a control.
 - **Time:** Under 2 hours.
-- **Good looks like:** The old looks have lifted blacks and lower saturation, which the scopes or histogram show. The same recipe applied twice gives identical output.
+- **Good looks like:** The look file records the sampled values and the three prints they came from. The same look applied twice gives identical output. TODO(research): the derivation method is not yet written, so the first run is a hand exercise.
 
 ### Exercise 8: One voxel hero object
 
 - **Goal:** Model one household object from a reference photo as voxels.
-- **Steps:** Model it in MagicaVoxel (Windows or Mac) or Goxel or Blockbench [56][58][59]. Export OBJ or PLY. Import it into Blender with forward axis Y and up axis Z [100]. Add warm light (recipe R4). Render a five-second turntable.
+- **Steps:** Model it in MagicaVoxel (Windows or Mac) or Goxel or Blockbench [56][58][59]. Export OBJ or PLY. Import it into Blender with forward axis Y and up axis Z [100]. Add warm light (`recipes/r4_render_voxel.py`). Render a five-second turntable. Goxel's command-line export runs under `xvfb-run -a` on a server. On Windows Goxel opens its own window, so the wrapper is not needed (TODO(verify on the maker's PC)) [58][100].
 - **Time:** TODO(research): modelling time per object was not measured. This exercise may run longer than two hours.
 - **Good looks like:** Someone who has not seen the photo names the object. The model uses 32 colours or fewer. It stands the right way up. Each frame renders in under 30 seconds at 960×540 on your machine. That is the research's target. Its four-core test machine took 8 seconds for one still [100]. Use a test viewer who does not know the subject, and who would not mention it to her.
 
@@ -250,15 +255,25 @@ Each exercise has a cap of about two hours, from the research notes. The researc
 ### Exercise 10: Mini-chapter and delivery rehearsal
 
 - **Goal:** A 60 to 90 second chapter, exported three ways, then played on the real screen.
-- **Steps:** Cut Exercises 2 to 9 into one chapter. Export the screening, web and archive versions (Step 12). Play the screening file from a USB stick on the TV or projector. Write the archive README and the SHA-256 checksums (Step 15).
+- **Steps:** Cut Exercises 2 to 9 into one chapter. Export the screening, web and archive versions (Step 12; `recipes/r9_deliver.sh`). Play the screening file from a USB stick on the TV or projector. Write the archive README and the SHA-256 checksums (Step 15).
 - **Time:** Up to 2 hours, plus playback time.
-- **Good looks like:** The file plays from the stick with sound and captions. The ffprobe output matches the profile. A checksum check passes. The archive file opens in a second player. TODO(research): checksum commands on Windows are untested.
+- **Good looks like:** The file plays from the stick with sound and captions. The ffprobe output matches the profile. A checksum check passes. The archive file opens in a second player.
+- **Self-check (checksums).** Bash (Git Bash or WSL2): `sha256sum chapter_usb.mp4 chapter_web_1080.mp4 chapter_archive.mov > SHA256SUMS`, then `sha256sum -c SHA256SUMS`; every file must print OK. (The three names are the research's Exercise 10 names; use your own.) PowerShell: `Get-ChildItem chapter_usb.mp4, chapter_web_1080.mp4, chapter_archive.mov | ForEach-Object { '{0}  {1}' -f (Get-FileHash $_.Name -Algorithm SHA256).Hash.ToLower(), $_.Name } | Set-Content SHA256SUMS -Encoding ascii`. Verify with `Get-Content SHA256SUMS | ForEach-Object { $h, $f = $_ -split '\s+', 2; if ((Get-FileHash $f -Algorithm SHA256).Hash -eq $h.ToUpper()) { "OK   $f" } else { "FAIL $f" } }`. TODO(verify on the maker's PC).
 
 **Pace.** Two exercises a week finishes the set by about 22 November 2026, which is week five. That leaves about fourteen of the nineteen weeks for the vertical slice and the chapters. Re-time after Exercise 5, the first Blender render, because that is where a weak computer shows [100].
 
 ## Decisions you'll need to make
 
 Each decision lists the options and our current lean. The lean is a suggestion for you to confirm, not a decision.
+
+### Decision 0: Which command shell?
+
+The tested recipes are Unix commands. Every program they call (ffmpeg, ImageMagick, Blender, Inkscape, `melt`) has a Windows build, so either route below can run them [100].
+
+- **A. Git Bash or WSL2: the tested recipes run unchanged,** provided their programs are on that shell's path. Git Bash rewrites arguments that look like Unix paths, so set `MSYS2_ARG_CONV_EXCL='*'`. WSL2 takes about half of your RAM by default, so use it only on a PC with 16 GB or more (research notes, Follow-up F3). Windows builds of ImageMagick, Inkscape and GIMP were not checked.
+- **B. Native PowerShell: the recipes need a PowerShell copy.** Every program in the stack has a Windows console program, so no Linux layer is needed (research notes, Follow-up F1 to F3). So far only the four self-checks (Exercises 1, 2, 6 and 10), the `melt.exe` call and the Blender call have a Windows form, each marked `TODO(verify on the maker's PC)`. The rest of the recipe files still need a PowerShell copy. TODO(research).
+
+**Lean: B, PowerShell with the Windows-native programs,** which is the research's recommendation (research notes, Follow-up F3). Choose A only if Git Bash is already installed. Choose WSL2 only at 16 GB of RAM or more. Step 0 asks for your RAM and whether `wsl --status` works, which settles it.
 
 ### Decision 1: Which video editor?
 
@@ -269,9 +284,11 @@ Each decision lists the options and our current lean. The lean is a suggestion f
 
 **Lean:** Kdenlive, unless you already work fluently in Resolve. If you do, use Resolve for colour and sound, and Kdenlive for batch assembly and captions. Resolve's scripting from outside is disputed (see Pitfalls).
 
+**Where this sits in the charter's approach.** Agents generate, and the ArtCraft apps (FilmCraft, PhotoCraft and others) are the maker's refinement layer. This editor is the proven fallback the charter requires, so nothing critical may depend on an alpha app [1]. **Hand-off:** every output of this track is a PNG sequence with alpha, an MP4, an SRT or a plain SVG, so either layer can take it; exact import formats belong to craft-visual/craft-motion. FilmCraft 0.9.0 does not import plain SVG, so rasterise it to PNG first (research notes, Follow-up F5).
+
 ### Decision 2: Where do parallax moves get built?
 
-- **Blender planes (recipe R2).** Tested and precise, but slow to render [100].
+- **Blender planes (`recipes/r2_parallax.py`).** Tested and precise, but slow to render [100].
 - **Keyframes in the editor.** Quicker to learn, but not tested by the research [100].
 
 **Lean:** Blender for the three or four hero moves, and editor keyframes for the rest. TODO(research): compare the time each route takes on your machine.
@@ -293,12 +310,14 @@ Each decision lists the options and our current lean. The lean is a suggestion f
 
 **Lean:** GIMP 3.2 or Krita, whichever you already have. ImageMagick for every batch.
 
+**Where this sits in the charter's approach.** The ArtCraft apps (PhotoCraft and others) are the maker's refinement layer. GIMP, Krita and ImageMagick are the proven fallback the charter requires, so nothing critical may depend on an alpha app [1]. **Hand-off:** every output of this track is a PNG sequence with alpha, an MP4, an SRT or a plain SVG, so either layer can take it; exact import formats belong to craft-visual/craft-motion. PhotoCraft 0.9.0 reads single PNGs and SVG, not image sequences (research notes, Follow-up F5).
+
 ### Decision 5: Where do heavy renders run?
 
 - **On your laptop.** The research measured this on a four-core CPU with no graphics card, so it is slow [100]. Blender's stated minimum includes a graphics card with 2 GB of video memory [30].
-- **In the cloud.** The charter asks for heavy work in the cloud wherever possible, because memory is tight on the maker's Windows PC [1]. The research did not test a cloud render path. TODO(research): test one. Note that a cloud route moves your files off your machine, and the charter says nothing personal is uploaded without your explicit say [1].
+- **In the cloud.** The charter asks for heavy work in the cloud wherever possible, because memory is tight on the maker's Windows PC [1]. The research did not test a cloud render path. A cloud route moves your files off your machine, and the charter says nothing personal is uploaded without your explicit say [1].
 
-**Lean:** Follow the charter. Drafts stay on the laptop. Finals go to the cloud once a tested path exists, and only with your agreement about the files.
+**Rule: Scripts travel, photos don't.** Agents write and test every script in the cloud on stock or synthetic images. The identical script then runs on your PC against the real photos, from a terminal with the Claude desktop app closed. The memory problem the charter records is the app, not ffmpeg or Blender, and overnight command-line renders do not need the app running [1]. Cloud rendering of real photos happens only after your explicit decision for a named batch, and never for the raw scans [1].
 
 ### Decision 6: Which music?
 
@@ -374,7 +393,7 @@ The charter has not yet fixed the occasion, the venue or the format [1]. These d
 5. **FFmpeg Filters Documentation.** https://ffmpeg.org/ffmpeg-filters.html [63]. Read the `zoompan`, `xfade`, `subtitles` and `loudnorm` sections before Steps 4, 10 and 11.
 6. **Inkscape Tutorials.** https://inkscape.org/learn/tutorials/ [36]. The official index, including the Interpolate, Tracing and Calligraphy tutorials.
 7. **CSS-Tricks: How SVG Line Animation Works** (Chris Coyier, 2014). https://css-tricks.com/svg-line-animation-works/ [65]. Still the clearest plain explanation of the dash-offset trick. The date is old, but the method still holds.
-8. **Library of Congress: Recommended Formats Statement, Moving Image Works.** https://www.loc.gov/preservation/resources/rfs/moving.html [92]. Which archive formats to keep, and why an MP4 is a viewing copy only.
+8. **Library of Congress: Recommended Formats Statement, Moving Image Works** (the current statement; undated on the page, read 2026-10-18). https://www.loc.gov/preservation/resources/rfs/moving.html [92]. Which archive formats to keep, and why an MP4 is a viewing copy only.
 
 **Video tutorials are thin.** The research could not verify any video for a Ken Burns move in an editor, 2.5D parallax in Blender, photo-to-voxel, SVG line-drawing, photo morphing or era grading [98][99]. The one video with a readable date and length is the Nuxttux "Keyframe Interpolation" tutorial, 5 minutes 34 seconds, uploaded 29 May 2025. The research read only its page details, not its content, so the title is all we know [99]. https://www.youtube.com/watch?v=F1h6Kg-WLDE. The Arkengheist rotoscoping video is from 2020 and shows an older Kdenlive, so use it for ideas only [99]. Blender Guru's 2026 beginner course runs over four hours, and its exact Blender version is unverified [98]. TODO(research): re-fetch the channel listings slowly, and open the shortlisted videos.
 
@@ -513,7 +532,7 @@ The charter has not yet fixed the occasion, the venue or the format [1]. These d
 
 [91] YouTube Help — Recommended upload encoding settings — https://support.google.com/youtube/answer/1722171 — MP4, H.264 High, AAC-LC 48 kHz, bitrates, BT.709.
 
-[92] Library of Congress — Recommended Formats Statement, Moving Image Works — https://www.loc.gov/preservation/resources/rfs/moving.html — RFS 2025-2026; FFV1 v3/Matroska, ProRes/QuickTime, MP4 as viewing proxy.
+[92] Library of Congress — Recommended Formats Statement, Moving Image Works — https://www.loc.gov/preservation/resources/rfs/moving.html — current RFS, undated on the page, read 2026-10-18; FFV1 v3/Matroska, ProRes/QuickTime, MP4 as viewing proxy.
 
 [93] RFC 9043 — FFV1 Video Coding Format Versions 0, 1, and 3 — https://www.rfc-editor.org/rfc/rfc9043.html
 
@@ -529,18 +548,19 @@ The charter has not yet fixed the occasion, the venue or the format [1]. These d
 
 [99] YouTube video pages with readable metadata — https://www.youtube.com/watch?v=gcIKU4KxfLk (Arkengheist 2.0, Rotoscoping, 16:09, 2020-11-21) ; https://www.youtube.com/watch?v=F1h6Kg-WLDE (Nuxttux Creative Studio, Keyframe Interpolation, 5:34, 2025-05-29).
 
-[100] Sandbox verification runs, 2026-10-18 — local, not a URL — ffmpeg 6.1.1, ImageMagick 6.9.12, Blender `bpy` 5.2.2 (Python 3.13), Inkscape 1.2.2, MLT melt 7.22.0, Synfig 1.5.1, Goxel 0.11.0 (Xvfb), librsvg 2.58.0, svgpathtools, Pillow; outputs inspected with `ffprobe` and by eye. Scripts reproduced in "Exemplars / recipes".
+[100] Sandbox verification runs, 2026-10-18 — local, not a URL — ffmpeg 6.1.1, ImageMagick 6.9.12, Blender `bpy` 5.2.2 (Python 3.13), Inkscape 1.2.2, MLT melt 7.22.0, Synfig 1.5.1, Goxel 0.11.0 (Xvfb), librsvg 2.58.0, svgpathtools, Pillow; outputs inspected with `ffprobe` and by eye. Runnable copies of research recipes R1 to R5 and R7 to R9 are in skills/free-creative-toolchain/recipes/.
 
 ## Changelog
 
 - v0.1 · 2026-10-18 · First draft, written by the Haiku scribe from research/toolchain.md and CHARTER.md. Not yet reviewed by the advisor or by the maker. The plan is provisional until the Step 0 checklist comes back.
+- v0.2 · 2026-10-18 · Round 1 advisor revisions applied by the Haiku scribe: Decision 0 (shell) with PowerShell forms of the four self-checks; Decision 5 rule "Scripts travel, photos don't"; album looks replace decade looks (Step 9, Exercise 7); ArtCraft and hand-off lines in Decisions 1 and 4; recipes moved to skills/free-creative-toolchain/recipes/; Library of Congress edition year corrected to "current, undated on the page".
 
 ### Open TODO(research) items at v0.1
 
 - **Your apps and computer.** The Step 0 checklist has not come back. The charter says Windows [1]; the research assumed the OS was unknown. Confirm the OS, the installed apps and the hardware.
 - **Resolve Free.** External scripting on 21.1, its hardware floor, Linux codec limits, whether captions and subtitle tracks work in Free, and which Photo-page tools are Free [2][3][6][7].
 - **Headless claims not run.** GIMP 3 batch Python procedure name; Krita headless Python; Glaxnimate's pip package on your OS; Audacity 4 scripting pipe; OpenShot bindings and `.osp`; running a Shotcut-saved `.mlt` through `melt`; hand-writing a native `.kdenlive`; the Blender program itself (the research used the Python module); EEVEE with no graphics card; Goxel's `--script` option (read from source only); Synfig's ffmpeg target syntax [100].
-- **Windows commands.** Which shell you will use; Blender's Python module on Windows; the `xvfb-run` step (needed only on servers); checksum commands; the burn-in font [100].
+- **Windows commands.** Which shell you will use (Decision 0); Blender's Python module on Windows; the `xvfb-run` step (needed only on servers); checksum commands; the burn-in font [100].
 - **Cloud rendering.** No cloud render path was tested (Decision 5).
 - **Tutorials.** Re-fetch channel listings slowly for Ken Burns, parallax, photo-to-voxel, SVG line-draw, photo morphing and era grading. Open the shortlisted videos [98][99].
 - **Screen and format.** TV and projector format support: exFAT or FAT32, MKV, soft subtitles, HEVC 4K, 4:3 or 16:9 projectors, audio path, and venue HDMI and USB behaviour [95][96].

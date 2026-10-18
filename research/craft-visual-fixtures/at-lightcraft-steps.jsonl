@@ -3,3 +3,4 @@
 {"command":"library.selectAll","params":{}}
 {"command":"preset.apply","params":{"id":"lj-faded-print-a","amount":100}}
 {"command":"app.export","params":{"dir":"C:\\lj\\at\\out","format":"jpg","quality":92,"naming":"{name}-{seq:2}","conflict":"skip"}}
+{"command":"app.export","params":{"dir":"C:\\lj\\at\\out","format":"tif","bitDepth":16,"colorSpace":"srgb","naming":"{name}-{seq:2}","conflict":"skip"}}
