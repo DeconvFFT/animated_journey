@@ -1,9 +1,11 @@
 # Free Desktop Toolchain: A Small Stack for the Life Journey
 
-Track: toolchain · Draft v0.3 · 2026-10-18 · For the maker (a motivated learner)
+Track: toolchain · Draft v0.4 · 2026-10-18 · For the maker (a motivated learner)
 Built from research/toolchain.md (Sonnet researcher, 2026-10-18) and CHARTER.md. Numbers in brackets, like [1], point to the Sources list at the end. Anything marked TODO(research) is still open.
 
 **Status: provisional.** We do not fix the plan until you return the app checklist in Step 0. Your computer and the apps you already have decide which tools make sense.
+
+**Reconciled with DECISIONS.md (2026-10-18). The register wins (D-21).** The Windows PC is decided (D-10); its numbers stay UNVERIFIED until `windows_check_report.json` is in the repo (W-28). The project frame rate is 24 fps (W-14), so the 25 fps values the research tested are now 24 (`d=120`, `fps=24`, `-framerate 24`, `atsc_1080p_24`). They are UNVERIFIED at 24 until `recipes/r1_kenburns.sh`, `recipes/r2_parallax.py`, `recipes/r5_story.mlt` and the colour-patch test are re-run at 24; those recipe files still carry 25 until then. Loudness is -1 dBTP everywhere, with three venue masters chosen at the Mon 22 Feb run (W-19). Real photos enter after the L1 process lock (Sat 14 Nov), and covert collection starts Sun 15 Nov (D-13). Family media stays on the PC and the encrypted drive, with no cloud copy (D-15, W-23, W-24, W-25). The maker alone decides every hard call (D-03, D-04). Each Decision below carries its register status: decided (`DECISIONS.md` Table 1), default with a decide-by date (Table 2), or open for the maker (Table 3).
 
 ## Why this matters for our life journey
 
@@ -11,7 +13,7 @@ Most of your mother's life happened between the big moments: the kitchen table, 
 
 The charter asks us to prefer scriptable tools [1]. A script can be re-run, repaired and handed to an AI agent. A menu click cannot. So this track picked a small stack. Blender handles depth, camera moves and renders. Inkscape handles maps, timelines and drawn lines. One video editor does the finishing pass. Two command-line tools, ffmpeg and ImageMagick, sit under all of it, and every shot passes through them [62][64].
 
-Fewer tools, learned well, will finish the film. We have about 19 weeks until Saturday, 27 February 2027. The ten practice exercises below take about three weeks at four a week, so Exercise 10 can be the dress rehearsal for the vertical slice by 8 November 2026. That leaves about sixteen weeks for the real work. The schedule locks the pipeline on Saturday 14 November, the end of week 4 (ROADMAP-ADDENDUM.md).
+Fewer tools, learned well, will finish the film. We have about 19 weeks until Saturday, 27 February 2027. The ten practice exercises below take about three weeks at four a week, so Exercise 10 can be the delivery rehearsal, on synthetic material, ahead of the L1 process lock on Saturday 14 November 2026, the end of week 4 (W-06). The vertical slice is a separate job: 100 seconds of chapter C01, briefed Sunday 15 November, animatic Sunday 6 December, final Sunday 20 December (W-07). That leaves about fifteen weeks after the lock for the real work (ROADMAP-ADDENDUM.md).
 
 ## Core principles
 
@@ -39,7 +41,7 @@ Do the steps in order. Do not skip Step 0.
 
 Run the checks in the research checklist (see the table in the research notes, "Recognise your apps") and paste the output back to the team. The research wrote one script that runs these checks and both timed Blender runs and writes one report: `research/toolchain-fixtures/step0_pc_tests.ps1` (research Follow-up F9). We need:
 
-- Your operating system and version. The charter records a Windows PC [1]. The research did not know this, so please confirm.
+- Your operating system and version. The maker has decided on a Windows PC (D-10; charter [1]). The research did not measure it, so every Windows number stays UNVERIFIED until the report from your PC is in the repo (W-28).
 - Which of these apps are installed, with versions: DaVinci Resolve (Free or Studio), Kdenlive, Shotcut, OpenShot, Inkscape, GIMP, Krita, Blender, MagicaVoxel, Goxel, Blockbench, Audacity.
 - Whether ffmpeg and ImageMagick run from a terminal.
 - CPU, RAM, graphics card and its video memory, free disk space, and whether you have a pen tablet.
@@ -52,7 +54,7 @@ The charter also names the ArtCraft Crafting Apps as refinement layers [1]. This
 
 ### Step 1: Make the project folder
 
-Keep the project in the private GitHub repository the charter names [1]. The cloud session is temporary, so the repo is the safe copy [1]. The research proposes these folders: `exercises/` (one folder per exercise, `ex01`, `ex02` and so on), `looks/` (saved colour recipes), `layers/` (cut-out PNG files), `licences/` (a saved copy of each licence page, with the date you saved it), and `credits.txt`. Add a `README.md` that names every tool and its version.
+Keep the project in the private GitHub repository the charter names [1]. The cloud session is temporary, so the repo is the safe copy [1]. The research proposes these folders: `exercises/` (one folder per exercise, `ex01`, `ex02` and so on), `looks/` (saved colour recipes), `layers/` (cut-out PNG files), `licences/` (a saved copy of each licence page, with the date you saved it), and `credits.txt`. Add a `README.md` that names every tool and its version. Commit only text, scripts and manifests with IDs (D-14): scans, audio, video and renders never enter git, so `layers/` holds only stock or synthetic exercise cut-outs, never a cut-out of one of her photos. Confirm the repo has been made private (O-13); nothing personal is committed until it is.
 
 ### Step 2: Install or find ffmpeg and ImageMagick
 
@@ -60,9 +62,9 @@ ffmpeg is the glue that most steps depend on [62][63]. The ffmpeg project ships 
 
 ### Step 3: Prepare photos in a batch
 
-Practise with stock or synthetic images now. Real photos come in only after the pipeline is locked [1].
+Practise with stock or synthetic images now. Real photos come in only after the pipeline is locked [1]: the L1 process lock is Sat 14 Nov 2026 and covert collection starts Sun 15 Nov (D-13, W-10).
 
-When real photos arrive, scan at the highest resolution you can. The research's rule of thumb is at least 1.5 times your output width, so a camera move can crop without going soft: 2880 px wide for 1080p, 5760 px for 4K [100].
+When real photos arrive, scan at the highest resolution you can. The research's rule of thumb is at least 1.5 times your output width, so a camera move can crop without going soft: 2880 px wide for 1080p [100]. The register prepares stills at 3840 px on the long edge (W-15) and the master is 1080p, so the research's 5760 px figure for 4K is dropped (4K is not needed). Scan masters follow W-27: 16-bit TIFF at 600 ppi, fronts and backs at the same sitting.
 
 Crop every photo to 16:9 in one ImageMagick batch [64]. A 3000×2000 test photo came out at 3840×2160 this way [100]:
 
@@ -79,13 +81,13 @@ A Ken Burns move is a slow push-in or pan across a still photo. Two rules come f
 - **Crop to the output shape first.** On a 3:2 photo, ffmpeg's `zoompan` stretched the picture by about 18 percent. A circle came out 641 by 541 pixels.
 - **Upscale before you zoom.** `zoompan` moves in whole pixels, so a larger source keeps the motion smooth. This is the usual workaround. The research did not test the case without the upscale [63].
 
-A five-second push-in at 25 frames a second is the tested command [100]:
+A five-second push-in at 24 frames a second is the command below. It was tested at 25 frames a second with `d=125`; the 24 values (`d=120`, `fps=24`) are UNVERIFIED until `recipes/r1_kenburns.sh` is re-run at 24 (W-14). It is a proof tool: `zoompan` snaps to whole pixels, so it is not used for delivered shots (W-41; `playbooks/cinematic-quality.md`) [100]:
 
 ```
-ffmpeg -loop 1 -i photoA.jpg -vf "crop=iw:iw*9/16,scale=6000:-1,zoompan=z='min(1+0.0008*on,1.2)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=125:s=1920x1080:fps=25,format=yuv420p" -t 5 -c:v libx264 -crf 18 kbA.mp4
+ffmpeg -loop 1 -i photoA.jpg -vf "crop=iw:iw*9/16,scale=6000:-1,zoompan=z='min(1+0.0008*on,1.2)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=120:s=1920x1080:fps=24,format=yuv420p" -t 5 -c:v libx264 -crf 18 kbA.mp4
 ```
 
-Join two clips with a one-second dissolve using ffmpeg's `xfade` filter [63]. `recipes/r1_kenburns.sh` has the full set [100].
+Join two clips with a one-second dissolve using ffmpeg's `xfade` filter [63]. `recipes/r1_kenburns.sh` has the full set [100]; the file still says 25 fps and `d=125` until it is re-run and patched by hand at 24.
 
 ### Step 5: Cut out layers for parallax
 
@@ -102,10 +104,10 @@ Filling in the background behind a cut-out invents pixels. Keep the fill minimal
 Put each layer on a flat plane at its own distance, slide the camera, and render the frames. The near layers then move more than the far ones, which is parallax [71]. The tested script is `recipes/r2_parallax.py` [100]. `recipes/r2_param.py` is the same scene, with its frame count, resolution, samples and folders set by environment variables, for the timed runs in Exercise 5. Three settings matter most:
 
 - **Set the view transform to Standard.** Blender's default, AgX, washed out the test photos. Standard kept their colours [100].
-- **Draft at 640×360 with four samples; finish at 1080p.** Fifty frames at 640×360 took about 64 to 66 seconds on four CPU cores with no graphics card [100]. A 1080p frame has about nine times the pixels. Measured in the sandbox, a 1080p frame took about 11 seconds, so a 30-second shot at 25 frames a second (750 frames) would take about 2.2 hours (research notes, Follow-up F2). Your PC is not measured yet; Exercise 5 measures it.
+- **Draft at 640×360 with four samples; finish at 1080p.** Fifty frames at 640×360 took about 64 to 66 seconds on four CPU cores with no graphics card [100]. A 1080p frame has about nine times the pixels. Measured in the sandbox, a 1080p frame took about 11 seconds, so a 30-second shot at 24 frames a second (720 frames) would take about 2.2 hours (research notes, Follow-up F2; the research counted 750 frames at 25 fps). Your PC is not measured yet; Exercise 5 measures it.
 - **Run it from a terminal with no window.** Blender's own command line is `blender -b -P script.py` [25]. The Windows `blender.exe` (under Wine, not on Windows itself) ran R2 in its parameterised form, `recipes/r2_param.py`, and the Linux `blender` program and the `bpy` module ran the same scene in the same sandbox (research notes, Follow-up F2). On Windows use `blender.exe`, not `blender-launcher.exe`. `pip install bpy` on Windows needs Python 3.13 exactly [102][103]. Sandbox measurements: peak memory about 0.9 GB at 640×360 and 2.5 GB at 1080p, and about 11 seconds per 1080p frame on four cores with no graphics card. Your PC's numbers come from Exercise 5.
 
-Turn the PNG frames into a movie with `ffmpeg -framerate 25 -i renders/p_%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p parallax.mp4` [100].
+Turn the PNG frames into a movie with `ffmpeg -framerate 24 -i renders/p_%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p parallax.mp4` [100].
 
 ### Step 7: Draw lines that reveal (maps, routes, titles)
 
@@ -121,7 +123,7 @@ Kdenlive 26.08 is the default editor [8][9]. It is built on MLT, the same engine
 
 Two traps from the tests [100]:
 
-- **Always set the profile.** Without `-profile atsc_1080p_25`, `melt` uses a PAL standard-definition frame (720×576).
+- **Always set the profile.** Without `-profile`, `melt` uses a PAL standard-definition frame (720×576). For the 24 fps project the profile is `atsc_1080p_24` (W-14); the tested form used `atsc_1080p_25`, and `recipes/r5_story.mlt` still does until it is re-run at 24.
 - **Crop photos to 16:9 before you place them.** A 3:2 photo otherwise letterboxes.
 
 On Windows, the same `melt.exe` is in the Kdenlive package, so the render can run from PowerShell or Git Bash. The command ran under Wine (research notes, Follow-up F10); the two shell lines below have not run on Windows. The default install folder was not verified, so the PowerShell line finds `melt.exe` first (TODO(verify on the maker's PC)).
@@ -129,27 +131,27 @@ On Windows, the same `melt.exe` is in the Kdenlive package, so the render can ru
 ```powershell
 # PowerShell, written but NOT run on Windows. Find melt.exe first; the default install folder was not verified.
 $melt = (Get-ChildItem "C:\Program Files*" -Filter melt.exe -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1).FullName
-& $melt story.mlt -silent -profile atsc_1080p_25 -consumer avformat:story.mp4 vcodec=libx264 crf=20 pix_fmt=yuv420p an=1
+& $melt story.mlt -silent -profile atsc_1080p_24 -consumer avformat:story.mp4 vcodec=libx264 crf=20 pix_fmt=yuv420p an=1
 ```
 
 ```bash
 # Git Bash, written but NOT run on Windows. Use the standalone download unpacked anywhere to avoid the install-folder question.
-MSYS2_ARG_CONV_EXCL='*' "/c/Tools/kdenlive-26.08.2_standalone/bin/melt.exe" story.mlt -silent -profile atsc_1080p_25 -consumer avformat:story.mp4 vcodec=libx264 crf=20 pix_fmt=yuv420p an=1
+MSYS2_ARG_CONV_EXCL='*' "/c/Tools/kdenlive-26.08.2_standalone/bin/melt.exe" story.mlt -silent -profile atsc_1080p_24 -consumer avformat:story.mp4 vcodec=libx264 crf=20 pix_fmt=yuv420p an=1
 ```
 
 Do the final cut by hand: timing to music, framing and the last pass.
 
 ### Step 9: Give each album its own look
 
-Every album gets one saved colour look, so every photo from that album matches. The look comes from the album itself, not from a decade. Pick three prints from one of her real albums (after the pipeline is locked). In each print, sample a known-white object and a skin midtone. Derive the lift, cast and grain from those samples, save the result in `looks/`, and name it after her chapter. Apply that one look to every photo from the album [1].
+Every album gets one saved colour look, so every photo from that album matches. The look comes from the album itself, not from a decade. Pick three prints from one of her real albums (from Sun 15 Nov, after the L1 lock). In each print, sample a known-white object and a skin midtone. Derive the lift, cast and grain from those samples, save the result in `looks/`, and name it after her chapter. Apply that one look to every photo from the album [1].
 
 The research's two ffmpeg chains (a 1970s-style and a 1950s-style chain) are stock practice, not for the film. They are kept in `recipes/r7_era_looks.txt` for exercises only [63][100]. Do not colourise black-and-white photos with AI unless you label the result as a reconstruction [1]. The step from sampled values to filter settings is written and was tested on three stock prints: `research/toolchain-fixtures/derive_album_look.py` (research notes, Follow-up F14). It has not run on your prints or on Windows Python, so it stays TODO(research) until it has.
 
 ### Step 10: Sound
 
-Build the sound in this order: voice first, then the music bed ducked underneath it, then room tone and effects. Use only music whose licence allows public screening and a private link (see Decision 6).
+Build the sound in this order: room tone and her-world sound first, then the hummed tune and any music bed, then, if one passed one-key-three-guards, her HER-PUBLIC line on top, ducking the music under it. The premiere cut has no other recorded voice of a living person (D-05, W-35); relatives' voices are April-version items (D-06). Make the final mix in REAPER, with Resolve Free's Fairlight as the fallback (W-20); the ffmpeg chain below is for proofs and the delivery check. Use only music whose licence allows public screening (see Decision 6).
 
-Set the loudness with ffmpeg's loudness filter, `-af loudnorm=I=-16:TP=-1.5:LRA=11` [63][100]. On a test file it moved the level from −22.1 to −16.0 LUFS [100]. The broadcast reference is −23 LUFS [97]. A projector room with small speakers often needs something louder. Test it in the room.
+Set the loudness with ffmpeg's loudness filter. The online copy is `-af loudnorm=I=-16:TP=-1:LRA=11` (-16 LUFS, -1 dBTP), and every file in the project holds -1 dBTP (W-19) [63][100]. The research ran its test file with `TP=-1.5`, so re-measure at `TP=-1`. On that test file the filter moved the level from −22.1 to −16.0 LUFS [100]. The broadcast reference is −23 LUFS [97]. A projector room with small speakers often needs something louder. Render three venue masters (-23, -18 and -16 LUFS integrated) and choose at the Mon 22 Feb venue run against sixty seconds of the hall's own room tone from the back row; if no reading can be taken, load -18 first (W-19). Use two-pass `loudnorm` with a linear second pass.
 
 ### Step 11: Captions
 
@@ -159,7 +161,7 @@ Draft the captions with Kdenlive's speech-to-text, which can use VOSK or Whisper
 
 **Resolve Free and captions.** Resolve Free imports an SRT and burns it in. Automatic subtitles from audio are Studio, so use Whisper for the draft [110][111][112]. Not yet seen on a real Free install.
 
-Burn the captions into the screening file, because burned-in text is the one kind every screen shows [12][13]. Keep a sidecar `.srt` file for the archive. The research's burn-in command names a font that may not be installed on your computer. Pick a font you have [100]. TODO(research): verify burn-in on Windows.
+Burn the captions into the screening file, because burned-in text is the one kind every screen shows [12][13]. Keep a sidecar `.srt` file for the archive. The research's burn-in command names a font that may not be installed on your computer. Use an OFL font (W-21): a Windows system font is fine rasterised into the video, but never embedded in a DCP subtitle track [100]. Caption layout follows W-18: 42 characters a line, two lines, at most 20 characters a second, `FontSize=23` (about 8% line height at 1080p) inside the 90% box, with a sidecar SRT and VTT in the archive. TODO(research): verify burn-in on Windows.
 
 ### Step 12: Export three versions from one master
 
@@ -168,7 +170,7 @@ From one master file, make three versions [91][95][92]:
 | Version | Container and codec | Main settings |
 |---|---|---|
 | **Screening** (TV, USB stick, projector) | MP4, H.264 High profile | Level 4.1, yuv420p, 1080p, AAC-LC 48 kHz stereo, `+faststart`, BT.709 tags |
-| **Private web link** | MP4, H.264 High profile | CRF 20, 12 Mbps cap at 1080p. YouTube recommends 8 Mbps for 1080p at 24 to 30 frames a second [91] |
+| **Private web link** (made for the April version; not uploaded anywhere before the maker says so, D-15, W-48) | MP4, H.264 High profile | CRF 20, 12 Mbps cap at 1080p. YouTube recommends 8 Mbps for 1080p at 24 to 30 frames a second [91] |
 | **Archive** | ProRes 422 HQ in `.mov`, and/or FFV1 version 3 in Matroska | Audio PCM 24-bit or FLAC. The Library of Congress lists both in its current preferred formats for moving images (the statement is undated on the page; read 2026-10-18). An MP4 counts only as a viewing copy [92][93][94] |
 
 The screening command, as tested [100]:
@@ -177,9 +179,9 @@ The screening command, as tested [100]:
 ffmpeg -i master.mov -c:v libx264 -preset slow -crf 18 -maxrate 20M -bufsize 40M -profile:v high -level 4.1 -pix_fmt yuv420p -colorspace bt709 -color_primaries bt709 -color_trc bt709 -c:a aac -b:a 256k -ar 48000 -ac 2 -movflags +faststart deliver_usb.mp4
 ```
 
-The research tested this without the `-maxrate` and `-bufsize` pair. Those two are a safety margin.
+The research tested this without the `-maxrate` and `-bufsize` pair. Those two are the register's 20 Mbps cap (W-17). The register's venue file (W-17) is this command at 1080p24 with captions burned in, a neutral file name and metadata stripped, plus a Main profile, level 4.0 backup at about 8 Mbps, a 60 to 90 second venue test clip with no personal content, and a 3-minute sound-and-stills fallback. There is no online link, cinema or festival copy until the consent ledger closes (Mon 29 Mar) and the rights log is green (W-48).
 
-**Watch the file size.** A FAT32 USB stick cannot hold a single file over 4 GB minus one byte [96]. At about 12 Mbps video plus 256 kbps audio, that is about 46 minutes. At 20 Mbps, it is about 28 minutes [100] (the research's arithmetic). Format the stick as exFAT, or keep each file under the limit, and test on the screen. Whether your screen takes exFAT, MKV or soft subtitles is unknown. TODO(research): no TV or projector format specification was readable.
+**Watch the file size.** A FAT32 USB stick cannot hold a single file over 4 GB minus one byte [96]. At about 12 Mbps video plus 256 kbps audio, that is about 46 minutes. At 20 Mbps, it is about 28 minutes [100] (the research's arithmetic). A 12-minute film at 20 Mbps is about 1.8 GB, so the premiere cut fits FAT32; the register's two sticks are FAT32 if under 4 GiB, else exFAT, in different pockets (W-52). Format the stick as exFAT, or keep each file under the limit, and test on the screen. Whether your screen takes exFAT, MKV or soft subtitles is unknown. TODO(research): no TV or projector format specification was readable.
 
 ### Step 13: Check every file
 
@@ -193,15 +195,15 @@ Then check the file size against the stick's limit, and check the loudness again
 
 ### Step 14: Rehearse on the real screen
 
-Play the screening file from a USB stick on the actual TV or projector, with the venue's cable or adapter if you can. Keep a laptop backup: play the master in VLC or mpv, set the laptop to 1920×1080, mirror the displays, and turn off notifications and sleep [100]. The charter fixes the occasion (a mostly public gathering on 2027-02-27); the venue's screen, cable and USB behaviour are still unknown.
+Play the screening file from a USB stick on the actual TV or projector, with the venue's cable or adapter if you can. Keep a laptop backup: play the master in VLC or mpv, set the laptop to 1920×1080, mirror the displays, and turn off notifications and sleep [100]. The charter fixes the occasion (a mostly public gathering on 2027-02-27; D-08). The venue's screen, cable and USB behaviour are still unknown: the venue is asked by Fri 6 Nov and its written answer is due Sun 15 Nov (W-17); the venue visit uses a test clip, never the film, by Sun 17 Jan (W-56); the full rehearsal is Mon 22 Feb (W-52).
 
 ### Step 15: Archive
 
-Keep the master file or files, the SRT and VTT caption files, the project files, the original scans and audio, the source SVG and Blender files, a README that names every tool and version, a licence and credits file, and SHA-256 checksums. Keep two physical copies and one off-site copy. Check the checksums every year, and migrate formats before they die (research archive checklist). The preferred archive formats above come from the Library of Congress [92].
+Keep the master file or files, the SRT and VTT caption files, the project files, the original scans and audio, the source SVG and Blender files, a README that names every tool and version, a licence and credits file, and SHA-256 checksums. Keep two physical copies and one off-site copy, where the off-site copy is a second encrypted SSD kept elsewhere; there is no cloud copy of family media (W-25). Check the checksums every year, and migrate formats before they die (research archive checklist). The preferred archive formats above come from the Library of Congress [92].
 
 ## Learn-by-doing exercises
 
-Each exercise has a cap of about two hours, from the research notes. The research did not time the exercises one by one [100]. Practise on synthetic or stock images and a few non-sensitive family photos. Keep the real hero material for the vertical slice [1]. Put each exercise in `exercises/exNN/` in the private repo, and keep every command line you run.
+Each exercise has a cap of about two hours, from the research notes. The research did not time the exercises one by one [100]. Practise on synthetic or stock images and your own photos, never hers: no photo of hers is used before the L1 lock on Sat 14 Nov (D-13). Keep the real hero material for the vertical slice [1]. Put each exercise in `exercises/exNN/` in the private repo, and keep every command line you run.
 
 ### Exercise 1: Inventory and dry run
 
@@ -216,7 +218,7 @@ Each exercise has a cap of about two hours, from the research notes. The researc
 - **Goal:** Three moves by script, joined by dissolves.
 - **Steps:** Make a push-in on one photo, a pan on another, and a third move of your choice, each about six seconds, using Step 4. Join them with one-second `xfade` dissolves.
 - **Time:** Under 2 hours.
-- **Good looks like:** ffprobe reports 1920×1080, 25 frames a second, H.264. A round object is not squashed. The slowest move shows no shimmer.
+- **Good looks like:** ffprobe reports 1920×1080, 24 frames a second (`r_frame_rate` 24/1; the project rate, W-14), H.264. If you run `recipes/r1_kenburns.sh` unchanged it writes 25, so patch it to 24 by hand first. A round object is not squashed. The slowest move shows no shimmer.
 - **Self-check.** `ffprobe -v error -show_entries "stream=width,height,r_frame_rate,codec_name" -of csv=p=0 ex02_kenburns.mp4` has no shell syntax, so it runs the same in Git Bash and PowerShell. The bash-only part is the three ffmpeg lines in `recipes/r1_kenburns.sh`; in PowerShell run them one at a time, since they use no shell variables. TODO(verify on the maker's PC).
 
 ### Exercise 3: The same in the editor, with easing
@@ -269,7 +271,7 @@ If Blender does not create the output folder, make `r640` and `r1080` first (TOD
 
 ### Exercise 8: One voxel hero object
 
-- **Goal:** Model one household object from a reference photo as voxels.
+- **Goal:** Model one household object from a reference photo as voxels. **Optional until the maker answers whether she loves Minecraft (O-05, pending):** if the answer is no, there is no voxel or Minecraft chapter. Original voxel assets only, with no Mojang textures, sounds, UI or footage (D-23).
 - **Steps:** Model it in MagicaVoxel (Windows or Mac) or Goxel or Blockbench [56][58][59]. Export OBJ or PLY. Import it into Blender with forward axis Y and up axis Z [100]. Add warm light (`recipes/r4_render_voxel.py`). Render a five-second turntable. Goxel's command-line export runs under `xvfb-run -a` on a server. On Windows Goxel opens its own window, so the wrapper is not needed (TODO(verify on the maker's PC)) [58][100].
 - **Time:** TODO(research): modelling time per object was not measured. This exercise may run longer than two hours.
 - **Good looks like:** Someone who has not seen the photo names the object. The model uses 32 colours or fewer. It stands the right way up. Each frame renders in under 30 seconds at 960×540 on your machine. That is the research's target. Its four-core test machine took 8 seconds for one still [100]. Use a test viewer who does not know the subject, and who would not mention it to her.
@@ -277,7 +279,7 @@ If Blender does not create the output folder, make `r640` and `r1080` first (TOD
 ### Exercise 9: Sound and captions
 
 - **Goal:** Forty seconds of narration over a licensed music bed, ducked, levelled and captioned.
-- **Steps:** Record narration with a phone voice memo, using your own voice on a practice script. Add a CC BY or CC0 track (Decision 6). Save the credit text from the licence page into `credits.txt`. Duck the music under the voice. Apply loudness normalisation (Step 10). Draft the captions and proofread them (Step 11). Test the captions on one old phone recording, or an older speaker's voice you already have, as well as on the clean clip: a clean clip does not test old recordings or elderly voices. Keep that file private and do not publish it.
+- **Steps:** Record narration with a phone voice memo, using your own voice on a practice script. Add a CC BY or CC0 track (Decision 6). Save the credit text from the licence page into `credits.txt`. Duck the music under the voice. Apply loudness normalisation (Step 10). Draft the captions and proofread them (Step 11). Test the captions on one old phone recording of an older speaker, as well as on the clean clip: a clean clip does not test old recordings or elderly voices. Use a public-domain oral-history clip or your own voice on an old phone: not hers, not a relative's, and nothing gathered for the film (D-02, D-05). Keep that file private and do not publish it.
 - **Time:** Under 2 hours.
 - **Good looks like:** The loudness report is within 1 LU of the target. Captions line up within about 0.2 seconds at three spot checks. Every name is spelled right. The credit text matches the wording the licence asks for.
 
@@ -289,7 +291,7 @@ If Blender does not create the output folder, make `r640` and `r1080` first (TOD
 - **Good looks like:** The file plays from the stick with sound and captions. The ffprobe output matches the profile. A checksum check passes. The archive file opens in a second player.
 - **Self-check (checksums).** Bash (Git Bash or WSL2): `sha256sum chapter_usb.mp4 chapter_web_1080.mp4 chapter_archive.mov > SHA256SUMS`, then `sha256sum -c SHA256SUMS`; every file must print OK. (The three names are the research's Exercise 10 names; use your own.) PowerShell: `Get-ChildItem chapter_usb.mp4, chapter_web_1080.mp4, chapter_archive.mov | ForEach-Object { '{0}  {1}' -f (Get-FileHash $_.Name -Algorithm SHA256).Hash.ToLower(), $_.Name } | Set-Content SHA256SUMS -Encoding ascii`. Verify with `Get-Content SHA256SUMS | ForEach-Object { $h, $f = $_ -split '\s+', 2; if ((Get-FileHash $f -Algorithm SHA256).Hash -eq $h.ToUpper()) { "OK   $f" } else { "FAIL $f" } }`. TODO(verify on the maker's PC).
 
-**Pace.** Three or four exercises a week. Four a week finishes the set by 8 November 2026, so Exercise 10 is the dress rehearsal for the vertical slice; three a week finishes it by 14 November 2026. Either way, the schedule locks the pipeline on 14 November (ROADMAP-ADDENDUM.md). Re-time after Exercise 5, the first Blender render, because that is where a weak computer shows [100].
+**Pace.** Three or four exercises a week. Four a week finishes the set by 8 November 2026, so Exercise 10 is the delivery rehearsal ahead of the process lock; three a week finishes it by 14 November 2026. Either way, the L1 process lock is Sat 14 November and the slice is briefed Sun 15 November (W-06, W-07; ROADMAP-ADDENDUM.md). Re-time after Exercise 5, the first Blender render, because that is where a weak computer shows [100].
 
 ## Decisions you'll need to make
 
@@ -320,7 +322,7 @@ The tested recipes are Unix commands. Every program they call (ffmpeg, ImageMagi
 - **Blender planes (`recipes/r2_parallax.py`).** Tested and precise, but slow to render [100].
 - **Keyframes in the editor.** Quicker to learn, but not tested by the research [100].
 
-**Lean:** Blender for the three or four hero moves, and editor keyframes for the rest. Time per route on your machine: pending the two `r2_param.py` runs from Exercise 5.
+**Lean:** Blender for the hero moves (hero shots are 5% of shots, about five in the film and four at 9 minutes, and the kitchen is the only built set; W-34), and editor keyframes for the rest. Time per route on your machine: pending the two `r2_param.py` runs from Exercise 5.
 
 ### Decision 3: Which voxel tool?
 
@@ -328,7 +330,7 @@ The tested recipes are Unix commands. Every program they call (ffmpeg, ImageMagi
 - **Goxel.** Runs on Windows, macOS and Linux. Exports OBJ, PLY and glTF. It opens a window even for export [58].
 - **Blockbench.** Cuboid models in a Minecraft style, free and open source, also a web app [59]. Its command line is unverified.
 
-**Lean:** MagicaVoxel for modelling, if Step 0 confirms Windows. Goxel for converting the model to OBJ. TODO(research): run a timed modelling test.
+**Lean:** MagicaVoxel for modelling, if Step 0 confirms Windows. Goxel for converting the model to OBJ. TODO(research): run a timed modelling test. **Register status (D-23, O-05):** the voxel route is live only if the maker's pending answer on Minecraft is yes; original voxel assets only, never the reconstruction marker; the Minecraft name is at most a secondary description with the disclaimer.
 
 ### Decision 4: Which raster editor for cut-outs?
 
@@ -346,13 +348,13 @@ The tested recipes are Unix commands. Every program they call (ffmpeg, ImageMagi
 - **On your laptop.** The research measured this on a four-core CPU with no graphics card, so it is slow [100]. Blender's stated minimum includes a graphics card with 2 GB of video memory [30]. Your machine's time per frame is pending the two `r2_param.py` runs from Exercise 5.
 - **In the cloud.** The charter asks for heavy work in the cloud wherever possible, because memory is tight on the maker's Windows PC [1]. The research did not test a cloud render path. A cloud route moves your files off your machine, and the charter says nothing personal is uploaded without your explicit say [1].
 
-**Rule: Scripts travel, photos don't.** Agents write and test every script in the cloud on stock or synthetic images. The identical script then runs on your PC against the real photos, from a terminal with the Claude desktop app closed. The memory problem the charter records is the app, not ffmpeg or Blender, and overnight command-line renders do not need the app running [1]. Cloud rendering of real photos happens only after your explicit decision for a named batch, and never for the raw scans [1]. The numbers support the rule: Blender at 1080p peaks near 2.5 GB, which fits an 8 GB PC once the Claude app is closed (research notes, Follow-up F2).
+**Rule: Scripts travel, photos don't.** Agents write and test every script in the cloud on stock or synthetic images. The identical script then runs on your PC against the real photos, from a terminal with the Claude desktop app closed. The memory problem the charter records is the app, not ffmpeg or Blender, and overnight command-line renders do not need the app running [1]. Every photo set carries `cloud: none` by default and only the maker raises it; preview proxies (about 768 px) go to the container only after the account's model-improvement setting is off, and no full-size family photo, scan or master ever leaves the VeraCrypt container except to the second SSD (D-15, W-24) [1]. A rented GPU is for non-family imagery only, Secure Cloud with an encrypted volume and the maker's recorded OK, never Community Cloud (W-23). The numbers support the rule: Blender at 1080p peaks near 2.5 GB, which fits an 8 GB PC once the Claude app is closed (research notes, Follow-up F2).
 
 ### Decision 6: Which music?
 
 - **Free licences that clearly allow public screening and a private link.** Kevin MacLeod's incompetech tracks are CC BY 4.0. You must give credit, and his FAQ allows live productions and monetised YouTube [76][79]. Freesound sounds licensed CC0 or CC BY are fine. Avoid CC BY-NC [78][80]. The Sonniss GDC bundles are royalty-free, need no credit, and forbid AI training [82]. Kenney's game assets are CC0; its audio packs were not checked [83].
 - **AI-generated music.** Suno's free tier is for personal, non-commercial use, and Suno assigns no ownership to free users [88]. Meta's MusicGen weights are non-commercial [90]. The US Copyright Office has published on AI and copyright, but the research did not read its conclusions [89].
-- **Commercial songs from her life.** These need a recording licence and a publishing licence for any public or online showing. An unlisted YouTube link can still be flagged. Options, safest first: a licensed substitute with a similar mood; your own performance of the tune; an offline private showing only, which is your informed risk; or no music at all [100].
+- **Commercial songs from her life.** These need a recording licence and a publishing licence for any public or online showing. An unlisted YouTube link can still be flagged. Options, safest first: a licensed substitute with a similar mood; your own performance of the tune; or no music at all [100]. An offline private showing is not an option for the premiere, because the occasion is a public screening (D-08). Under only-me the lean is no licensed song; at most two, with sync and master, and only if the maker accepts that publishers and labels learn a film exists (W-44).
 
 **What the licence texts say** (read 2026-10-18; research notes, Follow-up F8; not legal advice):
 - **Mixkit music** (free licence) [119]: public performance is granted "on any web or social media platform", and no venue screening is listed. Use Mixkit music for the private link only, unless Mixkit confirms in writing.
@@ -362,26 +364,28 @@ The tested recipes are Unix commands. Every program they call (ffmpeg, ImageMagi
 - **Suno** [121][140]: paid-tier downloads may be shown at a non-commercial premiere under the terms as read. Pro allows 20 song downloads a month and Premier 60; Free allows none, and free-tier output may not be shown. The choice is the maker's.
 - **For the premiere**, prefer licences that name public performance: CC BY 4.0, whose "Share" includes public performance [79]; Freesound CC0 or CC BY items [80]; or a paid-tier Suno download.
 
-**Lean:** CC0 or CC BY tracks. No CC BY-NC. No AI music until its terms are read for public use. For her favourite songs, use a substitute or your own performance. The premiere is a mostly public gathering (charter), so every track must clear public performance; a rights professional reviews the final music list before the master is locked. TODO(research): several licences were not read (see the open items list below).
+**Lean:** CC0 or CC BY tracks. No CC BY-NC. No AI music until its terms are read for public use. For her favourite songs, use a substitute or your own performance. The premiere is a mostly public gathering (charter), so every track must clear public performance; one paid rights-consult hour, asked as a hypothetical, is booked by Fri 4 Dec once the country is known (W-55), and every cue is decided by Mon 14 Dec (W-44). TODO(research): several licences were not read (see the open items list below).
+
+**Register status (W-44):** default. The music spine is, in order: silence and room tone; the tune she sang to the maker, hummed by the maker in week 1 and left uncleaned; a relative's public-domain performance; the maker's own sound; CC0 or CC BY with credit; a labelled local Stable Audio bed under voice only if the maker accepts it, never on the emotional peak. Route decided by Mon 30 Nov; substitutes locked Fri 8 Jan. Udio cannot supply a file (downloads disabled 2025-10-29), so treat it as closed. Suno free output may not be shown, and the paid-tier Suno route above is not part of the spine. Never use AI for her songs or an imitation of a real singer.
 
 ### Decision 7: Which export set?
 
 - **Screening MP4** (H.264 High, level 4.1, 1080p) [91][95].
-- **Private web link** (12 Mbps cap at 1080p) [91].
+- **Private web link** (12 Mbps cap at 1080p; made for the April version, with no link before the consent ledger closes, W-48) [91].
 - **Archive** (ProRes 422 HQ in MOV, or FFV1 in MKV) [92].
 
-**Lean:** All three, from one master, plus the laptop HDMI backup (Step 14). Use 4K only after the venue screen is confirmed. TODO(research): check HEVC 4K support on the real screen.
+**Lean:** All three, from one master, plus the laptop HDMI backup (Step 14). **Register status (W-15, W-17):** decided as the working default. The master is 1080p ProRes 422 HQ and a 2K Flat DCP is derived from it if the venue needs one; 4K is not needed (UHD only for single hero shots if a 4K cinema is booked). The screening MP4 is the 1080p24 venue file with the Main 4.0 backup described in Step 12.
 
 ### Decision 8: Burned-in captions or soft subtitles?
 
 - **Burned-in.** Every screen shows them, and nobody can switch them off [12][13].
 - **Soft subtitles** (a separate track the screen can switch on or off). TV support is unverified [100].
 
-**Lean:** Burned-in captions for the screening file. A sidecar `.srt` for the archive. Soft subtitles only after a test on the real screen.
+**Lean:** Burned-in captions for the screening file. A sidecar `.srt` for the archive. Soft subtitles only after a test on the real screen. **Register status (W-18):** decided as the working default. Burned-in open captions in the venue file, with a DCP subtitle track only for a later cinema, using an OFL font; three sizes (20, 23, 26) are tested from 3 m in week 9 and from the venue's back row at the visit (by Sun 17 Jan).
 
 ### Decision 9: The venue and screen (the charter's open decision)
 
-The charter fixes the occasion: a mostly public gathering on 2027-02-27. The venue's screen, cable and USB behaviour are still unknown, and they decide the final export [1]. **Lean:** Do not choose the final export until the venue and screen are known. Until then, build all three versions. The venue test kit (research notes, Follow-up F15) turns the screen questions into a short check.
+The charter fixes the occasion: a mostly public gathering on 2027-02-27 (D-08). The venue's screen, cable and USB behaviour are still unknown, and they decide the final export [1]. **Register status (W-17, O-21):** default. The venue is asked by Fri 6 Nov with the neutral FQ12 ask; its written answer, due Sun 15 Nov, decides file or DCP. Until then, build the 1080p24 venue file and the Main 4.0 backup, and treat the archive master as the one source. If no venue is booked by Sun 17 Jan, assume the worst case (laptop, HDMI, TV) from 15 Nov. **Lean:** Do not choose the final export until the venue and screen are known. The venue test kit (research notes, Follow-up F15) turns the screen questions into a short check.
 
 ## Pitfalls
 
@@ -408,7 +412,7 @@ The charter fixes the occasion: a mostly public gathering on 2027-02-27. The ven
 
 - FAT32 cannot hold a file over 4 GB [96]. Format the stick as exFAT, or split the file (Step 12).
 - Variable-frame-rate phone clips can drift against the timeline. Convert them to constant frame rate first. The research's command for this is untested [100].
-- 4K needs HEVC, or H.264 at level 5.1, and must be tested on the real screen [95].
+- 4K needs HEVC, or H.264 at level 5.1, and must be tested on the real screen [95]. The register does not need 4K (W-15).
 - TODO(research): no TV or projector format specification was readable. Test exFAT, MKV, soft subtitles and HDMI on the real hardware.
 
 **Look-alikes and web tools.**
@@ -419,7 +423,7 @@ The charter fixes the occasion: a mostly public gathering on 2027-02-27. The ven
 
 **Music.** "Royalty-free" does not mean free to show in public, and it does not mean no credit. Read the licence page, not the search result. The YouTube Audio Library is safe only on YouTube [77]. Pixabay's licence needs no credit, but it does not allow selling or distributing the content alone [81]. FreePD closed in 2025 [84]. BBC Sound Effects' stated terms mention personal or educational projects, or a paid licence. A public screening is not confirmed [85]. Zapsplat and Musopen were not read: both sites refused our requests [141]. Openverse and ccMixter were not read.
 
-**Surprise leaks.** The charter forbids anything that could tip her off, including shared devices, cloud photo libraries and family group chats [1]. Do not let your project folder sync to a cloud photo library. Do not post a "render finished" message in a family chat. Use neutral file names on any shared machine.
+**Surprise leaks.** The charter forbids anything that could tip her off, including shared devices, cloud photo libraries and family group chats [1]. Do not let your project folder sync to a cloud photo library. Do not post a "render finished" message in a family chat. Use neutral file names on any shared machine. The register adds the rest of the routine (W-26): a separate Windows account for the project, OneDrive backup off for Desktop, Documents and Pictures, recent-file lists and caches cleared after every session, and the Mum-test on every shared device now and monthly. Whether she shares the PC or the room is still pending (O-03).
 
 ## Best references (top 8)
 
@@ -642,6 +646,7 @@ The charter fixes the occasion: a mostly public gathering on 2027-02-27. The ven
 - v0.1 · 2026-10-18 · First draft, written by the Haiku scribe from research/toolchain.md and CHARTER.md. Not yet reviewed by the advisor or by the maker. The plan is provisional until the Step 0 checklist comes back.
 - v0.2 · 2026-10-18 · Round 1 advisor revisions applied by the Haiku scribe: Decision 0 (shell) with PowerShell forms of the four self-checks; Decision 5 rule "Scripts travel, photos don't"; album looks replace decade looks (Step 9, Exercise 7); ArtCraft and hand-off lines in Decisions 1 and 4; recipes moved to skills/free-creative-toolchain/recipes/; Library of Congress edition year corrected to "current, undated on the page".
 - v0.3 · 2026-10-18 · Round 2 advisor revisions applied by the Haiku scribe: `recipes/r2_param.py` added as the timed-run script, and Exercise 5 now produces the two R2_RESULT timings; Resolve external scripting restated as Studio-only per the 21 and 21.1 manuals; Mixkit, Pixabay, Suno and public-premiere licence readings added to Decision 6, Pitfalls and Sources; Windows run lines and melt.exe lines added; Whisper memory guidance added to Step 11 and Exercise 9; pace set to three or four exercises a week; open TODO items rewritten as open items at v0.2.
+- v0.4 · 2026-10-18 · Reconciled with DECISIONS.md (2026-10-18): frame rate 24 fps (W-14) in Step 4, Step 6, Step 8 and Exercise 2, with the 24 fps values marked UNVERIFIED until r1, r2 and r5 and the colour-patch test are re-run (the recipe files still carry 25); `zoompan` as a proof tool only (W-41); loudness -1 dBTP with three venue masters and a two-pass linear `loudnorm` (W-19); venue file per W-17 with a Main 4.0 backup; 4K dropped (W-15); sound order and mix tool for only-me (D-05, W-20, W-35); cloud policy (D-15, W-23, W-24); second encrypted SSD, no cloud copy (W-25); real photos after the L1 lock Sat 14 Nov and collection from Sun 15 Nov (D-13); music spine, Udio closed, no offline-private option for a public screening (D-08, W-44); voxel route conditional on O-05 and original assets only (D-23); no private link before the consent ledger closes (W-48). Decisions carry their register status.
 
 ### Open items at v0.2
 
@@ -653,9 +658,9 @@ The charter fixes the occasion: a mostly public gathering on 2027-02-27. The ven
 - **Kdenlive Whisper, fully offline.** A pre-staged install with no internet, and the real model folder on Windows (Step 11).
 - **Burn-in fonts on Windows.** Kdenlive's `ffmpeg.exe` has no `drawtext` filter and draws subtitles through libass, and under Wine libass found no fonts (research Follow-up F10, F15). Test the burn-in on the real PC.
 - **Verified 2025+ videos.** None yet for Ken Burns in Kdenlive or SVG line-draw in Blender (research Follow-up F7, F16). Cite the written sources until one is verified.
-- **Licences still unread.** Zapsplat and Musopen: the sites refused automated reads, so the maker can paste the licence text from a browser (research Follow-up F13). Also unread: Openverse, ccMixter, Free Music Archive per-track terms, BBC Sound Effects' full terms, the YouTube Audio Library outside YouTube [77], and Udio, Stable Audio and Lyria terms. The US Copyright Office Part 2 conclusions are unread [89]. Suno's download allowance on your own account (Decision 6).
+- **Licences still unread.** Zapsplat and Musopen: the sites refused automated reads, so the maker can paste the licence text from a browser (research Follow-up F13). Also unread: Openverse, ccMixter, Free Music Archive per-track terms, BBC Sound Effects' full terms, the YouTube Audio Library outside YouTube [77], and Stable Audio and Lyria terms (Udio cannot supply a file, so it is closed; W-44). The US Copyright Office Part 2 conclusions are unread [89]. Suno's download allowance on your own account (Decision 6).
 - **Album look on your prints.** `derive_album_look.py` was tested on three stock prints (Step 9, Exercise 7). Run it on three prints from one of your albums, and on Windows Python.
-- **Venue facts.** The screen, cable, USB format (FAT32 or exFAT), MKV and soft subtitles, HEVC, 50 frames a second, and the country of the premiere. Run the venue test kit on the real screen (research Follow-up F15; Decisions 7 to 9).
+- **Venue facts.** The screen, cable, USB format (FAT32 or exFAT), MKV and soft subtitles, HEVC, 50 frames a second (a 25 fps access copy is made only if a 50 Hz-only venue judders, W-14), and the country of the premiere (O-02, pending). Run the venue test kit on the real screen (research Follow-up F15; Decisions 7 to 9).
 - **Voxel route.** Human modelling time per object; Blender-native voxel routes; depth-map and camera-projection parallax (Decision 3, Exercise 8).
 - **Cloud rendering.** No cloud render path was tested (Decision 5).
 - **Hardware floors.** Kdenlive and Inkscape minimums were not found [8][32]. Resolve Free's floor is in its installer Read Me (above).

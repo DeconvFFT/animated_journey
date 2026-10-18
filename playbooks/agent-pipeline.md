@@ -1,8 +1,10 @@
 # Agent-First Production Pipeline: What the Agents Make, Where It Renders, How It Comes Back
 
-*Draft v1, 2026-10-18. Track `agent-pipeline`. Built from `research/agent-pipeline.md` (researcher Sonnet, 2026-10-18) and `CHARTER.md`. Not yet reviewed. Open items are marked TODO(research).*
+*Draft v3, 2026-10-18. Track `agent-pipeline`. Built from `research/agent-pipeline.md` (researcher Sonnet, 2026-10-18) and `CHARTER.md`, reconciled with [DECISIONS.md](../DECISIONS.md) (2026-10-18). Not yet reviewed. Open items are marked TODO(research).*
 
 *How to read the labels: [n] points to the Sources list at the end. (M1) to (M21) are measurements taken on 2026-10-18 in the project's cloud container, using made-up test material only. (J) is the researcher's judgment. ESTIMATE is arithmetic on measured numbers. UNVERIFIED means nobody has checked it yet.*
+
+**Reconciled with DECISIONS.md (2026-10-18). The register wins (D-21).** The frame rate is settled at 24 fps on the settings card, Sun 1 Nov (W-14, W-16). The film is 9 or 12 minutes (W-01, W-02): a 12-minute film is a wrapper plus three 3:00 modules and a 9-minute film a wrapper plus two, so "chapter" below means a module of about 3:00 (W-04); the vertical slice is 100 seconds of C01 (W-07). Only-me (D-03): the maker is the proxy and nobody else reviews; hard chapters follow one-key-three-guards (D-04). Gathering starts Sun 15 Nov, after the L1 process lock on Sat 14 Nov (D-13, W-06). Family media stays on the PC and the encrypted drive: `cloud: none` by default, a second encrypted SSD, no cloud copy (D-15, W-24, W-25). Each row of the Decisions table carries its register status.
 
 ## Why this matters for our life journey
 
@@ -14,41 +16,41 @@ The Craft apps (PhotoCraft, VectorCraft, FilmCraft, EffectCraft and the others) 
 
 Be honest about the evidence. We found no multi-minute, emotionally paced film made by a coding agent, and no family tribute made that way. The examples we found run from 18 seconds to 3 minutes 30 seconds, and most of them are promotional [36][37][38][43]. This process is therefore built on evidence about the plumbing and the review loop. It is not proof that the film will move her. The answer is to test the feeling early, with one real viewer, on one chapter first.
 
-The first real checkpoint is the one-chapter slice, reviewed in week 9 on Sunday 20 December 2026 [7].
+The first real checkpoint is the one-chapter slice (G-SLICE: 100 seconds of C01, briefed Sun 15 Nov, animatic Sun 6 Dec, final Sun 20 Dec; W-07), reviewed in week 9 on Sunday 20 December 2026 [7].
 
 ## Core principles
 
 1. **Story before software.** Her voice, places and objects decide what goes on screen. Tools come second [1].
 2. **The agents build, you refine.** The source of truth is text in the private repo: scene code, shot briefs and the timeline. If you change a shot in a Craft app, export it and write down what you changed. The agents read your change back. They do not rebuild over it.
 3. **A frame must be a function of time.** Ask for frame 48 twice and you must get the same picture both times. This lets an agent fix one shot without disturbing the others. In the probes, two runs of the same scene gave identical frames (M9, M10). Real-time animation did not repeat (M11). Any method that cannot step frame by frame is a prototype only.
-4. **Scripts travel to the photos. Photos stay home.** Each set of photos has a `cloud` level: `none`, `preview` or `full`. The default is `none`. Full-size scans stay on the PC and on the encrypted drive [2][4][5].
+4. **Scripts travel to the photos. Photos stay home.** Each set of photos has a `cloud` level: `none`, `preview` or `full`. The default is `none`. Full-size scans stay on the PC and on the encrypted drive [2][4][5]. `full` is for non-family material only: no full-size family photo is ever raised to `full` or leaves the PC (D-15, W-24).
 5. **Avoid the template look on purpose.** Uniform easing, stock transitions, centred titles and the same slow zoom on every photo make any film look like a template. Random noise does not fix this. Deliberate variety, seeded so it can be repeated, and some asymmetry do [37].
 6. **A person listens.** Agents can measure loudness. They cannot judge whether a sound feels right. One 22-agent run made a 90-second film and never listened to its audio. It opened 604 images and played 0 sounds [38]. Every chapter gets a listening pass on the TV or speakers it will play on.
-7. **Finish beats sprawl.** If a review gate cannot be passed in time, shorten the film. Do not skip the gate (charter principle 6) [1].
+7. **Finish beats sprawl.** If a review gate cannot be passed in time, shorten the film. Do not skip the gate (charter principle 8; D-24) [1].
 8. **Keep the surprise in one piece.** Repo names, commit messages, folder names, cloud sessions and phone notifications must look harmless. Family group chats and cloud photo libraries are the usual ways a surprise leaks [1].
 
 ## How to do it, step by step
 
 **Words first.**
 - **Shot:** one continuous picture between two cuts.
-- **Chapter:** a group of shots about one period of her life. The plan is about 100 seconds, which is 2,400 frames at 24 frames per second [7].
+- **Chapter:** a group of shots about one period of her life, told as a module of about 3:00 (W-04). The vertical slice builds 100 seconds of the first chapter, C01, which is 2,400 frames at 24 frames per second (W-07) [7].
 - **Route A:** scenes drawn in web code (SVG, GSAP animation, rough.js for hand-drawn edges, three.js for simple 3D). A headless browser (a browser with no window) captures them one frame at a time [22][24][25][26].
 - **Route B:** real photos moved and finished with ImageMagick, Pillow and ffmpeg.
 - **Hand-off:** a file given to a Craft app, in a format both sides can read.
 - **Gate:** a review that ends with a written decision saved in `reviews/`.
 
-**Step 1. Lock the settings (week 1, once).** Write them in the repo and never change them per shot.
+**Step 1. Lock the settings (propose in week 1; the maker signs the settings card Sun 1 Nov, W-16).** Write them in the repo and never change them per shot once signed.
 - Picture: 1920 by 1080 pixels.
-- Frame rate: 24 frames per second, unless you decide otherwise (see Decisions).
-- Colour: Rec. 709 and sRGB.
+- Frame rate: 24 frames per second, settled (W-14, W-16; see Decisions).
+- Colour: Rec. 709 and sRGB (Rec. 709 / BT.1886 for video, sRGB for stills; W-16).
 - Sound: 48 kHz, 24-bit.
 - Master: ProRes 422 HQ. Access copy: H.264 (details in Templates).
 
-**Step 2. Learn your PC (week 1).** Do Exercise 1. Then install and test the tools on the Windows PC. The list is Git, ffmpeg with ffprobe, Python 3.13 or `uv`, and the Craft apps as portable zips pinned to a version [3][4]. Install the first three from PowerShell with winget. These IDs were read from the winget manifests on 2026-10-18 and have not been run on Windows yet: `winget install --id Git.Git -e` (Git 2.55.0.5), `winget install --id Gyan.FFmpeg -e` (ffmpeg 9.0.2; this is not the 6.1.1 build the container uses, so the colour-patch test must run on it), and `winget install --id Python.Python.3.13 -e` (3.13.15) [69][70][71]. Open a new terminal afterwards so PATH refreshes. The Craft app download steps are TODO(research). Run the five-minute tests described in `research/craft-visual.md` and `research/craft-motion.md` (R7) [3][4].
+**Step 2. Learn your PC (week 1).** Do Exercise 1. Then install and test the tools on the Windows PC. The list is Git, ffmpeg with ffprobe, Python 3.13 or `uv`, and the Craft apps as portable zips pinned to a version (W-22; the Launcher is never installed, D-12) [3][4]. Install the first three from PowerShell with winget. These IDs were read from the winget manifests on 2026-10-18 and have not been run on Windows yet: `winget install --id Git.Git -e` (Git 2.55.0.5), `winget install --id Gyan.FFmpeg -e` (ffmpeg 9.0.2; this is not the 6.1.1 build the container uses, so the colour-patch test must run on it), and `winget install --id Python.Python.3.13 -e` (3.13.15) [69][70][71]. Open a new terminal afterwards so PATH refreshes. The Craft app download steps are TODO(research). Run the five-minute tests described in `research/craft-visual.md` and `research/craft-motion.md` (R7) [3][4].
 
 Optional: Claude Code can run natively on Windows with a PowerShell one-liner. It needs Windows 10 version 1809 or later and at least 4 GB of RAM. Sandboxing is not supported on native Windows [46]. Do not use the Claude desktop app for this work. The charter records that it uses too much memory on this PC [1].
 
-**Step 3. Run the spikes (week 1).** Five short tests decide which routes are real. Each has a pass mark.
+**Step 3. Run the spikes (week 1).** Five short tests decide which routes are real. Each has a pass mark. Fable reviews the results at the L1 process lock, Sat 14 Nov (W-06).
 - **S1:** the Craft command-line tools inside the container. The scope is in `research/craft-motion.md` (R8) [3].
 - **S2:** frame capture for Route A.
 - **S3:** Blender, for hero shots.
@@ -57,9 +59,9 @@ Optional: Claude Code can run natively on Windows with a PowerShell one-liner. I
 
 A route that fails its spike is dropped, or moved to the PC. Do not argue with the result.
 
-**Step 4. Write the shot brief (gate G0).** The agent drafts one short brief per shot. It says what the shot is for, where the material comes from (an interview excerpt or a document ID), how long it lasts, which route builds it, each input and its `cloud` level, the palette, the motion family, the seed, the audio cues and the checks it must pass. You approve or comment in `feedback/<shot>.md`. If an input is `cloud: none`, the agent still writes the brief, the script and the expected `render.json`, commits them and marks the shot `pc-render`. You run `lj.ps1 run <shot>` on the PC and push the validator JSON and the preview; only the cloud render is skipped. Raising the level is never the agent's move.
+**Step 4. Write the shot brief (gate G0).** The agent drafts one short brief per shot. It says what the shot is for, where the material comes from (an album-session excerpt, a Card A slip or a document ID), how long it lasts, which route builds it, each input and its `cloud` level, the palette, the motion family, the seed, the audio cues and the checks it must pass. You approve or comment in `feedback/<shot>.md`. If an input is `cloud: none`, the agent still writes the brief, the script and the expected `render.json`, commits them and marks the shot `pc-render`. You run `lj.ps1 run <shot>` on the PC and push the validator JSON and the preview; only the cloud render is skipped. Raising the level is never the agent's move.
 
-**Step 5. Approve three style frames (gate G1).** Before any motion, the agent makes three still frames that show the look. The palette is six colours or fewer, sampled from her prints. Type and textures are recorded with their licence files. You approve them. For a hard chapter, the trusted relative who acts as proxy can look too.
+**Step 5. Approve three style frames (gate G1).** Before any motion, the agent makes three still frames that show the look. The palette is six colours or fewer, sampled from her prints. Type and textures are recorded with their licence files. You approve them; the first approved set is G1, Sun 15 Nov (W-38). Under only-me nobody else looks, and a hard chapter follows one-key-three-guards (D-04).
 
 **Step 6. Build and render a draft (agent, 10 to 40 minutes per shot).**
 - Route A: the scene exposes `seekTo(t)`. That function sets the picture for time `t` and does nothing else. A repo script captures the frames in sharded, resumable jobs of 10 minutes or less, writing each frame to disk as it goes [49][50].
@@ -69,26 +71,26 @@ A route that fails its spike is dropped, or moved to the PC. Do not argue with t
 
 **Step 8. Review pack and critic (gate G2).** The agent makes a contact sheet of eight timed frames, frame strips for key moments, full-resolution crops of faces and type, and a preview of 20 MB or less. It also writes `render.json`, which records the inputs, the seed, the tool versions and the file hashes. A fresh-context reviewer scores the six charter criteria. Run the critic twice with different frame orders and compare the answers. A critic that sees only stills cannot judge smoothness or sound [43].
 
-**Step 9. Your review (5 to 10 minutes per shot).** Watch the preview with sound on. Write the comment file (Templates). For any shot flagged for template risk, compare the draft with a variant. Do not be told which one the agent made.
+**Step 9. Your review (5 to 10 minutes per production day, W-42).** Watch the day's review packs with sound on, for no more than 5 to 10 minutes. Drop markers only (red cut, yellow hold, green breath, blue wrong photo) and approve nothing until 48 hours have passed. Write the comment file (Templates) from your markers. For any shot flagged for template risk, compare the draft with a variant. Do not be told which one the agent made.
 
 **Step 10. Revise, then freeze.** The agent gets at most two rounds of revision. After that the scene is frozen. Further changes happen in a Craft app, not in the code.
 
-**Step 11. Refine by hand (gate G3, class B and C shots only).** Pull the hand-off files. Open them in PhotoCraft (layered `.ora` files), VectorCraft (SVG), EffectCraft (titles) or FilmCraft (editing). Make your changes, then export under a new file name. Run the validator on the export. Never save over the only copy of anything.
+**Step 11. Refine by hand (gate G3, class B and C shots only).** Pull the hand-off files. Open them in PhotoCraft (layered `.ora` files), VectorCraft (SVG), EffectCraft (titles) or FilmCraft (editing). Make your changes, then export under a new file name. Run the validator on the export. Never save over the only copy of anything. A Craft app touches only a copy in `work\`, a chapter whose spec and OTIO are in the repo, or a title whose SVG fallback exists, and is never a step in the week before the premiere (D-12).
 
 **Step 12. Hand back and render the final (agent).** The agent validates the export, re-attaches the animation to the shapes by their IDs, renders at full resolution and saves a new approved version. Version numbers only go up.
 
 **Step 13. Assemble the chapter (you and the agents, 1 to 2 hours per chapter pass).** The agents write the timeline file. You open it in FilmCraft on the PC, adjust it and export ProRes 422 HQ. ffmpeg makes the access copy. Then three gates run.
 - G4: a reviewer checks pacing, variety of moves, continuity and captions.
-- G5: the proxy relative reads the chapter for dignity and facts, hard chapters especially.
+- G5: dignity and facts. Fable flags in writing and the maker decides under one-key-three-guards (a decision sheet per item, the written flag, the maker's two decisions 72 hours apart, default OUT of the public cut on any doubt). Fable never passes G5 (D-04).
 - G6: a technical check. Run ffprobe and loudness measurement, check captions, test the file on a TV at about 3 metres [7], and make a safety copy.
 
 **Step 14. Close the day (agent, about 10 minutes).** Update the manifests and the ledger. Commit text only. Run the backup on the PC. Delete old drafts. Write the day's note.
 
-**Rhythm and budget (ESTIMATE, J).** The format track budgets about 10 hours a week and about 190 hours to the deadline [7]. A workable week is three weekday sessions of 30 to 45 minutes, where you look at one contact sheet and one short preview and write comments. Add one 3 to 4 hour weekend block in the Craft apps on two or three hero shots. A chapter costs you about 4.5 to 5.5 hours, so six chapters are about 30 hours.
+**Rhythm and budget (ESTIMATE, J).** The maker's reliable hours per week, H, are still pending (O-01; in writing by Sun 15 Nov). The format track's early figure of about 10 hours a week and about 190 hours to the deadline is superseded: the film's effort comes from the production-scale model (12 minutes: 141, 284, 201 and 116 hours for Prior, Base, Base plus levers and Best), measured by `h_slice` on Sun 20 Dec (W-02) [7]. A workable week is three weekday sessions of 30 to 45 minutes, where you look at one contact sheet and one short preview and write comments (the register's O-01 recommendation). Add one 3 to 4 hour weekend block in the Craft apps on two or three hero shots. A module costs you about 4.5 to 5.5 hours of review and hand work; the wrapper counts as one unit, so a 12-minute film is four units, about 18 to 22 hours, and a 9-minute film is three, about 14 to 17 hours.
 
 ## Learn-by-doing exercises
 
-Do these in order. Use only made-up or test material. No family photos until the pipeline is locked. Times are for a first attempt (J).
+Do these in order. Use only made-up or test material. No family photos until the L1 process lock (Sat 14 Nov); covert collection starts Sun 15 Nov (D-13). Times are for a first attempt (J).
 
 **Exercise 1. Know your PC.**
 - **Goal:** write down the five facts that decide the encryption route, the local model options and the export speed.
@@ -97,7 +99,7 @@ Do these in order. Use only made-up or test material. No family photos until the
   2. Run `Get-ComputerInfo` and note the Windows edition (Home, Pro or other) and the physical memory.
   3. Run `Get-CimInstance Win32_VideoController` to get the graphics card name. If it is an NVIDIA card, also run `nvidia-smi`. If not, run `dxdiag` [R10 in the research].
   4. In File Explorer, check the free space on the drive you plan to use.
-  5. Ask: does anyone else use this PC? Write the answer down. A shared family device changes the surprise risk.
+  5. Ask: does anyone else use this PC? Write the answer down (O-03, still pending). A shared family device changes the surprise risk.
   6. Save the answers in a text note. Later, the `lj.ps1 doctor` script is meant to write them to `maker-pc.json`. That script is designed but not written yet [TODO(research)]. Its output must not contain your Windows user name or the PC's name, because `maker-pc.json` lives in the repo (Pitfall 10).
 - **Time:** 20 minutes.
 - **What good looks like:** five answers written down, each with the command that produced it. You can say whether the edition is Home or Pro. That matters because BitLocker needs Pro or higher, and Home's device encryption does not cover USB drives [61].
@@ -169,13 +171,13 @@ Do these in order. Use only made-up or test material. No family photos until the
 | Setting | Value | Note |
 |---|---|---|
 | Picture | 1920 x 1080 | Fixed for the whole film [3][7] |
-| Frame rate | 24 (proposed) | Decide once in week 1 [TODO(research): depends on venue playback] |
-| Colour | Rec. 709, sRGB | Tag BT.709 on every H.264 file |
+| Frame rate | 24 (settled) | Signed on the settings card Sun 1 Nov (W-14, W-16). A 25 fps access copy only if a 50 Hz-only venue judders |
+| Colour | Rec. 709 / BT.1886 (video), sRGB (stills) | Tag BT.709 on every H.264 file |
 | Sound | 48 kHz, 24-bit WAV | Measure loudness with `ebur128` |
 | Master | ProRes 422 HQ | About 590 MB per minute on a test pattern (M5) |
 | Alpha overlay | ProRes 4444, yuva444p10le, BT.709 | Not a master. Encode with the ProRes 4444 chain in `skills/agent-first-production-pipeline/SKILL.md` step 8 (measured in research Q-F1). Tags are not enough: the colour-patch test must pass (Validator checklist). An RGBA PNG sequence from EffectCraft is preferred (`research/craft-motion.md`, issue #340) |
-| Access copy | H.264 High, yuv420p, BT.709, limited range, faststart, CRF 16 to 18 | [3]. Encode with the chain in SKILL step 8, then pass the colour-patch test (Validator checklist) |
-| Safety copy | 1080p H.264, CRF 20, High profile, level 4.1 | [3] |
+| Access copy | H.264 High, yuv420p, BT.709, limited range, faststart, CRF 16 to 18 | [3]. Encode with the chain in SKILL step 8, then pass the colour-patch test (Validator checklist). The venue file is CRF 18 with a 20 Mbps cap and AAC-LC 256 kbps (W-17) |
+| Safety copy | 1080p24 H.264, Main profile, level 4.0, about 8 Mbps | The register's backup copy (W-17) [3] |
 
 **Shot brief** (one file per shot, `brief.yaml`)
 
@@ -184,7 +186,7 @@ id: LJ-C01-S014
 chapter: C01
 class: A            # A photo move | B designed graphic | C hero shot | D title or caption
 beat: "One sentence: what the viewer should feel or learn."
-source_ref: "interview excerpt id or document id"
+source_ref: "album-session excerpt id, Card A slip id or document id"
 duration_s: 6.0
 fps: 24             # project rate; never changed per shot
 route: B            # A | B | blender | craft
@@ -198,9 +200,9 @@ motion:
   ease_family: asymmetric-settle
   hold_on_twos: true
   seed: 20261024
-audio: {vo: LJ-A02-0007, music_cue: m03, sync_points: ["3.2 s: she laughs"]}
+audio: {voice: none, room: LJ-A02-0007, music_cue: m03, sync_points: ["3.2 s: the kettle clicks off"]}   # premiere cut: no recorded living voice except one HER-PUBLIC line if it passed (D-05)
 constraints: [no invented faces, no lower thirds, no beat-synced zoom, reconstructions visibly stylised]
-acceptance: ["first and last 0.3 s clean", "face never cropped", "hold 0.75 s or more after the laugh"]
+acceptance: ["first and last 0.3 s clean", "face never cropped", "hold 0.75 s or more after the click"]
 output_level: L4a   # label ladder level of the result [2]
 ```
 
@@ -213,7 +215,7 @@ version: v007_draft
 approve: no            # yes | no | with-changes
 ---
 - 00:01.2  hold longer on her face; the push starts too soon  [should]
-- 00:03.2  the laugh lands, but the music is already loud  [blocker]
+- 00:03.2  the click lands, but the music is already loud  [blocker]
 - whole    camera drifts the same way as S013  [nice]
 craft-app-needed: no
 ```
@@ -226,8 +228,8 @@ Severity words are `blocker`, `should` and `nice`. The agent answers each line i
 - **G2 shot draft:** Validators green, with the JSON attached? Hold of 0.75 s or more after each payoff? No loops or stretches to fill a slot? Faces and type checked on full-resolution crops? Template-risk output reviewed? Open items listed, not hidden?
 - **G3 refine:** Your changes pass the hand-back validators? Nothing you did was lost? Labelled as yours?
 - **G4 chapter:** Varied move families, holds and silence? Palette and type continuous? Captions within the length and reading-speed limits in the format track [7]? Loudness plan? No more than three class-A shots in a row without a held still, a class B, C or D shot, or a voice-only beat? At least one shot per chapter where the photo does not move at all?
-- **G5 dignity (proxy):** Each hard topic (loss, illness, separation, money, conflict) is cleared or removed? Nothing she might not want seen in front of others is in the shared version?
-- **G6 technical:** Master is ProRes 422 HQ. Access copy is H.264, yuv420p, BT.709, limited range. Frame count, duration and 48 kHz audio are right. Loudness is in target. The file plays on the venue-class TV. Checksums are logged. Two backups are verified.
+- **G5 dignity (the maker, under one-key-three-guards):** Each hard topic (loss, illness, separation, money, conflict) has a decision sheet, Fable's written flag and the maker's two decisions 72 hours apart, and is cleared or OUT? Anything HOLD or PRIVATE, and anything she might not want seen in front of a public room, is out of the public cut? Fable flags and never passes G5 (D-04).
+- **G6 technical:** Master is ProRes 422 HQ. Access copy is H.264, yuv420p, BT.709, limited range. Frame count, duration and 48 kHz audio are right. Loudness holds -1 dBTP, with the venue master chosen at the Mon 22 Feb run (W-19). The file plays on the venue-class TV. Checksums are logged. The second copy is a second encrypted SSD kept elsewhere, verified (W-25).
 
 A gate passes only when every score is 4 or higher and nothing critical is open [1].
 
@@ -238,28 +240,28 @@ A gate passes only when every score is 4 or higher and nothing critical is open 
 - **SVG:** renders without being blank. Every ID survives. Do not run the default optimiser preset, because it strips every ID (M17).
 - **ORA:** the zip opens, `stack.xml` parses, every layer file exists, and names match the ID pattern.
 - **Timeline (OTIO):** parses, every media file exists, every clip sits inside its available range, and the rate matches the project.
-- **Audio:** 48 kHz, 24-bit. Record loudness and true peak with `ffmpeg -i <file> -af ebur128=peak=true -f null -`.
+- **Audio:** 48 kHz, 24-bit. Record loudness and true peak with `ffmpeg -i <file> -af ebur128=peak=true -f null -`; true peak must be at or below -1 dBTP (W-19).
 - **Fonts and textures:** each has a licence file. Handwriting fonts are OFL or Apache licensed [29]. Textures from ambientCG are CC0 [28]. Each texture has a source URL and a date.
 - **Pacing and repeat:** no shot under 1.5 seconds except impact frames. Two renders of one frame compare equal, or within the agreed tolerance.
 
 **Before anything goes to the cloud**
 - The set's `cloud` level is set by you, not by the agent.
 - Before the first `preview` level, your account's model-improvement setting is off. With it on, data is kept for 5 years and may be used for training. With it off, data is kept for 30 days [51].
-- Only made-up, cleared or proxy-sized images are used.
+- Only made-up or stock images, or proxy-sized images of a set the maker raised to `preview`, are used (D-15, W-24).
 - No family photo goes to a hosted renderer or to any hosted "memorial video" service.
 - API keys go in the environment's network secrets, never in chat, in environment variables or in the repo [49].
 - The repo holds person IDs such as `P-001`, not names. The key that maps IDs to names stays offline.
 
 **Shot classes and maker time (ESTIMATE, J)**
 
-| Class | What it is | Share of a 10-minute film | Your time per shot |
+| Class | What it is | Share of shots (research estimate; see below) | Your time per shot |
 |---|---|---|---|
 | A | Parameterised photo move (seeded; capped by gate G4) | about 60% | about 2 minutes |
 | B | Designed graphic | about 25% | about 12 minutes |
 | C | Hero shot (3D or Blender) | about 10% | about 60 minutes |
 | D | Title or caption | about 5% | about 5 minutes |
 
-A 10-minute film has about 120 shots, about 20 per chapter [R4 and Q7 in the research]. No more than three class-A shots in a row without a held still, a class B, C or D shot, or a voice-only beat. At least one shot per chapter where the photo does not move at all (gate G4).
+At 8 shots a minute (W-34, W-51) a 12-minute film has about 96 shots, about 24 per module, and a 9-minute film about 72; the research counted a 10-minute film at about 120 shots. Under the register, hero shots (class C) are 5% of shots, about five in the film and four at 9 minutes, and the kitchen is the only built set (W-34), so the class C share in the table (about 10%) is the research's pre-lever estimate, not the plan [R4 and Q7 in the research]. No more than three class-A shots in a row without a held still, a class B, C or D shot, or a voice-only beat. At least one shot per chapter where the photo does not move at all (gate G4).
 
 **Names**
 - Assets: `LJ-<set>-<seq>-<side>`, for example `LJ-B03-0042-F` [2].
@@ -273,18 +275,18 @@ For each decision: the options, then our current lean and why. The lean is a sta
 
 | # | Decision | Options | Our current lean |
 |---|---|---|---|
-| 1 | Format of the film | Film, explorable world, scroll story, or a hybrid [1] | A film of 8 to 12 minutes, 1080p, which is what the format track assumes [7]. This playbook assumes a film. |
-| 2 | Frame rate | 24, 25 or 30 frames per second | 24. Holding on twos then gives 12 drawings per second. The venue's playback chain may change this [TODO(research)]. |
-| 3 | Carrying routes | Route A, Route B, Blender, Craft CLI | Route A and Route B carry the slice. Blender is for 3 to 6 hero shots per chapter. HyperFrames is compared with our own harness in experiment E1 [22]. Remotion is a further alternative, pinned if used, and its licence changes in version 5.0 [9][10]. |
-| 4 | Where renders run | Cloud container, your PC, rented GPU | Drawn scenes in the container. Real full-size photos on the PC. Blender in container shards, or a rented GPU hour (cost UNVERIFIED) [6][R0 in the research]. |
-| 5 | Cloud level per photo set | `none`, `preview`, `full` | `none` by default. Move to `preview` only after your model-improvement setting is off [51]. |
-| 6 | Encryption on the drive | BitLocker (Windows Pro or higher) or VeraCrypt volume | VeraCrypt if the PC is Home. BitLocker if it is Pro. Decide after Exercise 1 [61][63]. |
-| 7 | Second copy off-site | Encrypted cloud copy (Backblaze B2 with rclone crypt, or Cryptomator [62]), Hetzner Storage Box, or a second SSD kept elsewhere | Lean: B2 at $6.95 per TB-month with names and contents encrypted [59][60], run from your PC. A second SSD kept elsewhere is simpler and avoids any cloud copy. Your call. Hetzner's prices were not shown on the page it was read from [64]. |
-| 8 | Git LFS for media | Yes or no | No. Media lives on the encrypted drive, with checksums in the repo. LFS rates for personal accounts are UNVERIFIED [54][57]. Plain Git warns above 50 MiB and blocks above 100 MiB [56]. |
-| 9 | Paid image and video generation | Gemini API paid tier, Replicate [66], none | Paid tier only, and only for photos you have cleared. Budget about $3 to $40 per chapter (ESTIMATE) [65]. No image or video model is named in the announced changes of 2026-12-01 and 2027-01-01, so no date forces the batch: run it when cleared photos exist, and re-read the page in the week it runs [65]. |
+| 1 | Format of the film | Film, explorable world, scroll story, or a hybrid [1] | **Register: default (W-30, W-01, W-02).** A linear, captioned film in chapters, 1080p, of 9 or 12 minutes: 12 if H is 16 or more, 9 if H is under 14, and the 8-minute tier is replaced by 9. This playbook assumes a film [7]. |
+| 2 | Frame rate | 24, 25 or 30 frames per second | **Register: settled (W-14, W-16).** 24, signed on the settings card Sun 1 Nov. Holding on twos then gives 12 drawings per second. A 25 fps access copy is made only if a 50 Hz-only venue judders. |
+| 3 | Carrying routes | Route A, Route B, Blender, Craft CLI | Route A and Route B carry the slice. Blender is for the hero shots: about five in the whole film (four at 9 minutes), with the kitchen the only built set (W-34). HyperFrames is compared with our own harness in experiment E1 [22]. Remotion is a further alternative, pinned if used, and its licence changes in version 5.0 [9][10]. |
+| 4 | Where renders run | Cloud container, your PC, rented GPU | **Register: decided (W-23, D-15).** Drawn scenes in the container. Real full-size photos on the PC. Blender hero shots for scenes with no family imagery, as Workbench drafts and sharded Cycles finals in the container; a rented GPU hour (cost UNVERIFIED) only for non-family imagery, Secure Cloud with an encrypted volume and the maker's recorded OK, never Community Cloud [6][R0 in the research]. |
+| 5 | Cloud level per photo set | `none`, `preview`, `full` | **Register: decided (W-24, D-15).** `none` by default, and only the maker raises it. Move to `preview` only after your model-improvement setting is off [51]. |
+| 6 | Encryption on the drive | BitLocker (Windows Pro or higher) or VeraCrypt volume | **Register: default (W-25).** A VeraCrypt file container on the external drive, created by an administrator account, mounted only while working and dismounted before leaving the desk; BitLocker may be added if the PC is Pro. Decide the rest after Exercise 1 [61][63]. |
+| 7 | Second copy off-site | Encrypted cloud copy (Backblaze B2 with rclone crypt, or Cryptomator [62]), Hetzner Storage Box, or a second SSD kept elsewhere | **Register: decided (W-25, D-15).** A second encrypted SSD kept elsewhere; no cloud copy of family media. The cloud options in this row are not used for family media; the research's B2 price of $6.95 per TB-month [59][60] and Hetzner's unpriced page [64] are kept for the record. |
+| 8 | Git LFS for media | Yes or no | **Register: decided (W-25, D-14).** No. Media lives on the encrypted drive, with checksums in the repo. LFS rates for personal accounts are UNVERIFIED [54][57]. Plain Git warns above 50 MiB and blocks above 100 MiB [56]. |
+| 9 | Paid image and video generation | Gemini API paid tier, Replicate [66], none | Paid tier only, and only for non-family imagery or `preview` proxies of a set the maker has raised, with the maker's recorded OK for each batch (D-15, W-23, W-24); never full-size family photos, and no AI animation of a real face (D-16). Budget about $3 to $40 per chapter (ESTIMATE) [65]. No image or video model is named in the announced changes of 2026-12-01 and 2027-01-01, so no date forces the batch: run it when cleared photos exist, and re-read the page in the week it runs [65]. |
 | 10 | Local agent on your PC | None, a local Claude Code session with Remote Control [47], or only the script | Script only, plus cloud agents. A local session only for chapters that need live driving of a Craft app. Watch its memory: several GitHub reports describe `claude.exe` growing very large on Windows (search results only) [53]. |
-| 11 | Who is in on it, and the proxy for hard chapters | Names still open | A trusted close relative as proxy for hard chapters (charter principle 5) [1]. The name is yours to choose. |
-| 12 | Venue and screening | Party, private screening, or both | Still open (charter) [1]. Plan one playback test on a TV at about 3 metres from a USB-playable file [7]. |
+| 11 | Who is in on it, and the proxy for hard chapters | Decided 2026-10-18: only the maker | **Register: decided (D-03, D-04).** The maker is the sole producer and the proxy for hard chapters; nobody else is in on it and nobody else reviews. Hard chapters follow one-key-three-guards (charter principle 5) [1]. The one scheduled re-opening is TD-L2c, Sun 3 Jan. |
+| 12 | Venue and screening | Party, private screening, or both | **Register: decided (D-08), venue dated (W-17).** A mostly public gathering, treated as a public screening [1]. The venue is asked by Fri 6 Nov and its written answer, due Sun 15 Nov, decides file or DCP. Plan one playback test on a TV at about 3 metres from a USB-playable file [7], and the venue visit with a test clip by Sun 17 Jan (W-56). |
 
 ## Pitfalls
 
@@ -292,7 +294,7 @@ For each decision: the options, then our current lean and why. The lean is a sta
 2. **Nobody listens.** Loudness numbers are not a listening test. Fix: you listen at G2 and G4, on the TV or speakers the film will use [38][43].
 3. **Live filters are slow and not repeatable.** A full-frame grain filter ran at 1.2 frames per second, and two runs with two filters differed in 5 of 36 frames by 12 to 80 pixels (M10). Fix: bake grain and paper into overlays. The cause of the small differences is UNVERIFIED (TODO(research)).
 4. **The container pauses and can be reclaimed.** Work that was still running is not restored [49][50]. Whether a running job keeps it awake is unknown (spike S4). Fix: jobs of 10 minutes or less, resumable frames, state kept in Git. Fallback: run long jobs on the PC or on a rented machine.
-5. **Disks fill up.** A 10-minute film at 24 frames per second is about 14,400 frames. Textured PNG frames are about 2 MB each, so loose frames would need about 29 GB. The container has about 24 to 28 GB free (M1, M10). Fix: pipe frames straight into ffmpeg, or encode each chunk and delete its frames.
+5. **Disks fill up.** A 12-minute film at 24 frames per second is 17,280 frames (the research counted a 10-minute film, 14,400 frames). Textured PNG frames are about 2 MB each, so loose frames would need about 35 GB. The container has about 24 to 28 GB free (M1, M10). Fix: pipe frames straight into ffmpeg, or encode each chunk and delete its frames.
 6. **Colour range mistakes.** Remotion's default output was full-range and tagged `bt470bg` (M13). Fix: set BT.709 and limited range explicitly, and check with ffprobe. The ffmpeg chains are not interchangeable across builds: the bare `-pix_fmt yuva444p10le` ProRes 4444 encode gave BT.601 pixels under BT.709 tags on ffmpeg 6.1.1 (10-bit luma 326 against 250) and correct pixels on 9.0.2 (Q-F1). On the Gyan 7.1.1, 8.1.2 and 9.0.2 builds tested, `-color_primaries` and `-color_trc` did not reach the stream, so the `setparams` filter restores them. Check the pixels with the colour-patch test, not only the tags. EffectCraft's ProRes 4444 is "tagged bt709 but sRGB-encoded" (open issue #340, `research/craft-motion.md`): prefer the RGBA PNG sequence, and use ProRes 4444 only after the colour-patch test passes.
 7. **Alpha software.** The Craft apps are early alpha and release often [3][4]. EffectCraft's command-line syntax is read from its source at tag v0.11.1 [68]. Fix: every step has a non-Craft fallback. Render to a new file name each time. Read the import report. Keep the source files regenerable.
 8. **Stills at the wrong size in FilmCraft.** FilmCraft reads neither EXIF rotation nor colour profiles, and it decodes whole files to 8-bit [3]. A 3600 by 2400 still in a 1080p sequence needs a scale of 53.3%, or a pre-made 2880 by 1620 copy. Fix: convert stills before import.
@@ -390,3 +392,4 @@ First-hand
   - Spike S1 is still the gate for any Craft command-line use inside the container.
 - **Open items (TODO(research)):** the maker's PC specifications; whether a running job keeps the cloud container awake (S4); whether cloud sessions accept image attachments; Remote Control on native Windows; memory of a browser tab and the local CLI; plan usage limits for 19 weeks; GitHub LFS personal rates; which Gemini models change price and whether Veo has a batch discount; prices for external SSDs, Hetzner Storage Box and Replicate editing models (Kontext, Qwen-Image-Edit); Remotion 5.0 licence text; the cause of SVG filter differences; cloud Cycles and EEVEE stability across container images; HyperFrames determinism rules; the Manim apt route; the Windows package IDs for ffmpeg and Python; `rclone` is not installed in the container, so backups run from the PC.
 - **2026-10-18, v2 (round-1 review nudges).** Colour chains replaced with the measured Q-F1 lines (the review's "`format=` before `scale=`" sentence was not applied, because the follow-up could not reproduce it); colour-patch validator added; M12 marked "tags verified, matrix not verified, corrected"; Gemini wording corrected (no image or video model named, no batch date forced); `cloud: none` now routes to the PC as `pc-render` instead of stopping the shot; class A renamed "parameterised photo move" with a G4 cap; winget ids added to Step 2; `lj.ps1 doctor` must not print user or machine names.
+- **2026-10-18, v3.** Reconciled with DECISIONS.md (2026-10-18): frame rate settled at 24 fps on the Sun 1 Nov settings card (W-14, W-16); runtime 9 or 12 minutes, chapters as 3:00 modules, the 100-second slice and the hours model replace "8 to 12 minutes", "100 seconds a chapter" and "10 hours a week, 190 hours" (W-01, W-02, W-04, W-07); proxy and G5 restated for only-me and one-key-three-guards (D-03, D-04); Decision 11 closed; Decision 12 restated as a mostly public gathering with the venue dated (D-08, W-17); second copy is a second encrypted SSD with no cloud copy, VeraCrypt container (W-25); cloud level and paid-generation guards (D-15, W-23, W-24); hero shots about five in the film (W-34); review is 5 to 10 minutes a production day with markers only (W-42); the example brief and feedback no longer assume a recorded living voice (D-05); gathering from Sun 15 Nov after the L1 lock (D-13); venue file and backup per W-17; true peak -1 dBTP (W-19); Craft boundary and no Launcher (D-12); charter principle number for "finish beats sprawl" corrected to 8 (D-24).

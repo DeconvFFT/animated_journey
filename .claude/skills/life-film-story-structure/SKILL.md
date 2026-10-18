@@ -1,6 +1,6 @@
 ---
 name: life-film-story-structure
-description: Plans, drafts and checks the story structure of the Life Journey film, covering chapter-by-teller and object-clock structure, slot-based beat sheets, narration-source choice, runtime budgets of 12, 15 and 25 minutes, the "who is she" cold open and the hard-chapter lock rule. Use when a treatment, beat sheet, paper edit, storyboard, narration plan, runtime decision or ending for the life film is drafted, reviewed or locked, or when story text, cards or captions are requested for it.
+description: Plans, drafts and checks the story structure of the Life Journey film, covering chapter-by-teller and object-clock structure, slot-based beat sheets, narration-source choice, runtime budgets of 12 (wrapper plus three 3:00 modules), 9 and, as a stretch, 15 to 18 minutes, the "who is she" cold open and the hard-chapter lock rule. Use when a treatment, beat sheet, paper edit, storyboard, narration plan, runtime decision or ending for the life film is drafted, reviewed or locked, or when story text, cards or captions are requested for it.
 ---
 
 # Life Film Story Structure
@@ -9,13 +9,13 @@ description: Plans, drafts and checks the story structure of the Life Journey fi
 
 Keep the Life Journey film structurally honest, followable by strangers, and within the material that really exists. This skill turns `research/film-story.md` into a procedure for agents. The human version is `playbooks/film-story.md`.
 
-The maker is the only person on the project and the only keeper of the secret (answer given 2026-10-18). Do not assume a second keeper, a co-reviewer or an insider.
+The maker is the only person on the project and the only keeper of the secret (answer given 2026-10-18). Do not assume a second keeper, a co-reviewer or an insider (D-03; the one re-open point is TD-L2c, Sun 3 Jan 2027). `DECISIONS.md` is the source of truth; this file was reconciled with it on 2026-10-18.
 
 ## When to use
 
 - A treatment, beat sheet, paper edit, storyboard, narration plan, runtime plan or ending is drafted, reviewed or locked.
 - A beat is proposed for S3 (drafted) or S5 (locked).
-- A runtime change is proposed (12, 15, 18, 25, 45 or 90 minutes).
+- A runtime change is proposed (6, 9, 12 or 15 to 18 minutes; 25, 45 and 90 are not production targets).
 - Story text, title cards, captions or a contributor credit is requested for any chapter.
 
 ## When not to use
@@ -28,19 +28,19 @@ The maker is the only person on the project and the only keeper of the secret (a
 ## Procedure
 
 1. Read `CHARTER.md` and the playbook section your task touches. Confirm the sole-keeper status first.
-2. Check the runtime state. Default: 12-minute floor, 15-minute public target with an 18-minute hard cap, 25 minutes as a private stretch. Do not plan 45 or 90 minutes. Until the maker decides the surprise-ops 12-minute cap, mark each output "runtime pending decision."
+2. Check the runtime state (W-01 to W-05, D-06, D-24). 12 minutes (wrapper plus three 3:00 modules) is the target if the maker's hours H are at least 16 a week; 9 if H is below 14; 14 to 16 plans 12 only if the maker adds hours or buys captions; 15 to 18 is a stretch only at G-SLICE (Sun 20 Dec), with 18 the hard cap; F-0 is 6 minutes ("object and photos", no voice). There is no 25-minute private cut: the April version is the same locked picture with voices. Do not plan 45 or 90 minutes. Until the maker writes H (due Sun 15 Nov, O-19), plan 9 and mark each output "runtime pending H."
 3. Accept only IDs as input: a beat row, its evidence IDs, the quote file and the style bible. Refuse prose requests such as "write a scene about her wedding," and ask for the evidence IDs.
 4. Build structure from functions, not events: COLD_OPEN, PLACE, OBJECT, TUESDAY, TURN, TEXTURE, RELIEF, HARD_GLIMPSE, TIME_PASS, CHAPTER_CARD, EMPTY_CHAPTER, ENDING. Keep every slot at S0 (empty) or S1 (evidence promised) until evidence exists.
 5. Write each slot as an evidence request with a fallback card, for example "1 image of first home + 1 sense detail + 1 witness line; fallback: 'no photograph survives'." Never write a fact before a source gives it.
-6. Pick the narration source by the ladder: HER-PUBLIC (only if it exists and is decided under the 72-hour double decision and the written "would she play this to strangers herself" line), then WIT (4 to 6 named voices at most, verbatim), then CARD (quoted source), then SND (wordless with score). HER-PRIVATE (voicemail, voice note, answering machine) is private cut or post-reveal only, per surprise-ops Decision 18. MAK-CARD is allowed for the contract card and for plain statements of what the maker knows or does not know (gap cards); never for her feelings or inner life; capped at about 10 percent of runtime (balance check 4). MAK-VOICE is private-cut only. Never use a neutral narrator or "I am her" narration. For any FOUND_VOICE beat (HER-PUBLIC or HER-PRIVATE), four inventory fields are mandatory: addressee, knowing recording, sensitivity (health, money, conflict or a third party), and other voices on the recording; a blank field keeps the beat at S1.
+6. Pick the narration source by the ladder: HER-PUBLIC (only if it exists and is decided under the 72-hour double decision and the written "would she play this to strangers herself" line), then WIT (4 to 6 named tellers at most, verbatim, as attributed text with no voice in the premiere cut, D-05), then CARD (quoted source), then SND (wordless with score). HER-PRIVATE (voicemail, voice note, answering machine) never enters the public cut and is post-reveal only (W-45, surprise-ops Decision 18). MAK-CARD is allowed for the contract card and for plain statements of what the maker knows or does not know (gap cards); never for her feelings or inner life; capped at about 10 percent of runtime (balance check 4). MAK-VOICE is the hum and at most one plain factual fragment tested in the slice and kept at G-SLICE (W-35). Never use a neutral narrator or "I am her" narration. For any FOUND_VOICE beat (HER-PUBLIC or HER-PRIVATE), four inventory fields are mandatory: addressee, knowing recording, sensitivity (health, money, conflict or a third party), and other voices on the recording; a blank field keeps the beat at S1.
 7. Fill the claims table (Checklist B) for every card, caption and board frame. A claim without an ID is UNSUPPORTED, and its frame stays a grey SLOT. No beat reaches S3 with an UNSUPPORTED claim. Show a CONTRADICTED claim as "X remembers," or cut it.
 8. Draft the paper edit in columns: asset ID; quote or card text with its source; evidence ID; consent status. Run the radio test: does the chapter work with the eyes closed?
 9. Storyboard only from IDs. Each frame cites an ID or is SLOT. Each L5 (reconstruction) frame cites a testimony quote ID and carries the caption "Reconstructed from [name]'s memory, 2026."
 10. Apply the inversion rule to uneven material. Give scarce early images long holds, one per chapter at most. For the recent decade, use an 8 to 10 second burst or one ordinary day. Allocate time by chapter, with no era above about 25 percent of runtime. Say the gap once, as a true card. Caption any context image that is not hers.
-11. Handle hard chapters by trait, not incident. Default to OUT for the public cut on any doubt. Record two decisions at least 72 hours apart as maker-proxy-72h-1 and maker-proxy-72h-2. Both must say yes. The public cut holds no HOLD or PRIVATE item.
+11. Handle hard chapters by trait, not incident, under one-key-three-guards (D-04). Default to OUT for the public cut on any doubt. Fable writes a flag first (Fable flags and never passes G5). Record two decisions at least 72 hours apart as maker-proxy-72h-1 and maker-proxy-72h-2. Both must say yes. The public cut holds no HOLD or PRIVATE item.
 12. Lock a chapter (S5) only when all six rules in Checklist C pass. Lock in order of evidence richness, not chronology. Design each transition for both neighbours at lock time.
 13. Run the stranger test on the treatment's first two minutes, and again on the animatic's first two minutes. Readers must never have met her, and must answer exit questions 1 to 4 of the who-is-she brief. If they cannot, rewrite. Stranger-read copies substitute a code name for her and `[relation]` tokens for every named teller; the exit test asks whether a name was said by someone who loves her and who in relation is telling it, not which name; real names live only in the private repo.
-14. Set the ending from the card for the chosen runtime: 12 minutes "the trace," 15 minutes "the trace and the open chapter" (held EMPTY_CHAPTER card of 6 to 10 s in her name, then the object, hard cut to black; the 1:45 ending is itemised in the playbook, Template 8), 25 minutes "the open chapter," 45 minutes "the return." End on a held card and house lights. Never end on a shot that frames the room, a second-person address to her, or a request that she react.
+14. Set the ending from the card: 9 and 12 minutes "the trace and the open chapter" (a held EMPTY_CHAPTER card of 6 to 10 s in her name, then the object, the hum returning and the room's own sound, hard cut to black; the 1:45 ending is itemised in the playbook, Template 8; W-36, W-37), and the same ending for a 15 to 18 minute stretch. 25 minutes is retired (D-06) and 45 minutes "the return" is not planned (D-24). The open-chapter card goes in at any runtime unless the maker, as proxy, decides it does not suit her. End on a held card and house lights. Never end on a shot that frames the room, a second-person address to her, or a request that she react.
 15. Log every generative element, music cue and archival source to the cue sheet and credits log as it enters the film.
 16. Report: slot states, balance-check results, counts of UNSUPPORTED and CONTRADICTED claims, every TODO(research) item the output touches, and any decision the maker must make.
 
@@ -59,7 +59,7 @@ The maker is the only person on the project and the only keeper of the secret (a
 1. Seconds per era, and each era's share against the 25 percent starting cap.
 2. Density: seconds per year of her life, per chapter.
 3. Hard beats: count them; the first comes no earlier than 25 to 33 percent of runtime.
-4. Narration mix: MAK-VOICE at 0 in the public cut; MAK-CARD at about 10 percent of runtime or less.
+4. Narration mix: MAK-VOICE only the hum and at most one factual fragment passed at G-SLICE (W-35); MAK-CARD at about 10 percent of runtime or less.
 5. Label mix: L5 seconds per chapter, each with a testimony ID.
 6. Unlocked consent: any not-asked beat with an identifiable third party.
 7. Claims: any unsupported claim.
@@ -81,11 +81,12 @@ Claims table header: `claim_id,beat_id,claim_text,type(name|date|place|number|co
 - [ ] every chapter is a module with a visible card before the next
 - [ ] the run sheet plans for refusal as a normal outcome, not an edge case (surprise-ops owns the lines)
 
-**E. Runtime budgets (including end credits)**
-- 12 min: cold open 1:15; four chapters of 2:15; ending 1:45 (object 0:55, black 0:05, end credits 0:45).
-- 15 min: wrapper 3:00 (cold open 1:15 plus ending 1:45); four modules of 3:00. The 1:45 ending is object 0:50, empty chapter 0:08, black 0:05, credits 0:42.
-- 25 min: cold open 1:30; six chapters of 3:00; three "Tuesday" interludes of 0:40; present close 2:00; ending 1:30 (open-chapter card 0:08, black 0:05, credits 1:17).
-- 45 min (not planned): Act I 12:00; Act II 21:00; Act III 9:00; ending and return 3:00.
+**E. Runtime budgets (including end credits; W-04)**
+- 12 min: wrapper plus three 3:00 modules: cold open 1:15; three modules of 3:00; ending 1:45 (empty chapter 0:08, object, hum and room sound 0:50, black 0:05, credits 0:42).
+- 9 min: wrapper plus two 3:00 modules: cold open 1:15; two modules of 3:00; ending 1:45.
+- 6 min (F-0, no voice): cold open 1:15; one module of 3:00; ending 1:45.
+- 15 to 18 min (stretch only at G-SLICE): wrapper 3:00 (cold open 1:15 plus ending 1:45); four or five modules of 3:00.
+- 25 min (retired, D-06), 45 min and 90 min: not planned (D-24).
 
 **F. Beat row header (use exactly)**
 
@@ -96,7 +97,7 @@ Allowed values: label_L is L0 to L5 (L4a/b/c for animated); hard_flag is NONE, S
 ## Quality bar: theatrical or mediocre
 
 Theatrical:
-- The first two minutes pass the exit test using an object, a loved one's voice and a laugh, not a CV.
+- The first two minutes pass the exit test using an object, a sound and a laugh, with a name written or said by someone who loves her (W-36), not a CV.
 - Every word and frame traces to an ID, and the film says what it does not know.
 - The sincere version of a moment is shorter, quieter and later than the showy one.
 - The hard life lives in an object or a withheld image, not in a shown incident.
@@ -115,7 +116,7 @@ Mediocre:
 
 - Real memories stay real. AI may restore, restyle, animate and connect real photos and stories. It must not invent events or people, put words in anyone's mouth, or clone a voice (charter, principle 4).
 - Never: ask her for "a few words" under a pretext; clone or synthesise her voice; re-cut her found speech into new sentences; record her without consent; have a relative read as her; have a narrator say what she felt; animate her face to speak words she did not say; generate new scenes of her; use a live-action shot of her taken without her knowledge.
-- Pretexts used with relatives must be truthful, and each relative must know the project is a film for her. Use the consent card and pretext cards in surprise-ops [P3].
+- Pretexts must be truthful. Under only-me no relative is told that a film is being made (D-03), and nobody is read the consent card (card 4a) before the premiere; it is used for release 4d after the premiere (W-48). Use the truthful pretext cards in surprise-ops [P3].
 - Consent values: asked-ok, asked-ok-with-limits, not-asked (surprise hold), declined, third-party-needs-check, bottom-drawer (do not use).
 - Keep all private material in the private repository. Do not upload anything to a third-party service, including vendor paper-edit tools, without the maker's explicit say (charter).
 - Music, photos taken by others, archival footage, fonts and the voices of people who appear must be cleared for public screening (charter, principle 7).
@@ -131,7 +132,7 @@ Mediocre:
 
 ## Open gaps (TODO(research))
 
-Do not present these as settled. Name them in any output that depends on them: no stopwatch timings beyond *Up*; legal viewing routes unknown for *Mama Micra* (any country) and for *The Tree of Life* in the US; *Boyhood* has a US snapshot route and *The Tree of Life* UK and Canadian ones (research round-2 follow-up, Q5); the maker's country is unknown; found voice: only her own consent is clean everywhere; lawyer consult before picture lock once the country is known; no audience evidence on 12 versus 25 versus 45 minutes; no precedent for a tribute premiered to a living subject who does not know; the Academy 40-minute sentence is checked against the 99th text (research note, Follow-up Q5) and must be re-checked each Awards year.
+Do not present these as settled. Name them in any output that depends on them: no stopwatch timings beyond *Up*; legal viewing routes unknown for *Mama Micra* (any country) and for *The Tree of Life* in the US; *Boyhood* has a US snapshot route and *The Tree of Life* UK and Canadian ones (research round-2 follow-up, Q5); the maker's country is unknown; found voice: only her own consent is clean everywhere; lawyer consult by Fri 4 Dec once the country is known (W-55, O-27); no audience evidence on 9 versus 12 versus longer minutes; no precedent for a tribute premiered to a living subject who does not know; the Academy 40-minute sentence is checked against the 99th text (research note, Follow-up Q5) and must be re-checked each Awards year.
 
 ## Sources
 
@@ -213,3 +214,7 @@ Do not present these as settled. Name them in any output that depends on them: n
 - [P6] `playbooks/format.md` — Decision 7 length, caption rules.
 - [P7] `CHARTER.md` — principles 1 to 9, known facts, open decisions.
 - [P8] `reviews/01-addendum-briefs-review.md` (2026-10-18) — the surprise as a structural device (chapters visibly told by one person each), the empty last chapter in her name, the gift after the gift.
+
+## Changelog
+
+- 2026-10-18: Reconciled with DECISIONS.md (2026-10-18). Runtime is 12 (wrapper plus three 3:00 modules) if H >= 16, 9 if H < 14, 15 to 18 stretch only at G-SLICE, F-0 6 minutes, no 25-minute private cut (W-01 to W-05, D-06); budgets per W-04; narration ladder per D-05, W-35 and W-45; hard chapters per D-04; the open-chapter ending at every length (W-36, W-37); no relative is told a film is being made (D-03).

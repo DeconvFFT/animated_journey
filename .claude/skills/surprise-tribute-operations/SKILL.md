@@ -1,9 +1,11 @@
 ---
 name: surprise-tribute-operations
-description: Runs the covert operations of a surprise tribute film for the Life Journey project, covering truthful pretexts, contributor briefs, borrowing and digitising without tipping off the honoree, two-key hard-chapter decisions, leak audits of shared devices and accounts, and reveal-day logistics. Use when gathering stories, photos, objects or recordings from relatives for a secret gift, drafting a contributor message or pretext card, auditing a shared device, sending items to a lab, or planning or running the reveal.
+description: Runs the covert operations of a surprise tribute film for the Life Journey project, covering truthful pretexts, low-key asks (contributor briefs are void placeholders under only-me), borrowing and digitising without tipping off the honoree, one-key-three-guards hard-chapter decisions, leak audits of shared devices and accounts, and reveal-day logistics. Use when gathering stories, photos, objects or recordings from relatives for a secret gift, drafting a low-key ask or pretext card, auditing a shared device, sending items to a lab, or planning or running the reveal.
 ---
 
 # Surprise Tribute Operations
+
+**Reconciled with `DECISIONS.md` (2026-10-18); the register wins.** The maker is the only person on the project: sole producer, sole keeper of the secret and sole proxy for hard chapters (only-me, D-03). There is no co-keeper, no second key, no partner role and no contributor ring. Nobody is read the consent card (card 4a), and nobody is told a film is being made, before the premiere. Hard chapters follow one-key-three-guards (D-04); slips follow D-19. Anything below that names a contributor brief, a consent-card reading or a recorded relative interview is a dated placeholder that fires only if TD-L2c (Sun 3 Jan 2027) brought someone in, with confirmations on Mon 8 Feb (D-03, W-08). Covert collection starts Sun 15 Nov 2026, after the L1 process lock (D-13, W-10).
 
 ## Purpose
 
@@ -11,7 +13,7 @@ Get the material for a surprise tribute without the honoree finding out, and wit
 
 ## When to use
 
-- Drafting or checking a contributor brief, a reminder, a pretext card or a consent card.
+- Drafting or checking a low-key ask or a pretext card, or (as dated placeholders only) a contributor brief, a reminder or a consent card.
 - Auditing devices, accounts, speakers, calendars or purchase histories for leaks.
 - Logging a borrow, a scan batch, a return or a lab order.
 - Building the lab ship-by table, the holiday rules or the secrecy checklist.
@@ -30,46 +32,47 @@ Get the material for a surprise tribute without the honoree finding out, and wit
 
 ## Procedure
 
-1. **Settle the facts first.** Read `CHARTER.md` and the Decisions section of the playbook. Confirm these: the country and region; whether she lives with the maker; whether 27 February 2027 is her birthday; the co-keeper and the two proxy keys; and whether the consent card matches where the audio really lives. If any is open, name it and stop before the steps that depend on it.
+1. **Settle the facts first.** Read `CHARTER.md`, `life-journey/DECISIONS.md` and the Decisions section of the playbook. Confirm these: the country and region (O-02, pending); whether she lives with the maker (O-03, pending); whether 27 February 2027 is her birthday (O-11); that only-me is recorded (D-03; the one re-open point is TD-L2c, Sun 3 Jan); and whether card 4a matches where the audio really lives (it is read to nobody before the premiere). If any is open, name it and stop before the steps that depend on it.
 2. **Check the mode.** If anyone reports that she knows, or she has asked directly, stop. Ask the maker which mode applies. Do not carry on as if it were still a surprise.
 3. **Use the code name.** Every file name, folder name, subject line and contact uses `[CODE]`. Never put her name in anything that might sync to a shared device.
-4. **Draft, do not send.** Any contributor message needs: one sentence of purpose; the deadline; exactly what to send and how; the secret rules; the one truthful line for her; what happens to their words and how to withdraw; and a phone contact. Base it on Version A or B in the playbook. Use plain language, and 14 pt or larger if printed. Give the draft to the maker to send.
-5. **Test each pretext card against six conditions.** It is real: the task is done, and she gets the result. Nothing said is untrue. She can stop, and you stop. Nothing said under it goes into a hard chapter without the proxy and her later OK. It is disclosed at the reveal. There is no recording of her without her knowledge. Card E also needs an announced recorder that everyone can see [9].
-6. **Log every interview before it is filed.** The consent card is read aloud, and a spoken yes is captured on the file [8]. Name the file `YYYY-MM-DD_[relation]-[initials]_kit##`. Keep a text sidecar with the consent status, the contributor's country (for the law guardrail), the drawer (top, middle or bottom), the withdrawal date, and `told_by_candidate` (yes, maybe or no, plus the chapter): could this be the one story this person tells, in their voice, as the spine of a chapter? Tag anything from the middle or bottom drawer as `drawer: middle/bottom`. It stays out of the shared cut unless the proxy decides.
+4. **Draft, do not send.** Under only-me every ask is an ordinary family request that reveals nothing (playbook Step 6; `story.md` Tier 1). A contributor message (Version A or B in the playbook) is a void placeholder that fires only if TD-L2c brought someone in. If it does, it needs: one sentence of purpose; the deadline; exactly what to send and how; the secret rules; the one truthful line for her; what happens to their words and how to withdraw; and a phone contact for the maker (there is no co-keeper). Use plain language, and 14 pt or larger if printed. Give the draft to the maker to send.
+5. **Test each pretext card against six conditions.** It is real: the task is done, and she gets the result. Nothing said is untrue. She can stop, and you stop. Nothing said under it goes into a hard chapter without the maker's one-key-three-guards decision and her later OK. It is disclosed at the reveal. There is no recording of her without her knowledge. Card E also needs an announced recorder that everyone can see [9].
+6. **Log every album-and-hands session before it is filed.** Nobody is read card 4a before the premiere. The session is filmed on the hands and pages under a true sentence ("I'm filming the album while you tell me about it"), and a spoken "fine" is captured on the file (W-49) [8]. The picture is Tier B now; the voice on the file is Tier C and waits for release 4d after the premiere. Name the file `YYYY-MM-DD_[relation]-[initials]_kit##`. Keep a text sidecar with the ask status, the relative's country (for the law guardrail), the drawer (top, middle or bottom), the withdrawal date (blank until the release letters go out after the premiere), and `told_by_candidate` (yes, maybe or no, plus the chapter): could this be the one story this person tells, in their voice, as the spine of a chapter? Tag anything from the middle or bottom drawer as `drawer: middle/bottom`. It stays out of the public cut unless the maker's one-key-three-guards decision says otherwise (default OUT).
 7. **Keep the chain of custody for every object.** Photograph it as found: the shelf or drawer, each cover and spine, and each spread. Change nothing. Keep loose items in labelled envelopes outside the album. Log time out, destination, time back and handler. Return in reverse order, and compare with the as-found photos. Legal originals never leave the house. Magnetic-album adhesive can weld to prints and tear them on removal [55], so photograph in place first.
-8. **Run the Mum-test on every shared device and account.** Do it before collection starts, and monthly after that. Open each one the way she would. Search the code name and the lab names. Ask each speaker about the calendar, recent orders and the shopping list [29]. Check family calendars [31][32], purchase histories, and shared libraries or albums [18][19]. Report each finding together with its fix.
-9. **Set the lab dates in writing.** For each lab, log the written turnaround, holiday closures, return and storage terms, and the ship-by date from the playbook's table, which uses the Friday on or before the calculated date. Ship-by is the Friday the parcel leaves. Log the lab's receipt date when the lab confirms it. Mark any date not confirmed in writing as provisional. Send a pilot first, to a mid or fast lab. Send only items she will not miss, and never a legal or irreplaceable original. Audio cassettes and microcassettes count as lab items; a tape that squeals, sheds or smells musty is not played [123]. The notes give no 2026 holiday cut-offs, so ask each lab (TODO(research)).
-10. **Decide hard chapters with two keys.** Fill in one decision sheet per candidate chapter. Ask each key the standard question, "what would she choose, and what have you seen or heard her say or do that tells you?", which is substituted judgment [61]. Apply the rules. Any OUT on the shared cut stays out. A disagreement on PRIVATE means HOLD. A key who is part of the story steps back on that item. The maker never overrules a key towards inclusion.
-11. **Build the reveal run sheet from the playbook.** Include the two cold-start tests, the room brief, the quiet word, the fallback ladder and the pause. Check each line against the rules: nobody asks her to speak; no close-up without her yes; nobody records the screen; nothing goes online.
-12. **Keep the ledgers current after the reveal.** The corrections ledger and the consent ledger record what the film says, what she says, the action and the status. Every row is "pending her review" until she decides. Nothing from the film leaves the room without her decision recorded.
-13. **Follow the slip protocol.** Stop. Do not cover the slip with a lie. Within 10 minutes, assess what she saw or heard, and whether it points at the project or only at "something". Tell the co-keeper within an hour. Choose one path: carry on; a partial reveal; convert to collaborative; or stop and ask the proxy. Fix the leak, and log it.
+8. **Run the Mum-test on every shared device and account.** Do it before collection starts (Sun 15 Nov), and monthly after that. Open each one the way she would. Search the code name and the lab names. Ask each speaker about the calendar, recent orders and the shopping list [29]. Check family calendars [31][32], purchase histories, and shared libraries or albums [18][19]. Report each finding together with its fix.
+9. **Set the lab dates in writing.** For each lab, log the written turnaround to the files and to the originals, holiday closures, return and storage terms, and the ship-by date from the playbook's table, which uses the Friday on or before the calculated date. Ship-by is the Friday the parcel leaves. A lab's published turnaround counts from the day the item enters processing, not from receipt, and a lab may return originals weeks after the files [144][152]; the ship-by date is computed on the originals' return. Log the lab's receipt date when the lab confirms it. Mark any date not confirmed in writing as provisional. Send a pilot first, to a mid or fast lab, by Fri 30 Oct. Ship-by rows (W-11): slow (4 to 6 weeks, including iMemories originals and 4-to-6-week audio labs) Fri 13 Nov; mid Fri 27 Nov; mid-fast Fri 4 Dec; fast Fri 11 Dec, and Fri 18 Dec only with a written return date. Pro8mm's unscheduled discount queue (Dec-Feb only) is not planned on. Do not send a batch to a lab that will not commit to a return date in writing. Send only items she will not miss, photographed as found first, and never a legal or irreplaceable original. Audio cassettes and microcassettes count as lab items; a tape that squeals, sheds or smells musty is not played [123]. No lab has confirmed a 2026 holiday cut-off in writing, so ask each lab (TODO(research)). Draft the six-question lab email for the maker to send (no mention of the project), and log the replies in the playbook's Exercise 4 table:
+   > I plan to send [N] [VHS / 8 mm reels / cassettes] on [date]. Please confirm in writing: (1) weeks from receipt to digital files, and to return of originals; (2) closure and cut-off dates and any longer turnaround between mid-November and early January; (3) what you do with mouldy or sticky tapes or film; (4) return shipping, and how long you hold originals after completion; (5) the total price with shipping and tax; (6) for audio: do you accept answering-machine microcassettes, and at which speed do you play them?
+10. **Decide hard chapters with one-key-three-guards (D-04).** Fill in one decision sheet per candidate chapter. Fable writes a flag; Fable flags and never passes G5. The maker answers the standard question in writing, "what would she choose, and what have you seen or heard her say or do that tells you?", which is substituted judgment [61], and decides twice, 72 hours apart (maker-proxy-72h-1 and maker-proxy-72h-2). Default OUT on any doubt. Any OUT, HOLD or PRIVATE stays out of the public cut, full stop; the her-turn conversation (Sat 6 Mar 2027) is the only way back in. If the maker is part of the story on an item, Fable's flag is read twice and the item defaults OUT (inference).
+11. **Build the reveal run sheet from the playbook.** Follow the premiere-week run in W-52. Include the two cold-start tests, the room brief, the quiet word (spoken by the maker), the fallback ladder and the pause. Check each line against the rules: nobody asks her to speak; no close-up without her yes; nobody records the screen; nothing goes online.
+12. **Keep the ledgers current after the reveal.** The corrections ledger and the consent ledger record what the film says, what she says, the action and the status. Every row is "pending her review" until she decides. Nothing from the film leaves the room without her decision recorded. Dates (W-48, D-06): releases 4d to 4g Sun 28 Feb to Sat 6 Mar; her turn Sat 6 Mar; response recordings Sun 7 Mar to Sat 10 Apr; consent ledger closed Mon 29 Mar; April version delivered Sat 24 Apr.
+13. **Follow the slip protocol (D-19).** Stop. Do not cover the slip with a lie. Within 10 minutes, assess what she saw or heard, and whether it points at the project or only at "something". Write it down within the hour; there is no co-keeper to tell. Tell the Fable advisor at the next session. Choose one path: carry on; a partial reveal; convert to collaborative; or stop. Fix the cause, and log it.
 14. **Mark the unknown.** Write TODO(research) for anything the notes do not cover. Never invent a price, date, legal rule, URL or cultural rule. Name the source for each fact, and label each inference as inference.
 
 ## Checklists
 
 ### Before any collection
 - [ ] Settled facts recorded (Procedure 1)
-- [ ] Rings and the two proxy keys written down, with the partner's role
+- [ ] Only-me recorded (D-03) and the sealed-envelope contact named (O-16); no rings, no keys, no partner role
 - [ ] Project email and `[CODE]` set up
 - [ ] Mum-test done on each shared device and account; fixes logged
 - [ ] External project drive holds a VeraCrypt container created from the administrator account; the project account mounts it only while working and dismounts before leaving the desk or switching users; mount, copy, dismount, unplug tested once [93][97][98]
-- [ ] One truthful side-project chosen; the one line agreed with the co-keeper
+- [ ] One truthful side-project chosen (Card A by default); the one truthful line written down
 
-### Before each interview
-- [ ] Contributor asked personally, and wants to be recorded [12]
-- [ ] Three-prompt card sent a day before (not all prompts)
-- [ ] Do Not Disturb on; phone on a towel, 6 to 12 inches from the mouth; test line played back
-- [ ] Consent card read aloud; spoken yes captured on the file
-- [ ] "Only you" question asked once, with an exit
+### Before each album-and-hands session
+- [ ] Relative asked in person, as an ordinary visit, and would enjoy it [12]
+- [ ] No card or prompts sent ahead; three prompts kept in your head
+- [ ] Do Not Disturb on; phone aimed at the album and the hands (the face never in frame), 6 to 12 inches from the nearest mouth; test line played back
+- [ ] True sentence said; spoken "fine" captured on the file (card 4a is read to nobody before the premiere)
+- [ ] "Only you" question asked once, with an exit, only if it can be asked as ordinary conversation
 
 ### Before each borrow
-- [ ] Item chosen with the co-keeper; not in weekly use
-- [ ] Window chosen; co-keeper knows where you are
+- [ ] Item chosen by the maker; not in weekly use
+- [ ] Window chosen and noted in the borrow log (time out, expected back)
 - [ ] Photographed as found; nothing marked
 - [ ] Log line made (time out, destination, time back, handler)
 
 ### Before each lab order
-- [ ] Written turnaround, holiday dates, and return and storage terms in the project email
+- [ ] Written turnaround to files and to originals, holiday dates, and return and storage terms in the project email
 - [ ] Ship-by date computed; lab's receipt date logged when confirmed; provisional if not confirmed in writing
 - [ ] Only items she will not miss; no legal or irreplaceable originals
 
@@ -78,35 +81,35 @@ Get the material for a surprise tribute without the honoree finding out, and wit
 - [ ] Captions burned in; sound checked with an older listener, if possible [66]
 - [ ] Two cold starts passed on the real device and cable
 - [ ] Room list and seat plan with hearing and mobility needs
-- [ ] Calendar clashes checked with the proxy: Ramadan [72], Lunar New Year [73]
+- [ ] Calendar clashes checked by the maker (the proxy): Ramadan [72], Lunar New Year [73]
 - [ ] Quiet word script ready; the distractor's plan is true
 - [ ] Fallback ladder written on a card
 
 ## Quality bar
 
-**Good.** Every claim is marked with [n], as inference, or as TODO(research). Every pretext is real, and its result is delivered. Every contributor knows the withdrawal date. Every shared screen has been tested with a dummy code name. Every hard chapter has two decisions, a reason and a date. The reveal has been rehearsed with a trusted person who is not a proxy.
+**Good.** Every claim is marked with [n], as inference, or as TODO(research). Every pretext is real, and its result is delivered. Every person recorded has a spoken "fine" on the file, and the withdrawal date is set when the release letters go out. Every shared screen has been tested with a dummy code name. Every hard chapter has two dated decisions 72 hours apart, Fable's flag, a reason and a date. The opening has been tested on strangers (S1, S2; W-43), and the venue run on Mon 22 Feb was done with the test clip only.
 
 **Mediocre.** A checklist that has never been run. Tools named without checking the setting on a real device. Anecdote presented as practice. A date given without written lab confirmation. A consent card that does not match where the audio lives. A message asking a relative to do something the maker will not actually do.
 
-**Unacceptable.** Any untruth to her. Any secret recording. A synthetic voice [63]. An animated face of a dead person without the closest family's explicit yes [64]. A reconciliation staged on screen. Any shared-cut material the proxy keys have not cleared.
+**Unacceptable.** Any untruth to her. Any secret recording. A synthetic voice [63]. Any AI animation of a real face, or an animated or voiced dead person in the public cut (D-16, W-46) [64]. A reconciliation staged on screen. Any public-cut material that one-key-three-guards has not cleared.
 
 ## Ethics and privacy guardrails
 
 - **Omit, never lie.** Withholding is allowed. Untruths are not, and the no-lie floor holds even when the truth is awkward [13][8].
 - **Consent is per person.** Each person gives a spoken yes on the file and has a withdrawal date. Narrators, her included, get the review options (delete, restrict, redact, clarify, correct, close until a date) [8]. Third parties are asked, not assumed. A family-history code requires specific consent from living people before information about them is shared further [78].
-- **Hard chapters default to HOLD.** Proxies are sometimes wrong. One review found about 68% agreement with patients' preferences, in medical hypotheticals, so the figure is an analogy only [60]. Use two keys and substituted judgment [61].
+- **Hard chapters default OUT of the public cut (D-04).** Proxies are sometimes wrong. One review found about 68% agreement with patients' preferences, in medical hypotheticals, so the figure is an analogy only [60]. Use one-key-three-guards and substituted judgment [61].
 - **Dignity.** Describe a difficult person by trait, not by one incident, and follow each honest line with warmth [56]. Do not name a cause of death without the closest family's say.
-- **Images and voices of the dead.** Some cultures restrict images, voices and names of the dead [65]. Treat the cultural checklist as questions for the proxy and an elder. None of it is a rule.
-- **Storage.** Audio stays on storage the maker controls, unless the maker decides otherwise and the consent card says so.
+- **Images and voices of the dead.** Some cultures restrict images, voices and names of the dead [65]. Treat the cultural checklist as questions for the maker (the proxy) to answer from their own knowledge; ask an elder only through a low-key question that reveals nothing, or after TD-L2c. None of it is a rule.
+- **Storage.** Audio stays on storage the maker controls, unless the maker decides otherwise and card 4a says so. Transcription runs locally, and no full-size family photo, interview audio or master leaves the encrypted container except to the second SSD; `cloud: none` by default (W-24, W-25).
 - **Law.** Do not conclude. The US guide is a baseline, and says it is not legal advice [14]. Apple's built-in call recording is consent-by-design, with a repeating notice, and is not available everywhere [15]. Third-party call recorders are not used in this project. UK: a participant's own recording is unlikely to be unlawful interception under IPA 2016 s.3/s.4 (the notes' reading, inference) [117][118]; Germany: StGB §201 makes an unauthorised recording of private speech an offence with no participant exception, so a spoken yes is mandatory [119]; EU: GDPR Art. 2(2)(c) household exemption is likely but untested [120]; other countries and non-US cross-border calls UNVERIFIED (TODO(research)).
-- **Her decisions override everyone's.** After the reveal, her decisions override the maker's and the proxies'.
+- **Her decisions override everyone's.** After the reveal, her decisions override the maker's, as her proxy.
 
 ## References
 
 - `playbooks/surprise-ops.md`: the method, templates, decisions, exercises and pitfalls.
 - `research/surprise-ops.md`: the evidence, with numbered sources, status labels and gaps.
 - Key sources: Oral History Association ethics [8] and remote interviewing [6]; Smithsonian family folklore [9]; Windows notifications and Do Not Disturb [24]; the WVU surprise-tribute brief [39]; Library of Congress media durability [70].
-- Related skill: `life-story-interviewing`, for ordinary interviews with consenting relatives.
+- Related skill: `life-story-interviewing`, for ordinary interviews with consenting relatives (under only-me, none are held before the premiere).
 
 ## Sources
 
@@ -179,3 +182,11 @@ Numbers match `research/surprise-ops.md`. Status: **fetched** = the researcher o
 [120] GDPR Article 2 (unofficial reproduction) — https://gdpr-info.eu/art-2-gdpr/ — undated — fetched — Article 2(2)(c) personal or household activity
 
 [123] US National Archives, "Magnetic Media Audio Condition Assessment" — https://archives.gov/files/preservation/formats/pdf/audio-magnetic-media-condition-assessment-table.pdf — October 2014 — fetched (PDF text extracted locally) — sticky shed, soft binder, vinegar syndrome, mould; "Do not bake"; do not handle mould
+
+[144] Pro8mm, Turn Around Times — https://www.pro8mm.com/pages/turn-around-times — "Changes — Effective November 1, 2025"; footer 2026 — fetched; re-read by the Fable advisor and the implementor on 2026-10-18 — the turnaround clock runs "from the date your film enters processing, not from the date your package is received"; allow up to 72 hours for logging; regular season (January to April, November, December) and peak season (May to October) business-day estimates; Home Movie Legacy Discount "Available December–February"
+
+[152] iMemories, Turnaround Time and Pricing — https://www.imemories.com/turnaround — footer 2026 — fetched — files online in 1 to 2 weeks (the page read "2 week" for the researcher and the implementor and "1 week" for the Fable advisor, all on 2026-10-18); "we will ship your originals back to you via UPS Ground within 4 weeks" after digitising
+
+## Changelog
+
+- 2026-10-18: Reconciled with DECISIONS.md (2026-10-18). Only-me (D-03) and one-key-three-guards (D-04) replace the co-keeper, the two proxy keys and the partner role; slip protocol per D-19; contributor briefs and the consent card (card 4a) are dated placeholders that fire only if TD-L2c (Sun 3 Jan 2027) brought someone in; album-and-hands sessions replace interviews (W-49); collection from Sun 15 Nov (D-13, W-10); lab ship-by rows per W-11; no AI animation of a real face (D-16, W-46); storage per W-24 and W-25.

@@ -1,6 +1,6 @@
 # Production Scale: How Much Film Can One Maker and an AI Team Finish?
 
-*Draft v3, 2026-10-18 (Sunday, week 1 of 19). Track `production-scale`. Built by the Haiku scribe from `research/production-scale.md` (researcher Sonnet, 2026-10-18, with follow-ups F0 to F5 and G1 to G6) and `CHARTER.md`. Rounds 1 and 2 of the review applied (`reviews/production-scale-round2.md`). Open items are marked TODO(research).*
+*Draft v3, 2026-10-18 (Sunday, week 1 of 19). Track `production-scale`. Built by the Haiku scribe from `research/production-scale.md` (researcher Sonnet, 2026-10-18, with follow-ups F0 to F5 and G1 to G6) and `CHARTER.md`. Rounds 1 and 2 of the review applied (`reviews/production-scale-round2.md`). Reconciled with `DECISIONS.md` (the decisions register; where this playbook and the register disagree, the register wins). Open items are marked TODO(research).*
 
 *How to read the labels. [n] points to the Sources list at the end, using the same numbers as the research note. **[J]** is judgement, not a measurement. **ESTIMATE** is arithmetic on measured or sourced numbers. **UNVERIFIED** means nobody has checked it yet. **Hearsay** means a forum post, résumé or unnamed source. **Snippet-only** means we saw a search summary, not the page.*
 
@@ -28,16 +28,16 @@ The one shot class that does drive the schedule is the hero shot (class C). In t
 
 The closest relative to our subject is the StoryCorps animated short work, which took 13 weeks for 3 minutes 15 seconds with 6 to 8 people [31]. Our plan replaces drawn characters with real photographs. That is why the numbers can be lower. It is not proven yet.
 
-The older estimate in the format playbook was 100 to 150 maker-hours for 8 to 12 minutes, a judgement and not a measurement [5]. Our model's 12-minute film needs 141 hours in the Prior case, 284 in Base, 201 with the levers and 116 in the best case. The older estimate fits only the optimistic cases.
+The older estimate in the format playbook was 100 to 150 maker-hours for 8 to 12 minutes, a judgement and not a measurement [5]; the format playbook now defers to this model (`DECISIONS.md` W-02). Our model's 12-minute film needs 141 hours in the Prior case, 284 in Base, 201 with the levers and 116 in the best case. The older estimate fits only the optimistic cases.
 
 ### Working answer (current lean, to be confirmed)
 
-- Commit to a **12-minute public cut**, built as a wrapper (cold open about 1:15 and ending about 1:45) and three modules of about 3:00, if you can give about **16 hours a week or more** and we adopt the four levers in Step 3 that need no purchase (about **14.5** if mix, grade and captions are bought after two quotes).
-- If it is nearer **10 hours a week**, plan **9 minutes (wrapper plus two modules)**. At 10 hours that fits only with all five levers and a slice of about 13 hours or less, about half the Base prediction. So the rule is: **9 minutes if the slice comes in near Prior speed (about 10 hours); otherwise add hours or buy finishing.**
-- Treat **15 to 18 minutes** as a stretch. It opens only if the 20 December slice measures well enough.
-- Treat **25 minutes** as a private cut after the premiere. Do not plan **45 or 90 minutes**.
+- Commit to a **12-minute public cut**, built as a wrapper (cold open about 1:15 and ending about 1:45) and three modules of about 3:00, if you can give **16 hours a week or more** in writing and we adopt the four levers in Step 3 that need no purchase (`DECISIONS.md` W-01, W-02, W-04). Between 14 and 16 hours, plan 12 only if you add hours or buy captions; otherwise 9.
+- If H is **under 14 hours a week**, plan **9 minutes (wrapper plus two modules)** from Sunday 15 November, not from 20 December. At 10 hours, 9 minutes fits only with all five levers and a slice of about 13 hours or less, about half the Base prediction; lever 3 (bought finishing) is off under only-me (W-50), so the rule is: **9 minutes if the slice comes in near Prior speed (about 10 hours); otherwise add hours.**
+- Treat **15 to 18 minutes** as a stretch. It opens only at G-SLICE on 20 December, only if H is 20 or more and the slice fits T2, and it is not recommended for the premiere cut under only-me (W-03). The fallback F-0 is 6 minutes: the wrapper plus one 3:00 module (W-05).
+- There is **no 25-minute plan.** The former private cut is re-purposed as the April version, the same locked picture with voices on (D-06). Do not plan **45 or 90 minutes** (D-24).
 
-The story track's floor of 12 minutes is not safe at 10 hours a week [7]. That conflict is open (see Decisions).
+The story track's old floor of 12 minutes is retired: 12 is the target when H allows and 9 when it does not (W-02). The conflict is resolved.
 
 The next step is the vertical slice. It is one complete chapter, built to final quality, that measures your real minutes. The 20 December gate uses that measurement to choose the runtime.
 
@@ -57,14 +57,14 @@ The next step is the vertical slice. It is one complete chapter, built to final 
 ### Words you will see
 
 - **H**: the hours per week you can reliably give. Usable hours are 85 percent of H each week (u = 0.85) [J].
-- **Runtime tier**: 9, 12, 15 to 18, 25, 45 or 90 minutes.
-- **Wrapper and modules**: the film is a wrapper (cold open about 1:15 and ending about 1:45) plus modules of about 3:00 each. Twelve minutes is the wrapper plus three modules; fifteen is the wrapper plus four [7]. The model's 100-second chapter is the learning-curve unit, not the cut structure, so seven of them for 12 minutes stays valid. The agent-pipeline playbook also defines a chapter as about 100 seconds [2]. Decided in round 2, with no open items: (a) this track plans 12 minutes as wrapper plus three 3:00 modules. `research/film-story.md` (runtime table, 12-minute row) and `playbooks/film-story.md` (runtime shapes) still carry four chapters of 2:15 for 12 minutes while their recommendation uses 3:00 modules; delta logged for film-story's next round; the cost model is unchanged either way (n = 7 learning units). (b) The 8-minute tier is replaced by 9 minutes (wrapper plus two modules), the nearest whole-module version. (c) At the 17 January gate, below 5.4 minutes approved, cut one module (the lowest-priority), not two; a second module is cut only at G-DRAFT if it is not at draft. (d) The slice is a 100-second piece of module M1 (acceptance 90 to 120 seconds), not all 180 seconds of it; the rest of M1 is built after the gate (Step 8). (e) Shot IDs carry wrapper shots: the pattern is `^LJ-(C\d{2}|W\d)-S\d{3}$`.
+- **Runtime tier**: 6 (F-0), 9, 12, or 15 to 18 (stretch). The 25-, 45- and 90-minute rows in the tables below are kept for comparison only; they are not production targets (`DECISIONS.md` W-03, D-24).
+- **Wrapper and modules**: the film is a wrapper (cold open about 1:15 and ending about 1:45) plus modules of about 3:00 each. Twelve minutes is the wrapper plus three modules; fifteen is the wrapper plus four [7]. The model's 100-second chapter is the learning-curve unit, not the cut structure, so seven of them for 12 minutes stays valid. The agent-pipeline playbook also defines a chapter as about 100 seconds [2]. Decided in round 2, with no open items: (a) this track plans 12 minutes as wrapper plus three 3:00 modules. `research/film-story.md` (runtime table, 12-minute row) and `playbooks/film-story.md` (runtime shapes) still carry four chapters of 2:15 for 12 minutes while their recommendation uses 3:00 modules; delta logged for film-story's next round; the cost model is unchanged either way (n = 7 learning units). Resolved by `DECISIONS.md` W-04: the 3:00 module is the shape; film-story's 2:15 row is superseded. (b) The 8-minute tier is replaced by 9 minutes (wrapper plus two modules), the nearest whole-module version. (c) At the 17 January gate, below 5.4 minutes approved, cut one module (the lowest-priority), not two; a second module is cut only at G-DRAFT if it is not at draft. (d) The slice is a 100-second piece of module M1 (acceptance 90 to 120 seconds), not all 180 seconds of it; the rest of M1 is built after the gate (Step 8). (e) Shot IDs carry wrapper shots: the pattern is `^LJ-(C\d{2}|W\d)-S\d{3}$`.
 - **Shot classes**: A is a photo move, B a designed graphic, C a hero shot, D a title or caption. The model's mix is 60, 25, 10 and 5 percent of shots [2].
 - **Animatic**: a timed rough cut made from real pictures and temporary sound.
 - **Slice**: the one complete piece we use to measure (Principle 3): 100 seconds of module M1.
 - **Master**: the final picture and sound files that everything else is made from. The plan uses ProRes 422 HQ, plus an H.264 access copy [3].
-- **DCP**: the digital package cinemas use to play a film. Whether we need one is an open decision.
-- **Cases**: *Prior* uses the older playbook numbers. *Base* is the research note's evidence-adjusted case. *Levers* is Base with the five levers (lever 3, bought finishing, only once two quotes are recorded). *Four* is Base with the four levers that need no purchase. *Best* is Prior speeds with the structural levers. *Stress* is a plausible bad run.
+- **DCP**: the digital package cinemas use to play a film. Whether we need one is decided by the venue's written answer, due Sunday 15 November (`DECISIONS.md` W-17).
+- **Cases**: *Prior* uses the older playbook numbers. *Base* is the research note's evidence-adjusted case. *Levers* is Base with the five levers (lever 3, bought finishing, is off for the premiere cut under only-me, `DECISIONS.md` W-50; read the *Four* case as the plan). *Four* is Base with the four levers that need no purchase. *Best* is Prior speeds with the structural levers. *Stress* is a plausible bad run.
 
 ### Who does what
 
@@ -74,15 +74,15 @@ The table below shows the Base case for each stage, in maker-hours per finished 
 
 | Stage | Output | Who | Base maker-hours per minute |
 |---|---|---|---|
-| Treatment, narration, beats (`film-story`) | beat sheet, voice-over script | agent drafts, you decide | 0.5 |
+| Treatment, card text, beats (`film-story`) | beat sheet, card text and sound script | agent drafts, you decide | 0.5 |
 | Storyboard and animatic | timed boards with temporary sound | agent assembles, you review | 0.5 |
 | Gathering, scanning, labelling, clearances | manifest lines, consent notes | you | 1.2 |
 | Layout and shot brief (G0, G1) | `brief.yaml`, three style frames | agent writes, you approve | counted in shot minutes |
 | Animation and compositing (Routes A and B, Blender) | draft renders (G2) | agent builds, you review | 4.6, including rework and reuse |
 | Hand refinement in the Craft apps (G3, classes B and C only) | Craft-app passes | you | counted in shot minutes |
 | Chapter assembly and passes (G4 to G6) | chapter master | you and agent | 1.2 |
-| Score, voice-over, sound integration | cue sheet, stems | you choose; composer or library; agent assembles | 0.6 |
-| Grade, mix, captions, QC | final audio and picture | you, or hired | 2.7 |
+| Score, sound integration (no narrator) | cue sheet, stems | you choose; library, CC0, CC BY or your own sound, no composer (D-07, W-44); agent assembles | 0.6 |
+| Grade, mix, captions, QC | final audio and picture | you (lever 3 is off for the premiere cut, W-50) | 2.7 |
 | Master, access copy, DCP or file, verification | ProRes 422 HQ, H.264, checksums | agent scripts, you check | 24 fixed hours |
 
 G0 to G6 are the review gates in the agent-pipeline playbook [2].
@@ -103,26 +103,27 @@ If H is not written by 15 November, the gate allows one week of grace, to 22 Nov
 
 Use the tables in the Templates section. The rules from the research note are these.
 
-- **H about 10**: plan 9 minutes (wrapper plus two modules) if the slice comes in near Prior speed; otherwise add hours or buy finishing (Words, item b; Step 10). Skip the reuse program, buy the master chain, and accept a templated look where you must (research note, Q5).
-- **H about 16 or more, with the four levers in Step 3 adopted** (about 14.5 with bought finishing): plan 12 minutes (wrapper plus three modules).
-- **H about 20 or more**: 15 to 18 minutes becomes the target, if the slice meets the thresholds on 20 December.
-- **H about 30**: plan 15 to 18 minutes, and keep 25 as the private cut.
+- **H under 14**: plan 9 minutes (wrapper plus two modules) from Sunday 15 November, not from 20 December (`DECISIONS.md` W-02; Words, item b). Skip the reuse program beyond the kitchen and the title system, and accept a templated look where you must (research note, Q5). A bought master chain is off under only-me (W-50); add hours instead.
+- **H 14 to under 16**: plan 12 minutes only if you add hours or buy captions; otherwise 9.
+- **H 16 or more, with the four levers in Step 3 adopted**: plan 12 minutes (wrapper plus three modules).
+- **H about 20 or more**: 15 to 18 minutes becomes a stretch that can open only at G-SLICE on 20 December, if the slice meets the T2 thresholds (W-03); it is not recommended for the premiere cut under only-me.
+- There is no 25-minute plan and no 25-minute private cut: the April version is the same locked picture with voices on (D-06).
 
-Do not plan above 18 minutes before the slice speaks.
+Do not plan above 12 minutes before the slice speaks (D-24).
 
-### Step 3. Adopt the levers now (four now; the fifth after two quotes)
+### Step 3. Adopt the levers now (four now; the fifth is off for the premiere cut)
 
-Five changes make 12 minutes fit at 14 to 20 hours a week in the Base case. Lever 3 (bought finishing) waits for two quotes, so until then the other four are the plan: they fit 12 minutes at about 16 hours a week or more. Each is an input in the model.
+Five changes make 12 minutes fit at 14 to 20 hours a week in the Base case. Lever 3 (bought finishing) is off for the premiere cut under only-me (`DECISIONS.md` D-07, W-50), so the other four are the plan: they fit 12 minutes at about 16 hours a week or more. Each is an input in the model.
 
 1. **Hero shots at 5 percent, not 10.** Move the shots from class C to class A where you can. In Base, the 12-minute film drops from 19.6 to 17.6 hours a week.
 2. **Eight shots per minute, not twelve.** Longer holds, closer to documentary pace. In Base, 19.6 falls to 17.2 hours a week. Stop-motion features run 6 to 12 shots per minute, and *Memoir of a Snail* used shots "only five to 10 seconds long" [70].
-3. **Buy or template the mix, grade and captions.** Finishing falls from 2.7 to 0.8 maker-hours per minute. In Base, 19.6 falls to 18.1 hours a week. **Do not adopt this lever in the model until two dated quotes are in hand** (research F1; the rule is in G1: two logged quotes, each with both prices and a turnaround of 10 working days or less). Captions are the small part: $25 to $36 bought from a transcription service, or free in DaVinci Resolve or a local tool [77][78][79]. Ask three vendors at G-READY (Sunday 15 November) with F1's five-line request, with turnaround counted from Saturday 6 February.
+3. **Buy or template the mix, grade and captions (OFF for the premiere cut).** Finishing would fall from 2.7 to 0.8 maker-hours per minute, and in Base 19.6 would fall to 18.1 hours a week. Under only-me a bought mix is a person brought in, so do the mix and grade yourself, with the finishing chain rehearsed inside the slice and rolling chapter locks from 17 January (`DECISIONS.md` W-50, D-07). Captions are the small part: $25 to $36 bought from a transcription service, which sees text and not pictures or a name, or free in DaVinci Resolve or a local tool [77][78][79]; buy captions alone only if time is short. Two dated quotes (research F1; two logged quotes, each with both prices and a turnaround of 10 working days or less) are needed by G-READY (Sunday 15 November) only if you want the option, and a bought mix is re-opened for the April version.
 4. **Triage the photos.** Decide which photos need hand work before you start. Class A falls from 7 to 4.5 minutes a shot. In Base, 19.6 falls to 19.1 hours a week.
 5. **Front-load gathering.** Get material in hand before 20 December. Alone, the lever tests 60 percent of production built before the holidays. It changes little at 12 minutes, but it raises the largest film you can finish at 20 hours a week from 9.4 to 12.0 minutes. The all-levers case uses 50 percent.
 
-Together, the five levers bring the 12-minute film from 19.6 to 13.9 hours a week, and the 25-minute film from 31.5 to 21.1. At 20 hours a week the largest film rises from 9.4 to 20.7 minutes. At 30 hours it rises from 15.5 to 32.7 minutes. Without the bought finishing (lever 3), the four levers give 15.5 hours a week for 12 minutes and 24.4 for 25 minutes; the largest film is 18.2 minutes at 20 hours and 29.0 minutes at 30 hours. Plan on these four-lever figures until the quotes are in.
+Together, the five levers bring the 12-minute film from 19.6 to 13.9 hours a week, and the 25-minute film from 31.5 to 21.1. At 20 hours a week the largest film rises from 9.4 to 20.7 minutes. At 30 hours it rises from 15.5 to 32.7 minutes. Without the bought finishing (lever 3), the four levers give 15.5 hours a week for 12 minutes and 24.4 for 25 minutes; the largest film is 18.2 minutes at 20 hours and 29.0 minutes at 30 hours. Plan on these four-lever figures (`DECISIONS.md` W-02, W-50).
 
-Buying the mix and grade is the largest finishing lever. Whether you can afford it is unknown (see Decisions).
+Buying the mix and grade is the largest finishing lever, but it is off for the premiere cut (W-50); the budget ceiling is still pending from the maker (O-04).
 
 ### Step 4. Set up the tracking files in the private repo
 
@@ -163,7 +164,7 @@ The G-READY gate needs spikes S1 to S5 to pass, or fallbacks named. They are the
 - **S4:** how the cloud container behaves when idle. Open question: does a running background job keep it awake? TODO(research), not documented in the pages read.
 - **S5:** the validators (the agent-pipeline templates).
 
-The G-READY settings card is the project settings card in the agent-pipeline playbook [2]: picture 1920 x 1080; frame rate 24 frames per second (proposed); Rec. 709 and sRGB; sound 48 kHz, 24-bit; master ProRes 422 HQ. The theatrical-delivery track may change the resolution and frame rate in week 2, which is why Decision 12 exists.
+The G-READY settings card is the project settings card in the agent-pipeline playbook [2]: picture 1920 x 1080; frame rate 24 frames per second (settled; signed on the settings card on Sunday 1 November, `DECISIONS.md` W-14, W-16); Rec. 709 and sRGB; sound 48 kHz, 24-bit; master ProRes 422 HQ. Decision 12 records that the frame rate is settled.
 
 These numbers were measured in the project's cloud container on 18 October 2026. The container has 4 vCPUs, 16 GB of RAM, no GPU and 24 to 28 GB of free disk [3].
 
@@ -177,7 +178,7 @@ These numbers were measured in the project's cloud container on 18 October 2026.
 
 So render in ranges of frames. Write each frame as it finishes, skip frames that already exist, encode each chunk, and delete its frames. Loose PNG frames for a 12-minute film would take about 35 GB, which is more than the free disk [3].
 
-**Hero finals are GPU work by default.** The maker's own PC (Exercise 1) is the first choice. RunPod's RTX 4090 costs $0.34 to $0.89 an hour, on a page updated 8 October 2026 [54]; use it only for a scene with no family imagery. On a 4090 a classroom-class frame at 1080p takes about 1.6, 3.0 and 5.6 seconds at 64, 128 and 256 samples [82][83][84]. The 12-minute film's 2,592 hero finals would take 1.2 to 4.0 GPU-hours, about $0.4 to $3.6 (ESTIMATE; denoise and pod start-up are not included). A scene that uses her photographs as textures counts as family imagery for this rule, and needs the maker's explicit say before it goes to a pod. Spike S3 passes if one real hero frame on a rented or maker-owned GPU lands within 2 times the table for its samples and size, with pod start, load time, denoise time and bytes transferred written down; it costs under $1. Build the kitchen from primitives and hand-made textures, with no photograph used as a texture, and its passes can go to a pod (a suggestion, not yet tested).
+**Hero finals are GPU work by default.** The maker's own PC (Exercise 1) is the first choice. RunPod's RTX 4090 costs $0.34 to $0.89 an hour, on a page updated 8 October 2026 [54]; use it only for a scene with no family imagery, only on Secure Cloud with an encrypted volume and the maker's recorded OK, and never on Community Cloud (`DECISIONS.md` W-23, D-15). On a 4090 a classroom-class frame at 1080p takes about 1.6, 3.0 and 5.6 seconds at 64, 128 and 256 samples [82][83][84]. The 12-minute film's 2,592 hero finals would take 1.2 to 4.0 GPU-hours, about $0.4 to $3.6 (ESTIMATE; denoise and pod start-up are not included). A scene that uses her photographs as textures counts as family imagery for this rule, and needs the maker's explicit say before it goes to a pod. Spike S3 passes if one real hero frame on a rented or maker-owned GPU lands within 2 times the table for its samples and size, with pod start, load time, denoise time and bytes transferred written down; it costs under $1. Build the kitchen from primitives and hand-made textures, with no photograph used as a texture, and its passes can go to a pod (a suggestion, not yet tested).
 
 **Free render farm.** SheepIt is free and lists Blender 5.2. It says nothing about confidentiality, so never send family imagery to it [57].
 
@@ -187,8 +188,8 @@ So render in ranges of frames. Write each frame as it finishes, skip frames that
 
 Choose a 100-second piece of module M1 for the slice (acceptance 90 to 120 seconds; the model's 100-second unit). The story track picks the actual module; this is the production brief for that choice. The module should:
 
-- sit in mid-life, where you already have the most photos and a recorded voice;
-- not be a hard chapter, because hard chapters need the 72-hour double-decision rule from the story track [7];
+- sit in mid-life, where you already have the most photos (and, if one exists, a HER-PUBLIC line);
+- not be a hard chapter, because hard chapters need one-key-three-guards, including the 72-hour double decision, from the story track [7] (`DECISIONS.md` D-04);
 - not be the childhood chapter, which has the least material and the strongest pull toward invented content [1];
 - not be the most recent decade, which has the most living people and the most rights questions [7].
 
@@ -198,7 +199,7 @@ The slice must include all of the following:
 - at least 10 class A shots;
 - at least 4 class B shots;
 - at least 1 class D title or caption;
-- a voice-over line;
+- one sound line from her world (and one HER-PUBLIC line if it passed one-key-three-guards; the maker-voice fragment is also tested here and decided at G-SLICE with the S1 sheets, `DECISIONS.md` W-35);
 - one music cue;
 - one still where the photo does not move;
 - the transition into the next module's motif.
@@ -217,7 +218,7 @@ By Sunday 6 December (G-SLICE-0) you need an animatic: real photos and temporary
 - A real mix, not temporary sound.
 - A grade and captions.
 - A master played end to end on venue-class playback: a TV or projector about 3 metres away.
-- A stranger read if you decide to hold one (Decision 8); otherwise the cold self-read (T3).
+- S1, the stranger screening on the slice (three strangers to her; Decision 8, `DECISIONS.md` W-43); if you decline, the cold self-read (T3).
 - The measured hours, h_slice and h_slice_fin.
 
 Log both in `hours.csv` as you go.
@@ -238,12 +239,12 @@ The rules from the gates file are these.
 - **Green**: the slice fits your H at the planned runtime. Continue.
 - **Amber**: continue only with the levers adopted.
 - **Red**: drop to the next shorter scenario.
-- **25 minutes**: continue only if the table fits your H. For example, at H = 30 the h_slice must be at most 15 without levers or 37 with levers. At H = 20 only with all levers, and h_slice must be at most 21.
+- **15 to 18 minutes (stretch)**: continue only if H is 20 or more and the table fits your H at G-SLICE; it is not recommended for the premiere cut under only-me (`DECISIONS.md` W-03). There is no 25-minute plan (D-06).
 - **12 minutes**: if the table says it does not fit your H, cut to 9 minutes (wrapper plus two modules).
 
 ### Step 11. The holidays (20 December to 2 January)
 
-The model counts zero hours for these two weeks. Do not plan production in them. Rest, or do ungated reading if you want to. The schedule does not count it [3].
+The model counts zero hours for these two weeks. Do not plan production in them. Rest, or do ungated reading if you want to. The holiday capture list (room tone of her kitchen, the object clock in its light, the street, the house sounds; never a recording of her) is the only fieldwork (`DECISIONS.md` W-10). The schedule does not count it [3].
 
 ### Step 12. The restart check (Sunday 3 January, G-RESTART)
 
@@ -254,7 +255,7 @@ Reconfirm H, the list of chapters with material in hand, and the cut order. If H
 Each chapter moves from brief to approved. The model assumes about 40 percent of production hours can be built before the holidays. The rest falls in these five weeks [J].
 
 - **Sunday 17 January (G-MID)**: at least 45 percent of target runtime approved. For 12 minutes that is 5.4 minutes. Below that, cut the lowest-priority module now (to 9 minutes). A second module is cut only at G-DRAFT, if it is not at draft.
-- **Sunday 31 January (G-DRAFT)**: 100 percent of kept runtime at draft or better. At least 60 percent rolling-locked. The finishing chain rehearsed. Any module not drafted becomes a held-still plus voice-over fallback, or is cut.
+- **Sunday 31 January (G-DRAFT)**: 100 percent of kept runtime at draft or better. At least 60 percent rolling-locked. The finishing chain rehearsed. Any module not drafted becomes a held-still plus card fallback, or is cut.
 
 ### Step 14. Picture lock (Saturday 6 February, G-LOCK)
 
@@ -273,22 +274,22 @@ On 6 February, every shot is marked `locked=1` in `status.csv`. Record the timel
 3. Agents treat locked shots as read-only. They must refuse a change request and point to the unlock rule.
 4. **Unlock rule.** Write the reason and the cost in hours (which sound, score and grade passes must be redone). Wait 24 hours. Unlock only for a factual, dignity or rights error. Allow at most two unlocks after 6 February. Each unlock adds a row to `decisions.csv`.
 5. Ideas after lock go in `parking-lot.md`, and you read them after the premiere.
-6. The stranger read of the whole film is scheduled for the first finishing week, before sound is final. That way a bad finding costs one unlock at most. The read itself is an open decision (Decision 8). If you do not hold it, the cold self-read (T3) takes the same slot.
+6. S2, the stranger screening of the whole locked cut (three to five strangers to her), is held in week 17 (Monday 8 to Sunday 14 February), before sound is final (`DECISIONS.md` W-43; Decision 8). That way a bad finding costs one unlock at most. If you decline, the cold self-read (T3) takes the same slot.
 
 One solo film, *Away*, was reportedly made without a full script or storyboards [10]. Its maker could review a real-time playblast cheaply. We cannot. Our renders are shared with agents, the score is fitted to the cut, and the surprise leaves no time for a second pass.
 
 ### Step 15. Finishing (weeks 17 and 18, 7 to 20 February)
 
-- **Saturday 13 February (G-MIX)**: mix v1 and grade v1 for every locked chapter. The strangers screening, if you decide to hold it, is held this week; otherwise the cold self-read of the whole film (T3) is done this week. Fix list only. No new picture.
-- **Saturday 20 February (G-MASTER)**: the ProRes 422 HQ master and the H.264 access copy are verified. A DCP is made only if the DCP decision says so. Produce ffprobe and loudness reports and checksums. Verify two backups. Play the film on venue-class playback. The loudness target is set by the theatrical-delivery track [notes].
+- **Saturday 13 February (G-MIX)**: mix v1 and grade v1 for every locked chapter. S2, the strangers screening (`DECISIONS.md` W-43), is held in week 17; if you decline, the cold self-read of the whole film (T3) is done this week. Saturday 13 February is also the latest acceptable picture lock, not an option to pick (W-08). Fix list only. No new picture.
+- **Saturday 20 February (G-MASTER)**: the ProRes 422 HQ master and the H.264 access copy are verified. A DCP is made only if the venue's written answer says so (`DECISIONS.md` W-17). Produce ffprobe and loudness reports and checksums. Verify two backups. Play the film on venue-class playback. Loudness: -1 dBTP everywhere; three venue masters (-23, -18 and -16 LUFS) are rendered and one is chosen at the 22 February run (W-19) [notes].
 
-The two finishing weeks hold about 34 usable hours at 20 hours a week. They hold 17 at 10 hours and 51 at 30. That makes finishing a crunch. The mitigations are to rehearse the master chain inside the slice, roll chapter locks, buy the mix and grade, and decide the DCP question early [J].
+The two finishing weeks hold about 34 usable hours at 20 hours a week. They hold 17 at 10 hours and 51 at 30. That makes finishing a crunch. The mitigations are to rehearse the master chain inside the slice, roll chapter locks, do the mix and grade yourself with the chain rehearsed (`DECISIONS.md` W-50), and get the venue's written answer on the DCP question by 15 November [J].
 
 ### Step 16. Buffer and rehearsal (week 19, 21 to 27 February)
 
 The buffer week is for fixing, not for adding. Rehearsals use 8 to 12 hours of it.
 
-- **Monday 22 February (G-REHEARSE)**: the film plays end to end on venue-class playback. If it fails, use the USB access copy as the fallback [gates].
+- **Monday 22 February (G-REHEARSE)**: the film plays end to end at the venue; the three loudness masters are played against the hall's own room tone and one is chosen (`DECISIONS.md` W-19, W-52). If it fails, use the USB access copy as the fallback [gates].
 - **Wednesday 24 February**: room brief.
 - **Thursday and Friday**: cold starts.
 
@@ -376,7 +377,7 @@ The first three exercises produce the numbers the schedule needs most. Use only 
 1. List every photo, video and recording you already hold. Group them by chapter, and refer to people by ID (for example `P-001`), not by name.
 2. For each item, note whether it is scanned and labelled. Note whether it is yours to show. Photos taken by others need clearance for public screening [1].
 3. Work out the share for each chapter.
-4. Note which gaps would need a covert ask later. Do not contact anyone yet.
+4. Note which gaps would need a covert ask later. Do not contact anyone yet; covert collection opens on Sunday 15 November, after the L1 process lock (`DECISIONS.md` D-13, W-10).
 
 **Good looks like.** A percentage per chapter, the top three chapters by material, and a list of gaps with no names in it.
 
@@ -397,7 +398,7 @@ The first three exercises produce the numbers the schedule needs most. Use only 
 **Goal.** Fix the stranger-read test before a cut exists to show anyone.
 
 **Steps.**
-1. Write the three questions: who is she, what did she want, and what did you feel [notes].
+1. Write the questions: first "If you met her at the reception afterwards, what would you ask her?", then who is she (in three sentences), what did she want, and what did you feel [notes] (`DECISIONS.md` W-43).
 2. Write a one-page answer sheet, and keep it in the repo.
 3. Show it to no one.
 
@@ -416,7 +417,7 @@ Hours and weekly hours needed for each case, for the four runtimes. The model's 
 | 45 min (540 shots) | 341 / 717 / 462 / 259 | **23.6 / 49.6 / 32.0 / 17.9** |
 | 90 min (1,080 shots) | 614 / 1,305 / 816 / 452 | **42.5 / 90.3 / 56.5 / 31.3** |
 
-The headline weekly hours above are the total-hours check only. The largest-film table below and T2 include the post-holiday check, so T2 is the stricter, operative table.
+The headline weekly hours above are the total-hours check only. The largest-film table below and T2 include the post-holiday check, so T2 is the stricter, operative table. The 25-, 45- and 90-minute rows are kept for comparison only (`DECISIONS.md` W-03, D-24), and "Base + levers" includes lever 3, which is off under only-me (W-50): read the four-lever figures (15.5 hours a week for 12 minutes) as the plan.
 
 *Best* is Prior speeds with the structural levers: hero share 5 percent, 8 shots per minute, finishing bought at 0.8 maker-hours per minute, and 50 percent of production built before 20 December. *Base + levers* uses all five levers, lever 3 (bought finishing) included; without it, the four levers give 15.5 hours a week for 12 minutes and 24.4 for 25 minutes.
 
@@ -446,11 +447,10 @@ Hours in the Base case are small at 10 hours a week because fixed work uses 58 p
 
 ### T2. Slice-to-runtime table
 
-Measure h_slice for the slice as Step 9 defines it (production side). The model predicted 9.9 hours (Prior), 26.5 (Base) and 54 (Stress). This table holds finishing at Base (mu_fin = 1), and its weekly needs include the post-holiday check, so it is the stricter, operative table. Its all-levers column includes lever 3 (bought finishing at 0.8 maker-hours per minute), so until two quotes are recorded, read the no-levers column. Read across to find your runtime. A recalculation of the model gives 23.9 at h_slice 26 and 19.5 at 20 for 12 minutes (the table shows 24.1 and 19.6); the gap is under 1 percent and is the same small offset the other cells show, so the table is unchanged.
+Measure h_slice for the slice as Step 9 defines it (production side). The model predicted 9.9 hours (Prior), 26.5 (Base) and 54 (Stress). This table holds finishing at Base (mu_fin = 1), and its weekly needs include the post-holiday check, so it is the stricter, operative table. Its all-levers column includes lever 3 (bought finishing at 0.8 maker-hours per minute), so while lever 3 is off under only-me (`DECISIONS.md` W-50), read the no-levers column as the conservative bound. The 8-minute tier is replaced by 9 (W-01); the 25-minute row is comparison only. Read across to find your runtime. A recalculation of the model gives 23.9 at h_slice 26 and 19.5 at 20 for 12 minutes (the table shows 24.1 and 19.6); the gap is under 1 percent and is the same small offset the other cells show, so the table is unchanged.
 
 | Runtime | Needed hours a week at h_slice = 10 / 15 / 20 / 26 / 35 / 45 | Largest h_slice that fits, no levers: H = 10 / 20 / 30 | Largest h_slice that fits, all five levers (lever 3 bought): H = 10 / 20 / 30 |
 |---|---|---|---|
-| 8 min | 11.3 / 12.7 / 14.0 / 17.3 / 22.1 / 27.5 | 5 / 31 / 50 | 16 / 69 / 107 |
 | 9 min (wrapper plus two modules) | 11.9 / 13.3 / 15.4 / 18.9 / 24.2 / 30.1 | 3 / 28 / 45 | 13 / 63 / 99 |
 | 10 min | 12.6 / 14.1 / 16.9 / 20.7 / 26.5 / 33.0 | 2 / 25 / 40 | 11 / 56 / 89 |
 | 12 min | 13.7 / 15.9 / 19.6 / 24.1 / 30.8 / 38.2 | none / 21 / 34 | 7 / 47 / 76 |
@@ -458,7 +458,7 @@ Measure h_slice for the slice as Step 9 defines it (production side). The model 
 | 18 min | 17.3 / 22.3 / 27.4 / 33.4 / 42.5 / 52.6 | none / 13 / 23 | none / 31 / 52 |
 | 25 min | 23.0 / 29.6 / 36.1 / 43.9 / 55.7 / 68.8 | none / 8 / 15 | none / 21 / 37 |
 
-Worked reading: with 20 hours a week, a 26-hour slice fits 12 minutes only with the levers. Without them the limit is 21 hours. With 30 hours a week and a 26-hour slice, 15 minutes fits without levers and 25 does not. At 10 hours a week, 9 minutes fits only if the slice took about 13 hours or less and all five levers are pulled, lever 3 included (8 and 10 minutes need 16 and 11 hours), about half the Base prediction. Without levers, 9 minutes needs a slice of about 3 hours. So at 10 hours: 9 minutes if the slice comes in near Prior speed (9.9 hours); otherwise add hours or buy finishing.
+Worked reading: with 20 hours a week, a 26-hour slice fits 12 minutes only with the levers. Without them the limit is 21 hours. With 30 hours a week and a 26-hour slice, 15 minutes fits without levers and 25 does not. At 10 hours a week, 9 minutes fits only if the slice took about 13 hours or less and all five levers are pulled, lever 3 included (10 minutes needs 11 hours), about half the Base prediction. Without levers, 9 minutes needs a slice of about 3 hours. So at 10 hours: 9 minutes if the slice comes in near Prior speed (9.9 hours); otherwise add hours or buy finishing.
 
 Paste h_slice and h_slice_fin into the model's calibration block (rows 173 and 176), copy the suggested mu and mu_fin, and the model recalculates.
 
@@ -466,18 +466,18 @@ Paste h_slice and h_slice_fin into the model's calibration block (rows 173 and 1
 
 | Gate | Date | Must be true | If not |
 |---|---|---|---|
-| G-READY | Sun 15 Nov 2026 | settings card written (the agent-pipeline project settings card; Step 7); spikes S1 to S5 pass or fallbacks named (Step 7); style bible and three style frames approved (G1); H confirmed in writing; `hours.csv` started | one week's grace (to 22 Nov); then drop one tier |
+| G-READY | Sun 15 Nov 2026 | settings card written (the agent-pipeline project settings card; Step 7); spikes S1 to S5 pass or fallbacks named (Step 7); style bible and three style frames approved (G1); H confirmed in writing; the venue's written answer on file (asked by Fri 6 Nov, W-17); `hours.csv` started | one week's grace (to 22 Nov); then drop one tier |
 | G-SLICE-0 | Sun 6 Dec 2026 | the slice animatic with real photos and temporary sound; first measured hours logged | no animatic: cut one tier now |
-| G-SLICE | Sun 20 Dec 2026 | the slice at final quality including sound mix, grade, captions and a master on venue-class playback at about 3 m; stranger read passed, if the maker has decided to hold one (Decision 8); otherwise the cold self-read passed; h_slice and h_slice_fin measured; material-in-hand share known | compare h_slice with T2; red: next shorter scenario; amber: continue only with levers |
+| G-SLICE | Sun 20 Dec 2026 | the slice at final quality including sound mix, grade, captions and a master on venue-class playback at about 3 m; S1 held with three strangers to her (Decision 8, W-43), or the cold self-read passed if the maker declines; h_slice and h_slice_fin measured; material-in-hand share known | compare h_slice with T2; red: next shorter scenario; amber: continue only with levers |
 | G-RESTART | Sun 3 Jan 2027 | H and material reconfirmed; chapters with material in hand listed; cut order reconfirmed | if H fell by more than 25 percent, recompute and cut now |
 | G-MID | Sun 17 Jan 2027 | at least 45 percent of target runtime at approved or better | 12 minutes: cut the lowest-priority module now (to 9 minutes); a second only at G-DRAFT, if not at draft |
-| G-DRAFT | Sun 31 Jan 2027 | 100 percent of kept runtime at draft or better; at least 60 percent rolling-locked; finishing chain rehearsed | replace unfinished modules with a held-still plus voice-over fallback, or cut |
+| G-DRAFT | Sun 31 Jan 2027 | 100 percent of kept runtime at draft or better; at least 60 percent rolling-locked; finishing chain rehearsed | replace unfinished modules with a held-still plus card fallback, or cut |
 | G-LOCK | Sat 6 Feb 2027 | every shot `locked=1`; timeline hash recorded; git tag `picture-lock-2027-02-06` | unlock rule only (Step 14). Lunar New Year falls on this date; if observed, lock Fri 5 Feb. |
-| G-MIX | Sat 13 Feb 2027 | mix v1 and grade v1 on all locked chapters; strangers screening held in week 17 if decided (Decision 8); otherwise the cold self-read of the whole film | fix list only; no new picture |
+| G-MIX | Sat 13 Feb 2027 | mix v1 and grade v1 on all locked chapters; S2 held in week 17 (Decision 8, W-43); if the maker declines, the cold self-read of the whole film | fix list only; no new picture |
 | G-MASTER | Sat 20 Feb 2027 | master and access copy verified; DCP if used; ffprobe and loudness reports; two backups verified; played on venue-class playback | buffer week is for fixing, not adding |
 | G-REHEARSE | Mon 22 Feb 2027 | final file plays end to end on venue-class playback | fall back to the USB access copy |
 
-**The cold self-read (the substitute when no outside reader is used).** You show the cut to no one. Leave it unopened for 48 hours. Then watch it once on venue-class playback at about 3 metres with the sound on. Before taking any notes, answer three questions in writing: who is she, what did she want, and what did you feel. The Fable advisor applies the cinematic-quality rubric to the same version. The W9 slot (the slice) and the W17 slot (the whole film) stay on the calendar, whichever read is used.
+**The cold self-read (the fallback if the maker declines S1 and S2).** You show the cut to no one. Leave it unopened for 48 hours. Then watch it once on venue-class playback at about 3 metres with the sound on. Before taking any notes, answer three questions in writing: who is she, what did she want, and what did you feel. The Fable advisor applies the cinematic-quality rubric to the same version. The W9 slot (the slice) and the W17 slot (the whole film) stay on the calendar, whichever read is used.
 
 ### T4. `shots/status.csv`
 
@@ -557,11 +557,11 @@ Record each result in `reviews/C01/` and in `decisions.csv`.
 
 - [ ] **Length and frames.** The 100-second slice (accept 90 to 120 seconds). Frame count is exactly duration times 24. ffprobe is clean.
 - [ ] **Picture at the bar.** Full-resolution crops of faces and type are clean. No invented faces. Reconstructions are visibly stylised. The template check passes (no more than 60 percent of tweens share one ease). No more than three class A shots in a row. At least one still.
-- [ ] **Sound.** A real mix, not temporary sound. Voice-over, music cue, room tone and transitions are all present. Loudness is measured with `ebur128` against the target that theatrical-delivery sets. A person listened on the venue-class speakers.
+- [ ] **Sound.** A real mix, not temporary sound. Her-world sound, room tone, any music cue and transitions are all present, and there is no recorded voice of a living person except a HER-PUBLIC line if it passed (`DECISIONS.md` D-05). Loudness is measured with `ebur128` at -1 dBTP true peak against the integrated target that theatrical-delivery sets (W-19). A person listened on the venue-class speakers.
 - [ ] **Grade.** One look applied through the same chain to every shot. The colour-patch test passes within plus or minus 3 out of 255 on the final encode [2].
 - [ ] **Captions.** Inside the reading-speed and length limits in the format track.
 - [ ] **Master.** ProRes 422 HQ and H.264 access copy produced. A DCP test file if a DCP is in scope. Played end to end on a TV or projector about 3 metres away.
-- [ ] **Strangers read it, or the cold self-read.** If you decide to hold a stranger read (Decision 8), two or three people who do not know her and cannot reach the family see it cold and answer who she is, what she wanted and what they felt. If not, the cold self-read in T3 takes the same slot. Protocol from the cinematic-quality track.
+- [ ] **Strangers read it, or the cold self-read.** S1: three strangers to her and to the family see a redacted copy cold, under the truthful partial pretext (`DECISIONS.md` W-43). The first question is "If you met her at the reception afterwards, what would you ask her?", then who she is (in three sentences), what she wanted and what they felt. If the maker declines, the cold self-read in T3 takes the same slot. Protocol from the cinematic-quality track.
 - [ ] **Hours logged.** `h_slice` and `h_slice_fin`, with learn and admin reported against the 30-hour allowance, agent hours, render seconds, rework counts and, if AI clips were used, generations tried and kept.
 - [ ] **Surprise safety.** Repo, folder and commit names harmless. No personal data in any cloud service. Cloud levels respected.
 - [ ] **Verdict.** Apply T2. Write the decision in `decisions.csv`.
@@ -603,72 +603,72 @@ Each decision lists the options and the current lean. The lean is not final. You
 ### 1. How many hours a week can you reliably give? (needed in writing by 15 November)
 
 - **Options**: the cases above. Roughly 10 hours, 14 to 20 hours, or 30 hours a week.
-- **Lean**: none. This is the input that moves the answer most, and we need your number.
+- **Lean**: none. This is the input that moves the answer most, and we need your number (pending from the maker, `DECISIONS.md` O-01, W-02).
 - **Also needed**: which Claude plan you are on (Pro, Max 5x or Max 20x), and a weekly usage-bar reading before and after the slice week (research F4; usage bars under Settings > Usage [88], and `/usage` in Claude Code [90]).
 
-### 2. Runtime
+### 2. Runtime (defaulted in `DECISIONS.md` W-01 to W-05)
 
-- **Options**: 9 minutes, 12 minutes (wrapper plus three 3:00 modules), 15 to 18 minutes, 25 minutes as a private cut, 45 minutes, or 90 minutes.
-- **Lean**: 12 minutes if H is about 16 or more with the four levers (about 14.5 with bought finishing). 9 minutes if H is about 10. 15 to 18 only if the slice unlocks it. 25 as a private cut after the premiere. Not 45 or 90.
-- **Open conflict**: the story track's 12-minute floor is not safe at 10 hours a week [7]. If H is about 10, the options are (a) lower the floor to 9, (b) buy more of the finishing, or (c) accept a templated look at 12 minutes. **Lean: (a)**, unless you can add hours. The orchestrator reconciles this with the story track.
+- **Options**: 9 minutes, 12 minutes (wrapper plus three 3:00 modules), or 15 to 18 minutes as a stretch; 6 minutes is the fallback F-0. 25, 45 and 90 minutes are not production targets.
+- **Lean**: 12 minutes if H is 16 or more in writing; 9 minutes if H is under 14, from Sunday 15 November; 12 at 14 to 16 only if hours are added or captions bought. 15 to 18 only if H is 20 or more and the slice fits T2 at G-SLICE, and not recommended under only-me. No 25-minute private cut: the April version is the same locked picture with voices (D-06). Not 45 or 90.
+- **Resolved conflict**: the story track's 12-minute floor is retired. 12 is the target when H allows and 9 when it does not (W-02), and the orchestrator has reconciled this with the story track.
 
 ### 3. Which levers to adopt (Step 3)
 
 - **Options**: all five, some, or none.
-- **Lean**: all five from today. Without them, 12 minutes needs 19.6 hours a week in Base. With them, 13.9.
+- **Lean**: the four levers that need no purchase (1, 2, 4 and 5) from today; lever 3 (bought finishing) is off for the premiere cut (`DECISIONS.md` W-50, W-51). Without levers, 12 minutes needs 19.6 hours a week in Base. With the four, 15.5; with all five, 13.9.
 
-### 4. Buy or do the mix, grade and composer work yourself?
+### 4. Buy or do the mix, grade and composer work yourself? (decided: do it yourself, `DECISIONS.md` W-50)
 
 - **Options**: do it yourself (2.7 maker-hours per minute in Base, plus 24 fixed hours for the master). Buy the mix and grade (0.8 hours per minute). Use a composer or a music library.
-- **Lean**: none until two dated quotes are in hand. Do not adopt lever 3 in the model until then (research F1; the rule in G1 is two logged quotes, each with both prices and a turnaround of 10 working days or less). Captions are the small part: $25 to $36 bought, or free in DaVinci Resolve or a local tool [77][78][79]. Lever 3 is the largest finishing lever (2.7 to 0.8 maker-hours per minute), and the budget is unknown.
+- **Lean**: do it yourself for the premiere cut, with the finishing chain rehearsed inside the slice (week 9) and rolling chapter locks from Sunday 17 January; buy captions alone only if time is short, since a transcription vendor sees text and not pictures or a name (`DECISIONS.md` W-50, D-07). No composer under only-me; use a music library, CC0, CC BY or your own sound (W-44). Re-open buying the mix for the April version. Captions are the small part: $25 to $36 bought, or free in DaVinci Resolve or a local tool [77][78][79]. Lever 3 would be the largest finishing lever (2.7 to 0.8 maker-hours per minute, research F1), but under only-me a bought mix is a person brought in.
 - **Music rights**: the *Sita* music rights were first asked at about $220,000 and settled at about $50,000 [14]. The music-sound track owns this. Clear rights before the mix, not after.
 
 ### 5. DCP or file for the venue
 
 - **Options**: a DCP, the digital package cinemas play. Encoding is CPU-bound, and the research note could not find a CPU speed [61]. At an assumed 4 frames per second, a 12-minute 2K DCP would take about 70 minutes. This is an assumption, UNVERIFIED, and 4K takes three to four times as long. Fixed cost is 8 to 16 hours. The alternative is a file played on venue-class playback, with a USB fallback.
-- **Lean**: none recorded in the research note. TODO(research): the theatrical-delivery track sets this before G-SLICE, because the slice includes a DCP test file only if a DCP is in scope.
+- **Lean**: the venue's written answer decides it (`DECISIONS.md` W-17). The venue is asked by Friday 6 November and its answer is due Sunday 15 November, before G-SLICE; the slice includes a DCP test file only if the venue ingests DCPs, otherwise the 1080p24 H.264 venue file is the master and a DCP is a contingency.
 
 ### 6. Hero share and shot rate
 
 - **Options**: 10 percent hero shots at 12 per minute (Prior and Base), or 5 percent at 8 per minute (levers).
-- **Lean**: 5 percent and 8 per minute.
+- **Lean**: 5 percent and 8 per minute. Settled (`DECISIONS.md` W-34, W-51).
 
 ### 7. Reuse program (recurring sets, one world map, the object clock, a title system, a portrait ladder)
 
 - **Options**: the full program (20 build hours, 10 percent saving). In Base it loses about 8.5 hours at 12 minutes, breaks even at 25, and gains 13 at 45 and 42 at 90. A lite program (8 hours, 6 percent) is about neutral at 12 minutes. No program.
-- **Lean**: for 12 minutes, build only the title system and one set, the kitchen (8 hours, 6 percent). Reused sets and motion can read as a template, so use seeded variety and at least one still per chapter [2]. A 2026 study of a shared asset library found about a 12 percent cut in builds. That is snippet-only and counts builds, not hours [69].
+- **Lean**: for 12 minutes, build only the title system and one set, the kitchen (8 hours, 6 percent); the kitchen is the only built set (`DECISIONS.md` W-34). Reused sets and motion can read as a template, so use seeded variety and at least one still per chapter [2]. A 2026 study of a shared asset library found about a 12 percent cut in builds. That is snippet-only and counts builds, not hours [69].
 
 ### 8. The outside stranger read (W9 for the slice, W17 for the whole film)
 
-The schedule has two reads by strangers to her. You are the only person on the project, and nobody else is in on the surprise. An outside reader cannot be asked without touching the secret.
+The schedule has two reads by strangers to her, now decided (`DECISIONS.md` W-43). You are the only person on the project, and nobody else is in on the surprise. The readers are strangers to her and to the family, on a redacted copy, under the truthful partial pretext: they learn that a short film about one woman exists, never who and never that it is a surprise.
 
-- **Options**: (a) keep the slots and approach strangers who have no link to the family, but only if you decide to; (b) drop the outside slots and use the cold self-read in T3 instead. It is the named substitute, and it brings nobody in.
-- **Lean**: none recorded. Until you decide, the slots stay on the calendar and nobody is approached. If you choose (b), the cold self-read takes both slots.
+- **Options**: (a) hold S1 (three strangers on the slice, about Sunday 20 December) and S2 (three to five on the locked cut in week 17, with one viewer over 65 and, if possible, one teenager with a guardian); (b) drop the outside slots and use the cold self-read in T3 instead. It is the named fallback, and it brings nobody in.
+- **Lean**: (a), strangers to her at S1 and S2. If you decline, the cold self-read (48 hours unopened) takes both slots, with Fable's rubric pass mandatory. Pass: at least 80 percent identify the reconstructions and one person across ages; no unread text; at most 2 tell-marks a minute.
 
-### 9. Who else is in on it, and who could approve the hard chapters? (deferred)
+### 9. Who else is in on it, and who approves the hard chapters? (decided: only-me)
 
-You asked for this to wait until the plan is ready. For now, you alone. The charter lets relatives and friends be sources through low-key asks, and leaves open whether anyone else is brought in [1]. Your note for this session says that for now only you are involved. Until you decide, Exercises 6 and 7 use only what you already hold.
+Decided on 2026-10-18 (`DECISIONS.md` D-03, D-04): for now only you are on the project, as sole producer, sole keeper of the secret and sole proxy for hard chapters. The charter lets relatives and friends be sources through low-key asks that reveal nothing [1]; nobody else is brought in. The one re-open point is TD-L2c on Sunday 3 January 2027. Exercises 6 and 7 use only what you already hold.
 
-For hard chapters the process is the 72-hour double decision: review 02 section 0.3's rule, adopted by the story track [6][7]. You decide, wait 72 hours, then decide again. The Fable advisor flags sensitive material for a deliberate decision [1]. The one-key process has a fourth guard, which makes it safe: default OUT of the public cut on any doubt; the her-turn conversation after the reveal is how she can put it back [6].
+For hard chapters the process is one-key-three-guards: a decision sheet per candidate; Fable's written flag [1]; your two decisions 72 hours apart (review 02 section 0.3's rule, adopted by the story track [6][7]); and default OUT of the public cut on any doubt. Anything HOLD or PRIVATE stays out of the public cut, and the her-turn conversation after the reveal (Saturday 6 March 2027) is how she can put it back [6]. Fable flags and never passes G5.
 
-### 10. Week numbering
+### 10. Week numbering (decided: the dates are the authority, `DECISIONS.md` D-21)
 
 - **Options**: keep review 02's week list, or adopt Sunday-start weeks with the dates as the authority.
 - **Lean**: adopt Sunday-start weeks with the dates as the authority. Review 02's list (12 to 15, 16 to 17, 18 to 19) is off by one. Production is W12 to W16, and finishing is W17 to W18 [6]. Owner: orchestrator.
 
 ### 11. Picture-lock date
 
-- **Options**: Saturday 6 February for the 12-minute cut, or the earlier 30 January that the 25-minute plan uses.
-- **Lean**: 6 February, as fixed, for 12 minutes.
+- **Options**: Saturday 6 February 2027 (G-LOCK). Saturday 13 February (G-MIX) is the latest acceptable lock, not an option to pick; there is no 25-minute plan and so no earlier 30 January lock (`DECISIONS.md` W-08, D-06).
+- **Lean**: 6 February, as fixed (Friday 5 February if the household observes Lunar New Year).
 
 ### 12. Frame rate
 
-- **Lean**: 24 frames per second, as the settings card proposes (Step 7). theatrical-delivery may change the resolution and frame rate in week 2; if it does, the model's frame rate (row 25) and the render budget change with it. TODO(research): confirm the frame rate used by the other tracks before any render specification is written.
+- **Settled**: 24 frames per second, signed on the settings card on Sunday 1 November (`DECISIONS.md` W-14, W-16). The model's frame rate (row 25) and the render budget are computed at 24. Craft-motion, the toolchain recipes and the motion skill carried 25 from their test runs; those are patched by hand after r1, r5 and the colour-patch test are re-run at 24 (W-14), so no other track is a reason to reopen this.
 
 ### 13. Chapter count
 
 - **Options**: the wrapper plus three modules of about 3:00 (the recommendation for 12 minutes), or film-story's own 12-minute row of four chapters of 2:15 [7]. The model's seven 100-second units are the learning-curve unit, not a cut option.
-- **Lean**: the wrapper plus three 3:00 modules. Decided. film-story's 2:15 row is a logged delta for its next round (see Words, item a); the cost model is unchanged either way.
+- **Lean**: the wrapper plus three 3:00 modules. Decided (`DECISIONS.md` W-04). film-story's 2:15 row is superseded (see Words, item a); the cost model is unchanged either way.
 
 ### 14. Shot tracking
 
@@ -678,7 +678,7 @@ For hard chapters the process is the 72-hour double decision: review 02 section 
 ### 15. Where to render
 
 - **Options**: the cloud container for drafts; a rented GPU; a free farm.
-- **Lean**: the container for drafts; hero finals on the maker's own PC, or on a rented GPU only for scenes with no family imagery (research F3: hero finals are GPU work by default). A scene that uses her photographs as textures counts as family imagery for this rule. Never send family imagery to a free farm [57].
+- **Lean**: the container for drafts of drawn scenes (Route A); photo moves (Route B) go to the container only as `preview` proxies of about 768 px, after the account's model-improvement setting is off and only where the photo set's `cloud` level allows, and full-size renders run on the PC (`DECISIONS.md` W-23, W-24); hero finals on the maker's own PC, or on a rented GPU only for scenes with no family imagery, on Secure Cloud with the maker's recorded OK and never Community Cloud (research F3: hero finals are GPU work by default). Scripts travel to the photos; photos stay home. A scene that uses her photographs as textures counts as family imagery for this rule. Never send family imagery to a free farm [57].
 
 ### 16. Observances and holidays
 
@@ -707,9 +707,9 @@ Two consequences:
 
 | Runtime | Decision | Date | Rule |
 |---|---|---|---|
-| 90 min | Kill now. | Sun 18 Oct 2026 | Needs 42.5 hours a week at Prior speed, 31.3 even in the best case, and 90 in Base. Re-open only if 40 hours or more is confirmed in writing by 15 November and the slice measures at most about 10 hours. Otherwise cut to 45. |
-| 45 min | Kill at the lock unless H is at least 30. | Sun 15 Nov 2026 | At 20 December, continue only if h_slice is at most about 10 hours and every lever is adopted. Otherwise cut to 25. In practice, treat 45 as a post-premiere project. |
-| 25 min | Decide at the slice. | 20 Dec 2026; second chance 17 Jan 2027 | Continue only if T2 fits your H. At 17 January, below 45 percent approved (11 of 25 minutes): cut to 15 to 18. |
+| 90 min | Kill now. | Sun 18 Oct 2026 | Needs 42.5 hours a week at Prior speed, 31.3 even in the best case, and 90 in Base. Killed (`DECISIONS.md` D-24). |
+| 45 min | Kill now. | Sun 18 Oct 2026 | Killed by D-24. Treat 45 as a post-premiere project, if at all. |
+| 25 min | Kill now. | Sun 18 Oct 2026 | No 25-minute plan: the former private cut is the April version, the same locked picture with voices on (`DECISIONS.md` D-06, W-03). |
 | 12 min | Decide at the slice. | 20 Dec 2026; 17 Jan 2027; 31 Jan 2027 | At 20 December, if T2 says it does not fit your H, cut to 9 minutes (wrapper plus two modules). At 17 January, below 5.4 minutes approved: cut the lowest-priority module (to 9 minutes); a second module is cut only at 31 January, if it is not at draft. At 31 January, any unfinished module becomes a fallback chapter. |
 
 All of these dates fall on Sundays or Saturdays.
@@ -720,9 +720,9 @@ All of these dates fall on Sundays or Saturdays.
 2. **The first chapter is the most expensive.** In Base it takes about 2.5 times the steady-state time. The model assumes each doubling of output cuts unit time by about 10 to 25 percent, which is Wright's 80 percent learning curve [66]. Put the learning in the slice, not in the final chapters. Never schedule an unfamiliar technique into the last two production weeks [notes].
 3. **Heroes decide the schedule.** In Base, 10 percent of shots take about 59 percent of shot-minutes. Give hero shots a budget in seconds per chapter, use them only on reused sets, and draft them in Workbench first [2].
 4. **Material arrives on calendar time, not hours.** Covert access to albums and recordings is the constraint, not scanning speed.
-5. **One pair of hands.** Scanning, labelling, consent notes, the lab and review are all you. Batch scanning. Let agents do manifests and checks. There is no second reviewer, so use the stranger read or the cold self-read (Decision 8), and for hard chapters the 72-hour double decision with its default-OUT guard [6][7].
+5. **One pair of hands.** Scanning, labelling, consent notes, the lab and review are all you. Batch scanning. Let agents do manifests and checks. There is no second reviewer, so use the two stranger screenings S1 and S2 or, if you decline, the cold self-read (Decision 8), and for hard chapters one-key-three-guards with its 72-hour double decision and default-OUT guard [6][7].
 6. **The Craft apps are early alpha.** Frequent releases mean failures cost days [2]. Keep the 10 percent risk reserve in Base. Every step needs a non-Craft fallback. Render to new file names.
-7. **The finishing crunch.** Two finishing weeks hold about 34 hours at 20 hours a week. Rehearse the master chain inside the slice, roll chapter locks, buy the mix and grade, and decide the DCP question early.
+7. **The finishing crunch.** Two finishing weeks hold about 34 hours at 20 hours a week. Rehearse the master chain inside the slice, roll chapter locks, do the mix and grade yourself (`DECISIONS.md` W-50), and get the venue's written answer on the DCP question by 15 November.
 8. **AI tools vanish.** *Critterz* had about 30 people, a 9 to 12 month plan and under $30 million [43]. OpenAI shut Sora down in 2026, and the film missed its Cannes slot and now targets Q1 2027 [44][45]. Keep every generated clip with its prompt and seed in the manifest. Budget for a keep rate, not a price per clip.
 9. **AI speed claims are not planning numbers.** *Air Head* took "a little over a week" for about a minute and a half, with hundreds of generations, a 300:1 ratio assumed by its post lead, and heavy compositing [41][42]. Vendor figures are the vendor's own planning numbers, not measured productions [47]. A how-to table with generic figures names no production [48]. *Catacombs* (242 hours, 3,229 generations) is UNVERIFIED. Do not use it [51].
 10. **Survivorship.** *Copán La Leyenda* took about 15 years and was heavily panned [46]. *On This Day... 1776* drew backlash for "repetitive camera movements" and "waxen characters" [50]. "AI-finished" is not a quality tier.
@@ -757,7 +757,7 @@ Project files
 - [2] Agent-First Production Pipeline playbook — `playbooks/agent-pipeline.md` — 2026-10-18 — shot classes, minutes per shot [J], gates, validators, naming, rhythm.
 - [3] Agent-first production pipeline research notes — `research/agent-pipeline.md` — 2026-10-18 — measurements M1 to M21, Q-F2 job limits.
 - [4] Animated, documentary and web life-journey research — `research/animated.md` — 2026-10-18 — DepthFlow 12.3 fps at 640 x 480 (around line 614).
-- [5] Delivery format playbook — `playbooks/format.md` — 2026-10-18 — 100 to 150 maker-hours for 8 to 12 minutes [J]; 6 to 10 hours per finished minute [J]; pacing guidance.
+- [5] Delivery format playbook — `playbooks/format.md` — 2026-10-18 — 100 to 150 maker-hours for 8 to 12 minutes [J]; 6 to 10 hours per finished minute [J] (both figures superseded by this model, `DECISIONS.md` W-02); pacing guidance.
 - [6] Film briefs review — `reviews/02-film-briefs-review.md` — 2026-10-18 — schedule prior, refined brief, week numbering.
 - [7] Writing a biographical animated film research notes — `research/film-story.md` — 2026-10-18 — runtime recommendation, scene-grade memory counts, 72-hour double-decision rule.
 - [8] AI imagery and motion research notes — `research/ai-imagery.md` — 2026-10-18 — Veo and Kling prices, children's photos, label ladder, RunPod.
@@ -828,6 +828,7 @@ Added in round 2 (cited above)
 
 ## Changelog
 
+- **2026-10-18, Reconciled with DECISIONS.md (2026-10-18).** Sonnet implementor pass against the decisions register: 9-or-12 rule by H and the 15 Nov deadline (W-01, W-02); 15 to 18 stretch only at G-SLICE (W-03); no 25-minute plan, the April version replaces the private cut (D-06); 25-, 45- and 90-minute tiers killed or comparison-only (D-24); the 8-minute T2 row removed (W-01); lever 3 off, finishing done by the maker (W-50, D-07); frame rate settled at 24 on the Sunday 1 Nov settings card (W-14, W-16); venue and DCP decided by the venue's written answer (W-17); stranger screenings S1 and S2 decided (W-43); only-me and one-key-three-guards replace the deferred "who else is in on it" decision (D-03, D-04); no voice-over, no composer (D-05, D-07); picture lock Sat 6 Feb with no 30 January option (W-08). Superseded values S-02, S-19, S-34, S-35, S-36 and S-37 patched.
 - **v3, 2026-10-18 (round 2 review applied by the Haiku scribe).** F3 and G2 render numbers, hero finals as GPU work by default and the family-imagery rule; lever 3 conditional on two quotes, with four-lever figures; the F5 calendar and its two consequences; the 9-minute tier and the G-MID rule; the 100-second slice of M1; the decided module shape and wrapper shot IDs; CC0 and 4K citations. TODO(research) closed in Words, Step 9, T2 and Decisions 13 to 16.
 - **v2, 2026-10-18 (round 1 review applied by the Haiku scribe).** Slice calibration now defines h_slice on the production side and h_slice_fin separately, and the model has a mu_fin row wired into the finishing rows. The stranger read is conditional on Decision 8, with the cold self-read as the named substitute. Module shape is now a wrapper plus 3:00 modules, with the 12-minute and 8-minute shape issues left as TODO(research). The 20-hour claim now states its post-holiday failure. Spike list and settings card are copied from the agent-pipeline playbook. The 1080p Veo prices are added. The 72-hour rule is cited to [6][7], with the default-OUT guard. Still open: the TODO(research) items in Words, T2 and Decisions 8 to 13.
 - **v1, 2026-10-18.** First draft by the Haiku scribe, from `research/production-scale.md` (Sonnet, 2026-10-18) and `CHARTER.md`. Covers Q1 to Q10 and the recommended runtime. Open items: TODO(research) for the spike list (Step 7), the settings card (G-READY), cash for the mix and grade, the DCP lean, the chapter count, the frame rate, the observances, and the outside stranger read. Decisions 2, 8, 9 and 10 need the orchestrator or the maker. Not yet reviewed against the rubric.

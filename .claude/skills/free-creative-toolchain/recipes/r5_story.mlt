@@ -2,9 +2,11 @@
      Source: research/toolchain.md, recipe R5. XML verbatim; this header added by the scribe.
      Ran on: melt 7.22.0 (Ubuntu 24.04 sandbox). melt.exe 7.43.0 from the Kdenlive 26.08.2 Windows package and
      melt.exe 7.41.0 from the Shotcut 26.9.27 Windows package, both under Wine 9.0 (research Follow-up F1).
-     Date run: 2026-10-18 [RUN]. Result: 200 frames, 1920x1080, 25 fps, H.264.
+     Date run: 2026-10-18 [RUN]. Result: 200 frames, 1920x1080, H.264, tested at 25 fps, UNVERIFIED at 24.
+     Frame rate: the project rate is 24 fps (DECISIONS.md W-14, S-01). The profile below, atsc_1080p_25, is the tested form;
+     after the re-run on the maker's PC it becomes atsc_1080p_24 (the frame counts in in/out then cover 100/24 s, not 4 s).
      Put photoA.jpg and photoB.jpg in the same folder, cropped to 16:9 first (a 3:2 photo letterboxes otherwise).
-     Render (tested form): melt story.mlt -silent -profile atsc_1080p_25 -consumer avformat:story.mp4 vcodec=libx264 crf=20 pix_fmt=yuv420p an=1
+     Render (tested form at 25, UNVERIFIED at 24): melt story.mlt -silent -profile atsc_1080p_25 -consumer avformat:story.mp4 vcodec=libx264 crf=20 pix_fmt=yuv420p an=1
      Always pass -profile: without it melt uses the PAL standard-definition frame, 720x576.
      Windows PowerShell and Git Bash forms: not run, TODO(verify on the maker's PC). -->
 <mlt LC_NUMERIC="C" version="7.0.0" profile="atsc_1080p_25">

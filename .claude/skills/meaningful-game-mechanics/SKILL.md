@@ -5,6 +5,8 @@ description: Designs, reviews or cuts game-like mechanics, maps, timelines, inve
 
 # Meaningful Game Mechanics
 
+**Reconciled with `DECISIONS.md` (2026-10-18); the register wins.** Decided there: no Mojang textures, sounds, UI or footage in the public cut, original voxel assets only (D-23); playable pieces are an optional companion keepsake (D-23, W-30); the maker is the only person on the project and the sole proxy for hard chapters, who decides under one-key-three-guards (D-03, D-04). Whether any Minecraft or voxel chapter exists at all waits on the maker's answer to O-05 (does she love Minecraft; is Minecraft Java owned): under W-30 it needs 20+ hours a week, Java owned and a subject who loves the game; otherwise the game stays a reference.
+
 ## Purpose
 
 Make sure every interactive or animated device in the Life Journey passes charter Principle 2: mechanics must mean something. This skill turns the research notes into a repeatable check. Write the device as one sentence, run the swap test, score it, apply the input and ethics rules, then log the decision. The human-readable version is `playbooks/games.md`.
@@ -36,9 +38,9 @@ Make sure every interactive or animated device in the Life Journey passes charte
 7. For the film, rule (c) is the primary form: the device must work as passive animation; the one-click and host-pause rules apply to the companion keepsake. Apply the input rules. Accept only: one click or tap; a visible next step; auto-advance or passive animation that still works if nobody touches it; a host pause. Reject drag, swipe, double-tap, long-press, rhythm taps, eye-blinks, webcam tracking, analog sticks and timed reactions. Convert each rejected input to one of the accepted ones. Basis: [39][40][41]. The pause chime comes from *Before Your Eyes* [14].
 8. Apply the anti-game rules. Remove points, XP, badges, achievements, levels, leaderboards, progress bars, completion percentages, game-over states and any timer tied to a viewer's action. Basis: [23][37][38] for points, [26] for fail states. Remove stock vocabulary: circle-of-life day and night, generic biomes, treasure chests, hearts and hunger bars, enemies standing in for illness or money.
 9. Apply the truth rules. Reconstructed scenes use a different medium from documents and carry a visible label. Nothing is invented: no events, people, quotes or objects without a source or the family's confirmation. Basis: [11][13].
-10. Apply the dignity rule. If the chapter covers loss, illness, separation, money or conflict, mark it "needs proxy decision" and route it to the maker, who is her proxy (charter Known facts and Principle 5), and flag it to the Fable advisor at the gate; consult no relative unless the maker has brought that person in and `surprise-ops` lists them. The default is to leave it out of the shared version. A locked chapter can follow the Minecraft Vault pattern: it opens once and only with its own key [55].
-11. Apply the IP rule. If any Minecraft asset appears (textures, models, sounds, footage), mark it "terms check needed." The default is to swap it for original voxel or vector assets. Tools: [49][50][76].
-12. Check the voice. A device must not put words in her mouth. Any speech comes from her real recorded words or from text with a real source. No synthetic, cloned or text-to-speech voice of any real person, living or dead, even with consent (charter review §1.2). Where she cannot be recorded, real words for surprise mode are existing home video or voice notes; her own letters and cards; or a saying that two relatives independently confirm, shown *attributed* ("as her sister remembers it"), never as a quotation in her voice.
+10. Apply the dignity rule. If the chapter covers loss, illness, separation, money or conflict, mark it "needs proxy decision" and route it to the maker, who is her proxy (charter Known facts and Principle 5; D-03), under one-key-three-guards (D-04): a decision sheet, Fable's written flag (Fable flags and never passes G5), and the maker's two decisions 72 hours apart; consult no relative. The default is OUT of the public cut. A locked chapter can follow the Minecraft Vault pattern: it opens once and only with its own key [55]; W-37 defaults to three visibly unfinished places and an open chapter card.
+11. Apply the IP rule (D-23). No Mojang textures, models, sounds, UI or footage appear in the public cut; original voxel assets only, and the name at most as a secondary description with the disclaimer. If any Minecraft asset appears anyway, mark it "terms check needed" and swap it for original voxel or vector assets. Tools: [49][50][76].
+12. Check the voice. A device must not put words in her mouth. Any speech comes from her real recorded words or from text with a real source. No synthetic, cloned or text-to-speech voice of any real person, living or dead, even with consent (charter review §1.2). Where she cannot be recorded, real words for surprise mode are her HER-PUBLIC clip if it passes one-key-three-guards (HER-PRIVATE voice notes never enter the public cut; D-05, W-45); her own letters and cards; or a saying that two relatives independently confirm, shown as attributed text with no voice ("as her sister remembers it"), never as a quotation in her voice.
 13. Record the decision. Append one row to `design/devices-log.md` (create it if absent) with columns: date | chapter | device sentence | subject facts + confirmed by | pattern # | A/G/B | decision | open questions. A/G/B are the access, gimmick risk and build effort scores from step 6. The orchestrator may move the file; update this path if so.
 14. Hand off. Delivery goes to the `format` track, tools to `toolchain`, photos to `ai-imagery`. Send the rubric scores to the Fable advisor gate.
 
@@ -51,7 +53,7 @@ Make sure every interactive or animated device in the Life Journey passes charte
 - [ ] Works with one click, or with no input at all.
 - [ ] Shows a next step; auto-advances or waits for a click; the host can pause.
 - [ ] Reconstructions are labelled; nothing is invented.
-- [ ] A hard chapter has a proxy decision, or is left out.
+- [ ] A hard chapter has a one-key-three-guards decision (sheet, Fable's flag, two maker decisions 72 hours apart), or is left out.
 - [ ] No Minecraft asset, or the terms check is recorded.
 - [ ] For the slice: access 4 or 5, gimmick risk L or M, build effort S or M.
 
@@ -61,7 +63,7 @@ Make sure every interactive or animated device in the Life Journey passes charte
 - Build effort: S about a day with AI help; M 2 to 5 days; L 1 to 3 weeks. These are rough guesses, with no engine assumed.
 
 **Before any tester sees a device:**
-- [ ] The tester is someone the maker has agreed to involve.
+- [ ] The tester is a stranger to her who is told nothing about the project and sees no family material (only-me, D-03; W-43).
 - [ ] Nothing on screen reveals the subject's identity or the project's name.
 - [ ] The test runs on a machine the subject does not use.
 - [ ] Screenshots and recordings do not sync to a cloud photo library.
@@ -94,9 +96,9 @@ Approval rule (charter): the advisor gate approves only when every rubric score 
 
 ## Ethics guardrails
 
-- **Consent and dignity.** Hard chapters are decided by the maker as her proxy, flagged by the Fable advisor, and the default is to leave them out (charter Principle 5). Whether to release a story at all is a real question. The *That Dragon, Cancer* developer asked it of himself and faced critics over it [17][18].
+- **Consent and dignity.** Hard chapters are decided by the maker as her proxy under one-key-three-guards (D-04), flagged by the Fable advisor, and the default is to leave them out of the public cut (charter Principle 5). Whether to release a story at all is a real question. The *That Dragon, Cancer* developer asked it of himself and faced critics over it [17][18].
 - **No invented facts.** Reconstructions are visibly reconstructions. Unreliable or disputed accounts are shown as such [11][13].
-- **No words in her mouth.** No invented quotes (charter Principle 4). No synthetic, cloned or text-to-speech voice of any real person, living or dead, even with consent (charter review §1.2). Where she cannot be recorded, real words for surprise mode are existing home video or voice notes; her own letters and cards; or a saying that two relatives independently confirm, shown *attributed* ("as her sister remembers it"), never as a quotation in her voice.
+- **No words in her mouth.** No invented quotes (charter Principle 4). No synthetic, cloned or text-to-speech voice of any real person, living or dead, even with consent (charter review §1.2). Where she cannot be recorded, real words for surprise mode are her HER-PUBLIC clip if it passes one-key-three-guards (HER-PRIVATE voice notes never enter the public cut; D-05, W-45); her own letters and cards; or a saying that two relatives independently confirm, shown as attributed text with no voice ("as her sister remembers it"), never as a quotation in her voice.
 - **No elegy by default.** She is alive. Take devices from death-forward games such as *Passage* and *Spiritfarer* [23][27], not their register [41].
 - **Surprise.** Devices, cloud sync and group chats must not give the surprise away.
 - **Minecraft terms.** Permissions can be revoked at any time. Mojang's wording treats sharing with the community as commercial. Selling copies is not allowed, and endorsement must not be implied [42][43].
@@ -146,3 +148,7 @@ Approval rule (charter): the advisor gate approves only when every rubric score 
 [65] 80.lv — Gabriel de Laubier, "Using Voxels for Simple Dioramas" — https://80.lv/articles/using-voxels-for-simple-dioramas — 2017-07-26.
 [76] MagicaVoxel official site, main page fragment (the licence block and changelog) — https://ephtracy.github.io/mv_main.html — [P] version 0.99.7.2.
 [77] MagicaVoxel official site, Commands page — https://ephtracy.github.io/mv_commands.html — [P].
+
+## Changelog
+
+- 2026-10-18: Reconciled with DECISIONS.md (2026-10-18). Original voxel assets only and the IP rule per D-23; hard chapters per one-key-three-guards (D-04); testers are strangers to her with no family material (D-03, W-43); found-voice wording per D-05 and W-45; the Minecraft chapter waits on O-05 and W-30.

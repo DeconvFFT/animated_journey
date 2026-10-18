@@ -27,7 +27,7 @@ LAYERS = os.environ.get('R2_LAYERS', 'layers'); OUT = os.environ.get('R2_OUT', '
 bpy.ops.wm.read_factory_settings(use_empty=True)
 sc = bpy.context.scene
 sc.render.engine = 'CYCLES'; sc.cycles.device = 'CPU'; sc.cycles.samples = SPP
-sc.render.resolution_x, sc.render.resolution_y, sc.render.fps = RX, RY, 25
+sc.render.resolution_x, sc.render.resolution_y, sc.render.fps = RX, RY, 25   # tested at 25, UNVERIFIED at 24: the project rate is 24 (DECISIONS.md W-14, S-01); change after the re-run
 sc.frame_start, sc.frame_end = 1, NF
 sc.view_settings.view_transform = 'Standard'          # default AgX desaturates photos
 def plane_height(dist):                                # fills a 16:9 frame at 50 mm / 36 mm sensor

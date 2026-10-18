@@ -2,6 +2,8 @@
 
 *For the maker. Track `ai-imagery`. Built from the research note at `research/ai-imagery.md` (sources read 2026-10-18). Deadline: Saturday 2027-02-27.*
 
+Reconciled with [DECISIONS.md](../DECISIONS.md) (2026-10-18), the single source of truth. Where a lean below disagrees with a register row, the register wins. D-nn rows are decided by the maker; W-nn rows are working defaults.
+
 **How to read this.** Numbers in square brackets, such as [2], point to the Sources list at the end. They match the research note. **TODO(research)** marks a gap we have not closed. Time estimates are planning guesses unless a source gives them. Some sources were seen only as search snippets; the Sources list says so.
 
 ## Why this matters for our life journey
@@ -12,9 +14,9 @@ The main risk is that these tools make things look finished. Almost every tool t
 
 Three facts shape the plan.
 
-- **Nobody has tested these tools on the kind of photo we have.** The research found clean, modern demo portraits. It found no tests on faded, low-resolution or black-and-white family prints. So in week 1 we run a five-photo bake-off on stand-in photos with the same defects, judged by the maker and confirmed insiders. Her own photos wait for the vertical slice.
+- **Nobody has tested these tools on the kind of photo we have.** The research found clean, modern demo portraits. It found no tests on faded, low-resolution or black-and-white family prints. So in week 1 we run a five-photo bake-off on stand-in photos with the same defects, judged by the maker alone (under only-me there are no insiders, D-03; likeness is the maker's, W-40). Her own photos wait for the L1 process lock (Sat 14 Nov) and the vertical slice (D-13, W-07).
 - **Most of the work is hands-on.** The research note estimates about 40 to 80 human hours for 300 photos, mostly scanning and hand clean-up, not computer time. This is an estimate, not a measurement. The research note's summary and its table now agree.
-- **We start small.** One chapter, a 30-photo vertical slice, comes before the rest of the archive (charter principle 6).
+- **We start small.** One chapter, a 30-photo vertical slice (C01, final Sun 20 Dec, W-07), comes before the rest of the archive (charter principle 6).
 
 ## Core principles
 
@@ -22,9 +24,9 @@ Three facts shape the plan.
 2. **Keep the original untouched.** Every change is a labelled copy. The master scan never changes [1][2].
 3. **Fix the photo without AI first.** Levels, colour cast, dust and cropping come first. Escalate only if the photo is still unusable.
 4. **Restoration is generation.** Upscalers, face restorers, colourisers and frame makers all invent something. Find out what each tool invents, and write it down.
-5. **Judge likeness with people who knew her.** A sharpness score does not tell you whether the face is still her. Ask a confirmed insider, someone on the insiders list in `GATHER.md` (not yet written; see Known gaps): "Does this look like your mother at that age?" (charter principle 5).
+5. **The maker judges likeness, alone.** A sharpness score does not tell you whether the face is still her. Under only-me there are no insiders (D-03), so the maker signs likeness from their own knowledge: five of five correct in a shuffled line-up, passed twice, 48 hours apart (W-40). The Fable advisor flags and never signs it (charter principle 5).
 6. **Morph only between real photos.** A classic morph or a dissolve adds no new faces. A tool that generates in-between frames is labelled, and it is never shown as a record.
-7. **Leave the faces of people who have died alone**, unless the family has said yes first. Motion in the environment, such as light, leaves or parallax, is the safe default.
+7. **Leave the faces of people who have died alone**, unless the family has said yes first. Motion in the environment, such as light, leaves or parallax, is the safe default. Under only-me nobody can be asked before the premiere (D-03), so the premiere cut has no face or expression motion for them at all (W-40).
 8. **Small first, then scale.** One photo, then the 30-photo slice, then the rest.
 9. **Show the original.** Keep an untouched L0 or L1 version of every hero photo, and show it beside the restoration at least once. See "When not to restore" below.
 
@@ -43,13 +45,13 @@ Each step names the research recipe it comes from (R1 to R6 in the note). Comman
 
 ### Step 0: Set up the folders and the records (R1)
 
-Create four folders: `01_masters`, `02_work`, `03_exports` and `04_reconstructions`. Put them on a drive or account that no one in the family will browse during the surprise. Keep one checksum file for the masters.
+Create four folders: `01_masters`, `02_work`, `03_exports` and `04_reconstructions`. Put them inside the VeraCrypt container on the external drive, in a separate Windows account that no one in the family will browse during the surprise (W-25, W-26). Keep one checksum file for the masters.
 
 Give every scan an ID such as `LJ-B03-0042-F`. B03 is the box, 0042 the sequence number, and F the front (use B for the back). A rescan adds `-R2`. Put the date in the record, not in the file name, because many photos are undated. This departs on purpose from the Library of Congress's date-first names [1].
 
 Keep two plain CSV files:
 
-- `manifest.csv`, one row per scan. Columns: id, box, medium, scan_date, device, ppi, bit_depth, profile, date_est, date_confidence, people, place, caption_source, interview_date, consent_note, sha256, notes. `interview_date` is filled when a caption cites an interview, as the L5 caption does.
+- `manifest.csv`, one row per scan. Columns: id, box, medium, scan_date, device, ppi, bit_depth, profile, date_est, date_confidence, people, place, caption_source, interview_date, consent_note, sha256, notes. `interview_date` is filled when a caption cites an interview, as the L5 caption does; before the premiere it holds the date of the album-and-hands session or of the maker's own written recollection (W-49, D-03).
 - `steps.csv`, one row per change. Columns: derivative_id, parent_id, step_no, tool, version, settings, seed, invents (none, texture, colour, frames or faces), label_level, reviewer, approved.
 
 The National Archives asks for who, what, where and when [2]. The manifest does that job.
@@ -63,7 +65,7 @@ The National Archives asks for who, what, where and when [2]. The manifest does 
 - **Depth Anything V2 Small:** install CPU PyTorch from `https://download.pytorch.org/whl/cpu`, then `pip install transformers pillow` [124][125][106].
 - **ExifTool:** unzip `exiftool-13.59_64.zip`, rename `exiftool(-k).exe` to `exiftool.exe`, keep the `exiftool_files` folder beside it, and put both on PATH [118].
 - **WSL:** `wsl --install` from an administrator PowerShell, then restart. It needs Windows 10 build 19041 or later, or Windows 11 [126]. SAM 2 also notes WSL as the route for Windows [56].
-- **Cloud container for CPU steps:** it runs Linux and is temporary. Use it by content, as Decision 6 sets out. Work with no family photo may run there. Anything with her face or a relative's stays on the maker's PC, or on a maker-approved rented GPU (charter, Constraints). The team's cloud session is a Linux VM with no GPU and no view of the maker's PC (checked 2026-10-18); the hardware tier comes only from the Q2 PowerShell block in the research note.
+- **Cloud container for CPU steps:** it runs Linux and is temporary. Use it by content, as Decision 6 sets out. Work with no family photo may run there. Anything with her face or a relative's stays on the maker's PC: no full-size family photo goes to a cloud session, a hosted renderer or a rented GPU. A rented GPU is for non-family imagery only, on Secure Cloud with an encrypted volume and the maker's recorded OK, never Community Cloud (D-15, W-23, W-24). The team's cloud session is a Linux VM with no GPU and no view of the maker's PC (checked 2026-10-18); the hardware tier comes only from the Q2 PowerShell block in the research note.
 
 ### Step 1: Clean the print and the glass
 
@@ -97,7 +99,7 @@ Check each scan at 100% zoom. Look for cut-off corners, blur and glare the scan 
 
 Windows (PowerShell, untested on Windows; `sha256sum` does not exist there): `Get-FileHash 01_masters\*.tif -Algorithm SHA256 | Export-Csv checksums.csv -NoTypeInformation`. This writes CSV rather than the `sha256sum` text format, with the same SHA-256 hashes.
 
-Back up 3-2-1: three copies, on two kinds of media, with one copy off-site [2].
+Back up 3-2-1 [2]: three copies, on two kinds of media, with the second copy on a second encrypted SSD kept elsewhere. There is no cloud copy of family media (W-25).
 
 ### Step 4: Make the cleaned copy (L1)
 
@@ -107,16 +109,16 @@ Faded 1970s to 90s colour prints usually have a magenta or yellow cast and low c
 
 ### Step 5: Decide whether the photo needs help
 
-Count pixels against the master the film will be made at, not against 1080p. The arithmetic is: pixels needed across = timeline width × (1 + push-in) × crop factor. The crop factor is 1.0 for a landscape print that fills the frame width.
+Count pixels against the master the film will be made at (1080p, W-15). The arithmetic is: pixels needed across = timeline width × (1 + push-in) × crop factor. The crop factor is 1.0 for a landscape print that fills the frame width.
 
-The master is not fixed yet. Assume UHD (3,840 px across) until the theatrical-delivery track fixes it. TODO(theatrical-delivery): master resolution. On UHD, a 4x6 print scanned at 600 ppi (3,600 by 2,400 px) with an 8 percent push-in needs about 4,150 px across, so it falls short. The 600 ppi scan is enough for a 2K master (2,048 px across [156]; about 2,160 to 2,210 px needed with an 8 percent push-in) or a 1080p master (about 2,075 px needed).
+The master is settled (W-15, [DECISIONS.md](../DECISIONS.md)): 1920x1080, 16:9, with stills prepared at 3840 px on the long edge. A 2K Flat DCP is derived from the master and never re-authored, and 4K is not needed. A 4x6 print scanned at 600 ppi (3,600 by 2,400 px) is about 6 percent under the 3840 px target, which a plain resize covers, and it is enough for the 1080p master (about 2,075 px needed with an 8 percent push-in) and for a 2K DCP (2,048 px across [156]; about 2,160 to 2,210 px needed). UHD applies only to single hero shots if a 4K cinema is booked. On UHD, the same print with an 8 percent push-in needs about 4,150 px across, so it falls short.
 
-If the master is UHD, choose one of these for hero prints:
+For a hero print booked at UHD, choose one of these:
 - Scan hero prints at 800 to 1,200 ppi. A 4x6 at 800 ppi is 4,800 by 3,200 px.
 - Allow a 2x Real-ESRGAN pass on hero prints, logged as an L2 step (Step 6).
 - Keep push-ins under about 5 percent. This helps only if the picture fills less than about 89 percent of the frame width (3,600 ÷ (3,840 × 1.05)). At full width, even a 0 percent push-in needs 3,840 px.
 
-Upscale only where the count is short: wallet prints, 1990s digital camera files, video frames and hero prints under the UHD rule.
+Upscale only where the count is short: wallet prints, 1990s digital camera files, video frames and any hero print booked at UHD.
 
 ### Step 6: Restore only what needs it (L2)
 
@@ -171,7 +173,7 @@ Windows (untested on Windows): `magick a.png b.png -morph 14 frames\m_%02d.png`.
 
 `ffmpeg -loop 1 -i in.png -vf "zoompan=z='min(zoom+0.0007,1.08)':d=96:s=960x720:fps=24,format=yuv420p" -t 4 kb.mp4`
 
-Windows (PowerShell, untested on Windows): the same command. Keep the whole filter in double quotes, as shown. The single quotes inside it are literal. Do not wrap the whole filter in single quotes.
+Windows (PowerShell, untested on Windows): the same command. Keep the whole filter in double quotes, as shown. The single quotes inside it are literal. Do not wrap the whole filter in single quotes. This command is proof-grade only: `zoompan` snaps to whole pixels and fails MO8 on a final push, so finals use sub-pixel rendering (W-41; cinematic-quality MO8).
 
 **Generated image-to-video (L4b).** Use only with these rules.
 
@@ -185,24 +187,24 @@ Windows (PowerShell, untested on Windows): the same command. Keep the whole filt
 
 **Local options (need a graphics card).** Wan2.2 TI2V-5B: ComfyUI says it fits 8 GB with offloading [70], while the README says 24 GB [69]. FramePack needs 6 GB. Its README tests RTX 30, 40 and 50 series cards. Older cards are untested, not excluded [72]. WanGP runs select models on 6 GB and was updated 2026-10-15 [77]. LTX-2 needs 32 GB or more [75].
 
-**Cloud options (privacy rules first; see Decision 6).** A Veo 3.1 clip at 720p with audio costs $0.20 on Lite, $0.40 on Fast and $1.60 on Standard for 4 seconds, or $0.40, $0.80 and $3.20 for 8 seconds [51]. Durations are 4, 6 or 8 seconds [82]; 1080p, 4K and reference images need 8 seconds [114]. The per-second prices for 1080p and 4K are not in our notes (TODO(research)). Kling 2.5 Turbo Pro via fal is about $0.35 for 5 seconds [52]. Luma Ray3.2 is about $0.30 at 720p on its Plus plan [81]. Whether Kling, Runway and Luma support first-and-last-frame generation is unconfirmed (TODO(research)). Runway's pricing page is internally inconsistent [80].
+**Cloud options (privacy rules first; see Decision 6).** The prices below are for reference and for stand-in or non-family imagery only: no full-size family photo goes to a hosted service, ever (D-15, W-24). A Veo 3.1 clip at 720p with audio costs $0.20 on Lite, $0.40 on Fast and $1.60 on Standard for 4 seconds, or $0.40, $0.80 and $3.20 for 8 seconds [51]. Durations are 4, 6 or 8 seconds [82]; 1080p, 4K and reference images need 8 seconds [114]. The per-second prices for 1080p and 4K are not in our notes (TODO(research)). Kling 2.5 Turbo Pro via fal is about $0.35 for 5 seconds [52]. Luma Ray3.2 is about $0.30 at 720p on its Plus plan [81]. Whether Kling, Runway and Luma support first-and-last-frame generation is unconfirmed (TODO(research)). Runway's pricing page is internally inconsistent [80].
 
 **Photos with a child in them: no cloud image-to-video.** Veo's image-to-video accepts only `allow_adult` [82]. Google's Vertex AI page says it rejects requests to generate content depicting children when `personGeneration` is not `allow_all` [116]. For these photos, use parallax or a local model only. Local image-to-video needs a graphics card. No test planned; the rule rests on [114] and [116], both read 2026-10-18.
 
-**Faces of people who have died.** No face or expression animation (principle 7 and Decision 4). Parallax or environment motion only, and ask the family first. MyHeritage's Deep Nostalgia made nearly 100 million animations [101]. The research did not read any reaction to animating the dead (TODO(research)).
+**Faces of people who have died.** No face or expression animation (principle 7 and Decision 4). Parallax or environment motion only. Under only-me nobody can be asked before the premiere (D-03), so a family yes cannot be had in time and the premiere cut has no face or expression motion for them at all (W-40). MyHeritage's Deep Nostalgia made nearly 100 million animations [101]. The research did not read any reaction to animating the dead (TODO(research)).
 
 ### Step 9: Stylise in the house look (L3)
 
 Pick one look for the whole chapter, and write a two-line style bible: palette, line weight, proportions. Then choose a route (labels follow recipe R4).
 
-- **Route A, hand-made (default).** For each age band (child, teen, young adult, adult, older), pick three to five real photos. List identity attributes: hair shape and colour, glasses, beard, scars, posture, signature clothes, and height relative to others. Build a character sheet in your chosen look: voxel, pixel or clay. MagicaVoxel and Blockbench are believed to be free, but this is unverified [notes]. Take the palette from the photo. For block-palette backgrounds, MapartCraft is a free browser tool under GPL-3.0 [54].
+- **Route A, hand-made (default).** For each age band (child, teen, young adult, adult, older), pick three to five real photos. List identity attributes: hair shape and colour, glasses, beard, scars, posture, signature clothes, and height relative to others. Build a character sheet in the chosen look. The look is the maker's own hand-made material, filled at G1 (W-38); voxel appears only as original voxel assets and is never the reconstruction marker (D-23). MagicaVoxel and Blockbench are believed to be free, but this is unverified [notes]. Take the palette from the photo. For block-palette backgrounds, MapartCraft is a free browser tool under GPL-3.0 [54].
 - **Route B, AI edit on the real photo.** Use an edit model that starts from your photo, such as FLUX.1 Kontext dev [33][34] (non-commercial, gated), Qwen-Image-Edit-2511 (Apache-2.0) [36], or FLUX.2 klein 4B (about 8 GB) [38]. Keep the input near 1 megapixel [37]. In the prompt, name the subject specifically and add "while maintaining the same facial features, hairstyle, and expression" [34]. Change one thing per step. Keep one seed, one LoRA strength and one prompt template per chapter. Choose the result by line-up.
 - **Route C, identity adapters: avoid for real people.** InstantID [40], PuLID-FLUX [41] and InfiniteYou [42] generate a new picture of the person from a prompt. The pose, clothes and scene are then invented. That makes it a reconstruction (L5), not a restyle. Use it only if a new angle is truly needed, and label it.
-- **Route D, style LoRA on your own art.** Train a style LoRA on 10 to 30 of your own hand-made frames, using fluxgym (12 GB) [47] or ai-toolkit [46]. A person LoRA is not the default. It is only conditionally acceptable, with consent, local training, deletion afterwards and labels (research note, Q4c).
+- **Route D, style LoRA on your own art.** Train a style LoRA on 10 to 30 of your own hand-made frames, using fluxgym (12 GB) [47] or ai-toolkit [46]. A person LoRA is out for her (D-16: no model is trained on her face). For anyone else it would need consent, local training, deletion afterwards and labels (research note, Q4c), and under only-me nobody can be asked, so none.
 
 The Kontext style LoRAs, such as Clay Toy, Origami and Paper Cutting, have no stated licence [45]. Check it before use.
 
-**Line-up test.** Show five stylised faces to confirmed insiders (`GATHER.md`). Ask who is who, and at what age. Adjust the attributes, not the faces. Run this on her real photos in the vertical slice, after the "who is in on it" decision, not before. The pass mark is set during the vertical slice (TODO(research)).
+**Line-up test.** The maker signs likeness alone (D-03, W-40). Show five stylised faces in a shuffled line-up with decoys (the full protocol is in cinematic-quality T3). Ask who is who, and at what age. Adjust the attributes, not the faces. Run this on her real photos in the vertical slice, after the L1 process lock (Sat 14 Nov). The pass mark is set (W-40): five of five correct, passed twice, 48 hours apart.
 
 ### Step 10: Label what you made
 
@@ -216,6 +218,8 @@ Every derivative gets a level. The ladder below is the research note's proposal 
 | L3 Restyled | Real photo redrawn in the house look | Edit model with style LoRA; hand-built character from the photo | `compositeWithTrainedAlgorithmicMedia` (AI edit on a real photo); `digitalCreation` (hand-drawn from scratch); `composite` (hand-drawn over a real photo) | Obviously stylised |
 | L4 Animated | Motion added to a real photo | 4a parallax or classic morph (no generated frames); 4b image-to-video; 4c generated in-between | 4a `humanEdits` or `algorithmicallyEnhanced`; 4b and 4c `compositeWithTrainedAlgorithmicMedia` | Tag on the clip: "moved", "frames invented" |
 | L5 Reconstruction | Scene never photographed, built from testimony | Stylised scene in the house look | `digitalCreation` (hand-built); `trainedAlgorithmicMedia` (AI-built); `compositeSynthetic` (mixed) | Always stylised; caption "Reconstructed from [name]'s memory, [interview date]" |
+
+**L5 testimony under only-me.** Before the premiere the testimony behind an L5 scene comes from the maker's own knowledge or an album-and-hands session (W-49), not from a recorded interview (D-03). The caption names a relation rather than a person where it can, because person IDs only live in the repo and the ID-to-name key stays offline (D-14). Recorded relative testimony arrives with the April version (D-06).
 
 The IPTC values come from the Digital Source Type vocabulary [89]. The IPTC user guide says to write the URI, not the label, and to store it in XMP only [90]. `humanEdits` is only for non-generative edits to captured media. A hand-built voxel, clay or other scene made from scratch is `digitalCreation`, which means "created by a human using non-generative tools" and was added on 2024-09-17 [89]. `composite` is for hand work layered over a real photo, and `compositeSynthetic` is for mixed work. Checked against [89] on 2026-10-18.
 
@@ -234,10 +238,10 @@ C2PA (Content Credentials) is an open standard [91][92]. Signing needs certifica
 ### Step 11: Review before anything is shown
 
 - Flick between the original and the result at 100%, both ways.
-- Ask one confirmed insider who knew her (on the insiders list in `GATHER.md`): "Does this look like her at that age?" Record the answer in the manifest.
+- The maker answers "Does this look like her at that age?" from their own knowledge; there is no insider under only-me (D-03, O-11). Record the answer in the manifest.
 - Check the label, the manifest row and the `steps.csv` entry.
 - Check that the end credits name every AI tool used.
-- Send anything sensitive, such as loss, illness, separation, money or conflict, to the trusted proxy first (charter principle 5).
+- Send anything sensitive, such as loss, illness, separation, money or conflict, through one-key-three-guards first: a decision sheet, the Fable advisor's written flag, and the maker's two decisions 72 hours apart (D-04, charter principle 5).
 
 ## Decisions you'll need to make
 
@@ -248,17 +252,17 @@ Each decision lists the options and our current lean. A lean marked "(from the n
 - *Borrow a flatbed* from a library, a relative or a makerspace. Best for a large batch of prints at 600 ppi (decision table in the note).
 - *Buy.* The Epson V850 Pro is $1,999 [10]. The V600 is discontinued [9]. VueScan can drive some scanners whose Epson drivers no longer work [11].
 - *Use a phone.* Fine for fewer than 400 prints, with PhotoScan [6] (decision table in the note). Photomyne is the choice for album pages [14].
-- **Lean (from the note):** borrow a flatbed for the big batch, and use a phone on a stand for album pages and small batches. (Scribe's reading, confirm:) do not buy anything before the bake-off.
+- **Lean (from the note):** borrow a flatbed for the big batch, and use a phone on a stand for album pages and small batches. (Scribe's reading, confirm:) do not buy anything before the bake-off. Defaulted in the register (W-27, O-23): the scan tool is whichever wins the ten-print pilot, decided Sun 15 Nov.
 
 **2. Graphics card (GPU) tier.** The charter does not say which graphics card the Windows PC has.
 
 - *No GPU.* CPU tools, hand work, parallax, morph and grading all work. Use a cloud step only where Decision 6 allows.
 - *8 to 12 GB Nvidia.* Real-ESRGAN, CodeFormer, smaller SeedVR2 builds, FLUX.2 klein 4B, FramePack and WanGP.
 - *16 GB or more.* Adds Qwen-Image-Edit-2511 and PuLID-FLUX. Some big-model VRAM figures are not stated in any source (see gaps).
-- *Rent a GPU.* RunPod lists an RTX 4090 at $0.34 per hour (community) or $0.89 (secure), updated 2026-10-08 [83]. A rented machine is a third-party service, so it falls under Decision 6.
-- **Lean (from the note):** start on the no-GPU path. Then check your graphics card and decide.
+- *Rent a GPU.* RunPod lists an RTX 4090 at $0.34 per hour (community) or $0.89 (secure), updated 2026-10-08 [83]. A rented machine is a third-party service, so it falls under Decision 6: non-family imagery only, Secure Cloud, never Community Cloud (W-23).
+- **Lean (from the note):** start on the no-GPU path. Then check your graphics card and decide. Defaulted in the register (W-23, [DECISIONS.md](../DECISIONS.md)): the GPU tier is settled after the PC inventory (Exercise 1).
 
-**3. Free public screening, or ticketed.** The charter now states a premiere at a mostly public gathering on Feb 27, to be treated as a film with a public audience (Known facts). Principle 7 (cleared for public screening) therefore applies. The open question is whether admission is free.
+**3. Free public screening, or ticketed.** The charter now states a premiere at a mostly public gathering on Feb 27, to be treated as a film with a public audience (Known facts). Principle 7 (cleared for public screening) therefore applies. The open question is whether admission is free; the register's door-policy default is invite-only (W-54, decide by Sun 15 Nov).
 
 - *Free public screening.* Non-commercial weights may be used only after each licence is read for public exhibition, and the reading is logged in `steps.csv`. Examples: SUPIR [21], FLUX.1 Kontext dev [33], Depth Anything V2 Base or Large [58], and rembg's `bria-rmbg` [55]. FLUX.1 dev's licence has two phrases, "production purposes" and "impact on end users", that only its publisher can settle [159].
 - *Ticketed showing.* Exclude every non-commercial weight. Any payment, such as a ticket, donation or sponsor, flips them to no [159][161].
@@ -268,31 +272,31 @@ Each decision lists the options and our current lean. A lean marked "(from the n
 
 **4. Animating people who have died.**
 
-- *Option A: no motion of faces or expressions.* Environment motion and parallax only, and only after the family says yes.
+- *Option A: no motion of faces or expressions.* Environment motion and parallax only.
 - *Option B: face or expression motion, with the family's explicit yes.* The note advises against it. Its research did not cover this case (TODO(research)).
 - *Option C: stills only.* No motion at all for them.
-- **Lean (from the note and charter principle 5):** Option A by default. Ask the family before any motion of them. The note's two lines read differently, one saying "no expression animation" and the other "without the family's say." We read them together as: never by default, and only with the family's yes.
+- **Lean (from the note and charter principle 5):** Option A by default. Settled for the premiere cut (W-40, [DECISIONS.md](../DECISIONS.md)): no face or expression motion of anyone who has died, because under only-me the family cannot be asked before the premiere (D-03). Environment motion and parallax only; the family-yes route waits until after the premiere. The note's two lines read differently, one saying "no expression animation" and the other "without the family's say." We read them together as: never by default, and only with the family's yes.
 
 **5. How far to label.**
 
 - *Option A: file names only.*
 - *Option B: the full six-level ladder (L0 to L5)* in file names, the manifest, the XMP metadata and the credits.
-- **Lean (from the note):** Option B. The ladder is the research team's proposal, so you may simplify it for the first chapter if you tell the orchestrator.
+- **Settled (W-40, [DECISIONS.md](../DECISIONS.md)):** Option B, the full L0 to L5 ladder in the file name, `steps.csv`, the XMP and the end-credit cue sheet.
 
-**6. Where processing happens (privacy).**
+**6. Where processing happens (privacy). Decided: D-15, W-23, W-24 ([DECISIONS.md](../DECISIONS.md)).**
 
 - *Option A: local only.* Nothing leaves your machine. This is the default for any photo with a family member in it, including anything with her face or a relative's.
-- *Option B: a paid tier whose terms say no training, for cleared photos only.* The Gemini API paid tier does not use prompts and files to improve products [85]. Veo results are stored for 2 days [82], so download them at once.
+- *Option B: a paid tier whose terms say no training.* Closed for family photos, because D-15 bars any full-size family photo from a hosted renderer; open for stand-ins and non-family imagery only. The Gemini API paid tier does not use prompts and files to improve products [85]. Veo results are stored for 2 days [82], so download them at once.
 - *Option C: consumer apps, or any service whose terms the research could not read.* Never.
 - *Option D: cloud, for work with no family photo in it.* Tool installs and tests, the stand-in bake-off, style-LoRA training on your own hand-made frames, scripts, renders of hand-built L5 scenes, and morph and parallax tests on stand-ins.
-- **Lean (charter and note, scribe's reading, confirm): split by content.** The charter says heavy work happens in the cloud wherever possible, and that nothing personal goes to a third-party service without your explicit say. We read both as one split. Option D is the default for everything with no family photo. Anything with her face or a relative's stays on your PC (Option A), or on a rented GPU you approve; a rented machine is a third-party service, so it needs your yes. The team's cloud session is a Linux VM with no GPU and no view of your PC (checked 2026-10-18), so your hardware tier comes only from the Q2 PowerShell block in the research note.
+- **Decided: split by content, `cloud: none` by default.** Only the maker raises a photo set's `cloud` level; an agent never does (W-24). The charter says heavy work happens in the cloud wherever possible, and that nothing personal goes to a third-party service without your explicit say. We read both as one split. Option D is the default for everything with no family photo. Anything with her face or a relative's stays on your PC (Option A). `preview` proxies of about 768 px may go to the cloud container only after the account's model-improvement setting is off (W-23, W-24). A rented GPU is a third-party service: non-family imagery only, on Secure Cloud with an encrypted volume and your recorded OK, never Community Cloud. The team's cloud session is a Linux VM with no GPU and no view of your PC (checked 2026-10-18), so your hardware tier comes only from the Q2 PowerShell block in the research note.
 
 **7. Face restoration.**
 
 - *None.*
 - *CodeFormer at high fidelity, with blend-back* [15].
 - *An edit model on the real photo* [33][36].
-- **Lean (from the note):** none by default. Run the bake-off, then choose per photo type. Non-AI fixes come first.
+- **Lean (from the note):** none by default. Run the bake-off, then choose per photo type. Non-AI fixes come first. Defaulted in the register (W-40, [DECISIONS.md](../DECISIONS.md)): faces at L2 are non-generative, or CodeFormer `w` of 0.7 or more blended back; any generative face change moves to L3 or is rejected; the five-photo bake-off on stand-ins comes before any tool decision.
 
 **8. Stylisation route.**
 
@@ -316,7 +320,7 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 
 **Steps.**
 1. Create the four folders from Step 0.
-2. Clean the scanner glass. Scan five stand-in prints (from the Exercise 3 list, not her albums; scanning her albums this week would be gathering before the gate opens) at 600 ppi, colour, 16-bit.
+2. Clean the scanner glass. Scan five stand-in prints (from the Exercise 3 list, not her albums; scanning her albums this week would be gathering before the gate opens: the gate is the L1 process lock on Sat 14 Nov, and collection starts Sun 15 Nov, D-13) at 600 ppi, colour, 16-bit.
 3. Scan the back of any print with writing on it.
 4. Name the files with the LJ pattern.
 5. Fill in five rows of `manifest.csv`.
@@ -335,21 +339,21 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 
 **Time.** 1 to 2 hours (estimate).
 
-**What good looks like.** Skin looks like skin, not orange or grey. Nothing new appears in the picture. The maker, or a confirmed insider, recognises the print as the same photo, only cleaner.
+**What good looks like.** Skin looks like skin, not orange or grey. Nothing new appears in the picture. The maker recognises the print as the same photo, only cleaner.
 
 ### Exercise 3: Five-photo bake-off (week 1)
 
-**Goal.** Find out whether any tool helps on the kinds of photo we really have, without using her archive for the test. Judges are the maker and confirmed insiders only. Right now the insiders list is empty, because the charter says only the maker knows about the project. So the maker judges alone until someone is confirmed.
+**Goal.** Find out whether any tool helps on the kinds of photo we really have, without using her archive for the test. The maker is the only judge (D-03, W-40): under only-me there is no insiders list.
 
 **Steps.**
-1. Pick five **stand-in** photos, none from her archive, with these defects: a faded colour print, a small black-and-white print, a soft group snapshot with small faces, a torn print, and a 1990s low-resolution digital file [research note, open question 1]. Sources: the maker's own prints; a consenting relative's print, only if that relative is a confirmed insider; or public-domain archival prints. Candidates from the research follow-up (Q6; licences read on each Commons page, re-check before use): NARA 546220, a faded colour print [132]; US Navy 80-G-27208, a creased print [131]; the State Archives of North Carolina's 1952 black-and-white snapshot with cracks and a torn corner [134]; and "1971-12-John Call Cook", a faded colour snapshot under CC BY-SA 3.0 [133]. Files [133] and [134] show named people, and [134] names a child who may still be alive, so keep tests with them private and publish nothing from them. No candidate yet for the soft group snapshot or the 1990s digital file (TODO(research)).
+1. Pick five **stand-in** photos, none from her archive, with these defects: a faded colour print, a small black-and-white print, a soft group snapshot with small faces, a torn print, and a 1990s low-resolution digital file [research note, open question 1]. Sources: the maker's own prints, or public-domain archival prints. No relative's print: nobody is asked before the premiere (D-03). Candidates from the research follow-up (Q6; licences read on each Commons page, re-check before use): NARA 546220, a faded colour print [132]; US Navy 80-G-27208, a creased print [131]; the State Archives of North Carolina's 1952 black-and-white snapshot with cracks and a torn corner [134]; and "1971-12-John Call Cook", a faded colour snapshot under CC BY-SA 3.0 [133]. Files [133] and [134] show named people, and [134] names a child who may still be alive, so keep tests with them private and publish nothing from them. No candidate yet for the soft group snapshot or the 1990s digital file (TODO(research)).
 2. For each photo, make four versions: (a) the L1 fix only; (b) Real-ESRGAN at 2x with `-n realesrgan-x4plus -s 2` [18][104]; (c) CodeFormer at `w` 0.7, 0.8 and 1.0, blended 50% back [15]; (d) one edit model run locally, if your graphics card allows. If not, skip it and say so.
 3. Look at each version at 100%. Note what it invents: teeth, eyelids, jaw, hair, background.
-4. Show the versions unlabelled to the judges (the maker, plus confirmed insiders if any). For each version, ask whether it still looks like the same person and the same photo as the original, and what it added. A result on a stand-in is evidence about the defect, not about her photos.
+4. Show the versions unlabelled to the judge (the maker alone; ask an agent to shuffle the labels). For each version, ask whether it still looks like the same person and the same photo as the original, and what it added. A result on a stand-in is evidence about the defect, not about her photos.
 
 **Time.** 1 to 2 days, spread across the week (estimate).
 
-**What good looks like.** A table with one row per stand-in and tool. Columns: "what it invents," "same person and same photo as the original," and a verdict. A chosen route for each defect type. Keep the stand-ins and their versions on your machine. Only the judges named above see them. Her own photos are not used in this exercise, because gathering them waits for the charter's gathering gate.
+**What good looks like.** A table with one row per stand-in and tool. Columns: "what it invents," "same person and same photo as the original," and a verdict. A chosen route for each defect type. Keep the stand-ins and their versions on your machine. Only the maker sees them. Her own photos are not used in this exercise, because gathering them waits for the charter's gathering gate.
 
 ### Exercise 4: The face dial
 
@@ -377,7 +381,7 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 
 **Goal.** A transition that says "time passed" with no generated frames.
 
-**Steps.** Choose two real photos of the same person at different ages, cleared by a relative. Align the eyes by scaling and rotating. Run the ImageMagick morph (14 frames; `magick` on Windows, see Step 7), and assemble it with ffmpeg. Make an `xfade` dissolve for comparison. If time allows, add landmarks using the LearnOpenCV example [65].
+**Steps.** Choose two real photos of the same person at different ages that are yours or public-domain (nobody is asked before the premiere, D-03). Align the eyes by scaling and rotating. Run the ImageMagick morph (14 frames; `magick` on Windows, see Step 7), and assemble it with ffmpeg. Make an `xfade` dissolve for comparison. If time allows, add landmarks using the LearnOpenCV example [65].
 
 **Time.** About 2 hours (estimate).
 
@@ -397,7 +401,7 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 
 1. **Demos flatter.** Most public demos use clean, modern portraits. No source the research reached shows these tools on faded, low-resolution or black-and-white family prints. Treat any quality claim as untested until your bake-off.
 2. **Restoration is generation.** Upscalers, face restorers and colourisers invent texture, features and colour. Frame makers invent frames. The tool tables in the research note say what each tool invents.
-3. **Face drift and plastic skin.** GFPGAN may change identity [17]. SeedVR2 had a "plastic" output problem, which version 2.5.6 addressed [24]. Fake-face methods such as PULSE make people who do not exist [30]. Blend back, and check with a relative.
+3. **Face drift and plastic skin.** GFPGAN may change identity [17]. SeedVR2 had a "plastic" output problem, which version 2.5.6 addressed [24]. Fake-face methods such as PULSE make people who do not exist [30]. Blend back, and check at 100% against the original (the maker is the only judge, W-40).
 4. **Age gaps.** Face recognition accuracy falls by 10 to 17 percent for same-person pairs with age gaps, in a 2017 benchmark [53]. The note expects identity tools to pull a face toward the age of the reference photo. That is a reasoned expectation, not a tested result (judgment in the note). Do not expect one face to cover childhood to today. Use each photo's own face, one photo per output.
 5. **Stale tutorials.** FILM was archived 2025-10-14 [61]. Microsoft's Old Photos repository was archived 2026-10-03 [25]. DeOldify was archived 2024-10-19 [29]. IP-Adapter-plus has been maintenance-only since 2025-04-14 [44]. The first Nano Banana model (`gemini-2.5-flash-image`) is marked deprecated with a 2026-10-02 shutdown on Google's pricing page [51]. The image docs call it only "legacy" [50]. That date has already passed, so assume it is gone and check before use. Check the dates and licence of any tutorial from 2023 to 2025.
 6. **Licence traps.** Non-commercial weights need a licence read for public exhibition before use, and a ticketed showing excludes them (Decision 3). InfiniteYou's licence says "for academic research purposes only" [162], so it is out for any shown frame. FLUX.2 dev, FLUX.2 klein 9B [38] and InstantID [40] have no licence read yet (TODO(research)). The charter fixes a public premiere (Known facts; Principle 7).
@@ -405,7 +409,7 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 8. **Cloud privacy.**
    - *Gemini consumer app, with Keep Activity on:* uploaded photos may be used to train models, and some chats are reviewed by people and kept for up to three years [84]. Never for family photos.
    - *Gemini API unpaid tier:* content is used to improve products, and the terms say not to submit personal information [85]. Never for family photos.
-   - *Gemini API paid tier:* prompts and files are not used to improve products [85]. Acceptable only for cleared photos, with your yes (Decision 6).
+   - *Gemini API paid tier:* prompts and files are not used to improve products [85]. Not for family photos at any size (D-15); acceptable for stand-ins and non-family imagery only (Decision 6).
    - *Luma:* its privacy policy lists training as a purpose, with no opt-out stated [86]. Never.
    - *Adobe Firefly:* Adobe says it has never trained Firefly on customer content [87]. The consumer terms were not read (TODO(research)).
    - *Replicate:* API predictions are removed after an hour [88]. Save results locally at once.
@@ -438,9 +442,9 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 - **DepthFlow's CLI documentation** (depth.tremeschin.com) was not fetched.
 - **Windows set-up** for ffmpeg, ImageMagick, Real-ESRGAN, rembg, Depth Anything V2 and ExifTool is researched from vendor pages (Step 0), not run on Windows. CodeFormer's Windows route is not researched (TODO(research)).
 - **Budget figures.** Resolved in round 1: the research summary now matches its table, 40 to 80 human hours (45 to 80 with no GPU).
-- **Insiders list (`GATHER.md`)** does not exist in the repo yet. The charter says only the maker knows about the project, so the list is empty. Relatives may judge likeness only once they are on it. TODO: write `GATHER.md` before anyone judges a likeness.
+- **Insiders list (`GATHER.md`)** is not needed under only-me (D-03): the maker judges likeness alone (W-40). If TD-L2c (Sun 3 Jan) ever brings someone in, write `GATHER.md` before anyone judges a likeness.
 - **ArtCraft apps** (PhotoCraft, LightCraft and the rest) are outside this track. TODO(research): see the craft-visual and craft-motion tracks.
-- **Open family and maker decisions:** whether the family accepts any animation of relatives who have died (Decision 4), and whether the public premiere on 27 February is free or ticketed (Decision 3). The charter fixes the premiere as public; the price is open.
+- **Open maker decisions:** whether the public premiere on 27 February is free or ticketed (Decision 3; the register's door-policy default is invite-only, W-54). The charter fixes the premiere as public; the price is open. Animating relatives who have died is settled for the premiere cut: no face or expression motion (Decision 4, W-40).
 - **Licence text not read:** FLUX.2 dev, FLUX.2 klein 9B [38] and InstantID [40] (TODO(research)). Do not use them for a shown frame until read.
 
 ## Best references
@@ -574,3 +578,4 @@ Numbers match the research note's Sources list at `research/ai-imagery.md`. The 
 - 2026-10-18: Version 1, written by the haiku scribe from `research/ai-imagery.md` (sources read 2026-10-18) and `CHARTER.md`. Open gaps are listed under Pitfalls as TODO(research). Each decision lean is marked either "from the note" or "scribe's reading, confirm."
 - 2026-10-18, round 1 (Fable review applied by the Haiku scribe): added Windows forms and the install route (C1); moved the bake-off to stand-in photos judged by the maker and confirmed insiders, with real photos moved to the vertical slice (C2); fixed the IPTC mapping for hand-made work; made the L2 face rule operational and added "When not to restore"; corrected the Real-ESRGAN command, FramePack GPU wording, budget and metadata notes; added the child-photo cloud limit; replaced the fixed 2026 caption date with the interview date.
 - 2026-10-18, round 2 (Fable review applied by the Haiku scribe): C1 fixed, with Decision 3 and the licence default reframed as free public screening versus ticketed, because the charter now fixes a public premiere. Colourised faces ruled L2 or L3 by a Lab L-channel test. GFPGAN `-w` recorded as having no effect, so CodeFormer's `w` stays the dial, and the v1.3 quotation corrected. Upscale rule keyed to the UHD master arithmetic (TODO(theatrical-delivery)). Cloud split by content. Veo costs and clip lengths restated for 4 s and 8 s, and the child-photo test dropped.
+- 2026-10-18, round 3: Reconciled with DECISIONS.md (2026-10-18): likeness and review are the maker's alone (no insiders, no GATHER.md; D-03, W-40); master settled at 1080p with stills at 3840 px and a derived 2K DCP (W-15); cloud policy restated as decided (`cloud: none`, no family photo to any hosted service or rented GPU; D-15, W-23, W-24); backup is a second encrypted SSD with no cloud copy (W-25); no face or expression motion for the dead in the premiere cut (W-40); no model trained on her face (D-16); voxel only as original assets, never the marker (D-23, W-38); L5 testimony and `interview_date` under only-me (W-49); `zoompan` marked proof-grade (W-41); door policy and scanner defaults linked (W-54, W-27).

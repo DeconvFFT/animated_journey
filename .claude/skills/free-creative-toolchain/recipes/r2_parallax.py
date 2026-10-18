@@ -22,7 +22,7 @@ W = os.path.abspath(os.path.dirname(__file__))
 bpy.ops.wm.read_factory_settings(use_empty=True)
 sc = bpy.context.scene
 sc.render.engine = 'CYCLES'; sc.cycles.device = 'CPU'; sc.cycles.samples = 4
-sc.render.resolution_x, sc.render.resolution_y, sc.render.fps = 640, 360, 25
+sc.render.resolution_x, sc.render.resolution_y, sc.render.fps = 640, 360, 25   # tested at 25, UNVERIFIED at 24: the project rate is 24 (DECISIONS.md W-14, S-01); change after the re-run
 sc.frame_start, sc.frame_end = 1, 50
 sc.view_settings.view_transform = 'Standard'          # default AgX desaturates photos
 def plane_height(dist):                                # fills a 16:9 frame at 50 mm / 36 mm sensor
@@ -46,4 +46,4 @@ cam.keyframe_insert('location', frame=1)               # Bezier (eased) by defau
 cam.location.x = 0.4; cam.keyframe_insert('location', frame=50)
 sc.render.image_settings.file_format = 'PNG'; sc.render.filepath = os.path.join(W, 'renders', 'p_')
 bpy.ops.render.render(animation=True)
-# Then (bash, tested): ffmpeg -framerate 25 -i renders/p_%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p parallax.mp4
+# Then (bash, tested at 25, UNVERIFIED at 24; the project rate is 24, W-14): ffmpeg -framerate 25 -i renders/p_%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p parallax.mp4

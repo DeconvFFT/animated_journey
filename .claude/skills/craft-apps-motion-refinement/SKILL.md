@@ -9,7 +9,9 @@ description: "Use when building, checking or handing off Life Journey chapters t
 
 Let agents build Life Journey chapters in code, then hand the maker a clean, checkable package. The maker refines it by hand in FilmCraft (and sometimes EffectCraft) on Windows. Every step has a fallback that does not need a Craft app. The Craft apps are free, open-source, early-alpha refinement layers. Nothing critical may depend on them.
 
-Human-facing guide: `playbooks/craft-motion.md`. Evidence and gaps: `research/craft-motion.md`.
+Human-facing guide: `playbooks/craft-motion.md`. Evidence and gaps: `research/craft-motion.md`. Decisions register (it wins where this skill disagrees, D-21): `DECISIONS.md`.
+
+**Reconciled with DECISIONS.md (2026-10-18).** The project rate is 24 fps (W-14). Every guard value below was written and tested at 25 in the research, so it is UNVERIFIED at 24 until r1, r5 and the colour-patch test are re-run at 24; confirm each by hand before relying on it. A Craft app stays inside the D-12 boundary (a copy in `work\`, a chapter whose spec and OTIO are in the repo, a title whose SVG fallback exists; never the only writer or reader of a format, never a step in the week before the premiere; SoundCraft learning-only; the Launcher is never installed). Only-me (D-03): the maker is the proxy and nobody else reviews.
 
 ## When to use
 
@@ -25,13 +27,13 @@ Human-facing guide: `playbooks/craft-motion.md`. Evidence and gaps: `research/cr
 - Story gathering or interviews: use `life-story-interviewing`.
 - Game mechanics: use `meaningful-game-mechanics`.
 - Delivering audio through SoundCraft. Never. It is pre-alpha, has no sidechain and has MP3/AAC import bugs. Use the ffmpeg recipe in `research/craft-motion.md` R5 or FilmCraft Essential Sound.
-- Any step where real family material would enter the tools before the pipeline is locked and the five-minute test has passed. Use generated test cards.
+- Any step where real family material would enter the tools before the L1 process lock (Sat 14 Nov 2026; covert collection starts Sun 15 Nov, D-13) and the five-minute test has passed. Use generated test cards.
 
 ## Procedure
 
 1. **Load context.** Read `CHARTER.md`, the playbook, and `research/craft-motion.md`. The recipes R1 to R8, the spike tests T1 to T6 and the Open questions list all live in `research/craft-motion.md`. Look for a written result of spike S1 (tests T1 to T6, for example in `research/` or in a `build_info.json`). If none exists, the Craft command-line tools are unproven in the container. Plan with ffmpeg and code as the primary path, and treat the Craft CLI as optional.
 
-2. **Pin the tools.** Use these unless a newer tag passes the maker's five-minute test. Hashes come from the release `SHA256SUMS.txt` files [40][66]:
+2. **Pin the tools.** Use these unless a newer tag passes the maker's five-minute test. The pins are frozen Sun 25 Oct, with no upgrade mid-chapter (W-22). Hashes come from the release `SHA256SUMS.txt` files [40][66]:
    - FilmCraft v0.9.0 (newest tag, released 2026-10-18; test first). Windows x64 portable zip SHA-256 `d370cac8ed2edd729c8129aa55f75d0123716ba3cddbf9c5e4e3f0fdaa101a5e`. Linux x86_64 tar.gz SHA-256 `ea67953cc754bfd8272e0e5fa940518e16068ae96f6b72a2dce566ed69a61632` [66]. Fallback v0.8.0: Windows x64 portable zip SHA-256 `0119afd59dfd6ecb94470ba6b3a48108ade87dabd4972898dd6c04e1db396b0b`; Linux x86_64 tar.gz SHA-256 `b166877905ae8a1b5505066d6dde60d7ce05831cfb309bacd5d7970f4bb017e1` [40]. v0.7.2 is retired and not pinned (Windows zip SHA-256 `8e22fabdf2f802573d3af4ad9993c05212dead5e933efda0fa290e825313cde7`, kept for the record).
    - EffectCraft v0.11.1, for titles and line-drawing only. Windows zip `78bd7f63c6bd814bc33f07bd523b003a5f8d095244c5f67bd70e902448fd6e34`. Linux tar.gz `b9cb2ce68dd66458cc164437e431376e94e38e33e3b6529fa8fd45f8cf968934`.
    - SoundCraft: not pinned for delivery.
@@ -40,16 +42,16 @@ Human-facing guide: `playbooks/craft-motion.md`. Evidence and gaps: `research/cr
 
 3. **Conform media before any Craft app sees it.**
    - Stills: `convert IN.tif -auto-orient -depth 8 -resize 2880x1620^ -gravity center -extent 2880x1620 -strip OUT.png`, with 2880x1620 replaced by the sequence size. If the scan has a non-sRGB ICC profile, convert it to sRGB before `-depth 8`. FilmCraft ignores ICC and EXIF orientation [10]. Keep the 16-bit master untouched.
-   - Phone, camcorder or VHS video: `ffmpeg -i IN -vf "yadif=mode=0:deint=interlaced,scale=1920:1080:flags=lanczos,format=yuv422p10le" -fps_mode cfr -r 25 -c:v prores_ks -profile:v 3 -vendor apl0 -c:a pcm_s24le -ar 48000 OUT.mov`. Drop the yadif step for progressive sources. Check with ffprobe.
+   - Phone, camcorder or VHS video: `ffmpeg -i IN -vf "yadif=mode=0:deint=interlaced,scale=1920:1080:flags=lanczos,format=yuv422p10le" -fps_mode cfr -r 24 -c:v prores_ks -profile:v 3 -vendor apl0 -c:a pcm_s24le -ar 48000 OUT.mov`. Drop the yadif step for progressive sources. Check with ffprobe.
    - Audio: 48 kHz 24-bit WAV or FLAC only. Never MP3 or AAC for working files [48].
-   - One sequence size and frame rate for the whole film (default plan: 1920x1080, 25 fps).
+   - One sequence size and frame rate for the whole film: 1920x1080 at 24 fps (settled, W-14, W-15; signed on the settings card Sun 1 Nov, W-16).
    - Write a manifest row per file: source, conformed path, size, crop or pad decision, SHA-256.
    - Never crop a face silently. The crop decision is recorded per shot.
    - Name every working copy by its stable shot id, `chNN_sNN.png`, never by the original file name. OTIO `name` fields, ffprobe JSON, logs and import reports carry file names, and the Discord-to-GitHub ticket relay is verified (filmcraft issue #2216 was created by the ticket-craft App from a Discord report; `reviews/craft-motion-round1.md`, row 16). The manifest keeps the id-to-original mapping in the private repo.
 
 4. **Compute motion.** For a source of w x h px in a sequence of W x H px, with `scale_to_frame` off:
    - Fit scale = min(W/w, H/h) x 100. Cover scale = max(W/w, H/h) x 100.
-   - Ken Burns: start at cover, end at cover x (1 + push), with EaseOut. The push and the duration come from the weight default, unless the spec overrides them for that shot: weight 1, 3 to 4 s and a push of 6 to 8 percent; weight 2, 5 to 6 s and a push of 10 to 12 percent, alternating push-in and drift; weight 3 (the photo that carries the chapter, at most one per chapter), the full length of the voice line about it (minimum 7 s), motion `none` or a push under 4 percent, hard cuts on both sides. Every duration is then trimmed so the move ends on or before the end of the voice line under it (`duration_frames` <= the line's end minus the shot's start).
+   - Ken Burns: start at cover, end at cover x (1 + push), with EaseOut. The push and the duration come from the weight default, unless the spec overrides them for that shot: weight 1, 3 to 4 s and a push of 6 to 8 percent; weight 2, 5 to 6 s and a push of 10 to 12 percent, alternating push-in and drift; weight 3 (the photo that carries the chapter, at most one per chapter), the full length of the voice line about it (minimum 7 s), motion `none` or a push under 4 percent, hard cuts on both sides. Every duration is then trimmed so the move ends on or before the end of the voice line under it (`duration_frames` <= the line's end minus the shot's start). In the premiere cut a "voice line" is a card, an attributed-text beat or a sound cue, or the one HER-PUBLIC clip if it passed one-key-three-guards; there is no other recorded living voice before the April version (D-05, D-06).
    - Sanity values: 3600x2400 into 1920x1080 gives fit 45.0 and cover 53.3. 2880x1620 into 1080p gives 66.67 for both [11].
    - Scale 100 means native pixels, and position is in sequence pixels from the top-left [11][4].
    - Ticks (only when driving the CLI): 254,016,000,000 ticks per second. A 5 s still is 1,270,080,000,000 ticks [4].
@@ -59,13 +61,13 @@ Human-facing guide: `playbooks/craft-motion.md`. Evidence and gaps: `research/cr
 6. **Emit files, never hand-edit them.**
    - E2, OTIO with `metadata.filmcraft`. Dissolves are `Transition.1` objects with `in_offset` and `out_offset`, and consume no timeline time. Motion keyframes sit under `metadata.filmcraft.effects`. Without `metadata.filmcraft.settings` the sequence is 1920x1080 at the file's rate. For any other size, export a template OTIO from FilmCraft once and copy its `settings` object. Malformed effect metadata is dropped silently [6]. Agent-written OTIO uses **relative** `target_url` values (`media/ch01_s01.png`), resolved against the `.otio` file's own folder. FilmCraft resolves relative paths against the document folder [5]. Kdenlive 26.08.2's `resolveFile` passes the string through `QUrl::fromLocalFile`, which does not decode a `file://` scheme (`otioimport.cpp` lines 390-399, read at v26.08.2, not run; KDE bug 503692 [54]), so an absolute URL makes every clip 'missing' and the import aborts [72][73]. Never write `file://` into the OTIO.
    - E3, FCP7 XML: export it from FilmCraft. Headless: `file.exportInterchange {format:"xml"}` (the command has no menu entry). The GUI item for FCP7 XML is File > Export > Final Cut Pro XML… (`file.exportFcp7Xml`) [83]; whether the two files are identical is TODO(research). The exporter is preferred over hand-written XML, because it was built against what Premiere writes [5][8]. If S1 fails, the bundle has no `chNN.xml`. The maker then exports it after Step 8 of the playbook (File > Export > Final Cut Pro XML…, saved as `chNN.xml` in the bundle folder), and that file goes into Resolve in Exercise 6.
-   - E4, bake-motion (use when a move must match in every editor; the command below is a weight 2 move, a 12 percent push): render each shot to a ProRes intermediate with `ffmpeg -y -loop 1 -framerate 25 -i IMG.png -vf "zoompan=z='min(1+0.12*on/124,1.12)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=125:s=1920x1080:fps=25,format=yuv422p10le" -frames:v 125 -c:v prores_ks -profile:v 3 -vendor apl0 shot.mov`. The OTIO then carries only cuts, dissolves and markers.
+   - E4, bake-motion (use when a move must match in every editor; the command below is a weight 2 move, a 12 percent push, as a **proof**): render each shot to a ProRes intermediate with `ffmpeg -y -loop 1 -framerate 24 -i IMG.png -vf "zoompan=z='min(1+0.12*on/119,1.12)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=120:s=1920x1080:fps=24,format=yuv422p10le" -frames:v 120 -c:v prores_ks -profile:v 3 -vendor apl0 shot.mov`. The OTIO then carries only cuts, dissolves and markers. The numbers are the 25 fps command re-derived for 24 (`d=120` for 5 s, `on/119`), UNVERIFIED until re-run. `zoompan` is for proofs only (W-41): a baked move in a delivered shot is rendered by the sub-pixel route (Pillow, or Chromium with GSAP writing `style.transform` for the ease only) and must pass MO8a at or below 0.05 px and MO8b at or below 0.04 px on the pre-encode master with `mo8_audit.py`.
    - Never write `.fcproj` or `.ecproj` by hand. The schema moves, and errors are silent [2][3][29].
 
 7. **Validate.**
    - With the CLI in the container: `filmcraft-cli --project ch01.fcproj inspect sequence`. Then `render --seconds 2.5 --out f.png` at the start, mid-dissolve and end frames. Then a draft `export draft.mp4 --preset "High Quality 1080p HD" --start 0 --end 10`. Check that `offlineMedia` is empty, and ffprobe the draft [14].
    - Drive the CLI one command at a time with `--save exec`, reading each result before the next. Confirm parameter names with `filmcraft-cli describe <id>`. Commands used: `file.newProject`, `file.import {paths}`, `file.newSequence {name,width,height,fps,sampleRate}` (set fps yourself; default is 23.976), `timeline.place`, `effects.setParam {clip, effect:"motion", param, value, keyframe:true, time}`, `effects.setInterpolation`, `sequence.applyVideoTransition {clip, effect:"cross_dissolve", frames}`, `markers.add`, `file.save` [9][14].
-   - Guard before any still is imported (the CLI form of Template B). Make the sequence with explicit `fps` 25, never with `file.newSequence {fromItem}`, which takes a still's pixel size and 29.97 fps [68]. Set `prefs.set media.indeterminateTimebase` with the JSON string value `"25"`, never a bare `25` (a number is refused); confirm the key and parameter names with `filmcraft-cli describe prefs.set`. Headless runs do not load or save preferences, so put the `prefs.set` and the import in one `run` script, or set it in the running app through `--bridge` [84]. The setting is app-level, saved in `preferences.json`, and a changed still file is re-stamped from the current value [84].
+   - Guard before any still is imported (the CLI form of Template B). Make the sequence with explicit `fps` 24, never with `file.newSequence {fromItem}`, which takes a still's pixel size and 29.97 fps [68]. Set `prefs.set media.indeterminateTimebase` with the JSON string value `"24"`, never a bare `24` (a number is refused); this guard was written at 25 and is UNVERIFIED at 24 until re-run; confirm the key and parameter names with `filmcraft-cli describe prefs.set`. Headless runs do not load or save preferences, so put the `prefs.set` and the import in one `run` script, or set it in the running app through `--bridge` [84]. The setting is app-level, saved in `preferences.json`, and a changed still file is re-stamped from the current value [84].
    - Units (as read from `commands.rs` @v0.8.0 [9]): `timeline.place` takes `seconds` (f64) or `time` (ticks), but `duration` only in ticks. `effects.setParam` `time` is in ticks. `effects.setInterpolation` takes `mediaTime` (ticks) and the lower-case names `linear|bezier|autoBezier|continuousBezier|hold|easeIn|easeOut`; the capitalised `EaseOut` is the serialised spelling in `.fcproj` and OTIO metadata, not the command spelling. Helper: `ticks = round(seconds * 254016000000)`.
    - Without the CLI: check the ffmpeg draft with ffprobe. Optionally validate the OTIO with the `opentimelineio` Python package in a venv.
    - Spike check (after import on the maker's side): the `motion` effect must exist with keyframes. If it does not, the metadata was dropped [6].
@@ -76,8 +78,8 @@ Human-facing guide: `playbooks/craft-motion.md`. Evidence and gaps: `research/cr
 
 10. **Make the finals.**
     - Archive master: `filmcraft-cli --project x.fcproj export master.mov --preset "Apple ProRes 422 HQ"`. Use ProRes 4444 only for alpha or banding-sensitive gradients [11][18].
-    - Venue copy: `ffmpeg -i master.mov -c:v libx264 -preset slow -crf 16 -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 320k premiere.mp4`. FilmCraft's own H.264 encoder has no trellis or psy-RD [18].
-    - Safety copy: 1080p, CRF 20, `-profile:v high -level 4.1`.
+    - Venue copy (W-17): `ffmpeg -i master.mov -c:v libx264 -preset slow -crf 18 -maxrate 20M -bufsize 40M -profile:v high -level 4.1 -pix_fmt yuv420p -colorspace bt709 -color_primaries bt709 -color_trc bt709 -movflags +faststart -c:a aac -b:a 256k -ar 48000 -ac 2 venue.mp4`, with captions burned in, a neutral file name and metadata stripped. FilmCraft's own H.264 encoder has no trellis or psy-RD [18]. The research tested CRF 16 with AAC 320 kbps; the register's venue file is CRF 18 with a 20 Mbps cap. If the venue's written answer (due Sun 15 Nov) says DCP, the 2K Flat DCP is made on the PC, never in the container.
+    - Backup copy (W-17): 1080p24, `-profile:v main -level 4.0`, about 8 Mbps.
     - Verify: ffprobe (codec, pixel format, frame count against expected duration); `ffmpeg -nostats -i x.wav -af ebur128=peak=true -f null -`; compare three frames against `filmcraft-cli render` output.
     - For EffectCraft renders, start every new comp at one thread: `RAYON_NUM_THREADS=1 effectcraft-cli render --comp Main --out out --format png --channels rgba`, one job per process. Render a 30-frame sample under `/usr/bin/time -v` (Task Manager on Windows) and record its peak memory. Raise the thread count only while peak stays under half of free RAM. Where that is too slow, render frame by frame (`render-frame` per frame, to PNG) and encode with ffmpeg, which is what the #1615 reporter did. `RAYON_NUM_THREADS=2` is not a bound: the reporter measured 6.8 GB with it. `EFFECTCRAFT_CPU_INFLIGHT` exists only in open PR #1763 (no reviews on 2026-10-18) and does nothing in v0.11.1 [70][71]. Check each MP4 with ffprobe. An out-of-memory crash leaves no moov atom [30][47].
 
@@ -90,7 +92,7 @@ Human-facing guide: `playbooks/craft-motion.md`. Evidence and gaps: `research/cr
 - [ ] Video: constant frame rate, progressive, ProRes intermediate. Not HEVC HLG, not DV [46][13].
 - [ ] Audio: WAV or FLAC at 48 kHz. No MP3 or AAC.
 - [ ] Manifest row per file with SHA-256.
-- [ ] `media.indeterminateTimebase` is 25 (set as a string) before stills are imported, and the sequence is 25 fps.
+- [ ] `media.indeterminateTimebase` is 24 (set as a string) before stills are imported, and the sequence is 24 fps (guard UNVERIFIED at 24 until re-run).
 - [ ] Only test cards, if the pipeline is not yet locked.
 
 **Before a hand-off**
@@ -105,7 +107,7 @@ Human-facing guide: `playbooks/craft-motion.md`. Evidence and gaps: `research/cr
 **After an export**
 - [ ] Frame count matches the expected duration.
 - [ ] Audio duration equals video duration within a frame.
-- [ ] Loudness matches the decided target (provisional -18 LUFS, -1.5 dBTP).
+- [ ] Loudness matches the decided target: -1 dBTP everywhere; three venue masters (-23, -18, -16 LUFS) chosen at the Mon 22 Feb run; online copy -16 LUFS, -1 dBTP (W-19).
 - [ ] New output name; the last good file is kept [47].
 - [ ] Three frames match the CLI render.
 
@@ -136,12 +138,12 @@ Human-facing guide: `playbooks/craft-motion.md`. Evidence and gaps: `research/cr
 ## Ethics and privacy guardrails
 
 - Real photos may be restyled, animated and connected. Never invent events, people or words. Reconstructions are visibly labelled (charter, principle 4).
-- Never generate speech in a relative's voice, or words they did not say. Text-to-speech is for labelled, neutral text only. FilmCraft lists its speech models as optional and off in release builds [13][19].
+- Never generate speech in a relative's voice, or words they did not say. No synthetic or cloned voice of any real person, living or dead, even with consent (D-16), and no synthetic voice in the premiere cut (W-46). Text-to-speech is allowed only as scratch audio for a test that never leaves the working folder. FilmCraft lists its speech models as optional and off in release builds [13][19].
 - Never paste family names, file names, screenshots or clips into bug reports, issues or forums. The research note reports that a ticket bot relays reports to public GitHub issues.
 - Keep working folders outside cloud-synced folders. Sync status on the maker's PC is unverified.
 - Use portable zips. FilmCraft's control channel binds loopback without a token, and its MCP server has no folder confinement [14][19]. Run the control channel or MCP only for a session, and never with family material on the maker's PC.
 - No telemetry in default builds. Do not enable optional downloads (Whisper, Kokoro, MobileSAM, MediaPipe) with family material without the maker's explicit say [19].
-- Follow charter principle 5 for hard chapters. Nothing the proxy reviewer has not approved goes into the shared version.
+- Follow charter principle 5 for hard chapters under only-me (D-03): the maker is the proxy, and nobody else reviews. Each candidate goes through one-key-three-guards (a decision sheet, Fable's written flag, the maker's two decisions 72 hours apart, default OUT on any doubt; D-04). Nothing HOLD or PRIVATE goes into the public cut.
 
 ## References
 
@@ -185,3 +187,7 @@ Sources cited in this skill (from the research note; not re-opened here):
 - [74] DaVinci Resolve 21 Reference Manual, `https://documents.blackmagicdesign.com/UserManuals/DaVinci_Resolve_21_Reference_Manual.pdf` (searched as text; pages 482, 484, 486, 521-523, 544-547). Research follow-ups F2 and G2.
 - [83] filmcraft v0.9.0 `docs/agents.md`, `crates/engine/src/commands.rs` (`markers.exportCsv`, `file.importImageSequence`) and `crates/ui-egui/src/menus.rs`: menu locations. Research follow-up G3.
 - [84] filmcraft v0.9.0 `crates/engine/src/{autosave.rs, settings.rs}` and `apps/filmcraft-cli/src/main.rs`: the Indeterminate Media Timebase key and value type; headless CLI runs do not load or save preferences. Research follow-up G4.
+
+## Changelog
+
+- 2026-10-18: Reconciled with DECISIONS.md (2026-10-18): frame rate 24 fps (W-14) with every guard value (`-r 24`, `d=120`, `on/119`, `fps` 24, `indeterminateTimebase` `"24"`) marked UNVERIFIED at 24 until r1, r5 and the colour-patch test are re-run; `zoompan` proofs only and MO8a/MO8b on the pre-encode master (W-41); venue file CRF 18 with a 20 Mbps cap and a Main 4.0 backup (W-17); loudness -1 dBTP with three venue masters (W-19); real material after the L1 lock Sat 14 Nov (D-13); Craft boundary and no Launcher (D-12); maker is the proxy (D-03, D-04); no recorded living voice or synthetic voice in the premiere cut (D-05, D-16, W-46).

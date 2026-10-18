@@ -2,6 +2,8 @@
 
 > **Status, 2026-10-18.** Built from the research notes for track `craft-visual`. Nothing in this playbook has been run on a Windows PC yet. Steps marked **Untested** are read from code, tests and docs. Exercise 1 is how we turn them into facts. Evidence tags, as in the notes: **[T]** a named test in the repo covers it, **[C]** code or docs only, **[V]** vendor claim, **[U]** unverified. Open items are marked **TODO(research)**.
 
+**Reconciled with DECISIONS.md (2026-10-18). The register wins (D-21).** Pins are the register's defaults, frozen Sun 25 Oct: PhotoCraft v0.10.0, VectorCraft v0.13.1, LightCraft v0.9.1, with no upgrade mid-chapter and no Launcher ever (W-22, D-12). A Craft app touches only a copy in `work\`, never holds the only copy of anything, and is never a step in the week before the premiere (D-12). Her photos and scans stay on the PC, inside the VeraCrypt container, and every photo set is `cloud: none` unless the maker raises it (D-15, W-24, W-25). Real family material enters after the L1 process lock, Sat 14 Nov, with covert collection from Sun 15 Nov (D-13); until then every exercise uses the maker's own prints or stand-ins. The scan tool is whichever wins the ten-print pilot, decided by Sun 15 Nov (W-27, O-23). Only-me: the maker alone judges every touch-up and every hard chapter (D-03, D-04). Each Decision below carries its register status: decided (`DECISIONS.md` Table 1), default with a decide-by date (Table 2), or open for the maker (Table 3).
+
 ## Why this matters for our life journey
 
 Claude and the agent team will do most of the heavy work. They will generate layered files, build the animation art, write the scripts and do the rendering. But some things still need a human hand. A speck of dust on a print needs a touch. A hand-drawn sun needs to sit a little higher. Forty faded prints need one colour cast removed, without losing the warmth of their decade. Those quick, human touches are what the three ArtCraft apps are for:
@@ -12,9 +14,9 @@ Claude and the agent team will do most of the heavy work. They will generate lay
 
 All three are free, open source and in early alpha. The whole suite is 18 days old. So the apps are good quick hands, but the project must never depend on just one of them. Each app works through a narrow, checkable hand-off, and each one has a fallback.
 
-VectorCraft's trace presets (Sketched Art, Line Art and Black and White Logo) turn a scan of her handwriting, a recipe card or a letterhead into SVG chapter titles lettered in her own hand. LightCraft presets are authored and named per decade or film stock, so each decade keeps its own colour instead of every print getting one uniform restored look (charter principle 3).
+VectorCraft's trace presets (Sketched Art, Line Art and Black and White Logo) turn a scan of her handwriting, a recipe card or a letterhead into SVG lettering. Her hand is used only for words she actually wrote (the Card A slips, a recipe card); chapter titles and cards of the maker's own words are in the maker's hand (W-35, W-38). LightCraft presets are authored and named per album batch, from the measured paper-border cast (`border_rgb`), so each era keeps its own colour instead of every print getting one uniform restored look (charter principle 3; W-27, W-39).
 
-Her photos and scans stay on your PC for these steps. The cloud container never receives them.
+Her photos and scans stay on your PC for these steps, inside the VeraCrypt container. The cloud container never receives a full-size family photo or scan (D-15, W-24). A `preview` proxy of about 768 px goes there only after the account's model-improvement setting is off, and only if the maker raised that set's `cloud` level.
 
 ## Core principles
 
@@ -26,6 +28,7 @@ Her photos and scans stay on your PC for these steps. The cloud container never 
 6. **Keep her material private, traces included.** Nothing personal goes to a cloud service, a cloud photo library, a synced folder or a group chat. The apps leave traces on the PC, so clean them up (see Pitfalls).
 7. **Switch off what you are not using.** Auto-update, face recognition, model downloads, network features and control ports stay off unless you are using them at that moment.
 8. **Label anything restored or generated.** When an app or a script changes a real photo, the hand-off log says so. This is charter principle 4, and it follows the labelling rules in `playbooks/ai-imagery.md`.
+9. **Stay inside the Craft boundary (D-12).** A Craft app may touch only a copy in a `work\` folder, a chapter whose spec and OTIO are in the repo, or a title whose SVG fallback exists. It is never the only writer or reader of a format, never the holder of the only copy of anything, and never a step in the week before the premiere (Sat 20 to Sat 27 Feb 2027).
 
 ## How to do it, step by step
 
@@ -36,8 +39,8 @@ Create these on the PC. They match the research recipes, so use the same names.
 - `C:\lj\at\` for the test files in Exercise 1.
 - `C:\lj\ch01\in`, `C:\lj\ch01\work` and `C:\lj\ch01\out` for one chapter. Repeat for each chapter (`ch02`, `ch03`, and so on).
 - `C:\lj\lib\` for the LightCraft library. It must be on a local NTFS disk. [36]
-- `D:\scans\raw\` for the scanned originals and `D:\scans\out\` for exports. The drive letter is an example. Use a local disk, not a network share.
-- A hand-off log file (Template A). Keep it on the PC.
+- `D:\scans\raw\` for the scanned originals and `D:\scans\out\` for exports. The drive letter is an example. Use a local disk, not a network share, and keep family originals inside the mounted VeraCrypt container (W-25), dismounted before you leave the desk.
+- A hand-off log file (Template A). Keep it on the PC. It uses shot ids and person IDs, never names or original file names, and it is committed to the private repo at the end of each session (D-14).
 
 None of these folders should sit inside a cloud-synced folder, such as a synced Pictures folder.
 
@@ -53,7 +56,7 @@ None of these folders should sit inside a cloud-synced folder, such as a synced 
 ```
 
 2. Write down each app's version, whether you installed the MSI or the portable zip, and whether the main program is signed. To check the signature, right-click the program, choose Properties, then open the Digital Signatures tab. The READMEs say the installers are signed. The vendor's own gap list says the signing material was not obtained. Expect Windows warnings, and write down what you actually see. [13]
-3. Write down your PC's memory, graphics card and free disk space. None of the three apps has been measured on Windows at low memory. Run the read-only PowerShell block below (from research R2) and paste its output into Template B. Then answer by hand: Launcher or website; MSI or zip; stock Windows or a stripped image (PhotoCraft and its CLI fail to start without `Windows.Data.Pdf.dll`, #6249 [70]); scanner model; whether she uses the room or the PC.
+3. Write down your PC's memory, graphics card and free disk space. None of the three apps has been measured on Windows at low memory. Run the read-only PowerShell block below (from research R2) and paste its output into Template B. Then answer by hand: Launcher or website; MSI or zip; stock Windows or a stripped image (PhotoCraft and its CLI fail to start without `Windows.Data.Pdf.dll`, #6249 [70]); scanner model; whether she shares the PC or the room (O-03, still pending).
 4. Use Windows 10 or later and the 64-bit builds. Do not use the 32-bit builds, because PhotoCraft caps one decode allocation at 2 GiB on 32-bit systems. LightCraft states no minimum Windows version. [6][11][29][41]
 
 **Read-only block for item 3** (research R2; not run in the container; it prints to the screen and sends nothing anywhere):
@@ -78,13 +81,13 @@ Test-Path "$env:SystemRoot\System32\Windows.Data.Pdf.dll"
 ### Step 2. Choose the version and pin it
 
 - **Do not install PhotoCraft from the website.** Its page shows version 0.7.0. That build has ORA support but not the guard against overwriting an ORA with less content. [43][44]
-- **Pick the newest tag on the day you pass the five-minute test, but no later than 2026-10-25.** The provisional pins are PhotoCraft v0.10.0, VectorCraft v0.13.1 and LightCraft v0.9.1, the newest tags as of 2026-10-18. Each main branch had 300 to 600 newer commits at the first pass, including save-safety and Windows fixes, so check for newer tags before you freeze. [43]
+- **Pick the newest tag on the day you pass the five-minute test, but no later than 2026-10-25.** The provisional pins are PhotoCraft v0.10.0, VectorCraft v0.13.1 and LightCraft v0.9.1, the newest tags as of 2026-10-18. Each main branch had 300 to 600 newer commits at the first pass, including save-safety and Windows fixes, so check for newer tags before you freeze. [43] These pins are the register's defaults, frozen Sun 25 Oct (W-22).
 - **Install the portable zip.** It keeps program data beside the program, which makes traces easier to find and clean (see Pitfalls). [11][29][41]
 - **Record the version and the SHA-256 hash of the portable zip.** Download the zip for the pinned tag from `github.com/storytold/<app>/releases/tag/<tag>`, and check its SHA-256 against the `SHA256SUMS.txt` in that same release (`photocraft/docs/releasing.md` line 26; Launcher README). Write both hashes in the log. [11][81]
 
 ### Step 3. Keep the Launcher out of production
 
-The Craft Launcher checks each app's GitHub releases and updates the ones you have installed [81]. The Launcher README documents no off switch for updates. **Do not install or run the Launcher during production.** Download the portable zip for the pinned tag from `github.com/storytold/<app>/releases/tag/<tag>` and check its SHA-256 against the `SHA256SUMS.txt` in that same release (`photocraft/docs/releasing.md` line 26; Launcher README). [11][81]
+The Craft Launcher checks each app's GitHub releases and updates the ones you have installed [81]. The Launcher README documents no off switch for updates. **Never install or run the Launcher (D-12).** Download the portable zip for the pinned tag from `github.com/storytold/<app>/releases/tag/<tag>` and check its SHA-256 against the `SHA256SUMS.txt` in that same release (`photocraft/docs/releasing.md` line 26; Launcher README). [11][81]
 
 ### Step 4. Set up each app before the first real file
 
@@ -141,9 +144,9 @@ Rules for `serve` (research R6, [61]):
 
 ### Step 8. Scan batches: the LightCraft hand-off
 
-LightCraft runs scans through the same develop pipeline it uses for raw files, but no faded-print test corpus exists yet. [35] So the pilot in Exercise 5 is not optional.
+LightCraft runs scans through the same develop pipeline it uses for raw files, but no faded-print test corpus exists yet. [35] So the pilot in Exercise 5 is not optional. It decides the scan tool by Sun 15 Nov (W-27, O-23): borrow a flatbed for the batch, use a phone on a stand for album pages, and buy nothing before the bake-off.
 
-1. **Scan to 16-bit TIFF.** Put the originals in `D:\scans\raw\`. Use the scanner settings from `playbooks/ai-imagery.md`; they are not repeated here. Mark the originals read-only.
+1. **Scan to 16-bit TIFF.** Put the originals in `D:\scans\raw\`. Use the scanner settings from `playbooks/ai-imagery.md`. The register's scan standard (W-27) is: masters as 16-bit TIFF at 600 ppi, fronts and backs at the same sitting (a `back` column in `manifest.csv`), the as-found frame photographed before anything moves and again when it is back, and `L00_asfound` as the first layer of every restored still. Mark the originals read-only.
 
 1a. **Check the strip layout before LightCraft imports anything.** LightCraft refuses a TIFF whose single strip or tile is larger than 128 MiB (134,217,728 bytes), with "decoder limits exceeded". This includes v0.9.1. The issues are #2198 and #1983; the fix, PR #1989, was still open on 2026-10-18 [72]. The limit applies to each strip's compressed size as the file declares it in `StripByteCounts`, not to the decoded image [83]. A 16-bit RGB 8x10 inch scan at 600 ppi is 172.8 MB, so it fails if the scanner writes it as one strip. Before the first import, check one worst-case scan with exiftool: `exiftool -RowsPerStrip -StripByteCounts -Compression -ImageSize -BitsPerSample <file.tif>` (standard tag names; not run in the container). ExifTool may print several strip sizes, so look for the largest. Pass if it is below 134,217,728. Do this before the first album is borrowed, because scanning happens once. If a scan fails, in this order: lower the scan resolution; or set the scanner software to small strips or tiles, if it offers that (TODO(research): we have not found what Epson Scan 2, VueScan, NAPS2 or SilverFast write); or rewrite a copy, never the master, with `magick in.tif -define tiff:rows-per-strip=64 -compress None out.tif`. That define was tested in the container with ImageMagick 6.9.12 (as `convert`), where it split a 108 MB one-strip file into 94 strips [84]. ImageMagick 7 on Windows uses `magick`; that is not tested on Windows. On a 134 MB one-strip input the command aborted in the container (cause not diagnosed), so test with the real worst-case file. LZW or ZIP compression helps only when each strip compresses below the limit, which grainy scans often do not. Put the largest planned scan into the 10-print pilot (Exercise 5).
 2. **Claude writes the preset and the script.** The preset is a plain JSON `.lcpreset` file that holds only the settings it changes. The script is a JSON-lines file, which avoids Windows quoting trouble. [33][42]
@@ -239,7 +242,7 @@ Every hand-off gets a line in the log (Template A). The log tells us which parts
 **Goal.** Choose the scan tool on evidence, not preference.
 
 **Steps.**
-1. Practise on ten non-family prints first. Include the largest planned scan, and check its strip layout first (Step 8, item 1a). Use the real family prints only after the rules for handling them are agreed and the log is set up. Family prints stay on the PC.
+1. Practise on ten non-family prints first. Include the largest planned scan, and check its strip layout first (Step 8, item 1a). Use her prints only after the L1 lock (Sat 14 Nov), from Sun 15 Nov, once the rules for handling them are agreed and the log is set up (D-13). Family prints stay on the PC.
 2. For each print, process it twice. Once in LightCraft (the preset, then the white-balance pick). Once in darktable, using a style. The darktable command line needs a config folder and a styles database, so set those up in the desktop app first. [53]
 3. Export each result as 16-bit TIFF.
 4. Measure the mean RGB of the unprinted paper border in each output. Claude's pilot script measures it. For a by-hand check, use ImageMagick: `magick out.tif -crop WxH+X+Y +repage -format "%[fx:mean.r*255] %[fx:mean.g*255] %[fx:mean.b*255]" info:` (general knowledge; confirm it in Exercise 4). Write the numbers down.
@@ -319,7 +322,8 @@ Every hand-off gets a line in the log (Template A). The log tells us which parts
 - [ ] Recent-file lists cleared.
 - [ ] Recovery autosaves reviewed and cleared in `%APPDATA%\Photocraft\Recovery` and `%LOCALAPPDATA%\Photocraft\Recovery` (see Pitfalls).
 - [ ] Control ports off.
-- [ ] Hand-off log updated.
+- [ ] LightCraft thumbnail caches and XMP sidecars cleared (W-26).
+- [ ] Hand-off log updated, with ids only, and committed to the private repo (D-14).
 
 ## Decisions you'll need to make
 
@@ -328,30 +332,35 @@ Each decision gives the options and our current lean. The lean may change after 
 1. **Which version to pin.**
    - Options: the newest tag on test day (no later than 2026-10-25), or the three provisional tags (PhotoCraft v0.10.0, VectorCraft v0.13.1, LightCraft v0.9.1, as of 2026-10-18).
    - **Lean:** the newest tag that passes Exercise 1. If none does, use the provisional tags.
+   - **Register status (W-22):** default. PhotoCraft v0.10.0, VectorCraft v0.13.1, LightCraft v0.9.1, or the newest tag that passes the five-minute test on test day; pins frozen Sun 25 Oct, portable zips verified against `SHA256SUMS.txt`, no upgrade mid-chapter.
 2. **Install type.**
    - Options: MSI (installs under Program Files, and keeps recovery files in your user profile), or portable zip (keeps data beside the program).
    - **Lean:** the portable zip, as the pin rule says. It makes traces easier to find and delete. [11]
+   - **Register status (W-22, W-26):** default. Craft apps as portable zips with data folders beside the program.
 3. **Editor for layered stills.**
    - Options: PhotoCraft; Krita (ORA is its native layered format, but the only check so far is the vendor's own Krita test, which we have not repeated); GIMP 3.0.4 had a reproduced `.ora` export bug (GitLab #14168: layers and text scrambled on reopen; a forum reply says Krita and MyPaint also showed it; the issue is now closed and the fix version was not found). Current GIMP 3.x behaviour is not tested; Krita remains the verified ORA fallback. [4][52][74]-[76]
    - **Lean:** PhotoCraft. Krita is the fallback, once we have tested it on our own files.
 4. **Scan tool.**
    - Options: LightCraft (script plus app); darktable; RawTherapee; ImageMagick as a rough pre-pass. [51][53][55]
    - **Lean:** LightCraft, but only if it wins the 10-print pilot against darktable.
+   - **Register status (W-27, O-23):** default, decide by Sun 15 Nov. Whichever tool wins the pilot; LightCraft only if it wins and the TIFF strip-layout check passes; borrow a flatbed before buying.
 5. **Where the scans and library live.**
    - Options: a local disk, or a network share. On a share, LightCraft opens the library without locking it, and two computers can silently drop each other's edits. [36]
-   - **Lean:** a local NTFS disk on your PC, never a synced cloud folder.
+   - **Lean:** a local NTFS disk on your PC, never a synced cloud folder, with the originals inside the VeraCrypt container (W-25).
 6. **SVG touch-up tool.**
    - Options: VectorCraft with the checker; Inkscape 1.2.2 or 1.4.4, Plain SVG. On the fixture `at-rig.svg`, Inkscape 1.2.2 Plain SVG kept all 11 ids, `data-pivot`, `data-z`, `class`, `<style>` and the original viewBox, and `check_ids.py` returned exit code 0 (research R5, [63]). Inkscape 1.4.4 gave the same result (research R15, [92]). Inkscape 1.3.x is not tested. Never use Optimized SVG: its "Remove unused IDs" default stripped `leaf-1` and `leaf-2` in 1.4.4 [92]. A moved group gets a `transform` in either mode, so never move an animated group: re-author it, or move its children in Optimized mode, and re-check `data-pivot` after any Inkscape edit [92]. For command-line export on Windows use `inkscape.com`, not `inkscape.exe`. The Windows installers we read did not add Inkscape to PATH by default, so give the full path (TODO(research): confirm on a real install) [93][94].
    - **Lean:** VectorCraft, with the checker on every save.
+   - **Register status (W-38, D-12, W-21):** titles are traced from the Card A slips in VectorCraft with Inkscape as the fallback; a title needs its SVG fallback; any live type uses an OFL font.
 7. **Face recognition.**
    - Options: on, or off.
    - **Lean:** off. Faces of relatives are biometric data. [39]
 8. **The apps' own AI features** (masks, content-aware fill, subject selection).
    - Options: use them, or avoid them. The research notes say these run locally, as classical or user-installed models. They have no numbered source.
-   - **Lean:** use them where they help, and log each use as AI-touched.
+   - **Lean:** non-AI fixes first, then these where they help, and log each use at its honesty-ladder level (L0 to L5) in the log and the manifest.
+   - **Register status (W-40, D-16):** decided. Faces stay at L2: non-generative, or CodeFormer at `w` of 0.7 or more blended back. Any generative face change moves that image to L3 or is rejected. There is no AI animation of a real face and no model trained on her face.
 9. **Web build for screenshots.**
    - Options: the desktop build, or the web build.
-   - **Lean:** the desktop build. Use the web build only if the desktop build will not start in the container. That is a week-1 check, not a decision for now. [12][38]
+   - **Lean:** the desktop build. Use the web build only if the desktop build will not start in the container, and only with test cards (D-15). That is a week-1 check, not a decision for now. [12][38]
 
 ## Pitfalls
 
@@ -383,7 +392,7 @@ Each decision gives the options and our current lean. The lean may change after 
 - **ORA is a small format with few checks.** Krita is the only third-party check so far. GIMP 3.0.4 had a reproduced `.ora` export bug (GitLab #14168, now closed; the fix version was not found), and current GIMP 3.x is not tested. Check every ORA round trip. [4][74]-[76]
 - **Windows command-line quoting.** Passing JSON to native programs from Windows PowerShell 5.1 can strip inner double quotes. This comes from general knowledge, not from our sources. Use JSON-lines files or stdin, and test first. TODO(research): verify on the maker's PC.
 - **Preview size.** The `serve` previews are capped at a 2048-pixel long edge and 5 MiB PNG, unless a trusted local session lifts the cap. Check the size of a final export yourself. [8]
-- **Traces on the PC.** The apps leave recent-file lists, recovery autosaves, LightCraft thumbnail caches, logs and XMP sidecars next to scans. The places to look are `%APPDATA%\Photocraft\Recovery` (v0.9.0 and earlier), `%LOCALAPPDATA%\Photocraft\Recovery` (v0.10.0 and later), `%APPDATA%\VectorCraft`, `%APPDATA%\LightCraft`, and the thumbnail cache. Portable zips keep their data in `PhotoCraftData`, `VectorCraftData` and `LightCraftData` beside the program. Clear them after sessions. If this PC is shared with her, this matters even more. The charter says nothing may tip her off. [13][33][36]
+- **Traces on the PC.** The apps leave recent-file lists, recovery autosaves, LightCraft thumbnail caches, logs and XMP sidecars next to scans. The places to look are `%APPDATA%\Photocraft\Recovery` (v0.9.0 and earlier), `%LOCALAPPDATA%\Photocraft\Recovery` (v0.10.0 and later), `%APPDATA%\VectorCraft`, `%APPDATA%\LightCraft`, and the thumbnail cache. Portable zips keep their data in `PhotoCraftData`, `VectorCraftData` and `LightCraftData` beside the program. Clear them after sessions. If this PC is shared with her, this matters even more. The charter says nothing may tip her off, and whether she shares the PC is still pending (O-03). The register's routine is a separate Windows account for the project, OneDrive backup off for Desktop, Documents and Pictures, and the Mum-test on every shared device now and monthly (W-26). [13][33][36]
 - **Cloud sync.** If your Pictures or Documents folder syncs to a cloud service, the scans and the library could be copied to it. Keep these folders outside the synced area, or pause sync. (This comes from the charter, not from the research notes.)
 - **The Launcher updates on its own.** It polls GitHub and can change the apps behind your back. Its README documents no off switch, so do not install or run it during production. Use the portable zip for the pinned tag instead. [81]
 - **Everything here is untested.** The commands come from code, tests and docs. Exercise 1 is the first real test.
@@ -464,3 +473,4 @@ Each decision gives the options and our current lean. The lean may change after 
 - **v0.1, 2026-10-18.** First version, written from `research/craft-visual.md` for track `craft-visual`. Nothing has been executed yet. Open items are marked TODO(research).
 - **v0.2, 2026-10-18.** Round 1 Fable review applied (`reviews/craft-visual-round1.md`): the Launcher updater step is replaced by a manual portable-zip and `SHA256SUMS.txt` check, provisional pins moved to v0.10.0, v0.13.1 and v0.9.1, Recovery paths qualified by version, VectorCraft's MSI path, the Python version and the TIFF master export in the LightCraft fixture added, and two story-serving uses added to "Why this matters".
 - v0.3, 2026-10-18. Round 2 Fable review applied (`reviews/craft-visual-round2.md`): LightCraft TIFF strip check added (Step 8 item 1a, Exercise 5, Checklist 4, skill step 13); `serve` path rules and the ORA group rule added; GIMP and Inkscape verdicts, the Windows hardware block, the Faces menu path and the border-measurement method updated from research rounds 1 and 2; save-guard and autosave wording and the Launcher citation corrected.
+- v0.4, 2026-10-18. Reconciled with DECISIONS.md (2026-10-18): pins stated as the register's defaults, frozen Sun 25 Oct (W-22); the Launcher is never installed and the Craft boundary added (D-12); title lettering only for words she wrote, with the maker's hand for cards (W-35, W-38); LightCraft looks per album batch, not per decade (W-27, W-39); scan standard added (W-27); family originals inside the VeraCrypt container with no cloud copy and `cloud: none` by default (D-15, W-24, W-25); her prints only from Sun 15 Nov after the L1 lock (D-13); the AI-features lean restated with the honesty ladder (W-40, D-16); the log carries ids only and is committed to the private repo (D-14); shared-PC routine (W-26, O-03 pending). Decisions carry their register status.

@@ -15,7 +15,7 @@ import bpy, os
 W = os.path.abspath(os.path.dirname(__file__))
 bpy.ops.wm.read_factory_settings(use_empty=True)          # TODO(verify): scribe addition
 sc = bpy.context.scene                                    # TODO(verify): scribe addition
-sc.render.resolution_x, sc.render.resolution_y, sc.render.fps = 1920, 1080, 25   # TODO(verify): scribe addition
+sc.render.resolution_x, sc.render.resolution_y, sc.render.fps = 1920, 1080, 25   # TODO(verify): scribe addition; tested at 25, UNVERIFIED at 24: the project rate is 24 (DECISIONS.md W-14, S-01)
 sc.frame_start, sc.frame_end = 1, 224                     # the notes' run rendered 224 frames
 sc.render.image_settings.media_type = 'VIDEO'; sc.render.image_settings.file_format = 'FFMPEG'   # 5.x: media_type first  [R8]
 sc.render.ffmpeg.format = 'MPEG4'; sc.render.ffmpeg.codec = 'H264'; sc.render.ffmpeg.audio_codec = 'NONE'   # [R8]
