@@ -80,12 +80,16 @@ def estimate_pan(frames, fps=24, tiles=(3, 3), dt=1, band=0.22, min_psr=10.0, mi
             t = (t - t.mean()) * win
             out.append((np.fft.fft2(t), tex))
         return out
-    F = [prep(frames[i]) for i in range(N)]
+    cache = {}                                  # round 2: FFTs are computed on demand and dropped when no longer needed (was: all N frames at once, about 17 MB per frame)
+    def Fget(i):
+        if i not in cache: cache[i] = prep(frames[i])
+        return cache[i]
     pairs = []; fast = []; fvx = []; fvy = []; conf = []; ngoods = []
     for t in range(N - dt):
         tl = []; best = (0.0, 0.0, 0.0, 0.0); ng = 0
+        Ft, Ft2 = Fget(t), Fget(t + dt)
         for k, (box) in enumerate(boxes):
-            Fa, tex = F[t][k]; Fb, _ = F[t + dt][k]
+            Fa, tex = Ft[k]; Fb, _ = Ft2[k]
             R = np.conj(Fa) * Fb; R = R / (np.abs(R) + 1e-3 * np.abs(R).max() + 1e-12); R = R * bw
             # conj(Fa)*Fb puts the correlation peak at +s when b(x) = a(x - s), i.e. content moved by +s (to the right)
             pk = _peaks(R, th, tw, n_peaks=2, psr_gate=min_psr)
@@ -96,6 +100,7 @@ def estimate_pan(frames, fps=24, tiles=(3, 3), dt=1, band=0.22, min_psr=10.0, mi
                 s = np.hypot(p['vx'], p['vy']) / dt
                 if s > best[0]: best = (s, p['vx'] / dt, p['vy'] / dt, p['psr'])
         pairs.append(tl); ngoods.append(ng); fast.append(best[0]); fvx.append(best[1]); fvy.append(best[2]); conf.append(best[3])
+        cache.pop(t, None)
     return dict(pairs=pairs, fast=np.array(fast), vx=np.array(fvx), vy=np.array(fvy), psr=np.array(conf), ngood=np.array(ngoods), H=H, W=W, fps=fps, dt=dt)
 
 def detect_twos(frames, tiles=(3, 3)):

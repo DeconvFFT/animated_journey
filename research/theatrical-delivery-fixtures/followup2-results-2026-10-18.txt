@@ -1,0 +1,39 @@
+Follow-up round 2 results, 2026-10-18. Real DCP-o-matic 2.18.51 (official Ubuntu 24.04 command-line package, git 920fb9b044) run in a cloud container.
+NOT the maker's Windows PC. Container: Ubuntu 24.04.5, 4 vCPU Intel Xeon 2.1 GHz (1 thread per core), 16 GB RAM, shared with other jobs
+(load average 8.8 to 10.6 during the timing runs, so WALL times are inflated and unreliable; CPU seconds are the stable figure).
+
+== A. Import and colour (patches_prores422hq.mov: ProRes 422 HQ, yuv422p10le, 1920x1080, 24 fps, BT.709 tags, 48 frames)
+dcpomatic2_create exit 0 for default / --colourspace rec709 / --colourspace rec1886.
+metadata.xml ColourConversion: default = Gamma 2.2 (the Rec. 709 preset); rec709 = Gamma 2.2; rec1886 = Gamma 2.4; all three: YUVToRGB 1 (Rec. 709), primaries 0.64/0.33, 0.30/0.60, 0.15/0.06, white 0.3127/0.3290, OutputGamma 2.6.
+dcpomatic2_cli dump (default): "colour conversion Rec. 709", 1920x1080, 24fps, "DCI Flat at 2K", 150Mbit/s, SMPTE unencrypted.
+dcpomatic2_verify_cli on the encoded DCP: "DCP verified OK." (no warnings), also for the 5-second clean clip DCP.
+
+== B. Decoded luminance (ffmpeg decode of frame 0 of each DCP's J2K MXF as xyz12le; Y code 0..4095; patch centres)
+patch   v     meas709(Y)  exp(g=2.2)  meas1886(Y)  exp(g=2.4)   ratio lin(2.2/2.4) measured  expected
+0x00  0.000        0.0        0.0         0.0        0.0       nan      nan
+0x1a  0.102      570.0      572.0       478.0      479.7     1.580    1.580
+0x40  0.251     1226.0     1230.1      1102.0     1106.1     1.319    1.318
+0x80  0.502     2205.0     2211.3      2090.0     2097.3     1.149    1.148
+0xbf  0.749     3091.0     3100.4      3022.0     3032.2     1.060    1.060
+0xe6  0.902     3617.0     3628.5      3587.0     3599.8     1.022    1.021
+0xff  1.000     3948.0     3960.0      3947.0     3960.0     1.001    1.000
+(expected Y = ((v^g * 48/52.37)^(1/2.6)) * 4095; measured about 0.3 percent below expected.)
+
+== C. ISDCF name and sound configuration (dcpomatic2_cli dump / CPL)
+stereo ProRes, default mapping L,R, 6-channel container (AudioChannels 6 is the create default): LJTest_SHR-1_F-178_XX-XX_20_2K_20261018_SMPTE_OV
+mono WAV (maps to Centre):                                                                  TMono_SHR-1_F_XX-XX_10_2K_20261018_SMPTE_OV
+six-channel 5.1 WAV (1:1 mapping):                                                          TSix_SHR-1_F_XX-XX_51_2K_20261018_SMPTE_OV
+CPL for the stereo DCP: <meta:MainSoundConfiguration>51/L,R,-,-,-,-</meta:MainSoundConfiguration>, ContentKind short.
+Sound MXF (ffprobe): pcm_s24le, 48000 Hz, 6 channels. Picture MXF: jpeg2000, 1998x1080, xyz12le, 24 fps.
+Code: src/lib/film.cc lines 1127-1132 (name field), mapped_audio_channels().
+
+== D. Encode cost (dcpomatic2_cli make-dcp, 120 frames each = 5 s at 24 fps, 1920x1080 ProRes 422 HQ source, Flat 2K, 150 Mbit/s cap)
+clip     source ProRes   threads  wall_s  user_s  sys_s  CPU_s/frame  peak_RSS_MB  DCP size
+flat patches (48 frames) 3 MB total   4   5.17    0.64   0.19   0.017        269        picture MXF 2.8 MB = about 11 Mbit/s
+clean (testsrc2)  65.8 Mbit/s   4   70.61   50.99   0.55   0.43         690        picture MXF 74.8 MB = 119.7 Mbit/s
+clean             65.8 Mbit/s   2   40.19   50.96   0.41   0.43         438
+clean             65.8 Mbit/s   1   50.16   48.14   0.28   0.40         314
+grainy (noise 18) 185.6 Mbit/s  4  145.44  152.01   0.68   1.27         695        picture MXF 93.8 MB = 150.0 Mbit/s (at the cap)
+grainy            185.6 Mbit/s  2  110.26  144.82   0.46   1.21         442
+grainy            185.6 Mbit/s  1  145.20  141.98   0.43   1.19         322
+Memory fit: about 190 MB + about 125 MB per encoding thread (CLI only; the GUI adds its own).

@@ -25,32 +25,34 @@ Facts come from `research/theatrical-delivery.md` (research date 2026-10-18). Th
 - Story, edit, animation or AI-generation decisions. Use the other project skills.
 - Gathering stories, photos or consent from people. This skill says what a release must contain, not how to ask for it.
 - Giving legal advice or settling a legal question. Flag it for the consult.
-- Anything that would reveal the surprise to her or to people outside the ring.
+- Anything that would reveal the surprise to her or to people outside the ring (under only-me mode, that is everyone else).
 
 ## Procedure
 
 1. Read the playbook's Decisions and T1 (settings card). Confirm the status of TD-1 to TD-8. If TD-7 is unknown, mark every legal output "jurisdiction not yet known".
 2. Master: ProRes 422 HQ, 1920x1080, 24p, Rec.709, limited range, 10-bit 4:2:2, PCM 24-bit 48 kHz [3]. Prepare scans and stills at 3840 px on the long edge or larger [3]. Do not create a UHD or 2K DCI working copy (TD-1).
-3. Probe every file with ffprobe. Record `pix_fmt`, `color_range`, `color_space`, `color_transfer`, frame count and duration [3]. The exact command is TODO(research); do not invent one.
-4. Colour: one grade to Rec.709 / BT.1886. Trim V (lit venue) and Trim C (dark cinema) are `.cube` lookup files applied only at export, via ffmpeg `lut3d` (untested). Trim C stays identity until a real cinema test. Hash and log each trim [2][34].
-5. Audio: one mix, with stems kept. Three outputs. Cinema: no normalisation, headroom kept [30]. Venue: start at about -16 LUFS integrated and -1 dBTP, then confirm on site. The toolchain example uses -1.5 dBTP, so record which value was used [2][36]. Online: -16 LUFS, -1 dBTP [38].
+3. Probe every file with ffprobe. Record `pix_fmt`, `color_range`, `color_space`, `color_transfer`, frame count and duration [3]. Use this command, run in the container on 2026-10-18 (ffmpeg 6.1.1); confirm once on the Windows PC: `ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,pix_fmt,color_range,color_space,color_transfer,color_primaries,r_frame_rate,nb_frames:format=duration -of default=nw=1 FILE`.
+4. Colour: one grade to Rec.709 / BT.1886. Trim V (lit venue) and Trim C (dark cinema) are `.cube` lookup files applied only at export, via ffmpeg `lut3d` (run in the container on 2026-10-18 without error; confirm once on the PC). Trim C stays identity until a real cinema test. Trim V is set on site at the TD-L2b visit (by Sunday 17 January 2027). Hash and log each trim [2][34].
+5. Audio: one mix, with stems kept. Three outputs. Cinema: no normalisation, headroom kept [30]. Venue: start at about -16 LUFS integrated and -1 dBTP, then confirm on site. Settled: -1 dBTP per R128 and the research; the toolchain's -1.5 was a loudnorm example, not a target [36][2]. Online: -16 LUFS, -1 dBTP [38].
 6. Loudness and mono check: `ffmpeg -nostats -i FILE -af ebur128=peak=true -f null -`, then the same with `-af "pan=mono|c0=0.5*c0+0.5*c1,ebur128=peak=true"`. A drop of more than about 3 LU against stereo flags phase trouble (rule of thumb, inference).
 7. Captions: open and burned in, inside the 90% by 90% box [37]. At most two lines, 42 characters or fewer per line, under 20 characters per second [4]. Venue line height 7 to 8% of picture height [4], confirmed on the real screen. Cinema start at 5.5 to 6% (inference). Windows fonts only as rasterised picture text [76]. Any DCP subtitle track uses an OFL font [75].
 8. Venue file set: MP4, H.264 High 4.1, yuv420p, BT.709 tags, AAC-LC 48 kHz stereo 256 kbps, `-crf 18 -maxrate 20M -bufsize 40M` [2]. Backup: H.264 Main 4.0, about 8 Mbps. Also the test clip and an audio-only fallback [5]. Online H.264 at about 12 Mbps only after the T3 gate.
-9. Neutral names everywhere. No personal name and no title metadata. Strip metadata with `-map_metadata -1` (inference; test it). The DCP title shows on cinema servers, so use the code name [5].
+9. Neutral names everywhere. No personal name and no title metadata. Strip metadata with `ffmpeg -i in.mp4 -map_metadata -1 -c copy out.mp4` (run in the container on 2026-10-18; it removed the title tag; ffmpeg re-adds a harmless `encoder` tag; confirm on the PC). The DCP title shows on cinema servers, so use the code name [5].
 10. Test on the real screen before anything else. Play the venue test clip (bars, PLUGE, ramp, tone, left and right, slow pan, captions at 20, 23 and 26) with overscan and HDR off [40][42][45]. Record the TV settings. Play the film's first and last five minutes only in an empty room.
-11. DCP, only after the test DCP passes, and encoded on the Windows PC, never in the cloud container [47]. DCP-o-matic 2.18.51 [8]. Container Flat 1.85, 2K, 24 fps, SMPTE, encryption off, JPEG2000 100 to 125 Mbit/s, single reel, ISDCF name on, content type feature [15]. Range Video [12]. Audio L and R at unity gain [13]. Timed text empty when captions are burned in [14].
+11. DCP, only after the test DCP passes, and encoded on the Windows PC, never in the cloud container [47]. DCP-o-matic 2.18.51 [8]. Container Flat 1.85, 2K, 24 fps, SMPTE, encryption off, JPEG2000 100 to 125 Mbit/s, single reel, ISDCF name on, content type feature or short, to match the final runtime; the type places the film in the projectionist's interface [15]. Range Video [12]. Audio L and R at unity gain [13]. Timed text empty when captions are burned in [14].
 12. Verify DCP in the Player (Tools, then Verify DCP). Fix every error and read every warning [18]. Play the DCP in the Player start to finish. This proves the package is well-formed, not that a cinema will accept it [17].
-13. Write the drive with DCP-o-matic's Disk Writer: MBR, one primary partition of type 0x83, ext3 or ext2 with a 128-byte inode [19][26]. Label it "Do not read with a consumer computer". Never plug it into the Windows PC after writing [26].
+13. Write the drive with DCP-o-matic's Disk Writer: ext2 (the only format DCP-o-matic guarantees in all cinemas; ISDCF also allows ext3), with a 128-byte inode, on an MBR table with one primary partition of type 0x83. Re-partition any retail USB stick first (ISDCF: retail partition tables are "almost certainly incorrect"). MBR drives must be 2 TB or smaller [19][26]. Label it "Do not read with a consumer computer". Never plug it into the Windows PC after writing [26].
 14. Make a SHA-256 manifest of each delivery folder, copy the folder, and re-check the hashes from the drive [4].
 15. Venue run: confirm the survey answers (T5). Run the test clip with the AV person present, then the full run, with a cold start under two minutes. Walk failure rungs 1 to 4 once each [5]. Gate G6 before final export; gate G6b at the venue full run.
-16. Rights: one log row per asset, cue or person, using the T8 header. Assign tiers A to D (playbook Step 11). A RISK row needs why, how to undo it, who is exposed, and the date. Tier C items and every RISK row need the Fable advisor's written flag and at least 48 hours between drafting and deciding (inference).
+16. Rights: one log row per asset, cue or person, using the T8 header. Assign tiers A to D (playbook Step 11). A RISK row needs why, how to undo it, who is exposed, and the date. Tier C items and every RISK row need the Fable advisor's written flag and at least 48 hours between drafting and deciding (inference). Advisor-flag mechanism: write the item as `rights/flags/<asset_id>.md` (why, undo, exposed, draft date) and request a Fable review of that file. Do not set status RISK or admit a Tier C item until the file carries a dated advisor line and 48 hours have passed since the draft date.
+
+    **Only-me mode (current).** The maker is the only person in on the project. Card 4a (T9) is not read to anyone until the maker decides to bring someone in; reading it to anyone is that decision, and it is parked. Before the premiere, Tier A means the maker's own material, her appearances by proxy, and original, CC0 or licensed assets. Relatives' voices go to her private cut only where a recorded yes is on file (Tier C still applies), or wait for the post-premiere release (T9, 4d). The public cut can therefore contain the maker's own material and narration, her appearances by proxy, Tier B stills of adults (no voice), attributed text with no voice, and original, CC0 or licensed music. It cannot contain a recorded voice of a living person before the premiere. Any step that asks a contributor to confirm, sign or approve (for example TD-L6) waits for the same decision. Decision point: Sunday 3 January 2027 (playbook T4, TD-L2c).
 17. Music: a commercial recording needs a sync licence and a master licence, and a performance licence is a third right [82]. Prefer CC0 or CC BY with credit (not NC), production music licensed for events, original music, or a licensed substitute.
-18. Photos taken by others: find the photographer and record every search step. Orphan works have no US safe harbour [54]. The UK licence scheme starts at £20 per work and covers UK use only [62]. In India, s.17(b) may make the commissioner the first owner (copy read; date unknown; confirm) [70].
+18. Photos taken by others: find the photographer and record every search step. Orphan works have no US safe harbour [54]. UK IPO application fee £20 for one work, £24 for two, £30 for five, £40 for ten, £60 for twenty, £80 for thirty; non-refundable; a separate licence fee is payable only if the licence is granted; licence up to 7 years; UK use only; film and photographs are covered; page updated 1 Dec 2025, read 2026-10-18 [62]. In India, s.17(b) may make the commissioner the first owner (copy read; date unknown; confirm) [70].
 19. AI items: record the L-level, tool name and version, tool terms and a human-contribution note. Add a pre-roll line before the title. Mark photoreal motion of a real person as a possible deepfake [53][65].
 20. Gates. T2 (27 February): every row green or a written RISK entry; no unlicensed commercial music; no Mojang assets. T3 (online): releases signed and the maker's explicit yes. T4 (cinema or festival): all T3 rows green, releases signed, E&O decision made, music cue sheet, AI disclosure [77][88].
 21. Before any showing beyond 27 February, confirm the consent ledger has closed (Monday 29 March 2027) and the T3 or T4 gate is green [5].
-22. Report back: what was checked, what is still TODO(research), and any conflict with the playbook (for example the venue loudness ceiling).
+22. Report back: what was checked, what is still TODO(research), and any conflict with the playbook (for example a date that disagrees with another playbook, such as picture lock, which is Sat 6 Feb 2027 per production-scale G-LOCK).
 
 ## Checklists
 
@@ -74,7 +76,7 @@ Facts come from `research/theatrical-delivery.md` (research date 2026-10-18). Th
 - [ ] DCP-o-matic settings match Procedure step 11.
 - [ ] Verify DCP: zero errors; every warning explained.
 - [ ] Played in the Player start to finish.
-- [ ] Drive: MBR, type 0x83, ext2 or ext3, inode 128, label set.
+- [ ] Drive: ext2 or ext3, 128-byte inode, MBR with one primary partition of type 0x83; retail stick re-partitioned; label set.
 - [ ] Hash manifest matches the drive copy.
 
 **Rights gate**
@@ -83,6 +85,8 @@ Facts come from `research/theatrical-delivery.md` (research date 2026-10-18). Th
 - [ ] Every RISK row has why, undo, exposed people and date.
 - [ ] No Mojang name, asset or footage; no third-party game footage.
 - [ ] No synthetic voice; every reconstruction labelled.
+- [ ] Only-me mode: no living person's voice in the public cut without a recorded yes; under only-me mode that means none before the premiere.
+- [ ] Every Tier C item and RISK row has `rights/flags/<asset_id>.md` with a dated advisor line.
 
 ## Quality bar
 
@@ -100,7 +104,7 @@ Theatrical work holds up on a big screen. Mediocre work does not.
 
 - Never invent facts, tools, prices or URLs. Mark every gap TODO(research).
 - No cloned or synthetic voices. Reconstructed scenes are visibly reconstructions [1][6].
-- Gather truthfully. The surprise may be omitted, but nothing untrue may be said. Read the consent card (T9, 4a) only when its bracketed lines are true [5].
+- Gather truthfully. The surprise may be omitted, but nothing untrue may be said. Read the consent card (T9, 4a) only when its bracketed lines are true [5], and under only-me mode not to anyone at all (Procedure step 16).
 - "Mostly public" triggers the public-rights answer. Family-circle assumptions do not hold for 27 February [56].
 - Minors: a guardian's written yes, or the child is left out, or an adult-now yes (4f) [86][5].
 - The dead: the closest family decides. Stills only unless they say more. Otherwise out [5]. Germany requires close relatives' consent for 10 years after death [68].
@@ -108,7 +112,7 @@ Theatrical work holds up on a big screen. Mediocre work does not.
 - Private data (names, consents, addresses) stays in the private repo. Nothing goes to a third-party service without the maker's explicit yes [1].
 - Games and brands: no Mojang textures, sounds, UI or footage. "Minecraft" appears only as a secondary description, with the disclaimer [48].
 - Misleading edits: a sequence must not present something as fact that it is not [85].
-- Accepted risks are written down, reversible first, and decided by the maker with the advisor's flag.
+- Accepted risks are written down, reversible first, and decided by the maker with the advisor's flag, filed at `rights/flags/<asset_id>.md` (Procedure step 16).
 
 ## References
 

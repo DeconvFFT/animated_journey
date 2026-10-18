@@ -1,0 +1,10 @@
+{"N": 24, "seconds": 1.0, "method": "pillow resize box", "a": 0.006, "b_9fr": 0.3043, "c_rough": 0.1695, "a_d4": 0.0031, "b_d4": 0.0158}
+{"N": 24, "seconds": 1.0, "method": "zoompan from 4K", "a": 0.2585, "b_9fr": 0.2991, "c_rough": 0.1654, "a_d4": 0.3393, "b_d4": 0.1078}
+{"N": 48, "seconds": 2.0, "method": "pillow resize box", "a": 0.0028, "b_9fr": 0.0521, "c_rough": 0.0597, "a_d4": 0.0018, "b_d4": 0.0035}
+{"N": 48, "seconds": 2.0, "method": "zoompan from 4K", "a": 0.2811, "b_9fr": 0.1111, "c_rough": 0.1264, "a_d4": 0.4073, "b_d4": 0.1288}
+{"N": 72, "seconds": 3.0, "method": "pillow resize box", "a": 0.0018, "b_9fr": 0.0188, "c_rough": 0.0327, "a_d4": 0.0016, "b_d4": 0.0025}
+{"N": 72, "seconds": 3.0, "method": "zoompan from 4K", "a": 0.2912, "b_9fr": 0.1224, "c_rough": 0.2108, "a_d4": 0.3635, "b_d4": 0.1707}
+{"N": 96, "seconds": 4.0, "method": "pillow resize box", "a": 0.0013, "b_9fr": 0.0092, "c_rough": 0.0215, "a_d4": 0.001, "b_d4": 0.0019}
+{"N": 96, "seconds": 4.0, "method": "zoompan from 4K", "a": 0.2903, "b_9fr": 0.1273, "c_rough": 0.2934, "a_d4": 0.3533, "b_d4": 0.1495}
+{"N": 144, "seconds": 6.0, "method": "pillow resize box", "a": 0.0009, "b_9fr": 0.0036, "c_rough": 0.0126, "a_d4": 0.0008, "b_d4": 0.0014}
+{"N": 144, "seconds": 6.0, "method": "zoompan from 4K", "a": 0.2982, "b_9fr": 0.1126, "c_rough": 0.3907, "a_d4": 0.4142, "b_d4": 0.1401}

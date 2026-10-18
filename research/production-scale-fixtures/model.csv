@@ -25,13 +25,13 @@ mu calibration multiplier on shots+chapter+sound hours (INPUT),1.0,,,,1.0 until 
 frame rate (INPUT),24,,,,
 "Route B photo move fps, 1080p, per process (INPUT)",7.8,,,,"agent-pipeline M21 measured, container"
 "Route A SVG/DOM fps, 1080p (INPUT)",6.0,,,,"M10: 12.9 flat, 5.7 with wobble; 6 assumed"
-"Blender Cycles CPU s per 1080p frame, 24 spp + denoise, 4 vCPU (INPUT)",17.5,,,,M14 measured 17.4-19.0 on Suzanne scene; real scenes will be slower: UNVERIFIED
+"Blender Cycles CPU s per 1080p frame, 24 spp + denoise, 4 vCPU (INPUT)",17.5,,,,"17.5 s (one lit Suzanne scene) to 204 s (Blender 'classroom' scene, 24 samples plus denoise) per 1080p frame on the container [F3]; spike S3 measures the kitchen set. The round-2 stand-in kitchen with no photographs measured 112 s at 64 samples and 204 s at 128 samples with denoise (G2). 17.5 is kept as the low end; set 204 to test the classroom case."
 Blender Workbench draft s per frame (INPUT),1.0,,,,M14 measured 0.72-1.16
 "render iterations, non-hero shots (INPUT)",4,,,,drafts + final [J]
 hero final render factor (INPUT),1.5,,,,partial re-renders [J]
 hero draft iterations (INPUT),4,,,,[J]
 "grain bake, grade, encodes, QC decodes, CPU-h per finished minute (INPUT)",0.1,,,,M4-M6 scaled [J]
-Cycles s per frame on a rented RTX 4090 (INPUT),5.0,,,,"UNVERIFIED: Renderjuice estimates 3.5-7.5 s on benchmark scenes, Blender 5.2"
+Cycles s per frame on a rented RTX 4090 (INPUT),5.0,,,,"Blender Open Data RTX 4090 runs (F3, [82][83][84]): 1.6, 3.0 and 5.6 s per 1080p frame at 64, 128 and 256 samples for a classroom-class scene (not the kitchen). 5.0 is the old, unverified assumption and is kept as the value; set 3.0 for the 128-sample case. Spike S3 pass: one real hero frame within 2 times the table."
 "RTX 4090 USD per hour, community (INPUT)",0.34,,,,RunPod page dated 2026-10-08
 "RTX 4090 USD per hour, secure (INPUT)",0.89,,,,RunPod page dated 2026-10-08
 "agent minutes per shot, class A (INPUT)",10,,,,agent-pipeline Step 6: 10 to 40 min per shot [J]
@@ -170,8 +170,8 @@ rented RTX 4090 hours if hero finals go to GPU,=B163*$B$34*$B$31/3600,=C163*$B$3
 "ProRes 422 HQ master size, GB (about 0.59 GB per minute, M5)",=B121*0.59,=C121*0.59,=D121*0.59,=E121*0.59,
 ,,,,,
 SLICE CALIBRATION (fill after the vertical slice),value,,,,
-"measured slice hours (INPUT): shots, chapter pass and sound only; excludes grade, mix, captions, master, learning",,,,,"leave blank until measured. Sum of hours.csv minutes for C01 with activity in brief_G0, style_G1, review_G2, craft_refine_G3, chapter_G4, dignity_G5, tech_G6, sound, rework. TODO(research): brief_G0 and style_G1 are in this list but not in the prediction on the next row, which prices story separately (story + animatic hours per finished minute, row 50). Decide before the 2026-12-20 gate: add the slice's share of story to the prediction, or drop these two activities from h_slice."
-"hours the selected case predicts for the slice chapter (C01, first built)",=(($B$8*$B$14/60)*($B$9*$E$44+$B$10*$E$45+$B$11*$E$46+$B$12*$E$47)/60*$E$48*(1-$E$58)+$E$49+$E$52*$B$14/60)*$E$53,,,,"one 100 s unit: shots + chapter pass + sound, times the learning multiplier for the first built chapter (row 53); no mu; excludes finishing"
+"measured slice hours (INPUT): shots, chapter pass and sound only; excludes grade, mix, captions, master, learning",,,,,"leave blank until measured. Sum of hours.csv minutes for C01 (the 100-second slice; chapters.csv slice_s = 100) with activity in brief_G0, style_G1, review_G2, craft_refine_G3, chapter_G4, dignity_G5, tech_G6, sound, rework. G0 and G1 work is priced inside the per-shot minutes (research Q4 stage table: 'Layout and shot brief: in shot minutes'), so brief_G0 and style_G1 belong in this list and are already in the prediction on row 174; story is the activity priced separately (row 50)."
+"hours the selected case predicts for the slice chapter (C01, first built)",=(($B$8*$B$14/60)*($B$9*$E$44+$B$10*$E$45+$B$11*$E$46+$B$12*$E$47)/60*$E$48*(1-$E$58)+$E$49+$E$52*$B$14/60)*$E$53,,,,"one 100 s unit: shots + chapter pass + sound, times the learning multiplier for the first built chapter (row 53); no mu; excludes finishing; slice_s = 100 (chapters.csv C01)"
 suggested mu (measured / predicted),"=IF($B$173="""","""",$B$173/$B$174)",,,,"copy into mu in GLOBAL INPUTS, then read the verdicts again"
 "measured finishing hours for the slice: grade, mix, captions, master, qc (INPUT)",,,,,"leave blank until measured. Sum of hours.csv minutes for C01 with activity in grade, mix, captions, master, qc"
 "finishing hours the selected case predicts for the slice (finishing per minute x slice minutes, plus the slice's pre-built share of fixed finishing)",=$E$59*$B$14/60+$B$23*$E$60,,,,no mu; Base: 2.7 x 1.67 + 0.5 x 24 = 16.5 h
@@ -183,5 +183,5 @@ CHECK learn + admin against the allowance,"=IF($B$180="""","""",IF($B$180<=$E$57
 NOTES,,,,,
 1,"Calendar (Sunday-start weeks): W1-4 2026-10-18 to 11-14, lock Sun 11-15; W5-9 to 12-19; W10-11 dead 12-20 to 2027-01-02; W12-16 2027-01-03 to 02-06 (picture lock Sat 02-06); W17-18 finishing to 02-20; W19 buffer and rehearsals to Sat 02-27.",,,,
 2,"review 02 numbers the last weeks as 12-15, 16-17, 18-19. With Sunday-start weeks the production block is W12-16 and finishing W17-18. Dates are the authority.",,,,
-4,Levers to try (each is an INPUT above): hero share sC 0.10 to 0.05 (move the difference to sA); shots per minute 12 to 8; fin_var 2.7 to 0.8 by paying a mixer and colourist for the heavy lifting; mA 7 to 4.5 by triaging photos; pre_share 0.4 to 0.5 by front-loading gathering before 12-20. All five together cut the base 12-minute requirement from 19.6 to 13.9 h per week.,,,,
+4,"Levers to try (each is an INPUT above): hero share sC 0.10 to 0.05 (move the difference to sA); shots per minute 12 to 8; fin_var 2.7 to 0.8 by paying a mixer and colourist for the heavy lifting; mA 7 to 4.5 by triaging photos; pre_share 0.4 to 0.5 by front-loading gathering before 12-20. All five together cut the base 12-minute requirement from 19.6 to 13.9 h per week. The 13.9 needs lever 3 (bought finishing, two quotes first); the four levers without it give 15.5 h per week (total view).",,,,
 3,Do not read this as a forecast. It is a way to see which assumption decides the runtime. The slice replaces the judgement values with measurements.,,,,

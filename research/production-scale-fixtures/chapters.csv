@@ -1,6 +1,6 @@
 chapter,module,title_code,target_s,priority,cut_order,material_in_hand_pct,status,approved_pct_of_runtime,rolling_lock_date,locked,hard_flag,note
 W1,wrapper,cold open (about 1:15; who is she),75,must,,,not_started,,,0,0,"wrapper, one-off (film-story); never cut"
-C01,M1,"slice chapter (C01 = first built, not first in the film); mid-life, non-hard module",180,must,99,,slice_in_progress,,,0,0,"vertical slice module; includes sound, grade, captions, master test. TODO(research): the slice is calibrated per 100 s (acceptance 90 to 120 s) but this module is about 180 s; decide whether the slice is a 100 s piece of M1 or all of M1"
+C01,M1,"slice chapter (C01 = first built, not first in the film); mid-life, non-hard module",180,must,99,,slice_in_progress,,,0,0,"vertical slice module; includes sound, grade, captions, master test. slice_s = 100: the slice is a 100-second piece of M1 (acceptance 90 to 120 s) containing the kitchen hero shot, at least 10 class A, 4 class B and 1 class D shots, a VO line, a music cue, one still and the transition into the next module's motif. The remaining ~80 s of M1 is built after the gate as the second learning-curve unit. h_slice sums over these 100 s only."
 C02,M2,,180,must,98,,not_started,,,0,0,
 C03,M3,,180,should,3,,not_started,,,0,0,cut_order: 1 is cut first
 C04,M4,,180,nice,1,,not_started,,,0,0,fourth module: needed only for 15 minutes (wrapper plus four); unlocked at the slice gate

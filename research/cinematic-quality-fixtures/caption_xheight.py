@@ -1,12 +1,22 @@
 """Q1 (follow-up round 1): measure x-height, cap-height and line pitch of ffmpeg `subtitles` FontSize=20/23/26
-as a percentage of picture height at 1080p (cross-check 2160p). Usage: python3 -I caption_xheight.py WORKDIR
-Needs ffmpeg with libass, numpy and Pillow, and the five fonts named in FONTS (edit the names to test your own caption font).
+as a percentage of picture height at 1080p (cross-check 2160p). Usage: python3 -I caption_xheight.py WORKDIR [FONT_FILE FONT_FAMILY_NAME]
+Needs ffmpeg with libass, numpy and Pillow. With no font arguments it measures the five fonts named in FONTS (fontconfig, Linux).
+With FONT_FILE and FONT_FAMILY_NAME (round 2, for the maker's own caption font, Windows included) it copies the file into WORKDIR/fonts, passes it to libass with
+fontsdir=, measures only that font, and checks the result against the font's own metrics (a large gap means libass fell back to another font).
+Round 2 change: ffmpeg runs with the working directory set to WORKDIR and relative file names, so a Windows path such as C:\\Users\\... never reaches the
+filter string (its colon would break `subtitles=`). Set FFMPEG=C:\\path\\ffmpeg.exe to choose the build. Results for the default fonts are unchanged.
 The font-metric cross-check in the notes used fontTools separately (hhea ascender, descender and the glyph height of 'x')."""
-import os, sys, subprocess, json
+import os, sys, subprocess, json, shutil
 import numpy as np
-from PIL import Image
-work = sys.argv[1]
+from PIL import Image, ImageFont
+FFMPEG = os.environ.get("FFMPEG", "ffmpeg")
+work = os.path.abspath(sys.argv[1])
 os.makedirs(work, exist_ok=True)
+USER_FONT = None
+if len(sys.argv) >= 4:
+    os.makedirs(os.path.join(work, "fonts"), exist_ok=True)
+    shutil.copyfile(sys.argv[2], os.path.join(work, "fonts", os.path.basename(sys.argv[2])))
+    USER_FONT = (sys.argv[3], sys.argv[2])
 FONTS = {  # name -> file (for metric lookup only; ffmpeg picks the font by name through fontconfig)
  "DejaVu Sans": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
  "Liberation Sans": "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
@@ -15,18 +25,18 @@ FONTS = {  # name -> file (for metric lookup only; ffmpeg picks the font by name
  "FreeSans": "/usr/share/fonts/truetype/freefont/FreeSans.ttf",
 }
 def render(text_lines, font, size, W, H, tag, extra=""):
-    srt = os.path.join(work, f"{tag}.srt")
-    with open(srt, "w") as f:
+    srt = f"{tag}.srt"
+    with open(os.path.join(work, srt), "w") as f:
         f.write("1\n00:00:00,000 --> 00:00:01,000\n" + "\n".join(text_lines) + "\n")
     style = f"FontSize={size},Outline=0,Shadow=0,PrimaryColour=&HFFFFFF&,BackColour=&H000000&"
     if font: style = f"FontName={font}," + style
     style += extra
-    png = os.path.join(work, f"{tag}.png")
+    png = f"{tag}.png"
     # original_size makes libass use the real frame size for the PlayRes mapping only if given; we do NOT give it,
     # so this is the default ffmpeg behaviour that format.md describes (288-line canvas for .srt).
-    vf = f"subtitles={srt}:force_style='{style}'"
-    subprocess.run(["ffmpeg","-v","error","-y","-f","lavfi","-i",f"color=black:s={W}x{H}:d=1:r=1","-vf",vf,"-frames:v","1",png],check=True)
-    return np.asarray(Image.open(png).convert("L"),dtype=np.float32)/255.0
+    vf = f"subtitles={srt}" + (":fontsdir=fonts" if USER_FONT else "") + f":force_style='{style}'"
+    subprocess.run([FFMPEG,"-v","error","-y","-f","lavfi","-i",f"color=black:s={W}x{H}:d=1:r=1","-vf",vf,"-frames:v","1",png],check=True,cwd=work)
+    return np.asarray(Image.open(os.path.join(work, png)).convert("L"),dtype=np.float32)/255.0
 def vextent(a):
     """Vertical extent in px, sub-pixel: rows where max coverage>0.5 plus partial edge rows (coverage of the edge row)."""
     prof = a.max(axis=1)
@@ -43,7 +53,7 @@ def lines_pitch(a):
     gaps = np.diff(idx); k = gaps.argmax()
     return idx[0], idx[k], idx[k+1], idx[-1]
 res = []
-for font in [None] + list(FONTS):
+for font in ([USER_FONT[0]] if USER_FONT else [None] + list(FONTS)):
     for size in (20,23,26):
         for (W,H) in ((1920,1080),(3840,2160)):
             tag = f"{(font or 'default').replace(' ','_')}_{size}_{H}"
@@ -58,3 +68,14 @@ for font in [None] + list(FONTS):
 json.dump(res, open(os.path.join(work,"q1_results.json"),"w"), indent=1)
 for r in res:
     if r["H"]==1080: print(r)
+if USER_FONT:
+    # expected x-height % from the font's own metrics: 100 * FontSize / 288 * xHeight / (ascent + descent)   (FQ1 formula; .srt through ffmpeg uses a 288-line canvas)
+    big = ImageFont.truetype(USER_FONT[1], 1000)
+    asc, desc = big.getmetrics()
+    bb = big.getbbox("x"); xh = bb[3] - bb[1]
+    for r in res:
+        if r["H"] == 1080:
+            exp = 100.0 * r["size"] / 288.0 * xh / (asc + desc)
+            r["expected_xh_pct"] = round(exp, 2); r["gap_pts"] = round(r["xh_pct"] - exp, 2)
+            print(f"FontSize={r['size']}: measured {r['xh_pct']}%  expected from font metrics {exp:.2f}%  gap {r['xh_pct']-exp:+.2f} pts", "(OK)" if abs(r["xh_pct"]-exp) <= 0.25 else "(CHECK: libass may have used a different font)")
+    json.dump(res, open(os.path.join(work,"q1_results.json"),"w"), indent=1)

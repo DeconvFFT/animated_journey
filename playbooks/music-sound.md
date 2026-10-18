@@ -1,6 +1,6 @@
 # Music, Songs, Voices and the Mix for a Life Film
 
-*Track: music-sound · Version 0.2 (round 1 review applied) · Written 2026-10-18 (Sunday), 19 weeks before the premiere on Saturday 2027-02-27 · Built from `research/music-sound.md` (researcher notes, 2026-10-18) and `CHARTER.md`. Scribe: Haiku.*
+*Track: music-sound · Version 0.3 (round 2 review applied) · Written 2026-10-18 (Sunday), 19 weeks before the premiere on Saturday 2027-02-27 · Built from `research/music-sound.md` (researcher notes, 2026-10-18) and `CHARTER.md`. Scribe: Haiku.*
 
 *Reading key: [n] points to a source in the Sources list at the end. "(inference)" marks our own suggestion, not something a source says. "UNVERIFIED" means we could not confirm the fact from a page we actually opened. "TODO(research)" marks a gap that still needs filling. Every rights statement here is "as read on 2026-10-18". Re-check it for the real country, venue and date. This is not legal advice.*
 
@@ -21,9 +21,9 @@ Her voice carries the film, but which of her recordings may lead in the public c
 ## Core principles
 
 1. **Voices lead, under a two-tier rule for her found voice.** Any recorded voice sits above the music, and the music steps back when someone speaks. Her found voice is used as recorded and never re-cut into new sentences [1][4]. Two tiers decide what may lead in the public cut:
-   - **Tier 1, eligible for the public cut.** Speech she gave knowing a camera was on (home video at a family event, a toast, singing at a birthday), addressed to the room, the camera or a family event, and used as recorded. It may lead in the public cut only after the one-key-three-guards decision: a decision sheet, a Fable advisor flag, a 72-hour double yes, and default OUT on doubt (review 02 §0.3).
-   - **Tier 2, private cut only.** Anything addressed to a third party: a voicemail, an answering-machine greeting, a phone call or a message. It stays out of the public cut and goes to the T9 ledger for her own post-reveal decision.
-   This playbook adopts the stricter reading of `surprise-ops` Decision 18 and `film-story` Decision 3. The rule is stated here once. Template D3 carries the `addressed_to` and `public_cut_eligible` columns that apply it.
+   - **Tier 1 (HER-PUBLIC), eligible for the public cut.** Speech she gave knowing a camera was on (home video at a family event, a toast, singing at a birthday), addressed to the room, the camera or a family event, and used as recorded. It may lead in the public cut only after the one-key-three-guards decision: a decision sheet, a Fable advisor flag, a 72-hour double yes, and default OUT on doubt (review 02 §0.3).
+   - **Tier 2 (HER-PRIVATE), private cut only.** Anything addressed to a third party: a voicemail, an answering-machine greeting, a phone call or a message. It stays out of the public cut and goes to the T9 ledger (`research/surprise-ops.md` T9: the corrections ledger and the post-reveal conversation) for her own post-reveal decision.
+   This playbook adopts the stricter reading of `surprise-ops` Decision 18 and `film-story` Decision 3, and their labels HER-PUBLIC and HER-PRIVATE. `public_cut_eligible` takes the values `yes` or `no`. The rule is stated here once. Template D3 carries the `addressed_to` and `public_cut_eligible` columns that apply it.
 2. **Silence is a sound.** Take the music out before the hardest moment, not after. *Up* does this: the music slows, nearly stops and strips down to a piano before the hardest beat [66][67]. Burns's sound team put it this way: "Nothing makes sound more effective than the absence of sound" [72].
 3. **One motif, many weathers.** Pick one theme early and let it return with a different instrument, tempo or mood as her life changes [66][67].
 4. **Royalty-free is not cleared for a public screen.** A licence can be fine for a private link and wrong for a gathering, a festival or a cinema. Read the tier, quote the sentence and date it before you use anything [32][35][33].
@@ -71,9 +71,9 @@ Take each beat from the film's beat sheet and give it one cue type:
 - **VOICE-ZONE**: her voice or a relative's, with no music.
 - **END**: a hard cut to black with no music tail [7].
 
-Give each MOTIF and CLOCK a `source_in_her_life`: the beat-sheet evidence row, or the relative who named the sound. **No MOTIF or CLOCK without one.** This is the test that a sound comes from her life and is not decoration (charter principle 2: it must mean something; review round 1). Write `cue_map.csv` with the columns `beat_id, cue_type, source_in_her_life, notes`.
+Give each MOTIF and CLOCK a `source_in_her_life`: the beat-sheet evidence row, or the relative who named the sound. **No MOTIF or CLOCK without one.** This is the test that a sound comes from her life and is not decoration (charter principle 2: it must mean something; review round 1). Write `cue_map.csv` with the columns `beat_id, cue_type, source_in_her_life, hard_flag, advisor_flag_ref, notes`. Copy `hard_flag` from the film-story beat sheet's `hard_flag` column (values NONE, SHARED-LIGHT, PRIVATE, HOLD, OUT, per the `film-story` template), so the two files join on `beat_id`.
 
-For any beat flagged hard-chapter, set the cue type to PULL-OUT by default. A cue that is not silence there needs a flag line for the Fable advisor (skill Procedure 4a).
+For any beat flagged hard-chapter, set the cue type to PULL-OUT by default. A cue that is not silence there needs a flag line for the Fable advisor (skill Procedure 4a). Write the flag line to `reviews/<chapter>/sound-flags.md` (the gate-file convention in `playbooks/agent-pipeline.md`), one line per beat: `beat_id | proposed cue | why not silence | date`, and set `advisor_flag_ref` on the cue_map row.
 
 For each decade, also write down what was playing in the house. Ask only in low-key ways that do not reveal the project. Include object-sound questions, such as "what did the house sound like in the mornings?", so the ambience and effects palette (research Q7) comes from her objects, not from a generic 1970s list [1][7].
 *Done when:* `cue_map.csv` lists every beat with a type, and each MOTIF and CLOCK has a source.
@@ -132,7 +132,7 @@ Use the two-pass method in Template G. Do not use single-pass dynamic `loudnorm`
 
 **Operational rule.** The maker, not the venue engineer, holds the master fader during the film. Set the level at the 2027-02-22 run, from the back row, on the neutral-voice reel, and write the fader position on the run sheet.
 
-**DX-gated check (before any master is signed off).** Measure the dialogue (DX) stem alone and the full mix, both integrated (Template G). If the integrated DX sits more than 6 LU under the full mix, the music is too loud for a room with many listeners aged 50 and over. Lower the music and measure again.
+**DX-gated check (before any master is signed off).** Measure DX and full mix over the same speech spans only (the `voice_present=yes` rows of `spotting.csv`), either by trimming and concatenating those spans with `atrim` and `concat` before `ebur128`, or per chapter, applying the test to chapters with speech. A whole-film integrated figure would compare a DX stem that is silent through every wordless passage with a full mix that is not, so a montage would skew the result. Keep 6 LU as the starting threshold (inference; the broadcast anchor in research G3 is not applied here): if the integrated DX sits more than 6 LU under the full mix, the music is too loud for a room with many listeners aged 50 and over. Lower the music and measure again. Record the per-chapter offset in the log.
 
 *Done when:* each master's measurement and its DX-gated check are written in the log.
 
@@ -268,7 +268,7 @@ The answer is one of two. **(A)** Family only: keep my voice to the private vers
 
 **Tier C is not spoken.** Festival, cinema and later showings are a written ask after the premiere, and nothing about them is promised before the maker's own post-premiere release (review 02 §0.3).
 
-**Routing.** The wording goes through the `surprise-ops` truthful pretext cards at that track's next round. Do not read the card until that check is done. Log the tier and the spoken yes with each file [6].
+**Routing.** The orchestrator patches `playbooks/surprise-ops.md` (Truthful pretext cards section, consent card) with the D2 sentence and the A/B answers by **Saturday 2026-11-07**, one week before the Track B voice-collection gate on 2026-11-14 (story.md Decision 11). Until that patch lands, D2 is not read and no relative is recorded for the public cut. Log the tier and the spoken yes with each file [6].
 
 **D3. Found-voice log header.** Add one row per item to the inventory in `story.md` [4]. Set `addressed_to` and `public_cut_eligible` first, then `use_decision`.
 
@@ -277,8 +277,8 @@ item_id,holder,device_or_format,date_made,who_speaks,addressed_to,length,quality
 ```
 
 - `addressed_to`: the room, the camera, a family event, or a named third party (voicemail, greeting, phone call, message).
-- `public_cut_eligible`: `yes` only if she knew a camera was on, the speech is not addressed to a third party, and the clip is used as recorded. Otherwise `no`. A `yes` still needs the one-key-three-guards decision; doubt means `no`.
-- `use_decision`: `as_recorded` (public cut only if `public_cut_eligible` is `yes` and the decision is recorded), `private_only` (tier 2, or undecided), or `none`.
+- `public_cut_eligible`: `yes` (HER-PUBLIC) only if she knew a camera was on, the speech is not addressed to a third party, and the clip is used as recorded. Otherwise `no` (HER-PRIVATE). A `yes` still needs the one-key-three-guards decision; doubt means `no`.
+- `use_decision`: `as_recorded` (public cut only if `public_cut_eligible` is `yes` and the decision is recorded), `private_only` (tier 2, HER-PRIVATE, or undecided), or `none`.
 
 Every person heard needs a consent status. That includes children, friends and relatives, and the dead, whose use needs the closest family's yes [6].
 
@@ -336,7 +336,7 @@ Hum usually shows as 60 Hz with a bigger 120 Hz part from the power supply. A no
 |---|---|---|---|
 | File | Stems and a stereo mix at 48 kHz, 24-bit. A professional builds any DCP (inference) [99] | `venue_-18.wav` plus `-23` and `-16` alternates, with the same audio on the video master | `online_-16.mp4` (AAC) |
 | Level | Calibrated playback, not LUFS. Peaks at or below about -3 dBFS (inference) [94][95] | -18 LUFS integrated, -1.5 dBTP, loudness range about 8 to 10 LU or less (inference from [98][93]) | -16 LUFS, -1.5 dBTP [2] |
-| Check | Mono sum. Dialogue still clear with playback 6 dB lower (our test; theatre faders are often lowered [94]) | Listen from front, side and back; DX-gated check (full mix no more than 6 LU above the DX stem) | Re-measure after the AAC encode |
+| Check | Mono sum. Dialogue still clear with playback 6 dB lower (our test; theatre faders are often lowered [94]) | Listen from front, side and back; DX-gated check on speech spans only (full mix no more than 6 LU above the DX stem) | Re-measure after the AAC encode |
 
 **Operational (venue).** The maker holds the master fader during the film, not the venue engineer. The level is set at the 2027-02-22 run from the back row, on the neutral-voice reel, and the fader position is written on the run sheet.
 
@@ -352,9 +352,9 @@ Hum usually shows as 60 Hz with a bigger 120 Hz part from the power supply. A no
 # measure
 ffmpeg -i mix.wav -af ebur128=peak=true -f null -
 
-# DX-gated check: integrated loudness of the DX stem alone and of the full mix (read the Integrated line of each summary)
-ffmpeg -i dx.wav -af ebur128=peak=true -f null -
-ffmpeg -i mix.wav -af ebur128=peak=true -f null -
+# DX-gated check, speech spans only: first cut the voice_present=yes spans into dx_speech.wav and mix_speech.wav (atrim and concat; this cut is not yet tested, TODO(research)), then read the Integrated line of each summary. Do not measure the whole film for this check.
+ffmpeg -i dx_speech.wav -af ebur128=peak=true -f null -
+ffmpeg -i mix_speech.wav -af ebur128=peak=true -f null -
 
 # pass 1: measure for the venue master
 ffmpeg -i mix.wav -af loudnorm=I=-18:TP=-1.5:LRA=11:print_format=json -f null -
@@ -375,6 +375,7 @@ FFmpeg 9.0.2 was released on 2026-09-18 [87]. The sandbox used 6.1.1 [108]. Chec
 - [ ] Play each of the three masters. Pick one and write the setting in the log.
 - [ ] Check the player path (USB, laptop, HDMI), lip sync, and that the audio is not forced to mono.
 - [ ] Check speech intelligibility at the back and sides, with at least one listener who does not have perfect hearing and who is not told the content.
+- [ ] Compare each chosen master's per-chapter DX-gated offset (Step 15) with what the back-row listener reports.
 - [ ] Keep a backup file on a second stick and the standalone WAV on a third device.
 
 **Day before (2027-02-26).**
@@ -401,7 +402,7 @@ Built on the production-scale gates (G-SLICE-0 2026-12-06, G-SLICE 2026-12-20, G
 | 2026-12-06 (G-SLICE-0) | Animatic with temp sound. Every MOTIF and CLOCK has a `source_in_her_life`. |
 | 2026-12-14 | Hard decision gate: each song cleared or replaced; each cue decided. |
 | 2026-12-20 (G-SLICE) | Chapter 1 at final quality, with its sound mix. Slice DX cleanup, ambience and effects run in December. |
-| 2026-12-28 | Start the REAPER trial (60 days; ends 2027-02-26, which covers the 13–20 Feb mix), or buy the $60 licence if you qualify (Decision 7). |
+| 2026-12-28 | REAPER: buy the $60 licence (personal use qualifies), or start the trial only to defer the spend to this date (60 days; a trial started on this date ends 2027-02-26 and covers the 13–20 Feb mix) (Decision 7). |
 | 2027-01-08 | Substitutes locked. |
 | 2027-01-17 (G-MID) | Rolling chapter locks begin. Sound work on a chapter starts when it is `locked=1`. |
 | 2027-01-31 (G-DRAFT) | At least 60 percent rolling-locked; each locked chapter has its cues decided. |
@@ -447,11 +448,11 @@ Each decision lists the options, then our current lean. A lean is a suggestion f
 
 **6. Consent for relatives: the spoken card and the written ask (decided in round 1).**
 - *Decided:* the spoken card is the surprise-ops card plus one public sentence (Template D2). It takes two answers, A (family only) and B (the gathering). Tier C (festival, cinema, later showings) is a written ask after the premiere, not part of the spoken card.
-- *Still open:* only the secrecy check, which routes through the surprise-ops truthful pretext cards at that track's next round. This is the single place this check is tracked.
+- *Still open:* only the secrecy check. The orchestrator patches `playbooks/surprise-ops.md` by Saturday 2026-11-07 (Template D2, Routing). Until that patch lands, D2 is not read. This is the single place this check is tracked.
 - *Lean:* honour removals until 2027-02-19, and promise nothing about festivals or cinemas before your own post-premiere release (review 02 §0.3).
 
 **7. Small spends.**
-- *REAPER:* a 60-day full-function trial, or a $60 discounted licence if gross yearly revenue stays at or under $20,000. The standard commercial licence is $225 [103]. A trial started on 2026-12-28 ends 2027-02-26 and covers the 13–20 Feb mix (G-MIX to G-MASTER). That end date is after G-MASTER, so the trial is enough only if nothing has to be re-mixed after 2027-02-26. *Lean:* buy the $60 licence if you qualify, so the mix is not on a timer.
+- *REAPER:* a 60-day full-function trial, or a $60 discounted licence for an individual using REAPER only for personal use, or for an individual or business using it commercially with yearly gross revenue at or under $20,000 (purchase page, read 2026-10-18 and re-read by the scribe the same day). The standard commercial licence is $225 [103]. A trial started on 2026-12-28 ends 2027-02-26 and covers the 13–20 Feb mix (G-MIX to G-MASTER). That end date is after G-MASTER, so the trial is enough only if nothing has to be re-mixed after 2027-02-26. *Lean:* buy the $60 licence (personal use qualifies), so the mix is not on a timer; start the trial only to defer the spend to 2026-12-28.
 - *Suno Pro:* $10 a month, 20 downloads [13]. *Lean:* skip it. Stable Audio runs locally and costs nothing (research figure) [21][23].
 - *Audacity, FFmpeg:* free [87][104].
 - *Composer:* see Decision 2.
@@ -523,7 +524,7 @@ Strength tags: P primary (the rules or the maker), S secondary or press, V vendo
 - [5] LOCAL `craft-motion.md`, playbooks/craft-motion.md. SoundCraft findings, including issues #707 and #710 (MP3 and AAC import can silently shorten or shift audio).
 - [6] LOCAL `surprise-ops.md`, playbooks/surprise-ops.md. Current consent card, voice letter, removal deadline 2027-02-19, Decision 10 (recording rule), Bourdain case.
 - [7] LOCAL `film-story.md`, research/film-story.md. Cue lengths for *Up*, *Coco* and *Robot Dreams*; end-cut advice; Tarnation cost.
-- [8] LOCAL `format.md`, playbooks/format.md. Rehearsal dates 2027-02-14 to 02-20; hash list (Step 4).
+- [8] LOCAL `format.md`, playbooks/format.md. Hash list (Step 4). Its rehearsal dates are retired for this track (2026-10-18); the venue test is the Mon 2027-02-22 run.
 - [10] Minecraft Usage Guidelines, https://www.minecraft.net/en-us/usage-guidelines. Read live 2026-10-18. P. Game sounds and audio count as brand assets; sharing counts as commercial use; permissions revocable.
 
 **AI music and AI rules**
@@ -619,7 +620,7 @@ Strength tags: P primary (the rules or the maker), S secondary or press, V vendo
 - [100] DCP-o-matic forum, "Stereo audio to 6 - 5.1 Audio", https://dcpomatic.com/forum/viewtopic.php?p=10951. 2023-09-06 to 09-09. F.
 - [101] Sound on Sound, "Duck Tales", https://www.soundonsound.com/techniques/duck-tales. Undated. S.
 - [102] CapCut, audio ducking guide, https://www.capcut.com/create/audio-ducking-for-clear-dialogue-in-video. SR/V (weak).
-- [103] REAPER, purchase page, https://www.reaper.fm/purchase.php. Version 7.82 dated 2026-10-04. P.
+- [103] REAPER, purchase page, https://www.reaper.fm/purchase.php. Version 7.82 dated 2026-10-04. P. Read 2026-10-18 (scribe re-read): the discounted licence covers "an individual, and REAPER is only for your personal use", and commercial users with yearly gross revenue up to USD $20,000; a 60-day evaluation "with full functionality".
 - [104] Audacity, download page, https://www.audacityteam.org/download/. Read 2026-10-18. P.
 - [105] SoundCraft README and docs/gaps.md, https://github.com/storytold/soundcraft ; https://raw.githubusercontent.com/storytold/soundcraft/main/docs/gaps.md. Read 2026-10-18. P. Pre-alpha; no sidechain bus; open correctness bugs.
 - [106] Blackmagic Design, Fairlight and Resolve Studio pages, https://www.blackmagicdesign.com/products/davinciresolve/fairlight ; https://www.blackmagicdesign.com/products/davinciresolve/studio. Read 2026-10-18. V. Free-version limits not stated.
@@ -639,3 +640,4 @@ Strength tags: P primary (the rules or the maker), S secondary or press, V vendo
   - The "story.md Decision 10" cross-reference was checked. story.md states the found-voice rule and refers to Decision 10, and the rule matches the research.
   - The Netflix and DCI spec figures come from secondary sources only (TODO(research)). The "Films to study" list cites the research's exemplar notes, which rely on search summaries for some films.
 - **2026-10-18, v0.2 (round 1 review applied, Fable advisor).** Found voice now uses a two-tier rule (Core principle 1; Template D3 adds `addressed_to` and `public_cut_eligible`), citing surprise-ops Decision 18 and film-story Decision 3 at their stricter reading. Schedule rebuilt on G-LOCK 2027-02-06, G-MIX 2027-02-13, G-MASTER 2027-02-20 and the 2027-02-22 run; format.md week-18 dates dropped; rolling chapter locks added; composer from lock ruled out. `source_in_her_life` added to cue_map and the spotting sheet. D2 consent wording decided and routed to the surprise-ops truthful pretext cards. ElevenLabs Enterprise Music Lite exclusion, Suno Remix limit, REAPER dates (trial to 2027-02-26), DX-gated check and master-fader rule added; ASCAP sources tagged as not re-read by the advisor; Step 17 cue-sheet reference corrected to Template C.
+- **2026-10-18, v0.3 (round 2 review applied, Fable advisor; Haiku scribe).** Research Deliverables 2, 3d, 3e, F6, F7, Summary 13, Q9, the REAPER row and source [8] now match this playbook (the superseded consent card is withdrawn, not kept); D2 routing is a dated surprise-ops patch by Saturday 2026-11-07, not a round; the DX-gated check measures speech spans only (6 LU kept as the starting threshold, labelled inference); cue_map gained `hard_flag` and `advisor_flag_ref`, with the flag written to `reviews/<chapter>/sound-flags.md`; HER-PUBLIC and HER-PRIVATE added beside tiers 1 and 2, with the T9 ledger path; REAPER's $60 personal-use condition added (purchase page re-read) and the schedule row rewritten.

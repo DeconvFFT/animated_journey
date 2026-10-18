@@ -32,7 +32,7 @@ The maker is the only person on the project and the only keeper of the secret (a
 3. Accept only IDs as input: a beat row, its evidence IDs, the quote file and the style bible. Refuse prose requests such as "write a scene about her wedding," and ask for the evidence IDs.
 4. Build structure from functions, not events: COLD_OPEN, PLACE, OBJECT, TUESDAY, TURN, TEXTURE, RELIEF, HARD_GLIMPSE, TIME_PASS, CHAPTER_CARD, EMPTY_CHAPTER, ENDING. Keep every slot at S0 (empty) or S1 (evidence promised) until evidence exists.
 5. Write each slot as an evidence request with a fallback card, for example "1 image of first home + 1 sense detail + 1 witness line; fallback: 'no photograph survives'." Never write a fact before a source gives it.
-6. Pick the narration source by the ladder: HER-PUBLIC (only if it exists and is decided under the 72-hour double decision and the written "would she play this to strangers herself" line), then WIT (4 to 6 named voices at most, verbatim), then CARD (quoted source), then SND (wordless with score). HER-PRIVATE (voicemail, voice note, answering machine) is private cut or post-reveal only, per surprise-ops Decision 18. MAK-CARD is allowed for the contract card and for plain statements of what the maker knows or does not know (gap cards); never for her feelings or inner life; capped at about 10 percent of runtime (balance check 4). MAK-VOICE is private-cut only. Never use a neutral narrator or "I am her" narration.
+6. Pick the narration source by the ladder: HER-PUBLIC (only if it exists and is decided under the 72-hour double decision and the written "would she play this to strangers herself" line), then WIT (4 to 6 named voices at most, verbatim), then CARD (quoted source), then SND (wordless with score). HER-PRIVATE (voicemail, voice note, answering machine) is private cut or post-reveal only, per surprise-ops Decision 18. MAK-CARD is allowed for the contract card and for plain statements of what the maker knows or does not know (gap cards); never for her feelings or inner life; capped at about 10 percent of runtime (balance check 4). MAK-VOICE is private-cut only. Never use a neutral narrator or "I am her" narration. For any FOUND_VOICE beat (HER-PUBLIC or HER-PRIVATE), four inventory fields are mandatory: addressee, knowing recording, sensitivity (health, money, conflict or a third party), and other voices on the recording; a blank field keeps the beat at S1.
 7. Fill the claims table (Checklist B) for every card, caption and board frame. A claim without an ID is UNSUPPORTED, and its frame stays a grey SLOT. No beat reaches S3 with an UNSUPPORTED claim. Show a CONTRADICTED claim as "X remembers," or cut it.
 8. Draft the paper edit in columns: asset ID; quote or card text with its source; evidence ID; consent status. Run the radio test: does the chapter work with the eyes closed?
 9. Storyboard only from IDs. Each frame cites an ID or is SLOT. Each L5 (reconstruction) frame cites a testimony quote ID and carries the caption "Reconstructed from [name]'s memory, 2026."
@@ -79,11 +79,12 @@ Claims table header: `claim_id,beat_id,claim_text,type(name|date|place|number|co
 - [ ] no beat makes the room look at her; no cue to applaud
 - [ ] the ending needs nothing from her; no second-person address
 - [ ] every chapter is a module with a visible card before the next
+- [ ] the run sheet plans for refusal as a normal outcome, not an edge case (surprise-ops owns the lines)
 
-**E. Runtime budgets (picture only)**
-- 12 min: cold open 1:15; four chapters of 2:15; ending 1:45.
-- 15 min: wrapper 3:00 (cold open 1:15 plus ending 1:45); four modules of 3:00.
-- 25 min: cold open 1:30; six chapters of 3:00; three "Tuesday" interludes of 0:40; present close 2:00; ending 1:30.
+**E. Runtime budgets (including end credits)**
+- 12 min: cold open 1:15; four chapters of 2:15; ending 1:45 (object 0:55, black 0:05, end credits 0:45).
+- 15 min: wrapper 3:00 (cold open 1:15 plus ending 1:45); four modules of 3:00. The 1:45 ending is object 0:50, empty chapter 0:08, black 0:05, credits 0:42.
+- 25 min: cold open 1:30; six chapters of 3:00; three "Tuesday" interludes of 0:40; present close 2:00; ending 1:30 (open-chapter card 0:08, black 0:05, credits 1:17).
 - 45 min (not planned): Act I 12:00; Act II 21:00; Act III 9:00; ending and return 3:00.
 
 **F. Beat row header (use exactly)**
@@ -118,7 +119,7 @@ Mediocre:
 - Consent values: asked-ok, asked-ok-with-limits, not-asked (surprise hold), declined, third-party-needs-check, bottom-drawer (do not use).
 - Keep all private material in the private repository. Do not upload anything to a third-party service, including vendor paper-edit tools, without the maker's explicit say (charter).
 - Music, photos taken by others, archival footage, fonts and the voices of people who appear must be cleared for public screening (charter, principle 7).
-- Do not print a quotation in a credit or programme until it is checked against the original. Eight items in the research note are snippet only: seven numbered sources ([4], [9], [55], [63], [64], [65], [66]) and one search excerpt (the Red Turtle crabs quote).
+- Do not print a quotation until checked against the original; the research note marks unopened sources "snippet only".
 - Generative elements go on the cue sheet and in the credits [61].
 
 ## References
@@ -126,15 +127,15 @@ Mediocre:
 - Playbook (human version): `playbooks/film-story.md`
 - Research notes: `research/film-story.md`
 - Charter: `CHARTER.md`
-- Key URLs (as listed in Sources): Big Fish structure [46] `https://johnaugust.com/?p=8341`; Mama Micra at IDFA [48a] `https://www.idfa.nl/en/film/55f8d8c8-5981-4818-8f9a-ecc33334c43a/mama-micra/`; Stories We Tell [20] `https://documentary.org/node/33754`; My Architect [22] `https://documentary.org/node/35088`; Boyhood editing [30] `https://www.filmcomment.com/interview-sandra-adair-boyhood/`; Netflix timed text [60] `https://partnerhelp.netflixstudios.com/hc/en-us/articles/217350977-English-Timed-Text-Style-Guide`; peak-end paper [49] `https://bear.warrington.ufl.edu/brenner/mar7588/Papers/fredr-kahneman-jpsp1993.pdf`.
+- Key URLs (as listed in Sources): Big Fish structure [46] `https://johnaugust.com/?p=8341`; Mama Micra at IDFA [48a] `https://www.idfa.nl/en/film/55f8d8c8-5981-4818-8f9a-ecc33334c43a/mama-micra/`; Stories We Tell [20] `https://documentary.org/node/33754`; My Architect [22] `https://documentary.org/node/35088`; Boyhood editing [30] `https://www.filmcomment.com/interview-sandra-adair-boyhood/`; Netflix timed text [60] `https://partnerhelp.netflixstudios.com/hc/en-us/articles/217350977-English-Timed-Text-Style-Guide`; peak-end paper [49] `https://bear.warrington.ufl.edu/brenner/mar7588/Papers/fredr-kahneman-jpsp1993.pdf`; 99th Animated Short Rules [68] `https://www.oscars.org/sites/oscars/files/2026-05/99th%20Animated%20Short%20Rules.pdf`.
 
 ## Open gaps (TODO(research))
 
-Do not present these as settled. Name them in any output that depends on them: no stopwatch timings beyond *Up*; legal viewing routes for most exemplars; no audience evidence on 12 versus 25 versus 45 minutes; no precedent for a tribute premiered to a living subject who does not know; the Academy 40-minute sentence is checked against the 99th text (research note, Follow-up Q5) and must be re-checked each Awards year.
+Do not present these as settled. Name them in any output that depends on them: no stopwatch timings beyond *Up*; legal viewing routes unknown for *Mama Micra* (any country) and for *The Tree of Life* in the US; *Boyhood* has a US snapshot route and *The Tree of Life* UK and Canadian ones (research round-2 follow-up, Q5); the maker's country is unknown; found voice: only her own consent is clean everywhere; lawyer consult before picture lock once the country is known; no audience evidence on 12 versus 25 versus 45 minutes; no precedent for a tribute premiered to a living subject who does not know; the Academy 40-minute sentence is checked against the 99th text (research note, Follow-up Q5) and must be re-checked each Awards year.
 
 ## Sources
 
-[1] to [66] are external. [P1] to [P8] are project files. Source [9] is not cited here and is left out.
+[1] to [66] and [68] are external. [P1] to [P8] are project files. Sources [9], [67] and [69] are not cited here and are left out.
 
 - [1] Cartoon Brew — Editor Janus Billeskov Jansen Explains His Role In Constructing The Narrative Of 'Flee' — https://www.cartoonbrew.com/interviews/editor-janus-billeskov-jansen-explains-his-role-in-constructing-the-narrative-of-flee-214304.html — undated; fetched — dialogue cut first as "lines of voices"; archive found in editing; ending shot; house-hunting scene kept after early audiences; out-of-continuity jumps kept on purpose.
 - [2] Documentary.org — Flee feature — https://documentary.org/node/36985 — undated; fetched — about 20 interviews over 3 to 4 years, audio only used; "master assembly ... just sound with storyboards"; "reversed editing"; scene dialogue written and voiced by the director as scratch; looser trauma style.
@@ -203,6 +204,7 @@ Do not present these as settled. Name them in any output that depends on them: n
 - [64] Rocks in My Pockets — interview and reviews — https://killermoviereviews.com/interview/signe-baumane-and-sturgis-warner-on-living-with-rocks-in-my-pockets ; https://screendaily.com/rocks-in-my-pockets/5074111.article — snippet only — the maker narrates; voice-over recorded first.
 - [65] Funan — Cineuropa and Zippy Frames interviews with Denis Do — https://cineuropa.org/en/interview/369001/fr/interview (fetch 403) ; https://zippyframes.com/interviews/political-animation-interview-with-denis-do-director-of-funan — snippet only — notepad conversations with his mother from March 2009; a fiction "based on" her life.
 - [66] National Film and Sound Archive of Australia — Mary and Max: two of Max's life goals come true — https://www.nfsa.gov.au/collection/item/mary-and-max-two-maxs-life-goals-come-true — undated; snippet only (fetch 403) — comedy balancing loneliness; the forgiveness letter as the most poignant scene.
+- [68] Academy of Motion Picture Arts and Sciences — 99th Animated Short Rules (Rule Eight) — https://www.oscars.org/sites/oscars/files/2026-05/99th%20Animated%20Short%20Rules.pdf — fetched; text extracted locally (research note, Follow-up Q5) — 40 minutes or less including credits; 75 percent animation; animated documentary may enter either short category; eligibility 1 Oct 2025 to 30 Sep 2026.
 - [P1] `playbooks/story.md` (v0.1, 2026-10-18) — chapter structures A/B/C, Up timings from a student essay, through-line method, drawers, 25-minute budget, consent values.
 - [P2] `playbooks/animated.md` and `research/animated.md` (2026-10-18) — disclosure convention, time-passing devices, era by medium, legal-viewing table F7, Wonder Years, Kalina, Flee/Tower/Missing Picture entries.
 - [P3] `playbooks/surprise-ops.md` (2026-10-18) — consent card, truthful pretext cards A to E, hard-chapter decision sheet, shared/private cuts, reveal-day run sheet.

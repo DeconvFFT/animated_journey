@@ -14,7 +14,7 @@ Human guide: `playbooks/production-scale.md`. Evidence, Q1 to Q10 and the model'
 ## When to use / when not to
 
 Use it for:
-- whether a runtime (8, 12, 15 to 18, 25, 45 or 90 minutes) fits the maker's weekly hours;
+- whether a runtime (9, 12, 15 to 18, 25, 45 or 90 minutes) fits the maker's weekly hours;
 - the slice verdict on 20 December 2026, and any later kill or cut;
 - gate dates, the burn-down, the picture-lock steps and the unlock rule;
 - creating or validating `shots/status.csv`, `chapters.csv`, `hours.csv`, `gates.csv` or `decisions.csv`.
@@ -28,8 +28,8 @@ Do not use it for:
 
 ## Procedure
 
-1. **Read the inputs from the repo, not from memory.** Required: H (weekly hours per phase, written by the maker), the runtime tier, shots per minute (12 or 8), hero share (10 or 5 percent), which of the five levers are adopted, `mu` and `mu_fin` (1.0 until measured), `h_slice` and `h_slice_fin` (if measured) and whether mix, grade and captions are bought. If H is missing, stop and ask the maker. Never assume 10, 20 or 30 hours.
-2. **Name the case you are using.** Prior uses the older playbook minutes. Base is the evidence-adjusted case, which allows for people finishing about 1.6 times their predicted time [65]. Levers is Base with the five levers. Best is Prior speeds with the structural levers. Stress is a bad run. Report Base unless the maker asks for another, and always state which case a number came from.
+1. **Read the inputs from the repo, not from memory.** Required: H (weekly hours per phase, written by the maker), the runtime tier, shots per minute (12 or 8), hero share (10 or 5 percent), which of the five levers are adopted, `mu` and `mu_fin` (1.0 until measured), `h_slice` and `h_slice_fin` (if measured) and whether mix, grade and captions are bought (only if two quotes are recorded in `decisions.csv`; until then finishing stays at 2.7 hours per minute, research F1 and G1). If H is missing, stop and ask the maker. Never assume 10, 20 or 30 hours.
+2. **Name the case you are using.** Prior uses the older playbook minutes. Base is the evidence-adjusted case, which allows for people finishing about 1.6 times their predicted time [65]. Levers is Base with the five levers, lever 3 (bought finishing) counted only once two quotes are recorded. Four is Base with the four levers that need no purchase. Best is Prior speeds with the structural levers. Stress is a bad run. Report Base unless the maker asks for another, and always state which case a number came from.
 3. **Count the shots.** `shots = shots_per_min x T`. Hero shots are `hero_share x shots`. The mix is 60 percent class A, 25 percent B, 10 percent C and 5 percent D [2].
 4. **Weight the minutes per shot.** Base: A 7, B 15, C 120, D 6. Prior: 2, 12, 60, 5. Stress: 10, 18, 180, 8. Weighted minutes = sum of share times minutes. Base gives 20.25.
 5. **Compute the hours.** Use these formulas, with Base constants where none is given.
@@ -47,14 +47,14 @@ Do not use it for:
    - Check 3, finishing: 50 percent of fixed finishing and 75 percent of variable finishing fall after picture lock. They must fit in W17 and W18 (7 to 20 February), which hold H x 0.85 x 2 hours.
    - Check 4, buffer: hours left in W19 (21 to 27 February) after the rehearsal hours.
 7. **Give a verdict.** OK means checks 1 and 2 pass. `post` means check 1 passes but check 2 fails. SHORT means check 1 fails. Add `/fin` when check 3 is a crunch.
-8. **Set the runtime tier with the slice table.** Use the slice table in the playbook (T2), or the model's SLICE CALIBRATION block, to turn `h_slice` into a weekly need. `h_slice` is production side: the minutes for the slice with activity brief_G0, style_G1, review_G2, craft_refine_G3, chapter_G4, dignity_G5, tech_G6, sound and rework. `h_slice_fin` is grade, mix, captions, master and qc, and it gives `mu_fin` against its own prediction. Derive `mu` and `mu_fin` from the block. Do not work it out by hand unless you check it against the block. Predicted `h_slice` is 9.9 (Prior), 26.5 (Base) and 54 (Stress); predicted `h_slice_fin` is 16.5 (Base). Learn and admin are excluded from both and compared with the 30-hour allowance. T2 holds finishing at Base, so read it only with `mu_fin` = 1. TODO(research): brief_G0 and style_G1 are in `h_slice` but not in the prediction (model row 173 note).
-9. **Apply the tier rules.** 12 minutes (wrapper plus three 3:00 modules) if H is about 14 or more with levers. 8 minutes if H is about 10 (TODO(research): no whole-module version at 8 minutes; nine is the nearest). 15 to 18 only if the slice passes its thresholds and H is about 20 or more. 25 as a private cut after the premiere. Do not plan 45 or 90 [7].
+8. **Set the runtime tier with the slice table.** Use the slice table in the playbook (T2), or the model's SLICE CALIBRATION block, to turn `h_slice` into a weekly need. `h_slice` is production side: the minutes for the slice with activity brief_G0, style_G1, review_G2, craft_refine_G3, chapter_G4, dignity_G5, tech_G6, sound and rework. `h_slice_fin` is grade, mix, captions, master and qc, and it gives `mu_fin` against its own prediction. Derive `mu` and `mu_fin` from the block. Do not work it out by hand unless you check it against the block. Predicted `h_slice` is 9.9 (Prior), 26.5 (Base) and 54 (Stress); predicted `h_slice_fin` is 16.5 (Base). Learn and admin are excluded from both and compared with the 30-hour allowance. T2 holds finishing at Base, so read it only with `mu_fin` = 1. Its all-levers column includes bought finishing, so read the no-levers column until two quotes are recorded. G0 and G1 work is priced inside the per-shot minutes (research Q4), so brief_G0 and style_G1 belong in `h_slice` and are already in the prediction; `story` is priced separately. A recalculation gives 23.9 at h_slice 26 (the table shows 24.1); under 1 percent, table unchanged.
+9. **Apply the tier rules.** 12 minutes (wrapper plus three 3:00 modules) if H is about 16 or more with the four levers (about 14.5 with bought finishing). 9 minutes (wrapper plus two modules) if H is about 10: at 10 hours, 9 minutes only if the slice comes in near Prior speed, otherwise add hours or buy finishing. At 12 minutes the G-MID rule is: below 5.4 minutes approved on 17 January, cut the lowest-priority module (to 9 minutes); a second module is cut only at G-DRAFT if it is not at draft. 15 to 18 only if the slice passes its thresholds and H is about 20 or more. 25 as a private cut after the premiere. Do not plan 45 or 90 [7].
 10. **Compute the burn-down weekly.** Approved runtime is the sum of `target_s` for shots at approved, refine, final or locked, divided by the total target. The checkpoints are 45 percent by 17 January (for 12 minutes, 5.4 minutes) and 100 percent drafted by 31 January.
 11. **Compute the selection ratio and `mu` only from logged data.** Selection ratio is `gens_kept / gens_tried`, for AI clips only. `mu` is the sum of `maker_act_min` over finished shots divided by the sum of `maker_est_min` over the same shots, after the first 20 shots. Vendor ratios are not our ratios [47].
 12. **Write decisions, not guesses.** Add a row to `decisions.csv` only when the maker has made the decision. Record the runtime before and after, the measured value, H and the decision in words. Agents recommend. The maker decides. Gate dates and lock dates change only with the maker's approval.
 13. **Enforce the lock.** At picture lock (Saturday 6 February 2027), set `locked=1` for every shot, record the timeline hash and frame count per chapter, and create the git tag `picture-lock-2027-02-06`. Refuse any change to a locked shot's duration or order, and point to the unlock rule. A change to shot order, timing or duration after lock is an unlock, because it breaks sync with music, voice-over and effects [63].
 14. **Apply the unlock rule when asked.** Require a written reason, the cost in hours (which sound, score and grade passes must redo), and a 24-hour wait. Allow only factual, dignity or rights errors. Allow at most two unlocks after lock. Log each in `decisions.csv`.
-15. **Validate the status file.** Check the shot ID pattern `^LJ-C\d{2}-S\d{3}$`, the allowed status and class values, and the rule that `approved`, `final` and `locked` need a version, `kind=appr` and a gate of G2 or higher. No more than three class A shots in a row in a chapter without a still, B, C, D or voice-only beat. Never let an agent raise `cloud_max`.
+15. **Validate the status file.** Check the shot ID pattern `^LJ-(C\d{2}|W\d)-S\d{3}$` (wrapper shots W1 and W2 validate), the allowed status and class values, and the rule that `approved`, `final` and `locked` need a version, `kind=appr` and a gate of G2 or higher. No more than three class A shots in a row in a chapter without a still, B, C, D or voice-only beat. Never let an agent raise `cloud_max`.
 
 ## Checklists
 
@@ -69,11 +69,11 @@ Do not use it for:
 - [ ] G-READY Sun 15 Nov 2026: H in writing; spikes S1 to S5 pass or fallbacks named; style frames approved.
 - [ ] G-SLICE-0 Sun 6 Dec 2026: animatic with real photos and temporary sound.
 - [ ] G-SLICE Sun 20 Dec 2026: slice at the bar, mix, grade, captions and master on venue-class playback; h_slice and h_slice_fin measured.
-- [ ] G-RESTART Sun 3 Jan 2027; G-MID Sun 17 Jan; G-DRAFT Sun 31 Jan.
-- [ ] G-LOCK Sat 6 Feb; G-MIX Sat 13 Feb; G-MASTER Sat 20 Feb; G-REHEARSE Mon 22 Feb.
+- [ ] G-RESTART Sun 3 Jan 2027; G-MID Sun 17 Jan (12 minutes: below 5.4 minutes approved, cut the lowest-priority module to 9 minutes; a second only at G-DRAFT, if not at draft); G-DRAFT Sun 31 Jan.
+- [ ] G-LOCK Sat 6 Feb (Lunar New Year falls on this date; if observed, lock Fri 5 Feb [94]); G-MIX Sat 13 Feb; G-MASTER Sat 20 Feb; G-REHEARSE Mon 22 Feb.
 
 **Slice acceptance (all must pass; record each in `reviews/C01/`)**
-- [ ] 90 to 120 seconds; frame count equals duration x 24; ffprobe clean.
+- [ ] The 100-second slice (accept 90 to 120 seconds) of module M1, containing the kitchen hero shot, at least 10 class A, 4 class B and 1 class D shots, a VO line, a music cue, one still and the transition into the next module's motif; frame count equals duration x 24; ffprobe clean. The rest of M1 is built after the gate.
 - [ ] Faces and type are clean at full resolution; no invented faces; reconstructions are visibly stylised; no more than 60 percent of tweens share one ease.
 - [ ] Real mix (voice-over, music cue, room tone, transitions); loudness measured with `ebur128` against the theatrical-delivery target; a person listened on venue-class speakers.
 - [ ] One grade through the same chain; colour-patch test within plus or minus 3 out of 255 on the final encode [2].
@@ -101,7 +101,7 @@ Theatrical work holds up on a big screen and in a dark room. Use these tests to 
 ## Ethics, rights and privacy guardrails
 
 - **The surprise.** The maker is the only person in on the project. Do not add anyone to a file, share, tool, notification or thread without the maker's explicit decision. Do not contact any relative or friend to test or source the film. Keep repo, folder and commit names harmless [1].
-- **Cloud levels.** Personal material defaults to `cloud_max=none`. Only the maker raises it. Never send family imagery to a free render farm [57], a hosted tracker or a rented GPU. Rented GPU pricing is at [54], and the speed estimate is unverified [56].
+- **Cloud levels.** Personal material defaults to `cloud_max=none`. Only the maker raises it. Never send family imagery to a free render farm [57], a hosted tracker or a rented GPU. Rented GPU pricing is at [54]. Cycles speed is 17.5 s (Suzanne) to 204 s (classroom) per 1080p frame on the container, and 1.6 to 5.6 s per frame on an RTX 4090 at 64 to 256 samples [82][83][84]; spike S3 measures the kitchen set and passes if one real hero frame lands within 2 times the table. Hero finals are GPU work by default: the maker's PC, or a rented pod only for scenes with no family imagery. A scene that uses her photographs as textures counts as family imagery and needs the maker's explicit say.
 - **Refusals.** Veo probably refuses photos of children, which is UNVERIFIED [8]. If a provider refuses, accept the refusal. Do not resubmit the photo through another route.
 - **Real memories.** AI may restore, restyle, animate and connect real photos and stories. It must not invent events, people, faces or cloned voices, or put words in anyone's mouth [1].
 - **Labels.** Mark AI-altered or generated content on the label ladder (L1 to L4c) in `status.csv` [8].
@@ -116,7 +116,7 @@ Theatrical work holds up on a big screen and in a dark room. Use these tests to 
 - Research notes (evidence, Q1 to Q10, formulas, gaps): `research/production-scale.md`
 - Charter: `CHARTER.md`
 - Related skill: `.claude/skills/agent-first-production-pipeline/SKILL.md`
-- Open before relying on the model: H (the maker's weekly hours, not yet given); the chapter count (the wrapper plus three 3:00 modules for 12 minutes in the playbook; film-story's own 12-minute row lists four 2:15 chapters; seven 100-second learning-curve units in the model, which are not the cut structure); the spike list S1 to S5; the DCP-or-file decision; the frame rate (this model uses 24 per second); cash for buying the mix and grade; and the holiday and observance dates for the jurisdiction. The playbook's Decisions section gives the current lean for each.
+- Open before relying on the model: H (the maker's weekly hours, not yet given); the chapter count (the wrapper plus three 3:00 modules for 12 minutes; film-story's 2:15 row is a logged delta for its next round; seven 100-second learning-curve units in the model, which are not the cut structure); the spike list S1 to S5 (S3 measures the real kitchen); the DCP-or-file decision; the frame rate (this model uses 24 per second); cash for buying the mix and grade (two quotes needed, research F1 and G1); the holiday and observance dates for the jurisdiction (research F5); and the Claude plan (research F4). The playbook's Decisions section gives the current lean for each.
 
 ### Sources
 
@@ -140,3 +140,7 @@ Theatrical work holds up on a big screen and in a dark room. Use these tests to 
 - [66] Wikipedia, "Learning curve" — https://en.wikipedia.org/wiki/Learning_curve — read 2026-10-18 — Wright's law, 80 percent curve.
 - [67] PremiumBeat, "A masterclass in making a Pixar animated short" — https://www.premiumbeat.com/blog/a-masterclass-in-making-a-pixar-animated-short — undated — look tests "super quick and dirty, just with a few days of work".
 - [68] Indietalk and ZHdK audio-post pages — https://indietalk.com/goto/post?id=348469 and https://medienarchiv.zhdk.ch/files/f693e5ef-5249-491e-8bfa-ae379306539a?lang=en — undated — **snippet-only** (both returned errors): "one hour per finished minute", "six hours per linear minute".
+- [82] Blender Open Data, About — https://opendata.blender.org/about/ — read 2026-10-18 — score definition (samples per minute, summed over scenes), snapshot address.
+- [83] Blender Open Data daily snapshot — https://opendata.blender.org/snapshots/opendata-latest.zip — Last-Modified Sun, 18 Oct 2026 00:01:21 GMT — licence Creative Commons 0 stated in the archive's README.txt and LICENSE.txt.
+- [84] Blender Benchmark 2.0 files — https://mirrors.ocf.berkeley.edu/blender/release/BlenderBenchmark2.0/ — read 2026-10-18 — scenes classroom, junkshop, monster; script sets samples to 1<<24, 30-second time limit, adaptive sampling off.
+- [94] Wikipedia, Chinese New Year — https://en.wikipedia.org/wiki/Chinese_New_Year — read 2026-10-18 — 2027: Saturday 6 February, Goat.

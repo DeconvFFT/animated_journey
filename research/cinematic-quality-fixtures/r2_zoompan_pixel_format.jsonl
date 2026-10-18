@@ -1,0 +1,3 @@
+{"case": "A: zoompan,format=rgb24 (zoompan runs in rgb24)", "a": 0.2903, "a_d4": 0.3533, "b": 0.1273, "b_d4": 0.1495, "c": 0.2934}
+{"case": "B: zoompan,format=yuv420p in the filter chain", "a": 0.6293, "a_d4": 0.8606, "b": 0.1271, "b_d4": 0.1491, "c": 0.2917}
+{"case": "C: zoompan with x264 -pix_fmt yuv420p as an output option (the usual command line), decoded", "a": 0.6274, "a_d4": 0.8577, "b": 0.13, "b_d4": 0.1511, "c": 0.2982}

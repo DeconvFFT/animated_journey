@@ -4,12 +4,12 @@ These are throwaway measurement scripts, not production code. They expect a text
 (made with: convert -size 1920x1080 plasma:fractal -blur 0x1 still.png) and write temporary mp4 files; delete them afterwards.
 Run with python3 -I from the same directory only after copying the script there (python -I ignores the current directory for imports).
 
-zoom_velocity_classifier.py   M-C1 and M-C7 estimator: least-squares zoom per frame pair, classifies linear / in-out / ease-out, detects twos, and prints MO8 roughness (nine-frame residual over mean speed). Set ZV_SIZE=1920x1080 for 1080p; the default is 240x135.
+zoom_velocity_classifier.py   M-C1 and M-C7 estimator: least-squares zoom per frame pair, classifies linear / in-out / ease-out, detects twos, and prints MO8 roughness (nine-frame residual over mean speed). MO8 pass (review round 2): roughness no more than 1.3 times a Pillow sub-pixel reference of the same move, and centre jitter at most 0.05 px (`analyse()` in zoompan_vs_subpixel_prints.py); no absolute roughness threshold. Set ZV_SIZE=1920x1080 for 1080p; the default is 240x135.
 gen_synthetic_pushins.py      renders the synthetic push-ins (linear, cosine in-out, cubic out, back-out, and the on-twos versions) with Pillow.
 zoompan_vs_subpixel.py        slow 4% push at 1080p from a 4K source: ffmpeg zoompan vs Pillow bicubic (roughness 0.35 vs 0.13 in M-C7). Writes pil_slow.mp4 and zp_slow.mp4; run `ZV_SIZE=1920x1080 python3 -I zoom_velocity_classifier.py pil_slow.mp4 zp_slow.mp4` to read the roughness.
 thin_line_survival.py         M-C6: 1-4 px red and black lines through H.264 CRF 18 4:2:0.
 grain_bitcost_and_banding.py  M-C5/M-C4 support: file size vs grain strength at CRF 18 (needs the g0..g32.mp4 files it describes).
-Still dependence (MO8): M-C7 roughness depends on still.png, so the absolute values change with the still; compare ratios, not absolutes. The still is not saved in this folder. Reproductions on 2026-10-18: the advisor's still gave Pillow 0.19 and zoompan 0.33 (1.7 times); a scribe check on a numpy-generated still (FFT-filtered noise, 1920 by 1080, ZV_SIZE=1920x1080) gave Pillow 0.076 and zoompan 0.277 (3.6 times); M-C7's original still gave 0.13 and 0.35 (2.7 times).
+Still dependence (MO8): M-C7 roughness depends on still.png, so the absolute values change with the still; compare ratios, not absolutes. The still is not saved in this folder. Reproductions on 2026-10-18: the advisor's still gave Pillow 0.19 and zoompan 0.33 (1.7 times); a scribe check on a numpy-generated still (FFT-filtered noise, 1920 by 1080, ZV_SIZE=1920x1080) gave Pillow 0.076 and zoompan 0.277 (3.6 times); M-C7's original still gave 0.13 and 0.35 (2.7 times). The advisor's second reproduction (FFT-noise still, 1920 by 1080, ZV_SIZE=1920x1080, 2026-10-18) gave Pillow 0.064 and zoompan 0.274 (4.3 times).
 Not saved as files: the signalstats flicker index (ffmpeg -vf signalstats,metadata=print + second difference of YAVG) and the grain-loop autocorrelation (numpy, 8 frames x2 vs fresh noise).
 
 --- Follow-up round 1 (2026-10-18, cloud container, ffmpeg 6.1.1, Python 3.13, numpy, Pillow; fontTools only for the metric cross-check) ---
@@ -33,3 +33,35 @@ pan_controls.py                Control tests: static, flat grain, fade to black,
 Result files (small): mc7b_4pct.jsonl, mc7b_10pct.jsonl, pan_validation.jsonl, pan_ffcrop.jsonl, pan_controls.jsonl, caption_xheight_results.json.
 Note: edge_jit_px1080 was added to zoompan_vs_subpixel_prints.py after the runs; in the jsonl files it equals rough x mean_speed x 960.
 Source images, encoded clips and downloaded TIFF/JPEG scans were deleted after use (rebuild them with prepare_prints.py).
+
+--- Follow-up round 2 (2026-10-18, cloud container; ffmpeg 6.1.1, Python 3.13, numpy 2.5, Pillow 12.3; Chromium build 1194 via playwright-core 1.56.1; bpy 5.2.2 LTS; filmcraft-cli 0.9.0 Linux) ---
+mo8_audit.py                   MO8 on ANY push or pull (video file or folder of PNG frames): centre jitter (MO8a), edge jitter (MO8b), roughness (MO8c), plus the same two jitters
+                               from the 4th difference (a_d4, b_d4: curvature-free, valid for any push length), total zoom, ease class; folders are also audited after x264 CRF 14.
+                               Run: python3 -I mo8_audit.py clip.mp4   (needs zoompan_vs_subpixel_prints.py and zoom_velocity_classifier.py in the same folder)
+ref_rows.py                    Pillow (resize box, transform EXTENT) and ffmpeg zoompan reference rows on the same still, length and amount as the renderer under test.
+css_gsap_capture.js            Chromium (playwright-core) stepped capture of a CSS or GSAP push to PNG frames. Modes css_wc, css_nowc, gsap_wc, gsap_force3d, gsap_proxy, css_layout (negative control).
+css_record_video.js            The real-time recordVideo shortcut, for the record (what NOT to do).
+blender_push.py                bpy (Cycles CPU) camera push or pan on an emission plane; options for texture interpolation, motion blur (sub-frame sampling), samples, pixel filter.
+filmcraft_push.py              FilmCraft CLI (headless) one-still push or pan with a chosen keyframe interpolation and export preset; set FILMCRAFT_CLI to the binary (filmcraft-cli.exe on Windows).
+pan_ease_classifier.py         Pan ease classifier: pan_estimator vectors -> position curve -> fit of named easings (GSAP names) with start/end holds -> class, family, family key, MO1b/MO2 verdicts; mo9_check().
+pan_ease_validate.py           Synthetic pans with known easing (also CSS cubic-beziers) cut from a 4K print at 1:1, treatments clean, grain_h264, twos, int_steps, parallax, tilt, left.
+pan_ease_table.py              Summary table for pan_ease_validate.py output.
+ab_push_card.py                The venue A/B push card: 3 Pillow-vs-zoompan pairs and a 7-rung injected-jitter ladder, randomised, with a key measured on the decoded file and a recording sheet.
+venue_calc.py                  The maker's six venue answers (FQ7) -> luminance, hidden shadow level, seat distances in screen heights, type floors, jitter in arc seconds.
+windows_check.py               One command for the maker's PC: versions, caption x-height in the maker's font, zoom classifier, MO8 audit, pan estimator and pan ease classifier, with PASS/CHECK output.
+prepare_prints_small.py        Fetches only the two small Smithsonian CC0 prints (p2, p3) used in round 2.
+caption_xheight.py             (changed) now Windows-safe (no drive-letter path in the filter string) and accepts a font file and family name to check the maker's own caption font. Default output is identical to round 1.
+mo8_push_length.py             MO8 for a perfect Pillow push and for zoompan at 1, 2, 3, 4 and 6 s: the 9-frame-mean edge jitter contains the ease curve's curvature, the 4th-difference one does not.
+zoompan_pixel_format.py        zoompan on a PNG still: centre jitter 0.29 px with an RGB path, 0.63 px when the chain ends in yuv420p (the usual command line).
+Result files (round 2):
+  r2_renderers_reference_rows.jsonl   Pillow box / EXTENT / zoompan on the p2 print, N=96 at 4% and N=48 at 2%, raw and after x264 CRF 14 (a, b, c, a_d4, b_d4)
+  r2_renderers_chromium.jsonl         CSS / GSAP modes (css_gsap3 series, with d4 and after-H.264 results) plus GSAP 3.15.0 rows (raw only)
+  r2_renderers_filmcraft.jsonl        FilmCraft 0.9.0 pushes: interpolation variants, built-in H.264, easeOut:easeIn pairs
+  r2_renderers_blender.jsonl          Blender Cycles CPU 32 spp, 48 frames at 2%: linear, linear + motion blur, cubic, closest
+  r2_pan_ease_validation.jsonl        114 synthetic pans with known easing (pan_ease_validate.py); summarise with pan_ease_table.py
+  r2_pan_ease_filmcraft.jsonl         FilmCraft pans through pan_ease_classifier.py (the last two rows use the library with smoothstep)
+  r2_mo8_push_length.jsonl            perfect Pillow push and zoompan at 1, 2, 3, 4, 6 s
+  r2_zoompan_pixel_format.jsonl       zoompan RGB path against yuv420p chain
+  r2_ab_push_key_example.json, r2_ab_push_sheet_example.txt   the answer key (measured on the decoded file) and the recording sheet of one card run (the 130 MB video is not stored)
+  r2_windows_check_container_report.json   windows_check.py full run in the container (versions, five PASS results)
+Not stored: the prints, rendered frames and clips, the FilmCraft and GSAP downloads (see sources [118] to [121] of the note for how to fetch them).

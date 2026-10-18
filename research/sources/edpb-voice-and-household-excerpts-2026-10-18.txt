@@ -1,0 +1,20 @@
+Dated excerpt: EDPB guidance used for the film-story round 2 question "Is a voice recording personal data, and does the household exemption cover a public screening?"
+For research/film-story.md "Follow-up research (round 2)", sources [109] and [110].
+Captured Sunday 2026-10-18 by a Sonnet researcher in the cloud container. The fetch tool could not read the PDFs, so each was saved by the tool and the text extracted locally with pdftotext (-layout). Quotes are short and verbatim; notes in square brackets are mine.
+
+1. EDPB Guidelines 02/2021 on virtual voice assistants, Version 2.0, adopted 7 July 2021
+   URL: https://www.edpb.europa.eu/system/files/2021-07/edpb_guidelines_202102_on_vva_v2.0_adopted_en.pdf
+   Para 47: "Since VVAs process personal data (e.g. users' voice, location or the content of the communication), they must comply with the transparency requirements of the GDPR"
+   Para 81: "The use of voice data for user identification implies the processing of biometric data as defined in Article 4.14 of the GDPR."
+   Para 95: "VVAs process and generate a wide variety of personal data like voice, transcriptions of voice, metadata or system logs."
+   Para 105: "Anonymizing voice recordings is specially challenging, as it is possible to identify users through the content of the message itself and the characteristics of voice itself."
+   [Context is voice assistants. The statements are general about voice, but the document is not about family recordings. Applying them to a recording of a relative is my inference.]
+
+2. EDPB Guidelines 3/2019 on processing of personal data through video devices, Version 2.0, adopted 29 January 2020 (version history lists 2.1 of 26 February 2020 "Amending material mistake")
+   URL: https://www.edpb.europa.eu/sites/default/files/files/file1/edpb_guidelines_201903_video_devices_en_0.pdf
+   Para 11: "Pursuant to Article 2 (2) (c), the processing of personal data by a natural person in the course of a purely personal or household activity, which can also include online activity, is out of the scope of the GDPR."
+   Para 12: the exemption "must be narrowly construed"; quoting the Court of Justice (Lindqvist, C-101/01, para 47), it is "relating only to activities which are carried out in the course of private or family life of individuals, which is clearly not the case with the processing of personal data consisting in publication on the internet so that those data are made accessible to an indefinite number of people".
+   Para 13, example: "A tourist is recording videos both through his mobile phone and through a camcorder to document his holidays. He shows the footage to friends and family but does not make it accessible for an indefinite number of people. This would fall under the household exemption."
+   Para 13 also lists factors: a personal relationship with the data subject, whether scale or frequency suggests professional activity, and potential adverse impact; "an overall assessment is needed".
+   Para 131 (organisational measures, policies): lists "use of hidden cameras and audio in addition to video recording" among topics a policy should cover; footnote 26: "This may depend on national laws and sector regulations."
+   [Video-surveillance guidance. The household-exemption reasoning is general; applying it to a film screening is my inference. The guidelines say nothing specific on audio beyond para 131.]

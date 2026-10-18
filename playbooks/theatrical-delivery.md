@@ -54,9 +54,9 @@ Check: each tool opens and reports its version. How much memory DCP-o-matic uses
 - Grade to Rec.709 / BT.1886 at a mid-key look. Rec.709 uses limited-range code values, 64 to 940 for luma on 10-bit [34].
 - Working limits (a proposal, not a sourced rule): keep shadows above about code 20 to 24 on 8-bit limited range, keep whites at or below 235 (940 on 10-bit), and check skin tones against a known family photo.
 - Make two small trims. They are lookup files applied only when exporting. The master is never touched.
-  - **Trim V, for a lit venue:** a starting lift of about 2 to 4 IRE in the shadows and a mid-gamma rise of about 0.05 to 0.10. These are starting values only.
+  - **Trim V, for a lit venue:** a starting lift of about 2 to 4 IRE in the shadows and a mid-gamma rise of about 0.05 to 0.10. These are starting values only. They are set on site at the TD-L2b visit (by Sunday 17 January 2027).
   - **Trim C, for a dark cinema:** identity (no change) until a real cinema test.
-- Hash and log every trim file. The method is ffmpeg's `lut3d` filter, which is untested here (**TODO(research)**).
+- Hash and log every trim file. The method is ffmpeg's `lut3d` filter. It was run in the cloud container on 2026-10-18 (ffmpeg 6.1.1) with a `.cube` file and gave no error; confirm once on the Windows PC.
 
 Check: the venue test clip (Exercise 4) looks right on the real screen.
 
@@ -67,7 +67,7 @@ Keep dialogue, music and effects as separate stems, and mix once.
 - **Cinema:** do not normalise. Keep headroom and real dynamics. Report the loudness for information only and let a cinema technician align the room. A correctly aligned cinema sets the level, not a number [30].
 - **Venue:** start at about -16 LUFS integrated and -1 dBTP. Check intelligibility in the back row with the oldest listener. Never trust the number over the room [2][5].
 - **Online:** about -16 LUFS and -1 dBTP. Streaming services normalise, so a quiet cinema mix posted online would play quietly [38].
-- **Conflict to settle on the card:** the research starts the venue at -1 dBTP, while the toolchain's loudness example uses -1.5 dBTP [2]. Pick one value and record why.
+- **Settled: -1 dBTP per R128 and the research; the toolchain's -1.5 was a loudnorm example, not a target [36][2].**
 - Delivery is stereo (L/R) for now. A later cinema version may use a 5.1 fold-up with voices in the centre channel, which is the better cinema option (inference) [28].
 - **Mono check:** if loudness drops by more than about 3 LU between the stereo and mono-folded readings, the mix has phase trouble that will show on a mono venue PA. This threshold is a rule of thumb (inference). See Exercise 5.
 
@@ -76,8 +76,9 @@ Keep dialogue, music and effects as separate stems, and mix once.
 - Open captions, burned into the picture, for the venue file and for the first DCP.
 - Keep all text inside the central 90% by 90% box. EBU R95 treats the outer 5% as the graphics-safe margin [37].
 - At most two lines, 42 characters or fewer per line, and under 20 characters per second [4].
-- **Venue file:** a line height of 7 to 8% of the picture height. The earlier format note reports that `FontSize=23` in ffmpeg gives about 8.0% at 1080p, tested on a TV from three metres [4]. **TODO(research):** confirm this on the real screen with the test clip.
+- **Venue file:** a line height of 7 to 8% of the picture height. The earlier format note reports that `FontSize=23` in ffmpeg gives about 8.0% at 1080p, tested on a TV from three metres [4]. Confirmed at TD-L2b (by Sun 17 Jan 2027) from caption sizes 20, 23 and 26 on the venue screen; until then 23 is the working value.
 - **Cinema:** start at 5.5 to 6% line height. The same percentage looks about twice as large to a cinema audience as on a 55-inch TV at three metres (computed). Keep captions out of the bottom 8 to 10%, where heads may block them (inference).
+- **Festival-style delivery:** a Sundance-style delivery needs a DCP with both a Closed Caption and an Open Caption version. Burned-in captions alone cannot satisfy that (Sundance FAQ 31, document dated 2026-09-08; "subject to change") [88].
 - Keep captions out of the black side bars of a Flat container. Do not bury them there.
 - **Fonts:** Windows fonts may be used in a video if the text is rendered as a bitmap in the picture and the font file is not embedded [76]. For any DCP subtitle track, use a SIL OFL font, which is unrestricted for video titling [75].
 
@@ -97,10 +98,16 @@ Check: the test clip and the film share pixel format and tags, so one test cover
 
 ### Step 8. Check every file
 
-- Run ffprobe on each file. Read `pix_fmt`, `color_range`, `color_space`, `color_transfer`, frame count and duration [3]. The exact command is **TODO(research)**.
+- Run ffprobe on each file. Read `pix_fmt`, `color_range`, `color_space`, `color_transfer`, frame count and duration [3]. Use the command below. It was run in the cloud container on 2026-10-18 (ffmpeg 6.1.1); confirm it once on the Windows PC:
+
+  ```
+  ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,pix_fmt,color_range,color_space,color_transfer,color_primaries,r_frame_rate,nb_frames:format=duration -of default=nw=1 FILE
+  ```
+
+  On the container's 1-second 1080p24 test file it printed `pix_fmt=yuv420p color_range=tv color_space=bt709 color_transfer=bt709 color_primaries=bt709 r_frame_rate=24/1 nb_frames=24 duration=1.000000`.
 - Run the colour-patch test after every re-encode [3].
 - Loudness: `ffmpeg -nostats -i in.wav -af ebur128=peak=true -f null -` prints integrated loudness and peak. The command syntax was run in the cloud container, not yet on the PC.
-- Metadata: strip it with `-map_metadata -1` (inference; test it) so no title or comment travels with the file.
+- Metadata: strip it with `-map_metadata -1`, so no title or comment travels with the file. Run in the cloud container on 2026-10-18, `ffmpeg -i in.mp4 -map_metadata -1 -c copy out.mp4` removed the title tag. ffmpeg re-adds a harmless `encoder` tag, which carries no personal data. Confirm on the Windows PC.
 - Hash: make a SHA-256 manifest of each delivery folder using the `mk_manifest.ps1` pattern that the research notes cite [4]. Copy the folder to the drive, then re-check the hashes from the drive.
 
 Check: the manifest lists every file, and every hash matches after the copy.
@@ -109,18 +116,20 @@ Check: the manifest lists every file, and every hash matches after the copy.
 
 Do this on the Windows PC, not in the cloud container. The container's root disk was full during testing and cannot hold a DCP [47]. Do it only after Exercise 3 passes. If the PC work is not ready, make the DCP after the premiere.
 
+**Branch: the venue is a cinema with a DCP server.** If the venue survey (T5) says the room is a cinema with a DCP server, the DCP becomes the primary deliverable. Exercise 3 moves to Sunday 29 November 2026, you book a January test slot, and the venue MP4 over HDMI becomes rung 1 of the backup ladder (T3).
+
 Settings in DCP-o-matic (names as in the manual; check each one on screen):
 
 1. **New film,** named with the neutral code name. The title appears on cinema servers and in key files, so it must not carry her name before the reveal [5][15].
 2. **Add the ProRes master.** DCP-o-matic reads it through FFmpeg. Reading ProRes is expected to work but is unverified (**TODO(research)**; test it in Exercise 3) [15].
-3. **DCP tab:** Container Flat (1.85). Resolution 2K. Frame rate 24. Standard SMPTE. Encryption off. JPEG2000 bandwidth 100 to 125 Mbit/s (the cap is 250). Reels: single. "Use ISDCF name" ticked. Content type: feature [15].
+3. **DCP tab:** Container Flat (1.85). Resolution 2K. Frame rate 24. Standard SMPTE. Encryption off. JPEG2000 bandwidth 100 to 125 Mbit/s (the cap is 250). Reels: single. "Use ISDCF name" ticked. Content type: feature or short, to match the final runtime. The content type places the film in the projectionist's interface, so pick the one that matches the runtime [15].
 4. **Audio:** six channels is the default. Map L to L and R to R at unity gain. Check what the ISDCF name shows; whether it reads "20" with only L and R mapped is **TODO(research)** [13].
 5. **Video tab:** colour preset Rec. 1886 if the grade was made on a gamma-2.4 display, otherwise Rec. 709. Which gamma each preset applies is **TODO(research)**, so compare the two on a known frame. Range: Video (16-235). Scale to fit [12][35].
 6. **Timed text:** leave it empty if the captions are already burned in [14].
 7. **Make DCP.** Encoding can take many hours [11].
 8. **Verify:** in the Player, open Tools, then Verify DCP. Fix every error and read every warning [18].
 9. **Play in the Player.** This proves the package is well-formed, not that a cinema will accept it. The manual warns against depending on the Player without a lot of testing [17].
-10. **Write the drive.** Use an MBR partition table with one primary partition of type 0x83, and ext3 or ext2 with a 128-byte inode [26]. DCP-o-matic's Disk Writer does this [19]. Label the drive "Do not read with a consumer computer" [26]. Never plug it into the Windows PC after it is written [26].
+10. **Write the drive.** Use ext2 (DCP-o-matic: the only format guaranteed in all cinemas; ISDCF also allows ext3) with a 128-byte inode, on an MBR partition table with one primary partition of type 0x83. Re-partition any retail USB stick first (ISDCF: retail partition tables are "almost certainly incorrect"). MBR drives must be 2 TB or smaller [19][26]. DCP-o-matic's Disk Writer formats the drive this way [19]. Label the drive "Do not read with a consumer computer" [26]. Never plug it into the Windows PC after it is written [26].
 11. **Hash the DCP folder,** copy it to a second place, and re-check the hashes.
 
 Size check: at 125 Mbit/s a finished minute is about 0.94 GB, so a 10-minute film is about 9.4 GB (computed) [15]. Encode speed measured on a cloud container was 3 to 4 wall minutes per finished minute for clean frames and about 12 for grainy frames [47]. Your PC's speed is **TODO(research)**. Record yours in Exercise 3.
@@ -129,6 +138,7 @@ Size check: at 125 Mbit/s a finished minute is about 0.94 GB, so a 10-minute fil
 
 - **Venue survey:** ask the questions in Templates (T5) in your own words, without naming the film's subject. Due by Friday 6 November 2026.
 - **Test clip first,** with the venue's AV person present. The film itself plays only when the room is empty or only you are present.
+- **Visit with the test clip only, by Sunday 17 January 2027 (TD-L2b).** Go with the venue's AV person and play the test clip, never the film. Record the TV or projector settings, check caption sizes 20, 23 and 26 from the back row, and check the PLUGE and tone level. Then set Trim V and the TD-3 caption size from this visit. Without this visit, the first look at the real screen is Monday 22 February, five days before the premiere, and any caption or black-level surprise would force re-exports in premiere week.
 - **Full run** on Monday 22 February 2027. Cold starts on Thursday 25 and Friday 26 February. Walk the failure ladder once each with a stopwatch.
 - **A later cinema:** ask two or three cinemas for written quotes using the enquiry questions (T6). The pages reviewed for this guide (Picturehouse, Everyman, Cinemark) list no prices, formats or insurance rules, so treat them as questions, not facts [89][90][91].
 
@@ -136,15 +146,18 @@ Size check: at 125 Mbit/s a finished minute is about 0.94 GB, so a 10-minute fil
 
 - Give every asset its own row in the rights log (T8). One row per asset, cue or person.
 - **Sort every person and item into a tier:**
-  - **A, in:** a recorded yes on the updated consent card, your own material, or her appearances as you decide.
+  - **A, in:** a recorded yes on the updated consent card, your own material, or her appearances as you decide. Before the premiere, under only-me mode, see the box below.
   - **B, in with documented risk:** adults in ordinary family, event or holiday photos, shown briefly, with no voice and no sensitive context. The owner is known and was asked, or there is an accepted-risk entry. Ratify after the premiere.
   - **C, out unless a yes is on file:** identifiable minors, any voice or video of a living person, named living third parties in hard episodes, ex-partners, estranged people, and any illness, money or conflict scene.
   - **D, out:** the dead, animated or voiced without the closest family's yes; any synthetic voice; invented events shown as fact; identifiable strangers (crop, stylise or leave them out).
+
+> **Only-me mode (current).** The maker is the only person in on the project. Until the maker decides to bring someone in, card 4a (T9) is not read to anyone. Reading it to a relative, lender or contributor is that decision, and it is parked. Before the premiere, Tier A means: the maker's own material, her appearances by proxy, and original, CC0 or licensed assets. Relatives' voices go to her private cut only where a recorded yes is on file (Tier C still applies), or wait for the post-premiere release (T9, 4d). So the public cut can contain: the maker's own material and narration; her appearances by proxy; Tier B stills of adults, with no voice; attributed text with no voice; and original, CC0 or licensed music. It cannot contain a recorded voice of a living person before the premiere. Any step that asks a contributor to confirm, sign or approve (for example TD-L6) waits for the same decision. **Decision point: Sunday 3 January 2027** (T4, TD-L2c), when the narration plan is fixed.
+
 - **Music:** a commercial recording needs a sync licence from the publisher and a master licence from the label. A public-performance licence is a third, separate right [82]. A venue's blanket licence, where there is one, normally covers performance, not copying a recording into your film (background; unverified) [82]. For a public gathering, prefer CC0 or CC BY music with credit (not NC), production music licensed for events, original music, or a licensed substitute.
-- **Photos taken by others:** find the photographer. Look for a studio stamp on the back of the print, and ask the family. Record every search step. Orphan works have no US safe harbour [54]. The UK has a licence scheme from £20 per work, for UK use only [62].
+- **Photos taken by others:** find the photographer. Look for a studio stamp on the back of the print, and ask the family. Record every search step. Orphan works have no US safe harbour [54]. UK IPO application fee £20 for one work, £24 for two, £30 for five, £40 for ten, £60 for twenty, £80 for thirty; non-refundable; a separate licence fee is payable only if the licence is granted; licence up to 7 years; UK use only; film and photographs are covered; page updated 1 Dec 2025, read 2026-10-18 [62].
 - **Games and brands:** no Mojang textures, sounds, UI or footage, and no third-party game footage by default [48][51]. Use "Minecraft" only as a secondary description, with the disclaimer, and only if you name it at all [48].
 - **AI-assisted material:** every L2-or-higher item needs its tool name, version, date and tool terms. Keep a human-contribution note for each one, and put a pre-roll line before the title [53][65].
-- **Accepted risk:** write down why, how you would undo it, who is exposed, and the date. Leave at least 48 hours between drafting and deciding (inference). Get the Fable advisor's written flag on every Tier C item and every accepted risk.
+- **Accepted risk:** write down why, how you would undo it, who is exposed, and the date. Leave at least 48 hours between drafting and deciding (inference). Get the Fable advisor's written flag on every Tier C item and every accepted risk. The mechanism: write the item as `rights/flags/<asset_id>.md` (why, undo, exposed, draft date) and request a Fable review of that file. Do not set status RISK or admit a Tier C item until the file carries a dated advisor line and 48 hours have passed since the draft date.
 - **The consult:** book one hour with a local rights professional by Friday 4 December 2026. Ask it as a hypothetical, using the question list (T10). Whether to tell a lawyer about the surprise is your call.
 
 ### Step 12. After the premiere
@@ -186,9 +199,9 @@ Size check: at 125 Mbit/s a finished minute is about 0.94 GB, so a 10-minute fil
 ### Exercise 5. Run the loudness and mono-fold checks
 
 - **Goal:** know whether a file will survive a mono venue PA.
-- **Steps:** run `ffmpeg -nostats -i in.wav -af ebur128=peak=true -f null -` on a stereo file. Then run the mono-fold version, `-af "pan=mono|c0=0.5*c0+0.5*c1,ebur128=peak=true"`, on the same file. Compare the two integrated readings and note the peak.
+- **Steps:** run `ffmpeg -nostats -i in.wav -af ebur128=peak=true -f null -` on a stereo file. Then run the mono-fold version, `-af "pan=mono|c0=0.5*c0+0.5*c1,ebur128=peak=true"`, on the same file. Compare the two integrated readings and note the peak. Then run the ffprobe command from Step 8 on the same file and note `pix_fmt`, `color_range` and the frame count.
 - **Time:** about 30 minutes.
-- **Good looks like:** both numbers are written down. A drop of more than about 3 LU is a warning sign (rule of thumb, inference). The command syntax has been run in the cloud container and still needs a run on the PC.
+- **Good looks like:** both numbers are written down. A drop of more than about 3 LU is a warning sign (rule of thumb, inference). The loudness and mono-fold syntax has been run in the cloud container and still needs a run on the PC. The ffprobe check was run there on 2026-10-18 too.
 
 ### Exercise 6. Hash a folder and check the copy
 
@@ -214,7 +227,7 @@ Size check: at 125 Mbit/s a finished minute is about 0.94 GB, so a 10-minute fil
 ### Exercise 9. Check the consent card against the truth
 
 - **Goal:** make sure the card you will read to contributors is true.
-- **Steps:** fill every bracket in the consent card (T9, 4a). For each sentence, write down whether it is true today. If a sentence is not true, change it or cut it. Read the card aloud once, alone, on a timer. Do not use it with anyone until its bracketed lines are true.
+- **Steps:** fill every bracket in the consent card (T9, 4a). For each sentence, write down whether it is true today. If a sentence is not true, change it or cut it. Read the card aloud once, alone, on a timer. Do not use it with anyone until its bracketed lines are true. While only-me mode holds (Step 11), do not read it to anyone at all.
 - **Time:** about 45 minutes.
 - **Good looks like:** every bracket is filled, every sentence is true, and the card commits you to a written release before any wider showing.
 
@@ -225,11 +238,11 @@ Size check: at 125 Mbit/s a finished minute is about 0.94 GB, so a 10-minute fil
 ```
 TD-1 working size:      1920x1080, 16:9; stills 3840 px on the long edge or more   [ ] confirmed
 TD-2 frame rate:        24 fps everywhere                                           [ ] confirmed
-TD-3 captions:          burned-in open; venue line height 7-8%; cinema start 5.5-6% [ ] confirmed
+TD-3 captions:          burned-in open; venue line height 7-8% (set at TD-L2b); cinema start 5.5-6% [ ] confirmed
 TD-4 DCP:               Flat 1998x1080, SMPTE, unencrypted, 24 fps                  [ ] confirmed
-Venue loudness start:   ____ LUFS integrated, ____ dBTP
-                        (research: -16 LUFS, -1 dBTP; toolchain example: -16 LUFS, -1.5 dBTP)
-Venue colour trim V:    ______ (starting values: lift 2-4 IRE; mid-gamma +0.05 to +0.10)
+Venue loudness start:   -16 LUFS integrated, -1 dBTP
+                        (settled in Step 5: -1 dBTP per R128 and the research; the toolchain's -1.5 was a loudnorm example)
+Venue colour trim V:    ______ (starting values: lift 2-4 IRE; mid-gamma +0.05 to +0.10; final at TD-L2b, by 17 Jan 2027)
 Cinema colour trim C:   identity until a real cinema test                           [ ]
 Decided by / date:      ______
 ```
@@ -239,14 +252,14 @@ Decided by / date:      ______
 | Parameter | Venue, Sat 27 Feb 2027 | Cinema (later, DCP) | Online (private link, later) | Archive |
 |---|---|---|---|---|
 | Purpose | Plays on whatever the venue has | A hired or festival cinema screen | Family and invited viewers | Preservation and re-making |
-| Picture | 1920x1080, 16:9, 24p constant, BT.709, limited range, burned-in open captions | DCP 2K Flat container 1998x1080; picture centred with 39 px black bars each side; XYZ 12-bit via DCP-o-matic [15][22][31] | Same as venue, 1080p24 | ProRes 422 HQ 1920x1080 24p (FFV1 optional) [2][3] |
+| Picture | 1920x1080, 16:9, 24p constant, BT.709, limited range, burned-in open captions | DCP 2K Flat container 1998x1080; picture centred with 39 px black bars each side; XYZ 12-bit via DCP-o-matic [12][22][31] | Same as venue, 1080p24 | ProRes 422 HQ 1920x1080 24p (FFV1 optional) [2][3] |
 | Container and codec | MP4, H.264 High 4.1, yuv420p, `+faststart` [2] | SMPTE DCP (picture and sound MXF, CPL, PKL, ASSETMAP), unencrypted [15][21] | MP4, H.264 High, CRF 20, 12 Mbps cap [2] | MOV (ProRes) and/or MKV (FFV1), PCM audio [2] |
 | Bit rate | Up to 20 Mbps | JPEG2000 100 to 125 Mbit/s (cap 250) [15][18] | 8 to 12 Mbps | Master data rate |
 | Audio | AAC-LC 48 kHz stereo 256 kbps; venue mix about -16 LUFS, -1 dBTP to start (confirm on site) [2][36] | PCM 24-bit 48 kHz; L and R in channels 1 and 2; cinema mix with headroom, not normalised [28][30][31] | AAC 256 kbps stereo; -16 LUFS, -1 dBTP [38] | PCM 24-bit 48 kHz, plus stems |
-| Captions | Burned in; two lines; inside the 90% by 90% box [37][4] | Burned in by default, or a SMPTE subtitle track with an OFL font [14][27] | Burned in, plus SRT or VTT sidecar | SRT, VTT, plain-text transcript |
+| Captions | Burned in; two lines; inside the 90% by 90% box [37][4] | Burned in by default, or a SMPTE subtitle track with an OFL font [14][27]. A Sundance-style delivery also needs a Closed Caption and an Open Caption DCP version, which burned-in captions alone cannot satisfy (Sundance FAQ 31, document dated 2026-09-08; "subject to change") [88] | Burned in, plus SRT or VTT sidecar | SRT, VTT, plain-text transcript |
 | Rights gate | T2 (public gathering): every row green or a documented risk; no unlicensed commercial music; no Mojang assets | T4: all T3 items green; releases signed; E&O decision; music cue sheet; AI disclosure | T3: releases signed; your explicit yes for the host [4] | Log, ledger and releases kept with the masters, in encrypted storage |
 | File name | Neutral code name; no personal data; no title metadata; version and date | ISDCF-generated name; neutral title [15][25] | Neutral | Descriptive, in a folder with a README |
-| Media | Two USB sticks (FAT32 if the file is under 4 GiB, which at 20 Mbps is about 28 minutes, computed; exFAT if the TV takes it) [43][44], plus two laptops | Drive written as MBR, one primary partition of type 0x83, ext2 or ext3, inode 128; label "Do not read with a consumer computer" [19][26] | Upload | Two physical copies plus one off-site [2] |
+| Media | Two USB sticks (FAT32 if the file is under 4 GiB, which at 20 Mbps is about 28 minutes, computed; exFAT if the TV takes it) [43][44], plus two laptops | Drive: ext2 (the only format DCP-o-matic guarantees in all cinemas; ISDCF also allows ext3), 128-byte inode, MBR with one primary partition of type 0x83; re-partition retail sticks first; MBR drives must be 2 TB or smaller; label "Do not read with a consumer computer" [19][26] | Upload | Two physical copies plus one off-site [2] |
 | Checks | ffprobe tags and pixel format; colour-patch test; loudness and mono-fold; caption legibility at 3 m; hashes; gates G6 and G6b [3] | Verify DCP with no errors; play in the Player; SHA-256 manifest; real-cinema test slot [18][17] | ffprobe; watch on a phone and a TV | Hash check yearly [2] |
 | Fallback | Backup ladder (T3) | A second DCP with burned-in captions if subtitle rendering fails [20] | n/a | n/a |
 
@@ -292,7 +305,7 @@ Decided by / date:      ______
 - [ ] Printed running order. The test clip on a stick.
 - [ ] A cloud copy only with your explicit yes [1][4].
 
-**Backup ladder**
+**Backup ladder** (if the Step 9 DCP-server branch applies, rung 1 is the venue MP4 over HDMI)
 1. Laptop playing the screening file.
 2. Second laptop with the same file.
 3. USB stick straight into the TV or projector media player (needs the exFAT and MP4 test).
@@ -308,11 +321,13 @@ Numbered to merge into the surprise-ops key dates and the reveal-day run sheet [
 |---|---|---|---|---|---|
 | TD-L1 | Sun 1 Nov 2026 | Maker | Write TD-1 to TD-4 into the settings card | Card saved in repo | n/a |
 | TD-L2 | By Fri 6 Nov 2026 | Maker | Venue survey (T5) | Answers logged | Assume the worst case: laptop, HDMI, TV |
+| TD-L5 | By Fri 4 Dec 2026 (follow-up Jan 2027) | Maker | Hold the consult; update the rights log and the releases | Notes saved | See Decisions |
 | TD-L3 | By Sun 20 Dec 2026 (G9) | Maker, agents | Build and view the venue test clip on the home TV; caption sizes 20, 23, 26 at 3 m; mono-fold; ffprobe | All clip checks pass | Fix and rerun |
 | TD-L4 | By Sun 20 Dec 2026 | Maker | Make a 60-second test DCP on the PC; Verify; play in the Player | Zero errors; plays | Move DCP work to after the premiere |
-| TD-L5 | By Fri 4 Dec 2026 (follow-up Jan 2027) | Maker | Hold the consult; update the rights log and the releases | Notes saved | See Decisions |
-| TD-L6 | Mon 15 Feb 2027 | Maker | Minecraft terms check (only if any Mojang name or asset is used); contributors confirm their clip; rights-log review | Hash matches, or the diff is read | Remove the asset or seek permission |
-| TD-L7 | Fri 19 Feb 2027 (picture lock) | Maker | Freeze the rights log, AI cue sheet, music cue sheet and credits | Every row has a status | Take out or substitute |
+| TD-L2c | Sun 3 Jan 2027 | Maker | Decide whether anyone is brought in (the only-me question, Step 11). Until then, card 4a is not read to anyone | Decision written down, with its date | Stay in only-me mode; the public cut keeps no recorded voice of a living person |
+| TD-L2b | By Sun 17 Jan 2027 | Maker, with the venue AV person | Visit with the test clip only (no film). Record TV or projector settings, caption sizes 20, 23 and 26 from the back row, PLUGE and tone level. Set Trim V and the TD-3 caption size from this visit | Settings recorded; Trim V and caption size set | If the venue is not booked by 17 Jan, say so and move this line; keep it before TD-L8 |
+| TD-L6 | Mon 15 Feb 2027 | Maker | Minecraft terms check (only if any Mojang name or asset is used); contributors confirm their clip (parked under only-me mode; applies only if TD-L2c brought someone in); rights-log review | Hash matches, or the diff is read | Remove the asset or seek permission |
+| TD-L7 | Fri 19 Feb 2027 (withdrawals close, surprise-ops; picture lock is Sat 6 Feb 2027, production-scale G-LOCK) | Maker | Freeze the rights log, AI cue sheet, music cue sheet and credits | Every row has a status | Take out or substitute |
 | TD-L8 | Sat 20 and Sun 21 Feb 2027 | Maker, agents | Final exports: master, venue file, backup file, audio-only fallback; apply trims; ffprobe, loudness, mono-fold; hashes; two sticks; gate G6 [3] | G6 passes | Re-export |
 | TD-L9 | Mon 22 Feb 2027 (full run) | Maker with venue AV operator | (1) Power the chain from cold; time to first frame. (2) Play the test clip: picture mode, overscan, HDR off, bars, PLUGE, ramp, tone level, left and right, caption size from the back row. (3) Room empty: play the first 5 and last 5 minutes and three spot sections. (4) Walk failure rungs 1 to 4. (5) Photograph settings and cabling. Gate G6b | Plays at the right levels; captions readable; no overscan crop; sound intelligible; mono-fold OK; cold start under 2 minutes | Adjust and repeat on Thursday or Friday |
 | TD-L10 | Wed 24 Feb 2027 (room brief) | Maker | Confirm AV access times with the venue (send no content) | Times confirmed | n/a |
@@ -381,6 +396,7 @@ Column guide:
 - `needed_T1` to `needed_T4`: Y (needed), N, ? (unknown, ask) or V (venue-dependent). T1, the private cut for her alone, carries less exposure but is not zero, so third-party commercial assets stay "?" there.
 - `status`: NS (not started), ASKED, GRANTED, REFUSED, SUBST (substituted), RISK (accepted documented risk), OUT, VERIFY (for the consult).
 - `risk_tier`: A, B, C or D (see Step 11).
+- `advisor_flag`: the path `rights/flags/<asset_id>.md` and the date of the Fable advisor line (Step 11).
 - `jurisdiction_note`: begins "Jurisdiction not yet known; confirm; not legal advice:" until TD-7 is answered.
 - A RISK row must also say why, how it would be undone, who is exposed, and the date.
 
@@ -389,7 +405,7 @@ Sample rows (from the research notes):
 | asset_id | type | where | rights holder | needed T1/T2/T3/T4 | permission | status | evidence | tier | note |
 |---|---|---|---|---|---|---|---|---|---|
 | PH-0042 | photo | Ch.1 | Aunt (took it, 1978) | ?/Y/Y/Y | Recorded yes on consent card | GRANTED | rec-0007.wav, sha256 ... | A | Ratify in writing after the premiere |
-| PH-0107 | photo | Ch.2 | Studio stamp (defunct?) | ?/Y/Y/Y | None | VERIFY, SUBST candidate | scan of back, note | B | Search done 2026-xx-xx; UK scheme from £20 per work, UK only; US has no safe harbour |
+| PH-0107 | photo | Ch.2 | Studio stamp (defunct?) | ?/Y/Y/Y | None | VERIFY, SUBST candidate | scan of back, note | B | Search done 2026-xx-xx; UK IPO application fee £20 for one work (sliding scale) plus a licence fee; UK use only; US has no safe harbour |
 | MU-003 | music | Ch.3 bed | CC BY composer | Y/Y/Y/Y | CC BY 4.0, credit | GRANTED | licence PDF | n/a | Credit in end titles |
 | MU-011 | music | Ch.4 | Label and publisher | ?/Y/Y/Y | Sync and master needed | NS | none | n/a | Substitute with MU-003 |
 | FN-001 | font | Titles | SIL OFL font | N/N/N/N | OFL | GRANTED | font file and OFL.txt | n/a | Rasterised in video; embedded in DCP track |
@@ -402,7 +418,7 @@ Before T4, every row needs `permission_type`, `scope`, `evidence_ref`, and a sig
 
 Principles: say what the film is; state nothing untrue; you may omit the fact of the surprise, but not anything false; offer a way out; keep each text to one page; write in the person's language. Jurisdiction and legal wording are placeholders.
 
-**4a. Contributor consent card, version 2.** Read it aloud on the recording. It replaces the old card in surprise-ops [5]. Read it only when the bracketed lines are true.
+**4a. Contributor consent card, version 2.** Read it aloud on the recording. It replaces the old card in surprise-ops [5]. Read it only when the bracketed lines are true. **Only-me mode:** it is not read to anyone until the maker decides to bring someone in (Step 11). Reading it to anyone is that decision.
 
 > "[MAKER] is making a film about [NAME]'s life as a surprise gift. It will be shown once, at a gathering on [date], to about [N] people: [family and invited friends] / [family, friends and community guests, which means it is a public-facing event, not only a family evening]. A longer private version will be given to [NAME]. May I use what you say, your recorded voice, your name, and any photographs or video you lend, in those showings? You can skip any question, stop, and ask me up to [Fri 19 Feb 2027] to take anything out. I will keep the recording private on storage I control [edit to match]. I may use software, including AI tools [that run on my own computer / in a private online workspace: edit to match], to type it up and tidy the sound, but I will not change what you said or make a synthetic copy of your voice. After the gathering I will ask you to sign a short written release if I want to show the film any further, for example online or in a cinema, and I will not do that without your signed yes. Is that all right with you?"
 
@@ -469,15 +485,15 @@ Each decision lists the options and our current lean. Leans are not final until 
 | TD-1 | Working size | 1920x1080 (16:9); 2K DCI; UHD | Stay at 1920x1080. Derive the 2K Flat DCP from it. Prepare stills at 3840 px or more. UHD only for single hero shots, and only if a booked 4K cinema justifies it, decided before Sunday 3 January 2027 [3][15] | A booked 4K cinema and a chapter that needs more detail |
 | TD-2 | Frame rate | 24 fps; 25 fps | 24 fps everywhere [16] | A 50 Hz-only venue whose test clip judders. Then make a 25 fps access copy with `fps=25`, not a speed change (untested) |
 | TD-3 | Captions | Burned-in open captions; soft subtitles | Burned-in open captions (7 to 8% line height for the venue file). Sidecar SRT and VTT. A DCP subtitle track only for a later cinema, with an OFL font [20] | A venue that asks for soft subtitles |
-| TD-4 | DCP container and standard | Flat 1998x1080; Scope. SMPTE; Interop | Flat, SMPTE, unencrypted, 24 fps [15][27] | A cinema that demands Interop or Scope |
+| TD-4 | DCP container and standard | Flat 1998x1080; Scope. SMPTE; Interop | Flat, SMPTE, unencrypted, 24 fps [15][27] | A cinema that demands Interop or Scope; a venue that is a cinema with a DCP server (Step 9 branch) |
 | TD-5 | Door policy for 27 February | Invite-only; open to all | Your decision. Invite-only keeps festival premiere status, under Sundance's rule [88]. Open to all raises the music, photo, likeness and Minecraft exposure [48][56] | Your wishes for the room |
-| TD-6 | Who runs playback on the day | Venue AV operator told a truthful minimum; a hired tech; you | A person told a truthful minimum (the venue operator or a hired tech). You host [5] | You bring someone in, which changes "only me" |
+| TD-6 | Who runs playback on the day | Venue AV operator told a truthful minimum; a hired tech; you | A person told a truthful minimum (the venue operator or a hired tech). You host [5] | You bring someone in, which changes "only me"; or the venue is a cinema with a DCP server (Step 9 branch) |
 | TD-7 | Country and state of the premiere | Any | Needed before the consult. It also decides the music, photo and likeness answers [56] | None. It must be answered |
 | TD-8 | Rights consult | Pay for one hour; skip | One paid hour by Friday 4 December 2026, asked as a hypothetical (T10) | Budget or privacy preferences |
 
 ### Other decisions
 
-- **Who is in on it, and who approves the hard chapters.** You told us: only you, for now. You are her proxy for hard chapters. The compensating controls are the Fable advisor's written flag on every Tier C item and every accepted risk, a written reason and an undo note for every accepted risk, at least 48 hours between drafting and deciding (inference), and the paid consult. You asked that a second approver or a day-of tech be decided later, once the plan is ready. Bringing anyone in changes "only me", so note the decision when it is made.
+- **Who is in on it, and who approves the hard chapters.** You told us: only you, for now. You are her proxy for hard chapters. The compensating controls are the Fable advisor's written flag on every Tier C item and every accepted risk, a written reason and an undo note for every accepted risk, at least 48 hours between drafting and deciding (inference), and the paid consult. You asked that a second approver or a day-of tech be decided later, once the plan is ready. Bringing anyone in changes "only me", so note the decision when it is made. The decision point is Sunday 3 January 2027 (TD-L2c). Until then, only-me mode holds (Step 11).
 - **Whether a cinema screening is wanted at all.** The research gives no lean. Our reading is this: the DCP is worth making before the premiere only if Exercise 3 passes. If it does not, make the DCP after the premiere. Encode on the PC, not the cloud [47].
 - **Release term.** The usual documentary grant is all media, worldwide, in perpetuity [79]. Form 4d allows withdrawal for future showings. The research gives no lean. Decide before any E&O application.
 - **Insurance.** Distributors and exhibitors generally require E&O [77][78]. Whether a one-off hire needs E&O or public-liability cover is **TODO(research)**. Ask the cinema (T6, question 5).
@@ -494,7 +510,43 @@ Each decision lists the options and our current lean. Leans are not final until 
 - Whether the India Copyright Act s.17(b) text read in the research is current (a government-hosted consolidated copy of unknown date).
 - Archive pricing (British Pathe and Getty; not found); consult and music-licence fees.
 - What family-film makers actually do about clearances. No survey was found. The risk ladder in this guide is a synthesis.
-- Trim values, the cinema caption size (5.5 to 6%) and the venue caption size need a real-screen test.
+### Scheduled tests
+
+- **Venue, TD-L2b (by Sun 17 Jan 2027):** Trim V and the venue caption size, judged on the venue screen with the test clip.
+- **Cinema, first real-cinema slot:** Trim C and the cinema caption size (5.5 to 6%).
+
+## Deltas to existing playbooks
+
+These are the changes the other playbooks need, by file and decision, so that a scribe can patch them from this guide without reading the research. The list is research Deliverable 6, with the round-2 corrections.
+
+| File | Where (section or decision) | Change |
+|---|---|---|
+| `surprise-ops.md` | Consent card | Replace with version 2 (T9, 4a): the true audience and use, and a later written release. Add the only-me box: until the maker decides to bring someone in, the card is not read to anyone (Step 11; TD-L2c) |
+| `surprise-ops.md` | Decision 6 (rings and keys) | Update for "only me": no co-keeper; the maker is the proxy for hard chapters; compensating controls (research Finding 11; "Other decisions" above) |
+| `surprise-ops.md` | Key dates, the 19 Feb row | Split "Fri 19 Feb 2027, Withdrawals close; picture lock" into "Sat 6 Feb 2027, Picture lock (G-LOCK, production-scale)" and "Fri 19 Feb 2027, Withdrawals close (removals only after lock)" |
+| `surprise-ops.md` | Key dates, new lines | Add "Sun 3 Jan 2027, TD-L2c: decide whether anyone is brought in" and "Sun 17 Jan 2027, TD-L2b: venue visit with the test clip only"; add TD-L6, TD-L7 and TD-L9 to TD-L16 from the T4 table |
+| `surprise-ops.md` | Decision 12 (reveal format and room) | The charter now says "mostly public"; the run sheet and tiers follow TD-5 |
+| `surprise-ops.md` | Reveal-day run sheet, S minus 2 h | Add the test clip first, a settings snapshot, and a backup-stick and second-laptop check (T4, TD-L13) |
+| `surprise-ops.md` | After the reveal | Add the post-premiere release step (TD-L15) and the T3 and T4 gate (TD-L16) |
+| `toolchain.md` | Step 10 (sound), `loudnorm I=-16:TP=-1.5:LRA=11` | Change TP=-1.5 to a "-1 dBTP target; -1.5 was an example" note. Venue and online start at -16 LUFS; cinema mixes are not normalised; a broadcast -23 LUFS target is not a cinema target [30][36] |
+| `toolchain.md` | Step 11 (captions) | Windows fonts are fine rasterised in video, not embedded in a DCP track; prefer OFL fonts [75][76] |
+| `toolchain.md` | Step 12 (export set) | Add the venue test clip, the two trims, a mono-fold check and a DCP column |
+| `toolchain.md` | Step 13 (checks) | Add `color_range` and `color_space` checks, and loudness plus mono-fold |
+| `toolchain.md` | Step 14 (rehearsal) | Rehearse with the neutral test clip first; walk the ladder rungs; take settings screenshots |
+| `toolchain.md` | Decision 7 | Change "Use 4K only after the venue screen is confirmed" to: 2K Flat DCP derived from 1080p; 4K not needed |
+| `toolchain.md` | Decision 8 | Burned-in captions confirmed as the default; DCP subtitle tracks later, with OFL fonts |
+| `toolchain.md` | Decision 9 | Add the venue-survey questions (T5) |
+| `agent-pipeline.md` | Step 1 and the project settings card | Lock 24 fps (TD-2). Colour reads "Rec.709 / BT.1886 display target (gamma about 2.4) for video, sRGB for stills". Add "stills prepared at 3840 px or more on the long edge; 2K Flat DCP derived, never re-authored" |
+| `agent-pipeline.md` | Gate G6 | Add the mono-fold check, trims applied, caption safe area, the test clip played on the venue screen, and DCP Verify if a DCP is made; add G6b (venue rehearsal) |
+| `format.md` | Step 8 and Exercise 1 | Keep 7 to 8% line height for the venue file; add the cinema 5.5 to 6% note |
+| `format.md` | Step 15 | "Send the file to the venue a day before" conflicts with the surprise: send only the test clip; bring the film on the day |
+| `format.md` | Decision 3 (venue) | Add the survey questions (T5) |
+| `format.md` | Decision 8 (hosting table) and Decision 12 (music) | Before any online link: the T3 gate (releases signed, explicit yes) [4]. Decision 12: add the exhibition layer (sync, master and performance); a public gathering is not a family circle |
+| `format.md` | Decision 9 (Minecraft) | Replace "grey area" with the 2026-10-18 re-read and table (research Finding 7) |
+| `format.md` | Decision 13 (languages) | Open: captions in other languages (VF or burned-in) |
+| `ai-imagery.md` | Decisions 3 and 5; end-credit cue sheet | "Public or ticketed" now applies to 27 Feb. Add the six cue-sheet extensions (research Finding 10): (1) a pre-roll line before the title; (2) tool name, version and date for each L2-or-higher item, with the tool's terms; (3) a human-contribution note per item; (4) a deepfake marker on photoreal motion of a real person (L4b and L4c); (5) a no-synthetic-voice line; (6) a metadata-stripping note: stream copy, re-encodes and platforms can strip metadata, so the credits and manifest are the record |
+| `games.md` | Q7 and F4 | Add the 2026-10-18 diff result and the new clauses (research Finding 7) |
+| `CHARTER.md` | Open decisions | Add: door policy (TD-5), jurisdiction (TD-7), who runs playback (TD-6) |
 
 ## Pitfalls
 
@@ -516,6 +568,7 @@ Each decision lists the options and our current lean. Leans are not final until 
 16. **Disk and compute limits in the cloud container.** The root disk was full during testing [47]. Encode the DCP on the PC, and use the container for measurement and checks.
 17. **Relying on the DCP Player at the venue.** The manual warns against depending on it [17]. The venue gets the MP4. The DCP is for a cinema.
 18. **Dignity for people who cannot be asked.** Apply the Tier C and D rules. Ask the closest family about the dead. The estranged default to out [5].
+19. **Burned-in captions do not satisfy a festival-style delivery.** A Sundance-style DCP needs both a Closed Caption and an Open Caption version (FAQ 31, document dated 2026-09-08; "subject to change") [88]. Check the festival's current rules before any submission.
 
 ## Best references
 
@@ -661,3 +714,5 @@ These eight are the best use of your reading time. Each link is one that the res
 ## Changelog
 
 - **v1, 2026-10-18.** First draft from `research/theatrical-delivery.md` (researcher's notes, 2026-10-18), by a Haiku scribe. Sources are copied from the notes with their original numbers. Open items are tagged TODO(research). Conflicts are flagged in Step 5 and T1 (venue loudness ceiling). Nothing here is legal advice.
+- **v2, 2026-10-18 (Fable round 1 applied).** Added the only-me box (Step 11, T9 4a, TD-L2c); the verified ffprobe command, with lut3d and metadata stripping marked as run in the container; TD-L2b venue visit by 17 Jan 2027; the DCP-server branch (Step 9); the UK IPO fee wording (£24 step flagged TODO); the ext2 and partition rules; the Sundance Closed and Open Caption note; -1 dBTP settled; the advisor-flag mechanism (rights/flags); Flat citation in T2 now [12][22][31].
+- **v3, 2026-10-18 (Fable round 2 applied).** Picture lock corrected: TD-L7 is now labelled as the withdrawals-close date (Fri 19 Feb 2027), and picture lock is Sat 6 Feb 2027 (G-LOCK, production-scale); UK IPO fee scale written once in full (the £24 TODO closed against gov.uk, read 2026-10-18); venue caption size confirmed at TD-L2b, with trims and the cinema caption size moved to Scheduled tests; T4 run sheet ordered by date; Deltas to existing playbooks section added; SKILL step 22 example updated.

@@ -1,0 +1,22 @@
+A/B push card: recording sheet (fill in BEFORE opening ab_push_key.json)
+Date/time:        Venue:        Projector/display:        Lights as at the event: yes / no
+Seat (front row / middle / back row):        Distance to screen (m):        Picture height (m):        Distance in screen heights:
+
+PART 1. Per pair: which of A or B looks steadier (or 'same')? Does the other one shimmer / crawl / buzz on the hairlines and text?
+  Pair 1: steadier = A / B / same     difference visible from this seat? yes / no     comment:
+  Pair 2: steadier = A / B / same     difference visible from this seat? yes / no     comment:
+  Pair 3: steadier = A / B / same     difference visible from this seat? yes / no     comment:
+
+PART 2. Per ladder clip: is the picture visibly less steady than a perfectly smooth push would be? (no / maybe / yes)
+  Ladder 1: no / maybe / yes     comment:
+  Ladder 2: no / maybe / yes     comment:
+  Ladder 3: no / maybe / yes     comment:
+  Ladder 4: no / maybe / yes     comment:
+  Ladder 5: no / maybe / yes     comment:
+  Ladder 6: no / maybe / yes     comment:
+  Ladder 7: no / maybe / yes     comment:
+
+Then open ab_push_key.json. For each ladder clip it lists the injected position jitter (injected_rms_px) AND what mo8_audit.py measures on the decoded file (measured_centre_jit_px = MO8a).
+MO8a reads about 1.3 to 1.6 times the injected position jitter (it is the frame-to-frame displacement residual, which adds a factor of about 1.33 for white jitter, plus the codec floor).
+Take the lowest rung you marked 'yes' from the FRONT row and from the BACK row, and the lowest marked 'maybe'. Set the MO8a limit to half the measured_centre_jit_px of the lowest front-row 'yes',
+and never above the measured_centre_jit_px of the lowest 'maybe'.

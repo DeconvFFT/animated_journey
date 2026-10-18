@@ -1,0 +1,33 @@
+Spike S3 round 2: STAND-IN stylised voxel kitchen (primitives only, no photos, no family imagery), NOT the maker's real set (it does not exist yet).
+Container: 4 vCPU Intel Xeon 2.1 GHz, 15 GB RAM, no GPU. Blender 5.2.2 LTS from PyPI package bpy, Cycles CPU, 1920x1080 at 100 percent, 2,938 faces, default light paths.
+Settings: adaptive sampling off unless stated; denoise = OpenImageDenoise on CPU. wall_s = the render call only (scene load adds about 1 s per process). 2026-10-18.
+
+--- sweep 1 (fresh process per line) ---
+RESULT 1920x1080 samples=8 denoise=0 adaptive=0 wall_s=13.3 peak_rss_mb=594 faces=2938
+  process_total_s=14.119685298
+RESULT 1920x1080 samples=64 denoise=0 adaptive=0 wall_s=95.2 peak_rss_mb=594 faces=2938
+  process_total_s=96.118659831
+RESULT 1920x1080 samples=128 denoise=0 adaptive=0 wall_s=231.5 peak_rss_mb=594 faces=2938
+  process_total_s=232.317756973
+RESULT 1920x1080 samples=64 denoise=1 adaptive=0 wall_s=115.1 peak_rss_mb=2209 faces=2938
+  process_total_s=116.191312249
+RESULT 1920x1080 samples=128 denoise=1 adaptive=0 wall_s=208.1 peak_rss_mb=2209 faces=2938
+  process_total_s=209.049663159
+RESULT 1920x1080 samples=128 denoise=1 adaptive=1 wall_s=203.2 peak_rss_mb=2248 faces=2938
+  process_total_s=204.112979362
+RESULT 1920x1080 samples=64 denoise=1 adaptive=0 wall_s=109.8 peak_rss_mb=2209 faces=2938
+  process_total_s=110.782639097
+ALLDONE
+--- sweep 2 (repeats of the two 128-sample cases) ---
+RESULT 1920x1080 samples=128 denoise=0 adaptive=0 wall_s=191.9 peak_rss_mb=594 faces=2938
+  process_total_s=192.928290018
+RESULT 1920x1080 samples=128 denoise=1 adaptive=0 wall_s=200.5 peak_rss_mb=2209 faces=2938
+  process_total_s=201.395156588
+ALLDONE2
+--- 24-sample denoised, run twice ---
+RESULT 1920x1080 samples=24 denoise=1 adaptive=0 wall_s=59.3 peak_rss_mb=2208 faces=2938
+RESULT 1920x1080 samples=24 denoise=1 adaptive=0 wall_s=50.7 peak_rss_mb=2209 faces=2938
+
+Derived: per sample (8 to 64, no denoise) = (95.2-13.3)/56 = 1.46 s; (64 to 128, using the 191.9 run) = 1.51 s; fixed cost about 1.6 s; denoise about 12 to 17 s at 1080p; peak memory 0.6 GB without denoise, 2.2 GB with.
+Noise: the two 64-sample denoised runs differ by 5 percent; the two 128-sample no-denoise runs by 21 percent (231.5 vs 191.9). Treat any single run as plus or minus 10 to 20 percent.
+Classroom (round 1, same container): 7.0 s per sample, so the stand-in is about 4.8 times cheaper per sample.

@@ -22,7 +22,7 @@ A research-limit note up front: the web-search budget for this run (200 searches
 10. **Voice capture.** Set the iPhone to Lossless and Android to 128 kbps or higher; phone on a soft surface about 5-12 inches from the mouth; keep the original file untouched; do not let remote platforms re-compress it [78][79][4]. Ask relatives to send the file as an attachment or shared file, not as a chat "audio message" (chat-app recompression is UNVERIFIED but likely).
 11. **Cloud "enhancers" fail the charter test as read.** Auphonic uses content to improve its algorithms by default (business opt-out on request), lets staff listen, and deletes audio after 21 days [88]. Descript lists training AI models among its uses and has a "Share Data with Descript" toggle [89]. Adobe's policy mentions machine-learning analysis with an opt-out and does not mention Podcast; Enhance Speech's own terms were not readable [90]. Family audio stays on the maker's PC.
 12. **Local chain:** Audacity Noise Reduction and Notch Filter, RNNoise or DeepFilterNet, ffmpeg `afftdn` and `highpass`, with the listen-to-what-was-removed check [80][81][82][83][86]. Generative "enhancers" that "restore" and "extend bandwidth" (Resemble Enhance's enhancer) invent signal and break the found-voice rule; its `--denoise_only` mode is the only acceptable use [85].
-13. **Mix: keep three loudness practices apart.** Cinema is a calibrated playback level (85 dBC pink noise per channel, "fader 7"), not a LUFS target; the movie-loudness metric Ioan Allen proposes "has no absolute value" [94][95]. Broadcast is -23 LUFS, +/-1 LU in live, -1 dBTP [93]. Online is about -14 LUFS on Spotify and -18 for speech in AES TD1008 [97][98]. A venue PA is unknown until the rehearsal on 2027-02-14 to 2027-02-20 [8].
+13. **Mix: keep three loudness practices apart.** Cinema is a calibrated playback level (85 dBC pink noise per channel, "fader 7"), not a LUFS target; the movie-loudness metric Ioan Allen proposes "has no absolute value" [94][95]. Broadcast is -23 LUFS, +/-1 LU in live, -1 dBTP [93]. Online is about -14 LUFS on Spotify and -18 for speech in AES TD1008 [97][98]. A venue PA is unknown until the Mon 2027-02-22 run on the real chain (surprise-ops run sheet).
 14. **Stereo that folds down safely.** A stereo DCP is normally played as plain L+R in cinemas; do not count on matrix decoding [100]. If a cinema books the film, a professional should make a 5.1 with dialogue in the centre from our stems. Stems: DX, MX, FX, AMB at 48 kHz, 24-bit WAV, matching the DCI audio spec (24-bit, 48 or 96 kHz) [99].
 15. **Tools verdict.** SoundCraft calls itself "pre-alpha", has no sidechain bus and has open mix-correctness bugs [105][5]. Use Audacity plus ffmpeg as the proven chain, mix inside the NLE's audio page or in Reaper (60-day full-function evaluation, then $60 discounted licence) [103], and keep SoundCraft for experiments only. I tested the ffmpeg two-pass loudness, ducking, denoise and ALAC-to-WAV commands in a sandbox [108].
 
@@ -267,7 +267,7 @@ For comparison, the broadcast reference is EBU R 128 (November 2023): programme 
 **Tool verdict for this film's mix.**
 - *SoundCraft:* README says "pre-alpha: it covers 94 % of the incumbent's menu items (measured)", about 40% of the way to replacing a professional DAW; it exports WAV at 16, 24 or 32-bit float and reports peak, true peak and LUFS on bounce [105]. The gaps list says "No sidechain (key input) buses for any host", no AAF/OMF, about 25 open correctness bugs, Windows only lightly exercised, and loudness metering is not mentioned [105]. Issues #710 and #707 (MP3 and AAC import can silently shorten or shift audio) are recorded in craft-motion.md [5]. Verdict: experiments only, WAV and FLAC only, never for delivery.
 - *Audacity plus ffmpeg:* the proven chain. Audacity lists version 4.0.1 on its download page (release date not shown; Windows x86_64 and ARM64) [104]; pin the version you tested. FFmpeg 9.0.2 was released 2026-09-18, with Windows builds from gyan.dev and BtbN [87]. Use Audacity for repair and listening, ffmpeg for batch work, conversion and loudness measurement.
-- *A free-to-evaluate DAW:* REAPER 7.82 (2026-10-04) has a 60-day evaluation with "full functionality"; $60 discounted licence if gross yearly revenue does not exceed $20,000, $225 commercial [103]. The 60 days will not stretch to the premiere from today (132 days), so start the trial around 2026-12-28 for a mix beginning in January, or buy the $60 licence. Ardour 9.8 is GPL v2; its Windows binary price was not shown [107].
+- *A free-to-evaluate DAW:* REAPER 7.82 (2026-10-04) has a 60-day evaluation with "full functionality"; $60 discounted licence for an individual using REAPER only for personal use, or for an individual or business using it commercially with yearly gross revenue up to $20,000; $225 commercial [103] (the purchase page re-read by the scribe on 2026-10-18 confirms the personal-use condition). The 60 days will not stretch to the premiere from today (132 days), so start the trial around 2026-12-28 to cover the 13–20 Feb mix (G-MIX to G-MASTER), or buy the $60 licence (personal use qualifies). Start the trial only to defer the spend to 2026-12-28. Ardour 9.8 is GPL v2; its Windows binary price was not shown [107].
 - *DaVinci Resolve Fairlight:* the Fairlight page lists a ducker, a de-hummer, loudness meters and surround formats up to 22.2; the only items it marks Studio-only are immersive 3D audio, the foley sampler and the extra FX; which of the rest are in the Free version is not stated (UNVERIFIED) [106]. Studio's neural voice isolation is a generative-adjacent tool and not needed.
 - *Lean:* mix inside the NLE's audio page or in REAPER; repair in Audacity; measure and convert in ffmpeg; keep SoundCraft for experiments. Apply the final-mix rule: decide once, pin versions in the log.
 
@@ -372,8 +372,8 @@ Legend: **Y** expressly covered as read; **y** not expressly stated, fair readin
 **Spotting-notes template** (one row per cue; reel-and-cue numbering as in [62][63]):
 
 ```
-cue_id,reel_cue,chapter,tc_in,tc_out,dur_s,picture_note,function,motif,mood_words,tempo_or_feel,hit_points_tc,pull_out_points_tc,voice_present,voice_id,dialogue_priority,temp_ref,source_plan,rights_state,ai_used,notes
-C07,1m7,C3-kitchen,01:06:12:00,01:07:38:12,86.5,"photo of the kitchen table, slow push-in",BED,A (waltz),"warm, slightly worn","slow 3/4, music-box","01:06:40:00 (hand enters)","01:07:30:00 (music out, room tone only)",yes,V-uncle-02,voice leads,TEMP-incompetech-Floral,composer,pending,no,"no cymbals; leave 2 s of room tone before her voice"
+cue_id,reel_cue,chapter,tc_in,tc_out,dur_s,picture_note,function,source_in_her_life,motif,mood_words,tempo_or_feel,hit_points_tc,pull_out_points_tc,voice_present,voice_id,dialogue_priority,temp_ref,source_plan,rights_state,ai_used,notes
+C07,1m7,C3-kitchen,01:06:12:00,01:07:38:12,86.5,"photo of the kitchen table, slow push-in",BED,"[beat-sheet evidence ID] (illustrative: a relative named the waltz)",A (waltz),"warm, slightly worn","slow 3/4, music-box","01:06:40:00 (hand enters)","01:07:30:00 (music out, room tone only)",yes,V-uncle-02,voice leads,TEMP-incompetech-Floral,composer,pending,no,"no cymbals; leave 2 s of room tone before her voice"
 ```
 
 **Cue-sheet template.** ASCAP lists the information a cue sheet needs: programme identification, music title, duration, "how the music was used (e.g. visual instrumental, visual vocal)", entitled parties (songwriters, composers, publishers) with ownership shares, and the production company's contact details [50]. The project adds licence and AI fields.
@@ -413,17 +413,15 @@ ffmpeg -i work.wav -af "arnndn=m=std.rnnn:mix=0.8" work_rn.wav
 ```
 In Audacity: Effect, Noise Removal and Repair, Noise Reduction (learn a profile from noise only, at least 2048 samples; start at the defaults and use the lowest values that work) [80]; Effect, EQ and Filters, Notch Filter at 60 or 50 Hz then harmonics with Q between 2 and 10 [81]. Check on headphones and on small speakers.
 
-**3d. Consent-wording extension for a public screening.** The current card in surprise-ops.md promises "a film that family will watch together, and a longer private version given to [NAME]" [6]. A public gathering goes beyond that, so extend the card and make the bracketed lines true before it is read (edit; the maker decides):
+**3d. Consent wording for the gathering (replaces the long card, withdrawn 2026-10-18; use playbook Template D2).** The long card that stood here, with its spoken wider-use line, is withdrawn: it offered festival and cinema use that the maker has not yet decided. Use the playbook Template D2 card (`playbooks/music-sound.md`). Read the surprise-ops card [6] first, then this one sentence:
 
-> "[MAKER] plans to show the finished film once, at a gathering on [Saturday 27 February 2027] at [venue]. The gathering is [free / not ticketed / open to invited guests and members of the public]. People you do not know may be there, and your recorded voice would be heard by them. Please tell me which you are happy with:
-> (A) Family only: keep my voice to the private version for [NAME] and the family.
-> (B) The gathering: play my voice at the gathering on 27 February 2027, and in rehearsals.
-> (C) Wider: also if the film is later shown at community screenings, a film festival or a cinema. Never online or sold without asking me again.
-> You can change your answer, or ask me to cut anything, until [Friday 19 February 2027], and afterwards for any later showing. I will keep the recording on my own computer, [not upload it to any online service,] and I will not copy or imitate your voice with software. If you play or sing, the performance stays yours; you let me use it as above, and I will arrange the rights to any song by someone else. Is that all right with you?"
+> "The film may also be shown to people outside the family at a gathering in late February. Tell me if your voice may be heard there."
 
-Log the tier and the spoken yes with each file. Do not read the extension until the bracketed claims are true (the same rule as the existing card) [6].
+The answer is one of two. **(A)** Family only: keep my voice to the private version. **(B)** The gathering: my voice may be heard there. You can change your answer or ask me to cut anything until Friday 19 February 2027 [6]. The sentence names no venue and no ticket status, so no bracketed claim needs checking.
 
-**3e. Found-voice log (add to story.md's inventory):** `item_id, holder, device_or_format, date_made, who_speaks, length, quality, original_in_hand, copied_once, hum_hz, noise_notes, other_voices_heard, consent_status_each, deceased_flag, closest_family_ok, use_decision(as_recorded|none), cut_points_tc, credit_line`.
+Tier C (festival, cinema, later showings) is a written ask after the premiere; nothing about them is promised before the maker's own post-premiere release. Log the tier and the spoken yes with each file. Do not read the card until the surprise-ops truthful pretext check is done (Template D2, Routing).
+
+**3e. Found-voice log (add to story.md's inventory):** Header identical to playbook Template D3 (its column definitions apply): `item_id,holder,device_or_format,date_made,who_speaks,addressed_to,length,quality,original_in_hand,copied_once,hum_hz,noise_notes,other_voices_heard,consent_status_each,deceased_flag,closest_family_ok,public_cut_eligible,use_decision,cut_points_tc,credit_line`. `public_cut_eligible` is `yes` (HER-PUBLIC) or `no` (HER-PRIVATE); `use_decision` is `as_recorded`, `private_only` or `none`.
 
 ### Deliverable 4. Mix spec: three targets and stem deliverables
 
@@ -454,11 +452,14 @@ On PowerShell, keep each filtergraph in double quotes; the Windows null target `
 
 **Stems.** `DX_`, `MX_`, `FX_`, `AMB_`, `FULL_`, `ME_` prefixes; same length, starting at 00:00:00:00; name with `film_v01_DX_48k24.wav`; archive the untouched originals and the cleaned versions separately; hash list per format.md Step 4 [8].
 
+**DX-gated check (speech spans only).** Measure DX and full mix over the same `voice_present=yes` spans from `spotting.csv`, per chapter or on the concatenated spans, never over the whole film. Keep 6 LU as the starting threshold (inference) and record the per-chapter offset. Playbook Step 15 and Template G are the controlling text.
+
 **Venue-test checklist (Mon 2027-02-22).**
 - [ ] Play the calibration reel (pink noise, sweep, neutral voice, one bed). The maker holds the master fader: set it from the back row on the neutral-voice reel and write the position on the run sheet.
 - [ ] Play each of the three masters; pick one; record the setting.
 - [ ] Check the player path (USB, laptop, HDMI), lip sync, and that the audio is not forced to mono.
 - [ ] Check speech intelligibility at the back and sides, with at least one listener who does not have perfect hearing (not told the content).
+- [ ] Compare each chosen master's per-chapter DX-gated offset (speech spans) with what the back-row listener reports.
 - [ ] Put a backup file on a second stick and the standalone WAV on a third device.
 
 ### Deliverable 5. Music and SFX licence log (feeds theatrical-delivery's clearance log)
@@ -508,7 +509,7 @@ asset_id,type,title,creator,source_url,date_accessed,plan_or_tier,account_email,
 |---|---|---|---|---|
 | Audacity | 4.0.1 on the download page (release date not shown); Windows x86_64 and ARM64 | Free; source offered | Licence not stated on the page; check the app's privacy settings; pin the version you test | [104] |
 | FFmpeg | 9.0.2 released 2026-09-18 (8.1.3 on 2026-09-21); Windows builds from gyan.dev, BtbN | Free | Sandbox tests ran on 6.1.1; re-run on the Windows build | [87][108] |
-| REAPER | 7.82, 2026-10-04 | 60-day full-function evaluation; $60 discounted (gross yearly revenue up to $20,000); $225 commercial | Evaluation will end before the premiere unless started late | [103] |
+| REAPER | 7.82, 2026-10-04 | 60-day full-function evaluation; $60 discounted (individuals using REAPER only for personal use, or commercial gross yearly revenue up to $20,000); $225 commercial | A trial started 2026-12-28 ends 2027-02-26 and covers the mix; buy the $60 licence to remove the timer | [103] |
 | DaVinci Resolve (Fairlight) | Resolve 21 Free; Studio $295 | Free / $295 | Studio-only: immersive 3D audio, foley sampler, extra FX, neural voice isolation; the rest not stated | [106][2] |
 | Ardour | 9.8 | Windows price not shown | GPL v2 | [107] |
 | SoundCraft | pre-alpha README (tag not shown); MIT or Apache-2.0 | Free | No sidechain; about 25 open correctness bugs; delivery off the critical path | [105][5] |
@@ -584,7 +585,7 @@ Numbered; tag = strength (P primary, S secondary or press, V vendor, F forum or 
 [5] LOCAL `playbooks/craft-motion.md` — Decision 8 and the SoundCraft findings (issues #707, #710).
 [6] LOCAL `playbooks/surprise-ops.md` — consent card, voice letter, Decisions 9 and 10, removal deadline Friday 2027-02-19, Bourdain case [63 there], ICO note [87 there], Apple Voice Memos share note [17 there].
 [7] LOCAL `research/film-story.md` — Q6 cue lengths for Coco, Up, Robot Dreams; Tarnation cost.
-[8] LOCAL `playbooks/format.md` — Step 14 rehearsals 2027-02-14 to 02-20; Step 4 hash list.
+[8] LOCAL `playbooks/format.md` — Step 4 hash list. Its Step 14 rehearsal dates (2027-02-14 to 02-20) are retired for this track as of 2026-10-18; the venue test is the Mon 2027-02-22 run.
 [9] LOCAL `research/sources/minecraft-usage-guidelines-2026-10-18.txt` — earlier excerpt of the Minecraft guidelines.
 [10] Minecraft Usage Guidelines — https://www.minecraft.net/en-us/usage-guidelines — read live 2026-10-18 — P — "assets" include "sounds and other audio from any of our games"; sharing counts as commercial use; permissions revocable.
 
@@ -693,7 +694,7 @@ Numbered; tag = strength (P primary, S secondary or press, V vendor, F forum or 
 [100] DCP-o-matic forum, "Stereo audio to 6 - 5.1 Audio" — https://dcpomatic.com/forum/viewtopic.php?p=10951 — 2023-09-06 to 09-09 — F.
 [101] Sound on Sound, "Duck Tales" — https://www.soundonsound.com/techniques/duck-tales — undated — S.
 [102] CapCut, audio ducking guide — https://www.capcut.com/create/audio-ducking-for-clear-dialogue-in-video — SR/V (weak).
-[103] REAPER, purchase page — https://www.reaper.fm/purchase.php — version 7.82 dated 2026-10-04 — P.
+[103] REAPER, purchase page — https://www.reaper.fm/purchase.php — version 7.82 dated 2026-10-04 — P. Re-read by the scribe on 2026-10-18: the $60 discounted licence covers "an individual, and REAPER is only for your personal use" and commercial users with yearly gross revenue up to USD $20,000; the evaluation is "60 days … with full functionality".
 [104] Audacity, download — https://www.audacityteam.org/download/ — read 2026-10-18 — P.
 [105] SoundCraft README and docs/gaps.md — https://github.com/storytold/soundcraft ; https://raw.githubusercontent.com/storytold/soundcraft/main/docs/gaps.md — read 2026-10-18 — P.
 [106] Blackmagic Design, Fairlight and Resolve Studio pages — https://www.blackmagicdesign.com/products/davinciresolve/fairlight ; https://www.blackmagicdesign.com/products/davinciresolve/studio — read 2026-10-18 — V.
@@ -828,7 +829,7 @@ The premiere country is still open, so this is a table of what each society or s
 
 **Facts to bring to the consult:** who made each recording, when, with what knowledge and for what stated purpose; whether the speaker is living and where; whether the recording captures anything private or health-related; where the premiere is and who is invited; whether it is filmed or shared afterwards (it should not be; see the removal deadline 2027-02-19 [6]); what the maker plans if a speaker objects.
 
-**A decision the maker can take before the consult (inference).** For every voice other than the mother's, get a recorded or written yes to a public showing from the speaker (or the closest family if the speaker has died), using the extended consent card (tier C) [6]. The mother's own recordings are the proxy decision under Principle 5; the maker is the only person on the project, so that decision and the lawyer's answer are the maker's alone. Ask the other speakers without naming the film's subject or occasion (the consent card already works this way [6]); if a speaker's yes cannot be had without tipping her off, that voice stays out. The law above is a floor; the charter's dignity rule is stricter.
+**A decision the maker can take before the consult (inference).** For every voice other than the mother's, get a recorded or written yes to a public showing from the speaker (or the closest family if the speaker has died), using the D2 card, answer B; tier C is a written ask after the premiere [6]. The mother's own recordings are the proxy decision under Principle 5; the maker is the only person on the project, so that decision and the lawyer's answer are the maker's alone. Ask the other speakers without naming the film's subject or occasion (the consent card already works this way [6]); if a speaker's yes cannot be had without tipping her off, that voice stays out. The law above is a floor; the charter's dignity rule is stricter.
 
 ---
 
@@ -854,7 +855,7 @@ The premiere country is still open, so this is a table of what each society or s
 | S3 mix | all chapters locked, G-LOCK 2027-02-06 | full mix, ducking, three loudness versions | nothing |
 | S4 print | after venue rehearsal | stems, masters, hashes | nothing |
 
-Note an inconsistency to fix in the schedule: the notes assume picture lock for sound on **2027-01-15**; the roadmap's rolling locks start 2027-01-17 and full lock is **2027-02-06** [149]. The sound plan should follow the roadmap: S1 and S2 per chapter from 2027-01-17, S3 on 2027-02-06 to 02-12 as already scheduled.
+Note an inconsistency to fix in the schedule: the notes assume picture lock for sound on **2027-01-15**; the roadmap's rolling locks start 2027-01-17 and full lock is **2027-02-06** [149]. The sound plan should follow the roadmap: S1 and S2 per chapter from 2027-01-17, S3 from G-LOCK 2027-02-06 to mix v1 at G-MIX 2027-02-13, masters by G-MASTER 2027-02-20.
 
 **What an unlock costs (inference using the project's figures [149]).** Sound integration is planned at **0.6 maker-hours per finished minute**; grade, mix, captions and QC at **2.7** (0.8 if bought) [149]. For an unlocked chapter of N minutes, the sound cost is about 0.6 x N hours if cues are hit to picture and every cue after the change must be re-spotted, plus a re-listen on the venue-class speaker, plus 0.1 to 0.3 hours to re-run the loudness measurement and re-export stems (our guess, no source). A one-shot change inside a chapter that leaves later timing equal (an equal-frame-count swap) costs almost nothing; a duration change moves every later cue in that chapter. A 3-minute chapter is therefore roughly 2 to 3 hours of sound rework per unlock, and the project's two-unlock allowance after lock [149] is a roughly 5-hour reserve for sound. Treat these as planning numbers to replace with the first measured chapter.
 
@@ -992,3 +993,300 @@ What to expect, from synthetic files made with ffmpeg 6.1.1 in the sandbox [148]
 [147] Apple Support, Voice Memos for Mac, "Change Voice Memos settings" — https://support.apple.com/guide/voice-memos/change-voice-memos-settings-vm0ba246ff3e/mac — P — quote above. The iPhone guide and the "Send and receive audio messages" article returned only tables of contents.
 [148] Own measurement, 2026-10-18 (not a web source): ffprobe 6.1.1 on synthetic ALAC and AAC .m4a files made with ffmpeg 6.1.1, and on the three .m4a files already on the machine (none a Voice Memos recording).
 [149] LOCAL `playbooks/production-scale.md` — Step 14 (rolling locks from 2027-01-17; G-DRAFT 2027-01-31; G-LOCK 2027-02-06; unlock rule, two unlocks after lock), the stage-hours table (sound integration 0.6; grade, mix, captions and QC 2.7, or 0.8 if bought) — read 2026-10-18.
+
+---
+
+## Follow-up research (round 2)
+
+Written 2026-10-18 (Sunday), 19 weeks before the premiere on Saturday 2027-02-27. Sonnet researcher, targeted follow-up on eight questions. Tags as above (P primary, S secondary or press, V vendor, F forum, SR search excerpt only, LOCAL project file, OWN own measurement in the sandbox, not a web source). New sources continue the numbering at [150]. Nothing here is legal advice. The premiere country is still undecided (the playbook's decision date is 2026-10-31), so every rights statement is conditional.
+
+**Context update from the maker (2026-10-18).** In answer to "who is in on the secret, and who could approve the hard chapters for her?" the maker wrote: for now only the maker, and the maker will be the only one on this project. That matches the charter: the maker is the sole person in on it and acts as her proxy for hard chapters, with the Fable advisor flagging sensitive material but not deciding. Four consequences for this track: (a) there is no second approver, so sign-off on the D2 consent sentence (G4) is the maker's; (b) the one-hour rights consult (F6, G7) is the maker's alone; (c) a composer, pro mixer, lawyer, venue engineer or society contact widens the circle and stays a later choice for the maker, using the name-free brief and the confidentiality clause already in the notes; (d) the January re-conform timing (G8) is done by the maker's own hands.
+
+**Research limits this round (read first).** (1) The web-search tool refused my one query because the shared search budget is used up (same as round 1), so I ran no searches. Everything below comes from direct page fetches and from files downloaded from the publisher's own server. (2) Hosts that still do not deliver their text: ASCAP (plain HTTP 403 again, on both the fetch tool and curl); BMI and Musopen (HTTP 403 whose body is a Cloudflare "Just a moment..." browser challenge, so a normal browser should load them); IPRS (HTTP 403, Cloudflare "Attention Required!" page); SACEM (blocked by the fetch tool itself, so I did not try another route); Netflix's Knowledge Hub (a script-rendered app whose HTML holds only the title "Knowledge Hub"; I did not call its private data API); PRS (pages return navigation only); two guessed hosts, backlothelp.netflixstudios.com and partners.bbc.co.uk, were refused by the egress proxy. I did not use archive, reader or proxy services, and I did not try to pass a browser challenge. (3) The Udio and RapidCue findings below came from reading the publisher's own page data and PDF, which the fetch tool's summary could not show.
+
+### Answers at a glance
+
+| # | Question | Result |
+|---|---|---|
+| G1 | ASCAP cue-sheet dates and usage categories | **Dates: still not independently re-read.** ASCAP is 403 again; BMI is behind a browser challenge. [50] stays tagged. **Categories: now confirmed from a primary source**, the RapidCue Batch Reference Guide (April 2025, © BMI, run by BMI and ASCAP): 29 valid `CueUsage` values and 10 `CueSubUsage` values, listed below, plus the fields that map onto our licence log. |
+| G2 | Musopen Terms of Use | **Not read.** Cloudflare browser challenge, so the page exists and the maker's browser should show it. Paste-ready log row and decision rule below. Maker action, 5 minutes. |
+| G3 | Dialogue-to-programme loudness offset | **Broadcaster anchor found: EBU R 128 s4 and Tech 3343 (both November 2023).** "Loudness-to-Dialogue Ratio" LDR = Programme Loudness minus Dialogue Loudness, recommended **at most 5 LU** for adapted cinematic content; ORF's 44-film study found a mean below 4 LU and unadapted films above 15 LU. Our playbook's 6 LU is 1 LU looser than the only broadcaster number found. Netflix's -27 LKFS spec **not read** (script-rendered). Dolby and BBC guidance **UNVERIFIED** (no readable primary). |
+| G4 | Owner and date of the D2 patch to surprise-ops | **Not applied yet** (checked: the surprise-ops playbook has not changed since 06:49 UTC, and music-sound Template D2 still says "next round"). **Owner: the orchestrator session. Date: Saturday 2026-11-07.** The maker signs off the wording. |
+| G5 | Free Fairlight on the maker's PC | **Cannot be run from here** (no access to the PC). Added: the manual's memory-cap setting, a tested sampling script, and a one-page result sheet. Resolve 21 Windows minimum RAM: **UNVERIFIED**. |
+| G6 | Udio's primary terms | **Read from the page** (Last Revised November 12, 2025). Downloads barred; Output usable "solely for your personal and non-commercial purposes"; Udio and its licensors own Output. Both secondary reports are confirmed on these points. **Udio is out for the film.** New: its licence over anything uploaded as Input Content is perpetual and irrevocable, so never upload family audio or photos. |
+| G7 | Society practice and the F6 consult question | **GEMA's Tarif T read in full (primary):** 1.3% of net ticket revenue, minimum EUR 30.40 per screening up to 150 people, and more. PRS, SACEM, IPRS: **UNVERIFIED.** The F6 consult paragraph stands; three add-on questions below. |
+| G8 | Measured re-conform cost | **Machine part measured in the sandbox: 23 to 28 seconds for a 3-minute chapter.** The human part cannot be measured before a real chapter exists. A stopwatch protocol, a dry run on the slice chapter (2026-12-21 to 12-27) and the January timing are set out below. F7's figures remain inference. |
+
+---
+
+### G1. ASCAP cue-sheet dates and usage categories
+
+**Dates (unchanged).** ASCAP's cue-sheet page returned plain "403 Forbidden" on the fetch tool and on curl this round [155], in addition to the earlier attempts [110]. BMI's cue-sheet URLs returned a Cloudflare challenge page, not content [155]. So the deadline table in F1 (March/April 2027 distributions need the cue sheet by 2027-01-01; June/July by 2027-04-02) still rests on the text captured at 06:44 UTC [110]. **[50] stays tagged.** The conclusion in F1 also stands: the date is not a project gate unless a cleared commercial song with an ASCAP or BMI writer is in the film and the film is later broadcast or streamed.
+
+**Maker action, only if such a song is in the cut (5 minutes, own browser).** Open the ASCAP page named in [50]. Paste into the licence log the two table rows "March 2027 / April 2027" and "June 2027 / July 2027", the sentence beginning "How the music was used", the date you read it, and the page's own date if shown. If no ASCAP or BMI writer is involved, skip this and leave [50] tagged.
+
+**Usage categories (confirmed from a primary source).** RapidCue is the electronic cue-sheet service for performing rights organisations. Its Batch Reference Guide is copyrighted "2019-2025 BMI", was created 2025-04-28 (PDF metadata), and tells readers to contact "RapidCue representatives at BMI and ASCAP" [154]. Its Appendix A.5 gives the valid `CueUsage` values and A.6 the valid `CueSubUsage` values [154]:
+
+- **CueUsage (29):** Background; Background Instrumental; Background Vocal; Bumper; Closing Theme; End Title Theme; Film Theme Close; Film Theme Close Background Instrumental; Film Theme Close Background Vocal; Film Theme Close Visual Instrumental; Film Theme Close Visual Vocal; Film Theme Open; Film Theme Open Background Instrumental; Film Theme Open Background Vocal; Film Theme Open Visual Instrumental; Film Theme Open Visual Vocal; Indistinguishable; Logo; Main Title Theme; Opening Theme; Segment Theme; Theme Instrumental Close; Theme Instrumental Open; Theme Vocal Close; Theme Vocal Open; Visual Dance; Visual Instrumental; Visual Performance Accompaniment; Visual Vocal.
+- **CueSubUsage (10):** None; A Cappella; Dance; Humming; Indistinguishable; Live Performance Symphonic; Lyricless Vocals; Noodling; Spoken; Whistling.
+
+This is a superset of the examples on ASCAP's page ("visual instrumental, vocal, background instrumental or vocal", "series theme") [110], so the two sources agree. It is RapidCue's data-entry list, not ASCAP's own page, and I did not check it against BMI's cue-sheet page.
+
+**Mapping for this film (inference; confirm with the society if a sheet is ever filed).**
+
+| Cue in the film | `CueUsage` / `CueSubUsage` |
+|---|---|
+| A relative plays or sings on screen | Visual Instrumental or Visual Vocal |
+| The maker's or her hummed tune, heard with no performer visible | Background Vocal, sub-usage Humming (Visual Vocal if the hummer is on screen) |
+| Library or AI underscore | Background Instrumental |
+| Song over the opening or end titles | Opening Theme or Main Title Theme; End Title Theme |
+| A sting on a production logo, if any | Logo |
+
+**Fields worth adding to Deliverable 5 and the cue-sheet template [154].** `PublicDomainIndicator` (Yes or No, required on every cue) and `PublicDomainTerritory` (World or US, required when Yes); `SyncUseIndicator` and `SyncUseLicensor`; `MasterUseIndicator` and `MasterUseLicensor`; `Performer`; `LibraryName`, `CDNumber`, `CutNumber` for library tracks; `Duration` as HHMMSS; interested-party `Role` from a fixed list (Composer, Author, Publisher and others), `Shares` as five digits (100% = 10000, 50% = 05000). The guide also describes a "no music" cue sheet [154]. Alphabetic entries are uppercase in the XML [154].
+
+---
+
+### G2. Musopen Terms of Use
+
+**Not read.** `musopen.org/` and `musopen.org/terms/` returned HTTP 403 on curl and on the fetch tool; the body is Cloudflare's "Just a moment..." challenge [155]. That is a check meant for browsers, so the maker's own browser should pass it. I did not try to get around it.
+
+**Maker action (5 minutes, own browser, by 2026-10-31 with the log build).** Open the Musopen terms page. Paste one row into `licence-log.csv` and, if it fits, the page's own date:
+
+```
+asset_id,type,title,creator,source_url,date_accessed,plan_or_tier,licence_name_and_version,quoted_sentence,page_last_updated,cleared_gathering,status
+L-xxxx,policy,"Musopen terms of use","Musopen","https://musopen.org/terms/",2026-10-xx,free,"Terms of Use (as shown)","<exact sentence about how recordings may be used>","<date on the page, or 'none shown'>",<Y|y|C|?|N>,<candidate|rejected>
+```
+
+Decision rule, unchanged from F4: if the sentence limits use to "personal" or "non-commercial", Musopen is **not** cleared for a public screening, and the music uses a source that does not depend on it (a relative's performance of a public-domain tune, or a pre-1926 US recording with a primary rights statement [45][46]).
+
+---
+
+### G3. A dialogue-to-programme loudness offset to anchor the playbook's 6 LU check
+
+**The check being anchored.** Playbook Step 15, "DX-gated check", and Template G: measure the dialogue stem (DX) alone and the full mix, both integrated; "if the integrated DX sits more than 6 LU under the full mix, the music is too loud for a room with many listeners aged 50 and over". In EBU terms that is the Loudness-to-Dialogue Ratio with the dialogue stem as the dialogue measurement.
+
+**What the EBU documents say (primary, November 2023).**
+- **Definitions.** "Programme Loudness (PL): The integrated loudness over the duration of a programme"; "Dialogue Loudness (DL): The average loudness of the speech component of a programme"; "Loudness-to-Dialogue Ratio (LDR): The difference between Programme and Dialogue Loudness (LDR = PL - DL)". A footnote adds: "Dialogue Loudness is also called 'Speech Loudness' or 'Speech-gated Loudness'" [151]. So "dialogue-gated" and "dialogue loudness" are the same measurement family as our DX-stem check.
+- **Limit.** Recommendation j): "the Loudness-to-Dialogue Ratio of Cinematic Content should not exceed 5 LU." Recommendation k): "if the Loudness-to-Dialogue Ratio of Cinematic Content is within 5 LU, no dynamic adaptation needs to be performed", and "increasing Dialogue Loudness to match Programme Loudness (LDR = 0) should be avoided" [151].
+- **Evidence behind 5 LU.** Tech 3343 §9.4 reports an analysis of 44 feature films from ORF's database, dubbed into German and already dynamically adapted by two experienced sound engineers: "The mean Loudness-to-Dialogue Ratio was for both methods below 4 LU"; for the stricter "narrow-range" dialogue (no whisper, shout or song, no competing music or effects) LDR was "higher, but still ≤ 5 LU"; the two measurement methods (a speech-edited centre channel versus Dolby's Dialogue Intelligence algorithm) differed by a mean of 0.4 LU [150]. Unadapted film mixes: LDR "can be excessive, sometimes more than 15 LU!" [150]; the s4 worked example is a film at PL -17 and DL -29 LUFS (LDR 12) [151].
+- **What 5 LU does to levels.** With the -23.0 LUFS target and LDR at most 5 LU, dialogue "can effectively sit on one level in the range of −28.0 ≤ DL ≤ −23.0 LUFS"; if the dialogue is normalised to -23, the programme can "maximally reach -18.0 LUFS" [150][151]. That is the same number as the notes' venue master (-18 LUFS integrated), so a venue master at -18 with LDR at most 5 implies dialogue at about -23 LUFS or louder. This is arithmetic on the EBU figures, not an EBU statement about halls.
+- **How to measure it cheaply.** Tech 3343 §9.4.1 spot-check: choose three on-screen dialogue sequences from the beginning, middle and end ("omit off-screen narration"); each about 30 seconds; no music or competing effects; measure each with ITU-R BS.1770; the average is the narrow-range DL. With a separate dialogue stem, measure the stem; for a stereo programme with no stem, "the complete mix is the basis" [150][151].
+
+**Limits of this anchor (important).** R 128 s4 is guidance on adapting dynamic films for **broadcast and streaming**; it says it "is explicitly not intended as production advice for feature films", and "programmes for playback in cinemas are explicitly not considered" [151]. So 5 LU is an anchor from the only broadcaster document I could read, not a rule for a hall PA.
+
+**Our 6 LU versus 5 LU (inference).** The playbook's 6 LU is one LU looser than the EBU figure, and the ORF mean (below 4 LU) shows 5 LU is routinely met by a careful dynamic adaptation. Recommended wording for the scribes: **target LDR of 5 LU or less (EBU R 128 s4); more than 5 LU means look at the music; more than 6 LU is a fail that must be fixed before a master is signed off**. That keeps 6 as the hard line the playbook already wrote and adds the EBU number as the aim. The room still has the last word: the 2027-02-22 run from the back row decides.
+
+**Sandbox check of the measurement itself (OWN [160]).** I built a synthetic 3-minute chapter (a public speech clip repeated with gaps as "dialogue", a steady three-note pad as "music"), normalised the dialogue to -23.0 LUFS and measured with `ffmpeg -af ebur128`. LDR = integrated(mix) minus integrated(DX):
+
+| Music gain | Mix integrated (LUFS) | LDR (LU) |
+|---|---|---|
+| -20 dB | -24.2 | -1.2 |
+| -10 dB | -22.6 | 0.4 |
+| -6 dB | -20.1 | 2.9 |
+| -4 dB | -18.5 | 4.5 |
+| -2 dB | -16.9 | 6.1 |
+| 0 dB | -15.1 | 7.9 |
+
+Two things to know. (1) Near the limit, about 0.8 LU of LDR moves per dB of music, so moving the limit from 6 to 5 LU lowers the music by roughly 1 to 1.5 dB in this synthetic case (not general). (2) With very quiet music the number can read **negative**: the mix measured lower than the dialogue alone. The likely cause (inference, not tested further) is that a quiet bed fills the gaps, lowers the relative gate's threshold and lets quieter speech blocks into the gated average. Read LDR only when the music is audible; a reading near zero or below does not mean "perfect". Recipe, per file: `ffmpeg -hide_banner -nostats -i FILE -af ebur128 -f null - 2>&1 | awk '/Summary/{s=1} s&&/I:/{print $2; exit}'`.
+
+**Netflix's dialogue-gated spec: not read directly.** The old partner-help address 301-redirects to `studiopartner.netflix.net/studio/branded-sound-mix-spec-and-best-practices`, a script-rendered app whose HTML holds only the title "Knowledge Hub" [153]. I did not call its private data interface. The "-27 LKFS dialogue-gated, +/-2 LU, -2 dBTP" figure therefore stays a search-snippet item [96], tagged UNVERIFIED. **Maker action (3 minutes, own browser):** open that address, find the loudness section, and paste the sentences giving the dialogue-gated target, its tolerance, the true-peak limit and the loudness-range limit into the log with the date and any version label on the page. It is a streaming spec and is not needed for the hall; its value is as a second anchor for "dialogue-gated".
+
+**Dolby and BBC: UNVERIFIED.** No Dolby or BBC page with a dialogue-versus-programme figure was readable (the Dolby professional TV page I read links no loudness documents; the BBC R&D pages are script-rendered; the BBC delivery host was refused by the egress proxy). Dolby is present indirectly: the ORF study used Dolby's Dialogue Intelligence, and a Dolby staff member is among the contributors named in R 128 s4 [150][151]. Tech 3343 also notes that in Dolby's metadata "dialnorm genuinely describes the loudness of an entire programme" unless anchor-based normalisation is used, in which case it describes the dialogue [150]. Tech 3343 gives -27 as the factory default of dialnorm in Dolby Digital and -31 as its lowest value [150], and Tech 3344 section 6.7 notes home-theatre equipment that applies a fixed offset to a -27 LUFS reference [152]; I claim no link between those and Netflix's figure. No practitioner (non-broadcaster) source for a hall or PA setting turned up; the nearest context is still the cinema measurements already in the notes [94][95].
+
+---
+
+### G4. Who patches the surprise-ops consent card with the D2 sentence, and by when
+
+**Status (checked 2026-10-18).** Not applied. `playbooks/surprise-ops.md` was last modified at 06:49 UTC and contains no D2 text; its consent card still promises "a film that family will watch together, and a longer private version given to [NAME]" [161]. `playbooks/music-sound.md` Template D2 "Routing" still says the wording goes to surprise-ops "at that track's next round", although that track has finished round 3 [161]. The round-2 advisor review had already asked for a dated action instead [161].
+
+**Owner and date.** The advisor review's note to the orchestrator reads: "Patch the surprise-ops consent card directly, by 2026-11-07, so the Track B gate on 2026-11-14 is not blocked" [161]. So: **the orchestrator session applies the patch to `playbooks/surprise-ops.md` (Consent card section, and the one-line text/voice version) by Saturday 2026-11-07, one week before the voice-collection gate on Saturday 2026-11-14. The maker approves the wording**, since the maker reads the card aloud and is the only human on the project. Until the patch lands, D2 is not read and no relative is recorded for the public cut [161]. I did not edit `surprise-ops.md`, which is outside this task.
+
+**What the patch should contain (suggestions).** (1) The D2 sentence after the existing card: "The film may also be shown to people outside the family at a gathering in late February. Tell me if your voice may be heard there." (2) The two answers, A (family only) and B (the gathering), with changes allowed until Friday 2027-02-19 [6]. (3) Reconcile the card's "two places" sentence so the family-only version and the gathering version do not contradict each other. (4) Record the open point already in the playbook: a relative who hears D2 learns that a late-February gathering exists, and the secrecy check of that fact has not been done. The maker decides per relative; an answer of A, or no question asked, keeps that voice out of the public cut.
+
+---
+
+### G5. Free Fairlight on the maker's Windows PC (the F9 fifteen-minute check)
+
+**Result: not done, because it needs the PC.** The charter says GUI control of the maker's machine is not connected, so I cannot read the installed build. Ducker, De-Hummer, Noise Reduction and the Loudness meter remain "documented without a Studio tag" per F9 [143], and **present on the installed build: UNVERIFIED.**
+
+**What I could add.**
+- **A way to stay inside the memory constraint.** The Resolve 21 manual (Chapter 4, System and User Preferences, Memory and GPU) describes a preference, "Limit Resolve Memory Usage to", that caps the system memory Resolve uses and so keeps memory free for other applications: "The maximum and default setting for this preference is 75 percent of your system's RAM." It also offers a separate limit for the Fusion cache [143]. So Resolve's use can be capped.
+- **Windows minimum RAM: UNVERIFIED.** The Blackmagic tech-specs page lists only hardware products and no RAM or GPU minimum [159]. The manual points to a separate Configuration Guide on Blackmagic's support page [143]; the support page I read carried no link to it [159].
+- **A tested memory log.** `memlog.ps1` (below) samples Resolve's memory every few seconds into a CSV. I ran it on PowerShell 7 on Linux against an ffmpeg process (6 samples, peak reported correctly) [160]; it has **not** been run on Windows, where the process name should be `Resolve` (check Task Manager, Details tab).
+
+```
+# memlog.ps1  -  .\memlog.ps1 -Minutes 5            (Resolve running, chapter playing on the Fairlight page)
+param([double]$Minutes = 5, [string]$Name = 'Resolve', [int]$Every = 5)
+$end  = (Get-Date).AddMinutes($Minutes)
+$rows = @()
+while ((Get-Date) -lt $end) {
+  $p = Get-Process -Name $Name -ErrorAction SilentlyContinue
+  if ($p) {
+    $rows += [pscustomobject]@{
+      time      = (Get-Date).ToString('HH:mm:ss')
+      workingMB = [math]::Round(($p | Measure-Object WorkingSet64 -Sum).Sum / 1MB)
+      privateMB = [math]::Round(($p | Measure-Object PrivateMemorySize64 -Sum).Sum / 1MB)
+    }
+  }
+  Start-Sleep -Seconds $Every
+}
+$rows | Export-Csv "$Name-mem.csv" -NoTypeInformation
+$peak = $rows | Sort-Object workingMB -Descending | Select-Object -First 1
+"peak working set: $($peak.workingMB) MB at $($peak.time); samples: $($rows.Count)"
+```
+
+**Result sheet for the maker (15 minutes).** Fill in and paste into the log.
+
+| Item | Result |
+|---|---|
+| Resolve build (Help > About) and Free or Studio | |
+| Installed RAM (Task Manager > Performance > Memory) | |
+| "Limit Resolve Memory Usage to" (Preferences > System > Memory and GPU) | default 75%, or the value you set |
+| Fairlight page, Effects Library lists Ducker | Y / N |
+| ... De-Hummer | Y / N |
+| ... Noise Reduction | Y / N |
+| ... De-Esser | Y / N |
+| Mixer shows the Loudness meter and its standard menu (EBU R128, Netflix, and so on) | Y / N |
+| Right-click a clip > Analyze Audio Level present | Y / N |
+| Peak working set during 5 minutes of playback (from `memlog.ps1`) | MB |
+| Audio dropouts or stutter during playback | Y / N |
+| Verdict | accept / cap and retest / fall back to REAPER [103] |
+
+**Acceptance rule (my proposal, inference; the maker may change it):** accept if the peak working set stays at or below half of the installed RAM, playback is clean, and the PC stays usable with a browser open. If not, set the cap to 50% and retest once; if still over, use REAPER (60-day trial per the schedule, or the $60 licence [103]) for the mix and keep Resolve for picture.
+
+---
+
+### G6. Udio's primary terms, read from the page
+
+**How it was read.** `udio.com/terms-of-service` is a Next.js page: the fetch tool's extractor shows only its title, but the full text is in the page's server-rendered data. I downloaded the HTML (HTTP 200) and extracted the text from it. The header reads "TERMS OF SERVICE" and "**Last Revised on November 12, 2025**" [156]. The clauses quoted here are saved in `research/sources/udio-terms-2026-10-18.txt`.
+
+**What the terms say (quotes under 125 characters; numbering is the page's).**
+
+| Clause | Text | Meaning for the film |
+|---|---|---|
+| 1.2 | "You may not download copies of any Output or any other output generated by the Services." It also bars you from making Output available "on any personal device or on any streaming platform" [156]. | No legal route to a file on the maker's PC. |
+| 6.3 | "you may use Output solely for your personal and non-commercial purposes", and may not download any copies of it from the App "for any purpose" [156]. | Use is personal and non-commercial only. A mostly public gathering strains "personal"; the download bar makes it moot. |
+| 5.2 | Among the prohibited acts: "exploit the Services, any Output, or the outputs of other users for any commercial purpose" [156]. | Any commercial use is barred. |
+| 6.1 | "the Company and/or its licensors own all right, title and interest in and to the Services and the Output"; ownership that "vests with you" is assigned to the Company [156]. | Udio and its licensors, not the user, own the Output. |
+| 6.4 | A credit to Udio is required for public use of Output, except for Output generated during a paid subscription [156]. | Moot, given the rows above. |
+| 1.1 and 6.3 (second paragraph) | "we may use your Input Content and any Output to train or otherwise improve our Services"; the licence over Your Content is "worldwide, perpetual and irrevocable" and "sub-licensable" [156]. | Anything uploaded as Input Content (a voice, a photo, a song) is licensed to Udio for good. |
+
+**Reconciling the earlier reports.** The two secondary reports said downloads were disabled and that the terms were revised on 2025-11-12 to personal, non-commercial use [18]. Both are **confirmed by the primary text**: the revision date matches, and the page I read on 2026-10-18 still shows that revision, so there has been no later revision in 11 months. The Dubspot report that paid plans grant commercial use [14] is **contradicted** by clauses 5.2 and 6.3 as served. F3's verdict stands, now on primary evidence: **Udio cannot supply a file for a public screening.**
+
+**New guardrail (inference).** Do not upload any family audio, voice recording, photo or humming to Udio, even as a style reference: clause 6.3 gives Udio a perpetual, irrevocable licence over it, which conflicts with the charter's rule that personal material stays private and with the consent given by the people heard.
+
+---
+
+### G7. Collecting-society practice for the premiere country, and the F6 consult question
+
+The country is still open (playbook Step 2, decision date 2026-10-31). Below is what can be read in advance for the four societies named.
+
+| Society | What I could read | Status |
+|---|---|---|
+| **GEMA (Germany)** | **Tarif T, version 46, valid from 2026-01-01** (PDF created 2025-12-01) is the tariff for music in single film screenings outside cinemas [157]. Fee: "1,3 % des Nettokartenumsatzes" per screening; **minimum per screening**: up to 150 people EUR 30.40, up to 300 people EUR 60.80, each further 150 people EUR 30.40; net amounts plus 7% VAT. A **15% discount** applies to events with a religious, cultural or social purpose that demonstrably pursue no economic aims (§39(3) VGG), on the per-screening rates only. The rates apply only if GEMA's consent is acquired "rechtzeitig vor Beginn der Nutzung" (in good time before use). The fee does not depend on how many works are played. It covers only GEMA's rights, not reproduction. **Consent is granted "unter der Voraussetzung", on condition that the right to use the music in the film has been properly acquired from the rightholders**, so sync is still your job. The tariff covers single screenings "außerhalb von Filmtheatern" (outside cinemas); regular screenings inside cinemas fall under Tarif T-F, not read. A clause on generative AI says that a licensee who claims AI output is not protected must prove it was made autonomously with no creative human contribution and reproduces no protected works or parts of works [157]. | **Primary, read.** Worked example with no ticket sales (our arithmetic): 120 guests EUR 32.53 gross; 200 guests EUR 65.06; 400 guests EUR 97.58, before any discount. The tariff does not name the payer; the organiser applying in advance is the natural reading (inference). Whether a family premiere qualifies for the 15% cultural/social discount: ask GEMA. |
+| **PRS (UK)** | The home page and the licence pages (`/get-a-music-licence`, `live-music-and-event`, `business-and-commercial`, `tv-and-media-production`) return HTTP 200 but the delivered HTML holds navigation only, with no film-screening text [158]. | **UNVERIFIED.** The community-cinema guide in F5 [130] remains the only (secondary) source. |
+| **SACEM (France)** | Blocked by the fetch tool; not tried by other means. | **UNVERIFIED.** |
+| **IPRS (India)** | HTTP 403, Cloudflare "Attention Required!" page [155]. | **UNVERIFIED.** |
+
+**The F6 consult paragraph stands unchanged.** Three add-on questions for whichever country is chosen, so the one hour is not spent on basics:
+1. "Is a free, one-off showing at a private-hire venue to invited and uninvited guests a 'public' performance here, and which collecting-society licences does that trigger for the music inside the film?" (GEMA's tariff turns on the screening, not the film.)
+2. "The tariff or licence says the society's consent assumes the music was properly licensed for the film. What evidence of sync and master clearance does the society or venue expect, and in what form?" (GEMA's Tarif T conditions its consent on exactly this [157].)
+3. "If any music in the film is generative-AI output, who has to show whether it is protected by copyright: the licensee or the society?" (GEMA puts that burden on the licensee [157]; ask whether the chosen country does the same.)
+
+Once the country is chosen, replace `[country, city]` in the F6 paragraph and add the venue question from F5. The maker alone takes the consult (see the context update above).
+
+---
+
+### G8. A measured re-conform cost for one late picture change inside a locked chapter
+
+**What can be measured now, and what cannot.** F7's figures (about 0.6 maker-hours per finished minute of sound integration, 2 to 3 hours of sound rework for a 3-minute chapter per unlock, 0.1 to 0.3 hours for re-measure and re-export) are inference. No real chapter exists yet, so the human part (re-spotting, fixing crossfades, listening) cannot be timed honestly. The machine part can, and I timed it.
+
+**Sandbox timing, one 3-minute stereo chapter (OWN [160]).** Input: a 48 kHz 24-bit stereo WAV (51.8 MB). Machine: 4 vCPU Linux sandbox, ffmpeg 6.1.1. Three runs each, wall-clock seconds:
+
+| Step | Seconds (min to max) |
+|---|---|
+| Measure integrated loudness (`ebur128`) | 1.7 to 1.8 |
+| `loudnorm` pass 1 (analyse) | 4.9 to 6.8 |
+| `loudnorm` pass 2 (write 24-bit WAV; confirmed -18.0 LUFS on the output) | 1.3 to 1.8 |
+| AAC 256 kbps encode for the online version | 12.3 to 13.2 |
+| Re-export three 24-bit stems | 3.1 to 4.7 |
+| **Total** | **23 to 28** |
+
+So the scripted re-measure and re-export of a chapter is **under half a minute** here. The maker's PC and Resolve's own deliver page will differ, but the order of magnitude says F7's 0.1 to 0.3 hours (6 to 18 minutes) is almost entirely the human steps, above all the listen-through, not the rendering. Pass 2 followed the pass-1 numbers measured on the same file.
+
+**Stopwatch protocol for the maker (so the numbers can be written back).** Time each step with a phone stopwatch; stop only for the step, not for breaks.
+
+| Step | What is timed |
+|---|---|
+| T1 | From "picture change approved" to the new picture in the Resolve timeline; use Compare Timeline against the backup [142][143] to see what moved |
+| T2 | Re-spot the cues after the change (the cues that moved or now miss a hit point) |
+| T3 | Fix transitions: crossfades, room tone under the new length, ambience |
+| T4 | Re-premix dialogue (levels only, per the S2 stage in F7) |
+| T5 | Re-run loudness (LDR from G3, integrated, true peak) and re-export stems and masters (`ebur128` and `loudnorm` as above) |
+| T6 | Listen-through of the whole chapter on the venue-class speakers or the closest thing |
+
+Log one row per unlock:
+
+```
+unlock_id,date,chapter,minutes_of_chapter,change_type,delta_frames,cues_moved,t1_min,t2_min,t3_min,t4_min,t5_min,t6_min,total_min,hours_per_finished_minute,notes
+```
+
+`change_type` is one of: equal-length swap, shortening, lengthening. `delta_frames` is the signed change. `hours_per_finished_minute` is total hours divided by the chapter's minutes, directly comparable with the 0.6 in production-scale.
+
+**When to measure (proposal, inference).**
+1. **Dry run on the slice chapter, 2026-12-21 to 2026-12-27.** After G-SLICE (Sunday 2026-12-20) chapter 1 exists with its sound mix. Make one deliberate change: lengthen one shot by two seconds, then re-conform and time T1 to T6. This gives a first number three weeks earlier than January and tests the "keep each chapter's music as its own cue" rules from F7.
+2. **First real unlock, from Sunday 2027-01-17** (G-MID, when rolling locks begin). Time the first chapter that is unlocked after its lock, using the same log.
+3. **Write-back.** The orchestrator or a scribe replaces the inference in the F7 "What an unlock costs" paragraph with the measured rows, and sends the hours-per-finished-minute figure to the production-scale stage-hours table (sound integration 0.6; grade, mix, captions and QC 2.7) [149]. Until then the F7 numbers stay labelled inference.
+
+---
+
+### Changes to earlier notes (for the scribes)
+
+1. **Playbook Step 15 ("DX-gated check"), Template G and research Deliverable 4:** add the EBU Loudness-to-Dialogue Ratio (G3): target 5 LU or less, fail above 6 LU; state that the source is broadcast guidance and "not production advice for feature films" [150][151]. Add the gating caveat (a quiet bed can read negative).
+2. **Cue-sheet paragraph, playbook Template C, research Deliverables 2 and 5:** replace "check the template for exact terms" with the RapidCue `CueUsage` and `CueSubUsage` lists and the added fields (G1) [154]. [50] and [110] keep their tags for the deadline dates.
+3. **Q3 (Udio row), F3 and Template (AI services):** replace "terms revised 2025-11-12, secondary" with the primary clauses (G6) [156]; add the guardrail never to upload family audio or photos to Udio.
+4. **F5 table, GEMA row:** replace "payer and calculation UNVERIFIED" with the Tarif T figures (G7) [157]; add the sync-clearance condition and the generative-AI clause to the clearance pack.
+5. **Template D2 "Routing" and Decision 6:** replace "at that track's next round" with the dated action in G4 (orchestrator patches `playbooks/surprise-ops.md` by Saturday 2026-11-07; maker approves).
+6. **F9 / Step 14 (Resolve Free):** add the memory-cap setting and `memlog.ps1` (G5) [143]; the installed-build check is still open.
+7. **F7 and the sound schedule:** add the machine-time measurement and a schedule row "2026-12-21 to 12-27, re-conform dry run on the slice chapter" (G8).
+8. **Sources:** [96] Netflix loudness stays SR-only until the maker's browser read (G3).
+
+### Remaining gaps after round 2
+
+- Maker's browser reads (each 3 to 5 minutes): Musopen terms (G2, by 2026-10-31); Netflix dialogue-gated loudness section (G3); ASCAP deadline table, only if an ASCAP or BMI writer is in the cut (G1).
+- Resolve Free on the installed build: effects present, peak memory, verdict (G5).
+- Dolby and BBC primary guidance on dialogue level relative to programme level; any practitioner source for hall or PA playback (G3).
+- PRS primary wording on films shown by guests; SACEM; IPRS (G7). These matter only for the chosen country.
+- GEMA: whether a family premiere qualifies for the 15% cultural/social discount, and who the payer is (G7).
+- The measured human-time re-conform figures (G8): dry run 2026-12-21 to 12-27; first real unlock from 2027-01-17.
+- Carried forward from round 1 and not touched this round: Suno docket status after 2026-10-02; a real Voice Memos Lossless file for `ffprobe`; WhatsApp and iMessage handling of an attached .m4a; personality, privacy and publicity law for the actual premiere country.
+
+### Sources added in round 2 (continue the numbering; tags as above)
+
+**G3 loudness offset**
+[150] EBU, Tech 3343, "Guidelines for Production of Programmes in accordance with EBU R 128", version 4, November 2023 (PDF created 2023-11-18, 46 pages) — https://tech.ebu.ch/docs/tech/tech3343.pdf — downloaded and text-searched 2026-10-18 — P (section 4.1 anchor signal; section 6 dialnorm; section 9.4 Cinematic Content, 9.4.1 to 9.4.3).
+[151] EBU, R 128 s4, "Loudness Normalisation of Cinematic Content", supplement 4 to R 128, November 2023 (PDF created 2023-11-18, 6 pages) — https://tech.ebu.ch/docs/r/r128s4.pdf — downloaded and read in full 2026-10-18 — P (definitions, recommendations f) to q), Figure 1; scope note that it is not production advice for feature films and excludes cinema playback).
+[152] EBU, Tech 3344, "Guidelines for distribution and reproduction in accordance with EBU R 128", v2.1, July 2016 — https://tech.ebu.ch/docs/tech/tech3344.pdf — downloaded and searched 2026-10-18 — P (section 6.7 and Annex A mention a -27 LUFS home-theatre offset; not otherwise used).
+[153] Netflix, Sound Mix Specifications and Best Practices — https://partnerhelp.netflixstudios.com/hc/en-us/articles/360001794307 (301 to) https://studiopartner.netflix.net/studio/branded-sound-mix-spec-and-best-practices — read 2026-10-18 — V — script-rendered; title "Knowledge Hub" only; content NOT read.
+
+**G1, G2, G7 access results and cue sheets**
+[154] RapidCue, Batch Reference Guide, April 2025 (PDF created 2025-04-28; copyright 2019-2025 BMI; support contact "RapidCue representatives at BMI and ASCAP"), with XML schema v1.4.5 — https://www.rapidcue.com/RapidCue%20Batch%20Reference%20Guide_April%202025.pdf ; https://www.rapidcue.com/Rapidcue_XML_Schema_v1.4.5.xsd ; home page https://www.rapidcue.com/ — downloaded and read 2026-10-18 — P (Appendix A.5 Cue Usage, A.6 Cue SubUsage, Cue field table, "no music" cue sheets).
+[155] Access results, 2026-10-18 (not content): ASCAP https://www.ascap.com/help/royalties-and-payment/cue-sheets — plain HTTP 403 on the fetch tool and on curl; BMI https://www.bmi.com/creators/detail/cue_sheet_submission and https://www.bmi.com/creators/cue_sheets — HTTP 403, Cloudflare "Just a moment..." page; Musopen https://musopen.org/ and https://musopen.org/terms/ — same Cloudflare page; IPRS https://www.iprs.org/ — HTTP 403, Cloudflare "Attention Required!" page; backlothelp.netflixstudios.com and partners.bbc.co.uk — refused by the egress proxy. None circumvented.
+
+**G6 Udio**
+[156] Udio, Terms of Service, "Last Revised on November 12, 2025" — https://www.udio.com/terms-of-service — fetched 2026-10-18 (HTTP 200); text extracted from the page's server-rendered data — P — clauses 1.1, 1.2, 5.2, 6.1, 6.3, 6.4; capture of the quoted clauses in `research/sources/udio-terms-2026-10-18.txt`.
+
+**G7 societies**
+[157] GEMA, Tarif T, "Filmvorführungen", version 46, valid from 2026-01-01 (PDF created 2025-12-01, 4 pages) — https://www.gema.de/de/musiknutzer/tarifuebersicht/tarif-t ; PDF linked from that page as tarif_t_version46.pdf — downloaded and read in full 2026-10-18 — P.
+[158] PRS for Music — https://www.prsformusic.com/ ; /get-a-music-licence ; /get-a-music-licence/live-music-and-event ; /business-and-commercial ; /tv-and-media-production — fetched 2026-10-18 (HTTP 200) — V — no film-screening text in the delivered HTML (navigation only).
+
+**G5 Resolve**
+[159] Blackmagic Design, DaVinci Resolve tech-specs page and Resolve and Fairlight product pages, and the support page https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion — read 2026-10-18 — V — no Windows RAM or GPU minimum for Resolve; no link to the Configuration Guide found. (The Resolve 21 manual's memory-cap text is under [143].)
+
+**G3, G5, G8 own measurements and local files**
+[160] Own measurements, 2026-10-18 (not a web source), 4 vCPU Linux sandbox, ffmpeg 6.1.1, PowerShell 7: (a) LDR sweep on a synthetic 3-minute chapter (speech clip as dialogue at -23.0 LUFS, steady pad as music); (b) timing of `ebur128`, `loudnorm` two-pass, AAC encode and stem re-export, three runs; (c) `memlog.ps1` run against an ffmpeg process (6 samples). Not run on Windows or on Resolve.
+[161] LOCAL: `reviews/music-sound-round2.md` (nudge 6; section 9 "Notes for the orchestrator"); `playbooks/music-sound.md` Template D2 and Decision 6; `playbooks/surprise-ops.md` consent card (file times read 2026-10-18); `playbooks/production-scale.md` gates and stage-hours (via [149]); `CHARTER.md`.
+
+## Changelog
+
+- 2026-10-18, deltas applied from round 1 (C1 and the round-2 nudges, `reviews/music-sound-round2.md`; Haiku scribe): Deliverable 3d now carries the playbook D2 card (the long card with the festival and cinema line is withdrawn; tier C is a written ask after the premiere); F6 points to D2 answer B; the Deliverable 2 spotting header and worked row and the Deliverable 3e found-voice header are identical to playbook Templates B and D3; Summary 13, Q9, the REAPER tools row and F7's last sentence no longer carry the 2027-02-14 rehearsal, the January mix, the "unless started late" wording or the 02-12 schedule; source [8] rehearsal dates retired in both lists; the REAPER $60 personal-use condition (purchase page re-read 2026-10-18) added to Q9, the tools row and [103]; Deliverable 4 and the venue checklist point to the speech-span DX check; the D2 routing date is Saturday 2026-11-07. Still open, not applied here: the G3 loudness-to-dialogue text for playbook Step 15 and Template G, and the other round-2 "Changes to earlier notes" items.

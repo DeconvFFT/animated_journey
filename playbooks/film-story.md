@@ -1,6 +1,6 @@
 # Writing a biographical animated film: structure, narration and runtime
 
-*Track: film-story · Version 0.2 · Written 2026-10-18 · Built from `research/film-story.md` (researcher notes, 2026-10-18) and `CHARTER.md`.*
+*Track: film-story · Version 0.3 · Written 2026-10-18 · Built from `research/film-story.md` (researcher notes, 2026-10-18) and `CHARTER.md`.*
 
 *Reading key: [n] points to a source in the Sources list at the end. [P1] to [P8] are project files, also listed there. "Summary" and "Q1" to "Q10" are sections of the research note, `research/film-story.md`. "(inference)" marks our own reasoning, not something a source says. "UNVERIFIED" means we could not confirm it. "Snippet only" means we saw the source in search results but did not open it. "Paraphrase" means the wording is not exact. "Not timed" means nobody has put a stopwatch on it. "TODO(research): ..." marks a gap.*
 
@@ -27,7 +27,7 @@ Two cautions. First, a 15-minute public cut breaches the 12-minute cap in the su
 
 ### What the evidence says about length, and what it does not
 
-- **Peak-end.** Thirty-two students watched plotless clips of 55 to 138 seconds. Their later judgements followed the peak and the end, not the duration [49]. It is old, small and not about narrative film. Treat it as a direction.
+- **Peak-end.** Thirty-two students watched plotless clips (pilot set 55 to 138 s; the 12 test clips were shown at 21 to 41 s (short) and 64 to 125 s (long)). Their later judgements followed the peak and the end, not the duration [49]. It is old, small and not about narrative film. Treat it as a direction.
 - **Children.** In 3- and 5-year-olds, a sustained look at the screen tends to continue, and distraction drops after about 15 seconds of steady looking [50]. So the first minute must be clear to the youngest viewer.
 - **Polls.** A 2026 US poll of 2,000 adults put the ideal commercial feature at 88 minutes [54]. That is about entertainment films, not tribute films.
 - **Funeral guidance.** A vendor blog suggests 3 to 8 minutes for a tribute slideshow, with 4 to 5 ideal [56]. It is not a study.
@@ -110,7 +110,7 @@ Each exercise has a goal, steps, a time estimate and a "what good looks like" li
   4. Write three sentences: what carries the life, where the hard thing is withheld, and where the sincere version sits.
 - **Time estimate.** About one evening per film, plus a write-up.
 - **What good looks like.** Every segment has a class. The totals add up to the runtime. You can point to the withheld moment with a timestamp.
-- **Costs and gaps.** The notes estimate $0 to about $12 in total if library access works. The library terms for Kanopy and Hoopla are UNVERIFIED. TODO(research): legal routes for *Waltz with Bashir*, *My Architect*, *Ethel & Ernest*, *Cobain: Montage of Heck*, *Boyhood*, *The Tree of Life*, *Listen to Me Marlon*, *Mama Micra* and *Father and Daughter*. The maker's country is unknown.
+- **Costs and gaps.** The notes estimate $22 to $46 for the six films with a route in the legal-viewing check, or $0 to $12 for the cheapest four [77]. That set differs from the nine-item plan, so add up the nine rows of Template 9 for that plan's cost (Mama Micra's cost is unknown). The library terms for Kanopy and Hoopla are UNVERIFIED. TODO(research): legal routes to confirm for *Boyhood*, *The Tree of Life* and *Mama Micra*. The research round-2 follow-up (Q5) has a US snapshot for *Boyhood* and UK and Canadian snapshots for *The Tree of Life*; *Mama Micra* has no confirmed route. The maker's country is unknown.
 
 ### Exercise 2. Do the runtime arithmetic with her real age
 
@@ -213,6 +213,7 @@ Allowed values:
 - **music_cue**: a cue ID, or "placeholder," or "silence," plus cleared=Y, N or pending [P7].
 - **slot_state**: S0 empty; S1 evidence promised; S2 evidence in hand, IDs assigned; S3 drafted, paper edit and boards exist; S4 reviewed, 48-hour review and stranger-read passed; S5 locked.
 - **borrowed_licence**: must read NONE on every beat. Any other value blocks the beat from S3.
+- **evidence_need**: the slot library's "evidence it asks for" for the function. For any FOUND_VOICE beat (HER-PUBLIC or HER-PRIVATE), four inventory fields are mandatory: addressee; knowing recording; sensitivity (health, money, conflict or a third party); other voices on the recording. A blank field keeps the beat at S1.
 
 Placeholder rows, labelled as practice and not her facts:
 
@@ -266,7 +267,7 @@ Ratings run from 1 (poor) to 5 (strong). For cost and risk, 5 means low cost and
 
 First hard beat, by scenario (the research note's own figures, inference): no earlier than about 3:00 to 4:00 in a 12-minute film, about 4:00 in a 15-minute film, and about 6:15 to 8:20 in a 25-minute film (25 to 33 percent of runtime).
 
-Budgets, picture only, excluding end credits:
+Budgets, including end credits:
 
 - **12 minutes:** cold open 1:15; four chapters of 2:15 (9:00); ending 1:45. Total 12:00.
 - **15 minutes:** wrapper 3:00 (cold open 1:15 plus ending 1:45); four modules of 3:00. Total 15:00.
@@ -334,9 +335,9 @@ One card per chosen scenario:
 
 `scenario | ending shape | last image | last sound | last card text | what the room does | what she is asked to do (must be: nothing) | house lights`
 
-- **12 minutes, "the trace."** The last 60 to 90 seconds: the surviving object, plus a few seconds of her handwriting, or HER-PUBLIC if it exists and is decided under the 72-hour rule (never a voicemail, which is HER-PRIVATE). Hard cut to black. House lights up. No music tail.
-- **15 minutes, "the trace and the open chapter."** The 12-minute trace, preceded by a held EMPTY_CHAPTER card (6 to 10 s) in her name: "Chapter [N]: [Her name]. To be told by her." Then the object, then a hard cut to black. This sits inside the 1:45 ending budget, itemised for example as object 0:50, empty chapter 0:08, black 0:05, credits 0:42 (sum 1:45). The research note's budget header says picture only, excluding end credits, so credits are counted here by choice. TODO(research): decide whether credits count toward runtime.
-- **25 minutes, "the open chapter."** An ordinary-day sequence. Then a held card: "Chapter [N]: [Her name]. To be told by her." This is the empty chapter in her name from review 01 [P8]. Then a short credits roll with the cue sheet and "Made by [maker], for [Name]."
+- **12 minutes, "the trace."** The 1:45 ending, including end credits, is itemised for example as object 0:55, black 0:05, credits 0:45 (sum 1:45). The object is the surviving object, plus a few seconds of her handwriting, or HER-PUBLIC if it exists and is decided under the 72-hour rule (never a voicemail, which is HER-PRIVATE). Hard cut to black; end credits; house lights up. No music tail.
+- **15 minutes, "the trace and the open chapter."** The 12-minute trace, preceded by a held EMPTY_CHAPTER card (6 to 10 s) in her name: "Chapter [N]: [Her name]. To be told by her." Then the object, then a hard cut to black. This sits inside the 1:45 ending budget, which includes end credits: object 0:50, empty chapter 0:08, black 0:05, credits 0:42 (sum 1:45).
+- **25 minutes, "the open chapter."** An ordinary-day sequence. Then a held card: "Chapter [N]: [Her name]. To be told by her." This is the empty chapter in her name from review 01 [P8]. Then a credits roll with the cue sheet and "Made by [maker], for [Name]." The 1:30 ending, including end credits, is itemised for example as open-chapter card 0:08, black 0:05, credits 1:17 (sum 1:30).
 - **45 minutes, "the return."** The opening image returns, changed. *Persepolis* closes on its airport frame [44]. Then the open chapter. Then a contributor credit naming each voice. Needs a planned pause at the second-act break.
 - **90 minutes.** Not recommended.
 
@@ -344,17 +345,17 @@ One card per chosen scenario:
 
 ### Template 9. Stopwatch watch plan (nine items)
 
-| # | Film and segment | What to time | Legal route in the US (JustWatch snapshot, 2026-10-16 to 18 [62]) | Cost |
+| # | Film and segment | What to time | Legal route in the US (JustWatch US snapshots, 2026-10-14 to 18 [62][77]) | Cost |
 |---|---|---|---|---|
 | 1 | *Coco*: the three in-film "Remember Me" scenes (showy, lullaby, reunion) | Start, stop, who is in frame, silence, reaction shots | Disney+ $12.49 per month, or rent $3.99 | $3.99 |
 | 2 | *Robot Dreams*: last 12 minutes | The fantasy reunion, the real choice, the song, the roof | Kanopy free (library access UNVERIFIED); rent $3.99 | $0 to $3.99 |
 | 3 | *Flee*: first archive insert and last 10 minutes | Archive length, square frame, final shot | Free with ads on Tubi; rent $3.99 [P2] | $0 |
-| 4 | *Mama Micra* (24 min) | Whole film by beat; voice vs puppet vs found photograph | UNVERIFIED (check IDFA, the distributor Interfilm, ZDF and 3sat) | Unknown |
-| 5 | *Father and Daughter* (8:30) | Seconds per life stage; the same shot repeated | UNVERIFIED | Unknown |
+| 4 | *Mama Micra* (24 min) | Whole film by beat; voice vs puppet vs found photograph | No online route found; broadcaster ZDF/3sat [81] | Unknown |
+| 5 | *Father and Daughter* (8:30) | Seconds per life stage; the same shot repeated | Free on Kanopy [77] | $0 with a Kanopy login |
 | 6 | *Memoir of a Snail*: first 12 and last 10 minutes | Deathbed opening; the turns | Kanopy free (library access UNVERIFIED); rent $2.99 | $0 to $2.99 |
 | 7 | *Stories We Tell*: last 10 minutes | Ending; voices; father's reading | Free with ads on YouTube and Tubi; Kanopy and Hoopla | $0 |
 | 8 | *Mary and Max*: the letter sequences | Letter reading, narrator, humour | Rent $2.99; Kanopy free | $0 to $2.99 |
-| 9 | *Ethel & Ernest*: year markers | Seconds per year; how history is shown | Not checked | Unknown |
+| 9 | *Ethel & Ernest*: year markers | Seconds per year; how history is shown | Rent $3.99 [77] | $3.99 |
 
 These listings are one US snapshot and they change. Check your own country first.
 
@@ -402,6 +403,7 @@ These listings are one US snapshot and they change. Check your own country first
 - [ ] No beat makes the room look at her. No cue to applaud.
 - [ ] The ending needs nothing from her. No second-person address to her.
 - [ ] Every chapter is a module with a visible card between it and the next, so a step-out loses one chapter, not the plot.
+- [ ] The run sheet plans for refusal as a normal outcome, not an edge case (surprise-ops owns the lines).
 
 ## Decisions you'll need to make
 
@@ -419,7 +421,7 @@ Each decision lists the options, our current lean, and what it depends on. They 
 
 **Decision 6. Opening on an object, not on her face.** Our lean: yes. The room is already looking at her. An object, a voice and a laugh pull the eyes to the screen (Template 5, rule 1).
 
-**Decision 7. Who is in on the secret, and who approves hard chapters.** Your answer on 2026-10-18 was: only you. You are the sole producer and the sole keeper. The question is parked until the plan is ready. For now the safety net is the 72-hour double decision and the default-out rule [P4], with the advisor gates set in the charter. If you change this later, a stranger-read and a second key in surprise-ops become possible [P3].
+**Decision 7. Who is in on the secret, and who approves hard chapters.** Your answer on 2026-10-18 was: only you. You are the sole producer and the sole keeper. The question is parked until the plan is ready. For now the safety net is the 72-hour double decision and the default-out rule [P4], with the advisor gates set in the charter. If you change this later, an insider read of drafts and a second key in surprise-ops become possible; stranger-reads are already in the plan and need no insider [P3].
 
 **Decision 8. Which hard chapters exist, and whether any goes in.** Our lean: default out for the public cut. A hard chapter shows a trait, not an incident. The public cut holds no HOLD or PRIVATE item. Any hard beat needs both 72-hour decisions to say yes [P3][P4].
 
@@ -441,7 +443,7 @@ Each decision lists the options, our current lean, and what it depends on. They 
 - **Uncleared music.** Do not write a scene that depends on a song you cannot clear. *Robot Dreams* could not afford its song for the credits [14]. The distributor of *Tarnation* spent about $400,000 on sound, print, score and clearances [27].
 - **Costs that do not transfer.** *Ethel & Ernest* used 67,680 hand-drawn frames [47]. *Waltz* took about 2,300 illustrations over four years [6]. *Flee* had about fifty people animating at once [3]. Only the grammar transfers, not the budget.
 - **Runtime creep.** Each extra minute adds hard-chapter exposure and invented filler. The 12-minute floor and the module lock dates are the control (Q8).
-- **Over-trusting write-ups.** The fetch tool summarised most pages. Eight items in the research note are snippet only: seven numbered sources ([4], [9], [55], [63], [64], [65], [66]) and one search excerpt (the *Red Turtle* crabs quote). Do not print a quotation in a credit or a programme until you have checked it against the original.
+- **Over-trusting write-ups.** The fetch tool summarised most pages. Sources marked snippet only were never opened. Do not print a quotation in a credit or a programme until you have checked it against the original.
 - **Reel feel.** Too many text cards, or photos on a timer, make a slideshow. Keep cards few and large.
 - **Nostalgia kitsch.** Avocado appliances, Cooper Black, heavy grain and Kodak sentimentality are decade clichés [P2]. Use her own scans.
 - **Humour that fails.** The failure modes in Q9: a roast that laughs at her; cringe, meaning narrator irony; an in-joke reel that only the family gets; a gag on top of a loss; and deflection, where jokes replace the hard chapter instead of arriving before and after it. The test: would she tell this about herself to a room of strangers? If you are unsure, cut it. Show the effect of a family saying on the person who hears it, rather than explaining it (inference, Q9; compare Stanton's "Don't give them 4. Give them 2+2" [59]). Dry narration can carry humour, as in *Mary and Max*, where the humour balances the loneliness (snippet only) [66].
@@ -460,7 +462,7 @@ Each decision lists the options, our current lean, and what it depends on. They 
 
 ## Sources
 
-[1] to [66] are external. [P1] to [P8] are project files. "Fetched" means the page was opened and summarised by the fetch tool. "Snippet only" means seen in search results but not opened. Quotes from fetched pages are as the tool returned them. Check any line before printing it in a credit or programme. Source [9] is in the research note but is not cited in this playbook, so it is left out.
+[1] to [8] and [10] to [69], plus [77], [81], [86] and [92], are external. [P1] to [P8] are project files. "Fetched" means the page was opened and summarised by the fetch tool. "Snippet only" means seen in search results but not opened. Quotes from fetched pages are as the tool returned them. Check any line before printing it in a credit or programme. Source [9] is in the research note but is not cited in this playbook, so it is left out.
 
 - [1] Cartoon Brew — Editor Janus Billeskov Jansen Explains His Role In Constructing The Narrative Of 'Flee' — https://www.cartoonbrew.com/interviews/editor-janus-billeskov-jansen-explains-his-role-in-constructing-the-narrative-of-flee-214304.html — undated; fetched — dialogue cut first as "lines of voices"; archive found in editing; ending shot; house-hunting scene kept after early audiences; out-of-continuity jumps kept on purpose.
 - [2] Documentary.org — Flee feature — https://documentary.org/node/36985 — undated; fetched — about 20 interviews over 3 to 4 years, audio only used; "master assembly ... just sound with storyboards"; "reversed editing"; scene dialogue written and voiced by the director as scratch; looser trauma style.
@@ -529,6 +531,13 @@ Each decision lists the options, our current lean, and what it depends on. They 
 - [64] Rocks in My Pockets — interview and reviews — https://killermoviereviews.com/interview/signe-baumane-and-sturgis-warner-on-living-with-rocks-in-my-pockets ; https://screendaily.com/rocks-in-my-pockets/5074111.article — snippet only — the maker narrates; voice-over recorded first.
 - [65] Funan — Cineuropa and Zippy Frames interviews with Denis Do — https://cineuropa.org/en/interview/369001/fr/interview (fetch 403) ; https://zippyframes.com/interviews/political-animation-interview-with-denis-do-director-of-funan — snippet only — notepad conversations with his mother from March 2009; a fiction "based on" her life.
 - [66] National Film and Sound Archive of Australia — Mary and Max: two of Max's life goals come true — https://www.nfsa.gov.au/collection/item/mary-and-max-two-maxs-life-goals-come-true — undated; snippet only (fetch 403) — comedy balancing loneliness; the forgiveness letter as the most poignant scene.
+- [67] Academy of Motion Picture Arts and Sciences — 99th Oscars rules and eligibility page — https://www.oscars.org/oscars/rules-eligibility — fetched 2026-10-18 — index of 99th rules PDFs.
+- [68] Academy — 99th Animated Short Rules (Rule Eight) — https://www.oscars.org/sites/oscars/files/2026-05/99th%20Animated%20Short%20Rules.pdf — fetched; text extracted locally — 40 minutes or less including credits; 75 percent animation; animated documentary either category; eligibility 1 Oct 2025 to 30 Sep 2026.
+- [69] Academy — 99th Oscars Complete Rules — https://www.oscars.org/sites/oscars/files/2026-05/99th_oscars_complete_rules.pdf — fetched; text extracted locally — Rule Eight on page 11; Rule Two 2.a feature = over 40 minutes.
+- [77] JustWatch US listings (round 1) — https://www.justwatch.com/us/movie/father-and-daughter ; /vals-im-bashir ; /my-architect-a-sons-journey ; /ethel-and-ernest ; /kurt-cobain-montage-of-heck ; /listen-to-me-marlon — checked times as printed, 2026-10-14 to 17; fetched — offers and prices. /mama-micra returned 404; /waltz-with-bashir, /my-architect and /waltz-with-bashir-2008 returned 404.
+- [81] Fabian&Fred — Mama Micra — https://www.fabianfred.com/mama-micra — fetched — "Broadcaster: ZDF/3sat"; festivals 2024 to 2026; no viewing links.
+- [86] The Wrap — Steve Pond, The Weird Brilliance of 'Mary and Max' — https://www.thewrap.com/weird-brilliance-mary-and-max-11544/ — 2009-12-09; fetched — "almost a documentary"; "a blend"; no percentage.
+- [92] AFA: Animation For Adults — Mark Brandon, Interview: Michaël Dudok de Wit, director of The Red Turtle — https://www.animationforadults.com/2017/05/interview-michael-dudok-de-wit-director.html — 2017-05-26; fetched — "My biggest fear was that in a quiet moment, viewers would disconnect".
 - [P1] `playbooks/story.md` (v0.1, 2026-10-18) — chapter structures A/B/C, Up timings from a student essay, through-line method, drawers, 25-minute budget, consent values.
 - [P2] `playbooks/animated.md` and `research/animated.md` (2026-10-18) — disclosure convention, time-passing devices, era by medium, legal-viewing table F7, Wonder Years, Kalina, Flee/Tower/Missing Picture entries.
 - [P3] `playbooks/surprise-ops.md` (2026-10-18) — consent card, truthful pretext cards A to E, hard-chapter decision sheet, shared/private cuts, reveal-day run sheet.
@@ -542,15 +551,16 @@ Each decision lists the options, our current lean, and what it depends on. They 
 
 - **0.1 (2026-10-18).** First version. Built by a Haiku scribe from `research/film-story.md` and the charter. Not yet reviewed at the advisor gate, and not yet stranger-tested.
 - **0.2 (2026-10-18).** Fable round 1 applied (`reviews/film-story-round1.md`): found voice split into HER-PUBLIC and HER-PRIVATE, with surprise-ops Decision 18 adopted; 15-minute "trace and open chapter" ending added and itemised; one MAK-CARD rule; code-name rule for stranger-read copies; GAME_GRAMMAR device; format.md Decision 7 restated as a chapter count; 25-minute first hard beat set at 6:15 to 8:20; Mama Micra sources split into [48a] to [48c] with the post-death find on [48c] only; source dates and the snippet-only count corrected.
+- **0.3 (2026-10-18).** Fable round 2 applied (`reviews/film-story-round2.md`). The round-1 follow-up corrections now reach the playbook: clip lengths split into pilot and test clips; *Mary and Max* "a blend" [86] replaces "80% true", and the Red Turtle crabs quote is dropped; legal routes and the $22 to $46 and $0 to $12 costs from round-1 Q3 [77] (six films with a route, not seven); credits counted in every ending budget (12-minute trace itemised to 1:45, 25-minute ending to 1:30, TODO lines removed); refusal planned as a normal outcome; the four found-voice fields made mandatory for HER beats (`evidence_need`); Decision 7 insider-read wording; sources [67] to [69], [77], [81], [86] and [92] added. Round-2 follow-up findings (SCA, GDPR, GAME_GRAMMAR, the maker quotes, the Boyhood and Tree of Life routes) appear only where a nudge needed them; the rest is not yet applied.
 - **Open items (TODO(research)), kept here so they are not lost:**
   - Stopwatch timings: none exist beyond *Up* (Exercise 1).
-  - Legal viewing routes: *Waltz with Bashir*, *My Architect*, *Ethel & Ernest*, *Cobain: Montage of Heck*, *Boyhood*, *The Tree of Life*, *Listen to Me Marlon*, *Mama Micra*, *Father and Daughter*. Kanopy and Hoopla library terms are UNVERIFIED. The maker's country is unknown.
+  - Legal viewing routes: closed for *Waltz with Bashir*, *Ethel & Ernest*, *Cobain: Montage of Heck*, *Listen to Me Marlon* and *Father and Daughter* (round 1, [77]); *My Architect* is disc only. Still open: *Boyhood* and *The Tree of Life* (round-2 Q5 has a US snapshot for *Boyhood*, and UK and Canadian snapshots for *The Tree of Life*) and *Mama Micra* (no confirmed route). Kanopy and Hoopla library terms are UNVERIFIED. The maker's country is unknown.
   - Audience evidence for 12 versus 25 versus 45 minutes in a mixed-age room: none found.
   - Precedent for a tribute premiered to a living subject who does not know: none found.
   - Caouette's consent for *Tarnation*, and his mother's reaction: not found [27].
   - What Johnson, Caouette, Akerman, Do and Blöcher say they got wrong: thin.
-  - *Mary and Max* "80 percent true": snippet only, UNVERIFIED.
-  - *The Red Turtle* crabs quote: source page not matched. Not used in this playbook.
+  - *Mary and Max* "80 percent true": closed. Not found in any checked source; Elliot calls it "a blend" of real life and invention [86].
+  - *The Red Turtle* crabs quote: closed. Not found and dropped.
   - *Up*'s closing scrapbook line: from memory, not verified.
   - Academy rules: the 40-minute sentence was verified on the 97th text [51] and is carried in the 99th text (research note, Follow-up Q5). Re-check each Awards year before quoting it.
   - Windows steps for local transcription (Whisper or whisper.cpp): UNVERIFIED [P1].

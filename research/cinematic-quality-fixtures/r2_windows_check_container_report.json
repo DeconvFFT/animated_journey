@@ -1,0 +1,214 @@
+{
+ "versions": {
+  "date": "2026-10-18 11:33:00",
+  "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "python": "3.13.16",
+  "numpy": "2.5.3",
+  "pillow": "12.3.0",
+  "pillow_freetype": "2.14.3",
+  "pillow_raqm": true,
+  "ffmpeg_version_line": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "ffmpeg_configuration": "configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared",
+  "ffmpeg_libs": [
+   "libavutil      58. 29.100 / 58. 29.100",
+   "libavcodec     60. 31.102 / 60. 31.102",
+   "libavformat    60. 16.100 / 60. 16.100",
+   "libavdevice    60.  3.100 / 60.  3.100",
+   "libavfilter     9. 12.100 /  9. 12.100",
+   "libswscale      7.  5.100 /  7.  5.100",
+   "libswresample   4. 12.100 /  4. 12.100",
+   "libpostproc    57.  3.100 / 57.  3.100"
+  ],
+  "ffmpeg_has_libass": true,
+  "ffmpeg_has_fontconfig": true,
+  "ffmpeg_has_libx264": true,
+  "ffmpeg_has_harfbuzz": true,
+  "filter_subtitles": true,
+  "filter_zoompan": true,
+  "ffmpeg_path": "/usr/bin/ffmpeg",
+  "ffmpeg_sha256": "ed16af623947494a72e284b6eb8ff225f2da22b38b5d5069c2fd4b4ba3384e41",
+  "ffmpeg_bytes": 342488,
+  "font_file": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+  "font_bytes": 759720,
+  "font_sha256": "ae7b7855e115a5966d8b1b3f80f254ccc117ec86f9965e202ee2940453837280",
+  "font_names": [
+   "DejaVu Sans",
+   "Book"
+  ],
+  "font_fonttools": "fontTools not installed (optional)"
+ },
+ "checks": {
+  "1_caption_xheight": {
+   "status": "PASS",
+   "summary": "x-height % at FontSize 20/23/26: 3.27, 3.8, 4.26 (font as expected)",
+   "rows": [
+    {
+     "font": "DejaVu Sans",
+     "size": 20,
+     "H": 1080,
+     "xh_px": 35.33,
+     "xh_pct": 3.27,
+     "cap_px": 47.33,
+     "cap_pct": 4.38,
+     "pitch_px": 75,
+     "pitch_pct": 6.94,
+     "expected_xh_pct": 3.26,
+     "gap_pts": 0.01
+    },
+    {
+     "font": "DejaVu Sans",
+     "size": 23,
+     "H": 1080,
+     "xh_px": 41.02,
+     "xh_pct": 3.8,
+     "cap_px": 54.05,
+     "cap_pct": 5.0,
+     "pitch_px": 86,
+     "pitch_pct": 7.96,
+     "expected_xh_pct": 3.75,
+     "gap_pts": 0.05
+    },
+    {
+     "font": "DejaVu Sans",
+     "size": 26,
+     "H": 1080,
+     "xh_px": 46.0,
+     "xh_pct": 4.26,
+     "cap_px": 61.25,
+     "cap_pct": 5.67,
+     "pitch_px": 98,
+     "pitch_pct": 9.07,
+     "expected_xh_pct": 4.24,
+     "gap_pts": 0.02
+    }
+   ],
+   "secs": 6.5,
+   "stderr": ""
+  },
+  "2_zoom_velocity_classifier": {
+   "status": "PASS",
+   "summary": "roughness Pillow 0.02, zoompan 0.321, ratio 16.05 (expect >= 1.5; round 1 saw 4 to 15 on real prints)",
+   "roughness": {
+    "pillow": 0.02,
+    "zoompan": 0.321
+   },
+   "secs": 43.8
+  },
+  "3_mo8_audit": {
+   "status": "PASS",
+   "summary": "centre jitter Pillow 0.0033 px (limit 0.05), zoompan 0.6274 px (expect about 0.29 from a 4K still; round 2 container: 0.001 and 0.29); 4th-difference edge jitter 0.0095 / 0.1511",
+   "audits": {
+    "pillow": {
+     "frames": 96,
+     "mo8a_centre_jit_px": 0.0033,
+     "tx_jit_px": 0.0024,
+     "ty_jit_px": 0.0022,
+     "mo8b_edge_jit_px": 0.013,
+     "mo8c_rough": 0.0303,
+     "mo8a_d4_px": 0.0046,
+     "mo8b_d4_px": 0.0095,
+     "mean_zoom_rate": 0.000447,
+     "zoom_total_pct": 4.25,
+     "ease_features": {
+      "frames": 96,
+      "twos": false,
+      "ends": 0.18,
+      "cv": 0.49,
+      "peak": 0.49,
+      "overshoot": false
+     },
+     "ease_class": "ease in-out",
+     "input": "pil_push.mp4"
+    },
+    "zoompan": {
+     "frames": 96,
+     "mo8a_centre_jit_px": 0.6274,
+     "tx_jit_px": 0.4652,
+     "ty_jit_px": 0.421,
+     "mo8b_edge_jit_px": 0.13,
+     "mo8c_rough": 0.2982,
+     "mo8a_d4_px": 0.8577,
+     "mo8b_d4_px": 0.1511,
+     "mean_zoom_rate": 0.000454,
+     "zoom_total_pct": 4.315,
+     "ease_features": {
+      "frames": 96,
+      "twos": false,
+      "ends": 0.19,
+      "cv": 0.47,
+      "peak": 0.47,
+      "overshoot": false
+     },
+     "ease_class": "ease in-out",
+     "input": "zp_push.mp4"
+    }
+   },
+   "secs": 9.8
+  },
+  "4_pan_estimator": {
+   "status": "PASS",
+   "summary": "8.0 px/frame -> 8.001; 11.43 px/frame -> 11.462; 16.0 px/frame -> 16.001 (expect within 0.3)",
+   "pans": {
+    "8.0": {
+     "est_peak_px": 8.001,
+     "verdict": "PASS",
+     "err": 0.001
+    },
+    "11.43": {
+     "est_peak_px": 11.462,
+     "verdict": "PASS",
+     "err": 0.032
+    },
+    "16.0": {
+     "est_peak_px": 16.001,
+     "verdict": "FAIL",
+     "err": 0.001
+    }
+   },
+   "secs": 29.1
+  },
+  "5_pan_ease_classifier": {
+   "status": "PASS",
+   "summary": "cosine in-out pan -> sine.inOut (in-out), rmse 0.0002, key in-out|pan left|3-6|>6",
+   "result": {
+    "frames": 96,
+    "dt": 1,
+    "axis_vec": [
+     1.0,
+     0.0
+    ],
+    "peak_px": 10.998,
+    "peak_fw_s": 0.1375,
+    "cls": "sine.inOut",
+    "family": "in-out",
+    "rmse": 0.0002,
+    "runner_up": "smoothstep",
+    "runner_up_rmse": 0.0055,
+    "best_other_family": "none (linear)",
+    "margin_other_family": 0.992,
+    "hold_lead_frac": 0.0,
+    "hold_trail_frac": -0.0,
+    "feature_family": "in-out",
+    "features": {
+     "start": 0.25,
+     "end": 0.25,
+     "peak_pos": 0.5,
+     "reverse": -0.0,
+     "cv": 0.46
+    },
+    "agree": true,
+    "low_confidence": false,
+    "axis": "pan left",
+    "total_px": 666.5,
+    "mag_pct": 34.71,
+    "dur_s": 4.0,
+    "family_key": "in-out|pan left|3-6|>6",
+    "twos": false,
+    "mo6_verdict": "PASS",
+    "mo6_peak_px": 10.99
+   },
+   "secs": 25.4
+  }
+ }
+}
