@@ -1,4 +1,4 @@
-import subprocess, sys, math, numpy as np
+import os, subprocess, sys, math, numpy as np
 from PIL import Image
 W,H=240,135
 def frames(path):
@@ -45,6 +45,15 @@ def classify(f):
     if f['peak']<0.3: return 'ease-out (decelerate)'
     if f['peak']>0.7: return 'ease-in (accelerate)'
     return 'other'
+def roughness(v,k=9):
+    # MO8 (M): std of the residual from a k-frame moving mean, relative to mean speed (edge-padded mean)
+    v=np.asarray(v,dtype=float); p=np.pad(v,(k//2,k//2),mode='edge')
+    m=np.convolve(p,np.ones(k)/k,mode='valid')
+    return float((v-m).std()/max(np.abs(v).mean(),1e-12))
 if __name__=="__main__":
+    # ZV_SIZE=1920x1080 runs the estimator at that frame size (the saved default is 240x135; the M-C7 numbers used 960x540 and 1920x1080)
+    if os.environ.get("ZV_SIZE"):
+        W,H=map(int,os.environ["ZV_SIZE"].lower().split("x"))
     for p in sys.argv[1:]:
         v=velocity(p); f=features(v); print(f"{p:16s}",f,"->",classify(f))
+        print(f"{p:16s} roughness {roughness(v):.3f} (MO8, frame {W}x{H})")

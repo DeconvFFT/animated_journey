@@ -31,7 +31,7 @@ The ArtCraft apps have their own research tracks (craft-visual and craft-motion)
 
 Parts A to E are the main path. It builds one chapter for the vertical slice: one same-pose pair, one simple move, one reconstruction and one music bed. Parts F to J are branches. Use a branch only if the format needs it, and only after its gate is passed.
 
-The scripts in Parts B, C and D live in `research/creator-threads-fixtures/`. Either an agent runs them in the cloud session and sends you the output, or you run them on Windows after installing Python 3 and ffmpeg (install route: TODO(research)). Family photos never go to the cloud session; cloud runs use the synthetic test face only (charter).
+The scripts in Parts B, C and D live in `research/creator-threads-fixtures/`. Either an agent runs them in the cloud session and sends you the output, or you run them on Windows after installing Python 3 and ffmpeg (install route: research note F2, written from official docs, not yet run on Windows). Family photos never go to the cloud session; cloud runs use the synthetic test face only (charter).
 
 ### Part A: Get ready before you touch a photo
 
@@ -45,8 +45,8 @@ The scripts in Parts B, C and D live in `research/creator-threads-fixtures/`. Ei
 
 6. **Pick a same-pose pair.** Look for the same doorway, chair, hat, angle and light. Both eyes should be visible, and the face should be fairly straight to the camera (M). Frontal faces are what face_morpher needs [28].
 
-6a. **If the archive has no same-pose pair for a chapter, make the recent half.** Plan it now, but shoot it only after the gate in step 1 is passed, because the charter allows real photos only once the pipeline is locked. Then, over the coming weeks, casually photograph her in the real places and poses the old photos are likely to show: the kitchen chair, the front step, holding the mug she always holds. A phone photo of your mother at the table tips nobody off (M). Keep these shots out of any cloud library (step 4). Log each as a bookend in the manifest with the old photo it answers. Check the pairing with the proxy before use.
-7. **Mark both eye centres in each photo.** Click them in any image viewer. Or detect them with MediaPipe, which returns 478 landmarks [29]. TODO(research): the MediaPipe eye-centre landmark numbers, and its CPU use on Windows, are not confirmed.
+6a. **If the archive has no same-pose pair for a chapter, make the recent half.** The charter's gather-after-lock rule protects the archive and the interviews from a pipeline that is not yet safe. A phone photo of her at her own table, on your own phone, never synced to a shared or cloud library, is not that risk, and the opportunity does not wait for the lock. Decision for the maker, flagged to the orchestrator as a charter reading: our lean is to start the bookends this week and keep them on the phone until the pipeline is locked. Over the coming weeks, casually photograph her in the real places and poses the old photos are likely to show: the kitchen chair, the front step, holding the mug she always holds. A phone photo of your mother at the table tips nobody off (M). Keep these shots out of any cloud library (step 4). Log each as a bookend in the manifest with the old photo it answers. Check the pairing with the proxy before use.
+7. **Mark both eye centres in each photo.** Click them in any image viewer. Or detect them with MediaPipe, which returns 478 landmarks [29]. MediaPipe landmarks 468 (subject's right eye) and 473 (subject's left eye) are the iris centres; tested on CPU on Linux, Windows run UNVERIFIED (note F7 [89][92][93][102]).
 8. **Align the pair to one frame.** The method turns each photo so the eyes sit level, scales it so the eyes are the same distance apart, and moves it so the eye midpoint lands on a fixed target [27]. The tested script puts the eyes at 35% and 65% across and 40% down [64]. PyImageSearch's default uses 35% down [27]. Choose one value and use it for the whole set.
 9. **Check by flipping.** Flip between the aligned photos. The eyes should not jump. The tested script was about 1.4 px off on synthetic test images. It has not been tried on real faces [L][64].
 10. **Dissolve with a crossfade.** Use ffmpeg's xfade filter [65] or a transition in your editor. Hold each portrait long enough to read the face. The right length is a judgment call (M).
@@ -72,7 +72,7 @@ The scripts in Parts B, C and D live in `research/creator-threads-fixtures/`. Ei
 
 ### Part F: Minecraft tour (only if the format includes a world)
 
-21. **Install Java Edition with Fabric.** Replay Mod v2.6.27 supports Fabric from 1.14.4 to 26.2. It supports Forge only up to 1.12.2 [52]. Minecraft's price and usage rules are UNVERIFIED because the Mojang pages returned errors (503). TODO(research): check both before any video leaves the family.
+21. **Install Java Edition with Fabric.** Replay Mod v2.6.27 supports Fabric from 1.14.4 to 26.2. It supports Forge only up to 1.12.2 [52]. Minecraft's Java & Bedrock for PC is $29.99 on the Xbox store listing, undated, fetched 2026-10-18 [69]; usage guidelines remain UNVERIFIED (503) and block public use of Minecraft footage. TODO(research): read the usage guidelines in a browser before any video leaves the family.
 22. **Record a walk.** Replay records a play session. Ten minutes takes about 2 to 10 MB [53]. Flashback is an alternative recorder. It works only with Fabric, and its licence is listed as "ARR", which the page does not explain [54].
 23. **Keyframe the camera.** Place position keyframes. The default path is a smooth spline. Press O for straight moves [53]. Time cannot run backwards during a camera path [53].
 24. **Render.** Choose the MP4 preset, or a PNG sequence [53]. If a render crashes, read export.log in your .minecraft folder [53].
@@ -92,15 +92,15 @@ The scripts in Parts B, C and D live in `research/creator-threads-fixtures/`. Ei
 ### Part I: Polish in an editor
 
 31. **Check which editor you have.** Your free editors are not yet confirmed. Kdenlive 26.08.2 is free, runs on Windows 10 and later, and is the editor our notes cover best [43]. DaVinci Resolve 21 is free but limited to 8-bit and up to 60 fps [35].
-32. **Use Transform keyframes for hand adjustments.** Kdenlive's Transform effect has position, size, rotation, rotation point and blend modes, and it supports keyframes [38][39]. The docs do not say whether it works on still images. TODO(research): test it on one still.
+32. **Use Transform keyframes for hand adjustments.** Kdenlive's Transform effect has position, size, rotation, rotation point and blend modes, and it supports keyframes [38][39]. The docs do not say whether it works on still images. Transform is MLT `qtblend`; it moved a still in a headless render (F8 [96][101]); whether the Kdenlive window accepts it on an image clip is UNVERIFIED, keep Exercise 5.
 33. **Watch the paper-cutout video before you copy its method.** Mint Visual's "Kdenlive | Paper Cutout Transition Tutorial" is listed on Kdenlive's own tutorials page [40][44]. We saw only its title and channel. Check it for paid assets. TODO(research): the steps.
-34. **Render.** The Kdenlive render dialog is verified [50]. Command-line and batch rendering are UNVERIFIED. TODO(research).
+34. **Render.** The Kdenlive render dialog is verified [50]. Render dialog > Generate Script, then `melt your_script.mlt` (manual 26.08 [97]); check whether `melt.exe` ships in the Windows install folder. TODO(research).
 
 ### Part J: AI photo motion (hold until two decisions are made)
 
-35. **Decide the hardware first.** Wan 2.2's 5B model needs 24 GB of VRAM, according to its README [18]. ComfyUI says the 5B model should fit in 8 GB with offloading [19]. WanGP claims as little as 6 GB for select models [20]. The 14B models need at least 80 GB [18]. Your GPU is unknown. A rented RTX 4090 (24 GB) costs $0.89 per hour on RunPod's pricing page, updated 2026-10-08 [84]; storage and network charges are not checked.
+35. **Decide the hardware first.** Wan 2.2's 5B model needs 24 GB of VRAM, according to its README [18]. ComfyUI says the 5B model should fit in 8 GB with offloading [19]. WanGP claims as little as 6 GB for select models [20]. The 14B models need at least 80 GB [18]. Your GPU is unknown. A rented RTX 4090 (24 GB) costs $0.89 per hour on RunPod's pricing page, updated 2026-10-08 [84]. Storage on the same page: Container Disk $0.10/GB/month; Volume Disk $0.10/GB/month running, $0.20 idle; Network Storage $0.07/GB/month under 1 TB; no separate egress charge listed (RunPod pricing, updated 2026-10-08 [84]). A four-hour test afternoon on a 4090 is about $3.56 plus well under $1 of storage (arithmetic, M). Verified on the page 2026-10-18.
 36. **Try one photo, gently.** Use restrained motion such as breath, light or a curtain. Compare it with the still, and label it as animation (principle 4). Do not use a first-and-last-frame method to fill the gap between two real photos. It invents the in-between [19].
-37. **Face animation waits for the proxy.** LivePortrait animates a still from a driving video, and its authors warn about deepfake misuse [21]. Hold it until the proxy has approved it and the ethics checklist is done. Its licence text was not seen (UNVERIFIED) [21].
+37. **Face animation waits for the proxy.** LivePortrait animates a still from a driving video, and its authors warn about deepfake misuse [21]. Hold it until the proxy has approved it and the ethics checklist is done. Its LICENSE is MIT with a carve-out: InsightFace's models, which it uses for human faces, are non-commercial research only [85][86]; a public screening is not research, so hold for the proxy on licence grounds too.
 
 ### Part K: Check before you show anyone
 
@@ -170,7 +170,7 @@ Each decision gives the options and our current lean. A lean is not a decision. 
 - **Our lean:** start with a film. Add one Minecraft room only if the world says something true about her life. The charter leaves the format open.
 
 **2. Where AI photo motion runs.**
-- **Options:** your own GPU (its model is unknown); a rented GPU (an RTX 4090 with 24 GB is $0.89 per hour on RunPod's pricing page, updated 2026-10-08 [84]); skip it.
+- **Options:** your own GPU (its model is unknown); a rented GPU (an RTX 4090 with 24 GB is $0.89 per hour on RunPod's pricing page, updated 2026-10-08 [84]); skip it. Storage on the same page: Container Disk $0.10/GB/month; Volume Disk $0.10/GB/month running, $0.20 idle; Network Storage $0.07/GB/month under 1 TB; no separate egress charge listed (RunPod pricing, updated 2026-10-08 [84]). A four-hour test afternoon on a 4090 is about $3.56 plus well under $1 of storage (arithmetic, M). Verified on the page 2026-10-18.
 - **Our lean:** skip it for the vertical slice. If you need it, try one photo on a rented GPU, labelled as animation. Face animation waits for the proxy (principle 5). Renting a GPU uploads what you send to a third party, so use only non-family images unless the maker agrees.
 
 **3. Music source.**
@@ -252,7 +252,9 @@ Cited in this playbook. Numbers are kept from the research note. Every URL below
 - [23] Bringing Old Photos Back to Life (Microsoft). https://github.com/microsoft/Bringing-Old-Photos-Back-to-Life. Archived 2026-10-03. MIT; academic research use only.
 - [25] MyHeritage (Wikipedia). https://en.wikipedia.org/wiki/MyHeritage. Deep Nostalgia launched February 2021; about 100 million animations.
 - [26] FILM: Frame Interpolation for Large Motion. https://github.com/google-research/frame-interpolation. Archived 2025-10-14. Apache-2.0; needs an NVIDIA GPU setup.
-- [84] RunPod pricing. https://www.runpod.io/pricing. Page says "Updated October 8, 2026". RTX 4090 24 GB at $0.89 per hour (Secure Cloud, from the page's structured data). Storage and network charges not checked.
+- [85] LivePortrait LICENSE (raw file). https://raw.githubusercontent.com/KwaiVGI/LivePortrait/main/LICENSE. MIT, "Copyright (c) 2024 Kuaishou Visual Generation and Interaction Center", plus an InsightFace carve-out: its models are for non-commercial research purposes only.
+- [86] LivePortrait src/utils/cropper.py (raw file). https://raw.githubusercontent.com/KwaiVGI/LivePortrait/main/src/utils/cropper.py. The human-face path builds FaceAnalysisDIY(name="buffalo_l") and takes landmark_2d_106, that is, InsightFace models.
+- [84] RunPod pricing. https://www.runpod.io/pricing. Page says "Updated October 8, 2026". RTX 4090 24 GB at $0.89 per hour (Secure Cloud, from the page's structured data). Storage prices on the same page (see step 35); no separate egress charge listed.
 
 **Morph, alignment and timeline**
 - [27] Face Alignment with OpenCV and Python (PyImageSearch). https://pyimagesearch.com/2017/05/22/face-alignment-with-opencv-and-python/. Dated 2017-05-22. Eye-point alignment steps.
@@ -261,6 +263,9 @@ Cited in this playbook. Numbers are kept from the research note. Every URL below
 - [31] Noah Kalina (Wikipedia). https://en.wikipedia.org/wiki/Noah_Kalina. Undated. Everyday: six photos per second; original piano score.
 - [32] "Noah takes a photo of himself every day for 6 years" (YouTube, oEmbed). https://www.youtube.com/watch?v=6B26asyGKDo. Title and channel only.
 - [33] Your Life in Weeks (Wait But Why). https://waitbutwhy.com/2014/05/life-weeks.html. Dated 2014-05-07.
+- [89] MediaPipe Face Landmarker guide for Python. https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker/python. Updated 2026-10-09. 478 landmarks; install with python -m pip install mediapipe.
+- [92] MediaPipe face_mesh_connections.py (raw file). https://raw.githubusercontent.com/google-ai-edge/mediapipe/master/mediapipe/python/solutions/face_mesh_connections.py. Iris rings 469 to 472 and 474 to 477.
+- [93] MediaPipe tasks face_landmarker.py (raw file). https://raw.githubusercontent.com/google-ai-edge/mediapipe/master/mediapipe/tasks/python/vision/face_landmarker.py. The same iris connections in the Tasks API.
 
 **Editing, collage and cutout**
 - [35] DaVinci Resolve (Blackmagic Design). https://www.blackmagicdesign.com/products/davinciresolve. Footer dated 2026. Free: 8-bit, up to 60 fps, UHD; Studio $295.
@@ -277,6 +282,8 @@ Cited in this playbook. Numbers are kept from the research note. Every URL below
 - [47] Cutout animation (Wikipedia). https://en.wikipedia.org/wiki/Cutout_animation. Undated. Flat materials, including photographs, moved by stop-motion.
 - [48] Stop motion (Wikipedia). https://en.wikipedia.org/wiki/Stop_motion. Undated. Pixilation, cutout and object animation.
 - [50] Kdenlive, Exporting. https://docs.kdenlive.org/en/exporting.html. Manual 26.08. Basic render workflow.
+- [96] Kdenlive effect definition qtblend.xml (raw file). https://raw.githubusercontent.com/KDE/kdenlive/master/data/effects/qtblend.xml. Tag qtblend, display name "Transform", "Position, scale and opacity".
+- [97] Kdenlive manual, Rendering. https://docs.kdenlive.org/en/exporting/render.html. Manual 26.08. Generate Script, then melt your_script.mlt; Job Queue; no Windows steps.
 
 **Minecraft**
 - [51] Replay Mod. https://www.replaymod.com/. Copyright 2026. What it is; Patreon link.
@@ -287,6 +294,7 @@ Cited in this playbook. Numbers are kept from the research note. Every URL below
 - [56] Arnis. https://github.com/louis-e/arnis. Copyright 2022-2026. Builds Minecraft worlds from OpenStreetMap; Apache-2.0; Java 1.17+, Bedrock, Luanti.
 - [58] MCprep. https://theduckcow.com/dev/blender/mcprep/. Page shows releases up to v3.6.0 (August 2024). Compatibility with current Blender UNVERIFIED.
 - [63] GitHub topic: stop-motion. https://github.com/topics/stop-motion. Listing, fetched 2026-10-18. Descriptions only.
+- [69] Minecraft: Java & Bedrock Edition for PC, Xbox store listing. https://xbox.com/en-us/games/store/minecraft-java-bedrock-edition-for-pc/9nxp44l49shj. Undated (release date 6/6/2022 shown). $29.99+ for Java & Bedrock for PC; Deluxe $39.99+; Ultimate $49.99+. Reached by redirect from the Microsoft Store address.
 
 **Stop-motion and paper**
 - [60] pasteup. https://github.com/tmoody1973/pasteup. Copyright 2026; version 1.1.0. MIT; needs a Gemini API key; sends prompts and images to the Gemini image API.
@@ -297,9 +305,12 @@ Cited in this playbook. Numbers are kept from the research note. Every URL below
 - [64] research/creator-threads-fixtures/align_eyes.py, committed 2026-10-18. Original run: worst error 1.36 px on three synthetic cases. Same function as research note T1.
 - [65] research/creator-threads-fixtures/kenburns_xfade.py, committed 2026-10-18 (Python port of the tested bash). Original run: 13.0 s, 312 frames, 5.7 s render; the looped-input trap. Research note T3.
 - [66] research/creator-threads-fixtures/jitter_twos.py, committed 2026-10-18. Original run: 24 of 24 held pairs identical, 23 of 23 pose changes, deterministic for a seed. Research note T4.
+- [101] qtblend Transform on a still, rendered with melt 7.22.0 under xvfb-run (sandbox, 2026-10-18; not kept in the repo). 50 frames, 1920 by 1080, H.264; first and last frames differ (mean absolute difference 40.3).
+- [102] MediaPipe 1.1.1 Face Landmarker on CPU (sandbox, Python 3.13, Linux, no GPU, 2026-10-18; not kept in the repo). 478 landmarks, 0.027 s per detection; iris ring centres within 0.05 px and 0.17 px of landmarks 468 and 473.
 
 ## Changelog
 
 - **2026-10-18, v1.** Written by the Haiku scribe from the creator-threads research note (Sonnet, same date) and the charter. No creator threads, Reddit posts or watched tutorials were read. Gaps are marked TODO(research).
 - **Conflicts in the research note, kept visible:** (a) the tested alignment script puts the eyes at 40% down [64], while PyImageSearch's default is 35% [27]; (b) Replay's docs and download page disagree on Sodium [52][53]; (c) the MCprep page is dated both to a 2016 post and to 2024 material [58].
 - **2026-10-18, v2.** Applied the Fable round 1 review: runnable fixtures committed under research/creator-threads-fixtures/, step 6a added with a charter gate, Suno and Incompetech wording checked, RunPod price added, Exercises 1-3 given commands, Sources [64]-[66] repointed.
+- **2026-10-18, v3.** Applied the Fable round 2 review and the research note's follow-ups F1 to F8: Minecraft price $29.99 [69] (usage rules still UNVERIFIED); MediaPipe eye centres 468/473, CPU tested on Linux only [89][92][93][102]; LivePortrait MIT with InsightFace carve-out [85][86]; Transform and Generate Script/melt [96][97][101]; RunPod storage [84]; step 6a rewritten, with the gather-after-lock reading flagged to the orchestrator as a decision for the maker. Sources [69][85][86][89][92][93][96][97][101][102] added.

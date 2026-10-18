@@ -1,0 +1,39 @@
+Dated excerpt: Minecraft EULA, plus Usage Guidelines clauses not captured in minecraft-usage-guidelines-2026-10-18.txt
+For research/theatrical-delivery.md Finding 7. Companion to research/sources/minecraft-usage-guidelines-2026-10-18.txt and check_mojang_quotes.py.
+
+Captured by a Sonnet researcher in the cloud container (Linux), Sunday 2026-10-18, about 07:00 GMT, curl over HTTP/1.1 with a browser user-agent.
+URLs: https://www.minecraft.net/en-us/usage-guidelines  (HTTP 200, 407,781 bytes)
+      https://www.minecraft.net/en-us/eula               (HTTP 200, 35,511 bytes)
+Neither page shows a visible revision date.
+
+Hashes (extraction method: the one in research/sources/check_mojang_quotes.py, so they are comparable between runs):
+  Usage Guidelines extracted text: 37,148 characters, sha256 c5a8253c842dfe436b058295a5b09a7e26ecb1c85b53e1b17c84300253b94222
+    Identical to the extracted text of two earlier same-day captures (about 02:38 and 04:48 GMT) held in the shared scratchpad.
+    All 12 quotes in check_mojang_quotes.py: PRESENT.
+  EULA extracted text: 16,687 characters, sha256 2ff38e065ac43f9e5ea26c778d9ba8667228e53c7d6e52961f14e5273f5c42e1
+    First read for the theatrical-delivery track; no earlier HTML copy to diff against.
+Raw HTML hashes (not comparable between fetches; the page has dynamic parts): guidelines cc2e93e629ca750574ee58ca2512e46c3c606185a6fc360754b3f40d4ecfc7e1; eula e0e51204ac1bf8e41a13113b0ffa32b4e26928a37b2fe6db67b45a4f7b1b2e9f.
+
+Short verbatim quotes. Notes in square brackets are mine.
+
+USAGE GUIDELINES (clauses not in the earlier excerpt)
+1. "All permissions and consents are given by us at our discretion and may be revoked at any time if we think that it is appropriate to do so, or we don't like what you are doing" [section "All uses"]
+2. "Obtain permissions and clearances from the owners of any intellectual property (for example: music, brands, products, celebrities, performers) you want to use" [section "Live in-game events"]
+3. "Clips of gameplay could be used as reference material if the subject is not the gameplay itself" [section "Videos, streams, and screenshots"]
+4. "You make it clear that you (not us) are responsible for anything that happens during your event" and "Do not use official Minecraft brand or assets on your marketing materials" [section "In-person events"]; the name may be used "in a secondary name, secondary title, or description only".
+5. "Prominently include the disclaimer similar to the following: "NOT AN OFFICIAL MINECRAFT [PRODUCT/SERVICE/EVENT/etc.]. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT"" [commercial-use requirements]
+6. "You may do things that are specifically covered by the fair dealing or fair use exceptions to copyright and trademark laws." [section "In general"]
+7. "Our assets, we mean the code, software, graphics, textures, images, models, sounds and other audio from any of our games and any videos or screenshots taken from our games" [definitions]
+8. "The allowances we give in these guidelines do not authorize commercial companies, corporate brands, advertising agencies, non-profits, politicians, political action committees, governments to use or exploit Minecraft for promoting products, services, or agendas unrelated to Minecraft." [section "Target audience"]
+9. "The guidelines presented here are to be followed along with the policies. They do not form part of the policies." [section "Important legal agreements"]
+10. In-person events example: "Hosting a casual meet up in your favorite pizza place ... (we're cool with this)"; "Renting a convention center, charging admission and inviting vendors to sell products with a Minecraft theme (we're not cool with this)".
+
+EULA
+11. "Do not distribute or make commercial use of anything we've made without our permission." [summary at the top]
+12. "By "distribute anything we've made" what we mean is: give copies of our game software or content to anyone else; make commercial use of anything we've made; try to make money from anything we've made; or let other people get access to anything we've made in a way that is unfair or unreasonable."
+13. "We've put together detailed Minecraft Usage Guidelines as to how you can or cannot do things using what we've made, including screenshots and recorded videos of our games. These Minecraft Usage Guidelines are extra permissions that we give to the community to encourage creativity and community, but we reserve the right to change them or withdraw permissions"
+14. Section CONTENT: "The Microsoft Services Agreement says "Your Content remains Your Content", and that applies to Minecraft. We don't own the original stuff that you create. We will however own things that are copies (or substantial copies) or derivatives of our property and creations ... a single Minecraft block (including its textures and its "look and feel") - we own that; your creation of a Gothic Cathedral with a rollercoaster running through it - we don't own that."
+15. "You may not distribute any Modded Versions of our game or software"; "Any Mods you create for Minecraft: Java Edition from scratch belong to you".
+16. "We may change this EULA from time to time, if we have reason to".
+
+Premiere-week routine: save both pages again (curl over HTTP/1.1), run `python -I research/sources/check_mojang_quotes.py PAGE.html` on the guidelines, compare the extract hash with the one above, and diff the EULA text by eye or with the same extraction. Planned dates: Mon 15 Feb 2027 and Fri 26 Feb 2027.

@@ -31,7 +31,8 @@ STOCK PRACTICE, NOT FOR THE FILM. Any film look you are licensed to use, as a 3D
 =====================================================================
 PART 3. ALBUM LOOK TEMPLATE (one filled copy per album, saved as looks/<chapter name>.txt)
 =====================================================================
-status:           NOT FILLED. TODO(research): the step from sampled values to filter settings is not written yet.
+status:           NOT FILLED. Method available: research/toolchain-fixtures/derive_album_look.py (research Follow-up F14),
+                  tested on three stock prints only; not yet run on the maker's prints or on Windows Python. TODO(research) until it is.
 album:            <name of her album>
 chapter:          <her chapter this album belongs to>   (name the look after the chapter, not the decade)
 source prints:    <print 1>, <print 2>, <print 3>       (three prints from this one album)

@@ -30,12 +30,12 @@ Gather and shape the texture and milestones of one 50+ year life for the Life Jo
 
 1. Read the known facts in `CHARTER.md` before anything else. Surprise mode is fixed there (2026-10-18). If the facts have changed (for example, the subject now knows about the project), stop and ask the maker which mode applies.
 2. Check the gate. Recorded sessions with real people wait for the gate date the maker sets in writing (playbook Decision 11), or for a Door A relative under a written decision to pull the gate earlier (`surprise-runbook.md`). Track A work can run now: the relative list, the consent script, the found-voice list and practice. Before the gate you may run only tests, with the maker's own voice or a practice partner who agrees. Do not schedule real sessions.
-3. Write down the mode and the proxy: who is the proxy for hard chapters, and who knows about the project. In surprise mode the subject is not interviewed. Work through relatives, documents, objects and **found voice**: existing audio and video of her (voicemails, answering-machine tapes, home video, clips on relatives' phones). Found voice is a source class of its own, and in surprise mode it is her only route to her own voice. Ask every relative: "Do you have any video or voice message of her on your phone? Please don't delete anything." Log each item with its holder, format and rough date. Copy only once the file plan is written.
+3. Write down the mode and the proxy. The proxy for hard chapters is the maker (charter, principle 5). Only the maker knows about the project; anyone else brought in is a dated entry in the people tab under playbook Decision 2, and the list reads "nobody yet" until the maker decides. In surprise mode the subject is not interviewed. Work through relatives, documents, objects and **found voice**: existing audio and video of her (voicemails, answering-machine tapes, home video, clips on relatives' phones). Found voice is a source class of its own, and in surprise mode it is her only route to her own voice. Ask every relative, as an ordinary family request (Tier 1, step 5): "Do you have any video or voice message of her on your phone? Please don't delete anything." Log each item with its holder, format and rough date. Copy as soon as the relative agrees, by cable or direct transfer, never through a chat app (`surprise-runbook.md`, Found voice).
 4. Choose one life stage and 5 to 10 questions from `question-bank.md` in this folder. Choose 1 to 3 prompts (object, photo, song, map) and keep the rest in reserve. Evidence for the prompts: smell cues bring back older, vivid memories, but rarely [41]. Songs from ages 15 to 30 work best, per [46]; we extend the lower bound to 12 to catch first records (inference). In one older-adult study about 70% of such songs evoked a memory, against 44% of other songs [46]. Use six photos, not sixty, with two that are not celebrations [58]. The cultural life script expects the middle years (about 35 to 55) to be grey, not empty [47], so ask for their ordinary good texture as well as their events.
-5. Brief each relative before the session, using the script below. Keep the pre-talk to logistics and consent, so the story is not told before recording starts [11]. Do not invent a cover story that asks the subject to act on camera [30]. Tell the relative that remembering can hurt, and let them ask questions first [33]. Sort them into Door A or Door B on the people tab (`surprise-runbook.md`).
+5. Ask each relative in one of two tiers. **Tier 1 (the default; not brought in; unrecorded):** no briefing about the project. Ask the found-voice question as an ordinary family request, and ask where the albums and papers are. Stories heard in normal conversation are written up afterwards by the maker as `R` rows with `consent_status = not-asked (surprise hold)`, and are never quoted in the film without later consent. **Tier 2 (brought in, only by a written maker decision under playbook Decision 2):** brief the relative with the honest script below before any recording. Keep the pre-talk to logistics and consent, so the story is not told before recording starts [11]. Log a dated `told_on` line and a `scripted_line_if_asked` in the people tab. Do not invent a cover story that asks the subject to act on camera [30]. Tell the relative that remembering can hurt, and let them ask questions first [33]. Sort them into Door A or Door B on the people tab (`surprise-runbook.md`).
 
-   **Relative script (honest; no cover story):**
-   > "I'm making a piece about [NAME]'s life as a gift. It is a secret from [NAME] until [date]. I'd love 45 minutes of your memories; you can skip anything, and nothing you say will be used without your OK. Please don't mention it to [NAME] or anyone who might."
+   **Relative script (Tier 2 only; honest; no cover story):**
+   > "I'm making a piece about [NAME]'s life as a gift. It is a secret from [NAME] until [date]. It will be shown at a gathering on Feb 27 that is partly public, and may be shared with family afterwards by private link; you can restrict any part. I'd love 45 minutes of your memories; you can skip anything, and nothing you say will be used without your OK. Please don't mention it to [NAME] or anyone who might."
 
    Then the found-voice question, in the same conversation:
    > "Do you have any video or voice message of her on your phone? Please don't delete anything. Please don't forward it to me or post it; just tell me what you have and roughly when it was made."
@@ -52,10 +52,10 @@ Gather and shape the texture and milestones of one 50+ year life for the Life Jo
     Do not change the subject for them [36]. Keep recording unless they ask you to stop, and note the time [32]. Afterwards, ask whether the passage is kept, restricted or removed [8]. If they seem far away or overwhelmed, stop [32].
 12. Close. Ask a reflective question: "What was it like to talk about this today?" [5]. Then say the recorder is still running and ask if that is all right, or stop it visibly. Never record someone who believes they are off-tape; that breaks the consent they gave [8]. If they agree, ask the last question, S10.4 or R10.2 from `question-bank.md`. It is the likeliest place for an unguarded remark (inference). Then thank them.
 13. Within 24 hours: copy the original to two places and never edit it. Rename it `YYYY-MM-DD_person_sessionNN.wav`. Make a time-coded index, every five minutes or less, and a spellings list [10][38]. Run the transcript locally, so the audio stays on the maker's machine [39][40]. Mark unclear words as unclear. Do not guess. The full after-session steps are in `session-protocol.md`.
-14. Propose inventory rows from transcripts and documents only. Each row needs a source code, with a quote and a timestamp. Never invent a sensory detail or a date. Leave unknown cells empty. If two accounts conflict, make two rows and do not average them. The maker confirms the confidence grade and the consent status. Columns and rules are in `inventory-rules.md`; the template is `inventory-template.csv`. The CSV header, for copying:
+14. Propose inventory rows from transcripts and documents only. Each row needs a source code, with a quote and a timestamp. Never invent a sensory detail or a date. Leave unknown cells empty. If two accounts conflict, make two rows and do not average them. The maker confirms the confidence grade and the consent status. Columns and rules are in `inventory-rules.md`; the template is `inventory-template.csv`. `allowed_use` is the widest screening the person has agreed to: `hall`, `private-link`, `family-only` or `none`. The CSV header, for copying:
 
     ```
-    id,type,date,date_precision,age,place,people,what_happened_or_repeats,objects,sensory_detail,recurrence,source,confidence,consent_status,drawer,treatment,motif_tags,who_can_verify,notes
+    id,type,date,date_precision,age,place,people,what_happened_or_repeats,objects,sensory_detail,recurrence,source,confidence,consent_status,allowed_use,drawer,treatment,motif_tags,who_can_verify,notes
     ```
 
     Source codes: `S` subject, `R` relative, `D` document, `O` object, `P` photo, `V` found voice.
@@ -72,7 +72,7 @@ Gather and shape the texture and milestones of one 50+ year life for the Life Jo
 ### Before a session
 - [ ] Charter gate passed for this recorded session (gate date, or a written Door A decision)
 - [ ] Mode and proxy written down
-- [ ] Relative briefed with the honest script, has agreed, and was asked the found-voice question
+- [ ] Relative is Tier 2 (written maker decision; `told_on` logged), briefed with the honest script, has agreed, and was asked the found-voice question
 - [ ] Stage, 5 to 10 questions and 1 to 3 prompts chosen; reserve list ready
 - [ ] Level check done; backup recorder running
 - [ ] Slate line ready; off-limits topics known
@@ -97,7 +97,7 @@ Gather and shape the texture and milestones of one 50+ year life for the Life Jo
 - [ ] source code with timestamp
 - [ ] texture rows: one concrete sensory detail
 - [ ] confidence graded A to D; conflicts split into separate rows
-- [ ] consent_status and drawer set
+- [ ] consent_status, allowed_use and drawer set
 - [ ] who_can_verify is a person
 
 ### Each hard chapter
@@ -128,6 +128,7 @@ Gather and shape the texture and milestones of one 50+ year life for the Life Jo
 - Keep recordings and transcripts local unless the maker gives explicit approval for a service. Do not use the StoryCorps app or archive for private material [4].
 - Do not let the subject find out through group chats, shared photo libraries or shared devices (charter).
 - Tell narrators that AI tools transcribe and may restyle real photos. No cloned or synthetic voice of any real person, living or dead, even with their consent (the lean; an open charter decision for the maker, playbook Decision 10) (inference).
+- Every voice and cue is cleared for a public premiere, or cut (charter, principle 7). Only a Tier 2 script that names the use can give consent for it (inference from the charter review, C1, and OHA [8]).
 - Never record someone who believes they are off-tape [8].
 - Do not treat tears or anger as material. Ask before using any emotional moment [32].
 - Respect breaks and stops. Do not push anyone to tell their story [34][35]. If distress is serious, stop and point to appropriate help.

@@ -10,19 +10,19 @@
 
 ## Summary (the most important things we learned)
 
-1. **The runtime is decided by four design choices and by when the material arrives, more than by raw hours.** My model (CSV, every assumption visible) says a 12-minute film needs about **9.8 maker-hours a week** on the playbooks' own numbers (Prior), **19.6** on my evidence-adjusted numbers (Base), and **13.9** if five design levers are adopted (Base plus levers). The best case, Prior speeds plus the levers, is **8.1**. For 25 minutes: 15.2, 31.5, 21.1, best case 11.9. For 45 minutes: 23.6, 49.6, 32.0, best case 17.9. For 90 minutes: 42.5, 90.3, 56.5, best case 31.3. These are averages over the 17 usable weeks and include story, gathering, finishing, learning and rehearsals (Q5).
+1. **The runtime is decided by four design choices and by when the material arrives, more than by raw hours.** My model (CSV, every assumption visible) says a 12-minute film needs about **9.8 maker-hours a week** on the playbooks' own numbers (Prior), **19.6** on my evidence-adjusted numbers (Base), and **13.9** if five design levers are adopted (Base plus levers). The best case, Prior speeds plus the levers, is **8.1**. For 25 minutes: 15.2, 31.5, 21.1, best case 11.9. For 45 minutes: 23.6, 49.6, 32.0, best case 17.9. For 90 minutes: 42.5, 90.3, 56.5, best case 31.3. These are averages over the 17 usable weeks and include story, gathering, finishing, learning and rehearsals (Q5). These 'h/week needed' figures are the total-hours check only; the largest-feasible-runtime figures (Summary 2) and the Q7 slice table include the post-holiday check, so the Q7 table is the stricter, operative one.
 2. **Largest feasible runtime by weekly hours** (total-hours check plus the post-holiday production check, Q5): at 10 h/week about 12 min (Prior), 3 min (Base), 6 min (Base plus levers) and 18 min (best case); at 20 h/week 27, 9, 21 and 44 min; at 30 h/week 42, 15, 33 and 68 min. Hours per week are unknown, and the answer moves by a factor of three to five between the optimistic and the cautious case. **The one question to ask the maker now is how many hours a week they can reliably give.**
 3. **Nothing in the published benchmarks supports our speed.** Festival-quality animated features made by one person run **1.1 to 3.7 finished minutes per person-month**; small teams run **0.06 to 0.3**; a documented solo feature cost the maker an estimated **114 hours per finished minute** (*Sita Sings the Blues*, 9,360 hours for 82 minutes) [14]. Our Base case implies 6.8 minutes per person-month and the Prior 13.6 (Q2). That is only believable because 85 percent of our screen time is photo moves and designed graphics rather than drawn or posed character animation. The pipeline's per-shot minutes are the single biggest unmeasured number, and the vertical slice exists to measure them.
 4. **Traditional output is 1 to 7 seconds of finished animation per animator-week for feature quality** (Coraline 2 to 7, Boxtrolls 1 to 2 [26]; Wallace & Gromit 4.2 [25]; 3D feature 3 to 4, hearsay [28]), and about 14 to 30 seconds for classic or limited 2D (Disney about 14, hearsay [28]; Walter Lantz 1944, 25 feet or about 17 seconds with three assistants [29]; TV quotas of 25 to 30, hearsay [28]). One stop-motion feature claims 5 to 10 seconds a day per animator [22], which is 25 to 50 a week on a five-day week and up to ten times Laika; I treat that as a single-interview outlier (Q1).
 5. **Hero shots are 10 percent of the shots but about 60 percent of the shot-hours** in the Base case (class C at 120 minutes each against 7, 15 and 6 for the others). Halving the hero share, cutting shots per minute from 12 to 8, buying the mix and grade, triaging photos and gathering earlier take the 12-minute requirement from 19.6 to 13.9 hours a week and the 25-minute requirement from 31.5 to 21.1 (Q5).
 6. **The calendar compresses the work harder than the totals show.** With Sunday-start weeks, production after the holidays is **five weeks (2027-01-03 to 02-06)**, finishing is **two weeks (02-07 to 02-20)** and the buffer week (02-21 to 02-27) already holds the rehearsals. At 20 h/week the finishing weeks hold only about 34 usable hours, so the master chain must be rehearsed inside the slice and the mix and grade partly outsourced or locked earlier chapter by chapter. The review-02 week numbers (12 to 15, 16 to 17, 18 to 19) are off by one against Sunday-start weeks; the dates are right (Q5).
 7. **2024 to 2026 AI work gives no credible hours per finished minute.** The best-documented case, *Air Head*, took "a little over a week" for about a minute and a half, with hundreds of 10 to 20 second generations, a 300:1 ratio assumed by its post-production lead, and a large share of compositing and grading [41][42]. Vendor numbers (3 generations per usable shot, 25 percent kept, $315 to $750 per finished minute [47]) are not finished minutes to the bar. No source I found splits prompting, editing and fixing by measurement (Q3).
-8. **Survivorship is large.** *Critterz* (about 30 people, 9 to 12 months planned, under $30M) lost its video model when OpenAI shut Sora down in 2026, missed its Cannes slot and is now aimed at Q1 2027 [43][44][45]. *Copán La Leyenda*, a 74-minute AI-finished feature, took about 15 years of development and was heavily panned [46]. *On This Day... 1776* drew public backlash for "repetitive camera movements" and "waxen characters" [50]. Tool volatility is itself a schedule risk (Q3, Risks).
-9. **Vertical slice first, and make it include sound, grade and a master.** One 90 to 120 second mid-life chapter at final quality, played on the venue-class playback, yields the measured maker-hours that replace the guesses. A table in Q7 converts the measured slice hours into the longest runtime that still fits at 10, 20 and 30 h/week. This is the basis for the **2026-12-20 kill-or-cut gate**.
+8. **Survivorship is large.** *Critterz* (about 30 people, 9 to 12 months planned, under $30M [43]) lost its video model when OpenAI shut Sora down in 2026 [45], missed its Cannes slot [45] and is now aimed at Q1 2027 [44]; [45] gives no date for the target. *Copán La Leyenda*, a 74-minute AI-finished feature, took about 15 years of development and was heavily panned [46]. *On This Day... 1776* drew public backlash for "repetitive camera movements" and "waxen characters" [50]. Tool volatility is itself a schedule risk (Q3, Risks).
+9. **Vertical slice first, and make it include sound, grade and a master.** The slice chapter (C01 = first built, not first in the film) is one 90 to 120 second mid-life piece at final quality, played on the venue-class playback. It yields the measured maker-hours that replace the guesses. A table in Q7 converts the measured slice hours (`h_slice`, plus `h_slice_fin` for finishing) into the longest runtime that still fits at 10, 20 and 30 h/week. This is the basis for the **2026-12-20 kill-or-cut gate**.
 10. **Picture lock:** lock chapter by chapter from 2027-01-17, hard lock Saturday **2027-02-06**. After lock only sound, grade, captions and equal-length text or photo swaps are allowed. A solo maker enforces it with a timeline hash, `locked=1` in `status.csv`, a git tag and a 24-hour unlock rule (Q8).
 11. **Render cost is not the constraint.** Container CPU is about 1.5 hours per finished minute, almost all of it Blender Cycles hero frames at 17.5 s each; a 12-minute film is about 18 CPU-hours and 76 ten-minute Cycles jobs. Cycles on a rented RTX 4090 at $0.34 to $0.89 an hour (RunPod page dated 2026-10-08) would cost roughly $1 to $3 for a 12-minute film if frames take about 5 s (UNVERIFIED) [54]. The cost that matters is the maker's time and keeping family material off third-party machines (Q9).
 12. **Shot tracking:** use plain text in the repo, `shots/status.csv` next to `brief.yaml`. Kitsu is AGPL-3.0 and mature (Blender Studio uses it) but costs €20 to €35 per user per month hosted or a Postgres, Redis, Nginx stack to self-host, and stores previews on a server; for one person it is not worth it (Q10, templates in the fixtures folder).
-13. **Recommended runtime** (for reconciliation with `film-story`'s floor 12, target 15, cap 18, private stretch 25): commit to a **12-minute public cut built as six 2-minute modules** if the maker can give **about 14 to 20 hours a week** and adopts the levers; plan **8 minutes** if it is nearer 10; treat **15 to 18** as unlocked only by a Dec 20 slice that measures at or below the thresholds in Q7; treat **25 as a post-premiere private cut**; do not plan 45 or 90. The schedule excludes them under Base at 30 h/week or less; they reopen arithmetically only in the best case (Prior speeds, all levers) at about 30 h/week for 45 and 40 for 90, and `film-story` excludes them on story grounds [7]. The orchestrator decides.
+13. **Recommended runtime** (for reconciliation with `film-story`'s floor 12, target 15, cap 18, private stretch 25): commit to a **12-minute public cut built as a wrapper (cold open about 1:15 plus ending about 1:45) and three 3:00 modules** if the maker can give **about 14 to 20 hours a week** and adopts the levers; plan **8 minutes** if it is nearer 10 (TODO(research): the wrapper-plus-module shape has no 8-minute version; nine minutes is the nearest); treat **15 to 18** as unlocked only by a Dec 20 slice that measures at or below the thresholds in Q7; treat **25 as a post-premiere private cut**; do not plan 45 or 90. The schedule excludes them under Base at 30 h/week or less; they reopen arithmetically only in the best case (Prior speeds, all levers) at about 30 h/week for 45 and 40 for 90, and `film-story` excludes them on story grounds [7]. The orchestrator decides.
 14. **Two things in the earlier plans do not survive contact with the numbers.** (a) `film-story`'s 12-minute floor is not safe at 10 h/week on any case except the Prior with zero slippage. (b) The "one week is buffer" is not free: the rehearsal calendar uses 8 to 12 hours of it.
 
 ---
@@ -59,7 +59,7 @@ Person-months are team size times calendar months and are **upper-bound effort**
 | Film | Runtime | Team | Calendar | Tools | Declared or reviewed tier | Min/pm |
 |---|---|---|---|---|---|---|
 | *Away* (2019) | 75 min | 1 | 3.5 years (Aug 2015 to Jan 2019); "seven days a week, maybe eight to 10 hours a day" | Maya, Premiere, Logic; long continuous takes; identical cats with copied animation to save time | Annecy Contrechamp Best Feature; Rotten Tomatoes 100% (31), Metacritic 78 [10][11] | **1.8** (about 150 h per finished minute, ESTIMATE: 41 months x 4.3 weeks x 7 days x 9 h / 75) |
-| *Sita Sings the Blues* (2008) | 82 min | 1 (plus sound design, one helper on one scene) | about 5 years | 2D computer graphics, Flash, vector; $290,000 | Berlin premiere; the maker estimated **9,360 hours** | **1.4** (114 h per finished minute) [14] |
+| *Sita Sings the Blues* (2008) | 82 min | 1 (plus sound design, one helper on one scene) | about 5 years [J; not on the cited page, [14]] | 2D computer graphics, Flash, vector; $290,000 | Berlin premiere; the maker estimated **9,360 hours** | **1.4** (114 h per finished minute) [14] |
 | *Is the Man Who Is Tall Happy?* (2013) | about 88 min (reported, not opened) | Gondry (two more animators credited per festival listing, snippet-only) | "three year period" (Vice [35]); other reviews say 2 years (snippet-only) | hand-drawn, shot on 16 mm | Berlinale 2014 programme | **2.4 solo over 3 years; 3.7 over 2; 0.8 if three people** |
 | *Rocks in My Pockets* (2014) | 88 min | Baumane plus 5 assistants and interns | script 2010, premiere July 2014 | paper drawings, 28 built sets, Photoshop, After Effects; 30,000 drawings | festival feature, $1.03M box office [15][16] | **0.3** with six people over 4 years; 1.8 if counted as one person |
 | *My Love Affair with Marriage* (2022) | 108 min | Baumane animated all but ~13 min herself; a Riga team coloured and composited | 7 years including funding (writing 2015) | pencil on paper, sets, Photoshop, After Effects; ~60,000 drawings | Tribeca and Annecy 2022 [17][18] | **1.1** (95 min by one animator over 84 months; time includes fundraising) |
@@ -89,7 +89,7 @@ Person-months are team size times calendar months and are **upper-bound effort**
 |---|---|---|---|---|---|
 | *Air Head* (shy kids, Sora, 2024) | about 1.5 minutes (secondary coverage says 1:22; not on pages I opened) | "the film took us about maybe a little over a week from start to finish" [41] | generations of 10 to 20 seconds, "pulling two to three seconds out of it" [41]; "hundreds of generations"; **post-production lead "assumes a ratio of 300:1"** [42]; most clips looked like slow motion, balloon colour wrong, a face removed, upscaled, stabilised, graded, re-framed [42]; "a big chunk of it was in VFX ... compositing and color grading" [41] | viral; later coverage that it "wasn't all AI" (snippet-only) | interview with the makers: good. The ratio is "assumed", not logged |
 | *Dear Upstairs Neighbors* (Google DeepMind with Pixar alumni, Sundance 2026) | about 6 minutes (search summary) | no durations given [49] | "none of our final shots were created in a single one-click generation"; artists made rough animation in Maya and TVPaint; fine-tuned Veo and Imagen turned it into the look; localized refinement; upscaled to 4K; text-only prompting was "random, uncontrolled" [49] | premiered at Sundance | the closest thing to a studio-grade AI-assisted animation workflow, and it needs animation skill and bespoke research tools; the page names about a dozen people, including researchers [49] |
-| *Critterz* (OpenAI-backed, Vertigo, Native Foreign) | **not released** as of the latest report; first-look footage shown to buyers at the Cannes market | planned about 9 months, about 30 people, under $30M [43]; Kleverov: compress a multi-year build into about a year [44] | not published | missed an in-festival Cannes slot; Sora was shut down (app dark 2026-04-26, API scheduled to end 2026-09-24); new target Q1 2027 [44][45] | trade press, two independent reports |
+| *Critterz* (OpenAI-backed, Vertigo, Native Foreign) | **not released** as of the latest report; first-look footage shown to buyers at the Cannes market | planned about 9 months, about 30 people, under $30M [43]; Kleverov: compress a multi-year build into about a year [44] | not published | missed an in-festival Cannes slot; Sora was shut down (app dark 2026-04-26, API scheduled to end 2026-09-24); new target Q1 2027 [44] ([45] gives no date) | trade press, two independent reports |
 | *Copán La Leyenda* (Honduras, 2026) | released 2026-05-07 in theatres, 74 min | "about 15 years to develop", about 10 of them on traditional 3D, then AI tools "to largely finish the film" [46] | not published; Gemini watermarks seen in promotional material | **heavily panned** by critics and audiences; a "long commercial"; comments reportedly deleted [46] | Wikipedia with cited reviews |
 | *On This Day... 1776* (Primordial Soup with TIME, 2026) | weekly shorts through 2026 | not published | humans wrote, voiced and scored; AI "in part" [50] | backlash; "repetitive camera movements", "waxen characters"; Aronofsky says later episodes improved | trade press |
 | *Total Pixel Space* (Runway AI Film Festival Grand Prix, 2025) | 9:28 | not published | Midjourney, Runway, ElevenLabs; about 6,000 entries (snippet-only [53]) | festival winner | winner of a vendor's own festival |
@@ -194,7 +194,7 @@ need_H   = total / (u * 17)
 | (gate) | **Sun 2026-12-20** | slice approved (G-SLICE) | decision |
 | W10, W11 | 2026-12-20 to 2027-01-02 | **holidays: dead zone, no production** | 0 hours |
 | W12 to W16 | 2027-01-03 to 02-06 | production; **picture lock Sat 2027-02-06** | pool W12-W16 (5 weeks) |
-| W17, W18 | 2027-02-07 to 02-20 | finishing only; strangers-to-her screening in W17; master verified by Sat 02-20 | pool W17-W18 (2 weeks) |
+| W17, W18 | 2027-02-07 to 02-20 | finishing only; strangers-to-her screening in W17 if held (otherwise the cold self-read); master verified by Sat 02-20 | pool W17-W18 (2 weeks) |
 | W19 | 2027-02-21 to 02-27 | buffer, rehearsals (Mon 02-22 playback, Wed 02-24 room brief, Thu-Fri cold starts) | pool W19 |
 
 Correction to review 02: its list "weeks 12 to 15 (to 02-06), 16 to 17 (to 02-20), 18 to 19" is off by one against Sunday-start weeks; production after the holidays is **five** weeks, W12 to W16, and finishing is W17 to W18 [6]. Total usable weeks are **17** (19 minus two dead). Jurisdiction is unknown, so other observances are unknown; the model carries only the stated dead zone (see Open questions).
@@ -252,12 +252,12 @@ Sensitivity of the Base largest runtime to the pre-holiday share: 0.3 gives 8.0 
 |---|---|---|---|
 | Sun 2026-11-15 | G-READY | settings card; spikes S1 to S5 pass or fallbacks named; style bible and three style frames approved; **H confirmed in writing** | one week of grace (to 11-22); then drop one tier |
 | Sun 2026-12-06 | G-SLICE-0 | slice animatic with real photos and temp sound; first logged hours | cut one tier now |
-| **Sun 2026-12-20** | **G-SLICE** | slice approved at the bar, including mix, grade, captions and a master played on venue-class playback; stranger-read passed; **h_slice measured**; material-in-hand known | compare with Q7 thresholds; red = next shorter scenario |
+| **Sun 2026-12-20** | **G-SLICE** | slice approved at the bar, including mix, grade, captions and a master played on venue-class playback; stranger-read passed if you decide to hold one (Decision 8), otherwise the cold self-read passed; **h_slice and h_slice_fin measured**; material-in-hand known | compare h_slice with the Q7 thresholds; red = next shorter scenario |
 | Sun 2027-01-03 | G-RESTART | H and material reconfirmed | if H fell by more than 25 percent, recompute and cut now |
 | Sun 2027-01-17 | G-MID | at least 45% of runtime at "approved" (5.4 min of 12; 11 of 25; 20 of 45) | cut lowest-priority modules now |
 | Sun 2027-01-31 | G-DRAFT | all kept modules at "draft", at least 60% rolling-locked, finishing chain rehearsed | replace unfinished modules with a held-still plus voice-over fallback or cut |
 | **Sat 2027-02-06** | **G-LOCK** | every shot `locked=1`, timeline hash recorded, git tag | unlock rule only (Q8) |
-| Sat 2027-02-13 | G-MIX | mix v1 and grade v1; strangers-to-her screening held in W17 | fix list only |
+| Sat 2027-02-13 | G-MIX | mix v1 and grade v1; strangers-to-her screening held in W17 if decided (Decision 8), otherwise the cold self-read of the whole film | fix list only |
 | Sat 2027-02-20 | G-MASTER | master and access copy verified, two backups verified | buffer week is for fixing |
 | Mon 2027-02-22 | G-REHEARSE | plays end to end on venue-class playback | USB access copy as fallback |
 
@@ -268,7 +268,7 @@ Sensitivity of the Base largest runtime to the pre-holiday share: 0.3 gives 8.0 
 | **90 min** | **Kill now.** | 2026-10-18 | Needs 42.5 h/week at Prior speeds, 31.3 even in the best case (short by 18 hours at 30 h/week) and 90 at Base; `film-story` also says the story supplies perhaps 8 to 24 scene-grade memories against the 36 it would need [7]. Re-open only if H of 40 or more is confirmed in writing by 2026-11-15 and the slice measures at most about 10 hours. Cut to 45. |
 | **45 min** | Kill at the lock unless H is at least 30 | **2026-11-15** | At 12-20, continue only if h_slice is at most about 10 hours (Prior speed) and every lever is adopted (best case needs 17.9 h/week); Base needs 49.6. Otherwise cut to 25. In practice treat 45 as a post-premiere project. |
 | **25 min** | Decide at the slice | **2026-12-20**; second chance **2027-01-17** | Continue only if the Q7 table says it fits your H (for example H = 30 with h_slice at most 15 without levers or 37 with levers; H = 20 only with all levers and h_slice at most 21). At 01-17, below 45% approved (11 of 25 min): cut to 15 to 18. |
-| **12 min** | Decide at the slice | **2026-12-20**; **2027-01-17**; **2027-01-31** | At 12-20, if the table says it does not fit your H, cut to 8 to 9 (four modules). At 01-17, below 5.4 minutes approved: cut the two lowest-priority modules. At 01-31, any unfinished module becomes a fallback chapter. |
+| **12 min** | Decide at the slice | **2026-12-20**; **2027-01-17**; **2027-01-31** | At 12-20, if the table says it does not fit your H, cut to 8 to 9 minutes (nine is the wrapper plus two modules; TODO(research): the 8-minute tier has no whole-module version). At 01-17, below 5.4 minutes approved: cut the two lowest-priority modules (this leaves six minutes; TODO(research): confirm the rule). At 01-31, any unfinished module becomes a fallback chapter. |
 
 All kill-or-cut dates fall on Sundays or Saturdays, so the maker can act on them at the weekend.
 
@@ -304,7 +304,7 @@ Documented reuse in the benchmarks is real but modest: *Away* made the cats iden
 
 ### Q7. The vertical slice
 
-**Which chapter.** One chapter, 90 to 120 seconds (the playbook's chapter is about 100 s and 20 shots [2]), chosen on production grounds so it de-risks the most:
+**Which chapter.** The slice: one piece of 90 to 120 seconds (the model's 100-second unit and about 20 shots [2]), chosen on production grounds so it de-risks the most:
 - A **mid-life chapter with the most material already in hand** (photos and a recorded voice), so the 40 percent pre-holiday assumption is tested honestly.
 - **Not a hard chapter**, so the slice cannot be blocked by a dignity decision; the 72-hour double-decision rule from `film-story` applies to hard chapters and would eat the calendar.
 - **Not the childhood chapter** (least material, strongest pull toward invented content, Principle 4) and **not the most recent decade** (most living people, most rights questions).
@@ -320,12 +320,14 @@ Documented reuse in the benchmarks is real but modest: *Away* made the cats iden
 4. **Grade:** one look applied through the same chain for every shot; the colour-patch test passes within plus or minus 3/255 on the final encode [2].
 5. **Captions:** inside the reading-speed and length limits in the format track.
 6. **Master:** ProRes 422 HQ and H.264 access copy produced, plus a DCP test file if a DCP is in scope; played end to end on a TV or projector at about 3 m.
-7. **Strangers read it:** two or three people who do not know her and cannot reach the family see it cold and answer: who is she, what did she want, what did you feel (protocol from `cinematic-quality`; I only schedule it, in W9 for the slice and W17 for the whole).
-8. **Hours logged** in `hours.csv` by stage and class from approved brief to approved chapter: `h_slice`, with agent hours, render seconds, rework counts and (if AI clips were used) generations tried and kept.
+7. **Strangers read it, or the cold self-read.** If the maker decides to hold a stranger read (Decision 8), two or three people who do not know her and cannot reach the family see it cold and answer: who is she, what did she want, what did you feel (protocol from `cinematic-quality`; I only schedule it, in W9 for the slice and W17 for the whole). If the maker does not, the cold self-read below passes instead, in the same slot.
+8. **Hours logged** in `hours.csv` by stage and class: `h_slice` (production side) and `h_slice_fin` (finishing), with learn and admin reported against the 30-hour allowance, agent hours, render seconds, rework counts and (if AI clips were used) generations tried and kept.
 9. **Surprise safety:** repo, folder and commit names harmless; no personal data in any cloud service; `cloud` levels respected [2].
 10. **Verdict:** apply the table below and write the decision in `decisions.csv`.
 
-**Converting measured slice hours into a runtime.** `h_slice` is the maker's all-in hours for one 100-second chapter-1 build (shots, chapter pass, sound and grade). The model predicts 9.9 (Prior), **26.5 (Base)** and 54 (Stress). The table shows the **weekly hours needed** (total plus post-holiday checks), keeping Base values for story, gathering and finishing, and the **largest `h_slice` that still fits** each H.
+**The cold self-read (the substitute).** You show the cut to no one. Leave it unopened for 48 hours. Then watch it once on venue-class playback at about 3 m with the sound on. Before taking any notes, answer three questions in writing: who is she, what did she want, and what did you feel. The Fable advisor applies the `cinematic-quality` rubric to the same version.
+
+**Converting measured slice hours into a runtime.** `h_slice` is the production-side hours for the slice: the sum of hours.csv minutes for the slice with activity in brief_G0, style_G1, review_G2, craft_refine_G3, chapter_G4, dignity_G5, tech_G6, sound and rework, for one 100-second unit. The model's prediction is shots, chapter pass and sound only: 9.9 (Prior), **26.5 (Base)** and 54 (Stress). `h_slice_fin` is the sum for grade, mix, captions, master and qc. Its Base prediction is **16.5 hours**: 2.7 hours per finished minute for 1.67 minutes (4.5), plus the half of the 24 fixed finishing hours pre-built in the slice (12). The measured-to-predicted finishing ratio gives `mu_fin`, which scales the finishing rows. Learn and admin are excluded from both and compared with the 30-hour allowance. TODO(research): brief_G0 and style_G1 are in `h_slice`, but the 26.5 prediction prices story separately; decide before 20 December whether to add the slice's share of story or drop those two activities. TODO(research): recomputing the model gives about 23.9 (not 24.1) at h_slice 26 and about 19.5 (not 19.6) at 20, for 12 minutes; not yet reconciled. The table shows the **weekly hours needed** (total plus post-holiday checks), keeping Base values for story, gathering and finishing (so it holds with `mu_fin` = 1), and the **largest `h_slice` that still fits** each H.
 
 | Runtime | Needed h/week at h_slice = 10 / 15 / 20 / 26 / 35 / 45 | Max h_slice that fits, no levers: H = 10 / 20 / 30 | Max h_slice that fits, with all levers: H = 10 / 20 / 30 |
 |---|---|---|---|
@@ -336,7 +338,7 @@ Documented reuse in the benchmarks is real but modest: *Away* made the cats iden
 | 18 min | 17.3 / 22.3 / 27.4 / 33.4 / 42.5 / 52.6 | none / 13 / 23 | none / 31 / 52 |
 | 25 min | 23.0 / 29.6 / 36.1 / 43.9 / 55.7 / 68.8 | none / 8 / 15 | none / 21 / 37 |
 
-Read it like this: with 20 hours a week, a slice that took 26 hours makes 12 minutes fit only with the levers (without them the limit is 21 hours); with 30 hours a week and a 26-hour slice, 15 minutes fits without levers and 25 does not; at 10 hours a week only 8 to 10 minutes fit, and only if the slice took 11 to 16 hours and every lever is pulled. Paste `h_slice` into the CSV (`SLICE CALIBRATION`), copy the suggested `mu`, and the whole model recomputes.
+Read it like this: with 20 hours a week, a slice that took 26 hours makes 12 minutes fit only with the levers (without them the limit is 21 hours); with 30 hours a week and a 26-hour slice, 15 minutes fits without levers and 25 does not; at 10 hours a week only 8 to 10 minutes fit, and only if the slice took 11 to 16 hours and every lever is pulled. Paste `h_slice` and `h_slice_fin` into the CSV (`SLICE CALIBRATION`, rows 173 and 176), copy the suggested `mu` and `mu_fin`, and the whole model recomputes.
 
 **What practitioners say a proof must prove before scaling** (synthesis): that the end-to-end chain works at the final bar (picture, sound, grade, master) and not just one stage [64]; that the look is agreed cheaply and early [67]; that the edit is settled before expensive work [20]; and that the time per unit is known so the rest can be budgeted (the vertical slice's purpose [64]).
 
@@ -363,7 +365,7 @@ Read it like this: with 20 hours a week, a slice that took 26 hours makes 12 min
 3. **Agents are told:** locked shots are read-only; the agent must refuse a request to change them and point to the unlock rule.
 4. **Unlock rule:** a written reason, the cost in hours (what sound, score and grade passes must redo), a 24-hour wait, and only for a factual, dignity or rights error. At most two unlocks after 02-06. Any unlock adds a row to `decisions.csv`.
 5. **Parking lot:** ideas after lock go in `parking-lot.md` and are read after the premiere.
-6. **Fresh eyes before lock:** the stranger-read (W17 for the whole film) belongs before sound is final; the schedule puts it in the first finishing week, so a bad finding costs one unlock at most.
+6. **Fresh eyes before lock:** the stranger-read (W17 for the whole film) belongs before sound is final; the schedule puts it in the first finishing week, so a bad finding costs one unlock at most. If no stranger read is held, the cold self-read (Q7 item 7) takes that slot.
 
 Counter-example: *Away* was made, according to a search summary of [10], without a complete script or storyboards, by one person who could review a real-time Maya playblast cheaply [10]. A solo maker with real-time rendering and no sound dependency can edit late. We cannot: our renders are shared with agents, the score is fitted to the cut, and the surprise leaves no time for a second pass.
 
@@ -462,6 +464,8 @@ Cases: Prior = the playbooks' numbers; Base = evidence-adjusted; Levers = Base w
 | Kill-or-cut | 2026-12-20, 2027-01-17, 2027-01-31 (Q5) | 2026-12-20, 2027-01-17 | 2026-11-15 | 2026-10-18 |
 | Rolling locks / final lock | 2027-01-17 / **2027-02-06** | 2027-01-10 / 2027-01-30 | 2027-01-03 / 2027-01-23 | n/a |
 
+The 'Hours per week needed' row is the total-hours check only. The 'Feasible at' rows, and the largest-feasible-runtime figures in Summary 2, include the post-holiday check; the Q7 slice table is the stricter, operative one.
+
 ### 3. Shot-tracking template (consistent with `agent-pipeline` naming)
 
 `shots/status.csv` header (one row per shot; the playbook's `brief.yaml` holds the full brief, this file holds state):
@@ -512,9 +516,9 @@ Other files: `chapters.csv` (`chapter, module, title_code, target_s, priority, c
 | Is 15 to 18 (target and cap)? | needs about 16 to 18 h/week with levers (Base) or 29 to 33 without | needs about 6 to 7 memories | the **target** if H is 20 or more and the slice is at or below the Q7 thresholds |
 | Is 12 (floor)? | needs 13.9 h/week with levers (Base), 19.6 without, 9.8 at Prior speed | needs about 5 memories | **committed** if H is about 14 or more with levers; otherwise the floor is 8 |
 
-**Recommendation.** **Commit to a 12-minute public cut built as six two-minute modules** (consistent with the film-story floor), with the levers adopted from today (hero shots at most 5 percent; 8 to 10 shots per minute; mix and grade bought or heavily templated; photo triage; gathering front-loaded so at least half of the chapters have material in hand by 2026-12-19). Add one or two more modules (minutes 12 to 15) as a **stretch that is unlocked, not promised, at 2026-12-20** by the Q7 table. Treat 25 as a private cut after the premiere. Do not plan 45 or 90.
+**Recommendation.** **Commit to a 12-minute public cut built as a wrapper (cold open about 1:15, ending about 1:45) and three 3:00 modules** (consistent with the film-story floor), with the levers adopted from today (hero shots at most 5 percent; 8 to 10 shots per minute; mix and grade bought or heavily templated; photo triage; gathering front-loaded so at least half of the chapters have material in hand by 2026-12-19). Add one more module (15 minutes, the wrapper plus four) or two (18, the cap) as a **stretch that is unlocked, not promised, at 2026-12-20** by the Q7 table. The model's 100-second 'chapter' is the learning-curve unit, not the cut structure; seven units for 12 minutes stays valid. Treat 25 as a private cut after the premiere. Do not plan 45 or 90.
 
-**If H is about 10:** plan **8 minutes** (four modules). 12 minutes at 10 h/week works only on Prior numbers with no slippage, no reuse program and a bought master chain. The film-story floor of 12 conflicts with this; that conflict belongs to the orchestrator, and the options are to lower the floor to 8, to buy more of the finishing, or to accept a templated look.
+**If H is about 10:** plan **8 minutes** (TODO(research): no whole-module version of the wrapper shape exists at 8; nine minutes, the wrapper plus two modules, is the nearest). 12 minutes at 10 h/week works only on Prior numbers with no slippage, no reuse program and a bought master chain. The film-story floor of 12 conflicts with this; that conflict belongs to the orchestrator, and the options are to lower the floor to 8, to buy more of the finishing, or to accept a templated look.
 
 **If H is 30:** plan 15 to 18 minutes and keep 25 as the private cut.
 
@@ -531,6 +535,7 @@ Other files: `chapters.csv` (`chapter, module, title_code, target_s, priority, c
 | RunPod RTX 5090 / L4 / A40 / H100 PCIe | $0.69-$1.19 / $0.44-$0.59 / $0.35-$0.59 / $1.99-$2.89 per hour | same [54] | |
 | Vast.ai | dynamic, "set by supply and demand"; no numbers retrievable | page fetched, price grid empty [UNVERIFIED] | |
 | Veo 3.1 Lite / Fast / Standard | $0.05 / $0.10 / $0.40 per second at 720p | Gemini pricing, "Last updated 2026-10-16 UTC" [55] | children's photos probably refused [8] |
+| Veo 3.1 Lite / Fast / Standard at 1080p | $0.08 / $0.12 / $0.40 per second | same page [55]; read in the round 1 review spot-check (`reviews/production-scale-round1.md`, section 1) | the project renders at 1080p |
 | Nano Banana Pro image | $0.134 (1K/2K), $0.24 (4K) | same [55] | 2.5 Flash Image shuts down October 2, 2026 |
 | SheepIt render farm | free; Blender 5.2 listed | [57] | not for family imagery |
 | Kitsu hosted | €20 / €30 / €35 per user per month, billed annually; two-week trial | cg-wire pricing page, footer 2026 [58] | not recommended for one person |
@@ -574,7 +579,7 @@ Other files: `chapters.csv` (`chapter, module, title_code, target_s, priority, c
 8. **Cash:** is there a budget to buy a mix, a grade or a composer? It is the largest lever on finishing hours.
 9. **DCP versus a file** at the venue: `theatrical-delivery` owns it; it moves 8 to 16 fixed hours.
 10. **Quality of the "theatrical bar" for a photo-forward film:** defined by `cinematic-quality` (note not yet written; its Q8 reception evidence should be added here).
-11. **Whether any outside person can be the stranger-read audience** without touching the surprise; the maker has said nobody else is involved.
+11. **Whether any outside person can be the stranger-read audience** without touching the surprise; the maker has said nobody else is involved. The named substitute is the cold self-read (Q7 item 7).
 12. **Whether the container's usage allowance** supports 70 to 500 agent-hours; UNVERIFIED.
 13. **Week numbering:** please adopt Sunday-start weeks and dates as the authority (W12 to W16 production, W17 to W18 finishing).
 
@@ -665,3 +670,190 @@ Tools, prices and process
 - [67] PremiumBeat, "A masterclass in making a Pixar animated short" — https://www.premiumbeat.com/blog/a-masterclass-in-making-a-pixar-animated-short — undated — look tests "super quick and dirty, just with a few days of work".
 - [68] Indietalk and ZHdK audio-post pages — https://indietalk.com/goto/post?id=348469 and https://medienarchiv.zhdk.ch/files/f693e5ef-5249-491e-8bfa-ae379306539a?lang=en — undated — **snippet-only** (both returned errors): "one hour per finished minute", "six hours per linear minute".
 - [69] arXiv 2604.03315, "StoryBlender" — https://arxiv.org/pdf/2604.03315 — 2026 — **snippet-only**: shared asset library cut model builds by about 12%.
+
+
+---
+
+## Follow-up research (round 1)
+
+*Researcher: Sonnet, 2026-10-18 (Sunday, week 1 of 19). Answers five open items from the playbook. Labels as above: **ESTIMATE** is arithmetic on sourced numbers, **UNVERIFIED** is not checked, **[J]** is judgement. Source numbers continue from [76]; the list is at the end of this section.*
+
+**Limits of this round, stated up front.** The shared web-search budget ran out (200 searches per turn across all agents) before I reached the mix and grade quotes. After that I used only direct fetches of pages I already knew by address. That is why F1 has captions prices but no mix or grade quote. Nothing here is a guessed URL that I cite. Failed fetches are listed in F1.
+
+### F0. What the maker has now told us (relayed request)
+
+- **Who is in on the secret: only the maker.** The maker is the only person on the project, and for now also the only person who can approve hard chapters for her. The maker said this can wait until the plan is ready, so no second approver is being recruited yet.
+- Effect on the schedule model: open question 11 (an outside stranger-read audience) stays closed. There is no second pair of eyes at the G-SLICE stranger read or on hard chapters, so the maker's own decisions are the only check, with the Fable advisor flagging sensitive material. That is a risk to record, not a number to change.
+- **Still open, not answered:** hours per week per phase (H); whether the holiday weeks are dead or the maker's freest fortnight; country and observances; the PC's CPU, RAM, GPU and free disk. The playbook's Exercise 1 and the PowerShell lines in `playbooks/craft-visual.md` already collect the PC facts in about two minutes. The dated calendar in F5 lets the maker answer the observance question with yes or no.
+
+### F1. What does buying the mix, grade and captions cost in 2026?
+
+**Result: captions priced from two pages I read. Mix and grade: no quote obtained, so the Decision 4 cash figure stays UNVERIFIED.**
+
+*Captions (a 12 to 18 minute film), prices seen on 2026-10-18:*
+
+| Vendor and service | Price seen | Turnaround stated | 12 min | 18 min | Source |
+|---|---|---|---|---|---|
+| Rev, human-made captions | "Starting at $1.99/min"; English and Spanish only | "delivered in 12 hours or less" | $23.88 | $35.82 | [77] |
+| HappyScribe, human-made subtitles | "From $2.00/min" ($1.90/min on its Business plan) | "Delivery in 4h+" | $24.00 | $36.00 | [78] |
+| HappyScribe, machine subtitles | credits at "$0.20/min" | not stated | $2.40 | $3.60 | [78] |
+| DaVinci Resolve (free) or a local speech-to-text tool | $0 cash; the maker's review time | none | $0 | $0 | [79] |
+
+Both pages carry no visible date. HappyScribe's page data says it was modified 2026-10-13 [78]; Rev's page shows none [77]. Both prices are list prices for a transcript-to-captions job, not a quote for a particular film. They are small enough not to matter: **captions cost about $25 to $36 bought, or nothing if done by the maker.** Do not treat captions as a finishing hours problem beyond review time (the Base figure of 0.3 h per minute is review, not typing) [J].
+
+*Mix and grade:* I did not find a rate card or quote that I saw with my own eyes. Pages tried and what they gave:
+
+- Fiverr audio mixing category: HTTP 403. Upwork audio-mixing cost page: HTTP 403. ProductionHub: HTTP 403.
+- SoundBetter home page: category links only, no prices on the part I could read.
+- PeopleperHour: empty page. Freelancer colorist page: 404. StudioBinder cost article (guessed address): 404. BECTU rates page (guessed address): 404.
+- Color Grading Central: no prices published.
+
+Hearsay already in the note stays hearsay: one freelancer at $150 per minute for post mixing and $100 per minute for dialogue editing (snippet-only, earlier round) [68]. Do not use it as a quote.
+
+*What I can state about the cash floor:* DaVinci Resolve's free version lists edit, colour, VFX, motion graphics and audio (Fairlight) in one app; Resolve Studio is "$295" with "Resolve 21" and a 2026 copyright notice on the page [79]. So a do-it-yourself mix and grade costs $0 to $295 in cash. The cost is the maker's hours, at the Base 2.7 hours per finished minute (grade 0.5, mix 1.5, captions 0.3, QC 0.4) plus 24 fixed hours.
+
+*What to do with this:*
+
+1. **Do not adopt lever 3 (buy mix, grade and captions) in the model until two quotes are in hand.** Until then run the model with finishing at 2.7 h/min (Base), not 0.8. If the quotes arrive, set it to 0.8 plus the maker's review time.
+2. **Ask for quotes at the G-READY week (Sun 15 Nov), not at picture lock.** The slice (G-SLICE, Sun 20 Dec) already needs a mix, a grade and captions on the slice (C01), so one vendor can price the slice and the full film together.
+3. **Request for quote, five lines, with no personal detail** (the project is covert; call it "a 15-minute documentary short, animated"): runtime 12 to 18 min; stereo mix from supplied stems (voice, music, effects) to a stated loudness; grade of a finished animated picture to a stated delivery (ProRes or DCP-ready); captions as a file or burned in; fixed price with two revision rounds; turnaround in working days **from picture lock on Sat 6 Feb 2027**, with the premiere on Sat 27 Feb. The finishing weeks are 7 to 20 Feb, so anything over about 10 working days including revisions does not fit.
+4. Ask three vendors. Record each as: date seen, quoted price, turnaround, what is excluded. Add them as sources [97] onward in the next round.
+
+*Owner:* `music-sound` and `theatrical-delivery` own the mix and delivery spec; `production-scale` only consumes the number.
+
+### F2. Veo 3.1 image-to-video on a photo with a child
+
+**Result: I could not run the test. The documents point to a refusal. Status stays UNVERIFIED.**
+
+- **Why no test:** this session has no Gemini or Vertex access (I checked the environment variable names for Gemini, Google, Veo, RunPod and Vast and none were set) and the maker has not approved a spend. The `ai-imagery` note also says "No test planned" (its Q4), so the two notes disagree on whether a test is wanted; see the recommendation below.
+- **What the documents say (re-read 2026-10-18, two independent reads, same result as `ai-imagery`):**
+  - Gemini API Veo page: for Veo 3.1, Veo 3.1 Fast, Veo 3.1 Lite, Veo 3 and Veo 3 Fast, `personGeneration` for **image-to-video, interpolation and reference images is `allow_adult` only**; text-to-video is `allow_all` only. No default is stated. The page says nothing about children or minors. Per-model "Latest update" dates: 3.1 and 3.1 Fast January 2026, 3.1 Lite March 2026 [80].
+  - Vertex AI responsible-AI page, "Last updated 2026-10-15 UTC": the **Child** category "Rejects requests to generate content depicting children if `personGeneration` isn't set to `"allow_all"` or if the project isn't on the allowlist for this feature." Support codes **58061214** and **17301594**. The page says its filters "aim to filter out input images and videos" that violate its policies and gives a sample message: "Veo could not generate videos because the input image violates Agent Platform's usage guidelines." It does not say what happens to an input image that contains a child [81].
+- **Reading across (M, UNVERIFIED):** image-to-video can only run at `allow_adult`, and the child category rejects when the setting is not `allow_all`. So a photo that shows a child is most likely **refused**, not quietly altered. The Gemini API page does not confirm this for its own product.
+- **Decision for class A childhood shots:** plan as if cloud image-to-video is **not available** for any photo with a child. Use depth-parallax, camera moves on stills, or local models. The plan has this fallback already, so nothing waits on the test.
+- **Recommendation:** run the test only if the maker wants cloud image-to-video for childhood shots anyway. It is cheap: Veo 3.1 Lite is $0.05 per second at 720p [55], so a 4 second clip is $0.20, and three clips are $0.60. Use **public-domain photos only, never a family photo**: (a) a public-domain photo of a child, (b) a public-domain adult portrait as control, (c) a landscape or object as control. `ai-imagery` already lists one in its note: US National Archives item 546220, a 1972 EPA photograph that shows children. Record per clip: accepted or blocked, the support code or message, any charge, and whether faces or ages changed. If (a) is blocked, close the item. If (a) is accepted and faithful, still do not send a family photo without the maker's explicit say (charter, constraints).
+
+### F3. Cycles seconds per frame on an RTX 4090
+
+**Result: the 5 second assumption is inside the measured range. I could not rent a GPU, so this is derived from the community benchmark, not a run on the maker's scene.**
+
+*Method.* I downloaded the Blender Open Data daily snapshot (file dated Sun 18 Oct 2026 00:01:21 GMT, 101,626,337 bytes, Creative Commons 0) [83] and filtered to records whose only compute device is "NVIDIA GeForce RTX 4090" (not Laptop, not "D"), device type OptiX, Blender 5.2.0 LTS: 81 runs per scene, dated 2026-07-20 to 2026-10-15. The benchmark script (version 3.1.2) renders each scene for a **fixed 30 seconds** with adaptive sampling off and counts samples, so the score is **samples per minute, with no denoising** [82][84]. I opened the three scene files with `bpy` 5.2.0 (installed from PyPI) to read their settings [84]. Scripts and outputs are saved in `research/production-scale-fixtures/followup1-*`.
+
+| Scene (Blender Studio benchmark) | Frame | Triangles (approx.) | 4090 samples per minute: median (p10 to p90) | Seconds per sample at its own size | Seconds per sample at 1080p (computed) |
+|---|---|---|---|---|---|
+| classroom | 1920 x 1080 | 241,000 | 2,881 (2,615 to 2,983) | 0.0208 | 0.0208 |
+| junkshop | 2000 x 1000 | 3,149,000 | 3,549 (3,196 to 3,713) | 0.0169 | 0.0175 |
+| monster | 1024 x 1024 | 1,602,000 | 5,184 (4,735 to 5,394) | 0.0116 | 0.0229 |
+
+*Seconds per frame for the same three scenes, computed* (samples times 1080p seconds per sample; the spread is the scenes' spread; add about 10 percent for a slower rented card, since the p10 runs are about 9 to 10 percent below the median):
+
+| Samples | 1080p | 2K DCI 2048 x 1080 | 4K UHD 3840 x 2160 |
+|---|---|---|---|
+| 24 | 0.4 to 0.6 s | 0.5 to 0.6 s | 1.7 to 2.2 s |
+| 64 | 1.1 to 1.5 s | 1.2 to 1.6 s | 4.5 to 5.9 s |
+| 128 | 2.2 to 2.9 s | 2.4 to 3.1 s | 9.0 to 11.7 s |
+| 256 | 4.5 to 5.9 s | 4.8 to 6.3 s | 18.0 to 23.4 s |
+| 512 | 9.0 to 11.7 s | 9.6 to 12.5 s | 35.9 to 46.9 s |
+
+*What is not in these numbers:* denoising (a fraction of a second at 1080p on a GPU; not measured, UNVERIFIED); scene load and BVH build, which the benchmark reports as 0.6 s (classroom), 0.8 s (monster) and 2.6 s (junkshop) per run (median of total minus sampling time) and which you pay once per Blender process, not per frame, if one process renders a range; pod start-up, Blender install and file transfer; and the maker's own scenes, which are probably simpler than these three (the benchmark's own scenes are interiors and creatures, not stylised or voxel looks) [J].
+
+*Reading it.* The old 5 second assumption equals about **220 to 290 samples at 1080p**, or **64 samples at 4K**. The third-party estimate of 3.5 to 7.5 seconds [56] is consistent with that, though its settings are still unstated. A hero frame at 128 samples and 1080p is about 3 seconds including a guessed 0.3 second denoise.
+
+*Container cross-check.* I rendered the classroom scene on this container (4 vCPU, no GPU) at 1080p, one run each: 8 samples 63.9 s; 24 samples 176.0 s; 24 samples plus denoise 204.3 s. That is about 7.0 s per sample and about 28 s of CPU denoise. The 4090 median is 0.0208 s per sample on the same scene, **about 336 times faster** (ESTIMATE from single runs). The earlier 17.5 s per frame figure was a one-light Suzanne scene, which is why a real scene is far slower on CPU: a classroom-class hero frame at 24 samples plus denoise is 204 s on this container, so 2,592 such frames would take about 147 CPU-hours. **A Cycles hero plan needs a GPU: the maker's own, or a rented one.**
+
+*Updated GPU budget for the 12 minute film* (2,592 hero final frames = 1,728 hero frames at 1.5 finals each, from Q9; classroom-class scene at 1080p; 0.3 s guessed denoise; RunPod $0.34 to $0.89 an hour [54]):
+
+| Samples | Seconds per frame | GPU-hours | Cash |
+|---|---|---|---|
+| 64 | 1.6 | 1.2 | $0.4 to $1.0 |
+| 128 | 3.0 | 2.2 | $0.7 to $1.9 |
+| 256 | 5.6 | 4.0 | $1.4 to $3.6 |
+| 512 | 11.0 | 7.9 | $2.7 to $7.0 |
+
+For scale, rendering all 17,280 frames of the 12 minute film with Cycles at 128 samples would be about 14 GPU-hours, roughly $5 to $13 (ESTIMATE). **Render cash is not a constraint at any runtime in the note.** The constraints are the privacy rule (a rented GPU is a third party; a scene that uses her photos as textures counts as family imagery and needs the maker's explicit say) and the maker's time to set up the pod. If neither the maker's PC nor a rented GPU is allowed, hero shots must use Workbench, EEVEE or 2D routes.
+
+*What spike S3 now has to prove.* It no longer has to discover the speed. It passes if one real hero frame on a rented or maker-owned GPU lands **within 2 times** of the table above for its samples and size, and the notes record: pod start to first frame, per-process load time, denoise time, bytes transferred. That is the number that replaces "UNVERIFIED" in the playbook. Cost of the spike: under $1 of GPU time.
+
+### F4. Does the Claude plan cover 70 to 140 supervised agent-hours over 17 weeks?
+
+**Result: cannot be settled from published numbers. UNVERIFIED. The plan limits are counted in tokens in rolling windows, not in hours, and Anthropic's pages give no hours figure.**
+
+What the pages say (all read 2026-10-18):
+
+- **Prices:** Pro $20 a month ($17 on annual billing, "$200 billed up front"); Max "From $100" a month, in a 5x or 20x choice "more usage than Pro" [85]; the Max article gives Max 5x $100 and Max 20x $200 a month [86]. "Price and plans are subject to change" [85].
+- **Limits:** "Both Pro and Max plans have a five-hour session limit and a weekly limit." Claude and Claude Code draw from the same limits [87]. Max also has a separate weekly limit for the Fable model [87][85]. No page I read gives hours or prompts per week.
+- **What uses more:** longer conversations, tool use and "multi-step tasks, like running code, creating files, or browsing websites" [88]. Subagents and workflows "send their own requests on top of the main conversation's" [90]. A workflow "can use meaningfully more tokens" than the same task in conversation, and "runs count toward your plan's usage and rate limits" [91]. Agent teams use "approximately 7x more tokens than standard sessions" [90].
+- **A sign that Pro is tight for fan-out work:** the default workflow size is "medium, or small when you're signed in on a Pro plan", where small means fewer than 5 agents [91].
+- **What happens at the limit:** work pauses until the window resets (a workflow run waits if the limit resets within 24 hours and the session is interactive; a weekly limit can be further out) [91]. Or the maker turns on **usage credits**, which are "billed at standard API rates", with a monthly spend limit the maker sets, and apply to Claude Code [89].
+- **Dollar scale:** Anthropic's own cost page says the average is about **$13 per developer per active day** and **$150 to $250 per developer per month**, below $30 per active day for 90 percent of users (enterprise deployments, API list prices) [90].
+
+*Rough bound on the overflow cost (ESTIMATE, low confidence).* Take 70 to 140 supervised hours. If an active day is about 5 hours [J], that is 14 to 28 active days. At $13 a day that is about $180 to $360; at the $30 ninety-percent ceiling, about $420 to $840. Compare Max 5x at $100 a month for the 4.3 months to 27 Feb, about $430. So **if the plan covers none of it, the usage-credit overflow is in the same range as a Max 5x subscription**, not a thousand-dollar problem. This does not count fan-out waves such as the 16-track learn phase, which are far heavier than a supervised session.
+
+*What this changes.*
+
+1. **Agent-hours are not yet a constraint, but they could become one in specific weeks.** The risk is not the 70 to 140 supervised hours; it is the parallel waves (research, shot generation batches, review passes). Plan those as bursts, and check the usage bars before and after each.
+2. **The unit should be a plan-percentage, not hours.** Record the weekly usage bar (Settings > Usage on claude.ai, or `/usage` in Claude Code, which also shows what share went to subagents) before and after the G-SLICE week and each build week [88][90]. After two weeks the maker has a real figure.
+3. **Ask the maker which plan this is** (Pro, Max 5x or Max 20x). Nothing in the project files says. If it is Pro, plan on a Max 5x upgrade for the 17 weeks, or usage credits with a monthly cap, and keep workflow size at "small" or "medium".
+4. The charter's cloud-first choice means the **Claude plan is the real engine budget**; the render cash above is trivial next to it.
+
+### F5. From the maker: still open, with the dated calendar to make the answer easy
+
+Only the maker can supply H per phase, the holiday-week answer, the country, and the PC facts. I can supply the calendar. All dates below are for 2026-11 to 2027-02. Weekdays and the two computed holidays are my arithmetic; the rest are from the sources.
+
+| Date | What | Weekday | Note | Source |
+|---|---|---|---|---|
+| 2026-11-08 | Diwali main day (Lakshmi Puja); festival runs 6 to 10 Nov | Sunday | Wikipedia lists "8 (Lakshmi Puja...)" | [92] |
+| 2026-11-26 | US Thanksgiving | Thursday | fourth Thursday of November (computed) | none |
+| 2026-12-04 evening to 2026-12-12 | Hanukkah | Fri to Sat | "Sunset, 4 December - nightfall, 12 December" | [93] |
+| 2026-12-20 | Planned G-SLICE | Sunday | five days before Christmas | playbook |
+| 2026-12-25 | Christmas Day | Friday | computed | none |
+| 2027-01-01 | New Year's Day | Friday | computed | none |
+| 2027-02-06 | Lunar (Chinese) New Year, year of the Goat | Saturday | **same day as picture lock** | [94] |
+| 2027-02-08 to 2027-03-08 | Ramadan (Umm al-Qura calendar; local moon sighting can move it by about a day) | Mon to Mon | **the Sat 27 Feb premiere falls on about day 20 of Ramadan**, so an evening screening at a mostly public gathering would need to follow sunset and iftar if the audience observes it | [95] |
+| 2027-02-10 | Ash Wednesday, start of Lent | Wednesday | Easter 28 March 2027 is computed from the page's "46 days before Easter" rule | [96] |
+| 2027-02-27 | Premiere | Saturday | | charter |
+
+Questions that would settle it: Which of these does the household or the expected audience observe? Is the holiday fortnight (about 20 Dec to 3 Jan) free time or family time? Which country, and what hours a week can be given in each of: Nov (learning, slice), Dec (slice), Jan (production), Feb (finishing)?
+
+### Impact summary (for the orchestrator and scribe)
+
+1. **Finishing cash (Decision 4):** captions $25 to $36 or free [77][78]; mix and grade quotes not found. Keep finishing at 2.7 h/min until two quotes are seen; ask at G-READY.
+2. **Veo and childhood photos:** documents say refusal is likely; not tested [80][81]. Keep parallax or local for class A. Optional $0.60 test with public-domain photos only.
+3. **Render budget:** the 5 s per hero frame assumption is inside a derived 2 to 6 s range at 1080p (128 to 256 samples) for a 4090 [82][83][84]. Cash for the 12 minute film is $0.4 to $7 for hero finals. The real constraint is the privacy rule and a GPU being available at all.
+4. **Claude plan:** the unit is tokens in 5-hour and weekly windows. No published hours. Overflow at API rates is roughly a Max 5x subscription in size. Ask the maker for the plan; record usage-bar readings each week [85][86][87][88][89][90][91].
+5. **Calendar:** Ramadan overlaps the premiere; Lunar New Year is picture-lock day. Ask the maker about observances before the schedule is finalised [94][95].
+6. **Sole maker:** confirmed for now; no second approver or outside reader.
+
+### Sources added in round 1
+
+Captions, mix and grade
+- [77] Rev pricing — https://www.rev.com/pricing — read 2026-10-18, page undated — human captions "Starting at $1.99/min", "delivered in 12 hours or less", English and Spanish only; AI captions are bundled in monthly plan minutes.
+- [78] HappyScribe pricing — https://www.happyscribe.com/pricing — read 2026-10-18; page data dateModified 2026-10-13 — human subtitles "From $2.00/min" (Business $1.90), "Delivery in 4h+"; machine credits "$0.20/min".
+- [79] Blackmagic Design, DaVinci Resolve — https://www.blackmagicdesign.com/products/davinciresolve — read 2026-10-18, no pricing date, copyright 2026, "DaVinci Resolve 21" — free version with edit, colour, VFX, motion graphics and audio; Studio "$295"; Fairlight audio.
+
+Veo
+- [80] Gemini API, Veo — https://ai.google.dev/gemini-api/docs/veo — read 2026-10-18 (same page as `ai-imagery` [114]) — `personGeneration` by model and mode, Limitations, model update dates.
+- [81] Vertex AI, Responsible AI for Veo — https://docs.cloud.google.com/vertex-ai/generative-ai/docs/video/responsible-ai-and-usage-guidelines — "Last updated 2026-10-15 UTC" (same page as `ai-imagery` [116]; the text sits after a 100,000 character navigation block) — Child category and support codes, input-image message.
+
+Cycles
+- [82] Blender Open Data, About — https://opendata.blender.org/about/ — read 2026-10-18 — score definition (samples per minute, summed over scenes), snapshot address.
+- [83] Blender Open Data daily snapshot — https://opendata.blender.org/snapshots/opendata-latest.zip — Last-Modified Sun, 18 Oct 2026 00:01:21 GMT, 101,626,337 bytes, Creative Commons 0 — analysed locally; 433,541 records; RTX 4090 OptiX rows used.
+- [84] Blender Benchmark 2.0 files (the open-data CDN address redirects here) — https://mirrors.ocf.berkeley.edu/blender/release/BlenderBenchmark2.0/ — read 2026-10-18 — scenes classroom (65.2 MiB), junkshop (336.2 MiB), monster (73.0 MiB), script version 3.1.2 (listed 2026-Mar-11); script sets samples to 1<<24, time limit 30 s, adaptive sampling off.
+
+Claude plan
+- [85] Claude pricing — https://claude.com/pricing — read 2026-10-18, no date — Pro $17 and $20, Max from $100, 5x or 20x, paid plans add weekly limits.
+- [86] Claude Help Center, "What is the Max plan?" — https://support.claude.com/en/articles/11049741-what-is-the-max-plan — "Updated this week" — Max 5x $100, 20x $200, five-hour and weekly limits.
+- [87] Claude Help Center, "Using Claude Code with your Pro or Max plan" — https://support.claude.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan — "Updated this week" — shared limits, session and weekly limits, Fable weekly limit on Max.
+- [88] Claude Help Center, "Usage limit best practices" — https://support.claude.com/en/articles/9797557-usage-limit-best-practices — "Updated over 3 weeks ago" — what consumes usage; progress bars under Settings > Usage.
+- [89] Claude Help Center, "Extra usage for paid Claude plans" — https://support.claude.com/en/articles/12429409-extra-usage-for-paid-claude-plans — read 2026-10-18 — usage credits "billed at standard API rates", monthly limit, applies to Claude Code.
+- [90] Claude Code docs, "Manage costs effectively" — https://code.claude.com/docs/en/costs — read 2026-10-18 — about $13 per developer per active day, $150 to $250 per month, below $30 for 90 percent; agent teams about 7x tokens; `/usage` breakdown.
+- [91] Claude Code docs, "Orchestrate subagents at scale with dynamic workflows" — https://code.claude.com/docs/en/workflows — read 2026-10-18 — cost section, size guideline default (small on Pro), usage-limit wait.
+
+Calendar
+- [92] Wikipedia, Diwali — https://en.wikipedia.org/wiki/Diwali — read 2026-10-18 — 2026 dates 6 to 10 November.
+- [93] Wikipedia, Hanukkah — https://en.wikipedia.org/wiki/Hanukkah — read 2026-10-18 — 2026: sunset 4 December to nightfall 12 December.
+- [94] Wikipedia, Chinese New Year — https://en.wikipedia.org/wiki/Chinese_New_Year — read 2026-10-18 — 2027: Saturday 6 February, Goat.
+- [95] Wikipedia, Ramadan — https://en.wikipedia.org/wiki/Ramadan — read 2026-10-18 — Umm al-Qura table: 2027 from 8 February to 8 March; moon-sighting caveat.
+- [96] Wikipedia, Ash Wednesday — https://en.wikipedia.org/wiki/Ash_Wednesday — read 2026-10-18 — 2027: 10 February.
+
+*Fixtures saved:* `research/production-scale-fixtures/followup1-rtx4090-benchmark-summary.py` and `.txt`, `followup1-read-benchmark-scene.py`, `followup1-classroom-cpu-timing.py` and `.txt`.

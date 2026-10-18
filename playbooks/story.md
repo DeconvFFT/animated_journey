@@ -1,6 +1,6 @@
 # Life-Story Craft: Gathering and Shaping a 50+ Year Life
 
-*Track: story · Version 0.2 (draft; Fable round 1 applied) · Written 2026-10-18 · Built from `research/story.md` (researcher notes, 2026-10-18) and `CHARTER.md`.*
+*Track: story · Version 0.3 (draft; Fable rounds 1 and 2 applied) · Written 2026-10-18 · Built from `research/story.md` (researcher notes, 2026-10-18) and `CHARTER.md`.*
 
 *Reading key: [17] points to a source in the Sources list at the end. "(inference)" marks our own suggestion, not something a source says. "UNVERIFIED" means we could not confirm a fact from a source we opened. "snippet only" means we saw the source in search results but did not open it. "TODO(research)" marks a gap that still needs filling.*
 
@@ -10,7 +10,7 @@ The piece is only as true as the material under it. Your mother's real voice, re
 
 Most of what makes a life feel like a life is not on the list of big events. It is the kitchen table, a saying that got repeated, a song in the car. The research calls this *texture*. Milestones give the skeleton. Texture is where the life actually lives (charter, principle 3).
 
-Two facts from the charter shape every step here. First, this is a surprise. She does not know, so she cannot be asked directly, and most of the gathering goes through relatives, friends, documents and objects. Second, some of the story is hard, so a trusted close relative acts as her proxy for those chapters (charter, principle 5).
+Three facts from the charter shape every step here. First, this is a surprise. She does not know, so she cannot be asked directly, and most of the gathering goes through relatives, friends, documents and objects. Second, only the maker knows about the project. Relatives and friends can still be sources through low-key asks that do not reveal it, unless the maker later decides to bring someone in (charter, Known facts). Third, some of the story is hard, so the maker acts as her proxy for those chapters, with the Fable advisor flagging anything sensitive (charter, principle 5). The premiere is at a mostly public gathering, which Decision 3 sets out.
 
 This playbook covers how to gather that material and shape it into something that holds together. It does not cover animation, games or the software. Those are other tracks.
 
@@ -29,12 +29,12 @@ This playbook covers how to gather that material and shape it into something tha
 
 **The gate comes first, and it splits gathering in two.** The charter says real photos and stories are gathered only after the pipeline and process are locked, and the Learn phase runs to about mid-November (Fable round-1 review, C1). Gathering has two tracks:
 
-- **Track A, locate and protect (starts now; no recording).** Make the relative list, oldest first, with age, health, hearing, distance and language. List the documents and where they physically are. Make the found-voice list (her voicemails, tapes, home video, clips on relatives' phones), because phones get replaced and this is the only route to her own voice in surprise mode. Write the consent script. Run the practice exercises. Nothing in Track A records a real person.
+- **Track A, locate and protect (starts now; no recording).** Make the relative list, oldest first, with age, health, hearing, distance and language. List the documents and where they physically are. Make the found-voice list (her voicemails, tapes, home video, clips on relatives' phones), because phones get replaced and this is the only route to her own voice in surprise mode. Write the consent script. Run the practice exercises. Nothing in Track A records a real person, and copying an existing file (Step 4) does not touch the gate.
 - **Track B, recorded sessions (behind the gate).** No recorded session with a real person until the gate is passed. The maker sets the gate date in writing (Decision 11). Reasons to pull it earlier are named in advance: a relative in Door A (Step 6), a serious illness, or a relative who is only in town at Christmas. Pulling it early is the maker's written decision, and the Fable advisor reviews it.
 
 Practice tests with your own voice, or with a friend who agrees to practise, are fine before the gate.
 
-**Step 1. Confirm the mode and the proxy.** Write down the mode the charter sets: a surprise. Name the one close relative who will act as proxy for hard chapters. See Decisions 1 and 2.
+**Step 1. Confirm the mode and the proxy.** Write down the mode the charter sets: a surprise. The proxy for hard chapters is the maker (charter, principle 5). A relative second check is optional, and counts as bringing that person in. See Decisions 1 and 2.
 
 **Step 2. Set up the recording.** Use a quiet room with soft things in it: rugs, curtains, cushions. Turn off the fridge and any chiming clocks if you can [10][37]. Put the phone on Do Not Disturb and plug it in. Stand it on a table, a stand or a folded cloth, not in your hand. For one speaker, 5 to 6 inches from the mouth [37], or 6 to 12 inches [89]. For two speakers no source gives a distance: the layout is inference, and Exercise 2 settles it. A table keeps handling noise off the recording [37]. Use lossless recording (iPhone: Settings > Voice Memos > Audio Quality > Lossless) or at least 128 kbps on Android [37]. Run a second phone as a backup [10].
 
@@ -45,9 +45,9 @@ Practice tests with your own voice, or with a friend who agrees to practise, are
 - Every row has a source code: `S` subject, `R` relative, `D` document, `O` object, `P` photo, `V` found voice (existing audio or video of her). Name the person or item, and add a timestamp such as `@00:14:30`. No source, no row.
 - Every texture row has one concrete sensory detail: a smell, a sound, a texture, a taste or a light.
 - Every row has a confidence grade. **A**: a dated original record, and at least one person agrees. **B**: two or more independent people agree, with no record. **C**: one first-hand memory. **D**: second-hand, a family legend, or conflicting accounts. The grades follow standard genealogy practice [79] (snippet only).
-- Every row has a consent status and a drawer. Consent values: `asked-ok`, `asked-ok-with-limits`, `not-asked (surprise hold)`, `declined`, `third-party-needs-check`, `bottom-drawer (do not use)`.
+- Every row has a consent status, an `allowed_use` and a drawer. Consent values: `asked-ok`, `asked-ok-with-limits`, `not-asked (surprise hold)`, `declined`, `third-party-needs-check`, `bottom-drawer (do not use)`. `allowed_use` is the widest screening the person has agreed to: `hall`, `private-link`, `family-only` or `none` (`inventory-rules.md`).
 
-**Found voice is a source class of its own (Track A).** In surprise mode it is the only route to her own voice, and phones get replaced, so start the list now. Her voicemails, answering-machine tapes, home video and clips on relatives' phones are where her voice may be. Ask each relative: "Do you have any video or voice message of her on your phone? Please don't delete anything." Ask them not to forward it or post it: they should just tell you what exists and roughly when it was made. For each item, record who holds it, the device or format, a rough date, who speaks, the length, the quality, whether the original is in hand, and the consent status of everyone heard. Copy the originals once the file plan is written, and never edit them [38]. Found voice may be restored and used as itself. It may not be extended or imitated (Decision 10).
+**Found voice is a source class of its own (Track A).** In surprise mode it is the only route to her own voice, and phones get replaced, so start the list now. Her voicemails, answering-machine tapes, home video and clips on relatives' phones are where her voice may be. Ask each relative, as an ordinary family request (Tier 1, Step 8): "Do you have any video or voice message of her on your phone? Please don't delete anything." Ask them not to forward it or post it: they should just tell you what exists and roughly when it was made. For each item, record who holds it, the device or format, a rough date, who speaks, the length, the quality, whether the original is in hand, and the consent status of everyone heard. Copy each original as soon as the relative agrees, by cable or direct transfer, never through a chat app, and never edit it [38]. The file plan is in `skills/life-story-interviewing/surprise-runbook.md` (Found voice). Found voice may be restored and used as itself. It may not be extended or imitated (Decision 10).
 
 **Step 5. Choose the vertical-slice chapter.** Pick one chapter from one life stage that you can make in full. Every method in this playbook gets tested on it first. The charter asks for one great chapter before expansion (charter, principle 6).
 
@@ -65,7 +65,10 @@ Her middle years, roughly 35 to 55, are where the cultural life script expects t
 - **"I remember" lists.** Ten short fragments in five minutes, with no explanation [52] (snippet only).
 - **House tour.** Walking with relatives in their seventies or eighties may not be practical. Do the tour at their kitchen table instead (inference, adapted from the go-along method [44]).
 
-**Step 8. Brief each relative first.** In surprise mode, every relative must know about the secret before the session. Use the honest script in `skills/life-story-interviewing/surprise-runbook.md`: the piece is a gift; it is a secret from your mother until a set date; they can skip anything; nothing they say will be used without their OK; please do not mention it to her or to anyone who might. Then ask the found-voice question (Step 4). Do not invent a cover story. Tell them that remembering can hurt, and let them ask questions first [33]. Keep the pre-talk to logistics and consent. If the story is told before the recorder starts, there is little left to record [11].
+**Step 8. Ask each relative in one of two tiers.** Nobody is briefed about the project by default. Decide the tier for each person.
+
+- **Tier 1: low-key and unrecorded (allowed now; reveals nothing).** Ask the found-voice question (Step 4) as an ordinary family request, for example: "Do you still have that video of Mum from the wedding? Please don't delete it." Ask where the albums and papers are. Stories heard in normal conversation are written up afterwards by the maker as `R` rows with `consent_status = not-asked (surprise hold)`, and are never quoted in the film without later consent. Copying an existing file is also a Tier 1 ask.
+- **Tier 2: brought in (only by a written maker decision under Decision 2).** Use the honest script in `skills/life-story-interviewing/surprise-runbook.md`: the piece is a gift; it is a secret from your mother until a set date; it will be shown at a gathering on Feb 27 that is partly public, and may be shared with family afterwards by private link; you can restrict any part; they can skip anything; nothing they say will be used without their OK; please do not mention it to her or to anyone who might. Log a dated `told_on` line and a `scripted_line_if_asked` in the people tab. Then ask the found-voice question (Step 4). Do not invent a cover story. Tell them that remembering can hurt, and let them ask questions first [33]. Keep the pre-talk to logistics and consent. If the story is told before the recorder starts, there is little left to record [11].
 
 **Step 9. Run the session.** Keep it to 45 to 60 minutes, with a break [10][35].
 
@@ -140,30 +143,30 @@ These dates come from the researcher's plan, adjusted in round 1 (Fable review, 
 
 | Dates | Track A: locate and protect (no recording) | Track B: recorded sessions (only after the gate) |
 |---|---|---|
-| Oct 18 – Oct 24 | Decide the mode (surprise, fixed by the charter) and the proxy. Start the relative list, oldest first, with age, health, hearing, distance and language. Write the consent script. Test recording and transcription on your own voice (tests, not gathering). | Set the gate date in writing (Decision 11). |
+| Oct 18 – Oct 24 | Confirm the mode (surprise, fixed by the charter) and the proxy (the maker, per the charter). Decide whether anyone is brought in; if nobody yet, Track A is Tier 1 only. Start the relative list, oldest first, with age, health, hearing, distance and language. Write the consent script. Test recording and transcription on your own voice (tests, not gathering). | Set the gate date in writing (Decision 11). |
 | Oct 25 – Nov 7 | Finish the people tab and the Door A and Door B sort. Start the found-voice list, asking each relative the found-voice question. Do the practice exercises (2, 3, 5, 7). Ask the closest insider the suitability question. | Door A only, and only if the maker has pulled the gate for that relative in writing: one short, audio-only session each, with the consent script. Log and transcribe it. |
-| Nov 1 – Dec 12 | Document inventory: where the photos, letters and records physically are. Complete the found-voice list. Copy originals once the file plan is written. | Recorded relative interviews after the gate: six to ten at about 45 minutes, some together and some alone. One object, photo or map session. Place visits. |
+| Nov 1 – Dec 12 | Document inventory: where the photos, letters and records physically are. Complete the found-voice list. Copy each original as soon as the relative agrees (Step 4). | Recorded relative interviews after the gate: six to ten at about 45 minutes, some together and some alone. One object, photo or map session. Place visits. |
 | Nov 15 – Dec 12 | Draft inventory v1 from documents and found voice. | Inventory v1 from the recorded sessions. Through-line workshop. Pick the vertical-slice chapter. |
 | Dec 20 – Jan 2 | Visits to the oldest relatives, one at a time (inference): documents, found-voice copies, the consent script. | Recorded sessions with the oldest relatives in the holiday window, only where the gate has passed for them. Freeze inventory v1. |
 | Jan 3 – Feb 6 | Check facts against documents. Corrections and gaps. | Hard-chapter conversations with relatives, under the proxy rule. Second interviews. Consent check at the rough cut. |
 | Feb 7 – Feb 20 | Review with the proxy. Veto window. | Lock. |
 | Feb 21 – Feb 27 | Final consent confirmations. | Premiere preparation. |
 
-The minimum for full surprise (the operating mode) is 8 to 12 relatives, 2 insiders, document work and a found-voice inventory. Documents to look for in the middle years include wall calendars, diaries, address books, school reports, phone camera rolls, receipts, car papers, holiday brochures and work ID photos (the notes' list, marked as inference).
+The minimum for full surprise (the operating mode) is 8 to 12 sources, of whom N are brought in, with N starting at the Door A count (Decision 2), plus document work and a found-voice inventory. Documents to look for in the middle years include wall calendars, diaries, address books, school reports, phone camera rolls, receipts, car papers, holiday brochures and work ID photos (the notes' list, marked as inference).
 
 ## Learn-by-doing exercises
 
 ### Exercise 1: Time a montage (*Up*, "Married Life")
 
 - **Goal.** See how a wordless montage paces joy, routine, loss and recovery.
-- **Steps.** Watch the opening on a copy you have legal access to, with a stopwatch. Log time, description, emotion, recurring image and what is withheld, as in Step 16. Compare your times with the student's table [17]. Draw the mood graph.
-- **Time.** About 2 hours.
-- **What good looks like.** Your times match the big moves to within a few seconds. Check these against [17]: the wedding flash at about 7:03; the first blow, from nursery to clinic, at about 8:20 to 8:30; the window turn at about 9:45 to 10:09; the hospital goodbye at about 10:23 to 10:50; the fade at about 11:08. The montage runs about 4 minutes 5 seconds, and about 77 seconds pass before the first blow [17]. The Ringer says "about four and a half minutes" [14]. You can name the withheld beat (the death is never shown; the cut goes from the hospital to the church steps) and at least three motifs that come back. Treat the timings as approximate. The essay is a student's work (TODO(research): re-time on your own copy).
+- **Steps.** (a) Watch the opening on a copy you have legal access to, with a stopwatch. Log time, description, emotion, recurring image and what is withheld, as in Step 16. Compare your times with the student's table [17]. Draw the mood graph. (b) *Danny & Annie*, combined cut, 5:52 (352 s), from the embed `WNfvuJr9164` that StoryCorps' page carries [92]. Fill the 13-row table in `research/story.md`, follow-up round 2, Q6: 10 beats and 3 cards, each cued by its opening words. Watch once with a stopwatch for the time column. Watch again with the table in hand for the on-screen, emotion, recurring-image and withheld columns. That is about 27 seconds a row.
+- **Time.** About 2 hours for part (a); about 15 minutes for part (b).
+- **What good looks like.** Your times match the big moves to within a few seconds. Check these against [17]: the wedding flash at about 7:03; the first blow, from nursery to clinic, at about 8:20 to 8:30; the window turn at about 9:45 to 10:09; the hospital goodbye at about 10:23 to 10:50; the fade at about 11:08. The montage runs about 4 minutes 5 seconds, and about 77 seconds pass before the first blow [17]. The Ringer says "about four and a half minutes" [14]. You can name the withheld beat (the death is never shown; the cut goes from the hospital to the church steps) and at least three motifs that come back. Treat the timings as approximate. The essay is a student's work (TODO(research): re-time on your own copy). For part (b), your 13 time-in values should rise down the table, and the last card should fall near the end of the 5:52 run.
 
 ### Exercise 2: Record a practice conversation
 
 - **Goal.** Find a setup where every word, from the furthest speaker, is clear.
-- **Steps.** Pair up with a friend who agrees to practise. Both of you read the same 60-second passage, alternating sentences, with the phone on a folded towel between you, centred, at about 6, 12 and 24 inches from the nearer mouth. Then try one phone each, about 6 inches from each mouth, which is the one-phone-per-person ideal [90]. Say a slate before each take ("test A, 6 inches"). Listen on headphones. Note hiss, echo and any speaker who fades. Write your placement rule. This exercise settles the two-speaker distance, which is inference until then (Step 2).
+- **Steps.** Pair up with a friend who agrees to practise. Both of you read the same 60-second passage, alternating sentences, with the phone on a folded towel between you, centred, at about 6, 12 and 24 inches from the nearer mouth. Then try one phone each, a few inches from each mouth per [90]; we test at about 6 inches (inference). Say a slate before each take ("test A, 6 inches"). Listen on headphones. Note hiss, echo and any speaker who fades. Write your placement rule. This exercise settles the two-speaker distance, which is inference until then (Step 2).
 - **Time.** About 90 minutes.
 - **What good looks like.** You can state the placement rule in one sentence, and the backup file plays back as cleanly as the main one.
 
@@ -207,7 +210,7 @@ The minimum for full surprise (the operating mode) is 8 to 12 relatives, 2 insid
 ### Exercise 7: Dry-run the consent paragraph and the relative script
 
 - **Goal.** Write the consent paragraph and the relative script, then check them for honesty.
-- **Steps.** Write a one-paragraph release. It should say what the piece is for, who will see it, that AI tools will transcribe and may help tidy or restyle real photos but will not invent events or voices, that the relative can skip, stop, restrict or withdraw, and until when they can withdraw (`skills/life-story-interviewing/session-protocol.md`, steps 2 and 3, and [8]). Then write the relative script from `skills/life-story-interviewing/surprise-runbook.md`. Give both to a friend who has not read this playbook, and ask them, in their own words, what they would do after reading.
+- **Steps.** Write a one-paragraph release. It should say what the piece is for, who will see it, and the use in one sentence: "It will be shown at a gathering on Feb 27 that is partly public, and may be shared with family afterwards by private link; you can restrict any part." It should also say that AI tools will transcribe and may help tidy or restyle real photos but will not invent events or voices, that the relative can skip, stop, restrict or withdraw, and until when they can withdraw (`skills/life-story-interviewing/session-protocol.md`, steps 2 and 3, and [8]). Then write the relative script from `skills/life-story-interviewing/surprise-runbook.md`. Give both to a friend who has not read this playbook, and ask them, in their own words, what they would do after reading.
 - **Time.** About 60 minutes.
 - **What good looks like.** The script contains no cover story that needs your mother to act on camera. It says the relative can skip anything. Your friend can say, in their own words, what happens to the recording and what they can stop.
 
@@ -225,15 +228,23 @@ Each decision lists the options, then our current lean. A lean is a suggestion f
 - **The cost of full surprise.** It needs more relatives and more checking. It also carries the highest risk that she will dislike being the centre of attention. The notes cite a live programme where the subject walked away [30].
 - Resolved in round 1: the notes now carry a dated addendum, and their mode table puts full surprise first. Re-check the hybrid only if the maker reopens the decision.
 
-### 2. Who is in on it, and who is the proxy for hard chapters
+### 2. Whom to bring in, if anyone, and when
 
-- **Options.** One proxy for every hard chapter. A different proxy for each chapter. A proxy plus a second check. The notes also suggest two insiders in surprise mode.
-- **Our current lean: not chosen.** The charter leaves this open. A suggested test is to pick the person who knows her best and whom she would trust with a hard story. Ask them early: "Would she love this or hate this? Has she ever said?" [30] Keep the circle as small as the work allows. Use a neutral project name, one shared folder and no group chats [28][29].
+- **The proxy.** The maker, per the charter (principle 5). The Fable advisor flags anything sensitive. A relative second check is optional, and counts as bringing that person in.
+- **Options** (research Q1, options A to D).
+  - *A. Nobody yet:* Tier 1 asks only. No recorded relative voice in the film, and no relative second check.
+  - *B. One person, a Door A relative:* told the purpose, and recorded once, before the gate.
+  - *C. Door A relatives only,* each told and logged; Door B waits for the gate.
+  - *D. A helper who is not a narrator,* to find albums and tapes only. A leak path with no recording benefit.
+- **The trade-off.** Zero brought in means no recorded relative voice in the film, and no relative second check. Each person brought in adds a recorded voice and a second check, and a leak path for the whole 19 weeks (research Q1, rule 5). Door A relatives are the natural first candidates; the order is in research Q1.
+- **Our current lean: not chosen (charter open decision: "whether to bring anyone else in later").** Until the maker decides, Track A runs as Tier 1 only, and nobody is recorded (Step 8). Any first person brought in gets a written maker decision, reviewed by the Fable advisor like a gate pull, with the Door A reason, what they were told, the scripted line and who must not be told. A suggested test for that person is to pick the one who knows her best and whom she would trust with a hard story. Ask them early: "Would she love this or hate this? Has she ever said?" [30] Keep the circle as small as the work allows. Use a neutral project name, one shared folder and no group chats [28][29].
+- **Note.** Wherever the playbook, the skill or the runbook says "the closest insider" (playbook Steps 15 and 17 and the Oct 25 timeline row; SKILL steps 19 and 21; runbook Gates 0 and 5; `beat-sheet.md`), it means a person brought in under this decision. TODO(advisor): round 3 to decide whether those lines are rephrased while nobody is brought in.
 
 ### 3. Occasion, venue, and whether it is public
 
-- **Options.** Is February 27 her birthday? A gathering, a private moment, or both? A private screening, or a public one?
-- **Our current lean: not chosen (charter open).** A public screening needs music rights. Private screening is the safe default unless the music is licensed [70]. TODO(research): the music rights for private versus public screening are not resolved.
+- **Known fact (charter, Known facts, updated Oct 18, 2026).** A premiere at a mostly public gathering on Saturday, Feb 27, 2027. Treat it as a film with a public audience, not a family slideshow. Every cue is cleared for public screening or cut (charter, principle 7). A cue that cannot be cleared is cut, not quietly kept.
+- **Open for the maker.** (a) The country or jurisdiction of the premiere, which sets the music and image rights (charter open decision; research Q4 and Q7). (b) The venue type: a licensed hall or a private room (research Q4). (c) Whether a private link follows the gathering. The relative script already says the piece may be shared with family by private link, so any consent given must cover it. (d) Whether Feb 27 is her birthday.
+- **Our current lean.** None is needed on whether it is public: it is. A public screening needs music rights [70]. TODO(research): the music rights for a public premiere depend on the jurisdiction and are not resolved (research Q7).
 
 ### 4. Format
 
@@ -294,7 +305,7 @@ Each decision lists the options, then our current lean. A lean is a suggestion f
 10. **Photo bias.** Family snapshots favour celebration and under-represent sorrow and routine [58]. Ask relatives for ordinary photos: a car, a kitchen, a corner shop.
 11. **Long, tired sessions.** Keep to 45 to 60 minutes, with a break. For narrators with memory difficulties, the notes suggest 30 to 45 minutes [35]. Some people find emotional memories exhausting, and may need to end a session early (snippet only) [76].
 12. **Over-fitting to Pixar.** *Up* was made by a large team over years, with test screenings [14]. Borrow its rules, not its scale.
-13. **Music rights.** Unresolved for public screening. Private viewing is the default unless the music is licensed. Platform takedown behaviour is UNVERIFIED [70].
+13. **Music rights.** Unresolved for the public premiere; the answer depends on the jurisdiction (Decision 3). Every cue is cleared for public screening or cut (charter, principle 7). Platform takedown behaviour is UNVERIFIED [70].
 14. **AI on real memories.** No invented events, faces or voices. Mark every reconstruction.
 
 ### Things we have not checked yet
@@ -307,7 +318,7 @@ Each decision lists the options, then our current lean. A lean is a suggestion f
 - **Legal.** Reuse terms for the StoryCorps question lists, the Dignity Therapy and McAdams wording, music rights, and consent for AI processing are unresolved (TODO(research)). This is not legal advice.
 - **Sources not opened.** Several primary sources were not opened. The McAdams interview page returned a 404, and the Library of Congress field kit returned a 403. Where a source is marked "snippet only", treat its claim as unconfirmed.
 - **Craft texts.** We did not retrieve craft texts by biographers (Lee, Holmes, Hamilton, Caro). We have only Strachey and Woolf commentary (TODO(research)).
-- **Danny & Annie.** The short's running time and visual choices are UNVERIFIED. We did not watch the animation.
+- **Danny & Annie.** Combined cut 5:52 (352 s), from the YouTube page metadata of the embed `WNfvuJr9164` carried by [92], seen 2026-10-18 by the Fable advisor; visual beats still UNVERIFIED. We did not watch the animation. The maker's table is Exercise 1, part (b). Swap date: Saturday 2026-11-14 (the gate). If the table is still empty that day, replace Exemplar 2 in the research notes with one of the other StoryCorps animated shorts whose durations are listed on [92] (3:21, 1:47, 3:23), and record the swap in a dated line here.
 
 ## Best references
 
@@ -390,3 +401,4 @@ Tool READMEs are linked from Step 3: Whisper [39] and whisper.cpp [40].
 
 - 2026-10-18, v0.1: First draft, written by the Haiku scribe from `research/story.md` (researcher notes, 2026-10-18) and the charter. The charter's surprise fact is used. The notes' hybrid recommendation is flagged as a conflict, not adopted. The gate on real gathering is kept. Not yet tested on the vertical-slice chapter.
 - 2026-10-18, v0.2: Fable round-1 review applied. Gathering split into Track A (locate and protect, now) and Track B (recorded sessions behind a gate the maker sets, Decision 11), with a two-track timeline; Janssen and Rubin [47] restated and the middle years framed as grey, not empty; song ages 15 to 30 per [46]; placement distances sourced for one speaker, two-speaker layout left to Exercise 2; the record-to-close rule changed; found voice made a source class; voice line stricter (Decision 10); Recipes 1 to 6 moved to `skills/life-story-interviewing/`.
+- 2026-10-18, v0.3: Fable round-2 review applied (C1, C2, nudges 1 to 6). The premiere is public and is a known fact (Decision 3; every cue cleared or cut; the relative script, the Tier 2 script and the release name the use). The proxy is the maker. Relative asks are Tier 1 (unrecorded, nobody briefed) or Tier 2 (brought in, by written maker decision; Step 8; Decision 2 retitled). Counts restated as sources, of whom N are brought in. `allowed_use` added to the inventory. The file plan is written and the copy instruction changed (Step 4). Exercise 1 part (b) is the Danny & Annie viewing (5:52 from page metadata; visual beats UNVERIFIED). Exercise 2 distance is sourced, with the 6-inch test value marked as inference. "The closest insider" wording in the playbook, skill and runbook is flagged for round 3.

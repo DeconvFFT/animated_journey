@@ -453,7 +453,7 @@ Date checked for every resource: **2026-10-18**. "Exact date" only where I could
 | 6 | **Line-draw SVG animation** | R3 (Python + librsvg + ffmpeg), R3b (Blender curve bevel / Grease Pencil Build), Trim Curve node | CSS-Tricks "How SVG Line Animation Works" · Chris Coyier · CSS/SVG · text · **2014-02-18** (technique still valid) [65] · MDN `stroke-dashoffset` (`pathLength` normalisation) [66] · Blender 5.2 manual: Grease Pencil Build modifier [28], Trim Curve node [29] · GSAP DrawSVG (free since 3.13) [67] · Logos By Nick "Trace A Pencil Sketch Into Vectors with Inkscape" · Inkscape (version unverified) · 31:00 · ≈Sep 2026 · `https://www.youtube.com/watch?v=72Tb0IMuVps` | Ex 6 |
 | 7 | **Voxelising a photo or scene** | Hand-model hero objects (MagicaVoxel/Goxel/Blockbench) from a reference photo; optional auto-relief script R4; assemble and light in Blender | MagicaVoxel page (feature demos linked there; not opened) [56] · Goxel README [58] · Blockbench [59] · `.vox` spec [57] · **No verified tutorial** (gap) | Ex 8 |
 | 8 | **Photo cut-outs for 2.5D** | Manual (GIMP/Krita), assisted (rembg, SAM 2), depth (Depth Anything V2) — all local | Davies Media Design "Learn GIMP 3.0 Photo Editing for Beginners in 25 Minutes" · GIMP 3.0 · 25:37 · ≈2025 ("1 year ago") · `https://www.youtube.com/watch?v=pXsP6vNtjck` · GIMP "Layer Masks" community tutorial [50] · rembg, SAM 2, Depth Anything V2 READMEs [72][73][74] | Ex 4 |
-| 9 | **Colour grading by era** | Editor colour tools (Resolve Color page is the strongest free option); ffmpeg chains R7; one saved recipe per decade | Resolve official "Introduction to Color" · Resolve (21-era page) · 1h33m · date n/a [5] · Casey Faris "What is a Color Grading LOOK?" · Resolve (version unverified) · 4:19 · ≈Apr 2026 · `https://www.youtube.com/watch?v=xGoBcesIHqk` · GIMP "Basic Color Curves" [50] · R7 | Ex 7 |
+| 9 | **Colour grading by era** | Editor colour tools (Resolve Color page is the strongest free option); ffmpeg chains R7; one saved look per album, sampled from three of her prints (R7); the era chains are stock practice | Resolve official "Introduction to Color" · Resolve (21-era page) · 1h33m · date n/a [5] · Casey Faris "What is a Color Grading LOOK?" · Resolve (version unverified) · 4:19 · ≈Apr 2026 · `https://www.youtube.com/watch?v=xGoBcesIHqk` · GIMP "Basic Color Curves" [50] · R7 | Ex 7 |
 | 10 | **Sound design and music pacing** | Voice first, then music bed ducked under it, then room tone/SFX; cut or move title cards on music phrases; markers/guides for chapter beats; loudness at the end (`loudnorm`) | Resolve official "Introduction to Sound Design" 58 min and "Introduction to Mixing" 1h16m [5] · Shotcut 26.9 "Auto Duck" release (2026-09-27) [21] · Audacity "Introducing Audacity 4" · Audacity 4.0 · 5:02 · ≈Sep 2026 · `https://www.youtube.com/watch?v=BTQymidLYIM` · EBU R 128 background [97] · licences in Q7 | Ex 9 |
 | 11 | **Captions** | Whisper or Kdenlive speech-to-text for the draft, human proofread, burn-in + sidecar SRT | Kdenlive 26.08 manual "Speech to Text" (VOSK/Whisper) [13] · Whisper README [75] · R9 | Ex 9 |
 | 12 | **Export settings (big screen, private link, archive)** | R9 trio; rehearse on the real display | Resolve official "Delivering Content" · Resolve 21-era · 19 min [5] · YouTube recommended upload encoding settings [91] · current Library of Congress Recommended Formats Statement (undated on the page; read 2026-10-18) [92] · RFC 9043, RFC 9559 [93][94] · Kdenlive render presets [11] | Ex 10 |
@@ -472,7 +472,7 @@ Practice on **synthetic or stock images and a few non-sensitive family photos**;
 | 4 | **Cut-outs and fake parallax.** One photo → foreground/midground/background PNGs with alpha (GIMP/Krita, or rembg then hand-fix); animate in the editor with larger move on nearer layers; add one hard match cut to a second photo. | `layers/*.png`, `ex04_parallax_editor.mp4` | Foreground moves ≥ 2× the background; no light halo on cut edges at 100 % zoom; edge feather 1–2 px. |
 | 5 | **Parallax in Blender by script.** Run R2 on the ex-4 layers: 480p draft, then 1080p final; `Standard` view transform; PNG sequence → ffmpeg. | `parallax.py`, `ex05_parallax_blender.mp4`, render-time note | A colour swatch in the render matches the source photo (not desaturated); the command runs from a terminal with no GUI; time per frame is written in the note. |
 | 6 | **Line-draw route and title.** In Inkscape draw a route or a signature/title as **one stroked centre-line path**; run R3 (or R3b in Blender); add easing. | `route.svg`, `ex06_linedraw.mp4` (and `frames/` PNGs) | The line starts, finishes and eases as designed; the last frame equals the static SVG exported by `inkscape --export-type=png`; the script reads the path length from the file, not a typed number. |
-| 7 | **Era looks.** Take 3 photos from three decades (or stock) plus one modern clip; build a look for each decade with R7 or the editor's colour page; save each as a text recipe/LUT. | `looks/70s.txt`, `looks/50s_bw.txt`, `ex07_eras.mp4` | Blacks are lifted and saturation reduced in the older looks (check waveform/scopes or compare histograms); the same recipe applied twice gives identical results (it is a saved string). |
+| 7 | **Album look.** Take 3 prints from one album (or 3 stock stand-ins); sample a known-white object and a skin midtone in each; derive the lift, cast and grain and fill `recipes/r7_era_looks.txt` (R7; method in Follow-up F14); apply the look to one modern clip as a control. | `looks/<chapter>.txt`, `ex07_album.mp4` | The look file records the sampled values and the three prints they came from; the same look string applied twice gives identical output (it is a saved string). |
 | 8 | **One voxel hero object.** Model one household object from a reference photo in MagicaVoxel (Win/Mac) or Goxel/Blockbench; export OBJ/PLY; import into Blender; warm light (R4 settings); 5 s turntable. | `object.vox` (or `.gox`), `object.obj`, `ex08_turntable.mp4` | A friend who never saw the photo names the object; colours ≤ 32 palette entries; correct way up; renders under 30 s/frame at 960×540 on your machine. |
 | 9 | **Sound and captions.** Record 40 s of narration (phone memo is fine), add a CC BY or CC0 music bed (credit text prepared from the licence page), duck the music under the voice, `loudnorm` to −16 LUFS, draft captions with Whisper/Kdenlive and proofread. | `ex09_sound.mp4`, `ex09.srt`, `credits.txt` | `loudnorm` report integrated within ±1 LU of target; captions in sync within ~0.2 s at three spot checks; every name spelled right; the credit block matches the licence's required wording. |
 | 10 | **Mini-chapter and delivery rehearsal.** Cut ex 2–9 into a 60–90 s chapter; export the **USB**, **web** and **archive** versions from Q6; play the USB file on the actual TV/projector; write the archive README and SHA-256 checksums. | `chapter_usb.mp4`, `chapter_web_1080.mp4`, `chapter_archive.mov` (or `.mkv`), `README.txt`, `SHA256SUMS` | Plays from the stick with sound and captions; `ffprobe` table matches the profile; `sha256sum -c SHA256SUMS` passes; archive file opens in a second player (VLC/ffplay). |
@@ -924,3 +924,293 @@ Read on 2026-10-18 unless another date is given.
 [122] YouTube, read 2026-10-18 — channel listings https://www.youtube.com/@nuxttux/videos, `@BlenderGuru`, `@DefaultCube`, `@BlenderStudio`, `@grabbitt`, `@PolyFjord`, `@Ducky3d`, `@CGMatter`, `@BlenderOfficial`, `@JoshGambrell`, `@GlebAlexandrov`, `@Imphenzia`, `@SouthernShotty`, `@BlenderDaily` (all `/videos`); oEmbed for https://www.youtube.com/watch?v=B8ZPoWaxQrA ; watch page https://www.youtube.com/watch?v=vNzt3fYTnDk (title, "Apr 17, 2025", views, description).
 [123] Sandbox runs for this round, 2026-10-18 (local, not a URL): Ubuntu 24.04, 4 vCPU, 16 GB, no GPU; Wine 9.0; 7-Zip 23.01; `bpy` 5.2.2; Blender 5.2.2 Linux and Windows builds; Kdenlive `melt.exe` 7.43.0 and Shotcut `melt.exe` 7.41.0; `filmcraft-cli.exe` 0.9.0; `photocraft-cli` 0.9.0 (Linux); `torch` 2.14.1+cpu with `openai-whisper` 20250625. Outputs inspected with `ffprobe`, Pillow and by eye.
 [124] `/home/user/animated_journey/CLAUDE.md` (local project file, added to the session on 2026-10-18; undated): "premiering Saturday, Feb 27, 2027 at a mostly public gathering", "theatrical bar", "everything shown in public must be cleared".
+
+
+---
+
+## Follow-up research (round 2)
+
+Track `toolchain` · Researcher: Sonnet · Date checked: **2026-10-18** (Sunday) · Answers the eight follow-ups in `reviews/toolchain-round2.md` section 6. New sources are numbered [125] onward and listed at the end of this section. New fixtures are in `research/toolchain-fixtures/` (listed in F9).
+
+**Evidence flags used here (extends the legends above).**
+- **[RUN]**: ran in the Linux cloud sandbox (4 vCPU, 16 GB, no GPU), output read.
+- **[RUN-WINE]**: the real Windows `.exe` from the vendor's own download, run under Wine 9.0 on that sandbox. Proves the files are in the package and the program runs its command line; does **not** prove PowerShell or Git Bash behaviour on Windows, Windows memory or GPU behaviour.
+- **[RUN-PS7]**: run by PowerShell **7.5.4 on Linux** (official Linux build) calling the Linux `ffmpeg`. Proves the PowerShell syntax and logic of a command; does **not** prove Windows path or argument handling. (Windows `pwsh.exe` 7.5.4 [144] started under Wine but printed nothing and wrote no files, so it could not be used.)
+- **[DOC]** / **UNVERIFIED**: as before. Tools and versions used this round: source [145].
+
+**Limits of this round, stated first.**
+1. **Step 0 on the maker's PC was not done, and could not be.** The relayed request says the local system is now connected. In this researcher session I looked for it: `ToolSearch` finds no remote-device, computer-use, or PowerShell-on-the-PC tool; `ListAgents` lists **no** reachable peer session. So every "run it on the maker's PC" item below is **pending**. What I did instead: ran the same commands on Windows binaries under Wine and in PowerShell 7 on Linux, and wrote **one script that does every PC check and writes one report** (F9). If the orchestrator's session has the connection, run that script; if not, the maker runs it.
+2. **The shared web-search budget was spent again** (`WebSearch` refused every call, as in round 1). Everything came from fetching known official URLs, vendor JSON endpoints and vendor downloads. Nothing was found by searching, which is why F16 (tutorials) is mostly empty.
+3. **Sites that refused us**: Zapsplat and Musopen (HTTP 403, again), Adobe Help (403 on the Levels and Curves pages), Wikimedia Commons API (HTTP 429 after a handful of calls; the shared sandbox address is rate limited), `github.com/.../releases/latest` (403; named release files download fine).
+4. **Disk filled up mid-session** (the sandbox's scratch disk, shared with other tracks). I freed space by deleting regenerable files only: the pip and uv caches and the Whisper model weights from round 1's F6 test (`scratchpad/wh/cache`). Round 1's F6 numbers stand; the models would have to be downloaded again to repeat that test.
+5. **Wine only runs 64-bit programs unless `wine32` is installed.** I installed `wine32:i386` this round so that GIMP's 32-bit installer would run. Nothing else changed.
+
+### Answers at a glance
+
+| # | Question | Answer (2026-10-18) |
+|---|---|---|
+| F9 | Step 0 and the two `r2_param.py` timings on the maker's PC | **Not done: no connection reachable from this session.** One script, `step0_pc_tests.ps1`, runs the whole F3 block, every section below, and both Blender timings with peak working set, and writes one report. Parse-checked and dry-run on PowerShell 7.5.4 (Linux); not run on Windows. |
+| F10 | Real runs of the `melt.exe` command, the four R9 commands, the four self-checks; which `TODO(verify on the maker's PC)` marks can go | All four R9 commands, the R1 Ken Burns chain, and the `melt.exe story.mlt` command **ran on the real Windows binaries** (ffmpeg.exe 8.1.1, melt.exe 7.43.0) [RUN-WINE]; the four PowerShell self-checks, the R9 and R1 command lines and the R7 chains **ran in PowerShell 7.5.4** [RUN-PS7]. **No mark can be removed** (PowerShell on Windows is still unrun); every mark can be **narrowed** to that one gap (table in F10). |
+| F11 | Windows-native ImageMagick 7, Inkscape 1.4.x, GIMP 3.2; `rsvg-convert` | **ImageMagick 7.1.2-34 portable**: `magick mogrify` (with its own wildcard expansion), `identify`, and a built-in SVG renderer all ran [RUN-WINE]. **Inkscape 1.4.4**: `inkscape --export-type=png` ran, one process for many files [RUN-WINE]; **trap: the Inkscape download named `...-x64.7z` can be the ARM64 build.** **GIMP 3.2.6**: Script-Fu batch ran [RUN-WINE]; Python-fu batch failed under Wine (cause unknown). **`rsvg-convert` is not shipped by Inkscape or ImageMagick**; only MSYS2 packages it (and an old Chocolatey package). Replace it with the Inkscape CLI or `magick mogrify`. None run from PowerShell on Windows. |
+| F12 | Resolve 21 Free install | **No install possible from here** (download needs a personal registration form). Re-read Blackmagic's listings: **no Read Me and no configuration guide for 21**; floor stays **UNVERIFIED**. Dropdown and subtitle behaviour stay **[DOC] only**. A by-hand checklist is in the Step 0 report. |
+| F13 | Zapsplat, Musopen, Suno allowance | Zapsplat and Musopen **still HTTP 403: UNVERIFIED**; questions for the maker are listed. **Suno pricing page** (undated, read today): Free "No monthly song downloads" and "No commercial rights"; **Pro 20 song downloads per month; Premier 60**; extra downloads can be bought. The live allowance is in the maker's account. |
+| F14 | Album-look derivation method (Step 9) | **A method now exists and is tested**: `derive_album_look.py` turns three sampled prints into black, white, cast and grain values and an ffmpeg string; exact on black and white, grain within 0.1 level of target, **identical pixels on ffmpeg 6.1.1 (Linux) and 8.1.1 (Windows build)**. Tested on three real scanned stock prints plus a synthetic ground-truth set. Two findings change the plan: **`colorbalance` cannot be driven from sampled values** (use `colorlevels` and `curves`), and **grain must be measured at the film's working resolution** (measured: sigma 8.6 at 7544 px falls to 6.2 at 1920 px). |
+| F15 | Premiere country and venue facts | **Cannot be researched; they are the maker's facts.** What can be done now: a 1.8 MB, six-file **venue test kit** (`make_venue_test_kit.py`) that turns "does this screen take exFAT, MKV, soft subtitles, HEVC, 4K, 50 fps" into a ten-minute test with a written checklist. Generated and checked here. |
+| F16 | Verified 2025+ tutorials | **Still not met.** One new page read: Gleb Alexandrov, *True Depth 3.0 for Blender*, **Aug 13, 2026**, read from the video page; **Blender version not stated** on the video page or the companion guide. Not a layer-cut-out parallax tutorial. Nothing for Ken Burns in Kdenlive or SVG line-draw in Blender. |
+
+---
+
+### F9. Step 0 on the maker's PC, and the script that does all of it
+
+**What I found.** No remote-device or computer-use tool, no PowerShell-on-the-PC tool, no peer session (`ListAgents`: none; `ToolSearch` for remote-devices, computer, PowerShell: no match). Reported, not worked around.
+
+**What I wrote so it costs the maker about ten minutes.** `research/toolchain-fixtures/step0_pc_tests.ps1` (written to run in Windows PowerShell 5.1 or PowerShell 7; only 7.5.4 was used). It makes its own synthetic test files (no personal files), runs each check inside `try/catch`, and writes `step0_report.txt` to paste back. Sections: (1) the F3 inventory block, plus free disk, free RAM, **a warning if any Claude process is still running** (the app should be closed first); (2) ImageMagick `magick mogrify` with a wildcard, and the Exercise 1 loop; (3) the four R9 commands with an `ffprobe` check, the R1 Ken Burns chain, the Exercise 2 and Exercise 10 self-checks, and `sha256sum -c` on the PowerShell-written file; (4) Inkscape export, `rsvg-convert` present or not, and the two replacements timed on 12 frames; (5) GIMP Script-Fu and Python-fu batch; (6) the F1 `melt.exe` command; (7) **both `r2_param.py` timings, 640×360 and 1920×1080, 10 frames at 4 samples, with peak working set polled while Blender runs** (not read after exit, which can fail); (8) Git Bash, only if installed, including `MSYS2_ARG_CONV_EXCL`; (9) the by-hand items (Resolve dropdown, Read Me, subtitles, Suno account, licences, venue kit).
+- **Run on PowerShell 7.5.4 (Linux)** with stand-ins for the Windows-only tools and a Linux Blender: every section reported PASS (Exercise 1, 2, 10 self-checks, four R9 files, `mogrify` with wildcard, Inkscape single and multi-file export, 12 SVG frames, `rsvg-convert` loop), the Claude warning fired (this session's own `claude` process, 848 MB), and both Blender timings returned (peak working set 692 MB and 2,259 MB; seconds per frame were 2.3 and 33, inflated because other agents were using the same four cores). One bug was found and fixed (relative input paths resolved after the script changed folder).
+- **Not run on Windows**: `TODO(verify on the maker's PC)`.
+
+**Other files added this round** (all in `research/toolchain-fixtures/`): `r2_param.py` (the round-1 parameterised R2, copied from the sandbox so it travels with the script), `derive_album_look.py` (F14), `album_look_samples_loc_stock.json` and `album_look_result_loc_stock.json` (the stock-print test), `make_venue_test_kit.py` (F15).
+
+---
+
+### F10. Real runs of the commands, and which marks can go
+
+**What ran, where, and what it proves** (Windows ffmpeg.exe 8.1.1 and melt.exe 7.43.0 are the ones inside the Kdenlive 26.08.2 package [104]; ImageMagick 7.1.2-34 [127]).
+
+| Command set | Where it ran | Result |
+|---|---|---|
+| **`melt.exe story.mlt -silent -profile atsc_1080p_25 -consumer avformat:story.mp4 vcodec=libx264 crf=20 pix_fmt=yuv420p an=1`** (F1) | `melt.exe` 7.43.0 [RUN-WINE], re-run today | 1920×1080, 25 fps, h264, **200 frames**; 9.6 s. |
+| **R9, four commands** (`deliver_usb.mp4`, `web_1080.mp4`, `archive_prores422hq.mov`, `archive_ffv1.mkv`) | `ffmpeg.exe` 8.1.1 [RUN-WINE]; and as written in PowerShell 7.5.4 with the Linux ffmpeg 6.1.1 [RUN-PS7] | All four exit 0. Screening file: `h264,High`, level 41, `yuv420p`, 1920×1080, `aac,LC,48000,2`. ProRes: `prores,HQ,yuv422p10le` + `pcm_s24le`. FFV1 + `flac`. |
+| **R1 Ken Burns** (`mogrify` crop to 3840×2160, push-in, pan, `xfade`) | `magick mogrify` with the literal wildcard `in\*.jpg` [RUN-WINE]; `ffmpeg.exe` 8.1.1 [RUN-WINE]; PowerShell 7.5.4 [RUN-PS7] | 3 files at 3840×2160; final clip 1920×1080, 25 fps, 225 frames, 9.0 s. |
+| **R7 stock chains and the derived album look** | PowerShell 7.5.4 [RUN-PS7] | All three strings pass through PowerShell unchanged and render. |
+| **Four PowerShell self-checks** (Exercises 1, 2, 6, 10) | PowerShell 7.5.4 on Linux with stand-ins [RUN-PS7]; Windows-IM and `ffprobe.exe` calls separately [RUN-WINE] | Exercise 1: three lines `3840x2160`. Exercise 2: `h264,1920,1080,25/1`. Exercise 6: four PNGs. Exercise 10: `SHA256SUMS` written, verified OK for all three files, and `sha256sum -c` agreed. |
+| **Git Bash** | **Not run** (no Git Bash; MSYS2 not available). | UNVERIFIED. |
+
+**Three corrections the runs forced.**
+1. **`ffprobe -of csv` prints fields in its own fixed order, not the order requested.** Requested `codec_name,profile,level,pix_fmt,width,height` returns `h264,High,1920,1080,yuv420p,41`. The R9 header and the playbook's "Expect: h264, High, level 41, yuv420p, 1920x1080" are not positional. Use `-of default=nw=1` (key=value lines), as `step0_pc_tests.ps1` does.
+2. **The web command has no `-level`**, and `libx264` chose **level 5.0** for it (screening file, with `-level 4.1`: 4.1). Harmless for a web link; do not play `web_1080.mp4` on a TV.
+3. **Kdenlive's bundled `ffmpeg.exe` 8.1.1 has no `drawtext` filter**, but it has `subtitles`, `ass`, `colorlevels`, `curves`, `noise` and `greyedge`. Any recipe that needs `drawtext` fails with "No such filter". Burn-in via `subtitles=` (libass) exists; font availability on Windows is untested (below).
+
+**Which `TODO(verify on the maker's PC)` marks can be removed.** Answer: **none yet**, because every mark is about *PowerShell or Git Bash on Windows* and neither was run there. Each can be **narrowed**. Suggested replacement wording: "ran on the Windows binary under Wine and in PowerShell 7.5.4 on Linux, 2026-10-18; PowerShell on Windows pending (`step0_pc_tests.ps1`)".
+
+| Mark (file, place) | Narrow to | Why it must stay for now |
+|---|---|---|
+| Playbook Ex1 `magick identify` loop; Ex2 `ffprobe`; Ex10 checksum lines; SKILL step 4 | the loop logic and output are verified; Windows paths pending | `\` path forms (`photos_16x9\*.jpg`) were not run in PowerShell on Windows. |
+| Playbook Ex6 `rsvg-convert` loop | **the loop is correct, but `rsvg-convert` is not on a normal Windows PC**: replace the line (F11) | Unavailable tool, not a logic problem. |
+| `r1_kenburns.sh`, `r9_deliver.sh` headers | commands verified on ffmpeg.exe 8.1.1; shell quoting verified in PowerShell 7.5.4 | Windows `CreateProcess` quoting and Windows PowerShell 5.1 untested. `r9` font line (`FontName=DejaVu Sans`) stays: **under Wine libass found no fonts at all and drew nothing** (F15), so Windows font availability is UNVERIFIED. |
+| `r5_story.mlt`, F1 PowerShell and Git Bash lines | `melt.exe` verified; shell forms pending | `& $melt` call operator and `MSYS2_ARG_CONV_EXCL` untested. |
+| `r2_*` Blender headers | verified under Wine (round 1) | Needs the two timings on the real PC (F9, section 7). |
+| Playbook Decision 0, option B "recipe files still need a PowerShell copy" | **partly closed**: R1, R9 and R7 command lines already parse and run in PowerShell unchanged (no `$` or backtick inside them) | R2, R3 and R4 loops still need a PowerShell copy (F11 gives R3's). |
+
+---
+
+### F11. Windows-native ImageMagick 7, Inkscape 1.4.x, GIMP 3.2, and `rsvg-convert`
+
+Evidence is **[RUN-WINE]** throughout (real Windows files, Wine 9.0, an X display from `xvfb`). **Not run from PowerShell on Windows.**
+
+**ImageMagick 7.1.2-34** [127]. The download page's Windows section lists installers (`-Q16-HDRI-x64-dll.exe` recommended) and **portable 7z** files (`ImageMagick-7.1.2-34-portable-Q16-HDRI-x64.7z`, 12,019,095 bytes, SHA-256 `8dcfd364…d723e6`); Windows 10 or later. The portable archive holds **`magick.exe`, `mogrify.exe`, `identify.exe`, `compare.exe`, `composite.exe`, `conjure.exe`, `montage.exe`, `stream.exe` and no `convert.exe`** (so the old `convert` command does not exist; use `magick`).
+- `magick mogrify -path out -resize 3840x -gravity center -crop 3840x2160+0+0 +repage -quality 92 'in\*.jpg'` produced three 3840×2160 files. ImageMagick **expanded the wildcard itself**, so it works without a shell that globs. (Whether PowerShell passes `in\*.jpg` through unexpanded: not run; the documented behaviour of PowerShell for native programs is that it does not glob.)
+- `mogrify.exe` and `identify.exe` called directly also worked. `magick -version` lists delegates `rsvg`, `cairo`, `pangocairo`, `heic`, `jxl`, `lcms`, `openexr`, `raw`.
+- **SVG without any extra program:** `magick mogrify -format png -density 96 -path out 'frames\f_*.svg'` rendered all **48** R3 line-draw frames in 9.7 s (one process), pixel-identical (0 differing pixels at 8 % fuzz) to `rsvg-convert -w 1280` on three test frames. The built-in renderer reports itself as librsvg 2.40.20 (an old one); it handled `stroke-dasharray` and `stroke-dashoffset`, the only features R3 uses, but text and filters were not compared.
+
+**Inkscape 1.4.4** [125][126] (release page: "Released on May 6, 2026"; 1.4.4 adds "installation files for Windows on Arm").
+- `inkscape.exe --version` → "Inkscape 1.4.4 (dcaf3e7, 2026-05-05)". `--export-type=png --export-width=1280 --export-filename=route_ink.png route.svg` wrote a 1280×720 PNG (about 7 s per process under Wine). **One process for many files**: `inkscape.com --export-type=png --export-width=1280 f_0001.svg f_0002.svg f_0003.svg f_0004.svg` wrote four PNGs in 6.8 s, identical to `rsvg-convert` at 8 % fuzz on line-only frames. The options exist in the man page [126].
+- **Console program:** the package has both `bin\inkscape.exe` (GUI) and `bin\inkscape.com` (console wrapper). On Windows `.com` sorts before `.exe` in the default `PATHEXT`, so typing `inkscape` in PowerShell should reach the console wrapper (not run). Wine cannot start a `.com` that is really a Windows program; I copied it to a `.exe` name to read console output.
+- **ARM64 trap (verified from hashes and file headers).** On the 1.4.4 download page the **"64-bit x86_64 (Choose if unsure)"** button leads to gallery item **59503**, file name `inkscape-1.4.4_2026-05-05_dcaf3e7-x64_mHK170m.7z`, 110,359,970 bytes, SHA-256 `c4dbd64a…b54c6a`, all 154 programs x64, Python 3.12. The **ARM64** button leads to item **59500**, whose file name is `inkscape-1.4.4_2026-05-05_dcaf3e7-x64.7z` (the plain "-x64" name!), 97,063,190 bytes, SHA-256 `75caaaca…63c532` (the file `…x64.7z.sha256` beside it; the real x64 file's hash is in `…x64.7z_BKqiyKW.sha256`), **all 151 programs AArch64**, Python 3.14. Anyone who picks a file by name from the gallery can get the ARM64 one on an Intel PC. Download from the page's "64-bit" button and compare the SHA-256 listed beside the file.
+- Package size: about 660 MB unpacked, 12,152 files.
+
+**GIMP 3.2.6** [128] (dated 2026-09-10; installer `gimp-3.2.6-setup.exe`, 190,358,080 bytes, SHA-256 `9337cccb…541ebca`, **matches the page**; installer needs Windows 10 1903 or later; no portable build listed). The installer is a 32-bit Inno Setup program, so Wine needed `wine32`. Silent install (`/VERYSILENT /DIR=…`) gave 648 MB.
+- `gimp-console-3.2.exe --version` → "GNU Image Manipulation Program version 3.2.6". Files `gimp-console-3.2.exe`, `gimp-console-3.exe` and `gimp-console.exe` exist. `--help` lists `-b/--batch`, `--batch-interpreter`, `--quit`.
+- **Script-Fu batch worked**: `gimp-console-3.2.exe -i -d -f -s --batch-interpreter=plug-in-script-fu-eval -b - < batch.scm` where the script does `(gimp-file-load RUN-NONINTERACTIVE "Z:/.../p1.jpg")`, `(gimp-image-scale image 1280 853)`, `(gimp-file-save RUN-NONINTERACTIVE image "…png")` and `(gimp-quit 0)` wrote two correct 1280×853 PNGs. Strings are accepted for the file arguments. Use forward slashes in the script.
+- **Python-fu batch (`--batch-interpreter=python-fu-eval`) failed under Wine** every time with `Fatal Python error: init_sys_streams: can't initialize sys standard streams … WinError 6 Invalid handle` (bundled Python 3.14), and `Bad interpreter referenced in interpreter file …\pygimp.interp: python3`. I cannot tell whether this is a Wine limitation or a real Windows problem. **UNVERIFIED on Windows: plan on Script-Fu, or on ImageMagick and Inkscape, and treat GIMP Python as untested.**
+
+**`rsvg-convert` on Windows (R3).** Not shipped in Inkscape (it ships `librsvg-2-2.dll`, a library only) and not in ImageMagick (built-in renderer only). The packaged `rsvg-convert.exe` I found: **MSYS2** `mingw-w64-x86_64-librsvg` 2.63.2 [129] (the package holds `mingw64/bin/rsvg-convert.exe` and `librsvg-2-2.dll`, depends on cairo, gdk-pixbuf2, libxml2, pango; installing needs MSYS2 and `pacman`); and a **Chocolatey community package** at version 2.40.20, last updated 29 Sep 2018, flagged by its virus scan [130]. I did not run either. **Decision: replace it, do not install it.** Recipe line for R3 and Exercise 6:
+```powershell
+# PowerShell, frames -> PNG, no rsvg-convert. Option A, one process, wildcard expanded by ImageMagick (best for hundreds of frames):
+magick mogrify -format png -density 96 'frames\f_*.svg'          # 48 frames, 1280x720, 9.7 s under Wine
+# Option B, Inkscape, one process (an argument list; fine up to a few hundred frames because a Windows command line is limited to about 32,767 characters):
+$files = (Get-ChildItem frames\f_*.svg).FullName; inkscape --export-type=png --export-width=1280 $files
+```
+Both still need `-density 96` (ImageMagick) or `--export-width` so the output is 1280 wide; check the first PNG's size before rendering the rest.
+
+---
+
+### F12. DaVinci Resolve 21 Free
+
+**No real install was possible**: the download page for Resolve requires a personal registration form, which I did not fill in on the maker's behalf. What I could add:
+1. **Support listings re-read** (`downloads.json`, `documents.json` [143]): newest Resolve is 21.1.1 (2 Oct 2026); the only "Configuration Guide" documents are for Resolve 10, 11, 12, 14, 15; there is **no Read Me and no system-requirements document for 21 or 21.1**; the entries carry no requirement text. Searching the 21 manual text for "system requirements", "minimum", "RAM", "VRAM" and Windows versions finds only the Apple Immersive "64 GB of system memory" and a "macOS 15 or later" line. **The hardware floor is UNVERIFIED; it is in the installer's Read Me, which the maker reads at install time.**
+2. **External scripting dropdown**: [DOC] "External Scripting Using: (Resolve Studio only)" (page 109 of [110]; page 106 of [111]). **Whether it is absent or greyed out on Free: UNVERIFIED** (needs an install).
+3. **Subtitle tracks and SRT burn-in on Free**: documented without a Studio mark ([111] pp. 1227 to 1248); auto-transcription is Studio. **UNVERIFIED in practice.**
+4. **Colour tools relevant to F14** read in the same manual [110][137]: **Lift** "adjust[s] the perceived shadow density … by altering the black point" and **Gain** adjusts "the white point of the image" (PDF p. 629); **Auto Balance** "automatically adjusts the dynamic range and white balance based on machine learning" (p. 629); the vectorscope has a **Show Skin Tone Indicator** "at the traditional Inphase angle … useful as a general guidepost for average skin tone hue" (p. 3157).
+
+**Hand checklist** (is in `step0_pc_tests.ps1`, section 9): dropdown missing, greyed or present; Read Me minimum RAM, GPU and OS lines; add a subtitle track, import an SRT, render with "Burn into video", note any watermark or message.
+
+---
+
+### F13. Music licences still unread, and Suno's allowance
+
+**Zapsplat and Musopen: still HTTP 403 today** (`https://www.zapsplat.com/license-type/standard-license/`, `https://musopen.org/about/faq/`) [141]. I did not look for them through archives or readers (the search rule forbids workarounds). **UNVERIFIED.** What the maker should paste back from a browser (one sentence each):
+- Zapsplat: does the free (standard) licence allow use in a **film shown to a public audience**, is **attribution required** and in what wording, may sounds be used in a **YouTube/online link**, any limits on registering the audio with **Content ID**.
+- Musopen: for the specific recording or score you want, is it **public domain or a Creative Commons licence**, and which; does the site's terms page add any **attribution or commercial** rule; remember a public-domain composition can still have a copyrighted recording.
+
+**Suno's allowance** [140] (the pricing page, read through WebFetch today; **undated**, so figures may change; the maker's account page is the live source):
+| Plan | Price shown | Credits | Downloads | Commercial wording on the page |
+|---|---|---|---|---|
+| Free | $0 | 50 per day | **"No monthly song downloads"** | "No commercial rights" |
+| Pro | $8 per month (the page also says "Saves $24 by billing yearly!", so the shown price may be the yearly-billing rate) | 2,500 per month | **20 song downloads per month**; "Ability to purchase additional credits and downloads" | "Commercial use rights" |
+| Premier | $24 per month (same caveat) | 10,000 per month | **60 song downloads per month**; additional downloads purchasable | "Commercial use rights" |
+
+Reading this with the Terms [121]: round 1 concluded that Pro or Premier output **obtained as a counted download** may be shown at a non-commercial public premiere. The pricing page now says Free has **no** downloads, which matches "never free tier for the premiere". The help article on ownership [140] repeats that Pro or Premier subscribers own songs and should be the only ones to monetise them, and that under either plan songs may not be eligible for copyright. Download counts per month are small (20 or 60), so choose the premiere tracks first and download only those. Credits "do not carry over from day to day or month to month". **Not legal advice.** The live allowance, the plan name and whether any download remains: the maker reads `suno.com/account` (login needed).
+
+---
+
+### F14. The album-look derivation method (what turns Step 9 into a method)
+
+**What the "look" is, stated so the numbers mean something.** The look is **the album's print characteristic**: per-channel black (lift), per-channel white (the cast and the roll-off), optionally a mid-tone anchor, and the grain. The same numbers can be applied to new material to make it sit with the album, or inverted to restore a print. **Which material receives the look is a design decision, not a measurement**: the advisor's round-2 review recommends that *reconstructions get no album look at all* (clean, unfaded) so absence of grain marks a reconstruction (Principle 4). The method below only produces the numbers.
+
+#### F14.1 Measurement protocol (what to sample, and the rules that make it repeatable)
+
+Scan the prints flat, with the scanner's automatic colour and exposure switched off, **the same settings for every print of the album**, and include the print's **unprinted paper margin** if it has one. Work in the gamma-encoded RGB the scanner file holds (no linearising; this keeps every number comparable with the file). Boxes are given as **fractions of the image** so they survive a rescale. Per print:
+- **`paper`** (optional but best): a patch of the unprinted white margin. It carries no scene light, only paper base and age. If present it sets the cast.
+- **`white`**: a patch on a known-white object (shirt, wall, paper). **Only its chromaticity is used, not its brightness**: a white shirt in shade is darker than paper white. In-scene whites carry the scene's light colour as well as the print's cast; three prints under different light disagree (measured below).
+- **`skin`**: a midtone patch (cheek, forehead), not a highlight and not a shadow.
+- **`flat`**: an even area (sky, painted wall) for grain only.
+- **`print_area`**: the picture, excluding scanner black, mats and borders.
+Rules in the code: black floor and white ceiling are **percentiles (0.5th and 99.5th) per channel on a box-averaged thumbnail about 480 px wide** inside `print_area`; grain is the **standard deviation of the residual after fitting a plane** to the flat patch (so a sky gradient is not counted as grain); a flat patch whose sigma exceeds 12 levels is **rejected as structure** (the leafy sky of one stock print was).
+
+#### F14.2 Formulas
+
+For prints k = 1..N (N at least 3), per channel c, with `W_k` the cast patch median, `floor_k`, `ceil_k` the percentiles, `S_k` the skin patch:
+
+| Quantity | Definition |
+|---|---|
+| Cast (unit vector) | `u_k = W_k / |W_k|`; album cast `u` = mean of `u_k`, renormalised |
+| Black, per channel | `black_c = median_k floor_{k,c}` |
+| White, per channel | `white_c = (u_c / max u) × median_k( max_c ceil_{k,c} )` (the cast's chromaticity, set to the print's own brightest-channel ceiling) |
+| Grain | `sigma = median_k` of the plane-fit residual standard deviation of luma (Rec.709 weights) at the film's working size |
+| Coherence gate | `ONE_ALBUM_LOOK` only if every pairwise cast angle ≤ 3°, black floors ≤ 0.06 apart, white levels ≤ 0.08 apart. **These limits are my judgement, not a published standard**; tune them once, by eye, on the maker's prints. |
+| Skin check | `n = (S − black)/(white − black)`; vectorscope hue of `n` (BT.709 Cb, Cr) should be within about 10° of the 123° skin line [110] |
+| Optional mid anchor | `rel_c = (S_c − black_c)/(white_c − black_c)`; with `x_c` the same skin in the **clean art** (the style-bible swatch), per-channel gamma `g_c = ln(rel_c)/ln(x_c)`, or the 3-point curve `(0, black_c) (x_c, S_c) (1, white_c)` |
+
+#### F14.3 Mapping to ffmpeg (measured, ffmpeg 6.1.1; checked on 8.1.1)
+
+| Part | Use | Why |
+|---|---|---|
+| Lift and roll-off, and the cast | **`colorlevels=rimin=0:…:romin=black_r:gomin=black_g:bomin=black_b:romax=white_r:gomax=white_g:bomax=white_b`** (exact per channel by definition [131]) | One filter, exact at black and white. |
+| Mid-tone anchor (only if the skin check fails) | **`curves=r='0/black_r x_r/S_r 1/white_r':g=…:b=…`** | Natural cubic spline through the points [131]; tested: skin, black and white land within 1 level. |
+| **Not `colorbalance`** | **Do not drive it from samples.** | The doc defines it by shadow, midtone and highlight adjustments in [-1, 1] with no mapping to RGB values [131]. Measured on a grey ramp, `rs=0.3` raised red by **+54 at input 0, +44 at 32, and 0 from 64 up**; `rm=0.3` acted only around 32 to 64 (+9, +54); `rh=0.3` gave **0 at pure white (255)**. A measured white cannot be hit with it. |
+| `colorchannelmixer` | Possible for a pure cast (`rr`, `gg`, `bb` gains), but has no lift and clips at white. | Gain `rr=1.1` gave +13 at 128 and 0 at 255. |
+| Grain | `format=yuv444p,noise=c0s=N:c0f=t+u,format=rgb24` | `t` = temporal (new each frame), `u` = uniform; the seed defaults to 123457, so **the same string gives the same pixels** [131]. |
+
+**Grain calibration (measured, flat grey at 64, 128 and 192: identical at all three levels):** strength N → luma sigma in 8-bit levels: N=2 → 0.50, 4 → 1.11, 8 → 2.67, 12 → 4.08, 16 → 5.33, 20 → 6.70, 24 → 8.07, 32 → 10.70, 40 → 13.40 (about 0.335 × N above N=8; steps at low N come from integer rounding). The script interpolates this table. Chroma stays zero (grey grain), which matches real prints: **the R–G residual correlation of a real scan's grain was 0.96 to 0.97**.
+**Real grain is spatially correlated; ffmpeg's `noise` is not** (lag-1 autocorrelation of its output: −0.03; of the real print's flat areas: 0.40 to 0.84). The script therefore also writes a **soft-grain filter graph** that builds the grain at one half or one third size and scales it up (`color=…:s=640x360 → noise → scale=1920:1080 bicubic → blend=all_mode=grainmerge`); its sigma is 0.272 per unit strength and its lag-1 autocorrelation came out at 0.84 against a target of 0.78. This matches the cinematic-quality notes' rule (grain σ within ±30 % of the scan's, spatially correlated, temporally independent).
+
+#### F14.4 Results
+
+**(a) Three real stock prints from one set**: Library of Congress photochrom prints of North Africa, 1899, items 2001697831, 2001697847, 2001699396, "No known restrictions on reproduction" [138]. They are colour **lithographic** prints, 1024-px JPEG derivatives, not 1970s snapshots; they test the **estimators on real scans**, not the look of a family album. Boxes are saved in `album_look_samples_loc_stock.json`.
+- Known-white patches read (212,197,172), (202,162,123), (245,206,146). **Pairwise cast angles 6.5°, 6.8°, 1.5°; red floors up to 0.055 apart; white levels 0.047 apart; white-patch box-shift test 0.2°, 0.4° and 6.3° (the third patch is not uniform).** `ONE_ALBUM_LOOK = false`: **the gate correctly refuses to call these three prints one album look.** (In-scene "whites" under different light disagree by more than the gate allows; with a paper margin, the margin would have been used.)
+- Numbers it still reports: black `[0.082, 0.047, 0.008]`, white `[0.992, 0.847, 0.661]`, grain sigma 4.1 levels (print 1: 1.6, print 3: 6.6; print 2 had no flat area and was excluded), R–G residual correlation 0.79, lag-1 autocorrelation 0.78. After removing floor and white, skin hue sits 0.0°, 8.0° and 22.3° off the 123° skin line, at relative levels 0.26, 0.40 and 0.63 (hand-tinted lithography; for a family album an offset like the third is the sign that a straight black-and-white mapping is not enough and the skin anchor is needed).
+- **Do the no-patch estimators agree with the patch?** Angle between each automatic illuminant estimate and the white patch, in degrees: **grey-world 3.0 / 4.2 / 8.8 (mean 5.3); max-RGB (white-patch) 0.4 / 3.6 / 2.5 (mean 2.1); shades-of-grey p=6 0.5 / 1.5 / 2.7 (mean 1.6).** Grey-world is worst, as its own assumption predicts [132][135] ("will not work for artificial scenes"); shades-of-grey (Minkowski p = 6) is the best of the three. With only three prints and a cream-coloured "white", this is anecdotal. **Rule: use the sampled patch; use shades-of-grey only as a cross-check**; ffmpeg has the same family built in as `greyedge` (`minknorm=0` is max-RGB) [131][132].
+
+**(b) Synthetic ground truth** (the same three images aged by a known transform: black `[0.060, 0.040, 0.020]`, white `[0.950, 0.900, 0.780]`, per-channel gamma `[1.00, 1.06, 1.12]`, correlated grain sigma 5, exposure ±3 %, with a white card, a skin patch, a flat card and a black patch inserted):
+recovered black `[0.067, 0.047, 0.016]`, white `[0.953, 0.904, 0.782]`, **cast angle error 0.04° for the album cast (0.06° to 0.15° per print)**, **sigma 5.0**; skin-anchor gamma `[1.026, 1.083, 1.115]` (error ≤ 0.03); the 3-point `curves` string reproduced the skin, black and white anchors within 1 level and stayed monotonic; at 50 % input the skin-anchored curve and the levels-only version differ by 5 to 7 levels, which is what the skin anchor buys. Estimators against the white card (a card is present, so max-RGB is advantaged): max-RGB 0.1° to 0.2°, shades-of-grey 4.5° to 7.4°, grey-world 8.9° to 18.4°. One bug was found and fixed by this test: taking percentiles on the **full-size** image made the blue floor read 0.016 too low when grain sigma was 5; the thumbnail cured it.
+
+**(c) Closed loop and determinism.** The stock-set look was applied to a clean reference image and re-measured: with the soft-grain graph, black `0.082, 0.047, 0.008` and white `0.992, 0.847, 0.663` against targets `0.082, 0.047, 0.008` and `0.992, 0.847, 0.661`; **grain sigma 4.11 against 4.11**; the plain `-vf` string lands within one level (black 0.043 against 0.047, sigma 4.08). **Running it twice gave identical pixels, and Linux ffmpeg 6.1.1 against the Windows ffmpeg.exe 8.1.1 (Kdenlive's build) gave zero differing pixels for both strings.**
+
+**(d) Grain depends on the working size (real scan, native 7544×5940 px, three flat wall patches):** luma sigma 8.6 / 8.5 / 6.8 at native size, 8.0 / 7.7 / 6.6 at 3840 px, **6.3 / 5.9 / 5.8 at 1920 px**, 4.4 / 4.4 / 4.8 at 1024 px (Lanczos downscale of the whole print, then measure). **So measure after scaling the print to the film's width**, or the film's grain will come out too weak. The cinematic-quality gate FN6 (±30 %) should be read against this figure. (This file was another track's derived copy of a public LOC scan [139]; its item number was not recorded: provenance UNVERIFIED.)
+
+#### F14.5 How colourists make the same call (practitioner documentation, not a survey)
+
+- **DaVinci Resolve** [110][137]: Lift **is** the black point and Gain **is** the white point ("altering the black point", "altering the white point of the image", PDF p. 629); Auto Balance sets range and white balance automatically; the **vectorscope's skin-tone indicator** is "a general guidepost for average skin tone hue" (p. 3157). Same three decisions as above: black point, white point, then a skin-tone sanity check.
+- **GIMP 3.0 Levels** [134]: three eyedroppers (black point, gray point, white point), "Work on all channels", and **Sample average** sets the radius of the averaged area, i.e. average a patch, never click one pixel. Same rule as the box median above.
+- **darktable colour calibration** [135]: "select a neutral color from the image or, if one is unavailable, select the entire image" (the average, i.e. grey-world), and the page states the grey-world assumption "will not work for artificial scenes, for example those with painted surfaces". Same ranking as the measured estimators.
+- **The statistics-matching alternative** [133]: Reinhard et al. impose "the mean and standard deviations along each of the three axes" of one image's colour space on another. It needs a **same-content** reference and discards the separate black, white and cast numbers, so it is not adopted; it is a fair cross-check (compare Lab means and spreads of a flat area) if the maker has a modern photo of the same room.
+- **Print ageing context** [136]: "Older chromogenic papers undergo more rapid fading"; Kodak's stability changed in 1954, 1958 and the early 1980s; more than 90 % of consumer prints are kept in the dark, where heat, humidity and pollutants dominate. **Which dye fades first and the resulting cast: not found in a source I could read: UNVERIFIED**; the method does not assume it (it measures the cast).
+- **Adobe's Levels and Curves pages (the standard colourist reference) returned HTTP 403: UNVERIFIED.** Everything above says what correction tools do (move toward neutral). **The inference that the same samples can be used in the opposite direction, to reproduce a non-neutral album, is mine.**
+
+#### F14.6 Limits and what is still UNVERIFIED
+- **Not run on the maker's prints or on a real 1970s colour-print scan.** Wikimedia Commons refused (HTTP 429); Library of Congress snapshot collections I found were personal papers marked "Publication may be restricted", so I did not use them. The stock prints are photochrom lithographs.
+- **`derive_album_look.py` was not run on Windows Python.** It needs Python 3 with `numpy` and `Pillow` (`py -3 -m pip install numpy pillow`) and runs with `-I`.
+- The 3° / 0.06 / 0.08 thresholds, the 12-level flat-patch limit and the ±10° skin limit are **judgement**.
+- The noise table is for ffmpeg 6.1.1; one 8.1.1 comparison matched exactly. Re-run `calibrate` on any ffmpeg change.
+- Grain strength depends on tone in real prints (the cinematic-quality note); `noise` adds the same amount at every level, so match the sigma measured at the patch's tone (the script records the patch's mean level, 0.77 here) and check mid-tones by eye.
+
+**What the maker does for each album (Step 9, as a method).** (1) Scan three prints with identical settings, margins included. (2) Write one boxes JSON per album (copy `album_look_samples_loc_stock.json`), with `film` width, height, fps and `working_long_side` 1920. (3) `py -3 -I derive_album_look.py boxes.json look.json`. (4) If `ONE_ALBUM_LOOK` is false, look at which of cast, floor or white differs; usually a print belongs to a different roll or year; split the album. (5) Save `look.json` and its `ffmpeg_vf` string under the chapter's name; apply the same string to every photo from that album. (6) Record one more field, *who took these* (advisor's note).
+
+---
+
+### F15. Country of the premiere and the venue's playback facts
+
+**These are the maker's facts; no search can supply them.** Decisions 7, 8 and 9 stay open until the maker says (a) the country, (b) which room, (c) what plays the file. What I can do now is make the unknowns cheap to close.
+
+**What each answer decides.**
+| Fact | Decides | Where it is already covered |
+|---|---|---|
+| Country (and state, if the US) | which public-performance licence societies and rules apply to music; image and likeness rules; the governing-law line in release forms | `theatrical-delivery.md` TD-7 and its jurisdiction table (all "UNVERIFIED, not legal advice"). |
+| Screen and projector (native 1080p or 4K, size) | whether 4K is worth delivering; caption size | Decision 7. |
+| Cable and playback path (laptop HDMI, USB stick in a TV, a media box, a cinema server) | which of the three exports is the screening file | Decision 9. |
+| USB format accepted (FAT32 or exFAT), MKV, soft subtitles, HEVC, frame rate | the container and codec; burned-in or soft captions | Decisions 7 and 8; existing notes: FAT32 files must be under 4 GiB, exFAT "is not universal" on TVs. |
+
+**The venue test kit.** `research/toolchain-fixtures/make_venue_test_kit.py` makes six 10-second files and a one-page checklist (`VENUE_CHECKLIST.txt`): **A** H.264 MP4 with a burned-in caption; **B** H.264 MP4 with a soft subtitle track (`mov_text`, flagged default); **C** H.264 MKV with a soft SRT track; **D** HEVC 1080p MP4; **E** HEVC 2160p MP4; **F** H.264 1080p at 50 fps. Each shows its filename, resolution, a frame counter, a yellow box moving at a constant 400 px/s (judder check), and a 1 kHz beep on the **left** channel for seconds 0 to 5 and on the **right** for 5 to 10 (verified: RMS 2,896 left / 66 right in the first half, 0 / 2,895 in the second). Together they are **1.8 MB** and take 40 s to make (34 s with Kdenlive's `ffmpeg.exe`). All six decode without errors; `ffprobe` confirms H.264 High 4.1 and HEVC Main, and the subtitle track types `mov_text` and `subrip`.
+- The text is drawn with **libass (an `.ass` file)**, not `drawtext`, because Kdenlive's `ffmpeg.exe` has no `drawtext` (F10). **A script check fails loudly if the text did not render**, because libass draws nothing and ffmpeg still exits 0 when it finds no font. Under Wine it found no font and the check fired; with `LJ_FONTSDIR` pointed at a font folder it still drew nothing there. **Whether text renders with Kdenlive's `ffmpeg.exe` on real Windows (where Arial exists) is UNVERIFIED**; on Linux ffmpeg 6.1.1 it rendered correctly (checked by eye).
+- **How to use it:** make the files (here in the cloud or on the PC), copy the six onto the stick that the premiere will use, play each on the real screen, fill in `VENUE_CHECKLIST.txt` (ten lines: screen, cable, stick format accepted, which files played, caption legibility, soft subtitle behaviour, HEVC, 50 fps, who presses play, country).
+- **How the answers close the decisions** (also in the checklist): soft subtitles only if B or C shows them by default; otherwise burned-in captions (file A) whatever else works, because a person in the room cannot switch soft subtitles on mid-film. Use the container and codec of the best file that played; 4K only if file E played smoothly **and** the master is 4K.
+
+---
+
+### F16. Verified 2025+ video tutorials
+
+Fetched slowly (one watch page per 10 to 15 s; no search; channel listings already cached from round 1 were re-parsed for the technique words, adding nothing new).
+| Technique | What I found | Status |
+|---|---|---|
+| **Photo parallax in Blender** | Gleb Alexandrov, **"True Depth 3.0 for Blender – Complete Guide"**, `https://www.youtube.com/watch?v=2NROp309-b4`: upload date **Aug 13, 2026** and 23,376 views read from the video page; chapters to 26:19 including "Flat Relief mode walkthrough" 04:16 and "Perspective mode (new in V3)" 15:07. The description names the add-on version (True Depth V3) and the model (Depth-Anything-V2) but **no Blender version**; the companion guide (`creativeshrimp.com`, also dated Aug 13, 2026) says the same [142]. It turns **one image into a 3D relief** with AI depth estimation (a paid add-on with a free Hugging Face demo), so it is a depth-relief method, **not** a cut-out layer stack, and the guide never uses the word "parallax". | **Date verified; Blender version UNVERIFIED; partial match.** |
+| **Ken Burns in Kdenlive** | None found. The channel listings parsed (Nuxttux, 20 other channels) hold nothing on pan and zoom; the official Kdenlive channel listing returned no data. | **None.** |
+| **SVG line-draw in Blender** | None found. | **None.** |
+**Recommendation for the playbook:** keep citing the written sources (Blender 5.2 manual [28][29], R2 and R3 above, Kdenlive manual's Transform effect [15]); cite True Depth only for "AI depth relief from a photo, Aug 2026, Blender version not stated".
+
+---
+
+### Corrections and updates to earlier parts of this file
+
+1. **Q6 / R9 and the playbook "Expect" strings.** `ffprobe -of csv` does not keep the requested field order; use key=value output (F10).
+2. **R9 web command** has no `-level`, and `libx264` picks 5.0; fine for a link, wrong for a TV (F10).
+3. **R3 and Exercise 6 (`rsvg-convert`).** Not on a normal Windows PC; replace with `magick mogrify -format png` or `inkscape --export-type=png` (F11). **R1a**: `mogrify` becomes `magick mogrify`, and there is no `convert.exe` in the portable ImageMagick.
+4. **R7 and Step 9 (`TODO(research)`).** The derivation method is written, tested and saved (F14). Update `r7_era_looks.txt` Part 3: `status:` from `NOT FILLED. TODO(research)` to "method available: `derive_album_look.py`"; fill `lift`, `cast`, `grain` and `filter string` from its output; keep the stock chains labelled "not for the film".
+5. **Round-1 F1 text "Kdenlive's bundled ffmpeg … so the R1 and R9 ffmpeg recipes can also run from …kdenlive\bin\ffmpeg.exe"**: true for R1 and R9; **false for any recipe using `drawtext`** (not in that build).
+6. **Round-1 F5 / F8 / F4 / F7**: F4 (hardware floor, dropdown) and F7 (tutorials) unchanged; F8's Suno allowance is now **20 downloads a month on Pro and 60 on Premier, none on Free** (pricing page, undated).
+7. **Round-1 limit 1 ("No machine of the maker's was reachable")** still holds in round 2.
+
+### Still open after this round
+- **Step 0 and the two `r2_param.py` timings on the maker's PC** (run `step0_pc_tests.ps1`; everything else marked "pending" above depends on it).
+- PowerShell and Git Bash on Windows for every command in F10; PowerShell 5.1 as well as 7.
+- A real Resolve 21 Free install: dropdown, subtitles and burn-in, the Read Me hardware floor.
+- Windows text rendering with Kdenlive's `ffmpeg.exe` (libass fonts) and GIMP Python-fu batch on Windows.
+- Zapsplat and Musopen text (maker, in a browser); Suno live allowance (maker's account).
+- `derive_album_look.py` on the maker's own prints (and on a real 1970s colour-print scan) and on Windows Python.
+- The venue facts and the country (maker), via the test kit.
+- Verified 2025+ tutorials for Ken Burns in Kdenlive and SVG line-draw in Blender; a Blender version for the True Depth video.
+- Adobe's Levels and Curves pages (403) and a readable source for which print dye fades first.
+
+### Sources added in round 2 (continuing the numbering)
+Read on 2026-10-18 unless another date is given.
+
+[125] Inkscape 1.4.4 for Windows — https://inkscape.org/release/inkscape-1.4.4/ ("Released on May 6, 2026"; "installation files for Windows on Arm"); https://inkscape.org/release/inkscape-1.4.4/windows/ ; https://inkscape.org/release/inkscape-1.4.4/windows/64-bit/compressed-7z/dl/ (redirect to `/gallery/item/59503/inkscape-1.4.4_2026-05-05_dcaf3e7-x64_mHK170m.7z`, 110,359,970 B, SHA-256 `c4dbd64a92628abe7d7316c43f9325396e4d48417866027ee3d993d4f5b54c6a`); https://inkscape.org/release/inkscape-1.4.4/windows/arm64/compressed-7z/dl/ (redirect to `/gallery/item/59500/inkscape-1.4.4_2026-05-05_dcaf3e7-x64.7z`, 97,063,190 B, SHA-256 `75caaaca116c59aa933b562aa895a29dd5ac2961f6b5223bb88fccc87a63c532`, matched by `https://media.inkscape.org/media/resources/sigs/inkscape-1.4.4_2026-05-05_dcaf3e7-x64.7z.sha256`); https://inkscape.org/release/all/windows/ (file list).
+[126] Inkscape man page — https://inkscape.org/doc/inkscape-man.html — undated; option list (`--export-type`, `--export-filename`, `--export-width`, `--actions`, `--shell`, `--batch-process`).
+[127] ImageMagick — https://imagemagick.org/download/ (Windows section, 7.1.2-34, "Windows 10 (x86, x64 and arm64) or newer"; read through WebFetch); release file https://github.com/ImageMagick/ImageMagick/releases/download/7.1.2-34/ImageMagick-7.1.2-34-portable-Q16-HDRI-x64.7z (12,019,095 B, SHA-256 `8dcfd3644b7fc20a92aeedeb4798024e5947f25f4d7c0c313c883fbca3d723e6`).
+[128] GIMP — https://www.gimp.org/downloads/ (3.2.6, 2026-09-10, installer SHA-256 `9337cccbc01d4098ee7a3dab215b3afbe6ece99c5287c92441d6f12cf541ebca`, "Windows 10 1903 or newer"; read through WebFetch); https://download.gimp.org/gimp/v3.2/windows/gimp-3.2.6-setup.exe (190,358,080 B; hash matched).
+[129] MSYS2 package repository — https://repo.msys2.org/mingw/mingw64/mingw-w64-x86_64-librsvg-2.63.2-1-any.pkg.tar.zst (21,491,074 B; file list and `.PKGINFO` read, not run).
+[130] Chocolatey — https://community.chocolatey.org/packages/rsvg-convert (version 2.40.20, "Last Update: 29 Sep 2018", community maintained, virus scan "Flagged"; read through WebFetch, first 100,000 characters).
+[131] FFmpeg filters documentation — https://ffmpeg.org/ffmpeg-filters.html — undated; sections `colorbalance`, `colorchannelmixer`, `colorlevels`, `curves`, `noise` (default seed 123457), `greyedge`, `colortemperature`.
+[132] van de Weijer, Gevers and Gijsenij, "Edge-Based Color Constancy", IEEE Transactions on Image Processing, 2007 — https://staff.science.uva.nl/th.gevers/pub/GeversTIP07.pdf (8 pages; gray-world, max-RGB, Minkowski norm and gray-edge as instances of one framework).
+[133] Reinhard, Ashikhmin, Gooch and Shirley, "Color Transfer between Images", IEEE Computer Graphics and Applications, 2001 — copy at https://www.cs.tau.ac.il/~turkel/imagepapers/ColorTransfer.pdf (8 pages).
+[134] GIMP 3.0 user manual, "8.10. Levels" — https://docs.gimp.org/3.0/en/gimp-tool-levels.html — undated; read through WebFetch (a summary).
+[135] darktable user manual (stable), color calibration — https://docs.darktable.org/usermanual/stable/en/module-reference/processing-modules/color-calibration/ — undated; read through WebFetch (a summary). (The version-4.8 URL returned 404.)
+[136] Wikipedia, "Print permanence" — https://en.wikipedia.org/wiki/Print_permanence — secondary source, read through WebFetch; section "Chromogenic color prints (silver halide prints)".
+[137] Blackmagic Design DaVinci Resolve 21 Reference Manual [110], PDF pages 629 (Lift, Gamma, Gain and Auto Balance in the Adjustments list) and 3157 (vectorscope Show Skin Tone Indicator), read from the locally extracted text of the PDF.
+[138] Library of Congress, Prints and Photographs — item records https://www.loc.gov/item/2001697831/?fo=json , https://www.loc.gov/item/2001697847/?fo=json , https://www.loc.gov/item/2001699396/?fo=json (photochrom prints; "No known restrictions on reproduction"); image files https://tile.loc.gov/storage-services/service/pnp/ppmsc/05500/05543v.jpg , …/05500/05559v.jpg , …/06000/06039v.jpg (1024 px, 179,996 / 230,765 / 208,189 B). Not stored in the repo.
+[139] Local derived scan used for the grain-versus-size test: a 7544×5940 TIFF of a LOC photochrom print from another track's scratch folder (item number not recorded; provenance UNVERIFIED); used for measurement only.
+[140] Suno — https://suno.com/pricing (undated; plans, credits, downloads; read through WebFetch) and https://help.suno.com/en/articles/2746945 ("Do I have the copyrights to songs I made?", no date).
+[141] Zapsplat and Musopen, tried again — https://www.zapsplat.com/license-type/standard-license/ and https://musopen.org/about/faq/ — HTTP 403 through WebFetch; UNVERIFIED.
+[142] YouTube and Creative Shrimp — https://www.youtube.com/watch?v=2NROp309-b4 (Gleb Alexandrov, "True Depth 3.0 for Blender - Complete Guide", "Aug 13, 2026", 23,376 views, description and chapters read from the page) ; https://www.creativeshrimp.com/true-depth-blender-add-on-the-complete-guide-v3.html (dated August 13, 2026; no Blender version stated; read through WebFetch).
+[143] Blackmagic support listings re-read — https://www.blackmagicdesign.com/api/support/us/downloads.json (1,638,669 B) and https://www.blackmagicdesign.com/api/support/us/documents.json (166,336 B): Resolve 21.1.1 dated 02 Oct 2026; no Read Me or requirements document for 21; Configuration Guides only for Resolve 10 to 15.
+[144] PowerShell 7.5.4 — Linux build (self-contained, net9.0, used to run the self-checks) and the Windows zip https://github.com/PowerShell/PowerShell/releases/download/v7.5.4/PowerShell-7.5.4-win-x64.zip (115,200,099 B; started under Wine but produced no output; its hash was not checked against the release's hash file).
+[145] Sandbox runs for this round, 2026-10-18 (local, not a URL): Ubuntu 24.04, 4 vCPU, 16 GB, no GPU; Wine 9.0 with `wine32` added; 7-Zip 23.01; Python 3.13.16 with numpy 2.5.3 and Pillow 12.3.0; ffmpeg 6.1.1 (Linux); `ffmpeg.exe` 8.1.1 and `melt.exe` 7.43.0 from the Kdenlive 26.08.2 payload [104]; ImageMagick 7.1.2-34 portable; Inkscape 1.4.4 (x64 7z); GIMP 3.2.6 (installed silently under Wine); PowerShell 7.5.4 (Linux); Linux Blender 5.2.2 for the dry run. Fixtures and their results are in `research/toolchain-fixtures/`.

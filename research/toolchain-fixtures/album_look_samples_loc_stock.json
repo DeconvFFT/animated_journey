@@ -1,0 +1,87 @@
+{
+ "album": "LOC photochrom series, North Africa 1899 (stock test, not the maker's)",
+ "chapter": "stock-test",
+ "prints": [
+  {
+   "file": "album_p1.jpg",
+   "print_area": [
+    0.03,
+    0.03,
+    0.97,
+    0.96
+   ],
+   "white": [
+    0.205,
+    0.585,
+    0.23,
+    0.615
+   ],
+   "skin": [
+    0.826,
+    0.5,
+    0.848,
+    0.53
+   ],
+   "flat": [
+    0.4,
+    0.04,
+    0.52,
+    0.11
+   ]
+  },
+  {
+   "file": "album_p2.jpg",
+   "print_area": [
+    0.03,
+    0.03,
+    0.97,
+    0.95
+   ],
+   "white": [
+    0.855,
+    0.55,
+    0.895,
+    0.62
+   ],
+   "skin": [
+    0.095,
+    0.675,
+    0.125,
+    0.7
+   ]
+  },
+  {
+   "file": "album_p3.jpg",
+   "print_area": [
+    0.03,
+    0.03,
+    0.96,
+    0.96
+   ],
+   "white": [
+    0.505,
+    0.345,
+    0.545,
+    0.375
+   ],
+   "skin": [
+    0.6,
+    0.24,
+    0.625,
+    0.275
+   ],
+   "flat": [
+    0.4,
+    0.05,
+    0.55,
+    0.12
+   ]
+  }
+ ],
+ "sources": {
+  "album_p1.jpg": "https://tile.loc.gov/storage-services/service/pnp/ppmsc/05500/05543v.jpg (LOC item 2001697831, photochrom, 1899, 'No known restrictions on reproduction')",
+  "album_p2.jpg": "https://tile.loc.gov/storage-services/service/pnp/ppmsc/05500/05559v.jpg (LOC item 2001697847)",
+  "album_p3.jpg": "https://tile.loc.gov/storage-services/service/pnp/ppmsc/06000/06039v.jpg (LOC item 2001699396)",
+  "note": "1024 px JPEG derivatives, downloaded 2026-10-18 and NOT stored in the repo. Stock prints for method testing only; photochrom is a lithographic process, not a family snapshot."
+ }
+}

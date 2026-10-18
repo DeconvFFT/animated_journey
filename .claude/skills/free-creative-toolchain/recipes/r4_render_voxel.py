@@ -8,6 +8,8 @@
 # Not tested: the turntable. The notes give the plan only: parent the camera to an Empty at the object's centre,
 #   keyframe the Empty's Z rotation from 0 to 360 degrees, and render the PNG sequence.
 # Run:    blender -b --factory-startup -P r4_render_voxel.py   (or python3 with bpy installed)
+# Windows run (PowerShell, from this folder): TODO(verify on the maker's PC)
+#         & "<path>\blender.exe" -b --factory-startup -noaudio --python-exit-code 3 -P .\r4_render_voxel.py
 
 import bpy, math, os
 W = os.path.abspath(os.path.dirname(__file__))

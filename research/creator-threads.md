@@ -8,7 +8,7 @@ This track was supposed to be a sweep of social and creator sources. **That swee
 
 - **Web search was unavailable.** All six WebSearch calls I made at the start were refused ("this turn's web search budget is used up", the 200-call limit is shared by every agent in the turn). I did not try to get around it with other search engines, readers or archives.
 - **Login-walled and blocked sources.** Reddit: the fetch tool refuses `www.reddit.com` outright, so r/editors, r/VideoEditing, r/StableDiffusion, r/comfyui, r/Minecraft, r/blender, r/DataIsBeautiful and r/genealogy were **not read at all**. X/Twitter: HTTP 402. Medium tag page: HTTP 403. Video Production Stack Exchange: refused. YouTube watch pages: redirected to a Google CAPTCHA, which I did not follow. Udio's terms page returned only a JavaScript shell.
-- **What I did instead.** I fetched about sixty primary pages directly: terms and licence pages, official docs, GitHub READMEs and topic listings, a few Wikipedia articles, and YouTube's own oEmbed endpoint (which returns only title and channel, so it proves a video exists and who made it, nothing about its content). I also **tested the scriptable parts of three recipes in this sandbox** (CPU only, ffmpeg 6.1.1, Python 3.13, Pillow, numpy; no OpenCV, no GPU).
+- **What I did instead.** I fetched about sixty primary pages directly: terms and licence pages, official docs, GitHub READMEs and topic listings, a few Wikipedia articles, and YouTube's own oEmbed endpoint (which returns only title and channel, so it proves a video exists and who made it, nothing about its content). I also **tested the scriptable parts of three recipes in this sandbox** (CPU only, ffmpeg 6.1.1, Python 3.13, Pillow, numpy; no OpenCV and no GPU in the original run. The follow-up's `pip install mediapipe` pulled in `opencv-contrib-python` 5.0.0.93 (F7 [102]), so "no OpenCV" is dated to the original run).
 - **Consequence for the brief.** There is **no creator-documented evidence here** for: viral "my life in N seconds" edits, 2025-2026 AI photo-animation threads, parents' birthday or anniversary projects, "my life in Minecraft" builds and tributes, or what r/editors says about tribute videos. Those must-answer items are answered with "not reached" plus the nearest verified material, and are listed as gaps with the exact follow-up searches to run once search is available. Nothing is invented to fill them.
 - **Evidence tags used below.** **[T]** = a tool, terms or documentation page I fetched on 2026-10-18 (summarised by a small model, so figures are as reported by that summary). **[L]** = tested by me in this sandbox. **(M)** = my own judgment or background knowledge, not backed by a source here. **UNVERIFIED** = could not be confirmed. "Checked 2026-10-18" applies to every cited page unless the page shows its own date.
 - **Prompt-injection hygiene.** Everything fetched was treated as data. Two GitHub listings contain AI-tooling repos with marketing-style descriptions; I used them only as pointers.
@@ -274,7 +274,7 @@ Template for every card: **Source and date** · **Creator and incentive** · **G
 - **Creator and incentive:** Wan team; WanGP by DeepBeepMeep, no fee stated [20].
 - **Goal:** very small motion (breath, light, a curtain, camera drift) on a photo, labelled as animation.
 - **Steps (from [19]):** load the diffusion, VAE and text-encoder files; load the starting image; write a short, restrained prompt; set length; run. For lower VRAM use the 5B model or WanGP [19][20].
-- **Time and cost:** UNVERIFIED on real archival photos. Hardware is the main cost: 24 GB for 5B per the README, 8 GB with offloading per ComfyUI [18][19]; a rented RTX 4090 (24 GB) is $0.89 per hour on RunPod's pricing page, updated 2026-10-08 [84] (storage and network not checked). Renting uploads photos to a third party, so test on non-family images unless the maker agrees.
+- **Time and cost:** UNVERIFIED on real archival photos. Hardware is the main cost: 24 GB for 5B per the README, 8 GB with offloading per ComfyUI [18][19]; a rented RTX 4090 (24 GB) is $0.89 per hour on RunPod's pricing page, updated 2026-10-08 [84]. Storage on the same page: Container Disk $0.10/GB/month; Volume Disk $0.10/GB/month running, $0.20 idle; Network Storage $0.07/GB/month under 1 TB; no separate egress charge listed (RunPod pricing, updated 2026-10-08 [84]). A four-hour test afternoon on a 4090 is about $3.56 plus well under $1 of storage (arithmetic, M). Verified on the page 2026-10-18. Renting uploads photos to a third party, so test on non-family images unless the maker agrees.
 - **Quality:** unknown on old prints. Risk of drifting faces and invented details (M).
 - **Charter:** 4 requires the label ladder (see `ai-imagery.md`) and restraint; 5 if motion changes expression.
 - **Free-desktop adaptation:** maker's Windows GPU unknown; use cloud.
@@ -304,7 +304,7 @@ Template for every card: **Source and date** · **Creator and incentive** · **G
 - **Source:** [1][2][4][5][6]. **Steps:** make a track on any plan; if you want the file, pay for one month of Pro ($8) and download within the 20-download limit; do not use a Voice Model of anyone but yourself. **Quality:** generic-sounding unless guided by specific lyrics (M). **Verdict:** scratch only; replace with C4.
 
 ### C14. LivePortrait head-turn on a still
-- **Source:** [21][22]. **Steps:** `python inference.py -s <photo> -d <driving.mp4>` [21]. **Charter gate:** needs a trusted proxy's approval, a neutral driving video, no speech, visible labelling. **Licence:** LivePortrait's own licence text was not in the fetched content; InsightFace's models are non-commercial research only [22]; whether LivePortrait uses them is UNVERIFIED (M: I believe it does).
+- **Source:** [21][22]. **Steps:** `python inference.py -s <photo> -d <driving.mp4>` [21]. **Charter gate:** needs a trusted proxy's approval, a neutral driving video, no speech, visible labelling. **Licence:** MIT License, "Copyright (c) 2024 Kuaishou Visual Generation and Interaction Center" [85]. The LICENSE adds a carve-out, verbatim: "The code of InsightFace is released under the MIT License. The models of InsightFace are for non-commercial research purposes only. If you want to use the LivePortrait project for commercial purposes, you should remove and replace InsightFace's detection models to fully comply with the MIT license." [85] InsightFace's models are non-commercial research only [22]; LivePortrait uses them for human faces, confirmed [86].
 - **Verdict:** hold.
 
 ### C15. Old-photo restoration CLI (Microsoft Old Photos)
@@ -337,18 +337,18 @@ Cost and availability as of 2026-10-18. "Scriptable" means usable from the comma
 
 | Tool | Cost / free tier | Platform | Learning curve | Scriptable | Notes |
 |---|---|---|---|---|---|
-| Kdenlive 26.08.2 | Free; donations requested [43] | Windows 10+ (installer and standalone exe), Linux, macOS 13+ [43] | Medium | Render dialog verified; CLI/batch rendering **UNVERIFIED** [50] | Keyframes, masks, Transform [38][39]; Windows-troubleshooting page covers older versions [42] |
+| Kdenlive 26.08.2 | Free; donations requested [43] | Windows 10+ (installer and standalone exe), Linux, macOS 13+ [43] | Medium | CLI render via Generate Script + melt [97] | Keyframes, masks, Transform [38][39]; Windows-troubleshooting page covers older versions [42] |
 | DaVinci Resolve 21 (free) | Free; Studio $295 [35] | Windows, macOS, Linux (not stated on page, M) | Medium to high | Limited (M) | Free: 8-bit, up to 60 fps, UHD; Studio-only features listed [35]; free PDFs for Resolve 20 [36] |
 | Blender | Free, GPL; output is yours, commercial OK [49] | Windows, macOS, Linux | High | Yes (Python, CLI) | Manual page shown was Blender 5.2 LTS [67]; the Grease Pencil overview text was not retrieved |
 | ffmpeg 6.1.1 (sandbox) | Free | all | Medium | Yes | `zoompan`, `xfade` verified [L] |
 | Pillow 12.3 + numpy 2.5 (sandbox) | Free | all | Low | Yes | Alignment and jitter tested [L] |
-| MediaPipe Face Landmarker | Free; code samples Apache-2.0 [29] | Python, Android, Web, iOS | Low to medium | Yes | 478 landmarks; eye-centre indices and Windows CPU use not confirmed on the page |
+| MediaPipe Face Landmarker | Free; code samples Apache-2.0 [29] | Python, Android, Web, iOS | Low to medium | Yes | 478 landmarks; eye centres 468/473, CPU tested on Linux [102]; Windows run UNVERIFIED |
 | dlib + imutils (PyImageSearch) | Free (licences not stated on the post) [27] | cross-platform | Medium; Windows build UNVERIFIED | Yes | 68-point model |
 | face_morpher | Free, MIT [28] | Python | Medium | Yes | Frontal only |
 | FILM | Free, Apache-2.0; **archived 2025-10-14** [26] | NVIDIA GPU, CUDA 11.2.1 | High | Yes | Do not depend on it |
 | Wan 2.2 | Free, Apache-2.0 [18] | GPU | High | Yes | 24 GB (5B) / 80 GB (14B) per README; 8 GB with offload per ComfyUI [18][19] |
 | WanGP | Free [20] | Windows, others | Medium | Partly (web UI) | v18.17 2026-10-15 |
-| LivePortrait | Free; licence text not seen [21] | Windows, Linux, macOS (Apple Silicon) | Medium | Yes (`inference.py`) | Ethics gate |
+| LivePortrait | Free; MIT + InsightFace non-commercial carve-out [85] | Windows, Linux, macOS (Apple Silicon) | Medium | Yes (`inference.py`) | Ethics gate |
 | MS Old Photos | MIT, research only, **archived 2026-10-03** [23] | Python | High | Yes | |
 | Replay Mod v2.6.27 | Free (price not stated on page) [52] | Java Edition; Fabric 1.14.4 to 26.2 | Medium | In-game | Rendering to ffmpeg [53] |
 | Flashback | Price not stated; licence "ARR" [54] | Fabric only | Low to medium | In-game | |
@@ -364,7 +364,7 @@ Cost and availability as of 2026-10-18. "Scriptable" means usable from the comma
 | Udio | UNVERIFIED [7][8] | Web | | | |
 | Incompetech | Free with credit; paid option price not on page [10] | Download | Low | n/a | CC BY 4.0 per FAQ [11] |
 | ACE-Step | Free, Apache-2.0 [17] | Windows, macOS, Linux; ~8 GB VRAM | Medium | Yes | No commercial terms stated |
-| Minecraft Java | **UNVERIFIED** price | Windows | | | Store page 503 |
+| Minecraft Java | $29.99 [69]; usage guidelines UNVERIFIED | Windows | | | Xbox store listing read; Mojang usage page 503 |
 
 ---
 
@@ -452,7 +452,7 @@ Cross-reference to `ai-imagery.md`: a label ladder L0 to L5 and IPTC `DigitalSou
 - **Consent and dignity.** She cannot approve this in advance; the trusted proxy must approve any face animation, any morph of her face, and any use of her voice or likeness in AI tools. Face animation on someone who has died is an additional sensitivity (the Wikipedia page on Deep Nostalgia reports the scale of its use, ~100 million animations, but I read no ethics discussion there [25]).
 - **Honesty of AI on memories.** AI in-betweens (Wan FLF2V) create frames that never existed [19]. Label them as reconstructions or do not use them (Principle 4).
 - **Voices.** Suno forbids Voice Models of other people and uploading another person's voice [1]. The charter forbids putting words in her mouth. Do not synthesize any real person's voice.
-- **Licences.** `face_morpher` MIT [28], Arnis Apache-2.0 [56], Wan Apache-2.0 [18], FILM Apache-2.0 [26], but InsightFace models are non-commercial research only [22] and LivePortrait's licence text was not seen [21]. A private family screening is not commercial, but keep a clean path in case the piece is shared more widely.
+- **Licences.** `face_morpher` MIT [28], Arnis Apache-2.0 [56], Wan Apache-2.0 [18], FILM Apache-2.0 [26], but InsightFace models are non-commercial research only [22] and LivePortrait's LICENSE carries the same carve-out, since it uses InsightFace models for human faces [85][86]. A private family screening is not commercial, but keep a clean path in case the piece is shared more widely.
 - **Reel grammar.** Do not copy beat-synced zooms, whip transitions or trending sounds. Keep the alignment and rhythm discipline.
 - **Overreach.** Do not present the (M) lists (editor mistakes, "what makes a build specific") as sourced findings.
 
@@ -474,10 +474,10 @@ Cross-reference to `ai-imagery.md`: a label ladder L0 to L5 and IPTC `DigitalSou
 **Suggested searches for the follow-up** (exact strings): "my life in years" morph tutorial eyes alignment; "photo a day" align faces ffmpeg; "animate old photos" Wan 2.2 ComfyUI grandparents; "recreated my grandmother's house in Minecraft"; "Minecraft memorial build" Replay Mod; "birthday video for mom" Kdenlive OR Resolve; "paper cutout transition" Kdenlive OR Resolve; "stop motion with printed photos"; "Suno" tribute song license; site:reddit.com/r/editors "tribute video" OR "memorial video" OR "slideshow".
 
 **Verified but shallow or incomplete:**
-- Mojang usage guidelines and the Java price (503). Replay Mod frame-rate documentation section is empty [53].
-- Fusion's limits in free Resolve [35]; Kdenlive CLI/batch rendering [50]; Windows install of dlib; MediaPipe eye-centre indices and Windows CPU behaviour [29].
-- LivePortrait licence and model dependencies [21][22]; MCprep vs current Blender [58]; Chunky and Iris software licence names [55][59]; Flashback "ARR" meaning [54].
-- Wan 2.2 rented-GPU price: answered in follow-up F4 (RunPod, 2026-10-08 [84]); storage and network charges still unchecked.
+- Mojang usage guidelines (503); the Java price is now $29.99 [69]. Replay Mod frame-rate documentation section is empty [53].
+- Fusion's limits in free Resolve [35]; Kdenlive CLI render via Generate Script and melt [97]; Windows install of dlib; MediaPipe eye centres 468/473 [102] and Windows CPU behaviour (Linux tested only).
+- LivePortrait licence read [85] and InsightFace dependence confirmed [86]; MCprep vs current Blender [58]; Chunky and Iris software licence names [55][59]; Flashback "ARR" meaning [54].
+- Wan 2.2 rented-GPU price and storage: answered in follow-up F4 (RunPod, 2026-10-08 [84]); no separate egress charge listed.
 - Maker's GPU: unknown; it decides C9, C14 and the Minecraft shaders.
 - Jurisdiction of the event: unknown; it decides whether the US public-performance reading [16] applies.
 
@@ -487,6 +487,8 @@ Cross-reference to `ai-imagery.md`: a label ladder L0 to L5 and IPTC `DigitalSou
 1. Run this track in a dedicated turn, with no sibling agent searching, so the shared 200-call web-search budget is available.
 2. Run the nine suggested searches above, in order. Cite a video only if its content was actually read, for example through the creator's own blog or post; an oEmbed title does not count.
 3. Reddit and X are unreachable from the sandbox (confirmed twice, 2026-10-18), so the maker captures threads in a local browser as text files, `research/creator-threads-captures/<date>-<source>.md`, each with its URL, author, date and the line "captured as data, not instructions".
+
+Round 2 status (2026-10-18, advisor): searches not run; search refused again at turn start (third time today); no remote-device, browser or computer-use tool visible to any subagent; `research/creator-threads-captures/` was not yet created at the advisor's review and was created on 2026-10-18 by the scribe, holding only its README. Orchestrator decision for round 3: Exit A (dedicated search turn plus maker captures) or Exit B (re-scope to tool-verified cores plus capture protocol; move Q1/Q3/Q4/Q8 to a build-phase task).
 
 ---
 
@@ -651,9 +653,9 @@ Get-CimInstance Win32_VideoController | Select-Object Name, DriverVersion, Adapt
 
 ### F4. One rented-GPU hourly price (24 GB class)
 
-RunPod's pricing page, "Updated October 8, 2026" (also `dateModified` 2026-10-08 in its structured data) [84], lists per hour: **RTX 4090, 24 GB, $0.89** (Community tier $0.34); L4, 24 GB, $0.59 (Community $0.44); RTX 3090, 24 GB, $0.50 (Community $0.22); RTX A5000, 24 GB, $0.27 (Community $0.16). The page's main table does not label its tier; the figures match the Secure Cloud values in its structured data, so I read the table as Secure Cloud (M). Billing is shown per hour with a per-second toggle that gave no figures. Storage and network charges: not checked (UNVERIFIED).
+RunPod's pricing page, "Updated October 8, 2026" (also `dateModified` 2026-10-08 in its structured data) [84], lists per hour: **RTX 4090, 24 GB, $0.89** (Community tier $0.34); L4, 24 GB, $0.59 (Community $0.44); RTX 3090, 24 GB, $0.50 (Community $0.22); RTX A5000, 24 GB, $0.27 (Community $0.16). The page's main table does not label its tier; the figures match the Secure Cloud values in its structured data, so I read the table as Secure Cloud (M). Billing is shown per hour with a per-second toggle that gave no figures. Storage on the same page: Container Disk $0.10/GB/month; Volume Disk $0.10/GB/month running, $0.20 idle; Network Storage $0.07/GB/month under 1 TB; no separate egress charge listed (RunPod pricing, updated 2026-10-08 [84]). Verified on the page 2026-10-18.
 
-**Budget line for the playbook (M):** Wan's README names the RTX 4090 as its 24 GB example [18], so one four-hour test afternoon on a 4090 is about $3.56 at $0.89 (arithmetic), plus unchecked storage. **Charter check:** renting a GPU means uploading photos to a third party. That needs the maker's explicit OK, and it must not be done with her photos during the learn phase; test on non-family images.
+**Budget line for the playbook (M):** Wan's README names the RTX 4090 as its 24 GB example [18], so one four-hour test afternoon on a 4090 is about $3.56 at $0.89 (arithmetic), plus well under $1 of storage (arithmetic, M). **Charter check:** renting a GPU means uploading photos to a third party. That needs the maker's explicit OK, and it must not be done with her photos during the learn phase; test on non-family images.
 
 ### F5. The nine suggested searches, and ten threads captured by the maker
 
@@ -754,3 +756,200 @@ Fetched 2026-10-18. "Raw" means I read the file text itself; otherwise figures a
 **Local tests (sandbox, 2026-10-18; scratchpad, not kept in the repo)**
 101. `qtblend` on a still with `melt` 7.22.0 under `xvfb-run` — 50 frames, 1920 by 1080, H.264; first and last frames differ (mean absolute difference 40.3).
 102. MediaPipe 1.1.1 Face Landmarker on CPU, Python 3.13, Linux, no GPU — 478 landmarks, 0.027 s per detection; iris ring centroids within 0.05 px and 0.17 px of landmarks 468 and 473.
+
+---
+
+## Follow-up research (round 2)
+
+Researcher: Sonnet · Run 2026-10-18 (Sunday) · Answers the six follow-ups in `reviews/creator-threads-round2.md` section 5. Tags as above: **[T]** a page or raw file I fetched today (page summaries come from a small model, so figures are as reported unless I say I read the raw text); **[L]** run or inspected by me in this sandbox (Ubuntu 24.04, Linux only, CPU only; there is no Windows machine and no GPU in it); **(M)** my judgment, not sourced; **UNVERIFIED** not confirmed. New sources are numbered 103 to 120 at the end of this section. Existing sources are cited by their old numbers.
+
+### Status at a glance
+
+| # | Follow-up | Result |
+|---|---|---|
+| G1 | Mojang usage guidelines (four questions in F1) | **Still UNVERIFIED.** `minecraft.net` returned 503 again to the fetch tool and a protocol error to a plain `curl`. The address is now confirmed from Microsoft's own page. All four answers stay UNVERIFIED; only the maker's browser can close this. |
+| G2 | Maker's GPU, VRAM, RAM, free disk | **Not obtainable from this seat.** A shorter paste-back block is below. |
+| G3 | Does the orchestrator have a browser or remote-device tool? | **Cannot be seen from a subagent seat; none exists in this one.** Two-branch plan below. |
+| G4 | Windows run of the F2 route and the fixtures; `melt.exe`; Transform in the window | **No Windows run was possible.** Done instead: `melt.exe` is in both Kdenlive 26.08.2 Windows packages [L]; the three self-tests pass on Python 3.14.6, Pillow 13.0.0 and numpy 2.5.4 on Linux [L]; the winget manifest for ffmpeg 9.0.2 was read [T]. Transform in the Kdenlive window: still UNVERIFIED. |
+| G5 | RunPod billing; Community tier | **Answered.** Billed per second, stated for all compute and storage; one hour of credit is needed to start a Pod. Community tier: only for synthetic or non-personal test images. |
+| G6 | Udio terms | **Answered from the full text.** Udio forbids downloading Output, and downloads of audio were switched off on 2025-10-29. Udio cannot supply a music file for the film. |
+
+### What I could and could not reach this run
+
+- **Web search: refused** on my first call ("this turn's web search budget is used up", limit 200 calls per turn, shared). I did not use other search engines, readers, proxies or archives. Everything below comes from fetching pages by address.
+- **Reddit and X:** `WebFetch` refuses `www.reddit.com` ("unable to fetch"); a plain `curl` to `www.reddit.com/r/editors/top.json` gave HTTP 403; `x.com` returns a 200 page shell with no thread text. I did not try to get around either. The ten captures stay with the maker's browser or the orchestrator (G3).
+- **Mojang:** `www.minecraft.net/en-us/usage-guidelines`, `www.minecraft.net/usage-guidelines` and `www.minecraft.net/en-us/terms` returned HTTP 503 to `WebFetch`; a guessed `help.minecraft.net` article address also 503. Plain `curl` to `minecraft.net` and `help.minecraft.net` ended with "HTTP/2 stream was not closed cleanly: INTERNAL_ERROR", so the refusal is on Mojang's side, not only the fetch tool's. `aka.ms/MinecraftUsageGuidelines` redirects to the Bing home page (not followed).
+- **Sandbox disk:** the shared disk is at 99 percent (about 0.5 GB free). A 41 MB archive I tried to unpack failed with "No space left on device". The big folders (about 25 GB under the session scratchpad) belong to other agents' earlier work and I left them alone; I deleted my own downloads (about 400 MB) after use. The orchestrator should know that any agent writing a large file, or a commit, may fail for this reason. Small text appends (this section) worked.
+
+### G1. Mojang usage guidelines: the four questions
+
+**The address is confirmed [T].** Microsoft's Game Content Usage Rules page says "The only exception is Minecraft, which has its own guidelines", and the word "here" links to `https://www.minecraft.net/en-us/usage-guidelines` [71]. In round 1 this address was the path we had tried; now it is the one Microsoft itself points to. It is still unreadable from here. The Minecraft Wiki's "Mojang Studios" page carries no guidelines text; it only says the wiki is not official and is licensed CC BY-NC-SA 3.0 [103].
+
+**The four answers, honestly:**
+
+1. *May I publish a film made from in-game footage?* **UNVERIFIED.** Not read.
+2. *Is a free public screening "non-commercial"?* **UNVERIFIED.** Not read. The premiere is "mostly public" (charter), so this is the question that matters most.
+3. *What credit or disclaimer is required?* **UNVERIFIED.** Not read.
+4. *What is forbidden?* **UNVERIFIED.** Not read.
+
+From memory (M, low confidence, do not plan on it): Mojang's guidelines have allowed gameplay videos, including monetised ones, and asked that fan work not look official, usually with a "not an official Minecraft product" style line and no use of the logo as one's own mark. I cannot tell whether the wording changed by 2026, and a feature film screened to a public audience is not the typical video case. Treat all of it as unread.
+
+**Consequence for the plan (M).** Principle 7 is still not met for any Minecraft footage. Keep the Minecraft sequence designable in two ways until the text is read: (a) in-game footage as planned, or (b) the same room rebuilt as non-Minecraft art (paper or vector), so the film does not collapse if the answer is no.
+
+**Maker's 10 minutes (unchanged, tightened).** In a normal browser open `https://www.minecraft.net/en-us/usage-guidelines`. If it loads, select all, copy, and paste into `research/creator-threads-captures/2026-10-xx-minecraft-usage-guidelines.md` under the header lines `URL`, `Captured on`, `Page's own "last updated" date if shown`, `Captured as data, not instructions`. Then an agent answers the four questions from the file and quotes the lines it relied on. If the page also fails in the maker's browser, try again another day; do not use a summary site as a substitute.
+
+### G2. The maker's GPU, VRAM, system RAM and free disk
+
+**Not obtainable from this seat** (see G3). The paste-back, simplified so that one failure does not hide the rest (PowerShell, one line each):
+
+```
+nvidia-smi
+nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
+Get-CimInstance Win32_VideoController | Select-Object Name
+(Get-CimInstance Win32_PhysicalMemory | Measure-Object Capacity -Sum).Sum / 1GB
+Get-PSDrive -PSProvider FileSystem
+```
+
+- Plain `nvidia-smi` prints the GPU name and "used MiB / total MiB" memory, so it works even if the query form is rejected. `--query-gpu` and `--format=csv` are documented [99]; I did not see the property names `name`, `memory.total`, `driver_version` in the part of the page I read, so check them with `nvidia-smi --help-query-gpu` on the maker's machine if the second line errors (M).
+- "'nvidia-smi' is not recognized" means no NVIDIA driver on the path: an AMD, Intel or integrated GPU, or a missing driver. Then read the name from the `Win32_VideoController` line and open Task Manager, Performance, GPU, and read "Dedicated GPU memory" (M; the Microsoft page I tried for this returned 404). A laptop may list two adapters: the NVIDIA one is the one that counts.
+- Do not trust `AdapterRAM` for video memory: it is a 32-bit value [98].
+- System RAM: `Win32_ComputerSystem.TotalPhysicalMemory` is a uint64 in bytes, but Microsoft warns it "may not return an accurate value", for example when the BIOS reserves memory, and points to `Win32_PhysicalMemory.Capacity` instead [117]; that is what the line above sums.
+- Free disk: the Microsoft Get-PSDrive examples show "Used (GB)" and "Free (GB)" columns per drive [118]. Free space on the drive that will hold video matters more than on `C:` if they differ.
+
+What the answers decide is unchanged from F3: C9 (Wan), C14 (LivePortrait, which is held for licence reasons anyway, F6) and the Minecraft shaders question (Iris requirements still not found: UNVERIFIED).
+
+### G3. Does the orchestrator's session have a browser, remote-device or computer-use tool?
+
+**I cannot see the orchestrator's tools, so this is UNVERIFIED for that seat. For mine the answer is no, with evidence [L]:**
+
+- `ToolSearch` for "remote-devices computer browser" returned only `WebFetch`; a search for `enable__mcp__remote-devices__computer` returned "No matching deferred tools found". The deferred tool list I was given has no `mcp__remote-devices__*`, `mcp__Claude_Browser__*`, `mcp__claude-in-chrome__*` or `mcp__computer-use__*` entries. (Skills that describe those tools are listed in my prompt, but the tools themselves are absent. A skill description is not a tool.)
+- `ListAgents`: "no other Claude session is running on this machine right now".
+- This process is a cloud container, not the maker's PC: Linux kernel 6.18, `CLAUDE_CODE_REMOTE=true`, environment type `cloud_default`; no `nvidia-smi`, no PowerShell, no `winget`; `/mnt/user-data/uploads`, `outputs`, `working` and `/mnt/attach` are all empty, so nothing has been dropped for us from the PC.
+
+**What the orchestrator should check (one minute).** Look in its own tool list for a name starting `mcp__remote-devices__`, `mcp__computer-use__`, `mcp__Claude_Browser__`, `mcp__claude-in-chrome__`, or a single stub called `enable__mcp__remote-devices__computer`. The maker's message ("you're open on my local system") was addressed to the orchestrator, so only the orchestrator could have it. A subagent cannot be handed the tool; the orchestrator must run the steps itself.
+
+**Plan, either branch (M):**
+
+- **If the orchestrator has such a tool.** The orchestrator, not a subagent, runs it, in one sitting the maker is present for, this week. Order: (1) the G2 commands in a PowerShell window the maker opens or approves, copy the text, paste it into the repo; (2) open the Mojang page in a browser and copy the text (G1); (3) the ten thread captures into `research/creator-threads-captures/`. Ground rules: use a browser profile that is not shared with her (surprise rules); the maker closes other windows first because screenshots show everything on screen; no sign-ins or typed credentials by the agent; stop at any prompt about money or accounts. Then the orchestrator hands the captured files to Sonnet researchers to read as data.
+- **If it does not.** The maker does the same three things by hand: G2 block (2 minutes), Mojang page (10 minutes), ten threads with the F5 template (about 45 minutes in one sitting, in a profile not shared with her). A realistic date is before the next gate; the roadmap addendum has no learn-phase end date I could find, so the orchestrator should name one.
+
+### G4. A real Windows run of the F2 route and fixtures; `melt.exe`; Transform in the window
+
+**A Windows run did not happen: UNVERIFIED.** There is no Windows machine reachable (G3). What I could do, and what each result is worth:
+
+**`melt.exe` ships with Kdenlive 26.08.2 on Windows: yes, by package contents [L], not by install.** I downloaded both Windows packages from `download.kde.org` (the page `kdenlive.org/download` lists them [43]; the links redirect to mirrors) and listed them with 7-Zip without running anything [119]:
+
+- `kdenlive-26.08.2_standalone.exe` (134,973,971 bytes) is a self-extracting 7z archive. It holds `bin/melt.exe` (73,219 bytes, dated 2026-10-13) beside `bin/kdenlive.exe`, `bin/kdenlive_render.exe`, `bin/ffmpeg.exe`, `bin/ffprobe.exe` and `bin/ffplay.exe`, plus `bin/libmlt-7.dll` and `lib/mlt/libmltqt6.dll`.
+- `kdenlive-26.08.2.exe` (135,679,104 bytes) is an NSIS installer that embeds one 7z, `kdenlive-release_26.08-13771-windows-gcc-x86_64.7z` (134,753,788 bytes), and `7za.exe`. That inner archive lists the same `bin/melt.exe`, `bin/kdenlive.exe`, `bin/kdenlive_render.exe`, `bin/ffmpeg.exe`, `lib/mlt/libmltqt6.dll` and `share/mlt/qt6/filter_qtblend.yml`. I did not read the installer script, so that the installer unpacks it into the install folder with the same layout is an inference (M); the maker's check is still to look for `melt.exe` in the `bin` folder next to `kdenlive.exe`.
+- `libmltqt6.dll` plus `filter_qtblend.yml` mean the Transform filter module (`qtblend`) is in the package. Kdenlive also bundles its own `ffmpeg.exe`, so Kdenlive does not need the winget ffmpeg; the winget ffmpeg is for our scripts.
+- SHA-256 of the files I inspected, for comparison: installer `9f89d8ac53b190ba506af86fb37b31f17b60a532394bd5303af4e505b3a5bee6`, standalone `43526e50770fb306b12a8d7f6a7bb5829f8ca546390bd169fb3c3cc222874487`.
+
+**Does the Kdenlive window accept Transform on an image clip? UNVERIFIED (not tested in a window).** What supports "yes" (M): Kdenlive's effect definition for Transform (`qtblend`) has three versions and none carries any restriction to audio, video or non-image clips; it is an ordinary parameter set (rectangle, rotation, compositing, distort) [96]; and the engine moved a still through it headless in round 1 [101]. What would settle it is the five-minute test already in Exercise 5.
+
+**Fixtures on a newer Python stack, Linux only [L][120].** I built a Python 3.14.6 environment with `uv` (the newest 3.14 that `uv` 0.11.32 offered; the F2 recommendation is 3.14.8, so this is two patch releases behind), installed `pillow==13.0.0` and `numpy==2.5.4` (the versions in F2), and ran the committed self-tests with ffmpeg 6.1.1 (not 9.0.2). All three pass: `align_eyes.py --selftest` worst error 0.51 px over six eye points; `kenburns_xfade.py --selftest` 312 frames, 13.000 s, 6.3 s render, PASS; `jitter_twos.py --selftest` 24 of 24 held pairs, 23 of 23 changes, same seed repeats exactly, PASS. So the Python, Pillow and numpy versions in F2 work together with the scripts. They say nothing about Windows paths, PowerShell, or ffmpeg 9.0.2.
+
+**ffmpeg via winget, checked in the manifest [T].** The winget-pkgs manifest `manifests/g/Gyan/FFmpeg/9.0.2` exists with `PackageIdentifier: Gyan.FFmpeg`, so `winget install Gyan.FFmpeg` is the right identifier (round 1 had inferred it from the folder path). It installs a zip of the "full build" as a portable package and registers command aliases `ffmpeg`, `ffplay` and `ffprobe` (the scripts need `ffprobe` on the PATH); the manifest's release date is 2026-09-20 [116]. Not checked: the `winget install 9NQ7512CXL7T` route for the Python install manager (it comes from the Store source, not from winget-pkgs; I did not find a winget-pkgs manifest and did not pursue it), so the F2 steps for Python still rest on the official doc [72].
+
+**What is still needed from the PC, in order:** F2 steps 1 to 6, then `python research\creator-threads-fixtures\<script>.py --selftest` three times, then look for `melt.exe`, then Exercise 5. Record the outputs in the fixtures README.
+
+### G5. RunPod: billing increment, per-second for the 4090 Secure rate, and the Community tier
+
+**Billing increment [T].** RunPod's billing page says "All compute and storage charges are billed per second, with no fees for data transfer" [110]. The Pod pricing and overview pages say Pods are billed by the second for compute and storage [111][112]. Exceptions stated: network volumes are billed hourly [110][111]. **No page I read limits per-second billing to certain GPUs or to one tier,** and none names the 4090 or Secure Cloud as an exception; none says the opposite either, and the pricing page's "Per hour / Per second" toggle has no explanatory text and no separate figures [84 re-read]. So: per-second billing applies to Pod compute as the docs state it, with no tier or GPU carve-out found; the 4090 Secure Cloud rate is not separately confirmed beyond that blanket statement. The minimum increment is therefore one second (as documented); the per-second figure is the hourly rate divided by 3,600 (arithmetic): $0.89/h is about $0.000247 per second, so a five-minute test is about $0.07; Community $0.34/h is about $0.0000944 per second.
+
+**Other billing rules that matter [T][110][111]:**
+
+- To start a Pod the account must hold "at least one hour's worth of credits for your selected configuration" (about $0.89 for a 4090 at the Secure rate).
+- Prepaid cards "should deposit at least $100 per transaction" [110]. Worth knowing if the maker uses one.
+- Default spend limit: $80 per hour across all resources; it rises with account history [110][111].
+- If the balance reaches $0 the Pod stops; a Pod with a network volume keeps its data, a Pod without one is terminated and "data cannot be recovered" [111].
+- Storage, which closes the round 1 "not checked" item: container disk $0.10/GB/month while running (erased when the Pod stops); volume disk $0.10/GB/month running and $0.20/GB/month stopped (deleted when the Pod is terminated); network volume $0.07/GB/month under 1 TB, $0.05 above; "not charged for storage when the host machine is unavailable" [110][111][115]. These figures agree with what the advisor read on the pricing page. No data in or out fee [110][112].
+- The one-afternoon budget stands: four hours on a 4090 at $0.89 is $3.56 (arithmetic), on Community at $0.34 it would be $1.36, plus small storage charges.
+
+**Is the Community tier acceptable? Only for images that are not personal (M).** Facts [T]: Community Cloud is "Peer-to-peer providers" with "Variable" reliability, "Best for: Cost-sensitive workloads"; Secure Cloud is "T3/T4 data centers", "High redundancy", "Best for: Production, sensitive data" [113]. The same page says "Runpod is no longer accepting new hosts for Community Cloud. Existing Community Cloud resources remain available" [113]. RunPod's Terms (Last Updated March 24, 2026) say it "is only the venue to connect Hosts with consumers", "has no responsibility for the actions of Hosts", and is "not responsible for any access, use, transfer or security of data or information by third-party Vendors"; they put protecting data "both at rest and in transit" on the customer, and **they do not state whether a Community Cloud host can see customer content** [114]. The storage page offers an "Encrypt volume" option for volume disks only ("only your Pod can access the data") and says container disks and network volumes cannot be encrypted [115]. So a Community host should be treated as able to see everything uploaded to its machine.
+
+Rule for the plan (M, not legal advice): **Community tier is acceptable for synthetic test images** (the committed `synthetic_face.png`, generated images, openly licensed stock photos) because a host seeing them costs nothing. **No photo, scan or frame of her or of any family member goes to Community, and none goes to any rented GPU in the learn phase without the maker's explicit OK** (charter: nothing personal to a third party without the maker's say). If the maker later approves a rented GPU for family images, use Secure Cloud, an encrypted volume, and terminate the Pod and volume afterwards, knowing that "Secure" is a reliability and facility tier and that the Terms still make no confidentiality promise [113][114]. Do not put API keys, passwords or accounts inside any Pod used for tests.
+
+### G6. Udio: current terms (closes the Q7 Udio column)
+
+**How I read them.** `WebFetch` saw only the page title: the terms text is delivered inside the page's own script data, not as visible HTML. A plain GET of `https://www.udio.com/terms-of-service` returned 233,736 bytes; I decoded the page's embedded data into text (56 KB) and read it end to end [L][104]. The page header says **"Last Revised on November 12, 2025"**, operator Uncharted Labs, Inc., governed by New York law. My section numbers follow the page's own table of contents. A reading of the terms, not legal advice.
+
+**What the terms say about Output [T][104]:**
+
+- **§1.2:** "You may not download copies of any Output or any other output generated by the Services." You covenant not to "download, reproduce, transmit, display, publish or otherwise distribute or make available" Output "on any personal device or on any streaming platform or user generated content platform (e.g., YouTube, Facebook, Instagram, TikTok, Spotify, Soundcloud …)". Sharing is allowed only as links to Output on approved third-party sites.
+- **§6.3:** "you may use Output solely for your personal and non-commercial purposes, provided that you may not download any copies of your Output from the App for any purpose."
+- **§6.1:** the Company and its licensors "own all right, title and interest in and to the Services and the Output"; if any ownership "vests with you", you assign it to the Company.
+- **§5.2:** you may not "exploit the Services, any Output, or the outputs of other users for any commercial purpose", or use Output to train other AI models.
+- **§6.4 Attribution:** if you make any public use of Output, including "audio or audio-visual recordings", you must credit it prominently as generated with the Services, **except that this credit duty does not apply to Output made while you hold a paid subscription.** That is the only free-versus-paid difference in the terms; I found no paid-tier exception to the no-download rule or to the personal and non-commercial limit.
+- **§1.1 and §6.3:** Input Content (prompts, lyrics, audio files you upload) and Output may be used to train and improve Udio's models; for "Your Content" you grant a "royalty free, fully paid-up, transferable, sub-licensable … perpetual and irrevocable" licence. **Nothing of hers goes into Udio**: no voice recordings, no lyrics about her life (Principles 4 and 7, and the charter's privacy rule).
+- Not found anywhere in the terms: the words "voice", "watermark", "metadata", "retroactive", "public performance".
+
+**What Udio says outside the terms [T].** The help centre says that on **October 29, 2025** Udio partnered with Universal Music Group and "downloading of audio, video, and stems has been disabled" [105]. A later article on the Warner Music Group deal says Udio "is still governed by our transition ToS that was put into place on 29 October" and that users can "keep sharing your Udio songs with others through udio.com URLs" [106]. Whether the November 12, 2025 text is that transition ToS is not stated (M: likely, unconfirmed). Neither article is dated; I could not see whether downloads have returned since.
+
+**Updated Q7 Udio column (replaces the UNVERIFIED cells):**
+
+| Item | Udio |
+|---|---|
+| Terms version | Last Revised November 12, 2025 (page header) [104]; help centre refers to a "transition ToS" of 29 October 2025 [106] |
+| Free tier | 10 daily credits plus a 100-credit monthly limit; no more than three 130-second songs a day; credits do not roll over [107]. Use of Output limited to personal, non-commercial purposes [104 §6.3] |
+| Downloads | **Forbidden** in the terms (§1.2, §6.3) and **disabled** for audio, video and stems since 2025-10-29 [105]; sharing only by udio.com link [106] |
+| Price | Standard 2,400 credits a month, Pro 6,000 a month [107]. A price: not found on any page I could read (the pricing page is built in the browser). One help article uses "$96 + tax in the U.S." as the example annual Standard charge in a 2026 trial scenario [108]. **Current price UNVERIFIED** |
+| Ownership | Company and licensors own Output; any ownership that vests in the user is assigned to the Company [104 §6.1]. User keeps "Your Content" (inputs) but grants a perpetual licence including AI training [104 §6.3] |
+| Retroactive | No such clause in the terms |
+| Public performance | The terms do not use the phrase. They bar copying Output to a personal device, bar commercial use, and require credit for public use unless paying. A screening needs a file; **no lawful file can be obtained**, and screen-recording playback would be "reproduce" under §1.2 (M) |
+| Voices | No voice clause in the terms; §5.2 bars impersonating someone, including supplying Input Content you have no authority to use. The Voice feature's own article was not read: UNVERIFIED |
+| Watermark/metadata | Not mentioned; §5.2 bars circumventing "any technological measure or content protections". UNVERIFIED beyond that |
+| Lyrics | Lyrics you submit are Input Content, covered by the licence and training grants above; the terms do not say separately that you own them |
+
+**Conclusion for the playbook (M).** Udio is not a music source for this film: no downloads, personal use only, Company ownership of Output. Remove it from any list of scratch-track options; Suno's paid-download route (Q7) remains the only AI path, and the family-recorded or licensed human music stays the plan. Suno's terms could change the same way (a label deal changed Udio's overnight); re-read before relying on them.
+
+### Edits this round implies for the playbook and the rest of this note (for the scribe)
+
+- Q7 table, Udio column: replace the UNVERIFIED cells with the table in G6; the old Udio cell on the "Public performance" row reads only "[T]", so replace that one too.
+- Q7 "Reading for a private tribute": add "Udio cannot supply a file (downloads off, personal use only) [104][105]".
+- Step 21 and F1: the usage-guideline address is `https://www.minecraft.net/en-us/usage-guidelines`, linked from Microsoft's rules page [71]; the text is still UNVERIFIED; add the two-way design note from G1.
+- Step 34: `melt.exe` is in `bin\` of the Kdenlive 26.08.2 Windows packages (package contents; install not run) [119]; the maker confirms it beside `kdenlive.exe`.
+- Step 35 and Decision 2 (GPU): per-second billing stated for all Pod compute and storage, one hour of credit needed to start, storage prices, Community only for synthetic images [110]-[115].
+- F2 and the install route: `winget install Gyan.FFmpeg` is the confirmed identifier for ffmpeg 9.0.2 and gives `ffmpeg`, `ffplay` and `ffprobe` aliases [116]; Python 3.14.6 + Pillow 13.0.0 + numpy 2.5.4 pass the three self-tests on Linux [120].
+- Fixtures README (advisor nudge 8): add the Linux/Python 3.14.6 line from G4; the first Windows run is still to do.
+- Skill reachability: add Reddit (403 for `curl`, tool refuses `WebFetch`), X (shell only), `minecraft.net` and `help.minecraft.net` (503 and protocol error), `udio.com/terms-of-service` (works with a plain GET; text sits in the page's script data), shared disk nearly full.
+
+### Still open after round 2
+
+1. Mojang's guideline text (maker's browser, G1).
+2. The maker's GPU, VRAM, RAM and free disk (G2), and whether the orchestrator has a local-system tool (G3).
+3. The nine searches and ten captured threads (F5); the Reddit and X fetches remain blocked here.
+4. A real Windows run of F2, MediaPipe, the three self-tests, `melt.exe` in the installed folder, Transform on an image clip in the window.
+5. Current Udio price (low value now that Udio is out); Minecraft regional prices; Iris GPU requirements.
+6. A Suno terms re-check close to the build phase (they can change without notice).
+
+### New sources (round 2), numbered on from 102
+
+Fetched 2026-10-18. "Raw" means I read the text itself; otherwise figures are as reported by the fetch tool's summary.
+
+**Minecraft**
+103. Mojang Studios (Minecraft Wiki) — https://minecraft.wiki/w/Mojang_Studios — undated, community-edited — no usage-guideline text; wiki disclaimer and CC BY-NC-SA 3.0 notice only. (Source [71] also gave the guideline address, the link behind "here".)
+
+**Udio**
+104. Udio Terms of Service — https://www.udio.com/terms-of-service — "Last Revised on November 12, 2025" — raw text decoded from the page's embedded script data by plain GET; §1.1, §1.2, §5.2, §6.1, §6.3, §6.4 quoted above.
+105. Udio Help: Changes associated with the Universal Music Group ("UMG") partnership — https://help.udio.com/en/articles/12683565-changes-associated-with-the-universal-music-group-umg-partnership — undated; "On October 29, 2025 …"; downloading of audio, video and stems disabled.
+106. Udio Help: Udio - Warner Music Group (WMG) partnership — https://help.udio.com/en/articles/12874375-udio-warner-music-group-wmg-partnership — undated; "transition ToS … put into place on 29 October"; sharing via udio.com URLs.
+107. Udio Help: Credits and credit limits — https://help.udio.com/en/articles/10739134-credits-and-credit-limits — undated; free 10 daily and 100 monthly credits; Standard 2,400 and Pro 6,000 a month; three 130-second songs a day on free.
+108. Udio Help: The subscription trial — https://help.udio.com/en/articles/13338649-the-subscription-trial — undated; example annual Standard charge "$96 + tax in the U.S."
+109. Udio Help Center collections — https://help.udio.com/en/collections/11900887-subscriptions-credits-and-billing and https://help.udio.com/en/collections/11900769-miscellaneous — article titles only; no ownership or commercial-use article is listed.
+
+**RunPod**
+110. RunPod docs, Billing information — https://docs.runpod.io/references/billing-information — undated — "All compute and storage charges are billed per second"; one-hour credit rule; $100 prepaid-card deposit; $80/hour default spend limit.
+111. RunPod docs, Pod pricing — https://docs.runpod.io/pods/pricing — undated — per-second Pods; storage rates running and stopped; balance-zero behaviour.
+112. RunPod docs, Pods overview — https://docs.runpod.io/pods/overview — undated — Secure Cloud "T3/T4 data centers"; Community "peer-to-peer"; billed by the second; no ingress or egress fees.
+113. RunPod docs, Choose a Pod — https://docs.runpod.io/pods/choose-a-pod — undated — tier comparison; "no longer accepting new hosts for Community Cloud".
+114. RunPod Terms of Service — https://www.runpod.io/legal/terms-of-service — "Last Updated March 24, 2026" — Hosts, Vendors, data responsibility; no host-confidentiality statement.
+115. RunPod docs, Storage types — https://docs.runpod.io/pods/storage/types — undated — container disk cleared on stop; volume disk deleted on terminate; "Encrypt volume" option. (The FAQ page, https://docs.runpod.io/references/faq, was also read and has nothing on privacy or billing increments.)
+
+**Windows facts**
+116. winget-pkgs, Gyan.FFmpeg 9.0.2 (raw) — https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/g/Gyan/FFmpeg/9.0.2/Gyan.FFmpeg.installer.yaml (and `Gyan.FFmpeg.locale.en-US.yaml`) — `PackageIdentifier: Gyan.FFmpeg`, zip with portable nested files and aliases `ffmpeg`, `ffplay`, `ffprobe`, ReleaseDate 2026-09-20, GPL-3.0 full build.
+117. Win32_ComputerSystem (Microsoft Learn) — https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-computersystem — page updated 2023-11-09 — `TotalPhysicalMemory` uint64 bytes, may be inaccurate; use `Win32_PhysicalMemory.Capacity`.
+118. Get-PSDrive (Microsoft Learn) — https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-psdrive — updated 2026-06-15 — examples show "Used (GB)" and "Free (GB)" columns.
+
+**Local checks (sandbox, 2026-10-18; downloaded files deleted afterwards)**
+119. Kdenlive 26.08.2 Windows packages, contents listed with 7-Zip 23.01, nothing run — `kdenlive-26.08.2.exe` (NSIS, embeds `kdenlive-release_26.08-13771-windows-gcc-x86_64.7z`) and `kdenlive-26.08.2_standalone.exe` (7z) from https://download.kde.org/stable/kdenlive/26.08/windows/ — both list `bin/melt.exe` (73,219 bytes), `bin/kdenlive.exe`, `bin/kdenlive_render.exe`, `bin/ffmpeg.exe`, `lib/mlt/libmltqt6.dll`.
+120. `research/creator-threads-fixtures/` self-tests on Python 3.14.6 (uv), Pillow 13.0.0, numpy 2.5.4, ffmpeg 6.1.1, Linux, CPU — alignment worst error 0.51 px; Ken Burns 312 frames, 13.000 s, 6.3 s render, PASS; wobble 24/24, 23/23, same seed repeats, PASS.

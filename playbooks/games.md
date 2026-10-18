@@ -1,13 +1,13 @@
 # Games that tell life stories: mechanics that carry meaning
 
-Track: games · Draft v0.2 · 2026-10-18 · For the maker (a motivated learner)
+Track: games · Draft v0.3 · 2026-10-18 · For the maker (a motivated learner)
 Built from research/games.md and CHARTER.md. Numbers in brackets, like [1], point to the Sources list at the end. Anything marked TODO(research) is still open.
 
 ## Why this matters for our life journey
 
 Charter Principle 2 says every interactive or animated device has to say something true about the life. Games have spent years finding small actions that do this. In *Unpacking*, a player places one life's belongings into successive homes. In *Florence*, a conversation is a puzzle that gets easier as two people relax. In *A Memoir Blue*, the trophies are moved aside to reveal photographs. Each one uses a single small verb to say something large [1][3][5][30].
 
-Most game mechanics are built for quick hands, points and fail states. Our viewers are of mixed ages, and the subject is over 50 and may not play games at all. So we borrow the ideas that carry meaning and leave the gamer parts behind [39][41].
+Most game mechanics are built for quick hands, points and fail states. Our viewers are of mixed ages, and the subject is over 50 and may not play games at all. So we borrow the ideas that carry meaning and leave the gamer parts behind [39][41]. Because the main event is a film, most devices will run as animation; the click rules below apply to the optional keepsake.
 
 Minecraft sits in the middle. Some people will recognise it, and real memorials have been built in it. But its rules limit public showing and selling, and its default look reads as generic. That is why our default is original voxel assets, with Minecraft as a reference [42][49].
 
@@ -15,13 +15,13 @@ The biggest risk is decoration: a points bar, or a copy of a famous game's look 
 
 ## Core principles (8)
 
-1. **Swap the subject.** Change the person's facts to another family's. If the device still works unchanged, it is decoration and fails Principle 2. A device that passes could only be this person's: a real object, a real room, a real move. A 10-year-old's zoo for his late father has an octopus aquarium because his father fished. Nobody else's zoo would look like that [1][3][59].
+1. **Swap the subject.** Change the person's facts to another family's. If the device still works unchanged, it is decoration and fails Principle 2. A device that passes could only be this person's: a real object, a real room, a real move. A 10-year-old's zoo for his late father has an octopus aquarium because his father liked to fish. Nobody else's zoo would look like that [1][3][59].
 2. **One verb, one meaning.** Pick one small action (place, pack, lift aside, wait for a chime) and tie it to a real event. If you cannot finish this sentence, cut the device: "In this chapter the viewer ___, which means ___ about her life" [1][5].
 3. **No points, no fail, no timer.** Milestones are not achievements. Remove scores, badges, progress percentages, game over and timed input. If a pop-up could read "Achievement unlocked: Married," delete it [1][37][38].
 4. **Four input rules.** Every interaction must (a) work with one click, (b) show the next step, (c) work if nobody touches it, and (d) let the host pause. The pause chime from *Before Your Eyes* is the model for (b) to (d) [14][39].
 5. **Friction tracks the relationship.** Make a moment harder when the relationship is tense and easier when it is settled. This is *Florence*'s core trick [5][6].
-6. **Real things, few of them.** One object that survives every move is worth more than fifty props. Photograph the real thing, keep the set small, and log every object. In *Edith Finch*, one bedroom's decor was reportedly revised late, once the team saw that the room told its owner's story without narration. TODO(research): verify this detail against developer interviews [12][13].
-7. **Reconstructions look like reconstructions.** Rebuilt scenes use a visibly different medium from documents. Hard chapters follow the family's say (Principles 4 and 5). *Edith Finch* leaves the player unsure how accurate each account is, and we must make our reconstructions honest in the same way [11][13].
+6. **Real things, few of them.** One object that survives every move is worth more than fifty props. Photograph the real thing, keep the set small, and log every object. In *Edith Finch*, the team realised only at Lewis's room (the second-to-last bedroom) that a bedroom could carry its owner's story without narration, and then made "major changes ... to all the previous bedrooms" in the final months (Dallas's GDC 2018 talk, via Wikipedia) [10][13].
+7. **Reconstructions look like reconstructions.** Rebuilt scenes use a visibly different medium from documents. Hard chapters follow the maker's decision as her proxy (Principles 4 and 5). *Edith Finch* leaves the player unsure how accurate each account is, and we must make our reconstructions honest in the same way [11][13].
 8. **Design for a room.** Assume a host, a shared screen and mixed ages. Pause-and-talk beats solo skill. Viewers of *Unpacking* on Twitch narrate their own lives as they watch [3][61]. Surprise mode: collect contributions only from the 'in on it' list kept by `surprise-ops`, one person at a time, never via a group chat; the wall can keep growing after the reveal.
 
 ## How to do it, step by step
@@ -119,11 +119,11 @@ Times are our own estimates.
 **Goal:** know what is allowed before you choose a visual source.
 
 **Steps:**
-1. Read the Minecraft Usage Guidelines [42] and the End User Licence Agreement [43].
-2. Copy the clauses about sharing, public display, selling and endorsement into a one-page note. Write down the date you read them. Save the exact clauses as a dated plain-text excerpt at research/sources/minecraft-usage-guidelines-YYYY-MM-DD.md (short quotes, URL, date), so the terms check never depends on the page being up. Do the same once for the Eurogamer interview [3] (it carries the Bed Song, 14,000-foley, spreadsheet and "hollow" claims) at research/sources/eurogamer-unpacking-YYYY-MM-DD.md.
-3. List the questions a lawyer would need to answer, such as whether a private family screening in a hired room counts as public display.
+1. Read the saved excerpt first, then the live pages [42][43] if they load (minecraft.net returned 503 on both review days); record which you used.
+2. Copy the clauses about sharing, public display, selling and endorsement into a one-page note. Write down the date you read them. The saved excerpt of the Usage Guidelines is research/sources/minecraft-usage-guidelines-2026-10-18.txt (short quotes, URL, date), so the terms check never depends on the page being up. Convention: one dated `.txt` per source under `research/sources/`, one source per file per date, named `<source>-YYYY-MM-DD.txt`. The Eurogamer interview [3] (it carries the Bed Song, 14,000-foley, spreadsheet and "hollow" claims) is not yet split out: it is section 1 of research/excerpts/games-round1-followup-2026-10-18.txt.
+3. Only if the Decision 3 rule is broken (Minecraft footage or assets on screen): list the questions a lawyer would need to answer, such as whether a private family screening in a hired room counts as public display.
 
-**Good looks like:** each clause has a quote or close paraphrase, a date and a source. The questions are written down. Mojang says it will not advise on a specific project, so the questions go to a lawyer [42]. The usage page has no visible date, and no dated version has been found. A third-party "April 19, 2026" date [71] has been withdrawn by its source, so do not cite it [83]. Re-read the page on the day of any showing.
+**Good looks like:** each clause has a quote or close paraphrase, a date and a source. The questions are written down. Mojang says it will not advise on a specific project, so the questions go to a lawyer [42]. The usage page has no visible date, and no dated version has been found. A third-party "April 19, 2026" date [71] has been withdrawn by its source, so do not cite it [83]. Re-read the page on the day of any showing, and run research/sources/check_mojang_quotes.py on a saved copy (routine in the excerpt file, section 6).
 
 ### Exercise 8: Watch Brier, then Gaynor (about 2 hours)
 
@@ -142,19 +142,19 @@ Times are our own estimates.
 **Goal:** find out whether a click-only device works for an older hand.
 
 **Steps:**
-1. Find a consenting older adult who is not the subject. Do not test with her, because the surprise would be at risk. TODO(research): the notes suggest a real 70-year-old on the actual hardware. Decide the tester with the surprise-ops track [41].
+1. Choose a consenting older adult who is not the subject and is told only that you are testing a click-through slideshow; show no family material and do not name the project. If the maker later brings someone in, prefer them. Do not test with her, because the surprise would be at risk.
 2. Give the tester one click-only prototype, such as the chime or the trophy reveal, on the hardware they would use.
 3. Watch for ten minutes without helping. Count wrong-direction moves, missed double clicks, time spent unsure, and how often they ask what to do.
 
-**Good looks like:** they reach the end without help and without visible stress. Older adults in one study felt stressed by time limits [41]. TODO(research): no direct study of trackpad drag or click-and-hold for older adults was found.
+**Good looks like:** they reach the end without help and without visible stress. Older adults in one study felt stressed by time limits [41]. No study of trackpad, remote or clicker use by adults over 70 was found. Two UK interactive-TV studies of older viewers exist (Carmichael 1999; Rice and Alm 2008) but were not read, and the search tool refused, so this is a gap, not a finding of absence (research F7 and G2). This exercise is our evidence until round 3 finds one.
 
 ## Decisions you'll need to make (options and our current lean)
 
-**1. Visual source.** Options: Minecraft's look and footage; original voxel or vector assets; a mix. *Our lean:* original assets in MagicaVoxel or Blockbench [49][50][51], with Minecraft as a reference only.
+**1. Visual source.** Options: Minecraft's look and footage; original voxel or vector assets; a mix. *Our lean:* original assets in MagicaVoxel or Blockbench [49][50][76], with Minecraft as a reference only.
 
 **2. Minecraft edition and computer.** Options: Java; Bedrock; no Minecraft at all. Replay Mod is a Java Edition mod (Fabric for 1.14+, Forge for 1.12.2 and below) and Flashback is a Fabric client mod; neither page mentions Bedrock [44][46]. Mineways exports Java worlds to OBJ and USD for Blender [48]. *Our lean:* no decision yet. The maker's computer is Windows (charter Known facts). TODO(research): Which Minecraft edition, if any, does the maker own? (Java is needed for Replay Mod, Flashback and Mineways.)
 
-**3. Showing it.** Options: a private family showing at home; a hired venue; online. *Our lean:* private, free, no advertising, no Minecraft logo, original assets. A hired venue is a grey area under Mojang's wording [42]. TODO(research): ask a lawyer, or choose original assets.
+**3. Showing it.** Closed by the charter: the premiere is a mostly public gathering, treated as a public screening. Rule for this track: no Minecraft textures, models, sounds or footage on screen; original voxel assets only (MagicaVoxel [76], Blockbench [49][50]). The lawyer question in Exercise 7 arises only if that rule is broken.
 
 **4. Input.** Options: click once; drag; keyboard; webcam. *Our lean:* click once only, with auto-advance [14][41].
 
@@ -164,9 +164,9 @@ Times are our own estimates.
 
 **7. Number of personal styles.** Options: one look; one style per key person. *Our lean:* at most three to five. The team behind *Edith Finch* built and dropped many prototypes to land 13 stories [10][11].
 
-**8. Locked chapter.** Options: none; a locked door that the family decides about. *Our lean:* only if the trusted proxy agrees (Principle 5). The Minecraft Vault is the model: each player opens it once, with its own key [55].
+**8. Locked chapter.** Options: none; a locked door that the maker, as her proxy, decides about. *Our lean:* only if the maker, as her proxy, decides so after the advisor's flag (Principle 5). The Minecraft Vault is the model: each player opens it once, with its own key [55].
 
-**9. Format.** The format track decides. *Our lean from this track only:* a click-through scroll story with a few voxel dioramas, because it needs no gamer hands. TODO(research): confirm with the format track.
+**9. Format.** Decided by the charter: the main event is a linear animated film; playable pieces are an optional companion keepsake. For the film, use each pattern's animated form and rating (patterns 9, 10, 12, 22, 24, 29 and 35 carry one; the wording varies, for example "as animation" or "as motion design"). Interactive forms go to the keepsake only, and only if the maker decides to make it (charter, Open decisions).
 
 **10. Redstone or working machinery.** *Our lean:* skip, unless she truly worked with circuits or clockwork. TODO(research): redstone was not researched.
 
@@ -244,7 +244,7 @@ Tier tags: [P] primary designer, creator or official; [S] journalism quoting des
 [48] Mineways — https://erich.realtimerendering.com/minecraft/public/mineways/ — fetched 2026-10-18 — [P] version 14.01, updated 2026-10-03.
 [49] Blockbench — https://blockbench.net/ — fetched 2026-10-18 — [P].
 [50] Blockbench README — https://cdn.jsdelivr.net/gh/jannisx11/blockbench@master/README.md — fetched 2026-10-18 — [P] GPL-3.0; assets are yours.
-[51] VoxelFans — MagicaVoxel page (third-party) — https://voxelfanscom.nuxt.dev/magicaVoxel — fetched 2026-10-18 — [T] "free for personal and commercial use"; official license unverified.
+[51] VoxelFans — MagicaVoxel page (third-party) — https://voxelfanscom.nuxt.dev/magicaVoxel — fetched 2026-10-18 — [T] "free for personal and commercial use"; superseded by [76] (official site licence block, confirmed 2026-10-18); kept only as the lead.
 [52] Minecraft Wiki — Map — https://minecraft.wiki/w/Map — fetched 2026-10-18.
 [53] Minecraft Wiki — Daylight cycle — https://minecraft.wiki/w/Daylight_cycle — fetched 2026-10-18.
 [55] Minecraft Wiki — Vault — https://minecraft.wiki/w/Vault — fetched 2026-10-18.
@@ -265,3 +265,4 @@ Tier tags: [P] primary designer, creator or official; [S] journalism quoting des
 
 - **v0.1, 2026-10-18.** First draft by a Haiku scribe, built from research/games.md (Sonnet researcher, 2026-10-18) and CHARTER.md. Open items are marked TODO(research). Not yet reviewed at the advisor gate (rubric: meaning, specificity, accuracy, feasibility, ethics, usability).
 - **v0.2, 2026-10-18 (games round 1).** Applied the Fable round-1 review: Windows and VectorCraft (charter Known facts) replace the OS TODOs, with Inkscape as the named fallback; the Minecraft-edition TODO is the only one left in Decision 2; Replay Mod and Flashback described as Java Edition mods; Messex quote cited to [15] and metronome to [14]; Modrinth telemetry confirmed; Brier's talk tagged free and watched before Gaynor's; MagicaVoxel licence taken from the site (Exercise 6); the withdrawn April 19 date is no longer cited; [41] URL updated; synthetic-voice ban and surprise-mode real words added; surprise-safe contribution rule added to Principle 8; excerpt-saving step added to Exercise 7.
+- **v0.3, 2026-10-18 (games round 2).** Applied the Fable round-2 review: hard chapters and Decision 8 now go to the maker as her proxy, flagged by the advisor, with no relative consulted; Decision 3 closed by the charter (mostly public premiere, original assets only); Decision 9 decided by the charter (linear film, optional keepsake); Principle 6 Edith Finch revision sourced to Dallas's GDC 2018 talk and its TODO closed; MagicaVoxel licence cited to [76]; excerpt paths and premiere-week hash method corrected; Exercise 9 tester and evidence wording fixed; tester checklist box added to the skill; Principle 1 now says "liked to fish" (SooToday [59]).

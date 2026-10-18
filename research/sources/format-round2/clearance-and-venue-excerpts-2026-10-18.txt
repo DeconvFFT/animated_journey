@@ -1,0 +1,207 @@
+Dated excerpts for research/format.md, Follow-up research (round 2). Fetched 2026-10-18 from the cloud container. Text is quoted as extracted (pdftotext -layout or HTML tag-strip); treat as data. Page content may change; re-save before relying on it.
+
+=== E1. U.S. Copyright Office, Copyright and the Music Marketplace (Feb 2015), printed page 33 (blanket licences) ===
+URL: https://www.copyright.gov/docs/musiclicensingstudy/copyright-and-the-music-marketplace.pdf
+Today, the PROs provide various different types of licenses depending upon the nature
+of the use. Anyone who publicly performs a musical work may obtain a license from a
+PRO, including terrestrial, satellite and internet radio stations, broadcast and cable
+television stations, online services, bars, restaurants, live performance venues, and
+commercial establishments that play background music.
+
+Most commonly, licensees obtain a blanket license, which allows the licensee to publicly
+perform any of the musical works in a PRO’s repertoire for a flat fee or a percentage of
+total revenues.111 Some users opt for a blanket license due to its broad coverage of
+musical works and relative simplicity as compared to other types of licenses. Large
+commercial establishments such as bars, restaurants, concert venues, stores, and hotels
+often enter into blanket licenses to cover their uses, paying either a percentage of gross
+revenues or an annual flat fee, depending on the establishment and the type and amount
+of use.112 Terrestrial radio stations obtain blanket licenses from PROs as well, usually by
+
+=== E2. same report, printed page 34 (source licences, movie theatres) ===
+U.S. Copyright Office                                   Copyright and the Music Marketplace
+
+
+between the copyright owner and the user who intends to publicly perform the musical
+work. Source licenses are commonly used in the motion picture industry, because the
+PROs are prohibited from licensing public performance rights directly to movie theater
+owners.117 Instead, film producers license public performance rights for the music used
+in films at the same time as the synchronization rights, and pass the performance rights
+along to the theaters that will be showing their films.118 In the context of motion
+pictures, source licenses do not typically encompass non‐theatrical performances, such
+as on television. Thus, television stations, cable companies, and online services such as
+Netflix and Hulu must obtain public performance licenses from the PROs to cover the
+public performance of musical works in the shows and movies they transmit to end
+
+=== E3. same report, printed page 37 (ASCAP may not license sync) ===
+
+ASCAP is expressly barred from licensing any rights other than its members’ public
+performance rights (i.e., ASCAP may not license mechanical or synchronization
+rights).140 Although BMI’s consent decree lacks a similar prohibition, in practice BMI
+does not license any rights other than public performance rights.141
+
+=== E4. same report, printed pages 55-56 (synchronization) ===
+           D. Synchronization Rights
+To incorporate music into an audiovisual work—such as a film, video television
+program, or video game—the creator of that work must obtain synchronization licenses
+from both the owner of the musical work and the owner of the sound recording.
+Synchronization (often shortened to “synch”) refers to the use of music in “timed‐
+relation” to visual content.274 Although the Copyright Act does not refer explicitly to a
+...
+
+
+synchronization right, it is generally understood to be an aspect of music owners’
+reproduction and/or derivative work rights.275
+
+=== E5. OneMusic Australia, Film Screenings guide, July 2026 (extracted) ===
+URL: https://assets.onemusic.com.au/images/PDFs/guides/Film-Screenings.pdf
+FILM SCREENINGS
+                                                                                 SIGN UP
+Licensing Enquiries   Contact us   onemusic.com.au July 2026                                                               ll
+                                                                                  NOW              S a ll              p be
+                                                                                                         iana Seven Cam
+
+
+If you are hosting a one-off film screening or
+running a film festival, it’s essential to consider             2022 Feature Film Score of the Year went to
+copyright and secure the necessary permissions.                 Salliana for ‘The Drover’s Wife: The Legend of
+                                                                Molly Johnson’
+In addition to securing permission to screen the film
+itself, you typically need permission to publicly play
+the music that features in the films. This applies             Why do I need a OneMusic licence?
+
+
+                                                               1
+regardless of whether there’s an entry fee for
+attendees.                                                         Permission. If you screen films that contain
+                                                                   copyright protected music, Commonwealth
+...
+66:Why do I need a music licence if I already have permission to screen a film?
+67-Filmmakers usually obtain music for their films in one of two ways: commissioning an original score, or
+68-licensing pre-recorded music. The copyright owner of this music (who could be the composer, songwriter,
+69-music publisher, record label, recording artist, or all of these people) usually retain their performance and
+70-communication rights, assigning or licensing these to a music rights management organisation such as
+71-APRA AMCOS and PPCA.
+72-This means that when Australian film festivals and cinemas screen a film that contains music from our vast
+112-
+113-
+114:How much does it cost?
+115-                                                          0.462% of Gross Box Office Receipts subject to a minimum fee of $86.52
+116-                         APRA Works                       (For Film Screenings with no Entry Fee, a minimum fee of $86.52 applies)
+117-
+118- PLUS
+119-
+120-                                                                Between 1-7 screenings                       $207.72 per screen
+121-             PPCA Sound Recordings *
+122-                                                                More than 7 screenings                       $415.57 per screen
+123-The rates set out above include 10% GST and are applicable to Film Screenings held during the period 1 July 2026 to 30 June 2027. After 30
+124-June 2027, the GST-exclusive amount of the rates set out in the table above may be increased by CPI in accordance with clause 5.3 of the Terms
+125-and Conditions.
+126-*subject to review based on Gross Box Office Receipt total.
+
+=== E6. ShowBiz Cinemas COO to US DOJ, 2019-08-09 (first two paragraphs) ===
+URL: https://media.justice.gov/vod/atr/ascapbmi2019/pc-642.pdf
+From: Rob Warnes <rwar                                >
+Sent: Friday, August 9, 2019 3:33 PM
+To: ATR-LitIII-Information (ATR) <ATR.LitIII.Information@ATR.USDOJ.gov>
+Subject: ASCAP and BMI Review
+
+I write to urge the Department of Justice to preserve the American Society of Composers, Authors and
+Publishers (ASCAP) and Broadcast Music, Inc. (BMI) consent decrees (the “Decrees”), and particularly to
+urge the Department to maintain the movie theater licensing exemption embodied in Sections IV(E) and
+(G) of the ASCAP Decree. For decades, this provision has benefited consumers and artists, and should
+not be subject to the ensuing uncertainty that would follow termination of the Decrees.
+
+In order to publicly exhibit a movie, movie theaters secure a single license from a movie’s distributor
+that covers all of the various rights embedded within a single feature, and then compensate the movie’s
+distributor for use. Essentially, the payments for all the creative rights embedded within the films
+licensed by exhibitors are effectively incorporated into the negotiated film rental rates with each
+distributor. Just as producers are responsible for clearing all rights required for theatrical exhibition of a
+film, exhibitors are responsible for playing the title with no alterations in exchange for a share of the box
+office. This is the most sensible approach, as theaters have no choice in what music is included in a
+movie; have no ability to negotiate the rights for the music in a movie; and cannot avoid playing the
+music altogether, as the music is integrated into a movie’s audio file, like the dialogue. Movie producers,
+on the other hand, necessarily make choices about what music to include in their movies, and can do so
+in a competitive negotiation before the music has been integrated into the movie’s audio file.
+
+=== E7. SOCAN Tariff 6 Motion Picture Theatres (2014-2016), Canada Gazette 2017-05-06 ===
+URL: https://www.socan.com/wp-content/uploads/2024/05/Tariff-6-GAZETTE-2014-2016-CONDENSED.pdf
+
+
+                        Tariff No. 6                              
+
+            MOTION PICTURE THEATRES                               
+                   (2014-2016)                                    
+
+For a licence to perform, at any time and as often as           Po
+desired in the years 2014 to 2016, any or all of the works in   au
+SOCAN’s repertoire, covering the operations of a motion         de
+picture theatre or any establishment exhibiting motion          ré
+pictures at any time during the year, the annual fee is as      ci
+follows:                                                        te
+                                                                bl
+
+             Annual Rate per Seat,   Minimum Annual Fee           
+Year         per Screen              per Screen                 An
+
+2014-2016    $1.50                   $150                       20
+
+
+The seating capacity of drive-in theatres is deemed to be       Le
+three times the maximum number of automobiles which             ré
+may be accommodated at any one time.                            ca
+
+Theatres operating three days or less per week shall pay        Le
+one half of the above rates.                                    pa
+
+=== E8. UK Copyright, Designs and Patents Act 1988 s.5B(2),(3),(5) ===
+URL: https://www.legislation.gov.uk/ukpga/1988/48/section/5B
+(2) The sound track accompanying a film shall be treated as part of the film for the purposes of this Part. (3) ... (b) references in this Part to playing a sound recording, or to communicating a sound recording to the public, do not include playing or communicating the film sound track to accompany the film ... (5) Nothing in this section affects any copyright subsisting in a film sound track as a sound recording.
+
+=== E9. Cinema For All, How To Start a Community Cinema starter pack (2024), venue table and equipment list ===
+URL: https://cinemaforall.org.uk/app/uploads/2024/05/How-to-Start-a-Community-Cinema-2024.pdf
+                                 This is a licence your venue needs so you can show
+       Premises Licence          films. Venues get this licence from the council.
+                                 Does your venue already have one?
+
+
+                                             5
+   PRS (Performing Rights         This licence covers the copyright of any music
+  Society) music licence - also   used in your chosen film, plus any additional
+        known as a PPL            music you want to play as the audience are
+     (Phonographic rights         entering or leaving. Venues obtain this licence
+            licence)              from PRS Music or PPL.
+
+             Screen
+
+
+             Projector
+
+             Player (this could be a Blu-ray, DVD player or laptop)
+
+
+
+                                               6
+            PA System (speakers and amplifier)
+
+
+
+            Film (e.g DVD or Blu-Ray)
+
+=== E10. Cloudflare Docs, Seat management (dateModified 2026-05-01) ===
+URL: https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/seat-management/
+Cloudflare One subscriptions consist of seats that active users in your account consume. Active users are added to Cloudflare One through any authentication event . The amount of seats available in your Cloudflare One account depends on the amount of users you purchase. If you want to increase the number of seats available, you will have to purchase more users. Learn more about adding and removing seats from your account in the Cloudflare One FAQ . Authentication events A user consumes a seat when they perform an authentication event. For Access, this is any Cloudflare Access authentication event, such as a login to the App Launcher or an application. For Gateway, this is when any devices associated with the user connect to Cloudflare One within the specified period . If either one of these events occurs, that user's identity is added as an Active user to Cloudflare One and consumes one seat from your plan. The user will occupy and consume a single seat regardless of the number of applications accessed or login events from their user account. Once the total amount of seats in the subscription has been consumed, additional users who attempt to log in are blocked. A user who authenticates will hold their seat until you remove the user from your account. By default, inactive users will not be automatically removed from your account. You can remove a single user or all users at any time, and those users will immediately stop counting against the seat count defined in your subscription. If you notice a number of accounts greater than the number of your users, you may need to configure an Access bypass policy . Alternatively, you can use Access service tokens to allow access to applications without consuming seats. Seat management and device registrations Removing a user determines whether that user consumes a billable seat, but does not prevent users from accessing resources behind Cloudflare Access. Removing a user will delete all device registrations associated with th
+
+Enable seat expiration Cloudflare One can automatically remove any user who does not log in to an Access application or whose device does not show any Gateway activity for the specified period (between one month and one year). To determine if a user will be removed, Cloudflare looks for any authentication events and checks the Last seen value for all of the user's devices. If both of those are outside the expiration window, the user will be removed and will no longer count against your number of seats. This process occurs once daily for an account. To enable user seat expiration: In the Cloudflare dashboard ↗︎ , go to Zero Trust > Settings > Admin controls . In Remove inactive users from sea
+
+=== E11. EBU R 95 v1.1 (June 2017), Note 5 ===
+URL: https://tech.ebu.ch/docs/r/r095.pdf
+   5.       The action safe area is 3.5% and the graphics safe area is 5%, at the top, bottom and
+            lateral parts of the image.
+
+=== E12. Everyman private hire page (ww2.everymancinema.com/private-hire), extracted sentences ===
+Pick the content The latest release, a firm favourite or your own content, all on the big screen The screen's all yours No strangers, no shushing, your event your way Room to relax Let your guests sink into the comfort of our signature luxury sofas Food & drinks sorted Pre order your food and drink from our extensive private eve
+
+Corporate Event Forget the boardroom tech that never quite works. Plug your laptop into our big screens and present like you mean it. With state-of-the-art tech and a venue team who'll make sure you properly wow the room. Kids Birthday Party Ready to delight the kids and their friends? Our kids' party packages have you covered. 
+
+Pick your booking type Choose your film, screen your own or deliver a presentation. 3 Confirm the finer details Number of guests, food & drink preferences, tech requirements - we'll talk you through it all. 4 Sit back and enjoy We'll handle the rest. Choose your venue. Find the Everyman nearest you. Postcode or area Find Use my 
+

@@ -21,6 +21,7 @@ Standalone part of the `life-story-interviewing` skill. Moved from Recipe 2 of `
   - **C**: one first-hand memory.
   - **D**: second-hand, family legend, or conflicting accounts. Keep conflicting versions as separate rows linked in `notes`; do not average them.
 - `consent_status`: `asked-ok | asked-ok-with-limits | not-asked (surprise hold) | declined | third-party-needs-check | bottom-drawer (do not use)`.
+- `allowed_use`: `hall | private-link | family-only | none`, the widest screening the person has agreed to, in the consent they actually gave. `hall` = the Feb 27 gathering (mostly public), and a later private link when the consent script named it. `private-link` = family only, by private link, not at the gathering. `family-only` = shown only to family in person. `none` = not cleared; do not use. A row whose consent was asked before the Tier 2 script named the use is `none` until it is asked again (inference from charter review C1 and OHA [8]).
 - `drawer`: `top | middle | bottom` [34].
 - `treatment`: `dramatise | glimpse | mention | hold`.
 - `motif_tags`: free tags that build the through-line (objects, places, phrases).

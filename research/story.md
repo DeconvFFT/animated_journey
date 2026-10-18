@@ -244,7 +244,7 @@ Evidence quality: I found no study or professional survey. The list below is fro
 | 7 | Narrator tired or over-pushed; interview ran long | Baylor (60-90 min average; concentration diminishes) [10]; family-history guides note emotional memories "can be exhausting... You may have to end a session before you're ready" (snippet only) [76] | 45-60 minute sessions; stop signals. |
 | 8 | Pre-interview uses up the story before recording | VHP: "be careful that they don't tell you their whole story before you turn the camera on" [11] | Keep the pre-talk to logistics and consent. |
 | 9 | Technical: noise, no backup, wrong format | Baylor, UDayton, LoC [10][37][38] | Test, two devices, two copies. |
-| 10 | Music licensing | FuneralOne says "confirm you have the right licenses" (vendor) [70]. Content ID/takedown behaviour: UNVERIFIED | Private screening only unless licensed; check before any upload. |
+| 10 | Music licensing | FuneralOne says "confirm you have the right licenses" (vendor) [70]. Content ID/takedown behaviour: UNVERIFIED | Every cue cleared for public screening or cut (charter, Principle 7); check before any upload. |
 | 11 | Leaks and suspicion in surprise mode | Big Red Book record [28][29][30] | Small circle, neutral project name, scripted answers. |
 | 12 | The tribute becomes an obituary or CV | Charter principle 3 and the résumé cut in Deliverable 1 | Texture quota in the inventory. |
 | 13 | Practical: gathering too late | A common warning in family-history guides: people assume that once elders are gone there are no options, and miss neighbours, classmates, friends (snippet only) [76] | Interview the oldest relatives first (inference). |
@@ -319,7 +319,7 @@ Evidence quality: I found no study or professional survey. The list below is fro
 
 ### Exemplar 2: StoryCorps animated short *Danny & Annie* (Mike and Tim Rauch with StoryCorps; POV premiere 2010 per PBS, StoryCorps page dated 2012-08-12)
 
-- **What it is.** An animated short built from StoryCorps interview audio recorded by Danny and Annie Perasa of Brooklyn (Danny a horse-betting clerk, Annie a nurse): the first-date story recorded in 2004 and a final interview recorded in January or February 2006 a few weeks after Danny's terminal-cancer diagnosis [20][21][22]. It was first made in two parts [23]. StoryCorps' page now shows a combined version: "Originally an animation in two parts, here you'll see a special version that combines both parts of their story" [92]. Running time: UNVERIFIED. The PBS page lists 37 minutes for the two-part package [23]; the length of the combined cut is not stated.
+- **What it is.** An animated short built from StoryCorps interview audio recorded by Danny and Annie Perasa of Brooklyn (Danny a horse-betting clerk, Annie a nurse): the first-date story recorded in 2004 and a final interview recorded in January or February 2006 a few weeks after Danny's terminal-cancer diagnosis [20][21][22]. It was first made in two parts [23]. StoryCorps' page now shows a combined version: "Originally an animation in two parts, here you'll see a special version that combines both parts of their story" [92]. Running time: combined cut 5:52 (352 s), from the YouTube page metadata of the embed `WNfvuJr9164` that [92] carries, seen 2026-10-18 by the Fable advisor; visual beats still UNVERIFIED. The PBS page lists 37 minutes for the two-part package [23]; that is not this cut's length.
 - **Credits ([92]).** Directed by The Rauch Brothers; produced by Mike Rauch and Lizzie Jacobs; animation by Tim Rauch; audio produced by Michael Garofalo and Sarah Kramer; facilitated by Sarah Kramer; original music by Fredrik; publisher House of Hassle. Audio and music are credited as roles separate from direction and animation, which matters for the `sound-and-voice` proposal.
 - **Combined structure and text cards ([92]; the cards are inferred, not watched).** The page's transcript has three labelled text elements: "Intro Text", "Introduction for 2nd part" and "End text". I infer them as on-screen cards: (1) context: Brooklyn, a horse-betting clerk and a nurse, married 1978, "they told the story of their very first date"; (2) between the parts: "twenty-seven happy years together", a diagnosis in January 2006, and "a few weeks later" one last interview "from the living room"; (3) close: broadcast a week after recording, Danny died that same day, and Annie "reads one each day in place of her love letter from Danny" after receiving thousands of letters. No narrator speaks on the cards; the recorded voices carry everything between them.
 - **Why it works (beat map from the radio transcripts; I did not watch the animation, so visual choices are UNVERIFIED).**
@@ -338,7 +338,7 @@ Evidence quality: I found no study or professional survey. The list below is fro
 | 10 | Danny: there will never be another Annie | Close | TODO | TODO |
 | coda | Danny died the day it aired (24 Feb 2006 per NHPR's link); Annie received thousands of condolence letters and read one each day; she died on 14 Aug 2021 of COVID aged 79 | Real-world coda, one line each | TODO | TODO |
 
-- **Status of the beat map (round 1).** The time and visual columns are open. The scribe could not watch video in this session, so every TODO is unfilled, and no timing or visual claim above is verified. The maker (or a researcher with video access) watches the short on StoryCorps' page [20] (canonical [92]) once with a stopwatch, and fills the columns: each ritual's drawing (the April 22 call, the kitchen note), whether the style changes at the illness, what the Valentine's letter shows, and whether the last card plays over silence or music. If that has not happened by the next gate, swap in a viewable documentary short and say why.
+- **Status of the beat map (round 1).** The time and visual columns are open. The scribe could not watch video in this session, so every TODO is unfilled, and no timing or visual claim above is verified. The maker (or a researcher with video access) watches the short on StoryCorps' page [20] (canonical [92]) once with a stopwatch, and fills the columns: each ritual's drawing (the April 22 call, the kitchen note), whether the style changes at the illness, what the Valentine's letter shows, and whether the last card plays over silence or music. Every TODO cell is filled by playbook Exercise 1, part (b): one viewing with a stopwatch and one with the table in hand, about 15 minutes. Swap date: Saturday 2026-11-14 (the gate). If the columns are still empty that day, replace this exemplar with one of the other StoryCorps animated shorts whose durations are listed on [92] (3:21, 1:47, 3:23), and record the swap in a dated line.
 - **How it was made.** The Rauchs animate StoryCorps audio that first aired on NPR; they "visit the storytellers whenever possible", gather family photos, photograph landmarks, make character designs and storyboards, then colour and composite in After Effects; "Our guide for that balance is always character and story" (naturalistic vs cartoonish) [24]. Influence: John Hubley's *Moonbird*, built on recordings of his children [24][25].
 - **What we can reuse.** (a) Put rituals first so the audience wants them kept before they are threatened. (b) Let the hard chapter be spoken by the people living it. (c) Let objects (the note, the letter) be the carriers. (d) A one-line real-world coda instead of an explanation. (e) Audio-first: design the visuals around the strongest recordings, not the reverse.
 - **Caution.** The couple chose to record a final interview and had StoryCorps release arrangements I could not see; a family project needs its own consent trail (Deliverable 3).
@@ -452,7 +452,7 @@ Named techniques, with where to find the how-to in this file.
 11. **Bias in the photo archive.** Celebration over routine and sorrow [58].
 12. **Over-long, over-tired sessions** [10][35][76].
 13. **Platform terms.** StoryCorps' app/archive terms give StoryCorps a perpetual licence and retention rights even for "private" interviews (terms last modified 2023-09-14) [4]. Do not upload private family interviews there.
-14. **Music rights.** Unresolved: private viewing vs any public posting; confirm licences (vendor advice) [70]; platform takedown behaviour UNVERIFIED.
+14. **Music rights.** Unresolved for the public premiere (jurisdiction open; every cue cleared for public screening or cut, charter Principle 7); confirm licences (vendor advice) [70]; platform takedown behaviour UNVERIFIED.
 15. **Do not impersonate or fabricate** records or reviews (artifact policy) and keep personal material private until the maker says otherwise (charter).
 16. **Over-fitting to Pixar.** *Up* is fiction built by a large team over years with test screenings [14]; use its rules, not its scale.
 
@@ -483,14 +483,14 @@ Named techniques, with where to find the how-to in this file.
 |---|---|---|
 | 1 | Oct 18 | Decide mode; list relatives (oldest first); consent script; test recording setup and Whisper on one recording; inventory sheet created |
 | 2-3 | Oct 25 - Nov 7 | Track A: relative list (oldest first), consent script, found-voice list, practice exercises. Recorded: only for gate-passed or Door A relatives (oldest first) |
-| 3-8 | Nov 1 - Dec 12 | Recorded relative interviews (after the gate): 6-10 relatives at 45 minutes (some together, some alone); one object/photo/map session; place visits. Subject sessions: none in full surprise |
+| 3-8 | Nov 1 - Dec 12 | Recorded relative interviews after the gate (Nov 14 at the latest, Decision 11): 6-10 relatives at 45 minutes (some together, some alone); one object/photo/map session; place visits. Subject sessions: none in full surprise |
 | 6-9 | Nov 15 - Dec 12 | Inventory v1; through-line workshop; pick the vertical-slice chapter |
 | 10-11 | Dec 20 - Jan 2 | Holiday visits for the oldest relatives (one at a time, not a noisy gathering) (inference); freeze inventory v1 |
 | 12-16 | Jan 3 - Feb 6 | Hard-chapter conversations (opt-in), corrections, gaps; second interviews; consent re-confirmation at rough cut |
 | 17-18 | Feb 7 - Feb 20 | Review round with the subject or closest insider; veto window; lock |
 | 19 | Feb 21 - Feb 27 | Final consent confirmations; premiere preparation |
 
-**3. Minimum viable gather (full surprise, the operating mode).** 8-12 relatives, 2 insiders, document work, a found-voice inventory (her existing voicemails, tapes, home video and clips), 2-3 place visits, and a populated inventory with at least 6 texture rows per stage. Only if the maker reopens the decision to hybrid or together: add three 45-60 minute sessions with the subject, and one object/photo/map session.
+**3. Minimum viable gather (full surprise, the operating mode).** 8-12 sources, of whom N brought in, N starting at the Door A count (playbook Decision 2), document work, a found-voice inventory (her existing voicemails, tapes, home video and clips), 2-3 place visits, and a populated inventory with at least 6 texture rows per stage. Only if the maker reopens the decision to hybrid or together: add three 45-60 minute sessions with the subject, and one object/photo/map session.
 
 **4. How the kit feeds the other tracks.**
 - *Games:* "mechanics must mean something". The repeated-object rule is a mechanic: a collectible that returns at different ages and changes meaning (Up's jar, book, balloon) [17]. "Rooms of a house" (Skeleton C) is a natural world map; the Tuesday walkthrough is a repeatable level (same kitchen across decades).
@@ -498,7 +498,7 @@ Named techniques, with where to find the how-to in this file.
 - *AI imagery:* the inventory's `sensory_detail` and `objects` are the grounding for any restyling; anything reconstructed is flagged.
 - *Toolchain:* local Whisper and CSV are scriptable; the AI team can populate rows with timestamped quotes only.
 
-**5. Questions for the Fable advisor at the next gate:** Is the hybrid recommendation right for this relationship? Are the proposed inclusion tests (turn, motif, scene, voice, dignity, variety) sufficient? Are the schedule and "minimum viable gather" realistic?
+**5. Questions for the Fable advisor at the next gate:** Whom to bring in, and in what order (research Q1; the charter's open decision)? How do the consent tiers interact with the Door A rule? Does the 8-12 count survive a small circle? Are the proposed inclusion tests (turn, motif, scene, voice, dignity, variety) sufficient? Are the schedule and "minimum viable gather" realistic?
 
 ---
 
@@ -506,9 +506,9 @@ Named techniques, with where to find the how-to in this file.
 
 Things the maker must decide or tell us
 1. Who is the subject, birth decade, country(ies), language(s)? Question banks use placeholders; era hooks and music need that.
-2. Surprise mode is fixed by the charter (2026-10-18); reopen it only if the maker decides to. Which relatives (ages, health, hearing, memory), and who can act as insiders?
+2. Surprise mode is fixed by the charter (2026-10-18); reopen it only if the maker decides to. Which relatives (ages, health, hearing, memory), and whom to bring in, if anyone (round 2, Q1)?
 3. Which hard chapters exist? Who may speak to them?
-4. Public screening or private gift? That changes music licensing and consent scope. See Q7: owner and decision due Sat 2026-11-14; the cue sheet is there.
+4. Jurisdiction of the premiere, and the cue sheet. The premiere is at a mostly public gathering (charter, Known facts), so the question is which country's music and image rights apply, not whether it is public. See Q7: owner and the country answer due Sat 2026-11-14; the cue sheet is there.
 5. Consent for AI processing of voice and photos.
 6. Which free apps are installed? (affects transcription UI and how the inventory is kept)
 
@@ -523,7 +523,7 @@ Things I could not verify or open (2026-10-18)
 14. Evidence gaps: no experiment compares prompt types for 50+ narrators; no systematic survey of family tribute failures; the Tuesday walkthrough has method provenance but no head-to-head evidence.
 15. Whisper performance on the maker's machine, with elderly voices, accents and non-English: UNVERIFIED; test before the interview schedule depends on it.
 16. Cultural fit of "redemption" and of chapter-title questions for the subject: UNVERIFIED.
-17. Legal: StoryCorps list reuse is an invitation, not a licence; Dignity Therapy and McAdams verbatim reuse; music rights for private vs public screening. I am not giving legal advice. Music rights: see Q7 (owner by Sat 2026-11-14; cue sheet).
+17. Legal: StoryCorps list reuse is an invitation, not a licence; Dignity Therapy and McAdams verbatim reuse; music rights for the public premiere (jurisdiction open). I am not giving legal advice. Music rights: see Q7 (owner by Sat 2026-11-14; cue sheet).
 
 ---
 
@@ -632,7 +632,7 @@ Written Sunday 2026-10-18 (week 1 of 19), answering the seven follow-ups in `rev
 | 4 | Existing recordings of the mother | Facts missing. Search checklist and ask-line ready. | Maker plus relatives |
 | 5 | Two-speaker phone placement | No source found for two speakers. Settle in Exercise 2; test protocol ready (commands tested). | Maker, one evening |
 | 6 | *Danny & Annie* runtime and visual beats | Credits, structure, text cards and one still verified. Runtime and beat timings UNVERIFIED. | Maker watches once with a stopwatch |
-| 7 | Music licensing, private vs public | Partly answered (US law text, platform rule). Owner and date proposed. | Maker names owner by Sat 2026-11-14 |
+| 7 | Music licensing for the public premiere (jurisdiction open) | Partly answered (US law text, platform rule). Owner and date proposed. | Maker names owner by Sat 2026-11-14 |
 
 ### Q1. Windows hardware: which Whisper, and how long for 10 minutes
 
@@ -763,11 +763,11 @@ So "6-12 inches" is traceable to [89], and only as a mic-to-mouth distance for o
 - Beat order in the combined cut (from the transcript): first-date speech and proposal; the morning-after phone call; the April 22 yearly call ("25 times yes"); the busted-radio line; the kitchen-table note and the weather-report letter; the colour-television line; [card]; Annie on finality; "hope" and Danny's plan; walking in and out "with you alone"; "Do you have the Valentine's Day letter"; Annie reads it; Danny's closing about "another Annie"; [card] [92]. The StoryCorps text reads "34 letter word" (the existing note already flagged that transcripts vary).
 - One official still (1920 by 1080) [93], viewed by me: a caricatured 2D cartoon, thick black outlines, flat colour with painterly grain texture on a yellow wall and wooden floor, two exaggerated characters in wedding clothes holding hands in a room with two Gothic-arched windows, a bouquet on a wooden chair. It is a promotional still; it may not be a frame of the film: UNVERIFIED. The tone looks comic, which suits Danny's jokes (inference).
 
-**Not obtained: runtime and shot-level beats.** The page does not list a running time (the "Recent Animations" durations of 3:21, 0:30, 1:47 and 3:23 belong to other pieces) [92]. The video is a YouTube embed whose ID appears in the page source (`youtube.com/embed/WNfvuJr9164`) [94]. YouTube redirected my automated request to a verification page; I did not try to get around it. PBS lists "37 minutes" for the two-part package [23]; that remains unexplained and is not this cut's length. Runtime: UNVERIFIED. Visual beats: UNVERIFIED.
+**Not obtained: runtime and shot-level beats.** The page does not list a running time (the "Recent Animations" durations of 3:21, 0:30, 1:47 and 3:23 belong to other pieces) [92]. The video is a YouTube embed whose ID appears in the page source (`youtube.com/embed/WNfvuJr9164`) [94]. YouTube redirected my automated request to a verification page; I did not try to get around it. PBS lists "37 minutes" for the two-part package [23]; that remains unexplained and is not this cut's length. Runtime: UNVERIFIED in round 1; recorded as 5:52 in round 2, Q6. Visual beats: UNVERIFIED.
 
 **What the maker does (10 minutes, once):** open [92], play the video with a stopwatch, and fill the beat sheet from Recipe 5 using the transcript order above as the rows: `time | what is on screen | emotion | recurring image | what is withheld`. Specific things to note: how each ritual (the April 22 call, the kitchen note) is drawn; whether the cartoon style changes when the story turns to illness; what the animation shows during the Valentine's letter; whether the final card appears over silence or music. Then send the table back and the "Exemplar 2" entry can be completed. If the maker cannot watch it, swap in a short documentary the team can view, as the Fable review allowed.
 
-### Q7. Music licensing: private screening versus public
+### Q7. Music licensing for a public premiere
 
 Belongs to the proposed `sound-and-voice` track. **Proposed owner: the maker decides, that track's researcher answers, and the answer is due by Saturday 2026-11-14 (end of week 4).** Jurisdiction is not stated in the charter; the law text below is US. Anywhere else: UNVERIFIED.
 
@@ -779,13 +779,13 @@ Belongs to the proposed `sound-and-voice` track. **Proposed owner: the maker dec
 
 **Platform rule found:** YouTube's Audio Library page says only music and sound effects from the Audio Library are known to YouTube to be copyright-safe; tracks from it "won't be claimed by a rights holder"; Creative Commons tracks in it must be credited in the video description; and YouTube "is not responsible for issues that arise from" "royalty-free" music from other sources, advising a lawyer for questions [99]. Whether a private or unlisted upload is still scanned: UNVERIFIED.
 
-**Options that keep a family piece clean (my synthesis; confirm the terms of anything you pick):**
+**Options that keep the film clean for a public premiere (my synthesis; confirm the terms of anything you pick):**
 1. Original music made for the piece by the maker, a relative or a commissioned musician, with a short written agreement saying where it may be played. *Danny & Annie* credits original music as its own role [92].
 2. A licensed library with the licence read and saved per track (the YouTube Audio Library is one, with its stated terms [99]).
 3. Her songs where they belong: in the room, not in the file. The story question set already collects her songs as memory cues [46]; collecting them as story is separate from putting the recordings in the film. How a venue's own music licence applies to a video played there: UNVERIFIED; ask the venue.
 4. Keep a cue sheet from day one so the answer for any screening is one filter: `cue_id | where in piece | title | artist | composer | source/licence | licence text saved (y/n) | allowed: home / hall / online | date checked`.
 
-**Decisions the maker supplies by 2026-11-14:** country; where it will be shown (home, rented room, streamed to relatives abroad, posted); whether copies will be given to family; whether her favourite songs are wanted in the file or only in the room. A qualified person should check the final answer if any public or online use is planned [99].
+**Decisions the maker supplies by 2026-11-14:** country; whether copies will be given to family; whether her favourite songs are wanted in the file or only in the room. The premiere is public (charter), so a qualified person should check the final answer [99].
 
 ### What this changes in the playbook and notes (for the scribe)
 
@@ -986,13 +986,13 @@ Notes:
 
 ### Q6. *Danny & Annie* visual beats (table ready; the viewing is the maker's)
 
-**Cannot be done by me.** I cannot play video, and YouTube redirected my automated request for the watch page to a Google verification page, which I did not follow [94]. The 5:52 running time is the advisor's reading of the YouTube metadata (`reviews/story-round2.md`, nudge 3); I could not verify it, and the StoryCorps page itself gives no running time [92].
+**Cannot be done by me.** I cannot play video, and YouTube redirected my automated request for the watch page to a Google verification page, which I did not follow [94]. Runtime recorded: combined cut 5:52 (352 s), from the YouTube page metadata of the embed `WNfvuJr9164` carried by [92], seen 2026-10-18 by the Fable advisor (`reviews/story-round2.md`, nudge 3). The StoryCorps page itself gives no running time [92], and the researcher could not verify the 5:52 figure.
 
 **What I could add:**
 - I re-read the StoryCorps page source this session and have the full transcript in order [92]. Below, the 13 rows (10 beats plus 3 cards) are cut from it, with the exact opening words of each as the cue to watch for. The grouping is mine; regroup freely.
 - The Rauch brothers' interview [24] does not mention *Danny & Annie*; it covers three other StoryCorps shorts (*Eyes on the Stars*, *Facundo the Great*, *Sundays at Rocco's*). So the round 1 use of [24] is a statement about the team's general method, not this film. From it: they research first, visit the storytellers when possible, gather family photos and snapshots of landmarks; design and storyboard; colour is added "at the very end"; everything is composited in After Effects; the look draws on 1940s and 1950s animation (UPA, John Hubley) and classic American TV, ranging from "a subtler feature animation approach" to "a more humorous TV cartoon sensibility" [24]. That fits the cartoon still [93] (inference).
 
-**The table to fill** (one viewing with a stopwatch for the first column, a second with the table in hand; about 15 minutes in all):
+**The table to fill** (playbook Exercise 1, part (b); one viewing with a stopwatch for the first column, a second with the table in hand; about 15 minutes in all):
 
 | # | Cue (opening words, from [92]) | Time in | On screen | Emotion | Recurring image | What is withheld |
 |---|---|---|---|---|---|---|

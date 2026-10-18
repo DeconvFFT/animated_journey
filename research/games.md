@@ -163,7 +163,7 @@ Conventions: "Says" = designer statement (cited). "Players" = reported feelings 
 
 **Edith Finch.**
 - Rooms as portraits: the core loop is find a Finch's room, learn personality from its objects, then play their death. Lewis's room (colored lighting, Murphy bed, paraphernalia, computers) signals him; a therapist's letter triggers the scene. [12]
-- The decor was *revised late* after the team saw that Lewis's room conveyed his story without narration (Wikipedia citing developer interviews; verify). [13]
+- The decor was *revised late* after the team saw that Lewis's room conveyed his story without narration (Wikipedia, citing Dallas's GDC 2018 talk [10]; confirmed 2026-10-18). [13]
 - Text lives on the objects; it directs attention and frames each scene as a recreation of a document. [12]
 - Accounts may be unreliable; the player is unsure how accurate each is. [13]
 
@@ -221,7 +221,7 @@ Community criticism that Minecraft-style voxel art is "overused" appears in itch
 
 **Verify against current Mojang/Microsoft terms before any public showing. I fetched the official pages on 2026-10-18; the Usage Guidelines page carries no visible date, and says the rules may change at any time. A third-party summary (ConductAtlas, snippet only) claimed "last updated April 19, 2026"; its source has since withdrawn that claim, so do not cite the date [83].** [42][43][71]
 
-**Excerpt rule (round 1 review):** Save the exact clauses as a dated plain-text excerpt at `research/sources/minecraft-usage-guidelines-YYYY-MM-DD.md` (short quotes only, with the URL and date), so the terms check never depends on the page being up. Do the same once for the Eurogamer interview [3] (it carries the Bed Song, 14,000-foley, spreadsheet and "hollow" claims) at `research/sources/eurogamer-unpacking-YYYY-MM-DD.md`.
+**Excerpt rule (round 1 review; paths corrected 2026-10-18):** Save the exact clauses as a dated plain-text excerpt in `research/sources/`, named `<source>-YYYY-MM-DD.txt`, one source per file per date (short quotes only, with the URL and date), so the terms check never depends on the page being up. The Usage Guidelines excerpt is `research/sources/minecraft-usage-guidelines-2026-10-18.txt`. The Eurogamer interview [3] excerpt (it carries the Bed Song, 14,000-foley, spreadsheet and "hollow" claims) is section 1 of `research/excerpts/games-round1-followup-2026-10-18.txt`; it has not yet been split into its own file. For the premiere-week diff, use `research/sources/check_mojang_quotes.py` (routine in the excerpt file, section 6).
 
 What the official pages say (paraphrase unless quoted):
 - **Personal use:** "We are very relaxed about things you create for yourself. Pretty much anything goes there." [42]
@@ -237,6 +237,7 @@ What the official pages say (paraphrase unless quoted):
 **Practical positions (my recommendation):**
 1. **Safest:** build the visuals as *original* voxel/low-poly assets: **MagicaVoxel** (free; the site licence says "Free to use for any project", asks for credit, and disallows selling or distributing the software in other packages [76]) or **Blockbench** (open source GPL-3.0; its README says assets you create "are your own"; has a Minecraft-style cuboid mode). No Mojang textures, so no brand questions. [49][50][51]
 2. **If Minecraft itself is wanted:** private screening, no payment, no advertising, no Mojang logo, own textures where possible, unique content on top of footage, disclaimer in credits; re-check the guidelines on the week of the premiere.
+   Charter update 2026-10-18: the premiere is a mostly public gathering, so this position applies only to a later private family viewing, not to the premiere.
 3. **Worlds as keepsakes:** do not share a modified install; sharing a bare world save is common practice (Mojang itself received one from Emenbee staff [60]) but its status under the EULA is **UNVERIFIED**.
 
 ### Q8. Which mappings are strongest for a 50+ life, which are clichés, which can be inverted
@@ -544,7 +545,7 @@ Fetched [42] on 2026-10-18 at 04:48 GMT (HTTP 200); also the EULA [43], and the 
 - The server sends `last-modified: Fri, 16 Oct 2026 17:56:11 GMT`. That is a file stamp, not a policy revision date (any site rebuild can bump it), so it only tells us the file served today was written two days ago. [82]
 - The page's own change clause: "We reserve the right to change our mind at any time." [42]
 - **The ConductAtlas "last updated April 19, 2026" claim [71] could not be reproduced and its source has withdrawn it.** The clause page (it redirects to a new URL) now says the clause "is no longer published", and its correction log lists, for the Usage Guidelines, a 2026-10-12 correction ("26 provision(s) ... had no source in any capture") and a 2026-10-06 one ("1 quotation(s) ... omitted the condition they depend on"). Treat [71] as unusable: do not cite the date. [83]
-- Recommended habit instead: store the text hash from the excerpt file (`6c00e292...` for my extraction) and re-fetch in the premiere week. A changed hash means re-read.
+- Recommended habit instead: re-fetch in the premiere week and run `research/sources/check_mojang_quotes.py` on the baseline and the live copy. That script uses one fixed extraction method (described in its docstring), so its hashes are comparable; it was tested only on a synthetic page. Compare the printed hashes and the PRESENT/MISSING lines; a changed hash means re-read. Do not compare the two round-1 hashes: the saved excerpts of this page carry different hashes (`6c00e292...` in `research/excerpts/games-round1-followup-2026-10-18.txt`, line 20, and `2956f589...` in `research/sources/minecraft-usage-guidelines-2026-10-18.txt`, line 10) because each used its own extraction method.
 
 **The clause itself.** It is one bullet in the list of conditions for putting Minecraft footage on YouTube, Twitch or another website (the "Videos, streams, and screenshots" section): "The gameplay is not displayed or projected publicly within physical locations, for example:" followed by two examples: "Promoting or advertising big-screen Minecraft gameplay inside any commercial venue like restaurants" and "Charging money for Minecraft gameplay, leagues, or competitions in theaters where gameplay is projected onto movie screens". [42]
 
@@ -554,6 +555,7 @@ Fetched [42] on 2026-10-18 at 04:48 GMT (HTTP 200); also the EULA [43], and the 
 - A separate trap: "When you decide to share your content with the community (whether you plan to make money off it or not), you are doing what we consider to be a commercial thing." "The community" is undefined; a gift to one's mother and relatives is not obviously that. [42]
 - **A hired room is a real grey zone**, and a second section points both ways. "In-person events" allows gatherings of "no more than approximately 150 participants", no profit sponsorship, Minecraft's name only as a secondary descriptor, no Minecraft brand or assets on marketing materials, and gives "a casual meet up in your favorite pizza place" as fine. But it is written for Minecraft community meetups, not for showing a personal film that uses Minecraft footage. [42]
 - Mojang says it cannot advise on specific projects (already in Q7). Our safe line is unchanged: private, free, invitation-only, no ads or sponsor, no Mojang logo or textures, a disclaimer in the credits; and **original voxel assets (MagicaVoxel/Blockbench) remove the question entirely.**
+- Charter update 2026-10-18: the premiere is a mostly public gathering, so this position applies only to a later private family viewing, not to the premiere.
 
 ### F5. Does the maker own Minecraft, and which edition?
 

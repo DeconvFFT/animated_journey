@@ -14,7 +14,7 @@ Standalone part of the `life-story-interviewing` skill. Moved from Recipes 5 and
 - Present-day close: 90 s
 - Thanks: 60 s
 
-**Beat sheet** (adapted from Wozny's Appendix 1 [17]): columns `time | description | emotion | recurring image | what is withheld`. Fill one for the final cut and one for each reference piece (Up, Danny & Annie) while you watch with a stopwatch, then draw the mood graph (x = time, y = mood) [17]. A good rhythm check: does the piece contain one long quiet beat, three or more repeats of a motif, and one withheld beat?
+**Beat sheet** (adapted from Wozny's Appendix 1 [17]): columns `time | description | emotion | recurring image | what is withheld`. Fill one for the final cut and one for each reference piece (Up, Danny & Annie) while you watch with a stopwatch, then draw the mood graph (x = time, y = mood) [17]. Reference runtime for Danny & Annie: combined cut 5:52 (352 s), from the YouTube page metadata of the embed `WNfvuJr9164` carried by [92], seen 2026-10-18 by the Fable advisor; visual beats still UNVERIFIED. The maker's 13-row table is in `research/story.md` (follow-up round 2, Q6), and the task is playbook Exercise 1, part (b). A good rhythm check: does the piece contain one long quiet beat, three or more repeats of a motif, and one withheld beat?
 
 ## Through-line workshop
 

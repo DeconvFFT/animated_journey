@@ -8,6 +8,8 @@
 #   `length`, not `frame_end`; set media_type = 'VIDEO' before file_format = 'FFMPEG'. Probe with dir() before
 #   trusting a remembered call.
 # Run:    blender -b --factory-startup -P r8_vse_xfade.py   (or python3 with bpy installed)
+# Windows run (PowerShell, from this folder): TODO(verify on the maker's PC)
+#         & "<path>\blender.exe" -b --factory-startup -noaudio --python-exit-code 3 -P .\r8_vse_xfade.py
 
 import bpy, os
 W = os.path.abspath(os.path.dirname(__file__))

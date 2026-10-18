@@ -4,12 +4,15 @@
 #   4 vCPU, no GPU, Cycles CPU, 4 samples. Date run: 2026-10-18 [RUN].
 #   Result: 50 frames at 640x360 in about 64 s; a sky pixel read #FCCF97 against the source #FFD9A0
 #   (colour kept because view_transform is Standard).
-# Also run as the Windows Blender 5.2.2 build under Wine 9.0 (research Follow-up F2), using a
-#   parameterised copy that is NOT this file. Not yet run on the maker's PC: TODO(verify on the maker's PC).
+# Also run as the Windows Blender 5.2.2 build under Wine 9.0 (research Follow-up F2), as the parameterised
+#   copy recipes/r2_param.py, NOT this file. Not yet run on the maker's PC: TODO(verify on the maker's PC).
 # Needs: ./layers/bg.png, ./layers/mid.png, ./layers/fg.png (RGBA, transparent where the layer is absent).
 #   Create ./renders/ first if it does not exist (TODO(verify on the maker's PC)).
 # Writes: ./renders/p_0001.png ... p_0050.png
 # Run:    blender -b --factory-startup -P r2_parallax.py     (or: python3 r2_parallax.py with bpy installed)
+# Windows run (PowerShell, from this folder; use your unzipped Blender folder): TODO(verify on the maker's PC)
+#         & "<path>\blender.exe" -b --factory-startup -noaudio --python-exit-code 3 -P .\r2_parallax.py
+#         Use blender.exe, the console program, not blender-launcher.exe (F2).
 # Draft:  to draft at 480p or change the length, edit resolution_x, resolution_y and frame_end below.
 #         The file as written is the tested 640x360, 50-frame run.
 # Note:   Blender 5.2.2 warns that Material.use_nodes will be removed in Blender 6.0 (F2); harmless for 5.2 LTS.

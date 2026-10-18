@@ -1,0 +1,19 @@
+scene n spm_med spm_p10 spm_p90 overhead_med_s
+classroom 81 2881 2615 2983 0.57 MP*spp/s=99.6 dates 2026-07-20 2026-10-15
+junkshop 81 3549 3196 3713 2.6 MP*spp/s=118.3 dates 2026-07-20 2026-10-15
+monster 81 5184 4735 5394 0.78 MP*spp/s=90.6 dates 2026-07-20 2026-10-15
+1080p 24 spp: {'classroom': 0.5, 'junkshop': 0.42, 'monster': 0.55}
+1080p 64 spp: {'classroom': 1.33, 'junkshop': 1.12, 'monster': 1.46}
+1080p 128 spp: {'classroom': 2.67, 'junkshop': 2.24, 'monster': 2.93}
+1080p 256 spp: {'classroom': 5.33, 'junkshop': 4.49, 'monster': 5.86}
+1080p 512 spp: {'classroom': 10.66, 'junkshop': 8.97, 'monster': 11.72}
+2K DCI 24 spp: {'classroom': 0.53, 'junkshop': 0.45, 'monster': 0.59}
+2K DCI 64 spp: {'classroom': 1.42, 'junkshop': 1.2, 'monster': 1.56}
+2K DCI 128 spp: {'classroom': 2.84, 'junkshop': 2.39, 'monster': 3.13}
+2K DCI 256 spp: {'classroom': 5.69, 'junkshop': 4.79, 'monster': 6.25}
+2K DCI 512 spp: {'classroom': 11.37, 'junkshop': 9.57, 'monster': 12.5}
+4K UHD 24 spp: {'classroom': 2.0, 'junkshop': 1.68, 'monster': 2.2}
+4K UHD 64 spp: {'classroom': 5.33, 'junkshop': 4.49, 'monster': 5.86}
+4K UHD 128 spp: {'classroom': 10.66, 'junkshop': 8.97, 'monster': 11.72}
+4K UHD 256 spp: {'classroom': 21.32, 'junkshop': 17.95, 'monster': 23.44}
+4K UHD 512 spp: {'classroom': 42.65, 'junkshop': 35.89, 'monster': 46.88}

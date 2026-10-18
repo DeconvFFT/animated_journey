@@ -33,16 +33,16 @@ Items marked TODO(research) are open. Do not treat them as settled.
 ## Procedure
 
 1. **Intake.** Confirm the photo's ID (`LJ-<box>-<seq>-<side>`), its date confidence, and whether its chapter is sensitive (loss, illness, separation, money, conflict). Sensitive chapters go to the trusted proxy before any work. If the family has not decided on animating a person who has died, do not animate that person.
-2. **Read the hardware tier.** Use the maker's GPU tier if it has been recorded (no decisions log file exists yet; TODO). If it is unknown, assume no GPU, and ask the maker. If there is no GPU and no cloud approval, stop after L1, log the row, and hand the photo to the maker with the candidate routes.
-3. **Read the privacy route.** The default is local only. Any upload, including to a rented GPU, needs the maker's explicit yes. Check the cloud verdict table under Ethics guardrails in this file before any service is used. Unknown terms mean no.
+2. **Read the hardware tier.** Read the maker's GPU tier from `decisions/hardware.md` (repo-relative), which the orchestrator creates. Its fields: GPU, VRAM, RAM, free disk, Vulkan device listed (yes or no) and its name (a software device such as `llvmpipe`, `SwiftShader` or "Basic Render" counts as no GPU), and scanner. If the file or a GPU field is missing, assume no GPU, and ask the maker. If there is no GPU and no cloud approval, stop after L1, log the row, and hand the photo to the maker with the candidate routes.
+3. **Read the privacy route.** Split by content. Work with no family photo may run in the cloud: tool installs and tests, the stand-in bake-off, style-LoRA training on the maker's own hand-made frames, scripts, renders of hand-built L5 scenes, and morph and parallax tests on stand-ins. Anything with her face or a relative's runs only on the maker's PC or a maker-approved rented GPU, and any upload of it needs the maker's explicit yes. The team's cloud session is a Linux VM with no GPU and no view of the maker's PC (checked 2026-10-18); the hardware tier comes only from the Q2 PowerShell block. Check the cloud verdict table under Ethics guardrails in this file before any service is used. Unknown terms mean no.
 4. **Create the record first.** Add a `manifest.csv` row before processing. Store the scan in `01_masters` as read-only. Write its sha256 to `checksums.txt`.
 5. **Scan.**
    - Flatbed: 600 ppi, colour, 16-bit TIFF. Turn off auto-enhance and restore-fading. Scan the back of any print with writing.
    - Phone: keep it parallel with a level app, use soft light, no flash, lock focus and exposure, and use PhotoScan's four-dot capture for glare.
    - Film: 1:1 macro on a copy stand, about f/8, lowest ISO, masked holder. Convert negatives with darktable's `negadoctor`, and keep the unexposed film border in the scan.
 6. **Make the L1 copy.** Crop, straighten, and fix the colour cast one channel at a time with levels and curves. Remove dust with the healing brush. No AI. Save as `__L1`. Log it in `steps.csv` with `invents = colour` if the colour changed, otherwise `none`.
-7. **Count pixels before any upscale.** A 4x6 print at 600 ppi is 3600 by 2400 pixels, which is enough for 1080p with a small push-in. Upscale only wallet prints, 1990s digital files and video frames.
-8. **Restore only if needed (L2).** Use Real-ESRGAN for a plain upscale: `realesrgan-ncnn-vulkan -i in.png -o out.png -n realesrgan-x4plus -s 2`. Do not use `-n realesr-general-x4v3`, which the portable build cannot load and which writes an all-black image [104]. Check `-h` for flags. Use face restoration only if the bake-off passed for this photo type. For CodeFormer, use `w` 0.7 to 1.0, then blend 40 to 60 percent back over the plain upscale with a layer mask. Reject any result with new teeth, eyelids or a changed jaw. Skip faces under about 64 px wide. At L2, generative repair is allowed on non-face regions only. Any generative change to a face moves the image to L3 or is rejected. Colourise only if the story needs it, and caption the shot "colours estimated."
+7. **Count pixels before any upscale, against the master.** Pixels needed across = timeline width × (1 + push-in) × crop factor (1.0 for a landscape print that fills the frame width). Assume a UHD master (3,840 px across) until the theatrical-delivery track fixes it (TODO(theatrical-delivery): master resolution). On UHD, a 4x6 print at 600 ppi (3,600 px across) with an 8 percent push-in needs about 4,150 px, so it is short; it is enough for 2K or 1080p. For UHD hero prints, scan at 800 to 1,200 ppi, or log a 2x Real-ESRGAN pass as L2, or keep push-ins under about 5 percent (which helps only if the picture fills less than about 89 percent of the frame width). Upscale only where the count is short: wallet prints, 1990s digital files, video frames and hero prints.
+8. **Restore only if needed (L2).** Use Real-ESRGAN for a plain upscale: `realesrgan-ncnn-vulkan -i in.png -o out.png -n realesrgan-x4plus -s 2`. Do not use `-n realesr-general-x4v3`, which the portable build cannot load and which writes an all-black image [104]. Check `-h` for flags. Use face restoration only if the bake-off passed for this photo type. For CodeFormer, use `w` 0.7 to 1.0, then blend 40 to 60 percent back over the plain upscale with a layer mask. Reject any result with new teeth, eyelids or a changed jaw. Skip faces under about 64 px wide. At L2, generative repair is allowed on non-face regions only. Any generative change to a face moves the image to L3 or is rejected. Colourise only if the story needs it, and caption the shot "colours estimated." A face stays L2 if the tool changes chroma only and leaves the original luminance; it is a generative change (L3 or reject) if luminance or texture on the face moves. Test it by diffing the L channel of the original and the result in CIELAB over the face box, with the threshold set in the bake-off (playbook Step 6 has the ruling).
 9. **Stylise (L3), using recipe R4's routes.**
    - Route A, hand-made (default): for each age band, pick 3 to 5 real photos, list identity attributes (hair, glasses, beard, scars, posture, signature clothes, height), and build a character sheet in the chosen look.
    - Route B, AI edit on the real photo: use an edit model that starts from the photo (FLUX.1 Kontext dev, Qwen-Image-Edit-2511, FLUX.2 klein). In the prompt, use "while maintaining the same facial features, hairstyle, and expression." Change one thing per step. Keep one seed, one LoRA strength and one prompt template per chapter.
@@ -51,7 +51,7 @@ Items marked TODO(research) are open. Do not treat them as settled.
 10. **Connect two real photos (L4a, or L4c if generated).** Use a classic landmark morph or an ImageMagick or ffmpeg dissolve between two real photos. Chain through real intermediate photos where they exist. Use a generated in-between (Wan FLF2V, Veo `lastFrame`) only as L4c, only inside a labelled reconstruction, and only after inspecting the middle frames.
 11. **Add motion to a still (L4a, or L4b if generated).**
     - Parallax: `rembg` cutout (never the cloud back-ends), Depth Anything V2 Small depth, depth blurred or flattened across faces, rendered with DepthFlow, Blender or paper-theatre layers. Keep the orbit at 2 to 3 degrees and the push-in at 3 to 8 percent.
-    - Image-to-video: first frame is the restored still, motion words only, no speech, 3 to 5 seconds, 3 to 4 takes, environment motion preferred. Gate each take with a face-similarity script. This gate is unverified (TODO(research)).
+    - Image-to-video: first frame is the restored still, motion words only, no speech, 3 to 4 takes, environment motion preferred. Clip length: local models 3 to 5 seconds; Veo 4 seconds at 720p (the shortest), or 8 seconds and a higher per-second price for 1080p or 4K, because those need 8 seconds [114]. Gate each take with a face-similarity script. This gate is unverified (TODO(research)).
     - Hard local-only condition: the photo contains a child. No cloud image-to-video for it. Veo accepts only `allow_adult` for image-to-video [82], and Google's Vertex page rejects child content when `personGeneration` is not `allow_all` [116]. Use parallax or a local model. See playbook Step 8.
 12. **Reconstruct (L5), only from recorded testimony.** Write a brief that separates what is known from what is invented. Use the house look only. Caption it "Reconstructed from [name]'s memory, [interview date]", taking the date from the source's row in `manifest.csv` (the `interview_date` column). Get the narrator's and family's agreement for sensitive scenes.
 13. **Label.** Set the level (L0 to L5). Write the IPTC DigitalSourceType URI to XMP, using the playbook's Step 10 mapping. An AI edit on a real photo is `compositeWithTrainedAlgorithmicMedia`. A hand-drawn scene from scratch, including a hand-built L5, is `digitalCreation`. Hand work layered over a real photo is `composite`. An AI-built L5 is `trainedAlgorithmicMedia`. Mixed work is `compositeSynthetic`. `humanEdits` is only for non-generative edits to captured media. Write the URI, not the label text. ExifTool was run on Linux only, so test it on a copy first. For video, write the tag after the final export, because ffmpeg strips it [105]. Put the label in the filename suffix, in `steps.csv`, and in the credits cue sheet.
@@ -72,7 +72,7 @@ Items marked TODO(research) are open. Do not treat them as settled.
 **Per clip**
 - [ ] First frame matches the restored still.
 - [ ] No speech, no lip movement, no added sound.
-- [ ] Middle frames inspected. No face matches neither endpoint.
+- [ ] Middle frames inspected: every face in them matches one of the two end photos.
 - [ ] Face-similarity gate run, or recorded as not run.
 - [ ] No face or expression motion for a person who has died, unless the family has said yes.
 - [ ] On-screen label: "moved", and "frames invented" where generated.
@@ -82,7 +82,7 @@ Items marked TODO(research) are open. Do not treat them as settled.
 - [ ] Credits list each AI tool and its label.
 - [ ] Originals are still in `01_masters`, and the checksums match.
 - [ ] No file depends on a cloud service the maker has not approved.
-- [ ] Licences checked for the showing type: private gift, or public or ticketed.
+- [ ] Licences checked for the showing type: free public screening, or ticketed (the premiere is public; charter Principle 7).
 
 ## Quality bar
 
@@ -110,7 +110,8 @@ Items marked TODO(research) are open. Do not treat them as settled.
 - **Local by default.** Family photos stay on the maker's machine. Cloud use needs the maker's explicit yes, and then only for cleared photos, on paid tiers whose terms say no training. Download results at once.
 - **Children and third parties** in the photos have not agreed to vendor processing. Process them locally.
 - **Covert work.** Nothing may sync to a cloud photo library or shared device that the mother can see (charter).
-- **Licences.** Non-commercial weights (for example SUPIR, FLUX.1 Kontext dev) are acceptable for a private gift only. Check before any public or ticketed showing.
+- **Licences.** Non-commercial weights need a licence read for public exhibition before use; a ticketed showing excludes them.
+- **Unread licences.** FLUX.2 dev, FLUX.2 klein 9B and InstantID have no licence read in the research note (TODO(research)). Do not use them for a shown frame until read.
 - **Label everything.** Use L0 to L5, the IPTC URI in XMP, and the credits cue sheet.
 
 **Cloud verdicts (from the research note's privacy table, Q7):**
@@ -157,6 +158,7 @@ Items marked TODO(research) are open. Do not treat them as settled.
   - [72] FramePack: https://github.com/lllyasviel/FramePack
   - [77] WanGP: https://github.com/deepbeepmeep/Wan2GP
   - [82] Veo 3.1 in the Gemini API: https://ai.google.dev/gemini-api/docs/veo
+  - [114] Veo 3.1 in the Gemini API (same page as [82]): https://ai.google.dev/gemini-api/docs/veo
   - [84] Gemini Apps Privacy Hub: https://support.google.com/gemini/answer/13594961
   - [85] Gemini API Additional Terms of Service: https://ai.google.dev/gemini-api/terms
   - [86] Luma Labs Privacy Policy: https://lumalabs.ai/legal/privacy-policy
@@ -170,5 +172,5 @@ Items marked TODO(research) are open. Do not treat them as settled.
   - [99] What Jennifer Did (Wikipedia): https://en.wikipedia.org/wiki/What_Jennifer_Did
   - [100] They Shall Not Grow Old (Wikipedia): https://en.wikipedia.org/wiki/They_Shall_Not_Grow_Old
   - [104] and [105] Local test runs (Real-ESRGAN flags and missing-model behaviour; ExifTool and MP4 tag handling): see the research note's follow-up round, not web pages
-  - [116] Veo responsible AI and usage guidelines (Vertex): https://docs.cloud.google.com/vertex-ai/generative-ai/docs/video/responsible-ai-and-usage-guidelines
+  - [116] Veo responsible AI and usage guidelines (Vertex): https://docs.cloud.google.com/vertex-ai/generative-ai/docs/video/responsible-ai-and-usage-guidelines (page text sits past a 100,000-character navigation block; a first fetch looks empty)
   - [102] Local sandbox test of ImageMagick and ffmpeg commands (commands run; result quality not judged on real faces). Not a web page; see the research note.

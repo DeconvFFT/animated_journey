@@ -33,11 +33,11 @@ Make sure every interactive or animated device in the Life Journey passes charte
 4. Run the swap test. Replace her facts with another family's facts in your head. If the device still works unchanged, it fails Principle 2. Redesign it.
 5. Match the device to a pattern in the notes' pattern library (patterns 1 to 39, in "Deliverable A" of `research/games.md`). Record the pattern number, or write "new" and describe it in one line.
 6. Score the device (these are judgment calls, not research findings): access 1 to 5, gimmick risk L, M or H, build effort S, M or L. Use the scales in the checklist below. Anything in the vertical slice needs access 4 or 5.
-7. Apply the input rules. Accept only: one click or tap; a visible next step; auto-advance or passive animation that still works if nobody touches it; a host pause. Reject drag, swipe, double-tap, long-press, rhythm taps, eye-blinks, webcam tracking, analog sticks and timed reactions. Convert each rejected input to one of the accepted ones. Basis: [39][40][41]. The pause chime comes from *Before Your Eyes* [14].
+7. For the film, rule (c) is the primary form: the device must work as passive animation; the one-click and host-pause rules apply to the companion keepsake. Apply the input rules. Accept only: one click or tap; a visible next step; auto-advance or passive animation that still works if nobody touches it; a host pause. Reject drag, swipe, double-tap, long-press, rhythm taps, eye-blinks, webcam tracking, analog sticks and timed reactions. Convert each rejected input to one of the accepted ones. Basis: [39][40][41]. The pause chime comes from *Before Your Eyes* [14].
 8. Apply the anti-game rules. Remove points, XP, badges, achievements, levels, leaderboards, progress bars, completion percentages, game-over states and any timer tied to a viewer's action. Basis: [23][37][38] for points, [26] for fail states. Remove stock vocabulary: circle-of-life day and night, generic biomes, treasure chests, hearts and hunger bars, enemies standing in for illness or money.
 9. Apply the truth rules. Reconstructed scenes use a different medium from documents and carry a visible label. Nothing is invented: no events, people, quotes or objects without a source or the family's confirmation. Basis: [11][13].
-10. Apply the dignity rule. If the chapter covers loss, illness, separation, money or conflict, mark it "needs proxy decision" and route it to the trusted close relative who acts as proxy (charter Principle 5). The default is to leave it out of the shared version. A locked chapter can follow the Minecraft Vault pattern: it opens once and only with its own key [55].
-11. Apply the IP rule. If any Minecraft asset appears (textures, models, sounds, footage), mark it "terms check needed." The default is to swap it for original voxel or vector assets. Tools: [49][50][51].
+10. Apply the dignity rule. If the chapter covers loss, illness, separation, money or conflict, mark it "needs proxy decision" and route it to the maker, who is her proxy (charter Known facts and Principle 5), and flag it to the Fable advisor at the gate; consult no relative unless the maker has brought that person in and `surprise-ops` lists them. The default is to leave it out of the shared version. A locked chapter can follow the Minecraft Vault pattern: it opens once and only with its own key [55].
+11. Apply the IP rule. If any Minecraft asset appears (textures, models, sounds, footage), mark it "terms check needed." The default is to swap it for original voxel or vector assets. Tools: [49][50][76].
 12. Check the voice. A device must not put words in her mouth. Any speech comes from her real recorded words or from text with a real source. No synthetic, cloned or text-to-speech voice of any real person, living or dead, even with consent (charter review §1.2). Where she cannot be recorded, real words for surprise mode are existing home video or voice notes; her own letters and cards; or a saying that two relatives independently confirm, shown *attributed* ("as her sister remembers it"), never as a quotation in her voice.
 13. Record the decision. Append one row to `design/devices-log.md` (create it if absent) with columns: date | chapter | device sentence | subject facts + confirmed by | pattern # | A/G/B | decision | open questions. A/G/B are the access, gimmick risk and build effort scores from step 6. The orchestrator may move the file; update this path if so.
 14. Hand off. Delivery goes to the `format` track, tools to `toolchain`, photos to `ai-imagery`. Send the rubric scores to the Fable advisor gate.
@@ -67,6 +67,7 @@ Make sure every interactive or animated device in the Life Journey passes charte
 - [ ] Screenshots and recordings do not sync to a cloud photo library.
 - [ ] Questions ask how it felt, not whether it was understood.
 - [ ] No test is run with the subject herself.
+- [ ] The tester has not been told what the project is or who it is for.
 
 **Before any public or large-screen showing:**
 - [ ] Minecraft terms re-read on the day of the showing, with the date recorded.
@@ -93,7 +94,7 @@ Approval rule (charter): the advisor gate approves only when every rubric score 
 
 ## Ethics guardrails
 
-- **Consent and dignity.** Hard chapters go through the trusted proxy, and the default is to leave them out (charter Principle 5). Whether to release a story at all is a real question. The *That Dragon, Cancer* developer asked it of himself and faced critics over it [17][18].
+- **Consent and dignity.** Hard chapters are decided by the maker as her proxy, flagged by the Fable advisor, and the default is to leave them out (charter Principle 5). Whether to release a story at all is a real question. The *That Dragon, Cancer* developer asked it of himself and faced critics over it [17][18].
 - **No invented facts.** Reconstructions are visibly reconstructions. Unreliable or disputed accounts are shown as such [11][13].
 - **No words in her mouth.** No invented quotes (charter Principle 4). No synthetic, cloned or text-to-speech voice of any real person, living or dead, even with consent (charter review §1.2). Where she cannot be recorded, real words for surprise mode are existing home video or voice notes; her own letters and cards; or a saying that two relatives independently confirm, shown *attributed* ("as her sister remembers it"), never as a quotation in her voice.
 - **No elegy by default.** She is alive. Take devices from death-forward games such as *Passage* and *Spiritfarer* [23][27], not their register [41].
@@ -137,9 +138,11 @@ Approval rule (charter): the advisor gate approves only when every rubric score 
 [47] Modrinth — Flashback Settings — https://modrinth.com/project/mOIDKWOa — fetched 2026-10-18 — [P] note: add-on; PolyForm Noncommercial; telemetry on by default.
 [49] Blockbench — https://blockbench.net/ — fetched 2026-10-18 — [P].
 [50] Blockbench README — https://cdn.jsdelivr.net/gh/jannisx11/blockbench@master/README.md — fetched 2026-10-18 — [P] GPL-3.0; assets are yours.
-[51] VoxelFans — MagicaVoxel page (third-party) — https://voxelfanscom.nuxt.dev/magicaVoxel — fetched 2026-10-18 — [T] "free for personal and commercial use"; official license unverified.
+[51] VoxelFans — MagicaVoxel page (third-party) — https://voxelfanscom.nuxt.dev/magicaVoxel — fetched 2026-10-18 — [T] "free for personal and commercial use"; superseded by [76] (official site licence block, confirmed 2026-10-18); kept only as the lead.
 [55] Minecraft Wiki — Vault — https://minecraft.wiki/w/Vault — fetched 2026-10-18.
 [57] Salon (from The Daily Dot) — "Gamer uses 'Minecraft' to pay tribute to his wife" — https://salon.com/2014/03/13/gamer_uses_minecraft_to_pay_tribute_to_his_wife_partner — 2014-03-13 — [S] second-hand; original not found.
 [58] Everplans — Adam Seifer, "Minecraft video game memorial honors loved one" — https://everplans.com/articles/minecraft-video-game-memorial-honors-loved-one — undated — [S] cites a Reddit post (not found).
 [64] Game Developer — Zach Soares, "Voxel Art: Reducing the Greebles" — https://www.gamedeveloper.com/design/voxel-art-reducing-the-greebles — 2017-06-05.
 [65] 80.lv — Gabriel de Laubier, "Using Voxels for Simple Dioramas" — https://80.lv/articles/using-voxels-for-simple-dioramas — 2017-07-26.
+[76] MagicaVoxel official site, main page fragment (the licence block and changelog) — https://ephtracy.github.io/mv_main.html — [P] version 0.99.7.2.
+[77] MagicaVoxel official site, Commands page — https://ephtracy.github.io/mv_commands.html — [P].

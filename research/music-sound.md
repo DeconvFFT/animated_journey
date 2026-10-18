@@ -10,12 +10,12 @@ A research-limit note up front: the web-search budget for this run (200 searches
 
 ## Summary
 
-1. **Nothing "free" or "royalty-free" is automatically cleared for a public screening, and the terms I read mostly say so.** Suno's free tier is personal and non-commercial [11][12]. ElevenLabs' Eleven Music terms (updated 2026-10-09) exclude "film, TV, radio" on every plan except Enterprise [19]. Epidemic Sound sends "films intended for theatrical/festival release" to a custom Enterprise licence [32]. Mixkit excludes "CDs, DVDs, Video Games or TV & Radio broadcasts" and is silent on film [38]. The YouTube Audio Library page does not address use off YouTube [40]. Musicbed says "most festivals explicitly reject Creative Commons and 'copyright-free' claims" [35].
+1. **Nothing "free" or "royalty-free" is automatically cleared for a public screening, and the terms I read mostly say so.** Suno's free tier is personal and non-commercial [11][12]. ElevenLabs' Eleven Music terms (updated 2026-10-09) exclude "film, TV, radio" on every plan except the Enterprise Music tier; Enterprise Music Lite also excludes them (advisor spot-check, reviews/music-sound-round1.md) [19]. Epidemic Sound sends "films intended for theatrical/festival release" to a custom Enterprise licence [32]. Mixkit excludes "CDs, DVDs, Video Games or TV & Radio broadcasts" and is silent on film [38]. The YouTube Audio Library page does not address use off YouTube [40]. Musicbed says "most festivals explicitly reject Creative Commons and 'copyright-free' claims" [35].
 2. **Recommended music spine (a lean for the maker to confirm):** one original or relative-performed motif, public-domain tunes in new performances, a small number of cleared songs (at most two), real voices and a lot of silence. AI music is allowed by Principle 4 because it is not a memory, but only as a labelled bed or as temp, never as her songs re-sung [1][4].
 3. **Commissioning a composer is the cleanest rights route and the worst fit for "only the maker knows".** Indie composers quote about $100-$500 per finished minute (Twine, 2025-12-02) [58]; one forum snippet puts a short at "$2000" [59]. For 8-12 minutes of score that is roughly $800-$6,000 (our arithmetic). It also brings one stranger into the secret. The fallback path (PD, relative, CC0/CC BY, AI bed, silence) needs no one.
 4. **AI music in October 2026.** Suno terms revised 2026-08-10, effective 2026-09-03: Pro and Premier get an assignment of "any Output owned by Suno", but no copyright warranty, and commercial use is tied to permitted downloads [11][12]. Udio has had downloads disabled since 2025-10-29, so it cannot supply a film file [13][18]. Stable Audio 3.0 (2026-05-20) has open weights and a Community Licence that lets small creators own and commercialise outputs, and it can run on the maker's own PC [21][22][23]. Google's Lyria 3 makes 30-second clips in Gemini and up to 3 minutes in Vertex AI preview, with commercial terms I could not confirm [24][25].
 5. **Copyright and PRO consequences of AI music.** The US Copyright Office says copyright does not extend to purely AI-generated material and that "prompts do not alone provide sufficient control" [28] (hub and publication dates: [27]). ASCAP, BMI and SOCAN (announced 2025-10-28) register partly-AI works but not wholly AI ones [29][30]. So a purely generated cue has no registrable composer and no writer's share. The cue sheet should say so.
-6. **Litigation is live.** Warner has settled with Suno (and, by most reports, Udio), and UMG has settled with Udio. UMG and Sony v. Suno continue; on 2026-08-18 the judge let the labels add a stream-ripping claim, with fair-use summary judgment expected after fact discovery closed on 2026-09-30 [15][16]. A ruling could land before the premiere.
+6. **Litigation is live.** Warner has settled with Suno (and, by most reports, Udio), and UMG has settled with Udio. UMG and Sony v. Suno continue; on 2026-08-18 the judge let the labels add a stream-ripping claim, with fair-use summary judgment expected after fact discovery closed on 2026-09-30 [15][16]. A second UMG and Sony suit (2026-09-18, 60,202 recordings) has been filed, and no summary-judgment ruling or settlement was found as of 2026-10-18 (F2) [112][113]. A ruling could land before the premiere, but none is scheduled in anything read.
 7. **A venue's PRO licence never covers sync.** ASCAP says it does not license the right to put music in "a motion picture, video or TV program"; that is for publishers [49]. Whether a venue needs a PRO licence for the music inside a film shown there varies: Australia's OneMusic requires an event organiser to hold a Film Screenings licence "regardless of whether there's an entry fee" [51]; US cinema owners say producers clear performance at source [53]; the US non-profit exemption in 17 U.S.C. 110(4) covers only "nondramatic" musical works, not a motion picture [54].
 8. **Public domain, 2026 edition.** US compositions published before 1931 and US recordings first published before 1926 are public domain as of 2026-01-01 [45][46]. A modern recording of a public-domain tune is still protected, so use a relative's performance, a Musopen-type recording whose terms you have read, or a pre-1926 US recording. UK and EU rules differ; India uses 60-year terms [44][47][48].
 9. **Favourite songs.** A song needs two permissions: publisher (sync) and label (master) [35][36]. Festival-only indie rates are about $500 per side for about 12 months; recognisable names about $800-$1,500 per side; a later step-up can be 3-10 times [36]. There is no sourced timeline, so start the asks now and set a decision gate (below). A cover removes the master fee but not the sync fee [36].
@@ -62,7 +62,7 @@ What each exemplar teaches at beat level. Durations are published cue lengths, n
 **What the contract must cover** (checklist; confirm with an entertainment lawyer):
 - **Grant, not just ownership.** Sync (music with picture), the recording (the composer's own master), and public performance (collected through the PRO). Media: all media, including festival, theatrical and online. Territory: worldwide. Term: perpetual. Exclusive or not. A sync licence "can be exclusive or non-exclusive and limited by territory and duration", and the client "does not need to own the music copyright" [57].
 - **Work for hire versus licence.** Without negotiation, standard clauses often mean "a complete assignment in copyright" [57]. Work for hire does not give up the writer's performing royalties: "Your performing rights are never part of the negotiations", the writer's share is non-transferable, and BMI says "in no case will the writer's share of royalties be paid to the employer" [56]. Our lean for a tribute film: an exclusive, perpetual, worldwide, all-media licence with the composer keeping authorship credit and the writer's share, rather than a buyout, because a buyout costs more and adds nothing the film needs (inference). One survey shows buyout pressure on composers is common (26% of Canadian respondents had been asked for a full buyout) [60].
-- **PRO and cue sheets.** The composer's name must be on the cue sheet; cue sheets must reach the PRO before quarterly deadlines [56][50]. The production company is normally responsible for filing [50].
+- **PRO and cue sheets.** The composer's name must be on the cue sheet; cue sheets must reach the PRO before quarterly deadlines [56][50]. ASCAP's 2027 dates govern broadcast-type performances only (F1). The production company is normally responsible for filing [50].
 - **Credit and moral rights.** Credit on all copies with prominence equal to other key creatives; check consent to alteration [57].
 - **Deliverables.** Stems and a full mix as 48 kHz 24-bit WAV, alternate lengths (full, short, bumper), a tempo or hit-point map, and the project file or MIDI (our additions).
 - **No generative AI without disclosure, no uncleared samples, no quoting of uncleared songs** (our additions, supporting Principle 4 and the clearance log).
@@ -79,11 +79,11 @@ All of these are dated snapshots. AI terms change often, and none of these shoul
 
 | Service | Ownership and commercial terms (what I read) | Public performance, festival, cinema | PRO registrability and labelling | Litigation | Quality and tells | Principle 4 fit |
 |---|---|---|---|---|---|---|
-| **Suno** (ToS revised 2026-08-10, effective 2026-09-03) [11][12] | Free tier: Outputs only for "lawful, personal and non-commercial purposes". Pro/Premier: Suno "hereby assigns" to you "any Output owned by Suno", but Output "will remain subject to these Terms of Service including any applicable commercial use restrictions", and Suno "makes no representation or warranty... that any copyright will vest in any Output". Commercial use only for Output downloaded through an approved channel; subscribing later does not make earlier free songs commercial [11][12]. Downloads are described as perpetual and unaffected by later cancellation [11] (per a page summary; re-read before relying). | No specific public-performance clause: "perform" appears only in the general bar on commercial use [11]. A paid-plan Output has commercial rights, so a public gathering, festival or cinema is y, but unstated. | A wholly AI composition cannot be registered with ASCAP, BMI or SOCAN; partly-AI works can [29][30]. You may not remove or obscure Suno's fingerprints, watermarks or metadata, and Suno "may publicly identify Output as generated through the Service" [11]. A voice model may only be of your own voice [11]. | UMG and Sony v. Suno active; Warner settled; 2026-08-18 order let the labels add a DMCA 1201 stream-ripping claim; fact discovery closes 2026-09-30; fair-use summary judgment expected [16][15]. | V6 launched 2026-09-09; user reports are mixed, with "muddy", "muffled", "flat" mixes [13]. Prices: Pro $10 a month ($8 yearly), 20 downloads; Premier $30 ($24), 60 downloads; Pro has Auto Split to up to 12 stems [13]. | Allowed: it is not a memory. Never upload family audio (the ToS gives Suno a perpetual licence to use content to improve its models [11]). |
-| **Udio** | Downloads of audio, video and stems have been disabled since 2025-10-29 under the UMG settlement; terms revised 2025-11-12 reportedly limit output to personal, non-commercial use [18]. A 48-hour download window reopened and closed in early November 2025 [17]. A 2026-10-04 comparison lists no downloads on any plan [13]. One June 2026 explainer says paid plans grant commercial use, which conflicts with the rest [14]. | Not usable: no file to put in a film. | n/a | Warner and UMG settled; Sony v. Udio active [15]. | Praised for cinematic and ambient material by some users [13]. | Primary Udio terms could not be read (JS page); UNVERIFIED. |
+| **Suno** (ToS revised 2026-08-10, effective 2026-09-03) [11][12] | Free tier: Outputs only for "lawful, personal and non-commercial purposes". Pro/Premier: Suno "hereby assigns" to you "any Output owned by Suno", but Output "will remain subject to these Terms of Service including any applicable commercial use restrictions", and Suno "makes no representation or warranty... that any copyright will vest in any Output". Commercial use only for Output downloaded through an approved channel; subscribing later does not make earlier free songs commercial [11][12]. "Nothing in this paragraph permits commercial use of any Remix" [11]. Downloads are described as perpetual and unaffected by later cancellation [11] (per a page summary; re-read before relying). | No specific public-performance clause: "perform" appears only in the general bar on commercial use [11]. A paid-plan Output has commercial rights, so a public gathering, festival or cinema is y, but unstated. | A wholly AI composition cannot be registered with ASCAP, BMI or SOCAN; partly-AI works can [29][30]. You may not remove or obscure Suno's fingerprints, watermarks or metadata, and Suno "may publicly identify Output as generated through the Service" [11]. A voice model may only be of your own voice [11]. | UMG and Sony v. Suno active; Warner settled; 2026-08-18 order let the labels add a DMCA 1201 stream-ripping claim; fact discovery closed 2026-09-30 in the first case; a second UMG and Sony suit (2026-09-18, 60,202 recordings, v6 models) is filed; no summary-judgment ruling or settlement found as of 2026-10-18 (F2) [112][113]. Suno retired its earlier models on 2026-09-09, so keep any file made with them (F2) [118]. | V6 launched 2026-09-09; user reports are mixed, with "muddy", "muffled", "flat" mixes [13]. Prices: Pro $10 a month ($8 yearly), 20 downloads; Premier $30 ($24), 60 downloads; Pro has Auto Split to up to 12 stems [13]. | Allowed: it is not a memory. Never upload family audio (the ToS gives Suno a perpetual licence to use content to improve its models [11]). |
+| **Udio** | Downloads of audio, video and stems have been disabled since 2025-10-29 under the UMG settlement; terms revised 2025-11-12 reportedly limit output to personal, non-commercial use [18]. A 48-hour download window reopened and closed in early November 2025 [17]. A 2026-10-04 comparison lists no downloads on any plan [13]. One June 2026 explainer says paid plans grant commercial use, which conflicts with the rest [14]. | Not usable: no file to put in a film. | n/a | Warner and UMG settled; Sony v. Udio active [15]. | Praised for cinematic and ambient material by some users [13]. | Udio's own pages confirm downloads are disabled (blog 2025-10-29; Help article restated 2026-02-17) [122][124]. Its terms page is script-rendered, so the commercial-use wording stays UNVERIFIED (F3) [126]. |
 | **Stable Audio 3.0** (2026-05-20) [21][22][23] | Open weights for Small SFX, Small and Medium on Hugging Face; Large via API only. "Under the Stability AI Community License, you own your outputs and can distribute and commercialize them freely"; organisations over $1M annual revenue need an enterprise licence (which adds indemnity) [23][21]. Company says trained on "fully licensed data" (AudioSparx and Freesound CC recordings, per the cited paper); not independently verified [23]. | Community Licence is silent on venue types, so y for all. | PRO status as for Suno (wholly AI: not registrable) [29]. | Stability faces separate image-training suits (Getty, class actions) per a 2025 trade report [109]; no music-specific suit found. | Medium makes tracks up to 6:20; Small 2:00; Small SFX is a sound-effects model [22]. Quality claims are Stability's own [22]. Can run locally, so no upload. | Allowed. Local run keeps everything on the maker's PC. |
 | **Google Lyria 3 / Lyria 3 Pro** | Gemini app: 30-second tracks, beta, ages 18+, 2026-02-18 [24]. Vertex AI: Lyria 3 Pro up to 3 minutes, public preview, 2026-04-07 [25]. Neither page states commercial rights or indemnity [24][25]: UNVERIFIED. | Unknown. | All outputs carry SynthID; Vertex supports C2PA [25]. Google's prohibited-use policy bars impersonation without disclosure and "claiming it was created solely by a human, in order to deceive" [26]. | n/a | "Designed for original expression, not for mimicking existing artists" [24]. | Allowed; terms to confirm before use. |
-| **ElevenLabs Eleven Music** (terms updated 2026-10-09) [19] | "All online and offline commercial use permitted, except film, TV, radio, and Studio Games" on Free, Starter, Creator, Pro, Scale and Business; Enterprise Music has no listed exclusions. Free output needs attribution ("denote Eleven Music"). Ownership "in accordance with your Underlying ElevenLabs Agreement". | Film is excluded on every non-Enterprise plan, so festival and cinema are N. A free gathering is ? (not "commercial", but a film). | PRO not mentioned [19]. Streaming disclosure per platform rules [19]. Artist-name prompts are barred on all plans [19]. | Launch deals with Merlin and Kobalt (2025-08-05) [20]. | Claims "studio-grade" music [20]. | Allowed, but unusable for this film without Enterprise. |
+| **ElevenLabs Eleven Music** (terms updated 2026-10-09) [19] | "All online and offline commercial use permitted, except film, TV, radio, and Studio Games" on Free, Starter, Creator, Pro, Scale and Business; Enterprise Music has no listed exclusions; Enterprise Music Lite also excludes film, TV and radio (advisor spot-check, reviews/music-sound-round1.md). Free output needs attribution ("denote Eleven Music"). Ownership "in accordance with your Underlying ElevenLabs Agreement". | Film is excluded on every non-Enterprise plan, so festival and cinema are N. A free gathering is ? (not "commercial", but a film). | PRO not mentioned [19]. Streaming disclosure per platform rules [19]. Artist-name prompts are barred on all plans [19]. | Launch deals with Merlin and Kobalt (2025-08-05) [20]. | Claims "studio-grade" music [20]. | Allowed, but unusable for this film without Enterprise. |
 | **Others** | Meta MusicGen weights are non-commercial (CC BY-NC) [2]. Mureka, AIVA, Soundraw, Beatoven and similar were not researched; UNVERIFIED. | | | | | |
 
 **Labelling.** Plan a credit line such as "Additional music generated with [tool, version] and arranged by [name]; no real artist's voice or style was imitated." The EU AI Act's Article 50 (page says it applies from 2 August 2026) requires providers to mark synthetic audio machine-readably and deployers to disclose deepfakes, narrowing the duty for an "evidently artistic, creative... work" to disclosure "in an appropriate manner that does not hamper the display or enjoyment" [31]. A music bed is not a deepfake on its face. Applicability to a private-ish screening in a given country, and any delay under EU "digital omnibus" proposals, are UNVERIFIED.
@@ -225,7 +225,7 @@ The rule is simple: family audio stays on the maker's PC unless a named batch's 
 - *Use as recorded.* Allowed: level, high-pass, hum and noise reduction, clean fade in and out, trimming silence at head and tail. Not allowed: re-cutting into new sentences, splicing across pauses, looping, stretching, pitch change, bandwidth extension, dubbing under a different picture so it means something else, or any synthetic extension of the voice (Principle 4; story.md Decision 10) [1][4].
 - *Cut only at natural pauses between full utterances,* never inside a sentence. Say in the credits that these are her own recorded words with the year and the source ("recorded 1998, from a family video").
 - *Everyone heard needs a consent status.* The story.md found-voice inventory already records the consent status of everyone heard [4]; add a column for the other voices in the clip (children, friends, relatives), including the dead, whose use needs the closest family's yes [6].
-- *Law and ethics (jurisdiction flagged; do not conclude):* who owns the recording (usually whoever made it); the speaker's privacy and publicity rights; data-protection rules if the premiere is in the UK or EU, where a voice can be personal data and the household exemption is narrow (the ICO page was not conclusive) [6]; personality-rights case law in India and state publicity rights in the US (not researched). This is one question for a lawyer, or the maker's own judgement: "May I play a private recording of her voice, made by a family member, to a public audience that includes her, at an event she does not know about?" The answer should be written into the plan before the voice is used (Principle 5 and 7).
+- *Law and ethics (jurisdiction flagged; do not conclude):* who owns the recording (usually whoever made it); the speaker's privacy and publicity rights; data-protection rules if the premiere is in the UK or EU, where a voice can be personal data and the household exemption is narrow (see F6: the EDPB household-exemption guidance reads that exemption narrowly, so a public screening falls outside it) [6][133]; personality-rights case law in India and state publicity rights in the US (not researched). This is one question for a lawyer, or the maker's own judgement: "May I play a private recording of her voice, made by a family member, to a public audience that includes her, at an event she does not know about?" The answer should be written into the plan before the voice is used (Principle 5 and 7).
 - *Credit what is generated.* The Archival Producers Alliance's guidance for generative material in documentaries is to log and disclose it; I read only its landing page, so treat the details as UNVERIFIED [92][7].
 - *Dignity.* Any recording she might not want a public to hear stays out. The Bourdain case shows how synthetic voices of a real person went wrong [6].
 
@@ -262,7 +262,7 @@ For comparison, the broadcast reference is EBU R 128 (November 2023): programme 
 
 **Stem deliverables (48 kHz, 24-bit WAV, same length, start at 00:00:00:00):** DX (found voice and relatives, each on its own sub-track, originals archived), MX (score and songs), FX (spot effects and foley), AMB (room tone and ambience), plus a stereo full mix and an M&E (music and effects without dialogue) in case of a second-language version. The 48 kHz 24-bit spec follows the DCI audio parameters [99].
 
-**Where to listen.** The venue test: at the week-18 rehearsals (2027-02-14 to 2027-02-20) on the real screen and speakers [8], from the front row, the back row and a side seat. Also on laptop speakers, a phone, earbuds and in mono. Use a calibration reel with no story in it (pink noise, a sweep, your own voice reading a neutral text, and one music bed) so the venue's engineer does not see the film. A phone SPL app is a relative check only (accuracy UNVERIFIED).
+**Where to listen.** The venue test: at the Mon 2027-02-22 run on the real screen and speakers (surprise-ops run sheet; the format.md week-18 dates are not used), from the front row, the back row and a side seat. Also on laptop speakers, a phone, earbuds and in mono. Use a calibration reel with no story in it (pink noise, a sweep, your own voice reading a neutral text, and one music bed) so the venue's engineer does not see the film. A phone SPL app is a relative check only (accuracy UNVERIFIED).
 
 **Tool verdict for this film's mix.**
 - *SoundCraft:* README says "pre-alpha: it covers 94 % of the incumbent's menu items (measured)", about 40% of the way to replacing a professional DAW; it exports WAV at 16, 24 or 32-bit float and reports peak, true peak and LUFS on bounce [105]. The gaps list says "No sidechain (key input) buses for any host", no AAF/OMF, about 25 open correctness bugs, Windows only lightly exercised, and loudness metering is not mentioned [105]. Issues #710 and #707 (MP3 and AAC import can silently shorten or shift audio) are recorded in craft-motion.md [5]. Verdict: experiments only, WAV and FLAC only, never for delivery.
@@ -308,7 +308,8 @@ Legend: **Y** expressly covered as read; **y** not expressly stated, fair readin
 | 2 | Commissioned score, work for hire or assignment | C | C | C | C | C | Same; writer's share stays with the composer [56] |
 | 3 | Relative plays a public-domain tune | C | C | C | C | C | Written release from the performer; confirm PD status in the venue's country [44][45] |
 | 4 | Relative plays her actual (copyrighted) song | C | C | C | C | C | Publisher sync licence needed; no master [36][49] |
-| 5 | Public-domain composition + public-domain recording (US pre-1926; Musopen after reading its terms) | Y | Y | y | y | Y | Per country [45][46][43] |
+| 5 | Pre-1926 US recordings of a public-domain composition | Y | Y | y | y | Y | Per country; US rule [45][46] |
+| 5b | Musopen recordings, until its terms are read | ? | ? | ? | ? | ? | Musopen terms not read: every path returned 403 (F4) [43][127] |
 | 6 | CC0 or Sonniss/Freesound CC0 sounds | Y | Y | Y | Y | Y | Check the GenAI tag on Freesound [75][76] |
 | 7 | CC BY (incompetech, Freesound CC BY, FMA CC BY) | Y | Y | y | y | Y | Credit; festivals can reject CC claims [35][2][41] |
 | 8 | CC BY-NC | Y | ? | N | N | ? | NC trap [41][35] |
@@ -317,9 +318,9 @@ Legend: **Y** expressly covered as read; **y** not expressly stated, fair readin
 | 11 | Library enterprise or per-project licence (Epidemic Enterprise, Musicbed) | C | C | C | C | C | Negotiate scope; Musicbed prices by quote [32][35] |
 | 12 | Free sites: Pixabay, Mixkit, YouTube Audio Library | y | y | ? | ? | y | Pixabay Terms silent on audio and Content ID [39]; Mixkit excludes TV/radio/CD/DVD/games [38]; YouTube silent off-platform [40] |
 | 13 | Suno free tier | Y | N | N | N | N | "personal and non-commercial" only [11][12] |
-| 14 | Suno Pro/Premier, downloaded while subscribed | Y | y | y | y | Y | Assignment of Output, no copyright warranty, commercial via downloads; no public-performance clause [11][12] |
+| 14 | Suno Pro/Premier, downloaded while subscribed | Y | y | y | y | Y | Assignment of Output, no copyright warranty, commercial via downloads; no public-performance clause; "Nothing in this paragraph permits commercial use of any Remix" [11][12] |
 | 15 | Stable Audio 3.0 local, Community Licence | Y | y | y | y | Y | Under $1M revenue [21][23] |
-| 16 | ElevenLabs Eleven Music (not Enterprise) | ? | ? | N | N | ? | Film/TV/radio excluded [19] |
+| 16 | ElevenLabs Eleven Music (not Enterprise Music) | ? | ? | N | N | ? | Film/TV/radio excluded on every plan except the Enterprise Music tier; Enterprise Music Lite also excludes them [19] (advisor spot-check) |
 | 17 | Udio | N | N | N | N | N | Downloads off [13][18] |
 | 18 | Google Lyria 3 / 3 Pro | ? | ? | ? | ? | ? | Commercial terms not found [24][25] |
 | 19 | Licensed song, sync + master | C | C | C | C | C | Media, territory, term as signed [35][36] |
@@ -360,10 +361,13 @@ Legend: **Y** expressly covered as read; **y** not expressly stated, fair readin
 | 1. Build the temp | 2026-11 | Temp from cleared or CC0/CC BY tracks you could keep, plus AI scratch beds; commercial temp only if flagged `TEMP-UNCLEARED` and kept on the PC | Animatic with temp, log rows |
 | 2. Spot | when animatic v2 is about 80% locked | Fill the spotting sheet below; run the "temp love" tests (mute temp on three cues; two temps for the key cue) | `spotting.csv` |
 | 3. Decide per cue | by 2026-12-14 | commission, generate, PD, relative, library, song or none; update the log | Decision list |
-| 4. Make and clear | 2026-12 to 2027-01-15 | Composer or AI beds; PD and relative recordings with releases; sync asks sent by 2026-11-15; substitute locked by 2027-01-08 | Files plus log rows `cleared` |
-| 5. Replace temp | 2027-01-16 to 02-05 | Drop stems in at the same timecode; move music, not picture | Conformed music stem |
-| 6. Mix and masters | 2027-02-06 to 02-12 | Deliverable 4 | Three masters plus stems |
+| 4. Make and clear | 2026-12-06 to each chapter's `locked=1` (last at G-LOCK 2027-02-06) | Composer or AI beds; PD and relative recordings with releases; sync asks sent by 2026-11-15; substitute locked by 2027-01-08. A composer from lock is not feasible on this calendar | Files plus log rows `cleared` |
+| 5. Replace temp | Per chapter from 2027-01-17 (rolling locks); all by G-LOCK 2027-02-06 | Drop stems in at the same timecode; move music, not picture | Conformed music stem per chapter |
+| 6. Mix and masters | Mix v1 at G-MIX 2027-02-13; three masters by G-MASTER 2027-02-20 | Deliverable 4 (DX-gated check added) | Three masters plus stems |
+| 6b. Venue test | Mon 2027-02-22 (surprise-ops run sheet) | Calibration reel, then the film on the real chain; the maker holds the fader | Fader position on the run sheet |
 | 7. Cue sheet and clearance pack | by 2027-02-25 | Final cue sheet, log freeze, receipts | Feeds theatrical-delivery's clearance log |
+
+**Rolling chapter lock.** Sound work on a chapter begins when that chapter is marked `locked=1` in `status.csv`. The vertical slice (G-SLICE, 2026-12-20) is the exception: its DX cleanup, ambience and effects start in December. A composer working from G-LOCK is out on this calendar.
 
 **Spotting-notes template** (one row per cue; reel-and-cue numbering as in [62][63]):
 
@@ -450,8 +454,8 @@ On PowerShell, keep each filtergraph in double quotes; the Windows null target `
 
 **Stems.** `DX_`, `MX_`, `FX_`, `AMB_`, `FULL_`, `ME_` prefixes; same length, starting at 00:00:00:00; name with `film_v01_DX_48k24.wav`; archive the untouched originals and the cleaned versions separately; hash list per format.md Step 4 [8].
 
-**Venue-test checklist (week 18).**
-- [ ] Play the calibration reel (pink noise, sweep, neutral voice, one bed). Note the venue fader or PA setting that makes the voice comfortable at the back row.
+**Venue-test checklist (Mon 2027-02-22).**
+- [ ] Play the calibration reel (pink noise, sweep, neutral voice, one bed). The maker holds the master fader: set it from the back row on the neutral-voice reel and write the position on the run sheet.
 - [ ] Play each of the three masters; pick one; record the setting.
 - [ ] Check the player path (USB, laptop, HDMI), lip sync, and that the audio is not forced to mono.
 - [ ] Check speech intelligibility at the back and sides, with at least one listener who does not have perfect hearing (not told the content).
@@ -470,23 +474,30 @@ asset_id,type,title,creator,source_url,date_accessed,plan_or_tier,account_email,
 - Re-read every AI and subscription row in the week before 2027-02-27, and record the date.
 - For `theatrical-delivery`: export the log as the music-and-SFX half of its clearance log (columns: asset, creator, source, licence, scope by venue type, evidence file, cost, attribution, restrictions, status).
 
-### Sound schedule (T-minus, aligned with format.md week 18)
+### Sound schedule (T-minus, aligned with production-scale gates and the surprise-ops run sheet; format.md week 18 not used)
 
 | Date | What |
 |---|---|
-| 2026-10-18 to 10-31 | Decide the premiere country and venue; decide whether anyone is brought in; build the log; test own-voice capture and the cleanup chain; low-key "what was playing" asks |
-| 2026-11-14 | Track B voice-collection gate (story.md Decision 11 lean) [4]; extend the consent card first |
+| 2026-10-18 to 10-31 | Decide the premiere country and venue; build the log; test own-voice capture and the cleanup chain; low-key asks, including object sounds |
+| 2026-11-14 | Track B voice-collection gate (story.md Decision 11 lean) [4]; the extended consent card is read only after the surprise-ops truthful pretext check |
 | by 2026-11-15 | Sync asks (at most two songs) |
-| by 2026-11-30 | Music path chosen; composer brief or AI/CC path; temp library built |
+| by 2026-11-30 | Music path chosen; composer yes or no (a composer from lock is not feasible); temp library built |
+| 2026-12-06 (G-SLICE-0) | Animatic with temp sound; source_in_her_life on every MOTIF and CLOCK |
 | 2026-12-14 | Hard decision gate: song cleared or replaced; commission or generate per cue |
-| about 2026-12-28 | Start the REAPER trial for a January mix, or buy the $60 licence |
+| 2026-12-20 (G-SLICE) | Chapter 1 with its sound mix; slice DX cleanup, AMB and FX run in December |
+| 2026-12-28 | Start the REAPER trial (60 days; ends 2027-02-26; covers the 13–20 Feb mix), or buy the $60 licence |
 | 2027-01-08 | Substitutes locked |
-| 2027-01-15 (assumed; production-scale decides) | Picture lock for sound |
-| 2027-01-16 to 02-05 | Score delivery; found-voice cleanup; SFX; temp replaced |
-| 2027-02-06 to 02-12 | Mix, stems, three masters |
-| 2027-02-14 to 02-20 | Venue rehearsals on the real screen and speakers [8]; relatives' removal deadline 2027-02-19 [6] |
-| 2027-02-21 to 02-25 | Final exports; hashes; copies; log freeze; cue sheet |
-| 2027-02-26 | Day-before check |
+| 2027-01-17 (G-MID) | Rolling chapter locks begin; sound on a chapter starts at locked=1 |
+| 2027-01-31 (G-DRAFT) | At least 60 percent rolling-locked |
+| 2027-02-06 (G-LOCK) | Picture lock; every shot locked=1 |
+| 2027-02-13 (G-MIX) | Mix v1 and grade v1 for all locked chapters |
+| 2027-02-19 | Relatives' removal deadline [6]; apply removals before the masters |
+| 2027-02-20 (G-MASTER) | Three masters (venue -18 with -23 and -16 alternates; online -16); DX-gated check |
+| 2027-02-21 to 02-25 | Hashes, copies, cue sheet; log freeze by 02-25 |
+| 2027-02-22 (Mon) | Full run on the real playback chain; maker sets the fader from the back row; position on the run sheet |
+| 2027-02-24 (Wed) | Room brief (surprise-ops) |
+| 2027-02-25 (Thu) | Cold start 1 |
+| 2027-02-26 (Fri) | Cold start 2; day-before check |
 | 2027-02-27 | Premiere |
 
 ---
@@ -522,7 +533,7 @@ asset_id,type,title,creator,source_url,date_accessed,plan_or_tier,account_email,
 6. **Anything that fakes a voice.** Out: narration "in mum's voice", AI re-singing of her song, text-to-speech of a relative's letter in that relative's voice, a voice-cloned relative. Principle 4 and the tools' own terms agree [1][11][19][26].
 7. **Over-processing or re-cutting her found voice.** Rules in Q8; A/B against the original; no bandwidth extension.
 8. **Consent creep from private to public.** Extend the card; tiers A, B, C; log the spoken yes; honour removals until 2027-02-19 [6].
-9. **Venue PA surprises.** Rehearse in week 18 with a calibration reel; carry the three masters, a standalone WAV, a backup stick; lip-sync check.
+9. **Venue PA surprises.** Rehearse on Mon 2027-02-22 with a calibration reel, then the film on the real chain; carry the three masters, a standalone WAV, a backup stick; lip-sync check.
 10. **Wrong loudness.** Do not mix a cinema master to -14 LUFS, and do not use single-pass dynamic loudnorm for the master [86][94].
 11. **Temp love and temp leaks.** Temp stays on the maker's PC; mute tests; two temps; brief the composer on function.
 12. **Secrecy leakage through a composer, mixer, lawyer or venue engineer.** Name-free briefs, confidentiality clause past 2027-02-27, calibration reel, or choose the no-outsider path.
@@ -618,8 +629,8 @@ Numbered; tag = strength (P primary, S secondary or press, V vendor, F forum or 
 [46] Duke Center for the Study of the Public Domain, Public Domain Day 2026 — https://cspd.law.duke.edu/publicdomainday/2026/ — January 2026 — S (first 100,000 characters read).
 [47] GOV.UK, how long copyright lasts; Copyright, Designs and Patents Act 1988, duration — https://www.gov.uk/copyright/how-long-copyright-lasts ; https://www.legislation.gov.uk/ukpga/1988/48/part/I/chapter/I/crossheading/duration-of-copyright — SR.
 [48] Indian Copyright Act 1957 (India Code) and commentary — https://www.indiacode.nic.in/bitstream/123456789/1367/1/a195714.pdf — SR (term figures from the search summary).
-[49] ASCAP, licensing FAQ — https://www.ascap.com/help/ascap-licensing — read 2026-10-18 — P — ASCAP does not license sync or mechanical rights.
-[50] ASCAP, Cue Sheet Corner — https://www.ascap.com/help/royalties-and-payment/cue-sheets — read 2026-10-18 — P — cue-sheet contents and quarterly deadlines.
+[49] ASCAP, licensing FAQ — https://www.ascap.com/help/ascap-licensing — read 2026-10-18 by the researcher; not re-read by the advisor on 2026-10-18 (HTTP 403) — P — ASCAP does not license sync or mechanical rights.
+[50] ASCAP, Cue Sheet Corner — https://www.ascap.com/help/royalties-and-payment/cue-sheets — read 2026-10-18 by the researcher; not re-read by the advisor on 2026-10-18 (HTTP 403) — P — cue-sheet contents and quarterly deadlines.
 [51] OneMusic Australia, Film Screenings — https://assets.onemusic.com.au/images/PDFs/guides/Film-Screenings.pdf — July 2026 — P.
 [52] SUISA, screenings in cinemas and film festivals — https://www.suisa.ch/en/Kunden/Musik-in-Filmen/Filmvorfuehrungen/Vorfuehrung-in-Kinos-und-an-Filmfestivals.html — undated — P.
 [53] US cinema operator comment to the Department of Justice on the ASCAP and BMI decrees (movie theater exemption) — https://media.justice.gov/vod/atr/ascapbmi2019/pc-642.pdf — 2019-08-09 — P as a statement of an exhibitor's position, not law.
@@ -689,3 +700,295 @@ Numbered; tag = strength (P primary, S secondary or press, V vendor, F forum or 
 [107] Ardour — https://ardour.org/ — read 2026-10-18 — P.
 [108] Own measurement — sandbox runs, 2026-10-18 (not a web source): ffmpeg 6.1.1 on synthetic pink-noise "dialogue" and sine "music": `loudnorm` two-pass (linear confirmed on the speech-like test; the first test with a flat-level signal reported "Dynamic"), `sidechaincompress` plus `amix`, `afftdn` with `om=n`, `bandreject` hum cut (mean level -34.1 dB to -55.2 dB on a 60/120 Hz test tone), ALAC to 24-bit 48 kHz WAV. No family audio. Windows builds and DeepFilterNet/arnndn were not tested.
 [109] Music Business Worldwide, Stable Audio 2.5 launch — https://www.musicbusinessworldwide.com/stability-ai-launches-ai-model-for-brands-to-create-custom-sounds — 2025-09-11 — S — Getty and artist suits against Stability.
+
+---
+
+## Follow-up research (round 1)
+
+Written 2026-10-18 (Sunday), 19 weeks before the premiere on Saturday 2027-02-27. Sonnet researcher, targeted follow-up on nine questions. Tags as above (P primary, S secondary or press, V vendor, F forum, SR search excerpt only, LOCAL project file). New sources continue the numbering at [110]. Nothing here is legal advice. The premiere country is still undecided, so every rights statement is conditional.
+
+**Research limits this round (read first).** (1) The web-search tool refused the four queries I tried because the shared 200-search budget was used up, so I ran no searches; everything below comes from direct page fetches, from files downloaded from the vendor's own server, and from code and PDFs I opened. I did not try to get around the limit. (2) These hosts blocked reading today: ASCAP (403, www and bare host), BMI (403), IPRS (403), Musopen (403 on every path I tried), APRA AMCOS (403), India Code (403), the California legislature (403), gesetze-im-internet.de (503); SACEM is blocked by the fetch tool itself; PRS and the Apple Messages page returned only a title or table of contents (script-rendered). I did not use archive, reader or proxy services to get around any of these. (3) Where a fact comes only from a Wikipedia article, an unofficial statute mirror or a trade press piece, the source line says so.
+
+### Answers at a glance
+
+| # | Question | Result |
+|---|---|---|
+| F1 | ASCAP 2027 cue-sheet deadlines and usage categories | Deadline table **confirmed from the text the first-round researcher captured on 2026-10-18 06:44 UTC** (the live page is 403 today, so this is not an independent re-read): March/April 2027 distributions need the cue sheet by **2027-01-01**; June/July by 2027-04-02. Full category code list and BMI's equivalent: **UNVERIFIED**. |
+| F2 | UMG and Sony v. Suno after 2026-09-30 | **No summary-judgment ruling and no settlement found** as of reading on 2026-10-18. New since the notes: a second UMG/Sony suit filed 2026-09-18. Latest dated item I read: 2026-10-02. |
+| F3 | Udio's primary terms | Udio's own pages confirm **downloads disabled** (2025-10-29, restated 2026-02-17). The terms page itself is script-rendered, so commercial-use wording is **UNVERIFIED**. Moot while there is no file to download. |
+| F4 | Musopen Terms of Use | **Not read.** Every Musopen path returned 403. Date and wording UNVERIFIED. |
+| F5 | Collecting society and venue licence for music inside a guest's film | Partial. **GEMA** (Germany) has a tariff for single film screenings (version valid from 2026-01-01). **UK**: only a community-cinema guide, no primary PRS text. **PRS primary, SACEM, IPRS: UNVERIFIED.** |
+| F6 | Playing a living person's private voice recording to a public audience | Sourced the **household exemption** (narrow; a public screening is outside it) and the **voice-as-personal-data** point. Personality-rights law is not uniform; a ready consult sheet is below. |
+| F7 | Rolling chapter lock for sound; re-conform cost | **No source found** that describes how documentary or animation shorts stage sound per reel, or any measured re-conform cost. A staging plan and a cost formula follow, both labelled inference. |
+| F8 | Voice Memos Lossless codec; chat apps | **Could not confirm on a real iPhone file** (none available). Signal Android's code does not transcode audio files. WhatsApp and iMessage: UNVERIFIED. A 10-minute hash test settles it. |
+| F9 | Resolve Free: ducker, de-hummer, loudness meters | **Yes, per the Resolve 21 manual**: all three are documented without a Studio tag. Studio tags sit on Voice Isolation, Dialogue Separator, Music Remixer, AI Audio Assistant, Atmos-type buses and B-chain. Confirm on the installed Free build. |
+
+---
+
+### F1. ASCAP cue-sheet deadlines (2027) and usage categories
+
+**What I could and could not read.** The live ASCAP page and its payment-schedule page returned 403 today [110]. BMI returned 403 [111]. The text of the ASCAP "Cue Sheet Corner" page, however, is preserved in the first-round researcher's session log, captured at 2026-10-18 06:44 UTC [110]. Treat that as the same page, read earlier the same day, not as a fresh read.
+
+**Deadlines as captured.** "Deadlines for submission of cue sheets" [110]:
+
+| Distribution dates | Submission deadline |
+|---|---|
+| September 2026 / October 2026 | July 3, 2026 |
+| December 2026 / January 2027 | October 2, 2026 |
+| **March 2027 / April 2027** | **January 1, 2027** |
+| June 2027 / July 2027 | April 2, 2027 |
+| September 2027 / October 2027 | July 2, 2027 |
+| December 2027 / January 2028 | October 1, 2027 |
+
+The notes' figure (2027-01-01 for March/April, 2027-04-02 for June/July) matches. The page says the schedule "indicates when a cue sheet must be received by ASCAP in order for ASCAP to process it for the appropriate quarterly distribution", and that "ASCAP distributes royalties for performances approximately six (6) months after the broadcast performance" [110]. 2027-01-01 is a Friday and a public holiday (our calendar check), so treat 2026-12-18 as the working date.
+
+**Who files.** "The production company is typically responsible for submitting cue sheets." ASCAP "accepts cue sheets directly from Networks and/or Production Companies and cannot accept cue sheets directly from members unless the source of the submission can be substantiated"; cue sheets go to TVCUESHEET@ascap.com [110].
+
+**What a cue sheet must contain** [110]: identifying information for the programme; title of the music; duration; "How the music was used (e.g. Was it a series theme? Visual instrumental? Visual vocal?)"; entitled parties (songwriters, composers, publishers) with ownership shares; and the production company's name and contact details. The page also lists "ASCAP & BMI Announce New Standardized Cue Sheet Template Powered by RapidCue" (Summer 2016) as an article; I did not read it.
+
+**Usage categories.** The captured text gives only examples: "visual instrumental, vocal, background instrumental or vocal", plus "series theme", "visual instrumental", "visual vocal" [110]. A complete code list is **UNVERIFIED**, and BMI's equivalent page is unread [111]. Background knowledge, not verified this round: the usual industry set is visual instrumental, visual vocal, background instrumental, background vocal, theme, main title, end title and logo. For this film the practical mapping is: a relative playing on screen is visual instrumental; underscore is background instrumental; a recording heard without a performer on screen is background vocal.
+
+**What this means for the plan (inference).** The deadlines govern royalties for broadcast-type performances reported to ASCAP, paid about six months later [110]. A single public gathering is not a surveyed broadcast, and the film's planned cues (public-domain tunes, a relative's performance, library or AI beds with no ASCAP writer) may carry no ASCAP member share at all. So the 2027-01-01 date is not a project gate. It becomes one only if (a) a cleared commercial song with an ASCAP writer is in the film and (b) the film is later broadcast or streamed. The cue sheet stays worth making as the clearance record (Deliverable 2). No change to the schedule row for 2027-02-21 to 02-25.
+
+---
+
+### F2. UMG and Sony v. Suno after fact discovery (read 2026-10-18)
+
+**Finding: no summary-judgment ruling and no UMG or Sony settlement turned up.** I cannot read the court docket from here, so this is a negative result from trade press, not a docket check.
+
+What the press shows, newest first:
+- **2026-10-02** (MBW, Shulman interview): neither UMG nor Sony has licensed Suno, per the article. Suno signed BMG on August 12 and Believe on September 8; Warner settled in November 2025. On 2026-09-09 Suno launched its v6 models, developed with WMG, BMG and Believe, and retired its previously used models the same day [118]; in August Suno had said "When the new models launch, all prior models will be retired" [117].
+- **2026-09-22** (MBW): UMG and Sony filed a **second suit on Friday 2026-09-18** in federal court in Boston, assigned to the same judge (F. Dennis Saylor IV). It covers **60,202 recordings** and argues Suno's v6 models derive from earlier models trained on unlicensed music: "Training a 'new' model on the outputs of an infringing model does not eliminate the infringement; it launders it." It also alleges circumvention of YouTube's anti-downloading technology. The labels asked for a jury trial; damages sought run to up to $150,000 per work. Suno: "These claims remain fundamentally flawed on both the facts and the law." In the original case (560 recordings), fact discovery closed on September 30; the parties asked on 2026-09-18 to run discovery on the new stream-ripping claim through **2026-11-20** [112][113]. The articles do not mention summary judgment, a trial date or settlement talks [112][113].
+- **2026-09-08** (MBW): Suno's 2026-09-01 answer admits it obtained YouTube audio for training using yt-dlp, argues the labels lack standing on the stream-ripping claim, and asserts fair use. The article says both sides are expected to file summary-judgment motions on fair use, and gives no date [114].
+- **2026-08-27** (MBW): the same judge denied most of Suno's motion to dismiss a separate indie-artist proposed class action [116].
+- **Other fronts:** GEMA won first-instance in Munich against Suno on 2026-07-31 (appealable; Suno "evaluating all available options, including an appeal") [119]; Sony filed a second suit against Udio on 2026-07-20 [121].
+- **Negative check on the reading date:** the MBW Suno tag page and the MBW homepage, both read on 2026-10-18, showed no headline about a summary-judgment ruling or a UMG/Sony settlement. The homepage items mostly carried no dates (one shows "Wednesday (October 14)"), so the newest item I can date is 2026-10-02 [118][120].
+
+**What it means (inference).** Summary judgment has not been briefed on any date I can find, and a second case with its own discovery window runs to at least 2026-11-20. A fair-use ruling before 2027-02-27 is possible but not scheduled in anything I read. It would not change the plan: the notes already treat every AI cue as swappable and never as the emotional peak. **Practical updates:** (1) re-read this item in the week of 2027-02-01; (2) Suno has retired its earlier models, so if the maker generated any temp or cue with an earlier model, download the file now and keep the receipt, because it can no longer be regenerated (per [118]); (3) from 2026-09-03 a paid subscriber must spend a download on a track before releasing, selling or licensing it [117], which matches the notes' download rule.
+
+---
+
+### F3. Udio's primary terms as they stand (read 2026-10-18)
+
+**What Udio's own pages say.**
+- Blog, 2025-10-29: "Starting today, downloads from the platform will be unavailable." "Over the next several months, Udio will be in a transition period." The post does not mention commercial use or ownership [122].
+- Help centre article "Changes associated with the Universal Music Group partnership", dated **2026-02-17**: "Note that downloading of audio, video, and stems has been disabled." It also lists credit-limit changes (Standard 1,200 to 2,400; Pro 4,800 to 6,000) and does not address commercial use or ownership [124].
+- Help centre WMG article, 2025-11-19: Udio is governed by its transition terms of service, which "was put into place on 29 October"; asked whether the labels own Udio, it answers "No, they did not."; shared songs stay available at udio.com URLs [123][125].
+- Plans (help article, undated): Free (10 daily credits), Standard (2,400 a month), Pro (6,000 a month); no commercial-use statement [126].
+- Changelog: "Updated TOS" on 2025-01-23 (an older revision); no later terms entry [126].
+
+**What I could not read.** The terms page (udio.com/terms-of-service) is script-rendered and returned only its title, and /terms returned the login page. So **the commercial-use and ownership clauses of the current terms remain UNVERIFIED** [126]. I found no help-centre or blog statement of commercial rights.
+
+**Reconciling the sources.** The notes' secondary reports said downloads were disabled and the terms were revised on 2025-11-12 to personal, non-commercial use [18]. Udio's own pages support the downloads part. The "terms revised 2025-11-12" and "personal, non-commercial" claims stay secondary. The Dubspot explainer saying paid plans grant commercial use [14] is neither confirmed nor refuted by any Udio page I could read. It does not matter in practice: with downloads disabled there is no audio file to put in a film, and recording a stream would be a workaround the terms probably forbid (inference; the terms are unread). Sony is the only major without a deal with Udio and has sued it twice [121]. **Verdict unchanged: Udio cannot supply a film file.** Re-check only if Udio's "reimagined platform" ships downloads; no page I read gives a date.
+
+---
+
+### F4. Musopen Terms of Use
+
+**Not read.** `musopen.org/terms/`, `/terms-of-service/`, `/terms-of-use/`, `/faq/`, `/about/` and the home page all returned 403 [127]. I cannot quote or date the current wording, and I cannot confirm or refute the guide's older "personal, non-commercial" phrasing. The only other description I could read, the Wikipedia article, calls the music "public domain" with "creative commons licensing" but takes its freemium details from a 2013 sign-up page, so it is out of date [127].
+
+**Do this instead (maker's own browser, 5 minutes).** Open the Musopen terms page on the Windows PC. Paste into `licence-log.csv`: the exact sentence about use of recordings, the page's "last updated" date if shown, today's date and the URL. If the sentence limits use to "personal" or "non-commercial", treat Musopen as not cleared for a public screening and use a recording that does not depend on that sentence: a relative's performance of a public-domain tune, or a pre-1926 US recording with a primary rights statement [45][46].
+
+---
+
+### F5. Collecting society and venue practice for music inside a guest's film
+
+The premiere country is still open, so this is a table of what each society or source says, with a question to put to the venue.
+
+| Country | What I could read | Status |
+|---|---|---|
+| **Germany (GEMA)** | The tariff overview has a film-screening tab with separate tariffs for single screenings (Tarif T), regular screenings outside cinemas (T-R), cinema operators (T-F) and, elsewhere, music performed when video carriers are played back (Tarif BT) [128]. Tarif T: "Die Vergütungssätze T gelten für Musikwiedergaben bei einzelnen Tonfilmvorführungen, unabhängig von der Art des Filmes"; examples are single screenings by municipalities, churches and youth institutions; **version 46, valid from 2026-01-01**; the page does not say who pays, whether it covers music already in the film, or how the fee is calculated [128]. General rule on the overview: "Eine geplante Musiknutzung muss vorher bei uns angemeldet werden" [128]. GEMA's page for film productions says that if you plan to perform your own production publicly (it names image films, corporate media and training videos), "Dann müssen Sie zusätzlich zur Klärung des Filmherstellungsrechts auch die Aufführungsrechte von uns erwerben", and describes its production-right tariffs as "lediglich Auffangtarife" (fallback tariffs) [129]. | Partial. Payer and calculation: UNVERIFIED (tariff PDF unread). Whether a family premiere falls under Tarif T or the production page: ask GEMA or the venue. |
+| **United Kingdom (PRS)** | PRS pages returned only titles [131]. A community-cinema guide (Cinema For All, "How to Start a Community Cinema", 16 May 2024) tells organisers the venue's "PRS music licence" "covers the copyright of any music used in your chosen film, plus any additional music you want to play as the audience are entering or leaving. Venues obtain this licence from PRS Music or PPL." It also says a film licence from the distributor is always needed [130]. | Secondary and not PRS's own wording; it also blurs PRS and PPL. **PRS primary: UNVERIFIED.** It supports the notes' point that a venue's PRS licence covers performance of the film's music, never sync or master [49]. |
+| **France (SACEM)** | The fetch tool blocks sacem.fr [131]. | **UNVERIFIED.** |
+| **India (IPRS)** | IPRS returned 403; India Code returned 403 [131]. | **UNVERIFIED.** |
+| **Australia, Switzerland, USA** | Already in the notes [51][52][53][54]. | As before. |
+
+**Question to put to the venue, in writing (works in any country):** "Which collecting-society licences do you hold (PRS, GEMA, SACEM, IPRS, ASCAP/BMI, OneMusic)? Do they name music inside a film shown by a guest? If not, who is responsible: you or the organiser? Is there a form, fee or notice date for a one-off screening?" Log the answer next to the premiere date.
+
+**What would change the plan.** If the answer is "the organiser reports and pays", the cue sheet becomes the document you hand over, which is a reason to keep Deliverable 5 current. A film built from public-domain tunes, relative performances and library tracks cleared in writing, with no collecting-society member repertoire, gives the society nothing to claim, but the venue may still ask for a declaration (inference).
+
+---
+
+### F6. Jurisdiction-flagged question for the one-hour consult: a private voice recording played to a public
+
+**The question as it should be put (one paragraph the lawyer can read cold).** "I am making a surprise tribute film for my mother's 50th-plus year, to be shown once at a mostly public gathering in [country, city] on 2027-02-27. It includes private audio recordings of living people's voices (my mother; other relatives; friends), made by family members for private purposes, years ago or recently. The speakers have not agreed to a public showing; for my mother, she cannot be asked. Which laws govern playing those recordings to the public here? Specifically: personality, privacy or publicity rights; data-protection law (is a voice personal data, is the household exemption available, which lawful basis, is there an artistic-expression exemption); any recording-consent or confidentiality-of-speech offence; and who needs to give what consent, in what form, before I play the recording?"
+
+**What the sources support (EU/UK data protection).**
+- **Household exemption.** GDPR Article 2(2)(c) excludes processing "by a natural person in the course of a purely personal or household activity" [132]. In the video-surveillance context the EDPB says it "must be narrowly construed" and, quoting the Court of Justice in *Lindqvist*, it relates "only to activities which are carried out in the course of private or family life of individuals, which is clearly not the case with the processing of personal data consisting in publication on the internet so that those data are made accessible to an indefinite number of people". Its worked example of what stays inside the exemption: a tourist who "shows the footage to friends and family but does not make it accessible for an indefinite number of people" [133]. *Rynes* (C-212/13) held that a camera covering public space is "directed outwards from the private setting of the person processing the data" and so is not purely personal or household [134]. **Reading:** a family member's private recording is inside the household exemption; a mostly public premiere, run by the maker, is not. So if the premiere is in the EU or the UK, the maker should assume the data-protection rules apply to the screening itself (inference from the sources; the lawyer should confirm).
+- **A voice is personal data.** The EDPB's voice-assistant guidelines say personal data in voice recordings may carry meaning in "its content" and "its meta-information (sex or age of the speaker etc.)", and "voice data is inherently biometric personal data", with a valid Article 6 basis and an Article 9 derogation needed when such data "is processed for the purpose of uniquely identifying a natural person" [135] (said in the voice-assistant context). Playing a recording to an audience is not identification processing, so Article 9 is probably not the issue (inference); ask.
+- **Artistic-expression exemption.** Article 85(2) tells member states to provide exemptions "for processing carried out for journalistic purposes or the purpose of academic artistic or literary expression" where necessary to reconcile data protection with freedom of expression [132]; national laws differ and I did not read any country's. UK: Data Protection Act 2018 Schedule 2 Part 5 paragraph 26 disapplies many GDPR provisions for artistic purposes only if the processing is aimed at publication, the controller "reasonably believes that the publication of the material would be in the public interest", and compliance would be incompatible with the artistic purpose [136]. Whether a one-off biographical tribute to a private person meets "public interest" is exactly the kind of point to ask about.
+- **Transparency and the surprise.** The notice duties in Articles 13 and 14 are among the provisions an artistic exemption can disapply [136]; without one, the surprise conflicts with them. Ask the lawyer how to handle this (for example a recorded consent from the speakers other than the mother, and a plain notice at the door).
+
+**Personality, privacy and publicity law (what I could source; all weak).**
+- **USA.** Publicity rights are state law. New York Civil Rights Law s.51 applies where a person's voice is used "for advertising purposes or for the purposes of trade" without written consent, with injunction and damages [138]. California Civil Code s.3344 covers use of a "name, voice, signature, photograph, or likeness"; I could only read this through Wikipedia, because the legislature page returned 403 [139]. Both read as commercial-use laws, so a free family tribute may fall outside them; privacy torts (private facts, false light) were not researched. UNVERIFIED for the state in question.
+- **Germany.** The general right of personality (Basic Law and BGB s.823(1)) is described as protecting everyone and as not limited to commercial use [139]. Separately, s.201 of the Criminal Code (*Verletzung der Vertraulichkeit des Wortes*) punishes unauthorised recording of the privately spoken word and certain uses of such a recording, with up to three years or a fine; s.201(2) covers publicly communicating a recording or overheard words if it could harm another's legitimate interests [137]. My reading of the secondary summary is that the offence turns on whether the recording was authorised, so the lawyer should ask how and why each recording was made. The official statute text was not readable (503) [137].
+- **France.** Article 9 of the Civil Code (private life) and Penal Code arts 226-1 ff. are named [139]; voice is not mentioned there. UNVERIFIED.
+- **India.** I found only press-level mentions of 2025 Delhi High Court actions by celebrities over AI misuse [139]; nothing on private persons. The Digital Personal Data Protection Act 2023's remaining provisions commence on **2027-05-13** per Wikipedia [140], after the premiere; primary text unread (403), and the Act's personal or domestic purpose exemption could not be checked. UNVERIFIED.
+- **United Kingdom.** No sourced statement on privacy or personality rights beyond data protection. UNVERIFIED.
+
+**Facts to bring to the consult:** who made each recording, when, with what knowledge and for what stated purpose; whether the speaker is living and where; whether the recording captures anything private or health-related; where the premiere is and who is invited; whether it is filmed or shared afterwards (it should not be; see the removal deadline 2027-02-19 [6]); what the maker plans if a speaker objects.
+
+**A decision the maker can take before the consult (inference).** For every voice other than the mother's, get a recorded or written yes to a public showing from the speaker (or the closest family if the speaker has died), using the extended consent card (tier C) [6]. The mother's own recordings are the proxy decision under Principle 5; the maker is the only person on the project, so that decision and the lawyer's answer are the maker's alone. Ask the other speakers without naming the film's subject or occasion (the consent card already works this way [6]); if a speaker's yes cannot be had without tipping her off, that voice stays out. The law above is a floor; the charter's dignity rule is stricter.
+
+---
+
+### F7. Rolling chapter lock for sound: staging and the cost of an unlock
+
+**What I could source.**
+- Picture lock "is the moment in post-production when the video edit is finalized"; after it, sound editors "receive a stable cut", and "any change after picture lock creates a domino effect, requiring rework across all these areas"; sound may need to re-sync dialogue and effects, sometimes from scratch. Changes to shot order, timing or duration should be treated as an unlock (ECG Productions, updated 2026-06-28; an agency blog, so V) [141].
+- Handover: after the final cut "the sound editor can begin to finalize the soundtrack and the composer can time scenes to finish writing the film score"; on lower-budget films, temporary music and effects are inserted and later replaced (Wikipedia, Film editing) [142].
+- A 35 mm sound reel (1,000 feet) runs "approximately 11 minutes"; a feature averages about five 2,000-foot reels (Wikipedia, Reel) [142]. So "reel" practice means units of about 10 to 20 minutes; our whole film is 12 to 15 minutes, which makes a chapter of 2 to 4 minutes our reel-equivalent (inference).
+- Mixing is staged: a dialogue premix first (levels, crossfades, noise removal), music temporary or permanent added, then a final mix; after test screenings, a re-cut means the soundtrack "must be mixed again" (Wikipedia, Re-recording mixer) [142].
+- Animation: animatics are shown "in sync with rough dialogue (i.e., scratch vocals) or rough soundtrack" (Wikipedia, Animatic) [142]. That is the temp-sound stage our plan already calls for (G-SLICE-0).
+- Resolve has a Compare Timeline window that "shows the two timelines stacked together, highlighting their differences" against a backup [143]. That is the closest tool I found for finding what a late picture change touched.
+
+**What I could not source.** How documentary or animation shorts stage sound per reel before full lock, and any measured hours to re-conform a locked reel. I found no primary description (Avid, Dolby, Netflix and festival pages were not reachable by direct link and I could not search). **UNVERIFIED; the plan below is our inference, built on the project's own hours table [149].**
+
+**Proposed per-chapter sound stages (inference; dates from production-scale Step 14 [149]).**
+
+| Stage | Trigger | What is allowed | What stays open |
+|---|---|---|---|
+| S0 temp | animatic (G-SLICE-0) | scratch voice, temp music, no mix | everything |
+| S1 spot | chapter passes G4 (rolling lock begins 2027-01-17) | music spotting notes, cue list, found-voice cleanup on copies | cue lengths and sync hits |
+| S2 build | chapter marked `locked=1` | final cues fitted, ambience and room tone laid, dialogue premix | levels only |
+| S3 mix | all chapters locked, G-LOCK 2027-02-06 | full mix, ducking, three loudness versions | nothing |
+| S4 print | after venue rehearsal | stems, masters, hashes | nothing |
+
+Note an inconsistency to fix in the schedule: the notes assume picture lock for sound on **2027-01-15**; the roadmap's rolling locks start 2027-01-17 and full lock is **2027-02-06** [149]. The sound plan should follow the roadmap: S1 and S2 per chapter from 2027-01-17, S3 on 2027-02-06 to 02-12 as already scheduled.
+
+**What an unlock costs (inference using the project's figures [149]).** Sound integration is planned at **0.6 maker-hours per finished minute**; grade, mix, captions and QC at **2.7** (0.8 if bought) [149]. For an unlocked chapter of N minutes, the sound cost is about 0.6 x N hours if cues are hit to picture and every cue after the change must be re-spotted, plus a re-listen on the venue-class speaker, plus 0.1 to 0.3 hours to re-run the loudness measurement and re-export stems (our guess, no source). A one-shot change inside a chapter that leaves later timing equal (an equal-frame-count swap) costs almost nothing; a duration change moves every later cue in that chapter. A 3-minute chapter is therefore roughly 2 to 3 hours of sound rework per unlock, and the project's two-unlock allowance after lock [149] is a roughly 5-hour reserve for sound. Treat these as planning numbers to replace with the first measured chapter.
+
+**Design rules that keep unlocks cheap (inference).**
+1. Do the mix inside the same Resolve project as the picture, so a ripple edit moves audio with picture and no conform round trip exists. Mixing in REAPER needs an export-and-conform step that I have not researched (UNVERIFIED).
+2. Keep each chapter's music as its own cue ending in a tail or on silence at the chapter boundary, with one to two seconds of spare audio at each end (playbook Step 13), so a change in chapter 3 cannot move chapter 4.
+3. Put a room-tone bed under every chapter and keep dialogue and voice-over as separate clips, never baked into a music track.
+4. Never lock a sync point to a licensed song's hit point (the notes' rule: substitute by 2027-01-08).
+5. Record the lock as a file (timeline hash, durations) as production-scale already says; the sound stages above read from that file.
+
+---
+
+### F8. Voice Memos "Lossless" codec; do chat apps re-encode an attached .m4a?
+
+**Voice Memos Lossless codec: not confirmed.** Apple's Voice Memos settings page says only: "Choose either Compressed (for lower-quality, smaller files) or Lossless (for high-quality, larger files)", and names no codec, container or sample rate [147]. Wikipedia says saved voice memos "can be shared as a .m4a file" [146], and that ALAC "is frequently stored within an MP4 container with the filename extension .m4a", the same extension Apple uses for lossy AAC [146]. So the assumption (Lossless = ALAC in .m4a) is plausible but **UNVERIFIED**: the sandbox had no real iPhone recording. The three .m4a files on this machine were: our own earlier ALAC test file, an ExifTool test image (AAC, 32 kHz, encoder "iTunes v4.9"), and a Whisper benchmark clip (AAC); none is a Voice Memos file [148].
+
+**The check, for the first real file the maker or a relative sends:**
+```
+ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels,bits_per_raw_sample,bit_rate:format=format_name:format_tags=encoder,major_brand -of default=nw=1 "file.m4a"
+```
+What to expect, from synthetic files made with ffmpeg 6.1.1 in the sandbox [148]: an ALAC file prints `codec_name=alac`, a `bits_per_raw_sample` value (16 here) and a content-dependent bit rate (142 kbps for the test tone); an AAC file prints `codec_name=aac`, `bits_per_raw_sample=N/A` and a bit rate near the target (64 kbps here). The command ran cleanly on both. Both report container `mov,mp4,m4a,3gp,3g2,mj2`. Record codec, sample rate and any `encoder` tag in the licence log and keep the file byte-for-byte.
+
+**Do chat apps re-encode an attached .m4a? Partial answers.**
+
+| App | Voice note | Attached audio file | Evidence |
+|---|---|---|---|
+| **Signal (Android)** | Recorded in the app as AAC (`AudioRecorder.java` sets the attachment type to AAC). The fallback encoder `AudioCodec.java` uses **AAC-LC, 32 kbps, mono, 44.1 kHz**; the preferred `MediaRecorderWrapper` settings were not read [145]. Either way lossy at capture. | `PushMediaConstraints.java` applies transcoding settings to video and compression settings to images only; audio and documents share the general attachment size limit and no transcoding method [145]. **Not re-encoded by that code path**; I did not trace the whole upload path, and Signal iOS was not read. | Source code read 2026-10-18 (P, Android only). |
+| **WhatsApp** | Opus at 8 to 16 kHz sampling rates per Wikipedia [146]: narrow-band, not usable for archival or final-mix voice. | Wikipedia: uploads of all file types are allowed (limit 2 GB since 2022) [146]. Whether a .m4a sent as a Document is left byte-identical: **UNVERIFIED** (the FAQ pages are script-rendered). | S. |
+| **iMessage** | Not read (the Apple Messages audio-message article returned only its table of contents). **UNVERIFIED.** | **UNVERIFIED.** | none. |
+
+**Ten-minute hash test (settles all three, needs only the maker).** Make a known .m4a and run `Get-FileHash file.m4a -Algorithm SHA256` on Windows (or `shasum -a 256` on a Mac). Send it once as a plain attachment or document and once as a voice note, between two of the maker's own devices or accounts, to keep the secret. Re-hash what arrives. Same hash means untouched; a different hash means re-encoded. Until the test is done, keep the notes' rule: relatives send the file by email attachment, AirDrop or USB, not as a chat voice note [78][79][6].
+
+---
+
+### F9. DaVinci Resolve Free: can its Fairlight page host the mix?
+
+**Answer: very likely yes for the functions asked about; confirm on the installed Free build.** I downloaded the DaVinci Resolve 21 Reference Manual (PDF, 4,444 pages, created 2026-07-09) from Blackmagic's server and searched its text [143]. The manual does not have one Free-versus-Studio table, so the finding rests on where the manual does and does not write "Studio" next to a feature.
+
+| Need | What the manual says | Studio tag? |
+|---|---|---|
+| **Ducker** | "Ducker (Track Mode Only): The Ducker Track FX plugin allows you to automatically lower the level" of a target from other tracks. "The Ducker uses changes in level only to do its work; the audio is not compressed or limited." Controls: Duck Amount (default 2.7 dB), Lookahead (15 ms), Rise Time (10 ms), Hold (150 ms), Recovery Time (750 ms). Track FX list: Voice Isolation, Dialogue Leveler, Dialogue Separator, Music Remixer, Ducker [143]. | **No tag.** |
+| **Sidechain compression** | "DaVinci Resolve supports the sidechaining of compatible Fairlight FX, AU, and VST plugins", for example the Channel Dynamics compressor or the Fairlight FX Limiter [143]. | No tag. |
+| **De-Hummer** | Listed under Fairlight FX; "Eliminates hum noise"; controls include a 50/60 Hz selector, Amount, Slope and a checkbox "Listen to Hum only", which lets you hear what is being removed [143]. | **No tag.** |
+| **Noise Reduction (audio)** | Listed under Fairlight FX with its own custom UI [143]. | No tag. (The "temporal and AI spatial noise reduction" that Blackmagic's page lists for Studio reads as video noise reduction; our reading [144].) |
+| **Loudness meters** | Loudness meters show integrated loudness in LUFS; standards selectable: BS.1770-1, BS.1770-4, ATSC A/85, EBU R128, OP-59, TR-B32, AGCOM 219, Netflix, YouTube, Disney 2.0 and Disney 5.1; default target -23 LUFS, adjustable (for example -14); true-peak per BS.1770-4. An **Offline Loudness Analyzer** (right-click a clip, Analyze Audio Level) measures files and bounces [143]. | **No tag.** |
+| Statement on plugin availability | "Fairlight FX are pre-installed with all DaVinci Resolve installations", providing effects "to all DaVinci Resolve users" [143]. | n/a |
+
+**What is Studio-only (explicitly tagged).** Dialogue Separator, Music Remixer, Voice Isolation ("a DaVinci Neural Engine AI effect that is only available in DaVinci Resolve Studio"), AI Audio Assistant, Surround Buses in Fairlight (the Atmos-type formats 9.1.6 and 22.2), object-based formats (Dolby Atmos 7.1.2/7.1.4, MPEG-H, SMPTE ST.2098), Auro-3D and B-Chain support [143]. Blackmagic's product pages add that Studio gives "more Fairlight FX audio plugins", and that the Foley Sampler and immersive 3D mixing are Studio features [144]. None of these is needed for a stereo mix, and the three neural effects are ones we would not use on her found voice anyway (they alter or separate the signal; Principle 4).
+
+**Where this leaves the plan.** The notes' Step 14 said the Free version's ducker, de-hummer and loudness meters were UNVERIFIED [106]. They are documented without a Studio tag, so the maker's free NLE can host the dialogue-first mix, ducking, and loudness measurement without REAPER. That also supports F7's rule of mixing in the same project as the picture. Keep REAPER and ffmpeg as the proven fallback: ffmpeg `loudnorm` two-pass remains the way to make the three loudness versions reproducibly from the command line [86][108].
+
+**Do before relying on it (about 15 minutes, on the Windows PC).** Install Resolve Free, open the Fairlight page, and check: Effects Library lists Ducker, De-Hummer, Noise Reduction and De-Esser; the Mixer shows the Loudness meter and the standard menu; right-click a clip shows Analyze Audio Level. If any is missing, note the build number and fall back to REAPER. Not checked this round: Resolve 21 Free's system requirements on the maker's PC (the charter flags memory use) and whether Free outputs 5.1 buses (the manual's Studio tag covers only the Atmos-type bus list above); both UNVERIFIED.
+
+---
+
+### Changes to earlier notes (for the scribes)
+
+1. Summary item 6 and Q3 (Suno row): add the second UMG/Sony suit (2026-09-18, 60,202 recordings, v6 "launders" theory), the 2026-09-09 retirement of earlier Suno models, and the dated negative check in F2.
+2. Q3 (Udio row): replace "primary terms could not be read" with F3: downloads disabled per Udio's own pages (2025-10-29; restated 2026-02-17); commercial-use wording still UNVERIFIED.
+3. Cue-sheet paragraph and Template C: the 2027-01-01 and 2027-04-02 deadlines are confirmed from the captured page text, but they matter only for broadcast-type performances (F1).
+4. Step 14 Tools line and the gaps list: Resolve Free's ducker, de-hummer and loudness meters are documented without Studio tags (F9).
+5. Schedule: the assumed picture lock for sound on 2027-01-15 conflicts with the roadmap's rolling locks from 2027-01-17 and full lock on 2027-02-06 (F7).
+6. Step 12 and the found-voice law paragraph: replace "the ICO page was not conclusive" with F6 (EDPB household-exemption guidance; the consult question).
+
+### Remaining gaps after round 1
+
+- Docket-level status of the Suno cases after 2026-10-02 (no docket access); re-read in the week of 2027-02-01.
+- BMI and ASCAP complete usage-code lists; ASCAP/BMI behaviour for a non-broadcast screening.
+- Udio's current terms text (commercial use, ownership); Musopen's terms (all 403): both need the maker's browser.
+- PRS primary wording on films shown by guests; SACEM; IPRS and India's Copyright Act s.52 position for events.
+- GEMA Tarif T payer and fee basis (tariff PDF unread).
+- A real Voice Memos Lossless file for `ffprobe`; WhatsApp and iMessage handling of an attached .m4a; Signal iOS.
+- Any primary source on per-reel sound staging for documentary or animation shorts and on re-conform costs; REAPER's conform tools.
+- Personality, privacy and publicity law for the actual premiere country; UK; India; national artistic-expression exemptions under GDPR Article 85; the official text of s.201 StGB.
+- Resolve 21 Free: confirm on the installed build; system requirements; 5.1 availability.
+
+---
+
+### Sources added in round 1 (continue the numbering; tags as above)
+
+**F1 cue sheets**
+[110] ASCAP, Cue Sheet Corner — https://www.ascap.com/help/royalties-and-payment/cue-sheets — text captured 2026-10-18 06:44 UTC by the first-round researcher (session log, agent aeb4a846721a183e0, workflow wf_4e84bd67-bdb); live fetch 403 on 2026-10-18 for this URL, the bare host `ascap.com`, and `/help/royalties-and-payment/payment/payment-schedule` — P (captured copy; not re-read live).
+[111] BMI (https://www.bmi.com/ and /creators/detail/cue_sheet_submission) — 403; APRA AMCOS (https://www.apraamcos.com.au/) — 403; SESAC (https://www.sesac.com/) — read, no cue-sheet content on the page, Help Center link only; SOCAN (https://www.socan.com/) — read, no cue-sheet content — not read for cue sheets.
+
+**F2 Suno litigation**
+[112] Music Business Worldwide, "Suno confirms V6 model was trained on 'creations' from users, as it blasts latest Sony and Universal lawsuit" — https://www.musicbusinessworldwide.com/suno-confirms-v6-model-was-trained-on-creations-from-users-as-it-blasts-latest-sony-and-universal-lawsuit/ — 2026-09-22 — S (complaint PDF linked there: .../files/2026/09/26-cv-14275-Dkt.-1-Complaint.pdf; not opened).
+[113] MBW, second UMG/Sony suit — https://www.musicbusinessworldwide.com/universal-and-sony-sue-suno-for-a-second-time-claiming-platforms-v6-models-are-the-fruit-of-the-same-poisoned-tree/ — 2026-09-18 — S.
+[114] MBW, "Suno admits it obtained YouTube audio to train its AI, but challenges UMG and Sony's standing..." — https://www.musicbusinessworldwide.com/suno-admits-it-obtained-youtube-audio-to-train-its-ai-but-challenges-umg-and-sonys-standing-to-bring-stream-ripping-claim/ — 2026-09-08 — S.
+[115] MBW, Suno–Believe licensing deal — https://www.musicbusinessworldwide.com/suno-inks-global-licensing-deal-with-believe/ — 2026-09-08 — S.
+[116] MBW, judge refuses to dismiss indie class action — https://www.musicbusinessworldwide.com/judge-refuses-to-dismiss-indie-artists-proposed-class-action-against-suno-clearing-ai-output-and-stream-ripping-claims-for-discovery/ — 2026-08-27 — S.
+[117] MBW, "5 things to know about Suno's BMG licensing deal, download caps, watermarks, and more" — https://www.musicbusinessworldwide.com/5-things-to-know-about-sunos-bmg-licensing-deal-download-caps-watermarks-and-more/ — 2026-08-17 — S.
+[118] MBW, Shulman interview — https://www.musicbusinessworldwide.com/suno-is-far-beyond-2m-subscribers-and-300m-in-revenue-says-mikey-shulman-who-argues-its-good-that-ai-music-has-no-firm-rules-of-the-road-yet/ — 2026-10-02 — S (newest dated item read).
+[119] MBW, GEMA v. Suno (Munich Regional Court) — https://www.musicbusinessworldwide.com/suno-infringed-copyright-in-gema-case-german-court-rules/ — 2026-07-31 — S.
+[120] MBW, Suno tag page and homepage — https://www.musicbusinessworldwide.com/tag/suno/ ; https://www.musicbusinessworldwide.com/ — read 2026-10-18 — S (negative check; most items undated).
+[121] MBW, Sony's second suit against Udio — https://www.musicbusinessworldwide.com/sony-music-files-new-lawsuit-against-ai-platform-udio-asserting-over-30000-sound-recordings-a-judge-barred-it-from-adding-to-its-original-case/ — 2026-07-20 — S.
+
+**F3 Udio**
+[122] Udio blog, "A New Era of Music - Udio with Universal Music Group" — https://www.udio.com/blog/a-new-era — 2025-10-29 — P.
+[123] Udio blog, "Udio with Warner Music Group" — https://www.udio.com/blog/udio-warner — 2025-11-19 — P.
+[124] Udio Help, "Changes associated with the Universal Music Group ("UMG") partnership" — https://help.udio.com/en/articles/12683565-changes-associated-with-the-universal-music-group-umg-partnership — dated 2026-02-17 — P.
+[125] Udio Help, "Udio - Warner Music Group (WMG) partnership" — https://help.udio.com/en/articles/12874375-udio-warner-music-group-wmg-partnership — 2025-11-19 — P.
+[126] Udio terms page (https://www.udio.com/terms-of-service, /terms) — script-rendered, title or login page only; Udio Help credits article https://help.udio.com/en/articles/10739134-credits-and-credit-limits ; changelog https://help.udio.com/en/articles/10748731-changelog-what-s-new-with-udio ; help collections and sitemap (no article on commercial use) — read 2026-10-18 — P.
+
+**F4 Musopen**
+[127] Musopen — https://musopen.org/ (and /terms/, /terms-of-service/, /terms-of-use/, /faq/, /about/) — 403 on all; Wikipedia, Musopen — https://en.wikipedia.org/wiki/Musopen — S, relies on a 2013 sign-up page.
+
+**F5 collecting societies**
+[128] GEMA, tariff overview and tariff pages — https://www.gema.de/de/musiknutzer/tarifuebersicht ; .../tarif-t (version 46, valid from 2026-01-01) ; .../tarif-t-r (version 44, valid from 2025-07-01) ; .../tarif-bt (version 49, valid from 2026-01-01) — read 2026-10-18 — P.
+[129] GEMA, "Filme, Serien, Werbespots" — https://www.gema.de/de/musiknutzer/av-produktionen — read 2026-10-18 — P.
+[130] Cinema For All, "How to Start a Community Cinema" (Starter Pack, PDF created 16 May 2024) — https://www.cinemaforall.org.uk/app/uploads/2024/05/How-to-Start-a-Community-Cinema-2024.pdf — S (UK community-cinema guidance, not PRS).
+[131] PRS (https://www.prsformusic.com/ and /get-a-music-licence/live-music-and-event — titles only); IPRS (https://iprs.org/, https://www.iprs.org/ — 403); SACEM (www.sacem.fr, clients.sacem.fr — blocked by the fetch tool); India Code Copyright Act PDF — 403 — not read.
+
+**F6 law**
+[132] GDPR Article 2 and Recital 18; Article 85 — https://gdpr-info.eu/art-2-gdpr/ ; https://gdpr-info.eu/recitals/no-18/ ; https://gdpr-info.eu/art-85-gdpr/ — read 2026-10-18 — S (unofficial mirror; recital text only in short quotes).
+[133] EDPB, Guidelines 3/2019 on processing of personal data through video devices, v2.0 adopted 2020-01-29 (v2.1 2020-02-26), section 2.3 "Household exemption" — https://www.edpb.europa.eu/sites/default/files/files/file1/edpb_guidelines_201903_video_devices_en_0.pdf — P — PDF downloaded and read 2026-10-18.
+[134] Court of Justice: *Rynes* C-212/13 (para 33) — https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62013CJ0212 ; *Lindqvist* C-101/01 (para 47) — https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62001CJ0101 — P (short quotes via the fetch tool).
+[135] EDPB, Guidelines 02/2021 on virtual voice assistants, v2.0 adopted 2021-07-07, para 31 — https://www.edpb.europa.eu/system/files/2021-07/edpb_guidelines_202102_on_vva_v2.0_adopted_en.pdf — P — PDF downloaded and read 2026-10-18.
+[136] Data Protection Act 2018, Schedule 2 Part 5 (para 26, journalistic, academic, artistic and literary purposes) — https://www.legislation.gov.uk/ukpga/2018/12/schedule/2/part/5 — P — read 2026-10-18 (summary via the fetch tool).
+[137] Criminal Code (Germany) s.201 — https://dejure.org/gesetze/StGB/201.html — S (paraphrase via the fetch tool; gesetze-im-internet.de returned 503).
+[138] New York Civil Rights Law s.51 — https://www.nysenate.gov/legislation/laws/CVR/51 — P — read 2026-10-18.
+[139] Wikipedia, Personality rights — https://en.wikipedia.org/wiki/Personality_rights — S (first 100,000 characters read; California s.3344 voice, Germany, France, India press mentions).
+[140] Wikipedia, Digital Personal Data Protection Act, 2023 — https://en.wikipedia.org/wiki/Digital_Personal_Data_Protection_Act,_2023 — S (commencement dates; primary text 403).
+
+**F7 lock and staging**
+[141] ECG Productions, "What Is Picture Lock and Why It's Crucial for Smooth Post-Production" — https://www.ecgprod.com/what-is-picture-lock-why-does-it-matter — updated 2026-06-28 — V.
+[142] Wikipedia: Film editing (https://en.wikipedia.org/wiki/Film_editing, first 100,000 characters), Reel (https://en.wikipedia.org/wiki/Reel), Re-recording mixer (https://en.wikipedia.org/wiki/Re-recording_mixer), Animatic (https://en.wikipedia.org/wiki/Animatic) — S.
+
+**F9 Resolve**
+[143] Blackmagic Design, DaVinci Resolve 21 Reference Manual — https://documents.blackmagicdesign.com/UserManuals/DaVinci_Resolve_21_Reference_Manual.pdf — PDF creation date 2026-07-09, 4,444 pages, downloaded and text-searched 2026-10-18 — P (Cut-page chapter 38 and Fairlight chapters 180 to 184: Ducker, Audio Effects, Fairlight FX, Audio Meters, Immersive Audio; Studio tags quoted above).
+[144] Blackmagic Design, Fairlight page, Resolve Studio page, tech specs (Resolve 21 listed; Studio $295) — https://www.blackmagicdesign.com/products/davinciresolve/fairlight ; .../studio ; .../techspecs ; .../compare (no comparison table) — read 2026-10-18 — V.
+
+**F8 voice notes**
+[145] Signal-Android source at `main`: `app/src/main/java/org/thoughtcrime/securesms/audio/AudioCodec.java`, `AudioRecorder.java`, `mms/PushMediaConstraints.java` — https://raw.githubusercontent.com/signalapp/Signal-Android/main/app/src/main/java/org/thoughtcrime/securesms/audio/AudioCodec.java (and siblings) — read 2026-10-18 — P (code; Android only; `MediaConstraints.java` and the support page not readable).
+[146] Wikipedia: WhatsApp (https://en.wikipedia.org/wiki/WhatsApp, first 100,000 characters), Apple Lossless Audio Codec (https://en.wikipedia.org/wiki/Apple_Lossless_Audio_Codec), Voice Memos (https://en.wikipedia.org/wiki/Voice_Memos) — S.
+[147] Apple Support, Voice Memos for Mac, "Change Voice Memos settings" — https://support.apple.com/guide/voice-memos/change-voice-memos-settings-vm0ba246ff3e/mac — P — quote above. The iPhone guide and the "Send and receive audio messages" article returned only tables of contents.
+[148] Own measurement, 2026-10-18 (not a web source): ffprobe 6.1.1 on synthetic ALAC and AAC .m4a files made with ffmpeg 6.1.1, and on the three .m4a files already on the machine (none a Voice Memos recording).
+[149] LOCAL `playbooks/production-scale.md` — Step 14 (rolling locks from 2027-01-17; G-DRAFT 2027-01-31; G-LOCK 2027-02-06; unlock rule, two unlocks after lock), the stage-hours table (sound integration 0.6; grade, mix, captions and QC 2.7, or 0.8 if bought) — read 2026-10-18.

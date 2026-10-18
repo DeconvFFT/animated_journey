@@ -1,0 +1,210 @@
+{
+ "album": "LOC photochrom series, North Africa 1899 (stock test, not the maker's)",
+ "chapter": "stock-test",
+ "per_print": [
+  {
+   "file": "album_p1.jpg",
+   "size": [
+    1024,
+    759
+   ],
+   "floor": [
+    0.08235294117647059,
+    0.047058823529411764,
+    0.011764705882352941
+   ],
+   "ceil": [
+    0.9490196078431372,
+    0.8941176470588236,
+    0.7725490196078432
+   ],
+   "L_white": 0.8942282352941177,
+   "white_patch": [
+    0.8313725490196079,
+    0.7725490196078432,
+    0.6745098039215687
+   ],
+   "skin_patch": [
+    0.3764705882352941,
+    0.24313725490196078,
+    0.1450980392156863
+   ],
+   "white_chroma": [
+    1.068634567303815,
+    0.993023630937979,
+    0.8670054036615857
+   ],
+   "sigma_luma_levels": 1.602952860845965,
+   "sigma_rgb_levels": [
+    1.7828466003859729,
+    1.687595219035875,
+    2.0933977937909156
+   ],
+   "grain_corr_RG": 0.6529400529202548,
+   "grain_lag1_autocorr": 0.7270423070581348,
+   "flat_patch_flatness_ratio": 1.04,
+   "flat_mean": 0.8821356264794611,
+   "flat_patch_rejected_as_structured": false,
+   "white_patch_box_jitter_deg": 0.24,
+   "illuminant_angle_error_vs_white_patch_deg": {
+    "grey_world": 3.04,
+    "max_rgb": 0.35,
+    "shades_of_grey_p6": 0.53
+   }
+  },
+  {
+   "file": "album_p2.jpg",
+   "size": [
+    1024,
+    763
+   ],
+   "floor": [
+    0.054901960784313725,
+    0.047058823529411764,
+    0.00784313725490196
+   ],
+   "ceil": [
+    0.996078431372549,
+    0.8509803921568627,
+    0.7137254901960784
+   ],
+   "L_white": 0.8626191921568628,
+   "white_patch": [
+    0.792156862745098,
+    0.6352941176470588,
+    0.4823529411764706
+   ],
+   "skin_patch": [
+    0.5294117647058824,
+    0.35294117647058826,
+    0.20784313725490197
+   ],
+   "white_chroma": [
+    1.2046166635457953,
+    0.9660787103684101,
+    0.7335042060204595
+   ],
+   "white_patch_box_jitter_deg": 0.35,
+   "illuminant_angle_error_vs_white_patch_deg": {
+    "grey_world": 4.17,
+    "max_rgb": 3.55,
+    "shades_of_grey_p6": 1.46
+   }
+  },
+  {
+   "file": "album_p3.jpg",
+   "size": [
+    1024,
+    754
+   ],
+   "floor": [
+    0.10980392156862745,
+    0.027450980392156862,
+    0.0
+   ],
+   "ceil": [
+    0.9921568627450981,
+    0.8313725490196079,
+    0.6588235294117647
+   ],
+   "L_white": 0.8480734431372546,
+   "white_patch": [
+    0.9607843137254902,
+    0.8058823529411765,
+    0.5705882352941176
+   ],
+   "skin_patch": [
+    0.792156862745098,
+    0.5372549019607843,
+    0.2549019607843137
+   ],
+   "white_chroma": [
+    1.169084444639557,
+    0.9805994015241998,
+    0.694293006918594
+   ],
+   "sigma_luma_levels": 6.61032062031194,
+   "sigma_rgb_levels": [
+    9.179254597610392,
+    6.091902429930115,
+    5.6986157213128505
+   ],
+   "grain_corr_RG": 0.9320950239468655,
+   "grain_lag1_autocorr": 0.8378462770599012,
+   "flat_patch_flatness_ratio": 1.05,
+   "flat_mean": 0.43484814823356444,
+   "flat_patch_rejected_as_structured": false,
+   "white_patch_box_jitter_deg": 6.34,
+   "illuminant_angle_error_vs_white_patch_deg": {
+    "grey_world": 8.82,
+    "max_rgb": 2.51,
+    "shades_of_grey_p6": 2.73
+   }
+  }
+ ],
+ "spread": {
+  "cast_pairwise_angle_deg": [
+   6.46,
+   6.77,
+   1.48
+  ],
+  "floor_range": [
+   0.055,
+   0.02,
+   0.012
+  ],
+  "white_level_range": 0.047,
+  "white_patch_box_jitter_deg": [
+   0.24,
+   0.35,
+   6.34
+  ],
+  "flat_patch_flatness_ratio": [
+   1.04,
+   null,
+   1.05
+  ],
+  "sigma_luma_range": [
+   1.6,
+   6.61
+  ]
+ },
+ "ONE_ALBUM_LOOK": false,
+ "black_c": [
+  0.0824,
+  0.0471,
+  0.0078
+ ],
+ "white_c": [
+  0.9922,
+  0.8474,
+  0.6613
+ ],
+ "sigma_luma_levels": 4.11,
+ "noise_strength": 12.1,
+ "skin_check": [
+  {
+   "relative_level": 0.259,
+   "hue_deg": 123.0,
+   "off_skin_line_deg": 0.0
+  },
+  {
+   "relative_level": 0.4,
+   "hue_deg": 131.0,
+   "off_skin_line_deg": 8.0
+  },
+  {
+   "relative_level": 0.631,
+   "hue_deg": 145.3,
+   "off_skin_line_deg": 22.3
+  }
+ ],
+ "flat_patch_mean_level": 0.658,
+ "grain_notes": {
+  "corr_RG": 0.79,
+  "lag1_autocorr": 0.78,
+  "note": "lag1_autocorr near 0 = per-pixel noise (what ffmpeg noise makes); real grain is above 0.3, so soften the synthetic grain"
+ },
+ "ffmpeg_vf": "colorlevels=rimin=0:gimin=0:bimin=0:rimax=1:gimax=1:bimax=1:romin=0.0824:gomin=0.0471:bomin=0.0078:romax=0.9922:gomax=0.8474:bomax=0.6613,format=yuv444p,noise=c0s=12.1:c0f=t+u,format=rgb24",
+ "ffmpeg_filter_complex_soft_grain": "color=c=0x808080:s=640x360:r=25,format=yuv444p,noise=c0s=15.1:c0f=t+u,format=gray,scale=1920:1080:flags=bicubic,format=rgb24[g];[0:v]colorlevels=rimin=0:gimin=0:bimin=0:rimax=1:gimax=1:bimax=1:romin=0.0824:gomin=0.0471:bomin=0.0078:romax=0.9922:gomax=0.8474:bomax=0.6613,format=rgb24[b];[b][g]blend=all_mode=grainmerge:shortest=1"
+}

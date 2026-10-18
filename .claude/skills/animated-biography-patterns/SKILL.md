@@ -7,7 +7,7 @@ description: Use when a Life Journey chapter needs drawn, built, animated or pho
 
 ## Purpose
 
-Make every animated or documentary-style scene in the Life Journey pass charter rule 4 (real memories stay real, and reconstructions are visibly reconstructions) and principle 7 (prefer scriptable tools) and the longevity rules from research Q6 (plain-file, self-contained delivery), while still carrying the feeling. This skill turns `research/animated.md` into a repeatable procedure. The human-readable version is `playbooks/animated.md`.
+Make every animated or documentary-style scene in the Life Journey pass charter rule 4 (real memories stay real, and reconstructions are visibly reconstructions) and principle 7 (cleared for public screening) and charter Principle 6 (theatrical bar) and principle 9 (prefer scriptable tools) and the longevity rules from research Q6 (plain-file, self-contained delivery), while still carrying the feeling. This skill turns `research/animated.md` into a repeatable procedure. The human-readable version is `playbooks/animated.md`.
 
 ## When to use
 
@@ -24,12 +24,16 @@ Make every animated or documentary-style scene in the Life Journey pass charter 
 - Interactive game mechanics. Use the `meaningful-game-mechanics` skill.
 - Licence questions. Flag them for the maker. Do not answer them as legal advice.
 - Writing code. The project is in the LEARN phase, so this skill decides design only.
+- Chapter structure, the "who is she" opening for strangers, narration and runtime: `film-story`.
+- Shot grammar beyond Ken Burns restraint, the AI-tell rubric and the strangers-to-her test screening: `cinematic-quality`.
+- Master, DCP, venue playback and releases: `theatrical-delivery`.
+- Score, songs, voices and the mix: `music-sound`.
 
 ## Procedure
 
 1. Read `CHARTER.md` and `playbooks/animated.md`. Confirm the phase. In LEARN, use practice material only. Do not open, process or describe family photographs or interview notes. Family material comes in only after the charter's lock.
-2. Check consent and proxy status for the chapter. If the chapter touches loss, illness, separation, money or conflict, and no trusted proxy is named, mark it `HOLD: proxy needed` and stop imagery design for that chapter.
-3. Write a scene card with these fields: chapter; one sentence, "This scene shows [what], so the viewer feels [what] about her life"; source inventory (each photo, letter, recording or object, with its date and place); what is photographed and what is invented; time-passing device; reconstruction material; motion; duration; disclosure text; reveal target; consent status; citations as [n]; fallback; open items. Write `TODO(story):` or `TODO(research):` in any empty field. Do not guess.
+2. Check consent and proxy status for the chapter. The maker is her proxy, and the Fable advisor flags. If the chapter touches loss, illness, separation, money or conflict, mark it `HARD`. Imagery design proceeds only when the scene card records (a) the maker's decision-sheet entry, (b) the advisor's flag or clearance, and (c) the second yes after 72 hours. Until all three exist, the chapter is `HOLD` and OUT of the public cut.
+3. Write a scene card with these fields: chapter; one sentence, "This scene shows [what], so the viewer feels [what] about her life"; source inventory (each photo, letter, recording or object, with its date and place); what is photographed and what is invented; time-passing device; reconstruction material; motion; duration; disclosure text; reveal target; consent status (values: `asked-yes`, `asked-no`, `asked-if-seen`, `not-asked-private-only`, `not-asked-omit`, `deceased-proxy-ok`, `minor-guardian-yes`; plus the audience tier the photo is cleared for: A private link, B premiere, C public; draft vocabulary from research F9); citations as [n]; fallback; open items. Write `TODO(story):` or `TODO(research):` in any empty field. Do not guess.
 
 Example scene card (practice only: an invented chapter and a public-domain photograph, not her life):
 
@@ -64,7 +68,7 @@ Open items: TODO(research): licence and source of the street photograph. TODO(st
 10. Set era cues on new material only: title cards, reconstructions and graphics. Use the medium (grain, frame shape, tint, crop) before any colour filter [88][91]. Sample the palette from her own scans of that decade once they exist, and use the decade table only as a sanity check [89]. Do not age material that is already aged. Do not add fake date stamps.
 11. Check the audio. A recorded relative's voice exists or is scheduled (the subject's own voice is unavailable in surprise mode; never substitute a synthetic one). The scene works with voice and room sound alone. Dialogue and effects are dropped where the picture carries the feeling [56][58]. Any song has a recorded licence [65].
 12. Score the scene against the charter rubric (meaning, specificity, accuracy, feasibility, ethics, craft), 1 to 5 each. Send the scores and open items to the advisor at the gate. Approve only when every score is 4 or higher and nothing critical is open.
-13. Set delivery. Export H.264 MP4 at 1080p [78]. Any web version is a self-contained folder with no external scripts, fonts, video hosts or analytics [39][46]. Include a static fallback [100]. Archive masters separately with a rebuild README. Test any web version in a current browser before calling it finished [39].
+13. Set delivery. Master to agent-pipeline's project settings card (1920x1080, 24 fps, Rec.709, ProRes 422 HQ) and theatrical-delivery's week-2 decision on 2K or 4K; keep the H.264 1080p MP4 as the screening and fallback copy, not the master [78]. TODO(theatrical-delivery): if stills must be prepared at 4K-equivalent, re-run the 600 ppi / 3,300 px arithmetic in research Q2. Any web version is a self-contained folder with no external scripts, fonts, video hosts or analytics [39][46]. Include a static fallback [100]. Archive masters separately with a rebuild README. Test any web version in a current browser before calling it finished [39].
 14. Log every `TODO(research)` item and every unverified claim in the scene card. Never state an unverified fact in the film, the disclosure card or any guide.
 
 ## Checklists
@@ -73,7 +77,7 @@ Open items: TODO(research): licence and source of the street photograph. TODO(st
 
 - [ ] Scene card complete, or every empty field marked TODO.
 - [ ] The "This scene shows..." sentence is written and says something true.
-- [ ] Proxy named if the chapter is a hard one; otherwise the chapter is on HOLD.
+- [ ] Hard chapter marked `HARD`; the scene card records the decision-sheet entry, the advisor's flag or clearance, and the second yes after 72 hours. Otherwise the chapter is `HOLD` and out of the public cut.
 - [ ] Disclosure text written and placed at the start.
 - [ ] One reconstruction material used for every invented element.
 - [ ] Every real event, person and place in the scene has a source in the scene card.
@@ -106,7 +110,7 @@ Open items: TODO(research): licence and source of the street photograph. TODO(st
 
 ### Delivery
 
-- [ ] Plain H.264 MP4 at 1080p exists.
+- [ ] Master to agent-pipeline's project settings card (1920x1080, 24 fps, Rec.709, ProRes 422 HQ) and theatrical-delivery's week-2 decision on 2K or 4K; keep the H.264 1080p MP4 as the screening and fallback copy, not the master [78].
 - [ ] Any web build loads everything from its own folder.
 - [ ] Static fallback exists.
 - [ ] Tested in a current browser, or a TODO(research) is recorded.
@@ -131,20 +135,24 @@ Any "mediocre" entry in the first two rows is a critical open item at the gate.
 ## Ethics guardrails
 
 - Charter rule 4: no invented events, people or words. Reconstructions are visibly reconstructions.
-- Charter rule 5: a trusted proxy decides for hard chapters. Anything she might not want shown in front of others stays out of the shared version.
+- Charter rule 5: the maker is her proxy, the advisor flags. Anything she might not want shown to strangers stays out of the public cut.
 - Charter principle 4 forbids invented events, fake people and invented speech. Our team rule, from the charter review, adds: no AI animation of any real person's face and no synthetic voice of any real person, living or dead, until the ai-imagery track has ruled on labelling.
 - AI restoration must not invent facial detail. If a scan is faded or soft, say so on screen [89][93].
 - Never leave a reconstruction unlabelled, even when it looks like archive. Stories We Tell shows how convincing an unlabelled fake can be, and how it divides audiences [66][67].
 - Never select photographs automatically by popularity, recency or detected faces. Select by hand, with the proxy's input [81][82].
 - Surprise rules: keep working files off shared devices, family group chats and auto-syncing photo libraries (charter).
-- Licences: no song goes into a scene without a recorded licence. A private gift carries less risk than a public showing [65][78].
-- Privacy is a longevity feature. A public URL outlives consent, so default to private [45].
+- Licences: no song goes into a scene without a recorded licence. The premiere is public (charter Known facts and Principle 7), so a song needs sync and public-performance clearance before it is cut in; music-sound and theatrical-delivery own the clearance log [65][78].
+- Privacy is a longevity feature. Any online copy defaults to private and time-limited; a public URL outlives consent [45].
 
 ## References
 
 - Playbook: `playbooks/animated.md`
 - Research notes: `research/animated.md` (questions Q1 to Q11; sources 1 to 105)
 - Charter: `CHARTER.md`
+- Film story: `playbooks/film-story.md`
+- Cinematic quality: `playbooks/cinematic-quality.md`
+- Theatrical delivery: `playbooks/theatrical-delivery.md`
+- Music and sound: `playbooks/music-sound.md`
 
 Sources cited in this skill (numbers match the notes and the playbook):
 

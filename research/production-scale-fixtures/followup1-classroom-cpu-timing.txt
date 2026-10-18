@@ -1,0 +1,8 @@
+Container: 4 vCPU Intel Xeon 2.1 GHz, 15 GB RAM, no GPU. Blender 5.2.0 LTS via PyPI bpy==5.2.0. 2026-10-18.
+Scene: Blender Benchmark 2.0 "classroom" (main.blend), forced to 1920 x 1080, 100 percent, Cycles CPU, adaptive sampling off.
+One run each, wall clock including scene sync and BVH build:
+RESULT samples=8 denoise=False wall_s=63.92
+RESULT samples=24 denoise=False wall_s=175.96
+RESULT samples=24 denoise=True wall_s=204.27   (OpenImageDenoise on CPU)
+Derived: (175.96 - 63.92) / 16 = 7.0 s per sample; fixed cost about 8 s; denoise about 28 s.
+RTX 4090 (OptiX, 5.2.0 LTS median): 2881 samples/min = 0.0208 s per sample on the same scene and resolution; ratio about 336x.

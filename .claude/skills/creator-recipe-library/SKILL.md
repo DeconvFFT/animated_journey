@@ -30,7 +30,7 @@ Check this before any fetch. Do not retry these. Route them to the maker's brows
 - `x.com`: HTTP 402. `medium.com`: HTTP 403.
 - `youtube.com/watch`: redirects to a CAPTCHA. YouTube's oEmbed returns the title and channel only, which shows a video exists, not what it shows.
 - `minecraft.net`: HTTP 503 (usage guidelines and store pages).
-- Web search: the shared 200-call budget was used up at turn start; siblings in the same turn can exhaust it.
+- Web search: the shared 200-call budget was found exhausted at turn start three times on 2026-10-18 (researcher twice, advisor once). Spend one call to test it, then stop; never fall back to curl, readers, proxies or archives.
 
 ## Procedure
 
@@ -40,7 +40,7 @@ Check this before any fetch. Do not retry these. Route them to the maker's brows
 4. Before you say anything about creator practice, check the Reachability section above and the open-questions list in the note. If the answer is a listed gap, write "not reached" and add a TODO(research) line. Never fill a gap from memory.
 5. Check the gates the card depends on: the maker's GPU model, the event's jurisdiction, and the proxy's approval for face work or a hard chapter. If any gate is unknown, set the verdict to hold.
 6. Check each tool's status and record it in the card. Install editors and Minecraft helpers only from their official pages, for example Kdenlive [43] and Arnis [56]. Record whether the tool is archived (Microsoft Old Photos [23], FILM [26]), paid-only, telemetry on by default (Eagle Animation [61]), uploads family material (pasteup's Gemini API [60]), or licence limits.
-7. If the card has a scriptable part, test it. At the time of the note, the sandbox had CPU only, ffmpeg 6.1.1, Python 3.13, Pillow and numpy, and no GPU. Re-check your own environment. The tested recipes are [64][65][66]. Keep test scripts in a folder the team has agreed on. The runnable scripts are committed at `research/creator-threads-fixtures/` (`align_eyes.py`, `kenburns_xfade.py`, `jitter_twos.py`), with a README.
+7. If the card has a scriptable part, test it. At the time of the note, the original run had CPU only, ffmpeg 6.1.1, Python 3.13, Pillow, numpy; the follow-up added MediaPipe 1.1.1 (which pulls OpenCV) and melt 7.22.0 [102][101]. Re-check your own environment. The tested recipes are [64][65][66]. Keep test scripts in a folder the team has agreed on. The runnable scripts are committed at `research/creator-threads-fixtures/` (`align_eyes.py`, `kenburns_xfade.py`, `jitter_twos.py`), with a README. Verify the folder in one line: `python research/creator-threads-fixtures/align_eyes.py --selftest && python research/creator-threads-fixtures/kenburns_xfade.py --selftest && python research/creator-threads-fixtures/jitter_twos.py --selftest`
 8. Write or update the card using this template: Source and date; Creator and incentive; Goal; Tools and cost (with the checked date); Steps; Time and cost; Quality (does it look generic?); Charter principles; Free-desktop adaptation; Verdict. Add two scores from 1 to 5: R (relevance to the project) and F (feasibility for a learner plus agents by 2027-02-27).
 9. Tag every claim and cite it by its Sources number. Copy each cited source into the document's Sources section. Never cite a URL you have not seen in a fetch or search result.
 10. Run the quality bar, then the ethics gate. Set one verdict: adopt, prototype, hold, watch or do not follow.
@@ -63,7 +63,7 @@ Check this before any fetch. Do not retry these. Route them to the maker's brows
 - [ ] The tool is not archived, frozen or blocked as a critical dependency [23][26].
 - [ ] The licence was read in full, not just the summary [11][12].
 - [ ] Telemetry and upload behaviour were checked and switched off or excluded for family material [60][61].
-- [ ] Cost is stated, including any GPU or rental cost, or marked UNVERIFIED [18][19][20].
+- [ ] Cost is stated, including any GPU or rental cost, or marked UNVERIFIED [18][19][20][84].
 - [ ] The test was run, or the card says it was not tested.
 - [ ] R and F scores are given.
 
@@ -157,3 +157,10 @@ Check this before any fetch. Do not retry these. Route them to the maker's brows
 - [64] `research/creator-threads-fixtures/align_eyes.py` (committed 2026-10-18). Original run: worst error 1.36 px on three synthetic cases. Same function as research note T1.
 - [65] `research/creator-threads-fixtures/kenburns_xfade.py` (Python port of the tested bash, committed 2026-10-18). Original run: 13.0 s, 312 frames, 5.7 s render; the looped-input trap. Research note T3.
 - [66] `research/creator-threads-fixtures/jitter_twos.py` (committed 2026-10-18). Original run: 24 of 24 held pairs identical, 23 of 23 pose changes, deterministic for a seed. Research note T4.
+- [69] Minecraft: Java & Bedrock Edition for PC, Xbox store listing. https://xbox.com/en-us/games/store/minecraft-java-bedrock-edition-for-pc/9nxp44l49shj. Undated (release date 6/6/2022 shown). $29.99+ for Java & Bedrock for PC; Deluxe $39.99+; Ultimate $49.99+.
+- [84] RunPod pricing. https://www.runpod.io/pricing. "Updated October 8, 2026." RTX 4090 24 GB $0.89 per hour (Secure Cloud, per the page's structured data); storage prices on the same page; no separate egress charge listed.
+- [85] LivePortrait LICENSE (raw file). https://raw.githubusercontent.com/KwaiVGI/LivePortrait/main/LICENSE. MIT, plus an InsightFace carve-out: its models are for non-commercial research purposes only.
+- [86] LivePortrait src/utils/cropper.py (raw file). https://raw.githubusercontent.com/KwaiVGI/LivePortrait/main/src/utils/cropper.py. The human-face path uses InsightFace models (FaceAnalysisDIY(name="buffalo_l"), landmark_2d_106).
+- [89] MediaPipe Face Landmarker guide for Python. https://developers.google.com/edge/mediapipe/solutions/vision/face_landmarker/python. Updated 2026-10-09. 478 landmarks.
+- [101] qtblend Transform on a still, rendered with melt 7.22.0 under xvfb-run (sandbox, 2026-10-18; not kept in the repo). 50 frames, 1920 by 1080, H.264; first and last frames differ.
+- [102] MediaPipe 1.1.1 Face Landmarker on CPU (sandbox, Python 3.13, Linux, no GPU, 2026-10-18; not kept in the repo). Eye-centre landmarks 468 and 473; 0.027 s per detection.

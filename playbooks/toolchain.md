@@ -1,6 +1,6 @@
 # Free Desktop Toolchain: A Small Stack for the Life Journey
 
-Track: toolchain · Draft v0.2 · 2026-10-18 · For the maker (a motivated learner)
+Track: toolchain · Draft v0.3 · 2026-10-18 · For the maker (a motivated learner)
 Built from research/toolchain.md (Sonnet researcher, 2026-10-18) and CHARTER.md. Numbers in brackets, like [1], point to the Sources list at the end. Anything marked TODO(research) is still open.
 
 **Status: provisional.** We do not fix the plan until you return the app checklist in Step 0. Your computer and the apps you already have decide which tools make sense.
@@ -11,7 +11,7 @@ Most of your mother's life happened between the big moments: the kitchen table, 
 
 The charter asks us to prefer scriptable tools [1]. A script can be re-run, repaired and handed to an AI agent. A menu click cannot. So this track picked a small stack. Blender handles depth, camera moves and renders. Inkscape handles maps, timelines and drawn lines. One video editor does the finishing pass. Two command-line tools, ffmpeg and ImageMagick, sit under all of it, and every shot passes through them [62][64].
 
-Fewer tools, learned well, will finish the film. We have about 19 weeks until Saturday, 27 February 2027. The ten practice exercises below take about five weeks at two a week, which leaves about fourteen weeks for the real work [100].
+Fewer tools, learned well, will finish the film. We have about 19 weeks until Saturday, 27 February 2027. The ten practice exercises below take about three weeks at four a week, so Exercise 10 can be the dress rehearsal for the vertical slice by 8 November 2026. That leaves about sixteen weeks for the real work. The schedule locks the pipeline on Saturday 14 November, the end of week 4 (ROADMAP-ADDENDUM.md).
 
 ## Core principles
 
@@ -37,14 +37,14 @@ Do the steps in order. Do not skip Step 0.
 
 ### Step 0: Recognise your apps (this blocks the plan)
 
-Run the checks in the research checklist (see the table in the research notes, "Recognise your apps") and paste the output back to the team. We need:
+Run the checks in the research checklist (see the table in the research notes, "Recognise your apps") and paste the output back to the team. The research wrote one script that runs these checks and both timed Blender runs and writes one report: `research/toolchain-fixtures/step0_pc_tests.ps1` (research Follow-up F9). We need:
 
 - Your operating system and version. The charter records a Windows PC [1]. The research did not know this, so please confirm.
 - Which of these apps are installed, with versions: DaVinci Resolve (Free or Studio), Kdenlive, Shotcut, OpenShot, Inkscape, GIMP, Krita, Blender, MagicaVoxel, Goxel, Blockbench, Audacity.
 - Whether ffmpeg and ImageMagick run from a terminal.
 - CPU, RAM, graphics card and its video memory, free disk space, and whether you have a pen tablet.
 
-Two answers change the plan. MagicaVoxel runs only on Windows and macOS, and Blender 5 needs Apple Silicon on a Mac [24][30][56]. Resolve has an External scripting setting, which is the place to check whether outside programs can drive it [6][7] (see Decision 1).
+Two answers change the plan. MagicaVoxel runs only on Windows and macOS, and Blender 5 needs Apple Silicon on a Mac [24][30][56]. Resolve's External scripting setting is Studio-only in Blackmagic's manuals [110][111][112], so on the Free edition note whether it is missing or greyed out (see Decision 1).
 
 The charter also names the ArtCraft Crafting Apps as refinement layers [1]. This track does not cover them. The craft-visual and craft-motion tracks do.
 
@@ -56,7 +56,7 @@ Keep the project in the private GitHub repository the charter names [1]. The clo
 
 ### Step 2: Install or find ffmpeg and ImageMagick
 
-ffmpeg is the glue that most steps depend on [62][63]. The ffmpeg project ships source code only. Windows builds come from third parties such as gyan.dev or BtbN [62]. Some projects warn about look-alike download sites [45], so download from official sites only. ImageMagick has Windows binaries [64]. Check what runs with `ffmpeg -version` and `magick -version` (older ImageMagick installs use `convert`), and write the results in your README.
+ffmpeg is the glue that most steps depend on [62][63]. The ffmpeg project ships source code only. Windows builds come from third parties such as gyan.dev or BtbN [62]. Some projects warn about look-alike download sites [45], so download from official sites only. ImageMagick has Windows binaries [64]. Check what runs with `ffmpeg -version` and `magick -version` (older ImageMagick installs use `convert`), and write the results in your README. The Kdenlive 26.08.2 Windows package ships `bin\melt.exe` (MLT 7.43.0) and `bin\ffmpeg.exe` (FFmpeg 8.1.1 with libx264, libx265, libass), so no separate ffmpeg or MLT install is needed on Windows; the standalone download unpacked anywhere is enough to render [104].
 
 ### Step 3: Prepare photos in a batch
 
@@ -99,11 +99,11 @@ Filling in the background behind a cut-out invents pixels. Keep the fill minimal
 
 ### Step 6: Parallax in Blender by script
 
-Put each layer on a flat plane at its own distance, slide the camera, and render the frames. The near layers then move more than the far ones, which is parallax [71]. The tested script is `recipes/r2_parallax.py` [100]. Three settings matter most:
+Put each layer on a flat plane at its own distance, slide the camera, and render the frames. The near layers then move more than the far ones, which is parallax [71]. The tested script is `recipes/r2_parallax.py` [100]. `recipes/r2_param.py` is the same scene, with its frame count, resolution, samples and folders set by environment variables, for the timed runs in Exercise 5. Three settings matter most:
 
 - **Set the view transform to Standard.** Blender's default, AgX, washed out the test photos. Standard kept their colours [100].
-- **Draft at 640×360 with four samples; finish at 1080p.** Fifty frames at 640×360 took about 64 to 66 seconds on four CPU cores with no graphics card [100]. A 1080p frame has about nine times the pixels. A 30-second shot at 25 frames a second, at about 12 seconds a frame, would take about 2.5 hours [100] (the research's extrapolation).
-- **Run it from a terminal with no window.** Blender's own command line is `blender -b -P script.py` [25]. The research ran the Blender Python module, not the Blender program [100], so check the program on your machine.
+- **Draft at 640×360 with four samples; finish at 1080p.** Fifty frames at 640×360 took about 64 to 66 seconds on four CPU cores with no graphics card [100]. A 1080p frame has about nine times the pixels. Measured in the sandbox, a 1080p frame took about 11 seconds, so a 30-second shot at 25 frames a second (750 frames) would take about 2.2 hours (research notes, Follow-up F2). Your PC is not measured yet; Exercise 5 measures it.
+- **Run it from a terminal with no window.** Blender's own command line is `blender -b -P script.py` [25]. The Windows `blender.exe` (under Wine, not on Windows itself) ran R2 in its parameterised form, `recipes/r2_param.py`, and the Linux `blender` program and the `bpy` module ran the same scene in the same sandbox (research notes, Follow-up F2). On Windows use `blender.exe`, not `blender-launcher.exe`. `pip install bpy` on Windows needs Python 3.13 exactly [102][103]. Sandbox measurements: peak memory about 0.9 GB at 640×360 and 2.5 GB at 1080p, and about 11 seconds per 1080p frame on four cores with no graphics card. Your PC's numbers come from Exercise 5.
 
 Turn the PNG frames into a movie with `ffmpeg -framerate 25 -i renders/p_%04d.png -c:v libx264 -crf 18 -pix_fmt yuv420p parallax.mp4` [100].
 
@@ -124,13 +124,26 @@ Two traps from the tests [100]:
 - **Always set the profile.** Without `-profile atsc_1080p_25`, `melt` uses a PAL standard-definition frame (720×576).
 - **Crop photos to 16:9 before you place them.** A 3:2 photo otherwise letterboxes.
 
+On Windows, the same `melt.exe` is in the Kdenlive package, so the render can run from PowerShell or Git Bash. The command ran under Wine (research notes, Follow-up F10); the two shell lines below have not run on Windows. The default install folder was not verified, so the PowerShell line finds `melt.exe` first (TODO(verify on the maker's PC)).
+
+```powershell
+# PowerShell, written but NOT run on Windows. Find melt.exe first; the default install folder was not verified.
+$melt = (Get-ChildItem "C:\Program Files*" -Filter melt.exe -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1).FullName
+& $melt story.mlt -silent -profile atsc_1080p_25 -consumer avformat:story.mp4 vcodec=libx264 crf=20 pix_fmt=yuv420p an=1
+```
+
+```bash
+# Git Bash, written but NOT run on Windows. Use the standalone download unpacked anywhere to avoid the install-folder question.
+MSYS2_ARG_CONV_EXCL='*' "/c/Tools/kdenlive-26.08.2_standalone/bin/melt.exe" story.mlt -silent -profile atsc_1080p_25 -consumer avformat:story.mp4 vcodec=libx264 crf=20 pix_fmt=yuv420p an=1
+```
+
 Do the final cut by hand: timing to music, framing and the last pass.
 
 ### Step 9: Give each album its own look
 
 Every album gets one saved colour look, so every photo from that album matches. The look comes from the album itself, not from a decade. Pick three prints from one of her real albums (after the pipeline is locked). In each print, sample a known-white object and a skin midtone. Derive the lift, cast and grain from those samples, save the result in `looks/`, and name it after her chapter. Apply that one look to every photo from the album [1].
 
-The research's two ffmpeg chains (a 1970s-style and a 1950s-style chain) are stock practice, not for the film. They are kept in `recipes/r7_era_looks.txt` for exercises only [63][100]. Do not colourise black-and-white photos with AI unless you label the result as a reconstruction [1]. TODO(research): the step that turns the sampled values into filter settings is not yet written.
+The research's two ffmpeg chains (a 1970s-style and a 1950s-style chain) are stock practice, not for the film. They are kept in `recipes/r7_era_looks.txt` for exercises only [63][100]. Do not colourise black-and-white photos with AI unless you label the result as a reconstruction [1]. The step from sampled values to filter settings is written and was tested on three stock prints: `research/toolchain-fixtures/derive_album_look.py` (research notes, Follow-up F14). It has not run on your prints or on Windows Python, so it stays TODO(research) until it has.
 
 ### Step 10: Sound
 
@@ -141,6 +154,10 @@ Set the loudness with ffmpeg's loudness filter, `-af loudnorm=I=-16:TP=-1.5:LRA=
 ### Step 11: Captions
 
 Draft the captions with Kdenlive's speech-to-text, which can use VOSK or Whisper [13]. Whisper is also available on its own. It runs locally after its model is downloaded, and it can print SRT files from the command line [75]. Then proofread every name and place by hand.
+
+**Whisper on Windows.** Kdenlive's Whisper needs Python 3 installed first. On first use it downloads about 2 GB of dependencies plus a model, so set it up while online; transcription itself runs offline. On an 8 GB PC use `tiny`, `base` or `small`: `small` peaks at about 2.1 GiB and is the sensible default. `medium` and `turbo` peak at about 5.1 and 5.4 GiB and only fit with other apps closed; `large` does not fit. Check where the first `.pt` model file lands. The script reads `~\.cache\whisper`, and the manual names `%AppData%\kdenlive\opencvmodels` [116][117][118]. Offline transcription was tested on Linux with the models already in place. The Windows run is TODO(verify on the maker's PC).
+
+**Resolve Free and captions.** Resolve Free imports an SRT and burns it in. Automatic subtitles from audio are Studio, so use Whisper for the draft [110][111][112]. Not yet seen on a real Free install.
 
 Burn the captions into the screening file, because burned-in text is the one kind every screen shows [12][13]. Keep a sidecar `.srt` file for the archive. The research's burn-in command names a font that may not be installed on your computer. Pick a font you have [100]. TODO(research): verify burn-in on Windows.
 
@@ -176,7 +193,7 @@ Then check the file size against the stick's limit, and check the loudness again
 
 ### Step 14: Rehearse on the real screen
 
-Play the screening file from a USB stick on the actual TV or projector, with the venue's cable or adapter if you can. Keep a laptop backup: play the master in VLC or mpv, set the laptop to 1920×1080, mirror the displays, and turn off notifications and sleep [100]. Venue and screen are still open decisions in the charter [1].
+Play the screening file from a USB stick on the actual TV or projector, with the venue's cable or adapter if you can. Keep a laptop backup: play the master in VLC or mpv, set the laptop to 1920×1080, mirror the displays, and turn off notifications and sleep [100]. The charter fixes the occasion (a mostly public gathering on 2027-02-27); the venue's screen, cable and USB behaviour are still unknown.
 
 ### Step 15: Archive
 
@@ -218,10 +235,22 @@ Each exercise has a cap of about two hours, from the research notes. The researc
 
 ### Exercise 5: Parallax in Blender by script
 
-- **Goal:** Run `recipes/r2_parallax.py` on the Exercise 4 layers.
-- **Steps:** Edit the resolution and frame range in `recipes/r2_parallax.py`, then render a 480p draft and a 1080p final. Keep the view transform at Standard. Turn the frames into a movie with ffmpeg. Write the time per frame in your notes.
+- **Goal:** Measure how long the Blender parallax render takes on your PC, using `recipes/r2_param.py` on the Exercise 4 layers.
+- **Steps:** Put `bg.png`, `mid.png` and `fg.png` from Exercise 4 in a `layers/` folder next to `r2_param.py`. Close the Claude desktop app. Run the two timed renders below: a 640×360 draft and a 1920×1080 frame, 10 frames each at four samples. Keep the view transform at Standard. Turning the frames into a movie with ffmpeg is optional.
 - **Time:** Up to 2 hours, plus render time.
-- **Good looks like:** A colour patch in the render matches the source photo. The render runs from a terminal with no window open. The time per frame is written down.
+- **Good looks like:** Both runs finish. A colour patch in the render matches the source photo. The render runs from a terminal with no window open.
+- **Output:** Paste back both `R2_RESULT` lines and the peak working set from each run. Decisions 2 and 5 wait on these numbers.
+
+```powershell
+# PowerShell, NOT run on Windows (TODO(verify on the maker's PC)). The D:\ path is the example from research Follow-up F2; use your unzipped Blender folder.
+$env:R2_DIR=(Get-Location).Path; $env:R2_NF=10; $env:R2_SPP=4; $env:R2_LAYERS='layers'
+$env:R2_RX=640;  $env:R2_RY=360;  $env:R2_OUT='r640';  & "D:\blender-5.2.2-windows-x64\blender.exe" -b --factory-startup -noaudio --python-exit-code 3 -P .\r2_param.py
+$env:R2_RX=1920; $env:R2_RY=1080; $env:R2_OUT='r1080'; & "D:\blender-5.2.2-windows-x64\blender.exe" -b --factory-startup -noaudio --python-exit-code 3 -P .\r2_param.py
+# Peak working set (TODO(verify on the maker's PC)): run this in a second window while each render is going.
+Get-Process blender | Select PeakWorkingSet64
+```
+
+If Blender does not create the output folder, make `r640` and `r1080` first (TODO(verify on the maker's PC)).
 
 ### Exercise 6: A line-draw route or title
 
@@ -234,9 +263,9 @@ Each exercise has a cap of about two hours, from the research notes. The researc
 ### Exercise 7: Album looks
 
 - **Goal:** Derive one saved look from three prints of one album.
-- **Steps:** Take three prints from one album (or three stock images standing in for prints). Sample a known-white object and a skin midtone in each, and write the numbers down. Derive the lift, cast and grain from them, and fill in the template in `recipes/r7_era_looks.txt`. Save the filled file in `looks/`. Apply the look to one modern clip as a control.
+- **Steps:** Take three prints from one album (or three stock images standing in for prints). Sample a known-white object and a skin midtone in each, and write the numbers down. Derive the lift, cast and grain from them with `research/toolchain-fixtures/derive_album_look.py` (method in the research notes, Follow-up F14; on Windows it needs Python 3 with numpy and Pillow). Fill in the template in `recipes/r7_era_looks.txt` and save the filled file in `looks/`. Apply the look to one modern clip as a control and save it as `ex07_album.mp4`. Outputs: `looks/<chapter>.txt` and `ex07_album.mp4`.
 - **Time:** Under 2 hours.
-- **Good looks like:** The look file records the sampled values and the three prints they came from. The same look applied twice gives identical output. TODO(research): the derivation method is not yet written, so the first run is a hand exercise.
+- **Good looks like:** The look file records the sampled values and the three prints they came from. The same look applied twice gives identical output. TODO(research): the derivation is tested on three stock prints only, so the first run on your own prints is still to do.
 
 ### Exercise 8: One voxel hero object
 
@@ -248,7 +277,7 @@ Each exercise has a cap of about two hours, from the research notes. The researc
 ### Exercise 9: Sound and captions
 
 - **Goal:** Forty seconds of narration over a licensed music bed, ducked, levelled and captioned.
-- **Steps:** Record narration with a phone voice memo, using your own voice on a practice script. Add a CC BY or CC0 track (Decision 6). Save the credit text from the licence page into `credits.txt`. Duck the music under the voice. Apply loudness normalisation (Step 10). Draft the captions and proofread them (Step 11).
+- **Steps:** Record narration with a phone voice memo, using your own voice on a practice script. Add a CC BY or CC0 track (Decision 6). Save the credit text from the licence page into `credits.txt`. Duck the music under the voice. Apply loudness normalisation (Step 10). Draft the captions and proofread them (Step 11). Test the captions on one old phone recording, or an older speaker's voice you already have, as well as on the clean clip: a clean clip does not test old recordings or elderly voices. Keep that file private and do not publish it.
 - **Time:** Under 2 hours.
 - **Good looks like:** The loudness report is within 1 LU of the target. Captions line up within about 0.2 seconds at three spot checks. Every name is spelled right. The credit text matches the wording the licence asks for.
 
@@ -260,7 +289,7 @@ Each exercise has a cap of about two hours, from the research notes. The researc
 - **Good looks like:** The file plays from the stick with sound and captions. The ffprobe output matches the profile. A checksum check passes. The archive file opens in a second player.
 - **Self-check (checksums).** Bash (Git Bash or WSL2): `sha256sum chapter_usb.mp4 chapter_web_1080.mp4 chapter_archive.mov > SHA256SUMS`, then `sha256sum -c SHA256SUMS`; every file must print OK. (The three names are the research's Exercise 10 names; use your own.) PowerShell: `Get-ChildItem chapter_usb.mp4, chapter_web_1080.mp4, chapter_archive.mov | ForEach-Object { '{0}  {1}' -f (Get-FileHash $_.Name -Algorithm SHA256).Hash.ToLower(), $_.Name } | Set-Content SHA256SUMS -Encoding ascii`. Verify with `Get-Content SHA256SUMS | ForEach-Object { $h, $f = $_ -split '\s+', 2; if ((Get-FileHash $f -Algorithm SHA256).Hash -eq $h.ToUpper()) { "OK   $f" } else { "FAIL $f" } }`. TODO(verify on the maker's PC).
 
-**Pace.** Two exercises a week finishes the set by about 22 November 2026, which is week five. That leaves about fourteen of the nineteen weeks for the vertical slice and the chapters. Re-time after Exercise 5, the first Blender render, because that is where a weak computer shows [100].
+**Pace.** Three or four exercises a week. Four a week finishes the set by 8 November 2026, so Exercise 10 is the dress rehearsal for the vertical slice; three a week finishes it by 14 November 2026. Either way, the schedule locks the pipeline on 14 November (ROADMAP-ADDENDUM.md). Re-time after Exercise 5, the first Blender render, because that is where a weak computer shows [100].
 
 ## Decisions you'll need to make
 
@@ -270,7 +299,7 @@ Each decision lists the options and our current lean. The lean is a suggestion f
 
 The tested recipes are Unix commands. Every program they call (ffmpeg, ImageMagick, Blender, Inkscape, `melt`) has a Windows build, so either route below can run them [100].
 
-- **A. Git Bash or WSL2: the tested recipes run unchanged,** provided their programs are on that shell's path. Git Bash rewrites arguments that look like Unix paths, so set `MSYS2_ARG_CONV_EXCL='*'`. WSL2 takes about half of your RAM by default, so use it only on a PC with 16 GB or more (research notes, Follow-up F3). Windows builds of ImageMagick, Inkscape and GIMP were not checked.
+- **A. Git Bash or WSL2: the tested recipes run unchanged,** provided their programs are on that shell's path. Git Bash rewrites arguments that look like Unix paths, so set `MSYS2_ARG_CONV_EXCL='*'`. WSL2 takes about half of your RAM by default, so use it only on a PC with 16 GB or more (research notes, Follow-up F3). Windows builds of ImageMagick, Inkscape and GIMP ran under Wine but not yet from PowerShell (research notes, Follow-up F11).
 - **B. Native PowerShell: the recipes need a PowerShell copy.** Every program in the stack has a Windows console program, so no Linux layer is needed (research notes, Follow-up F1 to F3). So far only the four self-checks (Exercises 1, 2, 6 and 10), the `melt.exe` call and the Blender call have a Windows form, each marked `TODO(verify on the maker's PC)`. The rest of the recipe files still need a PowerShell copy. TODO(research).
 
 **Lean: B, PowerShell with the Windows-native programs,** which is the research's recommendation (research notes, Follow-up F3). Choose A only if Git Bash is already installed. Choose WSL2 only at 16 GB of RAM or more. Step 0 asks for your RAM and whether `wsl --status` works, which settles it.
@@ -282,7 +311,7 @@ The tested recipes are Unix commands. Every program they call (ffmpeg, ImageMagi
 - **Shotcut 26.9.27.** Free, with MLT XML projects [19][20]. Less tested here.
 - **OpenShot 4.0.1.** The gentlest option, but it is not built on MLT [22][23]. Not recommended for this stack.
 
-**Lean:** Kdenlive, unless you already work fluently in Resolve. If you do, use Resolve for colour and sound, and Kdenlive for batch assembly and captions. Resolve's scripting from outside is disputed (see Pitfalls).
+**Lean:** Kdenlive, unless you already work fluently in Resolve. If you do, use Resolve for colour and sound, and Kdenlive for batch assembly and captions. Resolve's external scripting is Studio-only [110][111][112] (see Pitfalls).
 
 **Where this sits in the charter's approach.** Agents generate, and the ArtCraft apps (FilmCraft, PhotoCraft and others) are the maker's refinement layer. This editor is the proven fallback the charter requires, so nothing critical may depend on an alpha app [1]. **Hand-off:** every output of this track is a PNG sequence with alpha, an MP4, an SRT or a plain SVG, so either layer can take it; exact import formats belong to craft-visual/craft-motion. FilmCraft 0.9.0 does not import plain SVG, so rasterise it to PNG first (research notes, Follow-up F5).
 
@@ -291,7 +320,7 @@ The tested recipes are Unix commands. Every program they call (ffmpeg, ImageMagi
 - **Blender planes (`recipes/r2_parallax.py`).** Tested and precise, but slow to render [100].
 - **Keyframes in the editor.** Quicker to learn, but not tested by the research [100].
 
-**Lean:** Blender for the three or four hero moves, and editor keyframes for the rest. TODO(research): compare the time each route takes on your machine.
+**Lean:** Blender for the three or four hero moves, and editor keyframes for the rest. Time per route on your machine: pending the two `r2_param.py` runs from Exercise 5.
 
 ### Decision 3: Which voxel tool?
 
@@ -314,10 +343,10 @@ The tested recipes are Unix commands. Every program they call (ffmpeg, ImageMagi
 
 ### Decision 5: Where do heavy renders run?
 
-- **On your laptop.** The research measured this on a four-core CPU with no graphics card, so it is slow [100]. Blender's stated minimum includes a graphics card with 2 GB of video memory [30].
+- **On your laptop.** The research measured this on a four-core CPU with no graphics card, so it is slow [100]. Blender's stated minimum includes a graphics card with 2 GB of video memory [30]. Your machine's time per frame is pending the two `r2_param.py` runs from Exercise 5.
 - **In the cloud.** The charter asks for heavy work in the cloud wherever possible, because memory is tight on the maker's Windows PC [1]. The research did not test a cloud render path. A cloud route moves your files off your machine, and the charter says nothing personal is uploaded without your explicit say [1].
 
-**Rule: Scripts travel, photos don't.** Agents write and test every script in the cloud on stock or synthetic images. The identical script then runs on your PC against the real photos, from a terminal with the Claude desktop app closed. The memory problem the charter records is the app, not ffmpeg or Blender, and overnight command-line renders do not need the app running [1]. Cloud rendering of real photos happens only after your explicit decision for a named batch, and never for the raw scans [1].
+**Rule: Scripts travel, photos don't.** Agents write and test every script in the cloud on stock or synthetic images. The identical script then runs on your PC against the real photos, from a terminal with the Claude desktop app closed. The memory problem the charter records is the app, not ffmpeg or Blender, and overnight command-line renders do not need the app running [1]. Cloud rendering of real photos happens only after your explicit decision for a named batch, and never for the raw scans [1]. The numbers support the rule: Blender at 1080p peaks near 2.5 GB, which fits an 8 GB PC once the Claude app is closed (research notes, Follow-up F2).
 
 ### Decision 6: Which music?
 
@@ -325,7 +354,15 @@ The tested recipes are Unix commands. Every program they call (ffmpeg, ImageMagi
 - **AI-generated music.** Suno's free tier is for personal, non-commercial use, and Suno assigns no ownership to free users [88]. Meta's MusicGen weights are non-commercial [90]. The US Copyright Office has published on AI and copyright, but the research did not read its conclusions [89].
 - **Commercial songs from her life.** These need a recording licence and a publishing licence for any public or online showing. An unlisted YouTube link can still be flagged. Options, safest first: a licensed substitute with a similar mood; your own performance of the tune; an offline private showing only, which is your informed risk; or no music at all [100].
 
-**Lean:** CC0 or CC BY tracks. No CC BY-NC. No AI music until its terms are read for public use. For her favourite songs, use a substitute or your own performance. Ask a rights professional if the film will be shown beyond the family. TODO(research): several licences were not read (see the TODO list below).
+**What the licence texts say** (read 2026-10-18; research notes, Follow-up F8; not legal advice):
+- **Mixkit music** (free licence) [119]: public performance is granted "on any web or social media platform", and no venue screening is listed. Use Mixkit music for the private link only, unless Mixkit confirms in writing.
+- **Mixkit sound effects** [119]: allowed in filmmaking, including films shown on TV, on DVD or by video on demand.
+- **Pixabay** [120]: allowed for a film. Keep the download record. For the online copy, avoid tracks with the shield icon: they are registered with Content ID and can trigger claims.
+- **Zapsplat and Musopen** [141]: both sites refused our requests (HTTP 403). Their licences are not read.
+- **Suno** [121][140]: paid-tier downloads may be shown at a non-commercial premiere under the terms as read. Pro allows 20 song downloads a month and Premier 60; Free allows none, and free-tier output may not be shown. The choice is the maker's.
+- **For the premiere**, prefer licences that name public performance: CC BY 4.0, whose "Share" includes public performance [79]; Freesound CC0 or CC BY items [80]; or a paid-tier Suno download.
+
+**Lean:** CC0 or CC BY tracks. No CC BY-NC. No AI music until its terms are read for public use. For her favourite songs, use a substitute or your own performance. The premiere is a mostly public gathering (charter), so every track must clear public performance; a rights professional reviews the final music list before the master is locked. TODO(research): several licences were not read (see the open items list below).
 
 ### Decision 7: Which export set?
 
@@ -344,7 +381,7 @@ The tested recipes are Unix commands. Every program they call (ffmpeg, ImageMagi
 
 ### Decision 9: The venue and screen (the charter's open decision)
 
-The charter has not yet fixed the occasion, the venue or the format [1]. These decide the final export. **Lean:** Do not choose the final export until the venue and screen are known. Until then, build all three versions.
+The charter fixes the occasion: a mostly public gathering on 2027-02-27. The venue's screen, cable and USB behaviour are still unknown, and they decide the final export [1]. **Lean:** Do not choose the final export until the venue and screen are known. Until then, build all three versions. The venue test kit (research notes, Follow-up F15) turns the screen questions into a short check.
 
 ## Pitfalls
 
@@ -361,7 +398,7 @@ The charter has not yet fixed the occasion, the venue or the format [1]. These d
 
 **"Has a Python interface" does not mean "runs without a window."** Krita, Blockbench, Audacity, MagicaVoxel and Resolve Free run their scripts inside the open program [54][56][59][61]. The research ran these headless only: ffmpeg, ImageMagick, Blender's Python module, Inkscape's command line, `melt`, Synfig's command line and Goxel's export [100]. Glaxnimate's pip package would not import on Ubuntu 24.04 without extra libraries [39][100]. Goxel opens a window even when it exports [58].
 
-**Resolve Free scripting is disputed.** The Blackmagic README mirror says the scripting interface is common to Free and Studio [6]. A third-party README says outside scripting needs Studio [7]. Studio's page lists a remote scripting API [3]. Check the setting `Preferences > System > General > External scripting using` on your install [6][7]. TODO(research): confirm on Resolve 21.1.
+**Resolve's external scripting is Studio-only.** The 21 and 21.1 Reference Manuals say "External Scripting Using: (Resolve Studio only)", and the 21.1 features guide lists "Scripting API: Studio" [110][111][112]. The 21.1 MCP server for AI assistants is also Studio. On Free, agents hand the maker timeline files (OTIO, FCPXML, FCP7 XML, EDL, DRT, AAF) plus ffmpeg post-processing. Subtitle tracks, SRT/VTT import and export and burn-in carry no Studio mark; speech-to-subtitle does. Not yet seen on a real Free install: check `Preferences > System > General > External scripting using` on yours. The README mirror [6] and a third-party README [7] read the other way; the 21 and 21.1 manuals are the more specific source, so this playbook follows them.
 
 **Free-tool limits.** Kdenlive's hardware-accelerated presets are marked experimental [11]. Resolve Free lacks the Studio-only tools, such as the AI Neural Engine features, noise reduction and film grain [2][3]. Shotcut's licence is not named on its download page [19]. TODO(research): confirm it.
 
@@ -380,7 +417,7 @@ The charter has not yet fixed the occasion, the venue or the format [1]. These d
 - Photopea runs in a browser. Its "nothing is uploaded" claim is the vendor's statement, not an audit [55].
 - "AI photo animator" websites upload your photos to someone else's servers. That needs the consent of you and of everyone pictured [1].
 
-**Music.** "Royalty-free" does not mean free to show in public, and it does not mean no credit. Read the licence page, not the search result. The YouTube Audio Library is safe only on YouTube [77]. Pixabay's licence needs no credit, but it does not allow selling or distributing the content alone [81]. FreePD closed in 2025 [84]. BBC Sound Effects' stated terms mention personal or educational projects, or a paid licence. A public screening is not confirmed [85]. Mixkit, Musopen, Zapsplat, Openverse and ccMixter were not read [86].
+**Music.** "Royalty-free" does not mean free to show in public, and it does not mean no credit. Read the licence page, not the search result. The YouTube Audio Library is safe only on YouTube [77]. Pixabay's licence needs no credit, but it does not allow selling or distributing the content alone [81]. FreePD closed in 2025 [84]. BBC Sound Effects' stated terms mention personal or educational projects, or a paid licence. A public screening is not confirmed [85]. Zapsplat and Musopen were not read: both sites refused our requests [141]. Openverse and ccMixter were not read.
 
 **Surprise leaks.** The charter forbids anything that could tip her off, including shared devices, cloud photo libraries and family group chats [1]. Do not let your project folder sync to a cloud photo library. Do not post a "render finished" message in a family chat. Use neutral file names on any shared machine.
 
@@ -522,7 +559,7 @@ The charter has not yet fixed the occasion, the venue or the format [1]. These d
 
 [85] BBC Sound Effects — https://sound-effects.bbcrewind.co.uk/licensing — "personal/educational projects, or licence them for use".
 
-[86] Mixkit — License — https://mixkit.co/license/ — per-item-type licences; terms not extractable.
+[86] Mixkit — License — https://mixkit.co/license/ — per-item-type licences; terms not extractable in round 1; read in round 2 as [119].
 
 [88] Suno — Terms of Service — https://suno.com/terms — (WebFetch) revised 2026-08-10, effective 2026-09-03.
 
@@ -550,23 +587,79 @@ The charter has not yet fixed the occasion, the venue or the format [1]. These d
 
 [100] Sandbox verification runs, 2026-10-18 — local, not a URL — ffmpeg 6.1.1, ImageMagick 6.9.12, Blender `bpy` 5.2.2 (Python 3.13), Inkscape 1.2.2, MLT melt 7.22.0, Synfig 1.5.1, Goxel 0.11.0 (Xvfb), librsvg 2.58.0, svgpathtools, Pillow; outputs inspected with `ffprobe` and by eye. Runnable copies of research recipes R1 to R5 and R7 to R9 are in skills/free-creative-toolchain/recipes/.
 
+[102] PyPI, `bpy` — https://pypi.org/pypi/bpy/json (JSON of https://pypi.org/project/bpy/) — release list, wheel file names and sizes, `requires_python`, README text; 5.2.2 uploaded 2026-09-15.
+
+[103] Blender 5.2 downloads — https://download.blender.org/release/Blender5.2/ — `blender-5.2.2-windows-x64.zip` (404,453,484 B, SHA-256 `3849d17a…b535`) and `blender-5.2.2-linux-x64.tar.xz` (383,295,504 B, SHA-256 `84098912…a168`), both matching `blender-5.2.2.sha256` on the same page.
+
+[104] Kdenlive download page and installers — https://kdenlive.org/download/ ; https://download.kde.org/stable/kdenlive/26.08/windows/kdenlive-26.08.2.exe ; https://download.kde.org/stable/kdenlive/26.08/windows/kdenlive-26.08.2_standalone.exe — sizes and hashes in F1; contents listed with 7-Zip.
+
+[105] MLT source, `mlt_factory.c` — https://raw.githubusercontent.com/mltframework/mlt/master/src/framework/mlt_factory.c — Windows module and data folder rule (`MLT_APPDIR`, `\lib\mlt`, `\share\mlt`).
+
+[106] Shotcut 26.9.27 for Windows — https://github.com/mltframework/shotcut/releases/download/v26.9.27/shotcut-win64-26.9.27.zip (213,335,062 B), linked from https://www.shotcut.org/download/ (SourceForge links there answered 403).
+
+[107] Microsoft Learn, "Advanced settings configuration in WSL" — https://learn.microsoft.com/en-us/windows/wsl/wsl-config — `ms.date` 2026-10-16: `memory` default 50 % of Windows RAM, `swap` 25 %, `processors`, `autoMemoryReclaim`, `.wslconfig` location.
+
+[108] Microsoft Learn, "about_Parsing" (PowerShell 7.6) — https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_parsing — `ms.date` 2026-06-29: argument mode metacharacters, native-command arguments, `--%`, 7.3 change.
+
+[109] MSYS2, "Filesystem Paths" — https://www.msys2.org/docs/filesystem-paths/ — undated (read through WebFetch): automatic path conversion and `MSYS2_ARG_CONV_EXCL`.
+
+[110] DaVinci Resolve 21 Reference Manual (PDF, 4,444 pages, created 2026-07-09) — https://documents.blackmagicdesign.com/UserManuals/DaVinci_Resolve_21_Reference_Manual.pdf — pages 109 (External Scripting), 804 (Voice Convert 8 GB VRAM), 3910 (pointer to a Configuration Guide), 4363.
+
+[111] DaVinci Resolve 21.1 Reference Manual (PDF, 4,351 pages, created 2026-09-04) — https://documents.blackmagicdesign.com/UserManuals/DaVinci_Resolve_21.1_Reference_Manual.pdf (address as listed by Blackmagic, with `?_v=1788850812000`) — pages 106, 1227 to 1248 (subtitles), 4318 (AI assistants / MCP).
+
+[112] "DaVinci Resolve 21.1 Studio and iPad Features" (PDF, 12 pages, September 2026) — https://documents.blackmagicdesign.com/SupportNotes/DaVinci_Resolve_Studio_21_Features.pdf — Free/Studio feature table.
+
+[113] Blackmagic support listings (JSON) — https://www.blackmagicdesign.com/api/support/us/downloads.json and https://www.blackmagicdesign.com/api/support/us/documents.json — Resolve 21.1.1 dated 02 Oct 2026; newest "Configuration Guide" is Resolve 15; manuals 21, 21.1, Studio features (28 Sep 2026).
+
+[114] FilmCraft v0.9.0 — https://github.com/storytold/filmcraft (tag `v0.9.0`, commit `4a69a03`, 2026-10-17): `README.md`, `docs/file-format-parity.md`, `docs/agents.md`, `crates/media/src/sequence.rs`, `crates/captions/src/lib.rs`, `apps/filmcraft-cli/src/main.rs`; release file https://github.com/storytold/filmcraft/releases/download/v0.9.0/filmcraft-0.9.0-windows-x64-portable.zip (70,686,984 B, SHA-256 `d370cac8…a5e`, matches the release's `SHA256SUMS.txt`).
+
+[115] PhotoCraft v0.9.0 — https://github.com/storytold/photocraft (tag `v0.9.0`; reading clone at `main` commit `2d0f3b6`): `README.md`, `docs/file-format-parity.md`, `docs/scorecard.md` (FILE-215-9), `docs/ora.md`; release files `photocraft-0.9.0-windows-x64-portable.zip` (83,169,235 B, SHA-256 `e87bbe26…c97`) and `photocraft-0.9.0-linux-x86_64.tar.gz` (81,541,649 B, SHA-256 `91300c14…b90d`), both matching `SHA256SUMS.txt`.
+
+[116] Kdenlive manual, "Configure Kdenlive: Plugins" (Speech to Text) — https://docs.kdenlive.org/en/getting_started/configure_kdenlive/configuration_plugins.html — undated; read through WebFetch (a summary, so exact figures such as "about 2 GB" and "1.4 GB" are as that summary stated).
+
+[117] Kdenlive 26.08.2 Windows payload, Whisper helpers — inside [104]: `bin/data/kdenlive/scripts/whisper/whispertosrt.py`, `whispertotext.py`, `whisperquery.py`, `requirements-whisper.txt`, `requirements-cuda118|124|126|128.txt`.
+
+[118] OpenAI Whisper — https://raw.githubusercontent.com/openai/whisper/main/README.md (model, VRAM and speed table) ; https://raw.githubusercontent.com/openai/whisper/main/whisper/__init__.py (model download URLs, SHA-256 in the path) ; https://raw.githubusercontent.com/openai/whisper/main/tests/jfk.flac (test clip).
+
+[119] Mixkit — https://mixkit.co/license/ (index); https://mixkit.co/license/modal/musicFree/ and https://mixkit.co/license/modal/sfxFree/ (licence pop-ups; paths found in the site's script `controllers-1a0cdfcb….js`); https://mixkit.co/terms/ ("Last revised: October 2, 2025").
+
+[120] Pixabay — https://pixabay.com/service/terms/ ("Last updated: November 18, 2024"); https://pixabay.com/service/license-summary/ (undated); https://pixabay.com/service/faq/ (undated); all read through WebFetch, so quotations are as that tool returned them.
+
+[121] Suno — https://suno.com/terms (date of last revision August 10, 2026; effective September 3, 2026; read in full) and https://help.suno.com/en/articles/2746945 (undated).
+
+[122] YouTube, read 2026-10-18 — channel listings https://www.youtube.com/@nuxttux/videos, `@BlenderGuru`, `@DefaultCube`, `@BlenderStudio`, `@grabbitt`, `@PolyFjord`, `@Ducky3d`, `@CGMatter`, `@BlenderOfficial`, `@JoshGambrell`, `@GlebAlexandrov`, `@Imphenzia`, `@SouthernShotty`, `@BlenderDaily` (all `/videos`); oEmbed for https://www.youtube.com/watch?v=B8ZPoWaxQrA ; watch page https://www.youtube.com/watch?v=vNzt3fYTnDk (title, "Apr 17, 2025", views, description).
+
+[123] Sandbox runs for this round, 2026-10-18 (local, not a URL): Ubuntu 24.04, 4 vCPU, 16 GB, no GPU; Wine 9.0; 7-Zip 23.01; `bpy` 5.2.2; Blender 5.2.2 Linux and Windows builds; Kdenlive `melt.exe` 7.43.0 and Shotcut `melt.exe` 7.41.0; `filmcraft-cli.exe` 0.9.0; `photocraft-cli` 0.9.0 (Linux); `torch` 2.14.1+cpu with `openai-whisper` 20250625. Outputs inspected with `ffprobe`, Pillow and by eye.
+
+[124] `/home/user/animated_journey/CLAUDE.md` (local project file, added to the session on 2026-10-18; undated): "premiering Saturday, Feb 27, 2027 at a mostly public gathering", "theatrical bar", "everything shown in public must be cleared".
+
+[140] Suno — https://suno.com/pricing (undated; plans, credits, downloads; read through WebFetch) and https://help.suno.com/en/articles/2746945 ("Do I have the copyrights to songs I made?", no date).
+
+[141] Zapsplat and Musopen, tried again — https://www.zapsplat.com/license-type/standard-license/ and https://musopen.org/about/faq/ — HTTP 403 through WebFetch; UNVERIFIED.
+
 ## Changelog
 
 - v0.1 · 2026-10-18 · First draft, written by the Haiku scribe from research/toolchain.md and CHARTER.md. Not yet reviewed by the advisor or by the maker. The plan is provisional until the Step 0 checklist comes back.
 - v0.2 · 2026-10-18 · Round 1 advisor revisions applied by the Haiku scribe: Decision 0 (shell) with PowerShell forms of the four self-checks; Decision 5 rule "Scripts travel, photos don't"; album looks replace decade looks (Step 9, Exercise 7); ArtCraft and hand-off lines in Decisions 1 and 4; recipes moved to skills/free-creative-toolchain/recipes/; Library of Congress edition year corrected to "current, undated on the page".
+- v0.3 · 2026-10-18 · Round 2 advisor revisions applied by the Haiku scribe: `recipes/r2_param.py` added as the timed-run script, and Exercise 5 now produces the two R2_RESULT timings; Resolve external scripting restated as Studio-only per the 21 and 21.1 manuals; Mixkit, Pixabay, Suno and public-premiere licence readings added to Decision 6, Pitfalls and Sources; Windows run lines and melt.exe lines added; Whisper memory guidance added to Step 11 and Exercise 9; pace set to three or four exercises a week; open TODO items rewritten as open items at v0.2.
 
-### Open TODO(research) items at v0.1
+### Open items at v0.2
 
-- **Your apps and computer.** The Step 0 checklist has not come back. The charter says Windows [1]; the research assumed the OS was unknown. Confirm the OS, the installed apps and the hardware.
-- **Resolve Free.** External scripting on 21.1, its hardware floor, Linux codec limits, whether captions and subtitle tracks work in Free, and which Photo-page tools are Free [2][3][6][7].
-- **Headless claims not run.** GIMP 3 batch Python procedure name; Krita headless Python; Glaxnimate's pip package on your OS; Audacity 4 scripting pipe; OpenShot bindings and `.osp`; running a Shotcut-saved `.mlt` through `melt`; hand-writing a native `.kdenlive`; the Blender program itself (the research used the Python module); EEVEE with no graphics card; Goxel's `--script` option (read from source only); Synfig's ffmpeg target syntax [100].
-- **Windows commands.** Which shell you will use (Decision 0); Blender's Python module on Windows; the `xvfb-run` step (needed only on servers); checksum commands; the burn-in font [100].
+- **Step 0 on your PC.** Run `research/toolchain-fixtures/step0_pc_tests.ps1` (research Follow-up F9). It writes one report with your inventory, the Windows tool checks and both R2 timings. The plan stays provisional until it comes back.
+- **The two R2 timings.** Exercise 5: `r2_param.py` at 640×360 and 1920×1080, with peak working set. Decisions 2 and 5 wait on them.
+- **PowerShell and Git Bash on Windows.** Each command that ran under Wine or in PowerShell 7 on Linux (research Follow-up F10) still needs one run in Windows PowerShell 5.1 or 7, and in Git Bash if you have it. That includes the `melt.exe` call (Step 8) and `pip install bpy` on Python 3.13.
+- **ImageMagick, Inkscape and GIMP on Windows.** These ran under Wine, not from PowerShell (research Follow-up F11). GIMP's Python batch failed under Wine while Script-Fu worked, so treat GIMP Python as untested on Windows.
+- **Resolve 21 Free.** A real install: whether the External scripting dropdown is missing or greyed out, whether subtitle tracks and burn-in work, and the hardware floor in the installer's Read Me (Decision 1; research Follow-up F4 and F12).
+- **Kdenlive Whisper, fully offline.** A pre-staged install with no internet, and the real model folder on Windows (Step 11).
+- **Burn-in fonts on Windows.** Kdenlive's `ffmpeg.exe` has no `drawtext` filter and draws subtitles through libass, and under Wine libass found no fonts (research Follow-up F10, F15). Test the burn-in on the real PC.
+- **Verified 2025+ videos.** None yet for Ken Burns in Kdenlive or SVG line-draw in Blender (research Follow-up F7, F16). Cite the written sources until one is verified.
+- **Licences still unread.** Zapsplat and Musopen: the sites refused automated reads, so the maker can paste the licence text from a browser (research Follow-up F13). Also unread: Openverse, ccMixter, Free Music Archive per-track terms, BBC Sound Effects' full terms, the YouTube Audio Library outside YouTube [77], and Udio, Stable Audio and Lyria terms. The US Copyright Office Part 2 conclusions are unread [89]. Suno's download allowance on your own account (Decision 6).
+- **Album look on your prints.** `derive_album_look.py` was tested on three stock prints (Step 9, Exercise 7). Run it on three prints from one of your albums, and on Windows Python.
+- **Venue facts.** The screen, cable, USB format (FAT32 or exFAT), MKV and soft subtitles, HEVC, 50 frames a second, and the country of the premiere. Run the venue test kit on the real screen (research Follow-up F15; Decisions 7 to 9).
+- **Voxel route.** Human modelling time per object; Blender-native voxel routes; depth-map and camera-projection parallax (Decision 3, Exercise 8).
 - **Cloud rendering.** No cloud render path was tested (Decision 5).
-- **Tutorials.** Re-fetch channel listings slowly for Ken Burns, parallax, photo-to-voxel, SVG line-draw, photo morphing and era grading. Open the shortlisted videos [98][99].
-- **Screen and format.** TV and projector format support: exFAT or FAT32, MKV, soft subtitles, HEVC 4K, 4:3 or 16:9 projectors, audio path, and venue HDMI and USB behaviour [95][96].
-- **Licences not read.** Mixkit terms; Musopen; Zapsplat; Openverse; ccMixter and Free Music Archive per-track terms; BBC Sound Effects full terms; Pixabay's Content ID clause; the YouTube Audio Library licence outside YouTube; Udio, Stable Audio and Lyria terms in 2026; the US Copyright Office Part 2 conclusions [81][85][86][89]. Venue music licences and film synchronisation need a rights professional.
-- **Voxel route.** Human modelling time per object; Blender-native voxel routes (Geometry Nodes, remesh); depth-map displacement and camera-projection parallax; the Goxel and MagicaVoxel results on your machine [56][58].
-- **Hardware floors.** Kdenlive, Inkscape and Resolve Free minimums were not found [8][32].
+- **Hardware floors.** Kdenlive and Inkscape minimums were not found [8][32]. Resolve Free's floor is in its installer Read Me (above).
+- **Headless claims not run.** Krita headless Python; Glaxnimate's pip package on your OS; the Audacity 4 scripting pipe; OpenShot bindings and `.osp`; hand-writing a native `.kdenlive`; EEVEE with no graphics card; Goxel's `--script` option; Synfig's ffmpeg target syntax [100].
 - **ArtCraft.** Not covered by this track. See the craft-visual and craft-motion tracks [1].
 - **Time estimates.** Per-exercise times were not measured. Exercise 8 may take longer than two hours [100].
-- **Search budget.** The shared search budget was used up before the research began. Better tutorials and tools may exist [100].
+- **Search budget.** The shared search budget ran out in both research rounds. Better tutorials and tools may exist [100].

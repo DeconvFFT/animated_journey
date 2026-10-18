@@ -63,7 +63,7 @@ The National Archives asks for who, what, where and when [2]. The manifest does 
 - **Depth Anything V2 Small:** install CPU PyTorch from `https://download.pytorch.org/whl/cpu`, then `pip install transformers pillow` [124][125][106].
 - **ExifTool:** unzip `exiftool-13.59_64.zip`, rename `exiftool(-k).exe` to `exiftool.exe`, keep the `exiftool_files` folder beside it, and put both on PATH [118].
 - **WSL:** `wsl --install` from an administrator PowerShell, then restart. It needs Windows 10 build 19041 or later, or Windows 11 [126]. SAM 2 also notes WSL as the route for Windows [56].
-- **Cloud container for CPU steps:** it runs Linux and is temporary. Family photos would leave the PC, so use it only with the maker's explicit yes (charter, Constraints).
+- **Cloud container for CPU steps:** it runs Linux and is temporary. Use it by content, as Decision 6 sets out. Work with no family photo may run there. Anything with her face or a relative's stays on the maker's PC, or on a maker-approved rented GPU (charter, Constraints). The team's cloud session is a Linux VM with no GPU and no view of the maker's PC (checked 2026-10-18); the hardware tier comes only from the Q2 PowerShell block in the research note.
 
 ### Step 1: Clean the print and the glass
 
@@ -107,7 +107,16 @@ Faded 1970s to 90s colour prints usually have a magenta or yellow cast and low c
 
 ### Step 5: Decide whether the photo needs help
 
-Count the pixels before you upscale. A 4x6 print scanned at 600 ppi is 3600 by 2400 pixels. That is already enough for a 1080p timeline with a small push-in, and close to 4K. Do not upscale it. Upscale only wallet prints, 1990s digital camera files and video frames.
+Count pixels against the master the film will be made at, not against 1080p. The arithmetic is: pixels needed across = timeline width × (1 + push-in) × crop factor. The crop factor is 1.0 for a landscape print that fills the frame width.
+
+The master is not fixed yet. Assume UHD (3,840 px across) until the theatrical-delivery track fixes it. TODO(theatrical-delivery): master resolution. On UHD, a 4x6 print scanned at 600 ppi (3,600 by 2,400 px) with an 8 percent push-in needs about 4,150 px across, so it falls short. The 600 ppi scan is enough for a 2K master (2,048 px across [156]; about 2,160 to 2,210 px needed with an 8 percent push-in) or a 1080p master (about 2,075 px needed).
+
+If the master is UHD, choose one of these for hero prints:
+- Scan hero prints at 800 to 1,200 ppi. A 4x6 at 800 ppi is 4,800 by 3,200 px.
+- Allow a 2x Real-ESRGAN pass on hero prints, logged as an L2 step (Step 6).
+- Keep push-ins under about 5 percent. This helps only if the picture fills less than about 89 percent of the frame width (3,600 ÷ (3,840 × 1.05)). At full width, even a 0 percent push-in needs 3,840 px.
+
+Upscale only where the count is short: wallet prints, 1990s digital camera files, video frames and hero prints under the UHD rule.
 
 ### Step 6: Restore only what needs it (L2)
 
@@ -120,18 +129,18 @@ Work through the tools in this order.
 
 **What L2 permits (house rule, made operational in round 1).**
 - Generative repair on non-face regions only: tears, stains and backgrounds.
-- Faces at L2: non-generative fixes, or CodeFormer at `w` 0.7 or higher, or GFPGAN, each with blend-back. The sources give GFPGAN no `w` dial, so its strength setting is TODO(research).
+- Faces at L2: non-generative fixes, or CodeFormer at `w` 0.7 or higher, or GFPGAN, each with blend-back. `inference_gfpgan.py` has `-w/--weight` (default 0.5), but the value does nothing: outputs were bit-identical at 0, 0.5 and 1 for v1.3, v1.4 and RestoreFormer (run 2026-10-18) [146][149]. Do not tune it. Its `-v` also accepts 1.4 (README: "slightly more details and better identity than V1.3") and RestoreFormer, although the help text lists only 1, 1.2 and 1.3 (verified from the script, 2026-10-18) [146][147]. The fidelity dial is CodeFormer's `w` [15].
 - Any generative change to a face moves the image to L3, where it must look drawn, or the image is rejected.
 
 **Warnings about face tools.**
 
-- GFPGAN v1.3 "may slightly change identity" [17].
+- GFPGAN v1.3's README says it can "have a slight change on identity" [17].
 - Face super-resolution can make a different person. PULSE says it "makes imaginary faces of people who do not exist" [30].
 - Sources disagree about which face tool keeps likeness best. The two comparisons we saw are search snippets only [19][20]. The only real test is your own photos at 100% zoom.
 - Do not restore faces narrower than about 64 px. This is the note's rule of thumb (judgment).
 - Reject any result with new teeth, new eyelids or a changed jaw.
 
-**Colour, for black-and-white prints.** Treat colourising as costume design. DDColor [28] and DeOldify [29] guess every colour. DeOldify is known for "orange skin and overly red lips" [29]. Check clothes, rooms and cars against family memory or other colour photos. Keep skin tones muted. Caption the result "colours estimated." TODO(review): under the L2 rule above, does colourising a face count as a generative change to the face? This is an open question for the Fable advisor.
+**Colour, for black-and-white prints.** Treat colourising as costume design. DDColor [28] and DeOldify [29] guess every colour. DeOldify is known for "orange skin and overly red lips" [29]. Check clothes, rooms and cars against family memory or other colour photos. Keep skin tones muted. Caption the result "colours estimated." **Ruling on colourised faces (advisor review, round 2).** Colourising a face stays L2, captioned "colours estimated", if the tool changes chroma only and leaves the original luminance (L) on the face. It is a generative change, so L3 or reject, if luminance or texture on the face moves. Test it: convert the original and the result to CIELAB, and diff the L channel over the face box. The AI team writes the script, and the threshold is set in the bake-off. Starting values from the round-2 DDColor run, tiny model only: mean ΔL under 0.5 and 99th percentile under 2 over the face box, with a human look at any patch above 5 [153]. The L-channel diff catches luminance change; a 100 percent flick check catches texture change. DDColor's code keeps the input L by construction [151], but its README does not say so [28], so run the test rather than assume it.
 
 **Label and log.** This step is L2. If a generative model repaired content, the IPTC value is `compositeWithTrainedAlgorithmicMedia` [89]. Log each tool, version, setting, seed and what it invents in `steps.csv`.
 
@@ -170,15 +179,15 @@ Windows (PowerShell, untested on Windows): the same command. Keep the whole filt
 - Describe motion only. Do not re-describe the face.
 - Use restraint words such as "very subtle," "slow," "locked-off camera," "no scene change" and "no cut." These phrases are the research note's own synthesis from model documentation. No creator-tested prompts were reachable (untested).
 - Prefer environment motion, such as leaves, curtains, dust in light, or water, over faces and hands.
-- Keep clips to 3 to 5 seconds. Use a fixed seed and 3 to 4 takes. Keep the take with the least change.
+- Keep clips short. Local models: 3 to 5 seconds. Veo: 4 seconds at 720p (the shortest), or 8 seconds with a higher per-second price for 1080p or 4K, because those need 8 seconds [114]. Use a fixed seed and 3 to 4 takes. Keep the take with the least change.
 - Compare the first and last frames with a face-similarity script, and reject a take that drifts. This approach is unverified (TODO(research): choose and test a tool).
 - Never ask for speech, lip movement or sound.
 
 **Local options (need a graphics card).** Wan2.2 TI2V-5B: ComfyUI says it fits 8 GB with offloading [70], while the README says 24 GB [69]. FramePack needs 6 GB. Its README tests RTX 30, 40 and 50 series cards. Older cards are untested, not excluded [72]. WanGP runs select models on 6 GB and was updated 2026-10-15 [77]. LTX-2 needs 32 GB or more [75].
 
-**Cloud options (privacy rules first; see Decision 6).** A 5-second Veo 3.1 clip costs $0.25 on Lite, $0.50 on Fast and $2.00 on Standard, at 720p with audio [51]. Kling 2.5 Turbo Pro via fal is about $0.35 for 5 seconds [52]. Luma Ray3.2 is about $0.30 at 720p on its Plus plan [81]. Whether Kling, Runway and Luma support first-and-last-frame generation is unconfirmed (TODO(research)). Runway's pricing page is internally inconsistent [80].
+**Cloud options (privacy rules first; see Decision 6).** A Veo 3.1 clip at 720p with audio costs $0.20 on Lite, $0.40 on Fast and $1.60 on Standard for 4 seconds, or $0.40, $0.80 and $3.20 for 8 seconds [51]. Durations are 4, 6 or 8 seconds [82]; 1080p, 4K and reference images need 8 seconds [114]. The per-second prices for 1080p and 4K are not in our notes (TODO(research)). Kling 2.5 Turbo Pro via fal is about $0.35 for 5 seconds [52]. Luma Ray3.2 is about $0.30 at 720p on its Plus plan [81]. Whether Kling, Runway and Luma support first-and-last-frame generation is unconfirmed (TODO(research)). Runway's pricing page is internally inconsistent [80].
 
-**Photos with a child in them: no cloud image-to-video.** Veo's image-to-video accepts only `allow_adult` [82]. Google's Vertex AI page says it rejects requests to generate content depicting children when `personGeneration` is not `allow_all` [116]. For these photos, use parallax or a local model only. Local image-to-video needs a graphics card. A paid test of what Veo returns is TODO(research), and it must use a public-domain child photo, never a family photo.
+**Photos with a child in them: no cloud image-to-video.** Veo's image-to-video accepts only `allow_adult` [82]. Google's Vertex AI page says it rejects requests to generate content depicting children when `personGeneration` is not `allow_all` [116]. For these photos, use parallax or a local model only. Local image-to-video needs a graphics card. No test planned; the rule rests on [114] and [116], both read 2026-10-18.
 
 **Faces of people who have died.** No face or expression animation (principle 7 and Decision 4). Parallax or environment motion only, and ask the family first. MyHeritage's Deep Nostalgia made nearly 100 million animations [101]. The research did not read any reaction to animating the dead (TODO(research)).
 
@@ -249,11 +258,13 @@ Each decision lists the options and our current lean. A lean marked "(from the n
 - *Rent a GPU.* RunPod lists an RTX 4090 at $0.34 per hour (community) or $0.89 (secure), updated 2026-10-08 [83]. A rented machine is a third-party service, so it falls under Decision 6.
 - **Lean (from the note):** start on the no-GPU path. Then check your graphics card and decide.
 
-**3. Private gift, or a public or ticketed showing.**
+**3. Free public screening, or ticketed.** The charter now states a premiere at a mostly public gathering on Feb 27, to be treated as a film with a public audience (Known facts). Principle 7 (cleared for public screening) therefore applies. The open question is whether admission is free.
 
-- *Private gift.* Non-commercial weights are fine. Examples: SUPIR [21], FLUX.1 Kontext dev [33], InfiniteYou's model [42], and Depth Anything V2 Base or Large [58].
-- *Public or ticketed.* Check every non-commercial weight and every copyleft tool (AGPL: Upscayl, DepthFlow, Video2X; GPL-3.0: ComfyUI, chaiNNer, Krita AI Diffusion) before you start. The note says these are fine for a private gift and need reassessing for a ticketed event.
-- **Lean (scribe's reading, confirm):** plan for a private gift. Where two tools do the same job, choose the one with a commercial-friendly licence, so a later showing stays possible. The occasion and venue are still open in the charter.
+- *Free public screening.* Non-commercial weights may be used only after each licence is read for public exhibition, and the reading is logged in `steps.csv`. Examples: SUPIR [21], FLUX.1 Kontext dev [33], Depth Anything V2 Base or Large [58], and rembg's `bria-rmbg` [55]. FLUX.1 dev's licence has two phrases, "production purposes" and "impact on end users", that only its publisher can settle [159].
+- *Ticketed showing.* Exclude every non-commercial weight. Any payment, such as a ticket, donation or sponsor, flips them to no [159][161].
+- *InfiniteYou is out either way.* Its licence says "for academic research purposes only" [42][162]. Do not use it for any frame that is shown.
+- *Copyleft tools.* On the AGPL text, running Upscayl, DepthFlow and Video2X unmodified creates no source-code duty [166]. The models they bundle were not checked, and the GPL-3.0 tools (ComfyUI, chaiNNer, Krita AI Diffusion) were not re-read (TODO(research)).
+- **Lean (scribe's reading, confirm):** assume a free public screening. Where two tools do the same job, choose the one with an Apache-2.0, MIT or BSD licence, for example U-2-Net [168] or Depth Anything V2 Small [58], so a ticketed showing later stays possible.
 
 **4. Animating people who have died.**
 
@@ -270,10 +281,11 @@ Each decision lists the options and our current lean. A lean marked "(from the n
 
 **6. Where processing happens (privacy).**
 
-- *Option A: local only.* Nothing leaves your machine. This is the default.
+- *Option A: local only.* Nothing leaves your machine. This is the default for any photo with a family member in it, including anything with her face or a relative's.
 - *Option B: a paid tier whose terms say no training, for cleared photos only.* The Gemini API paid tier does not use prompts and files to improve products [85]. Veo results are stored for 2 days [82], so download them at once.
 - *Option C: consumer apps, or any service whose terms the research could not read.* Never.
-- **Lean (from the charter and the note):** Option A. The charter says nothing personal goes to a third-party service without your explicit say. That includes a rented GPU. So any cloud step needs your yes first.
+- *Option D: cloud, for work with no family photo in it.* Tool installs and tests, the stand-in bake-off, style-LoRA training on your own hand-made frames, scripts, renders of hand-built L5 scenes, and morph and parallax tests on stand-ins.
+- **Lean (charter and note, scribe's reading, confirm): split by content.** The charter says heavy work happens in the cloud wherever possible, and that nothing personal goes to a third-party service without your explicit say. We read both as one split. Option D is the default for everything with no family photo. Anything with her face or a relative's stays on your PC (Option A), or on a rented GPU you approve; a rented machine is a third-party service, so it needs your yes. The team's cloud session is a Linux VM with no GPU and no view of your PC (checked 2026-10-18), so your hardware tier comes only from the Q2 PowerShell block in the research note.
 
 **7. Face restoration.**
 
@@ -345,6 +357,8 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 
 **Steps.** Pick one face at least 64 px wide. Run CodeFormer at `w` 0.5, 0.7 and 0.9. Check `--help` for the flag names. Blend each result over the plain upscale at 40%, 50% and 60%, using a layer mask. Compare at 100%.
 
+**Do not use GFPGAN's `-w` as a dial.** The repo accepts it and ignores it: outputs were bit-identical at 0, 0.5 and 1 [146][149]. This exercise uses CodeFormer's `w` only.
+
 **Time.** 1 to 2 hours (estimate). The note's Q2 table says a GPU is recommended for CodeFormer, and CPU use is unconfirmed.
 
 **What good looks like.** You can find a setting where the skin improves but the teeth, eyelids and jaw stay the same. If you cannot find one, the answer for that photo is no face restoration.
@@ -386,7 +400,7 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 3. **Face drift and plastic skin.** GFPGAN may change identity [17]. SeedVR2 had a "plastic" output problem, which version 2.5.6 addressed [24]. Fake-face methods such as PULSE make people who do not exist [30]. Blend back, and check with a relative.
 4. **Age gaps.** Face recognition accuracy falls by 10 to 17 percent for same-person pairs with age gaps, in a 2017 benchmark [53]. The note expects identity tools to pull a face toward the age of the reference photo. That is a reasoned expectation, not a tested result (judgment in the note). Do not expect one face to cover childhood to today. Use each photo's own face, one photo per output.
 5. **Stale tutorials.** FILM was archived 2025-10-14 [61]. Microsoft's Old Photos repository was archived 2026-10-03 [25]. DeOldify was archived 2024-10-19 [29]. IP-Adapter-plus has been maintenance-only since 2025-04-14 [44]. The first Nano Banana model (`gemini-2.5-flash-image`) is marked deprecated with a 2026-10-02 shutdown on Google's pricing page [51]. The image docs call it only "legacy" [50]. That date has already passed, so assume it is gone and check before use. Check the dates and licence of any tutorial from 2023 to 2025.
-6. **Licence traps.** See Decision 3.
+6. **Licence traps.** Non-commercial weights need a licence read for public exhibition before use, and a ticketed showing excludes them (Decision 3). InfiniteYou's licence says "for academic research purposes only" [162], so it is out for any shown frame. FLUX.2 dev, FLUX.2 klein 9B [38] and InstantID [40] have no licence read yet (TODO(research)). The charter fixes a public premiere (Known facts; Principle 7).
 7. **Fake sites and listicles.** The CodeFormer, FramePack and DepthFlow pages each warn that look-alike sites are unofficial or fraudulent [15][72][60]. Use the official repository or vendor page only.
 8. **Cloud privacy.**
    - *Gemini consumer app, with Keep Activity on:* uploaded photos may be used to train models, and some chats are reviewed by people and kept for up to three years [84]. Never for family photos.
@@ -426,7 +440,8 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 - **Budget figures.** Resolved in round 1: the research summary now matches its table, 40 to 80 human hours (45 to 80 with no GPU).
 - **Insiders list (`GATHER.md`)** does not exist in the repo yet. The charter says only the maker knows about the project, so the list is empty. Relatives may judge likeness only once they are on it. TODO: write `GATHER.md` before anyone judges a likeness.
 - **ArtCraft apps** (PhotoCraft, LightCraft and the rest) are outside this track. TODO(research): see the craft-visual and craft-motion tracks.
-- **Open family and maker decisions:** whether the family accepts any animation of relatives who have died, and whether the work is a private gift or a public or ticketed showing (Decisions 3 and 4).
+- **Open family and maker decisions:** whether the family accepts any animation of relatives who have died (Decision 4), and whether the public premiere on 27 February is free or ticketed (Decision 3). The charter fixes the premiere as public; the price is open.
+- **Licence text not read:** FLUX.2 dev, FLUX.2 klein 9B [38] and InstantID [40] (TODO(research)). Do not use them for a shown frame until read.
 
 ## Best references
 
@@ -459,7 +474,7 @@ Numbers match the research note's Sources list at `research/ai-imagery.md`. The 
 [13] darktable negadoctor module — https://docs.darktable.org/usermanual/development/en/module-reference/processing-modules/negadoctor/ — undated — negative conversion workflow.
 [14] Photomyne — https://www.photomyne.com/ — app v6.6.2, © 2015-2026 — $59.99 per year after 3-day trial; AI restoration extra credits.
 [15] CodeFormer (sczhou) — https://github.com/sczhou/CodeFormer — last news 2023-07-20 — `w` fidelity; CLI; NTU S-Lab licence; unofficial-site warning.
-[17] GFPGAN (TencentARC) — https://github.com/TencentARC/GFPGAN — undated — v1.3 may slightly change identity; Apache-2.0.
+[17] GFPGAN (TencentARC) — https://github.com/TencentARC/GFPGAN — undated — v1.3 "have a slight change on identity" (README table); Apache-2.0.
 [18] Real-ESRGAN (xinntao) — https://github.com/xinntao/Real-ESRGAN — undated — ncnn portable builds; BSD-3; model list.
 [19] GFPGAN and CodeFormer guide (Replicate) — https://replicate.com/guides/upscaling-images/gfpgan-and-codeformer — snippet only — likeness advice.
 [20] CodeFormer vs ESRGAN: Enhance faces (Segmind) — https://blog.segmind.com/codeformer-vs-esrgan/ — snippet only — example where result bore little resemblance.
@@ -526,7 +541,8 @@ Numbers match the research note's Sources list at `research/ai-imagery.md`. The 
 [106] Local tests of rembg 2.0.85 (onnxruntime 1.31.0) and Depth Anything V2 Small via transformers 5.20.1, torch 2.14.1+cpu, Python 3.13.16 (2026-10-18).
 [110] realesrgan-ncnn-vulkan-20220424-windows.zip — https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-windows.zip — 45,474,481 bytes; contents listed.
 [112] Real-ESRGAN README — https://raw.githubusercontent.com/xinntao/Real-ESRGAN/master/README.md — four portable models; general-x4v3 in Updates only.
-[116] Veo responsible AI and usage guidelines (Vertex) — https://docs.cloud.google.com/vertex-ai/generative-ai/docs/video/responsible-ai-and-usage-guidelines — last updated 2026-10-15 UTC — Child category support codes; input-image rejection text.
+[114] Veo 3.1 in the Gemini API (same page as [82]) — https://ai.google.dev/gemini-api/docs/veo — "Last updated 2026-10-08 UTC" — personGeneration table, limitations, safety; 1080p, 4K and reference images need 8 seconds (round-2 review's read, 2026-10-18).
+[116] Veo responsible AI and usage guidelines (Vertex) — https://docs.cloud.google.com/vertex-ai/generative-ai/docs/video/responsible-ai-and-usage-guidelines — last updated 2026-10-15 UTC — Child category support codes; input-image rejection text. The page text sits past a 100,000-character navigation block, so a first fetch looks empty; read past it (checked 2026-10-18).
 [118] ExifTool install — https://exiftool.org/install.html — Windows executable steps; no Perl needed.
 [120] ImageMagick download — https://imagemagick.org/download/ — 7.1.2-34; winget ids; portable; `vcomp140.dll` note; `magick` command; no release date shown.
 [121] FFmpeg download — https://ffmpeg.org/download.html — 9.0.2 (2026-09-18), 8.1.3 (2026-09-21); Windows builds by gyan.dev and BtbN.
@@ -539,6 +555,17 @@ Numbers match the research note's Sources list at `research/ai-imagery.md`. The 
 [132] Commons file NARA 546220 — https://commons.wikimedia.org/wiki/File:CHEMICAL_PLANTS_ON_SHORE_ARE_CONSIDERED_PRIME_SOURCE_OF_POLLUTION_-_NARA_-_546220.jpg — EPA DOCUMERICA, June 1972; public domain.
 [133] Commons file 1971-12-John Call Cook — https://commons.wikimedia.org/wiki/File:1971-12-John_Call_Cook.jpg — CC BY-SA 3.0; 3,007x3,971.
 [134] Commons file Clara MEEKINS 1952 — https://commons.wikimedia.org/wiki/File:Clara_MEEKINS,_1_year_old,_1952,_in_front_of_the_house_on_South_Street,_Raleigh,_NC,_where_she_was_born._People_visible_sitting_on_the_porch_of_the_house_are_all_family._Clara_remembers_they_would_(26480797321).jpg — State Archives of North Carolina via Flickr Commons; "No known copyright restrictions".
+[146] GFPGAN source, raw files on `master` (read 2026-10-18) — https://raw.githubusercontent.com/TencentARC/GFPGAN/master/inference_gfpgan.py ; …/gfpgan/utils.py ; …/gfpgan/archs/gfpganv1_clean_arch.py ; …/gfpgan/archs/gfpganv1_arch.py ; …/gfpgan/archs/restoreformer_arch.py — `-w` defined; `weight` goes to `**kwargs` and is never read.
+[147] GFPGAN README (raw) — https://raw.githubusercontent.com/TencentARC/GFPGAN/master/README.md — v1.4 "slightly more details and better identity than V1.3"; V1.3 table "slight change on identity"; RestoreFormer inference added.
+[149] Local runs, 2026-10-18: GFPGAN v1.3, v1.4 and RestoreFormer weights through the repo's own architecture files, on CPU; `weight` unset, 0.0, 0.5 and 1.0 gave identical outputs. Weight hashes are in the research note's [149].
+[151] DDColor repository, `git clone --depth 1` at commit 2adb63f2656ac41cbdf7b894cddd94121a3faf13 (2026-01-18) — https://github.com/piddnad/DDColor — `ddcolor/pipeline.py` concatenates the input L with the predicted ab channels; Apache-2.0.
+[153] Local run, 2026-10-18: DDColor `piddnad/ddcolor_paper_tiny` on CPU through `ColorizationPipeline`; four scikit-image test images; ΔL measurements (tiny model only).
+[156] Digital Cinema System Specification v1.4.4, DCI, approved 2024-01-03 — https://documents.dcimovies.com/DCSS/42cfeb997ae72dd484f7b027547e6e0bfad43ecf/Digital%20Cinema%20System%20Specification.pdf — read as text: 2K 2048x1080 at 24 or 48 FPS; 4K 4096x2160 at 24 FPS.
+[159] FLUX.1 [dev] Non-Commercial License v1.1.1 — https://raw.githubusercontent.com/black-forest-labs/flux/main/model_licenses/LICENSE-FLUX1-dev — read in full 2026-10-18; names FLUX.1 Kontext [dev].
+[161] SUPIR licence and README — https://raw.githubusercontent.com/Fanghua-Yu/SUPIR/master/LICENSE ; …/README.md — read in full 2026-10-18; "Commercial Use" definition; Non-Commercial Use Only Declaration.
+[162] InfiniteYou — https://raw.githubusercontent.com/bytedance/InfiniteYou/main/README.md ; https://huggingface.co/ByteDance/InfiniteYou/raw/main/README.md — read 2026-10-18; "for academic research purposes only".
+[166] GNU Affero General Public License v3 — https://www.gnu.org/licenses/agpl-3.0.txt — read 2026-10-18; sections 0, 2 and 13.
+[168] U-2-Net LICENSE (Apache-2.0) — https://raw.githubusercontent.com/xuebinqin/U-2-Net/master/LICENSE ; rembg `LICENSE.txt` (MIT) — https://raw.githubusercontent.com/danielgatis/rembg/main/LICENSE.txt.
 [100] They Shall Not Grow Old (Wikipedia) — https://en.wikipedia.org/wiki/They_Shall_Not_Grow_Old — undated — restoration, colourisation, criticisms.
 [102] Local sandbox test (this session, 2026-10-18) — ffmpeg 6.1.1 and ImageMagick `convert`; commands `convert a.png b.png -morph 14`, `ffmpeg ... xfade`, `zoompan`, `minterpolate=fps=48:mi_mode=mci`, and frame-sequence assembly ran without error on synthetic images; confirms the commands run, not that results are good on real faces.
 
@@ -546,3 +573,4 @@ Numbers match the research note's Sources list at `research/ai-imagery.md`. The 
 
 - 2026-10-18: Version 1, written by the haiku scribe from `research/ai-imagery.md` (sources read 2026-10-18) and `CHARTER.md`. Open gaps are listed under Pitfalls as TODO(research). Each decision lean is marked either "from the note" or "scribe's reading, confirm."
 - 2026-10-18, round 1 (Fable review applied by the Haiku scribe): added Windows forms and the install route (C1); moved the bake-off to stand-in photos judged by the maker and confirmed insiders, with real photos moved to the vertical slice (C2); fixed the IPTC mapping for hand-made work; made the L2 face rule operational and added "When not to restore"; corrected the Real-ESRGAN command, FramePack GPU wording, budget and metadata notes; added the child-photo cloud limit; replaced the fixed 2026 caption date with the interview date.
+- 2026-10-18, round 2 (Fable review applied by the Haiku scribe): C1 fixed, with Decision 3 and the licence default reframed as free public screening versus ticketed, because the charter now fixes a public premiere. Colourised faces ruled L2 or L3 by a Lab L-channel test. GFPGAN `-w` recorded as having no effect, so CodeFormer's `w` stays the dial, and the v1.3 quotation corrected. Upscale rule keyed to the UHD master arithmetic (TODO(theatrical-delivery)). Cloud split by content. Veo costs and clip lengths restated for 4 s and 8 s, and the child-photo test dropped.

@@ -1,5 +1,5 @@
 "LIFE JOURNEY - production-scale model v1 (2026-10-18). Edit only rows marked INPUT; everything else is formulas. Judgement values [J] are priors, not measurements.",,,,,
-HOW TO USE,"Open in Excel or Google Sheets (CSV formulas recalculate on open). 1) set H (hours per week you can reliably give), 2) pick case 1=prior 2=base 3=stress, 3) read the SCENARIO RESULTS block. After the vertical slice, put the measured slice hours in the SLICE CALIBRATION block and copy the suggested multiplier into mu.",,,,
+HOW TO USE,"Open in Excel or Google Sheets (CSV formulas recalculate on open). 1) set H (hours per week you can reliably give), 2) pick case 1=prior 2=base 3=stress, 3) read the SCENARIO RESULTS block. After the vertical slice, put the measured slice hours in the SLICE CALIBRATION block and copy the suggested multiplier into mu, and the suggested finishing multiplier into mu_fin. Production-side slice hours go in row 173, finishing hours in row 176.",,,,
 ,,,,,
 GLOBAL INPUTS,value,,,,unit / note
 H hours per week (INPUT),20,,,,"maker hours per week you can reliably give. UNKNOWN: model 10, 20, 30"
@@ -11,7 +11,7 @@ shots per minute (INPUT),12,,,,"agent-pipeline: about 120 shots per 10 min. Docu
 "share of shots, class C hero (INPUT)",0.1,,,,hero share is the biggest single lever
 "share of shots, class D title/caption (INPUT)",0.05,,,,
 check: shares sum to 1,"=IF(ABS($B$9+$B$10+$B$11+$B$12-1)<0.0001,""OK"",""FIX SHARES"")",,,,
-"chapter length, seconds (INPUT)",100,,,,"agent-pipeline: about 100 s, about 20 shots"
+"chapter length, seconds (INPUT)",100,,,,"agent-pipeline: about 100 s, about 20 shots. This is the learning-curve unit, not the cut structure (the cut is film-story's wrapper plus 3:00 modules)"
 weeks W1-W9 (2026-10-18 to 12-19) (INPUT),9,,,,learn + pipeline lock (W1-4) and slice/early chapters (W5-9)
 weeks W12-W16 (2027-01-03 to 02-06) (INPUT),5,,,,"production after holidays, up to picture lock Sat 2027-02-06"
 weeks W17-W18 (02-07 to 02-20) (INPUT),2,,,,finishing only: no picture changes
@@ -50,7 +50,7 @@ rework factor on shot minutes,1.0,1.25,1.4,"=INDEX(B48:D48,1,$B$6)",planning fal
 story + animatic hours per finished minute,0.5,1.0,1.4,"=INDEX(B50:D50,1,$B$6)","treatment, narration, board, animatic; agents draft, maker decides"
 gathering hours per finished minute,0.6,1.2,1.8,"=INDEX(B51:D51,1,$B$6)","scans, low-key asks, labelling, clearances"
 sound integration hours per finished minute during production,0.3,0.6,0.8,"=INDEX(B52:D52,1,$B$6)","spotting, temp cues, VO edit, licensing paperwork"
-"learning multiplier, chapter 1",2.0,2.5,3.2,"=INDEX(B53:D53,1,$B$6)",first chapter takes this many times the steady-state hours [J]
+"learning multiplier, first built chapter (C01, the slice)",2.0,2.5,3.2,"=INDEX(B53:D53,1,$B$6)","first built chapter (the slice, C01; not first in the film) takes this many times the steady-state hours [J]"
 learning multiplier floor,1.1,1.15,1.25,"=INDEX(B54:D54,1,$B$6)",never below this
 learning rate per doubling of chapters,0.8,0.8,0.88,"=INDEX(B55:D55,1,$B$6)",0.80 = 20% faster per doubling (Wright's law; literature 0.75-0.90)
 "one-off reuse build hours (kitchen, title system, portrait ladder, map)",15,20,40,"=INDEX(B56:D56,1,$B$6)",pays back only above about 20 min unless used in 5+ shots
@@ -131,7 +131,7 @@ PRODUCTION-SIDE HOURS,=B127+B128+B129,=C127+C128+C129,=D127+D128+D129,=E127+E128
 story + animatic hours,=B121*$E$50,=C121*$E$50,=D121*$E$50,=E121*$E$50,
 gathering hours,=B121*$E$51,=C121*$E$51,=D121*$E$51,=E121*$E$51,
 risk reserve hours,=$E$62*(B130+B131+B132),=$E$62*(C130+C131+C132),=$E$62*(D130+D131+D132),=$E$62*(E130+E131+E132),
-finishing hours,=B121*$E$59+$E$60,=C121*$E$59+$E$60,=D121*$E$59+$E$60,=E121*$E$59+$E$60,
+finishing hours,=$B$179*(B121*$E$59+$E$60),=$B$179*(C121*$E$59+$E$60),=$B$179*(D121*$E$59+$E$60),=$B$179*(E121*$E$59+$E$60),
 learning + pipeline lock hours,=$E$57,=$E$57,=$E$57,=$E$57,
 reuse build hours,=$E$56,=$E$56,=$E$56,=$E$56,
 rehearsal hours,=$E$61,=$E$61,=$E$61,=$E$61,
@@ -145,12 +145,12 @@ pool W12-W16 hours,=$B$5*$B$7*$B$16,=$B$5*$B$7*$B$16,=$B$5*$B$7*$B$16,=$B$5*$B$7
 pool W17-W18 hours,=$B$5*$B$7*$B$17,=$B$5*$B$7*$B$17,=$B$5*$B$7*$B$17,=$B$5*$B$7*$B$17,
 pool W19 hours,=$B$5*$B$7*$B$18,=$B$5*$B$7*$B$18,=$B$5*$B$7*$B$18,=$B$5*$B$7*$B$18,
 story + gathering hours,=B131+B132,=C131+C132,=D131+D132,=E131+E132,
-production hours possible before 12-20,"=MAX(0,B143-$E$57-$E$56-$B$21*B147-$B$23*$E$60)","=MAX(0,C143-$E$57-$E$56-$B$21*C147-$B$23*$E$60)","=MAX(0,D143-$E$57-$E$56-$B$21*D147-$B$23*$E$60)","=MAX(0,E143-$E$57-$E$56-$B$21*E147-$B$23*$E$60)",
+production hours possible before 12-20,"=MAX(0,B143-$E$57-$E$56-$B$21*B147-$B$23*$E$60*$B$179)","=MAX(0,C143-$E$57-$E$56-$B$21*C147-$B$23*$E$60*$B$179)","=MAX(0,D143-$E$57-$E$56-$B$21*D147-$B$23*$E$60*$B$179)","=MAX(0,E143-$E$57-$E$56-$B$21*E147-$B$23*$E$60*$B$179)",
 production + reserve hours to place,=B130+B133,=C130+C133,=D130+D133,=E130+E133,
 placed before 12-20,"=MIN(B149*$B$20,B148)","=MIN(C149*$B$20,C148)","=MIN(D149*$B$20,D148)","=MIN(E149*$B$20,E148)",
 must be placed in W12-W16,=B149-B150,=C149-C150,=D149-D150,=E149-E150,
-W12-W16 hours free for production,=B144-(1-$B$21)*B147-$B$22*B121*$E$59,=C144-(1-$B$21)*C147-$B$22*C121*$E$59,=D144-(1-$B$21)*D147-$B$22*D121*$E$59,=E144-(1-$B$21)*E147-$B$22*E121*$E$59,
-finishing hours that must fall in W17-W18,=(1-$B$22)*B121*$E$59+(1-$B$23)*$E$60,=(1-$B$22)*C121*$E$59+(1-$B$23)*$E$60,=(1-$B$22)*D121*$E$59+(1-$B$23)*$E$60,=(1-$B$22)*E121*$E$59+(1-$B$23)*$E$60,
+W12-W16 hours free for production,=B144-(1-$B$21)*B147-$B$22*B121*$E$59*$B$179,=C144-(1-$B$21)*C147-$B$22*C121*$E$59*$B$179,=D144-(1-$B$21)*D147-$B$22*D121*$E$59*$B$179,=E144-(1-$B$21)*E147-$B$22*E121*$E$59*$B$179,
+finishing hours that must fall in W17-W18,=$B$179*((1-$B$22)*B121*$E$59+(1-$B$23)*$E$60),=$B$179*((1-$B$22)*C121*$E$59+(1-$B$23)*$E$60),=$B$179*((1-$B$22)*D121*$E$59+(1-$B$23)*$E$60),=$B$179*((1-$B$22)*E121*$E$59+(1-$B$23)*$E$60),
 W19 hours left after rehearsals,=B146-$E$61,=C146-$E$61,=D146-$E$61,=E146-$E$61,
 CHECK total hours,"=IF(B140>=0,""OK"",""SHORT"")","=IF(C140>=0,""OK"",""SHORT"")","=IF(D140>=0,""OK"",""SHORT"")","=IF(E140>=0,""OK"",""SHORT"")",
 CHECK post-holiday production (dead zone + gathering lag),"=IF(B152>=B151,""OK"",""SHORT"")","=IF(C152>=C151,""OK"",""SHORT"")","=IF(D152>=D151,""OK"",""SHORT"")","=IF(E152>=E151,""OK"",""SHORT"")",
@@ -170,9 +170,15 @@ rented RTX 4090 hours if hero finals go to GPU,=B163*$B$34*$B$31/3600,=C163*$B$3
 "ProRes 422 HQ master size, GB (about 0.59 GB per minute, M5)",=B121*0.59,=C121*0.59,=D121*0.59,=E121*0.59,
 ,,,,,
 SLICE CALIBRATION (fill after the vertical slice),value,,,,
-"measured maker hours for the slice chapter, brief to approved incl. sound and grade (INPUT)",,,,,leave blank until measured
-hours the selected case predicts for a chapter-1 build,=(($B$8*$B$14/60)*($B$9*$E$44+$B$10*$E$45+$B$11*$E$46+$B$12*$E$47)/60*$E$48*(1-$E$58)+$E$49+$E$52*$B$14/60)*$E$53,,,,"one chapter: shots + chapter pass + sound, times the chapter-1 learning multiplier (no mu)"
+"measured slice hours (INPUT): shots, chapter pass and sound only; excludes grade, mix, captions, master, learning",,,,,"leave blank until measured. Sum of hours.csv minutes for C01 with activity in brief_G0, style_G1, review_G2, craft_refine_G3, chapter_G4, dignity_G5, tech_G6, sound, rework. TODO(research): brief_G0 and style_G1 are in this list but not in the prediction on the next row, which prices story separately (story + animatic hours per finished minute, row 50). Decide before the 2026-12-20 gate: add the slice's share of story to the prediction, or drop these two activities from h_slice."
+"hours the selected case predicts for the slice chapter (C01, first built)",=(($B$8*$B$14/60)*($B$9*$E$44+$B$10*$E$45+$B$11*$E$46+$B$12*$E$47)/60*$E$48*(1-$E$58)+$E$49+$E$52*$B$14/60)*$E$53,,,,"one 100 s unit: shots + chapter pass + sound, times the learning multiplier for the first built chapter (row 53); no mu; excludes finishing"
 suggested mu (measured / predicted),"=IF($B$173="""","""",$B$173/$B$174)",,,,"copy into mu in GLOBAL INPUTS, then read the verdicts again"
+"measured finishing hours for the slice: grade, mix, captions, master, qc (INPUT)",,,,,"leave blank until measured. Sum of hours.csv minutes for C01 with activity in grade, mix, captions, master, qc"
+"finishing hours the selected case predicts for the slice (finishing per minute x slice minutes, plus the slice's pre-built share of fixed finishing)",=$E$59*$B$14/60+$B$23*$E$60,,,,no mu; Base: 2.7 x 1.67 + 0.5 x 24 = 16.5 h
+suggested mu_fin (measured finishing / predicted finishing),"=IF($B$176="""","""",$B$176/$B$177)",,,,"copy into mu_fin (row 179), then read the verdicts again"
+"mu_fin, finishing multiplier in use (INPUT)",1,,,,"scales fin_var and fin_fix: finishing hours (row 134), pre-built fixed finishing (row 148), rolling finishing (row 152) and W17-W18 finishing (row 153). 1.0 until measured"
+"learn + admin hours logged to date (INPUT, from hours.csv)",,,,,excluded from h_slice and h_slice_fin; compared with the one-off learning + pipeline-lock allowance (row 57)
+CHECK learn + admin against the allowance,"=IF($B$180="""","""",IF($B$180<=$E$57,""OK"",""OVER ALLOWANCE""))",,,,
 ,,,,,
 NOTES,,,,,
 1,"Calendar (Sunday-start weeks): W1-4 2026-10-18 to 11-14, lock Sun 11-15; W5-9 to 12-19; W10-11 dead 12-20 to 2027-01-02; W12-16 2027-01-03 to 02-06 (picture lock Sat 02-06); W17-18 finishing to 02-20; W19 buffer and rehearsals to Sat 02-27.",,,,
