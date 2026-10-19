@@ -1,6 +1,8 @@
 WP-07 UNVERIFIED items (generated from tests.jsonl; the standing list is in build/reports/WP-07.md)
 
 UNVERIFIED  guide.windows_behaviour: no Windows PC here: PowerShell 5.1 parsing is covered by ps_lint.py rules and pwsh 7 on Linux only; where the zips unpack, portable.txt handling and each app's writes wait for the maker's Sat 24 Oct paste
+BLOCKED  effectcraft.t1only_real: REFUSED: Avail 461 MB minus planned 300 MB leaves 161 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB. Remedy: answer Q-1 (clear the regenerable pip cache) or free space, or pass --wait SECONDS. Nothing was downloaded 
+BLOCKED  all.staged_run: REFUSED: Avail 465 MB minus planned 600 MB leaves -135 MB, below the 400 MB floor (filmcraft-v0.9.0, full profile). Neither profile fits at the live Avail; nothing was started.
 
 Standing: nothing about Windows is verified (PowerShell 5.1 itself, where each zip unpacks, portable.txt handling, what each app writes);
 the real CLIs' parameter names and the FilmCraft keyframe convention for clips that do not start at 0 are assumptions until T2 runs;

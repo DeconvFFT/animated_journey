@@ -1,6 +1,6 @@
 {
- "avail_mb_end": 591,
- "avail_mb_start": 592,
+ "avail_mb_end": 453,
+ "avail_mb_start": 455,
  "blocked": 0,
  "fail": 0,
  "mode": "--all",
@@ -69,7 +69,7 @@
   "mock_windows.software_checker_says_none": "PASS",
   "mock_windows.software_scenario_fields": "PASS",
   "one_source.no_private_identifying_regex": "PASS",
-  "one_source.public_lint_self_test": "SKIPPED",
+  "one_source.public_lint_self_test": "PASS",
   "parse.scripts_and_readme_fences": "PASS",
   "patterns.python_and_powershell_agree": "PASS",
   "pwsh.collision_report_records_the_note": "PASS",
@@ -102,9 +102,9 @@
   "windows.claims_awaiting_first_real_run": "UNVERIFIED"
  },
  "package": "WP-01a",
- "pass": 93,
+ "pass": 94,
  "schema": "lj-evidence-summary/1",
- "skipped": 1,
+ "skipped": 0,
  "tests": 95,
  "unverified": 1
 }

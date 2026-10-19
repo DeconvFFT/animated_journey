@@ -1,38 +1,26 @@
 {
   "counts": {
-    "PASS": 23,
+    "BLOCKED": 2,
+    "PASS": 32,
     "UNVERIFIED": 1
   },
   "date_utc": "2026-10-19",
-  "lowest_avail_mb_seen_by_the_tests": 464,
+  "lowest_avail_mb_seen_by_the_tests": 409,
   "mode": "all",
   "package": "WP-07",
   "real_run_state": "T1, T2 and T4 have NOT been run against the real CLIs: the disk guard refused every real stage (see real_stages). The harness is proven against stand-in CLIs only.",
   "real_stages": [
     {
       "disk": {
-        "avail_mb_end": 466,
-        "avail_mb_min": 466,
-        "avail_mb_start": 466,
+        "avail_mb_end": 461,
+        "avail_mb_min": 461,
+        "avail_mb_start": 461,
         "floor_mb": 400,
         "hard_floor_mb": 250,
         "planned_write_mb": 300
       },
-      "reason": "not started: REFUSED: Avail 466 MB minus planned 300 MB leaves 166 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB.",
+      "reason": "not started: REFUSED: Avail 461 MB minus planned 300 MB leaves 161 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB.",
       "stage": "stage_effectcraft-v0.11.1",
-      "status": "BLOCKED"
-    },
-    {
-      "disk": {
-        "avail_mb_end": 466,
-        "avail_mb_min": 466,
-        "avail_mb_start": 466,
-        "floor_mb": 400,
-        "hard_floor_mb": 250,
-        "planned_write_mb": 350
-      },
-      "reason": "not started: REFUSED: Avail 466 MB minus planned 350 MB leaves 116 MB, below the 400 MB floor (filmcraft-v0.9.0, lean profile); full would need Avail of at least 1000 MB and lean at least 750 MB.",
-      "stage": "stage_filmcraft-v0.9.0",
       "status": "BLOCKED"
     }
   ],
@@ -88,6 +76,50 @@
     },
     {
       "name": "lint.public",
+      "status": "PASS"
+    },
+    {
+      "name": "sums.real_six_files",
+      "status": "PASS"
+    },
+    {
+      "name": "blocked.force_bad_asset",
+      "status": "PASS"
+    },
+    {
+      "name": "effectcraft.t1only_real",
+      "status": "BLOCKED"
+    },
+    {
+      "name": "all.staged_run",
+      "status": "BLOCKED"
+    },
+    {
+      "name": "fake.sums_only",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.filmcraft_stage_and_keep",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.kept_tarball_reused",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.effectcraft_stage",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.corrupt_tarball_rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.guard_refuses_at_600",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.disk_floor_abort_cleans_up",
       "status": "PASS"
     },
     {

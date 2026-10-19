@@ -1,6 +1,6 @@
 # Her music and the sounds of her world: haveli sangeet, Gujarati devotional song, aartis and household sound
 
-*Track: gujarati-devotional-sound · Version 0.1 (first draft) · Written 2026-10-19 (Monday), 19 weeks before the premiere on Saturday 2027-02-27 · Built only from `research/gujarati-devotional-sound.md` (Sonnet researcher, 2026-10-19), `CHARTER.md` and `DECISIONS.md`. Where this playbook and the register disagree, the register wins. Scribe: Haiku.*
+*Track: gujarati-devotional-sound · Version 0.2 (round-1 review applied) · Written 2026-10-19 (Monday), 19 weeks before the premiere on Saturday 2027-02-27 · Built only from `research/gujarati-devotional-sound.md` (Sonnet researcher, 2026-10-19), `CHARTER.md` and `DECISIONS.md`. Where this playbook and the register disagree, the register wins. Scribe: Haiku.*
 
 *Reading key: [n] points to a source in the Sources list at the end, using the researcher's numbers. [Rn] points to a repo file. "opened" means the page was read on 2026-10-19; "SR" means a search-result summary only. "(M)" means measured on a model, not on a phone. "(J)" marks the researcher's judgement. "UNVERIFIED" means no page read confirms it. "TODO(research)" marks a gap. Rights statements are "not legal advice" and are India-first unless another country is named; the premiere country (O-02, TD-7) is still open. Her city, family and temple details are kept to what the maker has given, because the repo is public.*
 
@@ -68,7 +68,7 @@ Each exercise needs no code. Times are estimates. Each one ends with a row you c
 **Exercise 4. Place one tune (by Mon 14 Dec, about 60 minutes per candidate).**
 - *Time.* About 60 minutes per candidate, by Mon 14 Dec.
 - *Goal.* Decide which hum case (HC-1 to HC-7) the tune falls in, with the source named.
-- *Steps.* Type only the first line, in Gujarati script if you know it, or in Latin spelling if not. Search for the lyric. For any composer, find the composer and the death year on two independent pages. Use the hum-case table in the templates. For a Narsinh Mehta or "Vaishnav Jan To" tune, look for Narayan Khare's death year in a printed biography. The research could not find it [21][55]. Record `composition_status` and `recording_status` in separate columns.
+- *Steps.* Type only the first line, in Gujarati script if you know it, or in Latin spelling if not. Search for the lyric. For any composer, find the composer and the death year on two independent pages. Use the hum-case table in the templates. For a Narsinh Mehta or "Vaishnav Jan To" tune, look for Narayan Khare's death year in a printed biography. The research could not find it, and neither could the round-1 follow-up [21][55][62]. Only the famous Mishra Khamaj tune needs it: if the tune she sang is the family's own way of singing a Narsinh pada, it is HC-3 and the death year is not needed. Record `composition_status` and `recording_status` in separate columns.
 - *What good looks like.* A finished hum-log row with the case, the source and the decision: hum in the premiere, silence and kitchen sound instead, an April question, or a publisher question (which tells someone).
 
 **Exercise 5. Read a label's credits and split the two columns (about 45 minutes).**
@@ -92,11 +92,11 @@ The note gives Gujarati script for three items only. Every other text is given i
 | # | Text exactly as written | Transliteration (as written) | What the note says it is | Meaning | Source |
 |---|---|---|---|---|---|
 | A1 | વૈષ્ણવ જન તો | Vaishnav Jan To | Title of the Gujarati bhajan (shortlist T1-01) | TODO(research): no English meaning and no lyric text in the note | [20], [21] |
-| A2 | જય આદ્યા શક્તિ | Jai Adhya Shakti | Title of the Gujarati aarti for Maa Ambe (T1-09) | TODO(research): no meaning in the note. Attribution and date UNVERIFIED | [27], [28] |
-| A3 | શિવાનંદ સ્વામી | Shivanand Swami | Name as a composer signature, in a verse before the last of Jai Adhya Shakti, per the Gujarati text [27] | A name, not a meaning. Do not print "written by" on a card | [27] |
+| A2 | જય આદ્યા શક્તિ | Jai Adhya Shakti | Title of the Gujarati aarti for Maa Ambe (T1-09). Its fifth verse from the end carries two Samvat years (1657 and 1622 as read on [27]) and names Reva (the Narmada) | TODO(research): no meaning in the note. Author UNVERIFIED; the text's own Samvat year puts it c. 1600 CE, so the public-domain lead is stronger; confirm the verse in the family's printed book (question 7) | [27], [28] |
+| A3 | શિવાનંદ સ્વામી | Shivanand Swami | Name as a composer signature, in the third verse from the end of Jai Adhya Shakti, per the Gujarati text (read on [27] 2026-10-19) | A name, not a meaning. Who Shivanand Swami was stays UNVERIFIED. Do not print "written by" on a card | [27] |
 | A4 | Adharaṃ madhuraṃ vadanaṃ madhuraṃ ... | Adharaṃ madhuraṃ vadanaṃ madhuraṃ ... (opening, as quoted) | Sanskrit. Madhurashtakam, eight verses, attributed by tradition to Vallabhacharya. Not among the sixteen Shodasha Granthas | TODO(research): no translation in the note. The note's own description: "a 16th-century Sanskrit hymn" | [13], [12] |
 | A5 | śrī kṛṣṇaḥ śaraṇaṃ mama | śrī kṛṣṇaḥ śaraṇaṃ mama | Sanskrit mantra, "the sampradaya's mantra" (T1-08); Mahaprabhuji's line per the note | TODO(research): no translation in the note | [R1] N3 (sibling note; not reopened) |
-| A6 | Yamunā | Yamunā | The river goddess in the Yamunashtakam, "an esoteric hymn to the river goddess Yamunā" | "River goddess", as the note glosses it | [11], [12] |
+| A6 | Yamunā | Yamunā | The subject of the Yamunashtakam, the first of the sixteen Shodasha Granthas [12]. The maker names her Yamuna Maharani (D-31); an encyclopaedia's gloss for her is not used on a card | TODO(research): no meaning in the note. Address her as the maker does (Yamuna Maharani, Shri Yamunaji); never gloss her as the river goddess alone | [11], [12] |
 | A7 | Pyare pag vale | Pyare pag vale | Braj phrase quoted from the 2021 study, sung by popular musicians instead of the signature line | TODO(research): meaning not given; the language is not stated in the note | [4] |
 | A8 | Ban Thhan kaha chale Laal | Ban Thhan kaha chale Laal (spelling as in the note) | As A7 | TODO(research): as A7 | [4] |
 | A9 | Bhaktan ko kaha sikri son kaam | Bhaktan ko kaha sikri son kaam | Described by the note as a famous line of Kumbhandas, a farmer-born poet. The note does not state the language; the Ashtachhap padas are Braj Bhasha per the note | TODO(research): meaning and language not given | [8] |
@@ -127,15 +127,15 @@ The note gives Gujarati script for three items only. Every other text is given i
 
 | id | Title | Language and form | Tradition and deity | Text | composition_status | Route | Sheet value |
 |---|---|---|---|---|---|---|---|
-| T1-01 | Vaishnav Jan To | Gujarati bhajan | Gujarati Vaishnava; Vishnu/Krishna | PD (poet 15th century, dates unsettled [20]; earliest manuscript 1835, first printed 1885 [21]) | `unknown` (the common tune is Narayan Khare's, 1920s; death year not found [21]) | P: hum only if the tune is placed. A: hum, a relative, or a commission | MOTIF or END; any |
+| T1-01 | Vaishnav Jan To | Gujarati bhajan | Gujarati Vaishnava; Vishnu/Krishna | PD (poet 15th century, dates unsettled [20]; earliest manuscript 1835, printed 1885 in *Prāchīn Kāvya*; the page also dates the first print of Mehta's poems generally to 1852 [21]) | `unknown` (the common tune is Narayan Khare's, 1920s; death year not found [21]) | P: hum only if the tune is placed. A: hum, a relative, or a commission | MOTIF or END; any |
 | T1-02 | Narsinh Mehta prabhatiya | Gujarati, dawn song | Gujarati Vaishnava | PD (name the edition) | `unknown` (melodies "cannot be confirmed or reconstructed" [20]) | A | BED at dawn. Do not map to the Mangla darshan: a different tradition |
 | T1-03 | Dayaram's garbi and dhol | Gujarati and Braj | Pushtimarg Gujarati; Bal Krishna | PD (1777 to 1852 or 1853 [23]) | `unknown`; treat as `PD_text_owned_tune` | A | Voice zone or bed, April |
 | T1-04 | Ashtachhap pada (any of the eight poets) | Braj Bhasha, pada | Haveli sangeet; Bal Krishna | PD (16th century [2][3]) | `unknown` (family or haveli tune, oral) | A (commission after 6 Mar) | Bed, with a darshan set |
 | T1-05 | Mirabai pada | Rajasthani and Braj (a Gujarati layer UNVERIFIED) | Krishna bhakti; not Pushtimarg | PD by age; attribution contested [24] | `unknown` | A | Only if hers |
-| T1-06 | Yamunashtakam | Sanskrit stotra | Pushtimarg; Yamuna Maharani | PD | `PD_text_and_tune` (recited; no composed tune) | A; card in P from the family's own copy | Pull-out card; dawn |
+| T1-06 | Yamunashtakam | Sanskrit stotra | Pushtimarg; Yamuna Maharani | PD | text PD; tune `unknown` (sung; a recording's tune may be a named composer's) | A; card in P from the family's own copy | Pull-out card; dawn |
 | T1-07 | Madhurashtakam | Sanskrit, ashtakam | Pushtimarg; Krishna; attributed to Mahaprabhuji (Vallabhacharya) by tradition | PD by age; attribution traditional [13] | `unknown` | Card only | Card, printed as "attributed to" |
 | T1-08 | Ashtakshar, śrī kṛṣṇaḥ śaraṇaṃ mama | Sanskrit mantra | Pushtimarg | PD | `PD_text_and_tune` (spoken) | Card only | Card |
-| T1-09 | Jai Adhya Shakti | Gujarati aarti | Maa Ambe | PD only if the date holds (UNVERIFIED) | `unknown` (common aarti tune; arrangements owned) | A | Evening |
+| T1-09 | Jai Adhya Shakti | Gujarati aarti | Maa Ambe | PD lead stronger: the aarti's own closing verses carry Samvat years (1657, 1622); author UNVERIFIED; edition-dependent | `unknown` (common aarti tune; arrangements owned) | A | Evening |
 | T1-10 | Om Jai Shiv Omkara | Hindi aarti (origin language unstated) | Shiva | `unknown`; no date given [26] | `unknown` | A | Evening |
 | T1-11 | Ganesh aarti, the household's own | "Jai Ganesh Deva" (Hindi); "Sukhkarta Dukhharta" (Marathi, attributed to Samarth Ramdas, customary [29]) | Ganesh Dada | `unknown` | `unknown` | A | Morning; ask (question 7) |
 | T1-12 | Om Jai Lakshmi Mata | Hindi aarti | Lakshmi Maa | `unknown` (no author on the pages read [30]) | `unknown` | A | Dusk, Diwali; ask |
@@ -184,7 +184,7 @@ Every flag other than NONE carries `maker_rule = ASK` by default. An `ASK` that 
 | I-28 | Duf, upang, kinnari | Added in spring "to the Hori festival" [4] | The duf's name looks Arabic or Persian (*daf*) (UNVERIFIED). Upang and kinnari not read | UNVERIFIED | Not measured |
 | I-01 | Shankha (conch) | Blown before the first service [3]; at Utthapan [R2] | No page opened | NONE (UNVERIFIED) | PASS (thin: −4.1 dB at 500 Hz) |
 | I-02 | Ghanta (bell) | In the 36-instrument list [3] | No page opened | NONE (UNVERIFIED) | PASS |
-| I-29 | Bansuri | Excluded from the sanctum because "sectarian custom treats the instrument as a sacred emblem" [1] (one tagged sentence) | n/a | Keep out as a stock bed | n/a |
+| I-29 | Bansuri, murali (flute) | Conflict: [1] excluded; [3] lists Murali; UNVERIFIED either way. [1] says it is excluded from temple ensembles because "sectarian custom treats the instrument as a sacred emblem"; [3] quotes Chaturbhujdas's 36-instrument list, "used in divine service", which names Murali | [1]'s sentence is footnoted to Gaston (1997) and is not one of the page's two "better source needed" sentences; [3]'s list is cited to Sharma (2010), p. 134. Neither book was read | UNVERIFIED. Not a stock bed: Principle 2 and `ASK`, not the exclusion claim | n/a |
 
 **Phone verdicts (M9).** A model on real samples, not a phone. Pass means the cue keeps at least half its amplitude at a corner (loses 6.0 dB or less). The 500 Hz corner is the headline. The maker's Android ladder replaces both corners. One recording per row (two for the hum), so the verdicts are directional.
 
@@ -232,7 +232,7 @@ raga: none claimed          credit line: (none) / "hummed by the maker"
 | Case | How to tell | composition_status | Premiere | Needs |
 |---|---|---|---|---|
 | HC-1 Gujarati halardu, from oral tradition or Meghani's *Halarda* | The words appear in his collection or in lullaby anthologies | `PD_text_and_tune` if the tune is traditional and a source says so; otherwise `unknown` | The hum is the motif and the END cue | The maker's note of which source placed it. Nobody is asked |
-| HC-2 Narsinh Mehta pada or prabhatiya, or "Vaishnav Jan To" | The first line is his text | Text PD; tune `unknown` until the tune's author and death year are found (Khare for the common tune [21]) | Hum it if the tune is placed as PD; otherwise treat as HC-4 | Khare's dates from a printed biography, or from the Ashram Bhajanavali; or a different tune |
+| HC-2 Narsinh Mehta pada or prabhatiya, or "Vaishnav Jan To" | The first line is his text | Text PD; tune `unknown` until the tune's author and death year are found (Khare for the common tune [21]) | Hum it if the tune is placed as PD; otherwise treat as HC-4 | Khare's dates from a printed biography, or from the Ashram Bhajanavali; or a different tune. If the tune she sang is the family's own way of singing a Narsinh pada and does not match the Mishra Khamaj setting, it is HC-3 (oral, hummable) and Khare's death year is not needed |
 | HC-3 Pushtimarg kirtan, a dhol, or a family's own pada | The words are Braj or Gujarati devotion; the tune is "ours" | Text PD; tune `unknown` (family or oral) | Hum it. Name no raga. Claim no haveli | The family's name for it (question 13) |
 | HC-4 Twentieth-century Gujarati song by a named composer (Avinash Vyas and others) | A label or film credit on a lyric search | `owned` (E1-S2) | The hum is a performance of the work. Not in the premiere unless a written answer exists by Mon 14 Dec. Otherwise silence plus kitchen sound, and an April question | Publisher permission (which tells someone), or replace |
 | HC-5 Film or album song (Hindi or Gujarati) | As HC-4 | `owned` | As HC-4 | As HC-4 |
@@ -265,7 +265,7 @@ Rules: the maker records alone, in an empty house, on a device that does not syn
 | S-D1 | Sea at Koliyak at low tide: swash and shore-break | If the household goes there | Needs Gujarat (O-02) | Tide hours about 10 a.m. to 2 p.m., strongest at new and full moon [51] | Water's edge, mic low, no voices | One trip | PASS for surf and swash; FAIL for the swell | CC0 surf on rocks |
 | S-D2 | Coast wind | As S-D1 | Needs Gujarat | Any | Wind on a bare mic cover | Same | Unmeasured | None |
 | S-E1 | Kites: flutter, line hum, the reel (*firkee*) | Uttarayan is kept | Needs a season (Thu 14 and Fri 15 Jan 2027) and a place that flies | 14 and 15 Jan | From a quiet terrace at first light. Plain cotton thread only. No "Kai Po Che", no crowd | 14 Jan | Unmeasured | None found |
-| S-F1 | Garba dhol | She dances garba | Stand-in only. No live capture before 30 Sep 2027 | Thu 30 Sep to Sat 9 Oct 2027 [52] | Not captured | n/a | Unmeasured | None worth using (the Kolkata dhaak is Bengali) |
+| S-F1 | Garba dhol | She dances garba | Stand-in only. No live capture before 30 Sep 2027 | Thu 30 Sep to Sat 9 Oct 2027 [52] (Drik Panchang, New Delhi; Bhavnagar the same [59]) | Not captured | n/a | Unmeasured | None worth using (the Kolkata dhaak is Bengali) |
 | S-G1 | Temple loudspeaker; 6 a.m. devotional radio | She keeps one | No | Any | Not captured. Only a radio's click or tuning hiss with no station | n/a | n/a | None |
 
 - **Before Sun 15 Nov:** practise S-A1, S-A3, S-B3 and S-C1 on your own household or stand-ins. Measure each with the README recipe in the fixtures folder (a build-sprint task, not a learn-phase one).
@@ -308,39 +308,36 @@ beat_id,cue_type,source_in_her_life,hard_flag,advisor_flag_ref,notes,tradition,r
 
 **(a) Solo pakhawaj and jhanj cue (instrumental)**
 ```
-I am making a private film. I need [1-2] original instrumental cues of [60-120] seconds: solo pakhawaj with jhanj (hand cymbals), played by you, in a slow temple-kirtan manner in [dhamar (14 beats) / chautal (12) / rupak (7)] tala.
+I am making an independent film that has not been released. I cannot say who it is about or where it will be shown. I need [1-2] original instrumental cues of [60-120] seconds: solo pakhawaj with jhanj (hand cymbals), played by you, in a slow temple-kirtan manner in [dhamar (14 beats) / chautal (12) / rupak (7)] tala.
 No voice. No harmonium, sarangi, shehnai or duf unless I write that they are allowed. No AI-generated material. No samples of commercial recordings. If you play a traditional composition, name it and where you learned it; it must be public domain or yours.
 Phone note: the film is also watched on small phone speakers, where bass strokes disappear. Please keep the treble head and the cymbal clear and add a second take that favours them.
 Deliver a dry stereo WAV, 48 kHz, 24-bit, the unedited take, and the cymbal and drum on separate tracks if you can. Delivery within [N] days. Fee [  ] for [n] revisions.
 This is not for any ceremony, picture or temple; if the request sits badly with your practice, please tell me plainly.
 Before payment I will send a one-page signed letter: worldwide, perpetual, all media including public exhibition, online private links, archive and any later cinema or festival; your written consent to the performance being used in a film; credit as you prefer or anonymous; confidentiality until [a date after 27 Feb 2027]; no reuse of the cue.
-I cannot say who the film is about or where it will be shown.
 ```
 
 **(b) Solo instrumental in a haveli-idiom raga** (the instrument must be one the maker has ruled IN)
 ```
-I am making a private film. I need one original instrumental piece of [90-180] seconds for [instrument the maker has ruled IN: been / veena / tanpura-led alap / (harmonium only if I write IN)], in raga [a name the maker has chosen from a sourced set], with a short unmetered opening and a slow composed section. No tabla.
+I am making an independent film that has not been released. I cannot say who it is about or where it will be shown. I need one original instrumental piece of [90-180] seconds for [instrument the maker has ruled IN: been / veena / tanpura-led alap / (harmonium only if I write IN)], in raga [a name the maker has chosen from a sourced set], with a short unmetered opening and a slow composed section. No tabla.
 Allowed accompaniment: tanpura, pakhawaj, jhanj, manjira. Not allowed unless I write otherwise: bansuri, sitar, sarod, santoor, sarangi, shehnai, ravab, duf, tabla, harmonium.
 No voice. No AI. No samples. Please tell me, in writing, the raga you actually played and the source of the composed section; I will credit only what you tell me and will name no raga that you do not.
 Deliver ... [as (a)]
 Letter points ... [as (a)]
-I cannot say who the film is about or where it will be shown.
 ```
 
 **(c) A Gujarati bhajan with voice** (April, or after Sat 6 Mar 2027; through a name-free intermediary if earlier)
 ```
-I am making a private film. I need one devotional song in Gujarati, [2-4] minutes, sung by you with [tanpura / manjira / pakhawaj] only (harmonium only if I write IN).
+I am making an independent film that has not been released. I cannot say who it is about or where it will be shown. I need one devotional song in Gujarati, [2-4] minutes, sung by you with [tanpura / manjira / pakhawaj] only (harmonium only if I write IN).
 The text must be public domain: either I supply it [attached, with its source edition], or you choose one by a poet who died more than a century ago and tell me the poet and the edition you read.
 The tune must be yours, or a traditional tune you attest in writing was not composed by a named composer who died after 1955. No film or album song. No sample of any recording. No AI and no synthetic voice.
 Pronounce the text as you would in practice; I will not edit words.
 Deliver ... [as (a)]
 Letter points: as (a), plus: (1) you assign or license the performance AND your tune (s.19 and s.17 proviso; royalties under s.19(9)-(10) are addressed in the letter); (2) you give written consent to use of the performance in a film (s.38A(2)); (3) credit and non-distortion (s.38B); (4) confidentiality until [a date after 27 Feb 2027]; (5) the text and tune warranties above.
-I cannot say who the film is about or where it will be shown.
 ```
 
 - **What a stranger learns from these briefs:** that someone wants a Gujarati-language devotional recording or a temple-style drum cue. Not who, not where, not which deity, not which sampradaya.
 - **Leak check before sending:** read it once as a Baroda or Nathdwara musician would. If a phrase narrows the field to one family or haveli, cut it.
-- **Wording check (Pitfall 15):** "a private film" is the note's cover line. It needs Fable's read before any brief goes out.
+- **Wording check (Pitfall 15, resolved pending a Fable read of the full letter):** the cover line is "I am making an independent film that has not been released. I cannot say who it is about or where it will be shown." It omits and does not deny (D-18). Fable reads the full letter before any brief goes out.
 
 ### Template I. Composition, recording and term checklist
 
@@ -353,7 +350,7 @@ I cannot say who the film is about or where it will be shown.
 | Avinash Vyas (composition) | Died 20 Aug 1984 [31] | To 31 Dec 2044 | Composition owned |
 | Purushottam Upadhyay (composition) | Died 11 Dec 2024 [32] | To 31 Dec 2084 | Composition owned |
 | A 1960 film or record of a Vyas song | Published 1960 | Out of Indian term as a recording since 1 Jan 2021 (ss.26, 27) | Still owned as a composition. In the US, foreign sound recordings from 1957 to 14 Feb 1972 run to 15 Feb 2067 [R1 E2] (the sibling's reading; not rechecked) |
-| Narayan Khare (the common "Vaishnav Jan To" tune) | Death year not found | `unknown` | If he died in 1965 or earlier, the tune is out of Indian term; later, it is not. Find his death year before any use |
+| Narayan Khare (the common "Vaishnav Jan To" tune) | Death year not found [55][62] | `unknown` | If he died in 1965 or earlier, the tune is out of Indian term; later, it is not. Find his death year before any use of the Mishra Khamaj setting; a family tune that is not that setting does not need it (HC-3) |
 | Narsinh Mehta, Dayaram, Vallabhacharya, Mirabai (texts) | 15th to 19th century | PD by age | Name the edition the family reads |
 
 - **Performer:** 50 years (s.38), per the note.
@@ -386,6 +383,7 @@ The numbers continue after the sibling's list, which runs to 28 (the venue's PRO
 - The goddesses keep their own registers. Jai Adhya Shakti, Harsiddhi and Ambe are Shakta registers, and each gets its own frames or chapter [R2 PR18].
 - Shiva's shore: the Koliyak shrine is Shiva's. A recording of the sea there is fine. A recording of the temple is a permission question (Pitfall 20).
 - Narsinh Mehta, Dayaram and Mahaprabhuji are tradition. Do not paraphrase them on a card beyond the family's own words.
+- Yamunaji and Mahaprabhuji are named on any card with the honorific the maker uses (O-49 in review 05; no register row yet), never as "the river goddess" or "the philosopher Vallabha".
 - Do not tell the Akbar and Tansen legend about Mirabai (D-28).
 - Reverence norms for recording a kirtan outside a haveli rest on one 2021 study's interviews. No practitioner, label or musician was contacted (D-03). Treat them as the study's words, not as rules.
 
@@ -395,7 +393,7 @@ The numbers continue after the sibling's list, which runs to 28 (the venue's PRO
 |---|---|---|
 | Sung kirtan, aarti, a garba crowd, a temple loudspeaker, a 6 a.m. devotional radio | Out of the premiere. April only, with rights (D-05) | Living voices or labels |
 | A commissioned musician before 6 Mar 2027 | Out (D-07, W-48) | Only the maker knows |
-| A bansuri bed | Out | Excluded from the sanctum as the deity's emblem, one tagged sentence [1]. A stock Krishna-flute bed is the pan-Hindu cliché (Principle 2) |
+| A bansuri bed | Out | A stock Krishna-flute bed is the pan-Hindu cliché (Principle 2), and the flute is `ASK`. The sanctum claim is a conflict, not a settled fact: [1] excludes it from temple ensembles, [3] lists Murali among instruments of divine service (Template D, I-29) |
 | A garba as a cue | Out | The season is over; the composer-credit trap; garba is worship |
 | Gaudiya and ISKCON kirtan; the CC0 Antwerp 2013 Hare Krishna recording | Out as haveli sangeet | Another tradition |
 | Sikh kirtan and Gurbani | Out | Dharmic, but not her tradition |
@@ -425,7 +423,7 @@ The register's Table 3 ends at O-35. The questions below have a register row whe
 | 4 | Are the harmonium, sarangi, shehnai, ravab and duf hers, kept, or out under D-28? Is a tanpura drone acceptable? | Every one defaults to `ASK`, and `ASK` on Mon 14 Dec becomes silence | None yet (the note cites O-41 and O-51) |
 | 5 | Which sounds are in her house that you can make in an empty room: a brass bell, a jhanj, a manjira, a shankh, a hichko, a griddle and board, a churn? | Sets Template F and Principle 2 | W-10 (no question row yet) |
 | 6 | Which country and city will you be in on Thu 14 Jan 2027, during the January and February recording window, and where will the premiere be? | The Koliyak shore needs Gujarat; Uttarayan needs a place where kites are flown; the rights column depends on the country | O-02 |
-| 7 | Which household aartis (Ganesh, Lakshmi, Harsiddhi), and which printed book? | No sourced Gujarati text for them exists in the research (T1-11 to T1-13) | O-10 |
+| 7 | Which household aartis (Ambe, Ganesh, Lakshmi, Harsiddhi), and which printed book (its title page: publisher and year)? | No sourced Gujarati-language Ganesh or Lakshmi text exists in the research (T1-11 to T1-13), and the family's book is the check on the Jai Adhya Shakti verses (A2, A3) | O-10 |
 | 8 | Does the family keep the Pushtimarg kirtan at home: which darshans, and which book of padas? | The darshan sheet values, and whether a haveli voice is hers | None yet (the note cites O-46) |
 | 9 | Are saint-poet bhajans (Kabir and other panth poets) part of her house? | D-28 flags apply poet by poet | None yet |
 | 10 | Do you accept commissioning the April voices after the her-turn conversation on Sat 6 Mar 2027, so that she chooses whose voice and which family version? | Removes the D-07 problem for voices and keeps the secret in the premiere | W-48; O-31 |
@@ -444,7 +442,7 @@ The register's Table 3 ends at O-35. The questions below have a register row whe
 4. **A garba that is a film song is an owned composition.** Humming it is a performance of the work (HC-4). Chogada Tara, "based on 'Hey Ranglo' written & composed by Avinash Vyas" [35], is one example; the sources disagree on other attributions.
 5. **Attribution conflicts.** "Mehndi Te Vavi Malve" is credited "Traditional (Folk)" for lyrics in the film's track list, "Traditional" as composer on the compilation, and Avinash Vyas as lyricist on his Wikipedia table. "He Ranglo" is Vyas's on one page and Upadhyay's on another. Only a registry extract or the original label copy is authority. A web page is a lead.
 6. **Madhurashtakam is not one of the sixteen.** The brief and the review pair it with Yamunashtakam as "the pair". The first is the opening Shodasha Grantha. The second is attributed to Vallabhacharya by tradition [12][13]. Print "attributed to". The only text file the research read carries a personal-study notice, so type the card from the family's copy [14].
-7. **The darshan sources agree less than the summary says.** The note's summary says the sources disagree on five of eight rows. Its table marks two rows "disagree" and three "partial". Read it as: full agreement on three rows, partial or disagreement on five. Use sets, never single ragas.
+7. **The darshan sources agree in full on only three rows.** The 2026 paper and the T3a lists agree in full on three of eight rows (Mangla, Rajbhog, Shayan), in part on three (Shringar, Bhog, Sandhya) and disagree on two (Gwal, Utthapan). Use sets with their source ID, never single ragas.
 8. **Raga names stay off the screen, and a drone is not a raga.** No credit prints a raga unless the recording's metadata does.
 9. **"Free" libraries are not licences.** The archive.org haveli library has no licence [44]. The CC BY-NC labels on the haveli recital and the pakhawaj recital were set by the uploader, not the rights holder [45][46]. The Pixabay licence has no warranty and was read at its 2024-11-18 terms [48]. The Gujarat High Court's direction on Chinese manja (Sept 2026) is SR and UNVERIFIED in its detail [53].
 10. **No recording inside a haveli or at darshan.** The sanctum's sound is made by living voices (D-05). Strike the household's own bell, jhanj or manjira in an empty room.
@@ -452,18 +450,18 @@ The register's Table 3 ends at O-35. The questions below have a register row whe
 12. **Testing on her own phone may tip her off (D-02).** The protocol's test device is the project's Android phone. Use hers only if you are sure it tells her nothing.
 13. **Identification by hum sends a recording to a vendor (D-15).** Not without the maker's OK (question 14).
 14. **The commission window is tight.** The brief says about five weeks for commission, performance, delivery and one revision. That is 6 Mar to about 10 Apr, when the April response recordings close (W-48). The April mix runs 11 to 23 Apr. Start the brief at once after 6 Mar, not later.
-15. **"A private film" needs a wording check.** The brief template's cover line is true of a film that is not yet released. It will not be true of a public premiere or a later cinema, and the letter says so. D-18 forbids untrue statements and allows omission. Fable reads the wording before any brief goes out.
-16. **Register ID clashes.** The note cites O-38, O-41, O-46, O-47, O-50, O-51 and O-54. None is a row of `DECISIONS.md` (Table 3 ends at O-35). O-51 appears to be the song question, O-07 in the register. The note's "H-1" to "H-7" clash with H (the maker's hours), so this playbook writes them HC-1 to HC-7. Its "S1" and "S2" source classes clash with the register's stranger screenings, so this playbook writes them E1-S1 and E1-S2. The note's "T8" header clashes with the rights log (T8), so this playbook names the consult list T10 only.
-17. **Dates the note records but this pass did not verify.** The note says 27 Feb 2027 is Shrinathji's Patotsav, that Dhanurmas runs 16 Dec to 14 Jan, and that the Vasant season begins Thu 11 Feb. These come from repo files R2 and R7. TODO(research): verify each against a dated calendar before any sound, card or schedule depends on it.
-18. **No garba or dhol capture is possible before Sept 2027.** The next Sharad Navratri runs Thu 30 Sep to Sat 9 Oct 2027 [52], after the April version. Do not use a stand-in without a label.
-19. **The "Shivanand Swami" signature is a signature, not a documented person.** It appears in two aartis. The Surat identification rests on a 2017 social-media post and popular sites (SR) [28]. Do not print "written by" on a card.
+15. **The briefs' cover line is resolved, pending a Fable read of the full letter.** The briefs now open "I am making an independent film that has not been released. I cannot say who it is about or where it will be shown." D-18 allows omission, not untruth, and "a private film" would not stay true of a public premiere. Fable reads the full letter, and checks the line against the date each brief goes out (briefs (a) and (b) after TD-L2c; (c) after Sat 6 Mar 2027, which is after the premiere), before any brief goes out.
+16. **Register ID clashes.** The note cites O-38, O-41, O-46, O-47, O-49, O-50, O-51 and O-54. None is a row of `DECISIONS.md` (Table 3 ends at O-35). O-51 appears to be the song question, O-07 in the register. The note's "H-1" to "H-7" clash with H (the maker's hours), so this playbook writes them HC-1 to HC-7. Its "S1" and "S2" source classes clash with the register's stranger screenings, so this playbook writes them E1-S1 and E1-S2. The note's "T8" header clashes with the rights log (T8), so this playbook names the consult list T10 only.
+17. **Sat 27 Feb 2027, the premiere day, is Shrinathji's Patotsav (Maha vad 7, Samvat 2083): UNVERIFIED at Nathdwara, supported by a Pushtimarg tippani.** The tippani on pushtimarg.net prints "श्रीनाथजीको पाटोत्सव" against Sat 27 Feb 2027 and names no publisher [60]; `pushtimarg-world` holds the sampradaya's account of the day (R2 F10, FU4). The Nathdwara temple's own site gave the fetch tool only its title [67]. If it holds, review 05 section 0.6's row for Sat 27 Feb ("nothing marked for Pushtimarg") is wrong and the premiere falls on a Shrinathji utsav; the lead is handed to `pushtimarg-world` and the orchestrator. It is a motif-and-light fact only: no card, and nothing is designed on it until the maker has answered `pushtimarg-world`'s Q1 (does she keep it, and which house's tippani; the seven houses can differ by a day). The other two dates, Dhanurmas from Wed 16 Dec and the Vasant season from Thu 11 Feb, are Bhavnagar reads by `saurashtra-world` (R7).
+18. **No garba or dhol capture is possible before Sept 2027.** The next Sharad Navratri runs Thu 30 Sep to Sat 9 Oct 2027 [52] (Drik Panchang, New Delhi; re-read for Bhavnagar, geoname id 1276032, on 2026-10-19: the same dates [59]), after the April version. Do not use a stand-in without a label.
+19. **The "Shivanand Swami" signature is a signature, not a documented person.** It appears in two aartis. In Jai Adhya Shakti it is in the third verse from the end, and the aarti's own fifth verse from the end carries two Samvat years (1657 and 1622 as read on [27]) and names Reva, the Narmada, so the c. 1601 date is the text's own signature, not only a 2017 post. The Surat identification still rests on that post and popular sites (SR) [28]. Who Shivanand Swami was stays UNVERIFIED; the public-domain lead is stronger. Do not print "written by" on a card. Confirm the verse against the family's printed aarti book (question 7).
 20. **The Koliyak temple is Shiva's, and its Pandava story needs a citation.** The shrine is reachable only at low tide, and tides are strongest at new and full moon [51]. Plan each day from that day's tide table. Record the water's edge, mic low, not the far swell.
 
 ## Best references (8)
 
 1. **Rohit Kumar, "Haveli Sangeet as a medium of Vaishnava Bhakti within the Pushtimarg Sect", Sangeet Galaxy, July 2026** [3]. Peer-reviewed, opened in full. Darshan hours, the ragas per darshan, the instruments and the 36-instrument list. Its method is YouTube plus secondary sources.
 2. **Centre for Cultural Studies & Development, the 2021 kirtan practice study (excerpt)** [4]. Opened in full. Nathdwara, Baroda, Ahmedabad and Mathura practice; the name's three accounts; the recording and reverence notes.
-3. **Vaishnava Jana To, Wikipedia** [21]. Opened. Manuscripts from 1835, the first print in 1885, and the Khare setting of the 1920s.
+3. **Vaishnava Jana To, Wikipedia** [21]. Opened. Manuscripts from 1835, the 1885 print in *Prāchīn Kāvya* (the page dates the first print of Mehta's poems generally to 1852), and the Khare setting of the 1920s.
 4. **Zaverchand Meghani, Wikipedia, and the Commons scan of *Halarda*** [36]. Opened. Dates and the public-domain template, which the note reads as a volunteer's view.
 5. **Avinash Vyas, Wikipedia** [31]. Opened (the first 100,000 of about 117,700 characters). Dates for the term arithmetic and the 1960 film link.
 6. **Pixabay, Terms and Content Licence summary** [48]. Opened. Why a platform licence is a lead, not a clearance.
@@ -525,13 +523,24 @@ Format: `[n] title — URL — date — status — note`. The numbers are the re
 [49] Freesound sound pages (CC0 unless stated): https://freesound.org/people/sankalp/sounds/153262/ , https://freesound.org/people/johnnyguitar01/sounds/418152/ , https://freesound.org/people/ganiket/sounds/466652/ , https://freesound.org/people/misstickle/sounds/212541/ , https://freesound.org/people/RoofDog/sounds/78974/ , https://freesound.org/people/Luc%20Henrion/sounds/439616/ , https://freesound.org/people/MirkoMeter84/sounds/175932/ , https://freesound.org/people/OSFX/sounds/404696/ , https://freesound.org/people/bruno.auzet/sounds/785767/ , https://freesound.org/people/mellow_minx/sounds/711024/ , https://freesound.org/people/bajko/sounds/387896/ , https://freesound.org/people/dannydandanshababaloo/sounds/593172/ , https://freesound.org/people/Pennywind/sounds/816688/ , https://freesound.org/people/ShangusBurger/sounds/764112/ ; CC BY 4.0: https://freesound.org/people/bohitomi/sounds/261867/ , https://freesound.org/people/AnneshaGhosh/sounds/592301/ , https://freesound.org/people/sankalp/sounds/153247/ ; Sampling Plus: https://freesound.org/people/sonologue/sounds/107601/ — 2026-10-19 — opened — licence line read on each page; preview MP3s measured.
 [50] File:Woman_humming_a_nondescript_tune.wav — Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Woman_humming_a_nondescript_tune.wav — 2026-10-19 — opened — CC0, PSsoundproject, 5 Apr 2013.
 [51] Nishkalank Mahadev Temple — Wikipedia https://en.wikipedia.org/wiki/Nishkalank_Mahadev_Temple ; Gujarat Tourism https://gujarattourism.com/saurashtra/bhavnagar/nishkalank-mahadev.html — 2026-10-19 — opened — low-tide access; about a kilometre; visiting hours; Pandava lingas (needs a citation).
-[52] Ashwin Shardiya Navratri dates 2027 — Drik Panchang — https://www.drikpanchang.com/navratri/ashwin-shardiya-navratri-dates.html?year=2027 — 2026-10-19 — opened — Day 1 Thu 30 Sep 2027; Vijayadashami Sat 9 Oct 2027.
+[52] Ashwin Shardiya Navratri dates 2027 — Drik Panchang — https://www.drikpanchang.com/navratri/ashwin-shardiya-navratri-dates.html?year=2027 — 2026-10-19 — opened — Day 1 Thu 30 Sep 2027; Vijayadashami Sat 9 Oct 2027. The page is keyed to New Delhi; the Bhavnagar page is [59].
 [53] Chinese manja and Uttarayan — Gujarat High Court direction (Sept 2026) reported at https://deshgujarat.com/2026/09/27/gujarat-high-court-sets-october-11-deadline-for-action-against-chinese-manja-tukkal-ahead-of-uttarayan/ (bot wall when opened) ; PETA India https://www.petaindia.com/?p=64937 — 2026-10-19 — SR — enforcement before Navratri 2026; cotton thread permissible.
 [54] The hichko / hindolo — https://imp-art.org/?p=39369 (HTTP 403 when opened) ; https://www.joinpaperplanes.com/?p=37544 — 2026-10-19 — SR — naming and history.
 [55] Narayan Moreshwar Khare — SwarGanga https://www.swarganga.org/artists/247/Narayan%20Moreshwar%20Khare ; Bharat Discovery https://bharatdiscovery.org/india/%E0%A4%A8%E0%A4%BE%E0%A4%B0%E0%A4%BE%E0%A4%AF%E0%A4%A3_%E0%A4%AE%E0%A5%8B%E0%A4%B0%E0%A5%87%E0%A4%B6%E0%A5%8D%E0%A4%B5%E0%A4%B0_%E0%A4%96%E0%A4%B0%E0%A5%87 ; Mahatma Gandhi — a unique musician https://www.mkgandhi.org/articles/mahatma-gandhi-unique-musician.php — 2026-10-19 — opened (first two) / SR (third) — Gwalior gharana; Sabarmati music teacher; no birth or death year on either page opened.
 [56] AI music tools and languages — https://www.votemyai.com/blog/suno-vs-udio-vs-elevenlabs.html ; https://gudz.ai/posts/ai-music-generation-2026 ; https://www.teamday.ai/blog/best-ai-music-models-2026 — 2026-10-19 — SR — vendor-comparison blogs; none names Gujarati, Braj or Sanskrit-devotional support.
 [57] Soor Mandir — IndiaMART profile https://www.indiamart.com/soor-mandir/aboutus.html ; Justdial listing — 2026-10-19 — SR — Anand, Gujarat; 1987 or 1980; about 650 audio albums.
 [58] Aarati in Pushtimarg havelis — https://pushti-marg.net/arti3.htm — 2026-10-19 — opened — four aarti a day (Mangala, Rajbhog, Bhog-Sandhya, Shayan); no mention of bells, other instruments or recording.
+[59] Shardiya Navratri 2027 calendar for Bhavnagar — Drik Panchang — https://www.drikpanchang.com/navratri/ashwin-shardiya-navratri-dates.html?year=2027&geoname-id=1276032 — 2026-10-19 — opened (round-1 follow-up) — header "2027 Shardiya Navratri Calendar for Bhavnagar, Gujarat, India"; Day 1 Thu 30 Sep 2027 (the page prints the tithi label "Amavasya" for that day) to Day 10 Sat 9 Oct 2027 (Vijayadashami), Durga Visarjan Sun 10 Oct; the same first and last dates as [52]; no Gujarati month or paksha printed.
+[60] Tippani month-wise, February 2027 — pushtimarg.net — https://pushtimarg.net/new-updates/tippani-month-wise/?month=202702 — 2026-10-19 — opened (round-1 follow-up) — Sat 27 Feb 2027: "फाल्गुन सुद ७" and "श्रीनाथजीको पाटोत्सव"; no festival entry on 26 or 28 Feb; the page names no publisher. The "View Tippani" landing page (https://pushtimarg.net/new-updates/utsav-tippani/) returned only a verification screen.
+[61] Shukla-Bhatt (2014), *Narasinha Mehta of Gujarat: A Legacy of Bhakti in Songs and Stories*, Oxford University Press, pp. 189 and 274 — cited on [21] for Khare's 1920s Mishra Khamaj setting — the book was not seen.
+[62] Mahatma Gandhi — a unique musician — mkgandhi.org — https://www.mkgandhi.org/articles/mahatma-gandhi-unique-musician.php — 2026-10-19 — opened (round-1 follow-up; [55] had it as SR) — Gandhi's letter of 7 Oct 1924 addressed to "Pt. Narayan Moreshwar Khare (The Music Teacher in the Satyagraha Ashram, Sabarmati)"; Khare listed among the Ashram's musicians; no dates, gharana or tune named.
+[63] Sharma (as spelled "Sathyabhan" in [3]), a Hindi work on the music tradition of Pushtimarg temples and haveli sangeet, Radha Publications, 2010, p. 134 — cited by [3] for the 36-instrument list; the title is garbled in the PDF's text layer — the book was not seen.
+[64] Gaston, Anne-Marie (1997), *Krishna's Musicians: Musicians and Music Making in the Temples of Nathdvara, Rajasthan*, Manohar, New Delhi — footnote 6 of [1] (it supports several claims; no page number) — the book was not seen.
+[65] Sukhakarta Dukhaharta — Wikipedia — https://en.wikipedia.org/wiki/Sukhakarta_Dukhaharta — 2026-10-19 — opened (round-1 follow-up) — "a popular Marathi arati"; attributed to Samarth Ramdas (1608 to 1682); cites a *Lokprabha* feature of 17 Feb 2012 and *Prarthana: A Book of Hindu Psalms* (2007), pp. 163-8; no mention of Gujarat.
+[66] Om Jai Jagdish Hare — Wikipedia — https://en.wikipedia.org/wiki/Om_Jai_Jagdish_Hare — 2026-10-19 — opened (round-1 follow-up) — Shardha Ram Phillauri, "c. 1870"; no original edition named; no Lakshmi variation mentioned.
+[67] Shrinathji Temple, Nathdwara, official site — https://www.nathdwaratemple.org/ and https://www.nathdwaratemple.org/festivals — 2026-10-19 — opened (round-1 follow-up) — the fetch tool received only the title "Welcome to Shrinathji Temple, Nathdwara | Official Web Site"; no calendar, no Patotsav entry.
+[68] pushtimarg.net home, Kirtan and Pushti Vangmay pages — https://pushtimarg.net/ , https://pushtimarg.net/kirtan/ , https://pushtimarg.net/pushti-vangmay/ — 2026-10-19 — opened (round-1 follow-up) — no Yamunashtakam entry, audio, tune, singer or recording credit; the Vangmay list offers "Shodashgranth" (Vallabhacharyaji, Prakaran) as a downloadable .pub file.
+[69] Yamuna (goddess) — Wikipedia — https://en.wikipedia.org/wiki/Yamuna_(goddess) — 2026-10-19 — opened (round-1 follow-up) — lists "Yamunashtaka" under Mantra; other names Yami, Kalindi, Suryatanaya; no Pushtimarg content and neither "Yamunaji" nor "Yamuna Maharani".
 
 **Repo files (cited as [Rn]; not web sources).**
 - [R1] `research/devotional-sound-script.md` (the sibling's Templates A, C, D, E, F, H, I; Q4, Q5, Q6; the phone model CSV). The sibling's E1 source classes "S1" and "S2" are written here as E1-S1 and E1-S2.
@@ -547,6 +556,7 @@ Format: `[n] title — URL — date — status — note`. The numbers are the re
 ## Changelog
 
 - **2026-10-19, v0.1 (first draft).** Written by the Haiku scribe from `research/gujarati-devotional-sound.md` (Sonnet researcher, 2026-10-19), `CHARTER.md` and `DECISIONS.md`. Conflicts and gaps are flagged, not resolved.
+- **2026-10-19, v0.2 (round-1 review applied by the Sonnet implementor).** Applied `reviews/gujarati-devotional-sound-round1.md` in place from the note's new follow-up research: Yamunashtakam tune `unknown` and the Yamuna Maharani address rule (A6, T1-06); the flute as a source conflict (I-29); the Jai Adhya Shakti verse position and the text's own Samvat years (A2, A3, Pitfall 19); the city on the Navratri date (S-F1, Pitfall 18); the Patotsav lead (Pitfall 17); the cover line "an independent film that has not been released" (Template H, Pitfall 15); the 1885 print and the Khare escape (T1-01, HC-2); sources [59] to [69] added.
 
 **Existing playbook sections that the findings change.** Named as each file's own headings. Where the note used a different name, the correct one is given.
 
@@ -556,7 +566,7 @@ Format: `[n] title — URL — date — status — note`. The numbers are the re
 | `playbooks/music-sound.md` | Step 5, "Build the cue map (by 2026-11-14)"; Template A, "Licence log header" | `tradition` gains `haveli_sangeet` and `gujarati_devotional`. `time_of_day_or_season` gains `midday` and `darshan:<name>`, in the sheet only. Add `premiere_cut`, `april_version` and `phone_ref`. `composition_status` and `recording_status` become mandatory separate columns. A label's "Traditional" is entered `unknown`. |
 | `playbooks/music-sound.md` | Decision 5, "AI is a labelled bed, a temp, or a sound effect" | Confirmed for devotional text: no AI voice for Gujarati, Braj or Sanskrit, and no source documents support in any tool (SR, 2026-10-19). The note cites "Decision 4 (AI music)", but Decision 4 is about royalty-free music. Corrected here. |
 | `playbooks/music-sound.md` | Exercise 6, "Mono and small-speaker check"; Template I, "Sound-recording notes for the room" | Per-instrument phone verdicts. Closed-versus-open hum test. The capture list (Template F here) with `where`, `season_available` and `phone_speaker`. "Never at a haveli during darshan." |
-| `playbooks/devotional-sound-script.md` | T-4, "Instrument and form flags (Template C, condensed)" | Add I-24 to I-29 (jhanj, been, sarangi flag, ravab, duf, upang and kinnari, the bansuri exclusion). The pakhawaj phone cell becomes FAIL and the tanpura PASS, both measured. |
+| `playbooks/devotional-sound-script.md` | T-4, "Instrument and form flags (Template C, condensed)" | Add I-24 to I-29 (jhanj, been, sarangi flag, ravab, duf, upang and kinnari, the bansuri and murali source conflict). The pakhawaj phone cell becomes FAIL and the tanpura PASS, both measured. |
 | `playbooks/devotional-sound-script.md` | T-6, "The name-free commission brief and the signed letter (Template H)" | Commission timing moves to after Sat 6 Mar 2027. Add briefs (a), (b) and (c). Voice commissions add text and tune warranties. |
 | `playbooks/devotional-sound-script.md` | T-5, "Source vetting checklist and verdicts" (Template E, E4); T-1, "The cue map" | Add the G1 to G6 source rows. Reconcile the consult numbering: this note uses 29 to 40. The sibling's own patch list (its T-12, around line 400) says questions 21 to 28 are to be appended to the theatrical T10. That conflict is unresolved (see below). |
 | `playbooks/theatrical-delivery.md` | T8, "Rights-clearance log"; T10, "Consult question list" | `composition_status` and `recording_status` mandatory. Questions 29 to 40 appended after the reconciliation above. |
@@ -567,16 +577,14 @@ Format: `[n] title — URL — date — status — note`. The numbers are the re
 **Conflicts found in the register and the note (not resolved here).**
 - **W-36 and the first sound.** The register's "one true room sound" cannot be the first sound on a phone (Pitfall 2).
 - **W-44 spine.** The register lists "a relative's public-domain performance" as a spine item. D-05 keeps it out of the premiere. Treated here as April-only.
-- **Unregistered IDs.** The note cites O-38, O-41, O-46, O-47, O-50, O-51 and O-54. None is a row of `DECISIONS.md`, which ends at O-35. O-51 appears to match O-07.
+- **Unregistered IDs.** The note cites O-38, O-41, O-46, O-47, O-49, O-50, O-51 and O-54. None is a row of `DECISIONS.md`, which ends at O-35. O-51 appears to match O-07.
 - **Source-class and hum-case names.** The note's "S1" and "S2" (sibling E1) and "H-1" to "H-7" clash with the register's codes. This playbook writes E1-S1, E1-S2 and HC-1 to HC-7.
-- **Darshan summary.** The note's summary says "disagree on five of eight rows"; its table marks two "disagree" and three "partial". Read here as above (Pitfall 7).
 - **Consult numbering.** The sibling's patch list says 21 to 28; this note says 29 to 40; the sibling's E4 runs to 28. Reconcile before the consult is booked (W-55, by Fri 4 Dec).
-- **Cover line in the commission briefs.** "A private film" needs Fable's wording check (Pitfall 15).
 
 **Gaps, all TODO(research).**
-- The death year of Narayan Khare, whose tune is the common "Vaishnav Jan To" tune. Not found on any page read [55].
-- The dates and authors of Jai Adhya Shakti and Om Jai Shiv Omkara. UNVERIFIED [26][27][28].
-- No sourced Gujarati text for the Ganesh, Lakshmi or Harsiddhi aartis. No lyric text for any devotional song in the note.
+- The death year of Narayan Khare, whose tune is the common "Vaishnav Jan To" tune. Not found on any page read [55][62], including the round-1 follow-up. A printed biography is needed, and it is not needed at all if the tune she sang is the family's own (HC-3).
+- The author of Jai Adhya Shakti, and the dates and authors of Om Jai Shiv Omkara. UNVERIFIED [26][27][28]. Jai Adhya Shakti's text carries Samvat years of its own (A2).
+- No sourced Gujarati-language text for the Ganesh, Lakshmi or Harsiddhi aartis; round 1 re-checked, and the Gujarati panchang pages print Hindi and Marathi aartis in Gujarati script with no printed source [29][30][65][66]. No lyric text for any devotional song in the note.
 - Mirabai's Gujarati recension: UNVERIFIED [25].
 - No season-to-raga table for haveli sangeet. The darshan source disagreement stands [3][R2].
 - Instrument origins not read: jhanj, been, ravab, duf, upang, kinnari (the flags stay UNVERIFIED).
@@ -585,6 +593,6 @@ Format: `[n] title — URL — date — status — note`. The numbers are the re
 - Several pages did not open: Britannica, Krishnakosh, Discogs, imp-art (HTTP 403), DeshGujarat (bot wall), Saregama and T-Series (no sync enquiry page). The Gujarat High Court direction, the 2018 MEA rendition and the Soor Mandir details rest on search summaries.
 - No published fee for a kirtankar, a haveli-style pakhawaj player or a Gujarati bhajan singer. The cost figures in the sibling are for Hindustani solo players and are not used here. No tariff for a film screening from IPRS, PPL, Novex or a Gujarati label.
 - Not consulted: no practitioner, label or musician (D-03). The reverence norms rest on one 2021 study.
-- The note's date claims from repo files R2 and R7 (Patotsav on 27 Feb 2027, Dhanurmas, the Vasant season) are unverified here (Pitfall 17).
+- Sat 27 Feb 2027 as Shrinathji's Patotsav is on a Pushtimarg tippani [60] but not on the Nathdwara temple's own calendar, which was not readable [67] (Pitfall 17). Dhanurmas and the Vasant season are Bhavnagar reads by `saurashtra-world` (R7).
 - Iconography for each deity is outside this note. TODO(research): check it against the sibling tracks.
 - Questions 1 to 14 are unanswered. The register holds none of them yet.

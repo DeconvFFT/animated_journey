@@ -1,0 +1,15 @@
+Hindu-visual track, round 4 close-out: dated excerpts of two public pages, read on 2026-10-19 (cloud container).
+The web-fetch tool returns a short summary with short quoted fragments, not the full page, so the quotation marks below enclose only fragments the tool returned as quotes. Nothing here is a full capture and nothing here is legal advice. Public pages only; no household detail.
+
+==== 1. pushtimarg.net, Vasant Panchmi (https://pushtimarg.net/festivals/vasant-panchmi-2/) read 2026-10-19
+Context: Fable's round-3 review fetched this page a second time earlier the same day and got a "please wait while your request is being verified" wall, so it was not counted as re-verified. It loaded at this fetch.
+Fragments returned: Vastra "White malmal's"; Saaj "White"; Abhran (ornaments) "Golden"; "From today onwards the kram of Khel begins." (from the page's Pushti Elucidation section).
+Not on the page as returned: any Patotsav-specific vastra, pichwai or palette (the page is about Vasant Panchmi).
+Used for: research/hindu-visual.md B6 [141], playbooks/hindu-visual.md season rule "white at Vasant".
+
+==== 2. Arasuri Ambaji Mata Devasthan Trust, official site (https://ambajitemple.in/ambaji-temple ; home page https://ambajitemple.in/ ; https://ambajitemple.in/about) read 2026-10-19
+/ambaji-temple, fragments returned: "Unlike most temples, Ambaji has no idol of the Goddess. Instead, the Holy Shri Yantra is worshipped as the original deity." ; "No idol - Yantra itself is the deity." ; devotees "worship it with eyes covered".
+/ambaji-temple, not on the page as returned: a niche, a gilded plate, a screen or curtain, the name "Visa Yantra", any photography or phone rule.
+Home page, fragment returned: "Carrying mobile phones, cameras, or electronic gadgets inside the temple premises is strictly prohibited." (a rule for the temple premises; the sanctum is not named). The home page also speaks of "the world's largest Shree Yantra" in a sentence whose context the summary did not give.
+/about, as returned: history, governance and social work of the Trust; no description of the deity's form and no visitor rule.
+Used for: research/hindu-visual.md A4 (Ambaji) and [145], playbooks/hindu-visual.md Template H3 Maa Ambe and Harsiddhi row.

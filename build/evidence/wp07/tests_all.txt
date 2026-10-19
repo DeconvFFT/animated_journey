@@ -28,3 +28,11 @@ PASS       fake.defect_filmcraft_offset  driver exit 1; failing criteria: T2.ken
 PASS       fake.defect_filmcraft_dropframe  driver exit 1; failing criteria: T2.h264_frame_count,T2.prores_frame_count (expected T2.h264_frame_count,T2.prores_frame_count)
 PASS       fake.defect_filmcraft_dissolve  driver exit 1; failing criteria: T2.mid_dissolve (expected T2.mid_dissolve)
 PASS       fake.defect_filmcraft_offline  driver exit 1; failing criteria: T2.no_crash_n8_large,T2.no_crash_n12_conformed,T2.h264_completes,T2.h264_speed,T2.h264_frame_count,T2.h264_decode_silent,T2.offline_media_empty,T2.prores_frame_count,T2.prores_decode_silent (expected T2.offline_media_empty among others)
+PASS       fake.defect_filmcraft_crash  driver exit 1; failing criteria: T2.no_crash_n12_conformed,T2.rss_n12 (expected T2.no_crash_n12_conformed,T2.rss_n12)
+PASS       fake.defect_effectcraft_noalpha  driver exit 1; failing criteria: T4.title_png_has_alpha,T4.line_png_has_alpha (expected T4.title_png_has_alpha,T4.line_png_has_alpha)
+PASS       fake.defect_effectcraft_nondeterministic  driver exit 1; failing criteria: T4.determinism (expected T4.determinism)
+PASS       fake.defect_effectcraft_nodecode  driver exit 1; failing criteria: T4.prores4444_decodes (expected T4.prores4444_decodes)
+PASS       fake.defect_effectcraft_slow  driver exit 1; failing criteria: T4.parallax_speed (expected T4.parallax_speed)
+PASS       fake.verify_flipped_byte  intact -> exit 0; one byte flipped -> exit 1: REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 9f4bd99bae25... differs from the re
+SUMMARY all: 32 PASS, 0 FAIL, 2 BLOCKED, 1 UNVERIFIED, 0 SKIPPED
+all exit=3
