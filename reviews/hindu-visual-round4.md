@@ -1,0 +1,92 @@
+# Fable review: `hindu-visual`, round 4 (close-out)
+
+**Reviewer:** Fable advisor
+**Date:** Monday 2026-10-19 (week 1 of 19; premiere Saturday 2027-02-27)
+**Reviewed:** `CHARTER.md`; `DECISIONS.md` (D-27 to D-31); `reviews/04-hindu-mobile-addendum.md` in full (the agreed deity policy P1 in 1.2, the shrine moment as closed mandir doors, the floor-art line as primary idiom and the pichwai manner as frame register in 1.1, the R17 contradiction in section 0 and risk 1, the move condition in section 9); `reviews/hindu-visual-round3.md`; `research/hindu-visual.md` (the working-tree diff against `ca98792` in full, 74 changed lines, plus the Summary, T1, T4, T5, T6, K1 to K6, E-list, Open questions, A1, A4, A6, A8, B6 and Sources as they now stand); `playbooks/hindu-visual.md` (diff in full, 63 changed lines, plus Core principles, Steps 4 to 6 and 12, H1, H3, H4 R3 and R17, H5, H6, H10, "What we leave out", Decisions 1, 2 and 11, Pitfalls, Sources, Changelog); `skills-staging/hindu-visual-language/SKILL.md` in full (137 lines); `research/sources/hindu-visual-round4-excerpts-2026-10-19.txt` (untracked, new).
+**Working tree (2026-10-19):** the three track files are modified and uncommitted; nothing under `.claude/`, `CHARTER.md`, `DECISIONS.md`, `ROADMAP.md`, `PLAN-ON-A-PAGE.md` or `CLAUDE.md` changed; nothing committed by this review.
+
+Five pages were fetched for this review (section 4). Every quotation marked (S) is from a page read today; everything else is judgment (J).
+
+---
+
+## 1. Verdict
+
+**Approve.** The round-3 critical issue C1 and all eight nudges are applied in place, in the sentence each one corrects, and the three files now say the same thing under the same rule IDs. The research note no longer permits a photograph of a svarupa, murti or picture of hers without her knowing anywhere: `grep` for "three-dimensional murti", "murti on her shelf", "shelf photograph", "photograph of her shelf", "dark line of the river", "symbols only", "P1_symbols_only", "not in the repo", "L4b", "Minecraft" and "voxel" returns, across all three files, only the corrected sentences (research F5 line 152 and T5 line 336, playbook H6 line 298 and H10 line 365), the Changelog's description of what was fixed, and source [136] (the pages searched for a photography norm, none found). Both spot-checks hold verbatim, and three of the five pages fetched confirm claims the round-3 review could not reach. Three small, non-blocking tidy-ups are listed in section 7 for the next scribe pass; none of them changes a rule or a recommendation.
+
+## 2. Were round 3's items applied in place, and do the three files agree?
+
+| Item (round 3) | Research note | Playbook | SKILL | Agree? |
+|---|---|---|---|---|
+| C1 / nudge 1: T4 R17 route (3) seva objects only; never the Thakorji, Lalan, chitraji or any picture of hers without her knowing (PR4); svarupa only with O-52 yes and her knowing, April at the earliest | T4 R17 (line 308) now carries the playbook H4 R17 text with PR4 and F6 in the source column | H4 R17 (line 217) unchanged, correct | Step 5, step 11, Guardrails "Privacy" | Yes: identical substance, PR4 cited in all three |
+| C1 / nudge 1: R3 padukaji exception (PR11) | T4 R3 (line 294) appended, PR11 in the source column | H4 R3 (line 203) | Guardrails "Respect" | Yes, word for word |
+| C1 / nudge 2: K3, K5 P3, Open question 3 | K3 "the maker looks, counts and describes in words"; K5 P1 "symbols and seva objects that are not a svarupa", P3 split into "seva objects now; a svarupa only if O-52 says yes and she knows"; Open question 3 rewritten; also Summary 10 and 15, F5, F7 safe route, T5 shelf row, T6 block, K1 set-leads row and V1, which the round-3 review did not list but which carried the same wording | Decision 2, Core principles 2 and 8, Steps 5 and 6, H3 "How to use", H5, H6, H10 | Steps 1, 4, 5, 11; Deity-shot checklist; Guardrails | Yes |
+| C1 / nudge 3: T1 pichwai row and A6 | Row (line 54): "in the temple Shrinathji is never painted into the pichwai, so under P1 the border, bands and night sky stay and the figure drops; never the niche, never behind a face (F3, PR5)"; caution "a painted svarupa is P4 by a hereditary painter who paints the day's shringar (PR2)". A6 carries the round-2 nudge-4 OK-note wording ([38], [137], [37]), the "cloth only if a three-dimensional murti is also there" clause is gone, and the record is kept with "(Superseded 2026-10-19, round 2 C1 ...)" | Why, H1 row 10 and collapse rule, H3 pichwai row, Decision 1, Pitfalls | Guardrails "Hindu only" | Yes |
+| C1 / nudge 4: A1 "dark line of the river"; A8 P3 | A1: "the jhari holding Yamunajal in its red cloth (F8, PR20); never a local sea, gulf or river standing in for her", superseded clause appended; A8: P2 and P4 only as a hereditary painter's work in the day's shringar (PR2), P3 only if O-52 says yes and she knows, superseded clause appended | H3 Yamuna row, Decision 11 | Guardrails "Mahaprabhuji" and "The look" | Yes; history legible |
+| Nudge 5: season rule qualification (sanctum rule from Talwar [32]; a household's occasion cloth is Q4/O-48; the sibling records the open question) | not required | H1 row 10, H3 pichwai row, Decision 1, H10, Pitfalls: once in each, as asked; [142] now says what it does and does not say | Guardrails "Hindu only" | Yes, six places, one clause each |
+| Nudge 6: Ambaji AI-content banner; Visa Yantra UNVERIFIED against the trust's page | A4 gains an Ambaji entry and [145]: the trust's page read, what it says and does not say | H3 Maa Ambe and Harsiddhi row; Decision 11; Step 4 (premises rule) | Guardrails "Privacy" | Yes, and the implementor went further than asked: the trust's own page was read (section 4, checks 1 and 2) |
+| Nudge 7: [141] re-fetch note | B6 and [141] record the verification wall, the reload at close-out and the excerpt file | Sources [141] | not cited | Yes; the excerpt file exists and holds public fragments only |
+| Nudge 8: Changelog entry | n/a | Round-3-applied entry names every section touched and what now agrees; scribe correction 3 (L4b) closed | n/a | Yes |
+
+Beyond the eight, the three files were brought to the addendum's agreed values and now match it: `deity_policy: P1_symbols_and_seva_objects`, `tradition_primary: floor_art`, `tradition_secondary: pichwai_manner_frame_in_season`, `shrine_moment_closed_mandir_doors` in `appears_in` (research T6 and playbook H5, line for line); the shrine-moment order (closed doors; the shelf lamp with a seasonal backcloth only if Q4/O-48; her threshold drawing as the seat of the Vasant kalash only under SW1 or SW2) in research K5, playbook Core principle 9 and H10, and the SKILL's "The look and the shrine moment" guardrail; the sibling out-by-default items (kulhe and jama-vagha, the Deccani golden pichvai, the Kishangarh portrait, "Saal Mubarak", Ragamala and the Rajput court idiom) as one paragraph in the research E-list, the playbook's "What we leave out" and the SKILL's "Hindu only" guardrail, each noting the E27 numbering collision with the sibling; the game-world wording retired in favour of "the playful, crafted feel comes from this Hindu design world (D-28); D-29 retired D-23" in all three. The worked example Household A in T6 was also corrected from `P3` to P1 with its reasoning, which the round-3 review had not noticed.
+
+Nothing was appended as a trailing note; every change sits in the sentence it corrects; dated records (A1, A6, A8) keep what round 1 found and add the superseding clause.
+
+## 3. The surviving-permission grep (the task's specific question)
+
+Pattern set run over `research/hindu-visual.md`: `three-dimensional murti`, `murti on her shelf`, `photograph of her (home )?shelf`, `shelf photograph`, `own photograph of her (own )?murti`, `photograph(s|ed|ing)? (a |the )?(svarupa|murti|Thakorji|Lalan|chitraji)`, `P3 \(her own`, `dark line of the river`, `not in the repo`, `P1_symbols_only`, `symbols only`. Four hits, all of them the correct sentences: F5 line 152 ("a murti photograph taken in a temple is out as a source, and so is any photograph of the Thakorji, Lalan, chitraji or any picture of hers without her knowing"), T5 line 336 (the shelf row, seva objects only), line 851 (B-section "Changes", quoting the round-3 scope), and [136]. No sentence in the note permits photographing or depicting a svarupa or seva article in seva without her knowing. The playbook and SKILL return no hit beyond the H6 row, the H10 check and the Changelog. Addendum risk 1 is closed; the `stale_check.py` grep for "photograph of a three-dimensional murti" (W-29) can be added by the orchestrator with nothing left to catch.
+
+## 4. Spot-checks against sources (five pages fetched 2026-10-19)
+
+| # | Claim in the artifacts | Source fetched | Result |
+|---|---|---|---|
+| 1 | **Iconography.** Ambaji "has no idol of the Goddess"; the Yantra "is worshipped as the original deity"; devotees worship "with eyes covered"; the page writes Shri Yantra, not Visa Yantra, and mentions no niche, gilded plate, screen or camera rule (research A4, [145]; playbook H3 Ambe row, Decision 11; SKILL [145]) | ambajitemple.in/ambaji-temple | **Verbatim** (S): "Unlike most temples, Ambaji has no idol of the Goddess."; "Instead, the Holy Shri Yantra is worshipped as the original deity."; "Yantra itself is the deity."; "Devotees worship it with eyes covered". Visa Yantra, niche, plate, screen and any photography rule are absent, exactly as the note says |
+| 2 | Ambaji premises rule: phones, cameras and electronic gadgets "strictly prohibited" (playbook Step 4; SKILL "Privacy"; research [145]) | ambajitemple.in (home) | **Verbatim** (S): "Carrying mobile phones, cameras, or electronic gadgets inside the temple premises is strictly prohibited." The page names the "world's largest Shree Yantra" and no idol, as the excerpt file records |
+| 3 | **Licence terms.** Wellcome "Lakshmi lustrated by two elephants", reference 26778i, CC BY-NC 4.0, therefore ASK and never yes for a public screening (research F8 and T5; playbook Core principle 7, H6; SKILL step 10, [14]) | wellcomecollection.org/works/phr7cv3d | **Verbatim** (S): title "Lakshmi lustrated by two elephants. Watercolour, 18--.", reference 26778i, "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)". The ASK status follows |
+| 4 | Cleveland Open Access: CC0 on images and data since January 2019; exclusions for works under copyright or with donor or lender restrictions; no endorsement and no trademark grant (research Summary 11, F8; SKILL [1]) | clevelandart.org/open-access | **Holds** (S): CC0 on images, data, software and documentation; launched January 2019; excluded where "the artwork is under copyright or has other restrictions from the artist, donor, or lender"; "nor does it grant permission to use the CMA's trademarks without prior approval". The per-record rule the track states is exactly what the page describes |
+| 5 | Vasant Panchmi page: vastra "White malmal's", saaj "White", abharan "Golden", "From today onwards the kram of Khel begins"; neither Patotsav nor pichwai on the page (research B6, [141]; excerpt file item 1) | pushtimarg.net/festivals/vasant-panchmi-2/ | **Verbatim** (S), and the page loaded without the verification wall the round-3 review met. One honest caveat the note already carries: the page does not gloss "Abhran" as ornaments; that reading is the track's |
+
+Five of five hold. The two load-bearing checks the task asked for (iconography, licence terms) hold verbatim, and the two round-3 gaps (the Ambaji form from the trust's own page; the Vasant page behind a wall) are closed with dated excerpts in `research/sources/`.
+
+## 5. Is the Hindu-only rule (D-28) applied with care, and are deities treated with respect?
+
+Yes on both, and the three files now carry the same answer. The sibling exclusions are listed with their file and the E27 collision is named rather than hidden; the pichwai OK-note rests on what the pages say and names the Mewar subset; the season rule no longer claims more than Talwar and the lay guide support, and leaves the household's occasion cloth to the maker's Q4/O-48. On respect: the shelf rule is her sampradaya's own in all three files (PR4, F6); padukaji are seva objects (PR11); the pichwai keeps its cloth and loses only the figure (PR5); Yamunaji is the jhari in red cloth, never a sea or river (PR20); Mahaprabhuji is never on one seat with a svarupa (PR19); at Ambaji the yantra is the form and now stands on the trust's own words; the shrine moment is closed doors, which show devotion kept and open onto no person (PR6). The addendum's section 9 move condition for this skill ("after the C1 fixes land in `research/hindu-visual.md` and Fable's round 4 approves") is met from this track's side; the orchestrator's remaining condition is that the register rows the skill cites (O-36 to O-44, O-52, W-61) exist.
+
+## 6. Scores (1 to 5)
+
+| Rubric | Score | Why |
+|---|---|---|
+| Meaning | 5 | Every rule speaks her household's grammar: the jhari, the closed doors, the seva objects by her hands, the season of the cloth, her town's Shiva temples, the sathiyo as her own line. The swap test passes visibly in all three files, and the two invented households in T6 still yield two different films |
+| Specificity | 5 | Form, route, plate, licence text, px floors, the season table, PR numbers, the file and section for every out-by-default item, the excerpt file for every re-read page |
+| Accuracy | 5 | Five of five spot-checks verbatim; the two round-3 gaps closed from primary pages; labels honest (Visa Yantra, plate and niche stay UNVERIFIED; "Abhran" glossed as the track's reading); superseded records kept and dated |
+| Feasibility | 4 | P1-first keeps deity work small; the shrine moment is one drawn door and a lamp; nothing added costs maker hours; the commission stays (a) or (d) pending the consult |
+| Ethics | 5 | No file an agent or the maker reads permits a photograph of a svarupa or seva article without her knowing; the rule is the same under the same ID in all three; D-02, D-17 and reverence are protected by one wording |
+| Craft / usability | 4 | The two rule tables now agree, which was round 3's fault. Held from 5 by three tidy-ups (section 7): one mixed S0/SW0 sentence in research K5, three stale "untracked" sentences, and the P1 seva-object list that is longer in K5 than in Decision 2 |
+
+## 7. Critical issues
+
+None.
+
+## 8. Nudges (non-blocking; for the next scribe pass, not a re-review)
+
+1. **`research/hindu-visual.md` K5 (line 450), last sentence before the 1992 note.** "the sathiyo only if SW1 or SW2 is chosen; under S0 the kalash on a plain lotus" mixes the playbook's SW names with the note's own S0. Change "under S0" to "under SW0 (this note's S0; the playbook renames S0 to S2 as SW0 to SW2 because S1 and S2 are the stranger screenings, W-43)". T9's "S0 / S1 / S2" headings may stay as the note's record.
+2. **`playbooks/hindu-visual.md` header (line 3) and Gaps (lines 516 and 517); `SKILL.md` Inputs (line 32).** The sentences "in the working tree (untracked) as of 2026-10-19" and "`research/gujarati-*` is not yet" are stale: `research/pushtimarg-world.md`, `research/saurashtra-world.md` and `research/gujarati-devotional-sound.md` are tracked in `ca98792` (`git ls-files` confirms), and there is still no `research/gujarati-world.md`. Replace with "tracked since `ca98792` (2026-10-19); the only Gujarati-track note so far is `research/gujarati-devotional-sound.md`, a sound note".
+3. **`playbooks/hindu-visual.md` Decision 2, Options, P1 (line 428) and Core principle 2.** Research K5 and the addendum (1.2) list the butter-pot and the mishri bowl among the P1 seva objects; the playbook's P1 lists "the jhari in its red cloth, the thali, the folded cloth" only and its lean says the maker and Fable "confirm the P1 list". Either add "the butter-pot, the mishri bowl" to P1 in both places (my recommendation: they are seva objects, not images of him, and the addendum already lists them), or state in the lean that K5 names them and the peacock feather and flute remain the open proposal (research A8 already says exactly this).
+
+## 9. Research follow-ups (carried; facts the track still needs, none blocking)
+
+1. Talwar [32] on painted pichvais at Annakut and in winter versus the Goswami's lecture ([64] in `pushtimarg-world.md`) on a household's occasion cloth: decides whether the season rule binds the title card or only the sanctum register (Q4/O-48).
+2. A Patotsav-specific vastra or palette (none found on any page; the tippani names the day only).
+3. Narayanan's Brill entry on the Vallabha tilak (paywalled); the women's mark (sibling Q6) is still in no source.
+4. The Koyla Dungar image (stone, murti, pot or yantra): undescribed by any page.
+5. Whether her household's pichwai follows Nathdwara or a Gujarati workshop idiom (UNVERIFIED); how her hand draws the sathiyo (TODO_maker, never guessed).
+6. The Visa Yantra name, the gilded plate and the niche at Ambaji: Wikipedia only (AI-content banner); the trust's page says Shri Yantra and no idol. P1 for Ambe does not depend on it.
+
+## 10. Advisor insight
+
+The round-3 fault was never a wrong idea; it was one idea written two ways under one ID. What this round proves is that the fix held because the implementor went back to the sentence, not the appendix: every superseded clause is replaced where it sat, and where the sentence was a dated record it keeps the record and adds the date it was superseded. That is the habit the register asks of every track (D-21: the register wins and the scribe patches the file), and it is the one that will matter most in weeks 14 to 17, when a dignity or rights unlock has to land in `timeline.json`, the shot brief and the rights log in the same hour. Keep it.
+
+## 11. What is still open
+
+- **Blocking for this track:** nothing.
+- **For the orchestrator (not this track):** enter O-36 to O-61, O-62 to O-67, W-61 to W-66 and TD-9 as register rows (addendum 5.1), then move `skills-staging/hindu-visual-language/` to `.claude/skills/`; add the W-29 retired-words and the risk-1 sentence to `stale_check.py`; the three tidy-ups above at the next scribe pass.
+- **For the maker:** O-62 (P1 confirmed in writing by Sun 1 Nov), O-63 (the look at G1), O-64 (the sathiyo, SW0 by default), O-40/Q8 (what her hands make), Q4/O-48 (a household occasion cloth), O-52 (a svarupa, April at the earliest, only with her knowing).
