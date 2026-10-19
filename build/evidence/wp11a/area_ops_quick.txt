@@ -1,22 +1,29 @@
-# area=ops entry=WP-02 mode=quick result=FAIL exit=1 seconds=7 masked_values=0
+# area=ops entry=WP-02 mode=quick result=FAIL exit=1 seconds=11 masked_values=0
 FAIL       decisions_check_real         decisions_to_csv --check ops/decisions.csv exits 0; independent count equals the CSV
-             D-31 is in DECISIONS.md but missing from the CSV
-             O-02: column 'short_title' differs from the register (csv: 'Country and state of the premiere (TD-7), her home state and' / register: 'Country and state of the premiere (TD-7), and the countries ')
-             O-02: column 'note' differs from the register (csv: 'she is from India' / register: 'she is from Bhavnagar, Gujarat, D-31')
-           FAIL: decisions.csv does not match the register (3 problem(s)); regenerate with --write
-           
+             O-38 is in DECISIONS.md but missing from the CSV
+             W-06: column 'value_or_default' differs from the register (csv: 'P-LOCK Sat 14 Nov 2026 (Fable review of spikes SP1–SP5, five' / register: 'P-LOCK Sat 14 Nov 2026 (Fable review of spikes SP1–SP5, five')
+             O-11: column 'value_or_default' differs from the register (csv: 'Answer from your own knowledge (there is no insider); if she' / register: 'Answer from your own knowledge (there is no insider); if she')
+             O-48: column 'value_or_default' differs from the register (csv: 'Default: none is photographed (PR4; nothing in the seva spac' / register: 'Default: none of these is photographed (PR4 as the Codes sta')
+             O-55: column 'short_title' differs from the register (csv: 'Which places in saurashtra-world's places table does she go ' / register: 'Which places in saurashtra-world's places table does she go ')
+             O-55: column 'value_or_default' differs from the register (csv: 'Only a yes on hers_if moves a place from candidate to settin' / register: 'Only a yes on hers_if moves a place from candidate to settin')
+             O-69: column 'value_or_default' differs from the register (csv: '(b), move it: the repo is public, CLAUDE.md asks for no iden' / register: '(b), move it: the repo is public, CLAUDE.md asks for no iden')
+             O-79: column 'value_or_default' differs from the register (csv: 'Yes (default); PR22 and W-78.' / register: 'Yes (default); PR22 and W-78. Nothing is due from you on thi')
+             O-79: column 'decide_by' differs from the register (csv: 'Sun 1 Nov' / register: 'No decision needed (the default stands); say so only if you ')
+             O-59: column 'decide_by' differs from the register (csv: 'Sun 1 Nov' / register: 'Sun 15 Nov (G1; moved from Sun 1 Nov, nothing before G1 need')
+             O-60: column 'short_title' differs from the register (csv: 'Are there Jain, Swaminarayan or other-sampradaya places in h' / register: 'Are there Jain or other Hindu-sampradaya places in her life ')
+             O-60: column 'value_or_default' differs from the register (csv: 'Default out; they are flagged and never used unless you say ' / register: 'Default out: Swaminarayan and other Hindu-sampradaya places ')
 FAIL       decisions_write_twice        --write twice is byte-identical, and equals the committed file when no orchestrator cell is set
            the committed ops/decisions.csv differs from a fresh generation: run --write
-PASS       decisions_content            status vocabulary, D-14/D-23 notes, O-05/O-13 answered, S rows carry Table 4 status, 300-char cut
+FAIL       decisions_content            status vocabulary, D-14/D-23 notes, O-05/O-13 answered, S rows carry Table 4 status, 300-char cut
+           answered O rows: ['O-05', 'O-13', 'O-36', 'O-37']
 PASS       decisions_carry_over         orchestrator-owned cells (maker_answer, last_changed) survive --write and are ignored by --check
 PASS       decisions_neg_delete_row     negative: a deleted ID row makes --check and ops_lint exit 1 naming the ID
 PASS       decisions_neg_invented_id    negative: an invented ID row makes --check and ops_lint exit 1 naming the ID
 PASS       decisions_neg_header         negative: a changed header name makes --check and ops_lint exit 1 naming the header
 PASS       decisions_neg_values         negative: a changed status/value and an invalid status word are named by ID and column
-FAIL       decisions_register_growth    an added register row (for example a new O-36) is picked up with no code change
-           expected '167 rows' in the output; got:
-           wrote g.csv: 168 rows (D 31, W 60, O 36, S 41; by table T1 31, T2.1 13, T2.2 16, T2.3 31, T3 36, T4 41); orchestrator-owned cells carried over: 0 row(s)
-           
+PASS       decisions_register_growth    an added register row (for example a new O-36) is picked up with no code change
+PASS       decisions_three_digit_id     negative: a W-100 row in a register copy reaches the CSV (it was silently dropped when IDs had to be two digits)
+PASS       decisions_annotated_id       negative: an annotated ID cell (| O-NN (absorbs O-MM) |) reaches the CSV with the annotation in note; a row that cannot be parsed is exit 2, never dropped in silence
 PASS       decisions_bad_register       a malformed register (wrong cell count, duplicate ID, ID in the wrong table) exits 2
 PASS       hours_header_only            hours_report on the header-only ops/hours.csv: 'no rows yet', exit 0
 PASS       hours_9h30                   hours_9h30.csv: total 9.5 h and the '9 minutes' reading, exit 0
@@ -32,50 +39,54 @@ PASS       hours_enum_parity            the activity enum equals the enum in res
 FAIL       lint_real                    ops_lint.py on the real ops files exits 0
            ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
              note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
-             FAIL ops/decisions.csv [decisions_mismatch] D-31 is in DECISIONS.md but missing from the CSV
-             FAIL ops/decisions.csv [decisions_mismatch] O-02: column 'short_title' differs from the register (csv: 'Country and state of the premiere (TD-7), her home state and' / register: 'Country and state of the premiere (TD-7), and the countries ')
-             FAIL ops/decisions.csv [decisions_mismatch] O-02: column 'note' differs from the register (csv: 'she is from India' / register: 'she is from Bhavnagar, Gujarat, D-31')
-             FAIL ops/decisions.csv [id_set] missing from the CSV: D-31
-           ops_lint: FAIL (4 failure(s), 0 warning(s))
-           
-FAIL       lint_bad_note                ops_lint --hours hours_bad_note.csv: exit 1, line + category (e-mail, profile path, deny-list name), masked
-           expected 'hours_bad_note.csv:2 [email]' in the output; got:
-           ops_lint: checked 1 file(s): hours_bad_note.csv
-             note: pattern file version 1, 9 text categories, 1 deny-list name(s) loaded
-             FAIL hours_bad_note.csv:3 [profile_path_windows] note: masked hit C:**************
-             FAIL hours_bad_note.csv:4 [local_deny] note: masked hit Qz******
-             FAIL hours_bad_note.csv:5 [ipv4] note: masked hit 17********
-             FAIL hours_bad_note.csv:6 [handle] note: masked hit @q*********
-             WARN hours_bad_note.csv:7 [note_length] note is 121 characters (over 80): probably prose about a person; shorten it to IDs and relation tokens
-           ops_lint: FAIL (4 failure(s), 1 warning(s))
-           
+             FAIL ops/decisions.csv [decisions_mismatch] O-38 is in DECISIONS.md but missing from the CSV
+             FAIL ops/decisions.csv [decisions_mismatch] W-06: column 'value_or_default' differs from the register (csv: 'P-LOCK Sat 14 Nov 2026 (Fable review of spikes SP1–SP5, five' / register: 'P-LOCK Sat 14 Nov 2026 (Fable review of spikes SP1–SP5, five')
+             FAIL ops/decisions.csv [decisions_mismatch] O-11: column 'value_or_default' differs from the register (csv: 'Answer from your own knowledge (there is no insider); if she' / register: 'Answer from your own knowledge (there is no insider); if she')
+             FAIL ops/decisions.csv [decisions_mismatch] O-48: column 'value_or_default' differs from the register (csv: 'Default: none is photographed (PR4; nothing in the seva spac' / register: 'Default: none of these is photographed (PR4 as the Codes sta')
+             FAIL ops/decisions.csv [decisions_mismatch] O-55: column 'short_title' differs from the register (csv: 'Which places in saurashtra-world's places table does she go ' / register: 'Which places in saurashtra-world's places table does she go ')
+             FAIL ops/decisions.csv [decisions_mismatch] O-55: column 'value_or_default' differs from the register (csv: 'Only a yes on hers_if moves a place from candidate to settin' / register: 'Only a yes on hers_if moves a place from candidate to settin')
+             FAIL ops/decisions.csv [decisions_mismatch] O-69: column 'value_or_default' differs from the register (csv: '(b), move it: the repo is public, CLAUDE.md asks for no iden' / register: '(b), move it: the repo is public, CLAUDE.md asks for no iden')
+             FAIL ops/decisions.csv [decisions_mismatch] O-79: column 'value_or_default' differs from the register (csv: 'Yes (default); PR22 and W-78.' / register: 'Yes (default); PR22 and W-78. Nothing is due from you on thi')
+             FAIL ops/decisions.csv [decisions_mismatch] O-79: column 'decide_by' differs from the register (csv: 'Sun 1 Nov' / register: 'No decision needed (the default stands); say so only if you ')
+             FAIL ops/decisions.csv [decisions_mismatch] O-59: column 'decide_by' differs from the register (csv: 'Sun 1 Nov' / register: 'Sun 15 Nov (G1; moved from Sun 1 Nov, nothing before G1 need')
+PASS       lint_bad_note                ops_lint --hours hours_bad_note.csv: exit 1, line + category (e-mail, profile path, deny-list name), masked
 PASS       lint_clean_hours             hours_9h30.csv and hours_7h30.csv pass the note check
 PASS       lint_note_length             a note over 80 characters is a WARNING (exit 0), and fails under --strict
+PASS       lint_hours_shifted_masked    ops_lint --hours on a shifted row (a name in date and minutes) exits 1 and never prints the planted tokens
 PASS       lint_neg_card                negative: card without Phone / with an invented ID / without the Language line / signed with <date>
 FAIL       lint_card_scripts            the card's tested-script claim is cross-checked with pipeline/phone/test_strings.json when that file exists
            ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
              note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
              note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
-             FAIL ops/decisions.csv [decisions_mismatch] D-31 is in DECISIONS.md but missing from the CSV
-             FAIL ops/decisions.csv [decisions_mismatch] O-02: column 'short_title' differs from the register (csv: 'Country and state of the premiere (TD-7), her home state and' / register: 'Country and state of the premiere (TD-7), and the countries ')
-             FAIL ops/decisions.csv [decisions_mismatch] O-02: column 'note' differs from the register (csv: 'she is from India' / register: 'she is from Bhavnagar, Gujarat, D-31')
-             FAIL ops/decisions.csv [id_set] missing from the CSV: D-31
-           ops_lint: FAIL (4 failure(s), 0 warning(s))
-           
+             FAIL ops/decisions.csv [decisions_mismatch] O-38 is in DECISIONS.md but missing from the CSV
+             FAIL ops/decisions.csv [decisions_mismatch] W-06: column 'value_or_default' differs from the register (csv: 'P-LOCK Sat 14 Nov 2026 (Fable review of spikes SP1–SP5, five' / register: 'P-LOCK Sat 14 Nov 2026 (Fable review of spikes SP1–SP5, five')
+             FAIL ops/decisions.csv [decisions_mismatch] O-11: column 'value_or_default' differs from the register (csv: 'Answer from your own knowledge (there is no insider); if she' / register: 'Answer from your own knowledge (there is no insider); if she')
+             FAIL ops/decisions.csv [decisions_mismatch] O-48: column 'value_or_default' differs from the register (csv: 'Default: none is photographed (PR4; nothing in the seva spac' / register: 'Default: none of these is photographed (PR4 as the Codes sta')
+             FAIL ops/decisions.csv [decisions_mismatch] O-55: column 'short_title' differs from the register (csv: 'Which places in saurashtra-world's places table does she go ' / register: 'Which places in saurashtra-world's places table does she go ')
+             FAIL ops/decisions.csv [decisions_mismatch] O-55: column 'value_or_default' differs from the register (csv: 'Only a yes on hers_if moves a place from candidate to settin' / register: 'Only a yes on hers_if moves a place from candidate to settin')
+             FAIL ops/decisions.csv [decisions_mismatch] O-69: column 'value_or_default' differs from the register (csv: '(b), move it: the repo is public, CLAUDE.md asks for no iden' / register: '(b), move it: the repo is public, CLAUDE.md asks for no iden')
+             FAIL ops/decisions.csv [decisions_mismatch] O-79: column 'value_or_default' differs from the register (csv: 'Yes (default); PR22 and W-78.' / register: 'Yes (default); PR22 and W-78. Nothing is due from you on thi')
+             FAIL ops/decisions.csv [decisions_mismatch] O-79: column 'decide_by' differs from the register (csv: 'Sun 1 Nov' / register: 'No decision needed (the default stands); say so only if you ')
 PASS       lint_neg_gather              negative: GATHER without the gate / a stand-in ID / with a stand-in in Part B / a real-box ID in Part A
 PASS       lint_neg_howto_marker        negative: HOURS-HOWTO without the 'no names in note' sentence; an unfinished-work marker
 FAIL       lint_neg_planted_text        negative: identifying strings planted in the ops files are found, with file:line and a masked hit
-           expected 'ops/GATHER.md:3 [email]' in the output; got:
-           isions.csv [decisions_mismatch] D-31 is in DECISIONS.md but missing from the CSV
-             FAIL ops/decisions.csv [decisions_mismatch] O-02: column 'short_title' differs from the register (csv: 'Country and state of the premiere (TD-7), her home state and' / register: 'Country and state of the premiere (TD-7), and the countries ')
-             FAIL ops/decisions.csv [decisions_mismatch] O-02: column 'note' differs from the register (csv: 'she is from India' / register: 'she is from Bhavnagar, Gujarat, D-31')
-             FAIL ops/decisions.csv [id_set] missing from the CSV: D-31
-           ops_lint: FAIL (4 failure(s), 0 warning(s))
-           
+           a reserved-domain address must pass: ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+             note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+             note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+             FAIL ops/decisions.csv [decisions_mismatch] O-38 is in DECISIONS.md but missing from the CSV
+             FAIL ops/decisions.csv [decisions_mismatch] W-06: column 'value_or_default' differs from the register (csv: 'P-LOCK Sat 14 Nov 2026 (Fable review of spikes SP1–SP5, five' / register: 'P-LOCK Sat 14 Nov 2026 (Fable review of spikes SP1–SP5, five')
+             FAIL ops/decisions.csv [decisions_mismatch] O-11: column 'value_or_default' differs from the register (csv: 'Answer from your own knowledge (there is no insider); if she' / register: 'Answer from your own knowledge (there is no insider); if she')
+             FAIL ops/decisions.csv [decisions_mismatch] O-48: column 'value_or_default' differs from the register (csv: 'Default: none is photographed (PR4; nothing in the seva spac' / register: 'Default: none of these is photographed (PR4 as the Codes sta')
+             FAIL ops/decisions.csv [decisions_mismatch] O-55: column 'short_title' differs from the register (csv: 'Which places in saurashtra-world's places table does she go ' / register: 'Which places in saurashtra-world's places table does she go ')
+             FAIL ops/decisions.csv [decisions_mismatch] O-55: column 'value_or_default' differs from the register (csv: 'Only a yes on hers_if moves a place from candidate to settin' / register: 'Only a yes on hers_if moves a place from candidate to settin')
+             FAIL ops/decisions.csv [decisions_mismatch] O-69: column 'value_or_default' differs from the register (csv: '(b), move it: the repo is public, CLAUDE.md asks for no iden' / register: '(b), move it: the repo is public, CLAUDE.md asks for no iden')
+             FAIL ops/decisions.csv [decisions_mismatch] O-79: column 'value_or_default' differs from the register (csv: 'Yes (default); PR22 and W-78.' / register: 'Yes (default); PR22 and W-78. Nothing is due from you on thi')
+             FAIL ops/decisions.csv [decisions_mismatch] O-79: column 'decide_by' differs from the register (csv: 'Sun 1 Nov' / register: 'No decision needed (the default stands); say so only if you ')
 PASS       lint_pattern_samples         ops_lint's reading of the pattern file agrees with the file's own positive/negative samples
 PASS       lint_deny_list               deny list: whole word, case-insensitive, short entries skipped, --deny-file and LJ_DENY_FILE honoured
 PASS       lint_fail_closed             fail closed: missing, invalid or incomplete pattern file exits 2 and checks nothing
 PASS       lint_data_driven             patterns come from the file: a tiny synthetic pattern file changes what is flagged (no regex inside ops_lint)
+PASS       lint_mask_parity             ops_lint and public_lint print the same mask for the same hit (keep, fill and cap from the pattern file)
 PASS       lint_readonly                ops_lint, hours_report and decisions_to_csv --check modify nothing in the repository
 PASS       card_content                 SETTINGS-CARD: TD-1..TD-4, Phone, D-27, Language and script line, signed: no, every cited ID exists
 PASS       howto_gather_content         HOURS-HOWTO has the 'no names in note' sentence; GATHER has Part A/Part B, the gate, five stand-in scans, IDs only
@@ -84,4 +95,4 @@ PASS       scripts_compile              the three scripts compile and print --he
 PASS       public_lint_own_files        scripts/public_lint.py (WP-03), when present, finds nothing in WP-02's own files
 UNVERIFIED windows_unverified           Windows behaviour of the WP-02 files (Excel handling of hours.csv, py -3 -I on PowerShell 5.1/7) is UNVERIFIED
 ------------------------------------------------------------
-WP-02 ops tests (quick): 7 FAIL, 33 PASS, 1 UNVERIFIED
+WP-02 ops tests (quick): 6 FAIL, 38 PASS, 1 UNVERIFIED

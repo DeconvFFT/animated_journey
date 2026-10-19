@@ -1,10 +1,10 @@
 {
- "actual": "9 card mutations, each exit 1 naming the problem",
+ "actual": "19 card mutations (4 of them inside one row), each exit 1 naming the problem",
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 451,
-  "avail_mb_min": 451,
-  "avail_mb_start": 453,
+  "avail_mb_end": 1111,
+  "avail_mb_min": 1111,
+  "avail_mb_start": 1117,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0
@@ -14,7 +14,7 @@
   "platform": "linux",
   "python": "3.13.x"
  },
- "expected": "negative: card without Phone / with an invented ID / without the Language line / signed with <date>",
+ "expected": "negative: card without Phone (W-63, FontSize=28) / Script stack / Fonts / Burn-in rows / TD-3 MarginV / an invented ID / without the Language line / signed with <date>",
  "notes": "",
  "package": "WP-02",
  "schema": "lj-evidence/1",

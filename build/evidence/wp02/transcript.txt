@@ -3,31 +3,31 @@ WP-02 test transcript (commands run from the repository root; outputs are the re
 PASS  decisions_check_real
 decisions_to_csv --check ops/decisions.csv exits 0; independent count equals the CSV
 $ python3 -I scripts/decisions_to_csv.py --check ops/decisions.csv
-  OK: decisions.csv matches the register: 248 rows (D 31, W 79, O 73, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 73, T4 65)
+  OK: decisions.csv matches the register: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
   [exit 0]
 ==============================================================================
 PASS  decisions_write_twice
 --write twice is byte-identical, and equals the committed file when no orchestrator cell is set
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/decisions.csv
-  wrote decisions.csv: 248 rows (D 31, W 79, O 73, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 73, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote decisions.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/decisions.csv
-  wrote decisions.csv: 248 rows (D 31, W 79, O 73, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 73, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote decisions.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check <tmp>/decisions.csv
-  OK: decisions.csv matches the register: 248 rows (D 31, W 79, O 73, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 73, T4 65)
+  OK: decisions.csv matches the register: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
   [exit 0]
 ==============================================================================
 PASS  decisions_write_in_place
 literal acceptance: --write ops/decisions.csv twice leaves the tracked file unchanged
 $ python3 -I scripts/decisions_to_csv.py --write ops/decisions.csv
-  wrote decisions.csv: 248 rows (D 31, W 79, O 73, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 73, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote decisions.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --write ops/decisions.csv
-  wrote decisions.csv: 248 rows (D 31, W 79, O 73, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 73, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote decisions.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check ops/decisions.csv
-  OK: decisions.csv matches the register: 248 rows (D 31, W 79, O 73, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 73, T4 65)
+  OK: decisions.csv matches the register: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
   [exit 0]
 ==============================================================================
 PASS  decisions_content
@@ -36,13 +36,13 @@ status vocabulary, D-14/D-23 notes, O-05/O-13 answered, S rows carry Table 4 sta
 PASS  decisions_carry_over
 orchestrator-owned cells (maker_answer, last_changed) survive --write and are ignored by --check
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/d.csv
-  wrote d.csv: 248 rows (D 31, W 79, O 73, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 73, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote d.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check <tmp>/d.csv
-  OK: d.csv matches the register: 248 rows (D 31, W 79, O 73, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 73, T4 65)
+  OK: d.csv matches the register: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/d.csv
-  wrote d.csv: 248 rows (D 31, W 79, O 73, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 73, T4 65); orchestrator-owned cells carried over: 1 row(s)
+  wrote d.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 1 row(s)
   [exit 0]
 ==============================================================================
 PASS  decisions_neg_delete_row
@@ -110,7 +110,7 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
 PASS  decisions_register_growth
 an added register row (for example a new O-36) is picked up with no code change
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/g.csv --register <tmp>/DECISIONS.md
-  wrote g.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote g.csv: 250 rows (D 31, W 79, O 75, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 75, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/DECISIONS.md
     O-85 is in DECISIONS.md but missing from the CSV
@@ -120,10 +120,10 @@ $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register 
 PASS  decisions_three_digit_id
 negative: a W-100 row in a register copy reaches the CSV (it was silently dropped when IDs had to be two digits)
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/w100.csv --register <tmp>/DECISIONS.md
-  wrote w100.csv: 249 rows (D 31, W 80, O 73, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 51, T3 73, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote w100.csv: 250 rows (D 31, W 80, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 51, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check <tmp>/w100.csv --register <tmp>/DECISIONS.md
-  OK: w100.csv matches the register: 249 rows (D 31, W 80, O 73, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 51, T3 73, T4 65)
+  OK: w100.csv matches the register: 250 rows (D 31, W 80, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 51, T3 74, T4 65)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/DECISIONS.md
     W-100 is in DECISIONS.md but missing from the CSV
@@ -154,10 +154,10 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
 PASS  decisions_annotated_id
 negative: an annotated ID cell (| O-NN (absorbs O-MM) |) reaches the CSV with the annotation in note; a row that cannot be parsed is exit 2, never dropped in silence
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/annotated.csv --register <tmp>/annotated.md
-  wrote annotated.csv: 250 rows (D 31, W 80, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 51, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote annotated.csv: 251 rows (D 31, W 80, O 75, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 51, T3 75, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check <tmp>/annotated.csv --register <tmp>/annotated.md
-  OK: annotated.csv matches the register: 250 rows (D 31, W 80, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 51, T3 74, T4 65)
+  OK: annotated.csv matches the register: 251 rows (D 31, W 80, O 75, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 51, T3 75, T4 65)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/annotated.md
     W-80 is in DECISIONS.md but missing from the CSV
@@ -193,34 +193,69 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
   ops_lint: FAIL (1 failure(s), 0 warning(s))
   [exit 1]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/broken_pipe.csv --register <tmp>/broken_pipe.md
-  decisions_to_csv: the register is malformed: line 265: O-85 has 2 cells, expected 4
+  decisions_to_csv: the register is malformed: line 266: O-85 has 2 cells, expected 4
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/broken_pipe.md
-  decisions_to_csv: the register is malformed: line 265: O-85 has 2 cells, expected 4
+  decisions_to_csv: the register is malformed: line 266: O-85 has 2 cells, expected 4
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/broken_suffix.csv --register <tmp>/broken_suffix.md
-  decisions_to_csv: the register is malformed: line 265: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/broken_suffix.md
-  decisions_to_csv: the register is malformed: line 265: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/broken_digits.csv --register <tmp>/broken_digits.md
-  decisions_to_csv: the register is malformed: line 265: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/broken_digits.md
-  decisions_to_csv: the register is malformed: line 265: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/broken_space.csv --register <tmp>/broken_space.md
-  decisions_to_csv: the register is malformed: line 265: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/broken_space.md
-  decisions_to_csv: the register is malformed: line 265: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  [exit 2]
+$ python3 -I scripts/decisions_to_csv.py --write <tmp>/broken_emphasis.csv --register <tmp>/broken_emphasis.md
+  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  [exit 2]
+$ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/broken_emphasis.md
+  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  [exit 2]
+$ python3 -I scripts/decisions_to_csv.py --write <tmp>/broken_code.csv --register <tmp>/broken_code.md
+  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  [exit 2]
+$ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/broken_code.md
+  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo1
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
-    FAIL DECISIONS.md [register] the register is malformed: line 265: looks like a register row but does not parse
+    FAIL DECISIONS.md [register] the register is malformed: line 266: looks like a register row but does not parse
+    FAIL ops/GATHER.md:3 [cited_id] O-85 is cited but is not in DECISIONS.md
+    FAIL ops/GATHER.md:3 [cited_id] W-80 is cited but is not in DECISIONS.md
+    FAIL ops/GATHER.md:3 [cited_id] O-86 is cited but is not in DECISIONS.md
+  ops_lint: FAIL (4 failure(s), 0 warning(s))
+  [exit 1]
+$ python3 -I <tmp>/scripts_noguard/decisions_to_csv.py --write <tmp>/silent.csv --register <tmp>/emphasis_only.md
+  wrote silent.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  [exit 0]
+$ python3 -I <tmp>/scripts_noguard/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo1
+  ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+    note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+    note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+    FAIL ops/decisions.csv [parser] 250 line(s) start like a register row but the generator made 249 row(s): a row is being dropped
+    FAIL ops/GATHER.md:3 [cited_id] O-85 is cited but is not in DECISIONS.md
+    FAIL ops/GATHER.md:3 [cited_id] W-80 is cited but is not in DECISIONS.md
+    FAIL ops/GATHER.md:3 [cited_id] O-86 is cited but is not in DECISIONS.md
+  ops_lint: FAIL (4 failure(s), 0 warning(s))
+  [exit 1]
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo1
+  ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+    note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+    note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+    FAIL DECISIONS.md [register] the register is malformed: line 266: looks like a register row but does not parse
     FAIL ops/GATHER.md:3 [cited_id] O-85 is cited but is not in DECISIONS.md
     FAIL ops/GATHER.md:3 [cited_id] W-80 is cited but is not in DECISIONS.md
     FAIL ops/GATHER.md:3 [cited_id] O-86 is cited but is not in DECISIONS.md
@@ -230,13 +265,13 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
 PASS  decisions_bad_register
 a malformed register (wrong cell count, duplicate ID, ID in the wrong table) exits 2
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/cells.md
-  decisions_to_csv: the register is malformed: line 265: O-85 has 2 cells, expected 4
+  decisions_to_csv: the register is malformed: line 266: O-85 has 2 cells, expected 4
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/dup.md
-  decisions_to_csv: the register is malformed: line 265: O-35 appears twice (first on line 264)
+  decisions_to_csv: the register is malformed: line 266: O-35 appears twice (first on line 265)
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/table.md
-  decisions_to_csv: the register is malformed: line 265: W-80 is in table T3 but belongs to T2.1/T2.2/T2.3
+  decisions_to_csv: the register is malformed: line 266: W-80 is in table T3 but belongs to T2.1/T2.2/T2.3
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/none.md
   decisions_to_csv: cannot read the register none.md (No such file or directory)
@@ -363,7 +398,7 @@ $ python3 -I scripts/hours_report.py <tmp>/h.csv
   [exit 1]
 $ python3 -I scripts/hours_report.py <tmp>/h.csv
   h.csv: 1 problem(s); nothing is reported until they are fixed
-    line 2: shot_or_chapter 'al*********' must be an ID such as C01 or LJ-C01-S002, or '-' until shots exist
+    line 2: shot_or_chapter 'al*********' must be an ID with capital letters and a digit, such as C01 or LJ-C01-S002, or '-' until shots exist; a name is not an ID
   [exit 1]
 $ python3 -I scripts/hours_report.py <tmp>/h.csv
   h.csv: 1 problem(s); nothing is reported until they are fixed
@@ -379,7 +414,19 @@ $ python3 -I scripts/hours_report.py <tmp>/h.csv
   [exit 1]
 $ python3 -I scripts/hours_report.py <tmp>/h.csv
   h.csv: 1 problem(s); nothing is reported until they are fixed
-    line 2: who 'Ma***' must be exactly maker or agent (the repository is public: no names here)
+    line 2: who 'Ma***' must be exactly maker or agent (the repository is public: no names here) (lower-case only: did you mean 'maker'?)
+  [exit 1]
+$ python3 -I scripts/hours_report.py <tmp>/h.csv
+  h.csv: 1 problem(s); nothing is reported until they are fixed
+    line 2: who 'AG***' must be exactly maker or agent (the repository is public: no names here) (lower-case only: did you mean 'agent'?)
+  [exit 1]
+$ python3 -I scripts/hours_report.py <tmp>/h.csv
+  h.csv: 1 problem(s); nothing is reported until they are fixed
+    line 2: shot_or_chapter 'c0*' must be an ID with capital letters and a digit, such as C01 or LJ-C01-S002, or '-' until shots exist; a name is not an ID (IDs are written in capital letters)
+  [exit 1]
+$ python3 -I scripts/hours_report.py <tmp>/h.csv
+  h.csv: 1 problem(s); nothing is reported until they are fixed
+    line 2: shot_or_chapter 'CH*********' must be an ID with capital letters and a digit, such as C01 or LJ-C01-S002, or '-' until shots exist; a name is not an ID
   [exit 1]
 $ python3 -I scripts/hours_report.py <tmp>/h.csv
   h.csv: 1 problem(s); nothing is reported until they are fixed
@@ -414,11 +461,59 @@ $ python3 -I scripts/hours_report.py <tmp>/h.csv
   h.csv: 1 problem(s); nothing is reported until they are fixed
     line 1: header must be exactly: date,shot_or_chapter,activity,minutes,who,note (found 1 column(s), masked: Zq**********) (this looks semicolon-separated: save as CSV, comma delimited)
   [exit 1]
+$ python3 -I scripts/hours_report.py <tmp>/h.csv
+  h.csv: 1 problem(s); nothing is reported until they are fixed
+    line 2: shot_or_chapter 'Zq**********' must be an ID with capital letters and a digit, such as C01 or LJ-C01-S002, or '-' until shots exist; a name is not an ID
+  [exit 1]
+$ python3 -I scripts/hours_report.py <tmp>/h.csv
+  h.csv: 1 problem(s); nothing is reported until they are fixed
+    line 2: shot_or_chapter 'Zq**********' must be an ID with capital letters and a digit, such as C01 or LJ-C01-S002, or '-' until shots exist; a name is not an ID
+  [exit 1]
 $ python3 -I scripts/hours_report.py <tmp>/h.csv --json
   h.csv: 2 problem(s); nothing is reported until they are fixed
     line 2: date 'Zq**********' must look like 2026-10-19 (year-month-day; a spreadsheet may have changed it: format the column as Text)
     line 2: minutes 'Zq**********' must be a whole number from 1 to 1440 (no 'h', no decimals)
   [exit 1]
+$ python3 -I scripts/hours_report.py <tmp>/h.csv --week-start 2026-10-19
+  hours_report: h.csv, 1 row(s)
+  Window 2026-10-19 (Mon) to 2026-10-25
+    total: 0.5 h (30 minutes) over 1 day(s) with rows
+      learn               0.5 h
+    reading: under about 8 hours: the 6-minute F-0 would become the plan on Sun 1 Nov and 9 minutes the stretch (W-02)
+    indicative only: this is one logged window; the maker's reliable-hours number in writing (O-01, due Sun 25 Oct, Sun 15 Nov at the latest) decides
+  [exit 0]
+$ python3 -I scripts/hours_report.py <tmp>/h.csv --week-start 2026-10-19
+  hours_report: h.csv, 1 row(s)
+  Window 2026-10-19 (Mon) to 2026-10-25
+    total: 0.5 h (30 minutes) over 1 day(s) with rows
+      learn               0.5 h
+    reading: under about 8 hours: the 6-minute F-0 would become the plan on Sun 1 Nov and 9 minutes the stretch (W-02)
+    indicative only: this is one logged window; the maker's reliable-hours number in writing (O-01, due Sun 25 Oct, Sun 15 Nov at the latest) decides
+  [exit 0]
+$ python3 -I scripts/hours_report.py <tmp>/h.csv --week-start 2026-10-19
+  hours_report: h.csv, 1 row(s)
+  Window 2026-10-19 (Mon) to 2026-10-25
+    total: 0.5 h (30 minutes) over 1 day(s) with rows
+      learn               0.5 h
+    reading: under about 8 hours: the 6-minute F-0 would become the plan on Sun 1 Nov and 9 minutes the stretch (W-02)
+    indicative only: this is one logged window; the maker's reliable-hours number in writing (O-01, due Sun 25 Oct, Sun 15 Nov at the latest) decides
+  [exit 0]
+$ python3 -I scripts/hours_report.py <tmp>/h.csv --week-start 2026-10-19
+  hours_report: h.csv, 1 row(s)
+  Window 2026-10-19 (Mon) to 2026-10-25
+    total: 0.5 h (30 minutes) over 1 day(s) with rows
+      learn               0.5 h
+    reading: under about 8 hours: the 6-minute F-0 would become the plan on Sun 1 Nov and 9 minutes the stretch (W-02)
+    indicative only: this is one logged window; the maker's reliable-hours number in writing (O-01, due Sun 25 Oct, Sun 15 Nov at the latest) decides
+  [exit 0]
+$ python3 -I scripts/hours_report.py <tmp>/h.csv --week-start 2026-10-19
+  hours_report: h.csv, 1 row(s)
+  Window 2026-10-19 (Mon) to 2026-10-25
+    total: 0.5 h (30 minutes) over 1 day(s) with rows
+      learn               0.5 h
+    reading: under about 8 hours: the 6-minute F-0 would become the plan on Sun 1 Nov and 9 minutes the stretch (W-02)
+    indicative only: this is one logged window; the maker's reliable-hours number in writing (O-01, due Sun 25 Oct, Sun 15 Nov at the latest) decides
+  [exit 0]
 ==============================================================================
 PASS  hours_usage
 missing file and bad --week-start exit 2
@@ -683,14 +778,13 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
   [exit 1]
 ==============================================================================
 PASS  lint_neg_card
-negative: card without Phone / with an invented ID / without the Language line / signed with <date>
+negative: card without Phone (W-63, FontSize=28) / Script stack / Fonts / Burn-in rows / TD-3 MarginV / an invented ID / without the Language line / signed with <date>
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo1
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
-    FAIL ops/SETTINGS-CARD.md [card_content] the card does not contain 'Phone'
     FAIL ops/SETTINGS-CARD.md [card_row] no table row starting with 'Phone'
-  ops_lint: FAIL (2 failure(s), 0 warning(s))
+  ops_lint: FAIL (1 failure(s), 0 warning(s))
   [exit 1]
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo2
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
@@ -703,23 +797,65 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
-    FAIL ops/SETTINGS-CARD.md:3 [cited_id] W-99 is cited but is not in DECISIONS.md
+    FAIL ops/SETTINGS-CARD.md:15 [card_row] 'Phone' must cite W-63 in its Register column
   ops_lint: FAIL (1 failure(s), 0 warning(s))
   [exit 1]
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo4
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
-    FAIL ops/SETTINGS-CARD.md [card_language] the 'Caption and font test ran in:' line is missing
+    note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+    FAIL ops/SETTINGS-CARD.md:15 [card_value] 'Phone' row lacks the value 'FontSize=28'
   ops_lint: FAIL (1 failure(s), 0 warning(s))
   [exit 1]
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo5
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
-    FAIL ops/SETTINGS-CARD.md [card_language] the language line must say which scripts are NOT TESTED
+    FAIL ops/SETTINGS-CARD.md:11 [card_value] 'TD-3' row lacks the value '`MarginV` 20'
   ops_lint: FAIL (1 failure(s), 0 warning(s))
   [exit 1]
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo6
+  ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+    note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+    note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+    FAIL ops/SETTINGS-CARD.md [card_row] no table row starting with 'Script stack'
+  ops_lint: FAIL (1 failure(s), 0 warning(s))
+  [exit 1]
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo7
+  ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+    note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+    note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+    FAIL ops/SETTINGS-CARD.md [card_row] no table row starting with 'Fonts'
+  ops_lint: FAIL (1 failure(s), 0 warning(s))
+  [exit 1]
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo8
+  ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+    note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+    note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+    FAIL ops/SETTINGS-CARD.md [card_row] no table row starting with 'Burn-in path'
+  ops_lint: FAIL (1 failure(s), 0 warning(s))
+  [exit 1]
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo9
+  ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+    note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+    note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+    FAIL ops/SETTINGS-CARD.md:3 [cited_id] W-99 is cited but is not in DECISIONS.md
+  ops_lint: FAIL (1 failure(s), 0 warning(s))
+  [exit 1]
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo10
+  ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+    note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+    FAIL ops/SETTINGS-CARD.md [card_language] the 'Caption and font test ran in:' line is missing
+  ops_lint: FAIL (1 failure(s), 0 warning(s))
+  [exit 1]
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo11
+  ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+    note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+    note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+    FAIL ops/SETTINGS-CARD.md [card_language] the language line must say which scripts are NOT TESTED
+  ops_lint: FAIL (1 failure(s), 0 warning(s))
+  [exit 1]
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo12
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
@@ -727,7 +863,7 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
     FAIL ops/SETTINGS-CARD.md [card_signature] signed: yes but 'date signed:' has no date
   ops_lint: FAIL (2 failure(s), 0 warning(s))
   [exit 1]
-$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo7
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo13
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
@@ -735,18 +871,46 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
     FAIL ops/SETTINGS-CARD.md [card_row] no table row starting with 'TD-4'
   ops_lint: FAIL (2 failure(s), 0 warning(s))
   [exit 1]
-$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo8
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo14
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
     FAIL ops/SETTINGS-CARD.md:9 [card_value] 'TD-1' row lacks the value '1920x1080'
   ops_lint: FAIL (1 failure(s), 0 warning(s))
   [exit 1]
-$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo9
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo15
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
     FAIL ops/SETTINGS-CARD.md [card_content] the card must mark Windows behaviour UNVERIFIED (W-28)
+  ops_lint: FAIL (1 failure(s), 0 warning(s))
+  [exit 1]
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo16
+  ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+    note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+    note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+    FAIL ops/SETTINGS-CARD.md:16 [card_value] 'Script stack' row lacks the value 'Gujarati'
+  ops_lint: FAIL (1 failure(s), 0 warning(s))
+  [exit 1]
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo17
+  ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+    note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+    note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+    FAIL ops/SETTINGS-CARD.md:17 [card_value] 'Fonts' row lacks the value 'OFL.txt'
+  ops_lint: FAIL (1 failure(s), 0 warning(s))
+  [exit 1]
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo18
+  ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+    note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+    note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+    FAIL ops/SETTINGS-CARD.md:18 [card_value] 'Burn-in path' row lacks the value '`subtitles`'
+  ops_lint: FAIL (1 failure(s), 0 warning(s))
+  [exit 1]
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo19
+  ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+    note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+    note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+    FAIL ops/SETTINGS-CARD.md:18 [card_value] 'Burn-in path' row lacks the value '`ass`'
   ops_lint: FAIL (1 failure(s), 0 warning(s))
   [exit 1]
 ==============================================================================
@@ -777,7 +941,7 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
   [exit 1]
 ==============================================================================
 PASS  lint_neg_gather
-negative: GATHER without the gate / a stand-in ID / with a stand-in in Part B / a real-box ID in Part A
+negative: GATHER without the gate / a stand-in ID / with a stand-in in Part B / a real-box ID in Part A / without SND-01
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo1
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
@@ -803,7 +967,7 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
-    FAIL ops/GATHER.md:54 [gather_ids] stand-in ID LJ-ST-0009-F appears in Part B (stand-ins are Part A only)
+    FAIL ops/GATHER.md:56 [gather_ids] stand-in ID LJ-ST-0009-F appears in Part B (stand-ins are Part A only)
   ops_lint: FAIL (1 failure(s), 0 warning(s))
   [exit 1]
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo5
@@ -811,7 +975,7 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
     FAIL ops/GATHER.md [gather_ids] required ID LJ-ST-0005-F is missing
-    FAIL ops/GATHER.md:40 [gather_ids] real-box scan ID LJ-B03-0005-F appears before P-LOCK (Part A allows box ST only)
+    FAIL ops/GATHER.md:42 [gather_ids] real-box scan ID LJ-B03-0005-F appears before P-LOCK (Part A allows box ST only)
   ops_lint: FAIL (2 failure(s), 0 warning(s))
   [exit 1]
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo6
@@ -819,6 +983,13 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
     FAIL ops/GATHER.md:17 [cited_id] O-96 is cited but is not in DECISIONS.md
+  ops_lint: FAIL (1 failure(s), 0 warning(s))
+  [exit 1]
+$ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo7
+  ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+    note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+    note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+    FAIL ops/GATHER.md [gather_ids] required ID SND-01 is missing
   ops_lint: FAIL (1 failure(s), 0 warning(s))
   [exit 1]
 ==============================================================================
@@ -1018,7 +1189,7 @@ $ python3 -I scripts/hours_report.py ops/hours.csv
     no rows yet: log your real hours (see HOURS-HOWTO.md); the first logged week is read on Sun 1 Nov
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check ops/decisions.csv
-  OK: decisions.csv matches the register: 248 rows (D 31, W 79, O 73, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 73, T4 65)
+  OK: decisions.csv matches the register: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
   [exit 0]
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv

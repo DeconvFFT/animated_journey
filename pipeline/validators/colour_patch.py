@@ -6,7 +6,11 @@ So this tool looks at PIXELS. It builds one 1920x1080 frame of three flat vertic
 grey (128,128,128) and a skin tone (224,172,140), encodes 2 frames of it through each named chain (the chain's own video
 arguments from pipeline/lib/chains.json), decodes the file back to RGB with
     scale=in_color_matrix=bt709:in_range=tv:out_range=pc,format=rgb24
-and reports, per patch, the difference to the source out of 255. A chain PASSES when its worst per-channel error is 3 or
+and reports, per patch, the difference to the source out of 255.
+THE MEASUREMENT IS MADE AT THE CHAIN'S OUTPUT SIZE: the colour conversion above runs on the decoded picture at whatever size the
+chain produced (a 1280x720 phone copy is converted at 1280x720), and only then is the RGB picture stretched back to 1920x1080 by
+nearest-neighbour (scale=1920:1080:flags=neighbor, which copies pixels and changes no value) so the same patch boxes can be read.
+A chain whose output is 1920x1080 is read exactly as before (that last step does nothing). A chain PASSES when its worst per-channel error is 3 or
 less (W-16, tolerance +-3/255). Run it once for every command-line template and again on every ffmpeg build: the container's
 6.1.1 and the winget 9.0.2 build gave different pixels under identical tags.
 
@@ -42,9 +46,13 @@ The binary's path is never recorded in either form; console output shows the fil
 WHAT IT TOUCHES. It runs the ffmpeg you name (and ffprobe if found), writes only inside a new temporary folder (deleted at the
 end) and the one file named by --json / --out. It never reads personal media, never uses the network, never changes settings.
 
+RESULT LINES. "RESULT chains: N of M within 3/255; ABOVE TOLERANCE: ..." names chains that were measured and are too far off. A chain
+that could not be encoded or decoded at all has its OWN line, "RESULT chains: could not be measured (encode/decode error): ...", with
+the reason in the chain's ERROR line above: that is a tool or chain-definition problem, not a colour problem. Both end in exit 1.
+
 EXIT CODES (build plan 4.3)  0 every real chain passed (controls are information) and the tool's own controls behaved
-  1 a chain is above the tolerance, could not be encoded, is marked approved:true in the chain file while measuring above the
-  tolerance, or a tool control misbehaved   2 bad usage or invalid input
+  1 a chain is above the tolerance, could not be measured (encode or decode error), is marked approved:true in the chain file while
+  measuring above the tolerance, or a tool control misbehaved   2 bad usage or invalid input
   3 environment problem (ffmpeg not found / not runnable)
 
 UNVERIFIED on Windows and on ffmpeg 9.0.2 until the maker runs it (WP-09's runner). Verified on ffmpeg 6.1.1 (Linux) only.
@@ -71,6 +79,9 @@ PATCHES = [("red", (255, 0, 0), 255), ("grey50", (128, 128, 128), 200), ("skin",
 BOX = 100          # half-size of the square read at the centre of each patch (a 200 x 200 block)
 DECODE_VF = "scale=in_color_matrix=bt709:in_range=tv:out_range=pc,format=rgb24"
 DECODE_VF_ACCURATE = "scale=in_color_matrix=bt709:in_range=tv:out_range=pc:flags=accurate_rnd+full_chroma_int,format=rgb24"
+# After the colour conversion (done at the chain's own output size) the RGB picture is stretched to the 1920x1080 patch grid by
+# nearest-neighbour, which copies pixels: flat patches keep their exact values, and a 1920x1080 chain is passed through unchanged.
+READBACK_VF = "scale=%d:%d:flags=neighbor" % (W, H)
 SETPARAMS = "setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:range=tv"
 TAGS = ["-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-color_range", "tv"]
 EXT = {"mp4": ".mp4", "mov": ".mov", "mkv": ".mkv", "matroska": ".mkv"}
@@ -181,6 +192,7 @@ def run(cmd, data=None, timeout=300):
 def first_lines(b, n=3, work=None):
     s = b.decode("utf-8", "replace").strip().splitlines()[:n]
     out = " | ".join(x.strip() for x in s)
+    out = re.sub(r"@ 0x[0-9a-fA-F]+", "", out)        # ffmpeg heap addresses: not identifying, but they make the record differ run to run
     if work:
         out = out.replace(work, "<tmp>")
     return out[:300]
@@ -283,7 +295,7 @@ def probe_stream(ffprobe, path):
     if not ffprobe:
         return None
     rc, out, err = run([ffprobe, "-v", "error", "-select_streams", "v:0", "-show_entries",
-                        "stream=codec_name,profile,pix_fmt,color_range,color_space,color_primaries,color_transfer",
+                        "stream=codec_name,profile,pix_fmt,width,height,color_range,color_space,color_primaries,color_transfer",
                         "-of", "json", path], timeout=60)
     if rc != 0:
         return None
@@ -317,7 +329,9 @@ def compare_expect(observed, expect, extra=None):
 
 
 def decode_first_frame(ffmpeg, path, vf, pix_fmt, channels):
-    rc, out, err = run([ffmpeg, "-hide_banner", "-nostdin", "-v", "error", "-i", path, "-vf", vf, "-frames:v", "1",
+    """First frame as raw RGB(A) on the 1920x1080 patch grid. The colour conversion in `vf` runs at the file's own size; READBACK_VF then
+    stretches the result to 1920x1080 by nearest-neighbour, so a chain with a different output size (the 1280x720 phone copy) is measured too."""
+    rc, out, err = run([ffmpeg, "-hide_banner", "-nostdin", "-v", "error", "-i", path, "-vf", vf + "," + READBACK_VF, "-frames:v", "1",
                         "-f", "rawvideo", "-pix_fmt", pix_fmt, "pipe:1"], timeout=120)
     if rc != 0 or len(out) != W * H * channels:
         return None, first_lines(err) or "decode gave %d bytes" % len(out)
@@ -330,7 +344,7 @@ def measure(ffmpeg, ffprobe, chain, workdir, tolerance, keep_dir=None, kind="cha
     alpha = chain_is_alpha(chain)
     res = {"name": name, "kind": kind, "container": chain.get("container", "mp4"), "alpha": alpha,
            "encode_ok": False, "error": None, "patches": [], "worst_error": None, "pass": False,
-           "worst_error_accurate": None, "max_pixel_error": None, "tags": None, "tags_match_expect": None,
+           "worst_error_accurate": None, "max_pixel_error": None, "output_size": None, "tags": None, "tags_match_expect": None,
            "tag_mismatches": [], "alpha_error": None, "approved_in_file": chain.get("approved") if isinstance(chain.get("approved"), bool) else None}
     ext = EXT.get(res["container"], "." + str(res["container"]))
     out = os.path.join(workdir, "p_%s%s" % (re.sub(r"[^A-Za-z0-9_.-]", "_", name), ext))
@@ -377,6 +391,8 @@ def measure(ffmpeg, ffprobe, chain, workdir, tolerance, keep_dir=None, kind="cha
             res["alpha_error"] = ea
     obs = probe_stream(ffprobe, out)
     if obs is not None:
+        if obs.get("width") and obs.get("height"):
+            res["output_size"] = "%sx%s" % (obs["width"], obs["height"])
         res["tags"] = {k: obs.get(k) for k in ("codec_name", "profile", "pix_fmt", "color_range", "color_space", "color_primaries", "color_transfer")}
         res["tags_match_expect"], res["tag_mismatches"] = compare_expect(obs, chain.get("expect"), chain.get("expect_extra"))
     if keep_dir:
@@ -408,6 +424,26 @@ def judge_control(c, r):
     else:
         r["control_ok"] = True
     r["notes"] = c.get("notes", "")
+
+
+def split_results(results):
+    """(names measured and above the tolerance, names that could not be measured at all). A chain with no worst_error hit an encode or
+    decode error: that is a tool or chain-definition problem and is reported on its own line, never as a colour result."""
+    unmeasured = [r["name"] for r in results if r["worst_error"] is None]
+    above = [r["name"] for r in results if r["worst_error"] is not None and not r["pass"]]
+    return above, unmeasured
+
+
+def chain_result_lines(results, tolerance):
+    """The RESULT lines for the chains (empty list when there are none)."""
+    if not results:
+        return []
+    above, unmeasured = split_results(results)
+    lines = ["RESULT chains: %d of %d within %d/255%s" % (len(results) - len(above) - len(unmeasured), len(results), tolerance,
+                                                         ("; ABOVE TOLERANCE: " + ", ".join(above)) if above else "")]
+    if unmeasured:
+        lines.append("RESULT chains: could not be measured (encode/decode error; the reason is on the ERROR line, so run without --quiet): " + ", ".join(unmeasured))
+    return lines
 
 
 # ----------------------------------------------------------------------------------------------- chain files
@@ -495,7 +531,7 @@ def run_test(args):
     finally:
         shutil.rmtree(work, ignore_errors=True)
 
-    chains_fail = [r["name"] for r in results if not r["pass"]]
+    chains_fail, chains_error = split_results(results)
     # a chain that is marked approved:true must measure within tolerance on this build: an approval above 3/255 is a lie (W-16)
     approval_violations = [r["name"] for r in results if r.get("approved_in_file") is True and not r["pass"]]
     bad_controls = [r["name"] for r in ctrl_results if r.get("control_ok") is False or (r["error"] and CONTROL_BY_NAME[r["name"]].get("expect_result"))]
@@ -507,14 +543,14 @@ def run_test(args):
            "patches": [{"name": n, "rgb": list(rgb)} for n, rgb, _a in PATCHES],
            "decode": DECODE_VF, "chain_file": chain_file_used,
            "chains": results, "controls": ctrl_results,
-           "summary": {"chains": len(results), "chains_failed": chains_fail, "approval_violations": approval_violations, "controls_misbehaved": bad_controls,
+           "read_back": READBACK_VF,
+           "summary": {"chains": len(results), "chains_failed": chains_fail, "chains_error": chains_error, "approval_violations": approval_violations, "controls_misbehaved": bad_controls,
                        "traps_present": [r["name"] for r in ctrl_results if r.get("trap_present")]}}
     say("")
-    if results:
-        say("RESULT chains: %d of %d within %d/255%s" % (len(results) - len(chains_fail), len(results), args.tolerance,
-                                                        ("; ABOVE TOLERANCE: " + ", ".join(chains_fail)) if chains_fail else ""))
+    for line in chain_result_lines(results, args.tolerance):
+        say(line)
     if approval_violations:
-        say("RESULT approvals: NOT ALLOWED, marked approved:true in the chain file but above %d/255 (or not encodable) on this build: %s" % (args.tolerance, ", ".join(approval_violations)))
+        say("RESULT approvals: NOT ALLOWED, marked approved:true in the chain file but above %d/255 (or not measurable) on this build: %s" % (args.tolerance, ", ".join(approval_violations)))
     if ctrl_results:
         trap = raw["summary"]["traps_present"]
         say("RESULT controls: %s" % (("TRAP PRESENT on this build for: " + ", ".join(trap)) if trap else "no build-dependent trap shown on this build"))
@@ -523,7 +559,7 @@ def run_test(args):
     if args.json:
         write_json(args.json, raw)
         say("colour_patch: wrote the RAW record %s. It holds build flags: the maker pastes it in chat only; never file it." % os.path.basename(args.json))
-    return raw, (1 if (chains_fail or bad_controls or approval_violations) else 0)
+    return raw, (1 if (chains_fail or chains_error or bad_controls or approval_violations) else 0)
 
 
 CONTROL_BY_NAME = {c["name"]: c for c in CONTROLS}
@@ -546,6 +582,8 @@ def show(r, quiet=False):
     if r["tags_match_expect"] is False:
         tm = "  tags differ from chain expect: " + "; ".join(r["tag_mismatches"])
     al = "" if r["alpha_error"] is None else "  alpha-error %d" % r["alpha_error"]
+    if r.get("output_size") and r["output_size"] != "%dx%d" % (W, H):
+        al += "  measured at %s" % r["output_size"]
     per = "  ".join("%s %s" % (p["name"], "/".join("%+d" % e for e in p["error"])) for p in r["patches"])
     say("  %-30s %s  worst %d/255%s%s%s%s%s   [%s]" % (r["name"], tag, r["worst_error"], acc, al, extra, tm, "", per))
 
@@ -665,6 +703,26 @@ def selftest(args):
         bad = measure(ffmpeg, None, CONTROL_BY_NAME["control_wrong_matrix_bt601"], work, TOLERANCE, None, "control")
         check("mechanism.wrong_matrix_is_caught", bad["worst_error"] is not None and not bad["pass"] and bad["worst_error"] > 10,
               "worst %s/255 (want above 10)" % bad["worst_error"] if bad["worst_error"] is not None else bad["error"])
+        # a chain whose output is not 1920x1080 (the 1280x720 phone copy) is read back at its own size, not rejected
+        small = dict(CONTROL_BY_NAME["control_lossless_709"], name="selftest_720_lossless",
+                     vf=CONTROL_BY_NAME["control_lossless_709"]["vf"].replace("scale=out_color_matrix", "scale=1280:720:out_color_matrix", 1))
+        small_bad = dict(CONTROL_BY_NAME["control_wrong_matrix_bt601"], name="selftest_720_wrong_matrix",
+                         vf=CONTROL_BY_NAME["control_wrong_matrix_bt601"]["vf"].replace("scale=out_color_matrix", "scale=1280:720:out_color_matrix", 1))
+        probe = ffprobe_for(args.ffmpeg, getattr(args, "ffprobe", None))
+        g720 = measure(ffmpeg, probe, small, work, TOLERANCE, None, "chain")
+        b720 = measure(ffmpeg, probe, small_bad, work, TOLERANCE, None, "chain")
+        size_ok = probe is None or g720["output_size"] == "1280x720"
+        check("mechanism.720p_chain_is_measured", g720["worst_error"] is not None and g720["pass"] and g720["worst_error"] <= 1 and size_ok,
+              ("worst %s/255 at %s (want 1 or less at 1280x720)" % (g720["worst_error"], g720["output_size"] or "size not probed")) if g720["worst_error"] is not None else g720["error"])
+        check("mechanism.720p_wrong_matrix_is_caught", b720["worst_error"] is not None and not b720["pass"] and b720["worst_error"] > 10,
+              ("worst %s/255 (want above 10)" % b720["worst_error"]) if b720["worst_error"] is not None else b720["error"])
+        # a chain that cannot be encoded is reported as "could not be measured", never as "above tolerance"
+        broken = measure(ffmpeg, None, {"name": "selftest_no_such_encoder", "container": "mp4", "vf": "", "video_args": ["-c:v", "no_such_encoder_xyz"]},
+                         work, TOLERANCE, None, "chain")
+        lines = chain_result_lines([good, broken], TOLERANCE)
+        check("mechanism.unmeasurable_chain_is_separate", broken["worst_error"] is None and split_results([good, broken]) == ([], ["selftest_no_such_encoder"])
+              and any("could not be measured" in l for l in lines) and not any("ABOVE TOLERANCE" in l for l in lines),
+              "an encode error gives its own RESULT line and no ABOVE TOLERANCE")
         check("mechanism.tolerance_edge", is_pass(3, 3) and not is_pass(4, 3) and is_pass(0, 3) and not is_pass(None, 3),
               "3 passes, 4 fails, tolerance 3")
         # derive round trip with a synthetic raw record (no ffmpeg involved)

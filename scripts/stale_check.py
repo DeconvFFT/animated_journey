@@ -668,6 +668,13 @@ def self_test(doc, pats, infos, rows, adoc, entries, register=None, register_lab
 
 # ----------------------------------------------------------------------------- main
 def main(argv=None):
+    # A stale excerpt can hold a character the console code page lacks (an arrow, a dash): a Windows PowerShell capture or pipe gives
+    # Python cp1252 before 3.15. Replace what cannot be encoded, so the verdict is printed instead of a UnicodeEncodeError (review r4).
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(errors="replace")
+        except (AttributeError, ValueError):
+            pass
     ap = argparse.ArgumentParser(prog="stale_check.py", allow_abbrev=False, description="W-29 stale-copy check (read-only).")
     ap.add_argument("--root", default=str(ROOT_DEFAULT))
     ap.add_argument("--patterns", default=str(PATTERNS_DEFAULT))

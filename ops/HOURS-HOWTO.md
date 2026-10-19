@@ -9,7 +9,7 @@ This is one of the three files you type into (the other two are the inventory sh
 | Column | Write | Example |
 |---|---|---|
 | `date` | year-month-day | `2026-10-19` |
-| `shot_or_chapter` | `-` until shots exist, later `C01` or `LJ-C01-S014` | `-` |
+| `shot_or_chapter` | `-` until shots exist, later `C01` or `LJ-C01-S014` (capital letters and a digit; a name is refused) | `-` |
 | `activity` | one word from the list below, exactly as written | `learn` |
 | `minutes` | a whole number, no "h" | `90` |
 | `who` | `maker` or `agent` (only `maker` rows count towards your hours) | `maker` |

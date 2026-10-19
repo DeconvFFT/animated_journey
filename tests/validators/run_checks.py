@@ -4,8 +4,10 @@
   python3 -I tests/validators/run_checks.py --mode quick|all [--work renders/wp05] [--evidence build/evidence/wp05]
 
 One line per test:  PASS|FAIL|UNVERIFIED|SKIPPED|BLOCKED  name  detail
-and one evidence envelope per test (build plan 4.2) appended to <evidence>/tests.jsonl. Exit 0 if no line is FAIL or BLOCKED,
-1 if a line FAILs, 3 if a line is BLOCKED. UNVERIFIED (Windows-only behaviour) and SKIPPED are listed and never counted as a pass.
+and one evidence envelope per test (build plan 4.2) written to <evidence>/tests_<mode>.jsonl (tests_quick.jsonl or tests_all.jsonl, so a later
+--quick run can never overwrite the --all envelopes). --work must be a folder inside the repository that holds no tracked file: it is deleted
+at the end, and the lint tests read their planted files from it (exit 2 otherwise). Exit 0 if no line is FAIL or BLOCKED,
+1 if a line FAILs, 3 if a line is BLOCKED, 2 for a bad --work folder. UNVERIFIED (Windows-only behaviour) and SKIPPED are listed and never counted as a pass.
 
 Everything is generated at test time from synthetic content (three flat colour patches, a sine tone, a generated grey chart) under
 the --work folder (git-ignored renders/wp05) and removed again. No family media exists here and none is created or simulated.
@@ -146,6 +148,32 @@ def ev(*p):
 
 def rel(path):
     return os.path.relpath(path, ROOT)
+
+
+def work_folder_problem(path):
+    """Why `path` cannot be the work folder, or None. It is deleted at the end of a run, and the lint tests hand its files to public_lint.py, which
+    only scans paths under the repository root (a file outside the root is scanned as nothing, or refused, so the 'plant is detectable' half of
+    t_derive could never see its plant). So: strictly inside the repository, and holding no tracked file."""
+    root, w = os.path.realpath(ROOT), os.path.realpath(path)
+    try:
+        inside = os.path.commonpath([root, w]) == root and w != root
+    except ValueError:                                   # another drive
+        inside = False
+    if not inside:
+        return "must be a folder inside the repository (it is deleted at the end, and the lint tests only see files under the repository root); got a folder outside it or the root itself"
+    try:
+        p = subprocess.run(["git", "ls-files", "--", os.path.relpath(w, root)], cwd=root, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, timeout=60)
+        if p.returncode == 0 and p.stdout.strip():
+            return "holds tracked files, and a run deletes the work folder; use a git-ignored folder such as renders/wp05"
+    except (OSError, subprocess.TimeoutExpired):
+        pass
+    return None
+
+
+def lint_scanned(out):
+    """The N in public_lint.py's 'N file(s) scanned', or None when the line is missing."""
+    m = re.search(r"\b(\d+) file\(s\) scanned", out)
+    return int(m.group(1)) if m else None
 
 
 def gen(set_name, only=None):
@@ -416,6 +444,11 @@ def t_derive():
         rc3, o3, e3 = sh(PY + [os.path.join("scripts", "public_lint.py"), "--paths", rel(rp)])
         if rc3 != 2:
             probs.append("public_lint.py did NOT flag the planted raw file (exit %d): the plant would prove nothing" % rc3)
+        # "clean" and "found it" both mean nothing if the lint scanned nothing (a path outside the repository root once scanned 0 files and exited 0)
+        for what, o in (("derived", o2), ("planted raw", o3)):
+            n = lint_scanned(o)
+            if n != 1:
+                probs.append("public_lint.py scanned %s file(s) for the %s record, not 1: the check proves nothing" % (n, what))
         if not probs:
             probs = [schema_msg + "; public_lint clean on derived (exit 0), flags the planted raw (exit 2)"]
             check("colour_patch.derive_drops_planted_flags", True, "derived file has no planted path or name, validates, passes public_lint.py", probs[0])
@@ -442,10 +475,18 @@ def t_derive_bad():
 
 
 # ----------------------------------------------------------------------------------------------- the colour-patch run on this build
+def raw_record_path():
+    """Where the RAW colour-patch record of this run is kept: the scratch folder beside the repository, never the evidence folder. It holds
+    the ffmpeg build's configure flags, so only the derived form (colour_patch.py --derive-from) is filed."""
+    d = os.path.join(SCRATCH, "wp05")
+    os.makedirs(d, exist_ok=True)
+    return os.path.join(d, "colour_patch_ffmpeg-%s.raw.json" % ARGS.ffv)
+
+
 @test("colour_patch.all_chains_ffmpeg_6.1.1", modes=("all",))
 def t_cp_all():
-    out_json = ev("colour_patch_ffmpeg-%s.json" % ARGS.ffv)
-    cmd = PY + [os.path.join(VAL, "colour_patch.py"), "--ffmpeg", "ffmpeg", "--chain-file", os.path.join("pipeline", "lib", "chains.json"), "--all", "--json", rel(out_json)]
+    out_json = raw_record_path()
+    cmd = PY + [os.path.join(VAL, "colour_patch.py"), "--ffmpeg", "ffmpeg", "--chain-file", os.path.join("pipeline", "lib", "chains.json"), "--all", "--json", out_json]
     rc, out, err = sh(cmd)
     ok = rc == 0 and os.path.isfile(out_json)
     if ok:
@@ -569,23 +610,25 @@ def t_approval_refused():
 
 @test("colour_patch.derived_form_filed", modes=("all",))
 def t_derived_filed():
-    raw = ev("colour_patch_ffmpeg-%s.json" % ARGS.ffv)
+    raw = raw_record_path()
     outp = ev("colour_patch_ffmpeg-%s.derived.json" % ARGS.ffv)
     if not os.path.isfile(raw):
         record("colour_patch.derived_form_filed", "SKIPPED", "", "no raw record")
         return
-    rc, o, e = sh(PY + [os.path.join(VAL, "colour_patch.py"), "--derive-from", rel(raw), "--out", rel(outp)])
+    rc, o, e = sh(PY + [os.path.join(VAL, "colour_patch.py"), "--derive-from", raw, "--out", rel(outp)])
     d = read_json(outp) if rc == 0 else {}
     text = open(outp, encoding="utf-8").read() if rc == 0 else ""
     flags = read_json(raw)["ffmpeg"]["configure"]
     leak = [f for f in flags if f and f in text]
     ok = rc == 0 and not leak and d.get("ffmpeg", {}).get("version") == ARGS.ffv and len(d.get("chains", [])) == 6
-    check("colour_patch.derived_form_filed", ok, "the filed form (lj-pc-chains/1) holds version, sha256, six chain results and no build flags",
-          "exit %d; version %s; %d chains, %d controls; build flags leaked: %d" % (rc, d.get("ffmpeg", {}).get("version"), len(d.get("chains", [])), len(d.get("controls", [])), len(leak)))
+    stray = os.path.isfile(ev("colour_patch_ffmpeg-%s.json" % ARGS.ffv))
+    check("colour_patch.derived_form_filed", ok and not stray, "the filed form (lj-pc-chains/1) holds version, sha256, six chain results and no build flags; the raw record is not in the evidence folder",
+          "exit %d; version %s; %d chains, %d controls; build flags leaked: %d; raw record kept in <scratch>, not filed%s" %
+          (rc, d.get("ffmpeg", {}).get("version"), len(d.get("chains", [])), len(d.get("controls", [])), len(leak), ": a raw record IS in the evidence folder" if stray else ""))
 
 
 # ----------------------------------------------------------------------------------------------- spec_check on fixtures
-QUICK_GOOD = ["g_venue_m18.mp4", "g_master_hq.mov"]
+QUICK_GOOD = ["g_venue_m18.mp4", "g_master_hq.mov", "g_ffv1_lossless.mkv"]
 QUICK_DEFECT = ["d_25fps.mp4", "d_title_tag.mp4", "d_truncated.mp4", "d_44k1_audio.mp4"]
 
 
@@ -671,16 +714,73 @@ def t_oracle_bare_cross():
           "spec_check exit %d; red luma %s (good file %s, BT.709 expects 63); colour_patch worst %s/255" % (rc, y, good_y, cp["worst_error"]))
 
 
+def cp_json(chain_file, names, json_path):
+    """Run colour_patch.py on named chains of a chain file; returns (exit, stdout, {name: result row})."""
+    cmd = PY + [os.path.join(VAL, "colour_patch.py"), "--chain-file", chain_file]
+    for n in names:
+        cmd += ["--chain", n]
+    cmd += ["--json", json_path]
+    rc, out, err = sh(cmd)
+    rows = {r["name"]: r for r in read_json(json_path)["chains"]} if os.path.isfile(json_path) else {}
+    return rc, out, rows
+
+
 @test("colour_patch.accepts_a_phone_style_chain_file", modes=("all",))
 def t_phone_chain():
+    """WP-08's acceptance line shape, for BOTH phone shapes: 1920x1080 (PH1) and a chain with scale=1280:720 in its vf (PH2, W-63)."""
     pf = work("phone_profile.json")
     if not os.path.isfile(pf):
         record("colour_patch.accepts_a_phone_style_chain_file", "SKIPPED", "", "fixtures not generated")
         return
-    rc, out, err = sh(PY + [os.path.join(VAL, "colour_patch.py"), "--chain-file", rel(pf), "--chain", "phone_1080"])
-    m = re.search(r"phone_1080\s+(PASS|FAIL)\s+worst (\d+)/255", out)
-    check("colour_patch.accepts_a_phone_style_chain_file", rc == 0 and m is not None, "WP-08's acceptance line shape works: --chain-file profile.json --chain phone_1080, worst error 3 or less",
-          "exit %d; %s" % (rc, m.group(0) if m else out.strip()[-100:]))
+    rc, out, rows = cp_json(rel(pf), ["phone_1080", "phone_720_share"], work("phone_cp.json"))
+    a, b = rows.get("phone_1080"), rows.get("phone_720_share")
+    ok = (rc == 0 and a is not None and b is not None and a["worst_error"] is not None and b["worst_error"] is not None and a["pass"] and b["pass"]
+          and a["output_size"] == "1920x1080" and b["output_size"] == "1280x720" and "could not be measured" not in out)
+    check("colour_patch.accepts_a_phone_style_chain_file", ok,
+          "--chain-file profile.json --chain phone_1080 --chain phone_720_share: both measured, worst error 3 or less, the 720p chain read at 1280x720",
+          "exit %d; phone_1080 %s/255 at %s; phone_720_share %s/255 at %s" % (rc, a and a["worst_error"], a and a["output_size"], b and b["worst_error"], b and b["output_size"]))
+
+
+@test("colour_patch.measures_wp08_real_phone_chains", modes=("all",))
+def t_phone_real():
+    """pipeline/phone/profile.json is WP-08's real file. Both of its chains must be measurable here (the 1280x720 one used to ERROR with
+    'decode gave 2764800 bytes'). The number is information: approved:true on a chain waits for the maker's-PC build (ffmpeg 9.0.2)."""
+    real = os.path.join("pipeline", "phone", "profile.json")
+    if not os.path.isfile(os.path.join(ROOT, real)):
+        record("colour_patch.measures_wp08_real_phone_chains", "SKIPPED", "", "pipeline/phone/profile.json is not present")
+        return
+    rc, out, rows = cp_json(real, ["phone_1080", "phone_720_share"], work("phone_real_cp.json"))
+    a, b = rows.get("phone_1080"), rows.get("phone_720_share")
+    ok = (a is not None and b is not None and a["worst_error"] is not None and b["worst_error"] is not None and a["pass"]
+          and b["output_size"] == "1280x720" and "could not be measured" not in out)
+    STATE["phone_real"] = {n: {"worst_error": r["worst_error"], "pass": r["pass"], "output_size": r["output_size"]} for n, r in rows.items()}
+    check("colour_patch.measures_wp08_real_phone_chains", ok,
+          "WP-08's phone_1080 and phone_720_share (scale=1280:720) are both measured on this build; phone_1080 within 3/255",
+          "exit %d; phone_1080 %s/255; phone_720_share %s/255 at %s (ffmpeg %s)" % (rc, a and a["worst_error"], b and b["worst_error"], b and b["output_size"], ARGS.ffv))
+
+
+@test("colour_patch.unmeasurable_chain_has_its_own_result_line", modes=("quick", "all"))
+def t_unmeasurable():
+    """A chain that cannot be encoded is a tool or chain-definition problem, not a colour result: it is named on a 'could not be measured' line,
+    a chain that was measured and is too far off stays on the 'ABOVE TOLERANCE' line, and both exit 1."""
+    os.makedirs(ARGS.work, exist_ok=True)
+    plant = {"schema": "lj-chains/1", "chains": {
+        "bare_above_tolerance": {"container": "mp4", "alpha": False, "vf": "", "video_args": ["-c:v", "libx264", "-crf", "18", "-pix_fmt", "yuv420p", "-colorspace", "bt709",
+                                                                                          "-color_primaries", "bt709", "-color_trc", "bt709", "-color_range", "tv"], "notes": "planted"},
+        "no_such_encoder": {"container": "mp4", "alpha": False, "vf": "", "video_args": ["-c:v", "no_such_encoder_xyz"], "notes": "planted"},
+        "lossless_ok": {"container": "mkv", "alpha": False, "vf": "scale=out_color_matrix=bt709:out_range=tv,format=yuv444p10le,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:range=tv",
+                        "video_args": ["-c:v", "ffv1"], "notes": "planted"}}}
+    p = work("planted_unmeasurable.json")
+    json.dump(plant, open(p, "w"))
+    rc, out, err = sh(PY + [os.path.join(VAL, "colour_patch.py"), "--chain-file", rel(p), "--chain", "bare_above_tolerance", "--chain", "no_such_encoder", "--chain", "lossless_ok"])
+    above = [l for l in out.splitlines() if "ABOVE TOLERANCE" in l]
+    unm = [l for l in out.splitlines() if "could not be measured" in l]
+    ok = (rc == 1 and len(above) == 1 and "bare_above_tolerance" in above[0] and "no_such_encoder" not in above[0]
+          and len(unm) == 1 and "no_such_encoder" in unm[0] and "bare_above_tolerance" not in unm[0] and "encode/decode error" in unm[0]
+          and any("RESULT chains: 1 of 3 within" in l for l in out.splitlines()))
+    check("colour_patch.unmeasurable_chain_has_its_own_result_line", ok,
+          "exit 1; 'ABOVE TOLERANCE' names only the chain that measured too far off; 'could not be measured (encode/decode error)' names only the one that did not encode",
+          "exit %d; above-tolerance lines: %d, could-not-be-measured lines: %d" % (rc, len(above), len(unm)))
 
 
 @test("spec_check.verdict_json_and_no_path_leak", modes=("all",))
@@ -739,6 +839,43 @@ def t_phone():
     rc2, out2, err2 = spec(f, "venue_h264")      # the phone file is not a venue file: level 4.0 and -16 LUFS
     check("spec_check.phone_profile_via_profiles_file", rc == 0 and rc2 == 1 and "video.level" in out2, "--profiles-file adds WP-08's phone profile: the phone file passes it and fails the venue profile (level 4.0)",
           "phone exit %d; same file under venue_h264 exit %d" % (rc, rc2))
+
+
+@test("spec_check.integrity_detail_has_no_heap_address", modes=("all",))
+def t_integrity_clean():
+    """A file with damaged payload makes ffmpeg print lines such as '[NULL @ 0x55ce...]'. The filed verdict JSON must carry no heap address and
+    must be the same each time for the same file (review r1, nudge 5)."""
+    f = work("d_corrupt_mdat.mp4")
+    if not os.path.isfile(f):
+        record("spec_check.integrity_detail_has_no_heap_address", "SKIPPED", "", "defect fixtures not generated")
+        return
+    texts, checks = [], []
+    for i in range(3):
+        vj = work("verdict_corrupt_%d.json" % i)
+        rc, out, err = spec(f, "venue_h264", ["--no-loudness"], vj)
+        v = read_json(vj)
+        texts.append(json.dumps(v) + out + err)
+        checks.append(v["checks"])
+    addr = [t for t in texts if re.search(r"@ 0x[0-9a-fA-F]+|0x[0-9a-fA-F]{6,}", t)]
+    integ = [c for c in checks[0] if c["id"] == "integrity.decode"]
+    ok = rc == 1 and not addr and integ and integ[0]["status"] == "FAIL" and integ[0]["detail"] and checks[0] == checks[1] == checks[2]
+    check("spec_check.integrity_detail_has_no_heap_address", bool(ok), "integrity.decode FAILs on the damaged file, its detail carries no heap address, and three runs give identical check lists",
+          "exit %d; detail %d chars; runs with an address: %d; identical: %s" % (rc, len(integ[0]["detail"]) if integ else 0, len(addr), checks[0] == checks[1] == checks[2]))
+
+
+@test("driver.refuses_work_folder_outside_repo", modes=("quick", "all"))
+def t_work_guard():
+    """--work outside the repository (or the root, or a folder with tracked files) is refused at startup with exit 2, before anything is written or deleted."""
+    me = os.path.join(HERE, "run_checks.py")
+    outside = os.path.join(SCRATCH, "wp05-work-guard")
+    got = {}
+    for label, w in (("outside", outside), ("root", ROOT), ("tracked", os.path.join(ROOT, VAL))):
+        rc, out, err = sh(PY + [me, "--mode", "quick", "--work", w, "--evidence", work("guard_probe_evidence")])
+        got[label] = (rc, "--work" in err)
+    untouched = not os.path.exists(outside) and not os.path.exists(work("guard_probe_evidence")) and os.path.isfile(os.path.join(ROOT, VAL, "spec_check.py"))
+    check("driver.refuses_work_folder_outside_repo", all(v == (2, True) for v in got.values()) and untouched,
+          "--work outside the repository, equal to the repository root, or holding tracked files: exit 2 with a --work message; nothing created or deleted",
+          "; ".join("%s -> exit %d" % (k, v[0]) for k, v in got.items()) + "; untouched: %s" % untouched)
 
 
 # ----------------------------------------------------------------------------------------------- MO8 gate
@@ -874,7 +1011,11 @@ def main():
     ARGS = ap.parse_args()
     ARGS.work = os.path.abspath(ARGS.work)
     ARGS.evidence = os.path.abspath(ARGS.evidence)
-    ARGS.jsonl = os.path.join(ARGS.evidence, "tests.jsonl")
+    why = work_folder_problem(ARGS.work)
+    if why:
+        print("run_checks: --work %s" % why, file=sys.stderr)
+        return 2
+    ARGS.jsonl = os.path.join(ARGS.evidence, "tests_%s.jsonl" % ARGS.mode)
     ARGS.ffv = ffmpeg_version()
     ARGS.t_start = avail_mb()
     os.makedirs(ARGS.work, exist_ok=True)
@@ -905,7 +1046,7 @@ def main():
                        "f12": STATE.get("f12")}, f, indent=2)
     c = STATE["counts"]
     print("TOTAL: PASS %d, FAIL %d, UNVERIFIED %d, SKIPPED %d, BLOCKED %d   (%.0f s, Avail min %s MB)" % (c["PASS"], c["FAIL"], c["UNVERIFIED"], c["SKIPPED"], c["BLOCKED"], time.time() - t0, STATE["min_avail"]))
-    with open(os.path.join(ARGS.evidence, ".counts.json"), "w") as f:
+    with open(os.path.join(ARGS.evidence, ".counts_%s.json" % ARGS.mode), "w") as f:
         json.dump({"counts": c, "avail_mb_min": STATE["min_avail"], "avail_mb_start": ARGS.t_start, "peak_work_mb": round(STATE.get("peak_mb", 0), 1)}, f)
     return 3 if c["BLOCKED"] else (1 if c["FAIL"] else 0)
 

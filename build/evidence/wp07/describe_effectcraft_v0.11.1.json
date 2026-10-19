@@ -1,0 +1,616 @@
+{
+  "app": "effectcraft",
+  "commands": {
+    "comp.new": [
+      {
+        "enabled": true,
+        "id": "comp.new",
+        "label": "New Composition...",
+        "menu": [
+          "Composition"
+        ],
+        "params": "{name?, width?, height?, frameRate?, duration? (s), startTime? (s) | startTimecode?, background? [r,g,b]|#hex, pixelAspect?, shutterAngle?, shutterPhase?, motionBlurSamples?, adaptiveSampleLimit? (16\u2013256), preserveFrameRate?: bool, preserveResolution?: bool, renderer?: classic3D|advanced3D, anchor?, open?}",
+        "schema": {
+          "additionalProperties": false,
+          "description": "{name?, width?, height?, frameRate?, duration? (s), startTime? (s) | startTimecode?, background? [r,g,b]|#hex, pixelAspect?, shutterAngle?, shutterPhase?, motionBlurSamples?, adaptiveSampleLimit? (16\u2013256), preserveFrameRate?: bool, preserveResolution?: bool, renderer?: classic3D|advanced3D, anchor?, open?}",
+          "properties": {
+            "adaptiveSampleLimit": {
+              "description": "adaptiveSampleLimit? (16\u2013256)"
+            },
+            "anchor": {
+              "description": "anchor?"
+            },
+            "background": {
+              "description": "background? [r,g,b]|#hex"
+            },
+            "duration": {
+              "description": "duration? (s)"
+            },
+            "frameRate": {
+              "description": "frameRate?"
+            },
+            "height": {
+              "description": "height?"
+            },
+            "motionBlurSamples": {
+              "description": "motionBlurSamples?"
+            },
+            "name": {
+              "description": "name?"
+            },
+            "open": {
+              "description": "open?"
+            },
+            "pixelAspect": {
+              "description": "pixelAspect?"
+            },
+            "preserveFrameRate": {
+              "description": "preserveFrameRate?: bool"
+            },
+            "preserveResolution": {
+              "description": "preserveResolution?: bool"
+            },
+            "renderer": {
+              "description": "renderer?: classic3D|advanced3D"
+            },
+            "shutterAngle": {
+              "description": "shutterAngle?"
+            },
+            "shutterPhase": {
+              "description": "shutterPhase?"
+            },
+            "startTime": {
+              "description": "startTime? (s) | startTimecode?"
+            },
+            "startTimecode": {
+              "description": "startTime? (s) | startTimecode?"
+            },
+            "width": {
+              "description": "width?"
+            }
+          },
+          "required": [],
+          "type": "object"
+        },
+        "shortcut": "Cmd+N"
+      }
+    ],
+    "edit.pasteSvg": [
+      {
+        "enabled": false,
+        "id": "edit.pasteSvg",
+        "label": "Paste SVG as Shapes",
+        "params": "{svg: SVG markup, name?, comp?} \u2192 {layer, skipped} (Edit \u25b8 Paste runs it for SVG on the system clipboard)",
+        "schema": {
+          "additionalProperties": false,
+          "description": "{svg: SVG markup, name?, comp?} \u2192 {layer, skipped} (Edit \u25b8 Paste runs it for SVG on the system clipboard)",
+          "properties": {
+            "comp": {
+              "description": "comp?"
+            },
+            "name": {
+              "description": "name?"
+            },
+            "svg": {
+              "description": "svg: SVG markup"
+            }
+          },
+          "required": [
+            "svg"
+          ],
+          "type": "object"
+        },
+        "why": "no composition is open"
+      }
+    ],
+    "layer.addShapeItem": [
+      {
+        "enabled": false,
+        "id": "layer.addShapeItem",
+        "label": "Add (Shape)",
+        "params": "{layer?, kind: group|rect|ellipse|star|polygon|path|fill|stroke|gfill|gstroke|trim|repeater|round|offset|pucker|twist|zigzag|wiggle|merge|frontColor|bevelColor|sideColor|backColor, group?: uid|path} \u2192 {uid, path} (frontColor\u2026backColor: the group's Front / Bevel / Side / Back item, which colours that surface of every extruded paint in the group in Advanced 3D)",
+        "schema": {
+          "additionalProperties": false,
+          "description": "{layer?, kind: group|rect|ellipse|star|polygon|path|fill|stroke|gfill|gstroke|trim|repeater|round|offset|pucker|twist|zigzag|wiggle|merge|frontColor|bevelColor|sideColor|backColor, group?: uid|path} \u2192 {uid, path} (frontColor\u2026backColor: the group's Front / Bevel / Side / Back item, which colours that surface of every extruded paint in the group in Advanced 3D)",
+          "properties": {
+            "group": {
+              "description": "group?: uid|path"
+            },
+            "kind": {
+              "description": "kind: group|rect|ellipse|star|polygon|path|fill|stroke|gfill|gstroke|trim|repeater|round|offset|pucker|twist|zigzag|wiggle|merge|frontColor|bevelColor|sideColor|backColor"
+            },
+            "layer": {
+              "description": "layer?"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "type": "object"
+        },
+        "why": "no composition is open"
+      }
+    ],
+    "layer.newCamera": [
+      {
+        "enabled": false,
+        "id": "layer.newCamera",
+        "label": "Camera...",
+        "menu": [
+          "Layer",
+          "New"
+        ],
+        "params": "{name?, type?: oneNode|twoNode (default twoNode), preset?: 15mm|20mm|24mm|28mm|35mm|50mm|80mm|135mm|200mm, zoom?, focalLength? mm, angleOfView? deg, dof?, focusDistance?, aperture?, fStop?, blurLevel?, lockToZoom?, position? [x,y,z], poi? [x,y,z]}",
+        "schema": {
+          "additionalProperties": false,
+          "description": "{name?, type?: oneNode|twoNode (default twoNode), preset?: 15mm|20mm|24mm|28mm|35mm|50mm|80mm|135mm|200mm, zoom?, focalLength? mm, angleOfView? deg, dof?, focusDistance?, aperture?, fStop?, blurLevel?, lockToZoom?, position? [x,y,z], poi? [x,y,z]}",
+          "properties": {
+            "angleOfView": {
+              "description": "angleOfView? deg"
+            },
+            "aperture": {
+              "description": "aperture?"
+            },
+            "blurLevel": {
+              "description": "blurLevel?"
+            },
+            "dof": {
+              "description": "dof?"
+            },
+            "fStop": {
+              "description": "fStop?"
+            },
+            "focalLength": {
+              "description": "focalLength? mm"
+            },
+            "focusDistance": {
+              "description": "focusDistance?"
+            },
+            "lockToZoom": {
+              "description": "lockToZoom?"
+            },
+            "name": {
+              "description": "name?"
+            },
+            "poi": {
+              "description": "poi? [x,y,z]"
+            },
+            "position": {
+              "description": "position? [x,y,z]"
+            },
+            "preset": {
+              "description": "preset?: 15mm|20mm|24mm|28mm|35mm|50mm|80mm|135mm|200mm"
+            },
+            "type": {
+              "description": "type?: oneNode|twoNode (default twoNode)"
+            },
+            "zoom": {
+              "description": "zoom?"
+            }
+          },
+          "required": [],
+          "type": "object"
+        },
+        "shortcut": "Cmd+Alt+Shift+C",
+        "why": "no composition is open"
+      }
+    ],
+    "layer.newShape": [
+      {
+        "enabled": false,
+        "id": "layer.newShape",
+        "label": "Shape Layer",
+        "menu": [
+          "Layer",
+          "New"
+        ],
+        "params": "{kind?: rect|rounded|ellipse|star|polygon|none, name?, size?, fill?, fillType?, fillBlend?, fillOpacity?, stroke?, strokeType?, strokeBlend?, strokeOpacity?, strokeWidth?, position?}",
+        "schema": {
+          "additionalProperties": false,
+          "description": "{kind?: rect|rounded|ellipse|star|polygon|none, name?, size?, fill?, fillType?, fillBlend?, fillOpacity?, stroke?, strokeType?, strokeBlend?, strokeOpacity?, strokeWidth?, position?}",
+          "properties": {
+            "fill": {
+              "description": "fill?"
+            },
+            "fillBlend": {
+              "description": "fillBlend?"
+            },
+            "fillOpacity": {
+              "description": "fillOpacity?"
+            },
+            "fillType": {
+              "description": "fillType?"
+            },
+            "kind": {
+              "description": "kind?: rect|rounded|ellipse|star|polygon|none"
+            },
+            "name": {
+              "description": "name?"
+            },
+            "position": {
+              "description": "position?"
+            },
+            "size": {
+              "description": "size?"
+            },
+            "stroke": {
+              "description": "stroke?"
+            },
+            "strokeBlend": {
+              "description": "strokeBlend?"
+            },
+            "strokeOpacity": {
+              "description": "strokeOpacity?"
+            },
+            "strokeType": {
+              "description": "strokeType?"
+            },
+            "strokeWidth": {
+              "description": "strokeWidth?"
+            }
+          },
+          "required": [],
+          "type": "object"
+        },
+        "why": "no composition is open"
+      }
+    ],
+    "layer.newSolid": [
+      {
+        "enabled": false,
+        "id": "layer.newSolid",
+        "label": "Solid...",
+        "menu": [
+          "Layer",
+          "New"
+        ],
+        "params": "{name?, color? #hex|[r,g,b], width?, height?, pixelAspect?}",
+        "schema": {
+          "additionalProperties": false,
+          "description": "{name?, color? #hex|[r,g,b], width?, height?, pixelAspect?}",
+          "properties": {
+            "color": {
+              "description": "color? #hex|[r,g,b]"
+            },
+            "height": {
+              "description": "height?"
+            },
+            "name": {
+              "description": "name?"
+            },
+            "pixelAspect": {
+              "description": "pixelAspect?"
+            },
+            "width": {
+              "description": "width?"
+            }
+          },
+          "required": [],
+          "type": "object"
+        },
+        "shortcut": "Cmd+Y",
+        "why": "no composition is open"
+      }
+    ],
+    "layer.newText": [
+      {
+        "enabled": false,
+        "id": "layer.newText",
+        "label": "Text",
+        "menu": [
+          "Layer",
+          "New"
+        ],
+        "params": "{text?, name? (layer name; default the text), position? [x,y], box? [x,y,w,h] (paragraph text, comp space), vertical?, edit? (start editing), font?, style?, size?, fill?, stroke?, applyFill?, applyStroke?, strokeWidth?, tracking?, leading?, baselineShift?, hScale?, vScale?, tsume?, fauxBold?, fauxItalic?, allCaps?, smallCaps?, baseline?, superscript?, subscript?, kerning?, ligatures?, justify?, indentLeft?, indentRight?, indentFirst?, spaceBefore?, spaceAfter?, direction?, composer?, hangingPunctuation?, strokeOverFill?} (attributes as layer.setText)",
+        "schema": {
+          "additionalProperties": false,
+          "description": "{text?, name? (layer name; default the text), position? [x,y], box? [x,y,w,h] (paragraph text, comp space), vertical?, edit? (start editing), font?, style?, size?, fill?, stroke?, applyFill?, applyStroke?, strokeWidth?, tracking?, leading?, baselineShift?, hScale?, vScale?, tsume?, fauxBold?, fauxItalic?, allCaps?, smallCaps?, baseline?, superscript?, subscript?, kerning?, ligatures?, justify?, indentLeft?, indentRight?, indentFirst?, spaceBefore?, spaceAfter?, direction?, composer?, hangingPunctuation?, strokeOverFill?} (attributes as layer.setText)",
+          "properties": {
+            "allCaps": {
+              "description": "allCaps?"
+            },
+            "applyFill": {
+              "description": "applyFill?"
+            },
+            "applyStroke": {
+              "description": "applyStroke?"
+            },
+            "baseline": {
+              "description": "baseline?"
+            },
+            "baselineShift": {
+              "description": "baselineShift?"
+            },
+            "box": {
+              "description": "box? [x,y,w,h] (paragraph text, comp space)"
+            },
+            "composer": {
+              "description": "composer?"
+            },
+            "direction": {
+              "description": "direction?"
+            },
+            "edit": {
+              "description": "edit? (start editing)"
+            },
+            "fauxBold": {
+              "description": "fauxBold?"
+            },
+            "fauxItalic": {
+              "description": "fauxItalic?"
+            },
+            "fill": {
+              "description": "fill?"
+            },
+            "font": {
+              "description": "font?"
+            },
+            "hScale": {
+              "description": "hScale?"
+            },
+            "hangingPunctuation": {
+              "description": "hangingPunctuation?"
+            },
+            "indentFirst": {
+              "description": "indentFirst?"
+            },
+            "indentLeft": {
+              "description": "indentLeft?"
+            },
+            "indentRight": {
+              "description": "indentRight?"
+            },
+            "justify": {
+              "description": "justify?"
+            },
+            "kerning": {
+              "description": "kerning?"
+            },
+            "leading": {
+              "description": "leading?"
+            },
+            "ligatures": {
+              "description": "ligatures?"
+            },
+            "name": {
+              "description": "name? (layer name; default the text)"
+            },
+            "position": {
+              "description": "position? [x,y]"
+            },
+            "size": {
+              "description": "size?"
+            },
+            "smallCaps": {
+              "description": "smallCaps?"
+            },
+            "spaceAfter": {
+              "description": "spaceAfter?"
+            },
+            "spaceBefore": {
+              "description": "spaceBefore?"
+            },
+            "stroke": {
+              "description": "stroke?"
+            },
+            "strokeOverFill": {
+              "description": "strokeOverFill?"
+            },
+            "strokeWidth": {
+              "description": "strokeWidth?"
+            },
+            "style": {
+              "description": "style?"
+            },
+            "subscript": {
+              "description": "subscript?"
+            },
+            "superscript": {
+              "description": "superscript?"
+            },
+            "text": {
+              "description": "text?"
+            },
+            "tracking": {
+              "description": "tracking?"
+            },
+            "tsume": {
+              "description": "tsume?"
+            },
+            "vScale": {
+              "description": "vScale?"
+            },
+            "vertical": {
+              "description": "vertical?"
+            }
+          },
+          "required": [],
+          "type": "object"
+        },
+        "shortcut": "Cmd+Alt+Shift+T",
+        "why": "no composition is open"
+      }
+    ],
+    "layer.setSwitch": [
+      {
+        "enabled": false,
+        "id": "layer.setSwitch",
+        "label": "Layer Switch",
+        "params": "{layers?, switch: video|audio|solo|lock|shy|collapse|quality|fx|frameBlend|motionBlur|adjustment|threeD|guide|preserveTransparency, value?, merge?, others? (the named layers alone: the other layers get the opposite state, or come back)}",
+        "schema": {
+          "additionalProperties": false,
+          "description": "{layers?, switch: video|audio|solo|lock|shy|collapse|quality|fx|frameBlend|motionBlur|adjustment|threeD|guide|preserveTransparency, value?, merge?, others? (the named layers alone: the other layers get the opposite state, or come back)}",
+          "properties": {
+            "layers": {
+              "description": "layers?"
+            },
+            "merge": {
+              "description": "merge?"
+            },
+            "others": {
+              "description": "others? (the named layers alone: the other layers get the opposite state, or come back)"
+            },
+            "switch": {
+              "description": "switch: video|audio|solo|lock|shy|collapse|quality|fx|frameBlend|motionBlur|adjustment|threeD|guide|preserveTransparency"
+            },
+            "value": {
+              "description": "value?"
+            }
+          },
+          "required": [
+            "switch"
+          ],
+          "type": "object"
+        },
+        "why": "no composition is open"
+      }
+    ],
+    "prop.addKey": [
+      {
+        "enabled": false,
+        "id": "prop.addKey",
+        "label": "Add Keyframe",
+        "params": "{layer?, path|prop, time? (layer s by default), timeBase?: layer|comp, value?}",
+        "schema": {
+          "additionalProperties": false,
+          "description": "{layer?, path|prop, time? (layer s by default), timeBase?: layer|comp, value?}",
+          "properties": {
+            "layer": {
+              "description": "layer?"
+            },
+            "path": {
+              "description": "path|prop"
+            },
+            "prop": {
+              "description": "path|prop"
+            },
+            "time": {
+              "description": "time? (layer s by default)"
+            },
+            "timeBase": {
+              "description": "timeBase?: layer|comp"
+            },
+            "value": {
+              "description": "value?"
+            }
+          },
+          "required": [],
+          "type": "object"
+        },
+        "why": "no composition is open"
+      }
+    ],
+    "prop.set": [
+      {
+        "enabled": false,
+        "id": "prop.set",
+        "label": "Set Property Value",
+        "params": "{layer?, path|prop, value, time? (layer s by default), timeBase?: layer|comp, merge?, selected? (also the other selected layers), offset? (them by the same change), proportional? (with offset: Proportional Scrubbing, each layer by its share in selection order, the first none, the last all)}",
+        "schema": {
+          "additionalProperties": false,
+          "description": "{layer?, path|prop, value, time? (layer s by default), timeBase?: layer|comp, merge?, selected? (also the other selected layers), offset? (them by the same change), proportional? (with offset: Proportional Scrubbing, each layer by its share in selection order, the first none, the last all)}",
+          "properties": {
+            "layer": {
+              "description": "layer?"
+            },
+            "merge": {
+              "description": "merge?"
+            },
+            "offset": {
+              "description": "offset? (them by the same change)"
+            },
+            "path": {
+              "description": "path|prop"
+            },
+            "prop": {
+              "description": "path|prop"
+            },
+            "proportional": {
+              "description": "proportional? (with offset: Proportional Scrubbing, each layer by its share in selection order, the first none, the last all)"
+            },
+            "selected": {
+              "description": "selected? (also the other selected layers)"
+            },
+            "time": {
+              "description": "time? (layer s by default)"
+            },
+            "timeBase": {
+              "description": "timeBase?: layer|comp"
+            },
+            "value": {
+              "description": "value"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "type": "object"
+        },
+        "why": "no composition is open"
+      },
+      {
+        "enabled": false,
+        "id": "prop.setExpression",
+        "label": "Add Expression",
+        "menu": [
+          "Animation"
+        ],
+        "params": "{layer?, path|prop?, expression?, enabled?} (no path/prop: the selected properties)",
+        "schema": {
+          "additionalProperties": false,
+          "description": "{layer?, path|prop?, expression?, enabled?} (no path/prop: the selected properties)",
+          "properties": {
+            "enabled": {
+              "description": "enabled?"
+            },
+            "expression": {
+              "description": "expression?"
+            },
+            "layer": {
+              "description": "layer?"
+            },
+            "path": {
+              "description": "path|prop?"
+            },
+            "prop": {
+              "description": "path|prop?"
+            }
+          },
+          "required": [],
+          "type": "object"
+        },
+        "shortcut": "Alt+Shift+=",
+        "why": "no composition is open"
+      },
+      {
+        "enabled": false,
+        "id": "prop.setGroupEnabled",
+        "label": "Enable Property Group",
+        "params": "{layer?, prop: uid, value?}",
+        "schema": {
+          "additionalProperties": false,
+          "description": "{layer?, prop: uid, value?}",
+          "properties": {
+            "layer": {
+              "description": "layer?"
+            },
+            "prop": {
+              "description": "prop: uid"
+            },
+            "value": {
+              "description": "value?"
+            }
+          },
+          "required": [
+            "prop"
+          ],
+          "type": "object"
+        },
+        "why": "no composition is open"
+      }
+    ]
+  },
+  "missing": [],
+  "schema": "lj-describe/1",
+  "tag": "v0.11.1"
+}

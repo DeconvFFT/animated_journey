@@ -2,13 +2,13 @@
  "actual": "differences: none; with the file: h264\tchains.json:h264_venue\tmp4; without: h264\tbuilt-in\tmp4",
  "data": {
   "differences": {},
-  "seconds": 0.4
+  "seconds": 0.3
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 483,
-  "avail_mb_min": 483,
-  "avail_mb_start": 483,
+  "avail_mb_end": 1131,
+  "avail_mb_min": 1131,
+  "avail_mb_start": 1131,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

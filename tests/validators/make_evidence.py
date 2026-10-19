@@ -3,9 +3,9 @@
 
   python3 -I tests/validators/make_evidence.py
 
-Reads build/evidence/wp05/tests.jsonl (the last run), tests_quick.jsonl (the last --quick run), .counts.json (written by run_checks.py) and
-guard_stage.json (the disk guard's ledger line for the stage). Writes summary.json and environment.json. No host, user or path information is
-recorded: versions and counts only.
+Reads build/evidence/wp05/tests_all.jsonl (the last --all run), tests_quick.jsonl (the last --quick run), .counts_all.json (written by
+run_checks.py) and guard_stage.json (the disk guard's ledger line for the stage). Each mode has its own file, so a later --quick run can never
+overwrite the --all envelopes. Writes summary.json and environment.json. No host, user or path information is recorded: versions and counts only.
 """
 import datetime
 import json
@@ -40,13 +40,13 @@ def version_of(cmd):
 
 
 def main():
-    allr, quick = lines("tests.jsonl"), lines("tests_quick.jsonl")
+    allr, quick = lines("tests_all.jsonl"), lines("tests_quick.jsonl")
     groups = {}
     for r in allr:
         g = r["test"].split(".")[0]
         groups.setdefault(g, {"PASS": 0, "FAIL": 0, "UNVERIFIED": 0, "SKIPPED": 0, "BLOCKED": 0})[r["status"]] += 1
     counts = {}
-    p = os.path.join(EV, ".counts.json")
+    p = os.path.join(EV, ".counts_all.json")
     if os.path.isfile(p):
         counts = json.load(open(p))
     guard = {}
@@ -68,7 +68,7 @@ def main():
         with open(os.path.join(EV, name), "w", encoding="utf-8", newline="\n") as f:
             json.dump(obj, f, indent=2)
             f.write("\n")
-    for leftover in (".counts.json",):
+    for leftover in (".counts_all.json", ".counts_quick.json", ".counts.json"):
         try:
             os.remove(os.path.join(EV, leftover))
         except OSError:

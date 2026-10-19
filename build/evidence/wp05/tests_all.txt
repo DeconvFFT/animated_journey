@@ -1,7 +1,6 @@
-run_tests.sh --all: one lj_with_disk stage, label wp05-validators, planned 30 MB (lean profile), Avail 406 MB, floor 400 MB.
-lj_guard: REFUSED: Avail 406 MB minus planned 30 MB leaves 376 MB, below the 400 MB floor (wp05-validators). Lean-profile hint: plan a smaller stage, delete downloads you no longer need, or ask the orchestrator about the regenerable caches (Q-1).
-run_tests.sh --all: the disk guard did not start the stage: Avail 406 MB minus planned 30 MB is below the 400 MB floor, or the lock was busy (exit 3). --unguarded given: running directly under the plan's under-100-MB rule (4.9); the stage is recorded as SKIPPED with this reason.
-WP-05 validator tests (all). ffmpeg 6.1.1, python 3.13, Avail 406 MB at start.
+run_tests.sh --all: one lj_with_disk stage, label wp05-validators, planned 150 MB (full profile), Avail 1120 MB, floor 400 MB.
+lj_guard: wp05-validators: planned 150 MB, Avail 1120 MB, floor 400 MB, hard floor 250 MB
+WP-05 validator tests (all). ffmpeg 6.1.1, python 3.13, Avail 1120 MB at start.
 PASS       hygiene.python_compiles                        6 files
 PASS       hygiene.validators_stdlib_only                 stdlib only
 PASS       hygiene.windows_portable_python                none found
@@ -23,51 +22,59 @@ PASS       colour_patch.oracle.prores4444_bare            FAIL at 25/255
 PASS       colour_patch.oracle.prores4444_chain           PASS at 0/255
 PASS       colour_patch.f12_new_measurements              prores422hq_master 2/255, h264_venue 1/255, h264_backup_main40 1/255, h264_online 1/255
 PASS       chains.approved_means_measured_within_3        six chains approved on ffmpeg 6.1.1; recorded figures agree with the fresh run
-PASS       colour_patch.refuses_approval_above_3          exit 1; RESULT approvals: NOT ALLOWED, marked approved:true in the chain file but above 3/255 (or not encodable) on this build: bare_but_claims_approv
-PASS       colour_patch.derived_form_filed                exit 0; version 6.1.1; 6 chains, 6 controls; build flags leaked: 0
-PASS       spec_check.good.g_master_hq.mov                exit 0; failed: none (0.5s)
-PASS       spec_check.good.g_venue_m18.mp4                exit 0; failed: none (0.5s)
-PASS       spec_check.good.g_venue_m23.mp4                exit 0; failed: none (0.6s)
-PASS       spec_check.good.g_venue_m16.mp4                exit 0; failed: none (0.5s)
-PASS       spec_check.good.g_backup_main40.mp4            exit 0; failed: none (0.5s)
+PASS       colour_patch.refuses_approval_above_3          exit 1; RESULT approvals: NOT ALLOWED, marked approved:true in the chain file but above 3/255 (or not measurable) on this build: bare_but_claims_appro
+PASS       colour_patch.derived_form_filed                exit 0; version 6.1.1; 6 chains, 6 controls; build flags leaked: 0; raw record kept in <scratch>, not filed
+PASS       spec_check.good.g_master_hq.mov                exit 0; failed: none (0.4s)
+PASS       spec_check.good.g_venue_m18.mp4                exit 0; failed: none (0.4s)
+PASS       spec_check.good.g_venue_m23.mp4                exit 0; failed: none (0.4s)
+PASS       spec_check.good.g_venue_m16.mp4                exit 0; failed: none (0.4s)
+PASS       spec_check.good.g_backup_main40.mp4            exit 0; failed: none (0.4s)
 PASS       spec_check.good.g_online_m16.mp4               exit 0; failed: none (0.4s)
-PASS       spec_check.good.g_online_m16_edge.mp4          exit 0; failed: none (0.5s)
-PASS       spec_check.good.g_overlay_4444.mov             exit 0; failed: none (0.6s)
-PASS       spec_check.good.g_phone_1080.mp4               exit 0; failed: none (0.5s)
-PASS       spec_check.defect.d_yuvj420p.mp4               exit 1; failed: video.pix_fmt, video.color_range (0.7s)
-PASS       spec_check.defect.d_25fps.mp4                  exit 1; failed: video.fps, video.frame_count (0.6s)
-PASS       spec_check.defect.d_720p.mp4                   exit 1; failed: video.size (0.8s)
-PASS       spec_check.defect.d_bt601_under_709_tags.mp4   exit 0; failed: none (0.8s)
-PASS       spec_check.defect.d_prores4444_no_alpha.mov    exit 1; failed: video.pix_fmt, video.alpha (0.6s)
+PASS       spec_check.good.g_online_m16_edge.mp4          exit 0; failed: none (0.4s)
+PASS       spec_check.good.g_overlay_4444.mov             exit 0; failed: none (0.5s)
+PASS       spec_check.good.g_phone_1080.mp4               exit 0; failed: none (0.4s)
+PASS       spec_check.good.g_phone_720.mp4                exit 0; failed: none (0.4s)
+PASS       spec_check.good.g_ffv1_lossless.mkv            exit 0; failed: none (1.1s)
+PASS       spec_check.defect.d_yuvj420p.mp4               exit 1; failed: video.pix_fmt, video.color_range (0.6s)
+PASS       spec_check.defect.d_25fps.mp4                  exit 1; failed: video.fps, video.frame_count (0.4s)
+PASS       spec_check.defect.d_720p.mp4                   exit 1; failed: video.size (0.4s)
+PASS       spec_check.defect.d_bt601_under_709_tags.mp4   exit 0; failed: none (0.4s)
+PASS       spec_check.defect.d_prores4444_no_alpha.mov    exit 1; failed: video.pix_fmt, video.alpha (0.4s)
 PASS       spec_check.defect.d_true_peak.mp4              exit 1; failed: audio.true_peak (0.5s)
-PASS       spec_check.defect.d_44k1_audio.mp4             exit 1; failed: audio.sample_rate (0.5s)
+PASS       spec_check.defect.d_44k1_audio.mp4             exit 1; failed: audio.sample_rate (0.4s)
 PASS       spec_check.defect.d_16bit_master.mov           exit 1; failed: audio.codec, audio.bits (0.4s)
-PASS       spec_check.defect.d_title_tag.mp4              exit 1; failed: metadata.neutral (0.5s)
-PASS       spec_check.defect.d_truncated.mp4              exit 1; failed: container.readable, container.moov, container.atoms, container.faststart (0.2s)
-PASS       spec_check.defect.d_frame_count.mp4            exit 1; failed: video.frame_count (0.5s)
-PASS       spec_check.defect.d_not_faststart.mp4          exit 1; failed: container.faststart (0.5s)
-PASS       spec_check.defect.d_untagged.mp4               exit 1; failed: video.color_range, video.color_space, video.color_primaries, video.color_transfer (0.6s)
-PASS       spec_check.defect.d_online_too_loud.mp4        exit 1; failed: audio.integrated (0.5s)
-PASS       spec_check.defect.d_level40.mp4                exit 1; failed: video.level (0.5s)
-PASS       spec_check.defect.d_no_audio.mp4               exit 1; failed: audio.present (0.4s)
-PASS       spec_check.defect.d_mono.mp4                   exit 1; failed: audio.channels (0.5s)
-PASS       spec_check.no_false_positives                  9 good files, profiles: master_prores422hq, online_h264, overlay_prores4444_alpha, phone_1080, venue_h264, venue_h264_backup_main40, all exit 0: True
+PASS       spec_check.defect.d_title_tag.mp4              exit 1; failed: metadata.neutral (0.4s)
+PASS       spec_check.defect.d_truncated.mp4              exit 1; failed: container.readable, container.moov, container.atoms, container.faststart (0.1s)
+PASS       spec_check.defect.d_corrupt_mdat.mp4           exit 1; failed: integrity.decode (0.4s)
+PASS       spec_check.defect.d_frame_count.mp4            exit 1; failed: video.frame_count (0.4s)
+PASS       spec_check.defect.d_not_faststart.mp4          exit 1; failed: container.faststart (0.4s)
+PASS       spec_check.defect.d_untagged.mp4               exit 1; failed: video.color_range, video.color_space, video.color_primaries, video.color_transfer (0.4s)
+PASS       spec_check.defect.d_online_too_loud.mp4        exit 1; failed: audio.integrated (0.4s)
+PASS       spec_check.defect.d_level40.mp4                exit 1; failed: video.level (0.4s)
+PASS       spec_check.defect.d_no_audio.mp4               exit 1; failed: audio.present (0.3s)
+PASS       spec_check.defect.d_mono.mp4                   exit 1; failed: audio.channels (0.4s)
+PASS       spec_check.no_false_positives                  11 good files, profiles: ffv1_lossless_mkv, master_prores422hq, online_h264, overlay_prores4444_alpha, phone_1080, phone_720_share, venue_h264, venue_
 PASS       spec_check.the_eleven_named_defects            all eleven behave
 PASS       colour_patch.oracle.bare_encode_not_caught_by_spec_check spec_check exit 0; red luma 81 (good file 63, BT.709 expects 63); colour_patch worst 23/255
-PASS       colour_patch.accepts_a_phone_style_chain_file  exit 0; phone_1080                     PASS  worst 1/255
+PASS       colour_patch.accepts_a_phone_style_chain_file  exit 0; phone_1080 1/255 at 1920x1080; phone_720_share 1/255 at 1280x720
+PASS       colour_patch.measures_wp08_real_phone_chains   exit 0; phone_1080 1/255; phone_720_share 1/255 at 1280x720 (ffmpeg 6.1.1)
+PASS       colour_patch.unmeasurable_chain_has_its_own_result_line exit 1; above-tolerance lines: 1, could-not-be-measured lines: 1
 PASS       spec_check.verdict_json_and_no_path_leak       clean (28 checks listed)
 PASS       spec_check.usage_and_environment_errors        got [2, 2, 2, 2, 3, 3, 0]
 PASS       spec_check.phone_profile_via_profiles_file     phone exit 0; same file under venue_h264 exit 1
+PASS       spec_check.integrity_detail_has_no_heap_address exit 1; detail 240 chars; runs with an address: 0; identical: True
+PASS       driver.refuses_work_folder_outside_repo        outside -> exit 2; root -> exit 2; tracked -> exit 2; untouched: True
 PASS       mo8_gate.pillow_subpixel_push_passes           exit 0; MO8a 0.0046 px, MO8b 0.0095 px
 PASS       mo8_gate.ffmpeg_zoompan_push_fails             exit 1; MO8a 0.8187 px, MO8b 0.3018 px
 PASS       mo8_gate.png_folder_master_passes              exit 0; MO8a 0.0013 px, MO8b 0.0015 px, kind png-folder
 PASS       mo8_gate.refuses_long_and_short_clips          mo8_long97.mp4 -> exit 2; mo8_long121.mp4 -> exit 2; mo8_long130.mp4 -> exit 2; mo8_long121.mp4 --max-frames 120 -> exit 2; mo8_long130.mp4 --max-fram
 PASS       mo8_gate.lossy_clip_flagged_as_approximate     lossy-clip (h264); note present: True
 PASS       hygiene.stale_values_absent                    no hits in the owned files
-PASS       hygiene.public_lint_clean                      exit 0; public_lint: mode paths, 24 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the con
+PASS       hygiene.public_lint_clean                      exit 0; public_lint: mode paths, 27 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the con
 PASS       hygiene.theme_guard_clean                      exit 0
 UNVERIFIED windows.behaviour_unverified                   not run: no Windows host here; the code uses only subprocess argument lists, os.path and tempfile, and passes python -I -S on Linux
 UNVERIFIED colour_patch.ffmpeg_9.0.2_results              not measured: only ffmpeg 6.1.1 exists here
 UNVERIFIED spec_check.prores_range_tag_on_windows_builds  not measured
-SKIPPED    stage.disk_guard                               the guard refused or was busy and --unguarded was given: the disk guard did not start the stage: Avail 406 MB minus planned 30 MB is below the 400 MB 
-TOTAL: PASS 64, FAIL 0, UNVERIFIED 3, SKIPPED 1, BLOCKED 0   (151 s, Avail min 327 MB)
+PASS       stage.disk_guard                               measured peak of the generated files: 22.1 MB; start Avail 1120 MB, planned 150 MB, label wp05-validators
+TOTAL: PASS 72, FAIL 0, UNVERIFIED 3, SKIPPED 0, BLOCKED 0   (168 s, Avail min 1099 MB)
+lj_guard: wp05-validators: finished with exit 0; Avail start 1120 MB, min 1099 MB, end 1121 MB

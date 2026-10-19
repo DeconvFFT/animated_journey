@@ -1,20 +1,33 @@
 {
-  "actual": "not started: REFUSED: Avail 467 MB minus planned 300 MB leaves 167 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB.",
+  "actual": "exit 0",
   "date_utc": "2026-10-19",
   "detail": {
-    "exit_code": null,
-    "guard_ledger": null,
-    "profile": "none",
+    "avail_drop_includes_other_writers": true,
+    "avail_drop_mb": 212,
+    "df_after_mb": 1201,
+    "df_back_within_10mb_of_start_plus_kept": true,
+    "df_before_mb": 1201,
+    "df_delta_mb": 0,
+    "df_note": "the volume is shared; a concurrent writer moves this figure, the vendor listing below is the exact one",
+    "exit_code": 0,
+    "guard_ledger": {
+      "exit": 0,
+      "lock_wait_s": 0,
+      "status": "ok"
+    },
+    "kept_mb": 0,
+    "kept_tarballs": [],
+    "profile": "full",
     "stage": "effectcraft-v0.11.1",
     "vendor_craft_other_than_keep": []
   },
   "disk": {
-    "avail_mb_end": 467,
-    "avail_mb_min": 467,
-    "avail_mb_start": 467,
+    "avail_mb_end": 1201,
+    "avail_mb_min": 989,
+    "avail_mb_start": 1201,
     "floor_mb": 400,
     "hard_floor_mb": 250,
-    "planned_write_mb": 300
+    "planned_write_mb": 400
   },
   "env": {
     "contaminated": "not-timed",
@@ -28,7 +41,7 @@
   "package": "WP-07",
   "schema": "lj-evidence/1",
   "stage": "",
-  "status": "BLOCKED",
+  "status": "PASS",
   "test": "stage_effectcraft-v0.11.1",
   "unverified_reasons": []
 }

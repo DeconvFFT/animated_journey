@@ -171,9 +171,10 @@ def register_ids():
 
 
 def loose_row_count(text):
-    """An independent, deliberately dumb count: lines that START like a register row (`| O-6...`).
-    It does not share the row pattern, so a pattern that silently drops rows cannot also fool this."""
-    return len(re.findall(r"^\|\s*[DWOS]-[0-9]", text, re.M))
+    """An independent, deliberately dumb count: lines that START like a register row (`| O-6...`,
+    also `| **O-6**` and `` | `O-6` ``). It does not share the row pattern, so a pattern that
+    silently drops rows cannot also fool this."""
+    return len(re.findall(r"^\|\s*[*_`~]*\s*[DWOS]-[0-9]", text, re.M))
 
 
 def next_id(prefix):
@@ -516,6 +517,9 @@ def _(ctx):
         "suffix": ("| %sx | Sun 1 Nov | A synthetic question? | A synthetic recommendation. |" % oid, "looks like a register row but does not parse"),
         "digits": ("| O-%d | Sun 1 Nov | A synthetic question? | A synthetic recommendation. |" % 1234, "looks like a register row but does not parse"),
         "space": ("| O-6 | Sun 1 Nov | A synthetic question? | A synthetic recommendation. |", "looks like a register row but does not parse"),
+        # an ID cell wrapped in emphasis or code marks used to be dropped in silence (--write exit 0, no message)
+        "emphasis": ("| **%s** | Sun 1 Nov | A synthetic question? | A synthetic recommendation. |" % oid, "looks like a register row but does not parse"),
+        "code": ("| `%s` | Sun 1 Nov | A synthetic question? | A synthetic recommendation. |" % oid, "looks like a register row but does not parse"),
     }
     for name, (line, why) in cases.items():
         bp = ctx.write("broken_%s.md" % name, reg.replace(o_anchor, o_anchor + "\n" + line, 1))
@@ -527,8 +531,31 @@ def _(ctx):
         ok(rc == 2, "%s: --check exit %d: %s" % (name, rc, o))
     shutil.copy(bp, os.path.join(repo, "DECISIONS.md"))  # the last broken copy: ops_lint reports it, it does not skip the row
     rc, o = ctx.lint(root=repo); ok(rc == 1, o); has(o, "the register is malformed")
+    # defence in depth: take the generator's own guard out (scratch copy of the three scripts). The emphasised row
+    # is then dropped in silence by --write, and ops_lint's separate count of lines that look like a register row
+    # still fires the `parser` finding. With the real scripts this finding cannot fire (the guard stops first).
+    sdir = os.path.join(ctx.tmp, "scripts_noguard")
+    os.makedirs(sdir)
+    for f in ("ops_lint.py", "hours_report.py", "decisions_to_csv.py"):
+        shutil.copy(os.path.join(ROOT, "scripts", f), sdir)
+    src = open(os.path.join(sdir, "decisions_to_csv.py"), encoding="utf-8").read()
+    guard = ("            if NEAR_MISS_RE.match(line):\n"
+             "                raise ValueError(\"line %d: looks like a register row but does not parse\" % n)\n")
+    ok(guard in src, "test setup: the guard in decisions_to_csv.py moved; update this test")
+    open(os.path.join(sdir, "decisions_to_csv.py"), "w", encoding="utf-8", newline="").write(src.replace(guard, ""))
+    emph = ctx.write("emphasis_only.md", reg.replace(o_anchor, o_anchor + "\n" + cases["emphasis"][0], 1))
+    silent = os.path.join(ctx.tmp, "silent.csv")
+    rc, o = ctx.run([os.path.join(sdir, "decisions_to_csv.py"), "--write", silent, "--register", emph])
+    ok(rc == 0 and "%d rows" % len(current) in o, "test setup: without its guard the generator should drop the emphasised row in silence: %s" % o)
+    shutil.copy(emph, os.path.join(repo, "DECISIONS.md"))
+    shutil.copy(silent, os.path.join(repo, "ops", "decisions.csv"))
+    rc, o = ctx.run([os.path.join(sdir, "ops_lint.py"), "--patterns", ctx.patterns(), "--root", repo])
+    ok(rc == 1, o); has(o, "[parser]", "%d line(s) start like a register row but the generator made %d row(s)" % (len(current) + 1, len(current)))
+    rc, o = ctx.lint(root=repo)   # the real scripts stop at the emphasised row
+    ok(rc == 1, o); has(o, "the register is malformed")
     ctx.say("%s and %s reach the CSV (%d rows) with notes 'absorbs %s' and 'revises W-05'; %d live annotated ID cells carry their note; "
-            "ops_lint accepts a citation of the new IDs and flags %s; four unparseable rows exit 2 and ops_lint reports the register malformed"
+            "ops_lint accepts a citation of the new IDs and flags %s; six unparseable rows (including | **ID** | and | `ID` |) exit 2 and ops_lint reports "
+            "the register malformed; with the guard removed the emphasised row is dropped by --write and ops_lint's `parser` finding fires"
             % (oid, wid, len(current) + 2, gone, len(annotated), gone))
 
 
@@ -613,7 +640,10 @@ def _(ctx):
         (h + "2026-10-19,-,learn,30,maker,one, two\n", "line 2", "expected 6 columns, found 7"),
         (h + "2026-10-19,-,learn,30,,x\n", "line 2", "who '' must be exactly maker or agent"),
         (h + "2026-10-19,-,learn,30,someone,x\n", "line 2", "who 'so", "must be exactly maker or agent"),
-        (h + "2026-10-19,-,learn,30,Maker,x\n", "line 2", "must be exactly maker or agent"),
+        (h + "2026-10-19,-,learn,30,Maker,x\n", "line 2", "must be exactly maker or agent", "did you mean 'maker'"),
+        (h + "2026-10-19,-,learn,30,AGENT,x\n", "line 2", "who 'AG", "did you mean 'agent'"),
+        (h + "2026-10-19,c01,learn,30,maker,x\n", "line 2", "shot_or_chapter 'c0", "capital letters and a digit", "IDs are written in capital letters"),
+        (h + "2026-10-19,CHAPTER-ONE,learn,30,maker,x\n", "line 2", "shot_or_chapter 'CH", "capital letters and a digit"),
         (h + "2026-10-19,-,Learn,30,maker,x\n", "line 2", "did you mean 'learn'"),
         ("", "line 1", "empty"),
     ]
@@ -631,6 +661,9 @@ def _(ctx):
         (h + "2026-10-19,-,learn,%s,maker,x\n" % (tok1 + "9" * 40), "line 2", "minutes 'Zq"),
         ("%s,%s,learn,30,maker,x\n" % (tok1, tok2), "line 1", "header must be exactly", "masked: Zq"),
         ("%s;%s\n2026-10-19;learn\n" % (tok1, tok2), "line 1", "semicolon"),
+        # a hyphenated personal name used to pass as a shot ID (^[A-Za-z0-9][A-Za-z0-9_.-]*$); an ID needs a capital and a digit
+        (h + "2026-10-19,%s-%s,learn,30,maker,x\n" % (tok1, tok2), "line 2", "shot_or_chapter 'Zq", "a name is not an ID"),
+        (h + "2026-10-19,%s-%s-%s,learn,30,maker,x\n" % (tok1, tok2, tok1), "line 2", "shot_or_chapter 'Zq", "a name is not an ID"),
     ]
     for text, *needles in shifted:
         rc, o = hours(ctx, text)
@@ -638,8 +671,12 @@ def _(ctx):
         lacks(o, tok1, tok2, tok1.lower(), tok2.lower(), tok1[2:], tok2[2:])
     rc, o = hours(ctx, shifted[2][0], "--json")
     ok(rc == 1, o); lacks(o, tok1, tok2)
-    ctx.say("%d invalid files, each exit 1 with the line and the problem; %d shifted rows and headers never print the planted tokens"
-            % (len(cases), len(shifted)))
+    # what an ID is: a capital letter and a digit (C01, LJ-C01-S014, OBJ-02) pass; a name does not
+    for good in ("C01", "LJ-C01-S014", "LJ-C01-S002", "OBJ-02", "-"):
+        rc, o = hours(ctx, h + "2026-10-19,%s,learn,30,maker,x\n" % good, "--week-start", "2026-10-19")
+        ok(rc == 0, "the shot/chapter ID %r must be accepted: %s" % (good, o))
+    ctx.say("%d invalid files, each exit 1 with the line and the problem; %d shifted rows, name-shaped shot IDs and headers never print the planted tokens; "
+            "C01, LJ-C01-S014, OBJ-02 and '-' are accepted" % (len(cases), len(shifted)))
 
 
 @test("hours_usage", "missing file and bad --week-start exit 2")
@@ -806,14 +843,21 @@ def edit(repo, rel, old, new, count=1):
     open(p, "w", encoding="utf-8", newline="").write(t.replace(old, new, count))
 
 
-@test("lint_neg_card", "negative: card without Phone / with an invented ID / without the Language line / signed with <date>")
+@test("lint_neg_card", "negative: card without Phone (W-63, FontSize=28) / Script stack / Fonts / Burn-in rows / TD-3 MarginV / an invented ID / without the Language line / signed with <date>")
 def _(ctx):
     cases = [
         ("no phone row", "| **Phone** (D-27)", "| **Handset** (D-27)", ["Phone", "card_row"]),
-        ("no D-27 in the row", "| D-27 |", "| D-26 |", ["D-27"]),
+        ("no D-27 in the row", "| D-27, W-63, W-18 |", "| D-26, W-63, W-18 |", ["D-27"]),
+        ("no W-63 on the Phone row", "| D-27, W-63, W-18 |", "| D-27, W-18 |", ["W-63", "card_row"]),
+        ("Phone caption size missing", "`FontSize=28`", "`FontSize=26`", ["FontSize=28", "card_value"]),
+        ("TD-3 without MarginV", "`MarginV` 20 or more (the default lets", "a margin (the default lets", ["MarginV", "card_value"]),
+        ("no Script stack row", "| **Script stack** |", "| **Scripts** |", ["Script stack", "card_row"]),
+        ("no Fonts row", "| **Fonts** |", "| **Typefaces** |", ["Fonts", "card_row"]),
+        ("no Burn-in row", "| **Burn-in path** |", "| **Caption filter** |", ["Burn-in path", "card_row"]),
+
         ("invented ID", "(O-14)", "(W-99)", ["W-99", "cited_id"]),
         ("no language line", "Caption and font test ran in:", "Caption and font was run in:", ["card_language"]),
-        ("no NOT TESTED", "NOT TESTED until", "tested until", ["NOT TESTED"]),
+        ("no NOT TESTED", "gujarati NOT TESTED (D-31", "gujarati tested (D-31", ["NOT TESTED"]),
         ("signed yes with placeholder", "signed: no", "signed: yes", ["signed: yes"]),
         ("no TD-4", "**TD-4 DCP / venue file**", "**Venue file**", ["TD-4"]),
         ("wrong value", "1920x1080, 16:9.", "1280x720, 16:9.", ["1920x1080"]),
@@ -824,7 +868,24 @@ def _(ctx):
         edit(repo, "ops/SETTINGS-CARD.md", old, new, count=99)
         rc, o = ctx.lint(root=repo)
         ok(rc == 1, "%s: exit %d: %s" % (name, rc, o)); has(o, *needles)
-    ctx.say("%d card mutations, each exit 1 naming the problem" % len(cases))
+    # row-scoped mutations: a word taken out of one row only (the same word appears in other cells and rows)
+    row_cases = [
+        ("Script stack without Gujarati", "| **Script stack**", "Gujarati", "the local language", ["Script stack", "card_value", "Gujarati"]),
+        ("Fonts without the OFL.txt hash", "| **Fonts**", "OFL.txt", "licence file", ["Fonts", "card_value", "OFL.txt"]),
+        ("Burn-in row without the subtitles route", "| **Burn-in path**", "`subtitles`", "the other filter", ["Burn-in path", "card_value", "subtitles"]),
+        ("Burn-in row without the ass route", "| **Burn-in path**", "`ass`", "the other route", ["Burn-in path", "card_value", "ass"]),
+    ]
+    for name, prefix, old, new, needles in row_cases:
+        repo = ctx.clone()
+        cp = os.path.join(repo, "ops", "SETTINGS-CARD.md")
+        lines = open(cp, encoding="utf-8").read().split("\n")
+        ix = [i for i, ln in enumerate(lines) if ln.startswith(prefix)]
+        ok(len(ix) == 1 and old in lines[ix[0]], "test setup: one %s row containing %r" % (prefix, old))
+        lines[ix[0]] = lines[ix[0]].replace(old, new)
+        open(cp, "w", encoding="utf-8", newline="").write("\n".join(lines))
+        rc, o = ctx.lint(root=repo)
+        ok(rc == 1, "%s: exit %d: %s" % (name, rc, o)); has(o, *needles)
+    ctx.say("%d card mutations (%d of them inside one row), each exit 1 naming the problem" % (len(cases) + len(row_cases), len(row_cases)))
 
 
 @test("lint_card_scripts", "the card's tested-script claim is cross-checked with pipeline/phone/test_strings.json when that file exists")
@@ -845,7 +906,7 @@ def _(ctx):
     ctx.say("absent: noted; devanagari with strings: pass; without strings or broken file: exit 1")
 
 
-@test("lint_neg_gather", "negative: GATHER without the gate / a stand-in ID / with a stand-in in Part B / a real-box ID in Part A")
+@test("lint_neg_gather", "negative: GATHER without the gate / a stand-in ID / with a stand-in in Part B / a real-box ID in Part A / without SND-01")
 def _(ctx):
     cases = [
         ("no gate", "**Gate: nothing", "**Rule: nothing", ["gather_gate"]),
@@ -854,10 +915,13 @@ def _(ctx):
         ("stand-in in Part B", "| photo | `LJ-<box>-<nnnn>-F` |", "| photo | `LJ-ST-0009-F` |", ["Part B", "LJ-ST-0009-F"]),
         ("real box in Part A", "| [ ] | `LJ-ST-0005-F` |", "| [ ] | `LJ-B03-0005-F` |", ["before P-LOCK", "LJ-B03-0005-F"]),
         ("invented ID", "(O-06)", "(O-96)", ["O-96"]),
+        ("no SND-01", "SND-01", "SND-0X", ["gather_ids", "SND-01"]),
     ]
     for name, old, new, needles in cases:
         repo = ctx.clone()
-        if name == "real box in Part A":
+        if name == "no SND-01":
+            edit(repo, "ops/GATHER.md", old, new, count=99)
+        elif name == "real box in Part A":
             edit(repo, "ops/GATHER.md", "| [ ] | `LJ-ST-0005-F` | `LJ-ST-0005-B` |", "| [ ] | `LJ-B03-0005-F` | `LJ-ST-0005-B` |")
         elif name == "invented ID":
             edit(repo, "ops/GATHER.md", "| O-06 |", "| O-96 |")
@@ -1060,8 +1124,34 @@ def _(ctx):
     ids = set(register_ids())
     cited = set("%s-%s" % m for m in re.findall(r"\b([DWOS])-([0-9]{2,3})\b", t))
     ok(cited and cited <= ids, "cited IDs not in the register: %s" % sorted(cited - ids))
-    for rid in ["W-14", "W-15", "W-16", "W-17", "W-18", "W-19", "D-27", "D-31", "O-14", "O-15", "W-57"]:
+    for rid in ["W-14", "W-15", "W-16", "W-17", "W-18", "W-19", "D-27", "D-31", "O-14", "O-15", "W-57", "W-63", "W-75"]:
         ok(rid in cited, "%s should be cited" % rid)
+    # what the register says the maker signs on Sun 1 Nov (W-16 "Added 2026-10-19", O-14): TD-1..TD-4 plus the
+    # phone rows (PH1, PH2: W-63), the font rows and the script decision (W-75, O-15) and the burn-in path
+    rows = {ln.split("|")[1].strip(): [c.strip() for c in ln.strip().strip("|").split("|")] for ln in t.split("\n") if ln.startswith("| **")}
+    def row(prefix):
+        hit = [v for k, v in rows.items() if k.startswith(prefix)]
+        ok(len(hit) == 1 and len(hit[0]) == 6, "the card needs exactly one six-column row starting %r" % prefix)
+        return hit[0]
+    phone, td3 = row("**Phone"), row("**TD-3")
+    ok("D-27" in phone[3] and "W-63" in phone[3] and "W-18" in phone[3], "Phone row Register cell: %r" % phone[3])
+    ok("PH1" in phone[2] and "PH2" in phone[2], "the Phone row must name PH1 and PH2 (W-63)")
+    ok(all(n in phone[2] for n in ("1280x720", "CRF 20", "CRF 22", "8 Mb/s", "4 Mb/s", "level 3.1", "before the downscale")), "PH1/PH2 numbers (W-63)")
+    ok(all(n in phone[2] for n in ("`FontSize=28`", "`MarginV` 40", "36 characters", "68 to 86%")), "the phone caption numbers are W-18's")
+    ok("to be set by the phone test" not in t, "the Phone row must not defer to the phone test: W-18 fixes the phone caption size")
+    ok("`MarginV` 20 or more" in td3[2] and "W-16" in td3[3] and "W-18" in td3[3], "TD-3 must carry MarginV 20 (W-16, W-18)")
+    for prefix, regs, needles in [("**Script stack", ("W-75", "O-15"), ("Gujarati", "Devanagari", "shaped outlines")),
+                                  ("**Fonts", ("W-75", "W-21"), ("OFL.txt", "fontselect:", "pasted from the T8 font rows")),
+                                  ("**Burn-in path", ("W-16", "W-75", "O-14"), ("`ass`", "`subtitles`", "ab.srt"))]:
+        r = row(prefix)
+        ok(all(x in r[3] for x in regs), "%s: Register cell %r must cite %s" % (prefix, r[3], ", ".join(regs)))
+        ok(all(x in " ".join(r) for x in needles), "%s: lacks one of %s" % (prefix, needles))
+        ok("Proposed (J)" in r[2], "%s must be marked Proposed (J)" % prefix)
+        ok("UNVERIFIED" in r[4], "%s must say UNVERIFIED in its proof cell until the PC run" % prefix)
+    lang = [ln for ln in t.split("\n") if "Caption and font test ran in:" in ln]
+    ok(len(lang) == 1 and "devanagari (neutral test strings) on <date>" in lang[0] and "gujarati NOT TESTED" in lang[0]
+       and "D-31" in lang[0] and "32-string fixture of W-16/W-75" in lang[0], "the language line must say gujarati is NOT TESTED (D-31)")
+    ok("until the maker's script is named" not in t, "D-31 names Gujarati: the card must not say the script is unnamed")
     status = [ln for ln in t.split("\n") if ln.startswith("*Status when drafted")]
     ok(status and "Gujarati" in status[0] and "D-31" in status[0] and "pending_O-10" in status[0]
        and "must pass before this card is signed" in status[0],
@@ -1097,6 +1187,24 @@ def _(ctx):
     ok(all(n in o08[0] for n in ("hichko", "every evening", "at what hour", "travel with her")), "the O-08 row must ask the hichko question")
     o10 = [ln for ln in g.split("\n") if ln.startswith("| [ ] | O-10")]
     ok(o10 and "D-31" in o10[0].split("|")[2], "the O-10 row's Register cell must cite D-31")
+    # the v3 / v3.1 wording of the register's sittings (O-06, O-08 with O-48, O-10, O-11) and the two own-material rows it added (O-54, O-71)
+    o06 = [ln for ln in g.split("\n") if ln.startswith("| [ ] | O-06")]
+    ok(o06 and "and which of these does she do now" in o06[0] and "if it is seva craft, the material is the making, never the article" in o06[0],
+       "the O-06 row must ask which of these crafts she does now and say that seva craft is the making, never the article")
+    ok("O-48" in o08[0].split("|")[2] and all(n in o08[0] for n in ("inside the mandir", "any picture of hers", "only by sight, untouched", "G5 flag")),
+       "the O-08 row must carry O-48's never-photograph rule (Register cell O-48)")
+    ok("the prayer language of the house (kirtan, stotra, everyday speech)" in o10[0], "the O-10 row must ask for the prayer language of the house")
+    o11 = [ln for ln in g.split("\n") if ln.startswith("| [ ] | O-11")]
+    ok(o11 and "whether it is her birthday stays in your notes and is never recorded" in o11[0],
+       "the O-11 row must say that whether it is her birthday stays in the notes and is never recorded")
+    o54 = [ln for ln in g.split("\n") if ln.startswith("| [ ] | O-54")]
+    ok(o54 and "O-54" in o54[0].split("|")[2] and "W-26" in o54[0].split("|")[2], "an O-54, W-26 row (her phone) is required")
+    ok(all(n in o54[0] for n in ("make, model, Android version", "free storage", "USB-C", "video", "device-folder backup", "`DEV-xx`", "never a serial number or an account", "never looked at or tested before the reveal")),
+       "the O-54 row must list make, model, Android version, storage, USB-C, the video app and device-folder backup, recorded as DEV-xx, never a serial number or an account")
+    o71 = [ln for ln in g.split("\n") if ln.startswith("| [ ] | O-71")]
+    ok(o71 and all(n in o71[0] for n in ("empty room", "seva article", "`SND-01`", "`SND-02`", "does not sync")),
+       "an O-71 row (sounds of the house, SND-01, SND-02, ...) is required")
+    ok("`SND-01`" in g.split("**ID shapes used on this page.**")[1].split("\n")[0], "SND-01 belongs in the ID-shapes line")
     for n in ["id", "class", "holder", "cloud", "consent_state", "allowed_use", "as_found_photographed", "scanned", "returned"]:
         ok("`%s`" % n in g, "Part B field %s" % n)
     ctx.say("HOURS-HOWTO %d lines, %d words; GATHER structure present" % (len(h.split("\n")), len(h.split())))

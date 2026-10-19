@@ -8,11 +8,11 @@
 
 | Test | What it checks | Result | Evidence |
 |---|---|---|---|
-| T1 FilmCraft | `--version`, command list, state query, describe, clean stderr, libraries | NOT RUN: no stage has produced a result yet | `t1_filmcraft_*.json` |
-| T1 EffectCraft | the same for `effectcraft-cli` | NOT RUN: stage_effectcraft-v0.11.1: BLOCKED (not started: REFUSED: Avail 467 MB minus planned 300 MB leaves 167 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB.) | `t1_effectcraft_*.json` |
+| T1 FilmCraft | `--version`, command list, state query, describe, clean stderr, libraries | PASS | `t1_filmcraft_*.json` |
+| T1 EffectCraft | the same for `effectcraft-cli` | PASS | `t1_effectcraft_*.json` |
 | T2 FilmCraft stills | N = 5, 20, 100 at 3600x2400 and 300 at 2880x1620: no crash, RSS slope under 40 MB per still, RSS(300) under 12 GB; 2,400-frame H.264 at 5 fps or more; ProRes frame count; Ken Burns within 1 px; dissolve within 2 levels; offlineMedia empty | NOT RUN: no stage has produced a result yet | `t2_filmcraft_*.json` |
 | T3 interchange | OTIO, FCP7 XML, FCPXML, EDL import and export | done in WP-10 (from the FilmCraft tarball kept in `vendor/craft/_keep/` when the keep rule allowed) | WP-10 |
-| T4 EffectCraft | title, line-draw and parallax at 1080p24 with `RAYON_NUM_THREADS=1`: no OOM, PNG alpha, parallax under 3 s/frame and 6 GB, ProRes 4444 and H.264 decode, determinism | NOT RUN: stage_effectcraft-v0.11.1: BLOCKED (not started: REFUSED: Avail 467 MB minus planned 300 MB leaves 167 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB.) | `t4_effectcraft_*.json` |
+| T4 EffectCraft | title, line-draw and parallax at 1080p24 with `RAYON_NUM_THREADS=1`: no OOM, PNG alpha, parallax under 3 s/frame and 6 GB, ProRes 4444 and H.264 decode, determinism | NOT RUN: no stage has produced a result yet | `t4_effectcraft_*.json` |
 | T5 SoundCraft | bounce and loudness | not run: SoundCraft is unpinned and learning-only (D-12); no decision depends on it | none |
 | T6 web builds | the web zips in headless Chromium | not run: the web zips are not pins | none |
 
@@ -22,20 +22,18 @@ R8 decision rule (research/craft-motion.md): if T2 and T4 pass, agents may rende
 
 **Outcome: UNDECIDED. T2 and T4 have not been run.** Until they are, the plan's default stands: the container renders with ffmpeg, Pillow and Chromium (Route A), and FilmCraft and EffectCraft are maker-side refinement tools. ROADMAP 5.2 says "Craft CLIs: only if SP1 T2/T4 pass", so nothing is planned on them.
 
-Why they have not run (the stage envelopes, copied):
-- stage_effectcraft-v0.11.1: BLOCKED (not started: REFUSED: Avail 467 MB minus planned 300 MB leaves 167 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB.)
-
 ## 3. Measurements
 
 ## 4. Sums, hashes and the download ledger
 
 - `release_assets.json` (fetched 2026-10-19): usable = True; independent (R8) hash comparison: **all match** over 6 values; sizes against the plan's HEAD figures: **all match**.
 - PhotoCraft, VectorCraft and LightCraft have no independent value; their hashes prove integrity only. SoundCraft: not pinned, not fetched.
-- Download ledger: 0 tarball fetches recorded.
+- Download ledger: 2 tarball fetches recorded; effectcraft-0.11.1-linux-x86_64.tar.gz (effectcraft-v0.11.1, 61.1 MB); filmcraft-0.9.0-linux-x86_64.tar.gz (filmcraft-v0.9.0, 66.5 MB).
 
 ## 5. Disk
 
-- `stage_effectcraft-v0.11.1`: BLOCKED; Avail start 467 MB, minimum 467 MB, end 467 MB; planned 300 MB; profile none.
+- `stage_effectcraft-v0.11.1`: PASS; Avail start 1201 MB, minimum 989 MB, end 1201 MB; planned 400 MB; profile full.
+- `stage_filmcraft-v0.9.0`: PASS; Avail start 1201 MB, minimum 1062 MB, end 1134 MB; planned 600 MB; profile full.
 
 ## 6. What this does not say
 

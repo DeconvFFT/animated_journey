@@ -1,1 +1,49 @@
-NOT LANDED: tests/win_lj/run_tests.sh does not exist yet. This is not a failure; the runner exit code is unaffected.
+# area=win_lj entry=WP-01b mode=quick result=PASS exit=0 seconds=17 masked_values=14
+WP-01b tests (--quick). pwsh: present  patterns file: present  public_lint: present
+PASS       lint.lj_script                                       exit 0; TOTAL: 0 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.readme_fences                                   exit 0; TOTAL: 0 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.planted_RO-delete_is_caught_remove-item         exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.planted_RO-write_is_caught_set-content          exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.planted_RO-write_is_caught_out-file             exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.planted_RO-network_is_caught_invoke-webrequest  exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.planted_R13_is_caught_set-executionpolicy       exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       static.no_write_delete_network_code                  no match for 36 patterns in win/lj.ps1
+PASS       static.only_read_calls_into_dotnet_io                [System.IO.Directory]::Exists [System.IO.File]::Exists [System.IO.File]::ReadAllText [System.IO.Path]::Combine [System.IO.Path]::DirectorySeparatorCha
+PASS       parse.ps_parse_sh_all_files                          exit 0; PARSED 34 item(s), 0 parse error(s)|ps_parse: 0 parse errors|
+PASS       parse.own_files_and_readme_fences                    exit 0; PARSED 8 item(s) of lj.ps1 and README-LJ.md (7 fence(s)), 0 parse error(s)|
+PASS       data.example_config_test_configs_and_readme          exit 0; example apps: 6; test configs checked; README headings found: 7/7; powershell fences: 7; json fences: 1; problems: 0|
+PASS       lint.public_lint_on_owned_paths                      exit 0; 
+PASS       trees.build                                          exit 0; 
+PASS       help.prints_summary                                  exit 0; Not in v0 (planned for v1 in week 4): -Apply, -Commit, -IncludeWindowsRecent. They print a message and exit 2.|
+PASS       help.no_arguments_is_help                            exit 0; Not in v0 (planned for v1 in week 4): -Apply, -Commit, -IncludeWindowsRecent. They print a message and exit 2.|
+PASS       not_in_v0.close-Apply                                exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.close-Apply.tree_hash_identical            HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+PASS       not_in_v0.close-Commit                               exit 2; -Commit: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.close-Commit.tree_hash_identical           HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+PASS       not_in_v0.close-IncludeWindowsRecent                 exit 2; -IncludeWindowsRecent: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.close-IncludeWindowsRecent.tree_hash_identical HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+PASS       not_in_v0.doctor-Apply                               exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.doctor-Apply.tree_hash_identical           HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+PASS       not_in_v0.doctor-Commit                              exit 2; -Commit: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.doctor-Commit.tree_hash_identical          HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+PASS       not_in_v0.doctor-IncludeWindowsRecent                exit 2; -IncludeWindowsRecent: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.doctor-IncludeWindowsRecent.tree_hash_identical HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+PASS       not_in_v0.close_apply_with_config                    exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.close_apply_with_config.tree_hash_identical HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+PASS       not_in_v0.lowercase_and_abbreviations                exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.lowercase_and_abbreviations.tree_hash_identical HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+PASS       not_in_v0.double_dash_and_equals                     exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.double_dash_and_equals.tree_hash_identical HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+PASS       doctor.fixture_prints_tier_table                     exit 0; [3/4] Running scripts\windows_check.py (read-only; masks anything that looks like identifying data) ... exit 0|  RESULT: exit 0 (valid; nothin
+PASS       doctor.fixture_prints_tier_table.tree_hash_identical HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+PASS       close.planted_lists_the_planted_items                exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 12 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
+PASS       close.planted_lists_the_planted_items.tree_hash_identical HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+PASS       close.planted_list_is_exactly_the_manifest           exit 0; problems: 0|
+PASS       close.root_is_slash_refused                          exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is a drive root (/). Nothing was done.|files written: non
+PASS       close.root_is_slash_refused.tree_hash_identical      HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+PASS       close.root_is_repo_refused                           exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is the project repository folder. Nothing was done.|files
+PASS       close.root_is_repo_refused.tree_hash_identical       HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+PASS       close.root_is_home_refused                           exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is the user profile folder. Nothing was done.|files writt
+PASS       close.root_is_home_refused.tree_hash_identical       HASH c56543cb1424d5676a2cee9a262e1f9afdec4c564a5323a804aaf9d950020c39 entries=115 / HASH 60********
+---
+WP-01b --quick: PASS=45 FAIL=0 UNVERIFIED=0 SKIPPED=0 BLOCKED=0  (df Avail 1132 -> 1133 MB)

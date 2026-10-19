@@ -215,3 +215,32 @@ check_guide: 8 PASS, 0 FAIL, 0 UNVERIFIED
 
 $ bash tests/sp1/run_tests.sh --all  ->  SUMMARY all: 39 PASS, 0 FAIL, 2 BLOCKED, 1 UNVERIFIED, 0 SKIPPED   (exit 3: the two BLOCKED lines are the real stages the disk guard refused at Avail Avail 467 MB)
 $ bash tests/sp1/run_tests.sh --quick  ->  SUMMARY quick: 14 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED
+
+================ review r1, resumed round: fixes applied Mon 19 Oct 2026 (ledger, timeout reason, usable=false, fallback test) ================
+
+$ bash tests/sp1/run_tests.sh --all   with the PRE-fix run_sp1.sh and asset_tool.py restored from git (--skip-network): the new tests have teeth
+FAIL       fake.sums_only  exit 0: wrote <outside> (6 pins, R8 comparison: all match, sizes: all match); tampered R8 value: sums step exit 1 (usable=false), then a stage on that table: exit 1, 'usable=false' shown: 0, downloads re
+FAIL       fake.t1only_then_all_ledger_clean  --t1-only exit 0, then --all exit 0; ledger lines 3; line 3: effectcraft-0.11.1-linux-x86_64.tar.gz | ; --ledger-check exit 1; LEDGER PROBLEM shown: 0
+FAIL       fake.all_prints_ledger_problem  exit 0; 
+FAIL       fake.stage_timeout_reason  exit 3; stage envelope: exit 3; leftovers: none
+SUMMARY all: 36 PASS, 4 FAIL, 0 BLOCKED, 1 UNVERIFIED, 4 SKIPPED
+
+$ bash tests/sp1/run_tests.sh --all   with the fixes (real network lines included; the real EffectCraft line reuses the recorded evidence, so nothing is downloaded)
+UNVERIFIED guide.windows_behaviour  no Windows PC here: PowerShell 5.1 parsing is covered by ps_lint.py rules and pwsh 7 on Linux only; where the zips unpack, portable.txt handling and each app's writes wait for the maker's Sat 24 Oct paste
+PASS       effectcraft.t1only_real  fetched once already (ledger line 1, 2026-10-19); evidence reused, no second download: 8 checks, 0 failed; the recorded sha256 equals the table; vendor/craft leftovers: none
+SKIPPED    all.staged_run  the guard would allow it, but it takes hours: run 'bash spikes/sp1_craft_cli/run_sp1.sh --all' in the background, or pass --real-all
+PASS       fake.sums_only  exit 0: wrote <outside> (6 pins, R8 comparison: all match, sizes: all match); tampered R8 value: sums step exit 1 (usable=false), then a stage on that table: exit 1, 'usable=false' shown: 1, downloads recorded: 0, vendor leftovers: 
+PASS       fake.t2_fail_fetches_fallback  exit 1; fallback line shown: 1; ledger lines 3 (0.8.0: 1); stage envelopes: 0.9.0 FAIL, 0.8.0 FAIL, EffectCraft PASS; leftovers: none
+PASS       fake.t1only_then_all_ledger_clean  --t1-only exit 0, then --all exit 0; ledger lines 3; line 3: effectcraft-0.11.1-linux-x86_64.tar.gz | re-fetch: the earlier copy (stage effectcraft-v0.11.1, t1-only) was deleted with its tree; --ledger-check exit 0; LEDGER PROBLEM shown: 0
+PASS       fake.all_prints_ledger_problem  exit 1; == LEDGER PROBLEM: ledger: 4 fetches, 2 distinct assets, 0.0 MB in total (allowance 2048 MB); PROBLEMS: effectcraft-0.11.1-linux-x86_64.tar.gz was fetched 3 times and a later fetch has no recorded exc
+PASS       fake.stage_timeout_reason  exit 3; stage envelope: exit 3: TIMEOUT: the stage ran over 4 s and was stopped; T2's partial envelope holds what was measured; leftovers: none
+SUMMARY all: 44 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED, 1 SKIPPED
+
+$ bash spikes/sp1_craft_cli/run_sp1.sh --ledger-check
+ledger: 2 fetches, 2 distinct assets, 127.6 MB in total (allowance 2048 MB)
+
+$ python3 -I spikes/sp1_craft_cli/drivers/verdict.py --print | grep -E "^\| T[124] (FilmCraft|EffectCraft)"
+ T1 FilmCraft | PASS 
+ T1 EffectCraft | PASS 
+ T2 FilmCraft stills | NOT RUN: no stage has produced a result yet 
+ T4 EffectCraft | NOT RUN: no stage has produced a result yet 

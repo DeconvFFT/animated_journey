@@ -1,0 +1,49 @@
+{
+  "actual": "exit 0",
+  "date_utc": "2026-10-19",
+  "detail": {
+    "avail_drop_includes_other_writers": true,
+    "avail_drop_mb": 139,
+    "df_after_mb": 1134,
+    "df_back_within_10mb_of_start_plus_kept": true,
+    "df_before_mb": 1201,
+    "df_delta_mb": 67,
+    "df_note": "the volume is shared; a concurrent writer moves this figure, the vendor listing below is the exact one",
+    "exit_code": 0,
+    "guard_ledger": {
+      "exit": 0,
+      "lock_wait_s": 0,
+      "status": "ok"
+    },
+    "kept_mb": 66.5,
+    "kept_tarballs": [
+      "filmcraft-0.9.0-linux-x86_64.tar.gz"
+    ],
+    "profile": "full",
+    "stage": "filmcraft-v0.9.0",
+    "vendor_craft_other_than_keep": []
+  },
+  "disk": {
+    "avail_mb_end": 1134,
+    "avail_mb_min": 1062,
+    "avail_mb_start": 1201,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 600
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "the stage ran inside lj_with_disk, ended with exit 0, and left vendor/craft with nothing but _keep/",
+  "notes": "",
+  "package": "WP-07",
+  "schema": "lj-evidence/1",
+  "stage": "",
+  "status": "PASS",
+  "test": "stage_filmcraft-v0.9.0",
+  "unverified_reasons": []
+}

@@ -102,6 +102,28 @@
       "why": "good file for the phone_1080 profile"
     },
     {
+      "file": "g_phone_720.mp4",
+      "profile": "phone_720_share",
+      "expected": "pass",
+      "exit": 0,
+      "failed_checks": [],
+      "must_fail": null,
+      "isolated": false,
+      "ok": true,
+      "why": "good file for the phone_720_share profile"
+    },
+    {
+      "file": "g_ffv1_lossless.mkv",
+      "profile": "ffv1_lossless_mkv",
+      "expected": "pass",
+      "exit": 0,
+      "failed_checks": [],
+      "must_fail": null,
+      "isolated": false,
+      "ok": true,
+      "why": "good file for the ffv1_lossless_mkv profile"
+    },
+    {
       "file": "d_yuvj420p.mp4",
       "profile": "venue_h264",
       "expected": "fail",
@@ -254,6 +276,21 @@
       "isolated": false,
       "ok": true,
       "why": "MP4 cut to 60 percent: the moov atom is gone"
+    },
+    {
+      "file": "d_corrupt_mdat.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "integrity.decode"
+      ],
+      "must_fail": [
+        "integrity.decode"
+      ],
+      "isolated": false,
+      "ok": true,
+      "why": "2000 bytes inside mdat overwritten: the boxes are fine, the decode is not"
     },
     {
       "file": "d_frame_count.mp4",

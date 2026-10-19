@@ -1,34 +1,38 @@
-tests/sp1/run_tests.sh --all   (df now: Avail 467M)
+tests/sp1/run_tests.sh --all   (df now: Avail 1121M)
 PASS       syntax.bash  bash -n on run_sp1.sh, run_tests.sh and the fake df scripts; failing: none
 PASS       syntax.python  ast.parse on every .py file and both stand-in CLIs; failing: none
 PASS       lib.selftest  sp1_lib --selftest: 8 PASS, 0 FAIL
 PASS       watchdog.rss_and_wall  PASS  watchdog.kills_above_limit  killed by rss-watchdog after 2.5 s, polled peak 158 MB, kernel max 158 MB;PASS  watchdog.leaves_a_quiet_process  exit 0, kernel max 28 MB, polled 28 MB;PASS  watchdog.wall_clock_kill  killed by wall-clock after 2.3 s;
 PASS       assets.table  6 pins, 6 independent comparisons (all match), sizes all match; problems: none
-PASS       list.live  Avail 467 MB: exit 3 (expected 3: lean needs Avail of at least 750 MB); Chosen profile: none REFUSED: Avail 467 MB minus planned 600 MB leaves -133 MB, below the 400 MB floor (filmcraft-v0.9.0, full profile). 
+PASS       list.live  Avail 1121 MB: exit 0 (expected 0: lean needs Avail of at least 750 MB); Chosen profile: full 
 PASS       list.fake_900  exit 0;   full: filmcraft-v0.9.0 plans 600 MB, Avail 900 MB, leaves 300 MB: REFUSED (needs Avail of at least 1000 MB) Chosen profile: lean (the full profile is refused at this Avail) 
 PASS       list.fake_900_profile_full  exit 3; the full profile is refused at this Avail; lean would fit: rerun with --profile lean (or auto). The first stage needs Avail of at least 1000 MB for fu 
 PASS       list.fake_600_profile_full  exit 3; Neither profile fits: the first stage needs Avail of at least 1000 MB for full or 750 MB for lean, and Avail is 600 MB. 
 PASS       list.fake_600  exit 3; REFUSED: Avail 600 MB minus planned 600 MB leaves 0 MB, below the 400 MB floor (filmcraft-v0.9.0, full profile). REFUSED: Avail 600 MB minus planned 350 MB leaves 250 MB, below the 400 MB floor (filmcraft-v0.9.0, lean profile). 
-PASS       ledger.check  ledger: 0 fetches, 0 distinct assets, 0.0 MB in total (allowance 2048 MB)
+PASS       ledger.check  ledger: 2 fetches, 2 distinct assets, 127.6 MB in total (allowance 2048 MB)
 PASS       guide.in_sync_with_assets  build_guide.py regenerates MAKER-CRAFT-ZIPS.md byte for byte from release_assets.json
 PASS       guide.check_guide  check_guide: 8 PASS, 0 FAIL, 0 UNVERIFIED
 UNVERIFIED guide.windows_behaviour  no Windows PC here: PowerShell 5.1 parsing is covered by ps_lint.py rules and pwsh 7 on Linux only; where the zips unpack, portable.txt handling and each app's writes wait for the maker's Sat 24 Oct paste
-PASS       lint.public  public_lint: mode paths, 48 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+PASS       lint.public  public_lint: mode paths, 55 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
 PASS       sums.real_six_files  exit 0; wrote spikes/sp1_craft_cli/release_assets.json (6 pins, R8 comparison: all match, sizes: all match)
 PASS       blocked.force_bad_asset  exit 3; blocked_proof.json: HTTP 404, curl said: curl: (22) The requested URL returned error: 404
-PASS       blocked.forced_stage_not_in_verdict  forced envelope present and flagged: yes; verdict rows identical before and after the forced line: yes; FilmCraft rows now:  NOT RUN: no stage has produced a result yet 
-BLOCKED    effectcraft.t1only_real  REFUSED: Avail 467 MB minus planned 300 MB leaves 167 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB. Remedy: answer Q-1 (clear the regenerable pip cache) or free space, or pass --wait SECONDS. Nothing was downloaded and nothing was forced.
-BLOCKED    all.staged_run  REFUSED: Avail 467 MB minus planned 600 MB leaves -133 MB, below the 400 MB floor (filmcraft-v0.9.0, full profile). Neither profile fits at the live Avail; nothing was started.
-PASS       fake.sums_only  exit 0: wrote <outside> (6 pins, R8 comparison: all match, sizes: all match)
+PASS       blocked.forced_stage_not_in_verdict  forced envelope present and flagged: yes; verdict rows identical before and after the forced line: yes; FilmCraft rows now:  PASS 
+PASS       effectcraft.t1only_real  fetched once already (ledger line 1, 2026-10-19); evidence reused, no second download: 8 checks, 0 failed; the recorded sha256 equals the table; vendor/craft leftovers: none
+SKIPPED    all.staged_run  the guard would allow it, but it takes hours: run 'bash spikes/sp1_craft_cli/run_sp1.sh --all' in the background, or pass --real-all
+PASS       fake.sums_only  exit 0: wrote <outside> (6 pins, R8 comparison: all match, sizes: all match); tampered R8 value: sums step exit 1 (usable=false), then a stage on that table: exit 1, 'usable=false' shown: 1, downloads recorded: 0, vendor leftovers: 
 PASS       fake.filmcraft_stage_and_keep  exit 0; T2 criteria 13, failing: none; _keep: filmcraft-0.9.0-linux-x86_64.tar.gz ; verified kept sha equals the table: yes; other leftovers: none
 PASS       fake.kept_tarball_reused  exit 0; ledger lines for the first stage 1, after the second run 1; 1 reuse message
 PASS       fake.kept_tarball_corrupt_recovers  run 1 exit 0 (kept: yes); one byte flipped in _keep/; run 2 exit 0 (corrupt-and-removed message: 1), ledger lines 2, second line exception: kept tarball rejected, new _keep tarball equals the table: yes; run 3 exit 0, ledger lines 2, reused without a download: 1; ledger check exit 0; other leftovers: none
 PASS       fake.effectcraft_stage  exit 0; T4 criteria 9, failing: none; vendor leftovers: none (EffectCraft's tarball is deleted with its tree)
 PASS       fake.corrupt_tarball_rejected  exit 1 (a rejected hash is exit 1, never the internal 4); REJECTED shown: 1; extraction started: 0; leftovers: none; stage envelope: FAIL / exit 1: hash mismatch (stop and report)
 PASS       fake.hash_mismatch_stops_all  exit 1; STOP AND REPORT shown: 2; ledger lines 1 (0.8.0: 0, EffectCraft: 0); 0.8.0 or EffectCraft stage started: 0; leftovers: none; stage envelope: FAIL
+PASS       fake.t2_fail_fetches_fallback  exit 1; fallback line shown: 1; ledger lines 3 (0.8.0: 1); stage envelopes: 0.9.0 FAIL, 0.8.0 FAIL, EffectCraft PASS; leftovers: none
+PASS       fake.t1only_then_all_ledger_clean  --t1-only exit 0, then --all exit 0; ledger lines 3; line 3: effectcraft-0.11.1-linux-x86_64.tar.gz | re-fetch: the earlier copy (stage effectcraft-v0.11.1, t1-only) was deleted with its tree; --ledger-check exit 0; LEDGER PROBLEM shown: 0
+PASS       fake.all_prints_ledger_problem  exit 1; == LEDGER PROBLEM: ledger: 4 fetches, 2 distinct assets, 0.0 MB in total (allowance 2048 MB); PROBLEMS: effectcraft-0.11.1-linux-x86_64.tar.gz was fetched 3 times and a later fetch has no recorded exc
 PASS       fake.t2_envelope_survives_term  driver exit 143 after TERM; UNVERIFIED; 4 criteria; phase scaling; stopped: TERM received (stage timeout or disk guard)
 PASS       fake.t2_envelope_survives_kill  driver exit 137 after KILL; UNVERIFIED; 4 criteria; stage still running: phase 'scaling' done; 4 criteria measured so far, 0 failed
 PASS       fake.guard_refuses_at_600  exit 3; downloads recorded: 0; stage envelope BLOCKED: BLOCKED
+PASS       fake.stage_timeout_reason  exit 3; stage envelope: exit 3: TIMEOUT: the stage ran over 4 s and was stopped; T2's partial envelope holds what was measured; leftovers: none
 PASS       fake.disk_floor_abort_cleans_up  exit 3; guard status floor; leftovers in vendor/craft: none
 PASS       fake.defect_filmcraft_leak  driver exit 1; failing criteria: T2.rss_slope (expected T2.rss_slope)
 PASS       fake.defect_filmcraft_offset  driver exit 1; failing criteria: T2.kenburns_positions (expected T2.kenburns_positions)
@@ -40,6 +44,5 @@ PASS       fake.defect_effectcraft_noalpha  driver exit 1; failing criteria: T4.
 PASS       fake.defect_effectcraft_nondeterministic  driver exit 1; failing criteria: T4.determinism (expected T4.determinism)
 PASS       fake.defect_effectcraft_nodecode  driver exit 1; failing criteria: T4.prores4444_decodes (expected T4.prores4444_decodes)
 PASS       fake.defect_effectcraft_slow  driver exit 1; failing criteria: T4.parallax_speed (expected T4.parallax_speed)
-PASS       fake.verify_flipped_byte  intact -> exit 0; one byte flipped -> exit 1: REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 789098bc3096... differs from the re
-SUMMARY all: 39 PASS, 0 FAIL, 2 BLOCKED, 1 UNVERIFIED, 0 SKIPPED
-all exit=3
+PASS       fake.verify_flipped_byte  intact -> exit 0; one byte flipped -> exit 1: REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 c5b7853c8dad... differs from the re
+SUMMARY all: 44 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED, 1 SKIPPED

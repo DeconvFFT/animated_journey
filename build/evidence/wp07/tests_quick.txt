@@ -1,18 +1,17 @@
-tests/sp1/run_tests.sh --quick   (df now: Avail 465M)
+tests/sp1/run_tests.sh --quick   (df now: Avail 1120M)
 PASS       syntax.bash  bash -n on run_sp1.sh, run_tests.sh and the fake df scripts; failing: none
 PASS       syntax.python  ast.parse on every .py file and both stand-in CLIs; failing: none
 PASS       lib.selftest  sp1_lib --selftest: 8 PASS, 0 FAIL
 PASS       watchdog.rss_and_wall  PASS  watchdog.kills_above_limit  killed by rss-watchdog after 2.5 s, polled peak 158 MB, kernel max 158 MB;PASS  watchdog.leaves_a_quiet_process  exit 0, kernel max 28 MB, polled 28 MB;PASS  watchdog.wall_clock_kill  killed by wall-clock after 2.3 s;
 PASS       assets.table  6 pins, 6 independent comparisons (all match), sizes all match; problems: none
-PASS       list.live  Avail 465 MB: exit 3 (expected 3: lean needs Avail of at least 750 MB); Chosen profile: none REFUSED: Avail 465 MB minus planned 600 MB leaves -135 MB, below the 400 MB floor (filmcraft-v0.9.0, full profile). 
+PASS       list.live  Avail 1120 MB: exit 0 (expected 0: lean needs Avail of at least 750 MB); Chosen profile: full 
 PASS       list.fake_900  exit 0;   full: filmcraft-v0.9.0 plans 600 MB, Avail 900 MB, leaves 300 MB: REFUSED (needs Avail of at least 1000 MB) Chosen profile: lean (the full profile is refused at this Avail) 
 PASS       list.fake_900_profile_full  exit 3; the full profile is refused at this Avail; lean would fit: rerun with --profile lean (or auto). The first stage needs Avail of at least 1000 MB for fu 
 PASS       list.fake_600_profile_full  exit 3; Neither profile fits: the first stage needs Avail of at least 1000 MB for full or 750 MB for lean, and Avail is 600 MB. 
 PASS       list.fake_600  exit 3; REFUSED: Avail 600 MB minus planned 600 MB leaves 0 MB, below the 400 MB floor (filmcraft-v0.9.0, full profile). REFUSED: Avail 600 MB minus planned 350 MB leaves 250 MB, below the 400 MB floor (filmcraft-v0.9.0, lean profile). 
-PASS       ledger.check  ledger: 0 fetches, 0 distinct assets, 0.0 MB in total (allowance 2048 MB)
+PASS       ledger.check  ledger: 2 fetches, 2 distinct assets, 127.6 MB in total (allowance 2048 MB)
 PASS       guide.in_sync_with_assets  build_guide.py regenerates MAKER-CRAFT-ZIPS.md byte for byte from release_assets.json
 PASS       guide.check_guide  check_guide: 8 PASS, 0 FAIL, 0 UNVERIFIED
 UNVERIFIED guide.windows_behaviour  no Windows PC here: PowerShell 5.1 parsing is covered by ps_lint.py rules and pwsh 7 on Linux only; where the zips unpack, portable.txt handling and each app's writes wait for the maker's Sat 24 Oct paste
-PASS       lint.public  public_lint: mode paths, 49 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+PASS       lint.public  public_lint: mode paths, 55 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
 SUMMARY quick: 14 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED
-quick exit=0

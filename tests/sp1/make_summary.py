@@ -31,6 +31,22 @@ def from_transcript(path):
     return rows
 
 
+def real_run_state():
+    """One sentence about the real CLI results, derived from the driver envelopes (stand-in `_mini` envelopes do not count)."""
+    parts = []
+    for prefix, label in (("t1_filmcraft", "T1 FilmCraft"), ("t2_filmcraft", "T2 FilmCraft"), ("t1_effectcraft", "T1 EffectCraft"), ("t4_effectcraft", "T4 EffectCraft")):
+        found = []
+        for p in sorted(glob.glob(os.path.join(L.EVID, prefix + "_*.json"))):
+            if p.endswith("_mini.json"):
+                continue
+            d = L.read_json(p)
+            if (d.get("detail") or {}).get("mini"):
+                continue
+            found.append(d["status"])
+        parts.append("%s %s" % (label, "/".join(found) if found else "NOT RUN"))
+    return "Real CLI results: " + "; ".join(parts) + ". The harness is also proven against stand-in CLIs, which say nothing about FilmCraft or EffectCraft."
+
+
 def main(argv):
     if argv and argv[0] == "--from-transcript":
         from_transcript(argv[1])
@@ -50,7 +66,7 @@ def main(argv):
     avail = [r["disk"]["avail_mb_min"] for r in rows if r.get("disk") and r["disk"].get("avail_mb_min") is not None]
     summary = {"schema": "lj-wp-summary/1", "package": L.PACKAGE, "date_utc": L.today(), "mode": mode, "counts": counts, "tests": [{"name": r["test"], "status": r["status"]} for r in rows],
                "real_stages": stages, "lowest_avail_mb_seen_by_the_tests": min(avail) if avail else None,
-               "real_run_state": "T1, T2 and T4 have NOT been run against the real CLIs: the disk guard refused every real stage (see real_stages). The harness is proven against stand-in CLIs only."}
+               "real_run_state": real_run_state()}
     L.write_json(os.path.join(L.EVID, "summary.json" if mode != "quick" else "summary_quick.json"), summary)
     if mode == "quick":
         print("summary_quick.json written (%s)" % ", ".join("%s %d" % kv for kv in sorted(counts.items())))
@@ -60,7 +76,7 @@ def main(argv):
         if r["status"] in ("UNVERIFIED", "BLOCKED"):
             lines.append("%s  %s: %s" % (r["status"], r["test"], r["actual"][:300]))
     lines += ["", "Standing: nothing about Windows is verified (PowerShell 5.1 itself, where each zip unpacks, portable.txt handling, what each app writes);",
-              "the real CLIs' parameter names and the FilmCraft keyframe convention for clips that do not start at 0 are assumptions until T2 runs;",
+              "T1 confirmed the describe documents the drivers rely on; the shapes of the timeline, inspect and export results and the FilmCraft keyframe convention for clips that do not start at 0 are assumptions until T2 runs;",
               "the Parallax comp uses solids and shapes, not footage; timings are valid only when contaminated=no."]
     open(os.path.join(L.EVID, "unverified.txt"), "w", encoding="utf-8").write("\n".join(L.scrub(x) for x in lines) + "\n")
     print("summary.json and unverified.txt written (%s)" % ", ".join("%s %d" % kv for kv in sorted(counts.items())))

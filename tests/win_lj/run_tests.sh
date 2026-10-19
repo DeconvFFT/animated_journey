@@ -2,7 +2,8 @@
 # tests/win_lj/run_tests.sh [--quick|--all]    WP-01b: lj.ps1 doctor and close v0 (dry run only)
 #
 #   --quick  (at most 60 s, no downloads, no timed runs) lint, parse, static "no write code" checks, data checks, help,
-#            the not-in-v0 switches, doctor on a fixture, close on the planted tree, the three root refusals
+#            the not-in-v0 switches, doctor on a fixture, close on the planted tree, the three root refusals, and the Windows-only claims
+#            listed as UNVERIFIED
 #   --all    everything in --quick plus the rest of doctor and close (SaveTier guards, step0 on Linux, no Python,
 #            every root and config refusal, links, env-variable lists, empty root), the full close with the repo checks
 #            under a read-only mount and no network, and the Windows-only claims listed as UNVERIFIED
@@ -297,9 +298,12 @@ PYEOF
   mk_cfg git_root "{\"schema\":\"lj-config/1\",\"root\":\"$TREES/gitroot\"}"
   expect_still close.root_is_a_git_repo_refused 2 -m 'REFUSED: the root is itself a git repository' -- LJ close -Config "$TMP/git_root.json" -SkipChecks
   mk_cfg ancestor_of_home "{\"schema\":\"lj-config/1\",\"root\":\"$TREES/fakehome\"}"
-  expect_still close.root_containing_the_profile_refused 2 -m 'REFUSED: the root contains the user profile folder' -- env HOME="$TREES/fakehome/user1" "$PWSH" -NoProfile -File win/lj.ps1 close -Config "$TMP/ancestor_of_home.json" -SkipChecks
+  # pwsh itself writes a cache, a data folder and a telemetry id under HOME when it starts; with HOME set to a fake profile
+  # inside the hashed trees that would look like a change made by lj.ps1. So pwsh's own folders go to the temp folder.
+  PWHOME=(env HOME="$TREES/fakehome/user1" XDG_CACHE_HOME="$TMP/xdg/cache" XDG_DATA_HOME="$TMP/xdg/data" XDG_CONFIG_HOME="$TMP/xdg/config" POWERSHELL_TELEMETRY_OPTOUT=1 POWERSHELL_UPDATECHECK=Off)
+  expect_still close.root_containing_the_profile_refused 2 -m 'REFUSED: the root contains the user profile folder' -- "${PWHOME[@]}" "$PWSH" -NoProfile -File win/lj.ps1 close -Config "$TMP/ancestor_of_home.json" -SkipChecks
   mk_cfg profile_root "{\"schema\":\"lj-config/1\",\"root\":\"$TREES/fakehome/user1\"}"
-  expect_still close.root_equal_to_the_profile_refused 2 -m 'REFUSED: the root is the user profile folder' -- env HOME="$TREES/fakehome/user1" "$PWSH" -NoProfile -File win/lj.ps1 close -Config "$TMP/profile_root.json" -SkipChecks
+  expect_still close.root_equal_to_the_profile_refused 2 -m 'REFUSED: the root is the user profile folder' -- "${PWHOME[@]}" "$PWSH" -NoProfile -File win/lj.ps1 close -Config "$TMP/profile_root.json" -SkipChecks
   mk_cfg tools_outside "{\"schema\":\"lj-config/1\",\"root\":\"$PL\",\"tools_root\":\"../outside\"}"
   expect_still close.tools_root_outside_the_root_refused 2 -m 'REFUSED: tools_root must be a folder inside the root' -- LJ close -Config "$TMP/tools_outside.json" -SkipChecks
   mk_cfg tools_is_root "{\"schema\":\"lj-config/1\",\"root\":\"$PL\",\"tools_root\":\".\"}"
@@ -319,6 +323,12 @@ PYEOF
   expect_still close.no_config_file_refused 2 -m 'REFUSED: no config file' -- LJ close -Config "$TMP/there-is-no-config.json" -SkipChecks
   expect_still close.option_needs_a_value 2 -m "needs a value" -- LJ close -Config
   expect_still close.unknown_command 2 -m "Unknown command 'bogus'" -- LJ bogus
+
+  # ---- close: the project repository sitting INSIDE the configured root is listed as never touched, not opened, never removable
+  mk_cfg parent_of_repo "{\"schema\":\"lj-config/1\",\"root\":\"$(dirname "$ROOT")\"}"
+  expect_still close.repo_inside_the_root_is_never_touched 0 -m "<root>/$(basename "$ROOT")  \(the project repository\)" -- LJ close -Config "$TMP/parent_of_repo.json" -SkipChecks
+  if printf '%s\n' "$OUT" | sed -n '/^WOULD REMOVE/,/^HELD BACK/p' | grep -qF -- "<root>/$(basename "$ROOT")"; then record close.repo_inside_the_root_not_in_the_would_remove_list FAIL "no line of the repository in WOULD REMOVE" "present"
+  else record close.repo_inside_the_root_not_in_the_would_remove_list PASS "no line of the repository in WOULD REMOVE" "absent"; fi
 
   # ---- close: what is listed, what is not
   expect close.canaries_and_links_never_listed_as_removable 0 -n 'CANARY|OUTSIDE|secret' -m 'SKIPPED \(link\) <root>/work/link-out' -m 'SKIPPED \(link\) <root>/work/link-file.xmp' -m 'SKIPPED \(link\) <root>/work/broken.xmp' -m 'SKIPPED \(link\) <root>/tools/vectorcraft-0.13.1/Recovery' -m '<root>/media  \(protected folder name\)' -m '<root>/archive  \(protected folder name\)' -m '<root>/masters  \(protected folder name\)' -m '<root>/originals  \(protected folder name\)' -m '<root>/work/media  \(protected folder name\)' -m '<root>/otherrepo  \(another git repository\)' -m 'vault.hc  \(possible encrypted container file\)' -- LJ close -Config $T/planted.config.json -SkipChecks
@@ -362,7 +372,8 @@ PYEOF
 fi
 
 # ================================================================== Windows-only claims stay UNVERIFIED (one evidence line each)
-if [ "$MODE" = "--all" ]; then
+# recorded in --quick as well as --all: it costs nothing, and the quick evidence is what the week-2 runner collects
+if true; then
   U() { record "$1" UNVERIFIED "$2" "$3" "no Windows machine in the container; the maker's first run (and what is pasted back) is the evidence"; }
   U windows.path_rules_on_ntfs "drive roots, UNC roots, case-insensitive compares, 8.3 short names and long paths behave as the code assumes" "tested only with Linux paths; Test-SamePath, Test-Inside, GetPathRoot and GetFullPath on Windows are unproven"
   U windows.reparse_points_on_ntfs "symbolic links and junctions have the ReparsePoint attribute and are listed SKIPPED (link), never followed; OneDrive placeholders and other reparse tags are also skipped" "tested with Linux symlinks only"

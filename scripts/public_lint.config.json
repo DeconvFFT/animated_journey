@@ -70,8 +70,10 @@
    "pipeline/scenes/",
    "pipeline/phone/test_strings.json",
    "ops/GATHER.md",
-   "skills-staging/"
+   "skills-staging/",
+   "playbooks/"
   ],
+  "paths_note": "playbooks/ is a theme path (review r4, nudge 4): a NEW or CHANGED playbook is scanned on its added lines only (diff mode) and a rule statement in a .md file is a NOTE, so the existing playbook lines stay INFO (see info_paths); only a new line that uses an excluded motif is a finding.",
   "info_paths": [
    "playbooks/",
    ".claude/skills/",
@@ -123,6 +125,36 @@
     "id": "christian",
     "regex": "\\bChristian(?:ity)?\\b|\\bJesus\\b|\\bthe Bible\\b",
     "why": "Christian motif"
+   },
+   {
+    "id": "easter",
+    "regex": "\\bEaster\\b",
+    "why": "Christian holiday"
+   },
+   {
+    "id": "eid",
+    "regex": "\\bEid\\b|\\bEid al-[A-Za-z]+\\b",
+    "why": "Islamic festival"
+   },
+   {
+    "id": "steeple",
+    "regex": "\\bsteeples?\\b",
+    "why": "Christian building part"
+   },
+   {
+    "id": "jali",
+    "regex": "\\bjali\\b",
+    "why": "lattice screen, in common use mainly for Mughal and Indo-Islamic work; a Rajput palace or a temple can have one too, so a person decides the origin and leaves it out when it is ambiguous (CLAUDE.md)"
+   },
+   {
+    "id": "arabesque",
+    "regex": "\\barabesques?\\b",
+    "why": "Islamic ornament"
+   },
+   {
+    "id": "muezzin",
+    "regex": "\\bmuezzin\\b",
+    "why": "Islamic call to prayer"
    }
   ],
   "exclusion_cue_regex": "\\b(?:no|never|not|exclu[a-z]*|avoid[a-z]*|forbidden|out of scope|left out|leave out|default out)\\b",

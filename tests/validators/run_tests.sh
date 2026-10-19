@@ -17,7 +17,8 @@
 #
 # One line per test:  PASS|FAIL|UNVERIFIED|SKIPPED|BLOCKED  name  detail
 # Exit 0 only if no line is FAIL or BLOCKED; exit 1 if a line FAILs; exit 3 if the disk guard blocked the stage.
-# Every test also writes one evidence envelope (build plan 4.2) to build/evidence/wp05/tests.jsonl.
+# Every test also writes one evidence envelope (build plan 4.2) to build/evidence/wp05/tests_quick.jsonl or tests_all.jsonl (one file per mode,
+# so a later --quick run can not overwrite the --all envelopes).
 # Everything is generated at test time under renders/wp05/ (git-ignored) and removed again; nothing uses the network.
 set -u
 MODE="--quick"; PLANNED=""; WAIT=0; UNGUARDED=0; INNER=0
@@ -71,7 +72,7 @@ if [ ! -f "$WORK.started" ]; then
     rm -f "$WORK.started"
   else
     echo "BLOCKED  stage.disk_guard  $MSG. Remedy: free space (other jobs write to this volume), wait, or pass --wait S / --unguarded."
-    python3 -I - "$EVID/tests.jsonl" "$MSG" <<'PY'
+    python3 -I - "$EVID/tests_all.jsonl" "$MSG" <<'PY'
 import json, sys, datetime
 rec = {"schema": "lj-evidence/1", "package": "WP-05", "test": "stage.disk_guard", "date_utc": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
        "status": "BLOCKED", "env": {"platform": "linux"}, "disk": {"avail_mb_start": 0, "planned_write_mb": 0, "avail_mb_min": 0, "avail_mb_end": 0, "floor_mb": 400, "hard_floor_mb": 250},

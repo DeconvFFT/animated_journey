@@ -29,8 +29,8 @@ def result(name, ok, detail=""):
         FAILS.append(name)
 
 
-def run(root, *args, timeout=300):
-    p = subprocess.run([sys.executable, "-I", str(LINT), "--root", str(root)] + list(args), capture_output=True, text=True, errors="replace", timeout=timeout)
+def run(root, *args, timeout=300, cwd=None):
+    p = subprocess.run([sys.executable, "-I", str(LINT), "--root", str(root)] + list(args), capture_output=True, text=True, errors="replace", timeout=timeout, cwd=cwd)
     return p.returncode, p.stdout + p.stderr
 
 
@@ -77,6 +77,9 @@ def run_all(T):
     root.mkdir()
     git(root, "init", "-q")
     shutil.copy(REPO / ".gitignore", root / ".gitignore")
+    # the maker's clone must ignore the local deny list (the orchestrator adds the line, report F-6); the lint now says so when it does not (tested below)
+    with open(root / ".gitignore", "a", encoding="utf-8") as fh:
+        fh.write("\nscripts/public_lint.deny.local.txt\n")
     write(root, "docs/clean.md", "# A clean page\n\nNothing identifying here. Version 6.1.1 and 31.0.15." + "5222 and 192.0." + "2.1 and /home/" + "user/x.\n")
     shutil.copytree(REPO / "tests" / "win" / "fixtures", root / "tests" / "win" / "fixtures")
     write(root, "ops/GATHER.md", "# Gather\nPlain list.\n")
@@ -226,7 +229,9 @@ def run_all(T):
     rc, out = run(root, "--theme", "--paths", "pipeline/scenes/scene_ok.js")
     result("theme_guard_passes_crossfade_alone", rc == 0, out.strip().splitlines()[0])
     rc, out = run(root, "--theme", "--paths", "pipeline/scenes/scene_anim.js")
-    result("theme_guard_exits_1_on_a_scene_file_of_only_animation_word_lines", rc == 1 and len([l for l in out.splitlines() if l.startswith("FINDING")]) == 4 and not any(l.startswith("NOTE") for l in out.splitlines()), "exit %d" % rc)
+    # 5 findings: 'a church without a steeple' is a church (r1) and, since the review r4 keywords, a steeple too
+    result("theme_guard_exits_1_on_a_scene_file_of_only_animation_word_lines", rc == 1 and len([l for l in out.splitlines() if l.startswith("FINDING")]) == 5 and any("scene_anim.js:3" in l and "steeple" in l for l in out.splitlines())
+           and not any(l.startswith("NOTE") for l in out.splitlines()), "exit %d" % rc)
     rc, out = run(root, "--theme", "--paths", "docs/outside_theme_paths.md")
     result("theme_guard_with_explicit_paths_scans_what_it_is_given", rc == 1 and "mughal" in out, "")
     # a changed (not new) theme-bearing file: only its added lines count
@@ -240,6 +245,28 @@ def run_all(T):
            "INFO only" in out and "playbooks: 1 keyword hit" in out and not any(l.startswith("FINDING") and "playbooks/old.md" in l for l in out.splitlines()),
            next((l for l in out.splitlines() if l.startswith("INFO")), "no INFO line")[:160])
     (root / "ops" / "GATHER.md").write_text("# Gather\nPlain list.\n", encoding="utf-8")
+
+    # review r4, nudge 4: playbooks/ is a theme path (new or changed lines only) and the unambiguous D-28 words Easter, Eid, steeple, jali, arabesque, muezzin are keywords
+    write(root, "playbooks/x.md", "A Mughal garden opens the chapter.\nNo Mughal motifs.\nEaster egg hunt.\nEid lanterns, an arabesque border, and the muezzin calls.\nA jali screen and a church steeple.\nThe Eastern shore and Eidetic memory.\n")
+    rc, out = run(root, "--theme")
+    ls = [l for l in out.splitlines() if l.startswith("FINDING")]
+    notes_ = [l for l in out.splitlines() if l.startswith("NOTE")]
+    result("theme_guard_scans_a_new_playbook_and_flags_a_Mughal_garden", rc == 1 and any("playbooks/x.md:1" in l and "mughal" in l for l in ls), "; ".join(ls[:2]))
+    result("theme_guard_shows_No_Mughal_motifs_in_a_playbook_as_a_NOTE", any("playbooks/x.md:2" in l for l in notes_) and not any("playbooks/x.md:2" in l for l in ls), "; ".join(notes_[:2]))
+    result("theme_guard_flags_Easter_in_a_playbook", any("playbooks/x.md:3" in l and "easter" in l for l in ls), "")
+    result("theme_guard_flags_Eid_arabesque_muezzin_jali_and_steeple",
+           all(any("playbooks/x.md:%d" % n in l and kid in l for l in ls) for n, kid in ((4, "eid"), (4, "arabesque"), (4, "muezzin"), (5, "jali"), (5, "steeple"), (5, "church"))), "; ".join(l for l in ls if "x.md:4" in l or "x.md:5" in l)[:200])
+    result("theme_guard_does_not_flag_Eastern_or_Eidetic", not any("playbooks/x.md:6" in l for l in ls), "; ".join(l for l in ls if "x.md:6" in l))
+    result("theme_guard_still_leaves_an_unchanged_old_playbook_as_INFO", not any("playbooks/old.md" in l for l in ls) and "playbooks: 1 keyword hit" in out, "")
+    (root / "playbooks" / "x.md").unlink()
+    old_pb = (root / "playbooks" / "old.md").read_text(encoding="utf-8")
+    (root / "playbooks" / "old.md").write_text(old_pb + "A new line with a Mughal arch.\n", encoding="utf-8")
+    rc, out = run(root, "--theme")
+    ls = [l for l in out.splitlines() if l.startswith("FINDING")]
+    result("theme_guard_judges_only_the_added_lines_of_a_changed_playbook", rc == 1 and any("playbooks/old.md:2" in l for l in ls) and not any("playbooks/old.md:1" in l for l in ls), "; ".join(ls[:2]))
+    (root / "playbooks" / "old.md").write_text(old_pb, encoding="utf-8")
+    rc, out = run(root, "--theme")
+    result("theme_guard_is_quiet_again_with_the_playbooks_back_at_HEAD", rc == 0, out.strip().splitlines()[0])
 
     # ---------------------------------------------------------------- fail closed and usage
     bad = T / "badpat.json"
@@ -259,6 +286,56 @@ def run_all(T):
     result("default_mode_outside_git_exits_3_and_says_to_use_paths", rc == 3 and "--paths" in out, out.strip()[:100])
     rc, out = run(plain, "--paths", "a.txt")
     result("paths_mode_works_without_git", rc == 0, out.strip().splitlines()[-1])
+
+    # review r4, C-1: a path outside the repository root is a usage error (exit 2, a USAGE line), never "0 file(s) scanned" and exit 0
+    outside = T / "outside"
+    write(outside, "leak.md", "contact outside.person" + "@" + "mailbox-test.io today\n")
+    write(outside, "scene.md", "A church steeple at dusk.\ncrossfade to the Christmas card\nA jali screen in the Mughal style\n")
+    cases = (("lint_folder", ("--paths", str(outside))), ("lint_file", ("--paths", str(outside / "leak.md"))),
+             ("lint_one_inside_one_outside", ("--paths", "docs/p_email.md", str(outside))),
+             ("theme_folder", ("--theme", "--paths", str(outside))), ("theme_file", ("--theme", "--paths", str(outside / "scene.md"))))
+    for label, args_ in cases:
+        rc, out = run(root, *args_)
+        result("paths_outside_the_root_exit_2_with_a_USAGE_line_%s" % label,
+               rc == 2 and out.startswith("USAGE: a path given to --paths is outside the repository root (--root)") and "file(s) scanned" not in out and "outside.person" not in out and str(outside) not in out,
+               "exit %d: %s" % (rc, out.strip()[:110]))
+    rc, out = run(root, "--paths", "../outside", cwd=str(root))
+    result("a_relative_path_that_climbs_out_of_the_root_is_also_exit_2", rc == 2 and out.startswith("USAGE: ") and "outside the repository root" in out, "exit %d: %s" % (rc, out.strip()[:110]))
+    # ... while an absolute path INSIDE the root is still read, and the findings are still printed
+    rc, out = run(root, "--paths", str(root / "docs" / "p_email.md"))
+    result("an_absolute_path_inside_the_root_is_still_scanned", rc == 2 and "FINDING" in out and "docs/p_email.md:1" in out and "USAGE" not in out and "1 file(s) scanned" in out, "exit %d: %s" % (rc, out.strip().splitlines()[-1]))
+    write(root, "pipeline/scenes/scene_probe.js", "const a = 'A church steeple at dusk';\nconst b = 'crossfade to the Christmas card';\nconst c = 'A jali screen in the Mughal style';\n")
+    rc, out = run(root, "--theme", "--paths", "pipeline/scenes/scene_probe.js")
+    ls = [l for l in out.splitlines() if l.startswith("FINDING")]
+    result("a_church_steeple_scene_under_root_is_still_a_theme_finding",
+           rc == 1 and all(any("scene_probe.js:%d" % n in l and kid in l for l in ls) for n, kid in ((1, "church"), (1, "steeple"), (2, "christmas"), (3, "jali"), (3, "mughal"))), "exit %d, %d finding(s)" % (rc, len(ls)))
+    rc, out = run(root, "--theme", "--paths", str(root / "pipeline" / "scenes" / "scene_probe.js"))
+    result("the_same_scene_by_absolute_path_inside_the_root_is_also_a_finding", rc == 1 and "scene_probe.js:1" in out, "exit %d" % rc)
+
+    # review r4, nudge 5: a local deny list that exists but is not git-ignored is a finding (exit 2) before `git add -A` stages the maker's real names
+    dr = T / "deny_repo"
+    dr.mkdir()
+    git(dr, "init", "-q")
+    write(dr, "a.md", "A clean page.\n")
+    git(dr, "add", "-A")
+    git(dr, "commit", "-q", "-m", "baseline")
+    write(dr, "scripts/public_lint.deny.local.txt", "# invented names for the test\nQuillo" + "mar\n")
+    for label, extra_args in (("default", ()), ("all", ("--all",))):
+        rc, out = run(dr, *extra_args)
+        ls = [l for l in out.splitlines() if "local_deny_file" in l]
+        result("unignored_local_deny_list_is_a_finding_exit_2_%s_mode" % label, rc == 2 and len(ls) == 1 and "exists but is not git-ignored" in ls[0] and "scripts/public_lint.deny.local.txt" in ls[0] and "Quillo" not in out and "quillo" not in out,
+               "exit %d: %s" % (rc, (ls[0] if ls else out.strip())[:150]))
+    rc, out = run(dr, "--staged")
+    result("staged_mode_does_not_flag_an_unstaged_unignored_deny_list", rc == 0 and "local_deny_file" not in out, "exit %d" % rc)
+    rc, out = run(dr, "--paths", "a.md")
+    result("paths_mode_does_not_look_at_the_deny_list_file", rc == 0 and "local_deny_file" not in out, "exit %d" % rc)
+    for ignore_line in ("scripts/public_lint.deny.local.txt", "*.local.*"):
+        write(dr, ".gitignore", ignore_line + "\n")
+        rc, out = run(dr)
+        result("ignored_local_deny_list_%s_is_not_a_finding" % ("exact" if "/" in ignore_line else "star_local_star"), rc == 0 and "local_deny_file" not in out and "Quillo" not in out, "exit %d: %s" % (rc, out.strip().splitlines()[-1]))
+    git(dr, "add", "-f", "scripts/public_lint.deny.local.txt")
+    rc, out = run(dr)
+    result("a_staged_local_deny_list_is_still_refused_even_when_ignored", rc == 2 and any("local_deny_file" in l and "unstage it" in l for l in out.splitlines()), "exit %d" % rc)
 
     # ---------------------------------------------------------------- the consumer contract and the disagreement test
     samples = T / "samples.json"

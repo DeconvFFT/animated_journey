@@ -18,7 +18,7 @@
    "SKIPPED": 0
   },
   "guard": {
-   "PASS": 60,
+   "PASS": 66,
    "FAIL": 0,
    "UNVERIFIED": 0,
    "SKIPPED": 0
@@ -30,13 +30,13 @@
    "SKIPPED": 0
   },
   "stale": {
-   "PASS": 42,
+   "PASS": 45,
    "FAIL": 0,
    "UNVERIFIED": 0,
    "SKIPPED": 0
   },
   "lint": {
-   "PASS": 71,
+   "PASS": 95,
    "FAIL": 0,
    "UNVERIFIED": 0,
    "SKIPPED": 0
@@ -49,14 +49,14 @@
   }
  },
  "total": {
-  "PASS": 181,
+  "PASS": 214,
   "FAIL": 0,
   "UNVERIFIED": 1,
   "SKIPPED": 0
  },
  "disk": {
-  "avail_mb_start": 1261,
-  "avail_mb_min": 1261,
-  "avail_mb_end": 1261
+  "avail_mb_start": 1131,
+  "avail_mb_min": 1130,
+  "avail_mb_end": 1130
  }
 }

@@ -1,6 +1,7 @@
 # WP-05 acceptance commands, run on their own (the same commands run_tests.sh --all runs inside its stage)
+# The raw record goes to <scratch> (it holds build flags); only the derived form is filed.
 
-$ python3 -I pipeline/validators/colour_patch.py --ffmpeg ffmpeg --chain-file pipeline/lib/chains.json --all --json build/evidence/wp05/colour_patch_ffmpeg-6.1.1.json
+$ python3 -I pipeline/validators/colour_patch.py --ffmpeg ffmpeg --chain-file pipeline/lib/chains.json --all --json <scratch>/wp05/colour_patch_ffmpeg-6.1.1.raw.json
 colour_patch: ffmpeg 6.1.1 (sha256 ed16af623947...)
 colour_patch: encodes 2 frames per chain into a temporary folder (deleted at the end), decodes them back, compares with the source.
 colour_patch: tolerance 3/255 per channel (W-16). Pass/fail is on pixels; tags are shown for information.
@@ -19,7 +20,21 @@ colour_patch: tolerance 3/255 per channel (W-16). Pass/fail is on pixels; tags a
 
 RESULT chains: 6 of 6 within 3/255
 RESULT controls: TRAP PRESENT on this build for: control_h264_format_first_A, control_h264_bare_pix_fmt, control_prores4444_bare
-colour_patch: wrote the RAW record colour_patch_ffmpeg-6.1.1.json. It holds build flags: the maker pastes it in chat only; never file it.
+colour_patch: wrote the RAW record colour_patch_ffmpeg-6.1.1.raw.json. It holds build flags: the maker pastes it in chat only; never file it.
+exit=0
+
+$ python3 -I pipeline/validators/colour_patch.py --derive-from <scratch>/wp05/colour_patch_ffmpeg-6.1.1.raw.json --out build/evidence/wp05/colour_patch_ffmpeg-6.1.1.derived.json
+colour_patch: wrote the derived record colour_patch_ffmpeg-6.1.1.derived.json (ffmpeg 6.1.1, 6 chains, 6 controls). No build flags, no paths.
+exit=0
+
+$ python3 -I pipeline/validators/colour_patch.py --chain-file pipeline/phone/profile.json --chain phone_1080 --chain phone_720_share   # WP-08 acceptance line; the 1280x720 chain is read at its own size
+colour_patch: ffmpeg 6.1.1 (sha256 ed16af623947...)
+colour_patch: encodes 2 frames per chain into a temporary folder (deleted at the end), decodes them back, compares with the source.
+colour_patch: tolerance 3/255 per channel (W-16). Pass/fail is on pixels; tags are shown for information.
+  phone_1080                     PASS  worst 1/255  accurate-decode 1   [red -1/+0/+0  grey50 +0/+0/+0  skin -1/-1/-1]
+  phone_720_share                PASS  worst 1/255  accurate-decode 1  measured at 1280x720   [red -1/+0/+0  grey50 +0/+0/+0  skin -1/-1/-1]
+
+RESULT chains: 2 of 2 within 3/255
 exit=0
 
 $ python3 -I pipeline/validators/colour_patch.py --selftest
@@ -28,6 +43,9 @@ colour_patch --selftest: ffmpeg 6.1.1. Needs only ffmpeg; writes only to a tempo
   PASS  frame.patch_values                           read back exactly 255,0,0 / 128,128,128 / 224,172,140
   PASS  mechanism.lossless_709_passes                worst 0/255 (want 1 or less)
   PASS  mechanism.wrong_matrix_is_caught             worst 25/255 (want above 10)
+  PASS  mechanism.720p_chain_is_measured             worst 0/255 at 1280x720 (want 1 or less at 1280x720)
+  PASS  mechanism.720p_wrong_matrix_is_caught        worst 25/255 (want above 10)
+  PASS  mechanism.unmeasurable_chain_is_separate     an encode error gives its own RESULT line and no ABOVE TOLERANCE
   PASS  mechanism.tolerance_edge                     3 passes, 4 fails, tolerance 3
   PASS  derive.round_trip                            pass flags follow worst_error; schema mirror accepts it
   PASS  derive.drops_build_flags                     no configure flags in the derived record
@@ -42,6 +60,7 @@ spec_check --selftest: ffmpeg 6.1.1. Needs only ffmpeg and ffprobe; writes only 
   PASS  planted_title_tag                  exit 1 naming metadata.neutral
   PASS  planted_loud_peak                  exit 1 naming audio.true_peak
   PASS  planted_frame_count_vs_duration    exit 1 naming video.frame_count
+  PASS  good_ffv1_lossless_mkv             exit 0, all 21 checks pass (the muxer's DURATION tag was present and accepted)
 spec_check --selftest: ALL PASS
 exit=0
 

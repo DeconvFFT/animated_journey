@@ -53,6 +53,13 @@ def write(root, rel, text):
     p.write_text(text, encoding="utf-8")
 
 
+def run_cp1252(root, *args):
+    """The tool as a Windows PowerShell capture or pipe sees it: no -I (so PYTHONIOENCODING counts) and a cp1252 stdout. Bytes in, text out."""
+    env = dict(os.environ, PYTHONIOENCODING="cp1252")
+    p = subprocess.run([sys.executable, str(TOOL), "--root", str(root)] + list(args), capture_output=True, env=env, timeout=300)
+    return p.returncode, p.stdout.decode("cp1252", "replace") + p.stderr.decode("cp1252", "replace")
+
+
 def table4_ids(register):
     """The | S-nn | ids of Table 4, read from the register itself (nothing here is a hard-coded range)."""
     ids = []
@@ -188,6 +195,22 @@ def run_all(T):
     result("strict_mode_exits_0_on_a_clean_tree", rc == 0, out.strip().splitlines()[-1])
     rc, out = run(clean)
     result("report_mode_exits_0_on_a_clean_tree", rc == 0, out.strip().splitlines()[0])
+
+    # review r4: a Windows pipe (cp1252) must not turn the verdict into a traceback when a stale excerpt holds an arrow
+    arrow = T / "arrow"
+    arrow_sample = doc["patterns"][[p["id"] for p in doc["patterns"]].index("S-28.minus-1.5-dbtp")]["positive_samples"][0]
+    write(arrow, "playbooks/arrow.md", "Step 4 \u2192 %s\n" % arrow_sample)
+    rc, out = run_cp1252(arrow, "--strict")
+    result("cp1252_pipe_strict_prints_the_FAIL_line_and_exits_1_with_no_traceback",
+           rc == 1 and "FAIL S-28 playbooks/arrow.md:1" in out and "Step 4 ? " in out and "Traceback" not in out and "UnicodeEncodeError" not in out, "exit %d: %s" % (rc, out.strip().splitlines()[0] if out.strip() else "no output"))
+    arrow_base = T / "arrow_base.json"
+    write(T / "arrow_clean", "playbooks/ok.md", "A current page.\n")
+    rc0, _o = run(T / "arrow_clean", "--baseline", "--baseline-file", str(arrow_base))
+    rc, out = run_cp1252(arrow, "--new-only", "--baseline-file", str(arrow_base))
+    result("cp1252_pipe_new_only_prints_the_NEW_FAIL_line_and_exits_1_with_no_traceback",
+           rc0 == 0 and rc == 1 and "NEW FAIL" in out and "playbooks/arrow.md:1" in out and "Traceback" not in out and "UnicodeEncodeError" not in out, "exit %d: %s" % (rc, out.strip().splitlines()[0] if out.strip() else "no output"))
+    rc, out = run_cp1252(arrow)
+    result("cp1252_pipe_report_mode_exits_1_with_no_traceback", rc == 1 and "Traceback" not in out and "UnicodeEncodeError" not in out, "exit %d" % rc)
 
     # baseline and new-only
     base = T / "base.json"

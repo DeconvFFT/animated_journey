@@ -5,11 +5,15 @@
 #            600 MB df lines), the ledger check, the guide (regenerated, then check_guide.py), the memory watchdog, the public-repo lint.
 #   --all    everything in --quick, plus
 #            the real network lines: `--sums-only` (six small text files), the deliberately wrong asset (blocked_proof.json, exit 3), and
-#            `--only effectcraft v0.11.1 --t1-only` (a real 64 MB download if the disk guard allows it, else BLOCKED with the guard's exact message);
+#            `--only effectcraft v0.11.1 --t1-only` (a real 64 MB download if the disk guard allows it, else BLOCKED with the guard's exact message; if the
+#            download ledger already holds an EffectCraft fetch and t1_effectcraft_v0.11.1.json is PASS, that evidence is reused and nothing is downloaded again:
+#            each tarball is fetched once, so this line is re-runnable);
 #            the full staged run `--all` is ATTEMPTED only through its guard check here (it takes hours: start it by hand in the background, or pass --real-all);
 #            and the MECHANISM tests: the same run_sp1.sh against a local fake release server and stand-in CLIs (tiny, fake df): a full FilmCraft and EffectCraft
 #            stage, the keep rule, reuse of the kept tarball, a corrupted tarball rejected before extraction, a hash mismatch that stops `--all` (no 0.8.0 fetch, no
-#            EffectCraft), a corrupt kept tarball that is removed and fetched again, T2's partial envelope surviving a TERM, the guard's refusal, a disk-floor abort that
+#            EffectCraft), the legitimate 0.8.0 fallback after a failed T2, a --t1-only run followed by --all that leaves the ledger clean (the second EffectCraft fetch
+#            carries a recorded exception), a ledger problem that makes --all print LEDGER PROBLEM and exit 1, a usable=false table refused before any download,
+#            a corrupt kept tarball that is removed and fetched again, T2's partial envelope surviving a TERM, the guard's refusal, a disk-floor abort that
 #            cleans up, and planted defects (each must make exactly its own criterion FAIL). The stand-ins are not FilmCraft or EffectCraft and prove nothing about them.
 # Options: --skip-network  skip the real network lines (for a machine without the proxy); --real-all  run the real hours-long `--all` if the guard allows it.
 #
@@ -149,6 +153,14 @@ if [ "$NET" = 1 ]; then
   # the forced line leaves a flagged envelope (stage_filmcraft-v0.9.0_forced.json); the verdict must not read it as a real block, and nothing is deleted by hand
   vafter="$(vrows)"
   check blocked.forced_stage_not_in_verdict "$([ -f "$EVID/stage_filmcraft-v0.9.0_forced.json" ] && jq -e '.detail.forced_bad_asset==true and .status=="BLOCKED"' "$EVID/stage_filmcraft-v0.9.0_forced.json" >/dev/null && [ "$vbefore" = "$vafter" ] && ! grep -q 'T[12] FilmCraft.*download blocked' <<<"$vafter" && echo 1 || echo 0)" "forced envelope present and flagged: $([ -f "$EVID/stage_filmcraft-v0.9.0_forced.json" ] && echo yes || echo no); verdict rows identical before and after the forced line: $([ "$vbefore" = "$vafter" ] && echo yes || echo no); FilmCraft rows now: $(grep -E 'T1 FilmCraft' <<<"$vafter" | cut -d'|' -f4 | cut -c1-90)" "FORCE_BAD_ASSET=1 --only filmcraft v0.9.0 leaves a stage envelope flagged forced_bad_asset, and VERDICT-SP1A.md does not say T1/T2 were NOT RUN because the download was blocked"
+  # Each tarball is fetched once (the ledger rule). If EffectCraft was fetched already and its T1 envelope is a real PASS for that same hash, reuse that evidence.
+  ledf="$EVID/download_ledger.jsonl"; t1ef="$EVID/t1_effectcraft_v0.11.1.json"
+  lnum="$(grep -n '"app": "effectcraft"' "$ledf" 2>/dev/null | head -1 | cut -d: -f1)"
+  lhash="$(sed -n "${lnum:-0}p" "$ledf" 2>/dev/null | jq -r '.sha256' 2>/dev/null)"; thash="$(jq -r '.pins[]|select(.app=="effectcraft" and .tag=="v0.11.1")|.linux_x86_64_tarball.sha256' "$SP1/release_assets.json" 2>/dev/null)"
+  left="$(ls -A "$ROOT/vendor/craft" 2>/dev/null | grep -v '^_keep$' | tr '\n' ' ')"
+  if [ -n "$lnum" ] && [ -n "$thash" ] && [ "$lhash" = "$thash" ] && [ -z "$left" ] && jq -e '.status=="PASS" and .detail.mini!=true' "$t1ef" >/dev/null 2>&1; then
+    rec PASS effectcraft.t1only_real "fetched once already (ledger line $lnum, $(sed -n "${lnum}p" "$ledf" | jq -r '.date_utc')); evidence reused, no second download: $(jq -r '.actual' "$t1ef"); the recorded sha256 equals the table; vendor/craft leftovers: none" "sha256 equals the R8 table, T1 JSON written, tarball and tree deleted, df back within 10 MB"
+  else
   before="$(df -BM / | awk 'NR==2{gsub("M","",$4); print $4}')"
   out="$(bash "$SP1/run_sp1.sh" --only effectcraft v0.11.1 --t1-only 2>&1)"; rc=$?
   after="$(df -BM / | awk 'NR==2{gsub("M","",$4); print $4}')"
@@ -160,6 +172,7 @@ if [ "$NET" = 1 ]; then
     check effectcraft.t1only_real "$(grep -q 'also equals the independent value' <<<"$out" && [ -z "$left" ] && [ "$d" -le 10 ] && jq -e '.status=="PASS"' "$EVID/t1_effectcraft_v0.11.1.json" >/dev/null && echo 1 || echo 0)" "exit 0; sha256 matches the independent value: $(grep -c 'also equals the independent value' <<<"$out"); vendor/craft leftovers: ${left:-none}; df moved ${d} MB (Avail ${before} -> ${after})" "sha256 equals the R8 table, T1 JSON written, tarball and tree deleted, df back within 10 MB"
   else
     rec FAIL effectcraft.t1only_real "exit $rc: $(tail -3 <<<"$out" | tr '\n' ' ' | cut -c1-400)" "sha256 equals the R8 table, T1 JSON written, tarball and tree deleted, df back within 10 MB"
+  fi
   fi
 else
   rec SKIPPED sums.real_six_files "--skip-network" "network"; rec SKIPPED blocked.force_bad_asset "--skip-network" "network"; rec SKIPPED effectcraft.t1only_real "--skip-network" "network"
@@ -184,6 +197,17 @@ SRV=""
 cleanup() { [ -n "$SRV" ] && kill "$SRV" 2>/dev/null; rm -rf "$W"; }
 trap cleanup EXIT
 python3 -I "$T/make_fake_release.py" --out "$W/ok" >/dev/null && python3 -I "$T/make_fake_release.py" --out "$W/flip" --flip-byte filmcraft >/dev/null
+# the 'bug' tree: both FilmCraft tarballs carry the planted dissolve defect (it takes effect only under --profile full); the 'tamper' tree is the ok tree with one
+# digit of the independent (R8) FilmCraft 0.9.0 tarball hash changed
+python3 -I "$T/make_fake_release.py" --out "$W/bug" --bug dissolve >/dev/null
+cp -r "$W/ok" "$W/tamper" && python3 -I - "$W/tamper/r8.json" <<'PY'
+import json, sys
+d = json.load(open(sys.argv[1]))
+for e in d["expected"]:
+    if e["app"] == "filmcraft" and e["tag"] == "v0.9.0" and e["kind"] == "linux_x86_64_tarball":
+        e["sha256"] = ("0" if e["sha256"][0] != "0" else "1") + e["sha256"][1:]
+json.dump(d, open(sys.argv[1], "w"), indent=1)
+PY
 python3 -u -m http.server 0 --bind 127.0.0.1 --directory "$W" > "$W/srv.log" 2>&1 9>&- &
 SRV=$!
 for _ in 1 2 3 4 5 6 7 8 9 10; do PORT="$(grep -oE 'port [0-9]+' "$W/srv.log" | head -1 | awk '{print $2}')"; [ -n "$PORT" ] && break; sleep 0.5; done
@@ -196,7 +220,12 @@ fkrun() {  # fkrun REL NAME args...   (own vendor, evidence and scratch folders 
 }
 out="$(fkrun ok sums --sums-only)"; rc=$?
 fkrun flip sums_flip --sums-only >/dev/null
-check fake.sums_only "$([ $rc = 0 ] && grep -q 'R8 comparison: all match' <<<"$out" && echo 1 || echo 0)" "exit $rc: $(tail -1 <<<"$out" | sed "s#$W#<fake>#g")" "the sums path works end to end against a local server (fake hashes)"
+fkrun bug sums_bug --sums-only >/dev/null
+# a tampered independent (R8) value: the sums step says STOP AND REPORT and writes usable=false, and a stage run against that table refuses BEFORE any download
+outt="$(fkrun tamper sums_tamper --sums-only)"; rct=$?
+outs="$(fkrun tamper tam --only filmcraft v0.9.0 --profile lean)"; rcs=$?
+tusable="$(jq -r '.usable' "$W/tamper-assets.json" 2>/dev/null)"; tled="$(nlines "$W/e_tam/download_ledger.jsonl")"
+check fake.sums_only "$([ $rc = 0 ] && grep -q 'R8 comparison: all match' <<<"$out" && [ "$rct" = 1 ] && grep -q 'STOP AND REPORT' <<<"$outt" && [ "$tusable" = false ] && [ "$rcs" = 1 ] && grep -q 'usable=false' <<<"$outs" && grep -q 'STOP AND REPORT' <<<"$outs" && ! grep -q 'preflight HEAD' <<<"$outs" && ! grep -q 'curl' <<<"$outs" && [ "$tled" = 0 ] && [ -z "$(ls -A "$W/v_tam" 2>/dev/null)" ] && echo 1 || echo 0)" "exit $rc: $(tail -1 <<<"$out" | sed "s#$W#<fake>#g"); tampered R8 value: sums step exit $rct (usable=$tusable), then a stage on that table: exit $rcs, 'usable=false' shown: $(grep -c 'usable=false' <<<"$outs"), downloads recorded: $tled, vendor leftovers: $(ls -A "$W/v_tam" 2>/dev/null | tr '\n' ' ' | sed 's/^$/none/')" "the sums path works end to end against a local server (fake hashes); a tampered independent value gives usable=false and a stage refuses that table before downloading anything"
 # the flip tree has its own table: its sums list the intact hash, the served tarball has one byte flipped
 
 scn_filmcraft() {  # sets R_OK and R_DETAIL
@@ -255,6 +284,22 @@ out="$(fkrun flip stopall --all --profile lean)"; rc=$?
 led="$W/e_stopall/download_ledger.jsonl"; nled="$(nlines "$led")"; n08="$(grep -c 'filmcraft-0.8.0' "$led" 2>/dev/null)"; nec="$(grep -c 'effectcraft' "$led" 2>/dev/null)"
 left="$(ls -A "$W/v_stopall" | tr '\n' ' ')"
 check fake.hash_mismatch_stops_all "$([ $rc = 1 ] && grep -q 'STOP AND REPORT' <<<"$out" && ! grep -q 'failed T1 or T2' <<<"$out" && ! grep -q '== stage filmcraft-v0.8.0' <<<"$out" && ! grep -q '== stage effectcraft' <<<"$out" && [ "$nled" = 1 ] && [ "${n08:-0}" = 0 ] && [ "${nec:-0}" = 0 ] && [ ! -e "$W/e_stopall/stage_filmcraft-v0.8.0.json" ] && [ ! -e "$W/e_stopall/stage_effectcraft-v0.11.1.json" ] && [ -z "$left" ] && jq -e '.status=="FAIL"' "$W/e_stopall/stage_filmcraft-v0.9.0.json" >/dev/null && echo 1 || echo 0)" "exit $rc; STOP AND REPORT shown: $(grep -c 'STOP AND REPORT' <<<"$out"); ledger lines $nled (0.8.0: ${n08:-0}, EffectCraft: ${nec:-0}); 0.8.0 or EffectCraft stage started: $(grep -c '== stage \(filmcraft-v0.8.0\|effectcraft\)' <<<"$out"); leftovers: ${left:-none}; stage envelope: $(jq -r .status "$W/e_stopall/stage_filmcraft-v0.9.0.json" 2>/dev/null)" "--all with a flipped-byte FilmCraft 0.9.0 tarball stops and reports (exit 1): the 0.8.0 fallback is not fetched and EffectCraft is not started"
+# the legitimate 0.8.0 fallback: 0.9.0 passes its hash and fails T2 (planted dissolve defect, full profile only), so 0.8.0 is fetched, then EffectCraft runs anyway
+out="$(fkrun bug fb --all --profile full)"; rc=$?; LAST_OUT="$out"
+led="$W/e_fb/download_ledger.jsonl"; nled="$(nlines "$led")"; n08="$(grep -c 'filmcraft-0.8.0' "$led" 2>/dev/null)"
+left="$(ls -A "$W/v_fb" | grep -v '^_keep$' | tr '\n' ' ')"
+check fake.t2_fail_fetches_fallback "$([ $rc = 1 ] && grep -q 'failed T1 or T2 (exit 1), so the fallback 0.8.0 is fetched' <<<"$out" && ! grep -q 'STOP AND REPORT' <<<"$out" && [ "${n08:-0}" = 1 ] && [ "$nled" = 3 ] && [ -f "$W/e_fb/stage_filmcraft-v0.8.0.json" ] && [ -f "$W/e_fb/stage_effectcraft-v0.11.1.json" ] && jq -e '.status=="FAIL"' "$W/e_fb/stage_filmcraft-v0.9.0.json" >/dev/null && [ -z "$left" ] && echo 1 || echo 0)" "exit $rc; fallback line shown: $(grep -c 'so the fallback 0.8.0 is fetched' <<<"$out"); ledger lines $nled (0.8.0: ${n08:-0}); stage envelopes: 0.9.0 $(jq -r .status "$W/e_fb/stage_filmcraft-v0.9.0.json" 2>/dev/null), 0.8.0 $(jq -r .status "$W/e_fb/stage_filmcraft-v0.8.0.json" 2>/dev/null), EffectCraft $(jq -r .status "$W/e_fb/stage_effectcraft-v0.11.1.json" 2>/dev/null); leftovers: ${left:-none}" "--all with a FilmCraft 0.9.0 that passes its hash and fails T2 fetches the 0.8.0 fallback (the only reason it ever is), then still runs EffectCraft, and exits 1"
+# the plan's own acceptance order: EffectCraft --t1-only (tree and tarball deleted), then --all fetches it a second time WITH a recorded exception
+out1="$(fkrun ok t1all --only effectcraft v0.11.1 --t1-only --profile lean)"; rc1=$?
+out2="$(fkrun ok t1all --all --profile lean)"; rc2=$?; LAST_OUT="$out2"
+led="$W/e_t1all/download_ledger.jsonl"; nled="$(nlines "$led")"; lex3="$(sed -n 3p "$led" 2>/dev/null | jq -r '.asset + " | " + .exception' 2>/dev/null)"
+LJ_SP1_EVIDENCE="$W/e_t1all" LJ_SP1_ASSETS="$W/ok-assets.json" python3 -I "$DRV/asset_tool.py" ledger --check >/dev/null 2>&1; lrc=$?
+check fake.t1only_then_all_ledger_clean "$([ "$rc1" = 0 ] && [ "$rc2" = 0 ] && [ "$nled" = 3 ] && [ "$lex3" = 'effectcraft-0.11.1-linux-x86_64.tar.gz | re-fetch: the earlier copy (stage effectcraft-v0.11.1, t1-only) was deleted with its tree' ] && grep -q 'second fetch is recorded with the exception' <<<"$out2" && ! grep -q 'LEDGER PROBLEM' <<<"$out2" && [ "$lrc" = 0 ] && echo 1 || echo 0)" "--t1-only exit $rc1, then --all exit $rc2; ledger lines $nled; line 3: ${lex3:-none}; --ledger-check exit $lrc; LEDGER PROBLEM shown: $(grep -c 'LEDGER PROBLEM' <<<"$out2")" "--only effectcraft --t1-only followed by --all fetches EffectCraft twice with the second fetch recorded as an exception, so --ledger-check stays at exit 0"
+# a ledger that fails its check makes --all say so and exit 1 (two earlier EffectCraft fetches with no exception are seeded by hand through the ledger tool)
+mkdir -p "$W/e_lp"
+for _ in 1 2; do LJ_SP1_EVIDENCE="$W/e_lp" LJ_SP1_ASSETS="$W/ok-assets.json" python3 -I "$DRV/asset_tool.py" ledger --add effectcraft v0.11.1 --stage seeded >/dev/null 2>&1; done
+out="$(fkrun ok lp --all --profile lean)"; rc=$?; LAST_OUT="$out"
+check fake.all_prints_ledger_problem "$([ $rc = 1 ] && grep -q '^== LEDGER PROBLEM: ledger:.*PROBLEMS: effectcraft-0.11.1-linux-x86_64.tar.gz was fetched' <<<"$out" && ! grep -q '== after the run' <<<"$out" && echo 1 || echo 0)" "exit $rc; $(grep -m1 'LEDGER PROBLEM' <<<"$out" | cut -c1-200)" "--all prints 'LEDGER PROBLEM:' and exits 1 when the ledger check fails (it used to print the text and exit 0)"
 # T2 writes its envelope after every phase, so a stage that is stopped (the 60-minute timeout, a disk-floor TERM, even a KILL) keeps what was measured
 t2_interrupt() {  # t2_interrupt SIGNAL: start the T2 driver on the stand-in, signal it once the scaling phase has been written; sets SIG_RC and SIG_FILE
   local sig="$1" d="$W/t2i_$1" pid i
@@ -275,6 +320,10 @@ check fake.t2_envelope_survives_kill "$([ "$SIG_RC" = 137 ] && jq -e '.status=="
 out="$(FAKE_DF="$SP1/tests/fake_df_600.sh" fkrun ok ref --only filmcraft v0.9.0)"; rc=$?
 nled="$(nlines "$W/e_ref/download_ledger.jsonl")"
 check fake.guard_refuses_at_600 "$([ $rc = 3 ] && grep -q 'REFUSED: Avail 600 MB minus planned 350 MB leaves 250 MB' <<<"$out" && [ "$nled" = 0 ] && jq -e '.status=="BLOCKED"' "$W/e_ref/stage_filmcraft-v0.9.0.json" >/dev/null && echo 1 || echo 0)" "exit $rc; downloads recorded: $nled; stage envelope BLOCKED: $(jq -r .status "$W/e_ref/stage_filmcraft-v0.9.0.json" 2>/dev/null)" "at 600 MB the stage is refused before any download, with the exact message and a BLOCKED envelope"
+# a stage that runs over its time limit (SP1_STAGE_TIMEOUT_S, 3600 s by default) is stopped; its envelope says TIMEOUT, not a disk refusal
+out="$(SP1_STAGE_TIMEOUT_S=4 fkrun ok tmo --only filmcraft v0.9.0 --profile lean)"; rc=$?
+left="$(ls -A "$W/v_tmo" | tr '\n' ' ')"; tact="$(jq -r '.actual' "$W/e_tmo/stage_filmcraft-v0.9.0.json" 2>/dev/null)"
+check fake.stage_timeout_reason "$([ $rc = 3 ] && grep -q 'TIMEOUT: stage filmcraft-v0.9.0 ran for more than 4 s' <<<"$out" && jq -e '.status=="BLOCKED"' "$W/e_tmo/stage_filmcraft-v0.9.0.json" >/dev/null && grep -q 'TIMEOUT: the stage ran over 4 s and was stopped' <<<"$tact" && ! grep -qi 'disk guard refused' <<<"$tact" && [ -z "$left" ] && echo 1 || echo 0)" "exit $rc; stage envelope: ${tact:-none}; leftovers: ${left:-none}" "a stage stopped by its time limit exits 3, removes its folders, and its envelope (and so the verdict's disk line) says TIMEOUT instead of reading like a disk refusal"
 # the disk floor appears mid-run: the guard stops the group, the stage cleans up
 FLAG="$W/floor.flag"; ( sleep 7; touch "$FLAG" ) 9>&- &
 out="$(LJ_FAKE_DF_FLAG="$FLAG" LJ_POLL_S=1 LJ_TERM_GRACE_S=15 FAKE_DF="$T/fake_df_flag.sh" fkrun ok flo --only filmcraft v0.9.0 --profile lean)"; rc=$?

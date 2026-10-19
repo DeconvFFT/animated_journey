@@ -11,7 +11,8 @@ WHAT IT CHECKS (a finding is printed MASKED: category, file:line, the first two 
   3. the path denylist: a file named like a raw PC report (pc_report*.json, colour_patch_pc*.json,
      maker-pc*.json) anywhere except under tests/win/fixtures/.
   4. the optional local deny list scripts/public_lint.deny.local.txt (git-ignored; the maker's real names and PC
-     name, one per line, loaded on the maker's machine only, never printed).
+     name, one per line, loaded on the maker's machine only, never printed). The file itself is a finding (exit 2)
+     when it is tracked or staged, or when it exists but git does not ignore it (default mode and --all).
   5. --theme: D-28 exclusions (Mughal, Islamic, mosque, minaret, Taj Mahal, Red Fort, church, cathedral,
      crucifix, nativity, Christmas, ...) in NEW theme-bearing files. A keyword scan cannot judge iconography;
      a person (and the Fable review) must look at the pictures. Existing playbooks and research are INFO only.
@@ -22,7 +23,8 @@ WHAT IT CHECKS (a finding is printed MASKED: category, file:line, the first two 
 HOW TO RUN   (python3 -I on Linux, py -3 -I on Windows)
   python3 -I scripts/public_lint.py                 added lines of the diff against HEAD + untracked files (before a commit)
   python3 -I scripts/public_lint.py --staged        only what is staged
-  python3 -I scripts/public_lint.py --paths A B     whole files / folders (no git needed)
+  python3 -I scripts/public_lint.py --paths A B     whole files / folders under the repository root (no git needed);
+                                                    a path outside --root is a USAGE error, exit 2 (it would not be read)
   python3 -I scripts/public_lint.py --all           every tracked and untracked file (a whole-tree audit)
   python3 -I scripts/public_lint.py --theme [--paths ...]    the D-28 keyword guard on new theme-bearing files
   python3 -I scripts/public_lint.py --self-test     the 4.13 disagreement test (every consumer, every sample)
@@ -33,7 +35,8 @@ HOW TO RUN   (python3 -I on Linux, py -3 -I on Windows)
 EXIT CODES (build plan 4.3)
   0 clean   1 a hygiene or theme finding (binary, over 1 MB, ignored-but-tracked media, theme keyword,
   self-test disagreement)   2 identifying data found (any 4.13 category, a denylisted file name, a local deny
-  word), or bad usage, or the pattern file is missing or invalid (fail closed)   3 environment (git missing).
+  word, a local deny list that is not git-ignored), or bad usage (a --paths path outside --root), or the pattern file
+  is missing or invalid (fail closed)   3 environment (git missing).
 It writes only the file named by --json, never changes the tree, never touches the network, and prints only
 repo-relative paths and masked hits.
 """
@@ -402,8 +405,12 @@ class Linter:
                     self.check_line(rel, ln, line)
 
 
+OUTSIDE_ROOT = "a path given to --paths is outside the repository root (--root); run the lint from the clone, or pass --root"
+
+
 def walk_paths(root, paths):
-    """Expand files and folders (relative to cwd or absolute) into repo-relative posix paths."""
+    """Expand files and folders (relative to cwd or absolute) into repo-relative posix paths. A path outside the
+    repository root is a usage error (exit 2), never a silent zero: the lint opens root/rel, so it could not read it."""
     root = Path(root).resolve()
     out = []
     for p in paths:
@@ -413,6 +420,12 @@ def walk_paths(root, paths):
         if not pp.exists():
             raise Usage("a path given to --paths does not exist")
         pp = pp.resolve()
+        try:
+            pp.relative_to(root)
+        except ValueError:
+            # A file the lint cannot open under the root would be "scanned" as nothing and the exit code would say clean
+            # (review r4, C-1). Refuse instead; the message names no path.
+            raise Usage(OUTSIDE_ROOT)
         files = [pp] if pp.is_file() else []
         if pp.is_dir():
             for dp, dn, fn in os.walk(pp):
@@ -422,7 +435,7 @@ def walk_paths(root, paths):
             try:
                 rel = f.relative_to(root).as_posix()
             except ValueError:
-                rel = "<outside-root>/" + f.name
+                raise Usage(OUTSIDE_ROOT)
             out.append(rel)
     seen, uniq = set(), []
     for r in out:
@@ -430,6 +443,18 @@ def walk_paths(root, paths):
             seen.add(r)
             uniq.append(r)
     return uniq
+
+
+def local_deny_findings(root, pat, tracked, staged, check_ignore=True):
+    """The local deny list holds the maker's real names, so it must stay git-ignored. Refused (a finding, exit 2) when it is tracked
+    or staged; and, while it merely sits in the working tree, when git does not ignore it, because one 'git add -A' would stage it
+    (review r4, nudge 5). The file is never read here and its words are never printed."""
+    lp = pat.local_deny
+    if lp in tracked or lp in staged:
+        return [Finding("local_deny", "local_deny_file", lp, note="the local deny list holds real names and must stay git-ignored on the maker's machine; unstage it")]
+    if check_ignore and (Path(root) / lp).is_file() and git(root, "check-ignore", "-q", "--", lp) is None:
+        return [Finding("local_deny", "local_deny_file", lp, note="exists but is not git-ignored; add scripts/public_lint.deny.local.txt (or *.local.*) to .gitignore before git add -A")]
+    return []
 
 
 def gather(root, args, pat):
@@ -443,6 +468,7 @@ def gather(root, args, pat):
         tracked = (git(root, "ls-files", "-c", "-z") or "").split("\0")
         other = (git(root, "ls-files", "-o", "--exclude-standard", "-z") or "").split("\0")
         files = sorted(set(x for x in tracked + other if x))
+        extra.extend(local_deny_findings(root, pat, set(tracked), set()))
         return "all", [(f, None) for f in files], extra
     out = {}
     have_head = git(root, "rev-parse", "--verify", "HEAD") is not None
@@ -469,9 +495,8 @@ def gather(root, args, pat):
     # the local deny list must never be tracked or staged
     tracked_now = set((git(root, "ls-files", "-c", "-z") or "").split("\0"))
     staged_now = set((git(root, "diff", "--cached", "--name-only", "-z") or "").split("\0"))
-    lp = pat.local_deny
-    if lp in tracked_now or lp in staged_now:
-        extra.append(Finding("local_deny", "local_deny_file", lp, note="the local deny list holds real names and must stay git-ignored on the maker's machine; unstage it"))
+    # --staged looks at the index only, where staged-ness is the whole question; the other modes also ask whether git ignores the file
+    extra.extend(local_deny_findings(root, pat, tracked_now, staged_now, check_ignore=not args.staged))
     # media that .gitignore blocks but that is tracked or staged anyway
     for f in (git(root, "ls-files", "-c", "-i", "--exclude-standard", "-z") or "").split("\0"):
         if f:

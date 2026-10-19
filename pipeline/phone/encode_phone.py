@@ -443,6 +443,12 @@ def encode_audio(ffmpeg, src_abs, workdir, chain, enc, say_fn):
 
 
 # ------------------------------------------------------------------------------------------------ main
+def layout_of(obj):
+    """The scene layout from a render.mjs report (its scene_report.layout), from a scene report ({'layout': ...}) or from the layout itself."""
+    obj = obj.get("scene_report", obj) or obj
+    return obj.get("layout", obj)
+
+
 def build_parser():
     p = argparse.ArgumentParser(prog="encode_phone.py", description="Make the phone file from the 16:9 master with burned-in captions (WP-08).", add_help=True)
     p.add_argument("master", help="the master (ProRes .mov) or any 1920x1080 24 fps clip with sound")
@@ -663,7 +669,7 @@ def main(argv=None):
                                   "max_lines": max(len(c["lines"]) for c in cues)} if cues else None),
                     "input": {"name": os.path.basename(master), "width": w, "height": h, "frames": nb, "duration_s": round(dur, 3), "color_space_tag": v.get("color_space")},
                     "output": {"name": os.path.basename(out_abs), "width": ow, "height": oh, "bytes": size_b, "average_mbps": round(mbps, 3), "sha256": sha256_file(out_abs)},
-                    "audio": aud, "layout": (layout.get("layout", layout) if isinstance(layout, dict) else None),
+                    "audio": aud, "layout": (layout_of(layout) if isinstance(layout, dict) else None),
                     "checks": checks, "ffmpeg": ffmpeg_version(ffmpeg),
                     "unverified": ["everything on Windows (never run there)", "the colour of the burned captions on ffmpeg 9.0.2 (the PC build): the master is tagged BT.709 and the caption is white with a black outline, which no matrix changes, but a tinted caption needs the twelve-patch test first (W-16)"]}
             write_json(out_abs + ".phone.json", side)

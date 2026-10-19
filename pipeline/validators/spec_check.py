@@ -24,7 +24,8 @@ failure names):
   audio.true_peak       ebur128 true peak at or below -1 dBTP over the whole file (W-19, S-28)
   audio.integrated      integrated loudness within +-1 LU of the profile's target (online -16; venue -23, -18 or -16, chosen on 22 Feb)
   integrity.decode      ffmpeg decodes every frame and sample with nothing printed on stderr
-  metadata.neutral      no tags except encoder and the structural ones ffmpeg writes (no title, artist, comment, date, location ...)
+  metadata.neutral      no tags except encoder and the structural ones ffmpeg writes (no title, artist, comment, date, location ...);
+                        the structural ones include the Matroska muxer's own per-stream DURATION tag (a timecode, e.g. 00:00:02.000000000)
 
 WHAT IT CANNOT SEE: pixel colours. A BT.601 matrix under BT.709 tags passes every check here (the tags are right); only
 colour_patch.py catches it. Run both. Loudness is read to 0.1 dB (the ebur128 summary precision).
@@ -74,6 +75,10 @@ HANDLER_OK = {"videohandler", "soundhandler", "core media video", "core media au
 VENDOR_OK = {"[0][0][0][0]", "ffmp", "fmpg", "apl0", "appl"}
 ENCODER_RX = re.compile(r"^[A-Za-z0-9 ._+()\-]{1,80}$")
 LANG_RX = re.compile(r"^[a-z]{3}$")
+# The Matroska muxer writes a per-stream DURATION tag on its own (e.g. 00:00:02.000000000) and -map_metadata -1 cannot remove it. A
+# timecode-shaped value carries nothing personal, so it is structural; any other value under that key is still reported.
+DURATION_RX = re.compile(r"^\d\d:\d\d:\d\d\.\d+$")
+ADDR_RX = re.compile(r"\s*@ 0x[0-9a-fA-F]+")   # ffmpeg prints heap addresses such as [NULL @ 0x55ce...]: not identifying, but never filed
 
 
 class EnvError(Exception):
@@ -157,6 +162,17 @@ def scrub(text, path):
         if s and s not in (".", os.sep):
             text = text.replace(s, "<file>" if s == path or s == os.path.abspath(path) else "<folder>")
     return text.strip()
+
+
+def decode_messages(stderr, path):
+    """ffmpeg's decode complaints as one stable line: path scrubbed, heap addresses removed, duplicates dropped and the messages sorted (threaded
+    decoders interleave them in a different order on every run), so a filed verdict JSON is the same each time for the same file."""
+    lines = set()
+    for ln in scrub(stderr, path).splitlines():
+        ln = " ".join(ADDR_RX.sub("", ln).split())
+        if ln and not ln.startswith("Last message repeated"):       # a repeat counter depends on how the threads interleaved
+            lines.add(ln)
+    return " | ".join(sorted(lines))
 
 
 def mask(value, keep=2, fill="*", cap=8):
@@ -281,7 +297,7 @@ PROBE_ENTRIES = ("stream=index,codec_type,codec_name,profile,level,pix_fmt,width
 def ffprobe_json(ffprobe, path, timeout):
     rc, out, err = run([ffprobe, "-v", "error", "-of", "json", "-show_entries", PROBE_ENTRIES, path], timeout=timeout)
     if rc != 0:
-        msg = re.sub(r"@ 0x[0-9a-fA-F]+", "", scrub(err, path))
+        msg = ADDR_RX.sub("", scrub(err, path))
         msg = " ".join(msg.split())
         return None, msg[:240] or "ffprobe exited %d" % rc
     try:
@@ -376,6 +392,10 @@ def tag_problems(tags_by_scope):
                 continue
             if kl == "handler_name":
                 if val.lower() not in HANDLER_OK:
+                    bad.append((scope, k, mask(val)))
+                continue
+            if kl == "duration":
+                if not DURATION_RX.match(val):
                     bad.append((scope, k, mask(val)))
                 continue
             if kl == "language":
@@ -549,7 +569,7 @@ def check_file(path, pname, prof, ffmpeg, ffprobe, opts):
 
     # ---- integrity
     rc, so, se = run([ffmpeg, "-hide_banner", "-nostdin", "-v", "error", "-i", path, "-f", "null", "-"], timeout=timeout)
-    msg = scrub(se, path)
+    msg = decode_messages(se, path)
     rep.add("integrity.decode", rc == 0 and not msg, "decodes with nothing on stderr", "clean" if (rc == 0 and not msg) else "problems",
             msg[:240] if msg else ("ffmpeg exit %d" % rc if rc else ""))
 
@@ -635,6 +655,33 @@ def _make_clip(ffmpeg, out, *, fps=24, size="1920x1080", lufs=-16.0, burst=None,
             os.replace(trimmed, out)
 
 
+def default_chains():
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib", "chains.json")
+
+
+# A profile for the project's own lossless chain (ffv1_lossless in chains.json). settings.json has no mkv profile today; this one lives here
+# so the self-test can prove that the chain's own output passes every check, the Matroska muxer's DURATION tag included.
+FFV1_SELFTEST_PROFILE = {
+    "description": "self-test: the ffv1_lossless chain's own mkv output (FFV1 4:4:4 10-bit, PCM s24le)", "container": "mkv",
+    "video": {"codec": ["ffv1"], "pix_fmt": ["yuv444p10le"], "width": 1920, "height": 1080, "fps": "24/1", "color_range": ["tv"],
+              "color_space": ["bt709"], "color_primaries": ["bt709"], "color_transfer": ["bt709"], "alpha": False},
+    "audio": {"required": True, "codec": ["pcm_s24le"], "sample_rate": 48000, "channels": [2], "bits_per_sample": 24},
+    "loudness": {"true_peak_max_dbtp": -1.0}, "metadata": "neutral"}
+
+
+def _make_ffv1_clip(ffmpeg, out, chain, seconds=1, fps=24):
+    """One second of flat grey through the ffv1_lossless chain exactly as chains.json spells it."""
+    cmd = [ffmpeg, "-hide_banner", "-nostdin", "-v", "error", "-y",
+           "-f", "lavfi", "-i", "color=c=gray:size=1920x1080:rate=%d,format=rgb24" % fps,
+           "-f", "lavfi", "-i", _lavfi_audio(-20.0, seconds),
+           "-frames:v", str(fps * seconds), "-vf", chain["vf"]] + [str(a) for a in chain["video_args"]] + \
+          ["-map", "0:v:0", "-map", "1:a:0"] + [str(a) for a in chain["audio_args"]] + [out]
+    rc, so, se = run(cmd, timeout=300)
+    if rc != 0:
+        last = se.strip().splitlines()[-1][:160] if se.strip() else "no message"
+        raise EnvError("could not make the FFV1 self-test clip: " + last)
+
+
 def selftest(args):
     ffmpeg, ffprobe = find_tools(args.ffmpeg, args.ffprobe)
     settings = args.settings or default_settings()
@@ -670,6 +717,20 @@ def selftest(args):
         case("planted_title_tag", ["metadata.neutral"], extra_meta={"title": "Selftest Title"})
         case("planted_loud_peak", ["audio.true_peak"], burst=0.98)
         case("planted_frame_count_vs_duration", ["video.frame_count"], trim=True)
+        # the project's own lossless chain: its mkv carries the muxer's per-stream DURATION tag, which must count as structural (review r1)
+        chains = load_json_file(default_chains(), "chains file").get("chains") or {}
+        if "ffv1_lossless" not in chains:
+            raise Usage("the self-test needs the ffv1_lossless chain in pipeline/lib/chains.json")
+        mkv = os.path.join(work, "good_ffv1_lossless.mkv")
+        _make_ffv1_clip(ffmpeg, mkv, chains["ffv1_lossless"])
+        rep, probe = check_file(mkv, "ffv1_selftest", FFV1_SELFTEST_PROFILE, ffmpeg, ffprobe, {"timeout": 300})
+        tagged = any(isinstance(s.get("tags"), dict) and any(str(k).lower() == "duration" for k in s["tags"]) for s in (probe or {}).get("streams", []))
+        ok = not rep.failed
+        say("  %-5s %-34s %s" % ("PASS" if ok else "FAIL", "good_ffv1_lossless_mkv",
+                                 ("exit 0, all %d checks pass%s" % (len(rep.checks), " (the muxer's DURATION tag was present and accepted)" if tagged else " (this build wrote no DURATION tag)"))
+                                 if ok else "unexpected failures: " + ", ".join(rep.failed)))
+        if not ok:
+            fails += 1
     finally:
         shutil.rmtree(work, ignore_errors=True)
     say("spec_check --selftest: %s" % ("ALL PASS" if not fails else "%d FAILED" % fails))

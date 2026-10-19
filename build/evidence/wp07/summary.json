@@ -1,27 +1,40 @@
 {
   "counts": {
-    "BLOCKED": 2,
-    "PASS": 39,
+    "PASS": 44,
+    "SKIPPED": 1,
     "UNVERIFIED": 1
   },
   "date_utc": "2026-10-19",
-  "lowest_avail_mb_seen_by_the_tests": 464,
+  "lowest_avail_mb_seen_by_the_tests": 1103,
   "mode": "all",
   "package": "WP-07",
-  "real_run_state": "T1, T2 and T4 have NOT been run against the real CLIs: the disk guard refused every real stage (see real_stages). The harness is proven against stand-in CLIs only.",
+  "real_run_state": "Real CLI results: T1 FilmCraft PASS; T2 FilmCraft NOT RUN; T1 EffectCraft PASS; T4 EffectCraft NOT RUN. The harness is also proven against stand-in CLIs, which say nothing about FilmCraft or EffectCraft.",
   "real_stages": [
     {
       "disk": {
-        "avail_mb_end": 467,
-        "avail_mb_min": 467,
-        "avail_mb_start": 467,
+        "avail_mb_end": 1201,
+        "avail_mb_min": 989,
+        "avail_mb_start": 1201,
         "floor_mb": 400,
         "hard_floor_mb": 250,
-        "planned_write_mb": 300
+        "planned_write_mb": 400
       },
-      "reason": "not started: REFUSED: Avail 467 MB minus planned 300 MB leaves 167 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB.",
+      "reason": "exit 0",
       "stage": "stage_effectcraft-v0.11.1",
-      "status": "BLOCKED"
+      "status": "PASS"
+    },
+    {
+      "disk": {
+        "avail_mb_end": 1134,
+        "avail_mb_min": 1062,
+        "avail_mb_start": 1201,
+        "floor_mb": 400,
+        "hard_floor_mb": 250,
+        "planned_write_mb": 600
+      },
+      "reason": "exit 0",
+      "stage": "stage_filmcraft-v0.9.0",
+      "status": "PASS"
     }
   ],
   "schema": "lj-wp-summary/1",
@@ -100,11 +113,11 @@
     },
     {
       "name": "effectcraft.t1only_real",
-      "status": "BLOCKED"
+      "status": "PASS"
     },
     {
       "name": "all.staged_run",
-      "status": "BLOCKED"
+      "status": "SKIPPED"
     },
     {
       "name": "fake.sums_only",
@@ -135,6 +148,18 @@
       "status": "PASS"
     },
     {
+      "name": "fake.t2_fail_fetches_fallback",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.t1only_then_all_ledger_clean",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.all_prints_ledger_problem",
+      "status": "PASS"
+    },
+    {
       "name": "fake.t2_envelope_survives_term",
       "status": "PASS"
     },
@@ -144,6 +169,10 @@
     },
     {
       "name": "fake.guard_refuses_at_600",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.stage_timeout_reason",
       "status": "PASS"
     },
     {

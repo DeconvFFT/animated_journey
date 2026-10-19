@@ -2,9 +2,9 @@
  "actual": "--check and ops_lint: exit 1, W-99 named",
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 453,
-  "avail_mb_min": 453,
-  "avail_mb_start": 453,
+  "avail_mb_end": 1117,
+  "avail_mb_min": 1117,
+  "avail_mb_start": 1117,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

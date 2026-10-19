@@ -1,0 +1,106 @@
+{
+  "app": "filmcraft",
+  "commands": {
+    "effects.setInterpolation": {
+      "defaultShortcut": null,
+      "enabled": false,
+      "id": "effects.setInterpolation",
+      "label": "Keyframe Interpolation",
+      "menu": [],
+      "params": "{\"clip\":id,\"effect\":str|index,\"param\":str,\"mediaTime\":ticks,\"interpolation\":\"linear|bezier|autoBezier|continuousBezier|hold|easeIn|easeOut\"}",
+      "shortcut": null,
+      "shortcuts": []
+    },
+    "effects.setParam": {
+      "defaultShortcut": null,
+      "enabled": false,
+      "id": "effects.setParam",
+      "label": "Set Effect Parameter",
+      "menu": [],
+      "params": "{\"clip\":id,\"effect\":\"motion\"|index,\"param\":str,\"mask\":n?,\"value\":num|[x,y]|\"#rrggbb\"|bool|path|\"option name\" (a choice takes its index or its name),\"time\":ticks? (where the keyframe goes when the parameter is animated, kept there even outside the clip; default: the playhead, pinned to the clip; a parameter that is not animated gets a new static value whatever the time),\"keyframe\":bool? (true: write a keyframe at `time` and animate the parameter),\"merge\":bool|key?,\"begin\":bool?}",
+      "shortcut": null,
+      "shortcuts": []
+    },
+    "file.exportInterchange": {
+      "defaultShortcut": null,
+      "enabled": false,
+      "id": "file.exportInterchange",
+      "label": "Export Interchange",
+      "menu": [],
+      "params": "{\"format\":\"edl|xml|fcpxml|otio|aaf|omf\"=xml,\"path\":str,\"sequence\":id?}",
+      "shortcut": null,
+      "shortcuts": []
+    },
+    "file.import": {
+      "defaultShortcut": "Cmd+I",
+      "enabled": true,
+      "id": "file.import",
+      "label": "Import\u2026",
+      "menu": [
+        "File"
+      ],
+      "params": "{\"paths\":[str],\"bin\":binId?,\"imageSequence\":bool?,\"replace\":bool?}",
+      "shortcut": "Cmd+I",
+      "shortcuts": [
+        "Cmd+I"
+      ]
+    },
+    "file.newProject": {
+      "defaultShortcut": "Cmd+Alt+N",
+      "enabled": true,
+      "id": "file.newProject",
+      "label": "Project\u2026",
+      "menu": [
+        "File",
+        "New"
+      ],
+      "params": "{\"name\":str}",
+      "shortcut": "Cmd+Alt+N",
+      "shortcuts": [
+        "Cmd+Alt+N"
+      ]
+    },
+    "file.newSequence": {
+      "defaultShortcut": "Cmd+N",
+      "enabled": true,
+      "id": "file.newSequence",
+      "label": "Sequence\u2026",
+      "menu": [
+        "File",
+        "New"
+      ],
+      "params": "{\"name\":str,\"width\":u32=1920,\"height\":u32=1080,\"fps\":f64=23.976,\"sampleRate\":u32=48000,\"video\":n=3,\"audio\":n=3,\"mix\":\"Stereo|Mono|5.1|Adaptive\"?,\"trackType\":\"Standard|Mono|5.1|Adaptive\"?,\"fromItem\":itemId?,\"fromItems\":[itemId]?}",
+      "shortcut": "Cmd+N",
+      "shortcuts": [
+        "Cmd+N"
+      ]
+    },
+    "sequence.applyVideoTransition": {
+      "defaultShortcut": "Cmd+D",
+      "enabled": false,
+      "id": "sequence.applyVideoTransition",
+      "label": "Apply Video Transition",
+      "menu": [
+        "Sequence"
+      ],
+      "params": "{\"clip\":id?,\"effect\":\"cross_dissolve|Cross Dissolve|\u2026\"?,\"frames\":i64?,\"edge\":\"in\"|\"out\"?,\"params\":{param:value}?,\"reverse\":bool?}",
+      "shortcut": "Cmd+D",
+      "shortcuts": [
+        "Cmd+D"
+      ]
+    },
+    "timeline.place": {
+      "defaultShortcut": null,
+      "enabled": false,
+      "id": "timeline.place",
+      "label": "Place Clip",
+      "menu": [],
+      "params": "{\"item\":id|\"items\":[id] (back to back, one undo step),\"track\":\"V1\"|id|\"A1\" (sound only)|\"new\" (a video track after the last)?,\"audioTrack\":\"A1\"|id|\"new\"?,\"time\":ticks|\"frame\":i64|\"seconds\":f64,\"insert\":bool,\"sourceIn\":ticks?,\"duration\":ticks?,\"video\":bool=true,\"audio\":bool=true}",
+      "shortcut": null,
+      "shortcuts": []
+    }
+  },
+  "missing": [],
+  "schema": "lj-describe/1",
+  "tag": "v0.9.0"
+}

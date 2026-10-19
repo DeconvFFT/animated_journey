@@ -100,6 +100,21 @@ assert all(type(v) is int for v in seen.values()), seen
 PY
 grep -q '"label":"zero010ok","planned_mb":10,' "$S/disk-ledger.jsonl" && pass "planned_010_is_written_as_planned_mb_10_not_010" "" || fail "planned_010_is_written_as_planned_mb_10_not_010" "$(grep 'zero010ok' "$S/disk-ledger.jsonl" | head -c 200)"
 
+# ----------------------------------------------------------------------------- 3c. a PLANNED_MB too large for the arithmetic (review r4, carried from r3)
+# 18446744073709551616 (2^64) wrapped to 0 in bash arithmetic: "planned 0 MB", no refusal, the command ran, exit 0.
+S="$(new_scratch s3c)"; mkfake "$S" f 700
+export LJ_DF_CMD="$S/f.sh" LJ_SCRATCH="$S"
+ran="$S/ran_ovf"; rm -f "$ran"
+bash "$GUARD" with_disk 18446744073709551616 ovf -- bash -c "touch '$ran'" 2>"$S/err"; rc=$?
+expect "planned_2_pow_64_is_a_usage_error_exit_2" 2 "$rc" "$(head -c 100 "$S/err")"
+grep -q 'PLANNED_MB must be a whole number of MB (at most 12 digits)' "$S/err" && pass "planned_2_pow_64_message_says_at_most_12_digits" "" || fail "planned_2_pow_64_message_says_at_most_12_digits" "$(head -c 200 "$S/err")"
+[[ ! -e "$ran" ]] && pass "planned_2_pow_64_never_starts_the_command" "" || fail "planned_2_pow_64_never_starts_the_command" "the command ran (it wrapped to 0 MB)"
+bash "$GUARD" with_disk 1000000000000 big12 -- true 2>"$S/err"; rc=$?
+expect "planned_13_digits_is_a_usage_error_exit_2" 2 "$rc" "$(head -c 100 "$S/err")"
+bash "$GUARD" with_disk 999999999999 big12 -- true 2>"$S/err"; rc=$?
+expect "planned_12_digits_is_still_a_number_and_is_refused_by_the_floor_rule_exit_3" 3 "$rc" "$(grep -o 'REFUSED.*' "$S/err" | head -c 100)"
+if [[ -f "$S/disk-ledger.jsonl" ]] && grep -q '"label":"ovf"' "$S/disk-ledger.jsonl"; then fail "planned_2_pow_64_writes_no_ledger_line" "$(grep '"label":"ovf"' "$S/disk-ledger.jsonl" | head -c 200)"; else pass "planned_2_pow_64_writes_no_ledger_line" ""; fi
+
 # ----------------------------------------------------------------------------- 4. serialise, BUSY
 S="$(new_scratch s4)"; mkfake "$S" f 5000
 export LJ_DF_CMD="$S/f.sh" LJ_SCRATCH="$S"

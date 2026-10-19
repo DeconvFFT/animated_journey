@@ -24,6 +24,10 @@
 # So a stage returns a distinct INTERNAL code 4 for it (stage -> run_stage -> --all; the envelope says FAIL, "hash mismatch (stop and report)"). run_sp1.sh
 # itself never exits 4 to its caller: --only and --all turn it into exit 1. Only the hidden --stage-inner mode (called by run_stage, not by you) shows a 4.
 # A kept tarball in vendor/craft/_keep/ that fails the check is deleted and fetched again once in the same stage (ledger exception "kept tarball rejected").
+# A tarball the download ledger already holds is fetched again with a recorded exception ("re-fetch: the earlier copy (stage ID, t1-only) was deleted with its
+# tree": EffectCraft's --t1-only run, then --all), so --ledger-check stays at exit 0. --all prints "LEDGER PROBLEM:" and exits 1 if the ledger check fails.
+# A stage refuses a release_assets.json that says usable=false (an R8 or size mismatch): exit 1, "STOP AND REPORT", nothing downloaded.
+# A stage that runs over SP1_STAGE_TIMEOUT_S (default 3600) is stopped; its envelope says "TIMEOUT: ..." (exit 3), not a disk refusal.
 # Test overrides (used by tests/sp1/run_tests.sh, never needed otherwise): LJ_RELEASE_BASE LJ_SP1_ASSETS LJ_SP1_VENDOR LJ_SP1_EVIDENCE LJ_DF_CMD LJ_SCRATCH
 #   LJ_SP1_VERDICT (where --all writes the verdict file, so a test run against stand-ins can never overwrite VERDICT-SP1A.md)
 #   SP1_FAKE_MINI=1 (smaller test content for the fake CLIs). FORCE_BAD_ASSET=1 asks for a deliberately wrong asset name.
@@ -132,6 +136,7 @@ run_stage() {  # run_stage APP TAG PROFILE_REQUEST T1ONLY WAIT
   local app="$1" tag="$2" want="$3" t1only="$4" wait_s="$5" id="$1-$2" prof avail planned rc head waited=0 before after
   jq -e --arg id "$id" '.stages[]|select(.id==$id)' "$CFG" >/dev/null 2>&1 || die "$app $tag is not a stage of this spike (filmcraft v0.9.0, effectcraft v0.11.1, filmcraft v0.8.0)"
   [[ -f "$ASSETS" ]] || die "release_assets.json is missing; run --sums-only first" 3
+  jq -e '.usable==true' "$ASSETS" >/dev/null || die "release_assets.json says usable=false (R8 or size mismatch): STOP AND REPORT; nothing is downloaded against this table" 1
   say "== stage $id: preflight HEAD (no disk planned yet)"
   head="$(py "$DRV/asset_tool.py" head "$app" "$tag")"; rc=$?
   say "$head"
@@ -161,8 +166,10 @@ run_stage() {  # run_stage APP TAG PROFILE_REQUEST T1ONLY WAIT
   # a locked stage is at most 60 minutes (build plan 4.9): timeout ends it, and its cleanup trap runs on the TERM
   lj_with_disk "$planned" "sp1-$id-$prof" -- timeout --kill-after=60 "${SP1_STAGE_TIMEOUT_S:-3600}" bash "$SELF" --stage-inner "$app" "$tag" "$prof" "$t1only"
   rc=$?
+  local reason=()
   if (( rc == 124 )); then
     say "TIMEOUT: stage $id ran for more than ${SP1_STAGE_TIMEOUT_S:-3600} s and was stopped; the disk lock is released and its folders removed. Split the work into shorter stages."
+    reason=(--reason "TIMEOUT: the stage ran over ${SP1_STAGE_TIMEOUT_S:-3600} s and was stopped; T2's partial envelope holds what was measured")
     rc=3
   fi
   if (( rc == 4 )); then
@@ -170,7 +177,7 @@ run_stage() {  # run_stage APP TAG PROFILE_REQUEST T1ONLY WAIT
   fi
   after="$(lj_df_avail_mb)"
   py "$DRV/finalize_stage.py" --id "$id" --profile "$prof" --planned "$planned" --exit "$rc" --df-before "${before:-0}" --df-after "${after:-0}" \
-     --label "sp1-$id-$prof" --vendor "$VENDOR" || true
+     --label "sp1-$id-$prof" --vendor "$VENDOR" ${reason[@]+"${reason[@]}"} || true
   return "$rc"
 }
 
@@ -197,12 +204,18 @@ stage_inner() {  # runs inside lj_with_disk
   mkdir "$work" || die "cannot create a new empty folder" 3
   [[ -z "$(ls -A "$work")" ]] || die "the stage folder is not empty" 3
 
-  fetch_tarball() {  # $1: ledger exception text, or empty for the first fetch. Sets the global rc; returns it.
+  fetch_tarball() {  # $1: ledger exception text, or empty. Sets the global rc; returns it.
+    # A tarball the ledger already holds (EffectCraft after its --t1-only run: the tree and the tarball are deleted together) is fetched again with a
+    # recorded exception, so --ledger-check stays at exit 0 and the second fetch is visibly justified. An explicit exception ($1) wins.
+    local exc="$1" t1flag=()
+    if [[ -z "$exc" ]]; then exc="$(py "$DRV/asset_tool.py" ledger --refetch-exception "$app" "$tag")"; fi
+    [[ "$t1only" == 1 ]] && t1flag=(--t1only)
     say "[1/6] curl -> new empty folder ${work#"$ROOT"/}"
+    [[ -n "$exc" ]] && say "      this tarball is already in the download ledger; the second fetch is recorded with the exception: $exc"
     py "$DRV/asset_tool.py" get "$app" "$tag" --dest "$tb"; rc=$?
     (( rc != 0 )) && return "$rc"
-    if [[ -n "$1" ]]; then py "$DRV/asset_tool.py" ledger --add "$app" "$tag" --stage "$id" --exception "$1" >/dev/null
-    else py "$DRV/asset_tool.py" ledger --add "$app" "$tag" --stage "$id" >/dev/null; fi
+    if [[ -n "$exc" ]]; then py "$DRV/asset_tool.py" ledger --add "$app" "$tag" --stage "$id" --exception "$exc" ${t1flag[@]+"${t1flag[@]}"} >/dev/null
+    else py "$DRV/asset_tool.py" ledger --add "$app" "$tag" --stage "$id" ${t1flag[@]+"${t1flag[@]}"} >/dev/null; fi
     return 0
   }
   verify_tarball() {  # prints asset_tool's answer; sets the global rc; sets rejected=1 only for a REJECTED answer (hash or size mismatch), not for a crash
@@ -343,7 +356,9 @@ case "$MODE" in
       fi
     fi
     (( rc1 > overall )) && overall=$rc1; (( rc2 > overall )) && overall=$rc2
-    say "== after the run: $(py "$DRV/asset_tool.py" ledger --check)"
+    lmsg="$(py "$DRV/asset_tool.py" ledger --check)"; lrc=$?
+    if (( lrc != 0 )); then say "== LEDGER PROBLEM: $lmsg"; (( overall < 1 )) && overall=1
+    else say "== after the run: $lmsg"; fi
     left="$(ls -A "$VENDOR" 2>/dev/null | grep -v '^_keep$' | tr '\n' ' ')"
     say "== vendor/craft holds: ${left:-nothing but _keep/ (or nothing)}; df now Avail $(lj_df_avail_mb) MB (start ${start_avail} MB)"
     py "$DRV/verdict.py" --out "${LJ_SP1_VERDICT:-$SP1/VERDICT-SP1A.md}" >/dev/null 2>&1 || true

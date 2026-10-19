@@ -1,8 +1,8 @@
 {
- "avail_mb_end": 1213,
- "avail_mb_start": 1214,
+ "avail_mb_end": 1116,
+ "avail_mb_start": 1117,
  "blocked": 0,
- "fail": 2,
+ "fail": 0,
  "mode": "--all",
  "names": {
   "close.appdata_entries_resolve_when_the_variables_are_set": "PASS",
@@ -40,10 +40,13 @@
   "close.planted_lists_the_planted_items": "PASS",
   "close.planted_lists_the_planted_items.tree_hash_identical": "PASS",
   "close.read_only_mounts_really_block_writes": "PASS",
+  "close.repo_inside_the_root_is_never_touched": "PASS",
+  "close.repo_inside_the_root_is_never_touched.tree_hash_identical": "PASS",
+  "close.repo_inside_the_root_not_in_the_would_remove_list": "PASS",
   "close.root_containing_the_profile_refused": "PASS",
-  "close.root_containing_the_profile_refused.tree_hash_identical": "FAIL",
+  "close.root_containing_the_profile_refused.tree_hash_identical": "PASS",
   "close.root_equal_to_the_profile_refused": "PASS",
-  "close.root_equal_to_the_profile_refused.tree_hash_identical": "FAIL",
+  "close.root_equal_to_the_profile_refused.tree_hash_identical": "PASS",
   "close.root_inside_repo_refused": "PASS",
   "close.root_inside_repo_refused.tree_hash_identical": "PASS",
   "close.root_is_a_git_repo_refused": "PASS",
@@ -141,9 +144,9 @@
   "windows.reparse_points_on_ntfs": "UNVERIFIED"
  },
  "package": "WP-01b",
- "pass": 122,
+ "pass": 127,
  "schema": "lj-evidence-summary/1",
  "skipped": 0,
- "tests": 134,
+ "tests": 137,
  "unverified": 10
 }

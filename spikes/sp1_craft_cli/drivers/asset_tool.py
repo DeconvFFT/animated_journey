@@ -8,7 +8,10 @@ USAGE  python3 -I spikes/sp1_craft_cli/drivers/asset_tool.py SUBCOMMAND ...
                                        is one); prints OK or REJECTED; exit 0 / 1. Run BEFORE any extraction.
   plan    LISTING APP PROFILE          read a `tar -tvzf` listing; print JSON with the members to extract and their sizes
   ledger  --check                      check the download ledger: each tarball once (a second fetch needs an `exception`), under 2 GB
-  ledger  --add APP TAG --stage S [--exception TEXT]   append a ledger line for the tarball just fetched
+  ledger  --add APP TAG --stage S [--exception TEXT] [--t1only]   append a ledger line for the tarball just fetched
+  ledger  --count APP TAG              print how many ledger lines this tarball already has (a number, nothing else)
+  ledger  --refetch-exception APP TAG  if this tarball already has a ledger line, print the exception text a second fetch must carry
+                                       ("re-fetch: the earlier copy (stage ID, t1-only) was deleted with its tree"); else print nothing
 ENVIRONMENT  FORCE_BAD_ASSET=1 asks for a deliberately wrong asset name (the blocked-download test).
              LJ_RELEASE_BASE, LJ_SP1_ASSETS, LJ_SP1_R8, LJ_SP1_EVIDENCE: test overrides (a local fake release server, a fake table, a scratch evidence folder).
 EXIT CODES  0 ok; 1 hash mismatch or ledger violation (a finding); 2 bad usage; 3 download blocked.
@@ -161,12 +164,24 @@ def read_ledger():
 
 
 def cmd_ledger(a):
+    if a.count or a.refetch_exception:
+        app, tag = a.count or a.refetch_exception
+        pin, tb = tarball_info(app, tag)
+        prior = [r for r in read_ledger() if r["asset"] == tb["name"]]
+        if a.count:
+            print(len(prior))
+        elif prior:
+            last = prior[-1]
+            # t1_only is recorded from this change on; the two lines written before it came from --t1-only acceptance runs (build/reports/WP-07.md)
+            t1 = ", t1-only" if last.get("t1_only", True) else ""
+            print("re-fetch: the earlier copy (stage %s%s) was deleted with its tree" % (last.get("stage") or "unknown", t1))
+        return 0
     if a.add:
         app, tag = a.add
         pin, tb = tarball_info(app, tag)
         L.append_jsonl(ledger_path(), {"asset": tb["name"], "app": app, "tag": tag, "bytes": tb["bytes"], "sha256": tb["sha256"], "date_utc": L.today(),
                                        "stage": a.stage or "", "fetch": 1 + sum(1 for r in read_ledger() if r["asset"] == tb["name"]),
-                                       "exception": a.exception or ""})
+                                       "exception": a.exception or "", "t1_only": bool(a.t1only)})
         print("ledger: %s recorded" % tb["name"])
         return 0
     rows = read_ledger()
@@ -205,8 +220,11 @@ def main(argv):
     p = sub.add_parser("ledger")
     p.add_argument("--check", action="store_true")
     p.add_argument("--add", nargs=2, metavar=("APP", "TAG"))
+    p.add_argument("--count", nargs=2, metavar=("APP", "TAG"))
+    p.add_argument("--refetch-exception", nargs=2, metavar=("APP", "TAG"))
     p.add_argument("--stage")
     p.add_argument("--exception")
+    p.add_argument("--t1only", action="store_true")
     a = ap.parse_args(argv)
     return {"head": cmd_head, "get": cmd_get, "verify": cmd_verify, "plan": cmd_plan, "ledger": cmd_ledger}[a.cmd](a)
 

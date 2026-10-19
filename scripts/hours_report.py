@@ -23,6 +23,8 @@ WHAT IT PRINTS
   Per week: total hours, hours by activity, and the W-02 reading. `who` must be `maker` or
   `agent` (nothing else is accepted: in a public repository a `who` column is a name slot).
   Only `maker` rows count towards the maker's hours (H); `agent` rows are listed as not counted.
+  `shot_or_chapter` is `-` or an ID with capital letters and at least one digit (C01, LJ-C01-S014):
+  a hyphenated personal name has no digit, so it is refused and its cell is masked.
   Problems are printed with the file line number and nothing else is reported. Free text
   echoed in a problem (date, shot_or_chapter, activity, minutes, who, and the cells of a wrong
   header line) is masked: first two characters, then asterisks, because a shifted or mistyped
@@ -59,7 +61,9 @@ ACTIVITIES = [
     "qc", "admin", "learn", "rework", "event",
 ]
 DATE_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$")
-ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]*$")
+# A shot or chapter ID has an upper-case letter and a digit (C01, LJ-C01-S014, OBJ-02). A hyphenated
+# personal name has no digit, so it is refused here: this column is public, and a name must not fit it.
+ID_RE = re.compile(r"^(?=.*[0-9])[A-Z][A-Z0-9_.-]*$")
 MAKER = "maker"
 WHO_VALUES = ("maker", "agent")  # a `who` column in a public repository is a name slot: two words only
 # W-02 thresholds, in minutes of one week (8 h, 14 h, 16 h).
@@ -169,8 +173,11 @@ def check_row(row):
             msgs.append("date '%s' is not a real calendar date" % masked(d))
     s = row["shot_or_chapter"]
     if s != "-" and not ID_RE.match(s):
-        msgs.append("shot_or_chapter '%s' must be an ID such as C01 or LJ-C01-S002, or '-' "
-                    "until shots exist" % masked(s))
+        hint = ""
+        if ID_RE.match(s.upper()):
+            hint = " (IDs are written in capital letters)"  # no echo of the cell: it may be a name with a digit
+        msgs.append("shot_or_chapter '%s' must be an ID with capital letters and a digit, such as C01 or "
+                    "LJ-C01-S002, or '-' until shots exist; a name is not an ID%s" % (masked(s), hint))
     a = row["activity"]
     if a not in ACTIVITIES:
         hint = ""
@@ -182,8 +189,12 @@ def check_row(row):
     if not re.match(r"^[0-9]{1,4}$", m) or not (1 <= int(m) <= 1440):
         msgs.append("minutes '%s' must be a whole number from 1 to 1440 (no 'h', no decimals)" % masked(m))
     if row["who"] not in WHO_VALUES:
-        msgs.append("who '%s' must be exactly maker or agent (the repository is public: no names here)"
-                    % (masked(row["who"]) if row["who"] else ""))
+        hint = ""
+        for cand in WHO_VALUES:
+            if cand.lower() == row["who"].lower():
+                hint = " (lower-case only: did you mean '%s'?)" % cand
+        msgs.append("who '%s' must be exactly maker or agent (the repository is public: no names here)%s"
+                    % (masked(row["who"]) if row["who"] else "", hint))
     return msgs
 
 

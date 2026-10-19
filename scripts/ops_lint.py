@@ -3,19 +3,22 @@
 
 WHAT IT CHECKS (read-only; it never writes, moves or deletes anything)
   1. ops/decisions.csv against DECISIONS.md: same ID set (compared by a plain scan of the
-     register AND by the generator's parser), no duplicates, valid status words, exact header,
-     every generated column equal (orchestrator-owned columns are ignored).
+     register AND by the generator's parser; the number of lines that look like a register row,
+     emphasis marks around the ID included, must equal the generator's row count), no
+     duplicates, valid status words, exact header, every generated column equal
+     (orchestrator-owned columns are ignored).
   2. ops/hours.csv: exact header, activity enum, `who` is exactly maker or agent (a who column
      in a public repository is a name slot), date/minutes/ID shapes, and every cell
      against the identifying-data patterns and the local deny list; a note over 80
      characters is a WARNING (probably prose about a person).
-  3. ops/SETTINGS-CARD.md: rows TD-1..TD-4, Colour, Sound, Phone with their register IDs
-     and key values, the "Language and script" line, a "signed:" line, no unverified-on-
-     Windows claim, and every cited D-/W-/O-/S- ID exists in DECISIONS.md. When
+  3. ops/SETTINGS-CARD.md: rows TD-1..TD-4, Colour, Sound, Phone (PH1 and PH2: W-63), Script
+     stack, Fonts and Burn-in path (the rows W-16 and O-14 say the maker signs on Sun 1 Nov)
+     with their register IDs and key values, the "Language and script" line, a "signed:" line,
+     no unverified-on-Windows claim, and every cited D-/W-/O-/S- ID exists in DECISIONS.md. When
      pipeline/phone/test_strings.json exists, the scripts the "Caption and font test ran in:"
      line says were tested must have strings there (else a note says it was not cross-checked).
   4. ops/GATHER.md: Part A / Part B headings, the Part B gate sentence, the required
-     IDs (five stand-in scans LJ-ST-0001..0005 front and back, OBJ, REC, DEV, ERA, FP, HUM),
+     IDs (five stand-in scans LJ-ST-0001..0005 front and back, OBJ, REC, DEV, ERA, FP, HUM, SND),
      stand-in box code only in Part A and never in Part B, no real-box scan ID in Part A,
      every cited register ID exists.
   5. Every text file under ops/ (.md .csv .json .txt): no e-mail, IP, MAC, profile path,
@@ -285,6 +288,9 @@ def check_decisions(csv_path, register_path, d2c, findings):
     reg_set = set(reg_ids_plain)
     if len(reg_ids_plain) != len(reg_set):
         findings.add_fail("DECISIONS.md", 0, "register", "the register lists an ID twice")
+    # every line that starts like a register row, including an ID wrapped in emphasis or code marks
+    # (`| **O-95** |`): the generator must have produced exactly one row for each of them
+    looks_like_row = sum(1 for ln in reg_text.splitlines() if d2c.NEAR_MISS_RE.match(ln))
     try:
         rows = d2c.build_rows(d2c.parse_register(reg_text))
     except ValueError as exc:
@@ -293,6 +299,9 @@ def check_decisions(csv_path, register_path, d2c, findings):
     gen_set = {r["id"] for r in rows}
     if gen_set != reg_set:
         findings.add_fail(label, 0, "parser", "the generator's parser and the plain scan disagree on the ID set")
+    if looks_like_row != len(rows):
+        findings.add_fail(label, 0, "parser", "%d line(s) start like a register row but the generator made %d row(s): "
+                          "a row is being dropped" % (looks_like_row, len(rows)))
     try:
         problems = d2c.compare(rows, csv_path)
     except OSError as exc:
@@ -337,11 +346,15 @@ CARD_ROWS = [
     # (row marker, register IDs that must be cited in that row, strings that must appear in it)
     ("**TD-1", ["W-15"], ["1920x1080"]),
     ("**TD-2", ["W-14"], ["24 fps"]),
-    ("**TD-3", ["W-18"], ["FontSize=23"]),
+    ("**TD-3", ["W-18"], ["FontSize=23", "`MarginV` 20"]),
     ("**TD-4", ["W-17"], ["1080p24", "2K Flat"]),
     ("**Colour", ["W-16"], ["BT.709"]),
     ("**Sound", ["W-19"], ["-1 dBTP", "48 kHz"]),
-    ("**Phone", ["D-27"], ["(J)", "PHONE-ROW.md", "WP-08"]),
+    ("**Phone", ["D-27", "W-63"], ["(J)", "PHONE-ROW.md", "WP-08", "FontSize=28"]),
+    # rows the register says the maker signs on Sun 1 Nov (W-16 "Added 2026-10-19", O-14)
+    ("**Script stack", ["W-75"], ["Gujarati"]),
+    ("**Fonts", ["W-75"], ["OFL.txt"]),
+    ("**Burn-in path", ["W-16"], ["`ass`", "`subtitles`"]),
 ]
 
 
@@ -451,7 +464,7 @@ def check_gather(path, label, reg_set, findings):
     for i in range(1, 6):
         required += ["LJ-ST-%04d-F" % i, "LJ-ST-%04d-B" % i]
     # ranges are written "OBJ-01 to OBJ-05", so the two ends must be present
-    required += ["OBJ-01", "OBJ-05", "ERA-1", "ERA-5", "HUM-01", "REC-01", "DEV-01", "FP-01", "FP-10"]
+    required += ["OBJ-01", "OBJ-05", "ERA-1", "ERA-5", "HUM-01", "REC-01", "DEV-01", "FP-01", "FP-10", "SND-01"]
     for rid in required:
         if rid not in text:
             findings.add_fail(label, 0, "gather_ids", "required ID %s is missing" % rid)

@@ -1,12 +1,12 @@
 {
  "mode": "all",
- "scanned": 741,
+ "scanned": 759,
  "identifying": [
   {
    "kind": "identifying",
    "category": "email",
    "file": ".claude/skills/craft-apps-motion-refinement/SKILL.md",
-   "line": 176,
+   "line": 180,
    "hit": "kd********",
    "note": ""
   },
@@ -256,14 +256,6 @@
    "file": "reviews/toolchain-round3.md",
    "line": 41,
    "hit": "te********",
-   "note": ""
-  },
-  {
-   "kind": "identifying",
-   "category": "email",
-   "file": "skills-staging/craft-apps-motion-refinement/SKILL.md",
-   "line": 180,
-   "hit": "kd********",
    "note": ""
   }
  ],

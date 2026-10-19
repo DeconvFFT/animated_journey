@@ -99,7 +99,8 @@ lj_with_disk() (
   if [[ -z "$planned" || -z "$label_raw" || "${3:-}" != "--" || $# -lt 4 ]]; then
     _lj_say "usage: lj_with_disk PLANNED_MB LABEL -- COMMAND [ARGS...]"; exit 2
   fi
-  if ! [[ "$planned" =~ ^[0-9]+$ ]]; then _lj_say "usage: PLANNED_MB must be a whole number of MB"; exit 2; fi
+  # at most 12 digits: bash arithmetic wraps at 64 bits, so 18446744073709551616 would read as 0 MB and the stage would run (review r4)
+  if ! [[ "$planned" =~ ^[0-9]{1,12}$ ]]; then _lj_say "usage: PLANNED_MB must be a whole number of MB (at most 12 digits)"; exit 2; fi
   planned=$((10#$planned))   # a leading zero is decimal, not octal: 08 would abort the refusal test below (fail-open), 010 would be read as 8 and reach the ledger as invalid JSON
   shift 3
   label="$(_lj_label "$label_raw")"
