@@ -1,0 +1,12 @@
+{
+ "counts": {
+  "BLOCKED": 5,
+  "PASS": 36,
+  "SKIPPED": 1,
+  "UNVERIFIED": 1
+ },
+ "date_utc": "2026-10-19",
+ "mode": "all",
+ "package": "WP-02",
+ "schema": "lj-evidence-summary/1"
+}

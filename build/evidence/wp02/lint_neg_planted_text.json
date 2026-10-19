@@ -1,0 +1,24 @@
+{
+ "actual": "scripts/redaction_patterns.json (WP-03, build plan 4.13) has not landed; ops_lint fails closed without it. Set LJ_PATTERNS to run against another file.",
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 605,
+  "avail_mb_min": 605,
+  "avail_mb_start": 605,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "negative: identifying strings planted in the ops files are found, with file:line and a masked hit",
+ "notes": "",
+ "package": "WP-02",
+ "schema": "lj-evidence/1",
+ "status": "BLOCKED",
+ "test": "lint_neg_planted_text",
+ "unverified_reasons": []
+}

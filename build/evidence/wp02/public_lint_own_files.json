@@ -1,0 +1,24 @@
+{
+ "actual": "scripts/public_lint.py has not landed (WP-03); ops_lint scans ops/ with the same pattern file",
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 605,
+  "avail_mb_min": 605,
+  "avail_mb_start": 605,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "scripts/public_lint.py (WP-03), when present, finds nothing in WP-02's own files",
+ "notes": "",
+ "package": "WP-02",
+ "schema": "lj-evidence/1",
+ "status": "SKIPPED",
+ "test": "public_lint_own_files",
+ "unverified_reasons": []
+}

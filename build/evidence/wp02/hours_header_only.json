@@ -1,0 +1,24 @@
+{
+ "actual": "hours_report: hours.csv, 0 row(s)\n  no rows yet: log your real hours (see HOURS-HOWTO.md); the first logged week is read on Sun 1 Nov",
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 605,
+  "avail_mb_min": 605,
+  "avail_mb_start": 605,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "hours_report on the header-only ops/hours.csv: 'no rows yet', exit 0",
+ "notes": "",
+ "package": "WP-02",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "hours_header_only",
+ "unverified_reasons": []
+}

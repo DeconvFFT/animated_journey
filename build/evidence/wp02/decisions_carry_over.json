@@ -1,0 +1,24 @@
+{
+ "actual": "wrote d.csv: 166 rows (D 30, W 60, O 35, S 41; by table T1 30, T2.1 13, T2.2 16, T2.3 31, T3 35, T4 41); orchestrator-owned cells carried over: 1 row(s)",
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 605,
+  "avail_mb_min": 605,
+  "avail_mb_start": 605,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "orchestrator-owned cells (maker_answer, last_changed) survive --write and are ignored by --check",
+ "notes": "",
+ "package": "WP-02",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "decisions_carry_over",
+ "unverified_reasons": []
+}

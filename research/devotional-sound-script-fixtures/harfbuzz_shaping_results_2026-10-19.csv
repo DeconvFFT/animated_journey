@@ -1,0 +1,1219 @@
+font_file,font_name,version,script,id,n_codepoints,n_glyphs,n_clusters,notdef,dotted_circle,missing_codepoints
+Alegreya_wght_.ttf,Alegreya Regular,Version 2.009,latn,iast-small,135,136,135,0,0,U+1E41
+Alegreya_wght_.ttf,Alegreya Regular,Version 2.009,latn,iast-caps,59,62,59,0,0,U+1E38 U+1E40 U+1E5C
+Alegreya_wght_.ttf,Alegreya Regular,Version 2.009,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+Alegreya_wght_.ttf,Alegreya Regular,Version 2.009,latn,pop-spell,80,80,80,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,deva,dev-ksha,3,1,1,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,deva,dev-tra,3,1,1,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,deva,dev-jna,3,1,1,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,deva,dev-shri,4,2,1,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,deva,dev-dharma,4,3,2,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,deva,dev-matrdevo,11,11,7,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,deva,dev-krishna,5,4,3,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,deva,dev-ki-reorder,13,9,6,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,deva,dev-om-danda,19,19,14,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,deva,dev-vedic,22,20,9,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,deva,dev-ganesha,15,13,9,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,deva,dev-hrdaya,23,12,12,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,deva,dev-nukta,18,14,12,0,0,
+Amita-Regular.ttf,Amita Regular,Version 1.004,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Amita-Regular.ttf,Amita Regular,Version 1.004,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Amita-Regular.ttf,Amita Regular,Version 1.004,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Amita-Regular.ttf,Amita Regular,Version 1.004,latn,pop-spell,80,80,80,0,0,
+AnekBangla_wdth-wght_.ttf,Anek Bangla Medium,Version 1.003,beng,ben-shri,4,1,1,0,0,
+AnekBangla_wdth-wght_.ttf,Anek Bangla Medium,Version 1.003,beng,ben-ksha,3,1,1,0,0,
+AnekBangla_wdth-wght_.ttf,Anek Bangla Medium,Version 1.003,beng,ben-jna,3,1,1,0,0,
+AnekBangla_wdth-wght_.ttf,Anek Bangla Medium,Version 1.003,beng,ben-durga,6,5,2,0,0,
+AnekBangla_wdth-wght_.ttf,Anek Bangla Medium,Version 1.003,beng,ben-ra-zophola,4,3,1,0,0,
+AnekBangla_wdth-wght_.ttf,Anek Bangla Medium,Version 1.003,beng,ben-krishna,5,3,2,0,0,
+AnekBangla_wdth-wght_.ttf,Anek Bangla Medium,Version 1.003,latn,iast-small,135,149,135,15,0,U+0101 U+012B U+015B U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+AnekBangla_wdth-wght_.ttf,Anek Bangla Medium,Version 1.003,latn,iast-caps,59,68,59,15,0,U+0100 U+0101 U+012A U+012B U+015A U+016A U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+AnekBangla_wdth-wght_.ttf,Anek Bangla Medium,Version 1.003,latn,iso15919,25,28,22,8,0,U+0113 U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+AnekBangla_wdth-wght_.ttf,Anek Bangla Medium,Version 1.003,latn,pop-spell,80,80,80,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,deva,dev-ksha,3,1,1,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,deva,dev-tra,3,1,1,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,deva,dev-jna,3,1,1,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,deva,dev-shri,4,2,1,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,deva,dev-dharma,4,3,2,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,deva,dev-matrdevo,11,11,7,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,deva,dev-krishna,5,3,2,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,deva,dev-ki-reorder,13,10,6,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,deva,dev-om-danda,19,18,14,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,deva,dev-vedic,22,20,9,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,deva,dev-ganesha,15,13,9,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,deva,dev-hrdaya,23,12,12,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,deva,dev-nukta,18,14,12,0,0,
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,latn,iast-small,135,149,135,15,0,U+0101 U+012B U+015B U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,latn,iast-caps,59,68,59,15,0,U+0100 U+0101 U+012A U+012B U+015A U+016A U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,latn,iso15919,25,28,22,8,0,U+0113 U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+AnekDevanagari_wdth-wght_.ttf,Anek Devanagari Medium,Version 1.003,latn,pop-spell,80,80,80,0,0,
+AnekGujarati_wdth-wght_.ttf,Anek Gujarati Medium,Version 1.003,gujr,guj-shri,4,2,1,0,0,
+AnekGujarati_wdth-wght_.ttf,Anek Gujarati Medium,Version 1.003,gujr,guj-ksha,3,1,1,0,0,
+AnekGujarati_wdth-wght_.ttf,Anek Gujarati Medium,Version 1.003,gujr,guj-jna,3,1,1,0,0,
+AnekGujarati_wdth-wght_.ttf,Anek Gujarati Medium,Version 1.003,gujr,guj-dharma,4,3,2,0,0,
+AnekGujarati_wdth-wght_.ttf,Anek Gujarati Medium,Version 1.003,gujr,guj-om,7,5,4,0,0,
+AnekGujarati_wdth-wght_.ttf,Anek Gujarati Medium,Version 1.003,latn,iast-small,135,149,135,15,0,U+0101 U+012B U+015B U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+AnekGujarati_wdth-wght_.ttf,Anek Gujarati Medium,Version 1.003,latn,iast-caps,59,68,59,15,0,U+0100 U+0101 U+012A U+012B U+015A U+016A U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+AnekGujarati_wdth-wght_.ttf,Anek Gujarati Medium,Version 1.003,latn,iso15919,25,28,22,8,0,U+0113 U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+AnekGujarati_wdth-wght_.ttf,Anek Gujarati Medium,Version 1.003,latn,pop-spell,80,80,80,0,0,
+AnekGurmukhi_wdth-wght_.ttf,Anek Gurmukhi Medium,Version 1.003,guru,gur-shri,4,3,1,0,0,
+AnekGurmukhi_wdth-wght_.ttf,Anek Gurmukhi Medium,Version 1.003,guru,gur-maan,14,14,8,0,0,
+AnekGurmukhi_wdth-wght_.ttf,Anek Gurmukhi Medium,Version 1.003,guru,gur-dharam,14,12,8,0,0,
+AnekGurmukhi_wdth-wght_.ttf,Anek Gurmukhi Medium,Version 1.003,latn,iast-small,135,149,135,15,0,U+0101 U+012B U+015B U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+AnekGurmukhi_wdth-wght_.ttf,Anek Gurmukhi Medium,Version 1.003,latn,iast-caps,59,68,59,15,0,U+0100 U+0101 U+012A U+012B U+015A U+016A U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+AnekGurmukhi_wdth-wght_.ttf,Anek Gurmukhi Medium,Version 1.003,latn,iso15919,25,28,22,8,0,U+0113 U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+AnekGurmukhi_wdth-wght_.ttf,Anek Gurmukhi Medium,Version 1.003,latn,pop-spell,80,80,80,0,0,
+AnekKannada_wdth-wght_.ttf,Anek Kannada Medium,Version 1.003,knda,kan-shri,4,3,1,0,0,
+AnekKannada_wdth-wght_.ttf,Anek Kannada Medium,Version 1.003,knda,kan-ksha,3,1,1,0,0,
+AnekKannada_wdth-wght_.ttf,Anek Kannada Medium,Version 1.003,knda,kan-jna,3,1,1,0,0,
+AnekKannada_wdth-wght_.ttf,Anek Kannada Medium,Version 1.003,knda,kan-krishna,5,4,2,0,0,
+AnekKannada_wdth-wght_.ttf,Anek Kannada Medium,Version 1.003,knda,kan-vowel-signs,11,9,7,0,0,
+AnekKannada_wdth-wght_.ttf,Anek Kannada Medium,Version 1.003,knda,kan-dharma,4,3,2,0,0,
+AnekKannada_wdth-wght_.ttf,Anek Kannada Medium,Version 1.003,latn,iast-small,135,149,135,15,0,U+0101 U+012B U+015B U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+AnekKannada_wdth-wght_.ttf,Anek Kannada Medium,Version 1.003,latn,iast-caps,59,68,59,15,0,U+0100 U+0101 U+012A U+012B U+015A U+016A U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+AnekKannada_wdth-wght_.ttf,Anek Kannada Medium,Version 1.003,latn,iso15919,25,28,22,8,0,U+0113 U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+AnekKannada_wdth-wght_.ttf,Anek Kannada Medium,Version 1.003,latn,pop-spell,80,80,80,0,0,
+AnekLatin_wdth-wght_.ttf,Anek Latin Medium,Version 1.003,latn,iast-small,135,136,135,0,0,U+1E41
+AnekLatin_wdth-wght_.ttf,Anek Latin Medium,Version 1.003,latn,iast-caps,59,62,59,0,0,U+1E38 U+1E40 U+1E5C
+AnekLatin_wdth-wght_.ttf,Anek Latin Medium,Version 1.003,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+AnekLatin_wdth-wght_.ttf,Anek Latin Medium,Version 1.003,latn,pop-spell,80,80,80,0,0,
+AnekMalayalam_wdth-wght_.ttf,Anek Malayalam Medium,Version 1.003,mlym,mal-chillu,11,11,11,0,0,
+AnekMalayalam_wdth-wght_.ttf,Anek Malayalam Medium,Version 1.003,mlym,mal-chillu-zwj,11,5,5,0,0,
+AnekMalayalam_wdth-wght_.ttf,Anek Malayalam Medium,Version 1.003,mlym,mal-shri,4,3,1,0,0,
+AnekMalayalam_wdth-wght_.ttf,Anek Malayalam Medium,Version 1.003,mlym,mal-nte,3,1,1,0,0,
+AnekMalayalam_wdth-wght_.ttf,Anek Malayalam Medium,Version 1.003,mlym,mal-amma,11,9,7,0,0,
+AnekMalayalam_wdth-wght_.ttf,Anek Malayalam Medium,Version 1.003,mlym,mal-krishna,6,6,4,0,0,
+AnekMalayalam_wdth-wght_.ttf,Anek Malayalam Medium,Version 1.003,latn,iast-small,135,149,135,15,0,U+0101 U+012B U+015B U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+AnekMalayalam_wdth-wght_.ttf,Anek Malayalam Medium,Version 1.003,latn,iast-caps,59,68,59,15,0,U+0100 U+0101 U+012A U+012B U+015A U+016A U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+AnekMalayalam_wdth-wght_.ttf,Anek Malayalam Medium,Version 1.003,latn,iso15919,25,28,22,8,0,U+0113 U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+AnekMalayalam_wdth-wght_.ttf,Anek Malayalam Medium,Version 1.003,latn,pop-spell,80,80,80,0,0,
+AnekOdia_wdth-wght_.ttf,Anek Odia Medium,Version 1.003,orya,ori-shri,4,2,1,0,0,
+AnekOdia_wdth-wght_.ttf,Anek Odia Medium,Version 1.003,orya,ori-ksha,3,1,1,0,0,
+AnekOdia_wdth-wght_.ttf,Anek Odia Medium,Version 1.003,orya,ori-jna,3,1,1,0,0,
+AnekOdia_wdth-wght_.ttf,Anek Odia Medium,Version 1.003,orya,ori-dharma,4,3,2,0,0,
+AnekOdia_wdth-wght_.ttf,Anek Odia Medium,Version 1.003,orya,ori-jagannath,10,8,7,0,0,
+AnekOdia_wdth-wght_.ttf,Anek Odia Medium,Version 1.003,latn,iast-small,135,149,135,15,0,U+0101 U+012B U+015B U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+AnekOdia_wdth-wght_.ttf,Anek Odia Medium,Version 1.003,latn,iast-caps,59,68,59,15,0,U+0100 U+0101 U+012A U+012B U+015A U+016A U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+AnekOdia_wdth-wght_.ttf,Anek Odia Medium,Version 1.003,latn,iso15919,25,28,22,8,0,U+0113 U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+AnekOdia_wdth-wght_.ttf,Anek Odia Medium,Version 1.003,latn,pop-spell,80,80,80,0,0,
+AnekTamil_wdth-wght_.ttf,Anek Tamil Medium,Version 1.003,taml,tam-shri,4,1,1,0,0,
+AnekTamil_wdth-wght_.ttf,Anek Tamil Medium,Version 1.003,taml,tam-shri2,4,1,1,0,0,
+AnekTamil_wdth-wght_.ttf,Anek Tamil Medium,Version 1.003,taml,tam-ksha,3,1,1,0,0,
+AnekTamil_wdth-wght_.ttf,Anek Tamil Medium,Version 1.003,taml,tam-split-vowels,8,11,5,0,0,
+AnekTamil_wdth-wght_.ttf,Anek Tamil Medium,Version 1.003,taml,tam-tiruppavai,10,8,5,0,0,
+AnekTamil_wdth-wght_.ttf,Anek Tamil Medium,Version 1.003,taml,tam-tamil,5,4,3,0,0,
+AnekTamil_wdth-wght_.ttf,Anek Tamil Medium,Version 1.003,latn,iast-small,135,149,135,15,0,U+0101 U+012B U+015B U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+AnekTamil_wdth-wght_.ttf,Anek Tamil Medium,Version 1.003,latn,iast-caps,59,68,59,15,0,U+0100 U+0101 U+012A U+012B U+015A U+016A U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+AnekTamil_wdth-wght_.ttf,Anek Tamil Medium,Version 1.003,latn,iso15919,25,28,22,8,0,U+0113 U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+AnekTamil_wdth-wght_.ttf,Anek Tamil Medium,Version 1.003,latn,pop-spell,80,80,80,0,0,
+AnekTelugu_wdth-wght_.ttf,Anek Telugu Medium,Version 1.003,telu,tel-shri,4,2,1,0,0,
+AnekTelugu_wdth-wght_.ttf,Anek Telugu Medium,Version 1.003,telu,tel-ksha,3,2,1,0,0,
+AnekTelugu_wdth-wght_.ttf,Anek Telugu Medium,Version 1.003,telu,tel-jna,3,2,1,0,0,
+AnekTelugu_wdth-wght_.ttf,Anek Telugu Medium,Version 1.003,telu,tel-krishna,5,4,2,0,0,
+AnekTelugu_wdth-wght_.ttf,Anek Telugu Medium,Version 1.003,telu,tel-vowel-signs,14,10,9,0,0,
+AnekTelugu_wdth-wght_.ttf,Anek Telugu Medium,Version 1.003,telu,tel-amma,11,7,6,0,0,
+AnekTelugu_wdth-wght_.ttf,Anek Telugu Medium,Version 1.003,latn,iast-small,135,149,135,15,0,U+0101 U+012B U+015B U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+AnekTelugu_wdth-wght_.ttf,Anek Telugu Medium,Version 1.003,latn,iast-caps,59,68,59,15,0,U+0100 U+0101 U+012A U+012B U+015A U+016A U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+AnekTelugu_wdth-wght_.ttf,Anek Telugu Medium,Version 1.003,latn,iso15919,25,28,22,8,0,U+0113 U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+AnekTelugu_wdth-wght_.ttf,Anek Telugu Medium,Version 1.003,latn,pop-spell,80,80,80,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,deva,dev-ksha,3,1,1,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,deva,dev-tra,3,1,1,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,deva,dev-jna,3,1,1,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,deva,dev-shri,4,2,1,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,deva,dev-dharma,4,3,2,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,deva,dev-matrdevo,11,11,7,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,deva,dev-krishna,5,4,3,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,deva,dev-ki-reorder,13,9,6,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,deva,dev-om-danda,19,19,14,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,deva,dev-vedic,22,20,9,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,deva,dev-ganesha,15,13,9,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,deva,dev-hrdaya,23,12,12,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,deva,dev-nukta,18,14,12,0,0,
+Arya-Regular.ttf,Arya Regular,Version 1.002,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Arya-Regular.ttf,Arya Regular,Version 1.002,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Arya-Regular.ttf,Arya Regular,Version 1.002,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Arya-Regular.ttf,Arya Regular,Version 1.002,latn,pop-spell,80,80,80,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,deva,dev-ksha,3,1,1,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,deva,dev-tra,3,1,1,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,deva,dev-jna,3,1,1,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,deva,dev-shri,4,2,1,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,deva,dev-dharma,4,3,2,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,deva,dev-matrdevo,11,11,7,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,deva,dev-krishna,5,3,2,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,deva,dev-ki-reorder,13,10,6,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,deva,dev-om-danda,19,18,14,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,deva,dev-vedic,22,20,9,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,deva,dev-ganesha,15,13,9,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,deva,dev-hrdaya,23,12,12,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,deva,dev-nukta,18,14,12,0,0,
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,latn,iast-small,135,136,135,0,0,U+1E41
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,latn,iast-caps,59,60,59,0,0,U+1E40
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+Baloo2_wght_.ttf,Baloo 2 Regular,Version 1.700,latn,pop-spell,80,80,80,0,0,
+BalooBhai2_wght_.ttf,Baloo Bhai 2 Regular,Version 1.700,gujr,guj-shri,4,2,1,0,0,
+BalooBhai2_wght_.ttf,Baloo Bhai 2 Regular,Version 1.700,gujr,guj-ksha,3,1,1,0,0,
+BalooBhai2_wght_.ttf,Baloo Bhai 2 Regular,Version 1.700,gujr,guj-jna,3,1,1,0,0,
+BalooBhai2_wght_.ttf,Baloo Bhai 2 Regular,Version 1.700,gujr,guj-dharma,4,3,2,0,0,
+BalooBhai2_wght_.ttf,Baloo Bhai 2 Regular,Version 1.700,gujr,guj-om,7,6,5,0,0,
+BalooBhai2_wght_.ttf,Baloo Bhai 2 Regular,Version 1.700,latn,iast-small,135,136,135,0,0,U+1E41
+BalooBhai2_wght_.ttf,Baloo Bhai 2 Regular,Version 1.700,latn,iast-caps,59,60,59,0,0,U+1E40
+BalooBhai2_wght_.ttf,Baloo Bhai 2 Regular,Version 1.700,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+BalooBhai2_wght_.ttf,Baloo Bhai 2 Regular,Version 1.700,latn,pop-spell,80,80,80,0,0,
+BalooChettan2_wght_.ttf,Baloo Chettan 2 Regular,Version 1.700,mlym,mal-chillu,11,11,11,0,0,
+BalooChettan2_wght_.ttf,Baloo Chettan 2 Regular,Version 1.700,mlym,mal-chillu-zwj,11,11,5,0,0,
+BalooChettan2_wght_.ttf,Baloo Chettan 2 Regular,Version 1.700,mlym,mal-shri,4,3,1,0,0,
+BalooChettan2_wght_.ttf,Baloo Chettan 2 Regular,Version 1.700,mlym,mal-nte,3,3,2,0,0,
+BalooChettan2_wght_.ttf,Baloo Chettan 2 Regular,Version 1.700,mlym,mal-amma,11,11,8,0,0,
+BalooChettan2_wght_.ttf,Baloo Chettan 2 Regular,Version 1.700,mlym,mal-krishna,6,6,4,0,0,
+BalooChettan2_wght_.ttf,Baloo Chettan 2 Regular,Version 1.700,latn,iast-small,135,136,135,0,0,U+1E41
+BalooChettan2_wght_.ttf,Baloo Chettan 2 Regular,Version 1.700,latn,iast-caps,59,60,59,0,0,U+1E40
+BalooChettan2_wght_.ttf,Baloo Chettan 2 Regular,Version 1.700,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+BalooChettan2_wght_.ttf,Baloo Chettan 2 Regular,Version 1.700,latn,pop-spell,80,80,80,0,0,
+BalooDa2_wght_.ttf,Baloo Da 2 Regular,Version 1.700,beng,ben-shri,4,1,1,0,0,
+BalooDa2_wght_.ttf,Baloo Da 2 Regular,Version 1.700,beng,ben-ksha,3,1,1,0,0,
+BalooDa2_wght_.ttf,Baloo Da 2 Regular,Version 1.700,beng,ben-jna,3,1,1,0,0,
+BalooDa2_wght_.ttf,Baloo Da 2 Regular,Version 1.700,beng,ben-durga,6,5,2,0,0,
+BalooDa2_wght_.ttf,Baloo Da 2 Regular,Version 1.700,beng,ben-ra-zophola,4,3,1,0,0,
+BalooDa2_wght_.ttf,Baloo Da 2 Regular,Version 1.700,beng,ben-krishna,5,3,2,0,0,
+BalooDa2_wght_.ttf,Baloo Da 2 Regular,Version 1.700,latn,iast-small,135,136,135,0,0,U+1E41
+BalooDa2_wght_.ttf,Baloo Da 2 Regular,Version 1.700,latn,iast-caps,59,60,59,0,0,U+1E40
+BalooDa2_wght_.ttf,Baloo Da 2 Regular,Version 1.700,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+BalooDa2_wght_.ttf,Baloo Da 2 Regular,Version 1.700,latn,pop-spell,80,80,80,0,0,
+BalooPaaji2_wght_.ttf,Baloo Paaji 2 Regular,Version 1.700,guru,gur-shri,4,3,1,0,0,
+BalooPaaji2_wght_.ttf,Baloo Paaji 2 Regular,Version 1.700,guru,gur-maan,14,14,8,0,0,
+BalooPaaji2_wght_.ttf,Baloo Paaji 2 Regular,Version 1.700,guru,gur-dharam,14,12,8,0,0,
+BalooPaaji2_wght_.ttf,Baloo Paaji 2 Regular,Version 1.700,latn,iast-small,135,136,135,0,0,U+1E41
+BalooPaaji2_wght_.ttf,Baloo Paaji 2 Regular,Version 1.700,latn,iast-caps,59,60,59,0,0,U+1E40
+BalooPaaji2_wght_.ttf,Baloo Paaji 2 Regular,Version 1.700,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+BalooPaaji2_wght_.ttf,Baloo Paaji 2 Regular,Version 1.700,latn,pop-spell,80,80,80,0,0,
+BalooTamma2_wght_.ttf,Baloo Tamma 2 Regular,Version 1.700,knda,kan-shri,4,2,1,0,0,
+BalooTamma2_wght_.ttf,Baloo Tamma 2 Regular,Version 1.700,knda,kan-ksha,3,1,1,0,0,
+BalooTamma2_wght_.ttf,Baloo Tamma 2 Regular,Version 1.700,knda,kan-jna,3,1,1,0,0,
+BalooTamma2_wght_.ttf,Baloo Tamma 2 Regular,Version 1.700,knda,kan-krishna,5,4,2,0,0,
+BalooTamma2_wght_.ttf,Baloo Tamma 2 Regular,Version 1.700,knda,kan-vowel-signs,11,9,7,0,0,
+BalooTamma2_wght_.ttf,Baloo Tamma 2 Regular,Version 1.700,knda,kan-dharma,4,3,2,0,0,
+BalooTamma2_wght_.ttf,Baloo Tamma 2 Regular,Version 1.700,latn,iast-small,135,136,135,0,0,U+1E41
+BalooTamma2_wght_.ttf,Baloo Tamma 2 Regular,Version 1.700,latn,iast-caps,59,60,59,0,0,U+1E40
+BalooTamma2_wght_.ttf,Baloo Tamma 2 Regular,Version 1.700,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+BalooTamma2_wght_.ttf,Baloo Tamma 2 Regular,Version 1.700,latn,pop-spell,80,80,80,0,0,
+BalooTammudu2_wght_.ttf,Baloo Tammudu 2 Regular,Version 1.700,telu,tel-shri,4,2,1,0,0,
+BalooTammudu2_wght_.ttf,Baloo Tammudu 2 Regular,Version 1.700,telu,tel-ksha,3,2,1,0,0,
+BalooTammudu2_wght_.ttf,Baloo Tammudu 2 Regular,Version 1.700,telu,tel-jna,3,2,1,0,0,
+BalooTammudu2_wght_.ttf,Baloo Tammudu 2 Regular,Version 1.700,telu,tel-krishna,5,4,2,0,0,
+BalooTammudu2_wght_.ttf,Baloo Tammudu 2 Regular,Version 1.700,telu,tel-vowel-signs,14,10,9,0,0,
+BalooTammudu2_wght_.ttf,Baloo Tammudu 2 Regular,Version 1.700,telu,tel-amma,11,7,6,0,0,
+BalooTammudu2_wght_.ttf,Baloo Tammudu 2 Regular,Version 1.700,latn,iast-small,135,136,135,0,0,U+1E41
+BalooTammudu2_wght_.ttf,Baloo Tammudu 2 Regular,Version 1.700,latn,iast-caps,59,60,59,0,0,U+1E40
+BalooTammudu2_wght_.ttf,Baloo Tammudu 2 Regular,Version 1.700,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+BalooTammudu2_wght_.ttf,Baloo Tammudu 2 Regular,Version 1.700,latn,pop-spell,80,80,80,0,0,
+BalooThambi2_wght_.ttf,Baloo Thambi 2 Regular,Version 1.700,taml,tam-shri,4,1,1,0,0,
+BalooThambi2_wght_.ttf,Baloo Thambi 2 Regular,Version 1.700,taml,tam-shri2,4,1,1,0,0,
+BalooThambi2_wght_.ttf,Baloo Thambi 2 Regular,Version 1.700,taml,tam-ksha,3,1,1,0,0,
+BalooThambi2_wght_.ttf,Baloo Thambi 2 Regular,Version 1.700,taml,tam-split-vowels,8,11,5,0,0,
+BalooThambi2_wght_.ttf,Baloo Thambi 2 Regular,Version 1.700,taml,tam-tiruppavai,10,7,5,0,0,
+BalooThambi2_wght_.ttf,Baloo Thambi 2 Regular,Version 1.700,taml,tam-tamil,5,3,3,0,0,
+BalooThambi2_wght_.ttf,Baloo Thambi 2 Regular,Version 1.700,latn,iast-small,135,136,135,0,0,U+1E41
+BalooThambi2_wght_.ttf,Baloo Thambi 2 Regular,Version 1.700,latn,iast-caps,59,60,59,0,0,U+1E40
+BalooThambi2_wght_.ttf,Baloo Thambi 2 Regular,Version 1.700,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+BalooThambi2_wght_.ttf,Baloo Thambi 2 Regular,Version 1.700,latn,pop-spell,80,80,80,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,deva,dev-ksha,3,1,1,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,deva,dev-tra,3,1,1,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,deva,dev-jna,3,1,1,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,deva,dev-shri,4,2,1,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,deva,dev-dharma,4,3,2,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,deva,dev-matrdevo,11,11,7,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,deva,dev-krishna,5,4,3,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,deva,dev-ki-reorder,13,9,6,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,deva,dev-om-danda,19,19,14,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,deva,dev-vedic,22,20,9,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,deva,dev-ganesha,15,13,9,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,deva,dev-hrdaya,23,13,12,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,deva,dev-nukta,18,14,12,0,0,
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Biryani-Regular.ttf,Biryani Regular,Version 1.004; ttfautohint (v1.1) -l 5 -,latn,pop-spell,80,80,80,0,0,
+Cardo-Regular.ttf,Cardo,Version 1.0451,latn,iast-small,135,135,135,0,0,
+Cardo-Regular.ttf,Cardo,Version 1.0451,latn,iast-caps,59,59,59,0,0,
+Cardo-Regular.ttf,Cardo,Version 1.0451,latn,iso15919,25,28,22,0,0,U+1E3B U+1E49 U+1E5F
+Cardo-Regular.ttf,Cardo,Version 1.0451,latn,pop-spell,80,80,80,0,0,
+Catamaran_wght_.ttf,Catamaran Thin,Version 2.000,taml,tam-shri,4,1,1,0,0,
+Catamaran_wght_.ttf,Catamaran Thin,Version 2.000,taml,tam-shri2,4,1,1,0,0,
+Catamaran_wght_.ttf,Catamaran Thin,Version 2.000,taml,tam-ksha,3,1,1,0,0,
+Catamaran_wght_.ttf,Catamaran Thin,Version 2.000,taml,tam-split-vowels,8,11,5,0,0,
+Catamaran_wght_.ttf,Catamaran Thin,Version 2.000,taml,tam-tiruppavai,10,9,5,0,0,
+Catamaran_wght_.ttf,Catamaran Thin,Version 2.000,taml,tam-tamil,5,5,3,0,0,
+Catamaran_wght_.ttf,Catamaran Thin,Version 2.000,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Catamaran_wght_.ttf,Catamaran Thin,Version 2.000,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Catamaran_wght_.ttf,Catamaran Thin,Version 2.000,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Catamaran_wght_.ttf,Catamaran Thin,Version 2.000,latn,pop-spell,80,80,80,0,0,
+CharisSIL-Italic.ttf,Charis SIL Italic,Version 6.101,latn,iast-small,135,135,135,0,0,
+CharisSIL-Italic.ttf,Charis SIL Italic,Version 6.101,latn,iast-caps,59,59,59,0,0,
+CharisSIL-Italic.ttf,Charis SIL Italic,Version 6.101,latn,iso15919,25,25,22,0,0,
+CharisSIL-Italic.ttf,Charis SIL Italic,Version 6.101,latn,pop-spell,80,80,80,0,0,
+CharisSIL-Regular.ttf,Charis SIL,Version 6.101,latn,iast-small,135,135,135,0,0,
+CharisSIL-Regular.ttf,Charis SIL,Version 6.101,latn,iast-caps,59,59,59,0,0,
+CharisSIL-Regular.ttf,Charis SIL,Version 6.101,latn,iso15919,25,25,22,0,0,
+CharisSIL-Regular.ttf,Charis SIL,Version 6.101,latn,pop-spell,80,80,80,0,0,
+Chilanka-Regular.ttf,Chilanka Regular,Version 1.600,mlym,mal-chillu,11,11,11,0,0,
+Chilanka-Regular.ttf,Chilanka Regular,Version 1.600,mlym,mal-chillu-zwj,11,5,5,0,0,
+Chilanka-Regular.ttf,Chilanka Regular,Version 1.600,mlym,mal-shri,4,2,1,0,0,
+Chilanka-Regular.ttf,Chilanka Regular,Version 1.600,mlym,mal-nte,3,1,1,0,0,
+Chilanka-Regular.ttf,Chilanka Regular,Version 1.600,mlym,mal-amma,11,9,7,0,0,
+Chilanka-Regular.ttf,Chilanka Regular,Version 1.600,mlym,mal-krishna,6,3,3,0,0,
+Chilanka-Regular.ttf,Chilanka Regular,Version 1.600,latn,iast-small,135,135,135,1,0,U+1E41
+Chilanka-Regular.ttf,Chilanka Regular,Version 1.600,latn,iast-caps,59,62,59,3,0,U+015A U+1E40 U+1E46 U+1E5A
+Chilanka-Regular.ttf,Chilanka Regular,Version 1.600,latn,iso15919,25,25,22,8,0,U+0113 U+014D U+0310 U+0325 U+1E41 U+1E49 U+1E5F
+Chilanka-Regular.ttf,Chilanka Regular,Version 1.600,latn,pop-spell,80,80,80,0,0,
+CormorantGaramond_wght_.ttf,Cormorant Garamond Light,Version 4.001,latn,iast-small,135,135,135,0,0,
+CormorantGaramond_wght_.ttf,Cormorant Garamond Light,Version 4.001,latn,iast-caps,59,59,59,0,0,
+CormorantGaramond_wght_.ttf,Cormorant Garamond Light,Version 4.001,latn,iso15919,25,25,22,3,0,U+0310 U+0325
+CormorantGaramond_wght_.ttf,Cormorant Garamond Light,Version 4.001,latn,pop-spell,80,80,80,0,0,
+CrimsonPro_wght_.ttf,Crimson Pro Regular,Version 1.003,latn,iast-small,135,136,135,0,0,U+1E41
+CrimsonPro_wght_.ttf,Crimson Pro Regular,Version 1.003,latn,iast-caps,59,62,59,0,0,U+1E38 U+1E40 U+1E5C
+CrimsonPro_wght_.ttf,Crimson Pro Regular,Version 1.003,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+CrimsonPro_wght_.ttf,Crimson Pro Regular,Version 1.003,latn,pop-spell,80,80,80,0,0,
+EBGaramond_wght_.ttf,EB Garamond Regular,Version 1.003,latn,iast-small,135,135,135,0,0,
+EBGaramond_wght_.ttf,EB Garamond Regular,Version 1.003,latn,iast-caps,59,59,59,0,0,
+EBGaramond_wght_.ttf,EB Garamond Regular,Version 1.003,latn,iso15919,25,25,22,0,0,
+EBGaramond_wght_.ttf,EB Garamond Regular,Version 1.003,latn,pop-spell,80,80,80,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,deva,dev-ksha,3,1,1,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,deva,dev-tra,3,1,1,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,deva,dev-jna,3,1,1,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,deva,dev-shri,4,2,1,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,deva,dev-dharma,4,3,2,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,deva,dev-matrdevo,11,11,7,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,deva,dev-krishna,5,4,3,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,deva,dev-ki-reorder,13,12,6,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,deva,dev-om-danda,19,19,14,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,deva,dev-vedic,22,20,9,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,deva,dev-ganesha,15,13,9,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,deva,dev-hrdaya,23,12,12,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,deva,dev-nukta,18,14,12,0,0,
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,latn,iast-small,135,152,135,0,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,latn,iast-caps,59,78,59,0,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,latn,iso15919,25,31,22,3,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Eczar_wght_.ttf,Eczar Regular,Version 2.000,latn,pop-spell,80,80,80,0,0,
+GentiumBookPlus-Italic.ttf,Gentium Book Plus Italic,Version 6.101,latn,iast-small,135,135,135,0,0,
+GentiumBookPlus-Italic.ttf,Gentium Book Plus Italic,Version 6.101,latn,iast-caps,59,59,59,0,0,
+GentiumBookPlus-Italic.ttf,Gentium Book Plus Italic,Version 6.101,latn,iso15919,25,25,22,0,0,
+GentiumBookPlus-Italic.ttf,Gentium Book Plus Italic,Version 6.101,latn,pop-spell,80,80,80,0,0,
+GentiumBookPlus-Regular.ttf,Gentium Book Plus,Version 6.101,latn,iast-small,135,135,135,0,0,
+GentiumBookPlus-Regular.ttf,Gentium Book Plus,Version 6.101,latn,iast-caps,59,59,59,0,0,
+GentiumBookPlus-Regular.ttf,Gentium Book Plus,Version 6.101,latn,iso15919,25,25,22,0,0,
+GentiumBookPlus-Regular.ttf,Gentium Book Plus,Version 6.101,latn,pop-spell,80,80,80,0,0,
+GentiumPlus-Italic.ttf,Gentium Plus Italic,Version 6.101,latn,iast-small,135,135,135,0,0,
+GentiumPlus-Italic.ttf,Gentium Plus Italic,Version 6.101,latn,iast-caps,59,59,59,0,0,
+GentiumPlus-Italic.ttf,Gentium Plus Italic,Version 6.101,latn,iso15919,25,25,22,0,0,
+GentiumPlus-Italic.ttf,Gentium Plus Italic,Version 6.101,latn,pop-spell,80,80,80,0,0,
+GentiumPlus-Regular.ttf,Gentium Plus,Version 6.101,latn,iast-small,135,135,135,0,0,
+GentiumPlus-Regular.ttf,Gentium Plus,Version 6.101,latn,iast-caps,59,59,59,0,0,
+GentiumPlus-Regular.ttf,Gentium Plus,Version 6.101,latn,iso15919,25,25,22,0,0,
+GentiumPlus-Regular.ttf,Gentium Plus,Version 6.101,latn,pop-spell,80,80,80,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,deva,dev-ksha,3,1,1,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,deva,dev-tra,3,1,1,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,deva,dev-jna,3,1,1,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,deva,dev-shri,4,2,1,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,deva,dev-dharma,4,3,2,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,deva,dev-matrdevo,11,11,7,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,deva,dev-krishna,5,4,3,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,deva,dev-ki-reorder,13,10,6,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,deva,dev-om-danda,19,19,14,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,deva,dev-vedic,22,20,9,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,deva,dev-ganesha,15,13,9,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,deva,dev-hrdaya,23,12,12,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,deva,dev-nukta,18,14,12,0,0,
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,latn,iso15919,25,26,22,8,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Glegoo-Regular.ttf,Glegoo,Version 2.0.1; ttfautohint (v0.9) -r 48 ,latn,pop-spell,80,80,80,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,deva,dev-ksha,3,1,1,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,deva,dev-tra,3,1,1,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,deva,dev-jna,3,1,1,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,deva,dev-shri,4,2,1,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,deva,dev-dharma,4,3,2,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,deva,dev-matrdevo,11,11,7,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,deva,dev-krishna,5,3,2,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,deva,dev-ki-reorder,13,10,6,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,deva,dev-om-danda,19,18,14,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,deva,dev-vedic,22,20,9,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,deva,dev-ganesha,15,13,9,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,deva,dev-hrdaya,23,12,12,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,deva,dev-nukta,18,14,12,0,0,
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,latn,iast-small,135,136,135,0,0,U+1E41
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,latn,iast-caps,59,60,59,0,0,U+1E40
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+Gotu-Regular.ttf,Gotu,Version 2.320;hotconv 1.0.109;makeotfexe,latn,pop-spell,80,80,80,0,0,
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-ksha,3,1,1,0,0,
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-tra,3,1,1,0,0,
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-jna,3,1,1,0,0,
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-shri,4,2,1,0,0,
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-dharma,4,3,2,0,0,
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-matrdevo,11,11,7,0,0,
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-krishna,5,3,2,0,0,
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-ki-reorder,13,10,6,0,0,
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-om-danda,19,19,14,0,0,
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-vedic,22,20,9,4,0,U+0951 U+0952
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-ganesha,15,13,9,0,0,
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-hrdaya,23,12,12,0,0,
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-nukta,18,14,12,0,0,
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Hind-Regular.ttf,Hind Regular,Version 2.001;PS 1.0;hotconv 1.0.79;make,latn,pop-spell,80,80,80,0,0,
+HindGuntur-Regular.ttf,Hind Guntur Regular,Version 1.002;PS 1.0;hotconv 1.0.86;make,telu,tel-shri,4,2,1,0,0,
+HindGuntur-Regular.ttf,Hind Guntur Regular,Version 1.002;PS 1.0;hotconv 1.0.86;make,telu,tel-ksha,3,2,1,0,0,
+HindGuntur-Regular.ttf,Hind Guntur Regular,Version 1.002;PS 1.0;hotconv 1.0.86;make,telu,tel-jna,3,2,1,0,0,
+HindGuntur-Regular.ttf,Hind Guntur Regular,Version 1.002;PS 1.0;hotconv 1.0.86;make,telu,tel-krishna,5,4,2,0,0,
+HindGuntur-Regular.ttf,Hind Guntur Regular,Version 1.002;PS 1.0;hotconv 1.0.86;make,telu,tel-vowel-signs,14,9,9,0,0,
+HindGuntur-Regular.ttf,Hind Guntur Regular,Version 1.002;PS 1.0;hotconv 1.0.86;make,telu,tel-amma,11,7,6,0,0,
+HindGuntur-Regular.ttf,Hind Guntur Regular,Version 1.002;PS 1.0;hotconv 1.0.86;make,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+HindGuntur-Regular.ttf,Hind Guntur Regular,Version 1.002;PS 1.0;hotconv 1.0.86;make,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+HindGuntur-Regular.ttf,Hind Guntur Regular,Version 1.002;PS 1.0;hotconv 1.0.86;make,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+HindGuntur-Regular.ttf,Hind Guntur Regular,Version 1.002;PS 1.0;hotconv 1.0.86;make,latn,pop-spell,80,80,80,0,0,
+HindKochi-Regular.ttf,Hind Kochi,Version 0.702;PS 1.0;hotconv 1.0.81;make,mlym,mal-chillu,11,11,11,0,0,
+HindKochi-Regular.ttf,Hind Kochi,Version 0.702;PS 1.0;hotconv 1.0.81;make,mlym,mal-chillu-zwj,11,5,5,0,0,
+HindKochi-Regular.ttf,Hind Kochi,Version 0.702;PS 1.0;hotconv 1.0.81;make,mlym,mal-shri,4,3,1,0,0,
+HindKochi-Regular.ttf,Hind Kochi,Version 0.702;PS 1.0;hotconv 1.0.81;make,mlym,mal-nte,3,1,1,0,0,
+HindKochi-Regular.ttf,Hind Kochi,Version 0.702;PS 1.0;hotconv 1.0.81;make,mlym,mal-amma,11,9,7,0,0,
+HindKochi-Regular.ttf,Hind Kochi,Version 0.702;PS 1.0;hotconv 1.0.81;make,mlym,mal-krishna,6,6,4,0,0,
+HindKochi-Regular.ttf,Hind Kochi,Version 0.702;PS 1.0;hotconv 1.0.81;make,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+HindKochi-Regular.ttf,Hind Kochi,Version 0.702;PS 1.0;hotconv 1.0.81;make,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+HindKochi-Regular.ttf,Hind Kochi,Version 0.702;PS 1.0;hotconv 1.0.81;make,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+HindKochi-Regular.ttf,Hind Kochi,Version 0.702;PS 1.0;hotconv 1.0.81;make,latn,pop-spell,80,80,80,0,0,
+HindMadurai-Regular.ttf,Hind Madurai Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,taml,tam-shri,4,1,1,0,0,
+HindMadurai-Regular.ttf,Hind Madurai Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,taml,tam-shri2,4,1,1,0,0,
+HindMadurai-Regular.ttf,Hind Madurai Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,taml,tam-ksha,3,1,1,0,0,
+HindMadurai-Regular.ttf,Hind Madurai Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,taml,tam-split-vowels,8,11,5,0,0,
+HindMadurai-Regular.ttf,Hind Madurai Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,taml,tam-tiruppavai,10,8,5,0,0,
+HindMadurai-Regular.ttf,Hind Madurai Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,taml,tam-tamil,5,4,3,0,0,
+HindMadurai-Regular.ttf,Hind Madurai Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+HindMadurai-Regular.ttf,Hind Madurai Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+HindMadurai-Regular.ttf,Hind Madurai Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+HindMadurai-Regular.ttf,Hind Madurai Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,latn,pop-spell,80,80,80,0,0,
+HindSiliguri-Regular.ttf,Hind Siliguri Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,beng,ben-shri,4,2,1,0,0,
+HindSiliguri-Regular.ttf,Hind Siliguri Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,beng,ben-ksha,3,1,1,0,0,
+HindSiliguri-Regular.ttf,Hind Siliguri Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,beng,ben-jna,3,1,1,0,0,
+HindSiliguri-Regular.ttf,Hind Siliguri Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,beng,ben-durga,6,5,2,0,0,
+HindSiliguri-Regular.ttf,Hind Siliguri Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,beng,ben-ra-zophola,4,3,1,0,0,
+HindSiliguri-Regular.ttf,Hind Siliguri Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,beng,ben-krishna,5,3,2,0,0,
+HindSiliguri-Regular.ttf,Hind Siliguri Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+HindSiliguri-Regular.ttf,Hind Siliguri Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+HindSiliguri-Regular.ttf,Hind Siliguri Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+HindSiliguri-Regular.ttf,Hind Siliguri Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,latn,pop-spell,80,80,80,0,0,
+HindVadodara-Regular.ttf,Hind Vadodara Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,gujr,guj-shri,4,2,1,0,0,
+HindVadodara-Regular.ttf,Hind Vadodara Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,gujr,guj-ksha,3,1,1,0,0,
+HindVadodara-Regular.ttf,Hind Vadodara Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,gujr,guj-jna,3,1,1,0,0,
+HindVadodara-Regular.ttf,Hind Vadodara Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,gujr,guj-dharma,4,3,2,0,0,
+HindVadodara-Regular.ttf,Hind Vadodara Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,gujr,guj-om,7,5,4,0,0,
+HindVadodara-Regular.ttf,Hind Vadodara Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+HindVadodara-Regular.ttf,Hind Vadodara Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+HindVadodara-Regular.ttf,Hind Vadodara Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+HindVadodara-Regular.ttf,Hind Vadodara Regular,Version 1.001;PS 1.0;hotconv 1.0.86;make,latn,pop-spell,80,80,80,0,0,
+Inter_opsz-wght_.ttf,Inter Regular,Version 4.001;git-66647c0bb,latn,iast-small,135,135,135,0,0,
+Inter_opsz-wght_.ttf,Inter Regular,Version 4.001;git-66647c0bb,latn,iast-caps,59,59,59,0,0,
+Inter_opsz-wght_.ttf,Inter Regular,Version 4.001;git-66647c0bb,latn,iso15919,25,25,22,3,0,U+0310 U+0325
+Inter_opsz-wght_.ttf,Inter Regular,Version 4.001;git-66647c0bb,latn,pop-spell,80,80,80,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-ksha,3,1,1,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-tra,3,1,1,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-jna,3,1,1,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-shri,4,2,1,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-dharma,4,3,2,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-matrdevo,11,10,7,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-krishna,5,2,2,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-ki-reorder,13,10,6,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-om-danda,19,18,14,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-vedic,22,19,9,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-ganesha,15,13,9,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-hrdaya,23,12,12,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-nukta,18,13,12,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,latn,iast-small,135,136,135,0,0,U+1E37
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,latn,iast-caps,59,63,59,0,0,U+1E36 U+1E38 U+1E5C
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,latn,iso15919,25,25,22,0,0,
+Jaini-Regular.ttf,Jaini Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,latn,pop-spell,80,80,80,0,0,
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-ksha,3,1,1,0,0,
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-tra,3,1,1,0,0,
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-jna,3,1,1,0,0,
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-shri,4,2,1,0,0,
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-dharma,4,3,2,0,0,
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-matrdevo,11,11,7,0,0,
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-krishna,5,3,2,0,0,
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-ki-reorder,13,10,6,0,0,
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-om-danda,19,19,14,0,0,
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-vedic,22,20,9,4,0,U+0951 U+0952
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-ganesha,15,13,9,0,0,
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-hrdaya,23,12,12,0,0,
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,deva,dev-nukta,18,14,12,0,0,
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Kalam-Regular.ttf,Kalam,Version 2.001;PS 1.0;hotconv 1.0.79;make,latn,pop-spell,80,80,80,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,deva,dev-ksha,3,1,1,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,deva,dev-tra,3,1,1,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,deva,dev-jna,3,1,1,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,deva,dev-shri,4,2,1,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,deva,dev-dharma,4,3,2,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,deva,dev-matrdevo,11,11,7,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,deva,dev-krishna,5,3,2,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,deva,dev-ki-reorder,13,10,6,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,deva,dev-om-danda,19,19,14,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,deva,dev-vedic,22,20,9,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,deva,dev-ganesha,15,13,9,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,deva,dev-hrdaya,23,12,12,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,deva,dev-nukta,18,14,11,0,0,
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Karma-Regular.ttf,Karma Regular,Version 1.202;PS 1.0;hotconv 1.0.78;make,latn,pop-spell,80,80,80,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,deva,dev-ksha,3,1,1,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,deva,dev-tra,3,1,1,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,deva,dev-jna,3,1,1,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,deva,dev-shri,4,2,1,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,deva,dev-dharma,4,3,2,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,deva,dev-matrdevo,11,11,7,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,deva,dev-krishna,5,3,2,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,deva,dev-ki-reorder,13,10,6,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,deva,dev-om-danda,19,19,14,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,deva,dev-vedic,22,20,9,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,deva,dev-ganesha,15,13,9,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,deva,dev-hrdaya,23,12,12,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,deva,dev-nukta,18,14,11,0,0,
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Khand-Regular.ttf,Khand Regular,Version 1.102;PS 1.0;hotconv 1.0.78;make,latn,pop-spell,80,80,80,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-ksha,3,1,1,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-tra,3,2,2,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-jna,3,1,1,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-shri,4,3,2,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-dharma,4,4,3,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-matrdevo,11,11,7,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-krishna,5,4,3,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-ki-reorder,13,11,7,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-om-danda,19,19,14,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-vedic,22,20,9,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-ganesha,15,14,10,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-hrdaya,23,14,13,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,deva,dev-nukta,18,14,12,0,0,
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,latn,iso15919,25,26,22,8,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Kurale-Regular.ttf,Kurale Regular,Version 2.000; ttfautohint (v1.8.4.7-5d5,latn,pop-spell,80,80,80,0,0,
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,deva,dev-ksha,3,1,1,0,0,
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,deva,dev-tra,3,1,1,0,0,
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,deva,dev-jna,3,1,1,0,0,
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,deva,dev-shri,4,2,1,0,0,
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,deva,dev-dharma,4,3,2,0,0,
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,deva,dev-matrdevo,11,11,7,0,0,
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,deva,dev-krishna,5,3,2,0,0,
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,deva,dev-ki-reorder,13,10,6,0,0,
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,deva,dev-om-danda,19,19,14,0,0,
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,deva,dev-vedic,22,20,9,4,0,U+0951 U+0952
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,deva,dev-ganesha,15,13,9,0,0,
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,deva,dev-hrdaya,23,12,12,0,0,
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,deva,dev-nukta,18,14,11,0,0,
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,latn,iast-small,135,135,135,29,0,U+0101 U+012B U+015B U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,latn,iast-caps,59,59,59,24,0,U+0100 U+0101 U+012A U+012B U+015A U+016A U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,latn,iso15919,25,25,22,11,0,U+0113 U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Laila-Regular.ttf,Laila Regular,Version 1.302;PS 1.0;hotconv 1.0.78;make,latn,pop-spell,80,80,80,0,0,
+LibreBaskerville_wght_.ttf,Libre Baskerville Regular,Version 2.005,latn,iast-small,135,135,135,0,0,
+LibreBaskerville_wght_.ttf,Libre Baskerville Regular,Version 2.005,latn,iast-caps,59,59,59,0,0,
+LibreBaskerville_wght_.ttf,Libre Baskerville Regular,Version 2.005,latn,iso15919,25,25,22,1,0,U+0310
+LibreBaskerville_wght_.ttf,Libre Baskerville Regular,Version 2.005,latn,pop-spell,80,80,80,0,0,
+LibreFranklin_wght_.ttf,Libre Franklin Thin,Version 3.000,latn,iast-small,135,136,135,0,0,U+1E41
+LibreFranklin_wght_.ttf,Libre Franklin Thin,Version 3.000,latn,iast-caps,59,62,59,0,0,U+1E38 U+1E40 U+1E5C
+LibreFranklin_wght_.ttf,Libre Franklin Thin,Version 3.000,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+LibreFranklin_wght_.ttf,Libre Franklin Thin,Version 3.000,latn,pop-spell,80,80,80,0,0,
+Lora_wght_.ttf,Lora Regular,Version 3.008,latn,iast-small,135,152,135,0,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Lora_wght_.ttf,Lora Regular,Version 3.008,latn,iast-caps,59,78,59,0,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Lora_wght_.ttf,Lora Regular,Version 3.008,latn,iso15919,25,28,22,6,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Lora_wght_.ttf,Lora Regular,Version 3.008,latn,pop-spell,80,80,80,0,0,
+Manjari-Regular.ttf,Manjari Regular,Version 2.000,mlym,mal-chillu,11,11,11,0,0,
+Manjari-Regular.ttf,Manjari Regular,Version 2.000,mlym,mal-chillu-zwj,11,5,5,0,0,
+Manjari-Regular.ttf,Manjari Regular,Version 2.000,mlym,mal-shri,4,2,1,0,0,
+Manjari-Regular.ttf,Manjari Regular,Version 2.000,mlym,mal-nte,3,1,1,0,0,
+Manjari-Regular.ttf,Manjari Regular,Version 2.000,mlym,mal-amma,11,9,7,0,0,
+Manjari-Regular.ttf,Manjari Regular,Version 2.000,mlym,mal-krishna,6,3,3,0,0,
+Manjari-Regular.ttf,Manjari Regular,Version 2.000,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Manjari-Regular.ttf,Manjari Regular,Version 2.000,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Manjari-Regular.ttf,Manjari Regular,Version 2.000,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Manjari-Regular.ttf,Manjari Regular,Version 2.000,latn,pop-spell,80,80,80,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,deva,dev-ksha,3,1,1,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,deva,dev-tra,3,1,1,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,deva,dev-jna,3,1,1,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,deva,dev-shri,4,2,1,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,deva,dev-dharma,4,3,2,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,deva,dev-matrdevo,11,11,7,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,deva,dev-krishna,5,4,3,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,deva,dev-ki-reorder,13,9,6,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,deva,dev-om-danda,19,19,14,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,deva,dev-vedic,22,20,9,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,deva,dev-ganesha,15,13,9,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,deva,dev-hrdaya,23,12,12,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,deva,dev-nukta,18,14,12,0,0,
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,latn,iast-small,135,135,135,19,0,U+015B U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Martel-Regular.ttf,Martel,Version 1.001; ttfautohint (v1.1) -l 5 -,latn,pop-spell,80,80,80,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,deva,dev-ksha,3,1,1,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,deva,dev-tra,3,1,1,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,deva,dev-jna,3,1,1,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,deva,dev-shri,4,2,1,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,deva,dev-dharma,4,3,2,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,deva,dev-matrdevo,11,11,7,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,deva,dev-krishna,5,4,3,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,deva,dev-ki-reorder,13,9,6,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,deva,dev-om-danda,19,19,14,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,deva,dev-vedic,22,20,9,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,deva,dev-ganesha,15,13,9,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,deva,dev-hrdaya,23,12,12,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,deva,dev-nukta,18,14,12,0,0,
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+MartelSans-Regular.ttf,Martel Sans Regular,Version 1.002; ttfautohint (v1.1) -l 5 -,latn,pop-spell,80,80,80,0,0,
+Merriweather_opsz-wdth-wght_.ttf,Merriweather Light,Version 2.100,latn,iast-small,135,135,135,0,0,
+Merriweather_opsz-wdth-wght_.ttf,Merriweather Light,Version 2.100,latn,iast-caps,59,59,59,0,0,
+Merriweather_opsz-wdth-wght_.ttf,Merriweather Light,Version 2.100,latn,iso15919,25,25,22,0,0,
+Merriweather_opsz-wdth-wght_.ttf,Merriweather Light,Version 2.100,latn,pop-spell,80,80,80,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,deva,dev-ksha,3,1,1,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,deva,dev-tra,3,1,1,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,deva,dev-jna,3,1,1,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,deva,dev-shri,4,2,1,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,deva,dev-dharma,4,3,2,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,deva,dev-matrdevo,11,11,7,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,deva,dev-krishna,5,3,2,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,deva,dev-ki-reorder,13,10,6,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,deva,dev-om-danda,19,19,14,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,deva,dev-vedic,22,20,9,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,deva,dev-ganesha,15,13,9,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,deva,dev-hrdaya,23,12,12,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,deva,dev-nukta,18,13,12,0,0,
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Modak-Regular.ttf,Modak,Version 1.036;PS Version 1.000;hotconv 1,latn,pop-spell,80,80,80,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,deva,dev-ksha,3,1,1,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,deva,dev-tra,3,1,1,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,deva,dev-jna,3,1,1,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,deva,dev-shri,4,2,1,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,deva,dev-dharma,4,3,2,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,deva,dev-matrdevo,11,11,7,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,deva,dev-krishna,5,3,2,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,deva,dev-ki-reorder,13,10,6,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,deva,dev-om-danda,19,18,14,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,deva,dev-vedic,22,20,9,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,deva,dev-ganesha,15,13,9,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,deva,dev-hrdaya,23,12,12,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,deva,dev-nukta,18,14,12,0,0,
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,latn,iast-small,135,135,135,1,0,U+1E41
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,latn,iast-caps,59,59,59,1,0,U+1E40
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,latn,iso15919,25,25,22,4,0,U+0310 U+0325 U+1E41
+Mukta-Regular.ttf,Mukta Regular,Version 2.538;PS 1.001;hotconv 16.6.51;m,latn,pop-spell,80,80,80,0,0,
+MuktaMahee-Regular.ttf,Mukta Mahee Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,guru,gur-shri,4,3,1,0,0,
+MuktaMahee-Regular.ttf,Mukta Mahee Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,guru,gur-maan,14,14,8,0,0,
+MuktaMahee-Regular.ttf,Mukta Mahee Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,guru,gur-dharam,14,12,8,0,0,
+MuktaMahee-Regular.ttf,Mukta Mahee Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,latn,iast-small,135,135,135,1,0,U+1E41
+MuktaMahee-Regular.ttf,Mukta Mahee Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,latn,iast-caps,59,59,59,1,0,U+1E40
+MuktaMahee-Regular.ttf,Mukta Mahee Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,latn,iso15919,25,25,22,4,0,U+0310 U+0325 U+1E41
+MuktaMahee-Regular.ttf,Mukta Mahee Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,latn,pop-spell,80,80,80,0,0,
+MuktaMalar-Regular.ttf,Mukta Malar Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,taml,tam-shri,4,1,1,0,0,
+MuktaMalar-Regular.ttf,Mukta Malar Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,taml,tam-shri2,4,1,1,0,0,
+MuktaMalar-Regular.ttf,Mukta Malar Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,taml,tam-ksha,3,1,1,0,0,
+MuktaMalar-Regular.ttf,Mukta Malar Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,taml,tam-split-vowels,8,11,5,0,0,
+MuktaMalar-Regular.ttf,Mukta Malar Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,taml,tam-tiruppavai,10,7,5,0,0,
+MuktaMalar-Regular.ttf,Mukta Malar Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,taml,tam-tamil,5,3,3,0,0,
+MuktaMalar-Regular.ttf,Mukta Malar Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,latn,iast-small,135,135,135,1,0,U+1E41
+MuktaMalar-Regular.ttf,Mukta Malar Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,latn,iast-caps,59,59,59,1,0,U+1E40
+MuktaMalar-Regular.ttf,Mukta Malar Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,latn,iso15919,25,25,22,4,0,U+0310 U+0325 U+1E41
+MuktaMalar-Regular.ttf,Mukta Malar Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,latn,pop-spell,80,80,80,0,0,
+MuktaVaani-Regular.ttf,Mukta Vaani Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,gujr,guj-shri,4,4,2,0,0,
+MuktaVaani-Regular.ttf,Mukta Vaani Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,gujr,guj-ksha,3,3,2,0,0,
+MuktaVaani-Regular.ttf,Mukta Vaani Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,gujr,guj-jna,3,3,2,0,0,
+MuktaVaani-Regular.ttf,Mukta Vaani Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,gujr,guj-dharma,4,4,3,0,0,
+MuktaVaani-Regular.ttf,Mukta Vaani Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,gujr,guj-om,7,7,5,0,0,
+MuktaVaani-Regular.ttf,Mukta Vaani Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,latn,iast-small,135,135,135,1,0,U+1E41
+MuktaVaani-Regular.ttf,Mukta Vaani Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,latn,iast-caps,59,59,59,1,0,U+1E40
+MuktaVaani-Regular.ttf,Mukta Vaani Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,latn,iso15919,25,25,22,4,0,U+0310 U+0325 U+1E41
+MuktaVaani-Regular.ttf,Mukta Vaani Regular,Version 2.538;PS 1.000;hotconv 16.6.51;m,latn,pop-spell,80,80,80,0,0,
+NotoSansBengali_wdth-wght_.ttf,Noto Sans Bengali Regular,Version 3.011,beng,ben-shri,4,3,1,0,0,
+NotoSansBengali_wdth-wght_.ttf,Noto Sans Bengali Regular,Version 3.011,beng,ben-ksha,3,1,1,0,0,
+NotoSansBengali_wdth-wght_.ttf,Noto Sans Bengali Regular,Version 3.011,beng,ben-jna,3,1,1,0,0,
+NotoSansBengali_wdth-wght_.ttf,Noto Sans Bengali Regular,Version 3.011,beng,ben-durga,6,5,2,0,0,
+NotoSansBengali_wdth-wght_.ttf,Noto Sans Bengali Regular,Version 3.011,beng,ben-ra-zophola,4,3,1,0,0,
+NotoSansBengali_wdth-wght_.ttf,Noto Sans Bengali Regular,Version 3.011,beng,ben-krishna,5,3,2,0,0,
+NotoSansBengali_wdth-wght_.ttf,Noto Sans Bengali Regular,Version 3.011,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSansBengali_wdth-wght_.ttf,Noto Sans Bengali Regular,Version 3.011,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSansBengali_wdth-wght_.ttf,Noto Sans Bengali Regular,Version 3.011,latn,iso15919,25,27,22,8,0,U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSansBengali_wdth-wght_.ttf,Noto Sans Bengali Regular,Version 3.011,latn,pop-spell,80,80,80,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,deva,dev-ksha,3,1,1,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,deva,dev-tra,3,1,1,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,deva,dev-jna,3,1,1,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,deva,dev-shri,4,2,1,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,deva,dev-dharma,4,3,2,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,deva,dev-matrdevo,11,11,7,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,deva,dev-krishna,5,4,3,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,deva,dev-ki-reorder,13,10,6,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,deva,dev-om-danda,19,19,14,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,deva,dev-vedic,22,21,9,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,deva,dev-ganesha,15,13,9,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,deva,dev-hrdaya,23,12,12,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,deva,dev-nukta,18,14,12,0,0,
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,latn,iso15919,25,27,22,8,0,U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSansDevanagari_wdth-wght_.ttf,Noto Sans Devanagari Regular,Version 2.007,latn,pop-spell,80,80,80,0,0,
+NotoSansDisplay_wdth-wght_.ttf,Noto Sans Display Regular,Version 2.003,latn,iast-small,135,135,135,0,0,
+NotoSansDisplay_wdth-wght_.ttf,Noto Sans Display Regular,Version 2.003,latn,iast-caps,59,59,59,0,0,
+NotoSansDisplay_wdth-wght_.ttf,Noto Sans Display Regular,Version 2.003,latn,iso15919,25,25,22,0,0,
+NotoSansDisplay_wdth-wght_.ttf,Noto Sans Display Regular,Version 2.003,latn,pop-spell,80,80,80,0,0,
+NotoSansGujarati_wdth-wght_.ttf,Noto Sans Gujarati Regular,Version 2.106,gujr,guj-shri,4,2,1,0,0,
+NotoSansGujarati_wdth-wght_.ttf,Noto Sans Gujarati Regular,Version 2.106,gujr,guj-ksha,3,1,1,0,0,
+NotoSansGujarati_wdth-wght_.ttf,Noto Sans Gujarati Regular,Version 2.106,gujr,guj-jna,3,1,1,0,0,
+NotoSansGujarati_wdth-wght_.ttf,Noto Sans Gujarati Regular,Version 2.106,gujr,guj-dharma,4,3,2,0,0,
+NotoSansGujarati_wdth-wght_.ttf,Noto Sans Gujarati Regular,Version 2.106,gujr,guj-om,7,6,5,0,0,
+NotoSansGujarati_wdth-wght_.ttf,Noto Sans Gujarati Regular,Version 2.106,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSansGujarati_wdth-wght_.ttf,Noto Sans Gujarati Regular,Version 2.106,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSansGujarati_wdth-wght_.ttf,Noto Sans Gujarati Regular,Version 2.106,latn,iso15919,25,26,22,8,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSansGujarati_wdth-wght_.ttf,Noto Sans Gujarati Regular,Version 2.106,latn,pop-spell,80,80,80,0,0,
+NotoSansGurmukhi_wdth-wght_.ttf,Noto Sans Gurmukhi Regular,Version 2.004,guru,gur-shri,4,3,1,0,0,
+NotoSansGurmukhi_wdth-wght_.ttf,Noto Sans Gurmukhi Regular,Version 2.004,guru,gur-maan,14,14,8,0,0,
+NotoSansGurmukhi_wdth-wght_.ttf,Noto Sans Gurmukhi Regular,Version 2.004,guru,gur-dharam,14,12,8,0,0,
+NotoSansGurmukhi_wdth-wght_.ttf,Noto Sans Gurmukhi Regular,Version 2.004,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSansGurmukhi_wdth-wght_.ttf,Noto Sans Gurmukhi Regular,Version 2.004,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSansGurmukhi_wdth-wght_.ttf,Noto Sans Gurmukhi Regular,Version 2.004,latn,iso15919,25,26,22,8,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSansGurmukhi_wdth-wght_.ttf,Noto Sans Gurmukhi Regular,Version 2.004,latn,pop-spell,80,80,80,0,0,
+NotoSansKannada_wdth-wght_.ttf,Noto Sans Kannada Regular,Version 2.006,knda,kan-shri,4,3,1,0,0,
+NotoSansKannada_wdth-wght_.ttf,Noto Sans Kannada Regular,Version 2.006,knda,kan-ksha,3,1,1,0,0,
+NotoSansKannada_wdth-wght_.ttf,Noto Sans Kannada Regular,Version 2.006,knda,kan-jna,3,1,1,0,0,
+NotoSansKannada_wdth-wght_.ttf,Noto Sans Kannada Regular,Version 2.006,knda,kan-krishna,5,4,2,0,0,
+NotoSansKannada_wdth-wght_.ttf,Noto Sans Kannada Regular,Version 2.006,knda,kan-vowel-signs,11,12,7,0,0,
+NotoSansKannada_wdth-wght_.ttf,Noto Sans Kannada Regular,Version 2.006,knda,kan-dharma,4,3,2,0,0,
+NotoSansKannada_wdth-wght_.ttf,Noto Sans Kannada Regular,Version 2.006,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSansKannada_wdth-wght_.ttf,Noto Sans Kannada Regular,Version 2.006,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSansKannada_wdth-wght_.ttf,Noto Sans Kannada Regular,Version 2.006,latn,iso15919,25,27,22,8,0,U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSansKannada_wdth-wght_.ttf,Noto Sans Kannada Regular,Version 2.006,latn,pop-spell,80,80,80,0,0,
+NotoSansMalayalam_wdth-wght_.ttf,Noto Sans Malayalam Regular,Version 2.104,mlym,mal-chillu,11,11,11,0,0,
+NotoSansMalayalam_wdth-wght_.ttf,Noto Sans Malayalam Regular,Version 2.104,mlym,mal-chillu-zwj,11,5,5,0,0,
+NotoSansMalayalam_wdth-wght_.ttf,Noto Sans Malayalam Regular,Version 2.104,mlym,mal-shri,4,3,1,0,0,
+NotoSansMalayalam_wdth-wght_.ttf,Noto Sans Malayalam Regular,Version 2.104,mlym,mal-nte,3,1,1,0,0,
+NotoSansMalayalam_wdth-wght_.ttf,Noto Sans Malayalam Regular,Version 2.104,mlym,mal-amma,11,9,7,0,0,
+NotoSansMalayalam_wdth-wght_.ttf,Noto Sans Malayalam Regular,Version 2.104,mlym,mal-krishna,6,6,4,0,0,
+NotoSansMalayalam_wdth-wght_.ttf,Noto Sans Malayalam Regular,Version 2.104,latn,iast-small,135,152,135,0,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSansMalayalam_wdth-wght_.ttf,Noto Sans Malayalam Regular,Version 2.104,latn,iast-caps,59,78,59,0,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSansMalayalam_wdth-wght_.ttf,Noto Sans Malayalam Regular,Version 2.104,latn,iso15919,25,28,22,6,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSansMalayalam_wdth-wght_.ttf,Noto Sans Malayalam Regular,Version 2.104,latn,pop-spell,80,80,80,0,0,
+NotoSansOriya_wdth-wght_.ttf,Noto Sans Oriya Regular,Version 2.007,orya,ori-shri,4,2,1,0,0,
+NotoSansOriya_wdth-wght_.ttf,Noto Sans Oriya Regular,Version 2.007,orya,ori-ksha,3,1,1,0,0,
+NotoSansOriya_wdth-wght_.ttf,Noto Sans Oriya Regular,Version 2.007,orya,ori-jna,3,1,1,0,0,
+NotoSansOriya_wdth-wght_.ttf,Noto Sans Oriya Regular,Version 2.007,orya,ori-dharma,4,3,2,0,0,
+NotoSansOriya_wdth-wght_.ttf,Noto Sans Oriya Regular,Version 2.007,orya,ori-jagannath,10,8,7,0,0,
+NotoSansOriya_wdth-wght_.ttf,Noto Sans Oriya Regular,Version 2.007,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSansOriya_wdth-wght_.ttf,Noto Sans Oriya Regular,Version 2.007,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSansOriya_wdth-wght_.ttf,Noto Sans Oriya Regular,Version 2.007,latn,iso15919,25,27,22,8,0,U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSansOriya_wdth-wght_.ttf,Noto Sans Oriya Regular,Version 2.007,latn,pop-spell,80,80,80,0,0,
+NotoSansTamil_wdth-wght_.ttf,Noto Sans Tamil Regular,Version 2.004,taml,tam-shri,4,1,1,0,0,
+NotoSansTamil_wdth-wght_.ttf,Noto Sans Tamil Regular,Version 2.004,taml,tam-shri2,4,1,1,0,0,
+NotoSansTamil_wdth-wght_.ttf,Noto Sans Tamil Regular,Version 2.004,taml,tam-ksha,3,1,1,0,0,
+NotoSansTamil_wdth-wght_.ttf,Noto Sans Tamil Regular,Version 2.004,taml,tam-split-vowels,8,11,5,0,0,
+NotoSansTamil_wdth-wght_.ttf,Noto Sans Tamil Regular,Version 2.004,taml,tam-tiruppavai,10,8,5,0,0,
+NotoSansTamil_wdth-wght_.ttf,Noto Sans Tamil Regular,Version 2.004,taml,tam-tamil,5,4,3,0,0,
+NotoSansTamil_wdth-wght_.ttf,Noto Sans Tamil Regular,Version 2.004,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSansTamil_wdth-wght_.ttf,Noto Sans Tamil Regular,Version 2.004,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSansTamil_wdth-wght_.ttf,Noto Sans Tamil Regular,Version 2.004,latn,iso15919,25,26,22,8,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSansTamil_wdth-wght_.ttf,Noto Sans Tamil Regular,Version 2.004,latn,pop-spell,80,80,80,0,0,
+NotoSansTelugu_wdth-wght_.ttf,Noto Sans Telugu Regular,Version 2.005,telu,tel-shri,4,2,1,0,0,
+NotoSansTelugu_wdth-wght_.ttf,Noto Sans Telugu Regular,Version 2.005,telu,tel-ksha,3,1,1,0,0,
+NotoSansTelugu_wdth-wght_.ttf,Noto Sans Telugu Regular,Version 2.005,telu,tel-jna,3,2,1,0,0,
+NotoSansTelugu_wdth-wght_.ttf,Noto Sans Telugu Regular,Version 2.005,telu,tel-krishna,5,4,2,0,0,
+NotoSansTelugu_wdth-wght_.ttf,Noto Sans Telugu Regular,Version 2.005,telu,tel-vowel-signs,14,9,9,0,0,
+NotoSansTelugu_wdth-wght_.ttf,Noto Sans Telugu Regular,Version 2.005,telu,tel-amma,11,9,6,0,0,
+NotoSansTelugu_wdth-wght_.ttf,Noto Sans Telugu Regular,Version 2.005,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSansTelugu_wdth-wght_.ttf,Noto Sans Telugu Regular,Version 2.005,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSansTelugu_wdth-wght_.ttf,Noto Sans Telugu Regular,Version 2.005,latn,iso15919,25,26,22,8,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSansTelugu_wdth-wght_.ttf,Noto Sans Telugu Regular,Version 2.005,latn,pop-spell,80,80,80,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,deva,dev-ksha,3,1,1,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,deva,dev-tra,3,1,1,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,deva,dev-jna,3,1,1,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,deva,dev-shri,4,2,1,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,deva,dev-dharma,4,3,2,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,deva,dev-matrdevo,11,11,7,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,deva,dev-krishna,5,4,3,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,deva,dev-ki-reorder,13,10,6,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,deva,dev-om-danda,19,19,14,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,deva,dev-vedic,22,21,9,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,deva,dev-ganesha,15,13,9,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,deva,dev-hrdaya,23,12,12,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,deva,dev-nukta,18,14,12,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,latn,iast-small,135,139,135,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,latn,iast-caps,59,60,59,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,latn,iso15919,25,26,22,0,0,
+NotoSans_wdth-wght_.ttf,Noto Sans Regular,Version 2.015,latn,pop-spell,80,80,80,0,0,
+NotoSerifBengali_wdth-wght_.ttf,Noto Serif Bengali Regular,Version 3.000,beng,ben-shri,4,2,1,0,0,
+NotoSerifBengali_wdth-wght_.ttf,Noto Serif Bengali Regular,Version 3.000,beng,ben-ksha,3,1,1,0,0,
+NotoSerifBengali_wdth-wght_.ttf,Noto Serif Bengali Regular,Version 3.000,beng,ben-jna,3,1,1,0,0,
+NotoSerifBengali_wdth-wght_.ttf,Noto Serif Bengali Regular,Version 3.000,beng,ben-durga,6,5,2,0,0,
+NotoSerifBengali_wdth-wght_.ttf,Noto Serif Bengali Regular,Version 3.000,beng,ben-ra-zophola,4,3,1,0,0,
+NotoSerifBengali_wdth-wght_.ttf,Noto Serif Bengali Regular,Version 3.000,beng,ben-krishna,5,3,2,0,0,
+NotoSerifBengali_wdth-wght_.ttf,Noto Serif Bengali Regular,Version 3.000,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSerifBengali_wdth-wght_.ttf,Noto Serif Bengali Regular,Version 3.000,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSerifBengali_wdth-wght_.ttf,Noto Serif Bengali Regular,Version 3.000,latn,iso15919,25,27,22,8,0,U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSerifBengali_wdth-wght_.ttf,Noto Serif Bengali Regular,Version 3.000,latn,pop-spell,80,80,80,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,deva,dev-ksha,3,1,1,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,deva,dev-tra,3,1,1,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,deva,dev-jna,3,1,1,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,deva,dev-shri,4,2,1,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,deva,dev-dharma,4,3,2,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,deva,dev-matrdevo,11,11,7,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,deva,dev-krishna,5,4,3,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,deva,dev-ki-reorder,13,10,6,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,deva,dev-om-danda,19,19,14,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,deva,dev-vedic,22,21,9,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,deva,dev-ganesha,15,13,9,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,deva,dev-hrdaya,23,12,12,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,deva,dev-nukta,18,14,12,0,0,
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,latn,iso15919,25,27,22,8,0,U+014D U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSerifDevanagari_wdth-wght_.ttf,Noto Serif Devanagari Regular,Version 2.006,latn,pop-spell,80,80,80,0,0,
+NotoSerifDisplay_wdth-wght_.ttf,Noto Serif Display Regular,Version 2.003,latn,iast-small,135,135,135,0,0,
+NotoSerifDisplay_wdth-wght_.ttf,Noto Serif Display Regular,Version 2.003,latn,iast-caps,59,59,59,0,0,
+NotoSerifDisplay_wdth-wght_.ttf,Noto Serif Display Regular,Version 2.003,latn,iso15919,25,25,22,0,0,
+NotoSerifDisplay_wdth-wght_.ttf,Noto Serif Display Regular,Version 2.003,latn,pop-spell,80,80,80,0,0,
+NotoSerifGujarati_wght_.ttf,Noto Serif Gujarati Regular,Version 2.106,gujr,guj-shri,4,2,1,0,0,
+NotoSerifGujarati_wght_.ttf,Noto Serif Gujarati Regular,Version 2.106,gujr,guj-ksha,3,1,1,0,0,
+NotoSerifGujarati_wght_.ttf,Noto Serif Gujarati Regular,Version 2.106,gujr,guj-jna,3,1,1,0,0,
+NotoSerifGujarati_wght_.ttf,Noto Serif Gujarati Regular,Version 2.106,gujr,guj-dharma,4,3,2,0,0,
+NotoSerifGujarati_wght_.ttf,Noto Serif Gujarati Regular,Version 2.106,gujr,guj-om,7,6,5,0,0,
+NotoSerifGujarati_wght_.ttf,Noto Serif Gujarati Regular,Version 2.106,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSerifGujarati_wght_.ttf,Noto Serif Gujarati Regular,Version 2.106,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSerifGujarati_wght_.ttf,Noto Serif Gujarati Regular,Version 2.106,latn,iso15919,25,26,22,8,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSerifGujarati_wght_.ttf,Noto Serif Gujarati Regular,Version 2.106,latn,pop-spell,80,80,80,0,0,
+NotoSerifGurmukhi_wght_.ttf,Noto Serif Gurmukhi Regular,Version 2.004,guru,gur-shri,4,3,1,0,0,
+NotoSerifGurmukhi_wght_.ttf,Noto Serif Gurmukhi Regular,Version 2.004,guru,gur-maan,14,14,8,0,0,
+NotoSerifGurmukhi_wght_.ttf,Noto Serif Gurmukhi Regular,Version 2.004,guru,gur-dharam,14,12,8,0,0,
+NotoSerifGurmukhi_wght_.ttf,Noto Serif Gurmukhi Regular,Version 2.004,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSerifGurmukhi_wght_.ttf,Noto Serif Gurmukhi Regular,Version 2.004,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSerifGurmukhi_wght_.ttf,Noto Serif Gurmukhi Regular,Version 2.004,latn,iso15919,25,26,22,8,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSerifGurmukhi_wght_.ttf,Noto Serif Gurmukhi Regular,Version 2.004,latn,pop-spell,80,80,80,0,0,
+NotoSerifKannada_wght_.ttf,Noto Serif Kannada Regular,Version 2.005,knda,kan-shri,4,3,1,0,0,
+NotoSerifKannada_wght_.ttf,Noto Serif Kannada Regular,Version 2.005,knda,kan-ksha,3,1,1,0,0,
+NotoSerifKannada_wght_.ttf,Noto Serif Kannada Regular,Version 2.005,knda,kan-jna,3,1,1,0,0,
+NotoSerifKannada_wght_.ttf,Noto Serif Kannada Regular,Version 2.005,knda,kan-krishna,5,4,2,0,0,
+NotoSerifKannada_wght_.ttf,Noto Serif Kannada Regular,Version 2.005,knda,kan-vowel-signs,11,12,7,0,0,
+NotoSerifKannada_wght_.ttf,Noto Serif Kannada Regular,Version 2.005,knda,kan-dharma,4,3,2,0,0,
+NotoSerifKannada_wght_.ttf,Noto Serif Kannada Regular,Version 2.005,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSerifKannada_wght_.ttf,Noto Serif Kannada Regular,Version 2.005,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSerifKannada_wght_.ttf,Noto Serif Kannada Regular,Version 2.005,latn,iso15919,25,26,22,8,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSerifKannada_wght_.ttf,Noto Serif Kannada Regular,Version 2.005,latn,pop-spell,80,80,80,0,0,
+NotoSerifMalayalam_wght_.ttf,Noto Serif Malayalam Regular,Version 2.104,mlym,mal-chillu,11,11,11,0,0,
+NotoSerifMalayalam_wght_.ttf,Noto Serif Malayalam Regular,Version 2.104,mlym,mal-chillu-zwj,11,5,5,0,0,
+NotoSerifMalayalam_wght_.ttf,Noto Serif Malayalam Regular,Version 2.104,mlym,mal-shri,4,3,1,0,0,
+NotoSerifMalayalam_wght_.ttf,Noto Serif Malayalam Regular,Version 2.104,mlym,mal-nte,3,1,1,0,0,
+NotoSerifMalayalam_wght_.ttf,Noto Serif Malayalam Regular,Version 2.104,mlym,mal-amma,11,9,7,0,0,
+NotoSerifMalayalam_wght_.ttf,Noto Serif Malayalam Regular,Version 2.104,mlym,mal-krishna,6,6,4,0,0,
+NotoSerifMalayalam_wght_.ttf,Noto Serif Malayalam Regular,Version 2.104,latn,iast-small,135,152,135,0,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSerifMalayalam_wght_.ttf,Noto Serif Malayalam Regular,Version 2.104,latn,iast-caps,59,78,59,0,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSerifMalayalam_wght_.ttf,Noto Serif Malayalam Regular,Version 2.104,latn,iso15919,25,28,22,6,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSerifMalayalam_wght_.ttf,Noto Serif Malayalam Regular,Version 2.104,latn,pop-spell,80,80,80,0,0,
+NotoSerifTamil_wdth-wght_.ttf,Noto Serif Tamil Regular,Version 2.004,taml,tam-shri,4,1,1,0,0,
+NotoSerifTamil_wdth-wght_.ttf,Noto Serif Tamil Regular,Version 2.004,taml,tam-shri2,4,1,1,0,0,
+NotoSerifTamil_wdth-wght_.ttf,Noto Serif Tamil Regular,Version 2.004,taml,tam-ksha,3,1,1,0,0,
+NotoSerifTamil_wdth-wght_.ttf,Noto Serif Tamil Regular,Version 2.004,taml,tam-split-vowels,8,11,5,0,0,
+NotoSerifTamil_wdth-wght_.ttf,Noto Serif Tamil Regular,Version 2.004,taml,tam-tiruppavai,10,9,5,0,0,
+NotoSerifTamil_wdth-wght_.ttf,Noto Serif Tamil Regular,Version 2.004,taml,tam-tamil,5,5,3,0,0,
+NotoSerifTamil_wdth-wght_.ttf,Noto Serif Tamil Regular,Version 2.004,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSerifTamil_wdth-wght_.ttf,Noto Serif Tamil Regular,Version 2.004,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSerifTamil_wdth-wght_.ttf,Noto Serif Tamil Regular,Version 2.004,latn,iso15919,25,26,22,8,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSerifTamil_wdth-wght_.ttf,Noto Serif Tamil Regular,Version 2.004,latn,pop-spell,80,80,80,0,0,
+NotoSerifTelugu_wght_.ttf,Noto Serif Telugu Regular,Version 2.005,telu,tel-shri,4,2,1,0,0,
+NotoSerifTelugu_wght_.ttf,Noto Serif Telugu Regular,Version 2.005,telu,tel-ksha,3,1,1,0,0,
+NotoSerifTelugu_wght_.ttf,Noto Serif Telugu Regular,Version 2.005,telu,tel-jna,3,2,1,0,0,
+NotoSerifTelugu_wght_.ttf,Noto Serif Telugu Regular,Version 2.005,telu,tel-krishna,5,4,2,0,0,
+NotoSerifTelugu_wght_.ttf,Noto Serif Telugu Regular,Version 2.005,telu,tel-vowel-signs,14,9,9,0,0,
+NotoSerifTelugu_wght_.ttf,Noto Serif Telugu Regular,Version 2.005,telu,tel-amma,11,9,6,0,0,
+NotoSerifTelugu_wght_.ttf,Noto Serif Telugu Regular,Version 2.005,latn,iast-small,135,137,135,15,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+NotoSerifTelugu_wght_.ttf,Noto Serif Telugu Regular,Version 2.005,latn,iast-caps,59,61,59,15,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+NotoSerifTelugu_wght_.ttf,Noto Serif Telugu Regular,Version 2.005,latn,iso15919,25,26,22,8,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+NotoSerifTelugu_wght_.ttf,Noto Serif Telugu Regular,Version 2.005,latn,pop-spell,80,80,80,0,0,
+NotoSerif_wdth-wght_.ttf,Noto Serif Regular,Version 2.015,latn,iast-small,135,135,135,0,0,
+NotoSerif_wdth-wght_.ttf,Noto Serif Regular,Version 2.015,latn,iast-caps,59,59,59,0,0,
+NotoSerif_wdth-wght_.ttf,Noto Serif Regular,Version 2.015,latn,iso15919,25,25,22,0,0,
+NotoSerif_wdth-wght_.ttf,Noto Serif Regular,Version 2.015,latn,pop-spell,80,80,80,0,0,
+OpenSans_wdth-wght_.ttf,Open Sans Regular,Version 3.003,latn,iast-small,135,152,135,0,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+OpenSans_wdth-wght_.ttf,Open Sans Regular,Version 3.003,latn,iast-caps,59,78,59,0,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+OpenSans_wdth-wght_.ttf,Open Sans Regular,Version 3.003,latn,iso15919,25,28,22,6,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+OpenSans_wdth-wght_.ttf,Open Sans Regular,Version 3.003,latn,pop-spell,80,80,80,0,0,
+PT_Serif-Web-Regular.ttf,PT Serif,Version 1.000W OFL,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+PT_Serif-Web-Regular.ttf,PT Serif,Version 1.000W OFL,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+PT_Serif-Web-Regular.ttf,PT Serif,Version 1.000W OFL,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+PT_Serif-Web-Regular.ttf,PT Serif,Version 1.000W OFL,latn,pop-spell,80,80,80,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,deva,dev-ksha,3,1,1,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,deva,dev-tra,3,1,1,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,deva,dev-jna,3,1,1,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,deva,dev-shri,4,2,1,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,deva,dev-dharma,4,3,2,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,deva,dev-matrdevo,11,11,7,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,deva,dev-krishna,5,3,2,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,deva,dev-ki-reorder,13,9,6,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,deva,dev-om-danda,19,18,14,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,deva,dev-vedic,22,20,9,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,deva,dev-ganesha,15,13,9,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,deva,dev-hrdaya,23,12,12,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,deva,dev-nukta,18,14,12,0,0,
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Palanquin-Regular.ttf,Palanquin Regular,Version 1.0.4,latn,pop-spell,80,80,80,0,0,
+PlayfairDisplay_wght_.ttf,Playfair Display Regular,Version 1.203,latn,iast-small,135,152,135,0,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+PlayfairDisplay_wght_.ttf,Playfair Display Regular,Version 1.203,latn,iast-caps,59,78,59,0,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+PlayfairDisplay_wght_.ttf,Playfair Display Regular,Version 1.203,latn,iso15919,25,28,22,6,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+PlayfairDisplay_wght_.ttf,Playfair Display Regular,Version 1.203,latn,pop-spell,80,80,80,0,0,
+Poppins-Regular.ttf,Poppins Regular,4.004,deva,dev-ksha,3,1,1,0,0,
+Poppins-Regular.ttf,Poppins Regular,4.004,deva,dev-tra,3,1,1,0,0,
+Poppins-Regular.ttf,Poppins Regular,4.004,deva,dev-jna,3,1,1,0,0,
+Poppins-Regular.ttf,Poppins Regular,4.004,deva,dev-shri,4,2,1,0,0,
+Poppins-Regular.ttf,Poppins Regular,4.004,deva,dev-dharma,4,3,2,0,0,
+Poppins-Regular.ttf,Poppins Regular,4.004,deva,dev-matrdevo,11,11,7,0,0,
+Poppins-Regular.ttf,Poppins Regular,4.004,deva,dev-krishna,5,3,2,0,0,
+Poppins-Regular.ttf,Poppins Regular,4.004,deva,dev-ki-reorder,13,10,6,0,0,
+Poppins-Regular.ttf,Poppins Regular,4.004,deva,dev-om-danda,19,19,14,0,0,
+Poppins-Regular.ttf,Poppins Regular,4.004,deva,dev-vedic,22,20,9,4,0,U+0951 U+0952
+Poppins-Regular.ttf,Poppins Regular,4.004,deva,dev-ganesha,15,13,9,0,0,
+Poppins-Regular.ttf,Poppins Regular,4.004,deva,dev-hrdaya,23,12,12,0,0,
+Poppins-Regular.ttf,Poppins Regular,4.004,deva,dev-nukta,18,14,12,0,0,
+Poppins-Regular.ttf,Poppins Regular,4.004,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Poppins-Regular.ttf,Poppins Regular,4.004,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Poppins-Regular.ttf,Poppins Regular,4.004,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Poppins-Regular.ttf,Poppins Regular,4.004,latn,pop-spell,80,80,80,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,deva,dev-ksha,3,1,1,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,deva,dev-tra,3,1,1,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,deva,dev-jna,3,1,1,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,deva,dev-shri,4,2,1,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,deva,dev-dharma,4,3,2,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,deva,dev-matrdevo,11,11,7,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,deva,dev-krishna,5,3,2,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,deva,dev-ki-reorder,13,10,6,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,deva,dev-om-danda,19,19,14,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,deva,dev-vedic,22,20,9,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,deva,dev-ganesha,15,13,9,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,deva,dev-hrdaya,23,12,12,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,deva,dev-nukta,18,14,11,0,0,
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Rajdhani-Regular.ttf,Rajdhani Regular,Version 1.201;PS 1.0;hotconv 1.0.78;make,latn,pop-spell,80,80,80,0,0,
+Roboto_wdth-wght_.ttf,Roboto Regular,Version 3.015; 2026,latn,iast-small,135,135,135,2,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Roboto_wdth-wght_.ttf,Roboto Regular,Version 3.015; 2026,latn,iast-caps,59,59,59,4,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Roboto_wdth-wght_.ttf,Roboto Regular,Version 3.015; 2026,latn,iso15919,25,25,22,7,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Roboto_wdth-wght_.ttf,Roboto Regular,Version 3.015; 2026,latn,pop-spell,80,80,80,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,deva,dev-ksha,3,1,1,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,deva,dev-tra,3,1,1,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,deva,dev-jna,3,1,1,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,deva,dev-shri,4,2,1,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,deva,dev-dharma,4,3,2,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,deva,dev-matrdevo,11,11,7,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,deva,dev-krishna,5,3,2,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,deva,dev-ki-reorder,13,10,6,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,deva,dev-om-danda,19,19,14,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,deva,dev-vedic,22,20,9,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,deva,dev-ganesha,15,13,9,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,deva,dev-hrdaya,23,12,12,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,deva,dev-nukta,18,14,11,0,0,
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+RozhaOne-Regular.ttf,Rozha One Regular,Version 1.301;PS 1.0;hotconv 1.0.78;make,latn,pop-spell,80,80,80,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,deva,dev-ksha,3,1,1,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,deva,dev-tra,3,1,1,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,deva,dev-jna,3,1,1,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,deva,dev-shri,4,2,1,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,deva,dev-dharma,4,3,2,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,deva,dev-matrdevo,11,11,7,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,deva,dev-krishna,5,4,3,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,deva,dev-ki-reorder,13,9,6,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,deva,dev-om-danda,19,19,14,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,deva,dev-vedic,22,20,9,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,deva,dev-ganesha,15,13,9,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,deva,dev-hrdaya,23,12,12,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,deva,dev-nukta,18,14,12,0,0,
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,latn,iast-small,135,150,135,2,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,latn,iast-caps,59,72,59,4,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,latn,iso15919,25,27,22,7,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Sahitya-Regular.ttf,Sahitya,Version 1.001;PS 001.000;hotconv 1.0.70;,latn,pop-spell,80,80,80,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,deva,dev-ksha,3,1,1,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,deva,dev-tra,3,1,1,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,deva,dev-jna,3,1,1,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,deva,dev-shri,4,2,1,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,deva,dev-dharma,4,3,2,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,deva,dev-matrdevo,11,11,7,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,deva,dev-krishna,5,3,2,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,deva,dev-ki-reorder,13,10,6,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,deva,dev-om-danda,19,19,14,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,deva,dev-vedic,22,20,9,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,deva,dev-ganesha,15,13,9,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,deva,dev-hrdaya,23,12,12,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,deva,dev-nukta,18,14,11,0,0,
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Sarpanch-Regular.ttf,Sarpanch Regular,Version 2.004;PS 1.0;hotconv 1.0.78;make,latn,pop-spell,80,80,80,0,0,
+SourceSerif4_opsz-wght_.ttf,Source Serif 4 Regular,Version 4.004;hotconv 1.0.116;makeotfexe,latn,iast-small,135,136,135,0,0,U+1E41
+SourceSerif4_opsz-wght_.ttf,Source Serif 4 Regular,Version 4.004;hotconv 1.0.116;makeotfexe,latn,iast-caps,59,60,59,0,0,U+1E40
+SourceSerif4_opsz-wght_.ttf,Source Serif 4 Regular,Version 4.004;hotconv 1.0.116;makeotfexe,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+SourceSerif4_opsz-wght_.ttf,Source Serif 4 Regular,Version 4.004;hotconv 1.0.116;makeotfexe,latn,pop-spell,80,80,80,0,0,
+Spectral-Regular.ttf,Spectral Regular,Version 2.005; ttfautohint (v1.8.4.7-5d5,latn,iast-small,135,136,135,0,0,U+1E41
+Spectral-Regular.ttf,Spectral Regular,Version 2.005; ttfautohint (v1.8.4.7-5d5,latn,iast-caps,59,62,59,0,0,U+1E38 U+1E40 U+1E5C
+Spectral-Regular.ttf,Spectral Regular,Version 2.005; ttfautohint (v1.8.4.7-5d5,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+Spectral-Regular.ttf,Spectral Regular,Version 2.005; ttfautohint (v1.8.4.7-5d5,latn,pop-spell,80,80,80,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,deva,dev-ksha,3,1,1,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,deva,dev-tra,3,1,1,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,deva,dev-jna,3,1,1,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,deva,dev-shri,4,2,1,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,deva,dev-dharma,4,3,2,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,deva,dev-matrdevo,11,11,7,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,deva,dev-krishna,5,4,3,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,deva,dev-ki-reorder,13,9,6,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,deva,dev-om-danda,19,19,14,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,deva,dev-vedic,22,20,9,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,deva,dev-ganesha,15,13,9,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,deva,dev-hrdaya,23,12,12,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,deva,dev-nukta,18,14,12,0,0,
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Sumana-Regular.ttf,Sumana,Version 1.015;PS 001.015;hotconv 1.0.70;,latn,pop-spell,80,80,80,0,0,
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,deva,dev-ksha,3,1,1,0,0,
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,deva,dev-tra,3,1,1,0,0,
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,deva,dev-jna,3,1,1,0,0,
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,deva,dev-shri,4,2,1,0,0,
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,deva,dev-dharma,4,3,2,0,0,
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,deva,dev-matrdevo,11,11,7,0,0,
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,deva,dev-krishna,5,3,2,0,0,
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,deva,dev-ki-reorder,13,10,6,0,0,
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,deva,dev-om-danda,19,19,14,0,0,
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,deva,dev-vedic,22,20,9,4,0,U+0951 U+0952
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,deva,dev-ganesha,15,13,9,0,0,
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,deva,dev-hrdaya,23,12,12,0,0,
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,deva,dev-nukta,18,14,12,0,0,
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+Teko_wght_.ttf,Teko Light,Version 2.000;gftools[0.9.28.dev9+g7d213,latn,pop-spell,80,80,80,0,0,
+TiroBangla-Italic.ttf,Tiro Bangla Italic,Version 1.52,beng,ben-shri,4,1,1,0,0,
+TiroBangla-Italic.ttf,Tiro Bangla Italic,Version 1.52,beng,ben-ksha,3,1,1,0,0,
+TiroBangla-Italic.ttf,Tiro Bangla Italic,Version 1.52,beng,ben-jna,3,1,1,0,0,
+TiroBangla-Italic.ttf,Tiro Bangla Italic,Version 1.52,beng,ben-durga,6,5,2,0,0,
+TiroBangla-Italic.ttf,Tiro Bangla Italic,Version 1.52,beng,ben-ra-zophola,4,3,1,0,0,
+TiroBangla-Italic.ttf,Tiro Bangla Italic,Version 1.52,beng,ben-krishna,5,3,2,0,0,
+TiroBangla-Italic.ttf,Tiro Bangla Italic,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroBangla-Italic.ttf,Tiro Bangla Italic,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroBangla-Italic.ttf,Tiro Bangla Italic,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroBangla-Italic.ttf,Tiro Bangla Italic,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroBangla-Regular.ttf,Tiro Bangla Regular,Version 1.52,beng,ben-shri,4,1,1,0,0,
+TiroBangla-Regular.ttf,Tiro Bangla Regular,Version 1.52,beng,ben-ksha,3,1,1,0,0,
+TiroBangla-Regular.ttf,Tiro Bangla Regular,Version 1.52,beng,ben-jna,3,1,1,0,0,
+TiroBangla-Regular.ttf,Tiro Bangla Regular,Version 1.52,beng,ben-durga,6,5,2,0,0,
+TiroBangla-Regular.ttf,Tiro Bangla Regular,Version 1.52,beng,ben-ra-zophola,4,3,1,0,0,
+TiroBangla-Regular.ttf,Tiro Bangla Regular,Version 1.52,beng,ben-krishna,5,3,2,0,0,
+TiroBangla-Regular.ttf,Tiro Bangla Regular,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroBangla-Regular.ttf,Tiro Bangla Regular,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroBangla-Regular.ttf,Tiro Bangla Regular,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroBangla-Regular.ttf,Tiro Bangla Regular,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,deva,dev-ksha,3,1,1,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,deva,dev-tra,3,1,1,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,deva,dev-jna,3,1,1,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,deva,dev-shri,4,2,1,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,deva,dev-dharma,4,3,2,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,deva,dev-matrdevo,11,11,7,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,deva,dev-krishna,5,3,2,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,deva,dev-ki-reorder,13,10,6,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,deva,dev-om-danda,19,19,14,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,deva,dev-vedic,22,19,9,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,deva,dev-ganesha,15,13,9,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,deva,dev-hrdaya,23,12,12,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,deva,dev-nukta,18,14,12,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroDevanagariHindi-Italic.ttf,Tiro Devanagari Hindi Italic,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,deva,dev-ksha,3,1,1,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,deva,dev-tra,3,1,1,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,deva,dev-jna,3,1,1,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,deva,dev-shri,4,2,1,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,deva,dev-dharma,4,3,2,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,deva,dev-matrdevo,11,11,7,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,deva,dev-krishna,5,3,2,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,deva,dev-ki-reorder,13,10,6,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,deva,dev-om-danda,19,19,14,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,deva,dev-vedic,22,19,9,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,deva,dev-ganesha,15,13,9,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,deva,dev-hrdaya,23,12,12,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,deva,dev-nukta,18,14,12,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroDevanagariHindi-Regular.ttf,Tiro Devanagari Hindi Regular,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,deva,dev-ksha,3,1,1,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,deva,dev-tra,3,1,1,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,deva,dev-jna,3,1,1,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,deva,dev-shri,4,2,1,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,deva,dev-dharma,4,3,2,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,deva,dev-matrdevo,11,11,7,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,deva,dev-krishna,5,3,2,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,deva,dev-ki-reorder,13,10,6,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,deva,dev-om-danda,19,19,14,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,deva,dev-vedic,22,19,9,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,deva,dev-ganesha,15,13,9,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,deva,dev-hrdaya,23,12,12,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,deva,dev-nukta,18,14,12,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroDevanagariMarathi-Italic.ttf,Tiro Devanagari Marathi Italic,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,deva,dev-ksha,3,1,1,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,deva,dev-tra,3,1,1,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,deva,dev-jna,3,1,1,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,deva,dev-shri,4,2,1,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,deva,dev-dharma,4,3,2,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,deva,dev-matrdevo,11,11,7,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,deva,dev-krishna,5,3,2,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,deva,dev-ki-reorder,13,10,6,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,deva,dev-om-danda,19,19,14,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,deva,dev-vedic,22,19,9,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,deva,dev-ganesha,15,13,9,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,deva,dev-hrdaya,23,12,12,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,deva,dev-nukta,18,14,12,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroDevanagariMarathi-Regular.ttf,Tiro Devanagari Marathi Regular,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,deva,dev-ksha,3,1,1,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,deva,dev-tra,3,1,1,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,deva,dev-jna,3,1,1,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,deva,dev-shri,4,2,1,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,deva,dev-dharma,4,3,2,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,deva,dev-matrdevo,11,11,7,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,deva,dev-krishna,5,3,2,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,deva,dev-ki-reorder,13,10,6,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,deva,dev-om-danda,19,19,14,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,deva,dev-vedic,22,19,9,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,deva,dev-ganesha,15,13,9,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,deva,dev-hrdaya,23,12,12,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,deva,dev-nukta,18,14,12,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroDevanagariSanskrit-Italic.ttf,Tiro Devanagari Sanskrit Italic,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,deva,dev-ksha,3,1,1,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,deva,dev-tra,3,1,1,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,deva,dev-jna,3,1,1,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,deva,dev-shri,4,2,1,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,deva,dev-dharma,4,3,2,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,deva,dev-matrdevo,11,11,7,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,deva,dev-krishna,5,3,2,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,deva,dev-ki-reorder,13,10,6,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,deva,dev-om-danda,19,19,14,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,deva,dev-vedic,22,19,9,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,deva,dev-ganesha,15,13,9,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,deva,dev-hrdaya,23,12,12,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,deva,dev-nukta,18,14,12,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroDevanagariSanskrit-Regular.ttf,Tiro Devanagari Sanskrit Regular,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroGurmukhi-Italic.ttf,Tiro Gurmukhi Italic,Version 1.52,guru,gur-shri,4,3,1,0,0,
+TiroGurmukhi-Italic.ttf,Tiro Gurmukhi Italic,Version 1.52,guru,gur-maan,14,14,8,0,0,
+TiroGurmukhi-Italic.ttf,Tiro Gurmukhi Italic,Version 1.52,guru,gur-dharam,14,12,8,0,0,
+TiroGurmukhi-Italic.ttf,Tiro Gurmukhi Italic,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroGurmukhi-Italic.ttf,Tiro Gurmukhi Italic,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroGurmukhi-Italic.ttf,Tiro Gurmukhi Italic,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroGurmukhi-Italic.ttf,Tiro Gurmukhi Italic,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroGurmukhi-Regular.ttf,Tiro Gurmukhi Regular,Version 1.52,guru,gur-shri,4,3,1,0,0,
+TiroGurmukhi-Regular.ttf,Tiro Gurmukhi Regular,Version 1.52,guru,gur-maan,14,14,8,0,0,
+TiroGurmukhi-Regular.ttf,Tiro Gurmukhi Regular,Version 1.52,guru,gur-dharam,14,12,8,0,0,
+TiroGurmukhi-Regular.ttf,Tiro Gurmukhi Regular,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroGurmukhi-Regular.ttf,Tiro Gurmukhi Regular,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroGurmukhi-Regular.ttf,Tiro Gurmukhi Regular,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroGurmukhi-Regular.ttf,Tiro Gurmukhi Regular,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroKannada-Italic.ttf,Tiro Kannada Italic,Version 1.52,knda,kan-shri,4,3,1,0,0,
+TiroKannada-Italic.ttf,Tiro Kannada Italic,Version 1.52,knda,kan-ksha,3,1,1,0,0,
+TiroKannada-Italic.ttf,Tiro Kannada Italic,Version 1.52,knda,kan-jna,3,1,1,0,0,
+TiroKannada-Italic.ttf,Tiro Kannada Italic,Version 1.52,knda,kan-krishna,5,4,2,0,0,
+TiroKannada-Italic.ttf,Tiro Kannada Italic,Version 1.52,knda,kan-vowel-signs,11,9,7,0,0,
+TiroKannada-Italic.ttf,Tiro Kannada Italic,Version 1.52,knda,kan-dharma,4,3,2,0,0,
+TiroKannada-Italic.ttf,Tiro Kannada Italic,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroKannada-Italic.ttf,Tiro Kannada Italic,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroKannada-Italic.ttf,Tiro Kannada Italic,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroKannada-Italic.ttf,Tiro Kannada Italic,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroKannada-Regular.ttf,Tiro Kannada Regular,Version 1.52,knda,kan-shri,4,3,1,0,0,
+TiroKannada-Regular.ttf,Tiro Kannada Regular,Version 1.52,knda,kan-ksha,3,1,1,0,0,
+TiroKannada-Regular.ttf,Tiro Kannada Regular,Version 1.52,knda,kan-jna,3,1,1,0,0,
+TiroKannada-Regular.ttf,Tiro Kannada Regular,Version 1.52,knda,kan-krishna,5,4,2,0,0,
+TiroKannada-Regular.ttf,Tiro Kannada Regular,Version 1.52,knda,kan-vowel-signs,11,9,7,0,0,
+TiroKannada-Regular.ttf,Tiro Kannada Regular,Version 1.52,knda,kan-dharma,4,3,2,0,0,
+TiroKannada-Regular.ttf,Tiro Kannada Regular,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroKannada-Regular.ttf,Tiro Kannada Regular,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroKannada-Regular.ttf,Tiro Kannada Regular,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroKannada-Regular.ttf,Tiro Kannada Regular,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroTamil-Italic.ttf,Tiro Tamil Italic,Version 1.52,taml,tam-shri,4,1,1,0,0,
+TiroTamil-Italic.ttf,Tiro Tamil Italic,Version 1.52,taml,tam-shri2,4,1,1,0,0,
+TiroTamil-Italic.ttf,Tiro Tamil Italic,Version 1.52,taml,tam-ksha,3,1,1,0,0,
+TiroTamil-Italic.ttf,Tiro Tamil Italic,Version 1.52,taml,tam-split-vowels,8,11,5,0,0,
+TiroTamil-Italic.ttf,Tiro Tamil Italic,Version 1.52,taml,tam-tiruppavai,10,8,5,0,0,
+TiroTamil-Italic.ttf,Tiro Tamil Italic,Version 1.52,taml,tam-tamil,5,4,3,0,0,
+TiroTamil-Italic.ttf,Tiro Tamil Italic,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroTamil-Italic.ttf,Tiro Tamil Italic,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroTamil-Italic.ttf,Tiro Tamil Italic,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroTamil-Italic.ttf,Tiro Tamil Italic,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroTamil-Regular.ttf,Tiro Tamil Regular,Version 1.52,taml,tam-shri,4,1,1,0,0,
+TiroTamil-Regular.ttf,Tiro Tamil Regular,Version 1.52,taml,tam-shri2,4,1,1,0,0,
+TiroTamil-Regular.ttf,Tiro Tamil Regular,Version 1.52,taml,tam-ksha,3,1,1,0,0,
+TiroTamil-Regular.ttf,Tiro Tamil Regular,Version 1.52,taml,tam-split-vowels,8,11,5,0,0,
+TiroTamil-Regular.ttf,Tiro Tamil Regular,Version 1.52,taml,tam-tiruppavai,10,8,5,0,0,
+TiroTamil-Regular.ttf,Tiro Tamil Regular,Version 1.52,taml,tam-tamil,5,4,3,0,0,
+TiroTamil-Regular.ttf,Tiro Tamil Regular,Version 1.52,latn,iast-small,135,135,135,0,0,
+TiroTamil-Regular.ttf,Tiro Tamil Regular,Version 1.52,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroTamil-Regular.ttf,Tiro Tamil Regular,Version 1.52,latn,iso15919,25,22,22,0,0,
+TiroTamil-Regular.ttf,Tiro Tamil Regular,Version 1.52,latn,pop-spell,80,80,80,0,0,
+TiroTelugu-Italic.ttf,Tiro Telugu Italic,Version 1.53,telu,tel-shri,4,2,1,0,0,
+TiroTelugu-Italic.ttf,Tiro Telugu Italic,Version 1.53,telu,tel-ksha,3,1,1,0,0,
+TiroTelugu-Italic.ttf,Tiro Telugu Italic,Version 1.53,telu,tel-jna,3,2,1,0,0,
+TiroTelugu-Italic.ttf,Tiro Telugu Italic,Version 1.53,telu,tel-krishna,5,4,2,0,0,
+TiroTelugu-Italic.ttf,Tiro Telugu Italic,Version 1.53,telu,tel-vowel-signs,14,9,9,0,0,
+TiroTelugu-Italic.ttf,Tiro Telugu Italic,Version 1.53,telu,tel-amma,11,7,6,0,0,
+TiroTelugu-Italic.ttf,Tiro Telugu Italic,Version 1.53,latn,iast-small,135,135,135,0,0,
+TiroTelugu-Italic.ttf,Tiro Telugu Italic,Version 1.53,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroTelugu-Italic.ttf,Tiro Telugu Italic,Version 1.53,latn,iso15919,25,22,22,0,0,
+TiroTelugu-Italic.ttf,Tiro Telugu Italic,Version 1.53,latn,pop-spell,80,80,80,0,0,
+TiroTelugu-Regular.ttf,Tiro Telugu Regular,Version 1.53,telu,tel-shri,4,2,1,0,0,
+TiroTelugu-Regular.ttf,Tiro Telugu Regular,Version 1.53,telu,tel-ksha,3,1,1,0,0,
+TiroTelugu-Regular.ttf,Tiro Telugu Regular,Version 1.53,telu,tel-jna,3,2,1,0,0,
+TiroTelugu-Regular.ttf,Tiro Telugu Regular,Version 1.53,telu,tel-krishna,5,4,2,0,0,
+TiroTelugu-Regular.ttf,Tiro Telugu Regular,Version 1.53,telu,tel-vowel-signs,14,9,9,0,0,
+TiroTelugu-Regular.ttf,Tiro Telugu Regular,Version 1.53,telu,tel-amma,11,7,6,0,0,
+TiroTelugu-Regular.ttf,Tiro Telugu Regular,Version 1.53,latn,iast-small,135,135,135,0,0,
+TiroTelugu-Regular.ttf,Tiro Telugu Regular,Version 1.53,latn,iast-caps,59,60,59,0,0,U+1E38
+TiroTelugu-Regular.ttf,Tiro Telugu Regular,Version 1.53,latn,iso15919,25,22,22,0,0,
+TiroTelugu-Regular.ttf,Tiro Telugu Regular,Version 1.53,latn,pop-spell,80,80,80,0,0,
+WorkSans_wght_.ttf,Work Sans Regular,Version 2.012,latn,iast-small,135,136,135,0,0,U+1E41
+WorkSans_wght_.ttf,Work Sans Regular,Version 2.012,latn,iast-caps,59,62,59,0,0,U+1E38 U+1E40 U+1E5C
+WorkSans_wght_.ttf,Work Sans Regular,Version 2.012,latn,iso15919,25,26,22,3,0,U+0310 U+0325 U+1E41
+WorkSans_wght_.ttf,Work Sans Regular,Version 2.012,latn,pop-spell,80,80,80,0,0,
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,deva,dev-ksha,3,1,1,0,0,
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,deva,dev-tra,3,1,1,0,0,
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,deva,dev-jna,3,1,1,0,0,
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,deva,dev-shri,4,2,1,0,0,
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,deva,dev-dharma,4,3,2,0,0,
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,deva,dev-matrdevo,11,11,7,0,0,
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,deva,dev-krishna,5,3,2,0,0,
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,deva,dev-ki-reorder,13,10,6,0,0,
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,deva,dev-om-danda,19,19,14,0,0,
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,deva,dev-vedic,22,20,9,4,0,U+0951 U+0952
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,deva,dev-ganesha,15,13,9,0,0,
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,deva,dev-hrdaya,23,12,12,0,0,
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,deva,dev-nukta,18,14,12,0,0,
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,latn,iast-small,135,135,135,17,0,U+1E0D U+1E25 U+1E37 U+1E41 U+1E43 U+1E45 U+1E47 U+1E5B U+1E63 U+1E6D
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,latn,iast-caps,59,59,59,17,0,U+1E0C U+1E24 U+1E36 U+1E38 U+1E40 U+1E42 U+1E44 U+1E46 U+1E47 U+1E5A U+1E5B U+1E5C U+1E62 U+1E63 U+1E6C
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,latn,iso15919,25,25,22,9,0,U+0310 U+0325 U+1E3B U+1E41 U+1E47 U+1E49 U+1E5F U+1E63
+YatraOne-Regular.ttf,Yatra One Regular,Version 1.002g;PS 1.0;hotconv 1.0.86;mak,latn,pop-spell,80,80,80,0,0,

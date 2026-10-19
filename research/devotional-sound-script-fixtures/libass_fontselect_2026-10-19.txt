@@ -1,0 +1,28 @@
+libass font resolution as printed by ffmpeg 6.1.1 (libass 0.17.1, HarfBuzz 8.3.0) on 2026-10-19 with -loglevel debug.
+Lines are copied from the run; paths shortened. "fontselect: (REQUESTED, weight, italic) -> FILE" shows what libass actually used.
+
+A. Variable fonts whose default instance is not Regular were NOT matched by family name (silent substitution):
+  fontselect: (Anek Devanagari, 400, 0) -> .../freefont/FreeSans.ttf, 0, FreeSans          <- wrong face (and its Latin fell to Inter)
+  Glyph 0xBB8 not found, selecting one more font for (Catamaran, 400, 0)                   <- upstream Catamaran[wght].ttf has default Thin 100
+  fontselect: (Anek Telugu, 400, 0) -> .../unifont/unifont.otf, 0, Unifont                 <- blocky 16 px bitmap-style fallback face
+  fontselect: (Anek Kannada, 400, 0) -> .../freefont/FreeSerif.ttf, 0, FreeSerif
+  (all ten Anek families behaved this way; name ID 1 of the variable file is "Anek Devanagari Medium" etc., default weight 500)
+
+B. Fix 1: request the name libass sees (name ID 1) or use a static instance:
+  fontselect: (Anek Telugu Medium, 400, 0) -> AnekTelugu-Medium, 0, AnekTelugu-Medium     <- correct
+  static instance made with "fonttools varLib.instancer ... wght=400 --update-name-table" -> fontselect: (Anek Telugu, 400, 0) -> AnekTelugu-Regular   <- correct
+
+C. Families that resolved correctly in the same runs (static files, or variable files whose default instance is Regular 400):
+  Noto Sans/Serif (all nine scripts), Tiro Devanagari/Bangla/Gurmukhi/Kannada/Tamil/Telugu, Mukta (+Malar, Mahee, Vaani), Hind (+Madurai, Siliguri, Vadodara, Guntur, Kochi),
+  Poppins, Yatra One, Rozha One, Khand, Martel, Gotu, Baloo 2 family, Manjari, Chilanka.
+
+D. SRT burn-in with one force_style FontName falls back silently for any other script on the line:
+  subtitles=...:force_style='FontName=Noto Sans Devanagari'  with a Tamil cue ->
+  Glyph 0xBB8 not found, selecting one more font for (Noto Sans Devanagari, 400, 0)
+  fontselect: (Noto Sans Devanagari, 400, 0) -> .../unifont/unifont.otf
+  Fix verified: <font face="Noto Sans Tamil">...</font> inside the SRT cue gives
+  fontselect: (Noto Sans Tamil, 400, 0) -> NotoSansTamil-Regular
+
+E. Shaper line (proof that the complex shaper is on):
+  Shaper: FriBidi 1.0.13 (SIMPLE) HarfBuzz-ng 8.3.0 (COMPLEX)
+  The ass/subtitles filter option shaping=auto (default) gave a byte-identical frame to shaping=complex; shaping=simple gave the broken forms.

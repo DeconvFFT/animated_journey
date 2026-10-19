@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lj-pc-tier/1",
+  "title": "Life Journey derived PC tier file v1 (the only PC data that may be filed)",
+  "description": "Produced by scripts/windows_check.py --tier-json-out from a pasted raw report (build plan 4.16). Buckets and verdict words only: no CPU or GPU model, no driver version, no exact size, no account count, no shared-PC hint (review plan-review-r2 nudge 4). The date is a day only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "date",
+    "windows",
+    "gpu_tier",
+    "vram_bucket",
+    "ram_tier",
+    "disk_tier",
+    "display_class",
+    "ffmpeg",
+    "python_ok",
+    "git_ok",
+    "craft_pins"
+  ],
+  "properties": {
+    "schema": {
+      "const": "lj-pc-tier/1"
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "windows": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "edition_family",
+        "build_major"
+      ],
+      "properties": {
+        "edition_family": {
+          "type": "string",
+          "enum": [
+            "home",
+            "pro-or-higher",
+            "unknown"
+          ]
+        },
+        "build_major": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "gpu_tier": {
+      "type": "string",
+      "enum": [
+        "none",
+        "gpu-low",
+        "gpu-8-12",
+        "gpu-16+",
+        "unknown"
+      ]
+    },
+    "vram_bucket": {
+      "type": "string",
+      "enum": [
+        "none",
+        "unreadable",
+        "<4",
+        "4-7",
+        "8-11",
+        "12-15",
+        "16-23",
+        "24+"
+      ]
+    },
+    "ram_tier": {
+      "type": "string",
+      "enum": [
+        "<8",
+        "8-15",
+        "16+",
+        "unknown"
+      ]
+    },
+    "disk_tier": {
+      "type": "string",
+      "enum": [
+        "tight",
+        "ok",
+        "roomy",
+        "unknown"
+      ]
+    },
+    "display_class": {
+      "type": "string",
+      "enum": [
+        "below-fhd",
+        "fhd",
+        "qhd",
+        "4k+",
+        "unknown"
+      ]
+    },
+    "ffmpeg": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "sha256",
+        "has_libx264",
+        "has_libass",
+        "has_zscale"
+      ],
+      "properties": {
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9]+\\.[0-9]+(\\.[0-9]+)?$"
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "has_libx264": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "has_libass": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "has_zscale": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "python_ok": {
+      "type": "boolean"
+    },
+    "git_ok": {
+      "type": "boolean"
+    },
+    "craft_pins": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "app",
+          "status"
+        ],
+        "properties": {
+          "app": {
+            "type": "string",
+            "enum": [
+              "photocraft",
+              "vectorcraft",
+              "lightcraft",
+              "filmcraft",
+              "effectcraft",
+              "soundcraft"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "match",
+              "fallback-pin",
+              "mismatch",
+              "absent",
+              "unpinned"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

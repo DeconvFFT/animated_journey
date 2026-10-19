@@ -1,0 +1,28 @@
+{
+ "actual": "UNVERIFIED by design: see unverified_reasons",
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 605,
+  "avail_mb_min": 605,
+  "avail_mb_start": 605,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "Windows behaviour of the WP-02 files (Excel handling of hours.csv, py -3 -I on PowerShell 5.1/7) is UNVERIFIED",
+ "notes": "",
+ "package": "WP-02",
+ "schema": "lj-evidence/1",
+ "status": "UNVERIFIED",
+ "test": "windows_unverified",
+ "unverified_reasons": [
+  "py -3 -I scripts\\hours_report.py on Windows PowerShell 5.1 and PowerShell 7 was not run (no Windows here); the script is standard-library Python",
+  "Excel / Notepad behaviour when the maker edits ops/hours.csv (date reformatting, BOM, UTF-16, ANSI) is simulated by bytes in hours_encodings, not observed",
+  "the card commands on the maker's winget ffmpeg build are UNVERIFIED (W-28)"
+ ]
+}

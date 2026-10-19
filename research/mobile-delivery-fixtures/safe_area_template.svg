@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" shape-rendering="geometricPrecision" font-family="Liberation Sans, Arial, sans-serif">
+  <!-- Safe-area template for the Life Journey phone files (mobile-delivery, 2026-10-19). 1920x1080 overlay, transparent background.
+       Composite it over a G2 review-pack frame. Geometry is computed, not drawn by eye:
+       - Venue graphics-safe box (W-18): 5% margins = x 96..1824, y 54..1026.
+       - Fill-crop lines: a 16:9 picture scaled to FILL a landscape 18:9 / 19.5:9 / 20:9 / 21:9 screen loses (1 - (16/9)/A)/2 of its height at top and at bottom:
+         5.56% (y 60), 9.02% (y 97.4), 10.00% (y 108), 11.90% (y 128.6). Mirror lines at the bottom.
+       - Phone essential-text box: x 96..1824, y 130..950 (12% to 88% of height), inside the central 80% band (y 108..972) with a cushion for rounded corners and player overlays.
+       - Caption blocks (two lines, Liberation Sans, ffmpeg subtitles filter on an .srt, measured 2026-10-19):
+           venue W-18 FontSize 23 with MarginV 20 -> block y 847..1004 (bottom margin 6.9%)  [ffmpeg's default MarginV 10 puts descenders at y 1041, 3.5% from the bottom, outside the 5% box]
+           phone  FontSize 28 with MarginV 40 -> block y 737..929 (bottom margin 13.9%), at most 36 characters a line, at most two lines.
+       - Essential action (hands, the object) belongs in the central 80% band in every file, and out of the caption zone in captioned shots. -->
+  <defs>
+    <pattern id="hatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="14" stroke="#E6007E" stroke-width="3" opacity="0.55"/></pattern>
+    <pattern id="hatch2" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><line x1="0" y1="0" x2="0" y2="14" stroke="#00A0C8" stroke-width="3" opacity="0.55"/></pattern>
+  </defs>
+  <g id="lost-to-fill-crop" opacity="0.38">
+    <rect x="0" y="0" width="1920" height="108" fill="#000"/>
+    <rect x="0" y="972" width="1920" height="108" fill="#000"/>
+  </g>
+  <g id="venue-safe-box" fill="none" stroke="#00B050" stroke-width="4" stroke-dasharray="18 10">
+    <rect x="96" y="54" width="1728" height="972"/>
+  </g>
+  <g id="phone-essential-text-box" fill="none" stroke="#FFC000" stroke-width="5">
+    <rect x="96" y="130" width="1728" height="820"/>
+  </g>
+  <g id="central-80-band" stroke="#FF3B30" stroke-width="4">
+    <line x1="0" y1="108" x2="1920" y2="108"/><line x1="0" y1="972" x2="1920" y2="972"/>
+  </g>
+  <g id="fill-crop-lines" stroke="#FF3B30" stroke-width="2" stroke-dasharray="4 8" fill="#FF3B30" font-size="20">
+    <line x1="0" y1="60" x2="1920" y2="60"/><line x1="0" y1="1020" x2="1920" y2="1020"/>
+    <line x1="0" y1="97.4" x2="1920" y2="97.4"/><line x1="0" y1="982.6" x2="1920" y2="982.6"/>
+    <line x1="0" y1="128.6" x2="1920" y2="128.6"/><line x1="0" y1="951.4" x2="1920" y2="951.4"/>
+  </g>
+  <g id="caption-zones">
+    <rect x="96" y="847" width="1728" height="157" fill="url(#hatch2)" stroke="#00A0C8" stroke-width="3"/>
+    <rect x="96" y="737" width="1728" height="192" fill="url(#hatch)" stroke="#E6007E" stroke-width="3"/>
+  </g>
+  <g id="corner-radius-guides" fill="none" stroke="#FF3B30" stroke-width="3" opacity="0.8">
+    <!-- about 70 px at 1920 wide = a 5 mm corner radius on a 140 mm wide screen (assumption, UNVERIFIED) -->
+    <path d="M0 178 A70 70 0 0 1 70 108"/><path d="M1850 108 A70 70 0 0 1 1920 178"/><path d="M0 902 A70 70 0 0 0 70 972"/><path d="M1850 972 A70 70 0 0 0 1920 902"/>
+  </g>
+  <g id="labels" font-size="22" font-weight="bold">
+    <text x="110" y="92" fill="#FF3B30">above this line: lost when a 20:9 phone fills the screen (10%); 19.5:9 loses 9.0%; 21:9 loses 11.9%</text>
+    <text x="110" y="150" fill="#FFC000">phone essential-text box (12% to 88% of height; x 5% to 95%)</text>
+    <text x="110" y="1046" fill="#00B050">venue graphics-safe box W-18 (5% margins)</text>
+    <text x="1000" y="1046" fill="#00A0C8" font-size="20">venue caption zone: FontSize 23, MarginV 20 (y 847 to 1004)</text>
+    <text x="110" y="728" fill="#E6007E" font-size="20">phone caption zone: FontSize 28, MarginV 40, 36 characters a line, two lines (y 737 to 929)</text>
+    <text x="1000" y="966" fill="#FF3B30" font-size="20">below this line: lost under a 20:9 fill crop</text>
+  </g>
+</svg>

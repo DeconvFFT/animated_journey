@@ -9,6 +9,7 @@
 ## Known facts (updated Oct 18, 2026)
 
 - **Who:** the maker's mother (50+). She is from India and Hindu.
+- **Her world (maker, 2026-10-19):** from Bhavnagar (Saurashtra, Gujarat); mother tongue Gujarati; a Pushtimarg (Vallabh) Vaishnav family. The deities of her life: Lord Bal Krishna, Lord Shiva, Yamuna Maharani, Mahaprabhuji (Shri Vallabhacharya), Harsiddhi Maa, Maa Ambe, Ganesh Dada and Lakshmi Maa. She keeps all the Hindu festivals. Her phone is Android. Deep research on this world runs in its own sprint (`research/pushtimarg-*`, `research/saurashtra-*`, `research/gujarati-*`); other tracks key their recommendations to it rather than repeat it.
 - **Theme (maker's definition, 2026-10-19):** when the maker says "Indian themes" it always means Hindu themes: Sanatan Dharma and its sanskriti. Hindu gods, epics, Hindu history, temple architecture and Hindu art traditions are welcome. No Mughal or other Islamic motifs and no Christian motifs, ever. Deities are depicted with correct iconography and respect.
 - **Phone first, too:** the film and any keepsake must play beautifully on a mobile phone, not only on the venue screen.
 - **Build approved (2026-10-19):** the maker approved moving from Learn to building the process on synthetic material, and merging the Learn work into `main`.

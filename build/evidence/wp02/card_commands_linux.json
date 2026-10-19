@@ -1,0 +1,27 @@
+{
+ "actual": "TD-1 prores,1920,1080,yuv422p10le; TD-2 24/1,24/1; TD-4 h264/High/41/yuv420p; colour tv+bt709x3; sound I:/Peak: printed; frame grab ok",
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 605,
+  "avail_mb_min": 605,
+  "avail_mb_start": 605,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "ffmpeg": "6.1.1",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "the settings-card ffprobe/ffmpeg commands give the printed answers on tiny test files (Linux)",
+ "notes": "",
+ "package": "WP-02",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "card_commands_linux",
+ "unverified_reasons": [
+  "the same commands on the maker's Windows PC (winget ffmpeg build) are UNVERIFIED until the PC check and colour-patch runner have run there (W-28)"
+ ]
+}

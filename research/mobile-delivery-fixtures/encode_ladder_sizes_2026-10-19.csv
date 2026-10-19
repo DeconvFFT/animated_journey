@@ -1,0 +1,12 @@
+clip_12s_synthetic,encode,video_Mbps_incl_container,9min_video_MB,9min_total_MB_with_audio,12min_video_MB,12min_total_MB_with_audio
+C1 photo push (grain 3),P1,2.71,183.0,196.0,244.0,262.0
+C1 photo push (grain 3),P2,0.86,58.0,69.0,78.0,92.0
+C1 photo push (grain 3),H1,0.59,40.0,53.0,53.0,70.0
+C2 drawn flat colour (grain 3),P1,2.02,136.0,149.0,182.0,199.0
+C2 drawn flat colour (grain 3),P2,0.42,28.0,39.0,38.0,52.0
+C2 drawn flat colour (grain 3),H1,0.37,25.0,38.0,33.0,50.0
+"C3 dense lines, pan (grain 7)",P1,8.48,572.0,585.0,763.0,780.0
+"C3 dense lines, pan (grain 7)",P2,0.7,47.0,58.0,63.0,78.0
+"C3 dense lines, pan (grain 7)",H1,0.36,25.0,38.0,33.0,50.0
+cap bound,P1 8 Mbps cap + AAC 192k,8.00,540,553,720,737
+cap bound,P2 4 Mbps cap + AAC 160k,4.00,270,281,360,374

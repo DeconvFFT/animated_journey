@@ -1,0 +1,464 @@
+---- lint step0
+$ python3 -I win/tools/ps_lint.py win/step0_pc_tests.ps1
+win/step0_pc_tests.ps1: 0 error(s), 0 warning(s)
+TOTAL: 0 error(s), 0 warning(s) in 1 file(s)
+exit=0
+---- parse script and README fences
+$ bash win/tools/ps_parse.sh
+parser: 7.5.4  scripts: 1  readme fences: 11
+OK   win/step0_pc_tests.ps1
+OK   win/README-MAKER.md (fence starting at line 48)
+OK   win/README-MAKER.md (fence starting at line 54)
+OK   win/README-MAKER.md (fence starting at line 61)
+OK   win/README-MAKER.md (fence starting at line 67)
+OK   win/README-MAKER.md (fence starting at line 88)
+OK   win/README-MAKER.md (fence starting at line 134)
+OK   win/README-MAKER.md (fence starting at line 138)
+OK   win/README-MAKER.md (fence starting at line 142)
+OK   win/README-MAKER.md (fence starting at line 146)
+OK   win/README-MAKER.md (fence starting at line 150)
+OK   win/README-MAKER.md (fence starting at line 154)
+PARSED 12 item(s), 0 parse error(s)
+ps_parse: 0 parse errors
+exit=0
+---- Linux dry run (os.platform non-windows)
+$ <scratch>/pwsh/pwsh -NoProfile -File win/step0_pc_tests.ps1 -Out renders/wp01a/linux_report.json
+Life Journey PC inventory v1.0.0  (read-only; PowerShell 7.5.4)
+This reads facts about this computer and writes ONE report file. It changes nothing, installs nothing,
+uses no network, opens none of your own files, and does not record your name, computer name or any ID.
+[1/19] Loading the identifying-data patterns (scripts\redaction_patterns.json) ... ok
+[2/19] Loading win\pins.json and win\tiers.json (version pins and thresholds) ... ok
+[3/19] Reading the PowerShell version (built in) ... ok
+[4/19] Reading the Windows version (Win32_OperatingSystem and the CurrentVersion registry key, read-only) ... skipped (not Windows)
+[5/19] Reading the processor (Win32_Processor: model name and core counts) ... skipped (not Windows)
+[6/19] Reading RAM (Win32_ComputerSystem: total physical memory only) ... skipped (not Windows)
+[7/19] Listing graphics adapters (Win32_VideoController: name, maker, driver version, reported memory) ... skipped (not Windows)
+[8/19] Asking nvidia-smi for the real graphics memory (only if an NVIDIA adapter was listed) ... skipped (not Windows)
+[9/19] Reading 64-bit graphics memory from the registry (HardwareInformation.qwMemorySize, read-only) for adapters still unresolved ... skipped (not Windows)
+[10/19] Looking for Vulkan (the runtime library file and the vulkaninfo program; only a hint, the Real-ESRGAN test is the proof) ... ok
+[11/19] Listing drives (Win32_LogicalDisk: letter, kind, file system, size, free space; no labels, no serials) ... skipped (not Windows)
+[12/19] Reading the screen (current mode from Win32_VideoController, scale from the registry, screen count) ... skipped (not Windows)
+[13/19] Checking ffmpeg and ffprobe (runs "-version" and lists filters; hashes the ffmpeg file; the path is not recorded) ... ok
+[14/19] Checking Python, Git and winget (runs "--version" on each one that is on PATH) ... ok
+[15/19] Checking WSL, VeraCrypt, ImageMagick, Inkscape and Blender (WSL status only; the others are found by file, never started) ... ok
+[16/19] Looking for Craft app folders under the tools folders (folder names only; no Craft app is started) ... ok
+[17/19] Counting enabled local accounts and checking whether the Claude app is running (a count and a yes or no; no names) ... skipped (not Windows)
+[18/19] Self-scan: checking the finished report for identifying data before writing ... ok
+NOTE name check skipped for a computer_name of 2 character(s): shorter than the minimum, so it would match ordinary words (the pattern checks still ran)
+[19/19] Writing the report to renders/wp01a/linux_report.json ... ok
+
+Next: open the report in Notepad (File Explorer, type %TEMP% in the address bar), read it, and paste it into chat only. Do not copy it into the project folder.
+files written: renders/wp01a/linux_report.json
+exit=0
+---- checker on the Linux report: NOT A WINDOWS REPORT
+$ python3 -I scripts/windows_check.py renders/wp01a/linux_report.json
+PC REPORT CHECK
+encoding: UTF-8
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+NOT A WINDOWS REPORT: os.platform is non-windows. A report made on Linux or macOS (a test run) says nothing about the maker's PC.
+RESULT: exit 1 (valid report, but not a Windows report; no tier file was written)
+exit=1
+---- checker: report_gpu12_pro_16gb
+$ python3 -I scripts/windows_check.py tests/win/fixtures/report_gpu12_pro_16gb.json
+PC REPORT CHECK
+encoding: UTF-8
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+TIER TABLE (chat use only: it shows exact sizes; file pc_tier.json, never this)
+  gpu_tier        gpu-8-12   NVIDIA, 12.0 GB read from nvidia-smi
+  ram_tier        16+        15.9 GB; WSL2 ok (16 GB or more)
+  edition         pro-or-higher Pro or higher (Professional): BitLocker can be offered; a VeraCrypt file container works too
+  disk            roomy      best drive has 640.2 GB free; C: has 212.4 GB free
+  display         fhd        1920x1080 at 60 Hz, scale 100%, 1 screen(s)
+  blender floor   meets (4 cores / 8 GB RAM / 2 GB VRAM)
+  ffmpeg          7.1  libx264 libass zscale  sha256 3f2a9c41d7e8...
+                  run the colour-patch test on this build (it is the build the PC will use; the container used 6.1.1)
+  python          3.13.15
+  git             2.55.0
+  other tools     winget yes, magick no, inkscape no, blender no, wsl yes, veracrypt no
+  craft pins      photocraft absent; vectorcraft absent; lightcraft absent; filmcraft absent; effectcraft absent; soundcraft unpinned (learning only)
+  shared_pc_hint  1 enabled local account: no sign of sharing from the machine alone. O-03 is still about her home, so still ask.
+RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)
+exit=0
+---- checker: report_nogpu_home_8gb
+$ python3 -I scripts/windows_check.py tests/win/fixtures/report_nogpu_home_8gb.json
+PC REPORT CHECK
+encoding: UTF-8
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+TIER TABLE (chat use only: it shows exact sizes; file pc_tier.json, never this)
+  gpu_tier        none       no graphics device other than a software one (CPU-only path; cloud steps only where Decision 6 allows)
+  ram_tier        8-15       7.8 GB; WSL2 not advised (under 16 GB; run one heavy program at a time)
+  edition         home       Home (Core): BitLocker not offered; the VeraCrypt file container works on Home (W-25)
+  disk            tight      best drive has 61.5 GB free; C: has 61.5 GB free
+  display         below-fhd  1366x768 at 60 Hz, scale 100%, 1 screen(s)
+  blender floor   below on: cores, GPU (no graphics card: Blender still runs, Cycles on the CPU, EEVEE and the viewport slowly)
+  ffmpeg          7.1  libx264 libass zscale  sha256 3f2a9c41d7e8...
+                  run the colour-patch test on this build (it is the build the PC will use; the container used 6.1.1)
+  python          3.13.15
+  git             2.55.0
+  other tools     winget yes, magick no, inkscape no, blender no, wsl no, veracrypt no
+  craft pins      photocraft absent; vectorcraft absent; lightcraft absent; filmcraft absent; effectcraft absent; soundcraft unpinned (learning only)
+  shared_pc_hint  2 enabled local accounts: the PC may be shared. Ask O-03; if she can reach this PC, use the separate project account (W-26).
+RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)
+exit=0
+---- checker: report_software_gpu
+$ python3 -I scripts/windows_check.py tests/win/fixtures/report_software_gpu.json
+PC REPORT CHECK
+encoding: UTF-8
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+TIER TABLE (chat use only: it shows exact sizes; file pc_tier.json, never this)
+  gpu_tier        none       no graphics device other than a software one (CPU-only path; cloud steps only where Decision 6 allows)
+  ram_tier        16+        15.9 GB; WSL2 ok (16 GB or more)
+  edition         pro-or-higher Pro or higher (Professional): BitLocker can be offered; a VeraCrypt file container works too
+  disk            roomy      best drive has 640.2 GB free; C: has 212.4 GB free
+  display         fhd        1920x1080 at 60 Hz, scale 100%, 1 screen(s)
+  blender floor   below on: GPU (no graphics card: Blender still runs, Cycles on the CPU, EEVEE and the viewport slowly)
+  ffmpeg          7.1  libx264 libass zscale  sha256 3f2a9c41d7e8...
+                  run the colour-patch test on this build (it is the build the PC will use; the container used 6.1.1)
+  python          3.13.15
+  git             2.55.0
+  other tools     winget yes, magick no, inkscape no, blender no, wsl yes, veracrypt no
+  craft pins      photocraft absent; vectorcraft absent; lightcraft absent; filmcraft absent; effectcraft absent; soundcraft unpinned (learning only)
+  shared_pc_hint  1 enabled local account: no sign of sharing from the machine alone. O-03 is still about her home, so still ask.
+RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)
+exit=0
+---- checker: report_vram_nvidia_over_cap
+$ python3 -I scripts/windows_check.py tests/win/fixtures/report_vram_nvidia_over_cap.json
+PC REPORT CHECK
+encoding: UTF-8
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+TIER TABLE (chat use only: it shows exact sizes; file pc_tier.json, never this)
+  gpu_tier        gpu-16+    NVIDIA, 24.0 GB read from nvidia-smi
+  ram_tier        16+        15.9 GB; WSL2 ok (16 GB or more)
+  edition         pro-or-higher Pro or higher (Professional): BitLocker can be offered; a VeraCrypt file container works too
+  disk            roomy      best drive has 640.2 GB free; C: has 212.4 GB free
+  display         fhd        1920x1080 at 60 Hz, scale 100%, 1 screen(s)
+  blender floor   meets (4 cores / 8 GB RAM / 2 GB VRAM)
+  ffmpeg          7.1  libx264 libass zscale  sha256 3f2a9c41d7e8...
+                  run the colour-patch test on this build (it is the build the PC will use; the container used 6.1.1)
+  python          3.13.15
+  git             2.55.0
+  other tools     winget yes, magick no, inkscape no, blender no, wsl yes, veracrypt no
+  craft pins      photocraft absent; vectorcraft absent; lightcraft absent; filmcraft absent; effectcraft absent; soundcraft unpinned (learning only)
+  shared_pc_hint  1 enabled local account: no sign of sharing from the machine alone. O-03 is still about her home, so still ask.
+RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)
+exit=0
+---- checker: report_vram_capped_only
+$ python3 -I scripts/windows_check.py tests/win/fixtures/report_vram_capped_only.json
+PC REPORT CHECK
+encoding: UTF-8
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+TIER TABLE (chat use only: it shows exact sizes; file pc_tier.json, never this)
+  gpu_tier        unknown    a graphics device is present but its VRAM could not be read
+  ram_tier        16+        15.9 GB; WSL2 ok (16 GB or more)
+  edition         pro-or-higher Pro or higher (Professional): BitLocker can be offered; a VeraCrypt file container works too
+  disk            roomy      best drive has 640.2 GB free; C: has 212.4 GB free
+  display         fhd        1920x1080 at 60 Hz, scale 100%, 1 screen(s)
+  blender floor   meets (4 cores / 8 GB RAM / 2 GB VRAM); GPU memory unreadable, so the VRAM part is not judged
+  ffmpeg          7.1  libx264 libass zscale  sha256 3f2a9c41d7e8...
+                  run the colour-patch test on this build (it is the build the PC will use; the container used 6.1.1)
+  python          3.13.15
+  git             2.55.0
+  other tools     winget yes, magick no, inkscape no, blender no, wsl yes, veracrypt no
+  craft pins      photocraft absent; vectorcraft absent; lightcraft absent; filmcraft absent; effectcraft absent; soundcraft unpinned (learning only)
+  shared_pc_hint  1 enabled local account: no sign of sharing from the machine alone. O-03 is still about her home, so still ask.
+FINDING: VRAM unreadable: AdapterRAM stops near 4 GB, and neither nvidia-smi nor the registry value answered. Open Task Manager, Performance, GPU, and read 'Dedicated GPU memory'; tell the orchestrator the number.
+RESULT: exit 1 (valid; 1 finding(s) need a human)
+exit=1
+---- checker: report_ffmpeg9
+$ python3 -I scripts/windows_check.py tests/win/fixtures/report_ffmpeg9.json
+PC REPORT CHECK
+encoding: UTF-8
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+TIER TABLE (chat use only: it shows exact sizes; file pc_tier.json, never this)
+  gpu_tier        gpu-8-12   NVIDIA, 12.0 GB read from nvidia-smi
+  ram_tier        16+        15.9 GB; WSL2 ok (16 GB or more)
+  edition         pro-or-higher Pro or higher (Professional): BitLocker can be offered; a VeraCrypt file container works too
+  disk            roomy      best drive has 640.2 GB free; C: has 212.4 GB free
+  display         fhd        1920x1080 at 60 Hz, scale 100%, 1 screen(s)
+  blender floor   meets (4 cores / 8 GB RAM / 2 GB VRAM)
+  ffmpeg          9.0.2  libx264 libass zscale  sha256 3f2a9c41d7e8...
+                  run the colour-patch test on this build (it is the build the PC will use; the container used 6.1.1)
+  python          3.13.15
+  git             2.55.0
+  other tools     winget yes, magick no, inkscape no, blender no, wsl yes, veracrypt no
+  craft pins      photocraft absent; vectorcraft absent; lightcraft absent; filmcraft absent; effectcraft absent; soundcraft unpinned (learning only)
+  shared_pc_hint  1 enabled local account: no sign of sharing from the machine alone. O-03 is still about her home, so still ask.
+RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)
+exit=0
+---- checker: report_craft_pins_mixed
+$ python3 -I scripts/windows_check.py tests/win/fixtures/report_craft_pins_mixed.json
+PC REPORT CHECK
+encoding: UTF-8
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+TIER TABLE (chat use only: it shows exact sizes; file pc_tier.json, never this)
+  gpu_tier        gpu-8-12   NVIDIA, 12.0 GB read from nvidia-smi
+  ram_tier        16+        15.9 GB; WSL2 ok (16 GB or more)
+  edition         pro-or-higher Pro or higher (Professional): BitLocker can be offered; a VeraCrypt file container works too
+  disk            roomy      best drive has 640.2 GB free; C: has 212.4 GB free
+  display         fhd        1920x1080 at 60 Hz, scale 100%, 1 screen(s)
+  blender floor   meets (4 cores / 8 GB RAM / 2 GB VRAM)
+  ffmpeg          7.1  libx264 libass zscale  sha256 3f2a9c41d7e8...
+                  run the colour-patch test on this build (it is the build the PC will use; the container used 6.1.1)
+  python          3.13.15
+  git             2.55.0
+  other tools     winget yes, magick no, inkscape no, blender no, wsl yes, veracrypt no
+  craft pins      photocraft match (0.10.0); vectorcraft MISMATCH (0.12.9); lightcraft absent; filmcraft fallback pin (0.8.0); effectcraft absent; soundcraft unpinned (learning only)
+  shared_pc_hint  1 enabled local account: no sign of sharing from the machine alone. O-03 is still about her home, so still ask.
+FINDING: Craft pin mismatch: vectorcraft 0.12.9 is not the pinned 0.13.1 (win/pins.json, W-22).
+RESULT: exit 1 (valid; 1 finding(s) need a human)
+exit=1
+---- checker: report_identifying
+$ python3 -I scripts/windows_check.py tests/win/fixtures/report_identifying.json
+PC REPORT CHECK
+encoding: UTF-8
+REDACTION CHECK FAILED, identifying data found; nothing was written. Do not paste this report anywhere.
+category=email field=tools.git.notes hit=ta********
+category=ipv4 field=notes[0] hit=10********
+category=mac field=notes[3] hit=02********
+category=profile_path_windows field=errors[0] hit=C:********
+exit=2
+---- checker: report_bom
+$ python3 -I scripts/windows_check.py tests/win/fixtures/report_bom.json
+PC REPORT CHECK
+encoding: UTF-8 with BOM
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+TIER TABLE (chat use only: it shows exact sizes; file pc_tier.json, never this)
+  gpu_tier        gpu-8-12   NVIDIA, 12.0 GB read from nvidia-smi
+  ram_tier        16+        15.9 GB; WSL2 ok (16 GB or more)
+  edition         pro-or-higher Pro or higher (Professional): BitLocker can be offered; a VeraCrypt file container works too
+  disk            roomy      best drive has 640.2 GB free; C: has 212.4 GB free
+  display         fhd        1920x1080 at 60 Hz, scale 100%, 1 screen(s)
+  blender floor   meets (4 cores / 8 GB RAM / 2 GB VRAM)
+  ffmpeg          7.1  libx264 libass zscale  sha256 3f2a9c41d7e8...
+                  run the colour-patch test on this build (it is the build the PC will use; the container used 6.1.1)
+  python          3.13.15
+  git             2.55.0
+  other tools     winget yes, magick no, inkscape no, blender no, wsl yes, veracrypt no
+  craft pins      photocraft absent; vectorcraft absent; lightcraft absent; filmcraft absent; effectcraft absent; soundcraft unpinned (learning only)
+  shared_pc_hint  1 enabled local account: no sign of sharing from the machine alone. O-03 is still about her home, so still ask.
+RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)
+exit=0
+---- forbid exampleperson (absent)
+$ python3 -I scripts/windows_check.py --forbid exampleperson tests/win/fixtures/report_gpu12_pro_16gb.json
+PC REPORT CHECK
+encoding: UTF-8
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+TIER TABLE (chat use only: it shows exact sizes; file pc_tier.json, never this)
+  gpu_tier        gpu-8-12   NVIDIA, 12.0 GB read from nvidia-smi
+  ram_tier        16+        15.9 GB; WSL2 ok (16 GB or more)
+  edition         pro-or-higher Pro or higher (Professional): BitLocker can be offered; a VeraCrypt file container works too
+  disk            roomy      best drive has 640.2 GB free; C: has 212.4 GB free
+  display         fhd        1920x1080 at 60 Hz, scale 100%, 1 screen(s)
+  blender floor   meets (4 cores / 8 GB RAM / 2 GB VRAM)
+  ffmpeg          7.1  libx264 libass zscale  sha256 3f2a9c41d7e8...
+                  run the colour-patch test on this build (it is the build the PC will use; the container used 6.1.1)
+  python          3.13.15
+  git             2.55.0
+  other tools     winget yes, magick no, inkscape no, blender no, wsl yes, veracrypt no
+  craft pins      photocraft absent; vectorcraft absent; lightcraft absent; filmcraft absent; effectcraft absent; soundcraft unpinned (learning only)
+  shared_pc_hint  1 enabled local account: no sign of sharing from the machine alone. O-03 is still about her home, so still ask.
+RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)
+exit=0
+---- forbid zeta, collision
+$ python3 -I scripts/windows_check.py --forbid zeta tests/win/fixtures/report_short_username_collision.json
+PC REPORT CHECK
+encoding: UTF-8
+NOTE category=user_name field=gpus[0].name hit=ze** (a hardware-name field: reported, not refused)
+NOTE category=user_name field=gpus[0].vendor hit=ze** (a hardware-name field: reported, not refused)
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+TIER TABLE (chat use only: it shows exact sizes; file pc_tier.json, never this)
+  gpu_tier        gpu-low    other, 8.0 GB read from registry_qwMemorySize; non-NVIDIA card: capped at gpu-low until a test says otherwise
+  ram_tier        16+        15.9 GB; WSL2 ok (16 GB or more)
+  edition         pro-or-higher Pro or higher (Professional): BitLocker can be offered; a VeraCrypt file container works too
+  disk            roomy      best drive has 640.2 GB free; C: has 212.4 GB free
+  display         fhd        1920x1080 at 60 Hz, scale 100%, 1 screen(s)
+  blender floor   meets (4 cores / 8 GB RAM / 2 GB VRAM)
+  ffmpeg          7.1  libx264 libass zscale  sha256 3f2a9c41d7e8...
+                  run the colour-patch test on this build (it is the build the PC will use; the container used 6.1.1)
+  python          3.13.15
+  git             2.55.0
+  other tools     winget yes, magick no, inkscape no, blender no, wsl yes, veracrypt no
+  craft pins      photocraft absent; vectorcraft absent; lightcraft absent; filmcraft absent; effectcraft absent; soundcraft unpinned (learning only)
+  shared_pc_hint  1 enabled local account: no sign of sharing from the machine alone. O-03 is still about her home, so still ask.
+RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)
+exit=0
+---- forbid zeta, leak
+$ python3 -I scripts/windows_check.py --forbid zeta tests/win/fixtures/report_short_username_leak.json
+PC REPORT CHECK
+encoding: UTF-8
+REDACTION CHECK FAILED, identifying data found; nothing was written. Do not paste this report anywhere.
+category=user_name field=tools.git.notes hit=ze**
+exit=2
+---- version strings that look like IPv4
+$ python3 -I scripts/windows_check.py tests/win/fixtures/report_version_strings_not_ip.json
+PC REPORT CHECK
+encoding: UTF-8
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+TIER TABLE (chat use only: it shows exact sizes; file pc_tier.json, never this)
+  gpu_tier        gpu-8-12   NVIDIA, 12.0 GB read from nvidia-smi
+  ram_tier        16+        15.9 GB; WSL2 ok (16 GB or more)
+  edition         pro-or-higher Pro or higher (Professional): BitLocker can be offered; a VeraCrypt file container works too
+  disk            roomy      best drive has 640.2 GB free; C: has 212.4 GB free
+  display         fhd        1920x1080 at 60 Hz, scale 100%, 1 screen(s)
+  blender floor   meets (4 cores / 8 GB RAM / 2 GB VRAM)
+  ffmpeg          7.1  libx264 libass zscale  sha256 3f2a9c41d7e8...
+                  run the colour-patch test on this build (it is the build the PC will use; the container used 6.1.1)
+  python          3.13.15
+  git             2.55.0
+  other tools     winget yes, magick no, inkscape no, blender no, wsl yes, veracrypt no
+  craft pins      photocraft absent; vectorcraft absent; lightcraft absent; filmcraft absent; effectcraft absent; soundcraft unpinned (learning only)
+  shared_pc_hint  1 enabled local account: no sign of sharing from the machine alone. O-03 is still about her home, so still ask.
+RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)
+exit=0
+---- 64-hex hash
+$ python3 -I scripts/windows_check.py tests/win/fixtures/report_sha256_ok.json
+PC REPORT CHECK
+encoding: UTF-8
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+TIER TABLE (chat use only: it shows exact sizes; file pc_tier.json, never this)
+  gpu_tier        gpu-8-12   NVIDIA, 12.0 GB read from nvidia-smi
+  ram_tier        16+        15.9 GB; WSL2 ok (16 GB or more)
+  edition         pro-or-higher Pro or higher (Professional): BitLocker can be offered; a VeraCrypt file container works too
+  disk            roomy      best drive has 640.2 GB free; C: has 212.4 GB free
+  display         fhd        1920x1080 at 60 Hz, scale 100%, 1 screen(s)
+  blender floor   meets (4 cores / 8 GB RAM / 2 GB VRAM)
+  ffmpeg          7.1  libx264 libass zscale  sha256 3f2a9c41d7e8...
+                  run the colour-patch test on this build (it is the build the PC will use; the container used 6.1.1)
+  python          3.13.15
+  git             2.55.0
+  other tools     winget yes, magick no, inkscape no, blender no, wsl yes, veracrypt no
+  craft pins      photocraft absent; vectorcraft absent; lightcraft absent; filmcraft absent; effectcraft absent; soundcraft unpinned (learning only)
+  shared_pc_hint  1 enabled local account: no sign of sharing from the machine alone. O-03 is still about her home, so still ask.
+RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)
+exit=0
+---- 65-hex leak
+$ python3 -I scripts/windows_check.py tests/win/fixtures/report_hex65_leak.json
+PC REPORT CHECK
+encoding: UTF-8
+REDACTION CHECK FAILED, identifying data found; nothing was written. Do not paste this report anywhere.
+category=guid_serial field=notes[0] hit=3f********
+exit=2
+---- tier file
+$ python3 -I scripts/windows_check.py --tier-json-out renders/wp01a/pc_tier.json tests/win/fixtures/report_gpu12_pro_16gb.json
+PC REPORT CHECK
+encoding: UTF-8
+identifying-data scan: PASS (patterns version 1)
+schema: PASS (report format v1 from lj-step0-pc-tests)
+TIER TABLE (chat use only: it shows exact sizes; file pc_tier.json, never this)
+  gpu_tier        gpu-8-12   NVIDIA, 12.0 GB read from nvidia-smi
+  ram_tier        16+        15.9 GB; WSL2 ok (16 GB or more)
+  edition         pro-or-higher Pro or higher (Professional): BitLocker can be offered; a VeraCrypt file container works too
+  disk            roomy      best drive has 640.2 GB free; C: has 212.4 GB free
+  display         fhd        1920x1080 at 60 Hz, scale 100%, 1 screen(s)
+  blender floor   meets (4 cores / 8 GB RAM / 2 GB VRAM)
+  ffmpeg          7.1  libx264 libass zscale  sha256 3f2a9c41d7e8...
+                  run the colour-patch test on this build (it is the build the PC will use; the container used 6.1.1)
+  python          3.13.15
+  git             2.55.0
+  other tools     winget yes, magick no, inkscape no, blender no, wsl yes, veracrypt no
+  craft pins      photocraft absent; vectorcraft absent; lightcraft absent; filmcraft absent; effectcraft absent; soundcraft unpinned (learning only)
+  shared_pc_hint  1 enabled local account: no sign of sharing from the machine alone. O-03 is still about her home, so still ask.
+wrote: tier-json-out (buckets and verdict words only; the only PC data that may be filed)
+RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)
+exit=0
+---- renders/wp01a/pc_tier.json
+{
+  "schema": "lj-pc-tier/1",
+  "date": "2026-10-20",
+  "windows": {
+    "edition_family": "pro-or-higher",
+    "build_major": 22631
+  },
+  "gpu_tier": "gpu-8-12",
+  "vram_bucket": "12-15",
+  "ram_tier": "16+",
+  "disk_tier": "roomy",
+  "display_class": "fhd",
+  "ffmpeg": {
+    "version": "7.1",
+    "sha256": "3f2a9c41d7e85b60a1c4e9f0b2d37a85c6e1f4092b8d3a7e5c1f60d9b4a28e73",
+    "has_libx264": true,
+    "has_libass": true,
+    "has_zscale": true
+  },
+  "python_ok": true,
+  "git_ok": true,
+  "craft_pins": [
+    {
+      "app": "photocraft",
+      "status": "absent"
+    },
+    {
+      "app": "vectorcraft",
+      "status": "absent"
+    },
+    {
+      "app": "lightcraft",
+      "status": "absent"
+    },
+    {
+      "app": "filmcraft",
+      "status": "absent"
+    },
+    {
+      "app": "effectcraft",
+      "status": "absent"
+    },
+    {
+      "app": "soundcraft",
+      "status": "unpinned"
+    }
+  ]
+}
+---- script self-scan: identifying fixture with invented names
+$ <scratch>/pwsh/pwsh -NoProfile -File win/step0_pc_tests.ps1 -TestFixture tests/win/fixtures/report_identifying.json -FakeUser tamsinwrex -FakeComputer BRAMBLE-Q7 -FakeDomain bramblenet -Out renders/wp01a/none.json
+Life Journey PC inventory v1.0.0  (read-only; PowerShell 7.5.4)
+TEST MODE: nothing was collected
+[1/19] Loading the identifying-data patterns (scripts\redaction_patterns.json) ... ok
+REDACTION CHECK FAILED, nothing was written
+category=email field=tools.git.notes hit=ta********
+category=user_name field=tools.git.notes hit=ta**
+category=ipv4 field=notes[0] hit=10********
+category=user_name field=notes[1] hit=ta********
+category=computer_name field=notes[2] hit=BR********
+category=domain_name field=notes[2] hit=br**
+category=mac field=notes[3] hit=02********
+category=profile_path_windows field=errors[0] hit=C:********
+category=user_name field=errors[0] hit=ta********
+files written: none
+exit=2
+renders/wp01a/none.json exists: no
+---- script self-scan: collision fixture, user zeta
+$ <scratch>/pwsh/pwsh -NoProfile -File win/step0_pc_tests.ps1 -TestFixture tests/win/fixtures/report_short_username_collision.json -FakeUser zeta -Out renders/wp01a/collision.json
+Life Journey PC inventory v1.0.0  (read-only; PowerShell 7.5.4)
+TEST MODE: nothing was collected
+[1/19] Loading the identifying-data patterns (scripts\redaction_patterns.json) ... ok
+NOTE category=user_name field=gpus[0].name hit=ze** (a hardware-name field: reported, not refused)
+NOTE category=user_name field=gpus[0].vendor hit=ze** (a hardware-name field: reported, not refused)
+redaction check passed
+files written: renders/wp01a/collision.json
+exit=0
+renders/wp01a/collision.json exists: yes
+---- script self-scan: leak fixture, user zeta
+$ <scratch>/pwsh/pwsh -NoProfile -File win/step0_pc_tests.ps1 -TestFixture tests/win/fixtures/report_short_username_leak.json -FakeUser zeta -Out renders/wp01a/leak.json
+Life Journey PC inventory v1.0.0  (read-only; PowerShell 7.5.4)
+TEST MODE: nothing was collected
+[1/19] Loading the identifying-data patterns (scripts\redaction_patterns.json) ... ok
+REDACTION CHECK FAILED, nothing was written
+category=user_name field=tools.git.notes hit=ze**
+files written: none
+exit=2
+renders/wp01a/leak.json exists: no

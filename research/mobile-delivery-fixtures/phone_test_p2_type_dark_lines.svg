@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" font-family="Liberation Sans, Arial, sans-serif" shape-rendering="geometricPrecision">
+<rect width="1920" height="1080" fill="rgb(0,0,0)"/>
+<text x="60" y="50" font-size="24" fill="#bbb" font-weight="bold">DARK STEPS (8-bit code, limited range; 16 = black)</text>
+<rect x="60" y="100" width="170" height="130" fill="rgb(0,0,0)"/>
+<text x="145" y="175" font-size="34" fill="#777" text-anchor="middle" font-weight="bold">16</text>
+<rect x="250" y="100" width="170" height="130" fill="rgb(5,5,5)"/>
+<text x="335" y="175" font-size="34" fill="#777" text-anchor="middle" font-weight="bold">20</text>
+<rect x="440" y="100" width="170" height="130" fill="rgb(9,9,9)"/>
+<text x="525" y="175" font-size="34" fill="#777" text-anchor="middle" font-weight="bold">24</text>
+<rect x="60" y="250" width="170" height="130" fill="rgb(14,14,14)"/>
+<text x="145" y="325" font-size="34" fill="#777" text-anchor="middle" font-weight="bold">28</text>
+<rect x="250" y="250" width="170" height="130" fill="rgb(19,19,19)"/>
+<text x="335" y="325" font-size="34" fill="#777" text-anchor="middle" font-weight="bold">32</text>
+<rect x="440" y="250" width="170" height="130" fill="rgb(23,23,23)"/>
+<text x="525" y="325" font-size="34" fill="#777" text-anchor="middle" font-weight="bold">36</text>
+<rect x="60" y="400" width="170" height="130" fill="rgb(28,28,28)"/>
+<text x="145" y="475" font-size="34" fill="#777" text-anchor="middle" font-weight="bold">40</text>
+<rect x="250" y="400" width="170" height="130" fill="rgb(37,37,37)"/>
+<text x="335" y="475" font-size="34" fill="#777" text-anchor="middle" font-weight="bold">48</text>
+<rect x="440" y="400" width="170" height="130" fill="rgb(47,47,47)"/>
+<text x="525" y="475" font-size="34" fill="#777" text-anchor="middle" font-weight="bold">56</text>
+<rect x="60" y="550" width="170" height="130" fill="rgb(56,56,56)"/>
+<text x="145" y="625" font-size="34" fill="#222" text-anchor="middle" font-weight="bold">64</text>
+<rect x="250" y="550" width="170" height="130" fill="rgb(75,75,75)"/>
+<text x="335" y="625" font-size="34" fill="#222" text-anchor="middle" font-weight="bold">80</text>
+<rect x="440" y="550" width="170" height="130" fill="rgb(98,98,98)"/>
+<text x="525" y="625" font-size="34" fill="#222" text-anchor="middle" font-weight="bold">100</text>
+<text x="60" y="730" font-size="24" fill="#999">Lowest code you can tell from the 16 patch at 50% brightness in the room:</text>
+<text x="60" y="765" font-size="24" fill="#999">write it down. Trim P must lift picture detail above that code.</text>
+<text x="700" y="50" font-size="24" fill="#bbb" font-weight="bold">TYPE LADDER (x-height as % of picture height)</text>
+<text x="700" y="125" font-size="26" fill="#999">2.5%</text><text x="790" y="125" font-size="52.0" fill="#f3e9d2">She kept the key</text>
+<text x="700" y="195.2543352601156" font-size="26" fill="#999">3.0%</text><text x="790" y="195.2543352601156" font-size="62.4" fill="#f3e9d2">She kept the key</text>
+<text x="700" y="271.9595375722543" font-size="26" fill="#999">3.3%</text><text x="790" y="271.9595375722543" font-size="68.7" fill="#f3e9d2">She kept the key</text>
+<text x="700" y="352.5352601156069" font-size="26" fill="#999">3.5%</text><text x="790" y="352.5352601156069" font-size="72.8" fill="#f3e9d2">She kept the key</text>
+<text x="700" y="435.69132947976874" font-size="26" fill="#999">4.0%</text><text x="790" y="435.69132947976874" font-size="83.2" fill="#f3e9d2">She kept the key</text>
+<text x="700" y="525.2982658959537" font-size="26" fill="#999">4.5%</text><text x="790" y="525.2982658959537" font-size="93.6" fill="#f3e9d2">She kept the key</text>
+<text x="700" y="621.3560693641618" font-size="26" fill="#999">5.0%</text><text x="790" y="621.3560693641618" font-size="104.0" fill="#f3e9d2">She kept the key</text>
+<rect x="60" y="800" width="840" height="230" fill="#F3E9D2"/><rect x="920" y="800" width="840" height="230" fill="#1F2A5A"/>
+<text x="70" y="826" font-size="20" fill="#333" font-weight="bold">LINES 1, 2, 3, 4, 6 px (black on cream, pixel-aligned)</text><text x="930" y="826" font-size="20" fill="#eee" font-weight="bold">LINES 2, 3, 4 px (cream on indigo)</text>
+<rect x="90" y="840" width="1" height="170" fill="#181410"/>
+<rect x="100" y="840" width="1" height="170" fill="#181410"/>
+<rect x="110" y="840" width="1" height="170" fill="#181410"/>
+<rect x="120" y="840" width="1" height="170" fill="#181410"/>
+<rect x="130" y="840" width="1" height="170" fill="#181410"/>
+<rect x="170" y="840" width="2" height="170" fill="#181410"/>
+<rect x="181" y="840" width="2" height="170" fill="#181410"/>
+<rect x="192" y="840" width="2" height="170" fill="#181410"/>
+<rect x="203" y="840" width="2" height="170" fill="#181410"/>
+<rect x="214" y="840" width="2" height="170" fill="#181410"/>
+<rect x="255" y="840" width="3" height="170" fill="#181410"/>
+<rect x="267" y="840" width="3" height="170" fill="#181410"/>
+<rect x="279" y="840" width="3" height="170" fill="#181410"/>
+<rect x="291" y="840" width="3" height="170" fill="#181410"/>
+<rect x="303" y="840" width="3" height="170" fill="#181410"/>
+<rect x="345" y="840" width="4" height="170" fill="#181410"/>
+<rect x="358" y="840" width="4" height="170" fill="#181410"/>
+<rect x="371" y="840" width="4" height="170" fill="#181410"/>
+<rect x="384" y="840" width="4" height="170" fill="#181410"/>
+<rect x="397" y="840" width="4" height="170" fill="#181410"/>
+<rect x="440" y="840" width="6" height="170" fill="#181410"/>
+<rect x="455" y="840" width="6" height="170" fill="#181410"/>
+<rect x="470" y="840" width="6" height="170" fill="#181410"/>
+<rect x="485" y="840" width="6" height="170" fill="#181410"/>
+<rect x="500" y="840" width="6" height="170" fill="#181410"/>
+<rect x="950" y="840" width="2" height="170" fill="#F3E9D2"/>
+<rect x="961" y="840" width="2" height="170" fill="#F3E9D2"/>
+<rect x="972" y="840" width="2" height="170" fill="#F3E9D2"/>
+<rect x="983" y="840" width="2" height="170" fill="#F3E9D2"/>
+<rect x="994" y="840" width="2" height="170" fill="#F3E9D2"/>
+<rect x="1035" y="840" width="3" height="170" fill="#F3E9D2"/>
+<rect x="1047" y="840" width="3" height="170" fill="#F3E9D2"/>
+<rect x="1059" y="840" width="3" height="170" fill="#F3E9D2"/>
+<rect x="1071" y="840" width="3" height="170" fill="#F3E9D2"/>
+<rect x="1083" y="840" width="3" height="170" fill="#F3E9D2"/>
+<rect x="1125" y="840" width="4" height="170" fill="#F3E9D2"/>
+<rect x="1138" y="840" width="4" height="170" fill="#F3E9D2"/>
+<rect x="1151" y="840" width="4" height="170" fill="#F3E9D2"/>
+<rect x="1164" y="840" width="4" height="170" fill="#F3E9D2"/>
+<rect x="1177" y="840" width="4" height="170" fill="#F3E9D2"/>
+<text x="1250" y="866" font-size="20" fill="#eee" font-weight="bold">hatch 3 px at 9 px pitch</text>
+<rect x="1250" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1259" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1268" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1277" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1286" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1295" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1304" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1313" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1322" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1331" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1340" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1349" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1358" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1367" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1376" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1385" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1394" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1403" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1412" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1421" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1430" y="880" width="3" height="60" fill="#F3E9D2"/>
+<rect x="1439" y="880" width="3" height="60" fill="#F3E9D2"/>
+<text x="1250" y="976" font-size="20" fill="#eee" font-weight="bold">dots 6 px (pulli)</text>
+<circle cx="1262" cy="1000" r="3" fill="#F3E9D2"/>
+<circle cx="1292" cy="1000" r="3" fill="#F3E9D2"/>
+<circle cx="1322" cy="1000" r="3" fill="#F3E9D2"/>
+<circle cx="1352" cy="1000" r="3" fill="#F3E9D2"/>
+<circle cx="1382" cy="1000" r="3" fill="#F3E9D2"/>
+<circle cx="1412" cy="1000" r="3" fill="#F3E9D2"/>
+<circle cx="1442" cy="1000" r="3" fill="#F3E9D2"/>
+<circle cx="1472" cy="1000" r="3" fill="#F3E9D2"/>
+<circle cx="1502" cy="1000" r="3" fill="#F3E9D2"/>
+<circle cx="1532" cy="1000" r="3" fill="#F3E9D2"/>
+<circle cx="1562" cy="1000" r="3" fill="#F3E9D2"/>
+<circle cx="1592" cy="1000" r="3" fill="#F3E9D2"/>
+</svg>

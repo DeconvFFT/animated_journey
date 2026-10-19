@@ -1,0 +1,2 @@
+# test deny list for hours_bad_note.csv (a made-up token, not a real name)
+Qzxplorp

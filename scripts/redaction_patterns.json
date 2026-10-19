@@ -1,0 +1,858 @@
+{
+ "schema": "lj-redaction-patterns/1",
+ "version": 1,
+ "owner": "WP-03",
+ "status": "frozen",
+ "dialect": "common subset of Python re and .NET regex: [0-9] not \\d, \\b and backslash-punctuation escapes only, non-capturing groups, character classes, {m,n}, lookahead, fixed-width lookbehind; no named groups, no possessive quantifiers, no atomic groups, no inline flags (flags is '' or 'i'), no \\w \\s \\d.",
+ "how_to_read": "Samples are arrays of string fragments joined at load time, so this file never contains the strings it forbids. A consumer joins the fragments, applies placeholders, exemptions and field_exemptions, and reports category ids. Never print a flagged value in full: mask keeps the first two characters.",
+ "categories": [
+  {
+   "id": "email",
+   "scope": "both",
+   "action": "refuse",
+   "regex": "(?<![A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*\\.[A-Za-z]{2,}",
+   "flags": "",
+   "description": "An e-mail address (local part, at sign, dotted domain). The reserved example domains are exempted below.",
+   "positive_samples": [
+    [
+     "ja",
+     "ne.doe+t",
+     "@",
+     "mailbox-",
+     "test",
+     ".io"
+    ],
+    [
+     "r.k.sh",
+     "arma83",
+     "@",
+     "notarealhost",
+     ".in"
+    ]
+   ],
+   "negative_samples": [
+    [
+     "ffmpeg version 9.0.2-essentials_build-www",
+     ".gyan.dev"
+    ],
+    [
+     "someone",
+     "@",
+     "example",
+     ".org"
+    ],
+    [
+     "write to the",
+     " maintainer ",
+     "at",
+     " the project page"
+    ]
+   ]
+  },
+  {
+   "id": "ipv4",
+   "scope": "both",
+   "action": "refuse",
+   "regex": "(?<![0-9.])(?!(?:192\\.0\\.2|198\\.51\\.100|203\\.0\\.113)\\.[0-9]{1,3}(?![0-9]|\\.[0-9]))(?!127\\.0\\.0\\.1(?![0-9]|\\.[0-9]))(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?![0-9]|\\.[0-9])",
+   "flags": "",
+   "description": "A dotted IPv4 address: four octets 0-255 without leading zeros, not flanked by digits or dots. The documentation ranges 192.0.2.0/24, 198.51.100.0/24, 203.0.113.0/24 and 127.0.0.1 are allowed. Version strings that look like addresses are handled by field_exemptions (report fields) and by the no-leading-zero and not-flanked rules.",
+   "positive_samples": [
+    [
+     "84.1",
+     "12.9.200"
+    ],
+    [
+     "10.20",
+     ".30.40"
+    ],
+    [
+     "192.0",
+     ".3.1"
+    ],
+    [
+     "198.51",
+     ".101.7"
+    ],
+    [
+     "203.0",
+     ".112.9"
+    ],
+    [
+     "127.0",
+     ".0.2"
+    ]
+   ],
+   "negative_samples": [
+    [
+     "192.0",
+     ".2.1"
+    ],
+    [
+     "198.51",
+     ".100.7"
+    ],
+    [
+     "203.0",
+     ".113.9"
+    ],
+    [
+     "127.0",
+     ".0.1"
+    ],
+    [
+     "10.0.2",
+     "2631.4317"
+    ],
+    [
+     "31.0.15",
+     ".5222"
+    ],
+    [
+     "23.40.27",
+     ".06"
+    ],
+    [
+     "6.1",
+     ".1"
+    ],
+    [
+     "9.0",
+     ".2"
+    ],
+    [
+     "1.2.3",
+     ".4.5"
+    ]
+   ]
+  },
+  {
+   "id": "ipv6",
+   "scope": "both",
+   "action": "refuse",
+   "regex": "(?<![0-9A-Za-z_:])(?!2001:0{0,3}[dD][bB]8:)(?:(?:[0-9A-Fa-f]{1,4}:){7}[0-9A-Fa-f]{1,4}|[0-9A-Fa-f]{1,4}:(?::[0-9A-Fa-f]{1,4}){2,6}|(?:[0-9A-Fa-f]{1,4}:){2}(?::[0-9A-Fa-f]{1,4}){1,5}|(?:[0-9A-Fa-f]{1,4}:){3}(?::[0-9A-Fa-f]{1,4}){1,4}|(?:[0-9A-Fa-f]{1,4}:){4}(?::[0-9A-Fa-f]{1,4}){1,3}|(?:[0-9A-Fa-f]{1,4}:){5}(?::[0-9A-Fa-f]{1,4}){1,2}|(?:[0-9A-Fa-f]{1,4}:){6}:[0-9A-Fa-f]{1,4}|:(?::[0-9A-Fa-f]{1,4}){3,7})(?![0-9A-Za-z_]|:[0-9A-Fa-f:])",
+   "flags": "",
+   "description": "An IPv6 address: eight groups, or a compressed form with three to seven explicit groups. The 2001:db8::/32 documentation prefix is allowed. Short forms such as a loopback or a link-local suffix carry no identity and are not matched.",
+   "positive_samples": [
+    [
+     "2a02:",
+     "8071:1b0:6d00:",
+     "a1c3:44ff:fe19:7e52"
+    ],
+    [
+     "2a00:1450:",
+     "4009:81c::",
+     "200e"
+    ],
+    [
+     "2a02:",
+     "8071:1b0",
+     "::a1c3:44ff"
+    ]
+   ],
+   "negative_samples": [
+    [
+     "2001:",
+     "db8::1"
+    ],
+    [
+     "2001:",
+     "db8:85a3:",
+     ":8a2e:370",
+     ":7334"
+    ],
+    [
+     "2001:0",
+     "db8:0:0:0:0:0:1"
+    ],
+    [
+     ":",
+     ":1"
+    ],
+    [
+     "fe80",
+     "::1"
+    ],
+    [
+     "12:30:",
+     "45"
+    ],
+    [
+     "Add",
+     "::add"
+    ]
+   ]
+  },
+  {
+   "id": "mac",
+   "scope": "both",
+   "action": "refuse",
+   "regex": "(?<![0-9A-Za-z:-])(?:[0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}(?![0-9A-Za-z]|:[0-9A-Fa-f])|(?<![0-9A-Za-z:-])(?:[0-9A-Fa-f]{2}-){5}[0-9A-Fa-f]{2}(?![0-9A-Za-z]|-[0-9A-Fa-f])",
+   "flags": "",
+   "description": "A MAC address: six hex pairs joined by colons or by dashes.",
+   "positive_samples": [
+    [
+     "3C:52:",
+     "82:1A:9F:07"
+    ],
+    [
+     "3c-52-",
+     "82-1a-9f-07"
+    ]
+   ],
+   "negative_samples": [
+    [
+     "3c:52:",
+     "82:1a:9f"
+    ],
+    [
+     "12:30:",
+     "45"
+    ],
+    [
+     "3c:52:82:1a:",
+     "9f:07:5e"
+    ]
+   ]
+  },
+  {
+   "id": "profile_path_windows",
+   "scope": "both",
+   "action": "refuse",
+   "regex": "(?<![A-Za-z0-9])(?:[A-Za-z]:|/mnt/[A-Za-z])[\\\\/]+Users[\\\\/]+(?!(?:Public|Default|Administrator|All Users)(?![A-Za-z0-9_.-]))(?![<%${\\[(*.])[^\\\\/ \"'<>|:*?]+",
+   "flags": "i",
+   "description": "A Windows user-profile path: a drive letter (or a WSL mount), Users, then a folder name. The angle-bracket placeholder, an environment-variable placeholder and the shared Public, Default, Administrator and All Users folders are allowed. Doubled backslashes (JSON text) and forward slashes are covered.",
+   "positive_samples": [
+    [
+     "C:",
+     "\\Users",
+     "\\jsample",
+     "\\Desktop"
+    ],
+    [
+     "c:/users",
+     "/jsample/",
+     "x"
+    ],
+    [
+     "C:\\\\",
+     "Users\\\\",
+     "jsample\\\\",
+     "AppData"
+    ]
+   ],
+   "negative_samples": [
+    [
+     "C:\\Users",
+     "\\<user>",
+     "\\AppData"
+    ],
+    [
+     "%USER",
+     "PROFILE%",
+     "\\Desktop"
+    ],
+    [
+     "C:\\Users",
+     "\\Public\\",
+     "Documents"
+    ],
+    [
+     "C:\\Program",
+     " Files\\App"
+    ],
+    [
+     "C:\\Users",
+     "\\"
+    ]
+   ]
+  },
+  {
+   "id": "profile_path_linux",
+   "scope": "both",
+   "action": "refuse",
+   "regex": "(?<![A-Za-z0-9_.~-])/(?:home|Users)/(?!user(?![A-Za-z0-9_.-]))(?![<%${\\[(*.])[A-Za-z0-9_][A-Za-z0-9_.-]*",
+   "flags": "",
+   "description": "A /home or /Users path under any folder name other than the generic placeholder 'user' (and other than bracketed or variable placeholders). A path inside a longer URL is not matched.",
+   "positive_samples": [
+    [
+     "/home",
+     "/jsample/",
+     "projects"
+    ],
+    [
+     "/Users",
+     "/jsample/",
+     "Desktop"
+    ]
+   ],
+   "negative_samples": [
+    [
+     "/home",
+     "/user/animated_journey"
+    ],
+    [
+     "/home",
+     "/user"
+    ],
+    [
+     "/home",
+     "/user/build-scratch/pwsh"
+    ],
+    [
+     "<scra",
+     "tch>/pwsh"
+    ],
+    [
+     "https://example.org/",
+     "home/about"
+    ],
+    [
+     "/home",
+     "/<user>/x"
+    ]
+   ]
+  },
+  {
+   "id": "token_shape",
+   "scope": "both",
+   "action": "refuse",
+   "regex": "(?<![A-Za-z0-9_])gh[pousr]_[A-Za-z0-9]{36,}(?![A-Za-z0-9_])|(?<![A-Za-z0-9_])github_pat_[A-Za-z0-9_]{40,}(?![A-Za-z0-9])|(?<![A-Za-z0-9_])sk-(?=[A-Za-z0-9_-]*[0-9])[A-Za-z0-9_-]{20,}(?![A-Za-z0-9_-])|(?<![A-Za-z0-9])(?:AKIA|ASIA)[A-Z0-9]{16}(?![A-Za-z0-9])|(?<![A-Za-z0-9_])xox[abprs]-[A-Za-z0-9-]{20,}(?![A-Za-z0-9-])|(?<![A-Za-z0-9_])AIza[0-9A-Za-z_-]{35}(?![0-9A-Za-z_-])|-----BEGIN (?:[A-Z0-9]+ )*PRIVATE KEY(?: BLOCK)?-----",
+   "flags": "",
+   "description": "Secret-token shapes with a length rule each: GitHub classic (prefix plus 36 or more) and fine-grained (prefix plus 40 or more), sk-style API keys (20 or more characters including a digit), AWS access-key ids (prefix plus 16), Slack and Google API-key forms, and private-key block headers. A bare prefix in prose is not a hit.",
+   "positive_samples": [
+    [
+     "gh",
+     "p_",
+     "a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8"
+    ],
+    [
+     "github",
+     "_pat_",
+     "11AA",
+     "AAAAA0",
+     "abcdefghijklmnopqrstuvwxyz0123456789",
+     "ABCDEFGHIJ"
+    ],
+    [
+     "sk",
+     "-",
+     "proj-a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6"
+    ],
+    [
+     "AK",
+     "IA",
+     "ABCDEFGH",
+     "12345678"
+    ],
+    [
+     "-----BEGIN ",
+     "RSA PRIVATE",
+     " KEY-----"
+    ]
+   ],
+   "negative_samples": [
+    [
+     "the gh",
+     "p_ prefix in prose"
+    ],
+    [
+     "sk",
+     "-learn"
+    ],
+    [
+     "task-based-estimation-with-long-hyphenated-name-1"
+    ],
+    [
+     "AK",
+     "IA prefix only"
+    ],
+    [
+     "-----BEGIN ",
+     "PUBLIC KEY-----"
+    ]
+   ]
+  },
+  {
+   "id": "guid_serial",
+   "scope": "both",
+   "action": "refuse",
+   "regex": "(?<![0-9A-Fa-f])[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}(?![0-9A-Fa-f])|(?<![0-9A-Fa-f])[0-9A-Fa-f]{32,}(?![0-9A-Fa-f])|(?<![A-Za-z0-9])(?=(?:[A-Z]*[0-9]){3})(?=(?:[0-9]*[A-Z]){3})[A-Z0-9]{10,40}(?![A-Za-z0-9])",
+   "flags": "",
+   "description": "A GUID in 8-4-4-4-12 form; any hex run of 32 or more characters (a run of exactly 64 is exempted below); and serial-like tokens of 10 to 40 upper-case letters and digits with at least three of each.",
+   "positive_samples": [
+    [
+     "3f2504e0-",
+     "4f89-11d3-",
+     "9a0c-0305e82c3301"
+    ],
+    [
+     "0921e242ce",
+     "08dbb55b762a00565aed94"
+    ],
+    [
+     "0921e242ce08dbb5",
+     "5b762a00565aed94",
+     "6035b4727ec28673",
+     "7291ab575884097f",
+     "a"
+    ],
+    [
+     "WDWC",
+     "C4N",
+     "1234567"
+    ],
+    [
+     "0921e242ce08db",
+     "b55b762a00565a",
+     "ed946035b472"
+    ]
+   ],
+   "negative_samples": [
+    [
+     "0921e242ce08dbb5",
+     "5b762a00565aed94",
+     "6035b4727ec28673",
+     "7291ab575884097f"
+    ],
+    [
+     "0921e242ce08dbb",
+     "55b762a00565aed9"
+    ],
+    [
+     "H264",
+     " BT709"
+    ],
+    [
+     "ABC123",
+     "DEF"
+    ],
+    [
+     "UPPERCASE",
+     "ONLYLETTERS"
+    ],
+    [
+     "12345678",
+     "90123"
+    ],
+    [
+     "SHA256",
+     "SUMS"
+    ],
+    [
+     "PRORES",
+     "422HQ"
+    ],
+    [
+     "see https://sup",
+     "port.example.org/en/page-",
+     "3f2504e0-4f89-",
+     "11d3-9a0c-0305e82c3301"
+    ],
+    [
+     "PMC",
+     "8176340"
+    ],
+    [
+     "0921e242ce08dbb5-no-hex-run-of-32"
+    ]
+   ]
+  },
+  {
+   "id": "handle",
+   "scope": "text",
+   "action": "refuse",
+   "regex": "(?<![A-Za-z0-9_.@/\\\\-])@[A-Za-z][A-Za-z0-9_]{2,29}(?![A-Za-z0-9_@-]|/)",
+   "flags": "",
+   "apply_to": [
+    "*.md",
+    "*.csv",
+    "*.json",
+    "*.txt"
+   ],
+   "description": "An at-sign social handle in prose. Applied to .md, .csv, .json and .txt files only and never to code, where an at sign before a variable name is PowerShell splatting. Package scopes (followed by a slash) and a letter-less start are not matched.",
+   "positive_samples": [
+    [
+     "follow ",
+     "@",
+     "invented_user",
+     " for news"
+    ],
+    [
+     "thanks ",
+     "@",
+     "someone",
+     "01 for this"
+    ]
+   ],
+   "negative_samples": [
+    [
+     "an at sign alone ",
+     "@",
+     " with a space"
+    ],
+    [
+     "@",
+     "2x suffix"
+    ],
+    [
+     "scoped package ",
+     "@",
+     "scope/pkg"
+    ],
+    [
+     "the ",
+     "@",
+     "media rule"
+    ],
+    [
+     "a",
+     "@",
+     "b"
+    ],
+    [
+     "the ",
+     "@",
+     "keyframes rule"
+    ],
+    [
+     "use ",
+     "@",
+     "motion-canvas/core"
+    ],
+    [
+     "https://www.example.org/",
+     "@",
+     "invented_channel"
+    ]
+   ]
+  }
+ ],
+ "exemptions": [
+  {
+   "id": "sha256_64hex",
+   "category": "guid_serial",
+   "regex": "(?<![0-9A-Fa-f])[0-9A-Fa-f]{64}(?![0-9A-Fa-f])",
+   "flags": "",
+   "description": "A hex run of exactly 64 characters not flanked by hex digits is a SHA-256 (ffmpeg binary hashes, release checksums): public build identity, not a serial. A run of 65 or more, or of 32 to 63, is still a hit."
+  },
+  {
+   "id": "reserved_example_email_domains",
+   "category": "email",
+   "regex": "(?<![A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@(?:example\\.(?:com|org|net)|[A-Za-z0-9-]+\\.(?:example|invalid|test|localhost))(?![A-Za-z0-9-])",
+   "flags": "",
+   "description": "Addresses on the domains reserved for documentation (example.com, example.org, example.net and the .example, .invalid, .test and .localhost names) identify nobody. Added in v1 beside the required samples."
+  },
+  {
+   "id": "url_embedded_ids",
+   "category": "guid_serial",
+   "regex": "https?://[^ )>\\]\"'`,]+",
+   "flags": "",
+   "description": "An identifier inside a web address is a citation of a public page (a GUID in a support-page path, a node id, a commit URL), not a device or person identity. Only guid_serial is exempted; an address or e-mail inside a link is still a hit."
+  },
+  {
+   "id": "known_non_serial_tokens",
+   "category": "guid_serial",
+   "regex": "(?<![A-Za-z0-9])(?:SHA(?:1|256|384|512)SUMS?|PRORES(?:422|4444)[A-Z]{0,5}|PMC[0-9]{6,9})(?![A-Za-z0-9])",
+   "flags": "",
+   "description": "Upper-case technical vocabulary that has the shape of a serial: checksum file names (SHA256SUMS), ProRes profile names, and PubMed Central article ids. Add a token here only when it is public vocabulary, with a negative sample."
+  },
+  {
+   "id": "at_words_not_handles",
+   "category": "handle",
+   "regex": "(?<![A-Za-z0-9_.@/\\\\-])@(?:font|fontsource|keyframes|media|import|charset|page|supports|layer|param|returns?|example|see|todo|deprecated|override|echo|context|type|id|graph|main|tag|mentions?)(?![A-Za-z0-9_@-]|/)",
+   "flags": "",
+   "description": "At-rules, documentation tags and package-scope words that are not social handles."
+  }
+ ],
+ "field_exemptions": [
+  {
+   "category": "ipv4",
+   "fields": [
+    "gpus[].driver_version",
+    "os.version",
+    "os.build",
+    "powershell.version",
+    "tools.*.version",
+    "craft_apps.found[].version",
+    "craft_apps.found[].pinned_version",
+    "vulkan.devices[].driver_version"
+   ],
+   "description": "Version fields of a PC report can be four dot-separated numbers below 256; they are not addresses (F-15)."
+  }
+ ],
+ "name_checks": {
+  "sources": [
+   "user",
+   "computer",
+   "domain"
+  ],
+  "sources_note": "read from the environment at run time and never stored",
+  "match": "whole word, case-insensitive, anywhere in the report",
+  "min_name_len": 3,
+  "min_name_len_note": "a shorter name is skipped with a NOTE because it would match ordinary words",
+  "fragment_len": 4,
+  "fragment_min_name_len": 5,
+  "fragment_note": "any 4-character fragment of a name of 5 or more characters",
+  "hardware_name_fields": [
+   "cpu.name",
+   "gpus[].name",
+   "gpus[].vendor",
+   "os.caption"
+  ],
+  "hardware_field_action": "report",
+  "rule": "a name hit anywhere except a hardware-name field refuses the write; a name hit inside a hardware-name field is reported (a NOTE with category, field and masked hit, also recorded in redaction.name_hits_in_hardware_fields[]), not refused. The pattern categories are never relaxed by this rule."
+ },
+ "mask": {
+  "keep": 2,
+  "fill": "*",
+  "cap": 8
+ },
+ "placeholders": [
+  "C:\\Users\\<user>",
+  "%USERPROFILE%",
+  "/home/user",
+  "/home/user/build-scratch",
+  "<scratch>"
+ ],
+ "placeholder_aliases": {
+  "/home/user/build-scratch": "<scratch>"
+ },
+ "path_denylist": [
+  "**/pc_report*.json",
+  "**/colour_patch_pc*.json",
+  "**/maker-pc*.json"
+ ],
+ "path_denylist_exempt_dirs": [
+  "tests/win/fixtures/"
+ ],
+ "path_denylist_note": "refused by public_lint.py anywhere in the tree except under the exempt dirs, where every file is synthetic. The raw PC reports are a hardware fingerprint of one machine and never enter the repository.",
+ "local_deny": "scripts/public_lint.deny.local.txt",
+ "local_deny_note": "optional, git-ignored; one word per line (the maker's real names and PC name); loaded on the maker's machine only; never printed.",
+ "samples": [
+  {
+   "id": "x.version_driver",
+   "parts": [
+    "31.0.15",
+    ".5222"
+   ],
+   "file_kind": "text",
+   "expect": [],
+   "note": "driver-style version, not an address"
+  },
+  {
+   "id": "x.version_os",
+   "parts": [
+    "10.0.2",
+    "2631.4317"
+   ],
+   "file_kind": "text",
+   "expect": []
+  },
+  {
+   "id": "x.version_zero_padded",
+   "parts": [
+    "23.40.27",
+    ".06"
+   ],
+   "file_kind": "text",
+   "expect": [],
+   "note": "a zero-padded last part is not an octet"
+  },
+  {
+   "id": "x.doc_ip_1",
+   "parts": [
+    "192.0",
+    ".2.1"
+   ],
+   "file_kind": "text",
+   "expect": []
+  },
+  {
+   "id": "x.doc_ip_2",
+   "parts": [
+    "198.51",
+    ".100.7"
+   ],
+   "file_kind": "text",
+   "expect": []
+  },
+  {
+   "id": "x.doc_ip_3",
+   "parts": [
+    "203.0",
+    ".113.9"
+   ],
+   "file_kind": "text",
+   "expect": []
+  },
+  {
+   "id": "x.loopback",
+   "parts": [
+    "127.0",
+    ".0.1"
+   ],
+   "file_kind": "text",
+   "expect": []
+  },
+  {
+   "id": "x.ffmpeg_version_domain",
+   "parts": [
+    "ffmpeg version 9.0.2-essentials_build-www",
+    ".gyan.dev"
+   ],
+   "file_kind": "text",
+   "expect": [],
+   "note": "a build domain, not an e-mail address"
+  },
+  {
+   "id": "x.sha256_64",
+   "parts": [
+    "0921e242ce08dbb5",
+    "5b762a00565aed94",
+    "6035b4727ec28673",
+    "7291ab575884097f"
+   ],
+   "file_kind": "text",
+   "expect": [],
+   "note": "a 64-hex SHA-256 is public build identity"
+  },
+  {
+   "id": "x.hex_65",
+   "parts": [
+    "0921e242ce08dbb5",
+    "5b762a00565aed94",
+    "6035b4727ec28673",
+    "7291ab575884097f",
+    "a"
+   ],
+   "file_kind": "text",
+   "expect": [
+    "guid_serial"
+   ]
+  },
+  {
+   "id": "x.hex_32",
+   "parts": [
+    "0921e242ce08dbb5",
+    "5b762a00565aed94"
+   ],
+   "file_kind": "text",
+   "expect": [
+    "guid_serial"
+   ]
+  },
+  {
+   "id": "x.hex_31",
+   "parts": [
+    "0921e242ce08dbb5",
+    "5b762a00565aed9"
+   ],
+   "file_kind": "text",
+   "expect": []
+  },
+  {
+   "id": "x.hex_63",
+   "parts": [
+    "0921e242ce08dbb55b762",
+    "a00565aed946035b4727e",
+    "c286737291ab575884097"
+   ],
+   "file_kind": "text",
+   "expect": [
+    "guid_serial"
+   ],
+   "note": "32 to 63 still flagged"
+  },
+  {
+   "id": "x.placeholder_win",
+   "parts": [
+    "C:\\Users",
+    "\\<user>"
+   ],
+   "file_kind": "text",
+   "expect": []
+  },
+  {
+   "id": "x.placeholder_env",
+   "parts": [
+    "%USER",
+    "PROFILE%"
+   ],
+   "file_kind": "text",
+   "expect": []
+  },
+  {
+   "id": "x.placeholder_home",
+   "parts": [
+    "/home",
+    "/user"
+   ],
+   "file_kind": "text",
+   "expect": []
+  },
+  {
+   "id": "x.placeholder_scratch",
+   "parts": [
+    "/home",
+    "/user/build-scratch"
+   ],
+   "file_kind": "text",
+   "expect": []
+  },
+  {
+   "id": "x.placeholder_scratch_literal",
+   "parts": [
+    "<scra",
+    "tch>"
+   ],
+   "file_kind": "text",
+   "expect": []
+  },
+  {
+   "id": "x.other_home",
+   "parts": [
+    "/home",
+    "/maker2/work"
+   ],
+   "file_kind": "text",
+   "expect": [
+    "profile_path_linux"
+   ]
+  },
+  {
+   "id": "x.win_profile",
+   "parts": [
+    "C:\\Users",
+    "\\maker2\\Desktop"
+   ],
+   "file_kind": "text",
+   "expect": [
+    "profile_path_windows"
+   ]
+  },
+  {
+   "id": "x.powershell_splatting",
+   "parts": [
+    "Invoke-Thing ",
+    "@",
+    "params -Verbose"
+   ],
+   "file_kind": "code",
+   "expect": [],
+   "note": "an at-sign before a variable name in PowerShell code is splatting; the handle rule applies to .md, .csv, .json and .txt only"
+  },
+  {
+   "id": "x.handle_in_prose",
+   "parts": [
+    "see ",
+    "@",
+    "invented_user",
+    " on the forum"
+   ],
+   "file_kind": "text",
+   "expect": [
+    "handle"
+   ]
+  }
+ ]
+}

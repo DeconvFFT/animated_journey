@@ -1,0 +1,837 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lj-pc-report/1",
+  "title": "Life Journey PC inventory report v1 (raw, local-only)",
+  "description": "Produced by win/step0_pc_tests.ps1 (build plan 4.4). A RAW report: it stays on the maker's PC and in chat, and is never filed in the repository. Windows-only fields are null when os.platform is non-windows. Deliberately not collected: user name, computer name, domain, serials, UUIDs, MAC or IP addresses, Wi-Fi names, volume labels, monitor model, time zone, locale, installed-program lists, file names, paths under the user profile.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "tool",
+    "tool_version",
+    "generated_utc",
+    "powershell",
+    "os",
+    "cpu",
+    "ram",
+    "gpus",
+    "vulkan",
+    "disks",
+    "display",
+    "tools",
+    "craft_apps",
+    "local_accounts_count",
+    "claude_desktop_running",
+    "redaction",
+    "notes",
+    "errors"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "tool": {
+      "const": "lj-step0-pc-tests"
+    },
+    "tool_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "generated_utc": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$"
+    },
+    "powershell": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "edition"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "edition": {
+          "type": "string",
+          "enum": [
+            "WindowsPowerShell",
+            "PowerShell"
+          ],
+          "description": "WindowsPowerShell is 5.1 (PSEdition Desktop); PowerShell is 7 (PSEdition Core). Relabelled so the word Desktop, the start of Windows' default computer names, never appears in a report."
+        }
+      }
+    },
+    "os": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "platform",
+        "caption",
+        "version",
+        "build",
+        "edition_id",
+        "architecture"
+      ],
+      "properties": {
+        "platform": {
+          "type": "string",
+          "enum": [
+            "windows",
+            "non-windows"
+          ]
+        },
+        "caption": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 120
+        },
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 32
+        },
+        "build": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 32
+        },
+        "edition_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 64
+        },
+        "architecture": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 32
+        }
+      }
+    },
+    "cpu": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "cores",
+        "logical"
+      ],
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 120
+        },
+        "cores": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "logical": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "ram": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_gb"
+      ],
+      "properties": {
+        "total_gb": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 16384
+        }
+      }
+    },
+    "gpus": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "vendor",
+          "vram_gb",
+          "vram_source",
+          "driver_version",
+          "is_software"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "vendor": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 80
+          },
+          "vram_gb": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 4096
+          },
+          "vram_source": {
+            "type": "string",
+            "enum": [
+              "nvidia-smi",
+              "registry_qwMemorySize",
+              "adapterram",
+              "adapterram_capped_4gb",
+              "unreadable"
+            ]
+          },
+          "driver_version": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 40
+          },
+          "is_software": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "vulkan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runtime_dll_present",
+        "vulkaninfo_found",
+        "devices"
+      ],
+      "properties": {
+        "runtime_dll_present": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "vulkaninfo_found": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "devices": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "string",
+            "maxLength": 120
+          }
+        }
+      }
+    },
+    "disks": {
+      "type": "array",
+      "maxItems": 26,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "drive",
+          "type",
+          "fs",
+          "size_gb",
+          "free_gb"
+        ],
+        "properties": {
+          "drive": {
+            "type": "string",
+            "pattern": "^[A-Z]$"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "fixed",
+              "removable"
+            ]
+          },
+          "fs": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 16
+          },
+          "size_gb": {
+            "type": "number",
+            "minimum": 0
+          },
+          "free_gb": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "display": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary",
+        "count"
+      ],
+      "properties": {
+        "primary": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "required": [
+            "width",
+            "height",
+            "refresh_hz",
+            "scale_percent"
+          ],
+          "properties": {
+            "width": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "height": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "refresh_hz": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "scale_percent": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            }
+          }
+        },
+        "count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "tools": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ffmpeg",
+        "ffprobe",
+        "python",
+        "git",
+        "winget",
+        "magick",
+        "inkscape",
+        "blender",
+        "wsl",
+        "veracrypt_installed"
+      ],
+      "properties": {
+        "ffmpeg": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "found",
+            "version",
+            "notes",
+            "has_libx264",
+            "has_libass",
+            "has_zscale",
+            "sha256"
+          ],
+          "properties": {
+            "found": {
+              "type": "boolean"
+            },
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 64,
+              "description": "the token after 'ffmpeg version' (for example 9.0.2-essentials_build-www.gyan.dev); the checker reads the leading numbers"
+            },
+            "notes": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 200
+            },
+            "has_libx264": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "has_libass": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "has_zscale": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "sha256": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "ffprobe": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "found",
+            "version",
+            "notes"
+          ],
+          "properties": {
+            "found": {
+              "type": "boolean"
+            },
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 64
+            },
+            "notes": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 200
+            }
+          }
+        },
+        "python": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "found",
+            "version",
+            "notes"
+          ],
+          "properties": {
+            "found": {
+              "type": "boolean"
+            },
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 64
+            },
+            "notes": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 200
+            }
+          }
+        },
+        "git": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "found",
+            "version",
+            "notes"
+          ],
+          "properties": {
+            "found": {
+              "type": "boolean"
+            },
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 64
+            },
+            "notes": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 200
+            }
+          }
+        },
+        "winget": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "found",
+            "version",
+            "notes"
+          ],
+          "properties": {
+            "found": {
+              "type": "boolean"
+            },
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 64
+            },
+            "notes": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 200
+            }
+          }
+        },
+        "magick": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "found",
+            "version",
+            "notes"
+          ],
+          "properties": {
+            "found": {
+              "type": "boolean"
+            },
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 64
+            },
+            "notes": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 200
+            }
+          }
+        },
+        "inkscape": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "found",
+            "version",
+            "notes"
+          ],
+          "properties": {
+            "found": {
+              "type": "boolean"
+            },
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 64
+            },
+            "notes": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 200
+            }
+          }
+        },
+        "blender": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "found",
+            "version",
+            "notes"
+          ],
+          "properties": {
+            "found": {
+              "type": "boolean"
+            },
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 64
+            },
+            "notes": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 200
+            }
+          }
+        },
+        "wsl": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "found",
+            "version",
+            "notes"
+          ],
+          "properties": {
+            "found": {
+              "type": "boolean"
+            },
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 64
+            },
+            "notes": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 200
+            }
+          }
+        },
+        "veracrypt_installed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "craft_apps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tools_roots_scanned",
+        "found",
+        "not_found"
+      ],
+      "properties": {
+        "tools_roots_scanned": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "string",
+            "maxLength": 120
+          }
+        },
+        "found": {
+          "type": "array",
+          "maxItems": 24,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "app",
+              "version",
+              "pinned_version",
+              "matches_pin"
+            ],
+            "properties": {
+              "app": {
+                "type": "string",
+                "enum": [
+                  "photocraft",
+                  "vectorcraft",
+                  "lightcraft",
+                  "filmcraft",
+                  "effectcraft",
+                  "soundcraft"
+                ]
+              },
+              "version": {
+                "type": "string",
+                "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+              },
+              "pinned_version": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+              },
+              "matches_pin": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "not_found": {
+          "type": "array",
+          "maxItems": 6,
+          "items": {
+            "type": "string",
+            "enum": [
+              "photocraft",
+              "vectorcraft",
+              "lightcraft",
+              "filmcraft",
+              "effectcraft",
+              "soundcraft"
+            ]
+          }
+        }
+      }
+    },
+    "local_accounts_count": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "claude_desktop_running": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "redaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "user_name_removed",
+        "machine_name_removed",
+        "paths_generalised",
+        "self_scan_passed",
+        "patterns_version",
+        "name_hits_in_hardware_fields"
+      ],
+      "properties": {
+        "user_name_removed": {
+          "type": "boolean"
+        },
+        "machine_name_removed": {
+          "type": "boolean"
+        },
+        "paths_generalised": {
+          "type": "boolean"
+        },
+        "self_scan_passed": {
+          "type": "boolean"
+        },
+        "patterns_version": {
+          "type": [
+            "string",
+            "integer",
+            "number",
+            "null"
+          ]
+        },
+        "name_hits_in_hardware_fields": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "category",
+              "field",
+              "masked_hit"
+            ],
+            "properties": {
+              "category": {
+                "type": "string",
+                "maxLength": 40
+              },
+              "field": {
+                "type": "string",
+                "maxLength": 80
+              },
+              "masked_hit": {
+                "type": "string",
+                "maxLength": 16
+              }
+            }
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "maxLength": 240
+      }
+    },
+    "errors": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "string",
+        "maxLength": 240
+      }
+    }
+  }
+}

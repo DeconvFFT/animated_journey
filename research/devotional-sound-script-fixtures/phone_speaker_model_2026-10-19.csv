@@ -1,0 +1,10 @@
+sample,source_and_licence_as_read_2026-10-19,peak_hz_loudest_4s,energy_above_300hz_pct,energy_above_500hz_pct,rms_change_db_after_2nd_order_highpass_300hz,rms_change_db_after_2nd_order_highpass_500hz,note
+conch (shankha-like shell blown on a rooftop),Freesound 78974 by RoofDog; CC0 (page opened),323,100.0,31.7,-1.6,-4.1,survives; this is a Stanford rooftop recording not an Indian temple
+temple bell (Kothi Himachal Pradesh 2019),Freesound 466652 by ganiket; CC0 (page opened),997,73.8,73.7,-2.6,-2.8,survives
+temple ambience with people (bells and gong),Freesound 443383 by kylecutsfilms; CC0 (page opened),49,2.3,1.4,-19.6,-21.5,the low rumble and room body vanish; the bells ride on top
+Asian koel call (Singapore park),Freesound 460466 by ramblinglibrarian; CC0 (page opened),1217,99.5,99.5,0.0,-0.1,survives
+pressure cooker (location not stated),Freesound 462922 by SamuelGremaud; CC0 (page opened),2753,100.0,100.0,0.0,0.0,survives
+mridangam strokes (sample),archive.org Mridangam_sample1 by V.Raghuraman; CC public-domain dedication per uploader (metadata read; provenance of the dedication UNVERIFIED),395,86.2,35.9,-1.4,-3.2,mostly survives; the bass strokes lose body
+tanpura Sa-Pa drone key C (first 100 s only),ragajunglism.org c-tanpura-thick.mp3; NO licence stated and origin unknown (page opened); MEASUREMENT ONLY not reused,327,96.2,18.2,-1.2,-3.6,the buzzing jawari partials survive; the low fundamental body does not
+# Method: loudest 4 s window of the first 20 s (mono 48 kHz); FFT share of power above the cut-off; RMS before and after ffmpeg highpass=f=N:poles=2 (calibrated with pure tones on 2026-10-19: -3.0 dB at N and about -12 dB per octave below).
+# This is a crude model of a phone speaker (a high-pass), not a measured phone. One sample per sound. Directional only; the maker's own phone sweep at 50% volume decides.

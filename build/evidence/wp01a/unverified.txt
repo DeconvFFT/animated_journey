@@ -1,0 +1,15 @@
+Every CIM/WMI query (Win32_OperatingSystem, Win32_Processor, Win32_ComputerSystem, Win32_VideoController, Win32_LogicalDisk, Win32_UserAccount)
+Registry reads (CurrentVersion EditionID and UBR, display adapter class qwMemorySize, WindowMetrics AppliedDPI)
+Get-LocalUser in Windows PowerShell 5.1 and PowerShell 7
+System.Windows.Forms screen count
+winget --version, wsl --status (UTF-16 output and its English wording), py -3 --version
+nvidia-smi output format and the MiB-to-GB conversion
+Vulkan detection (a DLL on disk is only a hint; the Real-ESRGAN test remains the proof)
+The %TEMP% default and a write to it on a managed PC
+Windows PowerShell 5.1 behaviour of every cmdlet and of ConvertTo-Json output
+Execution-policy options A and B, Unblock-File and Group Policy handling
+Whether version strings on the maker's PC trip any pattern
+Process-start timeouts and the reading of tool output through System.Diagnostics.Process on 5.1
+The assumed thresholds in win/tiers.json marked (J)
+The six paste-in fallback commands in the README (parse-tested only; Get-CimInstance does not exist on Linux)
+The README's instructions about Properties, Unblock and Extract All in File Explorer

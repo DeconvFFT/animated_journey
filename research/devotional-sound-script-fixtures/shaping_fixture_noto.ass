@@ -1,0 +1,152 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 2
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Lab,Noto Sans,22,&H00B0B0B0,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+Style: S_deva,Noto Sans Devanagari,48,&H00F0F5FA,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+Style: S_taml,Noto Sans Tamil,48,&H00F0F5FA,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+Style: S_mlym,Noto Sans Malayalam,48,&H00F0F5FA,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+Style: S_beng,Noto Sans Bengali,48,&H00F0F5FA,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+Style: S_telu,Noto Sans Telugu,48,&H00F0F5FA,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+Style: S_knda,Noto Sans Kannada,48,&H00F0F5FA,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+Style: S_gujr,Noto Sans Gujarati,48,&H00F0F5FA,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+Style: S_orya,Noto Sans Oriya,48,&H00F0F5FA,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+Style: S_guru,Noto Sans Gurmukhi,48,&H00F0F5FA,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+Style: S_latn,Noto Sans,48,&H00F0F5FA,&H00000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,0,0,0,1
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,20)}Noto Sans Devanagari  (script deva, page 1)
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,60)}dev-ksha
+Dialogue: 0,0:00:00.00,0:00:04.00,S_deva,,0,0,0,,{\pos(260,50)}क्ष
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,122)}dev-tra
+Dialogue: 0,0:00:00.00,0:00:04.00,S_deva,,0,0,0,,{\pos(260,112)}त्र
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,184)}dev-jna
+Dialogue: 0,0:00:00.00,0:00:04.00,S_deva,,0,0,0,,{\pos(260,174)}ज्ञ
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,246)}dev-shri
+Dialogue: 0,0:00:00.00,0:00:04.00,S_deva,,0,0,0,,{\pos(260,236)}श्री
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,308)}dev-dharma
+Dialogue: 0,0:00:00.00,0:00:04.00,S_deva,,0,0,0,,{\pos(260,298)}धर्म
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,370)}dev-matrdevo
+Dialogue: 0,0:00:00.00,0:00:04.00,S_deva,,0,0,0,,{\pos(260,360)}मातृदेवो भव
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,432)}dev-krishna
+Dialogue: 0,0:00:00.00,0:00:04.00,S_deva,,0,0,0,,{\pos(260,422)}कृष्ण
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,494)}dev-ki-reorder
+Dialogue: 0,0:00:00.00,0:00:04.00,S_deva,,0,0,0,,{\pos(260,484)}कि क्षि धर्मि
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,556)}dev-om-danda
+Dialogue: 0,0:00:00.00,0:00:04.00,S_deva,,0,0,0,,{\pos(260,546)}ॐ नमः शिवाय । ॥ माँ
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,618)}dev-vedic
+Dialogue: 0,0:00:00.00,0:00:04.00,S_deva,,0,0,0,,{\pos(260,608)}अ॒ग्निमी॑ळे पु॒रोहि॑तं
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,680)}dev-ganesha
+Dialogue: 0,0:00:00.00,0:00:04.00,S_deva,,0,0,0,,{\pos(260,670)}श्री गणेशाय नमः
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,742)}dev-hrdaya
+Dialogue: 0,0:00:00.00,0:00:04.00,S_deva,,0,0,0,,{\pos(260,732)}हृदय द्य ब्रह्म द्द ट्ट
+Dialogue: 0,0:00:00.00,0:00:04.00,Lab,,0,0,0,,{\pos(20,804)}dev-nukta
+Dialogue: 0,0:00:00.00,0:00:04.00,S_deva,,0,0,0,,{\pos(260,794)}क़ ज़ फ़ क्‍ष क्‌ष
+Dialogue: 0,0:00:04.00,0:00:08.00,Lab,,0,0,0,,{\pos(20,20)}Noto Sans Tamil  (script taml, page 2)
+Dialogue: 0,0:00:04.00,0:00:08.00,Lab,,0,0,0,,{\pos(20,60)}tam-shri
+Dialogue: 0,0:00:04.00,0:00:08.00,S_taml,,0,0,0,,{\pos(260,50)}ஸ்ரீ
+Dialogue: 0,0:00:04.00,0:00:08.00,Lab,,0,0,0,,{\pos(20,122)}tam-shri2
+Dialogue: 0,0:00:04.00,0:00:08.00,S_taml,,0,0,0,,{\pos(260,112)}ஶ்ரீ
+Dialogue: 0,0:00:04.00,0:00:08.00,Lab,,0,0,0,,{\pos(20,184)}tam-ksha
+Dialogue: 0,0:00:04.00,0:00:08.00,S_taml,,0,0,0,,{\pos(260,174)}க்ஷ
+Dialogue: 0,0:00:04.00,0:00:08.00,Lab,,0,0,0,,{\pos(20,246)}tam-split-vowels
+Dialogue: 0,0:00:04.00,0:00:08.00,S_taml,,0,0,0,,{\pos(260,236)}கொ கோ கௌ
+Dialogue: 0,0:00:04.00,0:00:08.00,Lab,,0,0,0,,{\pos(20,308)}tam-tiruppavai
+Dialogue: 0,0:00:04.00,0:00:08.00,S_taml,,0,0,0,,{\pos(260,298)}திருப்பாவை
+Dialogue: 0,0:00:04.00,0:00:08.00,Lab,,0,0,0,,{\pos(20,370)}tam-tamil
+Dialogue: 0,0:00:04.00,0:00:08.00,S_taml,,0,0,0,,{\pos(260,360)}தமிழ்
+Dialogue: 0,0:00:08.00,0:00:12.00,Lab,,0,0,0,,{\pos(20,20)}Noto Sans Malayalam  (script mlym, page 3)
+Dialogue: 0,0:00:08.00,0:00:12.00,Lab,,0,0,0,,{\pos(20,60)}mal-chillu
+Dialogue: 0,0:00:08.00,0:00:12.00,S_mlym,,0,0,0,,{\pos(260,50)}ൺ ൻ ർ ൽ ൾ ൿ
+Dialogue: 0,0:00:08.00,0:00:12.00,Lab,,0,0,0,,{\pos(20,122)}mal-chillu-zwj
+Dialogue: 0,0:00:08.00,0:00:12.00,S_mlym,,0,0,0,,{\pos(260,112)}ന്‍ ര്‍ ല്‍
+Dialogue: 0,0:00:08.00,0:00:12.00,Lab,,0,0,0,,{\pos(20,184)}mal-shri
+Dialogue: 0,0:00:08.00,0:00:12.00,S_mlym,,0,0,0,,{\pos(260,174)}ശ്രീ
+Dialogue: 0,0:00:08.00,0:00:12.00,Lab,,0,0,0,,{\pos(20,246)}mal-nte
+Dialogue: 0,0:00:08.00,0:00:12.00,S_mlym,,0,0,0,,{\pos(260,236)}ന്റ
+Dialogue: 0,0:00:08.00,0:00:12.00,Lab,,0,0,0,,{\pos(20,308)}mal-amma
+Dialogue: 0,0:00:08.00,0:00:12.00,S_mlym,,0,0,0,,{\pos(260,298)}അമ്മ മലയാളം
+Dialogue: 0,0:00:08.00,0:00:12.00,Lab,,0,0,0,,{\pos(20,370)}mal-krishna
+Dialogue: 0,0:00:08.00,0:00:12.00,S_mlym,,0,0,0,,{\pos(260,360)}കൃഷ്ണൻ
+Dialogue: 0,0:00:12.00,0:00:16.00,Lab,,0,0,0,,{\pos(20,20)}Noto Sans Bengali  (script beng, page 4)
+Dialogue: 0,0:00:12.00,0:00:16.00,Lab,,0,0,0,,{\pos(20,60)}ben-shri
+Dialogue: 0,0:00:12.00,0:00:16.00,S_beng,,0,0,0,,{\pos(260,50)}শ্রী
+Dialogue: 0,0:00:12.00,0:00:16.00,Lab,,0,0,0,,{\pos(20,122)}ben-ksha
+Dialogue: 0,0:00:12.00,0:00:16.00,S_beng,,0,0,0,,{\pos(260,112)}ক্ষ
+Dialogue: 0,0:00:12.00,0:00:16.00,Lab,,0,0,0,,{\pos(20,184)}ben-jna
+Dialogue: 0,0:00:12.00,0:00:16.00,S_beng,,0,0,0,,{\pos(260,174)}জ্ঞ
+Dialogue: 0,0:00:12.00,0:00:16.00,Lab,,0,0,0,,{\pos(20,246)}ben-durga
+Dialogue: 0,0:00:12.00,0:00:16.00,S_beng,,0,0,0,,{\pos(260,236)}দুর্গা
+Dialogue: 0,0:00:12.00,0:00:16.00,Lab,,0,0,0,,{\pos(20,308)}ben-ra-zophola
+Dialogue: 0,0:00:12.00,0:00:16.00,S_beng,,0,0,0,,{\pos(260,298)}র‍্য
+Dialogue: 0,0:00:12.00,0:00:16.00,Lab,,0,0,0,,{\pos(20,370)}ben-krishna
+Dialogue: 0,0:00:12.00,0:00:16.00,S_beng,,0,0,0,,{\pos(260,360)}কৃষ্ণ
+Dialogue: 0,0:00:16.00,0:00:20.00,Lab,,0,0,0,,{\pos(20,20)}Noto Sans Telugu  (script telu, page 5)
+Dialogue: 0,0:00:16.00,0:00:20.00,Lab,,0,0,0,,{\pos(20,60)}tel-shri
+Dialogue: 0,0:00:16.00,0:00:20.00,S_telu,,0,0,0,,{\pos(260,50)}శ్రీ
+Dialogue: 0,0:00:16.00,0:00:20.00,Lab,,0,0,0,,{\pos(20,122)}tel-ksha
+Dialogue: 0,0:00:16.00,0:00:20.00,S_telu,,0,0,0,,{\pos(260,112)}క్ష
+Dialogue: 0,0:00:16.00,0:00:20.00,Lab,,0,0,0,,{\pos(20,184)}tel-jna
+Dialogue: 0,0:00:16.00,0:00:20.00,S_telu,,0,0,0,,{\pos(260,174)}జ్ఞ
+Dialogue: 0,0:00:16.00,0:00:20.00,Lab,,0,0,0,,{\pos(20,246)}tel-krishna
+Dialogue: 0,0:00:16.00,0:00:20.00,S_telu,,0,0,0,,{\pos(260,236)}కృష్ణ
+Dialogue: 0,0:00:16.00,0:00:20.00,Lab,,0,0,0,,{\pos(20,308)}tel-vowel-signs
+Dialogue: 0,0:00:16.00,0:00:20.00,S_telu,,0,0,0,,{\pos(260,298)}కై కౌ కొ కో కె
+Dialogue: 0,0:00:16.00,0:00:20.00,Lab,,0,0,0,,{\pos(20,370)}tel-amma
+Dialogue: 0,0:00:16.00,0:00:20.00,S_telu,,0,0,0,,{\pos(260,360)}అమ్మ తెలుగు
+Dialogue: 0,0:00:20.00,0:00:24.00,Lab,,0,0,0,,{\pos(20,20)}Noto Sans Kannada  (script knda, page 6)
+Dialogue: 0,0:00:20.00,0:00:24.00,Lab,,0,0,0,,{\pos(20,60)}kan-shri
+Dialogue: 0,0:00:20.00,0:00:24.00,S_knda,,0,0,0,,{\pos(260,50)}ಶ್ರೀ
+Dialogue: 0,0:00:20.00,0:00:24.00,Lab,,0,0,0,,{\pos(20,122)}kan-ksha
+Dialogue: 0,0:00:20.00,0:00:24.00,S_knda,,0,0,0,,{\pos(260,112)}ಕ್ಷ
+Dialogue: 0,0:00:20.00,0:00:24.00,Lab,,0,0,0,,{\pos(20,184)}kan-jna
+Dialogue: 0,0:00:20.00,0:00:24.00,S_knda,,0,0,0,,{\pos(260,174)}ಜ್ಞ
+Dialogue: 0,0:00:20.00,0:00:24.00,Lab,,0,0,0,,{\pos(20,246)}kan-krishna
+Dialogue: 0,0:00:20.00,0:00:24.00,S_knda,,0,0,0,,{\pos(260,236)}ಕೃಷ್ಣ
+Dialogue: 0,0:00:20.00,0:00:24.00,Lab,,0,0,0,,{\pos(20,308)}kan-vowel-signs
+Dialogue: 0,0:00:20.00,0:00:24.00,S_knda,,0,0,0,,{\pos(260,298)}ಕೊ ಕೋ ಕೈ ಕೌ
+Dialogue: 0,0:00:20.00,0:00:24.00,Lab,,0,0,0,,{\pos(20,370)}kan-dharma
+Dialogue: 0,0:00:20.00,0:00:24.00,S_knda,,0,0,0,,{\pos(260,360)}ಧರ್ಮ
+Dialogue: 0,0:00:24.00,0:00:28.00,Lab,,0,0,0,,{\pos(20,20)}Noto Sans Gujarati  (script gujr, page 7)
+Dialogue: 0,0:00:24.00,0:00:28.00,Lab,,0,0,0,,{\pos(20,60)}guj-shri
+Dialogue: 0,0:00:24.00,0:00:28.00,S_gujr,,0,0,0,,{\pos(260,50)}શ્રી
+Dialogue: 0,0:00:24.00,0:00:28.00,Lab,,0,0,0,,{\pos(20,122)}guj-ksha
+Dialogue: 0,0:00:24.00,0:00:28.00,S_gujr,,0,0,0,,{\pos(260,112)}ક્ષ
+Dialogue: 0,0:00:24.00,0:00:28.00,Lab,,0,0,0,,{\pos(20,184)}guj-jna
+Dialogue: 0,0:00:24.00,0:00:28.00,S_gujr,,0,0,0,,{\pos(260,174)}જ્ઞ
+Dialogue: 0,0:00:24.00,0:00:28.00,Lab,,0,0,0,,{\pos(20,246)}guj-dharma
+Dialogue: 0,0:00:24.00,0:00:28.00,S_gujr,,0,0,0,,{\pos(260,236)}ધર્મ
+Dialogue: 0,0:00:24.00,0:00:28.00,Lab,,0,0,0,,{\pos(20,308)}guj-om
+Dialogue: 0,0:00:24.00,0:00:28.00,S_gujr,,0,0,0,,{\pos(260,298)}ૐ કૃષ્ણ
+Dialogue: 0,0:00:28.00,0:00:32.00,Lab,,0,0,0,,{\pos(20,20)}Noto Sans Oriya  (script orya, page 8)
+Dialogue: 0,0:00:28.00,0:00:32.00,Lab,,0,0,0,,{\pos(20,60)}ori-shri
+Dialogue: 0,0:00:28.00,0:00:32.00,S_orya,,0,0,0,,{\pos(260,50)}ଶ୍ରୀ
+Dialogue: 0,0:00:28.00,0:00:32.00,Lab,,0,0,0,,{\pos(20,122)}ori-ksha
+Dialogue: 0,0:00:28.00,0:00:32.00,S_orya,,0,0,0,,{\pos(260,112)}କ୍ଷ
+Dialogue: 0,0:00:28.00,0:00:32.00,Lab,,0,0,0,,{\pos(20,184)}ori-jna
+Dialogue: 0,0:00:28.00,0:00:32.00,S_orya,,0,0,0,,{\pos(260,174)}ଜ୍ଞ
+Dialogue: 0,0:00:28.00,0:00:32.00,Lab,,0,0,0,,{\pos(20,246)}ori-dharma
+Dialogue: 0,0:00:28.00,0:00:32.00,S_orya,,0,0,0,,{\pos(260,236)}ଧର୍ମ
+Dialogue: 0,0:00:28.00,0:00:32.00,Lab,,0,0,0,,{\pos(20,308)}ori-jagannath
+Dialogue: 0,0:00:28.00,0:00:32.00,S_orya,,0,0,0,,{\pos(260,298)}ଜୟ ଜଗନ୍ନାଥ
+Dialogue: 0,0:00:32.00,0:00:36.00,Lab,,0,0,0,,{\pos(20,20)}Noto Sans Gurmukhi  (script guru, page 9)
+Dialogue: 0,0:00:32.00,0:00:36.00,Lab,,0,0,0,,{\pos(20,60)}gur-shri
+Dialogue: 0,0:00:32.00,0:00:36.00,S_guru,,0,0,0,,{\pos(260,50)}ਸ਼੍ਰੀ
+Dialogue: 0,0:00:32.00,0:00:36.00,Lab,,0,0,0,,{\pos(20,122)}gur-maan
+Dialogue: 0,0:00:32.00,0:00:36.00,S_guru,,0,0,0,,{\pos(260,112)}ਮਾਂ ਪੰਜਾਬੀ ਲੱਕ
+Dialogue: 0,0:00:32.00,0:00:36.00,Lab,,0,0,0,,{\pos(20,184)}gur-dharam
+Dialogue: 0,0:00:32.00,0:00:36.00,S_guru,,0,0,0,,{\pos(260,174)}ਧਰਮ ਪ੍ਰਾਣੀ ਮ੍ਹ
+Dialogue: 0,0:00:36.00,0:00:40.00,Lab,,0,0,0,,{\pos(20,20)}Noto Sans  (script latn, page 10)
+Dialogue: 0,0:00:36.00,0:00:40.00,Lab,,0,0,0,,{\pos(20,60)}iast-small
+Dialogue: 0,0:00:36.00,0:00:40.00,S_latn,,0,0,0,,{\pos(260,50)}mātṛdevo bhava, kṛṣṇa, śrī gaṇeśāya namaḥ, dharma, rāmāyaṇa, ṛgveda, tyāgarāja, bhajan, saṃskāra, ātman, ṭhākura, ḍamaru, ṇ ṅ ñ ḷ ḥ ṃ ṁ
+Dialogue: 0,0:00:36.00,0:00:40.00,Lab,,0,0,0,,{\pos(20,122)}iast-caps
+Dialogue: 0,0:00:36.00,0:00:40.00,S_latn,,0,0,0,,{\pos(260,112)}Ā Ī Ū Ṛ Ṝ Ḷ Ḹ Ṃ Ṁ Ḥ Ṅ Ñ Ṭ Ḍ Ṇ Ś Ṣ  Śrī Kṛṣṇa Ṛgveda Ṭhākura
+Dialogue: 0,0:00:36.00,0:00:40.00,Lab,,0,0,0,,{\pos(20,184)}iso15919
+Dialogue: 0,0:00:36.00,0:00:40.00,S_latn,,0,0,0,,{\pos(260,174)}kr̥ṣṇa, l̥ ē ō ṟ ṉ ḻ m̐ ṁ
+Dialogue: 0,0:00:36.00,0:00:40.00,Lab,,0,0,0,,{\pos(20,246)}pop-spell
+Dialogue: 0,0:00:36.00,0:00:40.00,S_latn,,0,0,0,,{\pos(260,236)}Shri Ganesha, Krishna, Lakshmi, Saraswati, Durga, Hanuman, Ram, Om Namah Shivaya

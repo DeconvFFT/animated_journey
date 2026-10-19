@@ -1,0 +1,16 @@
+{
+  "schema": "lj-pins/1",
+  "source": "DECISIONS.md W-22 (Craft version pins; frozen on Sun 25 Oct 2026 after the maker's five-minute tests)",
+  "status": "proposed until 2026-10-25; the newest tag that passes the five-minute test on test day may replace a pin before then",
+  "tools_roots": ["C:\\lj\\tools", "C:\\LifeJourney\\tools"],
+  "tools_roots_note": "C:\\lj\\tools is the planned folder (build plan A-02). C:\\LifeJourney\\tools is also scanned until playbooks/craft-motion.md is patched (build plan C-04); then the second root is a one-line removal here and in the script.",
+  "folder_name_rule": "a folder directly under a tools root whose name starts with the app name, then a separator, then an optional v, then major.minor.patch (for example photocraft-0.10.0). Any text after the version is ignored.",
+  "apps": {
+    "photocraft":  { "pin": "0.10.0", "fallback": null,    "retired": [],        "note": "W-22" },
+    "vectorcraft": { "pin": "0.13.1", "fallback": null,    "retired": [],        "note": "W-22" },
+    "lightcraft":  { "pin": "0.9.1",  "fallback": null,    "retired": [],        "note": "W-22" },
+    "filmcraft":   { "pin": "0.9.0",  "fallback": "0.8.0", "retired": ["0.7.2"], "note": "W-22: fallback 0.8.0; 0.7.2 is retired" },
+    "effectcraft": { "pin": "0.11.1", "fallback": null,    "retired": [],        "note": "W-22: stays until a tagged 0.12.0 passes the five-minute test" },
+    "soundcraft":  { "pin": null,     "fallback": null,    "retired": [],        "note": "W-22 and D-12: not pinned, learning only" }
+  }
+}

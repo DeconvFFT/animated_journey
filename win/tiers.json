@@ -1,0 +1,87 @@
+{
+  "schema": "lj-tiers/1",
+  "read_this_first": "Thresholds are data, not code: change a number here and scripts/windows_check.py and win/step0_pc_tests.ps1 follow. Every block has a source. (J) marks a proposal by the planner that has no external source; the orchestrator or the maker may change it. Windows behaviour behind these fields is UNVERIFIED until the maker's first real report.",
+
+  "gpu": {
+    "software_name_patterns": ["Basic Render", "Basic Display", "llvmpipe", "SwiftShader", "softpipe", "Microsoft Remote Display", "Hyper-V Video", "Virtual Display", "WARP"],
+    "software_name_patterns_source": "Names that mean no real graphics card: .claude/skills/ai-photo-to-animation-pipeline/SKILL.md step 2 (llvmpipe, SwiftShader, Basic Render count as no GPU); the remote, Hyper-V and WARP entries are the planner's additions (J).",
+    "tiers": [
+      { "id": "gpu-16+",   "min_vram_gb": 15.5, "meaning": "16 GB or more: adds Qwen-Image-Edit-2511 and PuLID-FLUX" },
+      { "id": "gpu-8-12",  "min_vram_gb": 7.5,  "meaning": "8 to 15 GB: Real-ESRGAN, CodeFormer, smaller SeedVR2 builds, FLUX.2 klein 4B, FramePack, WanGP" },
+      { "id": "gpu-low",   "min_vram_gb": 0,    "meaning": "a real graphics device under 8 GB: CPU-first path, small tools only" }
+    ],
+    "tiers_source": "playbooks/ai-imagery.md Decision 2 (No GPU / 8 to 12 GB Nvidia / 16 GB or more). The cut-offs sit half a gigabyte below the round numbers (7.5 and 15.5) because cards report a little under their name (an 8 GB card often shows 8187 MiB, a 16 GB card 16376 MiB) (J).",
+    "non_nvidia_max_tier": "gpu-low",
+    "non_nvidia_source": "playbooks/ai-imagery.md names the 8 to 12 GB tier as Nvidia and the listed tools (FramePack, Real-ESRGAN CUDA builds, Qwen, PuLID) assume CUDA. A non-NVIDIA card is therefore capped at gpu-low until a test says otherwise (J). Set this to null to turn the cap off.",
+    "vram_sources_trusted": ["nvidia-smi", "registry_qwMemorySize"],
+    "vram_sources_trusted_source": "F-11 in build/BUILD-PLAN-W1-2.md: Win32_VideoController.AdapterRAM is a 32-bit field that caps near 4 GB (UNVERIFIED on the maker's PC). It is trusted only when it is below the cap (an integrated device), never when flagged adapterram_capped_4gb.",
+    "adapterram_cap_bytes": 4293918720,
+    "adapterram_cap_source": "A value at or above 0xFFF00000 (4,293,918,720) is the 32-bit ceiling; 4,294,967,295 is the other common ceiling (general knowledge, UNVERIFIED on the maker's PC)."
+  },
+
+  "vram_buckets": {
+    "edges_gb": [4, 8, 12, 16, 24],
+    "labels": ["<4", "4-7", "8-11", "12-15", "16-23", "24+"],
+    "source": "Coarse buckets for the filed tier file so no exact size is stored (build plan 4.16). Edges are the planner's choice (J); they use the same half-gigabyte tolerance as the tiers (7.5, 11.5, 15.5, 23.5 are applied before bucketing).",
+    "tolerance_gb": 0.5
+  },
+
+  "ram": {
+    "tiers": [
+      { "id": "16+",  "min_gb": 15.0, "meaning": "WSL2 fits (default cap is half of RAM); Craft apps and a VM can run together" },
+      { "id": "8-15", "min_gb": 7.5,  "meaning": "meets the Blender floor; WSL2 not advised: one heavy program at a time" },
+      { "id": "<8",   "min_gb": 0,    "meaning": "below the Blender 5 floor of 8 GB" }
+    ],
+    "tiers_source": "Blender floor of 8 GB: research/toolchain.md item 15 and [30]. WSL2 at 16 GB or more: research/toolchain.md F3 (the WSL2 VM gets 50 percent of Windows RAM by default). Windows reports 16 GB as about 15.7 to 16.0 and 8 GB as about 7.4 to 7.9, so the cut-offs are 15.0 and 7.5 (J).",
+    "wsl2_ok_tier": "16+"
+  },
+
+  "blender_floor": {
+    "cores": 4, "ram_gb": 8, "vram_gb": 2,
+    "source": "research/toolchain.md item 15 and F3: Blender 5.x needs at least 4 cores, 8 GB RAM and a 2 GB VRAM GPU with OpenGL 4.3 or Vulkan 1.3 [30]. Printed as information; below the floor is a fact about the PC, not a failure."
+  },
+
+  "disk": {
+    "tiers": [
+      { "id": "roomy", "min_free_gb": 300, "meaning": "archive, masters, scans and renders all fit without cleaning" },
+      { "id": "ok",    "min_free_gb": 100, "meaning": "fits if renders are cleaned as you go" },
+      { "id": "tight", "min_free_gb": 0,   "meaning": "plan an external drive for the archive and masters" }
+    ],
+    "source": "(J) planner's proposal. A 12-minute ProRes 422 HQ 1080p24 master is roughly 16 GB (about 176 Mbit/s: general knowledge, UNVERIFIED here); 400 prints scanned at 600 ppi are roughly 40 GB (research/ai-imagery.md); working copies and renders double it. Judged on the fixed or removable drive with the most free space."
+  },
+
+  "edition": {
+    "home_prefixes": ["Core"],
+    "pro_or_higher_prefixes": ["Professional", "Enterprise", "Education", "IoTEnterprise", "Server"],
+    "source": "BitLocker drive encryption is offered on Windows Pro and higher; Home editions have only device encryption (Microsoft documentation, general knowledge, UNVERIFIED here). A VeraCrypt file container works on every edition (DECISIONS.md W-25). EditionID values: Core and CoreSingleLanguage are Home; Professional is Pro."
+  },
+
+  "display": {
+    "classes": [
+      { "id": "4k+",       "min_width": 3840 },
+      { "id": "qhd",       "min_width": 2560 },
+      { "id": "fhd",       "min_width": 1920 },
+      { "id": "below-fhd", "min_width": 0 }
+    ],
+    "source": "(J) planner's classes by the primary screen's pixel width. The film is mastered at 1920x1080 (settings card), so below-fhd cannot show a full-size preview."
+  },
+
+  "python": {
+    "min_version": "3.10", "recommended_version": "3.13",
+    "source": "playbooks/agent-pipeline.md Step 2 names Python 3.13 (winget Python.Python.3.13). The repo's Windows-side tools use only the standard library; 3.10 is the planner's minimum (J)."
+  },
+
+  "ffmpeg": {
+    "container_build": "6.1.1",
+    "winget_build": "9.0.2",
+    "min_major": 6,
+    "required_features": ["has_libx264", "has_libass"],
+    "optional_features": ["has_zscale"],
+    "source": "The container tests used ffmpeg 6.1.1; playbooks/agent-pipeline.md Step 2 names the winget build Gyan.FFmpeg 9.0.2, which is not the container build, so the colour-patch test must be run on whichever build is on the PC. libx264 is needed for the venue and phone H.264 files and libass for burned-in captions (theatrical-delivery notes); zscale is optional because the frozen chains do not use it (build plan 4.5). The 6.x floor is the planner's choice (J)."
+  },
+
+  "accounts": {
+    "shared_hint_threshold": 2,
+    "source": "O-03 in DECISIONS.md asks whether she shares the PC. Two or more enabled local accounts is only a hint (J): the answer is about her home, not the machine, so it is printed in the chat table and never filed."
+  }
+}

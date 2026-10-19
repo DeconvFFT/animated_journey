@@ -1,0 +1,24 @@
+{
+ "actual": "both mutations: exit 1",
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 605,
+  "avail_mb_min": 605,
+  "avail_mb_start": 605,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "negative: HOURS-HOWTO without the 'no names in note' sentence; an unfinished-work marker",
+ "notes": "ran with a synthetic mini pattern file because scripts/redaction_patterns.json is absent (mechanism test only)",
+ "package": "WP-02",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "lint_neg_howto_marker",
+ "unverified_reasons": []
+}

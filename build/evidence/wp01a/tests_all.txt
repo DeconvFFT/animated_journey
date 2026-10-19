@@ -1,0 +1,29 @@
+WP-01a tests (--all). tree: repo  patterns file: present  pwsh: present
+PASS       parse.scripts_and_readme_fences              exit 0; OK   win/step0_pc_tests.ps1|OK   win/README-MAKER.md (fence starting at line 48)|OK   win/README-MAKER.md (fence starting at line 54)|
+PASS       lint.step0_script                            exit 0; TOTAL: 0 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.maker_readme_fences                     exit 0; TOTAL: 0 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.planted_machine_scope_ps1               exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.planted_machine_scope_readme_fence      exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.readme_with_planted_block               exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.planted_powershell7_syntax              exit 1; TOTAL: 13 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.process_scope_and_quoted_text_pass      exit 0; TOTAL: 0 error(s), 0 warning(s) in 1 file(s)|
+PASS       data.json_schemas_pins_tiers                 exit 0; objects checked for additionalProperties:false: 28; problems: 0|
+PASS       fixtures.in_sync_with_generator              exit 0; 
+PASS       check.gpu12_pro_16gb                         exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.nogpu_home_8gb                         exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.gpu24_pro_32gb                         exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.software_gpu                           exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.vram_nvidia_over_cap                   exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.vram_capped_only                       exit 1; FINDING: VRAM unreadable: AdapterRAM stops near 4 GB, and neither nvidia-smi nor the registry value answered. Open Task Manager, Performance, 
+PASS       check.old_ffmpeg6                            exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.ffmpeg9                                exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.craft_pins_mixed                       exit 1; FINDING: Craft pin mismatch: vectorcraft 0.12.9 is not the pinned 0.13.1 (win/pins.json, W-22).|RESULT: exit 1 (valid; 1 finding(s) need a hum
+PASS       check.gpu_low_4gb                            exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.non_nvidia_is_capped                   exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.below_blender_floor_is_information     exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.version_strings_not_ip                 exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.sha256_ok                              exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.hex65_leak                             exit 2; category=guid_serial field=notes[0] hit=3f********|
+PASS       check.identifying                            exit 2; category=email field=tools.git.notes hit=ta********|category=ipv4 field=notes[0] hit=10********|category=mac field=notes[3] hit=02********|
+PASS       check.identifying_with_forbid                exit 2; category=email field=tools.git.notes hit=ta********|category=user_name field=tools.git.notes hit=ta**|category=ipv4 field=notes[0] hit=10*****
+PASS       check.forbid_absent_name                     exit 0; RESULT:

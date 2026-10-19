@@ -1,0 +1,49 @@
+template,patch,err_R,err_G,err_B
+P1,red,-1.0,0.0,0.0
+P1,grey50,0.0,0.0,0.0
+P1,skin,-1.0,-1.0,-1.0
+P1,cream,-3.0,-2.0,-2.0
+P1,indigo,-1.0,-1.0,-1.0
+P1,ochre,0.0,-2.0,0.0
+P1,g16,0.0,0.0,0.0
+P1,g24,0.0,0.0,0.0
+P1,g32,-0.7,-0.7,-0.7
+P1,g48,-1.0,-1.0,-1.0
+P1,g64,0.0,0.0,0.0
+P1,white235,0.0,0.0,0.0
+P2,red,-1.0,0.0,0.0
+P2,grey50,0.0,0.0,0.0
+P2,skin,-1.0,-1.0,-1.0
+P2,cream,-1.0,0.0,0.0
+P2,indigo,-1.0,-1.0,-1.0
+P2,ochre,0.0,-2.0,0.0
+P2,g16,0.0,0.0,0.0
+P2,g24,-0.5,-0.5,-0.5
+P2,g32,0.0,0.0,0.0
+P2,g48,-1.0,-1.0,-1.0
+P2,g64,0.0,0.0,0.0
+P2,white235,0.0,0.0,0.0
+HEVC,red,-1.5,0.0,0.0
+HEVC,grey50,0.0,0.0,0.0
+HEVC,skin,-0.9,-0.9,-0.9
+HEVC,cream,-2.0,-1.0,-1.0
+HEVC,indigo,-1.0,-1.0,-1.0
+HEVC,ochre,-2.0,-2.0,0.0
+HEVC,g16,0.0,0.0,0.0
+HEVC,g24,-0.5,-0.5,-0.5
+HEVC,g32,-0.5,-0.5,-0.5
+HEVC,g48,-0.9,-0.9,-0.9
+HEVC,g64,0.0,0.0,0.0
+HEVC,white235,-0.1,-0.1,-0.1
+bare -pix_fmt from RGB (tags say 709),red,0.0,23.0,0.0
+bare -pix_fmt from RGB (tags say 709),grey50,0.0,0.0,0.0
+bare -pix_fmt from RGB (tags say 709),skin,3.0,1.0,-4.0
+bare -pix_fmt from RGB (tags say 709),cream,-1.0,-3.0,-4.0
+bare -pix_fmt from RGB (tags say 709),indigo,-2.0,1.0,0.0
+bare -pix_fmt from RGB (tags say 709),ochre,6.0,-4.0,-8.0
+bare -pix_fmt from RGB (tags say 709),g16,0.0,0.0,0.0
+bare -pix_fmt from RGB (tags say 709),g24,0.0,0.0,0.0
+bare -pix_fmt from RGB (tags say 709),g32,-1.0,-1.0,-1.0
+bare -pix_fmt from RGB (tags say 709),g48,-1.0,-1.0,-1.0
+bare -pix_fmt from RGB (tags say 709),g64,0.0,0.0,0.0
+bare -pix_fmt from RGB (tags say 709),white235,0.0,0.0,0.0

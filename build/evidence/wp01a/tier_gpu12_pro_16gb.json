@@ -1,0 +1,48 @@
+{
+  "schema": "lj-pc-tier/1",
+  "date": "2026-10-20",
+  "windows": {
+    "edition_family": "pro-or-higher",
+    "build_major": 22631
+  },
+  "gpu_tier": "gpu-8-12",
+  "vram_bucket": "12-15",
+  "ram_tier": "16+",
+  "disk_tier": "roomy",
+  "display_class": "fhd",
+  "ffmpeg": {
+    "version": "7.1",
+    "sha256": "3f2a9c41d7e85b60a1c4e9f0b2d37a85c6e1f4092b8d3a7e5c1f60d9b4a28e73",
+    "has_libx264": true,
+    "has_libass": true,
+    "has_zscale": true
+  },
+  "python_ok": true,
+  "git_ok": true,
+  "craft_pins": [
+    {
+      "app": "photocraft",
+      "status": "absent"
+    },
+    {
+      "app": "vectorcraft",
+      "status": "absent"
+    },
+    {
+      "app": "lightcraft",
+      "status": "absent"
+    },
+    {
+      "app": "filmcraft",
+      "status": "absent"
+    },
+    {
+      "app": "effectcraft",
+      "status": "absent"
+    },
+    {
+      "app": "soundcraft",
+      "status": "unpinned"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+script,font,ka_ink_px,ka_ink_pct,line_ink_px,line_ink_pct,two_line_block_px,two_line_block_pct,line_pitch_px,line_pitch_pct
+latn,DejaVu Sans (reference),54,5.0,65,6.02,152,14.07,87,8.06
+latn,Noto Sans (Latin),41,3.8,51,4.72,137,12.69,87,8.06
+deva,Noto Sans Devanagari,28,2.59,53,4.91,139,12.87,86,7.96
+deva,Noto Serif Devanagari,24,2.22,46,4.26,132,12.22,86,7.96
+deva,Tiro Devanagari Sanskrit,33,3.06,64,5.93,150,13.89,86,7.96
+deva,Tiro Devanagari Hindi,34,3.15,65,6.02,151,13.98,86,7.96
+deva,Mukta,33,3.06,59,5.46,146,13.52,86,7.96
+deva,Hind,35,3.24,64,5.93,150,13.89,87,8.06
+deva,Poppins,37,3.43,64,5.93,150,13.89,86,7.96
+deva,Anek Devanagari,32,2.96,60,5.56,146,13.52,86,7.96
+deva,Yatra One,39,3.61,68,6.3,154,14.26,87,8.06
+deva,Rozha One,35,3.24,62,5.74,148,13.7,86,7.96
+deva,Khand,37,3.43,63,5.83,150,13.89,87,8.06
+deva,Martel,35,3.24,68,6.3,154,14.26,87,8.06
+deva,Gotu,36,3.33,72,6.67,158,14.63,86,7.96
+deva,Baloo 2,34,3.15,63,5.83,149,13.8,86,7.96
+taml,Noto Sans Tamil,39,3.61,81,7.5,167,15.46,86,7.96
+taml,Hind Madurai,35,3.24,70,6.48,156,14.44,86,7.96
+taml,Mukta Malar,26,2.41,56,5.19,142,13.15,86,7.96
+taml,Catamaran,28,2.59,59,5.46,145,13.43,86,7.96
+taml,Tiro Tamil,31,2.87,66,6.11,152,14.07,86,7.96
+mlym,Noto Sans Malayalam,41,3.8,81,7.5,167,15.46,87,8.06
+mlym,Hind Kochi,32,2.96,68,6.3,154,14.26,87,8.06
+mlym,Manjari,27,2.5,51,4.72,137,12.69,86,7.96
+beng,Noto Sans Bengali,38,3.52,73,6.76,159,14.72,86,7.96
+beng,Hind Siliguri,35,3.24,63,5.83,150,13.89,87,8.06
+beng,Tiro Bangla,37,3.43,66,6.11,153,14.17,86,7.96
+telu,Noto Sans Telugu,43,3.98,74,6.85,160,14.81,87,8.06
+telu,Hind Guntur,35,3.24,55,5.09,141,13.06,86,7.96
+telu,Tiro Telugu,37,3.43,70,6.48,156,14.44,86,7.96
+knda,Noto Sans Kannada,42,3.89,63,5.83,149,13.8,86,7.96
+knda,Tiro Kannada,36,3.33,59,5.46,145,13.43,86,7.96
+gujr,Noto Sans Gujarati,36,3.33,68,6.3,154,14.26,87,8.06
+gujr,Hind Vadodara,38,3.52,69,6.39,155,14.35,86,7.96
+gujr,Mukta Vaani,32,2.96,58,5.37,144,13.33,86,7.96
+orya,Noto Sans Oriya,43,3.98,59,5.46,145,13.43,87,8.06
+guru,Noto Sans Gurmukhi,41,3.8,76,7.04,162,15.0,86,7.96
+guru,Mukta Mahee,30,2.78,58,5.37,144,13.33,86,7.96
+guru,Tiro Gurmukhi,29,2.69,53,4.91,140,12.96,86,7.96

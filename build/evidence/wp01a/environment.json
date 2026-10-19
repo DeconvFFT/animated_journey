@@ -1,0 +1,7 @@
+{
+ "schema": "lj-wp01a-environment/1",
+ "pattern_file": "STAND-IN in an alternate tree (WP-03 file had not landed)",
+ "pattern_file_sha256_first12": "c5076ecd8c45",
+ "pwsh": "7.5.4",
+ "python": "3.13.16"
+}
