@@ -141,3 +141,204 @@ Table: Template J (shortlist) and `font_table_2026-10-19.csv` (all 104). Method:
 - **Font-fallback detection in each renderer.** libass: the `fontselect:` and `Glyph ... not found` debug lines. drawtext: `fontfile=` names the file, so there is no fallback to detect (a missing glyph shows tofu). Browser: `@font-face` from local files and `font-synthesis: none` (well established across browsers since January 2022 [86]); which font was actually used must be read in developer tools (UNVERIFIED here: the Chrome DevTools page I read did not describe a rendered-fonts pane).
 
 ---
+
+## Exemplars and what they teach us
+
+Film exemplars of raga, bhajan or Indic-script practice were not researched (the search budget ran out before I reached them); that is a stated gap. The exemplars below are the sourced practices and cases that taught the findings.
+
+| Exemplar | What it is (source) | What it teaches this film |
+|---|---|---|
+| M. S. Subbulakshmi's *Venkatesa Suprabhatam* | HMV LP released November 1963; "the early-morning anthem of many Hindu households, across continents"; at Tirumala the deity's waking begins with it at 3 am; "literally sold many millions" [13] | A household's dawn can be one recording owned by a label. The film's dawn is made of the *objects* (bell, conch, lamp) and the maker's own sound, not of that voice; a viewer who knows it will supply it. India's term has run out (our computation), the US and UK terms have not [1][16]. |
+| T-Series' two Hanuman Chalisas | One text (Tulsidas), two owned recordings: Hari Om Sharan, 1974, GCI, re-released 1995 by Super Cassettes; and Hariharan's on T-Series [14 SR] | The *version* is the unit of rights. "Her song" must be pinned to a recording year and singer before anyone can say who owns it (O-41). |
+| Annamacharya's compositions | About 12,000 of a traditional "nearly 32,000" survive; the 1950 committee had M. Balamuralikrishna "set music to over 800" [56] | Text free, familiar tune owned. A hum of "her" Annamacharya kriti is a performance of a modern composer's tune unless the family tune is older. |
+| Netflix Hindi and Tamil timed text guides | 42 characters a line, two lines, up to 22 cps adult / 18 cps children; "bottom-heavy pyramid"; no italics; transliterate names; Mangal named only as "a generic placeholder for proportional SansSerif"; guides dated 2025-10-17 (Hindi) and 2025-07-07 (Tamil) [81][82] | The industry's own caption limits for these languages match W-18's 42 and two lines; they count characters, and my measurement shows Tamil and Malayalam can exceed the box before 42 code points. |
+| Prasar Bharati's AI devotional pilot; the ISKCON songwriting experiment | AI-created devotional songs telecast "on a pilot basis" in Navratri 2025 (reply of 2025-12-12); devotees: "lacked living consciousness" [66][67] | Even the state broadcaster treats it as an experiment; devotional communities hesitate. For a film that must not offend a mostly public room, an AI devotional voice is a risk with no upside. |
+| Great 78 Project versus a private "VintageSense" upload | "research, teaching, and private study only" versus CC BY 3.0 on 1968 film songs [25][26] | A host's statement and an uploader's licence are different things; neither is the rights holder's licence. |
+| Tiro Devanagari Sanskrit | Static, OFL, Latin with IAST except `ḹ`, 328 fused conjunct pairs of 1,369 [fixture] | A face built for Sanskrit text on one family for Devanagari and IAST: no mixed-face line. |
+| Ragamala (from `research/hindu-frameworks.md` [22][23]) | The picture-tradition of raga-by-hour and season | The time-of-day idea is old; the paintings are Hindu in subject but Mughal and Deccani in lineage, so the raga *idea* is allowed as a label, the *images* are not (D-28; see hindu-frameworks flag 14). |
+
+---
+
+## Templates and deliverables
+
+### Template A. `cue_map.csv`, extended (extends `playbooks/music-sound.md` Step 5)
+
+The first six columns are Step 5's, unchanged. The rest are new.
+
+```
+beat_id,cue_type,source_in_her_life,hard_flag,advisor_flag_ref,notes,tradition,raga_or_mode,raga_id,time_of_day_or_season,rasa,rasa_basis,instruments,origin_flag,maker_rule,source_route,licence_log_ref,composition_status,recording_status,performer_status,voice_present,phone_check,mono_check,not_before,date_read
+```
+
+- `cue_type`: MOTIF, CLOCK, BED, PULL-OUT, VOICE-ZONE, END (Step 5).
+- `tradition`: `hindustani`, `carnatic`, `temple_ritual`, `folk_regional:<name>`, `domestic_sound`, `none`.
+- `raga_or_mode`: a raga name only if a named source or teacher identifies it, or the cue is a vetted public-domain recording whose metadata says so. Otherwise: `none (drone only)`, `her tune (raga unknown)`, or `pentatonic mode (not named)`. A raga name is a claim; never print one in credits unless the recording's own metadata carries it.
+- `raga_id`: R-01 to R-24 from Template B, or blank.
+- `time_of_day_or_season`: `dawn`, `morning`, `afternoon`, `dusk`, `evening`, `night`, `late_night`, `monsoon`, `any`, `n/a` (the same field as `season_or_time_of_day` in `research/hindu-frameworks.md` Template B, so the two sheets join).
+- `rasa`: `shanta`, `karuna`, `shringara_decorous`, `vira_quiet`, `hasya`, `adbhuta`, `vatsalya` (hindu-frameworks Template B). `rasa_basis`: `module_turn` (the module's turn chose it), `tradition_word:<quote>` (a source's mood word), or `inference` (ours).
+- `instruments`: I-ids from Template C, `;`-separated.
+- `origin_flag`: `NONE`, `SHARED`, `COURT`, `SUFI`, `CHURCH_COLONIAL`, `DHARMIC_NOT_HINDU`, `UNVERIFIED` (several allowed).
+- `maker_rule`: blank, `IN`, `OUT`, `ASK`. Default for any flagged instrument or form is `ASK`; a cue still `ASK` at Mon 14 Dec (W-44) is replaced by silence or room tone.
+- `source_route`: the W-44 rung, in order: `SILENCE`, `HER_TUNE_HUMMED`, `PD_PERFORMANCE_EXISTING`, `MAKER_OWN_SOUND`, `CC0`, `CC_BY`, `LOCAL_AI_BED`, `LICENSED_SONG` (at most two; lean none).
+- `licence_log_ref`: the T8 `asset_id` (`MU-` for music, `FN-` for fonts).
+- `composition_status`: `PD_text_and_tune`, `PD_text_owned_tune`, `owned`, `unknown`. `recording_status`: `n/a`, `PD:<countries>`, `owned:<label>`, `CC:<type>`, `maker`. `performer_status`: `maker`, `relative:release_pending`, `hired:written_consent_s38A2`, `n/a`.
+- `voice_present`: `yes` or `no`. A `yes` row cannot enter the premiere cut unless it is her HER-PUBLIC clip (D-05).
+- `phone_check`, `mono_check`: PASS or FAIL after the 50% volume phone-speaker check and the mono fold (the mobile-delivery protocol; the sibling track defines it).
+- `not_before`: `PREMIERE`, `TD-L2c`, `APRIL` (D-07 and D-06 gate). Rows not `PREMIERE` are not rendered into the premiere cut.
+
+Rules: (1) no MOTIF or CLOCK without `source_in_her_life` (Step 5). (2) A row with a `raga_id` and no named source for the raga is invalid. (3) Every `LOCAL_AI_BED` row needs `voice_present=yes`, is labelled, is never on the peak, and in the premiere cut has almost no legal home because D-05 removes voices; mark it `APRIL`. (4) Any `origin_flag` other than `NONE` needs a `maker_rule` by 14 Dec. (5) `composition_status=unknown` on a MOTIF blocks lock.
+
+**Worked rows on an invented household (practice only; nothing here is about her).**
+
+| beat_id | cue_type | source_in_her_life | tradition | raga_or_mode | time | rasa (basis) | instruments | origin_flag | maker_rule | source_route | voice | not_before |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| M1.B2 | CLOCK | E-014 (invented): the brass hand-bell on the prayer shelf | temple_ritual | none | dawn | shanta (module_turn) | I-02 | NONE | IN | MAKER_OWN_SOUND | no | PREMIERE |
+| M2.B1 | BED | E-020 (invented): the kitchen before school | domestic_sound | none (room tone only) | dawn | vatsalya (module_turn) | none | NONE | IN | MAKER_OWN_SOUND | no | PREMIERE |
+| M2.B3 | CLOCK | E-022 (invented): bhajans on a harmonium in the evening | temple_ritual | none | evening | shanta (inference) | I-19 | CHURCH_COLONIAL | ASK | none until ruled; silence in the render | no | PREMIERE (blocked by ASK) |
+| M3.B4 | MOTIF | E-031 (invented): the lullaby | none | her tune (raga unknown) | any | vatsalya (module_turn) | none (maker's hum) | NONE | IN | HER_TUNE_HUMMED | no (the maker's voice is the hum; W-44) | PREMIERE; `composition_status=unknown` until the tune is placed |
+| M3.B6 | PULL-OUT | hard chapter (D-04) | none | none | n/a | karuna (module_turn) | none | NONE | IN | SILENCE | no | PREMIERE |
+| M4.B5 | END | the hum returns, hard cut | none | her tune | any | shanta (module_turn) | none | NONE | IN | HER_TUNE_HUMMED | no | PREMIERE |
+
+### Template B. Raga-and-time map (24 rows; every cell is a source's word or marked)
+
+"Window" and "mood" are what the cited page says; "film rasa" is **our inference**, flagged, because no source fixes raga to rasa. "Bed" is what an agent-made bed may carry honestly (Q1): D = drone only; N = nothing melodic; M = a pentatonic or scale pad may be called a *mode*, never the raga. Counterparts are as named on the cited pages. Sources: [39] (the Wikipedia pages listed there, read 2026-10-19), [40] Gandharv Shastra, [41] raag-hindustani.com, [43].
+
+| id | Raga (counterpart) | Tradition | Window the sources give | Mood words in the sources | Film rasa (inference) | Origin or name flags | Bed |
+|---|---|---|---|---|---|---|---|
+| R-01 | Bhairav (same scale as Carnatic Mayamalavagowla) | Hindustani | "Daybreak"; opens concerts; "one of few ragas that can be sung in any season" | "solemn peacefulness"; "grave ... introversion as well as devotional attitude"; "Shaant aur Gambhir" | shanta | Legends: from the mouth of Shiva, or from Surya; no Persian claim on the page | D |
+| R-02 | Todi (Carnatic equivalent Shubhapantuvarali; Carnatic Todi/Hanumatodi is a different raga) | Hindustani | "approximately 8-10AM" (text); "9-12" (infobox); may open an overnight concert at 4 am | "pensive, mournful", relieved by a festive fast section | karuna | Miyan ki Todi attribution to Tansen "unlikely"; name first in 19th-century literature | N (komal Re/Ga/Dha intoned low, very sharp Ma) |
+| R-03 | Alhaiya Bilaval / Bilaval (Shankarabharanam) | Hindustani | "early morning, roughly 4 to 8" (infobox); "1st prahar (6 to 9)" (body) | "Shant Rasa" | shanta | "Alhaiya and Bilaval may have been separate ragas" in the 17th century | M (the scale is the major scale) |
+| R-04 | Bhoopali (Mohanam) | Hindustani | "Early night, 7-9 PM"; Gandharv Shastra: night prahar. **A morning use: not found (UNVERIFIED)** | "Most of the songs in this raga are based on Bhakti rasa"; "Shanti Rasa" | shanta | Used in abhangs and Kannada devotional songs; no origin legend on the page | M |
+| R-05 | Bhimpalasi (Abheri) | Hindustani | "early afternoon, from 12:00 P.M. to 3:00 P.M."; Gandharv Shastra: 12 pm to 12 am | none stated | none sourced | none | N |
+| R-06 | Brindavani Sarang (Brindavani) | Hindustani | "Madhyanah (noon), Afternoon", 12 to 3 | "sringara rasa - romantic love"; also Veer rasa | shringara_decorous | Created by Swami Haridas, who "brought Lord Krishna to earth"; Krishna bhakti | N |
+| R-07 | Yaman (Kalyani) | Hindustani | "first quarter of the night"; *The Raga Guide*: 9 pm to midnight; "from sunset to late evening" (raag-hindustani.com) | "soothing and auspicious"; "a mood of devotion and dedication" | shanta / shringara_decorous (evening) | **Name flag:** "Kalyan described as the Indian (Sanskrit) name and Yaman as the Persian name" (Kaufmann); "Iman" documented in the late 14th or early 15th century; Venkatamakhin (1620) calls Kalyan a favourite melody of the Arabs; Amir Khusrau attribution is traditional, unsupported on the pages. **Prefer "Kalyani" or no name on screen** | M |
+| R-08 | Puriya Dhanashree (Pantuvarali-like) | Hindustani | "at dusk"; sandhiprakash; "After sunset" | none stated | none sourced | Derived from Purvi | N |
+| R-09 | Malkauns (Hindolam) | Hindustani | "Late night, roughly 12-3" | "a serious, meditative raga"; Ali Akbar Khan: devotion, peace and heroism | shanta | Hindu legend: Parvati created it to calm Shiva; also a Jain tradition | M (pentatonic) |
+| R-10 | Durga (Shuddha Saveri-like) | Hindustani | "2nd part of the Night, 9-12" | "sringara rasa - romantic love" | shringara_decorous | "Named after the powerful Hindu goddess": a deity named only if hers (O-38) | M (pentatonic) |
+| R-11 | Bageshri (Kharaharapriya per the page) | Hindustani | "2nd Prahar of the Night (9PM to 12AM)" | "waiting for reunion with one's lover"; the page's listed rasa is Hasya (sits oddly with that sentence) | none sourced | "traces its origins to the Samaveda" | N |
+| R-12 | Bhairavi (Hindustani) (Hanumatodi) | Hindustani | "Morning; Conclusion of a concert"; "closing Raga for any formal performance" | "rich, devotional atmosphere"; bhajan and thumri | shanta (END label only) | Not the Carnatic Bhairavi | N |
+| R-13 | Desh | Hindustani | "second quarter of the night (9PM to 12AM)"; **season: UNVERIFIED** | none stated | none sourced | Used in "Vande Mataram" and in Tagore's songs: political and Brahmo-authorship associations; avoid as a motif | N |
+| R-14 | Malhar family (Miyan ki, Megh, Gaud, Sur, Ramdasi) (Madhyamavati's Hindustani counterparts include Megh and Megh Malhar) | Hindustani | "strongly associated with the monsoon" | rainy-season imagery; "longing during separation" | karuna / shringara_decorous (longing) | Tansen and Meera legends; Miyan ki Malhar carries the Akbar-court name | N |
+| R-15 | Hamsadhvani | Carnatic | "Early night, 9-12"; "usually sung at the beginning of a performance" | none on the page (a blog says uplifting and auspicious, SR) | adbhuta (opening; inference) | Created by Ramaswami Dikshitar (1735 to 1817); in Hindustani music via Aman Ali Khan and Amir Khan; the kriti "Vatapi Ganapatim" in it is UNVERIFIED (not on the page) | M (pentatonic) |
+| R-16 | Madhyamavati (Madhumad Sarang, Megh) | Carnatic | no time rule; "every Carnatic music concert ends with" a piece in it | "considered a very auspicious rāgam" | shanta (ending; inference) | Janya of Kharaharapriya | M (pentatonic) |
+| R-17 | Mohanam (Bhoopali) | Carnatic | none stated | none stated | none sourced | "Mullaippann (3 BCE)" is cited for the scale's antiquity | M |
+| R-18 | Kalyani (Yaman) | Carnatic | opens concerts "because it is considered auspicious"; weddings | auspiciousness | adbhuta / shringara_decorous (wedding; inference) | "Yaman/Aiman is not an ancient raga"; the Carnatic name is Sanskrit | M |
+| R-19 | Shankarabharanam (Bilaval) | Carnatic | none stated | "mellifluous and smooth"; "laid back majestic" | shanta | Dikshitar's Shiva kritis in it | M |
+| R-20 | Kharaharapriya (Kafi) | Carnatic | none stated | "brings out the Karuna rasam, invoking pathos" | karuna | Legend of Ravana singing to Shiva; Tyagaraja's raga | N |
+| R-21 | Sindhu Bhairavi | Carnatic | none stated | "Viraham (separation), Shokam (sorrow), Karunam (compassion) and Bhakthi (devotion)" | karuna | Name easily confused with Sindh; page is thin | N |
+| R-22 | Reetigowla | Carnatic | none stated | "Bhakti mixed with immense joy" | hasya-tinged vatsalya (inference only) | Kritis by Tyagaraja, Subbaraya Sastri, Swathi Thirunal, Papanasam Sivan | N |
+| R-23 | Sarang / Brindavani Sarang row repeated for the afternoon CLOCK | Hindustani | see R-06 | see R-06 | see R-06 | see R-06 | N |
+| R-24 | Her tune | unknown | n/a | n/a | vatsalya (module turn) | Raga is unknown; **do not assign one** | the maker's hum is the cue |
+
+Notes: Carnatic practice is "closer to the text, and places less emphasis on time or season" [39], so the Carnatic rows carry placement (opening, closing) rather than hours. Alternative "morning" Hindustani ragas used in the brief (Bilaval, Todi) are in R-02 and R-03. The brief's "Bhupali's morning use" has no support on pages read (R-04).
+
+### Template C. Instrument and timbre sheet with origin flags (I-01 to I-23)
+
+Flags: NONE, SHARED, COURT, SUFI, CHURCH_COLONIAL, UNVERIFIED. "Source" says whether I opened a page. "Phone" is the working expectation, partly measured (Summary 14). The default rule is the maker's: any flag other than NONE defaults to `maker_rule = ASK`.
+
+| id | Instrument | Hindu context | Origin note and source | Flag | Phone | One-line question for the maker |
+|---|---|---|---|---|---|---|
+| I-01 | shankha (conch) | household and temple ritual | no page opened; general knowledge | NONE (UNVERIFIED) | survives (CC0 conch: 323 Hz peak, 100% of energy above 300 Hz) | none |
+| I-02 | ghanta (bell) | pujas, temples | no page opened | NONE (UNVERIFIED) | survives (CC0 temple bell: 997 Hz peak) | none |
+| I-03 | damaru | Shiva's drum | no page opened; the hourglass drum is shared with Tibetan Buddhist ritual (general knowledge) | NONE (UNVERIFIED) | survives | none |
+| I-04 | manjira, kartal | bhakti and kirtan | no page opened; chimta in Sikh kirtan is a dharmic cousin | NONE (UNVERIFIED) | survives | none |
+| I-05 | mridangam | Carnatic, temple | tabla page notes the legend of Krishna halving a barrel drum "mridana" (a legend) [47]; no mridangam page opened | NONE (UNVERIFIED) | mostly survives; bass strokes lose body (-1.4 dB at 300 Hz, -3.2 dB at 500 Hz) | none |
+| I-06 | pakhawaj | dhrupad, Nathdwara | Prakrit name, wooden body from the 14th century [51]; Mughal-court use not on the page | NONE (court use UNVERIFIED) | low strokes weak | none |
+| I-07 | nadaswaram and thavil | South Indian temples, weddings | "mangala vadyam", "very auspicious" [53] | NONE | survives (loud) | none |
+| I-08 | chenda, edakka | Kerala temples | no page opened; also played at church festivals in Kerala (general knowledge, UNVERIFIED) | NONE / SHARED (UNVERIFIED) | survives | ask only if her region is Kerala |
+| I-09 | dhak | Bengal Durga Puja | a Kolkata Dashami recording exists under CC BY 4.0 [37] | NONE | survives | only if her region is Bengal |
+| I-10 | veena | Carnatic, Hindu iconography | no page opened | NONE (UNVERIFIED) | upper strings survive | none |
+| I-11 | bansuri | Krishna's flute | no page opened | NONE (UNVERIFIED) | survives | none |
+| I-12 | tanpura | the drone for every raga | "Tumburu Vina", c. 300 BCE per the page; modern form first pictured c. 16th to 17th century in Mughal-era paintings [52] | SHARED-LIGHT | body weak, jawari partials survive (96% of energy above 300 Hz in one sample) | Is a drone that carries a Mughal-era picture history acceptable? |
+| I-13 | ektara | Baul songs, kirtan, sadhus; one-string form "used by Hindu Sadhus and Islamic Sufi saints" [50] | Bengal syncretic tradition | SHARED / SUFI | survives | If her tradition is Bengali Baul or Vaishnava kirtan, is the ektara hers? |
+| I-14 | sitar | Hindustani, Hindu devotional use | word first dated 1739 with a Khusrau Khan; not in iconography before 1790; the Amir Khusrau attribution is a confusion [46] | COURT | survives | Out unless a family source says it was hers? |
+| I-15 | sarod | Hindustani | from the instrument still played in Afghanistan, Pakistan and Kashmir; first mention about 1830 [46] | COURT | survives | as above |
+| I-16 | tabla | accompanies bhajan, kirtan, Hindustani | disputed; "Clear pictorial evidence ... only from about 1745" [47] | SHARED | mostly survives | If she sings with a tabla, is it hers? (O-41) |
+| I-17 | shehnai | weddings, Kashi Vishwanath temple | Persian name or folk pungi; part of the royal naubat [54 SR] | SHARED | survives | Out unless hers? Do not use because it "sounds Indian" |
+| I-18 | santoor | Hindustani (Kashmir) | "Iranian origin"; the Indian santoor "directly borrowed from the Persian santoor" [48] | SUFI/PERSIAN | survives | Out |
+| I-19 | harmonium | bhajan, kirtan, harikatha | reed organ, "possibly with missionaries or traders", mid-19th century; hand-pumped Indian form; AIR ban 1940 to 1971 [44] | CHURCH_COLONIAL | mid-range survives | If she sings bhajans with it, is it kept because it is hers? |
+| I-20 | khayal (form) | Hindustani vocal | Persian/Arabic word; Delhi Sultanate and Mughal courts [49] | COURT | n/a | Out as a form unless hers |
+| I-21 | violin in Carnatic music | standard Carnatic accompanist | no page opened; a European instrument adopted in the colonial period (general knowledge, UNVERIFIED) | CHURCH_COLONIAL (UNVERIFIED) | survives | If her family is Carnatic, ask |
+| I-22 | khol / mridanga with karatals | Gaudiya Vaishnava kirtan | no page opened | NONE (UNVERIFIED) | low strokes weak | none |
+| I-23 | ghazal and qawwali forms (with harmonium, dholak) | none | harmonium is "almost all Qawwals'" accompaniment [44] | OUT (D-28) | n/a | none: out |
+
+### Template D. Devotional forms, and who owns what (F-01 to F-12)
+
+| id | Form | Where it fits the life film | Text | Tune | Famous recordings | Verdict |
+|---|---|---|---|---|---|---|
+| F-01 | Aarti (Om Jai Jagdish Hare) | dusk and festival scenes; a lamp scene | PD (Phillauri d. 1881, so out of Indian term at end 1941) [12][1] | variants differ; arrangements owned | Anuradha Paudwal (T-Series); film versions 1952, 1970, 2003 [12] | text free; version unknown until O-41 |
+| F-02 | Suprabhatam | dawn clock | traditional; first verse Valmiki [13] | traditional | M. S. Subbulakshmi, HMV, Nov 1963 [13] | recording: India free by our computation; US 2067; UK 2033 |
+| F-03 | Tiruppavai | Margazhi mornings (from about 16 Dec) | Andal, traditional (no page opened here; hindu-frameworks) | traditional settings and modern ones | many labels | text free; check the tune |
+| F-04 | Bhajan (saint-poets: Meera, Surdas, Tulsidas) | home and temple evenings | PD | traditional or modern settings | T-Series, Saregama, HMV catalogues | the hum or a PD performance only |
+| F-05 | Kirtan | call-and-response gatherings | PD | traditional | CC0 and CC BY uploads exist but with many voices (D-05) [26] | Sikh kirtan out (dharmic) |
+| F-06 | Stotra and shloka recitation | morning and evening shelf | PD | recited | label recordings of famous reciters | a card (hindu-frameworks) beats a recording |
+| F-07 | Shyama Sangeet | Bengal, Shakta | Ramprasad Sen mid-18th century; Kamalakanta [57] | traditional | label | restrict to Ramprasad and the Shakta line; Tagore and Nazrul composers out by default |
+| F-08 | Abhanga | Warkari households, Vitthal | Jñāneśvar c. 1200, Namdev, Eknath, Tukaram [55] | traditional and modern settings | Bhimsen Joshi, Kishori Amonkar and others | text free |
+| F-09 | Dasa sahitya, Annamacharya kritis | Karnataka and Andhra | Purandara Dasa; Annamacharya d. 1503 [56] | settings by named composers are owned | M. S. Subbulakshmi and others | text free, tune check |
+| F-10 | Film devotional (Gulshan Kumar/T-Series, Anuradha Paudwal, Rafi, Lata) | the maker's era cues | owned lyric and music | owned | label (T-Series, Saregama, Sony) | not cleared by being devotional; lean none (W-44) |
+| F-11 | Modern devotional albums (Hariharan's Hanuman Chalisa) | any | PD text (Tulsidas) | owned (Lalit Sen) | T-Series [14] | not cleared |
+| F-12 | Gurbani, Jain stotras, Buddhist chants | none | n/a | n/a | n/a | out unless the maker rules (dharmic, not Hindu) |
+
+### Template E. Rights decision matrix, India and abroad (not legal advice; for T10)
+
+**E1. By source type.** "Sync" is permission to put the music against picture; "master" is permission for a particular recording.
+
+| # | Source type | Composition | Recording and performer | Sync and master | Public showing, India | Public showing abroad | Route and cost | Only-me status |
+|---|---|---|---|---|---|---|---|---|
+| S1 | The maker's hum of a PD tune (W-44 motif) | free if the tune is PD | the maker's own | none | nothing to clear; the maker must know the tune is PD | same | nothing | allowed |
+| S2 | The maker's hum of a tune that is a film or album song | **owned** (publisher; IPRS-assigned performing rights if the author assigned them) | the maker's | sync for the composition; no master | composition permission or accepted risk (RISK row, tier B/C) | composition permission; the venue's PRO licence may or may not cover it (T10) | the publisher; amounts unknown | needs a decision; do not assume "a hum is free" |
+| S3 | PD composition, new recording by a relative or a hired musician | free | the performer's written consent to the film (India s.38A(2)); a relative's recording is April-only under D-05 (voice) and D-03 | none (the performer licenses their own recording) | s.19 assignment letter | the same letter, worldwide | Template H | instrumental by a hired player: after TD-L2c or April only (D-07) |
+| S4 | PD composition in an **old** recording | free | master and performer terms may have expired in India (published ≤ 1965: s.27; performer 50 years: s.38) but the US, UK and EU terms differ (1930s Indian records: US to 2030s; 1963: US 2067, UK 2033); a label's reissue may claim more | none if truly out of term in the premiere country | probably nothing to clear in India (our computation) | master permission still needed where protected | label contact; amounts unknown | allowed only after the by-country check |
+| S5 | Film devotional song | owned | master with the producer or label; performers' royalty rights (ISRA) | sync (publisher) and master (label) | IPRS (works) and PPL or Novex (recordings) for public performance, if they apply to a film showing: T10 | PRS and PPL; ASCAP/BMI/SESAC; SOCAN; APRA AMCOS and OneMusic | label sync desk (not reached; UNVERIFIED) | lean none: asking tells outsiders (W-44) |
+| S6 | Modern devotional album (T-Series, Saregama, Times Music) | text PD; tune and arrangement owned | master owned | same as S5 | same | same | same | lean none |
+| S7 | A relative's existing recording | depends on the tune | the relative's performer's right; whoever made the recording owns it | no sync from a label; the owner's and the performer's written consent | consent after the premiere (W-48) | same | none before the premiere (D-03) | a *sung* recording is a living voice: D-05; W-44 and D-05 need reconciling (Open question 4) |
+| S8 | CC0 or CC BY library track | per the file | per the file | the licence itself | CC BY credit; ND forbidden | same | free | allowed if provenance holds (Template F) |
+| S9 | AI-generated bed | none (no authorship warranty) | tool terms | the tool's terms | Suno: personal/non-commercial on free, assignment on paid; ElevenLabs excludes film; Udio: no file | same | Stable Audio 3.0 local: free under USD 1M revenue | April, labelled, under voice only |
+
+**E2. By country: terms and bodies read 2026-10-19.**
+
+| Item | India | US | UK | Canada | Australia |
+|---|---|---|---|---|---|
+| Works | life + 60 from next year (s.22) [1] | published before 1931 PD in 2026 [repo note 16] | life + 70 (repo note) | not read | not read |
+| Sound recordings | 60 years from next year after publication (s.27) [1] | foreign-published: before 1925 PD; 1925 to 1946 100 years; 1947 to 1956 110 years; 1957 to 14 Feb 1972 to 15 Feb 2067 [16] | 70 years from publication (repo note) | soundtrack accompanying a film excluded from "sound recording" [20] | not read |
+| Performers | 50 years from next year (s.38(2)) [1] | n/a | not read | not read | not read |
+| Public performance of works | IPRS [4] | ASCAP, BMI, SESAC (not read today) | PRS through TheMusicLicence, which names film screenings [18] | SOCAN (via Entandem with Re:Sound) [22] | APRA AMCOS via OneMusic [23 repo] |
+| Public performance of recordings | PPL (registered 2026-06-11), Novex, RMPL, ISRA for performers [5][6][7] | none for non-digital: §106(6), §114(a) [15] | PPL; film soundtrack is "part of the film" (s.5B(2)) [19] | Re:Sound; tariffs dated to 2015 for events [21] | OneMusic |
+| Non-profit exemption | s.52(1)(j), (k), (l), (za) [1] | §110(4): nondramatic musical works, no admission, no payment to performers/promoters/organisers [15] | not read | not read | not read |
+
+**E3. Cost and route leads (dated).** IPRS scheme "for approval at 55th AGM 2025", in force from 1 April 2025: LP/DJ events, non-ticketed, five-star banquet Rs 60,000, four-star Rs 40,000 per event, other venues indoor or outdoor Rs 1,50,000, sponsored Rs 3,00,000, ticketed 3% of admission (minimum Rs 75,000 indoor, Rs 1,50,000 outdoor); standalone commercial banquets and auditoriums (up to 1,500 capacity, ticket under Rs 1,500, not sponsored) Rs 12,000 per show or event; unlicensed users risk "a minimum of 50%" surcharge; these tariffs cover live, DJ and background music, not a named film screening [4]. Sangeet Dwar: no fees in the article [8]. UK: TheMusicLicence cost examples exist on the PPL PRS page ("correct as of September 2026"); amounts not extracted [18]. Sync and master quotes: see `research/music-sound.md` cost ranges (the sibling's [58] and [36]); label sync desks in India (Saregama, T-Series) were not reachable (404). Lean: none (W-44).
+
+**E4. Added T10 questions (extend `playbooks/theatrical-delivery.md` T10, items 21 to 28).**
+21. India: for a film shown free to invited guests in a hired hall, where each song has sync and master permission, does the venue or I also need an IPRS or PPL/Novex licence? Does any tariff name a film screening?
+22. Does s.52(1)(za) cover a recorded soundtrack if the gathering opens with a live aarti or puja? Does the 2019 government notice bind a court?
+23. Does s.52(1)(l) cover an amateur or family group's live performance of a PD bhajan at the event, and does "for the benefit of a religious institution" need a formal institution?
+24. A recording published in India in 1963: out of Indian term under s.27 on my reading; what do the US and UK terms do if the premiere is abroad?
+25. May a hired performer's s.38B moral rights be waived by contract in India? Is "assign worldwide, perpetual, all media" enough under s.19(2)?
+26. Under s.19(9) can a commissioned composer's royalty share for non-cinema-hall uses be bought out?
+27. A tune hummed by me that turns out to be a film song: is a short hum in a public film a performance of the work needing a licence?
+28. Does the venue's PRO blanket licence (ASCAP/BMI/PRS/SOCAN/APRA) cover music inside a film screened there?
+
+### Template F. Register of free and PD sources checked, and the vetting checklist
+
+**Checklist before any archive, library or sample is used** (log the answers in T8): (1) Read the licence on the rights holder's own page, not the host's field. (2) Is the uploader the performer or the label? (3) Work date and country of first publication, then Template E2. (4) Is it a digitisation of a commercial recording (then the label owns the master whatever the uploader says)? (5) ND = no sync; SA = avoid; NC = decide whether a free, unticketed premiere is non-commercial. (6) CC BY credit line text. (7) Save the page, the licence page, the URL, the date and a SHA-256 of the file. (8) A second source for the date (a catalogue or discography). (9) Voices of living people are out of the premiere cut (D-05). (10) Generic stand-ins only if hers (Principle 2).
+
+| Item (host) | Licence field | What I could establish | Verdict |
+|---|---|---|---|
+| Asuchanti Brajabasi, 1906 (archive.org `asuchantibrajabasisei`) | Public Domain Mark | Odia song recorded Calcutta March 1906 for G&T; published before 1925; text and singer's community not read | **Best candidate** for a PD vocal; fails D-05 only if the singer counts as a "living person" (he does not: 1906); still needs a second date source |
+| Mridangam (V. Raghuraman, `Mridangam_sample1`) | CC public-domain dedication | a performer's sample, 2004; uploader's identity with the performer UNVERIFIED | candidate for sound-effect strokes; provenance check |
+| rAga kIravANi (L. Ramakrishnan, `LR_kIravANI`); Grand Veena Technique demo (K. G. Vijayakrishnan) | CC public-domain dedication | veena improvisations recorded 2003 and 2004 and uploaded by a gmail-hosted account; living performers | candidates only if the uploader is the performer; a living performer's instrumental, not a voice |
+| Veena Raja Rao 1930s Album | CC public-domain dedication | out of Indian and UK term; US 100-year rule | India-only |
+| VintageSense Vintage Indian Music (`www.VintageSense.com-Vintage-Indian-Music-65n` etc.) | CC BY 3.0 | digitised commercial film songs including 1968; private uploader | **reject** |
+| M.S. Subbulakshmi concert 1999; N. Ramani and R. Pitchumani Iyer 2000 (`m.s.-subbulakshmi-carnatic-concert`, `classical-music-flute`) | Public Domain Mark | recordings of 1999 and 2000; performers' rights and label rights run | **reject** (wrong licence) |
+| Hindi Bhajans and Gujarati Bhajan items | CC0 or Public Domain Mark | uploader-asserted; performers unverified | reject unless provenance is shown |
+| Hindustani Alaps (CompMusic via archive.org) | CC BY-NC (rights line "CC BY-NC 2.5") | research recordings with the artist's consent | NC; vocal; D-05 |
+| Saraga 1.5 (Zenodo) | CC BY-NC-SA 4.0 | open; vocal concerts | reject (SA, voices) |
+| Sanidha (Georgia Tech) | CC BY 4.0 | email and VPN access; concerts include voices | needs contact, which breaks secrecy; vocals fail D-05 |
+| RaagaDhvani (Mendeley) | CC BY-ND 4.0 (SR) | flute | reject (ND) |
+| Great 78 Project | none | "research, teaching, and private study only" | reject as a licence |
+| ragajunglism tanpura drones | none stated; origin unknown | "100% open-access and ad-free" is not a licence; author unsure whose recording it is | **reject** until the licence is stated |
+| Freesound CC0 bell, temple ambience, conch, koel, cooker | CC0 | pages opened, licence confirmed | allowed as labelled stand-ins |
+| Freesound dhaak (Kolkata, 2021) | CC BY 4.0 | credit required | allowed with credit if hers |
+| Freesound conch labelled Hindu use; Kerala temple percussion | CC BY-NC (SR) | NC | decide |
+| BBC Sound Effects (RemArc) | personal, educational or research | commercial needs a licence (SR) | reject |
+| Musopen | unread (403) | | unknown |
+

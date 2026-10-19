@@ -1,0 +1,26 @@
+{
+ "actual": "exit 0; computed sha256 1fd7983f...94e2fef equals the published hashes.sha256 line; df (before) Avail 778 MB, df (after) Avail 593 MB; guard: min 553 MB, end 593 MB. An earlier attempt at Avail 593 MB was REFUSED by the guard (318 MB would remain, below 400), see fetch_pwsh_guard_refusal.txt; the scratch install (185 MB) was removed and fetched again so the literal command could run.",
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 593,
+  "avail_mb_min": 553,
+  "avail_mb_start": 778,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 275
+ },
+ "env": {
+  "ffmpeg": "6.1.1",
+  "node": "22.x",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "exit 0; SHA-256 and df before/after printed; Avail minus planned stays at or above 400 MB",
+ "notes": "The first install (Avail 971 MB at the time) was made before scripts/lj_guard.sh existed, by running the script directly with its own identical rule (fetch_pwsh_run.txt).",
+ "package": "WP-01a",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "fetch_pwsh_under_lj_with_disk_275",
+ "unverified_reasons": []
+}

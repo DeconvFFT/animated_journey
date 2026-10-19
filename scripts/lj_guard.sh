@@ -47,7 +47,7 @@
 # disk-ledger.jsonl, bench-ledger.jsonl and one throw-away state folder (removed again) under LJ_SCRATCH.
 # It deletes nothing of yours; cleanup is COMMAND's own trap or the LJ_ON_ABORT line you pass.
 # It prints no path, no host name and no user name. Sourcing it changes no shell option.
-# Requires bash 4+, flock, awk, setsid (falls back to job control without it).
+# Requires bash 4+, flock, awk. COMMAND may be an executable or a shell function.
 
 _LJ_GUARD_FILE="${BASH_SOURCE[0]}"
 _LJ_GUARD_DIR="$(cd "$(dirname "$_LJ_GUARD_FILE")" && pwd)"
@@ -141,13 +141,11 @@ lj_with_disk() (
   export LJ_HOLDS_DISK=1 LJ_DISK_LABEL="$label" LJ_DISK_START_MB="$avail_start" LJ_DISK_PLANNED_MB="$planned"
   _lj_say "$label: planned ${planned} MB, Avail ${avail_start} MB, floor ${floor} MB, hard floor ${hard} MB"
 
+  # job control makes the background command the leader of its own process group (pgid = its pid),
+  # so the watchdog can stop the command and everything it started with one signal
   exec 7<&0
-  if command -v setsid >/dev/null 2>&1; then
-    setsid "$@" <&7 7<&- {fd}>&- &
-  else
-    set -m
-    "$@" <&7 7<&- {fd}>&- &
-  fi
+  set -m
+  "$@" <&7 7<&- {fd}>&- &
   pid=$!
   exec 7<&-
 
@@ -165,7 +163,7 @@ lj_with_disk() (
           exit 0
         fi
       fi
-      sleep "$poll" {fd}>&- &
+      sleep "$poll" &
       sl=$!
       wait "$sl" 2>/dev/null
     done

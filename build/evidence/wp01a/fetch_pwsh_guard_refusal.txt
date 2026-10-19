@@ -1,0 +1,2 @@
+lj_guard: REFUSED: Avail 593 MB minus planned 275 MB leaves 318 MB, below the 400 MB floor (wp01a-pwsh). Lean-profile hint: plan a smaller stage, delete downloads you no longer need, or ask the orchestrator about the regenerable caches (Q-1).
+exit=3

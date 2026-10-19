@@ -1,0 +1,22 @@
+lj_guard: wp01a-pwsh: planned 275 MB, Avail 778 MB, floor 400 MB, hard floor 250 MB
+[1/6] Disk rule: Avail minus 275 MB must stay at or above 400 MB
+df (before): Avail 778 MB
+[2/6] Downloading powershell-7.5.4-linux-x64.tar.gz (expected 75396784 bytes) into a new empty folder
+      size 75396784 bytes
+[3/6] SHA-256
+      computed: 1fd7983fe56ca9e6233f126925edb24bf6b6b33e356b69996d925c4db94e2fef
+      published:  1fd7983fe56ca9e6233f126925edb24bf6b6b33e356b69996d925c4db94e2fef
+      MATCH
+[4/6] Extracting into a fresh folder (tar only; nothing from the archive is run)
+[5/6] Smoke test from a neutral working folder
+PowerShell 7.5.4
+[6/6] Done
+df (after): Avail 593 MB
+disk used by this step: about 185 MB (tarball already deleted)
+version=7.5.4
+tarball=powershell-7.5.4-linux-x64.tar.gz
+sha256=1fd7983fe56ca9e6233f126925edb24bf6b6b33e356b69996d925c4db94e2fef
+verified=yes (matches the release's hashes.sha256)
+[1]-  Done                    "$@" 0<&7 7>&- {fd}>&-
+lj_guard: wp01a-pwsh: finished with exit 0; Avail start 778 MB, min 553 MB, end 593 MB
+exit=0

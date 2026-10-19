@@ -31,10 +31,16 @@ if [ $# -ne 1 ] || [ -z "${1:-}" ]; then die 2 "usage: fetch_pwsh.sh DEST  (a pa
 DEST="${1%/}"
 case "$DEST" in /*) ;; *) die 2 "DEST must be an absolute path (got a relative one)";; esac
 
+# One df reader for the whole repo: the disk guard's, when it exists (scripts/lj_guard.sh, build plan 4.9).
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+if [ -f "$ROOT/scripts/lj_guard.sh" ]; then . "$ROOT/scripts/lj_guard.sh"; fi
 avail_mb() {
   if declare -F lj_df_avail_mb >/dev/null 2>&1; then lj_df_avail_mb; return; fi
-  local d="${LJ_DF_CMD:-df}"
-  $d -BM / | awk 'NR==2 { gsub("M","",$4); print $4 }'
+  # fallback with the guard's convention: LJ_DF_CMD is a command line that prints df -P style output, or just a number of MB
+  local out
+  if [ -n "${LJ_DF_CMD:-}" ]; then out="$(LC_ALL=C $LJ_DF_CMD 2>/dev/null)"; else out="$(LC_ALL=C df -BM -P / 2>/dev/null)"; fi
+  if printf '%s' "$out" | grep -Eq '^[[:space:]]*[0-9]+[[:space:]]*$'; then printf '%s\n' "$out" | tr -d ' \n'; echo; return; fi
+  printf '%s\n' "$out" | awk 'NR==1{next} NF>=4{v=$4; gsub(/[^0-9]/,"",v); if(v!=""){print v; exit}}'
 }
 show_df() { echo "df ($1): Avail $(avail_mb) MB"; }
 

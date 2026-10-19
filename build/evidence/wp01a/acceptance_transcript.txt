@@ -431,11 +431,14 @@ TEST MODE: nothing was collected
 REDACTION CHECK FAILED, nothing was written
 category=email field=tools.git.notes hit=ta********
 category=user_name field=tools.git.notes hit=ta**
+category=computer_name field=tools.git.notes hit=BR**
+category=domain_name field=tools.git.notes hit=br**
 category=ipv4 field=notes[0] hit=10********
 category=user_name field=notes[1] hit=ta********
 category=computer_name field=notes[2] hit=BR********
 category=domain_name field=notes[2] hit=br**
 category=mac field=notes[3] hit=02********
+category=user_name field=notes[5] hit=wr**
 category=profile_path_windows field=errors[0] hit=C:********
 category=user_name field=errors[0] hit=ta********
 files written: none

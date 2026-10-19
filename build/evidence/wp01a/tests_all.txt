@@ -26,4 +26,73 @@ PASS       check.sha256_ok                              exit 0; RESULT: exit 0 (
 PASS       check.hex65_leak                             exit 2; category=guid_serial field=notes[0] hit=3f********|
 PASS       check.identifying                            exit 2; category=email field=tools.git.notes hit=ta********|category=ipv4 field=notes[0] hit=10********|category=mac field=notes[3] hit=02********|
 PASS       check.identifying_with_forbid                exit 2; category=email field=tools.git.notes hit=ta********|category=user_name field=tools.git.notes hit=ta**|category=ipv4 field=notes[0] hit=10*****
-PASS       check.forbid_absent_name                     exit 0; RESULT:
+PASS       check.forbid_absent_name                     exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.short_username_collision_is_a_note     exit 0; NOTE category=user_name field=gpus[0].name hit=ze** (a hardware-name field: reported, not refused)|NOTE category=user_name field=gpus[0].vendo
+PASS       check.short_username_leak_refuses            exit 2; category=user_name field=tools.git.notes hit=ze**|
+PASS       check.too_short_name_is_skipped_with_note    exit 0; NOTE name check skipped for a user_name of 2 character(s): shorter than 3, so it would match ordinary words (the pattern checks still ran)|RES
+PASS       check.bom_equals_plain                       identical (18 lines)
+PASS       check.utf16_bom_equals_plain                 identical; encoding line: encoding: UTF-16 with BOM
+PASS       check.utf16_nobom_equals_plain               identical; encoding line: encoding: UTF-16 LE (no BOM)
+PASS       check.invalid_json                           exit 2; 
+PASS       check.schema_invalid_masks_unknown_keys      exit 2; 
+PASS       check.reads_standard_input                   exit 0, gpu-8-12
+PASS       check.missing_file                           exit 2; 
+PASS       check.no_arguments                           exit 2; 
+PASS       check.every_nullable_field_null_never_crashes exit 0; nullable fields tried: 48, crashes: 0|
+PASS       check.outputs_written                        exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       check.outputs_exist                          present
+PASS       check.refusal_writes_nothing                 exit 2; category=email field=tools.git.notes hit=ta********|category=ipv4 field=notes[0] hit=10********|category=mac field=notes[3] hit=02********|
+PASS       check.refusal_files_absent                   none created
+PASS       tier.file_valid_and_leaks_nothing            exit 0; schema errors: 0; fixture strings or exact sizes found in the tier file: 0; keys outside the schema: 0; shared_pc_hint present: False; needles
+PASS       tier.craft_fixture_has_statuses              exit 0; schema errors: 0; fixture strings or exact sizes found in the tier file: 0; keys outside the schema: 0; shared_pc_hint present: False; needles
+PASS       tier.craft_statuses_present                  all four in the tier file
+PASS       hardware_md.no_model_names                   14 lines, buckets only
+PASS       redaction.static_text_has_no_default_name_collisions exit 0; runs: 108, unexpected refusals: 0|
+PASS       pwsh.linux_dry_run_exit0                     exit 0; NOTE name check skipped for a computer_name of 2 character(s): shorter than the minimum, so it would match ordinary words (the pattern checks 
+PASS       pwsh.linux_report_is_not_a_windows_report    exit 1; RESULT: exit 1 (valid report, but not a Windows report; no tier file was written)|
+PASS       pwsh.linux_report_platform                   non-windows
+PASS       pwsh.report_has_no_bom                       first bytes are not EF BB BF
+PASS       pwsh.console_has_no_profile_path             none
+PASS       pwsh.selfscan_identifying_refuses            exit 2; category=email field=tools.git.notes hit=ta********|category=user_name field=tools.git.notes hit=ta**|category=computer_name field=tools.git.n
+PASS       pwsh.selfscan_refusal_wrote_no_file          absent
+PASS       pwsh.selfscan_collision_is_note_and_writes   exit 0; NOTE category=user_name field=gpus[0].name hit=ze** (a hardware-name field: reported, not refused)|NOTE category=user_name field=gpus[0].vendo
+PASS       pwsh.collision_report_records_the_note       recorded
+PASS       pwsh.selfscan_leak_refuses                   exit 2; category=user_name field=tools.git.notes hit=ze**|
+PASS       pwsh.leak_refusal_wrote_no_file              absent
+PASS       pwsh.selfscan_hex65_refuses                  exit 2; category=guid_serial field=notes[0] hit=3f********|
+PASS       pwsh.selfscan_version_strings_pass           exit 0; 
+PASS       pwsh.selfscan_sha256_passes                  exit 0; 
+PASS       pwsh.every_fixture_through_the_script_scan   all 19 as expected
+PASS       pwsh.directory_hash_only_out_files_created   kit hash dbfc6700919f7d85 unchanged; files: collision.json sha.json versions.json 
+PASS       patterns.python_and_powershell_agree         exit 0; samples: 100, python/powershell disagreements or declared-expectation misses: 0, versions: 1/1|
+PASS       failclosed.step0_without_pattern_file        exit 2; REDACTION PATTERNS UNAVAILABLE, nothing was collected and nothing was written: scripts\redaction_patterns.json
+PASS       failclosed.windows_check_without_pattern_file exit 2
+PASS       failclosed.corrupt_pattern_file              step0 2, windows_check 2
+PASS       failclosed.incomplete_pattern_file           exit 2
+PASS       mock_windows.nvidia_scenario_fields          nvidia: 0 problem(s)
+PASS       mock_windows.nvidia_checker_says_gpu_8_12    exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       mock_windows.amd_registry_scenario_fields    amd_registry: 0 problem(s)
+PASS       mock_windows.amd_registry_is_capped_at_gpu_low exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       mock_windows.capped_only_scenario_fields     capped_only: 0 problem(s)
+PASS       mock_windows.capped_only_checker_exit1       exit 1; FINDING: VRAM unreadable: AdapterRAM stops near 4 GB, and neither nvidia-smi nor the registry value answered. Open Task Manager, Performance, 
+PASS       mock_windows.software_scenario_fields        software: 0 problem(s)
+PASS       mock_windows.software_checker_says_none      exit 0; RESULT: exit 0 (valid; nothing needs a human. A low tier is information, not a failure.)|
+PASS       mock_windows.console_has_no_paths            none (19 ok lines, 0 failed)
+PASS       mock_windows.failing_step_continues_and_message_is_scrubbed console: failed: RuntimeException - Access to the path '<path>' is denied for <name> on <name> (kept in the report unde
+PASS       mock_windows.real_mode_name_in_cpu_field_is_a_note NOTE category=user_name field=cpu.name hit=ta******** (a hardware-name field: reported, not refused)
+PASS       mock_windows.real_mode_name_outside_hardware_fields_refuses category=user_name field=disks[0].fs hit=ta********
+PASS       deny_list.checker_reads_utf16_local_list     category=local_deny field=tools.git.notes hit=ze**
+PASS       deny_list.clean_report_still_passes          exit 0
+PASS       deny_list.script_reads_local_list_and_refuses category=local_deny field=disks[0].fs hit=zo****
+PASS       one_source.no_private_identifying_regex      grep found none
+SKIPPED    one_source.public_lint_self_test             scripts/public_lint.py has not landed (WP-03); this package's own agreement test above stands in
+PASS       readme.headings_files_and_no_identifying_text exit 0; headings found: 9/9; powershell fences: 11; pattern categories scanned: 9; problems: 0|
+PASS       tools.fetch_pwsh_syntax                      ok
+PASS       tools.fetch_pwsh_is_idempotent               exit 0; [1/1] already installed and verified in the scratch folder: nothing to do|
+PASS       tools.fetch_pwsh_refuses_relative_path       exit 2; fetch_pwsh: DEST must be an absolute path (got a relative one)|
+PASS       tools.fetch_pwsh_refuses_unverified_existing_dir exit 2; fetch_pwsh: DEST exists but holds no verified install of 7.5.4; refusing to write into it (choose a new path)|
+PASS       tools.fetch_pwsh_disk_rule_refuses           exit 3; fetch_pwsh: DISK: Avail 300 MB minus 275 MB is below 400 MB; nothing was downloaded|
+PASS       tools.fetch_pwsh_disk_refusal_created_nothing absent
+UNVERIFIED windows.claims_awaiting_first_real_run       15 claim groups listed in build/evidence/wp01a/unverified.txt
+---
+WP-01a all: PASS=93 FAIL=0 UNVERIFIED=1 SKIPPED=1 BLOCKED=0  (df Avail 595 -> 593 MB)
