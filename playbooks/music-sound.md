@@ -8,7 +8,7 @@
 
 ## Why this matters for our film
 
-Music and sound carry the feeling of a life between the big moments. A kettle in the morning, a radio in the car, a waltz she used to hum. The audience will forget the exact cues. They will remember whether the film felt true, and whether they could hear her.
+Music and sound carry the feeling of a life between the big moments. A spoon on steel in the morning, the bell, a lullaby she used to hum. The audience will forget the exact cues. They will remember whether the film felt true, and whether they could hear her.
 
 Two things can sink a film like this even when the picture is beautiful. The first is a rights problem: a song that cannot be shown in public, found out a week before the premiere. The second is a sound problem: a voice nobody can hear at the back of the room, or music that buries her words. This playbook is about avoiding both.
 
@@ -27,7 +27,7 @@ Her voice can carry the film only where a recording of hers passes the two-tier 
 2. **Silence is a sound.** Take the music out before the hardest moment, not after. *Up* does this: the music slows, nearly stops and strips down to a piano before the hardest beat [66][67]. Burns's sound team put it this way: "Nothing makes sound more effective than the absence of sound" [72].
 3. **One motif, many weathers.** Pick one theme early and let it return with a different instrument, tempo or mood as her life changes [66][67].
 4. **Royalty-free is not cleared for a public screen.** A licence can be fine for a private link and wrong for a gathering, a festival or a cinema. Read the tier, quote the sentence and date it before you use anything [32][35][33].
-5. **AI is a labelled bed, a temp, or a sound effect. Never her songs, never a copied voice.** AI music is allowed in principle because it is not a memory. It cannot re-sing her song or imitate a real singer [1][11][19][26].
+5. **AI music is closed for the premiere cut; a temp that stays on your PC is the only use. Never her songs, never a copied voice.** There is no voice for an AI bed to sit under (`DECISIONS.md` W-44), and the tools' own terms close the route (W-79). AI cannot re-sing her song or imitate a real singer [1][11][19][26], and there is no AI voice of any devotional text in Gujarati, Braj or Sanskrit, ever (W-79).
 6. **Keep the originals. Clean only copies.** Keep every recording exactly as received. Work on a copy at 48 kHz, 24-bit. Listen to what you removed before you keep a cleaned version [80][86].
 7. **Mix for the room you will play in.** A cinema, a venue PA and an online copy each need a different level. None of them is "-14 LUFS for everything" [94][95][93].
 8. **Every asset has a row in the licence log.** No row, no use. The log is the clearance record for any later festival, cinema or theatrical check [1][32].
@@ -45,18 +45,20 @@ Make one project folder on your PC with four subfolders: `originals` (never edit
 *Done when:* the log file exists and has its header row.
 
 **Step 2. Decide the premiere country (by 2026-10-25, pending from the maker: `DECISIONS.md` O-02) and ask the venue (by 2026-11-06; its written answer is due 2026-11-15: W-17, O-21).**
-The rest of this plan depends on this decision. Public-domain dates, performing-rights rules and venue licences all change by country [44][45][47][48][51][52][53]. The research read US, UK, EU, Indian and Canadian rules as far as it could. It did not read the UK PRS, German GEMA, French SACEM or Indian IPRS practice (TODO(research)).
+The rest of this plan depends on this decision. Public-domain dates, performing-rights rules and venue licences all change by country [44][45][47][48][51][52][53]. The research read US, UK, EU, Indian and Canadian rules as far as it could. It did not read the UK PRS, German GEMA, French SACEM or Indian IPRS practice (TODO(research)); the register's W-79 carries the India-first briefing for the consult ("devotional means free" is wrong five ways: words, tune, arrangement, recording and performance are five separate questions on every cue).
 *Done when:* the country and venue are written at the top of the log.
 
 **Step 3. Choose your music route (by 2026-11-30).**
 The research's lean is a stack of sources, not one big purchase. The full rights table is Deliverable 1 in `research/music-sound.md`. In short:
-- silence and room tone for the hardest chapters;
-- the tune she sang to you, hummed by you in week 1 and left uncleaned: the motif, returning at the end in your plain voice (`DECISIONS.md` W-44, O-07);
-- a relative's public-domain performance only if a recording already exists that you hold legitimately (nobody is asked to record or sign before the premiere, D-03; any release is sent after it, W-48), or a public-domain recording from a source whose terms you have read (Musopen's terms could not be read [43]);
-- sound you record yourself, or CC0 sound;
-- CC BY music or sound with credit, if the licence allows your use;
-- a labelled AI bed under her voice, only if you accept it (see Decisions);
-- at most one or two licensed songs, if you can clear them and accept that publishers and labels learn a film exists (lean none under only-me; W-44).
+The premiere's honest sound is objects, rooms, the sea's surf and the maker's hum; sung devotion waits for April (`DECISIONS.md` W-44, D-05). In the register's order:
+- silence and room tone for the hardest chapters (never as a first sound, W-36);
+- the tune she sang to you, hummed by you in week 1 and left uncleaned, **in two takes, closed-mouth and open vowel, both kept in `originals/` and both used**: the motif, returning at the end in your plain voice. The hall may carry the closed-mouth take if the room carries it; the phone files carry the open take (W-65, O-07, O-84);
+- sound you record yourself in her empty house, by the capture list and the rule of Template I (W-10, W-70);
+- CC0 or CC BY sound only as a labelled stand-in and only if the sound is hers (O-72); never a stand-in on the emotional peak;
+- no sung recording of any kind before April: a relative's performance, a sung aarti, kirtan, a garba crowd, a temple loudspeaker and a 6 a.m. radio are April-column items (D-05); a public-domain recording from a source whose terms you have read waits for April too (Musopen's terms could not be read [43]);
+- no AI bed (there is no voice to sit under; W-44, W-79);
+- no licensed song (lean none; at most two, if you can clear them and accept that publishers and labels learn a film exists; O-29);
+- no commissioned musician before the premiere (D-07); name-free briefs for April only are in `playbooks/gujarati-devotional-sound.md` Template H.
 *Done when:* every cue type in Step 5 has a named source.
 
 **Step 4. Test your voice capture on yourself (by 2026-10-31).**
@@ -72,7 +74,11 @@ Take each beat from the film's beat sheet and give it one cue type:
 - **VOICE-ZONE**: her HER-PUBLIC voice if one passed (a relative's voice only in the April version), with no music.
 - **END**: a hard cut to black with no music tail [7].
 
-Give each MOTIF and CLOCK a `source_in_her_life`: the beat-sheet evidence row, or the relative who named the sound. **No MOTIF or CLOCK without one.** This is the test that a sound comes from her life and is not decoration (charter principle 2: it must mean something; review round 1). Write `cue_map.csv` with the columns `beat_id, cue_type, source_in_her_life, hard_flag, advisor_flag_ref, notes`. Copy `hard_flag` from the film-story beat sheet's `hard_flag` column (values NONE, SHARED-LIGHT, PRIVATE, HOLD, OUT, per the `film-story` template), so the two files join on `beat_id`.
+Give each MOTIF and CLOCK a `source_in_her_life`: the beat-sheet evidence row, or the relative who named the sound. **No MOTIF or CLOCK without one.** This is the test that a sound comes from her life and is not decoration (charter principle 2: it must mean something; review round 1). Write `cue_map.csv` with the Template G header of `playbooks/gujarati-devotional-sound.md`, whose first six columns are `beat_id, cue_type, source_in_her_life, hard_flag, advisor_flag_ref, notes` and which adds `tradition`, `composition_status` and `recording_status` as separate mandatory columns (a label's "Traditional" is entered `unknown`), `premiere_cut`, `april_version` and `phone_ref` (W-44). Copy `hard_flag` from the film-story beat sheet's `hard_flag` column (values NONE, SHARED-LIGHT, PRIVATE, HOLD, OUT, per the `film-story` template), so the two files join on `beat_id`.
+
+**The first sound and the first minute.** The film's first sound is the first act of her morning, with energy above about 400 Hz, chosen from the tone ladder measured on the project Android before Sun 6 Dec (`playbooks/mobile-delivery.md` Exercise 6; W-36, W-76): water poured into a kitchen brass vessel if the home keeps Yamunajal in a jhari (O-77; never her jhari), the household hand-bell if the morning bell is hers (O-46), else a spoon on steel or the cooker whistle. Room tone alone fails as a first sound on a phone. A visible first light follows within about 4 s, and there is no rhythm instrument in the first minute (the Mangla service has none: a held object sound, the hum's open vowel, or nothing).
+
+**Instruments under D-28 (W-44, O-68).** Out by default: sitar, sarod, santoor, khayal, ghazal, qawwali and the Ragamala idiom. `ASK` (silence or room tone in the render until the maker rules): harmonium, tabla, bansuri (never a stock flute bed), tanpura, shehnai, sarangi, ektara, Carnatic violin, been, ravab, duf. In because hers if the house owns them and the maker can strike them: ghanta, shankha, jhanj, manjira, pakhawaj (its bass fails the phone), dhol. No raga name on screen or in credits anywhere; a haveli row's `raga_or_mode` is `tradition_set:<darshan>:<source id>` or blank.
 
 For any beat flagged hard-chapter, set the cue type to PULL-OUT by default. A cue that is not silence there needs a flag line for the Fable advisor (skill Procedure 4a). Write the flag line to `reviews/<chapter>/sound-flags.md` (the gate-file convention in `playbooks/agent-pipeline.md`), one line per beat: `beat_id | proposed cue | why not silence | date`, and set `advisor_flag_ref` on the cue_map row.
 
@@ -94,17 +100,17 @@ Fill the spotting sheet (Template B). Give each cue a reel and cue number, such 
 *Done when:* every cue has a spotting row and a decision placeholder.
 
 **Step 9. Decide each cue by 2026-12-14.**
-For each cue, choose one: a labelled AI bed (under voice only), a public-domain performance (a relative's only if it already exists), a library, CC0 or CC BY cue, your own sound, a licensed song (lean none), or none. A commissioned score is out under only-me (`DECISIONS.md` D-07). The motif is the hummed tune; everything else can be public domain, library, your own sound or silence (inference from the cost ranges in [58] and [36]). Write the decision on the spotting row.
+For each cue, choose one: your own sound, the hum (in the take its file needs), a CC0 or CC BY stand-in that is hers and labelled, a licensed song (lean none), or silence. Every instrument still `ASK` on this date becomes silence or room tone, and the hum case (HC-1 to HC-7 in `playbooks/gujarati-devotional-sound.md`) is placed: HC-7 blocks lock, and HC-4 to HC-6 fall back to silence plus kitchen sound (W-44). A commissioned score is out under only-me (`DECISIONS.md` D-07). The motif is the hummed tune; everything else is your own sound or silence (inference from the cost ranges in [58] and [36]). Write the decision on the spotting row.
 *Done when:* no cue says "TBD".
 
 **Step 10. Make and clear, per chapter, from the slice (2026-12-06) to each chapter's `locked=1` (last at G-LOCK, 2027-02-06).**
-Build or get each cue. Set a log row's status to `cleared` only when every venue you plan to use has a quoted sentence that covers it. A relative's performance needs a written release, but nobody is asked before the premiere (`DECISIONS.md` D-03); the release is sent after it (W-48), so use only a performance that already exists and swap in a substitute if the release is declined. There is no composer before the premiere (D-07); Template E applies only if TD-L2c re-opens that.
+Build or get each cue. Set a log row's status to `cleared` only when every venue you plan to use has a quoted sentence that covers it. No relative's performance is in the premiere cut (D-05); a performance recorded for the April version needs release 4d, sent after the premiere (D-03, W-48). There is no composer before the premiere (D-07); Template E applies only if TD-L2c re-opens that.
 
 **A composer working from picture lock is not feasible on this calendar.** The research's planning figure is 3 to 5 weeks from locked picture to final stems, plus one week of revisions (inference) [61][62]. Counted from G-LOCK on 2027-02-06, that lands between 2027-02-27 and 2027-03-13: on or after the premiere. A composer would need a near-lock animatic by mid-January, which is a different plan (review round 1). No composer is used before the premiere (`DECISIONS.md` D-07; Decision 2).
 *Done when:* every cue is `cleared`, `final` or replaced.
 
 **Step 11. Lock substitutes by 2027-01-08.**
-A licensed song without a written answer by 2026-12-14 is replaced. Substitutes are silence, a relative's performance of a public-domain tune, or a public-domain tune. Lock the substitute by 2027-01-08 and log it.
+A licensed song without a written answer by 2026-12-14 is replaced. Substitutes are silence, silence plus kitchen sound (the fallback for HC-4 to HC-6), or your own hum of a tune placed as HC-1 to HC-3. Lock the substitute by 2027-01-08 and log it.
 *Done when:* no song in the film is waiting for an answer.
 
 **Step 12. Clean her found voice, per chapter, on copies (after the decision for any public use).**
@@ -126,7 +132,7 @@ Between G-LOCK (2027-02-06) and G-MIX (2027-02-13) there is one week, not two. W
 
 **Step 15. Make three loudness versions (2027-02-13 to G-MASTER, 2027-02-20).**
 - **Venue (three masters):** render -23, -18 and -16 LUFS integrated, all at -1 dBTP (`DECISIONS.md` W-19), and choose at the 2027-02-22 run against sixty seconds of the hall's own room tone recorded from the back row; if no reading can be taken, load -18 first. The -23 figure borrows from the broadcast reference [93]. The -18 figure is from AES TD1008 for speech [98] (inference, see Decisions).
-- **Online:** -16 LUFS, -1 dBTP (W-19), the same setting the project's toolchain playbook carries [2]. Spotify normalises playback to -14 LUFS [97].
+- **Phone files (the online row):** PH1 and PH2 carry -16 LUFS integrated and -1 dBTP measured on the final MP4 after the AAC encode (W-19, W-63), the same setting the project's toolchain playbook carries [2]. Spotify normalises playback to -14 LUFS [97].
 - **Cinema:** no LUFS target. Keep the dynamics, keep peaks around -3 to -6 dBFS (inference), and have a professional make any cinema version. Cinema level is a calibrated playback level, not a loudness number [94][95].
 
 Use the two-pass method in Template G. Do not use single-pass dynamic `loudnorm` for a master. It upsamples to 192 kHz unless you set the rate, and it only goes linear when you give it four measured values [86][108].
@@ -192,9 +198,9 @@ Each exercise has a goal, steps, a time estimate (our estimate) and a "good look
 ### Exercise 6: Mono and small-speaker check
 
 - **Goal.** Make sure the mix survives a laptop, a phone and a mono sum.
-- **Steps.** (1) Play Exercise 5's output on laptop speakers, then on earbuds. (2) Sum it to mono with `-ac 1`, and play that. (3) Listen for phase problems, a missing voice or a thin sound.
-- **Time.** About 30 minutes.
-- **Good looks like.** The voice is clear in mono and on small speakers. Nothing vanishes in the sum.
+- **Steps.** (1) Play Exercise 5's output on laptop speakers, then on earbuds. (2) Sum it to mono with `-ac 1`, and play that. (3) Listen for phase problems, a missing voice or a thin sound. (4) Phone-speaker pass per cue: on the project Android at 50% volume in a quiet room, play the tone ladder from 100 Hz to 3.2 kHz, write down the lowest audible tone, then play each cue (the project Android replaces every model; `playbooks/mobile-delivery.md` T-M6 row 10).
+- **Time.** About 30 minutes, plus about 20 for the phone pass.
+- **Good looks like.** The voice is clear in mono and on small speakers. Nothing vanishes in the sum. The speech band (400 Hz to 3 kHz) is clearly audible, and each cue has PASS or FAIL written beside it. Modelled verdicts to confirm on the phone: room tone, a deep sea swell, a closed-mouth hum and pakhawaj bass fail; bell, conch (thin), jhanj, manjira, tanpura, surf, the cooker whistle and an open-vowel hum pass (W-19).
 
 ### Exercise 7: Fill one licence-log row correctly
 
@@ -219,21 +225,22 @@ Each exercise has a goal, steps, a time estimate (our estimate) and a "good look
 Copy this as the first line of `log/licence_log.csv`. One row per asset. Add a second row if the same asset has a different licence for a different use. Keep the file on your PC.
 
 ```
-asset_id,type,title,creator,source_url,date_accessed,plan_or_tier,account_name,licence_name_and_version,licence_text_file,quoted_sentence,sync,master,public_performance_who,cleared_private,cleared_gathering,cleared_festival,cleared_cinema,cleared_online,attribution_text,restrictions,term_and_territory,subscription_dependent,cost_paid,receipt_file,pro_or_cue_sheet_status,ai_generated,ai_tool_and_version,ai_plan_at_download,download_date,ai_prompt_or_settings_file,principle4_check,status,used_in_cues,reviewer,last_reread_date
+asset_id,type,title,creator,source_url,date_accessed,plan_or_tier,account_name,licence_name_and_version,licence_text_file,quoted_sentence,sync,master,public_performance_who,cleared_private,cleared_gathering,cleared_festival,cleared_cinema,cleared_online,attribution_text,restrictions,term_and_territory,subscription_dependent,cost_paid,receipt_file,pro_or_cue_sheet_status,ai_generated,ai_tool_and_version,ai_plan_at_download,download_date,ai_prompt_or_settings_file,principle4_check,status,used_in_cues,reviewer,last_reread_date,composition_status,recording_status,tradition_origin,phone_share
 ```
 
 - **Legend for `cleared_*`:** Y (expressly covered as read), y (not stated, a fair reading says yes, get it in writing), C (covered only if the contract says so), ? (unstated or unverified), N (excluded or unavailable).
 - **`status`:** temp, candidate, cleared, final, rejected.
+- **`composition_status` and `recording_status`** are separate mandatory columns on every row that has music (`PD_text_and_tune`, `PD_text_owned_tune`, `owned`, `unknown`); a label's "Traditional" is entered `unknown` (W-44, W-79). **`tradition_origin`** is a short note on where the sound or text comes from in her tradition (a source, never a family fact). **`phone_share`** is `none`, `her_device_only`, `relatives_after_ledger` or `public`, the same values as the rights log (W-46).
 - **`account_name`:** the account name, not a personal email address, if the file may be shared later. The research header used `account_email`; we changed it for privacy (inference).
 
 ### Template B. Spotting sheet header and one example row
 
 ```
 cue_id,reel_cue,chapter,tc_in,tc_out,dur_s,picture_note,function,source_in_her_life,motif,mood_words,tempo_or_feel,hit_points_tc,pull_out_points_tc,voice_present,voice_id,dialogue_priority,temp_ref,source_plan,rights_state,ai_used,notes
-C07,1m7,C3-kitchen,01:06:12:00,01:07:38:12,86.5,"photo of the kitchen table, slow push-in",BED,"[beat-sheet evidence ID] (illustrative: a relative named the waltz)",A (waltz),"warm, slightly worn","slow 3/4, music-box","01:06:40:00 (hand enters)","01:07:30:00 (music out, room tone only)",no,,n/a,TEMP-incompetech-Floral,library,pending,no,"no cymbals; leave 2 s of room tone under the hands"
+C07,1m7,C3-kitchen,01:06:12:00,01:07:38:12,86.5,"photo of the kitchen table, slow push-in",BED,"[beat-sheet evidence ID] (illustrative: the lullaby she sang to the maker)",A (the hum),"warm, slightly worn","slow; closed-mouth take in the hall, open vowel on the phone (W-65)","01:06:40:00 (hand enters)","01:07:30:00 (hum out, room tone only)",no,,n/a,S-HUM-open,maker,maker,no,"no cymbals; leave 2 s of room tone under the hands"
 ```
 
-The example row is illustrative. Its `temp_ref` names a CC BY temp, so the log row for that temp must say how it is credited.
+The example row is illustrative. Its source is the maker's own hum, so its log row is marked `maker` and carries no third-party credit.
 
 **Rule.** No MOTIF or CLOCK without a `source_in_her_life`: the beat-sheet evidence row, or the relative who named the sound. The rule binds MOTIF and CLOCK cues; the example's column is filled anyway.
 
@@ -337,9 +344,9 @@ Hum usually shows as 60 Hz with a bigger 120 Hz part from the power supply. A no
 
 | | Cinema | Venue PA | Online |
 |---|---|---|---|
-| File | Stems and a stereo mix at 48 kHz, 24-bit. A professional builds any DCP (inference) [99] | `venue_-23.wav`, `venue_-18.wav` and `venue_-16.wav`, with the same audio on the video master | `online_-16.mp4` (AAC) |
-| Level | Calibrated playback, not LUFS. Peaks at or below about -3 dBFS (inference) [94][95] | Three masters: -23, -18 and -16 LUFS integrated, all -1 dBTP, chosen at the 2027-02-22 run (`DECISIONS.md` W-19); loudness range about 8 to 10 LU or less (inference from [98][93]) | -16 LUFS, -1 dBTP (W-19) [2] |
-| Check | Mono sum. Dialogue still clear with playback 6 dB lower (our test; theatre faders are often lowered [94]) | Listen from front, side and back; DX-gated check on speech spans only (full mix no more than 6 LU above the DX stem) | Re-measure after the AAC encode |
+| File | Stems and a stereo mix at 48 kHz, 24-bit. A professional builds any DCP (inference) [99] | `venue_-23.wav`, `venue_-18.wav` and `venue_-16.wav`, with the same audio on the video master | The phone files PH1 and PH2 (AAC, W-63) |
+| Level | Calibrated playback, not LUFS. Peaks at or below about -3 dBFS (inference) [94][95] | Three masters: -23, -18 and -16 LUFS integrated, all -1 dBTP, chosen at the 2027-02-22 run (`DECISIONS.md` W-19); loudness range about 8 to 10 LU or less (inference from [98][93]) | -16 LUFS integrated, -1 dBTP, measured on the final MP4 (W-19) [2] |
+| Check | Mono sum. Dialogue still clear with playback 6 dB lower (our test; theatre faders are often lowered [94]) | Listen from front, side and back; DX-gated check on speech spans only (full mix no more than 6 LU above the DX stem) | Re-measure after the AAC encode; phone-speaker pass per cue on the project Android (Exercise 6) |
 
 **Operational (venue).** The maker holds the master fader during the film, not the venue engineer. The level is set at the 2027-02-22 run from the back row, on the neutral-voice reel, and the fader position is written on the run sheet.
 
@@ -390,7 +397,9 @@ FFmpeg 9.0.2 was released on 2026-09-18 [87]. The sandbox used 6.1.1 [108]. Chec
 
 Record room tone for each location, in mono, for 30 to 60 seconds, with the microphone placed as it was for the voice. Lay it under dialogue edits so that cuts do not sound like a dropout. Without it, the track "goes silent in a way the audience hears as a technical fault" [74]. The 30 to 60 seconds is our practice, not a source figure.
 
-Record sound effects in your own kitchen or a similar room, when she is not there, with no people in frame or earshot. A tap, a kettle, a door, a bus stop. This avoids consent issues and a tip-off (inference from the charter).
+Record sound effects in her empty house, alone, when she is not there, on a device that does not sync, with no people in frame or earshot, no voice and no radio, and file names by ID only (`DECISIONS.md` W-10, D-17). The capture list is the register's: water into a kitchen brass vessel, the household hand-bell struck once with its tail, jhanj and manjira if the family has them, the tavdi and rotli, the velan on the patli, the cooker whistle, churning, steel vati, thali, ladle, stove click, 60 s of room tone per room with the door shut and the phone in airplane mode, the hichko chain pushed empty, the object clock in its light, the street at dusk; the sea at Koliyak at low tide and kites at first light only in season and only if hers. The full table with the phone verdict for each is Template F of `playbooks/gujarati-devotional-sound.md`.
+
+**The seva-article rule (W-70).** A sound capture never handles her seva articles: the jhari, the shankh in the prayer corner, the mandir's bell if it lives inside the mandir, vastra, thali, banta and the mandir's cloth. Touching them in secret is a reverence breach even if nothing is photographed, and blowing her shankh in her empty prayer corner is a seva act performed without her (PR10, PR14). So water is poured into a kitchen vessel, never her jhari, and Yamunajal is never poured away (the sound is of filling, never emptying); the bell is a household hand-bell outside the mandir or the maker's own; the conch is the maker's own, a labelled CC0 stand-in only if a conch is hers (O-72), or nothing. Never a haveli at darshan time, a temple loudspeaker, a 6 a.m. radio or a garba dhol before Thu 30 Sep 2027. This avoids consent issues and a tip-off (inference from the charter).
 
 ### Template J. Sound schedule (T-minus)
 
@@ -399,20 +408,21 @@ Built on the production-scale gates (G-SLICE-0 2026-12-06, G-SLICE 2026-12-20, G
 | Date | What |
 |---|---|
 | 2026-10-18 to 10-31 | Decide the premiere country (by 10-25); ask the venue by 11-06, its written answer is due 11-15. Build the log. Test your own voice capture and the cleanup chain. Low-key asks: "what was playing" and object sounds ("what did the house sound like in the mornings?"). |
-| 2026-11-14 | L1 process lock; covert collection starts Sun 2026-11-15 (`DECISIONS.md` W-06, W-10). No voice collection and no consent card before the premiere (D-05); the story.md Track B voice-collection gate is void. |
+| 2026-10-25 (the sitting) | Record the hum in two takes, closed-mouth and open vowel, of each candidate tune, uncleaned, into `originals/` on a device that does not sync (W-65, O-07, O-84). |
+| 2026-11-14 | P-LOCK, the process lock; covert collection starts Sun 2026-11-15 (`DECISIONS.md` W-06, W-10). The Android tone ladder at 50% and the first-sound listening test pass; the cue map exists with the Template G header (W-44). No voice collection and no consent card before the premiere (D-05); the story.md Track B voice-collection gate is void. |
 | by 2026-11-15 | Sync asks, at most two songs (only if you accepted the trade-off in Step 6). |
 | by 2026-11-30 | Music route chosen; no composer (D-07). Temp library built. |
 | 2026-12-06 (G-SLICE-0) | Animatic with temp sound. Every MOTIF and CLOCK has a `source_in_her_life`. |
-| 2026-12-14 | Hard decision gate: each song cleared or replaced; each cue decided. |
+| 2026-12-14 | Hard decision gate: each song cleared or replaced; each cue decided; every instrument `ASK` ruled; the hum case placed (HC-7 replaced) (W-44, O-29). |
 | 2026-12-20 (G-SLICE) | Chapter 1 at final quality, with its sound mix. Slice DX cleanup, ambience and effects run in December. |
 | 2026-12-28 | REAPER: buy the $60 licence (personal use qualifies), or start the trial only to defer the spend to this date (60 days; a trial started on this date ends 2027-02-26 and covers the 13–20 Feb mix) (Decision 7). |
 | 2027-01-08 | Substitutes locked. |
-| 2027-01-17 (G-MID) | Rolling chapter locks begin. Sound work on a chapter starts when it is `locked=1`. |
+| 2027-01-17 (G-MID) | Rolling chapter locks begin. Sound work on a chapter starts when it is `locked=1`. By this date (TD-L2b) the lowest tone the room carries from the back row is written down; it decides the venue hum take (W-65). |
 | 2027-01-31 (G-DRAFT) | At least 60 percent rolling-locked; each locked chapter has its cues decided. |
 | 2027-02-06 (G-LOCK) | Picture lock: every shot `locked=1`. The last chapters start their sound work. |
-| 2027-02-13 (G-MIX) | Mix v1 for all locked chapters. One week after G-LOCK, not two. |
+| 2027-02-13 (G-MIX) | Mix v1 for all locked chapters. One week after G-LOCK, not two. The hum take for each master (venue and phone) is logged (W-65). |
 | 2027-02-19 | Withdrawals close; removals only, as understudy swaps (W-08, W-47) [6]. No relative audio is expected under only-me. |
-| 2027-02-20 (G-MASTER) | Three venue masters (-23, -18, -16 LUFS) and the online copy (-16 LUFS), all -1 dBTP (W-19). DX-gated check passed. Hashes and loudness reports. |
+| 2027-02-20 (G-MASTER) | Three venue masters (-23, -18, -16 LUFS) and the phone files PH1 and PH2 (-16 LUFS integrated, -1 dBTP after the AAC encode), all -1 dBTP (W-19, W-63). DX-gated check passed. Hashes and loudness reports. |
 | 2027-02-21 to 02-25 | Copies, cue sheet, hashes checked. Log freeze by 2027-02-25. |
 | 2027-02-22 (Mon) | Full run on the real playback chain (surprise-ops run sheet). Calibration reel first. Sixty seconds of the hall's room tone first; the three masters played and one chosen. The maker sets the fader from the back row; the position goes on the run sheet. |
 | 2027-02-23 (Tue) | The AMB stem's last 20 seconds may be re-rendered with the hall's room tone: the only permitted sound change of premiere week, logged (W-20). |
@@ -437,18 +447,18 @@ Each decision lists the options, then our current lean. A lean is a suggestion f
 - *Decided:* no one before the premiere (`DECISIONS.md` D-03, D-07). A composer working from lock is out on this calendar (Step 10). A venue AV operator told a truthful minimum (a test clip, an empty room) does not break only-me. If TD-L2c (Sunday 2027-01-03) brings someone in, use a name-free brief and a confidentiality clause that runs past 2027-02-27.
 
 **3. Which one or two songs are truly hers.**
-- *Options:* ask for up to two songs (sync and master, with the trade-off in Step 6); use a relative's performance of her song (publisher only, no master) [36]; use a public-domain tune in a relative's voice; use no song.
+- *Options:* ask for up to two songs (sync and master, with the trade-off in Step 6); hum her song yourself (the hum case decides whether that is a performance of an owned work: HC-4 to HC-6); use no song. A relative's performance, public domain or not, is an April-version option (D-05).
 - *Lean:* none under only-me (`DECISIONS.md` W-44); at most two songs, and send the asks only if you accept that publishers and labels learn a film exists. Set the 2026-12-14 gate. If a song is not in writing by then, substitute.
 
 **4. Whether labelled AI music is acceptable.**
 - *Options:* (a) no AI at all; (b) AI as temp only, marked `TEMP-UNCLEARED` and never shown; (c) AI as a labelled bed under voice, with a credit line; (d) AI sound effects, such as Stable Audio's small SFX model.
 - *Facts that matter:* Suno's free tier is for personal, non-commercial use. Its paid plans assign any output Suno owns, but Suno gives no copyright warranty [11][12]. Udio downloads have been off since 2025-10-29 [18][13], so it cannot supply a film file; treat it as closed (`DECISIONS.md` W-44). One June 2026 explainer says paid plans grant commercial use, which conflicts with the other sources [14]. Stable Audio 3.0 has open weights, the Community Licence lets small creators own and commercialise outputs (under $1M revenue), and it runs on your PC [21][22][23]. ElevenLabs' music terms exclude film, TV and radio on every plan except the Enterprise Music tier, and Enterprise Music Lite also excludes them [19]. Google's Lyria 3 commercial terms were not confirmed (UNVERIFIED) [24][25].
 - *Other facts:* Stability faces separate image-training suits, per a 2025 trade report, and no music-specific suit was found [109]. The EU AI Act's Article 50 may require synthetic audio to be marked, and deepfakes to be disclosed, with a lighter duty for an "evidently artistic, creative" work [31]. Whether it applies to a small screening, or was delayed, is UNVERIFIED (TODO(research)). The Archival Producers Alliance advises logging and disclosing generated material in documentaries; we read only its landing page [92].
-- *Lean:* (b), and (c) only if you accept it, under voice only and never on the emotional peak (`DECISIONS.md` W-44). Prefer the local Stable Audio route, because it uploads nothing. Never use AI for her songs, never imitate a real singer or voice, and never build the emotional peak on an AI cue [1][26]. Label it in the credits.
+- *Lean:* (a) for the premiere cut, and (b) at most: AI music is closed for the premiere, since there is no voice for a bed to sit under (`DECISIONS.md` W-44) and the tools' terms close the route (W-79); (c) waits for April, if at all. A temp that stays on your PC, if you make one, prefers the local Stable Audio route, because it uploads nothing. Never use AI for her songs, never imitate a real singer or voice, never use an AI voice for any devotional text in Gujarati, Braj or Sanskrit, and never build the emotional peak on an AI cue [1][26]. If an AI cue is ever shown, label it in the credits.
 
 **5. Whether a cinema booking is a real goal.**
-- *Options:* (a) plan for a venue PA only; (b) plan for a cinema, which means a professional 5.1, a DCP and a calibrated room.
-- *Lean:* plan for (a) now, and build stems so a professional can make a 5.1 later (inference; `DECISIONS.md` W-19). A cinema booking would change the work, and that choice belongs to you.
+- *Options:* (a) plan for a venue PA and the phone files; (b) plan for a cinema, which means a professional 5.1, a DCP and a calibrated room.
+- *Lean:* plan for (a) now, with the phone speaker as a first-class room (D-27; PH1 and PH2 are checked on the project Android, Exercise 6), and build stems so a professional can make a 5.1 later (inference; `DECISIONS.md` W-19). A cinema booking would change the work, and that choice belongs to you.
 
 **6. Consent for relatives: the spoken card and the written ask (superseded by only-me).**
 - *Decided:* before the premiere nobody is read a consent card or asked to record (`DECISIONS.md` D-03, D-05). Relatives' voices arrive in the April version, recorded in response to the film after they sign release 4d (D-06); releases 4d to 4g are sent Sunday 2027-02-28 to Saturday 2027-03-06 (W-48). Template D2's two answers (A family only, B the gathering) and Tier C as a written ask belong to that later round.
@@ -463,7 +473,7 @@ Each decision lists the options, then our current lean. A lean is a suggestion f
 
 **8. The music spine.**
 - *Options:* the stack in Step 3, or a simpler route with silence and her voice only.
-- *Lean:* the research's stack, which keeps the secret, in the register's order (`DECISIONS.md` W-44): silence and room tone; the tune she sang to you, hummed by you; a relative's public-domain performance (only an existing recording); your own sound; CC0 or CC BY with credit; a labelled local AI bed under voice only if you accept it. Licensed songs come last, at most two, lean none.
+- *Lean:* the register's order (`DECISIONS.md` W-44), which keeps the secret: silence and room tone (never as a first sound); the tune she sang to you, hummed by you in two takes; your own captures in her empty house; CC0 or CC BY only as a labelled stand-in and only if the sound is hers. Sung devotion, a relative's performance and any AI bed are out of the premiere. Licensed songs come last, at most two, lean none.
 
 **9. Runtime** (charter open decision, now defaulted). A shorter film needs fewer cues to clear and fewer mixes to check (inference). The research does not set a runtime. *Lean:* 9 minutes, or 12 if H is 16 or more in writing, by the register's rule (`DECISIONS.md` W-01, W-02); the cue map is sized to that.
 
@@ -486,11 +496,14 @@ Each decision lists the options, then our current lean. A lean is a suggestion f
 13. **Sync price shock, or silence.** Festival-only sync and master fees for indie songs are roughly $500 per side, for about 12 months. Recognisable names are about $800 to $1,500 per side. Step-ups can be 3 to 10 times the first price [36]. For independent films with distribution, one unattributed range puts a song at $10,000 to $80,000 [37], so a later distribution plan would change the cost. Negotiate the step-up before you sign. Send asks by 2026-11-15, set the 2026-12-14 gate, and keep a substitute.
 14. **A quiet recording that is not quiet enough.** Phone recordings in a room with a fridge or fan carry hum and room noise. Turn them off first, as the guides advise [78] (Exercise 1). Do not rely on software to fix a bad room.
 15. **Chat-app voice notes.** Chat apps may recompress audio. That was not verified (UNVERIFIED). Ask relatives to send a file, not a chat voice note [79][6].
-16. **Minecraft's audio.** The Minecraft Usage Guidelines count "sounds and other audio from any of our games" as brand assets, and sharing counts as commercial use under the guidelines. Permissions can be revoked [10]. Do not use game sounds or music. Build your own sound language for any Minecraft-styled sequence.
+16. **"Devotional" mistaken for "free".** The words, the tune, the arrangement, the recording and the performance are five separate questions on every cue; every famous recording a Hindu household plays is label property; a hum is a performance of the work; and section 52's religious-ceremony clauses do not cover a film premiere (`DECISIONS.md` W-79; not legal advice). *Fix:* fill `composition_status` and `recording_status` separately on every cue, and use silence plus kitchen sound where the hum case is HC-4 to HC-6.
 17. **Jurisdiction mistakes.** Public-domain dates, performing-rights rules and venue licences differ by country [44][45][46][47][48][51][53]. Decide the country first.
 18. **Secrecy leaks through the people around the film.** A composer, a mixer, a lawyer, a venue engineer, a publisher, a label and a relative all learn something. Name-free briefs, a calibration reel, and a confidentiality clause limit the damage. The no-outsider path avoids it.
 19. **Consent creep from private to public.** The current card promises "a film that family will watch together" [6]. A public gathering goes beyond that. Under only-me nobody is read a card before the premiere (`DECISIONS.md` D-03, D-05); the April version's card (Template D2, rewritten for it) is checked against the surprise-ops truthful pretext rules before it is read, and releases 4d to 4g are sent after the premiere (W-48) [6].
 20. **Hum that you can't hear.** Cleaning removes hum but also softens voice. Listen to the removed track, and keep room tone under cuts.
+21. **Room tone as a first sound.** On a phone speaker a room's rumble is inaudible and the file looks dead; the first sound needs energy above about 400 Hz and a visible first light within about 4 s (W-36, W-76).
+22. **The hum that vanishes on a phone.** A closed-mouth hum loses 6 to 9.5 dB at the 500 Hz corner; an open vowel carries and is not quite what she did. Record both takes in week 1 and let the room decide: closed-mouth for the hall if it carries, open vowel for the phone (W-65).
+23. **Handling a seva article to get a sound.** The jhari, the shankh in the prayer corner and the mandir's bell are never touched in secret (W-70, PR10, PR14); use a kitchen vessel, a household hand-bell outside the mandir or the maker's own, or nothing.
 
 ---
 
@@ -507,7 +520,7 @@ These are the eight sources most worth your time. Read them in this order. Each 
 7. **EBU R 128** [93]. The broadcast loudness reference (-23 LUFS) and why it is not a cinema or venue target. Primary source. https://tech.ebu.ch/docs/r/r128.pdf
 8. **Ioan Allen, "How Loud is a Movie?"** [94]. Why cinema level is a calibrated playback level, not a LUFS target. Primary source (SMPTE paper, via ISDCF). https://files.isdcf.com/papers/ISDCF-Doc11-MovieLoudnessMeasurement20160315.pdf
 
-Also worth a look, but not in the top eight: the Freesound FAQ on CC tags [75] and Sonniss's bundle terms [76] for effects, and the Minecraft Usage Guidelines [10] before any game-styled sequence.
+Also worth a look, but not in the top eight: the Freesound FAQ on CC tags [75] and Sonniss's bundle terms [76] for effects.
 
 **Films to study for sound.** These are teaching examples, not templates.
 - *Coco:* one song, four performances. The showy version comes first, and the sincere versions are shorter, plainer and later [7][69].
@@ -529,9 +542,9 @@ Strength tags: P primary (the rules or the maker), S secondary or press, V vendo
 - [6] LOCAL `surprise-ops.md`, playbooks/surprise-ops.md. Current consent card, voice letter, removal deadline 2027-02-19, Decision 10 (recording rule), Bourdain case.
 - [7] LOCAL `film-story.md`, research/film-story.md. Cue lengths for *Up*, *Coco* and *Robot Dreams*; end-cut advice; Tarnation cost.
 - [8] LOCAL `format.md`, playbooks/format.md. Hash list (Step 4). Its rehearsal dates are retired for this track (2026-10-18); the venue test is the Mon 2027-02-22 run.
-- [10] Minecraft Usage Guidelines, https://www.minecraft.net/en-us/usage-guidelines. Read live 2026-10-18. P. Game sounds and audio count as brand assets; sharing counts as commercial use; permissions revocable.
 
 **AI music and AI rules**
+- [10] Retired with the game-world material (`DECISIONS.md` D-29, S-49); the entry stays in `research/music-sound.md`, where the number still resolves.
 - [11] Suno Terms of Service, https://suno.com/terms. Revised 2026-08-10, effective 2026-09-03. P. Output assignment, no copyright warranty, downloads, voice-model limits, training licence.
 - [12] Suno Help, commercial use, https://help.suno.com/en/articles/2410177. Undated. P. Pro and Premier commercial rights; free tier non-commercial.
 - [13] Undetectr, "Suno vs Udio 2026", https://undetectr.com/blog/suno-vs-udio-2026-which-is-better. 2026-10-04. V (sells file-processing; no listening tests). Suno V6 launch, prices and download counts.
@@ -646,3 +659,4 @@ Strength tags: P primary (the rules or the maker), S secondary or press, V vendo
 - **2026-10-18, v0.2 (round 1 review applied, Fable advisor).** Found voice now uses a two-tier rule (Core principle 1; Template D3 adds `addressed_to` and `public_cut_eligible`), citing surprise-ops Decision 18 and film-story Decision 3 at their stricter reading. Schedule rebuilt on G-LOCK 2027-02-06, G-MIX 2027-02-13, G-MASTER 2027-02-20 and the 2027-02-22 run; format.md week-18 dates dropped; rolling chapter locks added; composer from lock ruled out. `source_in_her_life` added to cue_map and the spotting sheet. D2 consent wording decided and routed to the surprise-ops truthful pretext cards. ElevenLabs Enterprise Music Lite exclusion, Suno Remix limit, REAPER dates (trial to 2027-02-26), DX-gated check and master-fader rule added; ASCAP sources tagged as not re-read by the advisor; Step 17 cue-sheet reference corrected to Template C.
 - **2026-10-18, v0.3 (round 2 review applied, Fable advisor; Haiku scribe).** Research Deliverables 2, 3d, 3e, F6, F7, Summary 13, Q9, the REAPER row and source [8] now match this playbook (the superseded consent card is withdrawn, not kept); D2 routing is a dated surprise-ops patch by Saturday 2026-11-07, not a round; the DX-gated check measures speech spans only (6 LU kept as the starting threshold, labelled inference); cue_map gained `hard_flag` and `advisor_flag_ref`, with the flag written to `reviews/<chapter>/sound-flags.md`; HER-PUBLIC and HER-PRIVATE added beside tiers 1 and 2, with the T9 ledger path; REAPER's $60 personal-use condition added (purchase page re-read) and the schedule row rewritten.
 - **2026-10-18, Reconciled with DECISIONS.md (2026-10-18).** Sonnet implementor pass against the decisions register: -1 dBTP everywhere and the three venue masters (-23, -18, -16 LUFS) chosen at the 22 Feb run, online -16 LUFS (W-19; S-28); no composer, no hired mixer, no narrator (D-07); no recorded living voice but a HER-PUBLIC clip before the premiere, relatives' voices in the April version (D-05, D-06); consent cards D1 and D2 and the 2026-11-07 patch made void before the premiere (D-03; S-10); HER-PRIVATE never enters any cut before her decision (W-45); music spine order with the hummed tune, licensed songs lean none, Udio closed (W-44; S-33); withdrawals close 19 Feb as removals, AMB re-render 23 Feb (W-08, W-20); country by 25 Oct and venue asked by 6 Nov (O-02, W-17); runtime 9 or 12 (W-01, W-02).
+- **2026-10-19, Reconciled with DECISIONS.md after the her-world merge (2026-10-19).** Sonnet implementor pass against the merged register (S-49, S-53, S-51, S-60 to S-64): the premiere spine is objects, rooms, the sea's surf and the maker's hum, with sung devotion in April, and a relative's public-domain performance retired from it (W-44, D-05); the hum in two takes, one per room (W-65); the first sound above about 400 Hz with no rhythm instrument in the first minute (W-36, W-76); the instrument rulings under D-28 (`ASK` list, O-68); the cue map takes the Template G header of `playbooks/gujarati-devotional-sound.md`, and the licence log gains separate `composition_status` and `recording_status` columns, `tradition_origin` and `phone_share`; the capture list carries the seva-article rule (W-70, Template I); the phone files PH1 and PH2 are the online row, with a phone-speaker pass per cue (W-19, W-63, Exercise 6); AI music is closed for the premiere and no AI voice for any devotional text (W-44, W-79); pitfall 16 (a game publisher's audio terms) replaced by "devotional means free" (W-79) and pitfalls 21 to 23 added; the process lock is P-LOCK. The Minecraft-styled-sequence pitfall and source [10] are retired (D-29). Citations kept; no research note or review touched.

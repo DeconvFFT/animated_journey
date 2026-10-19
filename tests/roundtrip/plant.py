@@ -167,10 +167,16 @@ OTIO_DEFECTS = {
     "filmcraft_ticks_mismatch": ("filmcraft_ticks_mismatch", "duration_ticks says 6 s for a 5 s clip", ()),
     "motion_edge_exposed": ("motion_edge_exposed", "ch01_s01 drifts 200 px sideways at the start scale, so black shows", ()),
     "dissolve_without_neighbour": ("dissolve_without_neighbour", "a dissolve is the last item of the track", ()),
-    "no_video_track": ("no_video_track", "the Video track is renamed Audio", ()),
+    "no_video_track": ("no_video_track", "the Video track is renamed Audio (so no Video track holds a clip either)", ("no_clips",)),
     "schema_not_timeline": ("schema_not_timeline", "the root is a Stack", ()),
     "otio_json_invalid": ("otio_json_invalid", "the file is cut short", ()),
     "clip_duration_invalid": ("clip_duration_invalid", "ch01_s02 has a zero-length source_range", ("filmcraft_ticks_mismatch", "dissolve_longer_than_neighbour")),
+    # added after review r1 (break tests B1, B3, B2): a timeline with nothing visible, or with its clips hidden from the rules, or with a media path that climbs out of the folder
+    "empty_video_track": ("no_clips", "the Video track has no children at all (the stack's own markers and the audio clip are still there)", ()),
+    "nested_stack_in_track": ("nested_composition", "all of the Video track's items are moved into one nested Stack inside the track, so no per-clip rule sees a clip", ("no_clips",)),
+    "nested_track_beside_clips": ("nested_composition", "a Track holding a clip with a missing media path is nested inside the Video track, after the four real clips", ()),
+    "nested_stack_at_root": ("nested_composition", "a second Stack, holding a Track with a clip, is a child of the top Stack beside V1 and A1", ()),
+    "target_url_escapes_folder": ("target_url_escapes_folder", "ch01_s01 uses media/../media/ch01_s01.png (the file exists, but the path climbs through '..')", ()),
 }
 
 
@@ -235,6 +241,26 @@ def plant_otio(kind, src, dst):
         d["OTIO_SCHEMA"] = "Stack.1"
     elif kind == "clip_duration_invalid":
         clips[1]["source_range"]["duration"]["value"] = 0.0
+    elif kind == "empty_video_track":
+        d["tracks"]["children"][0]["children"] = []
+    elif kind == "nested_stack_in_track":
+        d["tracks"]["children"][0]["children"] = [{"OTIO_SCHEMA": "Stack.1", "name": "nested", "enabled": True, "markers": [], "effects": [], "metadata": {},
+                                                   "source_range": None, "children": v}]
+    elif kind == "nested_track_beside_clips":
+        hidden = copy.deepcopy(clips[0])
+        hidden["name"] = "ch01_hidden"
+        hidden["markers"] = []
+        hidden["media_references"]["DEFAULT_MEDIA"]["target_url"] = "media/ch01_s99.png"
+        v.append({"OTIO_SCHEMA": "Track.1", "name": "nested", "kind": "Video", "metadata": {}, "children": [hidden]})
+    elif kind == "nested_stack_at_root":
+        hidden = copy.deepcopy(clips[0])
+        hidden["name"] = "ch01_hidden"
+        hidden["markers"] = []
+        hidden["media_references"]["DEFAULT_MEDIA"]["target_url"] = "media/ch01_s99.png"
+        d["tracks"]["children"].append({"OTIO_SCHEMA": "Stack.1", "name": "nested", "enabled": True, "markers": [], "effects": [], "metadata": {}, "source_range": None,
+                                        "children": [{"OTIO_SCHEMA": "Track.1", "name": "V9", "kind": "Video", "metadata": {}, "children": [hidden]}]})
+    elif kind == "target_url_escapes_folder":
+        clips[0]["media_references"]["DEFAULT_MEDIA"]["target_url"] = "media/../media/ch01_s01.png"
     else:
         raise ValueError(kind)
     open(dst, "w", encoding="utf-8", newline="\n").write(json.dumps(d, indent=2) + "\n")

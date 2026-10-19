@@ -1,0 +1,24 @@
+{
+ "actual": "ops_lint --hours: exit 1 on a shifted row and on a header-less file; no planted token printed",
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 453,
+  "avail_mb_min": 453,
+  "avail_mb_start": 453,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "ops_lint --hours on a shifted row (a name in date and minutes) exits 1 and never prints the planted tokens",
+ "notes": "",
+ "package": "WP-02",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "lint_hours_shifted_masked",
+ "unverified_reasons": []
+}

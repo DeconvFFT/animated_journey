@@ -1,0 +1,41 @@
+{
+  "schema": "lj-config/1",
+  "_about": "Test config for tests/win_lj. The root is relative to this file and points at a synthetic tree that tests/win_lj/make_trees.py builds outside the repository.",
+  "root": "../../../build-scratch/wp01b-trees/planted",
+  "tools_root": "tools",
+  "work_folder_names": ["work"],
+  "never_touch_names": [],
+  "never_touch_paths": [],
+  "apps": {
+    "photocraft": {
+      "status": "UNVERIFIED",
+      "recent_files": [],
+      "cache": [],
+      "note": "synthetic test entry: an empty list is the shipped default"
+    },
+    "lightcraft": {
+      "status": "UNVERIFIED",
+      "recent_files": ["lightcraft-*/LightCraftData/recent.json"],
+      "cache": ["lightcraft-*/LightCraftData/thumbcache"],
+      "note": "synthetic test entries, as if filled from a paste"
+    },
+    "filmcraft": {
+      "status": "UNVERIFIED",
+      "recent_files": [],
+      "cache": [
+        "filmcraft-0.9.0/Auto-Save",
+        "filmcraft-0.9.0/Recovery/media",
+        "../elsewhere/Recovery",
+        "/etc/hostname",
+        "%LJ_UNSET_VARIABLE%/x"
+      ],
+      "note": "synthetic test entries that must be listed as already counted, refused, or skipped"
+    },
+    "vectorcraft": {
+      "status": "UNVERIFIED",
+      "recent_files": [],
+      "cache": ["vectorcraft-*/Recovery"],
+      "note": "a link named Recovery that points outside: must be SKIPPED (link)"
+    }
+  }
+}

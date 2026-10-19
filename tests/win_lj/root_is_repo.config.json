@@ -1,0 +1,5 @@
+{
+  "schema": "lj-config/1",
+  "_about": "Must be refused with exit 2: the root is the project repository folder (two levels above this file).",
+  "root": "../.."
+}

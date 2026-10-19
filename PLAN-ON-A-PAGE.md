@@ -1,28 +1,30 @@
 # Life Journey — the plan on a page
 
-*For you, the maker. Sunday 18 October 2026. The full plan is `ROADMAP.md`; the decision list is `DECISIONS.md`.*
+*For you, the maker. Monday 19 October 2026. The full plan is `ROADMAP.md`; the decision list is `DECISIONS.md`.*
 
 ## What we're making
 
-A short animated film of your mother's life, built to a cinema standard, shown on Saturday 27 February 2027 to a room that mostly has never met her, with her sitting in it and not knowing it was coming. Every image is one of her real photographs, restored in front of the audience, or something drawn in the material her own hands made and plainly marked as drawn; the one object that followed her through every home is the thread, and hands holding each thing are how the film tells. Because you are the only person on this project, the premiere cut carries no recorded voice of any living person except possibly her own; in April you deliver the same film with the voices turned on, recorded by relatives after they have seen it, and her own last word.
+A day in your mother's Gujarati Pushtimarg house that holds her whole life: water poured into brass before anyone is awake and one flame against the dark kitchen window, the kitchen at the hours of the eight darshans without ever saying so, her hands at the things they make opening every chapter, the one everyday object that followed her through every home as the only thread, and her evening seat on the swing to close. Every image is one of her real photographs, restored in front of the audience, or something drawn in her own tradition's line (the threshold drawing of her region, the pichwai manner as a border and never a figure) and plainly marked as drawn; her gods appear as the lamp, the kalash, the jhari in its red cloth and the closed doors of the home mandir, never as a drawn, generated or photographed deity. It is shown on Saturday 27 February 2027, to a cinema standard, to a room that mostly has never met her, with her sitting in it and not knowing it was coming; the same film goes onto her Android phone by cable with her yes that weekend, and in April you deliver it again with the voices turned on, recorded by relatives after they have seen it, and her own last word.
 
 ## The runtime rule, in one line
 
-Tell us your reliable hours a week by Sunday 15 November: 16 or more means a 12-minute film; about 10 is what 9 minutes costs if the first chapter comes in fast, and under 14 means 9 minutes from that day; under about 8 the honest plan is the 6-minute film, and we say so on Sunday 1 November when your first logged week is read. The finished first chapter on 20 December confirms it. Until you write the number, we plan 9.
+Tell us your reliable hours a week by Sunday 15 November: 16 or more means a 12-minute film; 14 to 16 means 12 only if you add hours or buy the captions alone, otherwise 9; about 10 is what 9 minutes costs if the first chapter comes in fast, and under 14 means 9 minutes from that day; under about 8 the honest plan is the 6-minute film, and we say so on Sunday 1 November when your first logged week is read. The finished first chapter on 20 December confirms it. Until you write the number, we plan 9.
 
-## Five rules that never bend
+## Seven rules that never bend
 
 1. **Real stays real.** No invented events, faces or words; no cloned voice of anyone; no AI animation of a real face. Anything drawn is marked.
-2. **Never record her without her knowing, and never lie.** A visible recorder and her spoken yes, or no recording. If she asks, the answer is yes, with the details kept until the day.
-3. **Her photos stay home.** No family photo, audio or video ever enters the cloud, a hosted tool or the code repository, and the repo, which is public, never holds names either. They live only on the encrypted drive and its second copy, unless you yourself raise a photo set to "preview", which lets a small 768-pixel copy reach the agents' review packs after the model-improvement setting is off; nothing full-size, ever.
-4. **If in doubt, it's out of the public cut.** Every hard chapter gets two decisions from you, 72 hours apart, with the advisor's flag read first. Out by default; her own say after the premiere is the only way back in.
-5. **Nothing critical depends on a half-finished app, and nothing new happens in the last week.** Every step has a free, proven fallback; the apps are pinned; the film is locked on 6 February.
+2. **Reverence.** No deity is ever drawn, generated or photographed; her gods are shown as symbols and the objects of seva, in her own tradition's manner, with the respect their devotees expect. Nothing Mughal, Islamic or Christian, and anything of mixed origin stays out unless you say otherwise in writing.
+3. **Her seva articles, one rule, word for word:** her Thakorji, chitraji, any picture of hers and anything inside the mandir are never photographed without her knowing; a seva article outside the mandir (the jhari in its cloth, the lamp, the closed doors) may be photographed by sight, untouched, on an unsynced phone (O-58), each logged as a G5 flag (O-48). Nothing in her prayer corner (the jhari, the shankh, the mandir's bell, Thakorji's cloth or thali) is touched, moved or sounded without her knowing. Captures use a kitchen vessel, a household hand-bell or your own things; a seva object that may not be photographed is drawn. If you prefer the wider rule (nothing of her seva photographed at all), say so and the shrine moment is drawn, not photographed. No temple or haveli office is ever asked anything.
+4. **Never record her without her knowing, and never lie.** A visible recorder and her spoken yes, or no recording. If she asks, the answer is yes, with the details kept until the day.
+5. **Her photos stay home.** No family photo, audio or video ever enters the cloud, a hosted tool or the code repository, and the repo, which is public, never holds names, her haveli, the in-town places she goes to or anything that identifies her (today it names her town; you decide on 1 November whether that stays: it sits in the charter, the register, the roadmap's calendar note, one fixture file name, one skill description and the three her-world playbooks, and every one of those changes on your yes). They live only on the encrypted drive and its second copy, unless you yourself raise a photo set to "preview", which lets a small 768-pixel copy reach the agents' review packs after the model-improvement setting is off; nothing full-size, ever. Nothing of the film reaches any phone before the reveal, yours included.
+6. **If in doubt, it's out of the public cut.** Every hard chapter gets two decisions from you, 72 hours apart, with the advisor's flag read first. Out by default; her own say after the premiere is the only way back in.
+7. **Nothing critical depends on a half-finished app, and nothing new happens in the last week.** Every step has a free, proven fallback; the apps are pinned; the film is locked on 6 February.
 
 ## What you do, what the AI team does
 
-**You:** every judgment call (approve the look, choose the chapters, decide the hard ones); every touch of a real photograph, recording or relative; five to ten minutes a day of watching with sound on and leaving coloured markers; you approve nothing until 48 hours have passed; the hand touch-ups in the Craft apps; the backups; the venue, the guests and the night itself. You type into three files only: `hours.csv`, the inventory sheet and the markers in the editor; the agents own every other manifest, ledger and log. Your weekly rhythm buys the runtime: for 9 minutes, two weekday evenings of about 2 hours plus a 6-hour weekend block (about 10 hours, the weekend block holding the 3–4 hour Craft pass); for 12 minutes, 16 hours; under about 8 hours the honest plan is the 6-minute F-0, and we will say so rather than let the schedule pretend.
+**You:** every judgment call (approve the look, choose the chapters, decide the hard ones, answer as her proxy what her tradition would welcome on a public screen); every touch of a real photograph, recording or relative; five to ten minutes a day of watching with sound on and leaving coloured markers; you approve nothing until 48 hours have passed; the hand touch-ups in the Craft apps; the backups; the venue, the guests and the night itself. You type into three files only: `hours.csv`, the inventory sheet and the markers in the editor; the agents own every other manifest, ledger and log. Your weekly rhythm buys the runtime: for 9 minutes, two weekday evenings of about 2 hours plus a 6-hour weekend block (about 10 hours); for 12 minutes, 16 hours; under about 8 hours the honest plan is the 6-minute film, and we will say so rather than let the schedule pretend.
 
-**The AI team:** writes the plan, the scripts and the checks; drafts every shot and chapter from text; renders drawn scenes in the cloud and gives you one command to render anything with her photos on your PC; builds the review packs; keeps the hours, the schedule and the decision log; reviews everything at every gate; and flags anything sensitive before you see it. It never decides a hard chapter, never touches her photos in the cloud, and never talks to anyone in your family.
+**The AI team:** writes the plan, the scripts and the checks; drafts every shot and chapter from text; renders drawn scenes in the cloud and gives you one command to render anything with her photos on your PC; builds the review packs; keeps the hours, the schedule and the decision log; checks every frame against her tradition's rules; reviews everything at every gate; and flags anything sensitive before you see it. It never decides a hard chapter, never touches her photos in the cloud, never draws a god, and never talks to anyone in your family.
 
 ## The next 14 days
 
@@ -30,54 +32,61 @@ Tell us your reliable hours a week by Sunday 15 November: 16 or more means a 12-
 
 - **Mon 19 Oct.** Start logging your real hours (seven days). Start five minutes a day of "I remember" notes about her into your own phone, never synced. Create a code name and a project email only you read.
 - **Tue 20 Oct.** Run the PC inventory script and paste the report. Check every shared device, account and photo library for anything that could tip her off.
-- **Wed 21 Oct.** Record yourself humming the song she sang to you, uncleaned. Write one line per stage of her life: what did her hands do most? Find that material in the house.
-- **Thu 22 Oct.** Photograph three to five candidates for the object that followed her everywhere, on an unsynced phone, in the light they live in.
+- **Wed 21 Oct.** Record yourself humming the song she sang to you, twice: once with your lips closed, once on an open "aa" (the phone speaker loses the closed one; the hall deserves it). If the women of the house sang a song at a birth or wedding you were at, hum that too, both ways. Type the first line of each in Gujarati, text only, sent nowhere. Write one line per stage of her life: what did her hands do most? Find that material in the house.
+- **Thu 22 Oct.** Photograph three to five candidates for the everyday object that followed her everywhere (the velan, the masala dabbo, the thepla tin, a vessel, the tiffin), on an unsynced phone, in the light they live in, without touching anything in the prayer corner. Note whether there is a hichko and when she sits in it.
 - **Fri 23 Oct.** Send the two six-question emails to the digitising labs (template in the surprise-ops playbook).
 - **Sat 24 Oct.** Download the five Craft apps as portable zips, verify the checksums, run each five-minute test. Do not install the Launcher.
-- **Sun 25 Oct.** Answer the week-1 facts in writing: hours, country, shared PC or room, budget ceiling, Minecraft, the family profile (languages, observances, where relatives live), which recordings of her voice exist, whether she would hate a public room or a speech. App versions are frozen today.
+- **Sun 25 Oct (Sharad Purnima): the sitting.** One quiet evening, from memory and by looking at the house, nothing asked of her or anyone, nothing recorded, "don't know" allowed, the answers kept in your own notes and never in the repo. Hours, country, shared PC or room, budget. The family profile, which recordings of her voice exist, whether she would hate a public room (and whether 27 February is a family date or one you chose; never say whether it is her birthday). Then her house: does she keep Yamunajal in a jhari and fill it first thing; does the morning start with the bell and the lamp; which darshans she keeps at home and which festivals; which of the eight is the kuldevi and who sits on the shelf; is there a pichwai or a picture in seva; what she calls Thakorji and what her children call her; does the family say "Jai Shri Krishna" at the door and on the phone; her Diwali week day by day and which printed panchang the house follows; whether she heeds Vinchudo and keeps the monthly fasts; her phone (make, storage, whether Google Photos backs up every folder); which temples she actually goes to (the in-town ones stay in your own notes; in chat say only "answered"); what sounds the empty house can make; does she wear the two tulsi malas; does the house say dates by tithi. App versions are frozen today.
 - **Mon 26 Oct.** Make a Ken Burns move by script, then the same move in the editor.
 - **Tue 27 Oct.** Set up the archive folders and scan five stand-in prints, fronts and backs, with the manifest and checksums.
-- **Wed 28 Oct.** Create the encrypted container on the external drive and test mount and dismount. Set up a separate Windows account for the project.
-- **Thu 29 Oct.** Time an album spread including the backs. Practise the "only you" conversation on your own material. Choose the pilot tape (one she will not miss); photograph where it sits first.
+- **Wed 28 Oct.** Create the encrypted container on the external drive and test mount and dismount. Set up a separate Windows account for the project. Wipe the two project phones (no accounts, backup off, airplane mode).
+- **Thu 29 Oct.** Run the ten-minute Gujarati caption test on your PC (test syllables only, never a mantra or a god's name) and keep the log; run the 32-string Gujarati sheet on the PC, in the browser and on a project phone. Time an album spread including the backs. Practise the "only you" conversation on your own material. Choose the pilot tape (one she will not miss); photograph where it sits first.
 - **Fri 30 Oct.** The pilot tape ships to a mid or fast lab.
-- **Sat 31 Oct.** Write the country at the top of the licence log. Record a practice conversation and your own voice, clean, checked on headphones.
-- **Sun 1 Nov.** Sign the settings card (1080p, 24 fps, captions burned in). Decide the film's language. Name one trusted person to hold a sealed envelope (where the drive and the name key are) opened only if you are incapacitated. Confirm the recording rule. Decide which tapes, if any, ship on 13 November. Your first logged week is read today: under about 8 hours, the 6-minute film becomes the plan and 9 minutes the stretch.
+- **Sat 31 Oct.** Write the country at the top of the licence log. Read the Gujarati test sheets yourself as a native reader (or name one person who sees only test syllables and learns nothing). Record a practice conversation and your own voice, clean, checked on headphones.
+- **Sun 1 Nov.** Sign the settings card (1080p, 24 fps, captions burned in, plus the phone files, the Gujarati fonts and how the captions are burned). Decide: cards in Gujarati, captions in the room's language. Answer, as her proxy, what her tradition would welcome on a public screen (we recommend "seva objects and symbols only, no deity"). Decide whether her threshold swastika form appears (we recommend not until the room is known). Decide whether her town stays in the public repo. Name one trusted person to hold a sealed envelope (where the drive and the name key are) opened only if you are incapacitated. Confirm the recording rule. Decide which tapes, if any, ship on 13 November. Your first logged week is read today: under about 8 hours, the 6-minute film becomes the plan and 9 minutes the stretch. Not due today: her cloths, any Jain or other-sampradaya place, library stand-in sounds, the family's word for the kirtan, a baithak, hatri and Dhanurmas, "offered first" and onion and garlic, and how the eight sit in the house all wait for 15 November; whether a phone assistant may hear your hum waits for 14 December (text search only until then); leaving every invasion story out needs no decision from you, say so only if you disagree.
 
 ## Decisions we need from you, with our recommended answer
 
 | By | Decision | We recommend |
 |---|---|---|
 | Sun 25 Oct | Hours a week | Name a number and a rhythm (about 10 hours buys 9 minutes, 16 buys 12, under about 8 means the 6-minute film); we set the runtime from it |
-| Sun 25 Oct | Country of the premiere | Write it down; recording law, labs, music and the rights consult all wait on it |
+| Sun 25 Oct | Country of the premiere | Write it down; recording law, labs, music, the rights consult, the sea and kite captures and the room's language all wait on it |
 | Sun 25 Oct | Does she share the PC or the room | If yes: a separate Windows account and scanning on a fixed routine |
-| Sun 25 Oct | Budget ceiling | Name it; the core plan is roughly $900–1,600 before venue and food |
-| Sun 25 Oct | Does she love Minecraft | If not, the game stays a reference and nothing voxel is built |
-| Sun 1 Nov | Settings card and language | Sign as proposed; one language with subtitles |
+| Sun 25 Oct | Budget ceiling | Name it; the core plan is roughly $900–2,000 before venue and food (the same two figures as the roadmap's budget table), including two project phones, an optional tablet and the rights consult hour; about $1,800 without the consult |
+| Sun 25 Oct | The questions about her house (above) | Answer from memory and by looking; "don't know" is fine; every piece of the film keyed to a no simply falls away |
+| Sun 1 Nov | Settings card and language | Sign as proposed; cards in Gujarati, captions in the room's language; a native reader has checked the Gujarati sheets |
+| Sun 1 Nov | Her gods on a public screen, answered as her proxy | Seva objects and symbols only (the lamp, the jhari in its red cloth, the closed mandir doors); no figure drawn, generated or photographed; anything more waits until she knows, in April |
+| Sun 1 Nov | Her swastika form (the sathiyo) on screen | Not until the room is known; if the room will read it, only inside her own floor drawing on the title card; your call alone |
+| Sat 14 Nov (cue map) and Mon 14 Dec (cues) | Harmonium, tabla, bansuri, tanpura in the sound (and whether the Hindu-only rule is about motifs or about the people who play) | Each one is silence until you rule; the rule is about motifs and the film's world, not about performers; the harmonium is both colonial and your tradition's own, so neither strip it nor slip it in |
 | Sun 15 Nov | 9 or 12 minutes | 12 if you wrote 16+ hours; otherwise 9 from that day |
-| Sun 15 Nov | Venue confirmed; invite-only or open; who runs playback | Invite-only; the venue's AV person runs playback and is told only "a short video"; you hold the volume |
-| Sun 15 Nov | Approve the look (the style bible and three frames) | Approve only if nothing in it would work for another family |
-| Sun 20 Dec | After the first chapter: keep the runtime; your voice in the film; the keepsake | Follow the hours table; cards plus your hum, no narration; the offline scrubber page on her USB |
-| Sun 3 Jan | Bring anyone else in? The true plan that brings her, and who holds the room while you fetch her | Stay solo; you bring her yourself by a plan that is true and give the 30-second welcome; one guest, asked that morning and told only "keep everyone seated until we walk in", holds the room, and the AV person holds the first frame; nobody learns of the film early |
-| Fri 5 – Sat 6 Feb | Final call on every hard chapter; picture lock | Out if in doubt; lock on the day |
+| Sun 15 Nov | Venue confirmed; invite-only or open; who runs playback; guests' phones | Invite-only; the venue's AV person runs playback and is told only "a short video"; you hold the volume; no QR code or link, just a spoken promise of a family copy later |
+| Sun 15 Nov | Approve the look (the style bible and three frames); the house details moved here from 1 November (her cloths, Jain or other-sampradaya places, library stand-in sounds, the word for the kirtan, a baithak, hatri and Dhanurmas, "offered first" and onion and garlic, how the eight sit in the house) | Approve only if nothing in it would work for another family: her prints' colours, her region's floor-art line, the pichwai manner as a border only, white and cream for the spring weeks of the premiere; the house details default out or unchanged until you answer |
+| Sun 22 Nov | Approve the treatment: the opening, the last card, the two short verse cards | Open on her morning (water into brass, one flame) if the house keeps it, else the kitchen; end on the swing and "જય શ્રી કૃષ્ણ" alone if the family says it; the line she says by heart outranks any verse we could choose |
+| Mon 14 Dec | Which tune the hum is, and every instrument | Place the tune (a lullaby or a family song is free; a film or album tune is not); anything undecided becomes silence and kitchen sound |
+| Sun 20 Dec | After the first chapter: keep the runtime; your voice in the film; the keepsake | Follow the hours table; cards plus your hum, no narration; the film itself on her phone by cable on reveal weekend, with her yes and after checking her backup is off |
+| Sun 3 Jan | Bring anyone else in? The true plan that brings her; who holds the room; her turn to talk on 7 March | Stay solo; you bring her yourself by a plan that is true and give the 30-second welcome; one guest, asked that morning and told only "keep everyone seated until we walk in", holds the room; her talk moves to the afternoon of Sunday 7 March because the 6th is Maha Shivaratri |
+| Fri 5 – Sat 6 Feb | Final call on every hard chapter; picture lock | Out if in doubt; lock on the day (Friday only if she keeps the Amavasya and needs the house) |
 
-## Key dates to the premiere
+## Key dates to the premiere, in her calendar
+
+Dates are as read for her town on 19 October; her house's printed panchang wins where sources differ.
 
 | Date | What happens |
 |---|---|
-| Fri 23 Oct | Lab emails out; **Sun 25 Oct** app versions frozen, week-1 facts answered |
-| Fri 30 Oct | Pilot tape ships; **Sun 1 Nov** settings card signed |
-| Fri 6 Nov | Venue asked in writing |
-| Sat 14 Nov | **The process check (P-LOCK)**: everything proven on stand-in material, including the one command that closes every session; gathering may start the next day |
-| Sun 15 Nov | Hours in writing; 9 or 12 decided; look approved; venue answer in; gathering begins |
-| Sun 6 Dec | First chapter exists as a rough animatic |
-| Sun 20 Dec | **First chapter finished to final quality**; one or two strangers watch it (or your own 48-hour cold read); runtime confirmed |
-| 21 Dec – 3 Jan | Holidays: no production; capture her kitchen's sounds and the object in its light; never record her |
-| Sun 17 Jan | Half the film approved; venue visit done with a test clip |
-| Sun 24 Jan | Invitations out (a gathering, not a film); all borrowed material back |
-| Sun 31 Jan | Every chapter drafted; your 48-hour cold read |
-| Sat 6 Feb | **Picture lock** |
-| Sat 13 Feb | Mix and grade done; second stranger screening |
-| Sat 20 Feb | Master verified; copies made |
-| Mon 22 Feb | Rehearsal at the venue; **Wed 24 Feb** guests briefed; Thu–Fri cold starts |
-| **Sat 27 Feb** | **Premiere.** Quiet word with her twenty minutes before. "No speech. There's food." |
-| Sat 6 Mar; Sat 24 Apr | Her turn to talk; the April version with the voices, delivered to her |
+| Fri 23 Oct | Lab emails out; **Sun 25 Oct** (Sharad Purnima) app versions frozen, the sitting |
+| Fri 30 Oct | Pilot tape ships; **Sun 1 Nov** settings card signed, her gods and her script decided |
+| Thu 5 Nov | Venue asked in writing; **her Diwali week opens** (Vagh Baras). Be present, ask nothing, photograph the object in Diwali light by sight, give no gadget or account as a gift |
+| Sun 8 Nov | Diwali and Chopda Pujan; Mon 9 or Tue 10 Annakut and Bestu Varas (whichever day the house keeps); Wed 11 Bhai Beej |
+| **Sat 14 Nov** | **Labh Pancham: the process check (P-LOCK)**: everything proven on stand-in material, including Gujarati captions burned correctly on your PC and the film playing from a project phone's gallery; gathering may start the next day |
+| Sun 15 Nov | Hours in writing; 9 or 12 decided; look approved; venue answer in; gathering begins. Sat 21 Nov Tulsi Vivah: the first album-and-hands afternoon if the family gathers |
+| Sun 6 Dec; Sun 20 Dec | First chapter as a rough animatic, the opening sound chosen by ear on a project phone; then **finished to final quality** and played on the project phones too; one or two strangers watch it (or your own 48-hour cold read); runtime confirmed |
+| 21 Dec – 3 Jan | Holidays: no production; capture her empty house's sounds and the object in its light, touching nothing of her seva; never record her. Fri 1 Jan Gusainji's day, if kept |
+| Thu 14 – Fri 15 Jan | Uttarayan: if she keeps it, your last asks go out Tue 12 Jan; a kite capture at first light, no voices |
+| Sun 17 Jan | Half the film approved; venue visit done with a test clip (write down the lowest note the room carries) |
+| Sun 24 Jan; Sun 31 Jan | Invitations out (a gathering, not a film); all borrowed material back. Every chapter drafted; your 48-hour cold read |
+| **Sat 6 Feb** | **Picture lock** (Maha vad Amas) |
+| Thu 11 Feb | **Vasant Panchami**: the film's own season in her calendar; the second stranger screening sits around the morning puja. Sat 13 Feb mix and grade done |
+| Sat 20 Feb | Master verified; copies made, the phone files among them |
+| Mon 22 Feb | Rehearsal at the venue; **Wed 24 Feb** guests briefed (Sankashti: no call to her house that evening); Thu–Fri cold starts; Fri 26 Feb is Yashoda Jayanti, a fact for you alone |
+| **Sat 27 Feb** | **Premiere.** Shri Nathji's Patotsav, and possibly her fast day: start after her evening lamp and after the haveli if she goes. Quiet word with her twenty minutes before. "No speech. There's food." Her copy onto her phone by cable, with her yes |
+| Sun 7 Mar; Sat 24 Apr | Her turn to talk (the afternoon after Maha Shivaratri); the April version with the voices, delivered to her |

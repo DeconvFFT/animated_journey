@@ -2,9 +2,9 @@
  "actual": "hours_bad_activity.csv: 1 problem(s); nothing is reported until they are fixed\n  line 3: activity 'Ga*******' is not one of: gather|scan|story|brief_G0|style_G1|review_G2|craft_refine_G3|chapter_G4|dignity_G5|tech_G6|sound|grade|mix|captions|master|qc|admin|learn|rework|event",
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 464,
-  "avail_mb_min": 464,
-  "avail_mb_start": 464,
+  "avail_mb_end": 453,
+  "avail_mb_min": 453,
+  "avail_mb_start": 453,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

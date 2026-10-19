@@ -15,6 +15,9 @@ WHAT IT CHECKS (a finding is printed MASKED: category, file:line, the first two 
   5. --theme: D-28 exclusions (Mughal, Islamic, mosque, minaret, Taj Mahal, Red Fort, church, cathedral,
      crucifix, nativity, Christmas, ...) in NEW theme-bearing files. A keyword scan cannot judge iconography;
      a person (and the Fable review) must look at the pictures. Existing playbooks and research are INFO only.
+     A line in a .md file with an exclusion cue (no, never, not, excluded, avoid, out of scope, left out ...) within
+     40 characters BEFORE the keyword is a rule statement and prints as a NOTE; everything else is a finding,
+     always so under pipeline/scenes/ and in pipeline/phone/test_strings.json (scripts/public_lint.config.json).
 
 HOW TO RUN   (python3 -I on Linux, py -3 -I on Windows)
   python3 -I scripts/public_lint.py                 added lines of the diff against HEAD + untracked files (before a commit)
@@ -478,12 +481,27 @@ def gather(root, args, pat):
 
 
 # ----------------------------------------------------------------------------- theme guard
+def cue_before(cue, t, pos, win):
+    """True when an exclusion cue (no, never, not, excluded, avoid..., left out...) ENDS within WIN characters before
+    POS in line T. A cue after the keyword never counts: 'a Mughal garden, not too dark' and 'fade out to a Taj Mahal'
+    are uses. The cue is found in the whole line (not a slice) so a word cut by the window is never taken for a cue."""
+    if cue is None:
+        return False
+    return any(0 <= pos - c.end() <= win for c in cue.finditer(t) if c.end() <= pos)
+
+
 def theme_scan(root, cfg, pat, args):
     th = cfg.get("theme", {})
     findings, info, statements = [], {}, []
-    cue, win = th.get("_cue"), int(th.get("exclusion_cue_window", 120))
+    cue, win = th.get("_cue"), int(th.get("exclusion_cue_window", 40))
     theme_paths = th.get("paths", [])
-    is_theme = lambda rel: any(rel == p or (p.endswith("/") and rel.startswith(p)) for p in theme_paths)
+    in_path = lambda rel, plist: any(rel == p or (p.endswith("/") and rel.startswith(p)) for p in plist)
+    is_theme = lambda rel: in_path(rel, theme_paths)
+    # Where a rule statement may be shown as a NOTE instead of a finding (review r1, C-1): prose files only. Never under
+    # pipeline/scenes/ or in the phone test strings, where every string is rendered and 'out', 'no', 'without' are animation words.
+    demote_suffixes = tuple(x.lower() for x in th.get("exclusion_demote_suffixes", [".md"]))
+    never_demote = th.get("exclusion_never_demote", ["pipeline/scenes/", "pipeline/phone/test_strings.json"])
+    can_demote = lambda rel: rel.lower().endswith(demote_suffixes) and not in_path(rel, never_demote)
     if args.paths:
         targets = [(r, None) for r in walk_paths(root, args.paths)]
         label = "explicit paths"
@@ -516,15 +534,18 @@ def theme_scan(root, cfg, pat, args):
             continue
         lines = decode_bytes(raw).replace("\r\n", "\n").replace("\r", "\n").split("\n")
         items = [(i + 1, t) for i, t in enumerate(lines)] if added is None else added
+        demotable = can_demote(rel)
         for ln, t in items:
             for kw in th.get("keywords", []):
-                m = kw["_rx"].search(t)
-                if m:
-                    near = t[max(0, m.start() - win): m.end() + win]
-                    if cue is not None and cue.search(near):
-                        statements.append(Finding("theme-excl", kw["id"], rel, ln, m.group(0), "the line says the motif is excluded: a statement of the rule, not a use"))
-                    else:
-                        findings.append(Finding("theme", kw["id"], rel, ln, m.group(0), "D-28 exclusion keyword: %s" % kw.get("why", "")))
+                hits = list(kw["_rx"].finditer(t))
+                if not hits:
+                    continue
+                # one verdict per keyword per line: a statement only if EVERY occurrence has an exclusion cue just before it
+                bare = next((m for m in hits if not (demotable and cue_before(cue, t, m.start(), win))), None)
+                if bare is None:
+                    statements.append(Finding("theme-excl", kw["id"], rel, ln, hits[0].group(0), "the line says the motif is excluded: a statement of the rule, not a use"))
+                else:
+                    findings.append(Finding("theme", kw["id"], rel, ln, bare.group(0), "D-28 exclusion keyword: %s" % kw.get("why", "")))
     # INFO only: existing playbooks, skills and research (counted, never failing)
     if not args.paths and is_git(root):
         tracked = (git(root, "ls-files", "-c", "-z") or "").split("\0")

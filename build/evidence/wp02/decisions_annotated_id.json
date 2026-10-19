@@ -1,0 +1,24 @@
+{
+ "actual": "O-85 and W-80 reach the CSV (250 rows) with notes 'absorbs O-86' and 'revises W-05'; 8 live annotated ID cells carry their note; ops_lint accepts a citation of the new IDs and flags O-86; four unparseable rows exit 2 and ops_lint reports the register malformed",
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 452,
+  "avail_mb_min": 452,
+  "avail_mb_start": 453,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "negative: an annotated ID cell (| O-NN (absorbs O-MM) |) reaches the CSV with the annotation in note; a row that cannot be parsed is exit 2, never dropped in silence",
+ "notes": "",
+ "package": "WP-02",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "decisions_annotated_id",
+ "unverified_reasons": []
+}

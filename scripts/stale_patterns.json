@@ -1,10 +1,10 @@
 {
  "schema": "lj-stale-patterns/1",
- "version": 1,
+ "version": 2,
  "owner": "WP-03",
  "date_utc": "2026-10-19",
- "source": "DECISIONS.md Table 4 (S-01 to S-41) as written 2026-10-18, and W-29. Statuses are a copy: update a row's status here when Table 4 changes (for example when the Haiku pass applies S-01).",
- "dialect": "Python re. Matched per line. flags is '' or 'i'. FAIL = unambiguous stale value; WARN = needs a human.",
+ "source": "DECISIONS.md Table 4 (S-01 to S-65, register v3 of 2026-10-19) and W-29. Statuses are a copy: update a row's status here when Table 4 changes (for example when the Haiku pass applies S-01); status_table4 holds the register's own Status cell for the record. When Table 4 grows, add the rows and their patterns here in the same pass and re-cut scripts/stale_baseline.json the same day; --self-test fails when a Table 4 id has no row, when a status disagrees with the register, and when the O-row bound is behind the register.",
+ "dialect": "Python re. Matched per line. flags is '' or 'i'. FAIL = unambiguous stale value; WARN = needs a human. Optional per pattern: 'attribute' (a name in 'attributions', or a list) picks the Table 4 row by file, first match wins, else row_id; 'only_files' limits the pattern to files matching any of the globs; 'register_prefix' + 'register_last' tie a pattern to the register's last row (checked by --self-test).",
  "scan": {
   "include": [
    "playbooks/",
@@ -31,6 +31,8 @@
    "scripts/stale_allowlist.json",
    "scripts/stale_baseline.json",
    "scripts/stale_check.py",
+   "scripts/public_lint.config.json",
+   "scripts/public_lint.py",
    "ops/decisions.csv",
    "tests/",
    "vendor/",
@@ -47,9 +49,107 @@
    "build/": "the plan and evidence quote the stale strings on purpose",
    "scripts/stale_*": "this tool's own pattern, allowlist and baseline files quote the stale strings on purpose",
    "ops/decisions.csv": "generated mirror of DECISIONS.md, which quotes every stale value by design (deviation from the plan's list, which names ops/ whole)",
-   "tests/": "test fixtures quote the stale strings on purpose"
+   "tests/": "test fixtures quote the stale strings on purpose",
+   "scripts/public_lint.py": "WP-03's theme guard: its docstring and keyword list (scripts/public_lint.config.json) name the retired theme and tool words on purpose, as scripts/stale_* do",
+   "scripts/public_lint.config.json": "see scripts/public_lint.py"
   },
   "max_file_bytes": 2000000
+ },
+ "attributions": {
+  "D-29": [
+   {
+    "row_id": "S-54",
+    "files": [
+     "playbooks/cinematic-quality.md"
+    ],
+    "if_line": "Original voxel assets only"
+   },
+   {
+    "row_id": "S-42",
+    "files": [
+     "playbooks/cinematic-quality.md",
+     ".claude/skills/cinematic-quality-bar/**",
+     "skills-staging/cinematic-quality-bar/**"
+    ]
+   },
+   {
+    "row_id": "S-43",
+    "files": [
+     "playbooks/ai-imagery.md",
+     ".claude/skills/ai-photo-to-animation-pipeline/**",
+     "skills-staging/ai-photo-to-animation-pipeline/**"
+    ]
+   },
+   {
+    "row_id": "S-44",
+    "files": [
+     "playbooks/format.md",
+     ".claude/skills/journey-format-architecture/**",
+     "skills-staging/journey-format-architecture/**"
+    ]
+   },
+   {
+    "row_id": "S-45",
+    "files": [
+     "playbooks/games.md",
+     ".claude/skills/meaningful-game-mechanics/**",
+     "skills-staging/meaningful-game-mechanics/**"
+    ]
+   },
+   {
+    "row_id": "S-46",
+    "files": [
+     "playbooks/toolchain.md",
+     "playbooks/animated.md",
+     ".claude/skills/free-creative-toolchain/**",
+     "skills-staging/free-creative-toolchain/**"
+    ]
+   },
+   {
+    "row_id": "S-47",
+    "files": [
+     "playbooks/creator-threads.md",
+     ".claude/skills/creator-recipe-library/**",
+     "skills-staging/creator-recipe-library/**"
+    ]
+   },
+   {
+    "row_id": "S-48",
+    "files": [
+     "playbooks/theatrical-delivery.md",
+     ".claude/skills/theatrical-delivery-and-rights/**",
+     "skills-staging/theatrical-delivery-and-rights/**"
+    ]
+   },
+   {
+    "row_id": "S-49",
+    "files": [
+     "playbooks/music-sound.md",
+     ".claude/skills/life-film-music-and-sound/**",
+     "skills-staging/life-film-music-and-sound/**"
+    ]
+   }
+  ],
+  "S-56": [
+   {
+    "row_id": "S-56",
+    "files": [
+     "playbooks/surprise-ops.md",
+     ".claude/skills/surprise-tribute-operations/**",
+     "skills-staging/surprise-tribute-operations/**"
+    ]
+   }
+  ],
+  "S-51": [
+   {
+    "row_id": "S-51",
+    "files": [
+     "playbooks/film-story.md",
+     ".claude/skills/life-story-interviewing/beat-sheet.md",
+     "skills-staging/life-story-interviewing/beat-sheet.md"
+    ]
+   }
+  ]
  },
  "rows": [
   {
@@ -384,10 +484,234 @@
    "owner": "Haiku"
   },
   {
+   "row_id": "S-42",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku (playbook); orchestrator (skill)",
+   "coverage": "full",
+   "stale": "cinematic-quality.md T2 decision 2 \"never a voxel marker (D-23)\"; the \"Brand rule for decisions 2 and 10 if a voxel look is used\" paragraph; T5 item 22 \"the Minecraft name as a title\"",
+   "canonical": "Decision 2 \"her own hand-made material; where that is seva craft, the *making*, never the finished seva article\" (W-38); the brand paragraph deleted; T5 gains the generic-India, generic-Gujarat, colonial-Christian, deity and Pushtimarg tells (W-38 decision 10; saurashtra-world T11 items 28–35) (D-29)",
+   "owner": "Haiku (playbook); orchestrator (skill)"
+  },
+  {
+   "row_id": "S-43",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku",
+   "coverage": "full",
+   "stale": "ai-imagery.md Step 9 Route A \"voxel appears only as original voxel assets (MagicaVoxel, Blockbench, MapartCraft)\"",
+   "canonical": "The deity rule: no generative route for any deity; a deity is hand-drawn, traced from a logged public-domain plate, the maker's photograph of seva objects that are not a svarupa, or a commissioned painting; Routes B, C and D never on a deity; deity_form and deity_source in steps.csv (W-61)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-44",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku (playbook); orchestrator (skill)",
+   "coverage": "partial",
+   "stale": "format.md Step 1 \"Do you own Minecraft Java\"; Decision 9; Exercise 6 diorama; the matrix rows \"Film rendered from Minecraft\" and \"three.js voxel world\"; the scrubber page as the companion",
+   "canonical": "Decision 9 closes as \"none (D-29, O-05 answered)\"; the companion is PH1 by cable with the scrubber page demoted to a laptop and archive companion (W-30, W-73)",
+   "owner": "Haiku (playbook); orchestrator (skill)",
+   "coverage_note": "The retired names (Minecraft, voxel, Mojang) are searched wherever they appear. Decision 9 closing as 'none', the Exercise 6 diorama and the demotion of the scrubber page are content a person checks."
+  },
+  {
+   "row_id": "S-45",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku (playbook); orchestrator (skill)",
+   "coverage": "full",
+   "stale": "games.md Exercise 6 \"Voxel readability\", Exercise 7 \"Minecraft terms check\"; Decision 1 \"original voxel or vector assets (D-23)\"; Decision 2 Minecraft edition",
+   "canonical": "The games track keeps only the swap-the-subject test and the object ledger; the phone-floor chart (mobile-delivery Exercise 5) and hindu-visual Exercise 4 replace the two exercises (D-29)",
+   "owner": "Haiku (playbook); orchestrator (skill)"
+  },
+  {
+   "row_id": "S-46",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku (playbooks); orchestrator (skill and recipes)",
+   "coverage": "full",
+   "stale": "toolchain.md Exercise 8 \"One voxel hero object\"; Decision 3 \"Which voxel tool?\" (MagicaVoxel, Goxel, Blockbench); recipes/r4_photo2vox.py, r4_render_voxel.py",
+   "canonical": "A timed floor-art line-draw card (one sathiyo or rangoli line on a dark ground, 4 px lines, 6 px dots) with the SVG line-reveal recipe as the tool (W-72); the voxel recipes retired (D-29)",
+   "owner": "Haiku (playbooks); orchestrator (skill and recipes)"
+  },
+  {
+   "row_id": "S-47",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku (playbook); orchestrator (skill)",
+   "coverage": "full",
+   "stale": "creator-threads.md Part F \"Minecraft tour\" (items 21 to 24); the Replay Mod exercise",
+   "canonical": "Archived; the Route A floor-art line and the shadow-puppet hinge (data-pivot) become the agent-pipeline examples (D-29)",
+   "owner": "Haiku (playbook); orchestrator (skill)"
+  },
+  {
+   "row_id": "S-48",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku before Fri 4 Dec (T10) and Fri 30 Oct (the rest)",
+   "coverage": "partial",
+   "stale": "theatrical-delivery.md T2 \"no Mojang assets\"; T8 row GM-002; TD-L6 and TD-L12 \"Minecraft terms check\"; T10 question 14; T10 numbering 21+ claimed by two tracks",
+   "canonical": "GM-002 kept as \"n/a, none used (D-29)\"; the two terms checks and T10 question 14 drop; T8 gains artwork, deity_image, commissioned_art, font, tradition_origin, phone_share (W-46); T10 renumbered once, 21 to 43 (W-55); Step 6 ass before n9.0",
+   "owner": "Haiku before Fri 4 Dec (T10) and Fri 30 Oct (the rest)",
+   "coverage_note": "The retired names (Minecraft, Mojang) are searched. The T8 columns and the one-time renumbering of T10 (21 to 43) are structure, not phrases; a person checks them."
+  },
+  {
+   "row_id": "S-49",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku",
+   "coverage": "full",
+   "stale": "music-sound.md Pitfall 16 \"Minecraft's audio\"",
+   "canonical": "Deleted (D-29)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-50",
+   "status": "outstanding",
+   "status_table4": "outstanding: orchestrator (patched copies to skills-staging/)",
+   "coverage": "full",
+   "stale": "Skill descriptions and bodies that name Minecraft or voxel outside the rows above (animated-biography-patterns, cinematic-quality-bar, life-film-music-and-sound, theatrical-delivery-and-rights)",
+   "canonical": "Re-scoped under D-29: the look comes from W-72; no voxel shot class exists",
+   "owner": "orchestrator (patched copies to skills-staging/)"
+  },
+  {
+   "row_id": "S-51",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku (playbook); orchestrator (skill file)",
+   "coverage": "full",
+   "stale": "film-story.md Template 5 beat budget \"0:00 to 0:08 Black; one room sound\"",
+   "canonical": "The first-sound rule and the Mangla order: a sound above about 400 Hz and a first light within about 4 s (W-36, W-76)",
+   "owner": "Haiku (playbook); orchestrator (skill file)"
+  },
+  {
+   "row_id": "S-52",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku before Sun 22 Nov (treatment)",
+   "coverage": "partial",
+   "stale": "film-story.md Template 1 row 11 \"Cue types, not songs\"; row 3 and Decision 4 (language and the word of address)",
+   "canonical": "Row 11 gains the darshan hour and a premiere-versus-April column; cards in Gujarati with her calendar's dates, the word of address from O-49/O-61, the Mangla cold open and the hichko ending, place_id, political_room, the motif_check values (W-35, W-36, W-68, W-69)",
+   "owner": "Haiku before Sun 22 Nov (treatment)",
+   "coverage_note": "Only the unpatched row 11 wording ('Cue types, not songs' without the darshan hour) is searched. The Gujarati cards, the word of address, place_id, political_room and motif_check are content a person checks."
+  },
+  {
+   "row_id": "S-53",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku before Sat 14 Nov (cue map)",
+   "coverage": "none",
+   "stale": "music-sound.md Step 3 (the route), Step 5 and Template A (cue map header), Template I, Exercise 6, Decision 5",
+   "canonical": "The premiere spine \"objects, rooms, the sea's surf, the hum; sung devotion is April\"; the Template G header; the capture list with the seva-article rule; the per-instrument phone verdicts and the two hum takes; no AI voice for any devotional text (W-44, W-65, W-70)",
+   "owner": "Haiku before Sat 14 Nov (cue map)",
+   "coverage_note": "The stale value is a set of sections to rewrite (Step 3, Step 5, Template A, Template I, Exercise 6, Decision 5), not a phrase, so no pattern can find it. The Haiku pass is checked by Fable's review, not by grep."
+  },
+  {
+   "row_id": "S-54",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku before Fri 30 Oct",
+   "coverage": "full",
+   "stale": "cinematic-quality.md Decisions row 6 \"Original voxel assets only and never the marker (D-23)\" (line 631 on 2026-10-19)",
+   "canonical": "Her own hand-made material, the making never the article (W-38 decision 2); no voxel shot class (D-29)",
+   "owner": "Haiku before Fri 30 Oct"
+  },
+  {
+   "row_id": "S-55",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku before Fri 30 Oct",
+   "coverage": "full",
+   "stale": "cinematic-quality.md Decisions row 4 \"S1 with three strangers\"",
+   "canonical": "S1 one or two strangers to her, or the cold self-read (W-43); S-04 is marked applied but this cell is not",
+   "owner": "Haiku before Fri 30 Oct"
+  },
+  {
+   "row_id": "S-56",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku (playbook); orchestrator (skill)",
+   "coverage": "partial",
+   "stale": "surprise-ops.md \"Holiday rules (weeks 10 and 11, Thanksgiving week …)\" heading and Key dates; the run sheet's object line; the gift rule",
+   "canonical": "Her calendar (W-10, ROADMAP.md §7); the Diwali gift rule (no new speaker, tablet or shared account); \"the object under the screen is never a seva article\" with the T4 list; the Patotsav and the monthly fast on the night (W-52)",
+   "owner": "Haiku (playbook); orchestrator (skill)",
+   "coverage_note": "The placeholder observances are searched (S-61 patterns, attributed here for surprise-ops.md and the surprise-tribute-operations skill). The Diwali gift rule, the seva-article rule on the run sheet and the Patotsav night are content a person checks."
+  },
+  {
+   "row_id": "S-57",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku before any staged skill moves",
+   "coverage": "full",
+   "stale": "\"P1, the phone master\", \"P2, the small copy\", \"P1 by cable\"",
+   "canonical": "PH1 and PH2 (Codes; W-63, W-73)",
+   "owner": "Haiku before any staged skill moves"
+  },
+  {
+   "row_id": "S-58",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku at the next touch, before the skill moves",
+   "coverage": "full",
+   "stale": "\"the T2 rule\" for the political-room rule",
+   "canonical": "The three-places rule (Codes; W-71)",
+   "owner": "Haiku at the next touch, before the skill moves"
+  },
+  {
+   "row_id": "S-59",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku before the skill moves",
+   "coverage": "full",
+   "stale": "\"H-1 to H-7\" for the hum cases; \"S1/S2\" for the sound track's source classes",
+   "canonical": "HC-1 to HC-7; E1-S1 / E1-S2 (Codes; W-65)",
+   "owner": "Haiku before the skill moves"
+  },
+  {
+   "row_id": "S-60",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku before hindu-visual-language moves; Fable round 4 re-reads",
+   "coverage": "partial",
+   "stale": "The permission to photograph a murti on her shelf (research/hindu-visual.md T4 R17 \"the maker's own photograph of a three-dimensional murti on her shelf\"); the \"shown without him it changes meaning\" pichwai line; the \"dark line of the river\" for Yamunaji; the old A6 origin note",
+   "canonical": "W-61: no deity is drawn, generated or photographed; nothing in seva is photographed without her knowing (PR4); Yamunaji is the jhari (PR20). The eight in-place fixes are listed in reviews/hindu-visual-round3.md (C1); until they land the skill cites playbook H4 and Decision 2, not the research tables",
+   "owner": "Haiku before hindu-visual-language moves; Fable round 4 re-reads",
+   "coverage_note": "The two spellings W-29 names and the pichwai and river lines are searched. research/hindu-visual.md (the one patched research note) is outside the scan because research/*.md is a historical record (W-29), and the old A6 origin note has no fixed wording."
+  },
+  {
+   "row_id": "S-61",
+   "status": "outstanding",
+   "status_table4": "applied today (register, roadmap, plan page); outstanding: Haiku (playbooks), orchestrator (skills)",
+   "coverage": "full",
+   "stale": "Placeholder observances \"Lunar New Year\", \"Hanukkah\", \"US Thanksgiving\", \"Ramadan\", \"Ash Wednesday\", \"Pongal\", \"Chhath\" as a constraint, \"Christmas\" and \"New Year\" as household rows",
+   "canonical": "Her calendar with city and source (ROADMAP.md §7; W-08, W-10, W-49); public holidays of the premiere country stay as logistics rows keyed on O-02",
+   "owner": "Haiku (playbooks), orchestrator (skills)"
+  },
+  {
+   "row_id": "S-62",
+   "status": "applied today",
+   "status_table4": "applied today",
+   "coverage": "full",
+   "stale": "Style-bible \"decision 11\" meaning moving footage",
+   "canonical": "Decision 12 (W-59); decision 11 is hindu_idiom (W-38)",
+   "owner": "applied today"
+  },
+  {
+   "row_id": "S-63",
+   "status": "outstanding",
+   "status_table4": "applied today (register, roadmap); outstanding: Haiku (the playbook quote, if it is not a negation)",
+   "coverage": "full",
+   "stale": "\"black and one true room sound\" as the cold open; \"one true room sound\"",
+   "canonical": "W-36 and W-76: the first act of her morning above about 400 Hz; room tone fails as a first sound on a phone",
+   "owner": "Haiku (the playbook quote, if it is not a negation)"
+  },
+  {
+   "row_id": "S-64",
+   "status": "outstanding",
+   "status_table4": "applied today (register, roadmap, plan page); outstanding: Haiku (playbooks), orchestrator (skills), by Sun 3 Jan at the latest",
+   "coverage": "partial",
+   "stale": "\"Sat 6 Mar\" as the date of the her-turn conversation",
+   "canonical": "Sun 7 Mar after about 14:00, else Mon 8 Mar; the morning of Sat 6 Mar only if she does not fast (W-48); releases 4d–4g still run Sun 28 Feb – Sat 6 Mar",
+   "owner": "Haiku (playbooks), orchestrator (skills), by Sun 3 Jan at the latest",
+   "coverage_note": "Only 'Sat 6 Mar' written as the her-turn conversation's date is searched (the releases 4d to 4g legitimately end on Sat 6 Mar, and the morning of Sat 6 Mar is allowed if she does not fast, so a bare date is not a stale value). A reworded 'the conversation is on Saturday' needs a person."
+  },
+  {
+   "row_id": "S-65",
+   "status": "outstanding",
+   "status_table4": "outstanding: Haiku before the skills move",
+   "coverage": "partial",
+   "stale": "hindu-frameworks skill \"When not to use\" line saying only research/pushtimarg-world.md exists; devotional-music-and-indic-scripts Template K and mobile-delivery Exercise 7 as two separate shaping gates",
+   "canonical": "The Saurashtra and Gujarati-sound notes exist; one shaping gate, run once at P-LOCK (W-06)",
+   "owner": "Haiku before the skills move",
+   "coverage_note": "Two wordings are searched: the 'only research/pushtimarg-world.md exists' line and 'Reconcile the two before either is run'. A skill or playbook that treats Template K and Exercise 7 as two separate gates in other words needs a person."
+  },
+  {
    "row_id": "W-29",
    "status": "check",
    "coverage": "full",
-   "stale": "Scribe-to-do phrases: 'not applied here', 'for the scribe', 'pending scribe'",
+   "stale": "Scribe-to-do phrases: 'not applied here', 'for the scribe', 'pending scribe'; an O-row above the register's last (O-84)",
    "canonical": "Resolve or remove the phrase (W-29)",
    "owner": "Haiku"
   }
@@ -837,17 +1161,22 @@
    "id": "S-05.ring-1",
    "row_id": "S-05",
    "severity": "WARN",
-   "flags": "i",
-   "regex": "rings? 1",
+   "flags": "",
+   "regex": "\\bRings? [12]\\b",
    "positive_samples": [
     "Ring 1: one co-keeper",
-    "Set the rings: Ring 1 and Ring 2"
+    "Set the rings: Ring 1 and Ring 2",
+    "Rings 1 and 2 hold the partner roles"
    ],
    "negative_samples": [
     "Ring 0 is you",
-    "Ring 2 is empty"
+    "Ring 3 is the audience",
+    "originated in Persia during 13th century",
+    "Bhavnagar spring 11.6 m",
+    "Story takes 12 hours, gathering 14, the risk reserve 15",
+    "wear a ring 1 inch wide"
    ],
-   "note": "WARN and deliberately loose (a plain case-insensitive grep, as W-29 describes): it also hits 'gathering 14', which the allowlist covers",
+   "note": "WARN. 'Ring 1' and 'Ring 2' are capitalised labels in the playbooks, so the match is case-sensitive and word-bounded (review r1 of WP-03): the old loose form 'rings? 1' also hit 'during 13th century', 'spring 11.6 m' and 'gathering 14'. The W-29 allowlist entry AL-4 ('Ring 1' inside 'gathering 14') therefore suppresses nothing by construction and is marked structural",
    "canonical": "Only-me (D-03); one-key-three-guards (D-04); no partner role"
   },
   {
@@ -1405,66 +1734,552 @@
    ],
    "note": "",
    "canonical": "The maker brings her; one briefed guest holds the room; TECH holds the first frame (O-32, W-12)"
-  }
- ],
- "info": [
+  },
   {
-   "id": "INFO.minecraft",
-   "suggested_row": "D-29 (Minecraft dropped, replaces D-23)",
+   "id": "D-29.minecraft",
+   "row_id": "S-50",
+   "severity": "FAIL",
    "flags": "i",
    "regex": "\\bMinecraft\\b",
-   "description": "'Minecraft' in a playbook, skill or fixture now contradicts D-29 (no Minecraft or voxel chapter, assets or name).",
    "positive_samples": [
-    "a Minecraft tour recipe"
+    "a Minecraft tour recipe",
+    "Do you own Minecraft Java",
+    "No Minecraft's audio"
    ],
    "negative_samples": [
-    "a minesweeper clone"
-   ]
+    "a minesweeper clone",
+    "Mine craft tables"
+   ],
+   "note": "Row is chosen by file from attributions['D-29']; S-50 is the row for any file the other rows do not name. Negations W-29 allowlists ('Minecraft is dropped', 'Minecraft was only an example') are suppressed.",
+   "canonical": "No Minecraft or voxel chapter, assets or name; the look comes from her own Hindu world (D-29, W-72)",
+   "attribute": "D-29"
   },
   {
-   "id": "INFO.voxel",
-   "suggested_row": "D-29",
+   "id": "D-29.voxel",
+   "row_id": "S-50",
+   "severity": "FAIL",
    "flags": "i",
    "regex": "\\bvoxels?\\b",
-   "description": "'voxel' in a playbook, skill or fixture now contradicts D-29 (the look comes from D-28).",
    "positive_samples": [
     "an original voxel asset",
-    "Voxels"
+    "Voxels",
+    "never a voxel marker (D-23)"
    ],
    "negative_samples": [
-    "a voluntary pixel"
-   ]
+    "a voluntary pixel",
+    "vox populi"
+   ],
+   "note": "Row is chosen by file from attributions['D-29'].",
+   "canonical": "No Minecraft or voxel chapter, assets or name; the look comes from her own Hindu world (D-29, W-72)",
+   "attribute": "D-29"
   },
   {
-   "id": "INFO.mojang",
-   "suggested_row": "D-29",
+   "id": "D-29.mojang",
+   "row_id": "S-50",
+   "severity": "FAIL",
    "flags": "i",
    "regex": "\\bMojang\\b",
-   "description": "'Mojang' (textures, sounds, UI, footage) now contradicts D-29.",
    "positive_samples": [
-    "No Mojang textures"
+    "No Mojang textures",
+    "no Mojang assets"
    ],
    "negative_samples": [
-    "a mohawk"
+    "a mohawk",
+    "Mojan"
+   ],
+   "note": "Row is chosen by file from attributions['D-29'].",
+   "canonical": "No Minecraft or voxel chapter, assets or name; the look comes from her own Hindu world (D-29, W-72)",
+   "attribute": "D-29"
+  },
+  {
+   "id": "D-29.magicavoxel",
+   "row_id": "S-50",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bMagicaVoxel\\b",
+   "positive_samples": [
+    "Which voxel tool? MagicaVoxel",
+    "export from MagicaVoxel"
+   ],
+   "negative_samples": [
+    "Magica Studio",
+    "a magical voxel-less scene"
+   ],
+   "note": "Row is chosen by file from attributions['D-29'].",
+   "canonical": "No Minecraft or voxel chapter, assets or name; the look comes from her own Hindu world (D-29, W-72)",
+   "attribute": "D-29"
+  },
+  {
+   "id": "D-29.blockbench",
+   "row_id": "S-50",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bBlockbench\\b",
+   "positive_samples": [
+    "original voxel assets (MagicaVoxel, Blockbench, MapartCraft)",
+    "Goxel or Blockbench"
+   ],
+   "negative_samples": [
+    "a blockbuster premiere",
+    "a block bench"
+   ],
+   "note": "Row is chosen by file from attributions['D-29'].",
+   "canonical": "No Minecraft or voxel chapter, assets or name; the look comes from her own Hindu world (D-29, W-72)",
+   "attribute": "D-29"
+  },
+  {
+   "id": "D-29.mapartcraft",
+   "row_id": "S-50",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bMapartCraft\\b",
+   "positive_samples": [
+    "original voxel assets (MagicaVoxel, Blockbench, MapartCraft)",
+    "export a map from MapartCraft"
+   ],
+   "negative_samples": [
+    "a map art craft table",
+    "Mapart"
+   ],
+   "note": "Row is chosen by file from attributions['D-29'].",
+   "canonical": "No Minecraft or voxel chapter, assets or name; the look comes from her own Hindu world (D-29, W-72)",
+   "attribute": "D-29"
+  },
+  {
+   "id": "S-51.one-room-sound",
+   "row_id": "S-51",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bone room sound\\b",
+   "positive_samples": [
+    "0:00 to 0:08 Black; one room sound",
+    "Black and one room sound"
+   ],
+   "negative_samples": [
+    "a sound above about 400 Hz",
+    "room tone fails as a first sound",
+    "one room tone"
+   ],
+   "note": "",
+   "canonical": "The first-sound rule and the Mangla order: a sound above about 400 Hz and a first light within about 4 s (W-36, W-76)"
+  },
+  {
+   "id": "S-63.one-true-room-sound",
+   "row_id": "S-63",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bone true room sound\\b",
+   "positive_samples": [
+    "black and one true room sound from her kitchen",
+    "Cold open: black and one true room sound"
+   ],
+   "negative_samples": [
+    "one true note",
+    "a true room tone",
+    "a sound above about 400 Hz"
+   ],
+   "note": "Row is S-51 for the files S-51 names (film-story.md, the beat-sheet) and S-63 elsewhere. A line that quotes the old wording to say it is wrong is still a hit (S-63: Haiku decides if it is a negation).",
+   "canonical": "W-36 and W-76: the first act of her morning above about 400 Hz; room tone fails as a first sound on a phone",
+   "attribute": "S-51"
+  },
+  {
+   "id": "S-52.cue-types-not-songs",
+   "row_id": "S-52",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "Cue types, not songs(?!,? each with its darshan hour)",
+   "positive_samples": [
+    "| 11. Sound plan | Cue types, not songs | per cue |",
+    "Row 11: Cue types, not songs."
+   ],
+   "negative_samples": [
+    "Cue types, not songs, each with its darshan hour in 'time_of_day_or_season'",
+    "cue types and songs"
+   ],
+   "note": "The patched row 11 reads 'Cue types, not songs, each with its darshan hour'; only the unpatched wording hits.",
+   "canonical": "Row 11 gains the darshan hour and a premiere-versus-April column (W-35, W-36, W-68, W-69)"
+  },
+  {
+   "id": "S-55.s1-three-strangers",
+   "row_id": "S-55",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bS1 with three strangers\\b",
+   "positive_samples": [
+    "Decisions row 4: S1 with three strangers",
+    "run S1 with three strangers"
+   ],
+   "negative_samples": [
+    "S1 one or two strangers to her",
+    "S2 three to five strangers"
+   ],
+   "note": "",
+   "canonical": "S1 one or two strangers to her, or the cold self-read (W-43)"
+  },
+  {
+   "id": "S-61.placeholder-observances",
+   "row_id": "S-61",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\b(?:Lunar New Year|Hanukkah|US Thanksgiving|Thanksgiving week|Ramadan|Ash Wednesday|Pongal)\\b",
+   "positive_samples": [
+    "Lunar New Year falls on picture-lock day",
+    "Hanukkah moved to weeks 7 and 8",
+    "Holiday rules (weeks 10 and 11, Thanksgiving week)",
+    "US Thanksgiving, Thu 26 Nov",
+    "the premiere falls in Ramadan",
+    "Ash Wednesday, start of Lent",
+    "festivals Makara Sankranti, Pongal, Uttarayana"
+   ],
+   "negative_samples": [
+    "Diwali week if kept",
+    "Navaratri nine nights",
+    "Gujarati New Year (Bestu Varas)",
+    "Makara Sankranti and Uttarayan",
+    "a thanksgiving prayer"
+   ],
+   "note": "Row is S-56 for surprise-ops.md and the surprise-tribute-operations skill, S-61 elsewhere.",
+   "canonical": "Her calendar with city and source (ROADMAP.md section 7; W-08, W-10, W-49); public holidays of the premiere country stay as logistics rows keyed on O-02",
+   "attribute": "S-56"
+  },
+  {
+   "id": "S-61.chhath-constraint",
+   "row_id": "S-61",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bChhath\\b[^\\n]{0,80}\\bconstraints?\\b|\\bconstraints?\\b[^\\n]{0,80}\\bChhath\\b",
+   "positive_samples": [
+    "Week 10: Chhath as a constraint on the gathering window",
+    "a constraint around Chhath"
+   ],
+   "negative_samples": [
+    "Chhath Puja is a Bihar and UP observance",
+    "Karva Chauth, Ahoi Ashtami, Chhath: not hers by default",
+    "Chhath is not hers"
+   ],
+   "note": "Only 'Chhath' with 'constraint' on the same line (W-29: 'Chhath as a constraint'). A line that says it is NOT a constraint is still a hit: W-29 allowlists only 'Chhath is not hers'.",
+   "canonical": "Her calendar with city and source (ROADMAP.md section 7; W-08, W-10, W-49); public holidays of the premiere country stay as logistics rows keyed on O-02",
+   "attribute": "S-56"
+  },
+  {
+   "id": "S-61.christmas-new-year-household",
+   "row_id": "S-61",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "(?:\\bChristmas\\b|(?<!Gujarati )(?<!Hindu )(?<!Lunar )(?<!Chinese )\\bNew Year\\b)[^\\n]{0,60}\\b(?:household|family)\\b[^\\n]{0,20}\\b(?:rows?|observes?|keeps?|celebrates?|observances?)\\b|\\b(?:household|family)\\b[^\\n]{0,20}\\b(?:rows?|observes?|keeps?|celebrates?|observances?)\\b[^\\n]{0,60}(?:\\bChristmas\\b|(?<!Gujarati )(?<!Hindu )(?<!Lunar )(?<!Chinese )\\bNew Year\\b)",
+   "positive_samples": [
+    "Christmas and New Year as household rows",
+    "the household keeps Christmas",
+    "a family row for New Year"
+   ],
+   "negative_samples": [
+    "Gujarati New Year (Bestu Varas) is a household row",
+    "the Hindu New Year household row",
+    "public holidays of the premiere country stay as logistics rows",
+    "Christmas Day, a public holiday"
+   ],
+   "note": "Christmas or New Year written as one of her household's observances. Gujarati, Hindu, Lunar and Chinese New Year are not matched here (Lunar is in the observance pattern).",
+   "canonical": "Her calendar with city and source (ROADMAP.md section 7; W-08, W-10, W-49); public holidays of the premiere country stay as logistics rows keyed on O-02",
+   "attribute": "S-56"
+  },
+  {
+   "id": "S-61.christmas-bare",
+   "row_id": "S-61",
+   "severity": "WARN",
+   "flags": "i",
+   "regex": "\\bChristmas\\b",
+   "positive_samples": [
+    "Fri 25 Dec 2026 | Christmas Day",
+    "five days before Christmas"
+   ],
+   "negative_samples": [
+    "Chris Maas",
+    "a christening",
+    "Diwali"
+   ],
+   "note": "WARN: a public holiday of the premiere country is a legitimate logistics row (S-61, O-02); as one of her household's observances it is stale. A human decides.",
+   "canonical": "Her calendar with city and source (ROADMAP.md section 7; W-08, W-10, W-49); public holidays of the premiere country stay as logistics rows keyed on O-02",
+   "attribute": "S-56"
+  },
+  {
+   "id": "S-57.p1-phone-master",
+   "row_id": "S-57",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\bP1[,:]? \\(?the phone master\\b",
+   "positive_samples": [
+    "P1, the phone master, goes by cable",
+    "**P1, the phone master (hers; relatives' phones as a document)**"
+   ],
+   "negative_samples": [
+    "PH1, the phone master",
+    "the phone master",
+    "P1 symbols and seva objects"
+   ],
+   "note": "",
+   "canonical": "PH1 and PH2 (Codes; W-63, W-73)"
+  },
+  {
+   "id": "S-57.p2-small-copy",
+   "row_id": "S-57",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\bP2[,:]? \\(?the small copy\\b",
+   "positive_samples": [
+    "P2, the small copy (low-storage phones)",
+    "**P2, the small copy**"
+   ],
+   "negative_samples": [
+    "PH2, the small copy",
+    "the small copy",
+    "P2 a hand-traced motif"
+   ],
+   "note": "",
+   "canonical": "PH1 and PH2 (Codes; W-63, W-73)"
+  },
+  {
+   "id": "S-57.p1-by-cable",
+   "row_id": "S-57",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\bP1 by cable\\b",
+   "positive_samples": [
+    "Phone deliverable: P1 by cable to her phone on reveal weekend",
+    "send P1 by cable"
+   ],
+   "negative_samples": [
+    "PH1 by cable",
+    "P1 symbols and seva objects by default"
+   ],
+   "note": "",
+   "canonical": "PH1 and PH2 (Codes; W-63, W-73)"
+  },
+  {
+   "id": "S-58.t2-rule",
+   "row_id": "S-58",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bthe T2 rule\\b",
+   "positive_samples": [
+    "no signage (the T2 rule, Reverence section)",
+    "The T2 rule (in motion, at a distance, no close-up)"
+   ],
+   "negative_samples": [
+    "the three-places rule",
+    "the T2 table",
+    "the PT2 rule"
+   ],
+   "note": "",
+   "canonical": "The three-places rule (Codes; W-71)"
+  },
+  {
+   "id": "S-59.h1-to-h7",
+   "row_id": "S-59",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\bH-1 ?(?:[-‐-―−]|to) ?H-7\\b",
+   "positive_samples": [
+    "the hum cases H-1 to H-7",
+    "H-1–H-7",
+    "H-1-H-7"
+   ],
+   "negative_samples": [
+    "HC-1 to HC-7",
+    "the H-2 hum case",
+    "H-1 to H-6"
+   ],
+   "note": "",
+   "canonical": "HC-1 to HC-7; E1-S1 / E1-S2 (Codes; W-65)"
+  },
+  {
+   "id": "S-59.s1-s2-source-classes",
+   "row_id": "S-59",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bS1/S2\\b[^\\n]{0,60}\\bsource classes?\\b|\\bsource classes?\\b[^\\n]{0,60}\\bS1/S2\\b",
+   "positive_samples": [
+    "the sound note's S1/S2 source classes",
+    "source classes S1/S2"
+   ],
+   "negative_samples": [
+    "E1-S1/E1-S2 source classes",
+    "strangers S1/S2 sessions",
+    "the source classes E1-S1 and E1-S2"
+   ],
+   "note": "",
+   "canonical": "HC-1 to HC-7; E1-S1 / E1-S2 (Codes; W-65)"
+  },
+  {
+   "id": "S-59.s1-s2-in-the-sound-files",
+   "row_id": "S-59",
+   "severity": "WARN",
+   "flags": "",
+   "regex": "\\bS1/S2\\b",
+   "positive_samples": [
+    "the sound note's S1/S2",
+    "S1/S2 hum"
+   ],
+   "negative_samples": [
+    "E1-S1/E1-S2",
+    "S1 and S2 strangers"
+   ],
+   "note": "WARN: S1/S2 also names the two stranger screenings (W-43); in the sound files it was the source classes (W-65). A human decides.",
+   "canonical": "HC-1 to HC-7; E1-S1 / E1-S2 (Codes; W-65)",
+   "only_files": [
+    "playbooks/gujarati-devotional-sound.md",
+    ".claude/skills/gujarati-pushtimarg-music/**",
+    "skills-staging/gujarati-pushtimarg-music/**"
    ]
   },
   {
-   "id": "INFO.holiday-placeholders",
-   "suggested_row": "C-08 / D-28 (the household is Hindu; generic holiday slots do not match)",
+   "id": "S-60.murti-photograph",
+   "row_id": "S-60",
+   "severity": "FAIL",
    "flags": "i",
-   "regex": "\\b(?:Hanukkah|Christmas|Ramadan|Ash Wednesday|Lunar New Year)\\b",
-   "description": "Generic holiday placeholders (calendar slots) that sit beside a Hindu household's actual observances; replacing them waits for the family profile (O-10).",
+   "regex": "photograph of a three-dimensional murti|permission to photograph a murti",
    "positive_samples": [
-    "Hanukkah",
-    "Christmas week",
-    "Ash Wednesday",
-    "Lunar New Year",
-    "during Ramadan"
+    "the maker's own photograph of a three-dimensional murti on her shelf",
+    "the permission to photograph a murti on her shelf"
    ],
    "negative_samples": [
-    "Diwali this week if kept",
-    "Navaratri nine nights"
-   ]
+    "nothing in seva is photographed without her knowing",
+    "no deity is drawn, generated or photographed",
+    "a hand-traced plate of a murti"
+   ],
+   "note": "The one legitimate occurrence, the P-class definition in playbooks/pushtimarg-world.md T1, is allowlisted by W-29.",
+   "canonical": "W-61: no deity is drawn, generated or photographed; nothing in seva is photographed without her knowing (PR4)"
+  },
+  {
+   "id": "S-60.pichwai-without-him",
+   "row_id": "S-60",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "shown without him it changes meaning",
+   "positive_samples": [
+    "a pichwai line: shown without him it changes meaning"
+   ],
+   "negative_samples": [
+    "shown with him it keeps its meaning"
+   ],
+   "note": "",
+   "canonical": "W-61; the in-place fixes of reviews/hindu-visual-round3.md (C1)"
+  },
+  {
+   "id": "S-60.river-dark-line",
+   "row_id": "S-60",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "dark line of the river",
+   "positive_samples": [
+    "Yamunaji as the dark line of the river"
+   ],
+   "negative_samples": [
+    "Yamunaji is the jhari (PR20)",
+    "a dark river line"
+   ],
+   "note": "",
+   "canonical": "Yamunaji is the jhari (PR20)"
+  },
+  {
+   "id": "S-62.decision-11-moving-footage",
+   "row_id": "S-62",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bdecisions? 11\\b(?:(?!hindu_idiom|\\b12\\b)[^\\n]){0,60}\\bmoving footage\\b|\\bmoving footage\\b(?:(?!hindu_idiom|\\b12\\b)[^\\n]){0,20}\\bdecisions? 11\\b(?![^\\n]{0,30}hindu_idiom)",
+   "positive_samples": [
+    "Decision 11 means moving footage.",
+    "the style-bible decision 11 (moving footage)",
+    "moving footage is decision 11"
+   ],
+   "negative_samples": [
+    "decision 11 is 'hindu_idiom' and decision 12 is moving footage",
+    "Decision 12 is moving footage",
+    "decisions 11 and 12 may read 'practice: none' for a subject with no moving footage",
+    "decision 12 is moving footage, decision 11 is hindu_idiom"
+   ],
+   "note": "",
+   "canonical": "Decision 12 (W-59); decision 11 is hindu_idiom (W-38)"
+  },
+  {
+   "id": "S-64.her-turn-sat-6-mar",
+   "row_id": "S-64",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bher[- ]turn\\b(?:(?!only if|does not fast|Shivaratri|moves?\\b|moved\\b|Sun(?:day)? 7 Mar|Mon(?:day)? 8 Mar)[^\\n]){0,70}\\bSat(?:urday)?,? 6 Mar(?:ch)?\\b(?![^\\n]{0,60}\\b(?:Shivaratri|moves?|moved)\\b)|(?<!to )\\bSat(?:urday)?,? 6 Mar(?:ch)?\\b\\W{1,4}(?:the )?her[- ]turn\\b(?![^\\n]{0,30}\\b(?:Sun(?:day)? 7 Mar|Mon(?:day)? 8 Mar)\\b)",
+   "positive_samples": [
+    "the her-turn conversation (Sat 6 Mar 2027) is the only way back in",
+    "her turn Saturday 6 March 2027",
+    "the her-turn conversation on Sat 6 Mar 2027 (W-48)",
+    "Sat 6 Mar: her-turn conversation"
+   ],
+   "negative_samples": [
+    "the her-turn conversation, Sun 7 Mar after about 14:00 (W-48)",
+    "the morning of Sat 6 Mar only if she does not fast",
+    "the her-turn conversation moves off Maha Shivaratri (Sat 6 Mar to Sun 7 Mar)",
+    "releases 4d to 4g Sun 28 Feb to Sat 6 Mar; her turn Sun 7 Mar after about 14:00",
+    "releases run Sun 28 Feb to Sat 6 Mar"
+   ],
+   "note": "",
+   "canonical": "Sun 7 Mar after about 14:00, else Mon 8 Mar; the morning of Sat 6 Mar only if she does not fast (W-48)"
+  },
+  {
+   "id": "S-65.siblings-do-not-exist",
+   "row_id": "S-65",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "only `?research/pushtimarg-world\\.md`? exists|Saurashtra and Gujarati notes[^\\n]{0,60}do not exist yet|no Saurashtra or Gujarati note does",
+   "positive_samples": [
+    "As of 2026-10-19 only `research/pushtimarg-world.md` exists",
+    "the Saurashtra and Gujarati notes named in CHARTER.md do not exist yet",
+    "a folder exists; no Saurashtra or Gujarati note does"
+   ],
+   "negative_samples": [
+    "the Saurashtra and Gujarati notes now exist",
+    "research/pushtimarg-world.md exists as of 2026-10-19; cross-checks only"
+   ],
+   "note": "",
+   "canonical": "The Saurashtra and Gujarati-sound notes exist; one shaping gate, run once at P-LOCK (W-06)"
+  },
+  {
+   "id": "S-65.two-shaping-gates",
+   "row_id": "S-65",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bReconcile the two before either is run\\b",
+   "positive_samples": [
+    "overlaps Template K here. Reconcile the two before either is run.",
+    "Reconcile the two before either is run"
+   ],
+   "negative_samples": [
+    "one shaping gate, run once at P-LOCK",
+    "reconcile the figures before the run"
+   ],
+   "note": "",
+   "canonical": "One shaping gate, run once at P-LOCK (W-06)"
+  },
+  {
+   "id": "W-29.o-row-above-last",
+   "row_id": "W-29",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\bO-(?:8[5-9]|9[0-9]|[1-9][0-9]{2,})\\b",
+   "positive_samples": [
+    "see O-85",
+    "O-86 asks whether",
+    "Open question O-120"
+   ],
+   "negative_samples": [
+    "O-84 is the last row",
+    "O-05 answered",
+    "the MO-85 gate",
+    "O-8"
+   ],
+   "note": "The self-test compares this pattern's bound with the register's last O-row and fails when the register has grown past it.",
+   "canonical": "Use only O-rows that exist in the register; a new question is added to Table 3 first (W-29)",
+   "register_prefix": "O-",
+   "register_last": "O-84"
   }
- ]
+ ],
+ "info_note": "'info' lists candidate new Table 4 rows that never change the exit code. It is empty since register v3 made Minecraft, voxel, Mojang and the placeholder observances rows S-42 to S-65.",
+ "info": []
 }

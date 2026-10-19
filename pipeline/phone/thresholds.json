@@ -1,0 +1,88 @@
+{
+  "schema": "lj-phone-thresholds/1",
+  "version": 1,
+  "owner": "WP-08",
+  "status": "proposal. Every value marked (J) is the planner's or the team's judgement. Nothing here is a measurement of a real phone or a real person. The arcminute minimum and every viewport figure are UNVERIFIED.",
+  "decisions": ["D-27", "W-18", "W-63", "W-19", "W-57"],
+  "unverified": [
+    "the arcminute minimum (the planner recalls the ISO 9241-3 range of roughly 16 to 22 arcminutes for character height but did not re-read it; 18 and 21 come from the research note's 0.30 and 0.35 degree floor and target for a 50+ viewer)",
+    "every viewport figure below: they describe typical phones from published diagonal and pixel counts, not a measured handset",
+    "how a given player implements fill or zoom: the 10% crop of fill_20x9 is arithmetic for a 20:9 screen, not a measurement of any app",
+    "the device scaler: a phone's own scaler is not knowable here; bicubic is an assumption (the research brackets six scalers)",
+    "messenger transcode rules: the shared scenario imitates 'a messenger' (480p, about 1 Mbps, veryfast); it is not WhatsApp's or any service's encoder",
+    "the viewing distance for video (35 cm is the research note's design distance for text, 40 cm its 50+ margin)"
+  ],
+  "distance_cm": {
+    "verdict": 35,
+    "margin_50plus": 40,
+    "source": "research/mobile-delivery.md Q3: smartphone text is held at a mean of 36.2 cm for messages and 32.2 cm for web pages (Bababekova et al. 2011, abstract via a search digest); 35 cm is the design distance and 40 cm the 50+ margin (J). The verdict is taken at the 'verdict' distance and the 40 cm figure is written next to it.",
+    "status": "(J)"
+  },
+  "x_height": {
+    "floor_arcmin": 18,
+    "target_arcmin": 21,
+    "floor_pct": 3.2,
+    "target_pct": 3.8,
+    "applies_to": "the x-height of the Latin caption face (probe 'x'); for an Indic script the height of the dominant band from the top of the headline to the baseline stands in for the height of the base letter (W-18 sizes Gujarati by the height of KA), which is an analogue, not the same thing",
+    "source": "floor_pct and target_pct: DECISIONS.md W-63 and research/mobile-delivery.md T-M2 (must-read type x-height 3.2% hard floor, 3.8% target of picture height, which research computes as 0.30 and 0.35 degrees at 40 cm on a 6.1 in landscape-fit screen). floor_arcmin 18 = 0.30 degrees and target_arcmin 21 = 0.35 degrees (J; the same angles taken at the verdict distance).",
+    "gate": "floor",
+    "status": "(J), arcminutes UNVERIFIED"
+  },
+  "contrast": {"min_ratio": 4.5, "target_ratio": 7.0, "formula": "WCAG 2.1 relative luminance of the decoded sRGB pixels: (L1 + 0.05) / (L2 + 0.05); the fill is the 98th percentile of luminance inside the caption box, the outline is the 2nd percentile", "source": "WCAG AA (4.5:1) and AAA (7:1); research/mobile-delivery.md T-M2 contrast 4.5:1, 7:1 target", "status": "(J)"},
+  "stroke": {
+    "min_effective_px": 1.0,
+    "retention_min": 0.5,
+    "must_survive_from_width_px": 3,
+    "percentile": 10,
+    "source": "research/mobile-delivery.md Q3 and T-M2: meaning-bearing strokes 4 px, decoration 3 px, no 1 px lines; through a 360p proxy a 3 px line keeps 0.61 and a 4 px line 0.84. min_effective_px is the stroke width after the scenario's smallest grid (the device grid, or the 480p share grid for 'shared'); retention_min is the contrast a line keeps after the same step. Lines of must_survive_from_width_px or more are gated; thinner lines are measured and reported.",
+    "status": "(J)"
+  },
+  "box90": {"x_min_pct": 5, "x_max_pct": 95, "y_min_pct": 5, "y_max_pct": 95, "source": "W-18: captions inside the 90% by 90% box; ROADMAP section 6", "status": "settled (W-18)"},
+  "position": {
+    "caption_bottom_max_pct": 88,
+    "caption_top_min_pct": 12,
+    "crop_margin_pts": 2,
+    "fill_visible_min": 0.999,
+    "default_fill_aspect": "20:9",
+    "source": "DECISIONS.md W-63 (text box 5 to 95% across, 12 to 88% down; a 20:9 phone in fill crops 9 to 10% top and bottom) and reviews/04-hindu-mobile-briefs-review.md Part 0.2. The 88% limit is the 90% crop line with a 2-point margin; it is also used when --aspect 19.5:9 moves the crop line to about 91%, which keeps the stricter figure.",
+    "status": "(J)"
+  },
+  "title": {"min_pct": 5, "measured_as": "the ink height of the title line (top of the tallest letter to the baseline) as a percentage of picture height", "source": "ROADMAP.md section 6 (type at 5% of picture height); read here as ink height, which is stricter than a font-size reading (UNVERIFIED reading)", "status": "(J)"},
+  "marks": {"min_ink_px": 2, "coverage_threshold": 0.5, "zone_iou_min": 0.5, "zone_dilate_px": 1, "reference_scale": 8, "source": "build plan WP-08: at least 2 px of ink in the mark's zone after the downscale to each scenario; the zone is derived by differential rendering at 8x with and without the mark's codepoints (no coordinate stored); zone_iou_min is a guard added here so that another letter's ink landing in the zone does not count as the mark", "status": "(J)"},
+  "iou": {"min": 0.9, "threshold_ink_coverage": 0.5, "source": "build plan WP-08: libass ink against a Pillow-raqm reference rendering, at least 0.9, or a shaping finding for that script", "status": "(J)"},
+  "bitrate_cap_tolerance_pct": 10,
+  "device_scaler": "bicubic",
+  "degrade_shared": {"height": 480, "video_bitrate": "1000k", "maxrate": "1200k", "bufsize": "2000k", "preset": "veryfast", "profile": "main", "audio_bitrate": "96k", "already_degraded_if_height_at_most": 480, "source": "build plan WP-08: re-encoded to 480p at about 1 Mbps with veryfast to imitate a messenger (J)", "status": "(J)"},
+  "viewports": {
+    "portrait": {
+      "description": "phone held upright, picture full width in a player or chat (the 'degraded by design' view of the research, K3)",
+      "css_w": 390, "css_h": 844, "dpr": 3, "mode": "fit", "screen_w_mm": 64.9, "screen_h_mm": 140.7,
+      "gate": "advisory", "gate_reason": "upright viewing is degraded by design: no caption that fits the 90% box reaches the x-height floor on a 36 mm tall picture; the hand-over says 'turn it sideways'",
+      "source": "6.1 in 19.5:9 class, 390x844 CSS px at device pixel ratio 3 (J)"
+    },
+    "landscape": {
+      "description": "the same phone held sideways, 16:9 picture fitted to the height (bars at the sides): the intended view",
+      "css_w": 844, "css_h": 390, "dpr": 3, "mode": "fit", "screen_w_mm": 140.7, "screen_h_mm": 64.9,
+      "gate": "blocking", "gate_reason": "the intended view",
+      "source": "6.1 in 19.5:9 class, 844x390 CSS px at device pixel ratio 3 (J)"
+    },
+    "small_portrait": {
+      "description": "a small upright phone, picture full width",
+      "css_w": 360, "css_h": 800, "dpr": 2, "mode": "fit", "screen_w_mm": 68.1, "screen_h_mm": 151.3,
+      "gate": "advisory", "gate_reason": "upright, as portrait",
+      "source": "a 6.5 in 720x1600 class phone (Redmi 9A class, 360x800 CSS px at ratio 2; research/mobile-delivery.md Q-F4) (J)"
+    },
+    "shared": {
+      "description": "the file after a messenger's recompression (480p, about 1 Mbps, veryfast), viewed sideways",
+      "css_w": 844, "css_h": 390, "dpr": 3, "mode": "fit", "screen_w_mm": 140.7, "screen_h_mm": 64.9,
+      "degrade": "degrade_shared", "gate": "blocking", "gate_reason": "what a relative actually receives if a copy is forwarded",
+      "source": "as landscape, plus the degrade_shared step (J)"
+    },
+    "fill_20x9": {
+      "description": "a 20:9 phone held sideways with the player set to fill or zoom: the picture is scaled to the screen width, so it is 11.25 units tall on a 9-unit screen and about 10% of the picture height is cropped at the top and at the bottom",
+      "css_w": 800, "css_h": 360, "dpr": 3, "mode": "fill", "screen_w_mm": 155.2, "screen_h_mm": 69.8, "aspect": "20:9",
+      "gate": "blocking", "gate_reason": "a viewer can tap fill on any player",
+      "source": "6.7 in 20:9 2400x1080 class (reviews/04-hindu-mobile-briefs-review.md Part 0.2); --aspect 19.5:9 gives about 9% (J)"
+    }
+  }
+}

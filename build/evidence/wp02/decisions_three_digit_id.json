@@ -1,0 +1,24 @@
+{
+ "actual": "W-100 reaches the CSV (249 rows), --check and ops_lint report it missing from a stale CSV and pass on a fresh one; a cited W-101 is flagged",
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 453,
+  "avail_mb_min": 453,
+  "avail_mb_start": 453,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "negative: a W-100 row in a register copy reaches the CSV (it was silently dropped when IDs had to be two digits)",
+ "notes": "",
+ "package": "WP-02",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "decisions_three_digit_id",
+ "unverified_reasons": []
+}

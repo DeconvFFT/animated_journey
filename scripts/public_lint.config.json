@@ -125,9 +125,16 @@
     "why": "Christian motif"
    }
   ],
-  "exclusion_cue_regex": "\\b(?:no|never|exclu[a-z]*|out|left out|leave out|avoid[a-z]*|without|forbidden|not (?:allowed|used|shown|included|wanted)|default out|out of scope)\\b",
-  "exclusion_cue_window": 120,
-  "exclusion_note": "A line that names a D-28 keyword AND says it is excluded (no, never, excluded, out, avoid, without) is a statement of the rule, not a use of the motif, and is printed as a NOTE for a person to read instead of a finding. 'Mughal garden, not too dark' is still a finding (a plain 'not' is no cue)."
+  "exclusion_cue_regex": "\\b(?:no|never|not|exclu[a-z]*|avoid[a-z]*|forbidden|out of scope|left out|leave out|default out)\\b",
+  "exclusion_cue_window": 40,
+  "exclusion_demote_suffixes": [
+   ".md"
+  ],
+  "exclusion_never_demote": [
+   "pipeline/scenes/",
+   "pipeline/phone/test_strings.json"
+  ],
+  "exclusion_note": "A line that names a D-28 keyword AND carries an exclusion cue (no, never, not, excluded, avoid, forbidden, out of scope, left out, leave out, default out) within 40 characters BEFORE that keyword is a statement of the rule, not a use of the motif, and is printed as a NOTE for a person to read instead of a finding. Only prose files (.md) are demoted, and never anything under pipeline/scenes/ or pipeline/phone/test_strings.json, where every string is rendered and 'out', 'no' and 'without' are animation words ('fade out to a Taj Mahal silhouette' is a finding). A cue after the keyword never counts: 'a Mughal garden, not too dark' is a finding. Review r1, C-1."
  },
  "denylist_exempt_globs": [
   "**/*.schema.json"

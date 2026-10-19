@@ -2,7 +2,7 @@
 
 *For the maker. Track `ai-imagery`. Built from the research note at `research/ai-imagery.md` (sources read 2026-10-18). Deadline: Saturday 2027-02-27.*
 
-Reconciled with [DECISIONS.md](../DECISIONS.md) (2026-10-18), the single source of truth. Where a lean below disagrees with a register row, the register wins. D-nn rows are decided by the maker; W-nn rows are working defaults.
+Reconciled with [DECISIONS.md](../DECISIONS.md) (2026-10-18, and again on 2026-10-19 after the her-world merge), the single source of truth. Where a lean below disagrees with a register row, the register wins. D-nn rows are decided by the maker; W-nn rows are working defaults. No generative route ever touches a deity (D-28, W-61), and the game-world rule is retired (D-29).
 
 **How to read this.** Numbers in square brackets, such as [2], point to the Sources list at the end. They match the research note. **TODO(research)** marks a gap we have not closed. Time estimates are planning guesses unless a source gives them. Some sources were seen only as search snippets; the Sources list says so.
 
@@ -14,7 +14,7 @@ The main risk is that these tools make things look finished. Almost every tool t
 
 Three facts shape the plan.
 
-- **Nobody has tested these tools on the kind of photo we have.** The research found clean, modern demo portraits. It found no tests on faded, low-resolution or black-and-white family prints. So in week 1 we run a five-photo bake-off on stand-in photos with the same defects, judged by the maker alone (under only-me there are no insiders, D-03; likeness is the maker's, W-40). Her own photos wait for the L1 process lock (Sat 14 Nov) and the vertical slice (D-13, W-07).
+- **Nobody has tested these tools on the kind of photo we have.** The research found clean, modern demo portraits. It found no tests on faded, low-resolution or black-and-white family prints. So in week 1 we run a five-photo bake-off on stand-in photos with the same defects, judged by the maker alone (under only-me there are no insiders, D-03; likeness is the maker's, W-40). Her own photos wait for P-LOCK (Sat 14 Nov) and the vertical slice (D-13, W-07).
 - **Most of the work is hands-on.** The research note estimates about 40 to 80 human hours for 300 photos, mostly scanning and hand clean-up, not computer time. This is an estimate, not a measurement. The research note's summary and its table now agree.
 - **We start small.** One chapter, a 30-photo vertical slice (C01, final Sun 20 Dec, W-07), comes before the rest of the archive (charter principle 6).
 
@@ -52,7 +52,7 @@ Give every scan an ID such as `LJ-B03-0042-F`. B03 is the box, 0042 the sequence
 Keep two plain CSV files:
 
 - `manifest.csv`, one row per scan. Columns: id, box, medium, scan_date, device, ppi, bit_depth, profile, date_est, date_confidence, people, place, caption_source, interview_date, consent_note, sha256, notes. `interview_date` is filled when a caption cites an interview, as the L5 caption does; before the premiere it holds the date of the album-and-hands session or of the maker's own written recollection (W-49, D-03).
-- `steps.csv`, one row per change. Columns: derivative_id, parent_id, step_no, tool, version, settings, seed, invents (none, texture, colour, frames or faces), label_level, reviewer, approved.
+- `steps.csv`, one row per change. Columns: derivative_id, parent_id, step_no, tool, version, settings, seed, invents (none, texture, colour, frames or faces), label_level, reviewer, approved, deity_form, deity_source. `deity_form` and `deity_source` stay `none` on every row that is not a deity image (W-61, Step 9).
 
 The National Archives asks for who, what, where and when [2]. The manifest does that job.
 
@@ -154,7 +154,7 @@ Work through the tools in this order.
 
 Windows (untested on Windows): `magick a.png b.png -morph 14 frames\m_%02d.png`. ImageMagick 7 on Windows is `magick`, and the folder can be made with `New-Item -ItemType Directory frames`. The ffmpeg lines run unchanged in PowerShell with backslash paths. Keep the xfade filter in double quotes, as shown.
 
-**Best design.** Chain morphs through real intermediate photos, such as ages 6, 12 and 18. Each segment then joins two real images. A paper-turn or block-build transition says "time passed" without implying that a face existed.
+**Best design.** Chain morphs through real intermediate photos, such as ages 6, 12 and 18. Each segment then joins two real images. A paper-turn transition, or the object clock (W-32), says "time passed" without implying that a face existed.
 
 **Generated in-between (L4c, use sparingly).** Tools such as Wan2.1 FLF2V [67] or Veo 3.1 with `lastFrame` [82] generate the whole video between two images. They invent intermediate faces and motion. Inspect the middle frames. If a face matches neither photo, it was invented. Use this only inside a labelled reconstruction, and never present it as a record of how she looked.
 
@@ -197,14 +197,16 @@ Windows (PowerShell, untested on Windows): the same command. Keep the whole filt
 
 Pick one look for the whole chapter, and write a two-line style bible: palette, line weight, proportions. Then choose a route (labels follow recipe R4).
 
-- **Route A, hand-made (default).** For each age band (child, teen, young adult, adult, older), pick three to five real photos. List identity attributes: hair shape and colour, glasses, beard, scars, posture, signature clothes, and height relative to others. Build a character sheet in the chosen look. The look is the maker's own hand-made material, filled at G1 (W-38); voxel appears only as original voxel assets and is never the reconstruction marker (D-23). MagicaVoxel and Blockbench are believed to be free, but this is unverified [notes]. Take the palette from the photo. For block-palette backgrounds, MapartCraft is a free browser tool under GPL-3.0 [54].
+- **Route A, hand-made (default).** For each age band (child, teen, young adult, adult, older), pick three to five real photos. List identity attributes: hair shape and colour, glasses, beard, scars, posture, signature clothes, and height relative to others. Build a character sheet in the chosen look. The look is the maker's own hand-made material, filled at G1 (W-38); where that is seva craft it is the *making*, never the finished seva article and never a reconstruction painted onto Thakorji's clothes. The game-style block look of the earlier plan is retired with its tools (D-29). Take the palette from the photo.
 - **Route B, AI edit on the real photo.** Use an edit model that starts from your photo, such as FLUX.1 Kontext dev [33][34] (non-commercial, gated), Qwen-Image-Edit-2511 (Apache-2.0) [36], or FLUX.2 klein 4B (about 8 GB) [38]. Keep the input near 1 megapixel [37]. In the prompt, name the subject specifically and add "while maintaining the same facial features, hairstyle, and expression" [34]. Change one thing per step. Keep one seed, one LoRA strength and one prompt template per chapter. Choose the result by line-up.
 - **Route C, identity adapters: avoid for real people.** InstantID [40], PuLID-FLUX [41] and InfiniteYou [42] generate a new picture of the person from a prompt. The pose, clothes and scene are then invented. That makes it a reconstruction (L5), not a restyle. Use it only if a new angle is truly needed, and label it.
 - **Route D, style LoRA on your own art.** Train a style LoRA on 10 to 30 of your own hand-made frames, using fluxgym (12 GB) [47] or ai-toolkit [46]. A person LoRA is out for her (D-16: no model is trained on her face). For anyone else it would need consent, local training, deletion afterwards and labels (research note, Q4c), and under only-me nobody can be asked, so none.
 
 The Kontext style LoRAs, such as Clay Toy, Origami and Paper Cutting, have no stated licence [45]. Check it before use.
 
-**Line-up test.** The maker signs likeness alone (D-03, W-40). Show five stylised faces in a shuffled line-up with decoys (the full protocol is in cinematic-quality T3). Ask who is who, and at what age. Adjust the attributes, not the faces. Run this on her real photos in the vertical slice, after the L1 process lock (Sat 14 Nov). The pass mark is set (W-40): five of five correct, passed twice, 48 hours apart.
+**Deities: no generative route (D-28, W-61).** The default policy is P1: symbols (lamp, kalash, lotus, conch, Om, linga, padukas, yantra, tulsi) and seva objects that are not a svarupa. Under it no deity figure is drawn, generated or photographed, and no generative route touches a deity in any class. If the maker rules a higher class at O-64, a deity image comes only from a hand-drawn vector symbol checked against the sheet, a hand-traced plate from a logged public-domain source, her own photograph (seva objects now; a svarupa picture only in the April version, and only if she knows), or a commissioned painting by a hereditary painter. Routes B (AI edits), C (identity adapters) and D (LoRAs) are never used on a deity, and a plate is never repaired by diffusion. Never draw or open the eyes of a svarupa, and remember that a picture of a svarupa may itself be a seva object (PR3, PR4 in `playbooks/pushtimarg-world.md`): nothing of the Thakorji, Lalan, chitraji or any picture of hers is photographed without her knowing. Deity line-art and vector symbols need no model at all. The rules live in `playbooks/hindu-visual.md`.
+
+**Line-up test.** The maker signs likeness alone (D-03, W-40). Show five stylised faces in a shuffled line-up with decoys (the full protocol is in cinematic-quality T3). Ask who is who, and at what age. Adjust the attributes, not the faces. Run this on her real photos in the vertical slice, after P-LOCK (Sat 14 Nov). The pass mark is set (W-40): five of five correct, passed twice, 48 hours apart.
 
 ### Step 10: Label what you made
 
@@ -219,11 +221,13 @@ Every derivative gets a level. The ladder below is the research note's proposal 
 | L4 Animated | Motion added to a real photo | 4a parallax or classic morph (no generated frames); 4b image-to-video; 4c generated in-between | 4a `humanEdits` or `algorithmicallyEnhanced`; 4b and 4c `compositeWithTrainedAlgorithmicMedia` | Tag on the clip: "moved", "frames invented" |
 | L5 Reconstruction | Scene never photographed, built from testimony | Stylised scene in the house look | `digitalCreation` (hand-built); `trainedAlgorithmicMedia` (AI-built); `compositeSynthetic` (mixed) | Always stylised; caption "Reconstructed from [name]'s memory, [interview date]" |
 
+**Deity images (W-61).** A `deity_image` row carries L0 or L1 (her own photograph of seva objects that are not a svarupa; a svarupa picture only in the April version, when she knows), L2 only for non-generative scaling, or L3 for a hand-traced plate; never L4 or L5. `deity_form` and `deity_source` (the R17 route in `playbooks/hindu-visual.md`) are filled in `steps.csv` on every deity row. A diffusion repair of a deity plate is banned, because it can silently change an attribute: that is stricter than the face rule for people (W-40).
+
 **L5 testimony under only-me.** Before the premiere the testimony behind an L5 scene comes from the maker's own knowledge or an album-and-hands session (W-49), not from a recorded interview (D-03). The caption names a relation rather than a person where it can, because person IDs only live in the repo and the ID-to-name key stays offline (D-14). Recorded relative testimony arrives with the April version (D-06).
 
-The IPTC values come from the Digital Source Type vocabulary [89]. The IPTC user guide says to write the URI, not the label, and to store it in XMP only [90]. `humanEdits` is only for non-generative edits to captured media. A hand-built voxel, clay or other scene made from scratch is `digitalCreation`, which means "created by a human using non-generative tools" and was added on 2024-09-17 [89]. `composite` is for hand work layered over a real photo, and `compositeSynthetic` is for mixed work. Checked against [89] on 2026-10-18.
+The IPTC values come from the Digital Source Type vocabulary [89]. The IPTC user guide says to write the URI, not the label, and to store it in XMP only [90]. `humanEdits` is only for non-generative edits to captured media. A hand-built clay, paper, thread or floor-art scene made from scratch is `digitalCreation`, which means "created by a human using non-generative tools" and was added on 2024-09-17 [89]. `composite` is for hand work layered over a real photo, and `compositeSynthetic` is for mixed work. Checked against [89] on 2026-10-18.
 
-Carry the label in four places: the file-name suffix (`__L2`), `steps.csv`, the embedded XMP, and the end-credit cue sheet [96]. The research note suggests the Archival Producers Alliance cue-sheet idea [95][96]. For how to disclose, Partnership on AI separates direct disclosure (labels on screen) from indirect disclosure (metadata, C2PA) [94].
+Carry the label in four places: the file-name suffix (`__L2`), `steps.csv`, the embedded XMP, and the end-credit cue sheet [96]. The research note suggests the Archival Producers Alliance cue-sheet idea [95][96]. For how to disclose, Partnership on AI separates direct disclosure (labels on screen) from indirect disclosure (metadata, C2PA) [94]. On-screen tags and L5 captions that the audience must read follow the phone-safe frame (x-height 3.2% as the hard floor, W-63) and the caption rules (W-18); a caption's gloss is in the room's language, and any Gujarati card line is read by the native reader (W-35, O-62).
 
 **Metadata command.** ExifTool 13.59 was run on Linux in the research sandbox, and writing the tag and reading it back worked [105]. Windows is untested. The tag needs the full URI. A label sentence written into the tag is stored as plain text, and readers will not recognise it [105]. The command is:
 
@@ -268,7 +272,7 @@ Each decision lists the options and our current lean. A lean marked "(from the n
 - *Ticketed showing.* Exclude every non-commercial weight. Any payment, such as a ticket, donation or sponsor, flips them to no [159][161].
 - *InfiniteYou is out either way.* Its licence says "for academic research purposes only" [42][162]. Do not use it for any frame that is shown.
 - *Copyleft tools.* On the AGPL text, running Upscayl, DepthFlow and Video2X unmodified creates no source-code duty [166]. The models they bundle were not checked, and the GPL-3.0 tools (ComfyUI, chaiNNer, Krita AI Diffusion) were not re-read (TODO(research)).
-- **Lean (scribe's reading, confirm):** assume a free public screening. Where two tools do the same job, choose the one with an Apache-2.0, MIT or BSD licence, for example U-2-Net [168] or Depth Anything V2 Small [58], so a ticketed showing later stays possible.
+- **Lean (scribe's reading, confirm):** assume a free public screening. Where two tools do the same job, choose the one with an Apache-2.0, MIT or BSD licence, for example U-2-Net [168] or Depth Anything V2 Small [58], so a ticketed showing later stays possible. Deity line-art and vector symbols need no model, so none of this licence reading applies to them (W-61).
 
 **4. Animating people who have died.**
 
@@ -302,7 +306,7 @@ Each decision lists the options and our current lean. A lean marked "(from the n
 
 - *Route A, hand-made* (no GPU, likeness built in by design).
 - *Route B, AI edit on the photo.*
-- **Lean (from the note):** Route A for the first chapter. Use Route B only if it passes the line-up test.
+- **Lean (from the note):** Route A for the first chapter. Use Route B only if it passes the line-up test. Routes B to D are never used on a deity (W-61).
 
 **9. Motion between two photos.**
 
@@ -320,7 +324,7 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 
 **Steps.**
 1. Create the four folders from Step 0.
-2. Clean the scanner glass. Scan five stand-in prints (from the Exercise 3 list, not her albums; scanning her albums this week would be gathering before the gate opens: the gate is the L1 process lock on Sat 14 Nov, and collection starts Sun 15 Nov, D-13) at 600 ppi, colour, 16-bit.
+2. Clean the scanner glass. Scan five stand-in prints (from the Exercise 3 list, not her albums; scanning her albums this week would be gathering before the gate opens: the gate is P-LOCK on Sat 14 Nov, and collection starts Sun 15 Nov, D-13) at 600 ppi, colour, 16-bit.
 3. Scan the back of any print with writing on it.
 4. Name the files with the LJ pattern.
 5. Fill in five rows of `manifest.csv`.
@@ -426,6 +430,7 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 16. **Covert handling (charter).** A phone scan may land in a photo library that syncs to a cloud account your mother can see, or on a shared device. Use a device and account she cannot see, and check the sync settings before the first scan. TODO(research): the note did not check how PhotoScan or Photomyne save and sync files on the maker's phone.
 17. **Originals in other hands.** Relatives lend prints. Handle them gently, scan the backs too, and return them unchanged [2].
 18. **Sprawl.** Model tinkering never ends. Time-box each tool trial, and finish one chapter first (principle 6).
+19. **AI deity images, even as placeholders.** Anything generated can leak into the cut, and the community has objected: the Hindu American Foundation's guidance says AI images "are not inherently sacred", and the Jagannath temple administration filed a police complaint in January 2026 over AI-generated videos of its deity (`playbooks/hindu-visual.md`, its sources 79, 83 and 84). No generative route touches a deity, not even for a storyboard (W-61).
 
 ### Known gaps (TODO(research))
 
@@ -438,7 +443,7 @@ Each exercise gives a goal, steps, a time estimate, and what good looks like. Th
 - **First-and-last-frame support and pricing** for Kling, Runway and Luma are unconfirmed.
 - **Gemini 2.5 Flash Image.** The pricing page says deprecated with a 2026-10-02 shutdown; the image docs say only "legacy." The sources conflict.
 - **C2PA signing** was not researched. ExifTool syntax and MP4 handling were run on Linux [105]. Windows runs are not done.
-- **MagicaVoxel and Blockbench** licence and price are unverified.
+- **AI image models' rendering of Devanagari and Gujarati text** was not researched. Until it is, typeset every Indic string from a font and never accept generated text (`playbooks/cinematic-quality.md` T9 row 7; W-75).
 - **DepthFlow's CLI documentation** (depth.tremeschin.com) was not fetched.
 - **Windows set-up** for ffmpeg, ImageMagick, Real-ESRGAN, rembg, Depth Anything V2 and ExifTool is researched from vendor pages (Step 0), not run on Windows. CodeFormer's Windows route is not researched (TODO(research)).
 - **Budget figures.** Resolved in round 1: the research summary now matches its table, 40 to 80 human hours (45 to 80 with no GPU).
@@ -508,7 +513,7 @@ Numbers match the research note's Sources list at `research/ai-imagery.md`. The 
 [51] Gemini API pricing — https://ai.google.dev/gemini-api/docs/pricing — undated — Veo 3.1 and image prices; free vs paid data use; 2.5 Flash Image deprecation note.
 [52] fal.ai pricing — https://fal.ai/pricing — undated, 2026 — Kling and Nano Banana Edit prices.
 [53] The Cross-Age LFW (CALFW) — https://arxiv.org/abs/1708.08197 — 2017 — 10 to 17 percent accuracy drop across ages.
-[54] MapartCraft — https://github.com/rebane2001/mapartcraft — undated — browser mapart generator; GPL-3.0.
+[54] Retired under D-29 (a game-map tool); no longer cited.
 [55] rembg — https://github.com/danielgatis/rembg — undated — CLI, CPU, MIT, cloud back-end warning.
 [56] SAM 2 — https://github.com/facebookresearch/sam2 — SAM 2.1 2024-09-30 — Apache-2.0.
 [58] Depth Anything V2 — https://github.com/DepthAnything/Depth-Anything-V2 — undated — licences by size.
@@ -579,3 +584,4 @@ Numbers match the research note's Sources list at `research/ai-imagery.md`. The 
 - 2026-10-18, round 1 (Fable review applied by the Haiku scribe): added Windows forms and the install route (C1); moved the bake-off to stand-in photos judged by the maker and confirmed insiders, with real photos moved to the vertical slice (C2); fixed the IPTC mapping for hand-made work; made the L2 face rule operational and added "When not to restore"; corrected the Real-ESRGAN command, FramePack GPU wording, budget and metadata notes; added the child-photo cloud limit; replaced the fixed 2026 caption date with the interview date.
 - 2026-10-18, round 2 (Fable review applied by the Haiku scribe): C1 fixed, with Decision 3 and the licence default reframed as free public screening versus ticketed, because the charter now fixes a public premiere. Colourised faces ruled L2 or L3 by a Lab L-channel test. GFPGAN `-w` recorded as having no effect, so CodeFormer's `w` stays the dial, and the v1.3 quotation corrected. Upscale rule keyed to the UHD master arithmetic (TODO(theatrical-delivery)). Cloud split by content. Veo costs and clip lengths restated for 4 s and 8 s, and the child-photo test dropped.
 - 2026-10-18, round 3: Reconciled with DECISIONS.md (2026-10-18): likeness and review are the maker's alone (no insiders, no GATHER.md; D-03, W-40); master settled at 1080p with stills at 3840 px and a derived 2K DCP (W-15); cloud policy restated as decided (`cloud: none`, no family photo to any hosted service or rented GPU; D-15, W-23, W-24); backup is a second encrypted SSD with no cloud copy (W-25); no face or expression motion for the dead in the premiere cut (W-40); no model trained on her face (D-16); voxel only as original assets, never the marker (D-23, W-38); L5 testimony and `interview_date` under only-me (W-49); `zoompan` marked proof-grade (W-41); door policy and scanner defaults linked (W-54, W-27).
+- 2026-10-19: Reconciled with DECISIONS.md after the her-world merge (2026-10-19): the game-style block look and its tools retired (D-29); Route A follows W-38 decisions 2 and 6; no generative route for a deity, with the deity-image label rule and the `deity_form` and `deity_source` columns (W-61; the Step 9 and Step 10 deltas of `playbooks/hindu-visual.md` and `playbooks/pushtimarg-world.md`); the AI-deity pitfall and the Indic-text gap; on-screen tags follow the phone-safe frame (W-63); P-LOCK replaces the old process-lock spelling.

@@ -93,7 +93,7 @@ wrote renders/wp06/ch.otio: 4 clips, 3 dissolves, 3 markers, 1 audio cue(s), 480
 exit=0
 
 $ python3 -I pipeline/roundtrip/validate_otio.py renders/wp06/ch.otio --with-otio <scratch>/venv-otio/bin/python
-PASS json_parses                        20167 bytes
+PASS json_parses                        20210 bytes
 PASS timeline_schema                    Timeline.1, 2 tracks
 PASS video_track_present                a Video track exists
 PASS rate_24                            all 33 times are at 24 fps
@@ -102,8 +102,11 @@ PASS media_reference                    all 5 clips
 PASS media_reference_single_file        all 5 clips
 PASS target_url_relative                all 5 clips
 PASS target_url_forward_slashes         all 5 clips
+PASS target_url_inside_folder           all 5 clips
 PASS media_exists                       all 5 clips
 PASS source_in_available                all 5 clips
+PASS clips_present                      4 clip(s) on the Video track(s)
+PASS track_children_flat                every track holds clips, gaps and transitions only
 PASS dissolve_between_clips             3 dissolve(s)
 PASS dissolve_offsets_valid             3 dissolve(s)
 PASS dissolve_fits                      3 dissolve(s)
@@ -120,7 +123,7 @@ PASS otio_counts_match                  5 clips, 3 transitions, 3 markers
 PASS otio_duration_matches              480 frames at 24 fps
 PASS otio_global_start_rate             rate 24
 PASS otio_filmcraft_preserved           5 clip(s): unchanged after write and read
-RESULT validate_otio: 27 checks, 0 FAIL, 0 WARN
+RESULT validate_otio: 30 checks, 0 FAIL, 0 WARN
 exit=0
 
 $ bash pipeline/roundtrip/adapter_probe.sh

@@ -15,6 +15,9 @@ WHAT IT MEASURES (low-entropy JPEG stills from gen_stills.py; every call is one 
             pixels, position 960,540 = centre of 1920x1080, as research/cinematic-quality-fixtures/filmcraft_push.py found for 0.9.0).
   dissolve  a cross dissolve between two flat-centre stills: the frame nearest the half-way mix within 2 levels of the average of the neighbours.
 EXIT CODES  0 all pass; 1 a measured criterion failed (a finding); 2 the harness could not drive the CLI (a command-surface surprise, NOT a verdict on FilmCraft).
+THE ENVELOPE IS WRITTEN AFTER EVERY PHASE (describe, scaling, export, kenburns+dissolve), with status UNVERIFIED, detail.partial true and the note "stage still
+running", and replaced by the final one when the run ends. The whole stage is capped at 60 minutes (run_sp1.sh, build plan 4.9) and the disk guard can stop it at
+any moment; either way the criteria measured so far stay in the file. A TERM that reaches this process also writes a "stopped" envelope before it leaves.
 NEVER TOUCHES  anything outside --home and --work except the evidence file. Only synthetic stills are used.
 """
 import argparse
@@ -402,6 +405,40 @@ class T2:
                        "within 2 levels of the average of the neighbours")
 
 
+def write_envelope(t, a, cfg, t0, phase_done, err=None, stopped=None, final=False):
+    """Write (or replace) the T2 envelope. final=False: the run is still going (after a phase): UNVERIFIED, partial. stopped: a TERM ended the run."""
+    failed = [c for c in t.crit if not c["pass"]]
+    unv = (["mini content, stand-in CLI"] if a.mini else []) + ["Windows behaviour is not tested by a Linux CLI run"]
+    if stopped:
+        status, rc = "UNVERIFIED", 3
+        actual = "stage stopped before T2 finished (%s); %d criteria measured after phase '%s', %d failed" % (stopped, len(t.crit), phase_done, len(failed))
+        unv.append("the run was stopped before the last phase: " + stopped)
+    elif not final:
+        status, rc = "UNVERIFIED", 0
+        actual = "stage still running: phase '%s' done; %d criteria measured so far, %d failed" % (phase_done, len(t.crit), len(failed))
+        unv.append("stage still running (a partial envelope, replaced when the run ends)")
+    elif err:
+        status, rc = "UNVERIFIED", 2
+        actual = "the harness could not drive the CLI: %s; %d criteria measured before that, %d failed" % (err, len(t.crit), len(failed))
+        unv.append(err)
+    elif a.mini:
+        status, rc = "UNVERIFIED", (0 if not failed else 1)
+        actual = "MINI content against a stand-in CLI (mechanism test): %d criteria, %d failed" % (len(t.crit), len(failed))
+    else:
+        status, rc = ("PASS", 0) if not failed else ("FAIL", 1)
+        actual = "%d criteria, %d failed%s" % (len(t.crit), len(failed), (": " + "; ".join(c["id"] for c in failed)) if failed else "")
+    L.envelope("t2_%s_%s" % (a.app, a.tag) + ("_mini" if a.mini else ""), status,
+               "all of: no crash at N=100 and N=300; RSS slope under 40 MB per still; RSS(N=300) under 12 GB; 2,400-frame H.264 at 5 fps or more with the right frame count and silent decode; "
+               "ProRes frame count; Ken Burns first/last within 1 px; mid-dissolve within 2 levels; offlineMedia empty",
+               actual, notes=("stage still running" if (not final and not stopped) else "A Linux CLI pass proves nothing about Windows. Timing is only valid when contaminated=no."),
+               unverified_reasons=unv,
+               extra={"profile": a.profile, "mini": a.mini, "criteria": t.crit, "results": t.R, "calls": t.rec.calls[-60:], "calls_total": len(t.rec.calls), "harness_error": err,
+                      "partial": not final, "phase_done": phase_done, "stopped": stopped,
+                      "sandbox": {"network_isolation": "unshare -rn" if L.unshare_ok() else "not available", "rss_kill_mb": cfg["rss_kill_mb"]},
+                      "wall_s": round(time.monotonic() - t0, 1), "contaminated": os.environ.get("LJ_BENCH_CONTAMINATED", "not-timed")})
+    return status, rc
+
+
 def main(argv):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--app", default="filmcraft")
@@ -426,35 +463,27 @@ def main(argv):
     print("T2 %s %s (profile %s%s)" % (a.app, a.tag, a.profile, ", MINI content" if a.mini else ""))
     err = None
     t0 = time.monotonic()
+    done = "none"
     try:
-        t.phase_describe()
-        t.phase_scaling()
-        t.phase_export()
-        t.phase_kenburns_dissolve()
+        for name, fn in (("describe", t.phase_describe), ("scaling", t.phase_scaling), ("export", t.phase_export), ("kenburns_dissolve", t.phase_kenburns_dissolve)):
+            fn()
+            done = name
+            if name != "kenburns_dissolve":
+                write_envelope(t, a, cfg, t0, done)  # everything measured so far survives a timeout, a TERM or a DISK-FLOOR
     except HarnessError as e:
         err = str(e)
         print("  HARNESS: " + err)
+    except SystemExit as e:  # the TERM handler of sp1_lib (the 60-minute timeout or the disk guard): record what was measured, then leave
+        try:
+            write_envelope(t, a, cfg, t0, done, stopped="TERM received (stage timeout or disk guard)")
+        except OSError:
+            pass
+        shutil.rmtree(t.stills, ignore_errors=True)
+        shutil.rmtree(t.exp, ignore_errors=True)
+        raise
     shutil.rmtree(t.stills, ignore_errors=True)
     shutil.rmtree(t.exp, ignore_errors=True)
-    failed = [c for c in t.crit if not c["pass"]]
-    if err:
-        status = "UNVERIFIED"
-        actual = "the harness could not drive the CLI: %s; %d criteria measured before that, %d failed" % (err, len(t.crit), len(failed))
-        rc = 2
-    elif a.mini:
-        status, rc = "UNVERIFIED", (0 if not failed else 1)
-        actual = "MINI content against a stand-in CLI (mechanism test): %d criteria, %d failed" % (len(t.crit), len(failed))
-    else:
-        status, rc = ("PASS", 0) if not failed else ("FAIL", 1)
-        actual = "%d criteria, %d failed%s" % (len(t.crit), len(failed), (": " + "; ".join(c["id"] for c in failed)) if failed else "")
-    L.envelope("t2_%s_%s" % (a.app, a.tag) + ("_mini" if a.mini else ""), status,
-               "all of: no crash at N=100 and N=300; RSS slope under 40 MB per still; RSS(N=300) under 12 GB; 2,400-frame H.264 at 5 fps or more with the right frame count and silent decode; "
-               "ProRes frame count; Ken Burns first/last within 1 px; mid-dissolve within 2 levels; offlineMedia empty",
-               actual, notes="A Linux CLI pass proves nothing about Windows. Timing is only valid when contaminated=no.",
-               unverified_reasons=(["mini content, stand-in CLI"] if a.mini else []) + ([err] if err else []) + ["Windows behaviour is not tested by a Linux CLI run"],
-               extra={"profile": a.profile, "mini": a.mini, "criteria": t.crit, "results": t.R, "calls": t.rec.calls[-60:], "calls_total": len(t.rec.calls), "harness_error": err,
-                      "sandbox": {"network_isolation": "unshare -rn" if L.unshare_ok() else "not available", "rss_kill_mb": cfg["rss_kill_mb"]},
-                      "wall_s": round(time.monotonic() - t0, 1), "contaminated": os.environ.get("LJ_BENCH_CONTAMINATED", "not-timed")})
+    status, rc = write_envelope(t, a, cfg, t0, done, err=err, final=True)
     print("T2 %s: %s" % (a.tag, status))
     return rc
 

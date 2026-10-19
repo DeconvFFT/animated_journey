@@ -112,3 +112,106 @@ $ python3 -I spikes/sp1_craft_cli/drivers/verdict.py
 wrote spikes/sp1_craft_cli/VERDICT-SP1A.md
 [exit 0]
 
+
+=== ROUND R1 FIXES (Mon 19 Oct 2026, after Fable review r1): acceptance commands re-run ===
+
+$ LJ_DF_CMD=spikes/sp1_craft_cli/tests/fake_df_900.sh bash spikes/sp1_craft_cli/run_sp1.sh --list --profile full     (nudge 6)
+Chosen profile: none
+REFUSED: Avail 900 MB minus planned 600 MB leaves 300 MB, below the 400 MB floor (filmcraft-v0.9.0, full profile).
+the full profile is refused at this Avail; lean would fit: rerun with --profile lean (or auto). The first stage needs Avail of at least 1000 MB for full and 750 MB for lean, and Avail is 900 MB.
+Nothing was started and nothing was forced.
+exit: 3
+
+$ [stand-in release server, FilmCraft tarballs with one byte flipped, fake df 2000 MB] bash spikes/sp1_craft_cli/run_sp1.sh --all --profile lean     (nudge 1)
+run_sp1.sh --all: FilmCraft 0.9.0 then EffectCraft 0.11.1 (profile lean, wait 0s per stage). df at start: Avail 2000 MB.
+== stage filmcraft-v0.9.0: preflight HEAD (no disk planned yet)
+{"name": "filmcraft-0.9.0-linux-x86_64.tar.gz", "status": 200, "bytes": 6317, "expected_bytes": 6317, "size_matches_table": true}
+== stage filmcraft-v0.9.0: profile lean, planned 350 MB (live Avail 2000 MB)
+[1/6] curl -> new empty folder <scratch>/v_stopall/filmcraft-v0.9.0
+downloaded filmcraft-0.9.0-linux-x86_64.tar.gz: 6317 bytes in 0.0 s (HTTP 200)
+[2/6] SHA-256 before anything is extracted
+REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 6642432fc9cb... differs from the release listing 7159aca74dce...; SHA-256 6642432fc9cb... differs from the independent value 7159aca74dce... (research/craft-motion.md). Nothing was extracted.
+STOP AND REPORT: the filmcraft-v0.9.0 tarball did not match its SHA-256 (or its listed size). Nothing was extracted, the bad file is deleted and nothing was forced. A mismatch is a finding, never a reason to fall back to another version.
+stage filmcraft-v0.9.0: FAIL (hash mismatch (stop and report))
+== STOP AND REPORT: the filmcraft 0.9.0 tarball was rejected by its SHA-256 (hash or size mismatch). The 0.8.0 fallback is not fetched for this and EffectCraft is not started; read the stage envelope and the REJECTED line above.
+== after the run: ledger: 1 fetches, 1 distinct assets, 0.0 MB in total (allowance 2048 MB)
+== vendor/craft holds: nothing but _keep/ (or nothing); df now Avail 2000 MB (start 2000 MB)
+exit: 1
+download ledger lines: 1 (filmcraft-0.9.0-linux-x86_64.tar.gz )
+stage envelopes: stage_filmcraft-v0.9.0.json  -> FAIL: exit 1: hash mismatch (stop and report)
+
+$ [stand-in server] run_sp1.sh --only filmcraft v0.9.0 --profile lean --t1-only     (run 1: the tarball is kept in _keep/)     (nudge 2)
+[1/6] curl -> new empty folder <scratch>/v_kc/filmcraft-v0.9.0
+downloaded filmcraft-0.9.0-linux-x86_64.tar.gz: 6317 bytes in 0.0 s (HTTP 200)
+[2/6] SHA-256 before anything is extracted
+[3/6] listing the tarball (tar -tvzf writes nothing)
+[4/6] extracting 0 MB into <scratch>/v_kc/filmcraft-v0.9.0/tree
+[5/6] tests (Craft binary by absolute path; env -i, throw-away HOME, timeout, unshare -rn when it works, 10 GB RSS watchdog)
+[6/6] cleanup (tree, home, stills, exports; the keep rule decides about the FilmCraft tarball)
+keep rule: filmcraft-0.9.0-linux-x86_64.tar.gz moved to <scratch>/v_kc/_keep/filmcraft-0.9.0-linux-x86_64.tar.gz for WP-10's T3 (Avail after cleanup 2000 MB, at least 700 MB)
+stage filmcraft-v0.9.0: PASS
+exit: 0
+
+$ [flip one byte of the kept tarball in vendor/craft/_keep/]; the same command again     (run 2)
+[1/6] a kept tarball exists in _keep/ (re-verified in the next step)
+[2/6] SHA-256 before anything is extracted
+REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 6642432fc9cb... differs from the release listing 7159aca74dce...; SHA-256 6642432fc9cb... differs from the independent value 7159aca74dce... (research/craft-motion.md). Nothin
+      the kept tarball was corrupt and has been removed from _keep/; it is downloaded again in this stage (recorded as a ledger exception)
+[1/6] curl -> new empty folder <scratch>/v_kc/filmcraft-v0.9.0
+downloaded filmcraft-0.9.0-linux-x86_64.tar.gz: 6317 bytes in 0.0 s (HTTP 200)
+[2/6] SHA-256 of the new download, before anything is extracted
+OK: filmcraft-0.9.0-linux-x86_64.tar.gz sha256 7159aca74dce71ec44784e62e98a129ba669c395d7889541399b8e3ec16e164e (also equals the independent value)
+[3/6] listing the tarball (tar -tvzf writes nothing)
+      plan: {"profile":"lean","files_total":6,"all_mb":2,"chosen_count":2,"chosen_mb":0.0,"cli_member":"filmcraft-0.9.0-linux-x86_64/bin/filmcraft-cli"}
+[4/6] extracting 0 MB into <scratch>/v_kc/filmcraft-v0.9.0/tree
+[5/6] tests (Craft binary by absolute path; env -i, throw-away HOME, timeout, unshare -rn when it works, 10 GB RSS watchdog)
+  PASS  T1.version_exit0  exit 0
+  PASS  T1.version_names_tag  filmcraft-cli 0.9.0
+  PASS  T1.commands_exit0  exit 0, 48 lines
+  PASS  T1.commands_list_not_trivial  48 lines (the first 5: cmd.00   a stand-in command | cmd.01   a stand-in command | cmd.02   a stand-in command | cmd.03   a stand-in command | cmd.04   a stand-in command)
+  PASS  T1.state_query_ok  --demo inspect sequence prints JSON: exit 0
+  PASS  T1.describe_commands_known  missing: none
+  PASS  T1.stderr_clean  patterns matched: none; GPU or CPU-renderer notices recorded, not failed: none
+  PASS  T1.every_call_exit0_or_listed  [0, 0, 0, 0, 0, 0]
+[6/6] cleanup (tree, home, stills, exports; the keep rule decides about the FilmCraft tarball)
+keep rule: filmcraft-0.9.0-linux-x86_64.tar.gz moved to <scratch>/v_kc/_keep/filmcraft-0.9.0-linux-x86_64.tar.gz for WP-10's T3 (Avail after cleanup 2000 MB, at least 700 MB)
+stage filmcraft-v0.9.0: PASS
+exit: 0
+ledger: [1,""] [2,"kept tarball rejected"] 
+
+$ the same command a third time     (run 3)
+[1/6] a kept tarball exists in _keep/ (re-verified in the next step)
+[2/6] SHA-256 before anything is extracted
+      the kept tarball passed the check: used in place (no second download)
+[3/6] listing the tarball (tar -tvzf writes nothing)
+[4/6] extracting 0 MB into <scratch>/v_kc/filmcraft-v0.9.0/tree
+[5/6] tests (Craft binary by absolute path; env -i, throw-away HOME, timeout, unshare -rn when it works, 10 GB RSS watchdog)
+[6/6] cleanup (tree, home, stills, exports; the keep rule decides about the FilmCraft tarball)
+stage filmcraft-v0.9.0: PASS
+exit: 0
+ledger: [1,""] [2,"kept tarball rejected"] 
+
+$ FORCE_BAD_ASSET=1 bash spikes/sp1_craft_cli/run_sp1.sh --only filmcraft v0.9.0     (real network; the plan's own acceptance line; nudge 3)
+== stage filmcraft-v0.9.0: preflight HEAD (no disk planned yet)
+BLOCKED: filmcraft-0.9.0-linux-x86_64.tar.gz -> HTTP 404, curl exit 22, curl said: curl: (22) The requested URL returned error: 404. Proof: build/evidence/wp07/blocked_proof.json. Fallback: spikes/sp1_craft_cli/FALLBACK.md
+exit: 3
+stage envelope left behind: stage_effectcraft-v0.11.1.json stage_filmcraft-v0.9.0_forced.json   ->  stage_filmcraft-v0.9.0_forced.json detail.forced_bad_asset = true
+
+$ python3 -I spikes/sp1_craft_cli/drivers/verdict.py --print | grep -E "^\| T[12] FilmCraft"     (nothing deleted by hand; the forced envelope is skipped)
+T1 FilmCraft: NOT RUN: no stage has produced a result yet
+T2 FilmCraft stills: NOT RUN: no stage has produced a result yet
+
+$ python3 -I spikes/sp1_craft_cli/check_guide.py     (nudge 4: guide regenerated with build_guide.py first)
+wrote spikes/sp1_craft_cli/MAKER-CRAFT-ZIPS.md (275 lines)
+PASS       G1.fences_marked_and_ascii  14 PowerShell fences; without a mode marker: none; non-ASCII characters: 0
+PASS       G2.pwsh_parses_every_fence  pwsh 7 Parser::ParseFile on 14 fences: parse errors: 0
+PASS       G3.ps51_lint_every_fence  14 fences linted (readonly fences in read-only mode); problems: none
+PASS       G4.names_sizes_hashes_match_assets  6 table rows, 6 distinct 64-hex strings; problems: none
+PASS       G5.hash_fence_rejects_one_flipped_byte  intact -> OK, one byte flipped -> MISMATCH, missing -> MISSING (pwsh on Linux, made-up files; Windows UNVERIFIED)
+PASS       G6.where_did_it_write_prints_only_generalised_paths  line 1 printed 7 lines, line 2 printed 1; not in %USERPROFILE% form: none; leaks of the made-up profile or user: none; Temp listed: none; lines with an @: none; the x@y folder shown as <redacted>: True; tree unchanged: True; exit 0/0 
+PASS       G7.flipped_tarball_rejected_before_extraction  intact tarball -> exit 0 (OK: filmcraft-0.9.0-); one byte flipped -> exit 1 (REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 69d6d); verify call at run_sp1.sh line 210 precedes the first tar -xzf at line 258: True
+PASS       G8.step2_move_prints_only_file_names  good destination: 5 of 5 moved, lines ok; failing destination: 5 'could not move' lines (names only: True), files stayed in Downloads: True, path leaks on stdout or stderr: none, stderr: '' (pwsh on Linux, made-up files; Windows UNVERIFIED)
+check_guide: 8 PASS, 0 FAIL, 0 UNVERIFIED
+
+$ bash tests/sp1/run_tests.sh --all  ->  SUMMARY all: 39 PASS, 0 FAIL, 2 BLOCKED, 1 UNVERIFIED, 0 SKIPPED   (exit 3: the two BLOCKED lines are the real stages the disk guard refused at Avail Avail 467 MB)
+$ bash tests/sp1/run_tests.sh --quick  ->  SUMMARY quick: 14 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED

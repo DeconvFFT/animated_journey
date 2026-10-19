@@ -1,8 +1,8 @@
 # Surprise Ops: Running a Surprise Tribute for Your Mother
 
-*Draft v5, 2026-10-18. Scribe draft from `research/surprise-ops.md` (researcher: Sonnet, 2026-10-18) and `CHARTER.md`, reconciled with `DECISIONS.md` (2026-10-18). Not legal advice. Citation numbers match the research notes. Anything marked TODO(research) is still open.*
+*Draft v6, 2026-10-19. Scribe draft from `research/surprise-ops.md` (researcher: Sonnet, 2026-10-18) and `CHARTER.md`, reconciled with `DECISIONS.md` (2026-10-19, after the her-world merge). Not legal advice. Citation numbers match the research notes. Anything marked TODO(research) is still open.*
 
-**Reconciled with DECISIONS.md (2026-10-18). The register wins (D-21).** The maker runs this project alone: sole producer, sole keeper of the secret, sole proxy for hard chapters ("only-me", D-03). Rings 1 and 2 (a co-keeper, proxy keys and contributors) are empty. Nobody is read the consent card, and nobody is told "a film is being made", before the premiere; relatives and friends stay sources only through low-key asks that reveal nothing. Hard chapters follow one-key-three-guards (D-04), and slips follow D-19. The one scheduled re-opening of the question is TD-L2c, Sun 3 Jan 2027 (O-31). Wherever a step below still names a co-keeper, a second key, a contributor brief, a consent-card reading or a recorded relative interview, it is a **dated placeholder that fires only if TD-L2c brought someone in** (confirmations then fall on Mon 8 Feb; D-03, W-08). It is not the default plan. Each decision in this playbook carries its register status: decided (`DECISIONS.md` Table 1), default with a decide-by date (Table 2), open for the maker (Table 3). Stale values are listed in Table 4.
+**Reconciled with DECISIONS.md (2026-10-19, after the her-world merge). The register wins (D-21).** Her world sets the calendar and the objects (D-28, D-31): she is from Bhavnagar, Gujarati-speaking and a Pushtimarg Vaishnav, so her own festivals, fasts and Diwali week are the constraints (W-10, `ROADMAP.md` section 7), the observances of other households are not, and nothing in her seva space is borrowed, photographed, touched or moved without her knowing (PR4, PR10, W-70). The maker runs this project alone: sole producer, sole keeper of the secret, sole proxy for hard chapters ("only-me", D-03). Rings 1 and 2 (a co-keeper, proxy keys and contributors) are empty. Nobody is read the consent card, and nobody is told "a film is being made", before the premiere; relatives and friends stay sources only through low-key asks that reveal nothing. Hard chapters follow one-key-three-guards (D-04), and slips follow D-19. The one scheduled re-opening of the question is TD-L2c, Sun 3 Jan 2027 (O-31). Wherever a step below still names a co-keeper, a second key, a contributor brief, a consent-card reading or a recorded relative interview, it is a **dated placeholder that fires only if TD-L2c brought someone in** (confirmations then fall on Mon 8 Feb; D-03, W-08). It is not the default plan. Each decision in this playbook carries its register status: decided (`DECISIONS.md` Table 1), default with a decide-by date (Table 2), open for the maker (Table 3). Stale values are listed in Table 4.
 
 ## Why this matters for our life journey
 
@@ -10,7 +10,7 @@ Most of the material for the film is not in her house. It is with the people who
 
 So the secrecy is part of the craft, and the charter sets its limits. Principle 4 says real memories stay real: nothing is invented, and no words go into anyone's mouth. Principle 5 says dignity comes first, even in a surprise. She cannot approve the film in advance, so anything she might not want shown stays out of the public cut until she has had her say (D-04).
 
-The deadline sets the dates. The reveal is Saturday 27 February 2027. Week 1 started on Sunday 18 October 2026. Week 15 starts on Sunday 24 January 2027, and by then all material should be back in hand. That leaves the last weeks for editing and rehearsal. Covert collection starts on Sunday 15 November 2026, the day after the L1 process lock (D-13, W-06, W-10); the hard stop for media is Saturday 30 January 2027.
+The deadline sets the dates. The reveal is Saturday 27 February 2027. Week 1 started on Sunday 18 October 2026. Week 15 starts on Sunday 24 January 2027, and by then all material should be back in hand. That leaves the last weeks for editing and rehearsal. Covert collection starts on Sunday 15 November 2026, the day after P-LOCK, the process lock (D-13, W-06, W-10); the hard stop for media is Saturday 30 January 2027.
 
 This playbook is a learning path. Exercises 1 and 4 come before the pilot tape. Exercises 2, 3, 5 and 6 come before the first real album-and-hands session (from Sun 15 Nov). Decision 0 is settled by the register (D-13, W-10); then follow the steps in order. The ArtCraft apps are not covered in these notes; the craft-visual and craft-motion tracks cover them. Their place in covert scanning and the reveal is settled: a Craft app may touch only a copy in a `work\` folder, never the only copy, and never anything in premiere week (D-12); the scan tool is whichever wins the ten-print pilot (W-27).
 
@@ -22,7 +22,7 @@ This playbook is a learning path. Exercises 1 and 4 come before the pilot tape. 
 4. **Ask her directly only in truthful windows.** There are three. You can label and date old photos with her. You can hold a real family-history conversation that also covers her parents and grandparents. You can hold an announced family-stories recording at a gathering, where everyone, her included, can see the recorder [9][10][11]. Everything else comes from other people and from objects.
 5. **Get a spoken yes, at the time, wherever a person is recorded.** Before the premiere nobody is read the consent card (card 4a; D-03, W-49). The only planned recordings are the album-and-hands sessions, filmed on the hands and pages under a true sentence with a spoken "fine" on the file, and an announced Card E evening. Relatives' voices arrive in the April version, after release 4d (D-06, W-48). The rule for recording her is: no recording of her without her knowledge and a spoken yes. The only planned cases are an announced recorder at a family-stories evening (Card E) and a wide shot of the room at the reveal, if she agrees in the quiet word. Decision 10 settles this as (b), and the register records it as D-17 (O-17 asks the maker to confirm it by Sun 1 Nov); write the choice into card 4a.
 6. **The reveal is her first consent point, and she can change anything after.** Give her the review options: delete, restrict, redact, add clarifications, correct mistakes, or keep material closed until a date she picks [8]. Her decisions override ours.
-7. **Default OUT.** If we are unsure about a hard chapter, it stays out of the public cut (D-04). You can add something later. You cannot un-show it (our inference). Anything HOLD or PRIVATE is out of the public cut, full stop; the her-turn conversation (Sat 6 Mar 2027) is the only way back in.
+7. **Default OUT.** If we are unsure about a hard chapter, it stays out of the public cut (D-04). You can add something later. You cannot un-show it (our inference). Anything HOLD or PRIVATE is out of the public cut, full stop; the her-turn conversation (Sun 7 Mar 2027 after about 14:00, moved off Maha Shivaratri, W-48) is the only way back in.
 8. **Honest and warm, not raw.** Describe a hard person by trait, not by one incident. Follow each honest sentence with something kind [56]. Hint rather than detail. Do not invent a sunny ending. Use no synthetic voices [63]. Use no AI animation of any real face, living or dead (D-16), and no animated or voiced dead in the public cut (W-46) [64].
 
 **Philosophy note.** Philosophers disagree on whether a lie to hide a surprise is acceptable. A search summary of Derek Parfit's 2002 Tanner lecture reports that he treats such a lie as innocent when the person would consent if asked [76]. We could not open the lecture (404), so we do not rely on it. A Leiden doctoral thesis separates surprise, as a reaction to the unexpected, from whether it later turns out good or bad [75]. The practical test is plain: would she consent? Only the maker can answer that, from their own knowledge (Step 1, O-11); there is no insider under only-me.
@@ -33,9 +33,9 @@ Work in order. Each step ends with a gate. Do not start a step until the gate be
 
 ### Decision 0: what starts now, and what waits for the pipeline (settled: D-13, W-06, W-10)
 
-The maker has decided that material gathering waits until the pipeline is locked (D-13). "Locked" means the L1 process lock on Saturday 14 November 2026, tested on synthetic material; covert collection starts the next day, Sunday 15 November (W-06, W-10). Some work cannot wait. The lab dates are fixed, and the secrecy set-up (Steps 2 to 4) has to exist before anyone is asked (our inference). Until 15 November every exercise uses the maker's own material or stand-ins.
+The maker has decided that material gathering waits until the pipeline is locked (D-13). "Locked" means P-LOCK, the process lock, on Saturday 14 November 2026, tested on synthetic material; covert collection starts the next day, Sunday 15 November (W-06, W-10). Some work cannot wait. The lab dates are fixed, and the secrecy set-up (Steps 2 to 4) has to exist before anyone is asked (our inference). Until 15 November every exercise uses the maker's own material or stand-ins.
 
-| Cannot wait (start in week 1) | Waits for the L1 lock (starts Sun 15 Nov 2026) |
+| Cannot wait (start in week 1) | Waits for P-LOCK (starts Sun 15 Nov 2026) |
 |---|---|
 | Facts check from the maker's own knowledge (Step 1) | Album-and-hands sessions (Step 6; they replace "interviews proper", W-49) |
 | Only-me recorded, code name and project email (Steps 2 and 3) | Borrowing and scanning in her house (Step 7) |
@@ -52,7 +52,7 @@ Contributor wave 1 is void under only-me (see the placeholder note in Templates)
 - Mid-fast, 2 to 3 weeks: ship-by Fri 4 December 2026.
 - Fast, 1 to 2 weeks (Pro8mm scheduled at the paid price, 2K tier): ship-by Fri 11 December 2026. Fri 18 December only with a written return date from the lab. After Fri 18 December nothing ships.
 
-**What waiting does to the sessions.** The notes' plan started interviews in week 2 (Oct 25 to 31) and ran them to week 8 (research notes, Table C). That plan is superseded. Covert collection starts Sun 15 Nov, after L1 (D-13, W-10), and the sessions are album-and-hands conversations, not interviews (W-49). Outgoing asks freeze Sat 19 Dec; all media are back Sun 24 Jan 2027 (week 15); the hard stop is Sat 30 Jan (W-10). The holiday rules take some of those weeks.
+**What waiting does to the sessions.** The notes' plan started interviews in week 2 (Oct 25 to 31) and ran them to week 8 (research notes, Table C). That plan is superseded. Covert collection starts Sun 15 Nov, after P-LOCK (D-13, W-10), and the sessions are album-and-hands conversations, not interviews (W-49). Outgoing asks freeze Sat 19 Dec; all media are back Sun 24 Jan 2027 (week 15); the hard stop is Sat 30 Jan (W-10). Her calendar takes some of those weeks: her Diwali week (Thu 5 – Sat 14 Nov) is all pre-P-LOCK, and weeks 10 and 11 carry no production targets (W-10).
 
 **Steps 6 and 7 start Sun 15 Nov.** Step 8 (the pilot and the lab terms) stays in weeks 1 to 2. The exercise order is in the Learn-by-doing section.
 
@@ -62,8 +62,8 @@ Gate: none for the maker to pass; the columns are fixed by the register. The one
 
 1. Answer from your own knowledge, not by asking her or anyone else: does she like surprises, speeches, or being filmed (O-11)? There is no insider under only-me. If you do not know, plan the two-step reveal (private first, then the room). Reports of people who dislike surprises are opinion and anecdote, not research [81].
 2. Write down your country and region, and those of her and each relative you will ask. Recording law, holidays, labs and phone services depend on them. UK: a participant's own recording is unlikely to be unlawful interception under IPA 2016 s.3/s.4 (the notes' reading, inference) [117][118]; Germany: StGB §201 makes an unauthorised recording of private speech an offence with no participant exception, so a spoken yes is mandatory [119]; EU: GDPR Art. 2(2)(c) household exemption is likely but untested [120]; other countries and non-US cross-border calls UNVERIFIED (TODO(research)).
-3. Decide whether 27 February 2027 is her birthday, a named milestone, or a date chosen for another reason. The date also clashes with calendars. One projection puts Ramadan starting about 8 February 2027 [72], and Lunar New Year falls on Saturday 6 February [73]. Check any clash yourself, with the family profile (O-10).
-4. Ask which observances the family keeps between November and February, such as Hanukkah, Christmas, Thanksgiving, Lunar New Year or Ramadan. Each one you keep gets the holiday rules on its own dates, and a row in the key dates. Hanukkah 2026, if kept, runs from sundown on Fri 4 December to Sat 12 December 2026 (see Holiday rules).
+3. Decide whether 27 February 2027 is her birthday, a named milestone, or a date chosen for another reason. The date also sits in her calendar: Sat 27 Feb is Shri Nathji ko Patotsav in the sampradaya's tippani (UNVERIFIED at the Board), Maha vad Satam to 21:54 and then Atham with the monthly Krishna Janmashtami fast on Drik's day page, and a Vinchudo day (W-12, O-57, O-75); Wed 24 Feb is Dwijapriya Sankashti (W-52). Check any clash yourself, from the family profile (O-10) and the printed panchang the house follows (O-56).
+4. Answer, from your own knowledge at the sitting on Sun 25 Oct, which observances her house keeps between November and February (`kept_by_her`, O-39, O-56): her Diwali week (Thu 5 – Sat 14 Nov), Tulsi Vivah (Sat 21 Nov), Dhanurmas (Wed 16 Dec – Thu 14 Jan), Uttarayan (Thu 14 and Fri 15 Jan), Vasant Panchami (Thu 11 Feb) and the monthly fasts. Each one she keeps gets the holiday rules on its own dates, and a row in the key dates (`ROADMAP.md` section 7); a festival becomes a constraint only when she keeps it (W-77, O-39).
 
 Gate: a one-page note of what she would and would not want, with your own knowledge named as the source for each line and every unknown marked unknown.
 
@@ -92,6 +92,7 @@ Run the Mum-test: open each shared device and account the way she would, and loo
 4. **Smart speakers.** When a child asked for recent orders, an Alexa+ device read a parent's recent Amazon orders aloud, including birthday gifts [29]. Turn off personal results on shared devices [30]. Turn off item titles in shopping notifications, and disable voice purchasing [29].
 5. **Your Windows PC.** Use a separate Windows account for the project. Keep project files on an external drive, in a folder that OneDrive does not back up. Check that Manage backup is off for Desktop, Documents and Pictures [25]. Set "Hide content when notifications are on lock screen" per app, and use Do Not Disturb [24]. Windows Recall exists only on Copilot+ PCs and is opt-in per user [23].
 6. **Encryption.** Windows Home lacks BitLocker Drive Encryption and BitLocker To Go [26], but has Device Encryption for the OS and fixed drives, turned on automatically on first sign-in with a Microsoft account and not for a local account [112]. Device Encryption does not cover USB drives [110], so the external project drive is the real gap, not the whole PC. A separate project user created as a local account does not get Device Encryption by itself. Device Encryption is theft protection, not family-privacy protection [110] (inference). For the external drive, the notes name VeraCrypt 1.26.29, which is free [93][95]. Decided (Fable advisor, round 2): a file container, not a whole-device volume. A standard user can mount it, an accidental format prompt is avoided (that prompt behaviour is (M), general knowledge, UNVERIFIED here), and the one visible large file is named with the code name. An administrator installs VeraCrypt and creates the container; the project account mounts and dismounts it [97][98]. A mounted volume is visible to every logged-on user, so dismount before you leave the desk or switch users (inference from [98]). The notes' rule: use VeraCrypt only for the external drive, never the Windows boot drive. Before real material goes in, test mount, copy, dismount and unplug once (inference).
+7. **Project phones.** Two phones, the maker's own old ones if any, else second-hand: no accounts, backup off, airplane mode, fixtures only, WhatsApp absent (W-26). The chat-recompression test (`playbooks/mobile-delivery.md` Exercise 8) runs only with fixtures on two separate numbers added for the test and removed afterwards, and only if the maker agrees (O-30). Her own phone is never looked at or tested before the reveal (O-54).
 
 Gate: the Mum-test finds no project word on any shared screen, and each fix is written down.
 
@@ -120,7 +121,7 @@ Gate: each session has a log line and a spoken "fine" on the file; nothing untru
 
 ### Step 7. Borrow and digitise without tipping her off (from Sun 15 Nov, to about week 13)
 
-1. Choose items she will not miss. Look yourself; do not ask her. Items in weekly use are photographed in place or left alone.
+1. Choose items she will not miss. Look yourself; do not ask her. Items in weekly use are photographed in place or left alone. Nothing in her seva space is ever chosen: the home mandir and its cloth, any vastra, jhari, thali or banta, and any picture of hers that may be in seva (a picture can be pusht and the film cannot tell by looking) are not borrowed, photographed, touched or moved without her knowing (PR4, PR10, W-70); a wall or room photograph that shows one is the maker's proxy call and a G5 flag (O-48). No temple or haveli office is ever asked anything: asking is telling (D-02, D-03).
 2. Pick a window when she is reliably out, with at least twice as long as you need. Note the window (time out, expected back) in the borrow log; there is nobody to tell under only-me.
 3. Photograph as found: the shelf or drawer, each album's cover and spine, and every spread before any page moves. This set is your order record and your first scan.
 4. Do not mark originals. Keep loose items in a labelled envelope outside the album, and keep a paper list.
@@ -140,7 +141,7 @@ Gate: every item has a log line, and everything is back or logged as out.
 3. Ask every lab in writing for: turnaround in weeks to the files and to the return of the originals, holiday closures from November to January, handling of mould and sticky shed, return shipping, and what happens to film or tapes after completion (the email is in Templates, under Lab email and log). Pro8mm holds film for 30 days after completion, then recycles it unless storage is bought [46].
 4. Compare quotes. Most price pages are competitor-authored or undated, so treat them as rough. Examples: Legacy Digital at $19.95 on special or $28.50 regular per two-hour tape [44]; Perfect Image Camera at $28.99 for VHS and $22.99 for MiniDV [45]; Capture at $19.99, $29.99 and $39.99 for SD, FHD and 4K [43]. Capture ranks itself first, so weigh its ranking with care [43]. Legacybox prices by kit, not by tape: about $31 to $35 per item by kit size, where an item is a tape, a film reel or a set of 25 photos [155]. Pro8mm's film scans have four tiers, $0.62, $1.00, $1.25 and $2.00, and the page does not state the unit; per foot is the only reading that gives sensible numbers (our inference) [143]. Its rush option (1 to 3 days) is $295 and its priority option (about 5 business days) is $165, each per film type, on a turnaround page effective 1 November 2025; the product page's older FAQ text gives a lower rush price, so use the dated page [143][144].
 5. Do not mail anything she would miss. A mail-in lab may keep an item away from her home for 4 to 10 weeks. Under only-me, tapes leave the house only when she will not miss them and the as-found frame is photographed first; which tapes, if any, ship in the slow batch on Fri 13 Nov is decided in week 2 (W-11, O-18).
-6. No lab states a closure window between Thanksgiving and New Year on the pages the researcher could read. Legacybox says it cannot make delivery guarantees for Standard digitising in peak season [153]. iMemories' holiday page lists order-by dates (21 November and 12 December) but states no year and carries leftover text, so treat them as unconfirmed [151]. TODO(research): ask each lab in writing (question 2 of the Exercise 4 email).
+6. No lab states a closure window between late November and early January on the pages the researcher could read. Legacybox says it cannot make delivery guarantees for Standard digitising in peak season [153]. iMemories' holiday page lists order-by dates (21 November and 12 December) but states no year and carries leftover text, so treat them as unconfirmed [151]. TODO(research): ask each lab in writing (question 2 of the Exercise 4 email).
 
 Gate: each lab's written dates and terms are in the project email, and the ship-by date is checked against them.
 
@@ -159,26 +160,28 @@ Gate: each candidate chapter has two dated decisions 72 hours apart, Fable's fla
 ### Step 10. Build the reveal (weeks 16 to 19)
 
 1. Make one picture, in two releases. The public cut runs 9 or 12 minutes (W-01, W-02). The April version (Sat 24 Apr 2027) is the same locked picture with relatives' voices added after they sign release 4d, plus her own coda recorded only with her spoken yes (D-06). There is no separate 20-to-30-minute private cut. Tribute videos in practitioner guidance cluster at 3 to 8 minutes [67][68]. Those are funeral-industry sources, and the notes found no study of reveal length. Our figures are inference.
-2. Burn the captions in. Mix speech forward, with no loud music sting. Test the captions and the sound with a viewer over 65 at the stranger sessions (W-43), and with the venue's own room on Mon 22 Feb, because about one in three US adults aged 65 to 74 has hearing loss [66].
+2. Burn the captions in, in the room's language; the cards are in Gujarati (W-35, W-75), and the phone file carries its own caption setting (W-18). Mix speech forward, with no loud music sting. Test the captions and the sound with a viewer over 65 at the stranger sessions (W-43), and with the venue's own room on Mon 22 Feb, because about one in three US adults aged 65 to 74 has hearing loss [66].
 3. The room is a mostly public gathering, treated as a public screening (D-08). The run sheet and tiers follow TD-5, the door policy (lean invite-only; O-20, W-54), and the venue is confirmed in writing by Sun 15 Nov (O-21, W-12). See Decision 12.
-4. Plan the quiet word, 20 minutes before the film (W-52), in a separate room, spoken by the maker (script in Templates). Offer her the choices: where to sit, who sits beside her, whether to watch with the room or alone first, a stop signal, and whether the room may be filmed, with no close-ups unless she says yes.
+4. Plan the quiet word, 20 minutes before the film (W-52), in a separate room, spoken by the maker (script in Templates). Offer her the choices: where to sit, who sits beside her, whether to watch with the room or alone first, a stop signal, whether the room may be filmed (a wide shot only, no close-ups unless she says yes), and, if she fasts that night, the food (the maker knows beforehand whether she does: O-57, W-52).
 5. Film the room and the screen, not her. Give her the footage, and let her delete any of it [42].
-6. Rehearse on the real playback chain on Monday 22 February (G-REHEARSE, W-52). Hold the room brief on Wednesday 24 February (to the venue: AV access times only, no content; W-52). Do a cold start from a powered-off laptop on Thursday 25 February, and again on Friday 26 February.
-7. Prepare the fallback ladder: the laptop; a second laptop with the same file; a USB stick straight to the TV; a phone by cable or cast; a three-minute audio or still version; and, last, a postponed private evening, said plainly. Keep two USB sticks in different pockets.
+6. Rehearse on the real playback chain on Monday 22 February (G-REHEARSE, W-52). Hold the room brief on Wednesday 24 February (to the venue: AV access times only, no content; W-52). Do a cold start from a powered-off laptop on Thursday 25 February, and again on Friday 26 February, and test the phone-by-cable rung with a cable and adapter for her phone class on a project phone and the spare laptop (W-52).
+7. Prepare the fallback ladder on a card (W-52): the laptop; a second laptop with the same file; a USB stick straight to the TV; PH1 on a phone by cable; the three-minute sound-and-stills version; and, last, a postponed private evening, said plainly. Keep two USB sticks in different pockets (FAT32 if under 4 GiB, else exFAT), PH1 on both beside the venue file.
 
 Gate: the Mon 22 Feb venue run done by the maker alone with the test clip only (the venue operator is told a truthful minimum, D-07), and two cold starts passed. No trusted rehearsal viewer is used under only-me; the stranger sessions S1 and S2 (W-43) do that job.
 
 ### Step 11. The reveal (Saturday 27 February 2027)
 
-1. Four hours before the start, set up: test the sound, turn captions on, turn on Do Not Disturb, hide notifications, and close mail and chat [24].
+Sat 27 Feb is also, in her calendar, Shri Nathji ko Patotsav and a Vinchudo day, and may be her fasting night (W-12): the evening starts after her evening lamp, and after the haveli if she goes (O-75); if she keeps the fast, the food is hers to decline and the maker knows it before the quiet word (O-57); the film borrows nothing of the day and carries no card about it. The date stays (D-20).
+
+1. Four hours before the start, set up: test the sound with the test clip first, turn captions on, turn on Do Not Disturb, hide notifications, and close mail and chat [24]. Put the real object under the screen: the object clock, never a seva article (the Pushtimarg T4 list) and never the hichko, which stays home (W-32, W-52, W-67).
 2. Guests arrive by a route she will not see. Phones are silent. Older relatives sit near the speakers with a clear sight line.
-3. A distractor brings her by a plan that is true. If she asks who will be there, do not lie.
+3. The maker brings her by a plan that is true (O-32). If she asks who will be there, do not lie.
 4. The quiet word happens 20 minutes before the film. Then she chooses her seat and her companion.
 5. Open with a welcome of 30 to 60 seconds, said by the maker: "This is a gift for [NAME]. There is nothing to say and nothing to do." (Under only-me the old "from all of us" line is dropped.) Then play the public cut.
 6. At the end, hold silence for 20 seconds. Bring the lights up slowly. Do not cue applause. Say: "No speech. There's food."
 7. Give a pause of 10 to 15 minutes, with food, soft music and her companion beside her. No toasts, no questions about the film, and she may step out.
 8. Toasts only if she signals she is ready. Nobody has agreed in advance to speak under only-me, so nobody is called on.
-9. Later, in a quiet corner, hand her the invitation card and, if she wants it, the keepsake (Decision 15): "This is yours. No rush." The April version follows (D-06).
+9. Later, in a quiet corner, hand her the invitation card and, if she wants it, offer the keepsake (Decision 15): "This is yours. No rush." The keepsake is PH1 on her phone by cable, done on reveal weekend with her yes and her phone in her hand, K1 first (W-73, W-74); nothing goes to relatives yet. The April version follows (D-06).
 10. The next day, send a short text. Ask nothing about the film.
 
 Gate: she is not asked to speak, perform gratitude, or say what she thought.
@@ -186,15 +189,15 @@ Gate: she is not asked to speak, perform gratitude, or say what she thought.
 ### Step 12. After the reveal (from 28 February 2027)
 
 1. Days 0 to 1: send a short thank-you. Ask nothing about the film.
-2. Days 2 to 5: send a card, the keepsake and the invitation: "This is version 1. It is yours to correct and to add to." The release letters 4d to 4g go to relatives who appear from Sun 28 Feb to Sat 6 Mar (W-48).
-3. About day 7 (Saturday 6 March 2027): hold a recorded "her turn" conversation of about 45 minutes, in a place and at a time she chooses, opened with the coverage map's darkest stretch; her release is offered then with no deadline. Record only with her yes. Use five to eight prompts from Templates. This conversation is the only way a HOLD or PRIVATE item can come back in (D-04).
+2. Days 2 to 5: send a card and the invitation: "This is version 1. It is yours to correct and to add to." The keepsake is already on her phone if she said yes on reveal weekend (W-74). The release letters 4d to 4g go to relatives who appear from Sun 28 Feb to Sat 6 Mar (W-48).
+3. About day 8 (Sunday 7 March 2027 after about 14:00, once Maha Shivaratri's Chaturdashi has ended at 13:46 and her parana is done; else Monday 8 March; the morning of Saturday 6 March only if she does not fast; W-48, O-31): hold a recorded "her turn" conversation of about 45 minutes, in a place and at a time she chooses, opened with the coverage map's darkest stretch; her release is offered then with no deadline, and the backup question (K1) is asked again. Record only with her yes. Use five to eight prompts from Templates. This conversation is the only way a HOLD or PRIVATE item can come back in (D-04).
 4. Keep a corrections ledger: what the film says, what she says, the action, who did it, and the status.
-5. Response recordings, Sun 7 Mar to Sat 10 Apr: relatives' voices, recorded in response to the film after they sign release 4d (D-06, W-48).
+5. Response recordings, from the day after the her-turn conversation to Sat 10 Apr: relatives' voices, recorded in response to the film after they sign release 4d (D-06, W-48).
 6. Day 30 (Monday 29 March 2027): close the consent ledger. Every row is kept, changed, removed, or closed until a date, in her words.
 7. Mix the April version Sun 11 to Fri 23 Apr and deliver it Saturday 24 April 2027 (D-06, W-48): the same locked picture with relatives' voices, plus her own coda recorded only with her spoken yes. Keep the premiere cut unchanged as a record.
 8. Make two copies on different media, and refresh them at least every five years [70]. Write "next copies due 2032-02" on each drive label.
-9. Use static QR codes, not subscription ones [71]. Treat a private web link as a convenience copy, not the archive. Of the pages that existed in 2013, 38% were gone by October 2023 [69].
-10. Relatives who appear receive the premiere cut only after she agrees, with a thank-you note. No cinema, festival or online link until the consent ledger closes and the rights log is green (W-48).
+9. Before the ledger closes there is no QR code and no live link (W-52, W-74). If a QR code is ever used, make it static, not a subscription one [71]. Treat any web page as a convenience copy, not the archive. Of the pages that existed in 2013, 38% were gone by October 2023 [69].
+10. Relatives who appear receive the premiere cut only after she agrees, with a thank-you note: after the ledger closes (Mon 29 Mar) and the rights log is green, as PH2 (or PH1 where storage allows) in a WhatsApp document, once, with the maker's yes per relative and each send logged (W-74). No cinema, festival or online link until the consent ledger closes and the rights log is green (W-48).
 
 ### If you slip (any time; D-19)
 
@@ -241,7 +244,7 @@ Exercises 1 and 4 come before the pilot tape (Step 8, Fri 30 October 2026). Exer
 ### Exercise 5. Cold-start a reveal test (about 1 hour)
 
 - **Goal:** prove the playback chain works from a powered-off laptop, with captions, sound and notifications set.
-- **Steps:** (1) Use a three-minute test file, not her film. (2) Power the laptop off. (3) Connect the screen cable, turn on captions, turn on Do Not Disturb, and hide notifications on the lock screen [24]. (4) Start the file from cold, and time the first frame. (5) Check the sound at room level with a listener who is hard of hearing, if possible [66]. (6) Walk the fallback ladder: second laptop, USB stick, audio-only version.
+- **Steps:** (1) Use a three-minute test file, not her film. (2) Power the laptop off. (3) Connect the screen cable, turn on captions, turn on Do Not Disturb, and hide notifications on the lock screen [24]. (4) Start the file from cold, and time the first frame. (5) Check the sound at room level with a listener who is hard of hearing, if possible [66]. (6) Walk the fallback ladder: second laptop, USB stick, PH1 on a project phone by cable, the three-minute sound-and-stills version.
 - **Time estimate:** about 1 hour.
 - **What good looks like:** the first frame appears without fiddling, captions are readable, the sound is clear to the listener, and the fallback order is written on a card.
 
@@ -262,43 +265,43 @@ Exercises 1 and 4 come before the pilot tape (Step 8, Fri 30 October 2026). Exer
 | Fri 23 Oct 2026 | Exercise 4: the two lab emails sent; the pilot depends on at least one reply |
 | Fri 30 Oct 2026 | Pilot tape (video or audio) ships to a mid or fast lab (W-11) |
 | Sun 1 Nov 2026 | Settings card signed: 24 fps (W-14, W-16). Sealed-envelope contact named (O-16). The mode is a charter fact; only-me was recorded 2026-10-18; the one re-open point is TD-L2c, Sun 3 Jan (D-03) |
-| Fri 6 Nov 2026 | Venue survey (FQ12 neutral ask) sent; its written answer is due Sun 15 Nov and decides file or DCP (W-17) |
+| Thu 5 to Sat 14 Nov 2026 | Her Diwali week, Vagh Baras to Labh Pancham (Drik her town): all pre-P-LOCK. Be present, listen, photograph the object clock in Diwali light by sight on an unsynced phone, never record her (D-17), no asks of any kind, no new speaker, tablet or shared account as a gift (W-10). Diwali, Lakshmi Pujan and Chopda Pujan are Sun 8; Annakut Mon 9 or Tue 10 and Bestu Varas Tue 10 are the house's answer (O-56) |
+| Fri 6 Nov 2026 | Venue survey (FQ12 neutral ask) sent (send it Thu 5 Nov, before her Diwali week fills); its written answer is due Sun 15 Nov and decides file or DCP (W-17) |
 | Fri 13 Nov 2026 | Ship-by for slow-lab (4-to-6-week) items, including originals returned by iMemories [152] and 4-to-6-week audio labs |
-| Sat 14 Nov 2026 | L1 process lock (W-06) |
+| Sat 14 Nov 2026 | P-LOCK, the process lock (W-06); Labh Pancham in her calendar: the work is the maker's own, send nothing, no gathering that evening |
 | Sun 15 Nov 2026 | G-READY; covert collection starts (D-13, W-10); venue confirmed in writing (W-12) |
-| Thu 26 Nov 2026 | US Thanksgiving: pause extraction that week, if you are in the US |
+| Sat 21 Nov 2026 | Tulsi Vivah (Prabodhini Ekadashi, Vaishnava vrat): the first album-and-hands occasion if the family gathers and keeps it (W-49) |
 | Fri 27 Nov 2026 | Ship-by for mid-lab (3-to-4-week) items |
-| Fri 4 Dec 2026 | Ship-by for 2-to-3-week lab items |
-| Fri 4 Dec 2026 (sundown) to Sat 12 Dec 2026 | Hanukkah, if the family keeps it (see Holiday rules) [169] |
-| Fri 11 Dec 2026 | Soft deadline for low-key asks, which may move a week for a family that keeps Hanukkah (W-10); fast-lab ship-by for 1-to-2-week items and for Pro8mm film at the scheduled price [144] |
+| Fri 4 Dec 2026 | Ship-by for 2-to-3-week lab items; the one-hour rights consult booked by this date (W-55) |
+| Fri 11 Dec 2026 | Soft deadline for low-key asks (W-10); fast-lab ship-by for 1-to-2-week items and for Pro8mm film at the scheduled price [144] |
+| Wed 16 Dec 2026 to Thu 14 Jan 2027 | Dhanurmas: a dawn-kitchen capture season only if hers (O-80, W-10) |
 | Fri 18 Dec 2026 | Fast-lab ship-by only with a written return date from the lab; nothing ships after this |
 | Sat 19 Dec 2026 | Outgoing asks freeze (W-10) |
-| Fri 25 Dec 2026 | Christmas (M) |
-| Fri 1 Jan 2027 | New Year (M) |
+| Mon 21 Dec 2026 to Sun 3 Jan 2027 | Weeks 10 and 11: no production targets; listen; the film's only location shoot, the maker alone in her empty house on a device that does not sync (W-10) |
+| Fri 1 Jan 2027 | Shri Gusainji Prakatyotsav (T): a listening day if the house keeps it (W-49) |
 | Sun 3 Jan 2027 | TD-L2c: the one scheduled re-opening of the only-me question (O-31); cover story and host chosen (O-32) |
-| Fri 15 Jan 2027 | Hard deadline for low-key asks (W-10) |
+| Thu 14 and Fri 15 Jan 2027 | Uttarayan: the hard deadline for low-key asks sits here; if she keeps it (O-56) the last send is Tue 12 Jan and answers run to Tue 19 Jan (W-10); a sound-only kite capture at first light, no session |
 | Sun 24 Jan 2027 | Week 15 starts: all media back (the gate) |
 | Sat 30 Jan 2027 | Hard stop for media |
 | Sun 31 Jan 2027 | Rough public cut (G-DRAFT); the maker's cold read (D-03) |
 | Fri 5 Feb 2027 | Hard-chapter decisions final: both of the maker's 72-hour decisions recorded (O-35) |
-| Sat 6 Feb 2027 | Picture lock (G-LOCK, W-08); Lunar New Year [73] (lock Fri 5 Feb if the household observes it) |
+| Sat 6 Feb 2027 | Picture lock (G-LOCK, W-08); Maha vad Amas in her calendar (Drik Delhi prints Mauni Amavasya): lock Fri 5 Feb only if she keeps it and the PC work needs the house (O-45) |
 | Sun 7 Feb 2027 | The maker's cold read (48 hours unopened, Fable's flags first) of the locked public cut (D-03) |
-| About Mon 8 Feb 2027 | Ramadan may begin, on one projection [72] |
 | Mon 8 Feb 2027 | Placeholder, void under only-me: contributors confirm their clip ("it is in; any change?"), only if TD-L2c brought someone in (D-03, W-08) |
-| Wed 10 Feb 2027 | Ash Wednesday (M; TODO(research): verify) |
+| Thu 11 Feb 2027 | Vasant Panchami: album-and-hands only after the morning puja; S2 sits around it (W-49, W-43); the Vasant register is the film's season (W-38) |
 | Sat 13 Feb 2027 | G-MIX: the latest acceptable lock, not an option to pick (W-08) |
 | Sun 14 Feb 2027 | The maker's cold read (48 hours unopened, Fable's flags first) of the private cut (D-03) |
 | Fri 19 Feb 2027 | Withdrawals close, executed as removals (understudy swaps), never a re-edit (W-08, W-47). Picture lock was Sat 6 Feb |
 | Sat 20 Feb 2027 | G-MASTER (W-53) |
 | Mon 22 Feb 2027 | G-REHEARSE: full run on the real playback chain at the venue (W-52) |
 | Tue 23 Feb 2027 | The AMB stem's last 20 seconds may be re-rendered with the venue's room tone (W-20) |
-| Wed 24 Feb 2027 | Room brief to guests; to the venue, AV access times only (W-52) |
+| Wed 24 Feb 2027 | Room brief to guests; to the venue, AV access times only (W-52). Dwijapriya Sankashti: no invitation call to the household that evening if she fasts to moonrise |
 | Thu 25 Feb 2027 | Cold start on the real device and cable |
 | Fri 26 Feb 2027 | Second cold start; pack list; print the run sheet |
-| Sat 27 Feb 2027 | Reveal |
+| Sat 27 Feb 2027 | Reveal (Shri Nathji ko Patotsav; a Vinchudo day; possibly her fasting night: W-12) |
 | Sun 28 Feb to Sat 6 Mar 2027 | Releases 4d-4g sent (W-48) |
-| Sat 6 Mar 2027 | Her turn conversation (about day 7) |
-| Sun 7 Mar to Sat 10 Apr 2027 | Response recordings (W-48, D-06) |
+| Sun 7 Mar 2027 after about 14:00 (else Mon 8 Mar; Sat 6 Mar morning only if she does not fast) | Her turn conversation (about day 8; W-48). Maha Shivaratri's Chaturdashi runs 12:03 Sat 6 Mar to 13:46 Sun 7 Mar, and Shiva is hers |
+| From the day after the her-turn conversation to Sat 10 Apr 2027 | Response recordings (W-48, D-06) |
 | Mon 29 Mar 2027 | Consent ledger closed (about day 30) |
 | Sun 11 to Fri 23 Apr 2027 | April version mixed |
 | Sat 24 Apr 2027 | April version delivered (about 8 weeks) (D-06) |
@@ -345,7 +348,7 @@ Under only-me nobody is read this card before the premiere (D-03, W-49). It is k
 
 > "[MAKER] is making a private film and keepsake about [NAME]'s life as a surprise gift, for [date]. May I use what you say, and your recorded voice, in two places: a film that family will watch together, and a longer private version given to [NAME]? You can skip any question, ask me to stop, and ask me afterwards to cut anything. I will keep the recording private, on storage I control, and will not share it more widely without asking you again. I may use software, including AI tools [that run on my own computer / in a private online workspace: edit to match what really happens], to type it up and tidy the sound, but I will not change what you said or make a synthetic copy of your voice. Is that all right with you?"
 
-Do not read this card until the bracketed line is true. Decision 9 is about exactly this. The card follows the Oral History Association's four points: consent before recording, goals and risks, how the material may be used, and a chance to review [8].
+Do not read this card until the bracketed line is true. Decision 9 is about exactly this. For release 4d the card also carries the copy line of W-48: "[ ] a copy of the film on my relatives' phones, sent by WhatsApp or similar; I understand a forwarded copy cannot be recalled." The card follows the Oral History Association's four points: consent before recording, goals and risks, how the material may be used, and a chance to review [8].
 
 One-line version for a text or voice message (placeholder, same conditions): "May I use your recorded voice in a private film and keepsake for [NAME], shown to family and given to her, with you able to skip questions, stop, or have anything taken out afterwards?"
 
@@ -385,7 +388,7 @@ The full sets are in the notes (T1). This wording is the researcher's, not a pub
 >
 > I am making a film and keepsake about [NAME]'s life as a surprise gift for [date], and I would love a small piece of your memory in it.
 >
-> **By when:** please send it by **Friday 15 January 2027**. Earlier is lovely. If you cannot, nothing is lost.
+> **By when:** please send it by **[Friday 15 January 2027, or Tuesday 12 January if she keeps Uttarayan: W-10]**. Earlier is lovely. If you cannot, nothing is lost.
 >
 > **What I am asking for (pick the easiest):**
 > 1. *A voice letter.* Open your phone's voice recorder (iPhone: Voice Memos; Android: Recorder or Voice Recorder). Put the phone on a cushion in a quiet room, about a hand's length from your mouth. Say your name and today's date. Then answer: "[ONE PROMPT]". Two to five minutes is plenty.
@@ -435,7 +438,7 @@ Test for any card, from the notes (inference), all six must hold: real (you do t
 
 **Costs, from the notes:** free fixes are previews off, Do Not Disturb, camera sharing off, no Family-calendar items, speaker settings, a separate Windows user, and the project email. A separate account is needed for the project email, the chat identity and any project cloud. A separate device or place is needed for the external drive, the scanning phone and a delivery address she does not see.
 
-### Holiday rules (weeks 10 and 11, Thanksgiving week, and any observance this family keeps (ask in Step 1))
+### Holiday rules (weeks 10 and 11, her Diwali week, and any observance her house keeps (answer at the sitting, Step 1))
 
 1. The room is not a studio. Do not extract, interview or scan in the middle of a meal. Listen, notice who is in the room, and note who might tell stories later.
 2. Quiet one-to-ones with the oldest relatives are the exception: a walk or a cup of tea, ten minutes, only if natural, as an album-and-hands conversation under the true sentence (W-49), and never with the consent card.
@@ -446,7 +449,7 @@ Test for any card, from the notes (inference), all six must hold: real (you do t
 7. If she asks what you are up to, use the truthful line (the "If she asks" answers under the Truthful pretext cards) and the no-lie floor.
 8. Do not take anything out of her house in these two weeks, unless it is a short, planned, logged borrow.
 
-These rules apply on the dates of any observance the family keeps, not only in weeks 10 and 11. Hanukkah, if kept, runs from sundown on Fri 4 December 2026 to Sat 12 December 2026 [169]. That is weeks 7 and 8, so these rules apply then, and the Fri 11 December soft deadline may need to move a week.
+These rules apply on the dates of any observance her house keeps, not only in weeks 10 and 11. Her Diwali week, Thu 5 to Sat 14 Nov (Vagh Baras to Labh Pancham), is the first of them: it is all pre-P-LOCK, so be present, listen, photograph the object clock in Diwali light by sight on an unsynced phone, never record her (D-17), ask nothing of anyone, and give no new speaker, tablet or shared account as a gift (W-10). Dhanurmas (Wed 16 Dec to Thu 14 Jan) and Uttarayan (Thu 14 and Fri 15 Jan) are the others if she keeps them (O-56, O-80); if she keeps Uttarayan the last send is Tue 12 Jan and answers run to Tue 19 Jan. A fasting household gets no ask, gathering or shoot on its fast day.
 
 ### Hard-chapter decision sheet (copy per item; one-key-three-guards, D-04)
 
@@ -467,7 +470,7 @@ These rules apply on the dates of any observance the family keeps, not only in w
 | Guard 3: the maker's second decision (maker-proxy-72h-2), at least 72 hours after the first | Same |
 | Heads-up needed for anyone in the room (bereaved, estranged)? If yes, default OUT: nobody can be warned under only-me | |
 | Decision, date, and who decided | the maker |
-| After the reveal: her decision (her-turn conversation, Sat 6 Mar) | kept / changed / removed / closed until [date] |
+| After the reveal: her decision (her-turn conversation, Sun 7 Mar after about 14:00) | kept / changed / removed / closed until [date] |
 
 Rules: default OUT on any doubt. Any OUT, HOLD or PRIVATE means out of the public cut, full stop. An item goes in only if both of the maker's decisions say yes after Fable's flag has been read. If the maker is part of the story on an item, Fable's flag is read twice and the item defaults OUT (inference).
 
@@ -479,10 +482,10 @@ Rules: default OUT on any doubt. Any OUT, HOLD or PRIVATE means out of the publi
 
 | When | Who | What |
 |---|---|---|
-| S minus 2 h | TECH and HOST | Set up sound with a spoken line; captions on; Do Not Disturb on; notifications hidden; mail and chat closed [24]. Play the whole file once, and check the first and last 30 seconds |
+| S minus 2 h | TECH and HOST | Set up sound with a spoken line; captions on; Do Not Disturb on; notifications hidden; mail and chat closed [24]. The real object stands under the screen (never a seva article, never the hichko: W-32, W-52). Play the whole file once, and check the first and last 30 seconds |
 | S minus 30 min | TECH and HOST | Guests seated, phones silent, older relatives near the speakers. She is brought in by a true plan. If she is late, HOST holds the room and TECH holds the first frame |
 | S minus 20 min | QUIET WORD | In a separate room, the quiet word (script below) |
-| S | MAKER | Welcome, 30 to 60 seconds: "This is a gift from all of us. There is nothing to say and nothing to do." TECH plays the public cut |
+| S | MAKER | Welcome, 30 to 60 seconds: "This is a gift for [NAME]. There is nothing to say and nothing to do." TECH plays the public cut |
 | End of film | MAKER | Hold silence for 20 seconds; lights up slowly; no cue to applaud; "No speech. There's food." |
 | Pause, S plus 10 to 25 min | TECH and HOST | Soft music, food, drinks; her companion beside her; no toasts; no questions about the film; she may step out. The keepsake is handed over later, as in the public-gathering sheet |
 
@@ -490,7 +493,7 @@ Rules: default OUT on any doubt. Any OUT, HOLD or PRIVATE means out of the publi
 
 | When | Who | What |
 |---|---|---|
-| Sat 27 Feb, 4 hours before | Tech, host | Set up; test sound with a spoken line; captions on; Do Not Disturb on; notifications hidden; mail and chat closed [24] |
+| Sat 27 Feb, 4 hours before | Tech, host | Set up; test clip first; test sound with a spoken line; captions on; Do Not Disturb on; notifications hidden; mail and chat closed [24]; the real object under the screen, never a seva article and never the hichko, which stays home (W-32, W-52, W-67) |
 | 2 hours before | Tech | Play the whole file once; check the first and last 30 seconds |
 | 90 minutes before | Host | Guests arrive by a route she will not see; phones silent; older relatives near the speakers |
 | 45 minutes before | Maker (as distractor) | Brings her by the true plan. If late, HOST (the one briefed guest) holds the room and TECH holds the first frame |
@@ -501,11 +504,11 @@ Rules: default OUT on any doubt. Any OUT, HOLD or PRIVATE means out of the publi
 | End of film | Maker | Silence for 20 seconds; lights up slowly; no cue to applaud; "No speech. There's food." |
 | 10 to 25 minutes after the start | Host | The pause: soft music, food, drinks; companion beside her; no toasts; no questions about the film |
 | 25 minutes after the start | Host | The party resumes; a toast only if she signals; nobody is called on |
-| 60 to 90 minutes after the start | Maker | Quiet corner or the way out: hand over the invitation and, if she wants it, the keepsake. "This is yours. No rush." |
+| 60 to 90 minutes after the start | Maker | Quiet corner or the way out: hand over the invitation and, if she wants it, offer the keepsake (PH1 by cable with her yes, K1 first: W-73, W-74). "This is yours. No rush." |
 | End of night | Tech | Back up the room recording if one was agreed; delete extras; collect USB sticks |
 | Next day | Maker | A short text. Ask nothing about the film |
 
-**Room brief (text for guests, sent Wed 24 Feb):** "On Saturday we're showing [NAME] a short film about her life, made by [MAKER]. It is about [N] minutes. Please arrive by [time] via [door]. Phones silent. No filming unless [CAMERA] asks. No talking during the film. No speeches or questions to her about the film afterwards. If a passage touches someone you love, it is handled gently. Step out any time. Thank you for keeping the secret."
+**Room brief (text for guests, sent Wed 24 Feb; no QR code and no live link, W-52, W-74):** "On Saturday we're showing [NAME] a short film about her life, made by [MAKER]. It is about [N] minutes. Please arrive by [time] via [door]. Phones silent. No filming unless [CAMERA] asks. No talking during the film. No speeches or questions to her about the film afterwards. If a passage touches someone you love, it is handled gently. Step out any time. Thank you for keeping the secret."
 
 **Quiet word (script, spoken by the maker, 20 minutes before the film, in a separate room; W-52):** "In a few minutes we are going to watch a short film about your life. I made it. It runs about [N] minutes. Anything hard has been left out unless I was sure you would want it shown, and what happens to the film next is yours to decide. You choose where to sit and who sits with you. If you want us to pause or stop, [signal, e.g. hold up a hand]. You don't need to say anything afterwards. Two questions: would you like to watch it now with everyone, or on your own first and join the party after? And may we film the room, a wide shot only, not close-ups of you?" If she says stop, stop.
 
@@ -513,7 +516,7 @@ Rules: default OUT on any doubt. Any OUT, HOLD or PRIVATE means out of the publi
 
 ### Public cut and the way back in: treatment cheat-sheet
 
-| Difficult theme | Public cut default | Way back in (her turn, Sat 6 Mar; April version) | Technique |
+| Difficult theme | Public cut default | Way back in (her turn, Sun 7 Mar; April version) | Technique |
 |---|---|---|---|
 | A death | One or two plain lines, a still photo or an object; no cause unless the closest family says | A fuller tribute, if she would want it | Brevity and stillness; no synthetic voice [63]; no face animation [64] |
 | Illness (hers or a relative's) | Only as part of the arc, and only if she speaks of it; show strength, not symptoms | Her call | No medical detail; carers' consent [58] |
@@ -535,17 +538,17 @@ Under only-me nobody is contacted, so there is no go-between to ask. The maker, 
 ### Cultural and religious questions (questions, not rules)
 
 1. Is 27 February her birthday, or a milestone with its own name or rites in her tradition? Does her community celebrate birthdays at all?
-2. Does the date clash with a fast, a mourning period, a festival or an observance (Ramadan, Lent, a death anniversary)? Would the meal, timing or alcohol need to change?
+2. Does the date clash with a fast, a mourning period, a festival or an observance (Ekadashi, Sankashti, the monthly Janmashtami fast, Vinchudo, a death anniversary)? Would the meal, timing or alcohol need to change? In her calendar Sat 27 Feb is Shri Nathji ko Patotsav, a Vinchudo day and possibly her fasting night, and Wed 24 Feb is Sankashti (W-12, W-52; O-57, O-75).
 3. Who is the head of the family, and should that person hear first, as a courtesy?
 4. Who speaks first, sits first or is served first? Is it right for a child (the maker) to host, or to present to elders?
 5. Are there norms about being photographed or filmed, about who may see her image, or about dress on screen?
 6. May images, voices or names of the dead be shown? Are there rituals or warnings expected first? Aboriginal and Torres Strait Islander people may be distressed by images, voices and names of the dead, which can conflict with cultural prohibitions [65].
 7. Which language or languages will the room speak? Do you need subtitles in more than one?
-8. Which music is acceptable in her tradition, and are there times when music is not played?
+8. Which music is acceptable in her tradition, and are there times when music is not played? No sung devotional recording is in the premiere cut (W-44), and what the room itself plays is a venue and rights question (W-55).
 9. Are divorce, remarriage, illness, miscarriage or debt taboo, shameful, or a source of pride when told well?
 10. What is the right way to thank, and is a public speech expected or unwelcome?
 
-None of these is a sourced rule for any culture. Do not apply any of them as an assumption. Answer from your own knowledge first (O-10, O-11); ask an elder only through a low-key question that reveals nothing, or after TD-L2c.
+In a Pushtimarg household these are answered at the sitting from memory and by looking at the house (O-46 to O-49, O-56, O-57, O-75), never by asking her or a relative. A garlanded photograph is the memorial form for someone who has died and is never made of her (W-78). None of these is a sourced rule for any culture. Do not apply any of them as an assumption. Answer from your own knowledge first (O-10, O-11); ask an elder only through a low-key question that reveals nothing, or after TD-L2c.
 
 ## Decisions you'll need to make
 
@@ -553,7 +556,7 @@ Each decision lists the options, then our current lean. A lean is the scribe's r
 
 **Decision 0 comes first, is settled (D-13, W-06, W-10), and its two columns are repeated here.** The cost of waiting, one line per lab class, is set out above Step 1.
 
-| Cannot wait (start in week 1) | Waits for the L1 lock (starts Sun 15 Nov) |
+| Cannot wait (start in week 1) | Waits for P-LOCK (starts Sun 15 Nov) |
 |---|---|
 | Facts check from your own knowledge; only-me recorded, code name and project email; the Mum-test; lab terms in writing and the pilot tape | Album-and-hands sessions; borrowing and scanning; low-key asks to relatives |
 
@@ -571,7 +574,7 @@ Each decision lists the options, then our current lean. A lean is the scribe's r
 12. **Reveal format and room.** **Decided: a mostly public gathering, treated as a public screening (D-08); the run sheet and tiers follow TD-5 (W-54), lean invite-only, to be decided by Sun 15 Nov (O-20).** Options: a family dinner for 10 to 20; a hall or party for 30 or more; a two-step reveal; a private gift. The earlier lean, a living room for four to eight, is superseded; the small-room run sheet survives only as a fallback if TD-5 and the venue answer make the gathering small. A hall or party has the highest social load and is hardest to protect the hard chapters in, which is why the default is OUT on any doubt.
 13. **Filming the reveal.** Options: no filming; a wide shot of the room only; close-ups with her yes. Lean: wide shot only, and close-ups only with her yes (W-52). Give her the footage and let her delete any of it [42].
 14. **The archive.** Options: family drives only; a copy placed in a local library or historical society, her call [85]; a StoryCorps-style recording, her choice only. Lean: avoid StoryCorps Connect by default. Its archive can be published, a Library of Congress copy persists whatever the privacy setting, and the session cannot be paused [1][2][3][4].
-15. **Keepsake form.** **Default: the offline scrubber page on a USB as the companion; decide at G-SLICE, Sun 20 Dec (W-30, O-30).** Options: a drive and disc; a printed book with QR codes; scanned originals returned with an index; a private web link. Lean: a drive and disc, plus a book whose chapters can be found without any QR code. Use static QR codes only [70][71].
+15. **Keepsake form.** **Default: PH1, the film itself, on her phone by cable, as the companion; the offline scrubber page is a laptop and archive companion on the USB; decide at G-SLICE, Sun 20 Dec (W-30, W-73, TD-9, O-30).** The route is chosen with her yes and her phone in her hand on reveal weekend, never before (D-02): K1 first (is "Back up all device folders" on?); off, then USB File Transfer into a folder her backup does not read; on or unknown, then an Android tablet in app pinning or the stick, or with her yes switch that folder off first; PH2 if she has under 1 GB free (O-54). Options: PH1 by cable; a tablet; a drive and disc; a printed book; scanned originals returned with an index; a private web link. Lean: PH1 by cable, with the stick as the archive, plus a book whose chapters can be found without any QR code. No QR code and no live link at or before the reveal (W-52, W-74); a private web link only after the ledger closes and the rights log is green, as a convenience copy; any QR code static [70][71].
 16. **Culture and faith checks.** Options: check from your own knowledge and the family profile (O-10, O-11); a calendar check; a move of the viewing date. Lean: do it before week 16, from your own knowledge; ask an elder only through a low-key question that reveals nothing. Move the viewing if she needs it moved. The build deadline can stay (D-20).
 17. **Who may speak first, host or present.** Options: none set; the eldest; the maker; a relative. Lean: none set. Ask the cultural questions above before deciding. W-52 already sets a 30 to 60 second welcome by the maker and no speeches.
 18. **Voices found on tapes and voicemails.** **Decided: D-05, D-16, W-45, W-46.** Options: her own voice, a family member's, a non-family caller's, the voice of someone who has died (real or synthetic). Lean (as stated; inference from research F5b, now fixed by the register): the public cut carries no recorded voice of any living person except her own HER-PUBLIC clip, and only if it passes one-key-three-guards and the written line "would she play this to strangers herself". Her own voicemail, voice note or answering-machine message is HER-PRIVATE: it never enters the public cut, never opens a hard chapter, and waits for her decision after the reveal (listed in the T9 ledger, research notes). A family member's message: not asked before the premiere; it is an April-version item after release 4d (D-06). A non-family caller: out. The dead: no recorded voice in the public cut (W-46), and never a synthetic version [63].
@@ -598,7 +601,9 @@ Each decision lists the options, then our current lean. A lean is the scribe's r
 - **Long or crowded reveals.** Hearing loss is common among older viewers [66]. Fix: keep the public cut at 9 or 12 minutes, burn in captions, and seat older guests near the speakers.
 - **Technical failure on the day.** Fix: two cold starts, two USB sticks, and the fallback ladder.
 - **Vendor bias.** Capture ranks its own service first [43]. Fix: get quotes from several labs, in writing.
-- **Holiday overload.** Fix: listen at holidays, and extract nothing mid-meal (holiday rules).
+- **Holiday overload.** Fix: listen in her festival weeks, and extract nothing mid-meal (holiday rules).
+- **A seva article taken, photographed or used as the object.** A touch in secret is a reverence breach even if nothing is photographed, and a picture may be pusht (in seva) while the film cannot tell by looking (PR4, PR10, W-70). Fix: the object clock is a kitchen object (W-32), seva objects enter the film only by sight, untouched, on an unsynced phone or drawn, and no temple or haveli office is ever asked anything.
+- **Sending the film to relatives early.** A forwarded copy reaches five chats at a time and cannot be recalled. Fix: nothing goes to relatives until the ledger closes and the rights log is green; then PH2 (or PH1) as a WhatsApp document, once, with the maker's yes per relative (W-74).
 - **Staging a reconciliation.** Fix: never. The maker, as proxy, decides on any estranged person's place under D-04, default OUT.
 - **Unverified law.** The US reporters' guide is a baseline, and it says it is not legal advice [14]. Apple's call recording is consent-by-design, with a repeating notice, and is available only in some regions [15]. Third-party call recorders may record silently [15]; this project does not use them. UK: a participant's own recording is unlikely to be unlawful interception under IPA 2016 s.3/s.4 (the notes' reading, inference) [117][118]; Germany: StGB §201 makes an unauthorised recording of private speech an offence with no participant exception, so a spoken yes is mandatory [119]; EU: GDPR Art. 2(2)(c) household exemption is likely but untested [120]; other countries and non-US cross-border calls UNVERIFIED (TODO(research)). Fix: ask a lawyer where it matters.
 - **Remote recording tools.** Many video platforms save only MP3, and each re-save of a compressed file adds loss [6][7]. Audio is about 1 GB per hour, against 10 to 30 GB for video [7]. Fix: for April-version response recordings (after release 4d), have the relative record audio on their own phone, and keep the original file.
@@ -622,7 +627,7 @@ Each decision lists the options, then our current lean. A lean is the scribe's r
 
 - **Reddit was not reachable** (search returned an API error; WebFetch refused reddit.com). No first-hand Reddit account was reviewed. The notes suggest searching r/AskReddit, r/Parenting, r/videography and r/genealogy by hand for "surprise video for my mom's 60th", "tribute video for my mom", "scanning my mom's photos without telling her", and "slip surprise party smart speaker". These subreddits and queries are the researcher's suggestions and were not checked.
 - **MetaFilter threads** [41] returned 403 on fetch. Only search summaries were seen. Re-read them directly if the details matter.
-- **Holiday closures.** No lab states a closure window between Thanksgiving and New Year on the pages read. Legacybox gives no peak-season delivery guarantee for Standard digitising [153], and iMemories' dated order-by figures are unconfirmed [151]. Ask each lab in writing.
+- **Holiday closures.** No lab states a closure window between late November and early January on the pages read. Legacybox gives no peak-season delivery guarantee for Standard digitising [153], and iMemories' dated order-by figures are unconfirmed [151]. Ask each lab in writing.
 - **Missing prices.** MiniDV prices are missing for several labs. Pro8mm's four tier prices are verified, but its unit is not stated: per foot is our reading, and only a written quote settles it (Exercise 4, optional third email) [143]. ScanCafe [47] and CameraMall [48] were not opened (403, 429).
 - **Turnaround range.** The notes' summary says one to ten weeks. The published figures for the labs in the plan run from 1 to 2 weeks (iMemories files, Pro8mm, CameraMall) to 6 weeks (Legacybox, Southtree), and iMemories returns originals up to 4 weeks after the files [152][154][161]. Pro8mm's 4-to-8-week discount queue opens in December–February and is not in the plan [144]. Ten weeks is the notes' bound for a mail-away absence.
 - **Time per album by phone** is inference. Time your first album (Exercise 2).
@@ -631,14 +636,13 @@ Each decision lists the options, then our current lean. A lean is the scribe's r
 - **Parfit's lecture** could not be opened [76].
 - **Platform controls seen only in snippets:** iOS Show Previews [33 S]; Signal's notification options [80 S]; the Amazon order-sharing setting [28 S]; Apple's purchase visibility [83 S][84 S]; Google Voice outside the US [88 S]. Check each on the real device.
 - **Audio cassettes, answering-machine tapes and old voicemails:** covered in research F5b. Mail-in audio labs publish 3 to 6 weeks [154][159][161]. Answering-machine-tape policy and microcassette speed are still UNVERIFIED (ask in Exercise 4 question 6). Answering machines also used full-size cassettes and endless-loop greeting tapes [163], so the family's tapes may not be microcassettes at all (inference). An iPhone voicemail exports probably as .m4a, UNVERIFIED on current iOS: share one voicemail to Files and read the extension [165].
-- **Ash Wednesday and Easter 2027** dates are from memory, not sourced.
-- **Hanukkah timing.** Hanukkah 2026 runs from sundown Fri 4 to Sat 12 December (weeks 7 and 8) [169].
+- **Her calendar.** Every date comes from Drik for her town (and Delhi where it differs) and the Nathdwara tippani, read 2026-10-19 (`ROADMAP.md` section 7); the printed panchang her household follows wins over any website (O-56).
 - **Film and tape care.** The notes' sources on sticky shed and mould are snippets [90 S].
 - **Scanning settings and file naming** are in `playbooks/ai-imagery.md`. The notes did not restate them.
 
 ## Sources
 
-Numbering matches `research/surprise-ops.md`. Status key: **fetched** = the researcher opened the page or PDF on 2026-10-18; **snippet only** (S) = seen in search results, page not opened (usually a 403, 429, redirect or cookie wall). Dates are as shown on the page, or "undated".
+Numbering matches `research/surprise-ops.md`; the numbers [72], [73] and [169] are missing here because they were sources for the placeholder observances of other households, retired in favour of her calendar (S-61), and they stay in the research note. Status key: **fetched** = the researcher opened the page or PDF on 2026-10-18; **snippet only** (S) = seen in search results, page not opened (usually a 403, 429, redirect or cookie wall). Dates are as shown on the page, or "undated".
 
 [1] StoryCorps Connect — https://storycorps.org/participate/storycorps-connect/ — undated — fetched — remote two-person recording in a browser; audio and a still photo go into the archive at the American Folklife Center; "aim for 6-8 questions over the course of a 40-minute interview"
 
@@ -774,10 +778,6 @@ Numbering matches `research/surprise-ops.md`. Status key: **fetched** = the rese
 
 [71] QRStuff, "Do QR Codes Expire?" — https://www.qrstuff.com/blog/?p=11583 — undated — fetched — vendor; static versus dynamic codes
 
-[72] The National (UAE), "Ramadan 2027 dates" — https://www.thenationalnews.com/news/uae/2026/09/09/ramadan-2027-dates-eid-al-fitr-holiday/ — 2026-09-09, updated 2026-10-06 — fetched — Astronomy Centre projection: begins about Feb 8, 2027; subject to moon sighting
-
-[73] ChinaTravel, Chinese New Year 2027 — https://www.chinatravel.com/chinese-new-year/date — undated — snippet only — Lunar New Year Sat Feb 6, 2027
-
 [74] Etiquetteer, milestone-birthday column — https://www.etiquetteer.com/columns/2011/08/21/family-occasionsdeterring-signage-vol-10-issue-6 — 2011-08-21 — snippet only — host controls the guest list
 
 [75] M.K. Noordewier, "The dynamics of surprise and curiosity", Leiden doctoral thesis — https://scholarlypublications.universiteitleiden.nl/access/item%3A2957264/view — 2016 — fetched (abstract only)
@@ -844,7 +844,7 @@ Numbering matches `research/surprise-ops.md`. Status key: **fetched** = the rese
 
 [152] iMemories, Turnaround Time and Pricing — https://www.imemories.com/turnaround ; https://www.imemories.com/pricing — footer 2026 — fetched — files "in 2 week" per the researcher and the implementor, "in 1 week" per the Fable advisor, all read on 2026-10-18; originals returned by UPS Ground "within 4 weeks" after digitising (all three reads agree); $29.99 per tape or per 50 ft, $0.99 per photo, SAVE50 half price
 
-[153] Legacybox, Christmas Delivery — https://legacybox.com/pages/christmas-delivery — footer 2026 — fetched; re-read by the implementor on 2026-10-18 — "not able to make any delivery guarantees for orders with Standard Digitizing during our peak season"; the paid "Guaranteed Rush" is the only assurance
+[153] Legacybox, holiday-season delivery page (title paraphrased; the address is in `research/surprise-ops.md` [153]) — footer 2026 — fetched; re-read by the implementor on 2026-10-18 — "not able to make any delivery guarantees for orders with Standard Digitizing during our peak season"; the paid "Guaranteed Rush" is the only assurance
 
 [154] Legacybox Help Center, "How long does Legacybox take?" — https://help.legacybox.com/en-US/how-long-does-legacybox-take-476859 — shown as "Updated 3 hours ago" at fetch, 2026-10-18 — fetched; verified by the Fable advisor — Standard 4 to 6 weeks, Expedited 3 to 4, Guaranteed Rush 10 business days; upgrade price shown in the cart
 
@@ -860,8 +860,6 @@ Numbering matches `research/surprise-ops.md`. Status key: **fetched** = the rese
 
 [165] Gadget Hacks, "How to share, forward and save voicemails on your iPhone" — https://ios.gadgethacks.com/how-to/share-forward-save-voicemails-your-iphone-0164636 — undated, iOS 9 to 11 era — fetched — ".m4a" for Message, Mail, Notes, Voice Memos, Copy
 
-[169] Hebcal, Chanukah 2026 — https://www.hebcal.com/holidays/chanukah-2026 — fetched 2026-10-18 by the Fable advisor — begins at sundown on Friday, 4 December 2026; ends at nightfall on Saturday, 12 December 2026
-
 ## Changelog
 
 - 2026-10-18, v1: first draft by the scribe from `research/surprise-ops.md` (researcher: Sonnet, 2026-10-18) and `CHARTER.md`. Gaps are marked TODO(research). Conflicts are flagged, not resolved: the "never any recording of her" rule against two planned recordings (Decision 10); the "send-by" versus "receive-by" wording in the lab table (Step 8); magnetic versus sticky albums (Step 7); and the pilot date (Step 8).
@@ -869,3 +867,4 @@ Numbering matches `research/surprise-ops.md`. Status key: **fetched** = the rese
 - 2026-10-18, v3: round 2 review applied (`reviews/surprise-ops-round2.md`). Audio cassettes and voicemail are in the plan (Decision 0, Step 8, Key dates, Gaps; research Tables A, C, D and F5b); UK, German and EU recording law from research F5a replaces the "unverified" wording in Step 1.2, Decision 1, Pitfalls, Gaps and the skill's Law guardrail; Decision 18 (voices found on tapes and voicemails) added; Step 4.6 decides a file container; Hanukkah cited as [169] (the review's [135] was already taken by round-2 research); Core principle 5 and Holiday rule 7 corrected.
 - 2026-10-18, v4: round 3 (final) review applied (`reviews/surprise-ops-round3.md`). Lab ship-by table, Decision 0 cost of waiting, Key dates, Step 8 and Gaps corrected against the labs' own pages: the first ship-by row is now the pilot ship date, Pro8mm film is in the fast class at the scheduled price, iMemories is split into files and originals, Legacybox Standard has no peak-season guarantee, audio labs sit in the same classes as video, and the cost sketch carries the 2K ProRes floor; Exercise 4 now carries the six-question lab email, the optional Pro8mm quote request and the log table; Hanukkah is cited as [169] only; sources [143]–[146], [151]–[155], [159], [161] and [163]–[165] added.
 - 2026-10-18, v5: Reconciled with DECISIONS.md (2026-10-18). Only-me (D-03) and one-key-three-guards (D-04) replace the rings, the co-keeper and the two keys; slip protocol per D-19; contributor briefs, the consent card and Checklist E are void or dated placeholders that fire only if TD-L2c (Sun 3 Jan) brought someone in; album-and-hands sessions (W-49) replace interviews; collection starts Sun 15 Nov after the L1 lock (D-13, W-10); picture lock Sat 6 Feb with Fri 19 Feb as removals only (W-08); maker cold reads Sun 31 Jan, Sun 7 Feb and Sun 14 Feb; lab ship-by rows per W-11; public cut 9 or 12 minutes with the April version as the same picture with voices (W-01, W-02, D-06); mostly public gathering per D-08 and W-54; the her-turn and release dates per W-48.
+- 2026-10-19, v6: Reconciled with DECISIONS.md after the her-world merge (2026-10-19). "L1 process lock" becomes P-LOCK (S-38); the placeholder observances of other households (Lunar New Year, Hanukkah, US Thanksgiving, Ramadan, Ash Wednesday, Christmas and New Year as household rows) are replaced by her calendar from the register (W-10, W-12, W-49, `ROADMAP.md` section 7), and their sources [72], [73] and [169] are dropped (S-56, S-61); the her-turn conversation is Sun 7 Mar after about 14:00, else Mon 8 Mar, with releases 4d to 4g still running Sun 28 Feb to Sat 6 Mar (W-48, S-64); the Uttarayan ask deadline is Tue 12 Jan (W-10); the keepsake is PH1 on her phone by cable with the scrubber page as a laptop and archive companion, and no QR code or live link before the ledger closes (W-30, W-52, W-73, W-74); the run sheet carries the real object under the screen (never a seva article, never the hichko), the Patotsav and the monthly fast on the night, the phone-by-cable rung and the two sticks (W-12, W-32, W-52); seva articles and pictures are never borrowed, photographed or moved, and no temple or haveli office is asked anything (PR4, PR10, W-70); the project-phone hygiene row is added to Step 4 (W-26).

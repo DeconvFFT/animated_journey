@@ -12,7 +12,7 @@ The project rate is 24 frames a second (W-14, S-01). The 25 fps E2 template of `
 ```bash
 bash tests/roundtrip/run_tests.sh --quick    # about 10 s, no network
 bash tests/roundtrip/run_tests.sh --all      # about 15 s; adds the plug-in adapter probe (pip, about 4 MB, throw-away venv)
-bash tests/roundtrip/make_evidence.sh        # quick, all, the acceptance commands, summary.json (writes build/evidence/wp06/)
+bash tests/roundtrip/make_evidence.sh        # quick, all, the acceptance commands, summary.json (writes build/evidence/wp06/; tests_quick.jsonl and tests_all.jsonl are separate files)
 
 # the venv for the optional library checks (about 16 MB on disk; outside the repo)
 python3 -m venv <scratch>/venv-otio && <scratch>/venv-otio/bin/pip install --no-cache-dir opentimelineio==0.18.1
@@ -31,7 +31,7 @@ Tools run as `python3 -I` (`py -3 -I` on Windows). Exit codes follow build plan 
 | `svg_roundtrip.sh` | rig, Inkscape plain-SVG export, reused `check_ids.py`, three planted defects, two touch-ups, the finding | bash, Inkscape |
 | `kb_scale.py W H` | Ken Burns scale: fit, cover, move edge safety; `--selftest` | standard library |
 | `emit_otio.py SPEC OUT.otio` | the neutral spec to OTIO at 24 fps; `--timeline169 PATH` also writes the reused `make_otio.py`'s input | standard library (Pillow only to make synthetic test media) |
-| `validate_otio.py FILE.otio` | the R8 OTIO rules at JSON level; `--with-otio [PYTHON]` also loads it with `opentimelineio`; `--no-media-check`, `--lenient-filmcraft`, `--json` | standard library |
+| `validate_otio.py FILE.otio` | the R8 OTIO rules at JSON level (24 checks); `--with-otio [PYTHON]` also loads it with `opentimelineio` (6 more); `--no-media-check`, `--lenient-filmcraft`, `--json` | standard library |
 | `adapter_probe.sh` | runs the reused `make_otio.py` unchanged against a 24 fps `timeline169.json` and records which adapters work; `--with-plugins` repeats it in a throw-away venv with the four adapter packages | bash, the venv |
 | `make_media.py`, `rt_common.py` | test-card PNGs and a sine WAV (never overwrites a file); shared report and PNG-header helpers | Pillow for the cards |
 | `spec/neutral_timeline.example.json` | the neutral spec: 24 fps, four 2880x1620 stills, three 24-frame dissolves, markers, one audio cue | |
@@ -51,6 +51,8 @@ and match `^[A-Za-z][A-Za-z0-9._-]*$`; only supported attributes (image: `versio
 **Two profiles.** `at-layers.ora` (the PhotoCraft acceptance fixture) names its layers `Title tint` and `Photo`, which break the id pattern, and it has no as-found layer. So `auto`
 picks the **pipeline** profile (naming and `L00_asfound` are failures) when any layer name looks like `L10_...`, and the **reference** profile (the same structural rules; naming and
 attribute rules are WARN) otherwise. `--profile pipeline` on `at-layers.ora` fails, so the choice is visible, not a blind spot.
+**Layer values are not part of the naming rules:** opacity (0 to 1), visibility (`visible` or `hidden`), composite-op (a known `svg:` operator) and whole-number `x` and `y` are structural,
+so a bad value is a **FAIL in both profiles** (`layer_value_invalid`); `at-layers.ora` still passes. Only the layer-name pattern, the supported-attribute list and the `L00_asfound` rule differ by profile.
 
 ## SVG: what the gate and the finding say
 
@@ -66,6 +68,53 @@ attribute rules are WARN) otherwise. `--profile pipeline` on `at-layers.ora` fai
   Windows Inkscape and versions after 1.2.2 are UNVERIFIED.
 
 ## OTIO
+
+### What `validate_otio.py` refuses, beyond the shape of the numbers
+
+* **`no_clips`**: no Video track holds a Clip. A timeline whose only Video track is empty has nothing to hand to FilmCraft, even if the stack has markers and the audio track has a cue.
+* **`nested_composition`**: a Track holds a Stack or another Track, or the top Stack holds a Stack. OTIO allows nesting (an editor's export can do it), but every per-clip rule reads only a track's direct
+  children, so clips inside a nested composition would pass unchecked. The tools refuse it instead; flatten the timeline.
+* **`target_url_escapes_folder`**: a `..` segment anywhere in a `target_url` (`media/../media/x.png` included), the same test `emit_otio.py` applies to a spec. The hand-off folder must be copyable as a unit.
+
+The other rules (rate 24, relative forward-slash URLs, media exists, source inside available range, dissolves fit, markers, `metadata.filmcraft`) are listed with their reason codes at the top of `validate_otio.py`.
+
+### The neutral timeline spec, `lj-neutral-timeline/1`
+
+`emit_otio.py SPEC.json OUT.otio` reads one JSON file; `spec/neutral_timeline.example.json` is a working one. Every field, and what the emitter does with it (a field marked *required* that is missing
+or wrong makes the emitter exit 2 and name it, as `spec.shots[1].duration_frames must be ...`; nothing is written then):
+
+| Field | Required | Meaning and limits |
+|---|---|---|
+| `schema` | yes | the text `lj-neutral-timeline/1` |
+| `name` | no | the timeline's name in the `.otio` (default `Life Journey timeline`) |
+| `synthetic_media` | no | `true` marks a TEST spec: missing media (numbered test cards, a sine WAV) is generated next to the `.otio`, never over an existing file. Absent or `false`: no media is ever created |
+| `fps` | yes | must be `24` (W-14, S-01) |
+| `sequence` | yes | `{"width": 1920, "height": 1080}`; any other size is refused (the shape of `metadata.filmcraft.settings` for it is not known) |
+| `still_available_frames` | no | whole number > 0, default `240`; the `available_range` written on every still (a still has no length, so this is a convention); no shot may be longer |
+| `markers[]` | no | sequence markers, placed on the top Stack: `name` (text), `at_frame` (whole number >= 0, a frame **of the whole timeline**), `color` (`PINK RED ORANGE YELLOW GREEN CYAN BLUE PURPLE MAGENTA BLACK WHITE`), `comment` (text, optional) |
+| `shots[]` | yes | non-empty list, **in timeline order**; each shot becomes one clip on track `V1` (Video) |
+| `shots[].id` | yes | `^[A-Za-z][A-Za-z0-9._-]*$`, unique; becomes the clip name |
+| `shots[].source` | yes | relative path with forward slashes (no drive, scheme, backslash or `..`); becomes `target_url`, resolved from the `.otio`'s folder |
+| `shots[].source_size` | when `motion.scale` is a `from` form | `[width, height]` in pixels; used for the scale and for the black-edge check (**without it that check is skipped**), and compared with the PNG header when the file exists |
+| `shots[].duration_frames` | yes | whole number > 0 and not more than `still_available_frames` |
+| `shots[].motion` | no | the Ken Burns move (below). **A shot with no `motion` gets no `metadata.filmcraft`** and FilmCraft's default for it is unknown |
+| `shots[].motion.scale` | yes, if `motion` | `[start, end]` in percent, or `{"from": "cover"\|"fit", "zoom": ratio, "direction": "in"\|"out"}`: `kb_scale.py` works out the base scale from `source_size` and the sequence; `zoom` (a number >= 1, default 1.0) is end divided by start; `direction` defaults to `in` |
+| `shots[].motion.position` | no | `[[x, y], [x, y]]`: the picture's centre in sequence pixels at the start and at the end (default: the sequence centre both times, `[[960, 540], [960, 540]]`) |
+| `shots[].motion.ease` | no | `Linear` (default) or `EaseOut`, the interpolation name written on the end keyframe (the start keyframe is always `Linear`; which side of a keyframe FilmCraft applies it to is UNVERIFIED); other names are refused |
+| `shots[].transition_out` | no | `{"type": "dissolve", "frames": N}` with N > 0; not allowed on the last shot. Written as `in_offset` N//2 and `out_offset` N - N//2, centred on the cut to the next shot, and it takes no timeline time |
+| `shots[].markers[]` | no | clip markers, same fields as `markers[]` but `at_frame` is a frame **inside the shot** (0 is its first frame, below `duration_frames`) |
+| `audio[]` | no | cues on track `A1` (Audio), in time order, not overlapping; gaps between them are written as Gap items |
+| `audio[].id` | yes | same pattern as a shot id; becomes the clip name |
+| `audio[].source` | yes | relative path to the WAV, same rules as `shots[].source` |
+| `audio[].start_frame` | no | whole number >= 0 (default 0): where the cue starts on the timeline |
+| `audio[].duration_frames` | yes | whole number > 0, not more than the file's length at 24 fps (checked when the file exists) |
+| `audio[].gain_db` | no | number (default 0.0), written to `metadata.filmcraft.gain_db` |
+| `audio[].duck_against` | no | text or `null`; kept as `metadata.life_journey.duck_against`, a note for the mix, outside `metadata.filmcraft`. Nothing reads it yet |
+
+Where a dissolve and a marker land: the timeline is the sum of the clip durations (dissolves take no time), so shot 1 of the example runs frames 0 to 120, shot 2 120 to 240, shot 3 240 to 360. The
+12 + 12 dissolve between shots 2 and 3 is centred on the cut at 240 and runs frames **228 to 252**, which is why the example's second sequence marker, "Cue: title in", sits at `at_frame` 228.
+
+### What the emitter writes
 
 `emit_otio.py` writes `Timeline.1` / `Stack.1` / `Track.1` (V1 Video, A1 Audio) / `Clip.2` / `Transition.1` (`SMPTE_Dissolve`) / `Marker.2` / `Gap.1`. Rules it follows and the test
 `otio.template_parity` proves: the output equals the R3 E2 template rebased to 24 fps (every rate 24; the 125-frame and 250-frame ranges become 120 and 240, the same seconds; the

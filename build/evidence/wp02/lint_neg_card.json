@@ -2,9 +2,9 @@
  "actual": "9 card mutations, each exit 1 naming the problem",
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 462,
-  "avail_mb_min": 462,
-  "avail_mb_start": 464,
+  "avail_mb_end": 451,
+  "avail_mb_min": 451,
+  "avail_mb_start": 453,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

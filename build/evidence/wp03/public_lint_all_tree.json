@@ -1,6 +1,6 @@
 {
  "mode": "all",
- "scanned": 455,
+ "scanned": 741,
  "identifying": [
   {
    "kind": "identifying",
@@ -14,7 +14,7 @@
    "kind": "identifying",
    "category": "email",
    "file": "playbooks/cinematic-quality.md",
-   "line": 721,
+   "line": 795,
    "hit": "us********",
    "note": ""
   },
@@ -22,7 +22,7 @@
    "kind": "identifying",
    "category": "email",
    "file": "playbooks/craft-motion.md",
-   "line": 432,
+   "line": 438,
    "hit": "kd********",
    "note": ""
   },
@@ -30,7 +30,7 @@
    "kind": "identifying",
    "category": "email",
    "file": "playbooks/surprise-ops.md",
-   "line": 331,
+   "line": 334,
    "hit": "in********",
    "note": ""
   },
@@ -257,6 +257,14 @@
    "line": 41,
    "hit": "te********",
    "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "skills-staging/craft-apps-motion-refinement/SKILL.md",
+   "line": 180,
+   "hit": "kd********",
+   "note": ""
   }
  ],
  "hygiene": [
@@ -264,22 +272,6 @@
    "kind": "binary",
    "category": "nul_byte",
    "file": ".claude/skills/free-creative-toolchain/recipes/__pycache__/r2_param.cpython-313.pyc",
-   "line": null,
-   "hit": null,
-   "note": "binary file (NUL byte); personal media never goes in git"
-  },
-  {
-   "kind": "binary",
-   "category": "nul_byte",
-   "file": "research/cinematic-quality-fixtures/__pycache__/zoom_velocity_classifier.cpython-313.pyc",
-   "line": null,
-   "hit": null,
-   "note": "binary file (NUL byte); personal media never goes in git"
-  },
-  {
-   "kind": "binary",
-   "category": "nul_byte",
-   "file": "research/cinematic-quality-fixtures/__pycache__/zoompan_vs_subpixel_prints.cpython-313.pyc",
    "line": null,
    "hit": null,
    "note": "binary file (NUL byte); personal media never goes in git"
@@ -311,7 +303,7 @@
  ],
  "notes": 1,
  "suppressed_by_allow": {
-  "ipv4-looking-software-versions": 107,
+  "ipv4-looking-software-versions": 104,
   "verbatim-licence-texts": 4,
   "git-commit-ids-in-notes": 11,
   "store-product-id-python-manager": 3

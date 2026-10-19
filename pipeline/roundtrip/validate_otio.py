@@ -12,7 +12,11 @@ JSON-LEVEL RULES (each is one named check; a failing check prints FAIL <reason> 
   clip_duration            every clip has a positive duration (source_range, else available_range)           clip_duration_invalid
   media_reference          every clip has an ExternalReference (not Missing, not an image sequence)          media_reference_missing, image_sequence_reference
   target_url_relative      target_url is a relative path with forward slashes (no drive, scheme, backslash)  target_url_absolute, target_url_backslash
+  target_url_inside_folder no '..' segment in target_url: the hand-off folder must be copyable as a unit     target_url_escapes_folder
   media_exists             the file named by target_url exists, resolved from the .otio's folder             media_missing         (off with --no-media-check)
+  clips_present            at least one Video track holds a Clip (an empty Video track hands over nothing)   no_clips
+  track_children_flat      no Stack or Track inside a Track, no Stack inside the top Stack: clips in a nested   nested_composition
+                           composition would never reach the per-clip rules above, so nesting is refused
   source_in_available      source_range lies inside available_range (when there is one)                     clip_outside_available_range
   dissolve_fits            each Transition sits between two clips and its in_offset and out_offset fit       dissolve_longer_than_neighbour, dissolve_without_neighbour,
                            inside them (a clip between two dissolves must hold both: out of one + in of the next)  dissolve_offset_invalid
@@ -171,7 +175,7 @@ def validate(path, check_media=True, lenient=False):
 
     # ----- clips
     P = {k: [] for k in ("clip_duration_invalid", "media_reference_missing", "image_sequence_reference", "target_url_absolute", "target_url_backslash",
-                         "media_missing", "clip_outside_available_range")}
+                         "target_url_escapes_folder", "media_missing", "clip_outside_available_range")}
     clips = []
     for ti, tr in enumerate(tracks):
         for ci, it in enumerate(tr.get("children", [])):
@@ -201,6 +205,8 @@ def validate(path, check_media=True, lenient=False):
             P["target_url_absolute"].append("%s -> %s" % (nm, url[:60]))
         elif "\\" in url:
             P["target_url_backslash"].append("%s -> %s" % (nm, url[:60]))
+        elif ".." in url.split("/"):                      # the same test emit_otio.is_rel applies to a spec; normpath would hide it, so look at the segments
+            P["target_url_escapes_folder"].append("%s -> %s" % (nm, url[:60]))
         elif check_media and not os.path.isfile(os.path.normpath(os.path.join(base, *url.split("/")))):
             P["media_missing"].append("%s -> %s" % (nm, url))
         ar, sr = range_of(ref.get("available_range")), range_of(c.get("source_range"))
@@ -208,15 +214,27 @@ def validate(path, check_media=True, lenient=False):
             P["clip_outside_available_range"].append("%s: source %s..%ss is outside available %s..%ss" % (
                 nm, float(sr[0]), float(sr[1]), float(ar[0]), float(ar[1])))
     ok_names = {"clip_duration_invalid": "clip_duration", "media_reference_missing": "media_reference", "image_sequence_reference": "media_reference_single_file",
-                "target_url_absolute": "target_url_relative", "target_url_backslash": "target_url_forward_slashes", "media_missing": "media_exists",
+                "target_url_absolute": "target_url_relative", "target_url_backslash": "target_url_forward_slashes",
+                "target_url_escapes_folder": "target_url_inside_folder", "media_missing": "media_exists",
                 "clip_outside_available_range": "source_in_available"}
     for reason in ("clip_duration_invalid", "media_reference_missing", "image_sequence_reference", "target_url_absolute", "target_url_backslash",
-                   "media_missing", "clip_outside_available_range"):
+                   "target_url_escapes_folder", "media_missing", "clip_outside_available_range"):
         if reason == "media_missing" and not check_media:
             rep.warn("media_exists_skipped", "--no-media-check")
             continue
         rep.check(not P[reason], ok_names[reason], reason, "; ".join(P[reason][:5]) + (" (+%d more)" % (len(P[reason]) - 5) if len(P[reason]) > 5 else ""),
                   "all %d clips" % len(clips))
+
+    # ----- something to hand over, and nothing hidden from the rules above
+    video_clips = sum(1 for t in tracks if t.get("kind") == "Video" for it in (t.get("children") or []) if is_a(it, "Clip"))
+    rep.check(video_clips > 0, "clips_present", "no_clips",
+              "no Video track holds a Clip (%d clip(s) on other tracks): there is nothing to hand to FilmCraft" % len(clips),
+              "%d clip(s) on the Video track(s)" % video_clips)
+    nested = ["%s holds a %s" % (t.get("name"), schema_of(it).split(".")[0]) for t in tracks for it in (t.get("children") or []) if is_a(it, "Stack") or is_a(it, "Track")]
+    nested += ["the top Stack holds a Stack named %r" % t.get("name") for t in (stack.get("children") or []) if is_a(t, "Stack")]
+    rep.check(not nested, "track_children_flat", "nested_composition",
+              "; ".join(nested[:4]) + " (clips inside a nested composition are not checked by the other rules; flatten the timeline)",
+              "every track holds clips, gaps and transitions only")
 
     # ----- dissolves
     dprob = []
@@ -344,7 +362,7 @@ def validate(path, check_media=True, lenient=False):
         if scale_keys and pos_keys and len(scale_keys) == len(pos_keys):    # scale and position share the same keyframe times and easing, so the keys decide the edges
             ref = ref_of(c)
             url = (ref or {}).get("target_url") if isinstance(ref, dict) else None
-            size = png_size(os.path.normpath(os.path.join(base, *url.split("/")))) if url and not url.startswith("/") and "://" not in url else None
+            size = png_size(os.path.normpath(os.path.join(base, *url.split("/")))) if url and not url.startswith("/") and "://" not in url and ".." not in url.split("/") else None
             if size:
                 ok, worst = kb_scale.move_is_edge_safe(size[0], size[1], SEQ_W, SEQ_H, [(s[1], p[1][0], p[1][1]) for s, p in zip(scale_keys, pos_keys)])
                 if not ok:

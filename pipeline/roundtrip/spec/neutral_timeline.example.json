@@ -7,7 +7,7 @@
   "still_available_frames": 240,
   "markers": [
     {"name": "Chapter 01", "at_frame": 0, "color": "GREEN", "comment": "synthetic test chapter"},
-    {"name": "Cue: title in", "at_frame": 216, "color": "YELLOW", "comment": "marker at the start of the third shot's dissolve"}
+    {"name": "Cue: title in", "at_frame": 228, "color": "YELLOW", "comment": "the dissolve into the third shot starts here (frames 228 to 252, centred on the cut at 240)"}
   ],
   "shots": [
     {"id": "ch01_s01", "source": "media/ch01_s01.png", "source_size": [2880, 1620], "duration_frames": 120,

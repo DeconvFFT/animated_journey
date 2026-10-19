@@ -1,10 +1,10 @@
 {
- "actual": "expected 'hours_bad_note.csv:2 [email]' in the output; got:\nops_lint: checked 1 file(s): hours_bad_note.csv\n  note: pattern file version 1, 9 text categories, 1 deny-list name(s) loaded\n  FAIL hours_bad_note.csv:3 [profile_path_windows] note: masked hit C:**************\n  FAIL hours_bad_note.csv:4 [local_deny] note: masked hit Qz******\n  FAIL hours_bad_note.csv:5 [ipv4] note: masked hit 17********\n  FAIL hours_bad_note.csv:6 [handle] note: masked hit @q*********\n  WARN hours_bad_note.csv:7 [note_length] note is 121 characters (over 80): probably prose about a person; shorten it to IDs and relation tokens\nops_lint: FAIL (4 failure(s), 1 warning(s))\n",
+ "actual": "ops_lint: checked 1 file(s): hours_bad_note.csv\n  note: pattern file version 1, 9 text categories, 1 deny-list name(s) loaded\n  FAIL hours_bad_note.csv:2 [email] note: masked hit ja********\n  FAIL hours_bad_note.csv:3 [profile_path_windows] note: masked hit C:********\n  FAIL hours_bad_note.csv:4 [local_deny] note: masked hit Qz******\n  FAIL hours_bad_note.csv:5 [ipv4] note: masked hit 17********\n  FAIL hours_bad_note.csv:6 [handle] note: masked hit @q********\n  WARN hours_bad_note.csv:7 [note_length] note is 121 characters (over 80): probably prose about a person; shorten it to IDs and relation tokens\nops_lint: FAIL (5 failure(s), 1 warning(s))",
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 464,
-  "avail_mb_min": 464,
-  "avail_mb_start": 464,
+  "avail_mb_end": 453,
+  "avail_mb_min": 453,
+  "avail_mb_start": 453,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0
@@ -18,7 +18,7 @@
  "notes": "",
  "package": "WP-02",
  "schema": "lj-evidence/1",
- "status": "FAIL",
+ "status": "PASS",
  "test": "lint_bad_note",
  "unverified_reasons": []
 }

@@ -2,7 +2,7 @@
   "all_run": {
     "BLOCKED": 0,
     "FAIL": 0,
-    "PASS": 102,
+    "PASS": 109,
     "SKIPPED": 0,
     "UNVERIFIED": 2
   },
@@ -11,7 +11,7 @@
     "floor_mb": 400,
     "hard_floor_mb": 250,
     "measured_peak_of_generated_files_mb": 2.3,
-    "test_run_min_avail_mb": 70,
+    "test_run_min_avail_mb": 476,
     "venv_size_mb": 12.7,
     "venv_stage_avail_mb_start": 304,
     "venv_stage_label": "wp06-venv",
@@ -29,7 +29,7 @@
     "hygiene": {
       "BLOCKED": 0,
       "FAIL": 0,
-      "PASS": 12,
+      "PASS": 13,
       "SKIPPED": 0,
       "UNVERIFIED": 0
     },
@@ -43,14 +43,14 @@
     "ora": {
       "BLOCKED": 0,
       "FAIL": 0,
-      "PASS": 32,
+      "PASS": 33,
       "SKIPPED": 0,
       "UNVERIFIED": 0
     },
     "otio": {
       "BLOCKED": 0,
       "FAIL": 0,
-      "PASS": 43,
+      "PASS": 48,
       "SKIPPED": 0,
       "UNVERIFIED": 0
     },
@@ -73,7 +73,7 @@
   "quick_run": {
     "BLOCKED": 0,
     "FAIL": 0,
-    "PASS": 101,
+    "PASS": 108,
     "SKIPPED": 0,
     "UNVERIFIED": 2
   },

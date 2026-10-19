@@ -30,12 +30,17 @@
     {
       "id": "G6.where_did_it_write_prints_only_generalised_paths",
       "status": "PASS",
-      "text": "line 1 printed 4 lines, line 2 printed 1; not in %USERPROFILE% form: none; leaks of the made-up profile or user: none; Temp listed: none; tree unchanged: True; exit 0/0 "
+      "text": "line 1 printed 7 lines, line 2 printed 1; not in %USERPROFILE% form: none; leaks of the made-up profile or user: none; Temp listed: none; lines with an @: none; the x@y folder shown as <redacted>: True; tree unchanged: True; exit 0/0 "
     },
     {
       "id": "G7.flipped_tarball_rejected_before_extraction",
       "status": "PASS",
-      "text": "intact tarball -> exit 0 (OK: filmcraft-0.9.0-); one byte flipped -> exit 1 (REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 96863); verify call at run_sp1.sh line 196 precedes the first tar -xzf at line 217: True"
+      "text": "intact tarball -> exit 0 (OK: filmcraft-0.9.0-); one byte flipped -> exit 1 (REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 e7271); verify call at run_sp1.sh line 210 precedes the first tar -xzf at line 258: True"
+    },
+    {
+      "id": "G8.step2_move_prints_only_file_names",
+      "status": "PASS",
+      "text": "good destination: 5 of 5 moved, lines ok; failing destination: 5 'could not move' lines (names only: True), files stayed in Downloads: True, path leaks on stdout or stderr: none, stderr: '' (pwsh on Linux, made-up files; Windows UNVERIFIED)"
     }
   ],
   "schema": "lj-guide-check/1"

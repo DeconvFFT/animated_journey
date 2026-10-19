@@ -1,25 +1,25 @@
 {
   "counts": {
     "BLOCKED": 2,
-    "PASS": 32,
+    "PASS": 39,
     "UNVERIFIED": 1
   },
   "date_utc": "2026-10-19",
-  "lowest_avail_mb_seen_by_the_tests": 409,
+  "lowest_avail_mb_seen_by_the_tests": 464,
   "mode": "all",
   "package": "WP-07",
   "real_run_state": "T1, T2 and T4 have NOT been run against the real CLIs: the disk guard refused every real stage (see real_stages). The harness is proven against stand-in CLIs only.",
   "real_stages": [
     {
       "disk": {
-        "avail_mb_end": 461,
-        "avail_mb_min": 461,
-        "avail_mb_start": 461,
+        "avail_mb_end": 467,
+        "avail_mb_min": 467,
+        "avail_mb_start": 467,
         "floor_mb": 400,
         "hard_floor_mb": 250,
         "planned_write_mb": 300
       },
-      "reason": "not started: REFUSED: Avail 461 MB minus planned 300 MB leaves 161 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB.",
+      "reason": "not started: REFUSED: Avail 467 MB minus planned 300 MB leaves 167 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB.",
       "stage": "stage_effectcraft-v0.11.1",
       "status": "BLOCKED"
     }
@@ -55,6 +55,14 @@
       "status": "PASS"
     },
     {
+      "name": "list.fake_900_profile_full",
+      "status": "PASS"
+    },
+    {
+      "name": "list.fake_600_profile_full",
+      "status": "PASS"
+    },
+    {
       "name": "list.fake_600",
       "status": "PASS"
     },
@@ -87,6 +95,10 @@
       "status": "PASS"
     },
     {
+      "name": "blocked.forced_stage_not_in_verdict",
+      "status": "PASS"
+    },
+    {
       "name": "effectcraft.t1only_real",
       "status": "BLOCKED"
     },
@@ -107,11 +119,27 @@
       "status": "PASS"
     },
     {
+      "name": "fake.kept_tarball_corrupt_recovers",
+      "status": "PASS"
+    },
+    {
       "name": "fake.effectcraft_stage",
       "status": "PASS"
     },
     {
       "name": "fake.corrupt_tarball_rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.hash_mismatch_stops_all",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.t2_envelope_survives_term",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.t2_envelope_survives_kill",
       "status": "PASS"
     },
     {

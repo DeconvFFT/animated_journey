@@ -1,0 +1,24 @@
+{
+ "actual": "ops_lint.mask equals public_lint.mask for six values under two mask settings; a 40-character hit shows keep + cap characters",
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 453,
+  "avail_mb_min": 453,
+  "avail_mb_start": 453,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "ops_lint and public_lint print the same mask for the same hit (keep, fill and cap from the pattern file)",
+ "notes": "",
+ "package": "WP-02",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "lint_mask_parity",
+ "unverified_reasons": []
+}

@@ -9,6 +9,7 @@ Each test prints   RESULT PASS|FAIL <name> :: <detail>.   Exit 0 only when all p
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -19,6 +20,7 @@ REPO = Path(__file__).resolve().parents[2]
 TOOL = REPO / "scripts" / "stale_check.py"
 PATTERNS = REPO / "scripts" / "stale_patterns.json"
 ALLOW = REPO / "scripts" / "stale_allowlist.json"
+REGISTER = REPO / "DECISIONS.md"
 BASE = REPO.parent / "build-scratch"
 FAILS = []
 
@@ -49,6 +51,16 @@ def write(root, rel, text):
     p = Path(root) / rel
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(text, encoding="utf-8")
+
+
+def table4_ids(register):
+    """The | S-nn | ids of Table 4, read from the register itself (nothing here is a hard-coded range)."""
+    ids = []
+    for line in Path(register).read_text(encoding="utf-8-sig").split("\n"):
+        m = re.match(r"^\| (S-[0-9]+) \|", line)
+        if m and m.group(1) not in ids:
+            ids.append(m.group(1))
+    return ids
 
 
 def git(root, *args):
@@ -118,25 +130,54 @@ def run_all(T):
     result("same_strings_in_research_md_reviews_register_build_and_own_files_are_ignored", not bad, "scanned by mistake: %s" % bad)
     result("hits_are_also_found_in_skills_fixtures_and_win_scripts",
            {".claude/skills/x/SKILL.md", "research/q-fixtures/fix.py", "win/w.ps1"} <= set(h["file"] for h in hits), "")
-    allowed_files = [("playbooks/music-sound.md" if e["file"] != "*" and e["file"].endswith("music-sound.md") else None) for e in adoc["entries"]]
-    leaked = [h for h in hits if "allowed" in h["file"] or h["file"] in ("playbooks/music-sound.md", "playbooks/production-scale.md")]
+    scoped = sorted(set(e["file"] for e in adoc["entries"] if "*" not in e["file"]))
+    leaked = [h for h in hits if "allowed" in h["file"] or h["file"] in scoped]
     result("same_strings_in_the_allowlisted_contexts_are_not_live_hits", not leaked, "live hits in allowlisted files: %s" % [(h["file"], h["pattern"]) for h in leaked][:4])
-    result("allowlisted_hits_are_counted_per_entry", set(report["allowlisted_by_entry"]) == set(e["id"] for e in adoc["entries"]),
-           "entries seen: %s" % sorted(report["allowlisted_by_entry"]))
-    result("report_lists_every_table_4_row_S01_to_S41_and_W29", [r["row_id"] for r in report["rows"]] == ["S-%02d" % n for n in range(1, 42)] + ["W-29"], "%d rows" % len(report["rows"]))
+    # every entry's positive sample is planted: each entry shows up in the counts, except one that is structural AND whose sample the patterns do not hit at all (AL-4)
+    seen = set(report["allowlisted_by_entry"])
+    ids = set(e["id"] for e in adoc["entries"])
+    missing = ids - seen
+    result("allowlisted_hits_are_counted_per_entry", seen <= ids and all(e.get("structural") for e in adoc["entries"] if e["id"] in missing) and ids - missing >= set(e["id"] for e in adoc["entries"] if not e.get("structural")),
+           "entries seen: %s; not seen: %s" % (sorted(seen), sorted(missing)))
+    result("every_structural_entry_gives_its_reason_and_the_count_comes_from_the_file",
+           all(e.get("structural_reason") for e in adoc["entries"] if e.get("structural")) and len(ids) == len(adoc["entries"]),
+           "%d entries, %d structural" % (len(adoc["entries"]), sum(1 for e in adoc["entries"] if e.get("structural"))))
+    # the expected rows come from the register's Table 4 (not from a range), plus W-29, in the pattern file's order
+    reg_ids = table4_ids(REGISTER)
+    pat_ids = [r["row_id"] for r in doc["rows"]]
+    rep_ids = [r["row_id"] for r in report["rows"]]
+    result("report_lists_every_table_4_row_of_the_register_and_W29", rep_ids == pat_ids and set(reg_ids) | {"W-29"} == set(rep_ids) and len(reg_ids) >= 65,
+           "%d rows in the report, %d Table 4 ids in the register, missing from the report: %s" % (len(rep_ids), len(reg_ids), sorted((set(reg_ids) | {"W-29"}) - set(rep_ids))))
     md = mdp.read_text(encoding="utf-8")
     result("markdown_report_has_the_required_sections",
            all(x in md for x in ["## Every Table 4 row", "## REGRESSIONS", "## WORK ORDERS", "## Not machine-checkable (prose)", "## INFO: candidate new Table 4 rows"]), "")
+    outstanding = {r["row_id"] for r in doc["rows"] if r["status"] == "outstanding"}
     result("outstanding_rows_become_work_orders_and_applied_rows_regressions",
-           {w["row_id"] for w in report["work_orders"]} == {"S-01", "S-38", "S-39", "S-40"} and any(h["row_id"] == "S-05" for h in report["regressions"]), "")
+           {w["row_id"] for w in report["work_orders"]} == outstanding and {"S-01", "S-38", "S-42", "S-61", "S-65"} <= outstanding and any(h["row_id"] == "S-05" for h in report["regressions"]),
+           "%d outstanding rows" % len(outstanding))
 
-    # INFO candidates are counted but never fail the check
+    # INFO candidates are counted but never fail the check. Register v3 made Minecraft and the rest FAIL patterns, so the mechanism is tested with a synthetic info entry.
+    result("no_info_candidates_remain_and_the_report_says_so", doc["info"] == [] and report["info_candidates"] == [] and "None today" in md, "info entries: %d" % len(doc["info"]))
     info_tree = T / "info"
-    write(info_tree, "playbooks/i.md", "A Minecraft tour, an original voxel asset, Mojang textures, and a Christmas slot.\n")
-    rc, out = run(info_tree, "--json", str(T / "info.json"))
+    write(info_tree, "playbooks/i.md", "A candidate-only phrase: zzqx-candidate appears here.\n")
+    info_pat = json.loads(PATTERNS.read_text(encoding="utf-8"))
+    info_pat["info"] = [{"id": "INFO.synthetic", "suggested_row": "none", "flags": "i", "regex": "zzqx-candidate", "description": "a synthetic candidate", "positive_samples": ["zzqx-candidate"], "negative_samples": ["zzqx"]}]
+    ip = T / "info_patterns.json"
+    ip.write_text(json.dumps(info_pat), encoding="utf-8")
+    rc, out = run(info_tree, "--patterns", str(ip), "--json", str(T / "info.json"))
     ij = json.loads((T / "info.json").read_text(encoding="utf-8"))
     tot = {i["id"]: i["total"] for i in ij["info_candidates"]}
-    result("INFO_candidates_are_counted_and_do_not_fail_the_run", rc == 0 and tot.get("INFO.minecraft") == 1 and tot.get("INFO.voxel") == 1 and tot.get("INFO.mojang") == 1 and tot.get("INFO.holiday-placeholders") == 1, "exit %d %s" % (rc, tot))
+    result("INFO_candidates_are_counted_and_do_not_fail_the_run", rc == 0 and tot.get("INFO.synthetic") == 1 and ij["summary"]["fail"] == 0, "exit %d %s" % (rc, tot))
+    # the D-29 terms and the placeholder observances are FAIL now: the same text that used to be INFO fails the run and is filed under a Table 4 row
+    d29_tree = T / "d29"
+    write(d29_tree, "playbooks/i.md", "A Minecraft tour, an original voxel asset, Mojang textures, MagicaVoxel, Blockbench, MapartCraft and a Hanukkah slot.\n")
+    rc, out = run(d29_tree, "--json", str(T / "d29.json"))
+    dj = json.loads((T / "d29.json").read_text(encoding="utf-8"))
+    by_pat = {}
+    for h in dj["hits"]:
+        by_pat[h["pattern"]] = h["row_id"]
+    result("D29_terms_and_placeholder_observances_are_FAIL_not_INFO", rc == 1 and dj["info_candidates"] == [] and len(by_pat) == 7 and all(h["severity"] == "FAIL" for h in dj["hits"]),
+           "exit %d, patterns %s" % (rc, sorted(by_pat)))
 
     # strict
     rc, out = run(snapshot, "--strict")
@@ -199,6 +240,121 @@ def run_all(T):
     deadp.write_text(json.dumps(dead), encoding="utf-8")
     rc, out = run(REPO, "--audit-allowlist", "--allowlist", str(deadp))
     result("audit_allowlist_fails_on_a_dead_entry_and_names_it", rc == 1 and "AL-dead" in out and "DEAD" in out, out.strip().splitlines()[-1])
+
+    # review r1: a structural entry is 'unused by design', not dead; one without a reason is invalid input (r2: the entry count is the file's own, there are three such entries)
+    structural = [e["id"] for e in adoc["entries"] if e.get("structural")]
+    nent = len(adoc["entries"])
+    rc, out = run(REPO, "--audit-allowlist")
+    by_design = [l for l in out.splitlines() if l.endswith("unused by design (structural)")]
+    tagged = [l.split()[0] for l in by_design]
+    # a structural entry is printed as unused by design while it suppresses nothing; one that suppresses a hit today is printed as a normal entry
+    result("audit_allowlist_prints_unused_structural_entries_as_unused_by_design_and_exits_0",
+           rc == 0 and "DEAD" not in out and set(tagged) <= set(structural) and "AL-4-gathering-14" in tagged
+           and ("no dead entries (%d entries, %d unused by design)" % (nent, len(tagged))) in out, out.strip().splitlines()[-1])
+    nor = json.loads(ALLOW.read_text(encoding="utf-8"))
+    for e in nor["entries"]:
+        if e.get("structural"):
+            del e["structural_reason"]
+    norp = T / "allow_structural_no_reason.json"
+    norp.write_text(json.dumps(nor), encoding="utf-8")
+    rc, out = run(REPO, "--audit-allowlist", "--allowlist", str(norp))
+    result("structural_entry_without_a_reason_is_invalid_input_exit_2", rc == 2 and "structural_reason" in out, out.strip()[:100])
+    unmarked = json.loads(ALLOW.read_text(encoding="utf-8"))
+    for e in unmarked["entries"]:
+        e.pop("structural", None)
+    unp = T / "allow_unmarked.json"
+    unp.write_text(json.dumps(unmarked), encoding="utf-8")
+    rc, out = run(REPO, "--audit-allowlist", "--allowlist", str(unp))
+    result("without_the_structural_mark_every_unused_entry_would_be_dead", rc == 1 and all(i in out for i in structural) and out.count("DEAD") >= len(structural), out.strip().splitlines()[-1])
+
+    # review r2 (C-1): the self-test reads Table 4 from the register, so the check cannot fall behind it unnoticed
+    rc, out = run(REPO, "--self-test")
+    result("self_test_reads_the_register_and_passes_on_the_real_pair", rc == 0 and "register check: %d Table 4 ids" % len(table4_ids(REGISTER)) in out and "0 problems" in out, out.strip().splitlines()[-1])
+    short = json.loads(PATTERNS.read_text(encoding="utf-8"))
+    last_id = table4_ids(REGISTER)[-1]
+    short["rows"] = [r for r in short["rows"] if r["row_id"] != last_id]
+    shp = T / "patterns_missing_last_row.json"
+    shp.write_text(json.dumps(short), encoding="utf-8")
+    rc, out = run(REPO, "--self-test", "--patterns", str(shp))
+    result("self_test_fails_when_a_table_4_id_has_no_row", rc == 1 and ("Table 4 row %s is missing" % last_id) in out, "removed %s: %s" % (last_id, out.strip().splitlines()[-1]))
+    grown = REGISTER.read_text(encoding="utf-8-sig") + "\n| S-%d | a new stale value | the canonical value | somewhere | **outstanding**: Haiku |\n" % (int(last_id[2:]) + 1)
+    grp = T / "register_grown.md"
+    grp.write_text(grown, encoding="utf-8")
+    rc, out = run(REPO, "--self-test", "--register", str(grp))
+    result("self_test_fails_when_the_register_grows_a_row_the_pattern_file_lacks", rc == 1 and ("Table 4 row S-%d is missing" % (int(last_id[2:]) + 1)) in out, out.strip().splitlines()[-1])
+    drift = REGISTER.read_text(encoding="utf-8-sig").replace("| S-42 |", "| S-42 |", 1)
+    lines = drift.split("\n")
+    for i, l in enumerate(lines):
+        if l.startswith("| S-42 |"):
+            lines[i] = l.rsplit("|", 2)[0] + "| applied |"
+    drp = T / "register_status_drift.md"
+    drp.write_text("\n".join(lines), encoding="utf-8")
+    rc, out = run(REPO, "--self-test", "--register", str(drp))
+    result("self_test_fails_when_a_row_status_disagrees_with_the_register", rc == 1 and "row S-42 has status 'outstanding' but Table 4 says 'applied'" in out, out.strip().splitlines()[-1])
+    orow = REGISTER.read_text(encoding="utf-8-sig") + "\n| O-85 | Sun 1 Nov | a new open question | maker | open |\n"
+    orp = T / "register_o_row.md"
+    orp.write_text(orow, encoding="utf-8")
+    rc, out = run(REPO, "--self-test", "--register", str(orp))
+    result("self_test_fails_when_the_register_grows_an_O_row_past_the_O_row_pattern", rc == 1 and "stops at O-84 but the register's last O- row is O-85" in out, out.strip().splitlines()[-1])
+    rc, out = run(snapshot_for_skip := (T / "clean"), "--self-test")
+    result("self_test_says_so_when_there_is_no_register_to_read", rc == 0 and "register check: SKIPPED" in out, out.strip().splitlines()[0])
+
+    # review r2: the spellings W-29 now names fail in a playbook-like file, and their allowed negations do not
+    plant = T / "w29"
+    cm = "Christ" + "mas"
+    lines29 = [
+        "Build a Minecraft tour of her town.", "Use original voxel assets from MagicaVoxel.", "Export with Blockbench or MapartCraft; no Mojang textures.",
+        "Apply the T2 rule here.", "P1, the phone master, goes by cable.", "P2, the small copy for relatives.", "Phone deliverable: P1 by cable.",
+        "Week 10: Lunar New Year slot and Chhath as a constraint.", "US Thanksgiving week and Thanksgiving week rules.", "Ramadan, Ash Wednesday, Pongal and Hanukkah rows.",
+        "%s and New Year as household rows." % cm, "H-1 to H-7 cover the hum cases.", "The sound note's S1/S2 source classes.",
+        "The maker's own photograph of a three-dimensional murti on her shelf.", "Black; one room sound.", "Black; one true room sound.",
+        "Decision 11 means moving footage.", "The her-turn conversation is on Sat 6 Mar.", "See O-85 for the answer.",
+    ]
+    write(plant, "playbooks/planted.md", "# planted\n\n" + "\n\n".join(lines29) + "\n")
+    rc, out = run(plant, "--json", str(T / "w29.json"))
+    wj = json.loads((T / "w29.json").read_text(encoding="utf-8"))
+    live_lines = {h["line"] for h in wj["hits"] if h["severity"] == "FAIL"}
+    silent = [l for i, l in enumerate(lines29) if (3 + 2 * i) not in live_lines]
+    result("every_spelling_W29_names_fails_in_a_playbook_like_file", rc == 1 and not silent, "silent lines: %s" % silent)
+    ok_tree = T / "w29ok"
+    write(ok_tree, "playbooks/ok.md", "# ok\n\nThe old question about owning a game is closed: Minecraft is dropped (D-29).\n\nMinecraft was only an example of the playful feel.\n\n"
+          "Chhath is not hers, so it is no constraint on the window.\n\nThe her-turn conversation is Sun 7 Mar after about 14:00; the morning of Sat 6 Mar only if she does not fast.\n\n"
+          "Decision 11 is 'hindu_idiom' and decision 12 is moving footage.\n\nPH1, the phone master, goes by cable; the three-places rule holds.\n\nO-84 is the register's last row.\n")
+    rc, out = run(ok_tree, "--json", str(T / "w29ok.json"))
+    oj = json.loads((T / "w29ok.json").read_text(encoding="utf-8"))
+    result("the_allowed_negations_and_the_patched_wordings_do_not_fail", rc == 0 and not oj["hits"] and oj["summary"]["allowlisted"] >= 3, "exit %d, live hits %s, allowlisted %d" % (rc, [(h["pattern"], h["line"]) for h in oj["hits"]], oj["summary"]["allowlisted"]))
+    scoped_ok = T / "w29pclass"
+    write(scoped_ok, "playbooks/pushtimarg-world.md", "R1 defines P3 as her own shelf photograph of a three-dimensional murti, and P4 as a commissioned painting.\n")
+    write(scoped_ok, "playbooks/other.md", "R1 defines P3 as her own shelf photograph of a three-dimensional murti, and P4 as a commissioned painting.\n")
+    rc, out = run(scoped_ok, "--json", str(T / "pclass.json"))
+    pj = json.loads((T / "pclass.json").read_text(encoding="utf-8"))
+    result("the_P_class_allowlist_entry_is_scoped_to_pushtimarg_world_md", rc == 1 and [h["file"] for h in pj["hits"]] == ["playbooks/other.md"], "live hits in %s" % [h["file"] for h in pj["hits"]])
+    # D-29 hits are filed under the Table 4 row whose scribe owns the file
+    att = T / "att"
+    for rel, text in [("playbooks/format.md", "A Minecraft tour."), (".claude/skills/meaningful-game-mechanics/SKILL.md", "Minecraft assets."), ("playbooks/music-sound.md", "Minecraft's audio."),
+                      ("playbooks/theatrical-delivery.md", "no Mojang assets."), ("playbooks/cinematic-quality.md", "Original voxel assets only and never the marker.\nnever a voxel marker."),
+                      ("skills-staging/x-skill/SKILL.md", "A voxel asset."), ("playbooks/surprise-ops.md", "The Ramadan row."), ("playbooks/production-scale.md", "The Ramadan row."),
+                      ("playbooks/film-story.md", "Black; one true room sound."), ("playbooks/gujarati-devotional-sound.md", "Black; one true room sound.")]:
+        write(att, rel, text + "\n")
+    rc, out = run(att, "--json", str(T / "att.json"))
+    aj = json.loads((T / "att.json").read_text(encoding="utf-8"))
+    got = sorted((h["file"], h["line"], h["row_id"]) for h in aj["hits"])
+    want_rows = [(".claude/skills/meaningful-game-mechanics/SKILL.md", 1, "S-45"), ("playbooks/cinematic-quality.md", 1, "S-54"), ("playbooks/cinematic-quality.md", 2, "S-42"), ("playbooks/film-story.md", 1, "S-51"),
+                 ("playbooks/format.md", 1, "S-44"), ("playbooks/gujarati-devotional-sound.md", 1, "S-63"), ("playbooks/music-sound.md", 1, "S-49"), ("playbooks/production-scale.md", 1, "S-61"),
+                 ("playbooks/surprise-ops.md", 1, "S-56"), ("playbooks/theatrical-delivery.md", 1, "S-48"), ("skills-staging/x-skill/SKILL.md", 1, "S-50")]
+    result("hits_are_filed_under_the_table_4_row_that_owns_the_file", got == sorted(want_rows), "got %s" % [g for g in got if g not in want_rows])
+
+    # review r1: S-05.ring-1 no longer fires on ordinary words that contain 'ring 1'
+    noise = T / "noise"
+    write(noise, "playbooks/words.md", 'The method "originated in Persia during 13th century".\nBhavnagar spring 11.6 m at the top of the tide.\nStory 12 hours, gathering 14 hours, reserve 15.\n')
+    write(noise, "playbooks/production-scale.md", "Story takes 12 hours, gathering 14, the risk reserve 15\n")
+    rc, out = run(noise, "--json", str(T / "noise.json"))
+    nj = json.loads((T / "noise.json").read_text(encoding="utf-8"))
+    result("S05_ring_1_does_not_fire_on_during_13th_spring_11_6_or_gathering_14", rc == 0 and not [h for h in nj["hits"] if h["pattern"] == "S-05.ring-1"], "exit %d, %d hit(s)" % (rc, len(nj["hits"])))
+    write(noise, "playbooks/rings.md", "Set the rings: Ring 1 is the co-keeper.\n")
+    rc, out = run(noise, "--json", str(T / "noise2.json"))
+    nj = json.loads((T / "noise2.json").read_text(encoding="utf-8"))
+    result("S05_ring_1_still_fires_on_the_capitalised_label", [h["file"] for h in nj["hits"] if h["pattern"] == "S-05.ring-1"] == ["playbooks/rings.md"], "")
 
 
 if __name__ == "__main__":

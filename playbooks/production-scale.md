@@ -58,7 +58,7 @@ The next step is the vertical slice. It is one complete chapter, built to final 
 
 - **H**: the hours per week you can reliably give. Usable hours are 85 percent of H each week (u = 0.85) [J].
 - **Runtime tier**: 6 (F-0), 9, 12, or 15 to 18 (stretch). The 25-, 45- and 90-minute rows in the tables below are kept for comparison only; they are not production targets (`DECISIONS.md` W-03, D-24).
-- **Wrapper and modules**: the film is a wrapper (cold open about 1:15 and ending about 1:45) plus modules of about 3:00 each. Twelve minutes is the wrapper plus three modules; fifteen is the wrapper plus four [7]. The model's 100-second chapter is the learning-curve unit, not the cut structure, so seven of them for 12 minutes stays valid. The agent-pipeline playbook also defines a chapter as about 100 seconds [2]. Decided in round 2, with no open items: (a) this track plans 12 minutes as wrapper plus three 3:00 modules. `research/film-story.md` (runtime table, 12-minute row) and `playbooks/film-story.md` (runtime shapes) still carry four chapters of 2:15 for 12 minutes while their recommendation uses 3:00 modules; delta logged for film-story's next round; the cost model is unchanged either way (n = 7 learning units). Resolved by `DECISIONS.md` W-04: the 3:00 module is the shape; film-story's 2:15 row is superseded. (b) The 8-minute tier is replaced by 9 minutes (wrapper plus two modules), the nearest whole-module version. (c) At the 17 January gate, below 5.4 minutes approved, cut one module (the lowest-priority), not two; a second module is cut only at G-DRAFT if it is not at draft. (d) The slice is a 100-second piece of module M1 (acceptance 90 to 120 seconds), not all 180 seconds of it; the rest of M1 is built after the gate (Step 8). (e) Shot IDs carry wrapper shots: the pattern is `^LJ-(C\d{2}|W\d)-S\d{3}$`.
+- **Wrapper and modules**: the film is a wrapper (cold open about 1:15 and ending about 1:45) plus modules of about 3:00 each. Twelve minutes is the wrapper plus three modules; fifteen is the wrapper plus four [7]. The model's 100-second chapter is the learning-curve unit, not the cut structure, so seven of them for 12 minutes stays valid. The agent-pipeline playbook also defines a chapter as about 100 seconds [2]. Decided in round 2, with no open items: (a) this track plans 12 minutes as wrapper plus three 3:00 modules. The cost model is unchanged either way (n = 7 learning units). `DECISIONS.md` W-04 makes the 3:00 module the shape, and `playbooks/film-story.md` no longer carries a 2:15 row (S-17 applied; `research/film-story.md` keeps its old runtime table as a historical record). (b) The 8-minute tier is replaced by 9 minutes (wrapper plus two modules), the nearest whole-module version. (c) At the 17 January gate, below 5.4 minutes approved, cut one module (the lowest-priority), not two; a second module is cut only at G-DRAFT if it is not at draft. (d) The slice is a 100-second piece of module M1 (acceptance 90 to 120 seconds), not all 180 seconds of it; the rest of M1 is built after the gate (Step 8). (e) Shot IDs carry wrapper shots: the pattern is `^LJ-(C\d{2}|W\d)-S\d{3}$`.
 - **Shot classes**: A is a photo move, B a designed graphic, C a hero shot, D a title or caption. The model's mix is 60, 25, 10 and 5 percent of shots [2].
 - **Animatic**: a timed rough cut made from real pictures and temporary sound.
 - **Slice**: the one complete piece we use to measure (Principle 3): 100 seconds of module M1.
@@ -81,7 +81,7 @@ The table below shows the Base case for each stage, in maker-hours per finished 
 | Animation and compositing (Routes A and B, Blender) | draft renders (G2) | agent builds, you review | 4.6, including rework and reuse |
 | Hand refinement in the Craft apps (G3, classes B and C only) | Craft-app passes | you | counted in shot minutes |
 | Chapter assembly and passes (G4 to G6) | chapter master | you and agent | 1.2 |
-| Score, sound integration (no narrator) | cue sheet, stems | you choose; library, CC0, CC BY or your own sound, no composer (D-07, W-44); agent assembles | 0.6 |
+| Score, sound integration (no narrator) | cue sheet, stems | you choose; her-world sound and your hum in two takes, CC0 or CC BY only as a labelled stand-in and only if the sound is hers, no composer and no sung recording before April (D-07, W-44, W-65); agent assembles | 0.6 |
 | Grade, mix, captions, QC | final audio and picture | you (lever 3 is off for the premiere cut, W-50) | 2.7 |
 | Master, access copy, DCP or file, verification | ProRes 422 HQ, H.264, checksums | agent scripts, you check | 24 fixed hours |
 
@@ -154,15 +154,15 @@ Make three style frames. A suggested set is one class A, one class B and one cla
 
 Days are enough for this. Pixar's look tests were "super quick and dirty, just with a few days of work for each," so the team agreed the direction early [67].
 
-### Step 7. Check the render setup (spikes S1 to S5)
+### Step 7. Check the render setup (spikes SP1 to SP5)
 
-The G-READY gate needs spikes S1 to S5 to pass, or fallbacks named. They are the spikes in the agent-pipeline playbook, Step 3 [2]:
+The P-LOCK process lock (Sat 14 Nov) needs spikes SP1 to SP5 to pass, or fallbacks named, and G-READY (Sun 15 Nov) confirms it (`DECISIONS.md` W-06). They are the spikes in the agent-pipeline playbook, Step 3 [2]:
 
-- **S1:** the Craft command-line tools inside the container. The scope is in `research/craft-motion.md` (R8) [3].
-- **S2:** frame capture for Route A.
-- **S3:** Blender, for hero shots. It measures one real kitchen frame against the table in the render bullets below (pass: within 2 times the table).
-- **S4:** how the cloud container behaves when idle. Open question: does a running background job keep it awake? TODO(research), not documented in the pages read.
-- **S5:** the validators (the agent-pipeline templates).
+- **SP1:** the Craft command-line tools inside the container. The scope is in `research/craft-motion.md` (R8) [3].
+- **SP2:** frame capture for Route A.
+- **SP3:** Blender, for hero shots. It measures one real kitchen frame against the table in the render bullets below (pass: within 2 times the table).
+- **SP4:** how the cloud container behaves when idle. Open question: does a running background job keep it awake? TODO(research), not documented in the pages read.
+- **SP5:** the validators (the agent-pipeline templates).
 
 The G-READY settings card is the project settings card in the agent-pipeline playbook [2]: picture 1920 x 1080; frame rate 24 frames per second (settled; signed on the settings card on Sunday 1 November, `DECISIONS.md` W-14, W-16); Rec. 709 and sRGB; sound 48 kHz, 24-bit; master ProRes 422 HQ. Decision 12 records that the frame rate is settled.
 
@@ -170,7 +170,7 @@ These numbers were measured in the project's cloud container on 18 October 2026.
 
 - Photo moves (Route B): about 7.8 frames per second at 1080p, in one process.
 - Blender Workbench (drafts): about 1 second per frame.
-- Blender Cycles, 24 samples with denoise, 1080p: 17.5 seconds per frame on one lit Suzanne scene, and 204 seconds on Blender's 'classroom' benchmark scene (research note F3). The stylised kitchen set will fall between them; spike S3 measures it. A stand-in kitchen with no photographs measured 112 seconds at 64 samples and 204 seconds at 128, with denoise, on the container (research note G2; no GPU run).
+- Blender Cycles, 24 samples with denoise, 1080p: 17.5 seconds per frame on one lit Suzanne scene, and 204 seconds on Blender's 'classroom' benchmark scene (research note F3). The stylised kitchen set will fall between them; spike SP3 measures it. A stand-in kitchen with no photographs measured 112 seconds at 64 samples and 204 seconds at 128, with denoise, on the container (research note G2; no GPU run).
 - Software EEVEE: 34 to 36 seconds per frame, which is slower than Cycles here.
 - A 12-minute film is 17,280 frames at 24 frames per second. It needs about 18 CPU-hours at Suzanne speed and about 150 at classroom speed, almost all of it for hero frames (883 ten-minute jobs at classroom speed; 76 at Suzanne speed).
 - A foreground command stops after 10 minutes. A background job gets 30 minutes by default, and up to 2 hours with a timeout. A reclaimed machine does not restore running jobs [3].
@@ -178,7 +178,7 @@ These numbers were measured in the project's cloud container on 18 October 2026.
 
 So render in ranges of frames. Write each frame as it finishes, skip frames that already exist, encode each chunk, and delete its frames. Loose PNG frames for a 12-minute film would take about 35 GB, which is more than the free disk [3].
 
-**Hero finals are GPU work by default.** The maker's own PC (Exercise 1) is the first choice. RunPod's RTX 4090 costs $0.34 to $0.89 an hour, on a page updated 8 October 2026 [54]; use it only for a scene with no family imagery, only on Secure Cloud with an encrypted volume and the maker's recorded OK, and never on Community Cloud (`DECISIONS.md` W-23, D-15). On a 4090 a classroom-class frame at 1080p takes about 1.6, 3.0 and 5.6 seconds at 64, 128 and 256 samples [82][83][84]. The 12-minute film's 2,592 hero finals would take 1.2 to 4.0 GPU-hours, about $0.4 to $3.6 (ESTIMATE; denoise and pod start-up are not included). A scene that uses her photographs as textures counts as family imagery for this rule, and needs the maker's explicit say before it goes to a pod. Spike S3 passes if one real hero frame on a rented or maker-owned GPU lands within 2 times the table for its samples and size, with pod start, load time, denoise time and bytes transferred written down; it costs under $1. Build the kitchen from primitives and hand-made textures, with no photograph used as a texture, and its passes can go to a pod (a suggestion, not yet tested).
+**Hero finals are GPU work by default.** The maker's own PC (Exercise 1) is the first choice. RunPod's RTX 4090 costs $0.34 to $0.89 an hour, on a page updated 8 October 2026 [54]; use it only for a scene with no family imagery, only on Secure Cloud with an encrypted volume and the maker's recorded OK, and never on Community Cloud (`DECISIONS.md` W-23, D-15). On a 4090 a classroom-class frame at 1080p takes about 1.6, 3.0 and 5.6 seconds at 64, 128 and 256 samples [82][83][84]. The 12-minute film's 2,592 hero finals would take 1.2 to 4.0 GPU-hours, about $0.4 to $3.6 (ESTIMATE; denoise and pod start-up are not included). A scene that uses her photographs as textures counts as family imagery for this rule, and needs the maker's explicit say before it goes to a pod. Spike SP3 passes if one real hero frame on a rented or maker-owned GPU lands within 2 times the table for its samples and size, with pod start, load time, denoise time and bytes transferred written down; it costs under $1. Build the kitchen from primitives and hand-made textures, with no photograph used as a texture, and its passes can go to a pod (a suggestion, not yet tested).
 
 **Free render farm.** SheepIt is free and lists Blender 5.2. It says nothing about confidentiality, so never send family imagery to it [57].
 
@@ -200,7 +200,7 @@ The slice must include all of the following:
 - at least 4 class B shots;
 - at least 1 class D title or caption;
 - one sound line from her world (and one HER-PUBLIC line if it passed one-key-three-guards; the maker-voice fragment is also tested here and decided at G-SLICE with the S1 sheets, `DECISIONS.md` W-35);
-- one music cue;
+- one music cue (in the premiere's spine this is the maker's hum, in the take the file needs: closed-mouth for the venue file, open vowel for the phone file; `DECISIONS.md` W-44, W-65);
 - one still where the photo does not move;
 - the transition into the next module's motif.
 
@@ -218,7 +218,7 @@ By Sunday 6 December (G-SLICE-0) you need an animatic: real photos and temporary
 - A real mix, not temporary sound.
 - A grade and captions.
 - A master played end to end on venue-class playback: a TV or projector about 3 metres away.
-- S1, the stranger screening on the slice (three strangers to her; Decision 8, `DECISIONS.md` W-43); if you decline, the cold self-read (T3).
+- S1, the stranger screening on the slice (one or two strangers to her; Decision 8, `DECISIONS.md` W-43); if you decline, the cold self-read (T3).
 - The measured hours, h_slice and h_slice_fin.
 
 Log both in `hours.csv` as you go.
@@ -244,7 +244,7 @@ The rules from the gates file are these.
 
 ### Step 11. The holidays (20 December to 2 January)
 
-The model counts zero hours for these two weeks. Do not plan production in them. Rest, or do ungated reading if you want to. The holiday capture list (room tone of her kitchen, the object clock in its light, the street, the house sounds; never a recording of her) is the only fieldwork (`DECISIONS.md` W-10). The schedule does not count it [3].
+The model counts zero hours for these two weeks. Do not plan production in them. Rest, or do ungated reading if you want to. The holiday capture list (room tone of her kitchen, the object clock in its light, the street, the house sounds; never a recording of her) is the only fieldwork: the film's only location shoot, the maker alone in her empty house on a device that does not sync, with no seva article touched and no haveli at darshan time (`DECISIONS.md` W-10, W-70). The schedule does not count it [3].
 
 ### Step 12. The restart check (Sunday 3 January, G-RESTART)
 
@@ -259,7 +259,7 @@ Each chapter moves from brief to approved. The model assumes about 40 percent of
 
 ### Step 14. Picture lock (Saturday 6 February, G-LOCK)
 
-Each chapter locks in order as it passes gates G4 and G5. For the 12-minute plan, rolling locks begin on Sunday 17 January [notes]. Lunar New Year falls on picture-lock day (Saturday 6 February 2027 [94]); if the household observes it, lock on Friday 5 February instead (Decision 16).
+Each chapter locks in order as it passes gates G4 and G5. For the 12-minute plan, rolling locks begin on Sunday 17 January [notes]. Saturday 6 February 2027 is Maha vad Amas in her calendar (Decision 16); lock on the day unless she keeps the Amavasya and the PC work needs the house, then on Friday 5 February (`DECISIONS.md` W-08, O-45).
 
 On 6 February, every shot is marked `locked=1` in `status.csv`. Record the timeline hash for the whole cut. Create the git tag `picture-lock-2027-02-06`.
 
@@ -377,7 +377,7 @@ The first three exercises produce the numbers the schedule needs most. Use only 
 1. List every photo, video and recording you already hold. Group them by chapter, and refer to people by ID (for example `P-001`), not by name.
 2. For each item, note whether it is scanned and labelled. Note whether it is yours to show. Photos taken by others need clearance for public screening [1].
 3. Work out the share for each chapter.
-4. Note which gaps would need a covert ask later. Do not contact anyone yet; covert collection opens on Sunday 15 November, after the L1 process lock (`DECISIONS.md` D-13, W-10).
+4. Note which gaps would need a covert ask later. Do not contact anyone yet; covert collection opens on Sunday 15 November, after P-LOCK, the process lock (`DECISIONS.md` D-13, W-06, W-10).
 
 **Good looks like.** A percentage per chapter, the top three chapters by material, and a list of gaps with no names in it.
 
@@ -466,13 +466,14 @@ Paste h_slice and h_slice_fin into the model's calibration block (rows 173 and 1
 
 | Gate | Date | Must be true | If not |
 |---|---|---|---|
-| G-READY | Sun 15 Nov 2026 | settings card written (the agent-pipeline project settings card; Step 7); spikes S1 to S5 pass or fallbacks named (Step 7); style bible and three style frames approved (G1); H confirmed in writing; the venue's written answer on file (asked by Fri 6 Nov, W-17); `hours.csv` started | one week's grace (to 22 Nov); then drop one tier |
+| P-LOCK | Sat 14 Nov 2026 | the production process proven on synthetic material (`DECISIONS.md` W-06): spikes SP1 to SP5 reviewed, the five-minute tests on the five pinned apps, round trips, settings card, manifest, encrypted drive, `lj.ps1 close` run once; the Gujarati shaping burn, the slice fixture played from the project Android's gallery, the project-phone hygiene row, the cue map with its header | no collection starts; fix and re-run (G-READY's grace week applies) |
+| G-READY | Sun 15 Nov 2026 | P-LOCK confirmed; settings card written (the agent-pipeline project settings card; Step 7); spikes SP1 to SP5 pass or fallbacks named (Step 7); style bible and three style frames approved (G1); H confirmed in writing; the venue's written answer on file (asked by Fri 6 Nov, W-17); `hours.csv` started | one week's grace (to 22 Nov); then drop one tier |
 | G-SLICE-0 | Sun 6 Dec 2026 | the slice animatic with real photos and temporary sound; first measured hours logged | no animatic: cut one tier now |
-| G-SLICE | Sun 20 Dec 2026 | the slice at final quality including sound mix, grade, captions and a master on venue-class playback at about 3 m; S1 held with three strangers to her (Decision 8, W-43), or the cold self-read passed if the maker declines; h_slice and h_slice_fin measured; material-in-hand share known | compare h_slice with T2; red: next shorter scenario; amber: continue only with levers |
+| G-SLICE | Sun 20 Dec 2026 | the slice at final quality including sound mix, grade, captions and a master on venue-class playback at about 3 m; S1 held with one or two strangers to her (Decision 8, W-43), or the cold self-read passed if the maker declines; h_slice and h_slice_fin measured; material-in-hand share known | compare h_slice with T2; red: next shorter scenario; amber: continue only with levers |
 | G-RESTART | Sun 3 Jan 2027 | H and material reconfirmed; chapters with material in hand listed; cut order reconfirmed | if H fell by more than 25 percent, recompute and cut now |
 | G-MID | Sun 17 Jan 2027 | at least 45 percent of target runtime at approved or better | 12 minutes: cut the lowest-priority module now (to 9 minutes); a second only at G-DRAFT, if not at draft |
 | G-DRAFT | Sun 31 Jan 2027 | 100 percent of kept runtime at draft or better; at least 60 percent rolling-locked; finishing chain rehearsed | replace unfinished modules with a held-still plus card fallback, or cut |
-| G-LOCK | Sat 6 Feb 2027 | every shot `locked=1`; timeline hash recorded; git tag `picture-lock-2027-02-06` | unlock rule only (Step 14). Lunar New Year falls on this date; if observed, lock Fri 5 Feb. |
+| G-LOCK | Sat 6 Feb 2027 | every shot `locked=1`; timeline hash recorded; git tag `picture-lock-2027-02-06` | unlock rule only (Step 14). Sat 6 Feb is Maha vad Amas; lock Fri 5 Feb only if she keeps it and the PC work needs the house (W-08, O-45). |
 | G-MIX | Sat 13 Feb 2027 | mix v1 and grade v1 on all locked chapters; S2 held in week 17 (Decision 8, W-43); if the maker declines, the cold self-read of the whole film | fix list only; no new picture |
 | G-MASTER | Sat 20 Feb 2027 | master and access copy verified; DCP if used; ffprobe and loudness reports; two backups verified; played on venue-class playback | buffer week is for fixing, not adding |
 | G-REHEARSE | Mon 22 Feb 2027 | final file plays end to end on venue-class playback | fall back to the USB access copy |
@@ -561,7 +562,7 @@ Record each result in `reviews/C01/` and in `decisions.csv`.
 - [ ] **Grade.** One look applied through the same chain to every shot. The colour-patch test passes within plus or minus 3 out of 255 on the final encode [2].
 - [ ] **Captions.** Inside the reading-speed and length limits in the format track.
 - [ ] **Master.** ProRes 422 HQ and H.264 access copy produced. A DCP test file if a DCP is in scope. Played end to end on a TV or projector about 3 metres away.
-- [ ] **Strangers read it, or the cold self-read.** S1: three strangers to her and to the family see a redacted copy cold, under the truthful partial pretext (`DECISIONS.md` W-43). The first question is "If you met her at the reception afterwards, what would you ask her?", then who she is (in three sentences), what she wanted and what they felt. If the maker declines, the cold self-read in T3 takes the same slot. Protocol from the cinematic-quality track.
+- [ ] **Strangers read it, or the cold self-read.** S1: one or two strangers to her and to the family see a redacted copy cold, under the truthful partial pretext (`DECISIONS.md` W-43). The first question is "If you met her at the reception afterwards, what would you ask her?", then who she is (in three sentences), what she wanted and what they felt. If the maker declines, the cold self-read in T3 takes the same slot. Protocol from the cinematic-quality track.
 - [ ] **Hours logged.** `h_slice` and `h_slice_fin`, with learn and admin reported against the 30-hour allowance, agent hours, render seconds, rework counts and, if AI clips were used, generations tried and kept.
 - [ ] **Surprise safety.** Repo, folder and commit names harmless. No personal data in any cloud service. Cloud levels respected.
 - [ ] **Verdict.** Apply T2. Write the decision in `decisions.csv`.
@@ -642,14 +643,14 @@ Each decision lists the options and the current lean. The lean is not final. You
 
 The schedule has two reads by strangers to her, now decided (`DECISIONS.md` W-43). You are the only person on the project, and nobody else is in on the surprise. The readers are strangers to her and to the family, on a redacted copy, under the truthful partial pretext: they learn that a short film about one woman exists, never who and never that it is a surprise.
 
-- **Options**: (a) hold S1 (three strangers on the slice, about Sunday 20 December) and S2 (three to five on the locked cut in week 17, with one viewer over 65 and, if possible, one teenager with a guardian); (b) drop the outside slots and use the cold self-read in T3 instead. It is the named fallback, and it brings nobody in.
+- **Options**: (a) hold S1 (one or two strangers on the slice, about Sunday 20 December) and S2 (three to five on the locked cut in week 17, with one viewer over 65 and, if possible, one teenager with a guardian); (b) drop the outside slots and use the cold self-read in T3 instead. It is the named fallback, and it brings nobody in.
 - **Lean**: (a), strangers to her at S1 and S2. If you decline, the cold self-read (48 hours unopened) takes both slots, with Fable's rubric pass mandatory. Pass: at least 80 percent identify the reconstructions and one person across ages; no unread text; at most 2 tell-marks a minute.
 
 ### 9. Who else is in on it, and who approves the hard chapters? (decided: only-me)
 
 Decided on 2026-10-18 (`DECISIONS.md` D-03, D-04): for now only you are on the project, as sole producer, sole keeper of the secret and sole proxy for hard chapters. The charter lets relatives and friends be sources through low-key asks that reveal nothing [1]; nobody else is brought in. The one re-open point is TD-L2c on Sunday 3 January 2027. Exercises 6 and 7 use only what you already hold.
 
-For hard chapters the process is one-key-three-guards: a decision sheet per candidate; Fable's written flag [1]; your two decisions 72 hours apart (review 02 section 0.3's rule, adopted by the story track [6][7]); and default OUT of the public cut on any doubt. Anything HOLD or PRIVATE stays out of the public cut, and the her-turn conversation after the reveal (Saturday 6 March 2027) is how she can put it back [6]. Fable flags and never passes G5.
+For hard chapters the process is one-key-three-guards: a decision sheet per candidate; Fable's written flag [1]; your two decisions 72 hours apart (review 02 section 0.3's rule, adopted by the story track [6][7]); and default OUT of the public cut on any doubt. Anything HOLD or PRIVATE stays out of the public cut, and the her-turn conversation after the reveal (Sunday 7 March 2027 after about 14:00, else Monday 8 March, moved off Maha Shivaratri; `DECISIONS.md` W-48) is how she can put it back [6]. Fable flags and never passes G5.
 
 ### 10. Week numbering (decided: the dates are the authority, `DECISIONS.md` D-21)
 
@@ -659,7 +660,7 @@ For hard chapters the process is one-key-three-guards: a decision sheet per cand
 ### 11. Picture-lock date
 
 - **Options**: Saturday 6 February 2027 (G-LOCK). Saturday 13 February (G-MIX) is the latest acceptable lock, not an option to pick; there is no 25-minute plan and so no earlier 30 January lock (`DECISIONS.md` W-08, D-06).
-- **Lean**: 6 February, as fixed (Friday 5 February if the household observes Lunar New Year).
+- **Lean**: 6 February, as fixed (Friday 5 February only if she keeps Maha vad Amas and the PC work needs the house, O-45).
 
 ### 12. Frame rate
 
@@ -680,28 +681,30 @@ For hard chapters the process is one-key-three-guards: a decision sheet per cand
 - **Options**: the cloud container for drafts; a rented GPU; a free farm.
 - **Lean**: the container for drafts of drawn scenes (Route A); photo moves (Route B) go to the container only as `preview` proxies of about 768 px, after the account's model-improvement setting is off and only where the photo set's `cloud` level allows, and full-size renders run on the PC (`DECISIONS.md` W-23, W-24); hero finals on the maker's own PC, or on a rented GPU only for scenes with no family imagery, on Secure Cloud with the maker's recorded OK and never Community Cloud (research F3: hero finals are GPU work by default). Scripts travel to the photos; photos stay home. A scene that uses her photographs as textures counts as family imagery for this rule. Never send family imagery to a free farm [57].
 
-### 16. Observances and holidays
+### 16. Her calendar and the holidays
 
-The jurisdiction is unknown. The dated list below was checked on 2026-10-18 against the sources shown (research F5).
+The household's calendar is hers, not a generic one: a Gujarati Pushtimarg household in Saurashtra (`DECISIONS.md` D-31). The rows below are read from `ROADMAP.md` §7.1 (dates as the tracks read them on 2026-10-19; Drik Panchang for her town unless another city is named, and the sampradaya's tippani, T); **her household's printed panchang wins over any website** (O-56). A row is a schedule constraint only when `kept_by_her = yes` (O-39); the premiere country's public holidays are logistics rows keyed on O-02, not household observances. Chhath is not hers.
 
-| Date | Observance | Weekday | Note | Source |
+| Date | In her calendar | Weekday | What it does to the plan | Source |
 |---|---|---|---|---|
-| Sun 8 Nov 2026 | Diwali, main day (festival 6 to 10 November) | Sunday | | [92] |
-| Thu 26 Nov 2026 | US Thanksgiving | Thursday | fourth Thursday of November (computed) | none |
-| Fri 4 Dec evening to Sat 12 Dec 2026 | Hanukkah | Friday to Saturday | sunset 4 December to nightfall 12 December | [93] |
-| Sun 20 Dec 2026 | Planned G-SLICE | Sunday | five days before Christmas | playbook |
-| Fri 25 Dec 2026 | Christmas Day | Friday | computed | none |
-| Fri 1 Jan 2027 | New Year's Day | Friday | computed | none |
-| Sat 6 Feb 2027 | Lunar (Chinese) New Year, Year of the Goat | Saturday | **same day as picture lock** | [94] |
-| Mon 8 Feb to Mon 8 Mar 2027 | Ramadan (Umm al-Qura calendar; local moon sighting can move it by about a day) | Monday to Monday | **the premiere, Saturday 27 February, is about day 20** | [95] |
-| Wed 10 Feb 2027 | Ash Wednesday, start of Lent | Wednesday | | [96] |
-| Sat 27 Feb 2027 | Premiere | Saturday | | charter |
+| Thu 5 to Sat 14 Nov 2026 | Her Diwali week: Vagh Baras to Labh Pancham; Diwali, Lakshmi Pujan and Chopda Pujan Sun 8; Annakut Mon 9 or Tue 10 (which day is the house's, O-56) | Thursday to Saturday | All before P-LOCK (Sat 14 Nov = Labh Pancham): be present, no asks, no new speaker, tablet or shared account as a gift (W-10) | [92]; `ROADMAP.md` §7.1 |
+| Sat 21 Nov 2026 | Tulsi Vivah (Prabodhini Ekadashi, Vaishnava day); Dev Diwali Tue 24 | Saturday | The first album-and-hands occasion if the family gathers (W-49) | `ROADMAP.md` §7.1 |
+| Sun 20 Dec 2026 | Planned G-SLICE; Mokshada Ekadashi (T) | Sunday | A quiet day; the gate is unaffected by a fast | `ROADMAP.md` §7.1 |
+| Wed 16 Dec 2026 to Thu 14 Jan 2027 | Dhanurmas | | A dawn-kitchen capture season only if hers (O-80) | `ROADMAP.md` §7.1 |
+| Thu 14 and Fri 15 Jan 2027 | Uttarayan | Thursday, Friday | If she keeps it, the last ask is Tue 12 Jan and answers run to Tue 19 Jan (W-10) | `ROADMAP.md` §7.1 |
+| Sat 30 Jan 21:21 to Tue 2 Feb 2027 | Vinchudo | | Ends before lock week | `ROADMAP.md` §7.1 |
+| Sat 6 Feb 2027 | Maha vad Amas = G-LOCK | Saturday | Lock Fri 5 Feb only if she keeps it and the PC work needs the house (W-08, O-45) | `ROADMAP.md` §7.1 |
+| Thu 11 Feb 2027 | Vasant Panchami: the film's own season | Thursday | S2 scheduled around the morning puja (W-49) | `ROADMAP.md` §7.1 |
+| Sat 13 Feb and Sat 20 Feb 2027 | Ratha Saptami = G-MIX; Maha Poonam = G-MASTER | Saturday | None; the maker alone | `ROADMAP.md` §7.1 |
+| Wed 24 Feb 2027 | Dwijapriya Sankashti Chaturthi = the room brief | Wednesday | No invitation call to the household that evening if she fasts to moonrise (W-52) | `ROADMAP.md` §7.1 |
+| Sat 27 Feb 2027 | Premiere; Shri Nathji ko Patotsav (T, UNVERIFIED at the Board); Vinchudo all day; the monthly Krishna Janmashtami fast | Saturday | Start after her evening lamp and the haveli; the reception's food is hers to decline (W-12, O-57, O-75) | charter; `ROADMAP.md` §7.1 |
+| Sat 6 and Sun 7 Mar 2027 | Maha Shivaratri (Chaturdashi to 13:46 Sun) | Saturday, Sunday | The her-turn conversation moves to Sun 7 Mar after about 14:00, else Mon 8 Mar (W-48) | `ROADMAP.md` §7.1 |
 
 Two consequences:
-- **Picture lock falls on Lunar New Year.** If the household or the audience observes it, lock on Friday 5 February instead. gates.csv says the same at G-LOCK.
-- **The premiere falls on about day 20 of Ramadan.** If the audience observes it, an evening screening follows sunset and iftar. Log this as a delta for surprise-ops' run sheet. The research note (G3) gives approximate sunset times for 27 February as an estimate only; use a local prayer-times table.
+- **Picture lock falls on Maha vad Amas.** Lock Sat 6 Feb unless she keeps the Amavasya and the house is needed, then Fri 5 Feb (O-45). The `gates.csv` fixture should say the same at G-LOCK (the fixtures are patched with the other inputs, S-39).
+- **The premiere is a Patotsav evening, a Vinchudo day and possibly her fasting night.** The date stays (D-20); the run sheet carries the lamp, the haveli and the food (W-12, W-52).
 
-- **Lean**: tell us which of these apply to you (research G3 is the one-message answer sheet). If one falls in a production week, treat that week as half.
+- **Lean**: the maker marks each row yes, no or blank at the sitting (O-39, O-56). If a kept row falls in a production week, treat that week as half.
 
 ### Kill-or-cut by runtime
 
@@ -729,7 +732,7 @@ All of these dates fall on Sundays or Saturdays.
 11. **The template look.** Uniform easing, stock transitions, centred titles and the same slow zoom on every photo make any film look like a template [2][37]. Use deliberate seeded variety, asymmetry, and at least one still per chapter.
 12. **Music rights can cost more than the animation.** See Decision 4 [14].
 13. **Surprise leaks.** Notifications, repo names, shared devices, cloud photo libraries and group chats are the routes [1][2].
-14. **Holidays and calendar blindness.** Weeks 10 and 11 are dead, and the jurisdiction is unknown. Check Decision 16.
+14. **Holidays and calendar blindness.** Weeks 10 and 11 carry no production targets, and her festival year sets the constraints (the Diwali week before P-LOCK, Uttarayan before the last ask, Vinchudo, the Patotsav on the premiere); the premiere country is still unknown (O-02). Check Decision 16.
 15. **Feasibility quietly deciding the runtime.** Record every runtime decision in `decisions.csv`, with the story reasons as well as the numbers [7].
 16. **The container's limits.** Foreground commands stop after 10 minutes. Loose frames fill the disk [3].
 17. **Audio post hearsay.** "One hour per finished minute" and "six hours per linear minute" are forum claims and unverified [68]. iZotope advises doubling your mix-time estimate and adding days of buffer [62].
@@ -821,10 +824,7 @@ Added in round 2 (cited above)
 - [88] Claude Help Center, "Usage limit best practices" — https://support.claude.com/en/articles/9797557-usage-limit-best-practices — "Updated over 3 weeks ago" — what consumes usage; progress bars under Settings > Usage.
 - [90] Claude Code docs, "Manage costs effectively" — https://code.claude.com/docs/en/costs — read 2026-10-18 — about $13 per developer per active day, $150 to $250 per month, below $30 for 90 percent; agent teams about 7x tokens "when teammates run in plan mode"; `/usage` breakdown.
 - [92] Wikipedia, Diwali — https://en.wikipedia.org/wiki/Diwali — read 2026-10-18 — 2026 dates 6 to 10 November.
-- [93] Wikipedia, Hanukkah — https://en.wikipedia.org/wiki/Hanukkah — read 2026-10-18 — 2026: sunset 4 December to nightfall 12 December.
-- [94] Wikipedia, Chinese New Year — https://en.wikipedia.org/wiki/Chinese_New_Year — read 2026-10-18 — 2027: Saturday 6 February, Goat.
-- [95] Wikipedia, Ramadan — https://en.wikipedia.org/wiki/Ramadan — read 2026-10-18 — Umm al-Qura table: 2027 from 8 February to 8 March; moon-sighting caveat.
-- [96] Wikipedia, Ash Wednesday — https://en.wikipedia.org/wiki/Ash_Wednesday — read 2026-10-18 — 2027: 10 February.
+- Entries [93] to [96] (the four generic date pages for the placeholder observances) are retired with the placeholder observances they supported (`DECISIONS.md` S-61); they stay in `research/production-scale.md`, where those numbers still resolve. Her calendar is read from `ROADMAP.md` §7.1.
 
 ## Changelog
 
@@ -832,3 +832,4 @@ Added in round 2 (cited above)
 - **v3, 2026-10-18 (round 2 review applied by the Haiku scribe).** F3 and G2 render numbers, hero finals as GPU work by default and the family-imagery rule; lever 3 conditional on two quotes, with four-lever figures; the F5 calendar and its two consequences; the 9-minute tier and the G-MID rule; the 100-second slice of M1; the decided module shape and wrapper shot IDs; CC0 and 4K citations. TODO(research) closed in Words, Step 9, T2 and Decisions 13 to 16.
 - **v2, 2026-10-18 (round 1 review applied by the Haiku scribe).** Slice calibration now defines h_slice on the production side and h_slice_fin separately, and the model has a mu_fin row wired into the finishing rows. The stranger read is conditional on Decision 8, with the cold self-read as the named substitute. Module shape is now a wrapper plus 3:00 modules, with the 12-minute and 8-minute shape issues left as TODO(research). The 20-hour claim now states its post-holiday failure. Spike list and settings card are copied from the agent-pipeline playbook. The 1080p Veo prices are added. The 72-hour rule is cited to [6][7], with the default-OUT guard. Still open: the TODO(research) items in Words, T2 and Decisions 8 to 13.
 - **v1, 2026-10-18.** First draft by the Haiku scribe, from `research/production-scale.md` (Sonnet, 2026-10-18) and `CHARTER.md`. Covers Q1 to Q10 and the recommended runtime. Open items: TODO(research) for the spike list (Step 7), the settings card (G-READY), cash for the mix and grade, the DCP lean, the chapter count, the frame rate, the observances, and the outside stranger read. Decisions 2, 8, 9 and 10 need the orchestrator or the maker. Not yet reviewed against the rubric.
+- **2026-10-19, Reconciled with DECISIONS.md after the her-world merge (2026-10-19).** Sonnet implementor pass against the merged register (S-39, S-57 to S-64, S-61): Decision 16 re-keyed from the placeholder observances (Lunar New Year, Hanukkah, US Thanksgiving, Christmas, Ramadan, Ash Wednesday) to her festival year, with the logistics rows left to the premiere country (O-02); picture lock stays Sat 6 Feb and moves to Fri 5 Feb only for Maha vad Amas (W-08, O-45); the her-turn conversation is Sun 7 Mar after about 14:00, else Mon 8 Mar (W-48); the Sonnet spikes are SP1 to SP5 and the process lock is P-LOCK (W-06), with a P-LOCK row added to the gates calendar; S1 is one or two strangers (W-43); the premiere spine's music cue is the maker's hum in two takes (W-44, W-65); the holiday capture list carries the W-70 seva-article rule. Sources [93] to [96] retired. Citations kept; no research note or review touched.

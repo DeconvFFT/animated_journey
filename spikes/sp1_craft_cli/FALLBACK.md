@@ -7,7 +7,7 @@
 Either of these is the trigger:
 
 1. **A download is blocked.** `run_sp1.sh` stops with exit 3 and writes `build/evidence/wp07/blocked_proof.json`: the URL (no query string), the HTTP status, curl's exit code, **curl's stderr word for word**, the HTTP status lines the proxy and GitHub returned, and the time. It never records the proxy address or credentials. One example of the file's shape is made by the test `blocked.force_bad_asset` (a deliberately wrong asset name gives HTTP 404, curl exit 22, "The requested URL returned error: 404").
-2. **A hash does not match.** That is not a blocked download; it is a stop-and-report. `asset_tool.py verify` prints `REJECTED`, nothing is extracted, and `release_assets.json` says `usable: false` if the mismatch is in the table. Nobody builds on those files until the orchestrator has looked.
+2. **A hash does not match.** That is not a blocked download; it is a stop-and-report. `asset_tool.py verify` prints `REJECTED`, nothing is extracted, and `release_assets.json` says `usable: false` if the mismatch is in the table. `--all` stops at once: the 0.8.0 fallback is not fetched and EffectCraft is not started (the fallback exists only for a 0.9.0 that passed the hash and failed T1 or T2); the stage envelope says `FAIL`, "hash mismatch (stop and report)"; run_sp1.sh exits 1. A corrupt tarball in `vendor/craft/_keep/` is the one exception that heals itself: it is deleted, fetched again once and the ledger records the exception. Nobody builds on a mismatching file until the orchestrator has looked.
 
 (Today, Mon 19 Oct, downloads are reachable: the release assets answer 302 and then 200. The proof path exists because the proxy may change.)
 

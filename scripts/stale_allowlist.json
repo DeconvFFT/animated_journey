@@ -1,9 +1,9 @@
 {
  "schema": "lj-stale-allowlist/1",
- "version": 1,
+ "version": 2,
  "owner": "WP-03",
- "source": "DECISIONS.md W-29 allowlist, exactly: (1) playbooks/music-sound.md DX-gated check ('not applied here' is body text about a broadcast anchor); (2) negations ('no co-keeper', 'Rings 1 and 2 are empty', 'there is no insider'); (3) a 25 next to 'tested at 25, UNVERIFIED at 24' or 'access copy only if a 50 Hz venue judders'; (4) 'Ring 1' inside 'gathering 14'. Nothing else may be added by an implementor: a new entry is an orchestrator decision.",
- "how_it_works": "A hit is allowed when its file matches 'file' (a glob under the repo root), its row is in 'rows', and context_regex matches somewhere in the hit's line and the 'window' lines before and after it. --audit-allowlist fails on any entry that suppresses nothing.",
+ "source": "DECISIONS.md W-29 allowlist, exactly (register v3 of 2026-10-19): (1) playbooks/music-sound.md DX-gated check ('not applied here' is body text about a broadcast anchor); (2) negations ('no co-keeper', 'Rings 1 and 2 are empty', 'there is no insider', 'Chhath is not hers', 'Minecraft is dropped', 'Minecraft was only an example'); (3) a 25 next to 'tested at 25, UNVERIFIED at 24' or 'access copy only if a 50 Hz venue judders'; (4) 'Ring 1' inside 'gathering 14'; (5) the P-class definition in playbooks/pushtimarg-world.md T1 (it defines P3, it does not permit it). Reviews and research notes are not entries: they are outside the scan (a historical record). Nothing else may be added by an implementor: a new entry is an orchestrator decision.",
+ "how_it_works": "A hit is allowed when its file matches 'file' (a glob under the repo root), its row is in 'rows', and context_regex matches somewhere in the hit's line and the 'window' lines before and after it. --audit-allowlist fails on any entry that suppresses nothing, except an entry marked \"structural\": true with a structural_reason, which is printed as 'unused by design' (it suppresses nothing on today's tree: its sample line no longer hits, or no scanned line carries the words yet; --self-test still proves the entry would suppress its own sample).",
  "entries": [
   {
    "id": "AL-1-music-sound-dx-gated",
@@ -89,6 +89,89 @@
    ]
   },
   {
+   "id": "AL-2d-chhath-not-hers",
+   "register_row": "W-29",
+   "file": "*",
+   "rows": [
+    "S-56",
+    "S-61"
+   ],
+   "context_regex": "\\bChhath is not hers\\b",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "negation: Chhath is not hers (W-29, S-61); a line that says so is not a Chhath constraint",
+   "structural": true,
+   "structural_reason": "S-61.chhath-constraint fires only on a line that has both 'Chhath' and 'constraint', and no scanned line says 'Chhath is not hers' today, so the entry suppresses nothing now; kept because W-29 names it, so that 'Chhath is not hers, so it is no constraint' stays clean when it is written.",
+   "positive_samples": [
+    "Chhath is not hers, so it is no constraint on the gathering window."
+   ],
+   "negative_samples": [
+    "Week 10: Chhath as a constraint on the gathering window."
+   ]
+  },
+  {
+   "id": "AL-2e-minecraft-dropped",
+   "register_row": "W-29",
+   "file": "*",
+   "rows": [
+    "S-42",
+    "S-43",
+    "S-44",
+    "S-45",
+    "S-46",
+    "S-47",
+    "S-48",
+    "S-49",
+    "S-50",
+    "S-54"
+   ],
+   "context_regex": "\\bMinecraft is dropped\\b",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "negation: the text says Minecraft is dropped (D-29)",
+   "positive_samples": [
+    "The old question about owning a game is closed: Minecraft is dropped (D-29; O-05 answered)."
+   ],
+   "negative_samples": [
+    "Build a Minecraft tour of her town."
+   ]
+  },
+  {
+   "id": "AL-2f-minecraft-only-an-example",
+   "register_row": "W-29",
+   "file": "*",
+   "rows": [
+    "S-42",
+    "S-43",
+    "S-44",
+    "S-45",
+    "S-46",
+    "S-47",
+    "S-48",
+    "S-49",
+    "S-50",
+    "S-54"
+   ],
+   "context_regex": "\\bMinecraft was only an example\\b",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "negation: Minecraft was only an example of the feel the maker wants (D-29)",
+   "structural": true,
+   "structural_reason": "no scanned line carries the exact words 'Minecraft was only an example' today (playbooks/format.md says 'Minecraft is dropped; it was only an example', which AL-2e covers), so the entry suppresses nothing now; kept because W-29 names it, so that the register's own wording stays clean when a playbook quotes it.",
+   "positive_samples": [
+    "Minecraft was only an example of the playful, crafted feel."
+   ],
+   "negative_samples": [
+    "Use Minecraft as the look of chapter three."
+   ]
+  },
+  {
    "id": "AL-3a-tested-at-25-unverified-at-24",
    "register_row": "W-29",
    "file": "*",
@@ -142,11 +225,35 @@
     "after": 0
    },
    "reason": "'Ring 1' is a substring of 'gathering 14' (hours budget: story 12, gathering 14)",
+   "structural": true,
+   "structural_reason": "S-05.ring-1 is now case-sensitive and word-bounded, so 'gathering 14' no longer hits and this entry suppresses nothing by construction; kept because W-29 names it (finding F-10 asks the orchestrator to strike the clause).",
    "positive_samples": [
     "Story takes 12 hours, gathering 14, the risk reserve 15"
    ],
    "negative_samples": [
     "Ring 1 is the co-keeper"
+   ]
+  },
+  {
+   "id": "AL-5-pushtimarg-p-class",
+   "register_row": "W-29",
+   "file": "playbooks/pushtimarg-world.md",
+   "rows": [
+    "S-60"
+   ],
+   "context_regex": "\\bP3 as her own shelf photograph of a three-dimensional murti\\b",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "the P-class definition in T1 of playbooks/pushtimarg-world.md: it defines P3 (as research note R1 defines it), it does not permit it (W-29)",
+   "structural": true,
+   "structural_reason": "by 08:02 UTC on 2026-10-19 the T1 P-class definition in playbooks/pushtimarg-world.md had been rewritten in place, so no scanned line says 'P3 as her own shelf photograph of a three-dimensional murti' any more and the entry suppresses nothing on today's tree; it did suppress that one line earlier the same day. Kept because W-29 names the context, so a quotation of R1's P3 definition stays clean if it comes back.",
+   "positive_samples": [
+    "R1 defines P1 as symbols only, P2 as a hand-traced public-domain plate, P3 as her own shelf photograph of a three-dimensional murti, and P4 as a commissioned painting."
+   ],
+   "negative_samples": [
+    "Take the maker's own photograph of a three-dimensional murti on her shelf."
    ]
   }
  ]

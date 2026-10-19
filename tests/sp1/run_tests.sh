@@ -8,8 +8,9 @@
 #            `--only effectcraft v0.11.1 --t1-only` (a real 64 MB download if the disk guard allows it, else BLOCKED with the guard's exact message);
 #            the full staged run `--all` is ATTEMPTED only through its guard check here (it takes hours: start it by hand in the background, or pass --real-all);
 #            and the MECHANISM tests: the same run_sp1.sh against a local fake release server and stand-in CLIs (tiny, fake df): a full FilmCraft and EffectCraft
-#            stage, the keep rule, reuse of the kept tarball, a corrupted tarball rejected before extraction, the guard's refusal, a disk-floor abort that cleans up,
-#            and planted defects (each must make exactly its own criterion FAIL). The stand-ins are not FilmCraft or EffectCraft and prove nothing about them.
+#            stage, the keep rule, reuse of the kept tarball, a corrupted tarball rejected before extraction, a hash mismatch that stops `--all` (no 0.8.0 fetch, no
+#            EffectCraft), a corrupt kept tarball that is removed and fetched again, T2's partial envelope surviving a TERM, the guard's refusal, a disk-floor abort that
+#            cleans up, and planted defects (each must make exactly its own criterion FAIL). The stand-ins are not FilmCraft or EffectCraft and prove nothing about them.
 # Options: --skip-network  skip the real network lines (for a machine without the proxy); --real-all  run the real hours-long `--all` if the guard allows it.
 #
 # One line per test:  PASS|FAIL|UNVERIFIED|SKIPPED|BLOCKED  name  detail.  Exit 0 only if no line is FAIL or BLOCKED; exit 1 if a line FAILs; exit 3 if a line is
@@ -106,6 +107,10 @@ want_rc=$([ "${avail:-0}" -ge "$lean_need" ] && echo 0 || echo 3)
 check list.live "$([ "$rc" = "$want_rc" ] && grep -q 'Planned downloads' <<<"$out" && echo 1 || echo 0)" "Avail ${avail} MB: exit $rc (expected $want_rc: lean needs Avail of at least ${lean_need} MB); $(grep -E '^(Chosen profile|REFUSED)' <<<"$out" | head -2 | tr '\n' ' ')" "--list prints the plan and refuses (exit 3) exactly when Avail minus planned is under 400 MB"
 out="$(LJ_DF_CMD="$SP1/tests/fake_df_900.sh" bash "$SP1/run_sp1.sh" --list 2>&1)"; rc=$?
 check list.fake_900 "$([ $rc = 0 ] && grep -q 'full: filmcraft-v0.9.0 plans 600 MB, Avail 900 MB, leaves 300 MB: REFUSED' <<<"$out" && grep -q 'Chosen profile: lean' <<<"$out" && echo 1 || echo 0)" "exit $rc; $(grep -E 'full: filmcraft|Chosen profile' <<<"$out" | tr '\n' ' ' | cut -c1-300)" "at a fake 900 MB the full profile is refused and lean is chosen"
+out="$(LJ_DF_CMD="$SP1/tests/fake_df_900.sh" bash "$SP1/run_sp1.sh" --list --profile full 2>&1)"; rc=$?
+check list.fake_900_profile_full "$([ $rc = 3 ] && grep -q 'the full profile is refused at this Avail; lean would fit: rerun with --profile lean (or auto)' <<<"$out" && ! grep -q 'Neither profile fits' <<<"$out" && grep -q 'Chosen profile: none' <<<"$out" && echo 1 || echo 0)" "exit $rc; $(grep -E 'full profile is refused|Neither' <<<"$out" | cut -c1-150 | tr '\n' ' ')" "--profile full at a fake 900 MB: exit 3 and the message says lean would fit (not 'Neither profile fits')"
+out="$(LJ_DF_CMD="$SP1/tests/fake_df_600.sh" bash "$SP1/run_sp1.sh" --list --profile full 2>&1)"; rc=$?
+check list.fake_600_profile_full "$([ $rc = 3 ] && grep -q 'Neither profile fits' <<<"$out" && ! grep -q 'lean would fit' <<<"$out" && echo 1 || echo 0)" "exit $rc; $(grep -E 'Neither|lean would fit' <<<"$out" | cut -c1-120 | tr '\n' ' ')" "--profile full at a fake 600 MB: neither fits, and the message still says so"
 out="$(LJ_DF_CMD="$SP1/tests/fake_df_600.sh" bash "$SP1/run_sp1.sh" --list 2>&1)"; rc=$?
 check list.fake_600 "$([ $rc = 3 ] && grep -q 'REFUSED: Avail 600 MB minus planned 600 MB leaves 0 MB, below the 400 MB floor (filmcraft-v0.9.0, full profile)' <<<"$out" && grep -q 'REFUSED: Avail 600 MB minus planned 350 MB leaves 250 MB, below the 400 MB floor (filmcraft-v0.9.0, lean profile)' <<<"$out" && echo 1 || echo 0)" "exit $rc; $(grep -E '^REFUSED' <<<"$out" | tr '\n' ' ' | cut -c1-360)" "at a fake 600 MB both profiles are refused with the exact message, exit 3"
 out="$(bash "$SP1/run_sp1.sh" --ledger-check 2>&1)"; rc=$?
@@ -136,10 +141,14 @@ if [ "$NET" = 1 ]; then
   out="$(bash "$SP1/run_sp1.sh" --sums-only 2>&1)"; rc=$?
   check sums.real_six_files "$([ $rc = 0 ] && grep -q 'R8 comparison: all match' <<<"$out" && echo 1 || echo 0)" "exit $rc; $(tail -1 <<<"$out")" "six SHA256SUMS.txt fetched, release_assets.json written, the independent hashes compared"
   rm -f "$EVID/blocked_proof.json"
+  vrows() { python3 -I "$DRV/verdict.py" --print 2>/dev/null | grep -E '^\| T[124] (FilmCraft|EffectCraft|FilmCraft stills) '; }
+  vbefore="$(vrows)"
   out="$(FORCE_BAD_ASSET=1 bash "$SP1/run_sp1.sh" --only filmcraft v0.9.0 2>&1)"; rc=$?
   st="$(jq -r '.http_status' "$EVID/blocked_proof.json" 2>/dev/null)"; er="$(jq -r '.curl_stderr_verbatim' "$EVID/blocked_proof.json" 2>/dev/null)"
   check blocked.force_bad_asset "$([ $rc = 3 ] && [ "$st" = 404 ] && grep -q 'The requested URL returned error: 404' <<<"$er" && echo 1 || echo 0)" "exit $rc; blocked_proof.json: HTTP $st, curl said: $er" "a wrong asset name gives 404 -> blocked_proof.json with the exact status and curl stderr; exit 3"
-  rm -f "$EVID/stage_filmcraft-v0.9.0.json"
+  # the forced line leaves a flagged envelope (stage_filmcraft-v0.9.0_forced.json); the verdict must not read it as a real block, and nothing is deleted by hand
+  vafter="$(vrows)"
+  check blocked.forced_stage_not_in_verdict "$([ -f "$EVID/stage_filmcraft-v0.9.0_forced.json" ] && jq -e '.detail.forced_bad_asset==true and .status=="BLOCKED"' "$EVID/stage_filmcraft-v0.9.0_forced.json" >/dev/null && [ "$vbefore" = "$vafter" ] && ! grep -q 'T[12] FilmCraft.*download blocked' <<<"$vafter" && echo 1 || echo 0)" "forced envelope present and flagged: $([ -f "$EVID/stage_filmcraft-v0.9.0_forced.json" ] && echo yes || echo no); verdict rows identical before and after the forced line: $([ "$vbefore" = "$vafter" ] && echo yes || echo no); FilmCraft rows now: $(grep -E 'T1 FilmCraft' <<<"$vafter" | cut -d'|' -f4 | cut -c1-90)" "FORCE_BAD_ASSET=1 --only filmcraft v0.9.0 leaves a stage envelope flagged forced_bad_asset, and VERDICT-SP1A.md does not say T1/T2 were NOT RUN because the download was blocked"
   before="$(df -BM / | awk 'NR==2{gsub("M","",$4); print $4}')"
   out="$(bash "$SP1/run_sp1.sh" --only effectcraft v0.11.1 --t1-only 2>&1)"; rc=$?
   after="$(df -BM / | awk 'NR==2{gsub("M","",$4); print $4}')"
@@ -183,7 +192,7 @@ fkrun() {  # fkrun REL NAME args...   (own vendor, evidence and scratch folders 
   local rel="$1" name="$2"; shift 2
   mkdir -p "$W/v_$name" "$W/e_$name" "$W/s_$name"
   ( export LJ_RELEASE_BASE="http://127.0.0.1:$PORT/$rel/www" LJ_SP1_ASSETS="$W/$rel-assets.json" LJ_SP1_R8="$W/$rel/r8.json" LJ_SP1_VENDOR="$W/v_$name" \
-      LJ_SP1_EVIDENCE="$W/e_$name" LJ_SCRATCH="$W/s_$name" SP1_FAKE_MINI=1 LJ_DF_CMD="${FAKE_DF:-$T/fake_df_2000.sh}"; bash "$SP1/run_sp1.sh" "$@" 2>&1 )
+      LJ_SP1_EVIDENCE="$W/e_$name" LJ_SCRATCH="$W/s_$name" LJ_SP1_VERDICT="$W/verdict_$name.md" SP1_FAKE_MINI=1 LJ_DF_CMD="${FAKE_DF:-$T/fake_df_2000.sh}"; bash "$SP1/run_sp1.sh" "$@" 2>&1 )
 }
 out="$(fkrun ok sums --sums-only)"; rc=$?
 fkrun flip sums_flip --sums-only >/dev/null
@@ -220,11 +229,48 @@ n1="$(nlines "$W/e_fc$FC_SFX/download_ledger.jsonl")"
 out="$(fkrun ok fc$FC_SFX --only filmcraft v0.9.0 --profile lean --t1-only)"; rc=$?; LAST_OUT="$out"
 n2="$(nlines "$W/e_fc$FC_SFX/download_ledger.jsonl")"
 check fake.kept_tarball_reused "$([ $rc = 0 ] && [ "$n1" = 1 ] && [ "$n2" -le 1 ] && grep -q 'no second download' <<<"$out" && echo 1 || echo 0)" "exit $rc; ledger lines for the first stage $n1, after the second run $n2; $(grep -c 'no second download' <<<"$out") reuse message" "a second FilmCraft run uses the kept tarball and records no second download"
+# a corrupt kept tarball is removed and fetched again (and the run after that reuses the new one)
+out1="$(fkrun ok kc --only filmcraft v0.9.0 --profile lean --t1-only)"; rc1=$?
+kfile="$(ls "$W/v_kc/_keep/"*.tar.gz 2>/dev/null | head -1)"
+if [ -n "$kfile" ]; then python3 -I - "$kfile" <<'PY'
+import sys
+b = bytearray(open(sys.argv[1], "rb").read()); b[len(b) // 2] ^= 1; open(sys.argv[1], "wb").write(bytes(b))
+PY
+fi
+out2="$(fkrun ok kc --only filmcraft v0.9.0 --profile lean --t1-only)"; rc2=$?; LAST_OUT="$out2"
+kled="$W/e_kc/download_ledger.jsonl"; kn2="$(nlines "$kled")"; kex="$(sed -n 2p "$kled" 2>/dev/null | jq -r '.exception' 2>/dev/null)"
+khash="$(sha256sum "$W/v_kc/_keep/"*.tar.gz 2>/dev/null | cut -d' ' -f1)"
+out3="$(fkrun ok kc --only filmcraft v0.9.0 --profile lean --t1-only)"; rc3=$?; kn3="$(nlines "$kled")"
+kleft="$(ls -A "$W/v_kc" | grep -v '^_keep$' | tr '\n' ' ')"
+hs_ok="$(jq -r '.pins[]|select(.app=="filmcraft" and .tag=="v0.9.0")|.linux_x86_64_tarball.sha256' "$W/ok-assets.json")"
+LJ_SP1_EVIDENCE="$W/e_kc" LJ_SP1_ASSETS="$W/ok-assets.json" python3 -I "$DRV/asset_tool.py" ledger --check >/dev/null 2>&1; lrc=$?
+check fake.kept_tarball_corrupt_recovers "$([ "$rc1" = 0 ] && [ -n "$kfile" ] && [ "$rc2" = 0 ] && grep -q 'kept tarball was corrupt and has been removed' <<<"$out2" && grep -q 'REJECTED' <<<"$out2" && [ "$kn2" = 2 ] && [ "$kex" = 'kept tarball rejected' ] && [ "$khash" = "$hs_ok" ] && [ "$rc3" = 0 ] && [ "$kn3" = 2 ] && grep -q 'no second download' <<<"$out3" && [ -z "$kleft" ] && [ "$lrc" = 0 ] && echo 1 || echo 0)" "run 1 exit $rc1 (kept: $([ -n "$kfile" ] && echo yes || echo no)); one byte flipped in _keep/; run 2 exit $rc2 (corrupt-and-removed message: $(grep -c 'kept tarball was corrupt' <<<"$out2")), ledger lines $kn2, second line exception: ${kex:-none}, new _keep tarball equals the table: $([ "$khash" = "$hs_ok" ] && echo yes || echo no); run 3 exit $rc3, ledger lines $kn3, reused without a download: $(grep -c 'no second download' <<<"$out3"); ledger check exit $lrc; other leftovers: ${kleft:-none}" "a kept tarball that fails the SHA-256 check is removed, fetched again in the same stage (recorded ledger exception) and the next run uses the new one"
 with_retry fake.effectcraft_stage scn_effectcraft "an EffectCraft stage runs T1+T4 and deletes everything"
 # a corrupted tarball
 out="$(fkrun flip bad --only filmcraft v0.9.0 --profile lean)"; rc=$?
 left="$(ls -A "$W/v_bad" | tr '\n' ' ')"
-check fake.corrupt_tarball_rejected "$([ $rc = 1 ] && grep -q 'REJECTED' <<<"$out" && ! grep -q 'extracting' <<<"$out" && ! grep -q '\[3/6\]' <<<"$out" && [ -z "$left" ] && echo 1 || echo 0)" "exit $rc; REJECTED shown: $(grep -c REJECTED <<<"$out"); extraction started: $(grep -c 'extracting' <<<"$out"); leftovers: ${left:-none}" "a tarball with one flipped byte is rejected before it is listed or extracted, and nothing is left behind"
+check fake.corrupt_tarball_rejected "$([ $rc = 1 ] && grep -q 'REJECTED' <<<"$out" && ! grep -q 'extracting' <<<"$out" && ! grep -q '\[3/6\]' <<<"$out" && [ -z "$left" ] && jq -e '.status=="FAIL" and (.actual|contains("hash mismatch (stop and report)")) and .detail.hash_rejected==true' "$W/e_bad/stage_filmcraft-v0.9.0.json" >/dev/null && echo 1 || echo 0)" "exit $rc (a rejected hash is exit 1, never the internal 4); REJECTED shown: $(grep -c REJECTED <<<"$out"); extraction started: $(grep -c 'extracting' <<<"$out"); leftovers: ${left:-none}; stage envelope: $(jq -r '.status + " / " + .actual' "$W/e_bad/stage_filmcraft-v0.9.0.json" 2>/dev/null | cut -c1-90)" "a tarball with one flipped byte is rejected before it is listed or extracted, nothing is left behind, and the stage envelope says FAIL: hash mismatch (stop and report)"
+# a hash mismatch in --all is STOP AND REPORT: no 0.8.0 fetch, no EffectCraft stage
+out="$(fkrun flip stopall --all --profile lean)"; rc=$?
+led="$W/e_stopall/download_ledger.jsonl"; nled="$(nlines "$led")"; n08="$(grep -c 'filmcraft-0.8.0' "$led" 2>/dev/null)"; nec="$(grep -c 'effectcraft' "$led" 2>/dev/null)"
+left="$(ls -A "$W/v_stopall" | tr '\n' ' ')"
+check fake.hash_mismatch_stops_all "$([ $rc = 1 ] && grep -q 'STOP AND REPORT' <<<"$out" && ! grep -q 'failed T1 or T2' <<<"$out" && ! grep -q '== stage filmcraft-v0.8.0' <<<"$out" && ! grep -q '== stage effectcraft' <<<"$out" && [ "$nled" = 1 ] && [ "${n08:-0}" = 0 ] && [ "${nec:-0}" = 0 ] && [ ! -e "$W/e_stopall/stage_filmcraft-v0.8.0.json" ] && [ ! -e "$W/e_stopall/stage_effectcraft-v0.11.1.json" ] && [ -z "$left" ] && jq -e '.status=="FAIL"' "$W/e_stopall/stage_filmcraft-v0.9.0.json" >/dev/null && echo 1 || echo 0)" "exit $rc; STOP AND REPORT shown: $(grep -c 'STOP AND REPORT' <<<"$out"); ledger lines $nled (0.8.0: ${n08:-0}, EffectCraft: ${nec:-0}); 0.8.0 or EffectCraft stage started: $(grep -c '== stage \(filmcraft-v0.8.0\|effectcraft\)' <<<"$out"); leftovers: ${left:-none}; stage envelope: $(jq -r .status "$W/e_stopall/stage_filmcraft-v0.9.0.json" 2>/dev/null)" "--all with a flipped-byte FilmCraft 0.9.0 tarball stops and reports (exit 1): the 0.8.0 fallback is not fetched and EffectCraft is not started"
+# T2 writes its envelope after every phase, so a stage that is stopped (the 60-minute timeout, a disk-floor TERM, even a KILL) keeps what was measured
+t2_interrupt() {  # t2_interrupt SIGNAL: start the T2 driver on the stand-in, signal it once the scaling phase has been written; sets SIG_RC and SIG_FILE
+  local sig="$1" d="$W/t2i_$1" pid i
+  mkdir -p "$d/cli" "$d/hw/home" "$d/hw/work" "$d/ev" "$d/sc"
+  cp "$T/fake_craft/filmcraft-cli" "$d/cli/"; : > "$d/cli/fake_bug.txt"
+  SIG_FILE="$d/ev/t2_filmcraft_v0.9.0_mini.json"
+  ( export LJ_SP1_EVIDENCE="$d/ev" LJ_SCRATCH="$d/sc"; exec python3 -I "$DRV/t2_filmcraft.py" --tag v0.9.0 --cli "$d/cli/filmcraft-cli" --home "$d/hw/home" --work "$d/hw/work" --profile lean --mini >/dev/null 2>&1 ) 9>&- &
+  pid=$!
+  for i in $(seq 1 900); do grep -q '"phase_done": "scaling"' "$SIG_FILE" 2>/dev/null && break; sleep 0.1; done
+  kill -"$sig" "$pid" 2>/dev/null; wait "$pid" 2>/dev/null; SIG_RC=$?
+  pkill -KILL -f "$d/cli/filmcraft-cli" 2>/dev/null; sleep 0.3
+}
+t2_interrupt TERM
+check fake.t2_envelope_survives_term "$([ "$SIG_RC" = 143 ] && jq -e '.status=="UNVERIFIED" and .detail.partial==true and (.detail.stopped|type)=="string" and (.detail.criteria|length)>=4 and (.detail.phase_done=="scaling" or .detail.phase_done=="export")' "$SIG_FILE" >/dev/null && echo 1 || echo 0)" "driver exit $SIG_RC after TERM; $(jq -r '[.status, (.detail.criteria|length|tostring)+" criteria", "phase "+.detail.phase_done, "stopped: "+(.detail.stopped//"no")]|join("; ")' "$SIG_FILE" 2>/dev/null | cut -c1-200)" "a TERM during T2 (the stage timeout or the disk guard) leaves an UNVERIFIED envelope with the criteria measured so far and a 'stopped' note"
+t2_interrupt KILL
+check fake.t2_envelope_survives_kill "$([ "$SIG_RC" = 137 ] && jq -e '.status=="UNVERIFIED" and .detail.partial==true and .detail.stopped==null and (.actual|startswith("stage still running")) and (.detail.criteria|length)>=4' "$SIG_FILE" >/dev/null && echo 1 || echo 0)" "driver exit $SIG_RC after KILL; $(jq -r '[.status, (.detail.criteria|length|tostring)+" criteria", .actual]|join("; ")' "$SIG_FILE" 2>/dev/null | cut -c1-200)" "even a KILL (no handler can run) leaves the envelope written after the scaling phase: UNVERIFIED, 'stage still running', its criteria intact"
 # the guard refuses
 out="$(FAKE_DF="$SP1/tests/fake_df_600.sh" fkrun ok ref --only filmcraft v0.9.0)"; rc=$?
 nled="$(nlines "$W/e_ref/download_ledger.jsonl")"

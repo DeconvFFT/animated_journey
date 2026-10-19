@@ -7,9 +7,10 @@ PASS       hygiene.not_a_photo                            no Image.open, no jpg/
 PASS       hygiene.reused_unchanged                       git diff empty, status clean
 PASS       hygiene.spec_json                              fps 24, 4 shots
 PASS       hygiene.no_stale_rate                          no hits
-PASS       hygiene.public_lint                            public_lint: mode paths, 38 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+PASS       hygiene.public_lint                            public_lint: mode paths, 37 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
 PASS       hygiene.theme_guard                            theme guard: 17 file(s) scanned (explicit paths), 0 finding(s), 0 exclusion statement(s) shown as NOTE | LIMIT: this is a keyword scan of text only. It can NOT judge icon
-PASS       hygiene.no_pycache                             none
+PASS       hygiene.no_pycache                             none created during the run
+PASS       hygiene.no_pycache_detects                     all 6 cases right
 PASS       kb_scale.selftest                              PASS kb_scale selftest: fit 45.0, cover 53.3 (53.34), 2880x1620 66.67 for both, rounding, edge safety
 PASS       kb_scale.values                                3600x2400 fit 45.0 cover 53.3 (53.34); 2880x1620 fit 66.67 cover 66.67
 PASS       kb_scale.cli_errors                            exits 2 2 2
@@ -22,6 +23,7 @@ PASS       ora.reference_make_ora_validates               RESULT validate_ora: 2
 PASS       ora.reference_matches_fixture                  identical members: stack.xml, data/title.png, data/photo.png, mergedimage.png
 PASS       ora.at_layers                                  exit 0; profile reference; WARN ['layer_name_invalid']
 PASS       ora.at_layers_strict                           exit 1; FAILED: asfound_not_bottom, layer_name_invalid
+PASS       ora.reference_values_strict                    opacity 1.5 -> exit 1 ['layer_value_invalid']; opacity not a number -> exit 1 ['layer_value_invalid']; visibility shown -> exit 1 ['layer_value_invalid']; composite-op un
 PASS       ora.usage                                      exits 2 2 2
 PASS       ora.plant.missing_layer_png                    exit 1; FAILED ['layer_png_missing']
 PASS       ora.plant.duplicate_name                       exit 1; FAILED ['layer_name_duplicate']
@@ -58,9 +60,9 @@ PASS       svg.gate_usage                                 gate exit 3
 PASS       svg.usage_exits                                exits 2 2 2 3
 PASS       otio.venv                                      opentimelineio 0.18.1, venv 13 MB
 PASS       otio.emit                                      wrote ./renders/wp06/ch.otio: 4 clips, 3 dissolves, 3 markers, 1 audio cue(s), 480 frames at 24 fps (20.0 s); generated 5 test media file(s)
-PASS       otio.validate_json_level                       exit 0; RESULT validate_otio: 21 checks, 0 FAIL, 0 WARN
-PASS       otio.validate_with_otio                        exit 0; RESULT validate_otio: 27 checks, 0 FAIL, 0 WARN
-PASS       otio.determinism                               sha256 2fa7ce880c2e2967
+PASS       otio.validate_json_level                       exit 0; RESULT validate_otio: 24 checks, 0 FAIL, 0 WARN
+PASS       otio.validate_with_otio                        exit 0; RESULT validate_otio: 30 checks, 0 FAIL, 0 WARN
+PASS       otio.determinism                               sha256 17a39012bf79078a
 PASS       otio.content                                   clips 4; dissolves 3; urls media/ch01_s01.png; shot 1 scale [66.67, 80.0] position [(960.0, 540.0), (930.0, 520.0)]; shot 3 scale 80.0 -> 66.67
 PASS       otio.template_parity                           template rates [25.0]; 0 difference(s)
 PASS       otio.plant.clip_outside_available_range        exit 1; FAILED ['clip_outside_available_range']
@@ -81,15 +83,20 @@ PASS       otio.plant.filmcraft_keyframe_time             exit 1; FAILED ['filmc
 PASS       otio.plant.filmcraft_ticks_mismatch            exit 1; FAILED ['filmcraft_ticks_mismatch']
 PASS       otio.plant.motion_edge_exposed                 exit 1; FAILED ['motion_edge_exposed']
 PASS       otio.plant.dissolve_without_neighbour          exit 1; FAILED ['dissolve_without_neighbour']
-PASS       otio.plant.no_video_track                      exit 1; FAILED ['no_video_track']
+PASS       otio.plant.no_video_track                      exit 1; FAILED ['no_clips', 'no_video_track']
 PASS       otio.plant.schema_not_timeline                 exit 1; FAILED ['schema_not_timeline']
 PASS       otio.plant.otio_json_invalid                   exit 1; FAILED ['otio_json_invalid']
 PASS       otio.plant.clip_duration_invalid               exit 1; FAILED ['clip_duration_invalid', 'dissolve_longer_than_neighbour', 'filmcraft_ticks_mismatch']
-PASS       otio.no_media_check                            RESULT validate_otio: 21 checks, 0 FAIL, 1 WARN
-PASS       otio.lenient_filmcraft                         RESULT validate_otio: 21 checks, 0 FAIL, 1 WARN
+PASS       otio.plant.empty_video_track                   exit 1; FAILED ['no_clips']
+PASS       otio.plant.nested_stack_in_track               exit 1; FAILED ['nested_composition', 'no_clips']
+PASS       otio.plant.nested_track_beside_clips           exit 1; FAILED ['nested_composition']
+PASS       otio.plant.nested_stack_at_root                exit 1; FAILED ['nested_composition']
+PASS       otio.plant.target_url_escapes_folder           exit 1; FAILED ['target_url_escapes_folder']
+PASS       otio.no_media_check                            RESULT validate_otio: 24 checks, 0 FAIL, 1 WARN
+PASS       otio.lenient_filmcraft                         RESULT validate_otio: 24 checks, 0 FAIL, 1 WARN
 PASS       otio.exit_codes                                exits 2 3 3
-PASS       otio.with_otio_auto_skips                      RESULT validate_otio: 22 checks, 0 FAIL, 1 WARN
-PASS       otio.accepts_utf8_bom                          RESULT validate_otio: 21 checks, 0 FAIL, 0 WARN
+PASS       otio.with_otio_auto_skips                      RESULT validate_otio: 25 checks, 0 FAIL, 1 WARN
+PASS       otio.accepts_utf8_bom                          RESULT validate_otio: 24 checks, 0 FAIL, 0 WARN
 PASS       otio.weird_shapes                              list_root -> exit 1; string_rate -> exit 1; metadata_list_with_filmcraft -> exit 1
 PASS       ora.random_bytes                               exit 1; FAILED: zip_unreadable
 PASS       otio.emit_refusals                             old_rate -> 2; abs_source -> 2; backslash_source -> 2; dup_id -> 2; last_dissolve -> 2; black_edge -> 2; bad_colour -> 2; size_4k -> 2; bad_ease -> 2; too_long -> 2
@@ -102,4 +109,4 @@ PASS       otio.adapter_probe_no_paths                    clean
 PASS       otio.adapter_probe_plugins                     exit 0; working ['cmx_3600', 'fcpx_xml', 'kdenlive', 'mlt_xml']; rate hints {'cmx_3600': 'last timecode 00:00:20:00', 'fcpx_xml': '25/600s', 'kdenlive': '24', 'mlt_xml': 
 UNVERIFIED windows.validators                             standard library only, os.path joins, UTF-8 and BOM reading, ASCII output, no shell=True; not run on Windows
 UNVERIFIED craft_apps.accept_files                        not run: no Craft app was started in this package
-TOTAL: PASS 102, FAIL 0, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (12 s)
+TOTAL: PASS 109, FAIL 0, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (13 s)

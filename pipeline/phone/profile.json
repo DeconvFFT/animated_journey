@@ -1,0 +1,126 @@
+{
+  "schema": "lj-phone-profile/1",
+  "version": 1,
+  "owner": "WP-08",
+  "status": "proposal (J): every number below that DECISIONS.md does not fix is the team's judgement and can move before the settings card is signed (Sun 1 Nov 2026). Nothing here is signed by an agent.",
+  "decisions": ["D-27", "D-28", "D-15", "W-17", "W-18", "W-19", "W-21", "W-57", "W-63", "W-75"],
+  "about": "The phone file is cut from the ProRes 422 HQ master (never from the venue file, never from RGB frames) and is the same 16:9 picture: no reframing, no crop, no vertical cut (W-63). It differs from the venue file only in its caption burn-in and its encode. The 'chains' and 'profiles' objects have the shape of pipeline/lib/chains.json and pipeline/settings.json, so `colour_patch.py --chain-file` and `spec_check.py --profiles-file` read this file as it is. The other top-level objects (caption, encode, check) are read by encode_phone.py and phone_check.py only.",
+  "chains": {
+    "phone_1080": {
+      "container": "mp4",
+      "alpha": false,
+      "used_for": "PH1, the phone file (W-63): 1920x1080 at 24 fps, H.264 High 4.1, CRF 20 with an 8 Mbps cap, AAC-LC 48 kHz stereo 192 kbps, faststart, metadata stripped; -16 LUFS integrated and -1 dBTP are set by the audio stage and measured on the final file",
+      "vf": "scale=out_color_matrix=bt709:out_range=tv,format=yuv420p,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:range=tv",
+      "video_args": ["-c:v", "libx264", "-preset", "slow", "-profile:v", "high", "-level", "4.1", "-crf", "20", "-maxrate", "8M", "-bufsize", "16M", "-g", "48", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-color_range", "tv", "-movflags", "+faststart", "-map_metadata", "-1", "-fflags", "+bitexact"],
+      "audio_args": ["-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2"],
+      "expect": {"codec": "h264", "profile": null, "pix_fmt": "yuv420p", "color_range": "tv", "color_space": "bt709", "color_primaries": "bt709", "color_transfer": "bt709"},
+      "expect_extra": {"profile": "High"},
+      "bitrate_cap_mbps": 8,
+      "approved": true,
+      "measured": {"6.1.1": {"worst_error": 1, "date": "2026-10-19", "by": "colour_patch.py --chain-file pipeline/phone/profile.json --chain phone_1080 (build/evidence/wp08/colour_patch_phone.json)"}},
+      "notes": "Level 4.1 and the 8 Mbps cap are W-63 and the mobile-delivery T-M1 template. -g 48 is two seconds at 24 fps (seeking on a phone). CRF 20 keeps 73% of flat-patch grain in the research fixtures (J). The caption burn-in (the ass filter) goes BEFORE this vf in encode_phone.py, so the captions are drawn on the 1080 frame and then scaled, matrixed and tagged with the picture."
+    },
+    "phone_720_share": {
+      "container": "mp4",
+      "alpha": false,
+      "used_for": "PH2, the small copy for slow links and low-storage phones (W-63): 1280x720 at 24 fps, H.264 High 3.1, CRF 22 with a 3.5 Mbps cap, AAC-LC 48 kHz stereo 160 kbps, faststart, metadata stripped",
+      "vf": "scale=1280:720:flags=lanczos+accurate_rnd+full_chroma_int:out_color_matrix=bt709:out_range=tv,format=yuv420p,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:range=tv",
+      "video_args": ["-c:v", "libx264", "-preset", "slow", "-profile:v", "high", "-level", "3.1", "-crf", "22", "-maxrate", "3500k", "-bufsize", "7M", "-g", "48", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-color_range", "tv", "-movflags", "+faststart", "-map_metadata", "-1", "-fflags", "+bitexact"],
+      "audio_args": ["-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-ac", "2"],
+      "expect": {"codec": "h264", "profile": null, "pix_fmt": "yuv420p", "color_range": "tv", "color_space": "bt709", "color_primaries": "bt709", "color_transfer": "bt709"},
+      "expect_extra": {"profile": "High"},
+      "bitrate_cap_mbps": 3.5,
+      "approved": false,
+      "measured": {},
+      "notes": "The plan says about 3.5 Mbps; W-63 says a 4 Mbps cap. 3.5 is inside both. colour_patch.py reads a 1920x1080 frame back, so it cannot test this chain as it stands (the output is 1280x720): the WP-08 tests measure it with the same patches and a decode that scales back up (tests/phone, test colour.phone_720_share), and approved stays false until a maker's-PC build has been tested."
+    }
+  },
+  "profiles": {
+    "phone_1080": {
+      "description": "phone file PH1: 1080p24 H.264 High 4.1, yuv420p, BT.709, AAC-LC 48 kHz stereo, faststart, -16 LUFS / -1 dBTP",
+      "decision": ["D-27", "W-19", "W-63"],
+      "chain": "phone_1080",
+      "container": "mp4",
+      "faststart": true,
+      "video": {"codec": "h264", "profile": ["High"], "level": [41], "pix_fmt": ["yuv420p"], "width": 1920, "height": 1080, "fps": "24/1",
+                "color_range": ["tv"], "color_space": ["bt709"], "color_primaries": ["bt709"], "color_transfer": ["bt709"], "alpha": false, "max_mbps": 8.8},
+      "audio": {"required": true, "codec": ["aac"], "profile": ["LC"], "sample_rate": 48000, "channels": [2]},
+      "loudness": {"true_peak_max_dbtp": -1.0, "integrated_lufs": [-16], "tolerance_lu": 1.0},
+      "metadata": "neutral"
+    },
+    "phone_720_share": {
+      "description": "phone small copy PH2: 720p24 H.264 High 3.1, yuv420p, BT.709, AAC-LC 48 kHz stereo, faststart, -16 LUFS / -1 dBTP",
+      "decision": ["D-27", "W-19", "W-63"],
+      "chain": "phone_720_share",
+      "container": "mp4",
+      "faststart": true,
+      "video": {"codec": "h264", "profile": ["High"], "level": [31], "pix_fmt": ["yuv420p"], "width": 1280, "height": 720, "fps": "24/1",
+                "color_range": ["tv"], "color_space": ["bt709"], "color_primaries": ["bt709"], "color_transfer": ["bt709"], "alpha": false, "max_mbps": 3.85},
+      "audio": {"required": true, "codec": ["aac"], "profile": ["LC"], "sample_rate": 48000, "channels": [2]},
+      "loudness": {"true_peak_max_dbtp": -1.0, "integrated_lufs": [-16], "tolerance_lu": 1.0},
+      "metadata": "neutral"
+    }
+  },
+  "caption": {
+    "decision": ["D-27", "W-18", "W-21", "W-63", "W-75"],
+    "status": "(J) the size was picked from the measured candidates in build/evidence/wp08/caption_candidates.json, not guessed; see the rule in the 'chosen_by' field",
+    "burn_in": {
+      "filter": "ass",
+      "why": "ffmpeg before n9.0 draws the `subtitles` filter in simple shaping and breaks Indic conjuncts and vowel signs without any warning (W-75; measured again here, build/evidence/wp08/shaping_paths.json). The `ass` filter on an ASS file made from the SRT shaped correctly on 6.1.1 in the same test. The same path is used for every script and every build.",
+      "fonts_dir_name": "fonts",
+      "relative_names_only": true
+    },
+    "ass": {"play_res_x": 384, "play_res_y": 288, "ycbcr_matrix": "TV.709", "wrap_style": 2, "scaled_border_and_shadow": "yes",
+            "note": "384x288 is the canvas ffmpeg itself gives an SRT, so FontSize and MarginV here mean what FontSize and MarginV mean in the settings card (W-16, W-18): one unit is 3.75 px on a 1080p frame."},
+    "default_style": "phone",
+    "styles": {
+      "phone": {
+        "description": "PH1 / PH2 caption: two lines, at most 32 characters a line, white with a black outline, box ending at or above 88% of picture height so a 20:9 phone filling the screen (about 10% cropped top and bottom) still shows the whole bottom line",
+        "font_size": 28,
+        "font_size_by_script": {},
+        "margin_v": 40,
+        "margin_lr": 0,
+        "outline": 0.8,
+        "shadow": 0,
+        "bold": 0,
+        "primary_colour": "FFFFFF",
+        "outline_colour": "000000",
+        "max_chars_per_line": 32,
+        "max_lines": 2,
+        "box_bottom_max_pct": 88,
+        "box_top_min_pct": 12,
+        "chosen_by": "the smallest candidate whose Latin x-height reaches the 0.35 degree target at the 40 cm margin distance on the landscape-fit viewport (thresholds.json x_height), rounded to a whole FontSize; MarginV from the box-bottom rule. Re-derived by `phone_check.py --candidates`. Indic faces are sized per script later (W-18 sizes Gujarati by the height of KA): font_size_by_script is empty until a reader of that script has looked.",
+        "status": "(J)"
+      },
+      "venue_fs23": {
+        "description": "REFERENCE ONLY, NOT A PHONE DELIVERABLE: the venue caption of the settings card (W-16, W-18): FontSize=23, MarginV 20. It exists so the phone check can write the FontSize-23 finding and so the 'clip burned with the venue margin' test has something to burn.",
+        "font_size": 23,
+        "font_size_by_script": {},
+        "margin_v": 20,
+        "margin_lr": 0,
+        "outline": 0.8,
+        "shadow": 0,
+        "bold": 0,
+        "primary_colour": "FFFFFF",
+        "outline_colour": "000000",
+        "max_chars_per_line": 42,
+        "max_lines": 2,
+        "box_bottom_max_pct": 95,
+        "box_top_min_pct": 5,
+        "chosen_by": "the settings card (pipeline/settings.json captions.font_size); MarginV 20 is the card's 'MarginV 20 or more'",
+        "status": "reference"
+      }
+    },
+    "candidate_font_sizes": [24, 26, 28, 30, 32]
+  },
+  "encode": {
+    "loudness": {"integrated_lufs": -16, "true_peak_dbtp": -1.0, "target_tp_start_dbtp": -1.5, "target_tp_step_db": 0.5, "retries": 3, "lra": 11, "mode": "two-pass loudnorm, second pass linear, then AAC; the final audio is measured and the true-peak target is lowered and the pass repeated if the AAC file reads above -1.0 dBTP (the AAC encode can add 0.3 dB or more)"},
+    "bitrate_tolerance_pct": 10,
+    "neutral_names": "output file names are given by the caller; the tool never writes a title, comment or encoder-specific tag beyond what -fflags +bitexact leaves, and prints only base names",
+    "disk_planned_mb": 100
+  },
+  "check": {
+    "scenarios": ["portrait", "landscape", "small_portrait", "shared", "fill_20x9"],
+    "thresholds_file": "thresholds.json"
+  }
+}

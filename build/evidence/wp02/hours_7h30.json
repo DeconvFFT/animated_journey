@@ -2,9 +2,9 @@
  "actual": "hours_report: hours_7h30.csv, 5 row(s)\nWindow 2026-10-19 (Mon) to 2026-10-25\n  total: 7.5 h (450 minutes) over 5 day(s) with rows\n    gather              1.8 h\n    story               1.5 h\n    admin               0.8 h\n    learn               3.5 h\n  reading: under about 8 hours: the 6-minute F-0 would become the plan on Sun 1 Nov and 9 minutes the stretch (W-02)\n  indicative only: this is one logged window; the maker's reliable-hours number in writing (O-01, due Sun 25 Oct, Sun 15 Nov at the latest) decides",
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 464,
-  "avail_mb_min": 464,
-  "avail_mb_start": 464,
+  "avail_mb_end": 453,
+  "avail_mb_min": 453,
+  "avail_mb_start": 453,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

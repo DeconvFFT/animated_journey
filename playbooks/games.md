@@ -1,36 +1,36 @@
 # Games that tell life stories: mechanics that carry meaning
 
-Track: games · Draft v0.4 (reconciled with DECISIONS.md, 2026-10-18) · 2026-10-18 · For the maker (a motivated learner)
+Track: games · Draft v0.5 (reconciled with DECISIONS.md, 2026-10-19) · 2026-10-18 · For the maker (a motivated learner)
 Built from research/games.md and CHARTER.md. Numbers in brackets, like [1], point to the Sources list at the end. Anything marked TODO(research) is still open.
 
-**Reconciled with `DECISIONS.md` (2026-10-18); the register wins (D-21).** Decided there: game-world language is welcome only where a mechanic says something true about the life, and no Mojang textures, sounds, UI or footage appear in the public cut, original voxel assets only (D-23); playable pieces are an optional companion keepsake, never the main event (D-23, W-30); the maker is the only person on the project (D-03), so no contributions are solicited and nobody is tested with family material before the premiere; hard chapters follow one-key-three-guards (D-04). Still open and pending: whether she loves Minecraft and whether Minecraft Java is owned (O-05, by Sun 25 Oct).
+**Reconciled with `DECISIONS.md` (2026-10-19, after the her-world merge); the register wins (D-21).** Decided there: the game-world look is dropped (D-29, which replaces D-23). The playful, crafted, animated feel the maker wants comes from her own Hindu world (D-28, D-31, W-72), not from any game's look, assets or name; this track keeps what games taught about meaning (the swap-the-subject test, one verb per device, the object ledger, the input and ethics rules) and nothing of their look. Playable pieces are an optional companion, never the main event (W-30); the keepsake on her phone is the film itself, PH1 by cable (W-73, TD-9). The maker is the only person on the project (D-03), so no contributions are solicited and nobody is tested with family material before the premiere; hard chapters follow one-key-three-guards (D-04). O-05 is answered: the game was only an example.
 
 ## Why this matters for our life journey
 
 Charter Principle 2 says every interactive or animated device has to say something true about the life. Games have spent years finding small actions that do this. In *Unpacking*, a player places one life's belongings into successive homes. In *Florence*, a conversation is a puzzle that gets easier as two people relax. In *A Memoir Blue*, the trophies are moved aside to reveal photographs. Each one uses a single small verb to say something large [1][3][5][30].
 
-Most game mechanics are built for quick hands, points and fail states. Our viewers are of mixed ages, and the subject is over 50 and may not play games at all. So we borrow the ideas that carry meaning and leave the gamer parts behind [39][41]. Because the main event is a film, most devices will run as animation; the click rules below apply to the optional keepsake.
+Most game mechanics are built for quick hands, points and fail states. Our viewers are of mixed ages, and the subject is over 50 and may not play games at all. So we borrow the ideas that carry meaning and leave the gamer parts behind [39][41]. Because the main event is a film, most devices will run as animation; the click rules below apply to the optional playable companion (W-30), not to PH1, which is the film itself.
 
-Minecraft sits in the middle. Some people will recognise it, and real memorials have been built in it. But its rules limit public showing and selling, and its default look reads as generic. That is why our default is original voxel assets, with Minecraft as a reference [42][49]; this is decided (D-23).
+**The look is not a game's look.** A borrowed game aesthetic reads as generic and brings rights questions of its own. The crafted, playful feel comes from her world instead: hands at work, the floor-art line of her threshold, a kitchen rendered at a different hour each time (W-33, W-34, W-72). This is decided (D-28, D-29).
 
 The biggest risk is decoration: a points bar, or a copy of a famous game's look with none of her facts behind it. *Unpacking*'s designer Wren Brier says a clone leaves "this sort of hollow experience" [3].
 
 ## Core principles (8)
 
-1. **Swap the subject.** Change the person's facts to another family's. If the device still works unchanged, it is decoration and fails Principle 2. A device that passes could only be this person's: a real object, a real room, a real move. A 10-year-old's zoo for his late father has an octopus aquarium because his father liked to fish. Nobody else's zoo would look like that [1][3][59].
+1. **Swap the subject.** Change the person's facts to another family's. If the device still works unchanged, it is decoration and fails Principle 2. A device that passes could only be this person's: a real object, a real room, a real move. A 10-year-old's virtual zoo for his late father has an octopus aquarium because his father liked to fish. Nobody else's zoo would look like that [1][3][59].
 2. **One verb, one meaning.** Pick one small action (place, pack, lift aside, wait for a chime) and tie it to a real event. If you cannot finish this sentence, cut the device: "In this chapter the viewer ___, which means ___ about her life" [1][5].
 3. **No points, no fail, no timer.** Milestones are not achievements. Remove scores, badges, progress percentages, game over and timed input. If a pop-up could read "Achievement unlocked: Married," delete it [1][37][38].
 4. **Four input rules.** Every interaction must (a) work with one click, (b) show the next step, (c) work if nobody touches it, and (d) let the host pause. The pause chime from *Before Your Eyes* is the model for (b) to (d) [14][39].
 5. **Friction tracks the relationship.** Make a moment harder when the relationship is tense and easier when it is settled. This is *Florence*'s core trick [5][6].
 6. **Real things, few of them.** One object that survives every move is worth more than fifty props. Photograph the real thing, keep the set small, and log every object. In *Edith Finch*, the team realised only at Lewis's room (the second-to-last bedroom) that a bedroom could carry its owner's story without narration, and then made "major changes ... to all the previous bedrooms" in the final months (Dallas's GDC 2018 talk, via Wikipedia) [10][13].
 7. **Reconstructions look like reconstructions.** Rebuilt scenes use a visibly different medium from documents. Hard chapters follow one-key-three-guards (D-04): a decision sheet, Fable's written flag, and the maker's two decisions 72 hours apart as her proxy, default OUT of the public cut (Principles 4 and 5). *Edith Finch* leaves the player unsure how accurate each account is, and we must make our reconstructions honest in the same way [11][13].
-8. **Design for a room.** Assume a host, a shared screen and mixed ages. Pause-and-talk beats solo skill. Viewers of *Unpacking* on Twitch narrate their own lives as they watch [3][61]. Surprise mode: under only-me there is no 'in on it' list and no contributions are solicited before the premiere (D-03); a wall that keeps growing can only grow after the reveal, from the April response recordings and releases (D-06, W-48).
+8. **Design for a room.** Assume a host, a shared screen and mixed ages. Pause-and-talk beats solo skill. Viewers of *Unpacking* on Twitch narrate their own lives as they watch [3]. Surprise mode: under only-me there is no 'in on it' list and no contributions are solicited before the premiere (D-03); a wall that keeps growing can only grow after the reveal, from the April response recordings and releases (D-06, W-48).
 
 ## How to do it, step by step
 
 We are in the LEARN phase, so every step is done on paper, in a document or in a free desktop tool. No code yet.
 
-1. Read CHARTER.md, then research/games.md. The notes' summary (item 15) gives a starting menu of seven devices: a trophies-aside reveal, unpacking across three homes, a map that fills in [52], a first-meeting conversation piece [5][6], one real room as a shrine [12], a pause chime [14], and one warm voxel diorama [64][65].
+1. Read CHARTER.md, then research/games.md. The notes' summary (item 15) gives a starting menu of seven devices: a trophies-aside reveal, unpacking across three homes, a map that fills in (its places are settings and transitions, never chapters, W-72, and it carries no map card for Somnath, Dwarka or anything of Ayodhya, W-71), a first-meeting conversation piece [5][6], one real room that carries its owner's story [12] (ours is the kitchen, W-34, never the home mandir, W-61), a pause chime [14], and one warm built set (ours is again the kitchen, the only built set, W-34). The notes' seventh item, a game-world diorama, is replaced by that set (D-29).
 2. Get the story facts for one chapter from the story track: objects, rooms, places, sayings and turning points. Mark which ones the family has confirmed. Do not design a device around a fact nobody has confirmed. Real locations work best when the story needs them. *Dordogne*'s art director picked places this way [32].
 3. Apply subtractive design. For each chapter, list what it does not need, and cut anything that does not serve the core idea [1].
 4. Choose one verb per chapter and write the Principle 2 sentence.
@@ -39,8 +39,8 @@ We are in the LEARN phase, so every step is done on paper, in a document or in a
 7. Score each device for access (1 to 5), gimmick risk (low, medium or high) and build effort (S, M or L). These scales are our own judgment, not research findings. Anything in the slice needs an access score of 4 or 5.
 8. Choose a vertical slice: one chapter and no more than three devices. The charter asks for one great chapter first (Principle 8).
 9. Paper-prototype each device with index cards or a storyboard. Test only with people who are told nothing about the project and see no family material (strangers to her, W-43); under only-me nobody is brought in. Ask what they felt, not whether they understood. The notes call this "playtest for emotion" [11].
-10. Set the visual rules: a palette for each era drawn from real photo stock, a small voxel palette, and one warm key light with a softer cool fill [25][64][65][66].
-11. Before any asset leaves the desk, run the terms check (Exercise 7) and settle the visual source (Decision 1).
+10. Set the visual rules: a palette for each era drawn from her own prints (W-38 decision 1), the phone floor for every line (W-38 decision 3, W-63), the Hindu-idiom rules of the style bible (decisions 10 and 11, W-66, W-72), and one warm key light with a softer cool fill [25].
+11. Before any asset leaves the desk, give it a rights-log row and a `motif_check` value (W-46, W-66); write `deity_form` and `deity_source` for anything that stands for a deity (W-61; `playbooks/hindu-visual.md` Exercise 6 writes the rights rows before the art); then settle the visual source (Decision 1).
 12. Hand the approved device list to the format track (how it is delivered) and the toolchain track (which tools).
 
 ## Learn-by-doing exercises
@@ -104,28 +104,27 @@ Times are our own estimates.
 
 **Good looks like:** the viewer knows when to act or wait without any words of instruction. TODO(research): the notes give no timing values. Choose the intervals by testing.
 
-### Exercise 6: Voxel readability (about 2 hours, MagicaVoxel)
+### Exercise 6: Phone-floor readability (about 40 minutes)
 
-**Goal:** learn what makes a blocky object read as warm rather than generic [64][65].
-
-**Steps:**
-1. Before using it, read the licence on the MagicaVoxel website. It says "Free to use for any project", asks for credit, and disallows selling or distributing the software in other packages [76]. The Windows download has no licence file [78].
-2. Model one object from your own home, such as a mug or a kettle, about 16 voxels across.
-3. Use 6 to 8 colours. Paint the shading into the colours. Keep one voxel size.
-4. Shrink the object to thumbnail size and check the silhouette. Remove stair-step diagonals.
-
-**Good looks like:** recognisable at thumbnail size, few colours, no default Minecraft textures.
-
-### Exercise 7: Minecraft terms check (about 1 hour)
-
-**Goal:** know what is allowed before you choose a visual source.
+**Goal:** learn what makes a small drawn object read as clear rather than generic at phone size. This replaces the former game-world readability exercise (D-29).
 
 **Steps:**
-1. Read the saved excerpt first, then the live pages [42][43] if they load (minecraft.net returned 503 on both review days); record which you used.
-2. Copy the clauses about sharing, public display, selling and endorsement into a one-page note. Write down the date you read them. The saved excerpt of the Usage Guidelines is research/sources/minecraft-usage-guidelines-2026-10-18.txt (short quotes, URL, date), so the terms check never depends on the page being up. Convention: one dated `.txt` per source under `research/sources/`, one source per file per date, named `<source>-YYYY-MM-DD.txt`. The Eurogamer interview [3] (it carries the Bed Song, 14,000-foley, spreadsheet and "hollow" claims) is not yet split out: it is section 1 of research/excerpts/games-round1-followup-2026-10-18.txt.
-3. Only if the Decision 3 rule is broken (Minecraft footage or assets on screen): list the questions a lawyer would need to answer, such as whether a screening in a hired room, even an invite-only one, counts as public display.
+1. Run `playbooks/mobile-delivery.md` Exercise 5 (dark steps and strokes) on a project phone, with the synthetic chart only and no family material.
+2. Take the two frames from Exercise 4 and redraw any meaning line thinner than 4 px at 1080p (decoration 3 px, dots 6 px, holes 4 px, hairlines banned: W-38 decision 3).
+3. Shrink each frame to thumbnail size and check the silhouette: the shelf and the photograph must still read as two layers.
 
-**Good looks like:** each clause has a quote or close paraphrase, a date and a source. The questions are written down. Mojang says it will not advise on a specific project, so the questions go to a lawyer [42]. The usage page has no visible date, and no dated version has been found. A third-party "April 19, 2026" date [71] has been withdrawn by its source, so do not cite it [83]. Re-read the page on the day of any showing, and run research/sources/check_mojang_quotes.py on a saved copy (routine in the excerpt file, section 6).
+**Good looks like:** every meaning line is crisp at 4 px or more, and the "after" frame still changes how the shelf reads at thumbnail size. If a line does not survive, enlarge it in the art.
+
+### Exercise 7: Measure the phone floor with a real file (about 1 hour)
+
+**Goal:** replace a proxy number with a measurement from a real app, so a device is judged on what the phone plays. This replaces the former game-world terms check (D-29).
+
+**Steps:**
+1. Run `playbooks/hindu-visual.md` Exercise 4 with its synthetic chart (`research/hindu-visual-fixtures/phone_chart.svg`); no family material, and the clip goes only to your own phone.
+2. Read the chart's line rows against what the phone plays, then compare the thinnest meaning line in your Exercise 4 frames with those rows.
+3. Record the result as one row for that app and phone.
+
+**Good looks like:** one row exists for the real app and phone. If the 4 px floor holds, say so; if it does not, the floor moves, and the change goes to the register as a decision, not as a quiet edit here.
 
 ### Exercise 8: Watch Brier, then Gaynor (about 2 hours)
 
@@ -152,25 +151,25 @@ Times are our own estimates.
 
 ## Decisions you'll need to make (options and our current lean)
 
-**1. Visual source.** **Decided: original voxel or vector assets only (D-23).** Options: Minecraft's look and footage; original voxel or vector assets; a mix. *Our lean:* original assets in MagicaVoxel or Blockbench [49][50][76], with Minecraft as a reference only.
+**1. Visual source.** **Decided: her world, not a game's look (D-28, D-29, W-72).** The floor-art line of her region is primary; the pichwai manner is the frame register in season; the kitchen is the only built set; no game-world look, asset or name appears on screen. The finer choice is the maker's at G1 (O-65). *Our lean:* the register's own, the floor-art line primary with her temple and haveli as set only and the pichwai manner as the frame register in season; no device borrows a game's vocabulary.
 
-**2. Minecraft edition and computer.** **Open, pending: O-05 (does she love Minecraft, and is Minecraft Java owned?), by Sun 25 Oct.** Default (W-30): a Minecraft chapter only with 20+ hours a week, Minecraft Java owned and a subject who loves the game; otherwise no voxel or Minecraft chapter and the game stays a reference. The maker's computer is Windows (D-10). Options: Java; Bedrock; no Minecraft at all. Replay Mod is a Java Edition mod (Fabric for 1.14+, Forge for 1.12.2 and below) and Flashback is a Fabric client mod; neither page mentions Bedrock [44][46]. Mineways exports Java worlds to OBJ and USD for Blender [48]. *Our lean:* no decision until O-05 is answered. TODO(research): Which Minecraft edition, if any, does the maker own? (Java is needed for Replay Mod, Flashback and Mineways.)
+**2. Game engine or edition.** **Closed (D-29; O-05 answered).** No game edition, mod, capture tool or world-export tool is used. The maker's computer is Windows (D-10); the tools are the free desktop tools and the ArtCraft apps, each with a proven fallback (D-11, D-25).
 
-**3. Showing it.** Decided (D-08, D-23). Closed by the charter: the premiere is a mostly public gathering, treated as a public screening. Rule for this track: no Minecraft textures, models, sounds or footage on screen; original voxel assets only (MagicaVoxel [76], Blockbench [49][50]). The lawyer question in Exercise 7 arises only if that rule is broken.
+**3. Showing it.** Decided (D-08, D-29). The premiere is a mostly public gathering, treated as a public screening. Rule for this track: no texture, model, sound, UI or footage from any game appears on screen; every asset is the maker's own, hand-drawn or hand-traced from a logged source, and has a rights-log row (W-46). Any question about showing goes to the rights consult (W-55, TD-8), not to this playbook.
 
 **4. Input.** Options: click once; drag; keyboard; webcam. *Our lean:* click once only, with auto-advance [14][41].
 
 **5. Pacing.** Options: timed auto-advance; advance on click; chime-gated pauses. *Our lean:* advance on click, with a chime marking pause moments and a host pause. Text advances on action, not on a timer [40].
 
-**6. Reconstruction style.** Options: one look for everything; a different medium for reconstructions. *Our lean:* a different medium, with a visible label [13].
+**6. Reconstruction style.** Options: one look for everything; a different medium for reconstructions. *Our lean:* a different medium, with a visible label [13]; where her own hands made floor art, embroidery or garlands, the marker is that craft's line (W-38 decision 6).
 
 **7. Number of personal styles.** Options: one look; one style per key person. *Our lean:* at most three to five. The team behind *Edith Finch* built and dropped many prototypes to land 13 stories [10][11].
 
-**8. Locked chapter.** Default (W-37): three visibly unfinished places built from the inventory's "things only she can confirm", plus the open chapter card at any runtime unless the maker, as proxy, decides it does not suit her; decide by Sun 13 Dec (O-28). Options: none; a locked door that the maker, as her proxy, decides about. *Our lean:* only if the maker, as her proxy, decides so after the advisor's flag (Principle 5). The Minecraft Vault is the model: each player opens it once, with its own key [55].
+**8. Locked chapter.** Default (W-37): three visibly unfinished places built from the inventory's "things only she can confirm", drawn as closed doors in her house's line with the held card, never the home mandir's doors (those are shown once, in the shrine moment, W-61; a closed mandir may mark a hard chapter only after one-key-three-guards, PR15), plus the open chapter card at any runtime unless the maker, as proxy, decides it does not suit her; decide by Sun 13 Dec (O-28). Options: none; a locked door that the maker, as her proxy, decides about. *Our lean:* only if the maker, as her proxy, decides so after the advisor's flag (Principle 5).
 
-**9. Format.** Decided by the charter and the register (D-23, W-30): the main event is a linear, captioned animated film in chapters; playable pieces are an optional companion keepsake. The default companion is the offline scrubber page on a USB; live interludes only if the maker says "partly playable is a must", G-SLICE passes with hours to spare, and ten clean dry runs are done by Sun 17 Jan; decided at G-SLICE (O-30). For the film, use each pattern's animated form and rating (patterns 9, 10, 12, 22, 24, 29 and 35 carry one; the wording varies, for example "as animation" or "as motion design"). Interactive forms go to the keepsake only, and only if the maker decides to make it (charter, Open decisions).
+**9. Format.** Decided by the charter and the register (W-30, W-73): the main event is a linear, captioned animated film in chapters; playable pieces are an optional companion, never the main event. The default companion is PH1 on her phone by cable (W-73, TD-9), with the offline scrubber page demoted to a laptop and archive companion on the USB (W-30); live interludes only if the maker says "partly playable is a must", G-SLICE passes with hours to spare, and ten clean dry runs are done by Sun 17 Jan; decided at G-SLICE (O-30). For the film, use each pattern's animated form and rating (patterns 9, 10, 12, 22, 24, 29 and 35 carry one; the wording varies, for example "as animation" or "as motion design"). Interactive forms go to the optional playable companion only, and only if the maker decides to make it (W-30; charter, Open decisions).
 
-**10. Redstone or working machinery.** *Our lean:* skip, unless she truly worked with circuits or clockwork. TODO(research): redstone was not researched.
+**10. Working machinery.** *Our lean:* skip as a mechanic (D-29). A machine her hands really worked is a row in the object ledger (Exercise 2), not a device that runs.
 
 **11. Trophies moved aside.** *Our lean:* yes, as one device near the end. It turns the milestone list into a question [30].
 
@@ -178,20 +177,21 @@ Times are our own estimates.
 
 - **Points and milestone scoreboards.** A life is not a leaderboard [37][38].
 - **Progress bars and completion percentages.** They imply she is unfinished.
-- **Stock vocabulary.** Circle-of-life day and night, generic biomes, treasure chests, hearts and hunger bars. Day and night in Minecraft run on a 20-minute cycle [53].
+- **Stock vocabulary.** Circle-of-life day and night, generic biomes, treasure chests, hearts and hunger bars, and the Hindu-world tells of the style bible (generic India, generic Gujarat, colonial-Christian and deity-misuse tells: W-38 decision 10, W-66).
+- **A reveal device on the seva space.** The "trophies aside" move is for trophies and photographs only. The home mandir's doors are shown closed, once (W-61); a deity or a seva article is never lifted aside, opened, dressed or revealed as a mechanic (W-61, W-70, PR10).
 - **Enemies as illness, divorce or money.** This is a dignity risk (Principle 5). It is our judgment, in line with Ryan Green's view that mechanics should be metaphor, not spectacle [18].
 - **Fail states and timers.** Older adults disliked time limits [41]. *Gris* has no fail state and was designed that way for accessibility [26].
 - **Drag, swipe, double-tap, long-press, blinking, webcams.** Older participants in one study slid in the wrong direction, forgot to lift their fingers and failed double taps [41]. Dragging terrain is the core of *Old Man's Journey* [19], so convert it to animation.
 - **Elegy by default.** She is alive. *Passage*, *Spiritfarer* and *Edith Finch* are about death. Borrow their devices, not their mood [23][27][41].
 - **Invented events, people or quotes.** This breaks Principle 4 [11][13]. No synthetic, cloned or text-to-speech voice of any real person, living or dead, even with consent (charter review §1.2). Where she cannot be recorded, real words for surprise mode are her HER-PUBLIC clip if it passes one-key-three-guards (HER-PRIVATE voice notes never enter the public cut; D-05, W-45); her own letters and cards; or a saying that two relatives independently confirm, shown as attributed text with no voice ("as her sister remembers it"), never as a quotation in her voice.
 - **Cloning famous looks.** Copying *Florence*'s couch colours or *Unpacking*'s boxes without her facts [3].
-- **Minecraft UI cosplay.** Hotbars, hearts and achievement pop-ups look cheap and fall under Mojang's brand rules [42].
-- **Solo assumptions.** Design for a host and a room [3][61].
-- **Second-hand memorial stories.** The Gas Bandit tribute is reported by Salon and Everplans, and the original post was not found. Do not repeat it as fact [57][58].
+- **Game-UI cosplay.** Hotbars, hearts and achievement pop-ups look cheap (Principle 3) and are another owner's interface, which needs clearing before any public showing (W-46).
+- **Solo assumptions.** Design for a host and a room [3].
+- **Second-hand memorial stories.** A tribute reported only second-hand, with the original not found, is not repeated as fact.
 - **Calibration and comfort.** Reviews of *Before Your Eyes* mention calibration trouble [69]. Reports of eye discomfort are unverified.
 - **A broken link.** The hideandseek.net copy of Robertson's essay now redirects to an unrelated gambling site. Use the Kotaku republication [37].
 - **Surprise leaks.** Test on a machine she does not use. Screen recordings must not sync to a cloud photo library, and test screenshots must not go into family group chats (charter, known facts).
-- **Add-on privacy.** The Flashback Settings add-on is listed as PolyForm Noncommercial, with telemetry on by default [47]. Read its settings before installing it on any computer that holds family material (confirmed on Modrinth 2026-10-18: "Anonymous usage statistics are enabled by default").
+- **Add-on privacy.** Read the settings of any add-on, plug-in or extension before installing it on a computer that holds family material; telemetry can be on by default (D-15, W-26).
 - **A creator's reputation.** Wikipedia reports public allegations against Florence's director and an apology, but this was not checked against primary reporting [9]. If we credit *Florence* publicly, decide knowingly.
 - **Our numbers.** Ratings, time estimates and build effort are judgment. Check them before quoting.
 
@@ -206,11 +206,11 @@ Times are our own estimates.
 7. **Inverse on the ending of *A Memoir Blue* [30].** Read with the A.V. Club interview [29]. This is the trophies-to-photographs device.
 8. **Lee et al., mobile game design guide for middle-aged and older adults, 2021 [41].** The only older-adult evidence we have. It is small (40 people), about mobile touch, and qualitative. Read it alongside the accessibility checklist [39].
 
-Also required reading before any public showing: the Minecraft Usage Guidelines [42].
+Also required before any public showing: the rights log (W-46) and the Hindu-world checks (W-66).
 
 ## Sources
 
-Tier tags: [P] primary designer, creator or official; [S] journalism quoting designers; [T] Wikipedia or aggregator; [snippet] seen only in search results. Pages were fetched on 2026-10-18 unless the entry says otherwise.
+Tier tags: [P] primary designer, creator or official; [S] journalism quoting designers; [T] Wikipedia or aggregator; [snippet] seen only in search results. Pages were fetched on 2026-10-18 unless the entry says otherwise. Source numbers match `research/games.md`; numbers missing here belong to the sources for the game-world look dropped under D-29, which stay in the research note as a historical record.
 
 [1] Danielle Riendeau — "'Unpacking' the design pillars of a chill puzzle game" — https://www.gamedeveloper.com/design/unpacking-the-design-pillars-of-a-chill-puzzle-game — 2023-04-21 — [S] summary of Wren Brier's GDC 2023 talk.
 [2] GDC Vault — "'Unpacking' Zen: Designing a Game Without Fail States or Scores" (Wren Brier, GDC 2023) — https://www.gdcvault.com/play/1029400/-Unpacking-Zen-Designing-a — 2023 — [P] listing seen via search; tagged "free content"; video not viewed.
@@ -238,30 +238,8 @@ Tier tags: [P] primary designer, creator or official; [S] journalism quoting des
 [39] Game Accessibility Guidelines — full list — https://gameaccessibilityguidelines.com/full-list/ — fetched 2026-10-18 — community checklist.
 [40] Game Accessibility Guidelines — "Allow players to progress through text prompts at their own pace" — https://gameaccessibilityguidelines.com/allow-players-to-progress-through-text-prompts-at-their-own-pace — fetched 2026-10-18.
 [41] Lee S, Oh H, Shi C-K, Doh YY — "Mobile Game Design Guide to Improve Gaming Experience for the Middle-Aged and Older Adult Population", JMIR Serious Games 2021;9(2):e24449 — https://pmc.ncbi.nlm.nih.gov/articles/PMC8176340/ (text retrieved via NCBI E-utilities) — 2021 — [P] 40 participants, mean age 66.75.
-[42] Mojang/Microsoft — Minecraft Usage Guidelines — https://www.minecraft.net/en-us/usage-guidelines — fetched 2026-10-18; no visible date — [P].
-[43] Mojang/Microsoft — Minecraft End User License Agreement — https://www.minecraft.net/en-us/eula — fetched 2026-10-18 — [P].
-[44] Replay Mod documentation — https://www.replaymod.com/docs — fetched 2026-10-18 — [P].
-[46] Modrinth — Flashback — https://modrinth.com/mod/flashback — fetched 2026-10-18 — [P] license ARR, Fabric, 12.8M downloads.
-[47] Modrinth — Flashback Settings — https://modrinth.com/project/mOIDKWOa — fetched 2026-10-18 — [P] note: add-on; PolyForm Noncommercial; telemetry on by default.
-[48] Mineways — https://erich.realtimerendering.com/minecraft/public/mineways/ — fetched 2026-10-18 — [P] version 14.01, updated 2026-10-03.
-[49] Blockbench — https://blockbench.net/ — fetched 2026-10-18 — [P].
-[50] Blockbench README — https://cdn.jsdelivr.net/gh/jannisx11/blockbench@master/README.md — fetched 2026-10-18 — [P] GPL-3.0; assets are yours.
-[51] VoxelFans — MagicaVoxel page (third-party) — https://voxelfanscom.nuxt.dev/magicaVoxel — fetched 2026-10-18 — [T] "free for personal and commercial use"; superseded by [76] (official site licence block, confirmed 2026-10-18); kept only as the lead.
-[52] Minecraft Wiki — Map — https://minecraft.wiki/w/Map — fetched 2026-10-18.
-[53] Minecraft Wiki — Daylight cycle — https://minecraft.wiki/w/Daylight_cycle — fetched 2026-10-18.
-[55] Minecraft Wiki — Vault — https://minecraft.wiki/w/Vault — fetched 2026-10-18.
-[57] Salon (from The Daily Dot) — "Gamer uses 'Minecraft' to pay tribute to his wife" — https://salon.com/2014/03/13/gamer_uses_minecraft_to_pay_tribute_to_his_wife_partner — 2014-03-13 — [S] second-hand; original not found.
-[58] Everplans — Adam Seifer, "Minecraft video game memorial honors loved one" — https://everplans.com/articles/minecraft-video-game-memorial-honors-loved-one — undated — [S] cites a Reddit post (not found).
-[59] SooToday — Jeff Klassen, "Son builds virtual Minecraft zoo and memorial to honour his deceased father" — https://www.sootoday.com/great-stories/son-builds-virtual-minecraft-zoo-and-memorial-to-honour-his-deceased-father-9-photos-707477 — 2017-09-01 — [S] interview.
-[61] The Harvard Crimson — Olivia Gopnik-Parker, "A House, Pixelated, Can Stand" — https://www.thecrimson.com/article/2020/4/30/minecraft-pfo/ — 2020-04-30 — [S].
-[64] Game Developer — Zach Soares, "Voxel Art: Reducing the Greebles" — https://www.gamedeveloper.com/design/voxel-art-reducing-the-greebles — 2017-06-05.
-[65] 80.lv — Gabriel de Laubier, "Using Voxels for Simple Dioramas" — https://80.lv/articles/using-voxels-for-simple-dioramas — 2017-07-26.
-[66] 80.lv — Thibault Simar, "Voxel Dioramas: Tips and Tricks" — https://80.lv/articles/voxel-dioramas-tips-and-tricks/ — 2017-06-22.
+[59] SooToday — Jeff Klassen, "Son builds virtual … zoo and memorial to honour his deceased father" (title abridged; the game's name is dropped under D-29; the address is in `research/games.md` [59]) — 2017-09-01 — [S] interview.
 [69] Before Your Eyes reviews — https://fingerguns.net/reviews/2021/04/06/before-your-eyes-review-blink-back-tears/ ; https://www.thesixthaxis.com/2021/05/05/before-your-eyes-review/ ; https://gamingtrend.com/reviews/dont-blink-or-youll-miss-it-before-your-eyes-review/ — 2021 — [snippet] mouse alternative, calibration, emotional reactions.
-[71] ConductAtlas third-party summary of Minecraft Usage Guidelines — https://conductatlas.com/platform/minecraft/minecraft-usage-guidelines/commercial-use-and-monetization-restrictions/ — [snippet]; claims "last updated April 19, 2026": UNVERIFIED.
-[76] MagicaVoxel official site, main page fragment (licence block) — https://ephtracy.github.io/mv_main.html — 2026-10-18 — [P].
-[78] MagicaVoxel 0.99.7.2 Windows release zip (listed; no licence file) — https://github.com/ephtracy/ephtracy.github.io/releases/download/0.99.7/MagicaVoxel-0.99.7.2-win64.zip — 2026-10-18 — [P].
-[83] ConductAtlas, withdrawn clause page — https://conductatlas.com/platform/minecraft/minecraft-usage-guidelines/provision/CA-P-002831/commercial-use-and-monetization-restrictions/ — 2026-10-18 — [T] "This clause is no longer published"; no "April 19, 2026" date found.
 
 ## Changelog
 
@@ -269,3 +247,4 @@ Tier tags: [P] primary designer, creator or official; [S] journalism quoting des
 - **v0.2, 2026-10-18 (games round 1).** Applied the Fable round-1 review: Windows and VectorCraft (charter Known facts) replace the OS TODOs, with Inkscape as the named fallback; the Minecraft-edition TODO is the only one left in Decision 2; Replay Mod and Flashback described as Java Edition mods; Messex quote cited to [15] and metronome to [14]; Modrinth telemetry confirmed; Brier's talk tagged free and watched before Gaynor's; MagicaVoxel licence taken from the site (Exercise 6); the withdrawn April 19 date is no longer cited; [41] URL updated; synthetic-voice ban and surprise-mode real words added; surprise-safe contribution rule added to Principle 8; excerpt-saving step added to Exercise 7.
 - **v0.3, 2026-10-18 (games round 2).** Applied the Fable round-2 review: hard chapters and Decision 8 now go to the maker as her proxy, flagged by the advisor, with no relative consulted; Decision 3 closed by the charter (mostly public premiere, original assets only); Decision 9 decided by the charter (linear film, optional keepsake); Principle 6 Edith Finch revision sourced to Dallas's GDC 2018 talk and its TODO closed; MagicaVoxel licence cited to [76]; excerpt paths and premiere-week hash method corrected; Exercise 9 tester and evidence wording fixed; tester checklist box added to the skill; Principle 1 now says "liked to fish" (SooToday [59]).
 - **v0.4, 2026-10-18 (reconciled).** Reconciled with DECISIONS.md (2026-10-18). Visual source decided as original voxel assets only (D-23); format and companion per W-30; hard chapters per one-key-three-guards (D-04); no contributions solicited and no tester with family material under only-me (D-03, W-43); found-voice wording per D-05 and W-45; the Minecraft edition question is pending O-05; Step 8 now cites Principle 8 (one great chapter first), not Principle 6.
+- **v0.5, 2026-10-19.** Reconciled with DECISIONS.md after the her-world merge (2026-10-19). The Minecraft and voxel material of v0.1 to v0.4 is retired under D-29 (it replaces D-23, S-45): the look comes from D-28 and W-72; Decisions 1 to 3, 8, 9 and 10 rewritten; Exercises 6 and 7 replaced by the phone-floor chart and the real-file measurement; the terms, tool and add-on sources removed (the research note keeps them as a historical record); the mandir, three-places and companion rules added; the companion is PH1 by cable (W-73).

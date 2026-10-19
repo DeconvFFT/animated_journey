@@ -44,6 +44,8 @@ def main(argv):
     stages = []
     for p in sorted(glob.glob(os.path.join(L.EVID, "stage_*.json"))):
         d = L.read_json(p)
+        if (d.get("detail") or {}).get("forced_bad_asset"):
+            continue  # the deliberate wrong-asset test is not a real stage
         stages.append({"stage": d["test"], "status": d["status"], "reason": d["actual"], "disk": d["disk"]})
     avail = [r["disk"]["avail_mb_min"] for r in rows if r.get("disk") and r["disk"].get("avail_mb_min") is not None]
     summary = {"schema": "lj-wp-summary/1", "package": L.PACKAGE, "date_utc": L.today(), "mode": mode, "counts": counts, "tests": [{"name": r["test"], "status": r["status"]} for r in rows],

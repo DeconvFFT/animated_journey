@@ -8,9 +8,12 @@ CHECKS (one line each: PASS, FAIL or UNVERIFIED with the reason)
   G3  every fence passes win/tools/ps_lint.py (the Windows PowerShell 5.1 rules): readonly fences in its read-only mode, setup fences with --allow-write
   G4  every file name, size and SHA-256 in the guide equals release_assets.json; every 64-hex string in the guide is a known hash; all five pins and the fallback appear
   G5  the Step 3 hash-check fence, run on Linux against made-up files: an intact file prints OK, a copy with ONE BYTE FLIPPED prints MISMATCH, a missing one MISSING
-  G6  the two "where did it write" fences, run on Linux against a made-up profile (including an AppData folder OUTSIDE the profile): every output line starts with
-      %USERPROFILE%\\ (or <app folder>), and neither the made-up profile path nor the made-up user name appears; the fences are read-only (the tree is unchanged)
+  G6  the two "where did it write" fences, run on Linux against a made-up profile (including an AppData folder OUTSIDE the profile and a made-up folder named like an
+      e-mail address, x@y): every output line starts with %USERPROFILE%\\ (or <app folder>), neither the made-up profile path nor the made-up user name appears, an "@"
+      never appears (that folder is printed as <redacted>); the fences are read-only (the tree is unchanged)
   G7  a tarball with one byte flipped is rejected by asset_tool.py before any extraction, and run_sp1.sh calls the check before its first tar -x
+  G8  the Step 2 move fence, run on Linux against a made-up Downloads folder: a good move prints "moved <name>" and moves the file; a move that cannot happen (the
+      destination is not a folder) prints "could not move: <name>" and nothing else, no path of the made-up profile, on any output stream
 EXIT CODES  0 no FAIL (UNVERIFIED lines allowed); 1 a FAIL; 2 bad usage.
 NEVER TOUCHES  anything but a temporary folder under the scratch area, removed again. Windows behaviour stays UNVERIFIED: pwsh on Linux is a proxy.
 """
@@ -173,7 +176,8 @@ def main(argv):
             roam = os.path.join(prof, "AppData", "Roaming")
             loc_outside = os.path.join(tmp, "redirected", "Local")  # an AppData that lives OUTSIDE the profile
             appdir = os.path.join(tmp, "tools", "filmcraft-v0.9.0")
-            for p in (os.path.join(roam, "FilmCraft", "data"), os.path.join(roam, "Temp", "x"), os.path.join(loc_outside, "FilmCraft", "Recovery"), os.path.join(appdir, "data")):
+            at_dir = os.path.join(roam, "Microsoft", "Outlook", "x@y.example")  # a folder named like an e-mail address: must be redacted by design
+            for p in (os.path.join(roam, "FilmCraft", "data"), os.path.join(roam, "Temp", "x"), os.path.join(loc_outside, "FilmCraft", "Recovery"), os.path.join(appdir, "data"), at_dir):
                 os.makedirs(p)
             open(os.path.join(appdir, "filmcraft.exe"), "w").write("x")
             open(os.path.join(appdir, "data", "preferences.json"), "w").write("{}")
@@ -185,19 +189,30 @@ def main(argv):
             lines1 = [x for x in out1.splitlines() if x.strip()]
             lines2 = [x for x in out2.splitlines() if x.strip()]
             leaks = [x for x in lines1 + lines2 if user in x or tmp in x or "Zq7" in x]
+            at_shown = [x for x in lines1 + lines2 if "@" in x or "x@y" in x]
+            redacted_shown = [x for x in lines1 if x.endswith("<redacted>")]
             form1 = [x for x in lines1 if not x.startswith("%USERPROFILE%\\")]
             form2 = [x for x in lines2 if not x.startswith("<app folder>")]
             temp_listed = [x for x in lines1 if re.search(r"[\\/]Temp([\\/]|$)", x)]
             after = sorted(os.path.join(r, n) for r, ds, fn in os.walk(tmp) for n in ds + fn)
-            ok = rc1 == 0 and rc2 == 0 and lines1 and lines2 and not leaks and not form1 and not form2 and not temp_listed and snap == after
+            ok = rc1 == 0 and rc2 == 0 and lines1 and lines2 and not leaks and not form1 and not form2 and not temp_listed and snap == after and not at_shown and redacted_shown
             rec("G6.where_did_it_write_prints_only_generalised_paths", "PASS" if ok else "FAIL",
-                "line 1 printed %d lines, line 2 printed %d; not in %%USERPROFILE%% form: %s; leaks of the made-up profile or user: %s; Temp listed: %s; tree unchanged: %s; exit %s/%s %s" % (
-                    len(lines1), len(lines2), (form1 + form2)[:3] or "none", leaks[:3] or "none", temp_listed or "none", snap == after, rc1, rc2, (err1 + err2)[:150].strip()))
+                "line 1 printed %d lines, line 2 printed %d; not in %%USERPROFILE%% form: %s; leaks of the made-up profile or user: %s; Temp listed: %s; lines with an @: %s; "
+                "the x@y folder shown as <redacted>: %s; tree unchanged: %s; exit %s/%s %s" % (
+                    len(lines1), len(lines2), (form1 + form2)[:3] or "none", leaks[:3] or "none", temp_listed or "none", at_shown[:2] or "none", bool(redacted_shown), snap == after,
+                    rc1, rc2, (err1 + err2)[:150].strip()))
         else:
             rec("G6.where_did_it_write_prints_only_generalised_paths", "UNVERIFIED", "pwsh not found or the two where-did-it-write fences are missing")
         # G7: Linux side, tarball integrity before extraction
         ok7, msg7 = linux_flip_check(tmp)
         rec("G7.flipped_tarball_rejected_before_extraction", "PASS" if ok7 else "FAIL", msg7)
+        # G8 (pwsh): the Step 2 move fence never echoes a profile path, not even when a move fails
+        mv = next((f for f in fs if "Move-Item" in f["body"]), None)
+        if pw and mv:
+            ok8, msg8 = step2_move_check(pw, mv["body"], tmp)
+            rec("G8.step2_move_prints_only_file_names", "PASS" if ok8 else "FAIL", msg8)
+        else:
+            rec("G8.step2_move_prints_only_file_names", "UNVERIFIED", "pwsh not found or the Step 2 move fence is missing")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
     if a.json:
@@ -205,6 +220,45 @@ def main(argv):
     n_fail = sum(1 for r in results if r["status"] == "FAIL")
     print("check_guide: %d PASS, %d FAIL, %d UNVERIFIED" % (sum(r["status"] == "PASS" for r in results), n_fail, sum(r["status"] == "UNVERIFIED" for r in results)))
     return 1 if n_fail else 0
+
+
+def step2_move_check(pw, body, tmp):
+    """Run the Step 2 fence on Linux against a made-up profile. Good destination: every zip moves, the output has only 'moved <name>' lines. Bad destination (a
+    path below a plain FILE, so the move cannot happen): every line is 'could not move: <name>', the files stay in Downloads, and neither the made-up profile path
+    nor the made-up user name is on stdout or stderr (an unguarded Move-Item prints the full path of the file in its error)."""
+    user = "Zq7MadeUpUser"
+    prof = os.path.join(tmp, "step2", "Users", user)
+    down = os.path.join(prof, "Downloads")
+    os.makedirs(down)
+    names = re.findall(r"'([^']+\.zip)'", body)
+    if not names:
+        return False, "no zip names found in the Step 2 fence"
+    for n in names:
+        open(os.path.join(down, n), "w").write("made-up zip\n")
+    good_dest = os.path.join(tmp, "step2", "dl_good")
+    os.makedirs(good_dest)
+    blocker = os.path.join(tmp, "step2", "not_a_folder")
+    open(blocker, "w").write("a plain file\n")
+    bad_dest = os.path.join(blocker, "dl") + "/"
+    env = {"USERPROFILE": prof}
+    good_body = body.replace("C:\\lj\\dl\\", good_dest + "/")
+    rc1, out1, err1 = run_pwsh(pw, good_body, env)
+    moved = sorted(os.listdir(good_dest))
+    lines1 = [x.split() for x in out1.splitlines() if x.strip()]
+    ok_good = rc1 == 0 and moved == sorted(names) and len(lines1) == len(names) and all(x[0] == "moved" for x in lines1) and not os.listdir(down)
+    for n in names:  # put them back for the failing run
+        open(os.path.join(down, n), "w").write("made-up zip\n")
+    bad_body = body.replace("C:\\lj\\dl\\", bad_dest)
+    rc2, out2, err2 = run_pwsh(pw, bad_body, env)
+    lines2 = [x for x in out2.splitlines() if x.strip()]
+    shown = out2 + "\n" + err2
+    leaks = [x for x in shown.splitlines() if user in x or tmp in x or "Zq7" in x or "/" in x or "\\" in x]
+    only_names = len(lines2) == len(names) and all(re.fullmatch(r"could not move:\s+\S+\.zip", x) for x in lines2)
+    stayed = sorted(os.listdir(down)) == sorted(names)
+    ok_bad = only_names and not leaks and stayed and not err2.strip()
+    msg = "good destination: %d of %d moved, lines %s; failing destination: %d 'could not move' lines (names only: %s), files stayed in Downloads: %s, path leaks on stdout or stderr: %s, stderr: %r (pwsh on Linux, made-up files; Windows UNVERIFIED)" % (
+        len(moved), len(names), "ok" if ok_good else "WRONG", len(lines2), only_names, stayed, leaks[:2] or "none", err2[:80])
+    return bool(ok_good and ok_bad), msg
 
 
 def linux_flip_check(tmp):

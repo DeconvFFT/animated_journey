@@ -73,10 +73,38 @@ ran="$S/ran"; rm -f "$ran"
 bash "$GUARD" with_disk 320 p320 -- bash -c "touch '$ran'" 2>/dev/null
 [[ ! -e "$ran" ]] && pass "refused_command_never_started" "" || fail "refused_command_never_started" "the command ran"
 
+# ----------------------------------------------------------------------------- 3b. leading zeros in PLANNED_MB (review r2)
+# 08 used to abort the refusal test with "value too great for base" and then run the command (fail-open, exit 0);
+# 010 was read as octal 8 and written to the ledger as "planned_mb":010, which is not valid JSON.
+S="$(new_scratch s3b)"; mkfake "$S" f 405
+export LJ_DF_CMD="$S/f.sh" LJ_SCRATCH="$S"
+ran="$S/ran08"; rm -f "$ran"
+bash "$GUARD" with_disk 08 zero08 -- bash -c "touch '$ran'" 2>"$S/err"; rc=$?
+expect "planned_08_df405_is_refused_exit_3" 3 "$rc" "$(grep -o 'REFUSED.*' "$S/err" | head -c 100)"
+if grep -qiE 'value too great|syntax error|arithmetic|operand' "$S/err"; then fail "planned_08_prints_no_arithmetic_error" "$(head -c 200 "$S/err")"; else pass "planned_08_prints_no_arithmetic_error" "stderr: $(head -c 60 "$S/err" | tr '\n' ' ')"; fi
+grep -q 'Avail 405 MB minus planned 8 MB leaves 397 MB, below the 400 MB floor' "$S/err" && pass "planned_08_is_read_as_decimal_8" "" || fail "planned_08_is_read_as_decimal_8" "$(head -c 200 "$S/err")"
+[[ ! -e "$ran" ]] && pass "planned_08_refused_command_never_started" "" || fail "planned_08_refused_command_never_started" "the command ran (fail-open)"
+bash "$GUARD" with_disk 010 zero010 -- true 2>"$S/err010"; rc=$?
+expect "planned_010_df405_is_refused_as_decimal_10" 3 "$rc" "$(grep -o 'planned [0-9]* MB leaves [0-9]* MB' "$S/err010" | head -n 1)"
+mkfake "$S" g 5000
+LJ_DF_CMD="$S/g.sh" bash "$GUARD" with_disk 010 zero010ok -- true 2>"$S/err010ok"; rc=$?
+expect "planned_010_df5000_runs_and_exits_0" 0 "$rc" ""
+python3 -I - "$S/disk-ledger.jsonl" <<'PY' && pass "planned_010_ledger_lines_are_json_with_planned_mb_10" "refused and ok lines both parse and say 10" || fail "planned_010_ledger_lines_are_json_with_planned_mb_10" "$(grep -E 'zero0' "$S/disk-ledger.jsonl" | head -c 300)"
+import json, sys
+seen = {}
+for line in open(sys.argv[1], encoding="utf-8"):
+    d = json.loads(line)                      # a line with "planned_mb":010 raises here
+    seen[d["label"]] = d["planned_mb"]
+assert seen.get("zero08") == 8 and seen.get("zero010") == 10 and seen.get("zero010ok") == 10, seen
+assert all(type(v) is int for v in seen.values()), seen
+PY
+grep -q '"label":"zero010ok","planned_mb":10,' "$S/disk-ledger.jsonl" && pass "planned_010_is_written_as_planned_mb_10_not_010" "" || fail "planned_010_is_written_as_planned_mb_10_not_010" "$(grep 'zero010ok' "$S/disk-ledger.jsonl" | head -c 200)"
+
 # ----------------------------------------------------------------------------- 4. serialise, BUSY
 S="$(new_scratch s4)"; mkfake "$S" f 5000
 export LJ_DF_CMD="$S/f.sh" LJ_SCRATCH="$S"
-job() { bash "$GUARD" with_disk 10 "$1" -- bash -c "echo start-$1 \$(date +%s.%N) >> '$S/order'; sleep 1.2; echo end-$1 \$(date +%s.%N) >> '$S/order'" 2>>"$S/err4"; }
+# the first job holds the lock for 2.2 s, so the second waits about 1.9 s: lock_wait_s is whole seconds ($SECONDS), and only a wait of at least 1 s is sure to read 1 or more (with a 0.9 s wait the test failed about one run in ten)
+job() { bash "$GUARD" with_disk 10 "$1" -- bash -c "echo start-$1 \$(date +%s.%N) >> '$S/order'; sleep 2.2; echo end-$1 \$(date +%s.%N) >> '$S/order'" 2>>"$S/err4"; }
 job A & pa=$!; sleep 0.3; job B & pb=$!; wait $pa; ra=$?; wait $pb; rb=$?
 expect "two_jobs_both_succeed" "0 0" "$ra $rb" ""
 seq="$(awk '{print $1}' "$S/order" | tr '\n' ' ')"

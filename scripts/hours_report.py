@@ -24,8 +24,9 @@ WHAT IT PRINTS
   `agent` (nothing else is accepted: in a public repository a `who` column is a name slot).
   Only `maker` rows count towards the maker's hours (H); `agent` rows are listed as not counted.
   Problems are printed with the file line number and nothing else is reported. Free text
-  echoed in a problem (activity, shot_or_chapter, who) is masked: first two characters, then
-  asterisks, because a mistyped column may hold a name.
+  echoed in a problem (date, shot_or_chapter, activity, minutes, who, and the cells of a wrong
+  header line) is masked: first two characters, then asterisks, because a shifted or mistyped
+  column may hold a name. The problem line number says where to look.
 
 THE W-02 READING (DECISIONS.md W-02; always printed as indicative)
   under 8 h          : the 6-minute F-0 would become the plan on Sun 1 Nov, 9 the stretch
@@ -122,8 +123,11 @@ def parse(text):
                     hint = ""
                     if len(cells) == 1 and ";" in cells[0]:
                         hint = " (this looks semicolon-separated: save as CSV, comma delimited)"
+                    # The first line may be a data row (a file saved without its header), so
+                    # every cell echoed here is masked like the other free text.
+                    shown = ",".join(masked(c) for c in cells[:len(HEADER) + 2])
                     problems.append((start, "header must be exactly: " + ",".join(HEADER)
-                                     + " (found: " + ",".join(cells)[:120] + ")" + hint))
+                                     + " (found %d column(s), masked: %s)" % (len(cells), shown) + hint))
                     return rows, problems
                 continue
             if not any(c.strip() for c in rec):
@@ -157,12 +161,12 @@ def check_row(row):
     d = row["date"]
     if not DATE_RE.match(d):
         msgs.append("date '%s' must look like 2026-10-19 (year-month-day; a spreadsheet may "
-                    "have changed it: format the column as Text)" % d[:20])
+                    "have changed it: format the column as Text)" % masked(d))
     else:
         try:
             datetime.date.fromisoformat(d)
         except ValueError:
-            msgs.append("date '%s' is not a real calendar date" % d)
+            msgs.append("date '%s' is not a real calendar date" % masked(d))
     s = row["shot_or_chapter"]
     if s != "-" and not ID_RE.match(s):
         msgs.append("shot_or_chapter '%s' must be an ID such as C01 or LJ-C01-S002, or '-' "
@@ -176,7 +180,7 @@ def check_row(row):
         msgs.append("activity '%s' is not one of: %s%s" % (masked(a), "|".join(ACTIVITIES), hint))
     m = row["minutes"]
     if not re.match(r"^[0-9]{1,4}$", m) or not (1 <= int(m) <= 1440):
-        msgs.append("minutes '%s' must be a whole number from 1 to 1440 (no 'h', no decimals)" % m[:12])
+        msgs.append("minutes '%s' must be a whole number from 1 to 1440 (no 'h', no decimals)" % masked(m))
     if row["who"] not in WHO_VALUES:
         msgs.append("who '%s' must be exactly maker or agent (the repository is public: no names here)"
                     % (masked(row["who"]) if row["who"] else ""))

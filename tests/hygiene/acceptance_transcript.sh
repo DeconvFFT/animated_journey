@@ -4,11 +4,17 @@
 #
 # Unlike run_tests.sh this DOES write the deliverables the acceptance list asks for:
 #   build/evidence/wp03/stale_check_report.json and .md   (the first stale_check run; exit 1 is expected)
-#   scripts/stale_baseline.json                             (today's hits)
 #   build/evidence/wp03/LANDED-4.13.txt                     (by the pattern test)
-# Everything else is read-only. Run from anywhere:  bash tests/hygiene/acceptance_transcript.sh
+# The --baseline then --new-only step runs on a SCRATCH baseline file, so a re-run never overwrites
+# scripts/stale_baseline.json. Pass --write-baseline to rewrite the real one on purpose: re-cut it the same day
+# Table 4 or the stale patterns grow (review r2 did, so that --new-only does not list the old copies of the new
+# rows as new), and after a Haiku pass lands.
+# Everything else is read-only. Run from anywhere:  bash tests/hygiene/acceptance_transcript.sh [--write-baseline]
 set -u
 cd "$(dirname "${BASH_SOURCE[0]}")/../.." || exit 3
+BASEFILE="../build-scratch/acceptance-baseline.json"   # relative on purpose: the transcript echoes the command and must hold no absolute path
+mkdir -p "$(dirname "$BASEFILE")"
+if [[ "${1:-}" == "--write-baseline" ]]; then BASEFILE="scripts/stale_baseline.json"; fi
 OUT=build/evidence/wp03/acceptance_transcript.txt
 mkdir -p build/evidence/wp03
 : > "$OUT"
@@ -32,7 +38,7 @@ step "guard, stale and lint tests (--all)" bash tests/hygiene/run_tests.sh --all
 step "stale_check self-test" python3 -I scripts/stale_check.py --self-test
 step "stale_check allowlist audit (no dead entries)" python3 -I scripts/stale_check.py --audit-allowlist
 step "stale_check first run: report written, exit 1 expected" python3 -I scripts/stale_check.py --json build/evidence/wp03/stale_check_report.json --md build/evidence/wp03/stale_check_report.md
-step "stale_check --baseline then --new-only (exit 0 straight after)" bash -c "python3 -I scripts/stale_check.py --baseline && python3 -I scripts/stale_check.py --new-only"
+step "stale_check --baseline then --new-only (exit 0 straight after; scratch baseline unless --write-baseline)" bash -c "python3 -I scripts/stale_check.py --baseline --baseline-file '$BASEFILE' && python3 -I scripts/stale_check.py --new-only --baseline-file '$BASEFILE'"
 step "public_lint self-test (4.13 disagreement test)" python3 -I scripts/public_lint.py --self-test
 step "public_lint --self-test --fail-on-skip (WP-11b's final form; a skip is a failure)" python3 -I scripts/public_lint.py --self-test --fail-on-skip
 step "public_lint on WP-03's own files and evidence" python3 -I scripts/public_lint.py --paths scripts/redaction_patterns.json scripts/lj_guard.sh scripts/stale_check.py scripts/stale_patterns.json scripts/stale_allowlist.json scripts/stale_baseline.json scripts/public_lint.py scripts/public_lint.config.json tests/hygiene build/evidence/wp03

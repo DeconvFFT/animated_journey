@@ -1,12 +1,12 @@
 # Cinematic Quality: Making It Theatrical Without Looking Like AI
 
-**Track:** `cinematic-quality` · **Version:** 5 (2026-10-18) · **Built from:** `research/cinematic-quality.md` and `CHARTER.md`
+**Track:** `cinematic-quality` · **Version:** 6 (2026-10-19) · **Built from:** `research/cinematic-quality.md` and `CHARTER.md`
 
 **How to read this.** Numbers in [brackets] point to the Sources list at the end. (M) means we measured it on made-up test material [76]. (J) means it is a judgement call to calibrate on the first five slice shots. TODO(research) marks a gap.
 
-Nothing here uses her photos or stories yet. Real material comes in only after the pipeline and process are locked: the L1 process lock is Sat 14 Nov 2026 and covert collection starts Sun 15 Nov (D-13, W-06).
+Nothing here uses her photos or stories yet. Real material comes in only after the pipeline and process are locked: the P-LOCK process lock is Sat 14 Nov 2026 and covert collection starts Sun 15 Nov (D-13, W-06).
 
-Reconciled with [DECISIONS.md](../DECISIONS.md) (2026-10-18), the single source of truth. Where a lean below disagrees with a register row, the register wins. D-nn rows are decided by the maker; W-nn rows are working defaults.
+Reconciled with [DECISIONS.md](../DECISIONS.md) (2026-10-18, and again on 2026-10-19 after the her-world merge), the single source of truth. Where a lean below disagrees with a register row, the register wins. D-nn rows are decided by the maker; W-nn rows are working defaults. Her Hindu world (D-28, D-31) sets the look, the phone is a first-class screen (D-27), and the game-world rule is retired (D-29).
 
 ---
 
@@ -55,7 +55,7 @@ Work in this order. Each step ends in a check or a gate, so no shot moves on by 
    Open with this neutral ask, which says nothing about the film (FQ12), and send it by Fri 6 Nov (W-17): "We are planning to show a short video at a gathering on 27 February 2027. Could someone tell me the projector or display model, how it is connected (HDMI, USB, other), the width and height of the lit picture, and whether the room can be darkened? Could we do a 30-minute test with our own laptop on a weekday before mid-January?"
 
    Put the six answers in a small `venue.json` and run `python3 -I research/cinematic-quality-fixtures/venue_calc.py venue.json` (with no argument it prints the template). It prints peak luminance, the grading gamma, the signal level the ambient light hides, the nearest and farthest seat in screen heights, the type-size floors, and what 0.05, 0.1 and 0.3 px of jitter subtend in arc seconds (M-C14), and it lists the defaults it still used. The same weekday test is the slot for the A/B push card (T6). Until the answers are in, every brightness, gamma, black-level and type-size figure in this playbook is a scenario, not the venue.
-2. **Write the style bible.** It is one document of four to eight pages, with the ten decisions locked before the slice (T2). Add a good / not good board. Add a rule only when a test shot fails without it [27][28].
+2. **Write the style bible.** It is one document of four to eight pages, with the twelve decisions locked at G1, before the slice (T2; decision 11 is `hindu_idiom` and decision 12 is moving footage, W-38, W-59). Add a good / not good board. Add a rule only when a test shot fails without it [27][28].
 3. **Build the era colour strip.** From the animatic, pick one frame per beat. Reduce each frame to three swatches: dominant, secondary and accent. Lay them in a strip where each beat's width equals its running time. Draw one line above for emotional temperature, and a row below for the light (window, lamp, overcast, flash or none). Budget about two hours per era (J). Freeze the strip at gate G1 for the slice [31][32].
 4. **Set the camera grammar.** Allowed moves are push, pull, pan, tilt, a small orbit of up to 3 degrees, and hold. Push or pull up to 8% of the frame. Pan up to 5% of frame width. For the virtual lens, use the photo's own 35 mm-equivalent focal length if the file has one [52]. Otherwise use 35 mm for snapshots and 50 mm for portraits (J). Keep faces central.
 5. **Write each shot brief.** Every shot needs its label (L0 to L5, defined in the AI imagery playbook [P2]), a `because:` reason (reveal, link, isolate, time or hold), an ease family, `mirrored: false`, its lens, and its source photos. A shot with no reason fails check B1.
@@ -75,11 +75,11 @@ Work in this order. Each step ends in a check or a gate, so no shot moves on by 
    - **Staging.** Stage photographs with at least three depth planes and a ground-contact cue, such as a shadow, so they do not look like paper dolls [80] (search-result only).
 10. **Finish the shot.** Count the global layers: grain, vignette, letterbox, flare or bloom, halation, dust, light leak, colour filter and shake. Keep it to two or fewer, all from the era's finish stack (FN1). Run the finish-off test. Bake grain as at least 48 distinct frames, with a different seeded start for each shot. Keep the grain's luminance spread on new layers within 30% of the scan's flat patch (FN6). Light wrap goes last in the chain, on the edge only, after spill suppression [50]. Blur each depth plane as a layer, not per pixel, because per-pixel depth blur makes halos at depth edges [51]. Never blur faces for depth.
 11. **Check colour with numbers.** Compute each shot's median colour and its three dominant colours in Lab. Compare them with the era swatches using ΔE00 [40]. A difference below 1 is generally not visible. From 1 to 2 it shows only in close side-by-side viewing. Above 2 it is an increasingly obvious mismatch. Our tolerances (J): within 6 for the shot, within 4 for skin, and within 3 between shots in one scene.
-12. **Check type and graphics (TY1, TY3, TY4).** Applies to type we set: titles, cards, date lines, captions and credits. Font at least 5% of picture height, x-height at least 2.5%, and strokes at least 2 px at 1080p. Text inside photographs and her handwriting is exempt. Below 2% x-height, text is decorative and must not carry information. If text inside a photograph carries information, repeat it on a card or caption (TY4). Captions follow `format.md` Step 8 (7 to 8% line height), which at 1080p is `FontSize=23`: x-height 3.2 to 3.8% of picture height across five fonts, line pitch 7.96% (M-C8). Caption x-height floor 3.1% (6 screen heights, J); `FontSize=23` meets it in every font tested, `FontSize=20` does not for Carlito or FreeSans. Run `caption_xheight.py` once on the maker's Windows ffmpeg with the chosen caption font; TY1 is a floor, not a caption size. Keep all text and graphics inside 5% margins [45]. Every font needs a licence file (TY3). OFL: video titling is a listed permitted use (FAQ 1.1); embedding is answered for documents and files (1.12), not video [56]. OFL fonts only (W-21): commercial fonts under an Adobe or Monotype subscription are out (T2 decision 4).
+12. **Check type and graphics (TY1, TY3, TY4).** Applies to type we set: titles, cards, date lines, captions and credits. Font at least 5% of picture height, x-height at least 2.5%, and strokes at least 2 px at 1080p. Those are the venue floors. Anything the audience must read also meets the phone-safe frame in every file (TY5, W-63): x-height 3.2% as a hard floor and 3.8% as the target, and meaning lines of 4 px (W-38 decision 3). Text inside photographs and her handwriting is exempt. Below 2% x-height, text is decorative and must not carry information. If text inside a photograph carries information, repeat it on a card or caption (TY4). Captions follow `format.md` Step 8 (7 to 8% line height), which at 1080p is `FontSize=23`: x-height 3.2 to 3.8% of picture height across five fonts, line pitch 7.96% (M-C8). Caption x-height floor 3.1% (6 screen heights, J); `FontSize=23` meets it in every font tested, `FontSize=20` does not for Carlito or FreeSans. Run `caption_xheight.py` once on the maker's Windows ffmpeg with the chosen caption font; TY1 is a floor, not a caption size. Those caption figures are for Latin type: Gujarati is sized by the height of its base letter KA, not by `FontSize`. Noto Sans Gujarati gives KA 3.33% of picture height at `FontSize=23` (enough for the venue; it passes the 35 cm 0.35 degree target and the 40 cm floor) and needs `FontSize` 26.2 for the phone's 3.8% target, so the phone file carries its own caption setting: `FontSize=28`, `MarginV` 40, two lines of at most 36 characters, the block at 68 to 86% of height (W-18; the Windows numbers are UNVERIFIED until `windows_check_report.json`). Keep all text and graphics inside 5% margins [45]. Every font needs a licence file (TY3). OFL: video titling is a listed permitted use (FAQ 1.1); embedding is answered for documents and files (1.12), not video [56]. OFL fonts only (W-21): commercial fonts under an Adobe or Monotype subscription are out, and the Indic families and the outlines-not-live-text rule for her script are in T2 decision 4.
 13. **Do the maker's eye checks.** These cannot be automated: eyes, mouth, hands, text, reflections, cut-out edges on black, white and mid-grey at 200%, and the AI-tell sweep (T9). The numbers help, but they never sign anything off.
 14. **Check the chapter.** In every run of eight moving shots, look for at least three move families, none above 40%, no family more than twice in a row, and an entropy of at least 1.5 bits (MO9). Held shots should be at least 35% of photo shots. Include at least one picture-led silence of 3 s or more. Shot lengths should vary, with a coefficient of variation of at least 0.4 (J). No finishing layer on more than 80% of shots. Captions stay within reading limits.
 15. **Run the review ritual.** Wait 48 hours before you approve or reject a shot. This is practitioner advice with no controlled study behind it [75]. Then do a blind A/B against the previous version, a squint test [73], distance viewing, half and double speed, sound-off and picture-off passes, and a reverse-order pass.
-16. **Run the strangers' tests.** Two sessions are decided (W-43): S1 with three strangers to her on the slice about Sun 20 Dec, and S2 with three to five on the locked cut in week 17 (Mon 8 to Sun 14 Feb). Each time, people who have never met her, and never will, watch a redacted copy once with no pauses. Then they fill in the written sheet before any discussion (T7). Strangers judge whether the film reads and whether it looks computer-made. They cannot judge likeness or truth.
+16. **Run the strangers' tests.** Two sessions are decided (W-43): S1 with one or two strangers to her on the slice about Sun 20 Dec (or the cold self-read, with Fable's rubric pass), and S2 with three to five on the locked cut in week 17 (Mon 8 to Sun 14 Feb). Each time, people who have never met her, and never will, watch a redacted copy once with no pauses. Then they fill in the written sheet before any discussion (T7). Strangers judge whether the film reads and whether it looks computer-made. They cannot judge likeness or truth.
 17. **Test on the venue.** Run the projection-truth checklist (T6) on the real projector at the venue visit by Sun 17 Jan 2027 (TD-L2b, W-56), with the test clip only and never the film. Run it again at the Mon 22 Feb rehearsal with the three masters (G-REHEARSE, W-52), and on the day.
 18. **Log every decision.** Write one short entry per decision (T8). Record what was decided, why, the evidence file, and whether it can be reversed.
 
@@ -157,14 +157,14 @@ Work in this order. Each step ends in a check or a gate, so no shot moves on by 
 
 ### Exercise 7: Fill a style bible for a practice subject
 
-- **Goal:** Learn the ten decisions by using them.
+- **Goal:** Learn the twelve decisions by using them.
 - **Steps:**
   1. Pick a practice subject: a made-up character, or a photo of someone who is not in the film.
   2. Fill in the T2 template with values.
   3. For each decision, write its "how we check" line.
   4. Make a good / not good board with four pairs. Add one line on why each is good or not.
 - **Time:** about 3 to 4 hours (J).
-- **What good looks like:** all ten decisions have a value and a test, and the board has four pairs.
+- **What good looks like:** all twelve decisions have a value and a test (decisions 11 and 12 may read `practice: none` for a subject with no Hindu idiom and no moving footage), and the board has four pairs.
 
 ### Exercise 8: Build a practice colour strip
 
@@ -186,8 +186,9 @@ Work in this order. Each step ends in a check or a gate, so no shot moves on by 
   2. Encode it as H.264 at CRF 18, the setting the notes used (M).
   3. Watch it full screen, then on the TV from 3 m.
   4. Note which lines and type stay clear.
+  5. Phone pass: run the synthetic chart `research/hindu-visual-fixtures/phone_chart.svg` through the two chat proxies (the command is the mobile-delivery track's), and read the line rows against `playbooks/hindu-visual.md` Template H9. The proxies are stand-ins, not WhatsApp's encoder; real app output on the project Android replaces them when `mobile-delivery` Exercise 5 has been run.
 - **Time:** about 1 hour (J).
-- **What good looks like:** near-black lines stay clear at every width. In the notes' test, 2 px and 4 px red lines kept about 99% of their contrast, and a 1 px red line kept about 70% (M). That is why our strokes are at least 2 px.
+- **What good looks like:** near-black lines stay clear at every width. In the notes' test, 2 px and 4 px red lines kept about 99% of their contrast, and a 1 px red line kept about 70% (M). That is why our venue strokes are at least 2 px. The 2 px reasoning holds for a room and fails for a phone: after the chat proxies a 4 px line keeps about 0.83 where a 2 px line keeps 0.48 (M, `playbooks/hindu-visual.md` Template H9), so the phone floor for a line that carries meaning is 4 px (W-38 decision 3).
 
 ### Exercise 10: Find where pans strobe
 
@@ -233,7 +234,7 @@ Severity: **Crit** = any fail blocks the shot. **Maj** = fix before chapter asse
 
 **Minimum set for class A.** Every Crit item that applies to the shot, plus B1, B8, C1 and FN1. MO9 and FN3 are checked once per chapter, not per shot.
 
-**Per finished minute (J).** Weighting the typical minutes by the class mix (A 60%, B 25%, C 10%, D about 5%) gives about 3.7 maker minutes per shot before A3. At about 12 shots per finished minute (about 120 shots per 10 minutes, `playbooks/agent-pipeline.md`), that is about 45 maker minutes per finished minute, plus 10 for each L3 or L4b face shot. That is the unlevered figure. The register's levers set hero shots at 5% and the film at 8 shots a minute (W-34, W-51): with the class mix A 65%, B 25%, C 5%, D about 5% it is about 3.4 maker minutes per shot and about 27 per finished minute, plus the same 10 for each face shot. The total goes to `production-scale` as a delta.
+**Per finished minute (J).** Weighting the typical minutes by the class mix (A 60%, B 25%, C 10%, D about 5%) gives about 3.7 maker minutes per shot before A3. At about 12 shots per finished minute (about 120 shots per 10 minutes, `playbooks/agent-pipeline.md`), that is about 45 maker minutes per finished minute, plus 10 for each L3 or L4b face shot. That is the unlevered figure. The register's levers set hero shots at 5% and the film at 8 shots a minute (W-34, W-51): with the class mix A 65%, B 25%, C 5%, D about 5% it is about 3.4 maker minutes per shot and about 27 per finished minute, plus the same 10 for each face shot. The total goes to `production-scale` as a delta. The Hindu-world items HW1 to HW5 add maker minutes on deity and seva-object shots only; they are not timed yet (J, to calibrate on the slice), and Fable reads every deity shot (W-42).
 
 | ID | Item | Test | Pass | Sev | Who | Gate |
 |---|---|---|---|---|---|---|
@@ -251,8 +252,9 @@ Severity: **Crit** = any fail blocks the shot. **Maj** = fix before chapter asse
 | B4 | Shot size progression | Adjacent shots differ in size class or angle (30 degrees); at most two close-ups per chapter | True | Min | Agent | G4 |
 | B5 | Direction | Move follows or holds the gaze; no more than 2 consecutive same-direction drifts | True | Min | Agent | G4 |
 | B6 | Portrait ladder alignment | Eye centre of consecutive portraits within 3% of frame | True | Maj | Agent | G2 |
-| B7 | Safe area | All text and faces inside 5% margins (faces may bleed only when the brief says close-up) | True | Maj | Agent | G2 |
+| B7 | Safe area | All text and faces inside 5% margins (faces may bleed only when the brief says close-up). Phone files: text box inside 5 to 95% across and 12 to 88% down (W-63) | True | Maj | Agent | G2 |
 | B8 | Hold before move | New photo holds at least 0.5 s before any move | True | Min | Agent | G2 |
+| B9 | Hands and the object | `hands_box` and `object_box` in the brief sit inside the central 80% of height and clear of the caption zone (venue 78 to 93%, phone 68 to 86%); a 20:9 phone in "fill" crops 9 to 10% off the top and bottom (W-38 decision 5, W-63) | True | Maj | Agent | G0/G2 |
 | **C. Colour and light** | | | | | | |
 | C1 | Palette | Median and three dominant colours in Lab within ΔE00 of 6 of the era swatches | True | Maj | Agent | G1/G2 |
 | C2 | Scene continuity | Shots in one scene within ΔE00 of 3 of each other (median colour) | True | Min | Agent | G4 |
@@ -283,18 +285,26 @@ Severity: **Crit** = any fail blocks the shot. **Maj** = fix before chapter asse
 | FN7 | Grain loop | Autocorrelation at the loop length under 0.3 | True | Maj | Agent | G2 |
 | FN8 | Depth of field | Blur by plane; no blur on faces; far-plane blur at most 1.2% of width | True | Maj | Agent | G2 |
 | **F. AI tells** | | | | | | |
-| AI1 | Tells 1 to 23 swept | Catalogue (T9) walked at 100% on key frames, with 5 frames per second of a moving shot | None present | Crit | Maker | G2 |
+| AI1 | Tells 1 to 28 swept | Catalogue (T9) walked at 100% on key frames, with 5 frames per second of a moving shot | None present | Crit | Maker | G2 |
 | AI2 | Flicker | Flicker index on a static region | 0.3 levels or less (M: static 0.000, injected 2.58) | Maj | Agent | G2 |
 | AI3 | Hands, text, reflections | Every visible instance checked | Correct or absent | Crit | Maker | G2 |
 | **G. Type and titles** | | | | | | |
-| TY1 | Legibility, type we set | Titles, cards, date lines, captions and credits: font at least 5% of picture height; x-height at least 2.5%; strokes at least 2 px. Text inside photographs and her handwriting is exempt; below 2% x-height, text is decorative and must not carry information. Captions follow `format.md` Step 8 (7 to 8% line height), which at 1080p is `FontSize=23`: x-height 3.2 to 3.8% of picture height across five fonts, line pitch 7.96% (M-C8). Caption x-height floor 3.1% (6 screen heights, J); `FontSize=23` meets it in every font tested, `FontSize=20` does not for Carlito or FreeSans. Run `caption_xheight.py` once on the maker's Windows ffmpeg with the chosen caption font; TY1 is a floor, not a caption size | True | Crit | Agent | G2 |
+| TY1 | Legibility, type we set | Titles, cards, date lines, captions and credits: font at least 5% of picture height; x-height at least 2.5%; strokes at least 2 px. Text inside photographs and her handwriting is exempt; below 2% x-height, text is decorative and must not carry information. Captions follow `format.md` Step 8 (7 to 8% line height), which at 1080p is `FontSize=23`: x-height 3.2 to 3.8% of picture height across five fonts, line pitch 7.96% (M-C8). Caption x-height floor 3.1% (6 screen heights, J); `FontSize=23` meets it in every font tested, `FontSize=20` does not for Carlito or FreeSans. Run `caption_xheight.py` once on the maker's Windows ffmpeg with the chosen caption font; TY1 is a floor, not a caption size. These are Latin figures: Gujarati is sized by the height of its base letter KA, not by `FontSize` (W-18; Step 12). The phone floors are TY5 | True | Crit | Agent | G2 |
 | TY2 | Hold | Card held at least 36 frames once fully legible; captions within reading-speed limits from the format track | True | Maj | Agent | G2 |
 | TY3 | Licence | Font, texture and plate each have a licence file | True | Crit | Agent | G1/G2 |
 | TY4 | Text in photographs | Any text inside a photograph that the audience must read (sign, letter, label, her handwriting) is repeated on a card or caption | True where the text carries information | Min | Maker | G2 |
+| TY5 | Phone-safe type | Must-read type (cards, captions, date lines, credits) on three frames of the phone file, with `safe_area_template.svg` composited (W-42): x-height 3.2% as the hard floor and 3.8% as the target; Gujarati by KA height (the 3.8% target needs `FontSize` 26.2 in Noto Sans Gujarati); meaning lines 4 px; no must-read type in the 9 to 10% a 20:9 "fill" crop removes top and bottom (W-18, W-63) | True | Crit | Agent | G0/G2 |
 | **H. Projection** | | | | | | |
 | PR1 | Banding | Dark-ramp test: no visible steps in dark gradients at the venue; masters 10-bit | True | Maj | Maker | G6 |
-| PR2 | Thin lines | No saturated 1 px lines; contrast retained at 90% or more after the access-copy encode | True | Maj | Agent | G6 |
-| PR3 | Grain survival | Flat-patch grain std after encode at least 70% of the master's | True | Maj | Agent | G6 |
+| PR2 | Thin lines | No saturated 1 px lines; contrast retained at 90% or more after the access-copy encode (the access copy only; chat loss is PR2b) | True | Maj | Agent | G6 |
+| PR2b | Thin lines after a chat re-encode | The synthetic chart (`phone_chart.svg`) through the two chat proxies, and real app output on the project Android once measured; the shot's own lines against the phone floors: meaning lines 4 px, decoration 3 px, dots 6 px, holes 4 px, hatch 3 px at 9 px pitch, no 1 px and no hairline (W-38 decision 3; `playbooks/hindu-visual.md` Template H9) | After the two proxies 3 px lines keep at least 0.6 of contrast and 4 px lines at least 0.8 (M, stand-in proxies) | Maj | Agent | G2/G6 |
+| PR3 | Grain survival | Flat-patch grain std after encode at least 70% of the master's, on the venue file and on PH1 (PH1 at CRF 20 keeps 73%; PH2 at CRF 22 and any HEVC fail the same test at 43% and 1 to 27%, and are exempt or measured at equal viewing scale; W-63, W-64) | True | Maj | Agent | G6 |
+| **I. Hindu world (W-42, W-66)** | | | | | | |
+| HW1 | Motif origin | `motif_check` is one of `hindu`, `Hindu-Gujarati`, `flagged`, `excluded`, `jain_flag`, `adivasi_flag`, `political-room`, with a source (W-66) | Present; nothing `excluded` in the cut; `flagged` only with the maker's logged one-line overrule | Crit | Agent + Maker | G0/G2 |
+| HW2 | Deity shot | `deity_form` and `deity_source` filled; default policy P1, symbols and seva objects that are not a svarupa (W-61); no generative route; the arm-and-attribute count is in the G2 pack | True | Crit | Agent + Maker | G2 |
+| HW3 | Respect and reverence | `respect_check`: R1 to R20 (`playbooks/hindu-visual.md` Template H4), VR-1 to VR-3 and PR1 to PR25 (`playbooks/pushtimarg-world.md` T2) walked on every deity or seva-object shot; each fail fixed in the frame | All pass | Crit | Agent + Maker | G2 |
+| HW4 | The three places | `political_room` set on any shot of Somnath, Dwarka or Ayodhya; a card names the place and nothing else (W-71) | True | Crit | Agent + Maker | G2 |
+| HW5 | Darshan names | A `card_text` scan finds none of the eight darshan names on any card (PR16, W-62); `kitchen_hour` is a sheet field only | True | Crit | Agent | G4 |
 
 ### T2. Style bible (from D2)
 
@@ -305,30 +315,38 @@ Format: one document of four to eight pages, with a good / not good board. The m
 1_palette_per_era:
   how: "sample from L0 scans: k-means in Lab on non-face regions + paper border; record sRGB hex and Lab"
   limit: "six colours or fewer per era (G1)"
+  accent_rule: "a rasa or festival accent lives inside the era palette and never replaces it; the Vasant register (white malmal, cream, gold as points, a gulal puff over hands and table) is the card palette for the premiere season; never sampled from a museum scan (W-38)"
   eras:
     - {id: era_1, years: "[ ]", colours: ["#", "#", "#", "#", "#", "#"], skin_swatch: "#", accent: "#", light: "[window | lamp | flash | overcast]"}
   test: "shot dominant colours within dE00 6 of the era swatches; skin within 4"
 2_hand_made_material:
-  material: "[her own hand-made material, from the maker's week-1 answer and filled at G1 (W-38): dough | thread | garden | ledger | other; never a voxel marker (D-23)]"
+  material: "[her own hand-made material, from the maker's week-1 answer (O-06) and filled at G1 (W-38): dough | thread | stitch | flower string | floor art | garden | ledger | other; where it is seva craft, the making, never the finished seva article and never a reconstruction painted onto Thakorji's clothes]"
   rules: ["layer count max [ ]", "shadow direction [ ]", "edge: [torn | cut | scalloped]", "hand rule: [ ]", "eye rule: [ ]", "what never animates: [ ]"]
   good_not_good_board: "path/to/board.png"
   test: "at least 80% of strangers can say which shots are reconstructed before any card (for example 4 of 5, 3 of 4, 3 of 3)"
 3_line_and_edge:
-  min_stroke_px_1080: 2
+  min_stroke_px_1080: 2                  # the venue floor
+  phone_min_stroke_px_1080: 4            # meaning-bearing lines in every file (W-38 decision 3, W-63): decoration 3, dots 6, holes 4, hatch 3 at 9 px pitch, hairlines banned; black on red needs more than 4 px or a lighter fill
   cutout_edge: "feather 0.5 to 1 px, colour decontaminated"
-  test: "three-background test at 200%; thin-line retention 90% or more"
+  test: "three-background test at 200%, plus a 'recompressed twice' variant through the two chat proxies; thin-line retention 90% or more on the access copy; after the proxies 3 px lines keep 0.6 or more and 4 px lines 0.8 or more (M)"
 4_typography:
   families: ["display: [ ]", "text: [ ]", "handwriting: only words she actually wrote"]
+  indic_families: ["captions: Noto Sans Gujarati (resolves by name; draws Om, Gujarati digits and fused conjuncts)", "cards with a Gujarati line and an IAST line in one face: Rasa or Baloo Bhai 2", "verse: Noto Serif Gujarati (about 25.6)", "Devanagari verse: Noto Serif or Tiro Sanskrit", "outlined title art only: Shrikhand and Farsan (Farsan has no Om), Kumar One (collapses in libass as shipped)"]
+  indic_not_used: ["Hind Vadodara for any date or Samvat (no Gujarati digits)", "Mukta Vaani for Gujarati text (unfused conjuncts when tagged Gujarati)", "the plain name 'Anek Gujarati' (only 'Anek Gujarati Medium' resolves)", "variable fonts (Anek, Catamaran) except as static instances"]
+  her_script: "titles and verse cards carry her script as shaped outlines, never live text; every Gujarati string is read by the native reader (W-75, O-62)"
+  caption_size: "Latin FontSize=23; Gujarati by KA height (3.33% at 23, 26.2 for the phone's 3.8%); the phone file FontSize=28, MarginV 40, two lines of at most 36 characters (W-18)"
+  rights_row: "every family has a T8 `font` row with its OFL.txt hash and the libass `fontselect:` line pasted (W-21)"
   licence: "OFL fonts for titles, cards and captions (video titling is a listed permitted use, FAQ 1.1; embedding is answered for documents and files, 1.12, not video [56]). OFL fonts only (W-21, confirmed at G1, Sun 15 Nov): commercial fonts under an Adobe or Monotype subscription are out, for the reasons that follow. Adobe Fonts Product Specific Terms (effective 7 Oct 2024, confirmed by the advisor from the PDF 2026-10-18 [109]): the grant lasts 'only for as long as you maintain an uninterrupted Adobe Subscription Plan' and the terms never mention video, film, broadcast or exhibition. Monotype Create + Deploy, Create + Pitch and Enterprise likewise tie every grant to the term and keep no right for a finished film after it [88][89]. No Adobe Fonts FAQ lookup is needed while OFL fonts only stands (W-21); do it only if a commercial font is ever reconsidered"
-  min_size: "font 5% of picture height, x-height 2.5%"
+  min_size: "font 5% of picture height, x-height 2.5% (venue); must-read type 3.2% hard floor and 3.8% target in every file (W-63)"
 5_camera_grammar:
   moves: ["push", "pull", "pan", "tilt", "orbit up to 3 degrees", "hold"]
   ranges: "push/pull up to 8%, pan up to 5% of width"
   virtual_lens: "35 mm equivalent default; 50 for portraits"
   cut_or_move: "move only for reveal, link, isolate, time"
   direction: "follow or hold gaze; never mirror a photo"
+  hands_and_object: "hands and the object inside the central 80% of height and clear of the caption zone (venue 78 to 93%, phone 68 to 86%); one room only; the kitchen's hour keyed to the darshan day-clock and never named (W-34, W-62)"
 6_reconstruction_marker:
-  signature: "[material + paper frame + persistent mark]"
+  signature: "[her own hand-made material's line + persistent mark; where her hands made floor art, embroidery or garlands, decisions 2, 6 and 11 are one thing; otherwise the Hindu idiom dresses cards, titles and set only (W-38)]"
   disclosure_card: "[wording] (see animated.md)"
   test: "blind stranger identification by at least 80% of viewers"
 7_still_to_moving_ratio:
@@ -340,28 +358,41 @@ Format: one document of four to eight pages, with a good / not good board. The m
   grain: "spatially correlated, temporally independent; at least 48 distinct frames; seeded offset; std within 30% of scan"
   paper: "scan of her print backs, or a CC0 texture (the notes name ambientCG; its licence is TODO(research)); source recorded"
   applied: "once, last, on the 10-bit master; the 8-bit access copy relies on grain or texture of at least one 8-bit level, because invisible dither is quantised away by the encoder [44]"
+  trims: "Trim V (venue) and Trim C (cinema) sit on top of the one grade, and Trim P (phone: a mild shadow lift of 4 to 7 IRE at codes 24 to 40, black pinned at 16, set at G-SLICE) beside them (W-64)"
 9_title_system:
   types: ["chapter card", "date line", "end credits cue sheet"]
   rules: ["no lower thirds", "no typewriter reveal", "centre only if the layout calls for it", "hold 1.5 s once legible"]
-10_never_list: "see T5"
+  title_card: "from the Card A slips traced in VectorCraft (Inkscape fallback); it may be her threshold drawing as the seat of the Vasant kalash (SW1 or SW2) or the kalash on a plain lotus; 'Jai Shri Krishna' on the title or end card only if the maker chooses it (W-38, W-69)"
+  language: "cards in Gujarati; module cards dated by her calendar in Gujarati script and digits, with the Gregorian date in the caption track (W-35, W-68); the maker's hand for the maker's words; her handwriting only for words she wrote"
+10_never_list: "see T5 (it carries the generic-India, generic-Gujarat, colonial-Christian, deity-misuse and Pushtimarg tells, and the shared-origin items that are out by default, W-66)"
+11_hindu_idiom:
+  block: "playbooks/hindu-visual.md Template H5, filled by pushtimarg-world T1 and saurashtra-world Templates D, H and I"
+  content: "tradition_primary floor art; tradition_secondary the pichwai-manner frame in season and the plain semicircular Chaulukya toran; floor_art_form sathiyo and rangoli (SW0 by default, O-66); deity_policy P1 with one line per deity (W-72); the exclusion list E1 to E34; respect_rules R1 to R20 plus VR-1 to VR-3 and PR1 to PR25; the political_room field; the maker-overrules log; the swap test; the refuses list"
+  lock: "added at G1 only if the household keys are answered by Sun 1 Nov, otherwise a card-and-set sheet so G1 is not blocked (O-67)"
+  test: "swap test (a different household produces a visibly different film); R1 to R20, VR and PR walked on every deity shot; every idiom line at the phone floor"
+12_moving_footage:
+  options: ["as found, in a paper frame", "played straight", "never"]
+  conform: "r10_conform_footage to 1080p24 ProRes with an audio-sync check, written before the first tape returns (W-59)"
 ```
 
-The ten decisions in one line each:
+The twelve decisions in one line each:
 
 | # | Decision | Lock | Failure it prevents |
 |---|---|---|---|
 | 1 | Palette per era | Six colours per era from her scans, plus skin and accent | Generic decade palettes and teal-orange |
-| 2 | Hand-made material | Material, layer, hand and eye rules | A reconstruction mistaken for a photograph |
-| 3 | Line and edge | Minimum stroke, feather, fringe test | Paper-doll cut-outs, aliasing |
-| 4 | Typography | Two faces, plus her handwriting for her words only; licence files | Illegible or unlicensed type |
+| 2 | Hand-made material | Her own hands' material, layer, hand and eye rules | A reconstruction mistaken for a photograph |
+| 3 | Line and edge | Minimum stroke (2 px venue, 4 px phone), feather, fringe test | Paper-doll cut-outs, aliasing, lines lost on a phone |
+| 4 | Typography | OFL faces including the Indic families, her script as outlines, her handwriting for her words only; licence files | Illegible, unshaped or unlicensed type |
 | 5 | Camera grammar | Move list, ranges, lens, cut-or-move | The same slow zoom on every photo |
 | 6 | Reconstruction marker | Visible signature and disclosure card | A breach of charter principle 4 |
 | 7 | Still-to-moving ratio | Hold share and plane limits | Slideshow rhythm |
-| 8 | Grain and paper | Stack per era, at most two layers, matched to scans | Stacked finish, looped grain |
+| 8 | Grain and paper | Stack per era, at most two layers, matched to scans; Trim V, C and P | Stacked finish, looped grain |
 | 9 | Title system | Three title types and their rules | Template titles |
 | 10 | Never list | T5 | Cheap tells |
+| 11 | Hindu idiom | The `hindu_idiom` block, or a card-and-set sheet | A generic-India, generic-Gujarat or deity-misuse look; a motif that is not hers |
+| 12 | Moving footage | As found in a paper frame, played straight, or never; the conform recipe | Home-movie footage that jars with the stills |
 
-Brand rule for decisions 2 and 10 if a voxel (Minecraft-style) look is used: decided (D-23, W-38, [DECISIONS.md](../DECISIONS.md)). No Mojang textures, sounds, UI or footage in the public cut; original voxel assets only; the name at most as a secondary description with the disclaimer; and a voxel look is never the reconstruction marker. The saved usage excerpt says why: the name may not be the primary title, gameplay must not be "displayed or projected publicly within physical locations," and events were limited to about 150 participants [57].
+Order and brand note: decision 11 is `hindu_idiom` and decision 12 is moving footage, in that order everywhere (W-38, W-59). The earlier brand rule for a game-style look went with that look (D-29); brand and trademark marks of any kind stay out of the public cut (T5 item 22).
 
 ### T3. Per-age reference board (from D2b)
 
@@ -402,7 +433,8 @@ Score each criterion from 1 to 5, using the charter's six criteria: meaning, spe
 | Reconstruction visibly stylised | Could a reconstruction be mistaken for a photograph? | No |
 | Finish stack | Count of global layers | Two or fewer |
 | Squint and distance | Blur and greyscale; TV at 3 m | Subject and mood read |
-| Type | Size and licence file | T1 TY1 and TY3 |
+| Type | Size and licence file | T1 TY1, TY3 and TY5 |
+| Hindu idiom | Decision 11 block, or the card-and-set sheet if the household keys are not answered; the deity policy confirmed in writing (O-64, O-24) | Present; P1 unless the maker has ruled otherwise |
 | Hand and eye rules | Shown on the board | Present |
 | Era identifiable | Hide the date. Does the frame say which era it is? | Yes |
 | Likeness | Age board line-up for any stylised face | 5 of 5, twice |
@@ -431,8 +463,11 @@ Automatic fail: any critical item in T1, any banned tell from T5, or any unliste
 | Finish frequency | FN3 | True |
 | AI-tell sweep | One frame per second of the chapter at 100%, in contact sheets, plus full-speed viewing | No banned tell |
 | Captions | Reading-speed and length limits from the format track | True |
-| Loudness plan | Present: -1 dBTP everywhere; three venue masters (-23, -18 and -16 LUFS) chosen at the Mon 22 Feb run; online copy -16 LUFS (W-19) | True |
+| Loudness plan | Present: -1 dBTP everywhere; three venue masters (-23, -18 and -16 LUFS) chosen at the Mon 22 Feb run; the phone files (PH1, PH2) and any online copy -16 LUFS and -1 dBTP measured on the final MP4 after the AAC encode (W-19, W-63) | True |
 | Strangers' evidence | Independent marks per minute (T7) | Two or fewer per minute |
+| Darshan names | `card_text` scan for the eight darshan names (HW5, PR16) | None on any card |
+
+**Gated and reported (W-42).** The checks that gate a chapter at G4 are MO8a and MO8b, captions inside the 90% box, -1 dBTP, the colour-patch test, the L-label present, the AI-tell sweep including the Hindu tells (T5 items 28 to 39, T9 rows 24 to 28), one still-still, the strangers' first question, and the `card_text` scan. The others in the table (shot-length coefficient of variation, move-family mix, holds share, the ΔE00 thresholds, half- and double-speed passes, sound-off and picture-off passes) are reported and are not gated until G-DRAFT (Sun 31 Jan).
 
 ### T5. Banned cheap tells (from D4)
 
@@ -459,12 +494,24 @@ Banned in the public cut. Each one can be detected with the test named in T1 or 
 19. Depth-of-field blur on faces, or per-pixel depth defocus halos. (FN8)
 20. Cloned voices, AI-sung words, or new sentences in her handwriting font [P3][P5].
 21. Sepia or "old film" filters over everything, or stacked era filters [P1].
-22. The Minecraft name as a title, or unlicensed brand marks [57].
-23. Saturated 1 px lines, or text under 2.5% x-height. (PR2, TY1)
+22. Unlicensed brand marks, logos or trademarks.
+23. Saturated 1 px lines, any meaning-bearing line under 4 px in a phone file, or must-read type under a 2.5% x-height (3.2% in any file). (PR2, PR2b, TY1, TY5)
 24. ffmpeg `zoompan` for a final push. (MO8)
 25. Phone-style "memory" themes and auto-music [P1].
 26. CSS layout-property animation (`width`, `height`, `left`, `top`) or a real-time screen recording for a push: centre jitter 0.18 px, and stutter. (MO8)
 27. GSAP's own `scale` tween on a slow push: it writes four decimals and reads MO8b 0.061 px against 0.04. (MO8)
+28. The Rann of Kutch salt flat or any Kutch landscape for a Saurashtra household. (HW1; `playbooks/saurashtra-world.md` Template I, T11)
+29. The Statue of Unity, the Sabarmati riverfront, the Ahmedabad pol or any Ahmedabad skyline as "Gujarat". (HW1)
+30. The Gir lion. (HW1)
+31. Garba-night stock footage. (HW1)
+32. A thali top-shot, a dhokla close-up or a "Gujarati food montage". (HW1)
+33. Bandhani as a background wash, "Kutch embroidery" or mirror work as blanket texture, or a patola, gharchola or bandhani without a named maker. (HW1, W-66)
+34. The international kite festival's giant kites in place of her terrace, or a rooftop crowd with shouts. (HW1)
+35. A swastika on a black-and-white or red-field flag or title. (HW1; the sathiyo question is O-66, SW0 by default)
+36. The generic-India tells: a Taj silhouette, a snake charmer, a saffron drone shot of a temple, incense-smoke stock, a lens flare on a diya, a "curry" display font, Bollywood poster framing, a tourism-ad grade. (HW1; `playbooks/hindu-visual.md`, What we leave out)
+37. The colonial-Christian layer, checked plate by plate: disc halos, winged apsaras, cherubs, a candle where a diya belongs, a church bell where a ghanta belongs. (HW1)
+38. Deity misuse: a generated or AI-altered deity, a mirrored murti, a dissolve, wipe, burn or morph on a deity, glossy gold, a human hand in hand with a deity, a Mughal arch or dome for an "India feel". (HW2, HW3, T9 rows 24 to 28)
+39. The Pushtimarg tells: a painted pichwai in a winter chapter; a niche, opening or pichwai backdrop around or behind a person; eyes drawn or opened on a svarupa; embossed gold as pichwai; a darshan name on a card; a garlanded photograph of her; a seva article of Thakorji in another deity's frame. (HW3, HW5; PR3, PR5, PR9, PR16, PR18 of `playbooks/pushtimarg-world.md`)
 
 ### T6. Projection-truth checklist (from D5)
 
@@ -478,7 +525,7 @@ Run this at the premiere venue, or in an equivalent hall, with the real projecto
 - Colour bars.
 - Three skin-tone stills.
 - A type-size ladder, with x-height from 1.5% to 4% in 0.5% steps.
-- A line ladder: 1, 2 and 3 px lines, in black and red.
+- A line ladder: 1, 2, 3 and 4 px lines, in black and red.
 - A textured pan at 0.10, 0.143, 0.2 and 0.3 frame widths per second, generated by the same code and audited before it is played (`pan_estimator.py`; FQ3).
 - A speech passage with numbers.
 - At the TD-L2b visit, the 60 to 90 s venue test clip with no personal content (W-17, W-56). Thirty seconds from the actual film are played only at the Mon 22 Feb rehearsal (W-52).
@@ -495,7 +542,7 @@ The A/B push card exists and its answer key was checked on the decoded file; the
 | 5 | Brightness | Lumens and screen area, or a meter | About 45 nits or more at screen centre for a cinema-like feel. Below 30 nits, lift the grade using the venue's measured shadow compensation (J). Reference white: 48.0 cd/m² (14.0 fL), ±3.5 Review Room, ±10.2 Theater (37.8 to 58.2), ST 431-1 Table 1 [92]; gamma 2.6 ±5% in a theatre [91] | [91][92][33] and the lumen arithmetic in `venue_calc.py`; [35] superseded for these figures |
 | 6 | Gamma and colour | Skin-tone stills beside the laptop; reference gamma from the playback path | Faces not orange or grey; shadows not milky; decision recorded | [33][37] |
 | 7 | Banding | Dark gradient, full screen | No visible steps at normal seat distance | (M): 26 vs 100 levels; [44] |
-| 8 | Aliasing and thin lines | Line ladder | 2 px lines stable; 1 px red line visibly weaker (expected) | (M) |
+| 8 | Aliasing and thin lines | Line ladder | 2 px lines stable; 1 px red line visibly weaker (expected). The room's floor is 2 px; the phone's is 4 px for a line that carries meaning (phone-truth list below) | (M) |
 | 9 | Grain against compression | 30 s sample in the venue's actual file or DCP (the test clip at TD-L2b; 30 s of the film at the Mon 22 Feb rehearsal) | Grain visible but not smeared; no mosquito noise around type | [42][34] |
 | 10 | Judder | Pan test through the venue chain | Even cadence | [41] |
 | 11 | Resolution scaling | 1 px checker pattern | No moiré from the projector's scaler; text sharp | [34] |
@@ -504,20 +551,29 @@ The A/B push card exists and its answer key was checked on the decoded file; the
 | 14 | Captions | Back-row read | Readable without leaning. Caption x-height 3.1% or more at 6 screen heights (J; see item 1). Run `caption_xheight.py` once on the maker's Windows ffmpeg with the chosen caption font | [47] |
 | 15 | Faces in group photos | Back-row identification of the featured person | Featured person's head at least 8% of picture height, or a move that brings it there (J) | (J) |
 
+**Phone-truth sub-list (D-27, W-63).** Run it on the project Android with the same test clip and never on her phone before the reveal (W-26). Facts that move fast (player fill defaults, her handset's skin) are dated and re-read the week before G-MASTER.
+
+- **Two views.** Landscape full screen (scale 1.0, one video pixel to one device pixel) is the design view. Upright inline in a chat (scale 0.5625) is a degraded view, and the phone file is made for landscape (W-18).
+- **The chart through the two proxies.** `research/hindu-visual-fixtures/phone_chart.svg` through the WA-HD (1280x720 at 2.5 Mb/s) and WA-STD (640x360 at 0.5 Mb/s) stand-in proxies, read against `playbooks/hindu-visual.md` Template H9. They are not WhatsApp's own encoder (M).
+- **Real output.** The synthetic chart and then a real file on the project Android, measured with ffprobe as the mobile-delivery track sets out (`playbooks/mobile-delivery.md`, Exercises 2 and 5).
+- **Phone-safe frame.** Three frames of PH1 with the safe-area overlay: must-read type at 3.2% x-height or more, text inside 5 to 95% across and 12 to 88% down, hands and the object inside the central 80% of height, the 20:9 "fill" crop (TY5, B9).
+- **Gujarati captions.** Legible at 35 cm on the project Android, by the KA check (W-18).
+- **Trim P and the first sound.** Dark steps with and without Trim P at 100 and 500 lux (W-64); the tone ladder at 50% volume and the first-sound test on the project Android (W-19, W-76).
+
 ### T7. Test-screening protocol (from D6)
 
 **Purpose.** Find problems you cannot see yourself, and check that a public room reads the film. Strangers cannot judge truth or likeness. You keep a veto on facts about her.
 
 **Timing (decided, W-43 and W-08).** Picture lock is set for Saturday 6 February 2027 [P4]. The brief's week 17 is 7 to 13 February 2027 (Mon 8 to Sun 14 Feb in the register). A screening that late can change only sound, grade, titles, captions and trims of about 2%. The register decides two sessions:
 
-- **S1:** three strangers, the slice chapter, in the slice-review week (about 20 December 2026). Changes are cheapest then.
+- **S1:** one or two strangers to her, the slice chapter, in the slice-review week (about 20 December 2026), or the cold self-read with the Fable advisor's rubric pass (W-43). Changes are cheapest then.
 - **S2:** three to five strangers, the locked cut, in week 17, with one viewer over 65 and, if possible, one teenager with a guardian (W-43).
 
-There is no one-session option: Sat 13 Feb is G-MIX, the latest acceptable lock, not a choice (W-08, W-43). The stranger count is three (S1) and three to five (S2); the written sheet (questions A to H) replaces a three-question read. The production-scale calendar already holds the W9 and W17 slots, so no new date is needed. If you decline strangers, the fallback is the cold self-read (48 hours unopened), and then the Fable advisor's rubric pass is mandatory in that slot.
+There is no one-session option: Sat 13 Feb is G-MIX, the latest acceptable lock, not a choice (W-08, W-43). The stranger count is one or two (S1) and three to five (S2); the written sheet (the first question, then A to K) replaces a three-question read. The production-scale calendar already holds the W9 and W17 slots, so no new date is needed. If you decline strangers, the fallback is the cold self-read (48 hours unopened), and then the Fable advisor's rubric pass is mandatory in that slot.
 
 **Recruitment without revealing who she is.**
 
-- **Who:** adults, three to five, who have never met her and will not meet her. They are not in her social circle and do not share close acquaintances with the family. At least one should be film-literate, because the others may be too kind.
+- **Who:** adults (one or two for S1, three to five for S2) who have never met her and will not meet her. They are not in her social circle and do not share close acquaintances with the family. At least one should be film-literate, because the others may be too kind.
 - **Pretext (truthful and partial):** "I'm finishing a short animated film about one woman's life that will be shown at a gathering. I need people who don't know her to watch it and tell me where it fails. It takes about 90 minutes. Please don't share anything about it before it's shown." Do not say whose life. Do not say it is a surprise.
 - **Privacy:** show it on your own laptop or a borrowed projector, in a neutral place. No copy leaves the room. Phones are away. No video is recorded.
 - **Redacted cut (your decision):** surname, street names and phone numbers are blurred or bleeped, and you say openly that details have been hidden. If redaction hurts the specificity too much, choose strangers in a different city.
@@ -532,6 +588,7 @@ There is no one-session option: Sat 13 Feb is G-MIX, the latest acceptable lock,
 3. Screen the whole cut with no pauses [70].
 4. Two minutes of silence to write, alone.
 5. **Written sheet (before any discussion; anonymous; on paper):**
+   - First, before A: "If you met her at the reception afterwards, what would you ask her?" (W-43). The answers tell you whether the film made her someone a stranger wants to meet; at S1 they must be about her, not about the maker (the test for keeping the maker's one spoken fragment, W-35).
    - A. One word for how it felt.
    - B. On a printed timeline, mark each moment you drifted, got confused, or noticed something that looked wrong, fake or computer-made.
    - C. In three sentences, who is she?
@@ -540,6 +597,9 @@ There is no one-session option: Sat 13 Feb is G-MIX, the latest acceptable lock,
    - F. Was there anything you could not read or hear?
    - G. Which moment will you remember tomorrow?
    - H. Was any part too long or too short?
+   - I. What does it remind you of? (A named film or template is a cookie-cutter flag.)
+   - J. Name one thing that could only be about her.
+   - K. What did you think had happened to her? (It catches the obituary misread, W-69.)
 6. Round-robin group discussion. You stay silent except to say "say more". Ask project-specific worries last, for example about a transition, so you do not sway opinions [70].
 7. Close: thank them, and repeat the privacy request.
 
@@ -547,16 +607,16 @@ There is no one-session option: Sat 13 Feb is G-MIX, the latest acceptable lock,
 
 **How to weigh the notes.**
 
-- A problem marked by three or more of five viewers (or two of three) is a fix. Marked by two of five, investigate. One person's taste is logged and not acted on, unless it confirms a doubt you already had [70].
+- A problem marked by three or more of five viewers (or two of three) is a fix. Marked by two of five, investigate. One person's taste is logged and not acted on, unless it confirms a doubt you already had [70]. At S1, with one or two viewers, every mark is a hypothesis to check against your own cold read.
 - Believe the diagnosis and discount the prescription. Gaiman's rule, paraphrased: people are almost always right that something is wrong, and almost always wrong about how to fix it [71]. Translate each note into the thing behind it. "I was bored" may mean pacing or stakes [70].
-- Failed comprehension (C, D or E answered wrongly) outranks taste.
+- Failed comprehension (C, D or E answered wrongly) outranks taste. An answer to K that reads the film as a memorial sends the ending and the cards back to the treatment (W-69).
 - More than two independent AI-tell marks per minute in a chapter sends that chapter back to the tell catalogue (T9).
 - You keep the veto on facts about her. Dignity decisions are yours, flagged by the Fable advisor [P4].
 - Log everything in the decision log, with the action taken or the reason for no action.
 
-With three to five viewers you cannot estimate rates. You can only find problems. Use counts, not percentages.
+With one to five viewers you cannot estimate rates. You can only find problems. Use counts, not percentages.
 
-**Pass or fail for the cut.** At least 80% of viewers (four of five, three of four, or three of three) identify the reconstructions correctly (D) and say it is one person across ages (E). No unread text (F). No chapter above two tell-marks per minute.
+**Pass or fail for the cut.** At S2, at least 80% of viewers (four of five, three of four, or three of three) identify the reconstructions correctly (D) and say it is one person across ages (E). No unread text (F). No chapter above two tell-marks per minute. At S1 there is no percentage: the same questions are read as counts.
 
 ### T8. Logs and sheets (from D7)
 
@@ -614,6 +674,11 @@ The sources for tells are mostly 2026 vendor and trade pieces, which are weak ev
 | 21 | **Soft generated video, scaled up to a 2K screen** | Native model resolution | Compare at 100% on the venue screen | Use generated video for small inserts only; L4a for key shots | **LABEL L4b**, small inserts only |
 | 22 | **Finish used as a mask** | Over-finishing | Finish-off test (FN2) | Fix the defect or cut the shot | Fails review |
 | 23 | **Repeated pattern grain** | Short baked loops | Autocorrelation at the loop length (M: 1.00 at lag 16) | At least 48 distinct frames; seeded offsets | Fix |
+| 24 | **Deity attribute or arm-count error** | High-variance anatomy; a deity form is a fixed permutation of attributes (Keshava, Narayana and Govinda are the same four attributes in different orders) | Count arms, attributes and hand order against the sheet row and her image, twice, by an agent and then by the maker (`playbooks/hindu-visual.md` R10) | Generate no deity; under P1 only hand-drawn symbols and seva objects that are not a svarupa (W-61) | **BANNED** in the public cut (UNVERIFIED as an AI-specific measurement: arm-count errors are treated as likely, not measured) |
+| 25 | **Wrong skin colour or mark for the form** | Model averages; documented failures include a "very white" Rama and a Vaishnava mark on Shiva | Compare with the sheet row (`playbooks/hindu-visual.md` R8) | As row 24 | **BANNED** |
+| 26 | **Sexualised or aggressive deity** | Documented failures: sexualised goddesses, an always-angry Hanuman (`playbooks/hindu-visual.md`, its sources 81 and 82) | R12; the maker's look | As row 24 | **BANNED** |
+| 27 | **Fabricated ritual** | A model supplies a rite that never happened or that her house does not keep | R11: a ritual is shown only if it happened or is a standard form she keeps; nothing in seva is staged (PR4, PR10) | Show the object, drawn or by sight, never the rite | **BANNED** |
+| 28 | **A human beside a deity at the same level and scale** | Group-portrait composition average | R9: a person and a deity share a frame only as darshan, the person at the side or lower, still, facing the shrine | Re-frame, or leave the deity out (P1) | **BANNED** |
 
 ---
 
@@ -624,11 +689,11 @@ Our current lean is marked. Where the notes give no lean, it says so.
 | # | Decision | Options | Our current lean |
 |---|---|---|---|
 | 1 | **Runtime** (short, mid-length or feature) | Short, mid-length, feature | Defaulted in the register (W-01, W-02, W-03; [DECISIONS.md](../DECISIONS.md)): plan 9 minutes until H is in writing (Sun 15 Nov), then 12 if H is 16 or more, 9 if H is under 14, and 12 between 14 and 16 only if the maker adds hours or buys captions. 15 to 18 is a stretch confirmed only at G-SLICE (Sun 20 Dec). F-0 is 6. The charter calls it the biggest lever on quality and schedule. |
-| 2 | **Playback path** | (a) DCP: grade for BT.1886 at 2.4, convert with the matching input-gamma setting, test with a real cinema server. DCP-o-matic is described as free and open-source [58]. (b) HDMI or USB file: grade at 2.4 in a dim room, or 2.2 if the lights stay up, and set the projector's gamma to match. | The venue's written answer, due Sun 15 Nov, decides file or DCP (W-17); the default is the 1080p24 H.264 venue file. For a dim room, the notes default to 2.4. The DCP path allows a test DCP on a real cinema server, which the notes recommend before lock. Practitioners say "the only reliable check is a properly calibrated cinema screening" [37]. The theatrical-delivery track owns the choice. |
+| 2 | **Playback path** | (a) DCP: grade for BT.1886 at 2.4, convert with the matching input-gamma setting, test with a real cinema server. DCP-o-matic is described as free and open-source [58]. (b) HDMI or USB file: grade at 2.4 in a dim room, or 2.2 if the lights stay up, and set the projector's gamma to match. | The venue's written answer, due Sun 15 Nov, decides file or DCP (W-17); the default is the 1080p24 H.264 venue file. For a dim room, the notes default to 2.4. The DCP path allows a test DCP on a real cinema server, which the notes recommend before lock. Practitioners say "the only reliable check is a properly calibrated cinema screening" [37]. The theatrical-delivery track owns the choice. Trim V (venue) and Trim C (cinema) sit on top of the one grade, and Trim P (phone, W-64) beside them. |
 | 3 | **Venue facts** | You supply: venue type, screen size, projector model, who runs AV, ambient light | The neutral ask goes out by Fri 6 Nov and the six answers are due Sun 15 Nov (W-17, O-21). Until you supply them, every brightness number here is a scenario, not a fact. |
-| 4 | **Strangers' screenings** | Decided (W-43; [DECISIONS.md](../DECISIONS.md)): two sessions. S1 with three strangers to her on the slice chapter (about 20 Dec 2026), S2 with three to five strangers to her on the locked cut (week 17). The written sheet (T7 questions A to H) replaces a three-question read. There is no one-session option: Sat 13 Feb is G-MIX, the latest acceptable lock (W-08). | Two sessions. S1 arrives early enough that structural notes are still cheap. If you decline strangers, the fallback is the cold self-read (48 hours unopened), and the Fable advisor's rubric pass is mandatory in that slot. |
+| 4 | **Strangers' screenings** | Decided (W-43; [DECISIONS.md](../DECISIONS.md)): two sessions. S1 with one or two strangers to her on the slice chapter (about 20 Dec 2026), or the cold self-read, and S2 with three to five strangers to her on the locked cut (week 17). The written sheet (the first question, then T7 questions A to K) replaces a three-question read. There is no one-session option: Sat 13 Feb is G-MIX, the latest acceptable lock (W-08). | Two sessions. S1 arrives early enough that structural notes are still cheap. If you decline strangers, the fallback is the cold self-read (48 hours unopened), and the Fable advisor's rubric pass is mandatory in that slot. |
 | 5 | **Redacted cut for strangers** | Redacted (blurred names, streets and numbers, stated openly), or the full cut with strangers from another city | Defaulted to a redacted copy (W-43). Redaction may cost specificity. |
-| 6 | **Reconstruction marker** (bible decision 6) | Material, paper frame and a persistent mark, or other | Set by the register: her own hand-made material, filled at G1 (Sun 15 Nov) from the maker's week-1 answer (W-38). Original voxel assets only and never the marker (D-23); the Minecraft rule is settled [57]. |
+| 6 | **Reconstruction marker** (bible decision 6) | Material, paper frame and a persistent mark, or other | Set by the register: her own hand-made material, filled at G1 (Sun 15 Nov) from the maker's week-1 answer (W-38); where it is seva craft, the making, never the finished seva article. Where her hands made floor art, embroidery or garlands, the marker is that craft's line and decisions 2, 6 and 11 are one thing; where the idiom is separate, it dresses cards, titles and set only. The game-style look is retired (D-29). |
 | 7 | **Grain and paper source** | Scan of her print backs, or a CC0 texture | Her print backs (W-38, decision 8). Use a CC0 texture only after its licence is checked (TODO(research)). |
 | 8 | **8-bit or 10-bit venue file** | Design visible grain or paper that survives 8-bit, or use a 10-bit encode if the venue's playback machine accepts it | Design for visible texture, and test both at the venue. The register's default venue file is 8-bit yuv420p H.264 (W-17), made from the 10-bit master (W-15). Software players usually accept 10-bit. A forum summary, seen only in search results, says many hardware players do not. |
 | 9 | **Training a model on her face** | No, or yes with local training, deletion afterwards, labels, and your explicit sign-off | Decided: no (D-16). She cannot consent to a model trained on her face without knowing about it. |
@@ -639,6 +704,8 @@ Our current lean is marked. Where the notes give no lean, it says so.
 | 14 | **Life eras for the colour strip** | Five placeholder eras: 0 to 12, 13 to 22, 23 to 35, 36 to 49, and 50 plus | Use them as placeholders until we see her material (W-39). |
 | 15 | **Motion estimator scope** | Push-ins only; push-ins and translation-only pans; or also orbits and multi-layer moves | Push and pull ease by `zoom_velocity_classifier.py`, and MO8 by `mo8_audit.py` on any renderer's output. Pans: speed by `pan_estimator.py` (validated, M-C9) and ease by `pan_ease_classifier.py` (validated on translation-only pans, M-C11; the truth curves were the classifier's own library except five CSS curves). Orbits, rotations, mixed zoom-and-pan and layers with different eases are spec-only and reported `unknown`. |
 | 16 | **Maker review time per shot** | Budget the maker minutes by shot class (T1 preamble), or cut the Maker items for class A | The minimum set for class A and the full set for classes B to D. All minutes are estimates (J) to time on the slice. The per-minute total goes to `production-scale.md` as a delta. |
+| 17 | **Decision 11 `hindu_idiom` in the G1 style bible** | Add it at G1, or keep a card-and-set sheet so G1 is not blocked | Defaulted in the register (W-38, O-67): add it only if the household keys (O-46 to O-49, O-55, O-56, O-64) are answered by Sun 1 Nov; otherwise the sheet. The block is `playbooks/hindu-visual.md` Template H5. Decisions 1 to 10 are never edited by it. |
+| 18 | **Decision 12 moving footage** | As found in a paper frame, played straight, or never | Defaulted in the register (W-59): decided with the first tape's return; the conform recipe `r10_conform_footage` is due Fri 6 Nov. Decision 11 is `hindu_idiom`, never this. |
 
 ---
 
@@ -651,7 +718,7 @@ Our current lean is marked. Where the notes give no lean, it says so.
 5. **Looped grain.** An 8-frame grain loop held on twos repeats every 16 frames (0.67 s). Autocorrelation is 1.00 at that lag, against 0.00 for fresh grain (M). Flat areas will "breathe" in a pattern.
 6. **Plain digital noise.** Real film grain is spatially correlated, and independent noise per pixel reads as digital (J) [42].
 7. **Banding.** A smooth dark ramp in 8-bit video showed 26 levels, against 100 at 10-bit (M). Encoders remove invisible dither, so add visible texture instead [44].
-8. **Thin lines.** A saturated 1 px red line kept about 70% of its contrast after H.264 at 1080p (M). Keep strokes at least 2 px, with no saturated hairlines.
+8. **Thin lines.** A saturated 1 px red line kept about 70% of its contrast after H.264 at 1080p (M). Keep venue strokes at least 2 px, with no saturated hairlines. For a phone the floor is 4 px for a line that carries meaning: a 2 px line keeps 0.48 of its contrast through the smaller chat proxy and a 4 px line 0.83 (M, stand-in proxies; `playbooks/hindu-visual.md` Template H9).
 9. **ffmpeg `zoompan` for finals.** It snaps to whole pixels, so slow moves shimmer (M). On real prints its centre jitter is 0.13 to 0.59 px against the MO8a limit of 0.05 px, and 0.63 px in the usual `-pix_fmt yuv420p` command line (M-C7b, M-C10). A relative roughness test alone would pass a fast push from a 4K source (M-C7b) and the GSAP `scale` tween that MO8b fails (M-C10), which is why roughness is informational only. Use `zoompan` for proofs only.
 10. **Mirroring a photograph.** It flips a hair parting, a wedding ring hand, and any text. That breaks "real memories stay real" [P5].
 11. **Trusting laurels.** Runway's festival is run by a tool vendor, and its prizes include credits [1][2]. The "Best Film" claim for *Costa Verde* is unconfirmed. The WAIFF prize list shows *Costa Verde* with the CapCut Prize, and it names a different film as Best WAIFF Film [7]. The Nowness page returned a 503 error [20] (TODO(research)).
@@ -665,6 +732,7 @@ Our current lean is marked. Where the notes give no lean, it says so.
 19. **Venue unknown.** The brightness and contrast numbers here are scenarios. A hall with the lights on can cut contrast far below a cinema's. One measured example (search-result only) gave 57:1 for a standard 1.0-gain screen with the room lights on, against over 8,000:1 for the projector with the lights off [49]. The cinema reference is ambient on the screen with the projector off below 0.01 cd/m² in a Review Room and below 0.03 cd/m² in an Exhibition Theater (SMPTE RP 431-2 s6.1) [91]; a hall with the lights on will not come close.
 20. **Honest labelling will be read by a mixed public.** Cannes' main festival director has talked about films one day being labelled "made without artificial intelligence" [9]. Some viewers at a public screening will be hostile to AI. The disclosure card, the end-credit cue sheet and a visibly small, human-led AI use are our answer [P1][P2].
 21. **The 48-hour rule is untested.** It is practitioner advice, not a controlled study [75]. Treat it as a habit to test, not as proof.
+22. **The generic-India or generic-Gujarat look.** A Taj silhouette, incense-smoke stock, a tourism-ad grade, a Kutch salt flat or a garba-night montage would work for any family, which fails the swap test. T5 items 28 to 39 are the list, and her own things come first (W-38 decision 10, W-72).
 
 ---
 
@@ -678,6 +746,12 @@ Our current lean is marked. Where the notes give no lean, it says so.
 6. **Does size matter for reading?** (Legge and Bigelow, *Journal of Vision*), https://legge.dl8.umn.edu/sites/legge.psych.umn.edu/files/2020-08/Legge%20Bigelow%202011%20Does%20size%20matter%20for%20reading%3F%20A%20review%20of%20findings%20from%20vision%20science%20and%20typography.pdf. Read locally. Why: the basis for the type-size rule for a big screen [47].
 7. **CRAFT.md** (bishpls/animation-pipeline), https://raw.githubusercontent.com/bishpls/animation-pipeline/main/docs/CRAFT.md. Fetched. Why: timing, holds and review rules. It is a third-party guide, so check its numbers before using them [68].
 8. **Six Tips for a Successful Test Screening** (Frame.io), https://blog.frame.io/2017/07/06/successful-test-screening-tips/. Fetched. Why: room setup, sound levels and question order for a test screening [70].
+
+For her world, three exemplars from `playbooks/hindu-visual.md` (Best references 4 to 6; its sources 94, 92 and 100, Wikipedia pages read 2026-10-19):
+
+9. ***Mahavatar Narsimha* (2025).** A benchmark for scriptural fidelity (named Puranas, a visit to the temple site), not for style.
+10. ***Sita Sings the Blues* (2008).** Separates registers by medium: painted figures, shadow-puppet narrators and vector songs. Take the method and no assets. The film drew a petition.
+11. **Nina Sabnani's films, for example *Hum Chitra Banate Hain* (2016).** Craft made with practising artists, who are credited and collaborate. Some details are digest only.
 
 ---
 
@@ -736,7 +810,7 @@ Format: [n] title, URL, date, note. "Fetched" means the page was opened. "Search
 - [54] Meaning in Motion: Ken Burns and His 'Effect' (Poynter), https://www.poynter.org/news/meaning-motion-ken-burns-and-his-effect. 2007-06-21. Fetched.
 - [55] 6 'Rules' for Good Cutting According to Walter Murch (No Film School), https://nofilmschool.com/2016/11/6-rules-good-cutting-according-oscar-winning-editor-walter-murch. 2016. Fetched.
 - [56] SIL Open Font License FAQ, https://openfontlicense.org/ofl-faq/. Fetched 2026-10-18. Video titling is a listed permitted use (FAQ 1.1); embedding is answered for documents and files (1.12), not video. Commercial fonts are out (W-21; T2 decision 4) [88][89][109].
-- [57] Minecraft Usage Guidelines excerpt (local, captured 2026-10-18), research/sources/minecraft-usage-guidelines-2026-10-18.txt. Physical locations; name as title.
+- [57] Retired under D-29 (a game-licence excerpt); no longer cited in this playbook.
 - [58] DCP-o-matic, https://dcpomatic.com/. Fetched 2026-10-18. "Free and open-source"; licence not stated on the page.
 
 **Identity and AI technique**
@@ -789,6 +863,7 @@ Format: [n] title, URL, date, note. "Fetched" means the page was opened. "Search
 - **v3, 2026-10-18.** Review round 2 (Fable advisor) applied: MO8 became a pixel rule on centre and edge jitter (since refined in v4); MO6 is a pixel audit with `pan_estimator.py` (pan speed validated), with a pan clip on the test card; projection figures cite SMPTE RP 431-2, ST 431-1 and ST 428-1, with [35] superseded for them; caption x-height is tied to `FontSize=23` (3.1% floor) in step 12, TY1 and T6; the six venue questions are in step 1; the stranger count is three to five (T7, Decision 4); the sound-levelling wording keeps the Frame.io citation exact; the estimator's provenance now includes the M-C7b prints.
 - **v4, 2026-10-18.** Review round 3 (Fable advisor) applied in place: MO8 is MO8a centre jitter at most 0.05 px on the delivered file and MO8b fourth-difference edge jitter at most 0.04 px on the master before the encode, with roughness and the reference ratio informational (T1, step 9, Pitfall 9, Exercise 4, Open gaps, T8 lint keys); renderer rules in step 9 and T5 items 26 and 27; pan ease validated on translation-only pans (MO1b, MO2, MO9, step 9, Decision 15, Pitfall 18); venue neutral ask, `venue_calc.py`, the A/B push card and the RP 431-2 grey scales in step 1 and T6; the STI routes in T6 item 13; Adobe and Monotype font terms in T2 decision 4 and step 12; the 48 cd/m² reference cited to [92]; the Windows check, the leitmotif from the line-up, and the open gaps brought up to date; the "proposed changes" list for other playbooks removed (the same rows are in the research note's Deltas table).
 - **v5, 2026-10-18.** Reconciled with DECISIONS.md (2026-10-18): playback path and venue ask dated (ask by Fri 6 Nov, answer Sun 15 Nov, W-17); venue visit by Sun 17 Jan with the test clip only and the Mon 22 Feb rehearsal (W-52, W-56); two stranger sessions decided and the one-session option removed (W-43, W-08); OFL fonts only (W-21); reconstruction marker is her own hand-made material and voxel is never the marker (W-38, D-23); decisions 1, 2, 3, 9, 10, 11 and 12 marked decided or defaulted; maker minutes restated at 8 shots a minute and 5% hero shots (W-34, W-51).
+- **v6, 2026-10-19.** Reconciled with DECISIONS.md after the her-world merge (2026-10-19): the style bible is twelve decisions, with `hindu_idiom` as 11 and moving footage as 12, and decisions 2, 3, 4, 5, 6, 8 and 9 restated for her hands, the phone floor, the Indic families, the hands box and Trim P (W-38, W-64); T1 gains B9, TY5, PR2b and the Hindu-world items HW1 to HW5, and TY1, B7 and PR3 gain the phone-safe frame, Gujarati sizing and the PH1 grain rule (W-18, W-63); T5 gains items 28 to 39 and T9 rows 24 to 28; T6 gains the phone-truth sub-list; T7 gains the first question and I to K, with S1 at one or two strangers (W-43); the game-style look and its brand rule are retired (D-29); P-LOCK replaces the old process-lock spelling; exemplars 9 to 11 added.
 
 **Open gaps (TODO(research)).**
 
@@ -803,4 +878,4 @@ Format: [n] title, URL, date, note. "Fetched" means the page was opened. "Search
 - Gaudette's hours rest on a secondhand report. The *Costa Verde* "Best Film" laurel is unconfirmed. The Nowness page returned 503.
 - Not yet researched: real scanned grain libraries and their licences; the *Up* colour script images; DCP-o-matic and DaVinci Resolve on Windows (the free edition's features are unconfirmed); and the ambientCG licence. The Windows run of `windows_check.py` has not happened (FQ15). All three STI routes (T6 item 13) are unverified against a calibrated meter (FQ8).
 - MO8 limits: centre jitter at most 0.05 px and fourth-difference edge jitter at most 0.04 px (FQ9, FQ10, M-C10) are derived, not observed. The visibility of 0.1 to 0.3 px of random frame-to-frame jitter on a screen is untested (FQ9): the A/B card has been generated and its key checked, but not run on a projector. The best-case static alignment threshold is 2 to 5 arc seconds [123]; no source on random jitter in moving imagery has been read. The limits are still to be confirmed on the slice (J).
-- Decisions now in the register ([DECISIONS.md](../DECISIONS.md)): the Minecraft rule (D-23: original voxel assets only, never the marker); the runtime (W-01 to W-03); the playback path (W-17, venue answer due Sun 15 Nov); strangers on a redacted copy at S1 and S2 (W-43).
+- Decisions now in the register ([DECISIONS.md](../DECISIONS.md)): the game-world rule retired (D-29), so the reconstruction marker is her own hand-made material (W-38); the twelve-decision style bible (W-38, W-59); the runtime (W-01 to W-03); the playback path (W-17, venue answer due Sun 15 Nov); strangers on a redacted copy at S1 (one or two) and S2 (three to five) (W-43).

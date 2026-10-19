@@ -32,7 +32,8 @@ WHERE "IDENTIFYING DATA" COMES FROM (build plan 4.13)
   beside the checked file with the same base name and the extension .deny.txt (tests).
   A deny entry is matched as a whole word, case-insensitively; entries under 3 characters
   are skipped with a note. Findings print the category, file:line and a MASKED hit (the
-  first two characters, then asterisks), never the full value.
+  first two characters, then at most 8 asterisks: the mask section of the pattern file, the
+  same as public_lint prints), never the full value and never its length.
 
 HOW TO RUN (standard library only; always with -I)
   python3 -I scripts/ops_lint.py                         # everything under ops/
@@ -62,8 +63,9 @@ REQUIRED_CATEGORIES = ["email", "ipv4", "ipv6", "mac", "profile_path_windows",
 TEXT_SUFFIXES = (".md", ".csv", ".json", ".txt")
 MARKERS = ["TO" + "DO", "FIX" + "ME"]  # built from parts so this file does not contain them
 NOTE_WARN_LEN = 80
-REG_ID_RE = re.compile(r"\b([DWOS])-([0-9]{2})\b")
-REGISTER_ROW_RE = re.compile(r"^\|\s*([DWOS]-[0-9]{2})\s*\|", re.M)
+REG_ID_RE = re.compile(r"\b([DWOS])-([0-9]{2,3})\b")  # two or three digits: W-60 today, W-100 possible
+# What a register row is (the ID cell may carry an annotation, `| O-06 (absorbs O-40) |`) is defined
+# once, as ROW_RE in decisions_to_csv.py; check_decisions() uses it through the loaded sibling.
 LJ_ID_RE = re.compile(r"\bLJ-([A-Z0-9]{1,4})-([0-9]{4})-([FB])(?:-R[0-9]+)?\b")
 
 
@@ -135,6 +137,7 @@ class Patterns:
         mask = data.get("mask") or {}
         self.keep = int(mask.get("keep", 2))
         self.fill = str(mask.get("fill", "*")) or "*"
+        self.cap = int(mask.get("cap", 8))  # same mask as public_lint: a hit's length does not leak
         nc = data.get("name_checks") or {}
         self.min_name_len = int(nc.get("min_name_len", 3))
         self.placeholders = [str(p) for p in (data.get("placeholders") or [])]
@@ -150,7 +153,7 @@ class Patterns:
         hit = hit.strip()
         if len(hit) <= self.keep:
             return self.fill * max(len(hit), 1)
-        return hit[:self.keep] + self.fill * (len(hit) - self.keep)
+        return hit[:self.keep] + self.fill * min(len(hit) - self.keep, self.cap)
 
     def exempt(self, category, start, end, line):
         for _id, rx, e in self.exemptions:
@@ -276,7 +279,9 @@ def check_decisions(csv_path, register_path, d2c, findings):
     except OSError as exc:
         findings.add_fail(label, 0, "register", "cannot read DECISIONS.md (%s)" % exc.strerror)
         return set()
-    reg_ids_plain = REGISTER_ROW_RE.findall(reg_text)
+    # plain scan: every line the shared row pattern matches, with no table or cell checks
+    reg_ids_plain = ["%s-%s" % (m.group(1), m.group(2))
+                     for m in (d2c.ROW_RE.match(ln) for ln in reg_text.splitlines()) if m]
     reg_set = set(reg_ids_plain)
     if len(reg_ids_plain) != len(reg_set):
         findings.add_fail("DECISIONS.md", 0, "register", "the register lists an ID twice")

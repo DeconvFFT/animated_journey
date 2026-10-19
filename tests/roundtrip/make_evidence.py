@@ -3,7 +3,8 @@
 
   python3 -I tests/roundtrip/make_evidence.py
 
-Reads build/evidence/wp06/tests.jsonl (the last --all run), tests_quick.jsonl (the last --quick run), .counts.json (written by run_checks.py), guard_stage_venv.json
+Reads build/evidence/wp06/tests_all.jsonl (the last --all run), tests_quick.jsonl (the last --quick run), .counts.json (written by run_checks.py when make_evidence.sh sets
+LJ_WP06_COUNTS; removed again here), guard_stage_venv.json
 (the disk guard's ledger line for the venv stage) and the pip list of the venv. Writes summary.json, environment.json and venv_otio.json. No host, user or path
 information is recorded: versions, counts and sizes only.
 """
@@ -54,7 +55,7 @@ def tree_mb(path):
 
 
 def main():
-    allr, quick = lines("tests.jsonl"), lines("tests_quick.jsonl")
+    allr, quick = lines("tests_all.jsonl"), lines("tests_quick.jsonl")
     groups = {}
     for r in allr:
         groups.setdefault(r["test"].split(".")[0], {"PASS": 0, "FAIL": 0, "UNVERIFIED": 0, "SKIPPED": 0, "BLOCKED": 0})[r["status"]] += 1

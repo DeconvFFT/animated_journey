@@ -1,11 +1,11 @@
 # Free Desktop Toolchain: A Small Stack for the Life Journey
 
-Track: toolchain · Draft v0.4 · 2026-10-18 · For the maker (a motivated learner)
+Track: toolchain · Draft v0.5 · 2026-10-19 · For the maker (a motivated learner)
 Built from research/toolchain.md (Sonnet researcher, 2026-10-18) and CHARTER.md. Numbers in brackets, like [1], point to the Sources list at the end. Anything marked TODO(research) is still open.
 
 **Status: provisional.** We do not fix the plan until you return the app checklist in Step 0. Your computer and the apps you already have decide which tools make sense.
 
-**Reconciled with DECISIONS.md (2026-10-18). The register wins (D-21).** The Windows PC is decided (D-10); its numbers stay UNVERIFIED until `windows_check_report.json` is in the repo (W-28). The project frame rate is 24 fps (W-14), so the 25 fps values the research tested are now 24 (`d=120`, `fps=24`, `-framerate 24`, `atsc_1080p_24`). They are UNVERIFIED at 24 until `recipes/r1_kenburns.sh`, `recipes/r2_parallax.py`, `recipes/r5_story.mlt` and the colour-patch test are re-run at 24; those recipe files still carry 25 until then. Loudness is -1 dBTP everywhere, with three venue masters chosen at the Mon 22 Feb run (W-19). Real photos enter after the L1 process lock (Sat 14 Nov), and covert collection starts Sun 15 Nov (D-13). Family media stays on the PC and the encrypted drive, with no cloud copy (D-15, W-23, W-24, W-25). The maker alone decides every hard call (D-03, D-04). Each Decision below carries its register status: decided (`DECISIONS.md` Table 1), default with a decide-by date (Table 2), or open for the maker (Table 3).
+**Reconciled with DECISIONS.md (2026-10-18). The register wins (D-21).** The Windows PC is decided (D-10); its numbers stay UNVERIFIED until `windows_check_report.json` is in the repo (W-28). The project frame rate is 24 fps (W-14), so the 25 fps values the research tested are now 24 (`d=120`, `fps=24`, `-framerate 24`, `atsc_1080p_24`). They are UNVERIFIED at 24 until `recipes/r1_kenburns.sh`, `recipes/r2_parallax.py`, `recipes/r5_story.mlt` and the colour-patch test are re-run at 24; those recipe files still carry 25 until then. Loudness is -1 dBTP everywhere, with three venue masters chosen at the Mon 22 Feb run (W-19). Real photos enter after the P-LOCK process lock (Sat 14 Nov), and covert collection starts Sun 15 Nov (D-13). Family media stays on the PC and the encrypted drive, with no cloud copy (D-15, W-23, W-24, W-25). The maker alone decides every hard call (D-03, D-04). Each Decision below carries its register status: decided (`DECISIONS.md` Table 1), default with a decide-by date (Table 2), or open for the maker (Table 3). **Re-reconciled 2026-10-19 after the her-world merge:** the film's look comes from her Hindu world (D-28, D-31, W-72), so the game-world route is gone (D-29) and Exercise 8 and Decision 3 are now about the floor-art line; the phone files are PH1 and PH2 (W-63); the repo is public, so only text, scripts and ID-keyed manifests are committed (D-14, D-26); Indic text is burned with the `ass` filter before ffmpeg n9.0 and set in OFL families (W-21, W-75).
 
 ## Why this matters for our life journey
 
@@ -13,7 +13,7 @@ Most of your mother's life happened between the big moments: the kitchen table, 
 
 The charter asks us to prefer scriptable tools [1]. A script can be re-run, repaired and handed to an AI agent. A menu click cannot. So this track picked a small stack. Blender handles depth, camera moves and renders. Inkscape handles maps, timelines and drawn lines. One video editor does the finishing pass. Two command-line tools, ffmpeg and ImageMagick, sit under all of it, and every shot passes through them [62][64].
 
-Fewer tools, learned well, will finish the film. We have about 19 weeks until Saturday, 27 February 2027. The ten practice exercises below take about three weeks at four a week, so Exercise 10 can be the delivery rehearsal, on synthetic material, ahead of the L1 process lock on Saturday 14 November 2026, the end of week 4 (W-06). The vertical slice is a separate job: 100 seconds of chapter C01, briefed Sunday 15 November, animatic Sunday 6 December, final Sunday 20 December (W-07). That leaves about fifteen weeks after the lock for the real work (ROADMAP-ADDENDUM.md).
+Fewer tools, learned well, will finish the film. We have about 19 weeks until Saturday, 27 February 2027. The ten practice exercises below take about three weeks at four a week, so Exercise 10 can be the delivery rehearsal, on synthetic material, ahead of the P-LOCK process lock on Saturday 14 November 2026, the end of week 4 (W-06). The vertical slice is a separate job: 100 seconds of chapter C01, briefed Sunday 15 November, animatic Sunday 6 December, final Sunday 20 December (W-07). That leaves about fifteen weeks after the lock for the real work (ROADMAP-ADDENDUM.md).
 
 ## Core principles
 
@@ -42,11 +42,11 @@ Do the steps in order. Do not skip Step 0.
 Run the checks in the research checklist (see the table in the research notes, "Recognise your apps") and paste the output back to the team. The research wrote one script that runs these checks and both timed Blender runs and writes one report: `research/toolchain-fixtures/step0_pc_tests.ps1` (research Follow-up F9). We need:
 
 - Your operating system and version. The maker has decided on a Windows PC (D-10; charter [1]). The research did not measure it, so every Windows number stays UNVERIFIED until the report from your PC is in the repo (W-28).
-- Which of these apps are installed, with versions: DaVinci Resolve (Free or Studio), Kdenlive, Shotcut, OpenShot, Inkscape, GIMP, Krita, Blender, MagicaVoxel, Goxel, Blockbench, Audacity.
+- Which of these apps are installed, with versions: DaVinci Resolve (Free or Studio), Kdenlive, Shotcut, OpenShot, Inkscape, GIMP, Krita, Blender, Audacity.
 - Whether ffmpeg and ImageMagick run from a terminal.
 - CPU, RAM, graphics card and its video memory, free disk space, and whether you have a pen tablet.
 
-Two answers change the plan. MagicaVoxel runs only on Windows and macOS, and Blender 5 needs Apple Silicon on a Mac [24][30][56]. Resolve's External scripting setting is Studio-only in Blackmagic's manuals [110][111][112], so on the Free edition note whether it is missing or greyed out (see Decision 1).
+Two answers change the plan. Blender 5 needs Apple Silicon on a Mac [24][30]. Resolve's External scripting setting is Studio-only in Blackmagic's manuals [110][111][112], so on the Free edition note whether it is missing or greyed out (see Decision 1).
 
 The charter also names the ArtCraft Crafting Apps as refinement layers [1]. This track does not cover them. The craft-visual and craft-motion tracks do.
 
@@ -54,7 +54,7 @@ The charter also names the ArtCraft Crafting Apps as refinement layers [1]. This
 
 ### Step 1: Make the project folder
 
-Keep the project in the private GitHub repository the charter names [1]. The cloud session is temporary, so the repo is the safe copy [1]. The research proposes these folders: `exercises/` (one folder per exercise, `ex01`, `ex02` and so on), `looks/` (saved colour recipes), `layers/` (cut-out PNG files), `licences/` (a saved copy of each licence page, with the date you saved it), and `credits.txt`. Add a `README.md` that names every tool and its version. Commit only text, scripts and manifests with IDs (D-14): scans, audio, video and renders never enter git, so `layers/` holds only stock or synthetic exercise cut-outs, never a cut-out of one of her photos. Confirm the repo has been made private (O-13); nothing personal is committed until it is.
+Keep the project in the GitHub repository the charter names [1]. It is public by the maker's choice (D-14, D-26), so it holds only text, scripts and ID-keyed manifests. The cloud session is temporary, so the repo is the safe copy of those [1]. The research proposes these folders: `exercises/` (one folder per exercise, `ex01`, `ex02` and so on), `looks/` (saved colour recipes), `layers/` (cut-out PNG files), `licences/` (a saved copy of each licence page, with the date you saved it), and `credits.txt`. Add a `README.md` that names every tool and its version. Commit only text, scripts and manifests with IDs (D-14): scans, audio, video and renders never enter git, so `layers/` holds only stock or synthetic exercise cut-outs, never a cut-out of one of her photos. The repo stays public (D-26; O-13 is answered), so nothing personal is ever committed: no names, no addresses, no photos, no audio, no video.
 
 ### Step 2: Install or find ffmpeg and ImageMagick
 
@@ -62,7 +62,7 @@ ffmpeg is the glue that most steps depend on [62][63]. The ffmpeg project ships 
 
 ### Step 3: Prepare photos in a batch
 
-Practise with stock or synthetic images now. Real photos come in only after the pipeline is locked [1]: the L1 process lock is Sat 14 Nov 2026 and covert collection starts Sun 15 Nov (D-13, W-10).
+Practise with stock or synthetic images now. Real photos come in only after the pipeline is locked [1]: the P-LOCK process lock is Sat 14 Nov 2026 and covert collection starts Sun 15 Nov (D-13, W-10).
 
 When real photos arrive, scan at the highest resolution you can. The research's rule of thumb is at least 1.5 times your output width, so a camera move can crop without going soft: 2880 px wide for 1080p [100]. The register prepares stills at 3840 px on the long edge (W-15) and the master is 1080p, so the research's 5760 px figure for 4K is dropped (4K is not needed). Scan masters follow W-27: 16-bit TIFF at 600 ppi, fronts and backs at the same sitting.
 
@@ -113,7 +113,7 @@ Turn the PNG frames into a movie with `ffmpeg -framerate 24 -i renders/p_%04d.pn
 
 To make a route or a signature draw itself, draw it in Inkscape as one stroked centre-line path [35][36]. Inkscape does not animate on its own [35], so a script does it. The script writes one SVG file per frame, with a dash pattern that shrinks from full length to nothing, then renders each frame [65]. `recipes/r3_linedraw.py` reads the path's real length from the file. Do not type the length in by hand. The renderer used in testing ignored `pathLength="1"`, so every frame looked finished until the length was computed [66][100].
 
-Forty-eight frames at 1280×720 took 1.9 seconds on the research machine [100]. Titles set in outline fonts will not "write" with this method, because outline fonts are filled shapes, not single lines. Use a single-line font, or trace a handwritten title with Inkscape's tracing or calligraphy tools [36].
+Forty-eight frames at 1280×720 took 1.9 seconds on the research machine [100]. Titles set in outline fonts will not "write" with this method, because outline fonts are filled shapes, not single lines. Use a single-line font, or trace a handwritten title with Inkscape's tracing or calligraphy tools [36]. Her script on titles and verse cards travels as shaped outlines, never live text (W-21): a Gujarati title is drawn or traced as a path, and the shaping is checked on the PC before any Gujarati string goes into a frame (W-75).
 
 Blender can also reveal a curve or a Grease Pencil drawing with a build effect [28][29][100].
 
@@ -143,15 +143,15 @@ Do the final cut by hand: timing to music, framing and the last pass.
 
 ### Step 9: Give each album its own look
 
-Every album gets one saved colour look, so every photo from that album matches. The look comes from the album itself, not from a decade. Pick three prints from one of her real albums (from Sun 15 Nov, after the L1 lock). In each print, sample a known-white object and a skin midtone. Derive the lift, cast and grain from those samples, save the result in `looks/`, and name it after her chapter. Apply that one look to every photo from the album [1].
+Every album gets one saved colour look, so every photo from that album matches. The look comes from the album itself, not from a decade. Pick three prints from one of her real albums (from Sun 15 Nov, after P-LOCK). In each print, sample a known-white object and a skin midtone. Derive the lift, cast and grain from those samples, save the result in `looks/`, and name it after her chapter. Apply that one look to every photo from the album [1].
 
 The research's two ffmpeg chains (a 1970s-style and a 1950s-style chain) are stock practice, not for the film. They are kept in `recipes/r7_era_looks.txt` for exercises only [63][100]. Do not colourise black-and-white photos with AI unless you label the result as a reconstruction [1]. The step from sampled values to filter settings is written and was tested on three stock prints: `research/toolchain-fixtures/derive_album_look.py` (research notes, Follow-up F14). It has not run on your prints or on Windows Python, so it stays TODO(research) until it has.
 
 ### Step 10: Sound
 
-Build the sound in this order: room tone and her-world sound first, then the hummed tune and any music bed, then, if one passed one-key-three-guards, her HER-PUBLIC line on top, ducking the music under it. The premiere cut has no other recorded voice of a living person (D-05, W-35); relatives' voices are April-version items (D-06). Make the final mix in REAPER, with Resolve Free's Fairlight as the fallback (W-20); the ffmpeg chain below is for proofs and the delivery check. Use only music whose licence allows public screening (see Decision 6).
+Build the sound in this order (W-44): the premiere's honest sound is objects, rooms, the sea's surf and the maker's hum, and sung devotion waits for April. Start from the maker's own captures in her empty house (W-10, W-70) and the hummed tune, recorded in two takes (closed-mouth and open vowel), both kept uncleaned in `originals/` (W-65). Room tone is the bed under them and never a first sound, because it vanishes on a phone speaker (W-36, W-76). Any music is a CC0 or CC BY stand-in, labelled, and only if the sound is hers (O-72); there is no AI bed. If one passed one-key-three-guards, her HER-PUBLIC line goes on top. The premiere cut has no other recorded voice of a living person (D-05, W-35); relatives' voices are April-version items (D-06). Make the final mix in REAPER, with Resolve Free's Fairlight as the fallback (W-20); the ffmpeg chain below is for proofs and the delivery check. Use only music whose licence allows public screening (see Decision 6).
 
-Set the loudness with ffmpeg's loudness filter. The online copy is `-af loudnorm=I=-16:TP=-1:LRA=11` (-16 LUFS, -1 dBTP), and every file in the project holds -1 dBTP (W-19) [63][100]. The research ran its test file with `TP=-1.5`, so re-measure at `TP=-1`. On that test file the filter moved the level from −22.1 to −16.0 LUFS [100]. The broadcast reference is −23 LUFS [97]. A projector room with small speakers often needs something louder. Render three venue masters (-23, -18 and -16 LUFS integrated) and choose at the Mon 22 Feb venue run against sixty seconds of the hall's own room tone from the back row; if no reading can be taken, load -18 first (W-19). Use two-pass `loudnorm` with a linear second pass.
+Set the loudness with ffmpeg's loudness filter. The online copy is `-af loudnorm=I=-16:TP=-1:LRA=11` (-16 LUFS, -1 dBTP), and every file in the project holds -1 dBTP (W-19) [63][100]. The phone files are that online row, measured on the final MP4 after the AAC encode (W-19, W-63). The research ran its test file with `TP=-1.5`, so re-measure at `TP=-1`. On that test file the filter moved the level from −22.1 to −16.0 LUFS [100]. The broadcast reference is −23 LUFS [97]. A projector room with small speakers often needs something louder. Render three venue masters (-23, -18 and -16 LUFS integrated) and choose at the Mon 22 Feb venue run against sixty seconds of the hall's own room tone from the back row; if no reading can be taken, load -18 first (W-19). Use two-pass `loudnorm` with a linear second pass.
 
 ### Step 11: Captions
 
@@ -161,17 +161,18 @@ Draft the captions with Kdenlive's speech-to-text, which can use VOSK or Whisper
 
 **Resolve Free and captions.** Resolve Free imports an SRT and burns it in. Automatic subtitles from audio are Studio, so use Whisper for the draft [110][111][112]. Not yet seen on a real Free install.
 
-Burn the captions into the screening file, because burned-in text is the one kind every screen shows [12][13]. Keep a sidecar `.srt` file for the archive. The research's burn-in command names a font that may not be installed on your computer. Use an OFL font (W-21): a Windows system font is fine rasterised into the video, but never embedded in a DCP subtitle track [100]. Caption layout follows W-18: 42 characters a line, two lines, at most 20 characters a second, `FontSize=23` (about 8% line height at 1080p) inside the 90% box, with a sidecar SRT and VTT in the archive. TODO(research): verify burn-in on Windows.
+Burn the captions into the screening file, because burned-in text is the one kind every screen shows [12][13]. Keep a sidecar `.srt` file for the archive. The research's burn-in command names a font that may not be installed on your computer. Use an OFL font (W-21): a Windows system font is fine rasterised into the video, but never embedded in a DCP subtitle track [100]. Caption layout follows W-18: two lines, at most 20 characters a second (slower for a room over 70), `FontSize=23` for Latin (about 8% line height at 1080p) with `MarginV` 20 or more inside the 90% box, with a sidecar SRT and VTT (UTF-8, single script per cue) in the archive; "42 characters a line" is a guide, and the rule is that a line fits the box in its face. Gujarati is sized by the height of its KA, not by `FontSize`: Noto Sans Gujarati passes the venue at 23 and needs 26.2 for the phone's 3.8% target, so the phone file carries its own setting (`FontSize=28`, `MarginV` 40, two lines, at most 36 characters, block at 68 to 86% of height). On any ffmpeg older than n9.0 burn Indic text with the `ass` filter on an ASS file made from the SRT (`YCbCr Matrix: TV.709` in its header), never `subtitles` or `drawtext`, because the simple shaper breaks conjuncts without a warning; the ten-minute A/B on test syllables decides the PC's path and is a P-LOCK condition (W-75, W-06). Fonts are the OFL families of W-21. TODO(research): verify burn-in on Windows.
 
-### Step 12: Export three versions from one master
+### Step 12: Export the versions from one master
 
-From one master file, make three versions [91][95][92]:
+From one master file, make these versions [91][95][92]; the phone files are PH1 and PH2 (W-63):
 
 | Version | Container and codec | Main settings |
 |---|---|---|
 | **Screening** (TV, USB stick, projector) | MP4, H.264 High profile | Level 4.1, yuv420p, 1080p, AAC-LC 48 kHz stereo, `+faststart`, BT.709 tags |
 | **Private web link** (made for the April version; not uploaded anywhere before the maker says so, D-15, W-48) | MP4, H.264 High profile | CRF 20, 12 Mbps cap at 1080p. YouTube recommends 8 Mbps for 1080p at 24 to 30 frames a second [91] |
 | **Archive** | ProRes 422 HQ in `.mov`, and/or FFV1 version 3 in Matroska | Audio PCM 24-bit or FLAC. The Library of Congress lists both in its current preferred formats for moving images (the statement is undated on the page; read 2026-10-18). An MP4 counts only as a viewing copy [92][93][94] |
+| **Phone files** (PH1 and PH2; for her phone by cable after her yes, and for relatives after the ledger closes, W-73, W-74) | MP4, H.264 | PH1: 1920×1080p24, High 4.1, yuv420p, BT.709 tags on the master before the burn-in, CRF 20 with an 8 Mb/s cap, AAC-LC 192 kbps, `+faststart`, `-map_metadata -1`, captions burned at the phone setting, -16 LUFS and -1 dBTP on the final MP4. PH2: 1280×720, CRF 22, 4 Mb/s cap, level 3.1, captions burned on the 1080 frame before the downscale. SDR only, no HEVC (its saving is the grain). `playbooks/mobile-delivery.md` owns the commands |
 
 The screening command, as tested [100]:
 
@@ -179,7 +180,7 @@ The screening command, as tested [100]:
 ffmpeg -i master.mov -c:v libx264 -preset slow -crf 18 -maxrate 20M -bufsize 40M -profile:v high -level 4.1 -pix_fmt yuv420p -colorspace bt709 -color_primaries bt709 -color_trc bt709 -c:a aac -b:a 256k -ar 48000 -ac 2 -movflags +faststart deliver_usb.mp4
 ```
 
-The research tested this without the `-maxrate` and `-bufsize` pair. Those two are the register's 20 Mbps cap (W-17). The register's venue file (W-17) is this command at 1080p24 with captions burned in, a neutral file name and metadata stripped, plus a Main profile, level 4.0 backup at about 8 Mbps, a 60 to 90 second venue test clip with no personal content, and a 3-minute sound-and-stills fallback. There is no online link, cinema or festival copy until the consent ledger closes (Mon 29 Mar) and the rights log is green (W-48).
+The research tested this without the `-maxrate` and `-bufsize` pair. Those two are the register's 20 Mbps cap (W-17). The register's venue file (W-17) is this command at 1080p24 with captions burned in, a neutral file name and metadata stripped, plus a Main profile, level 4.0 backup at about 8 Mbps, a 60 to 90 second venue test clip with no personal content that carries a tone ladder from 100 Hz to 3.2 kHz, and a 3-minute sound-and-stills fallback. There is no online link, cinema or festival copy until the consent ledger closes (Mon 29 Mar) and the rights log is green (W-48).
 
 **Watch the file size.** A FAT32 USB stick cannot hold a single file over 4 GB minus one byte [96]. At about 12 Mbps video plus 256 kbps audio, that is about 46 minutes. At 20 Mbps, it is about 28 minutes [100] (the research's arithmetic). A 12-minute film at 20 Mbps is about 1.8 GB, so the premiere cut fits FAT32; the register's two sticks are FAT32 if under 4 GiB, else exFAT, in different pockets (W-52). Format the stick as exFAT, or keep each file under the limit, and test on the screen. Whether your screen takes exFAT, MKV or soft subtitles is unknown. TODO(research): no TV or projector format specification was readable.
 
@@ -203,7 +204,7 @@ Keep the master file or files, the SRT and VTT caption files, the project files,
 
 ## Learn-by-doing exercises
 
-Each exercise has a cap of about two hours, from the research notes. The research did not time the exercises one by one [100]. Practise on synthetic or stock images and your own photos, never hers: no photo of hers is used before the L1 lock on Sat 14 Nov (D-13). Keep the real hero material for the vertical slice [1]. Put each exercise in `exercises/exNN/` in the private repo, and keep every command line you run.
+Each exercise has a cap of about two hours, from the research notes. The research did not time the exercises one by one [100]. Practise on synthetic or stock images and your own photos, never hers: no photo of hers is used before P-LOCK on Sat 14 Nov (D-13). Keep the real hero material for the vertical slice [1]. Put each exercise in `exercises/exNN/` in the repo (public, D-26: text and scripts only, nothing of hers), and keep every command line you run.
 
 ### Exercise 1: Inventory and dry run
 
@@ -269,12 +270,12 @@ If Blender does not create the output folder, make `r640` and `r1080` first (TOD
 - **Time:** Under 2 hours.
 - **Good looks like:** The look file records the sampled values and the three prints they came from. The same look applied twice gives identical output. TODO(research): the derivation is tested on three stock prints only, so the first run on your own prints is still to do.
 
-### Exercise 8: One voxel hero object
+### Exercise 8: One floor-art line-draw card
 
-- **Goal:** Model one household object from a reference photo as voxels. **Optional until the maker answers whether she loves Minecraft (O-05, pending):** if the answer is no, there is no voxel or Minecraft chapter. Original voxel assets only, with no Mojang textures, sounds, UI or footage (D-23).
-- **Steps:** Model it in MagicaVoxel (Windows or Mac) or Goxel or Blockbench [56][58][59]. Export OBJ or PLY. Import it into Blender with forward axis Y and up axis Z [100]. Add warm light (`recipes/r4_render_voxel.py`). Render a five-second turntable. Goxel's command-line export runs under `xvfb-run -a` on a server. On Windows Goxel opens its own window, so the wrapper is not needed (TODO(verify on the maker's PC)) [58][100].
-- **Time:** TODO(research): modelling time per object was not measured. This exercise may run longer than two hours.
-- **Good looks like:** Someone who has not seen the photo names the object. The model uses 32 colours or fewer. It stands the right way up. Each frame renders in under 30 seconds at 960×540 on your machine. That is the research's target. Its four-core test machine took 8 seconds for one still [100]. Use a test viewer who does not know the subject, and who would not mention it to her.
+- **Goal:** Draw one floor-art line, the primary idiom of her region (W-72), on a dark ground, and make it draw itself at the phone floor. Synthetic material only; nothing of hers.
+- **Steps:** Build a dot grid (pulli) of at least 5 by 5 dots in Inkscape, or have the agent write it as a Route A seekable SVG. Draw one closed stroke round each dot, then one continuous rangoli-style line through the grid with round line caps. Stroke widths at 1080p: 4 px for the meaning line, 3 px for decoration, 6 px for dots and the repeat unit, 4 px for holes, no hairlines (W-38 decision 3). Colours: cream on indigo, or kumkum on cream (W-72). Reveal it over six seconds with an ease using `recipes/r3_linedraw.py`, the SVG line-reveal recipe of Step 7 [35][36][65][66]. Use a plain rangoli pattern: no deity, no sathiyo (swastika) form, which stays SW0 until O-66 is answered, and nothing copied from a museum scan.
+- **Time:** About 2 hours. TODO(research): drawing time per card was not measured.
+- **Good looks like:** The line starts, finishes and eases as designed, and the last frame matches the static SVG. Every stroke measures at least 4 px (dots 6 px) at 1080p, and the card still reads on the phone-floor chart (`mobile-delivery` Exercise 5). Use a test viewer who does not know the subject, and who would not mention it to her.
 
 ### Exercise 9: Sound and captions
 
@@ -291,7 +292,7 @@ If Blender does not create the output folder, make `r640` and `r1080` first (TOD
 - **Good looks like:** The file plays from the stick with sound and captions. The ffprobe output matches the profile. A checksum check passes. The archive file opens in a second player.
 - **Self-check (checksums).** Bash (Git Bash or WSL2): `sha256sum chapter_usb.mp4 chapter_web_1080.mp4 chapter_archive.mov > SHA256SUMS`, then `sha256sum -c SHA256SUMS`; every file must print OK. (The three names are the research's Exercise 10 names; use your own.) PowerShell: `Get-ChildItem chapter_usb.mp4, chapter_web_1080.mp4, chapter_archive.mov | ForEach-Object { '{0}  {1}' -f (Get-FileHash $_.Name -Algorithm SHA256).Hash.ToLower(), $_.Name } | Set-Content SHA256SUMS -Encoding ascii`. Verify with `Get-Content SHA256SUMS | ForEach-Object { $h, $f = $_ -split '\s+', 2; if ((Get-FileHash $f -Algorithm SHA256).Hash -eq $h.ToUpper()) { "OK   $f" } else { "FAIL $f" } }`. TODO(verify on the maker's PC).
 
-**Pace.** Three or four exercises a week. Four a week finishes the set by 8 November 2026, so Exercise 10 is the delivery rehearsal ahead of the process lock; three a week finishes it by 14 November 2026. Either way, the L1 process lock is Sat 14 November and the slice is briefed Sun 15 November (W-06, W-07; ROADMAP-ADDENDUM.md). Re-time after Exercise 5, the first Blender render, because that is where a weak computer shows [100].
+**Pace.** Three or four exercises a week. Four a week finishes the set by 8 November 2026, so Exercise 10 is the delivery rehearsal ahead of the process lock; three a week finishes it by 14 November 2026. Either way, the P-LOCK process lock is Sat 14 November and the slice is briefed Sun 15 November (W-06, W-07; ROADMAP-ADDENDUM.md). Re-time after Exercise 5, the first Blender render, because that is where a weak computer shows [100].
 
 ## Decisions you'll need to make
 
@@ -324,13 +325,13 @@ The tested recipes are Unix commands. Every program they call (ffmpeg, ImageMagi
 
 **Lean:** Blender for the hero moves (hero shots are 5% of shots, about five in the film and four at 9 minutes, and the kitchen is the only built set; W-34), and editor keyframes for the rest. Time per route on your machine: pending the two `r2_param.py` runs from Exercise 5.
 
-### Decision 3: Which voxel tool?
+### Decision 3: Which tool draws the floor-art line?
 
-- **MagicaVoxel.** The research's judgement is that it is the quickest hand-modelling tool. It has a path-tracing renderer. It runs on Windows and macOS only, and it has no command line [56]. Its licence allows free use for any project, but not redistribution of the software [56].
-- **Goxel.** Runs on Windows, macOS and Linux. Exports OBJ, PLY and glTF. It opens a window even for export [58].
-- **Blockbench.** Cuboid models in a Minecraft style, free and open source, also a web app [59]. Its command line is unverified.
+- **Inkscape plus `recipes/r3_linedraw.py`.** The SVG line-reveal recipe of Step 7: one stroked centre-line path per line, its length read from the file, one SVG per frame, rendered from the command line [35][36][65][66]. Tested, no window.
+- **An agent-written seekable SVG (Route A).** The agent writes the scene as SVG, drives `stroke-dashoffset` against `pathLength` from a seekable time function, and renders it in the cloud container (`playbooks/agent-pipeline.md`; W-72). Best for the cards in the film, because the drawing is code and can be re-run.
+- **VectorCraft** (pinned v0.13.1). The maker's hand-touch layer for stable ids and data attributes (`playbooks/craft-visual.md`); never the only writer of the file (D-12).
 
-**Lean:** MagicaVoxel for modelling, if Step 0 confirms Windows. Goxel for converting the model to OBJ. TODO(research): run a timed modelling test. **Register status (D-23, O-05):** the voxel route is live only if the maker's pending answer on Minecraft is yes; original voxel assets only, never the reconstruction marker; the Minecraft name is at most a secondary description with the disclaimer.
+**Lean:** Inkscape and the recipe for the exercise; an agent-written SVG for the cards in the film, with the Inkscape drawing as the fallback. **Register status (D-29, W-72, S-46):** decided. The game-world route is retired; the look is her region's floor-art line drawn at the phone floor, and no deity is drawn (W-61).
 
 ### Decision 4: Which raster editor for cut-outs?
 
@@ -353,35 +354,36 @@ The tested recipes are Unix commands. Every program they call (ffmpeg, ImageMagi
 ### Decision 6: Which music?
 
 - **Free licences that clearly allow public screening and a private link.** Kevin MacLeod's incompetech tracks are CC BY 4.0. You must give credit, and his FAQ allows live productions and monetised YouTube [76][79]. Freesound sounds licensed CC0 or CC BY are fine. Avoid CC BY-NC [78][80]. The Sonniss GDC bundles are royalty-free, need no credit, and forbid AI training [82]. Kenney's game assets are CC0; its audio packs were not checked [83].
-- **AI-generated music.** Suno's free tier is for personal, non-commercial use, and Suno assigns no ownership to free users [88]. Meta's MusicGen weights are non-commercial [90]. The US Copyright Office has published on AI and copyright, but the research did not read its conclusions [89].
-- **Commercial songs from her life.** These need a recording licence and a publishing licence for any public or online showing. An unlisted YouTube link can still be flagged. Options, safest first: a licensed substitute with a similar mood; your own performance of the tune; or no music at all [100]. An offline private showing is not an option for the premiere, because the occasion is a public screening (D-08). Under only-me the lean is no licensed song; at most two, with sync and master, and only if the maker accepts that publishers and labels learn a film exists (W-44).
+- **AI-generated music.** Suno's free tier is for personal, non-commercial use, and Suno assigns no ownership to free users [88]. Meta's MusicGen weights are non-commercial [90]. The US Copyright Office has published on AI and copyright, but the research did not read its conclusions [89]. **Closed for the premiere (W-44, W-79), and no AI voice of any devotional text in Gujarati, Braj or Sanskrit, ever.**
+- **Commercial songs from her life.** These need a recording licence and a publishing licence for any public or online showing. An unlisted YouTube link can still be flagged. Options, safest first: a licensed substitute with a similar mood; your own performance of the tune, only when the hum case (HC-1 to HC-7) allows it (W-65, W-79); or no music at all [100]. An offline private showing is not an option for the premiere, because the occasion is a public screening (D-08). Under only-me the lean is no licensed song; at most two, with sync and master, and only if the maker accepts that publishers and labels learn a film exists (W-44).
 
 **What the licence texts say** (read 2026-10-18; research notes, Follow-up F8; not legal advice):
 - **Mixkit music** (free licence) [119]: public performance is granted "on any web or social media platform", and no venue screening is listed. Use Mixkit music for the private link only, unless Mixkit confirms in writing.
 - **Mixkit sound effects** [119]: allowed in filmmaking, including films shown on TV, on DVD or by video on demand.
 - **Pixabay** [120]: allowed for a film. Keep the download record. For the online copy, avoid tracks with the shield icon: they are registered with Content ID and can trigger claims.
 - **Zapsplat and Musopen** [141]: both sites refused our requests (HTTP 403). Their licences are not read.
-- **Suno** [121][140]: paid-tier downloads may be shown at a non-commercial premiere under the terms as read. Pro allows 20 song downloads a month and Premier 60; Free allows none, and free-tier output may not be shown. The choice is the maker's.
-- **For the premiere**, prefer licences that name public performance: CC BY 4.0, whose "Share" includes public performance [79]; Freesound CC0 or CC BY items [80]; or a paid-tier Suno download.
+- **Suno** [121][140]: paid-tier downloads may be shown at a non-commercial premiere under the terms as read. Pro allows 20 song downloads a month and Premier 60; Free allows none, and free-tier output may not be shown. Kept as a record: AI music is closed for the premiere (W-44, W-79).
+- **For the premiere**, prefer licences that name public performance: CC BY 4.0, whose "Share" includes public performance [79]; Freesound CC0 or CC BY items [80], only as labelled stand-ins and only if the sound is hers (O-72, W-79). The Suno reading above is a record, not a route.
 
-**Lean:** CC0 or CC BY tracks. No CC BY-NC. No AI music until its terms are read for public use. For her favourite songs, use a substitute or your own performance. The premiere is a mostly public gathering (charter), so every track must clear public performance; one paid rights-consult hour, asked as a hypothetical, is booked by Fri 4 Dec once the country is known (W-55), and every cue is decided by Mon 14 Dec (W-44). TODO(research): several licences were not read (see the open items list below).
+**Lean:** under W-44 the premiere has no licensed song (lean none, O-29) and no AI bed; CC0 or CC BY only as a labelled stand-in and only if the sound is hers (O-72). No CC BY-NC. For her favourite songs, use a substitute, or silence plus kitchen sound; a hummed tune is a performance of the work, so the hum case (HC-1 to HC-7) is placed first (W-65, W-79). The premiere is a mostly public gathering (charter), so every track must clear public performance; one paid rights-consult hour, asked as a hypothetical, is booked by Fri 4 Dec once the country is known (W-55), and every cue is decided by Mon 14 Dec (W-44). TODO(research): several licences were not read (see the open items list below).
 
-**Register status (W-44):** default. The music spine is, in order: silence and room tone; the tune she sang to the maker, hummed by the maker in week 1 and left uncleaned; a relative's public-domain performance; the maker's own sound; CC0 or CC BY with credit; a labelled local Stable Audio bed under voice only if the maker accepts it, never on the emotional peak. Route decided by Mon 30 Nov; substitutes locked Fri 8 Jan. Udio cannot supply a file (downloads disabled 2025-10-29), so treat it as closed. Suno free output may not be shown, and the paid-tier Suno route above is not part of the spine. Never use AI for her songs or an imitation of a real singer.
+**Register status (W-44, W-65, W-79):** default. The premiere's honest sound is objects, rooms, the sea's surf and the maker's hum; sung devotion waits for April. The spine is, in order: silence and room tone (never as a first sound); the tune she sang to the maker, hummed by the maker in week 1, uncleaned, in two takes (closed-mouth and open vowel), both used; the maker's own captures in her empty house; CC0 or CC BY only as a labelled stand-in and only if the sound is hers (O-72). No AI bed, no licensed song (lean none, O-29), no sung recording of any kind before April, no commissioned musician for the premiere (name-free briefs, April only), and no raga name on screen or in credits. Route decided by Mon 30 Nov; every cue and the hum case decided by Mon 14 Dec; substitutes locked Fri 8 Jan. Udio cannot supply a file (downloads disabled 2025-10-29), so treat it as closed; Suno and every other AI music route are closed for the premiere. Never use AI for her songs, for any devotional text, or for an imitation of a real singer.
 
 ### Decision 7: Which export set?
 
 - **Screening MP4** (H.264 High, level 4.1, 1080p) [91][95].
 - **Private web link** (12 Mbps cap at 1080p; made for the April version, with no link before the consent ledger closes, W-48) [91].
 - **Archive** (ProRes 422 HQ in MOV, or FFV1 in MKV) [92].
+- **Phone files** (PH1 at 1080p, PH2 at 720p; W-63) [91].
 
-**Lean:** All three, from one master, plus the laptop HDMI backup (Step 14). **Register status (W-15, W-17):** decided as the working default. The master is 1080p ProRes 422 HQ and a 2K Flat DCP is derived from it if the venue needs one; 4K is not needed (UHD only for single hero shots if a 4K cinema is booked). The screening MP4 is the 1080p24 venue file with the Main 4.0 backup described in Step 12.
+**Lean:** All four, from one master, plus the laptop HDMI backup (Step 14); the phone files are never a second edit (W-63). **Register status (W-15, W-17):** decided as the working default. The master is 1080p ProRes 422 HQ and a 2K Flat DCP is derived from it if the venue needs one; 4K is not needed (UHD only for single hero shots if a 4K cinema is booked). The screening MP4 is the 1080p24 venue file with the Main 4.0 backup described in Step 12.
 
 ### Decision 8: Burned-in captions or soft subtitles?
 
 - **Burned-in.** Every screen shows them, and nobody can switch them off [12][13].
 - **Soft subtitles** (a separate track the screen can switch on or off). TV support is unverified [100].
 
-**Lean:** Burned-in captions for the screening file. A sidecar `.srt` for the archive. Soft subtitles only after a test on the real screen. **Register status (W-18):** decided as the working default. Burned-in open captions in the venue file, with a DCP subtitle track only for a later cinema, using an OFL font; three sizes (20, 23, 26) are tested from 3 m in week 9 and from the venue's back row at the visit (by Sun 17 Jan).
+**Lean:** Burned-in captions for the screening file. A sidecar `.srt` for the archive. Soft subtitles only after a test on the real screen. **Register status (W-18):** decided as the working default. Burned-in open captions in the venue file, with a DCP subtitle track only for a later cinema, using an OFL font; three sizes (20, 23, 26) are tested from 3 m in week 9 and from the venue's back row at the visit (by Sun 17 Jan). The phone files carry their own caption burn (`FontSize=28`, `MarginV` 40), and Indic text goes through the `ass` filter before ffmpeg n9.0 (W-18, W-75).
 
 ### Decision 9: The venue and screen (the charter's open decision)
 
@@ -396,11 +398,11 @@ The charter fixes the occasion: a mostly public gathering on 2027-02-27 (D-08). 
 - Blender's default view transform desaturates photos. Set Standard [100].
 - A 3:2 photo stretches in `zoompan` and letterboxes in `melt` unless you crop it first [100].
 - `melt` defaults to a PAL frame (720×576) unless you set the profile [100].
-- Blender's OBJ importer assumes Y-up, but voxel tools are Z-up [56][100].
+- Blender's OBJ importer assumes Y-up, so a model exported from a Z-up tool arrives on its side unless you set forward axis Y and up axis Z [100].
 - An SVG imported into Blender comes in at about 0.000282 metres per pixel, so a bevel of 0.02 metres swamps the drawing [100].
 - A renderer that ignores `pathLength` will show every line as finished [66][100].
 
-**"Has a Python interface" does not mean "runs without a window."** Krita, Blockbench, Audacity, MagicaVoxel and Resolve Free run their scripts inside the open program [54][56][59][61]. The research ran these headless only: ffmpeg, ImageMagick, Blender's Python module, Inkscape's command line, `melt`, Synfig's command line and Goxel's export [100]. Glaxnimate's pip package would not import on Ubuntu 24.04 without extra libraries [39][100]. Goxel opens a window even when it exports [58].
+**"Has a Python interface" does not mean "runs without a window."** Krita, Audacity and Resolve Free run their scripts inside the open program [54][61]. The research ran these headless only: ffmpeg, ImageMagick, Blender's Python module, Inkscape's command line, `melt` and Synfig's command line [100]. Glaxnimate's pip package would not import on Ubuntu 24.04 without extra libraries [39][100].
 
 **Resolve's external scripting is Studio-only.** The 21 and 21.1 Reference Manuals say "External Scripting Using: (Resolve Studio only)", and the 21.1 features guide lists "Scripting API: Studio" [110][111][112]. The 21.1 MCP server for AI assistants is also Studio. On Free, agents hand the maker timeline files (OTIO, FCPXML, FCP7 XML, EDL, DRT, AAF) plus ffmpeg post-processing. Subtitle tracks, SRT/VTT import and export and burn-in carry no Studio mark; speech-to-subtitle does. Not yet seen on a real Free install: check `Preferences > System > General > External scripting using` on yours. The README mirror [6] and a third-party README [7] read the other way; the 21 and 21.1 manuals are the more specific source, so this playbook follows them.
 
@@ -436,7 +438,7 @@ The charter fixes the occasion: a mostly public gathering on 2027-02-27 (D-08). 
 7. **CSS-Tricks: How SVG Line Animation Works** (Chris Coyier, 2014). https://css-tricks.com/svg-line-animation-works/ [65]. Still the clearest plain explanation of the dash-offset trick. The date is old, but the method still holds.
 8. **Library of Congress: Recommended Formats Statement, Moving Image Works** (the current statement; undated on the page, read 2026-10-18). https://www.loc.gov/preservation/resources/rfs/moving.html [92]. Which archive formats to keep, and why an MP4 is a viewing copy only.
 
-**Video tutorials are thin.** The research could not verify any video for a Ken Burns move in an editor, 2.5D parallax in Blender, photo-to-voxel, SVG line-drawing, photo morphing or era grading [98][99]. The one video with a readable date and length is the Nuxttux "Keyframe Interpolation" tutorial, 5 minutes 34 seconds, uploaded 29 May 2025. The research read only its page details, not its content, so the title is all we know [99]. https://www.youtube.com/watch?v=F1h6Kg-WLDE. The Arkengheist rotoscoping video is from 2020 and shows an older Kdenlive, so use it for ideas only [99]. Blender Guru's 2026 beginner course runs over four hours, and its exact Blender version is unverified [98]. TODO(research): re-fetch the channel listings slowly, and open the shortlisted videos.
+**Video tutorials are thin.** The research could not verify any video for a Ken Burns move in an editor, 2.5D parallax in Blender, SVG line-drawing, photo morphing or era grading [98][99]. The one video with a readable date and length is the Nuxttux "Keyframe Interpolation" tutorial, 5 minutes 34 seconds, uploaded 29 May 2025. The research read only its page details, not its content, so the title is all we know [99]. https://www.youtube.com/watch?v=F1h6Kg-WLDE. The Arkengheist rotoscoping video is from 2020 and shows an older Kdenlive, so use it for ideas only [99]. Blender Guru's 2026 beginner course runs over four hours, and its exact Blender version is unverified [98]. TODO(research): re-fetch the channel listings slowly, and open the shortlisted videos.
 
 ## Sources
 [1] Project charter — CHARTER.md — undated (local file) — principles incl. "prefer scriptable tools", real memories stay real, dignity and consent.
@@ -515,11 +517,11 @@ The charter fixes the occasion: a mostly public gathering on 2027-02-27 (D-08). 
 
 [55] Photopea — Learn: Introduction — https://www.photopea.com/learn/ — vendor statement on local processing.
 
-[56] MagicaVoxel — https://ephtracy.github.io/mv_main.html ; https://ephtracy.github.io/mv_renderer.html ; https://ephtracy.github.io/mv_commands.html — 0.99.7.2 [7/12/2025]; licence; renderer; export; console; FAQ.
+[56] Withdrawn 2026-10-19 (D-29): a game-world modelling tool page. The number is kept so that other citations resolve.
 
-[58] Goxel — https://goxel.xyz/ ; https://raw.githubusercontent.com/guillaumechereau/goxel/master/README.md ; https://raw.githubusercontent.com/guillaumechereau/goxel/master/src/main.c — README "Version 0.15.1", GPL-3, formats; CLI `--export`, `--script`.
+[58] Withdrawn 2026-10-19 (D-29): a game-world modelling tool page. The number is kept so that other citations resolve.
 
-[59] Blockbench — https://www.blockbench.net/ — low-poly/cuboid models, animation, plugins, web app, GPL.
+[59] Withdrawn 2026-10-19 (D-29): a game-world modelling tool page. The number is kept so that other citations resolve.
 
 [61] Audacity Manual — Scripting; Macros — https://manual.audacityteam.org/man/scripting.html ; https://manual.audacityteam.org/man/macros.html — legacy development manual.
 
@@ -589,7 +591,7 @@ The charter fixes the occasion: a mostly public gathering on 2027-02-27 (D-08). 
 
 [99] YouTube video pages with readable metadata — https://www.youtube.com/watch?v=gcIKU4KxfLk (Arkengheist 2.0, Rotoscoping, 16:09, 2020-11-21) ; https://www.youtube.com/watch?v=F1h6Kg-WLDE (Nuxttux Creative Studio, Keyframe Interpolation, 5:34, 2025-05-29).
 
-[100] Sandbox verification runs, 2026-10-18 — local, not a URL — ffmpeg 6.1.1, ImageMagick 6.9.12, Blender `bpy` 5.2.2 (Python 3.13), Inkscape 1.2.2, MLT melt 7.22.0, Synfig 1.5.1, Goxel 0.11.0 (Xvfb), librsvg 2.58.0, svgpathtools, Pillow; outputs inspected with `ffprobe` and by eye. Runnable copies of research recipes R1 to R5 and R7 to R9 are in skills/free-creative-toolchain/recipes/.
+[100] Sandbox verification runs, 2026-10-18 — local, not a URL — ffmpeg 6.1.1, ImageMagick 6.9.12, Blender `bpy` 5.2.2 (Python 3.13), Inkscape 1.2.2, MLT melt 7.22.0, Synfig 1.5.1, librsvg 2.58.0, svgpathtools, Pillow; outputs inspected with `ffprobe` and by eye. Runnable copies of research recipes R1 to R5 and R7 to R9 are in skills/free-creative-toolchain/recipes/.
 
 [102] PyPI, `bpy` — https://pypi.org/pypi/bpy/json (JSON of https://pypi.org/project/bpy/) — release list, wheel file names and sizes, `requires_python`, README text; 5.2.2 uploaded 2026-09-15.
 
@@ -646,6 +648,7 @@ The charter fixes the occasion: a mostly public gathering on 2027-02-27 (D-08). 
 - v0.1 · 2026-10-18 · First draft, written by the Haiku scribe from research/toolchain.md and CHARTER.md. Not yet reviewed by the advisor or by the maker. The plan is provisional until the Step 0 checklist comes back.
 - v0.2 · 2026-10-18 · Round 1 advisor revisions applied by the Haiku scribe: Decision 0 (shell) with PowerShell forms of the four self-checks; Decision 5 rule "Scripts travel, photos don't"; album looks replace decade looks (Step 9, Exercise 7); ArtCraft and hand-off lines in Decisions 1 and 4; recipes moved to skills/free-creative-toolchain/recipes/; Library of Congress edition year corrected to "current, undated on the page".
 - v0.3 · 2026-10-18 · Round 2 advisor revisions applied by the Haiku scribe: `recipes/r2_param.py` added as the timed-run script, and Exercise 5 now produces the two R2_RESULT timings; Resolve external scripting restated as Studio-only per the 21 and 21.1 manuals; Mixkit, Pixabay, Suno and public-premiere licence readings added to Decision 6, Pitfalls and Sources; Windows run lines and melt.exe lines added; Whisper memory guidance added to Step 11 and Exercise 9; pace set to three or four exercises a week; open TODO items rewritten as open items at v0.2.
+- v0.5 · 2026-10-19 · Reconciled with DECISIONS.md after the her-world merge (2026-10-19): the P-LOCK name for the Sat 14 Nov lock (Codes); Exercise 8 and Decision 3 re-based on the floor-art line at the phone floor (D-29, W-72, S-46) with the retired tool sources withdrawn; repo stated as public, text and ID-keyed manifests only (D-14, D-26); Step 10 and Decision 6 follow the W-44 spine (objects, rooms, surf, the two-take hum; no AI bed, no licensed song, no sung recording before April; W-65, W-79); Step 11 and Decision 8 carry the W-18 Gujarati caption rules, the phone caption setting and the `ass` path before ffmpeg n9.0 (W-75); the phone files PH1 and PH2 added to Step 12 and Decision 7 (W-63); the venue test clip carries the tone ladder (W-17).
 - v0.4 · 2026-10-18 · Reconciled with DECISIONS.md (2026-10-18): frame rate 24 fps (W-14) in Step 4, Step 6, Step 8 and Exercise 2, with the 24 fps values marked UNVERIFIED until r1, r2 and r5 and the colour-patch test are re-run (the recipe files still carry 25); `zoompan` as a proof tool only (W-41); loudness -1 dBTP with three venue masters and a two-pass linear `loudnorm` (W-19); venue file per W-17 with a Main 4.0 backup; 4K dropped (W-15); sound order and mix tool for only-me (D-05, W-20, W-35); cloud policy (D-15, W-23, W-24); second encrypted SSD, no cloud copy (W-25); real photos after the L1 lock Sat 14 Nov and collection from Sun 15 Nov (D-13); music spine, Udio closed, no offline-private option for a public screening (D-08, W-44); voxel route conditional on O-05 and original assets only (D-23); no private link before the consent ledger closes (W-48). Decisions carry their register status.
 
 ### Open items at v0.2
@@ -661,10 +664,10 @@ The charter fixes the occasion: a mostly public gathering on 2027-02-27 (D-08). 
 - **Licences still unread.** Zapsplat and Musopen: the sites refused automated reads, so the maker can paste the licence text from a browser (research Follow-up F13). Also unread: Openverse, ccMixter, Free Music Archive per-track terms, BBC Sound Effects' full terms, the YouTube Audio Library outside YouTube [77], and Stable Audio and Lyria terms (Udio cannot supply a file, so it is closed; W-44). The US Copyright Office Part 2 conclusions are unread [89]. Suno's download allowance on your own account (Decision 6).
 - **Album look on your prints.** `derive_album_look.py` was tested on three stock prints (Step 9, Exercise 7). Run it on three prints from one of your albums, and on Windows Python.
 - **Venue facts.** The screen, cable, USB format (FAT32 or exFAT), MKV and soft subtitles, HEVC, 50 frames a second (a 25 fps access copy is made only if a 50 Hz-only venue judders, W-14), and the country of the premiere (O-02, pending). Run the venue test kit on the real screen (research Follow-up F15; Decisions 7 to 9).
-- **Voxel route.** Human modelling time per object; Blender-native voxel routes; depth-map and camera-projection parallax (Decision 3, Exercise 8).
+- **Floor-art line-draw card.** Drawing time per card on the maker's PC, and the agent-written Route A version against the Inkscape recipe (Decision 3, Exercise 8).
 - **Cloud rendering.** No cloud render path was tested (Decision 5).
 - **Hardware floors.** Kdenlive and Inkscape minimums were not found [8][32]. Resolve Free's floor is in its installer Read Me (above).
-- **Headless claims not run.** Krita headless Python; Glaxnimate's pip package on your OS; the Audacity 4 scripting pipe; OpenShot bindings and `.osp`; hand-writing a native `.kdenlive`; EEVEE with no graphics card; Goxel's `--script` option; Synfig's ffmpeg target syntax [100].
+- **Headless claims not run.** Krita headless Python; Glaxnimate's pip package on your OS; the Audacity 4 scripting pipe; OpenShot bindings and `.osp`; hand-writing a native `.kdenlive`; EEVEE with no graphics card; Synfig's ffmpeg target syntax [100].
 - **ArtCraft.** Not covered by this track. See the craft-visual and craft-motion tracks [1].
-- **Time estimates.** Per-exercise times were not measured. Exercise 8 may take longer than two hours [100].
+- **Time estimates.** Per-exercise times were not measured. Exercise 8 (the floor-art card) may run longer than two hours; its drawing time was not measured [100].
 - **Search budget.** The shared search budget ran out in both research rounds. Better tutorials and tools may exist [100].

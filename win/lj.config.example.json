@@ -1,0 +1,48 @@
+{
+  "schema": "lj-config/1",
+  "_about": "Copy this file to lj.config.local.json in the same folder and edit the copy. Use forward slashes in paths. Version 0 of lj.ps1 only LISTS things; nothing in this file can make it delete anything.",
+  "root": "C:/lj",
+  "tools_root": "tools",
+  "work_folder_names": ["work"],
+  "never_touch_names": [],
+  "never_touch_paths": [],
+  "extra_tools_folder_names": [],
+  "apps": {
+    "photocraft": {
+      "status": "UNVERIFIED",
+      "recent_files": [],
+      "cache": [],
+      "note": "Our notes say (not checked on this PC): Recovery is in %APPDATA%/Photocraft/Recovery up to v0.9.0 and in %LOCALAPPDATA%/Photocraft/Recovery from v0.10.0; a portable zip keeps its data in PhotoCraftData beside the program."
+    },
+    "vectorcraft": {
+      "status": "UNVERIFIED",
+      "recent_files": [],
+      "cache": [],
+      "note": "Our notes say (not checked on this PC): %APPDATA%/VectorCraft for an installed copy; a portable zip keeps its data in VectorCraftData beside the program."
+    },
+    "lightcraft": {
+      "status": "UNVERIFIED",
+      "recent_files": [],
+      "cache": [],
+      "note": "Our notes say (not checked on this PC): %APPDATA%/LightCraft and a thumbnail cache; a portable zip keeps its data in LightCraftData beside the program; XMP sidecars sit next to the scans (v0 lists the ones under a work folder)."
+    },
+    "filmcraft": {
+      "status": "UNVERIFIED",
+      "recent_files": [],
+      "cache": [],
+      "note": "Our notes say (not checked on this PC): a portable zip (portable.txt present) keeps a data folder beside the program, otherwise %APPDATA%/FilmCraft; an Auto-Save folder sits next to each project; previews go in a Media Cache folder."
+    },
+    "effectcraft": {
+      "status": "UNVERIFIED",
+      "recent_files": [],
+      "cache": [],
+      "note": "Our notes say (not checked on this PC): auto-saves go in a folder named EffectCraft Auto-Save next to the project; settings are in its config folder (a portable zip keeps them beside the program)."
+    },
+    "soundcraft": {
+      "status": "UNVERIFIED",
+      "recent_files": [],
+      "cache": [],
+      "note": "Learning only, never in the delivery path. Our notes say (not checked on this PC): %APPDATA%/SoundCraft holds Autosave, logs and ui.json."
+    }
+  }
+}

@@ -49,6 +49,15 @@
       "dissolve_without_neighbour"
     ]
   },
+  "empty_video_track": {
+    "allowed_companions": [],
+    "described_as": "the Video track has no children at all (the stack's own markers and the audio clip are still there)",
+    "exit": 1,
+    "expected_code": "no_clips",
+    "failed_codes": [
+      "no_clips"
+    ]
+  },
   "filmcraft_effect_unknown": {
     "allowed_companions": [],
     "described_as": "an effect named blur is added",
@@ -139,12 +148,45 @@
       "motion_edge_exposed"
     ]
   },
-  "no_video_track": {
+  "nested_stack_at_root": {
     "allowed_companions": [],
-    "described_as": "the Video track is renamed Audio",
+    "described_as": "a second Stack, holding a Track with a clip, is a child of the top Stack beside V1 and A1",
+    "exit": 1,
+    "expected_code": "nested_composition",
+    "failed_codes": [
+      "nested_composition"
+    ]
+  },
+  "nested_stack_in_track": {
+    "allowed_companions": [
+      "no_clips"
+    ],
+    "described_as": "all of the Video track's items are moved into one nested Stack inside the track, so no per-clip rule sees a clip",
+    "exit": 1,
+    "expected_code": "nested_composition",
+    "failed_codes": [
+      "nested_composition",
+      "no_clips"
+    ]
+  },
+  "nested_track_beside_clips": {
+    "allowed_companions": [],
+    "described_as": "a Track holding a clip with a missing media path is nested inside the Video track, after the four real clips",
+    "exit": 1,
+    "expected_code": "nested_composition",
+    "failed_codes": [
+      "nested_composition"
+    ]
+  },
+  "no_video_track": {
+    "allowed_companions": [
+      "no_clips"
+    ],
+    "described_as": "the Video track is renamed Audio (so no Video track holds a clip either)",
     "exit": 1,
     "expected_code": "no_video_track",
     "failed_codes": [
+      "no_clips",
       "no_video_track"
     ]
   },
@@ -203,6 +245,15 @@
     "expected_code": "target_url_backslash",
     "failed_codes": [
       "target_url_backslash"
+    ]
+  },
+  "target_url_escapes_folder": {
+    "allowed_companions": [],
+    "described_as": "ch01_s01 uses media/../media/ch01_s01.png (the file exists, but the path climbs through '..')",
+    "exit": 1,
+    "expected_code": "target_url_escapes_folder",
+    "failed_codes": [
+      "target_url_escapes_folder"
     ]
   }
 }

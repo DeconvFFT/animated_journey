@@ -2,8 +2,9 @@
 # tests/roundtrip/make_evidence.sh     WP-06: run everything and file the evidence
 #
 # Runs run_tests.sh --quick, then run_tests.sh --all, then the acceptance commands of the work package on their own (with the venv stage recorded as the
-# guard answered it), and writes build/evidence/wp06/{tests_quick.txt,tests_all.txt,tests_quick.jsonl,acceptance_transcript.txt,guard_stage_venv.json,summary.json,
-# environment.json,venv_otio.json}. Exit code: that of the --all run.
+# guard answered it), and writes build/evidence/wp06/{tests_quick.txt,tests_all.txt,tests_quick.jsonl,tests_all.jsonl,acceptance_transcript.txt,guard_stage_venv.json,
+# summary.json,environment.json,venv_otio.json}. Each mode has its own .jsonl (run_checks.py writes tests_<mode>.jsonl), so the two runs can not overwrite each other.
+# Exit code: that of the --all run.
 set -u
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 EV="$ROOT/build/evidence/wp06"
@@ -11,8 +12,7 @@ SCR="${LJ_SCRATCH:-$(cd "$ROOT/.." && pwd)/build-scratch}"
 mkdir -p "$EV"
 cd "$ROOT" || exit 2
 bash tests/roundtrip/run_tests.sh --quick 2>&1 | tee "$EV/tests_quick.txt"
-cp "$EV/tests.jsonl" "$EV/tests_quick.jsonl"
-bash tests/roundtrip/run_tests.sh --all 2>&1 | tee "$EV/tests_all.txt"
+LJ_WP06_COUNTS="$EV/.counts.json" bash tests/roundtrip/run_tests.sh --all 2>&1 | tee "$EV/tests_all.txt"
 RC="${PIPESTATUS[0]}"
 # the venv stage's ledger line (the guard's own record of what it said)
 # shellcheck disable=SC1091

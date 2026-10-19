@@ -70,15 +70,19 @@ $names = @(
 foreach ($n in $names) {
     $src = Join-Path $env:USERPROFILE ('Downloads\' + $n)
     if (Test-Path -LiteralPath $src) {
-        Move-Item -LiteralPath $src -Destination 'C:\lj\dl\' -Force
-        'moved          ' + $n
+        try {
+            Move-Item -LiteralPath $src -Destination 'C:\lj\dl\' -Force -ErrorAction Stop
+            'moved          ' + $n
+        } catch {
+            'could not move:  ' + $n
+        }
     } else {
         'not in Downloads: ' + $n
     }
 }
 ```
 
-If a line says "not in Downloads", the browser saved it somewhere else or you have not downloaded it yet. Move it by hand.
+If a line says "not in Downloads", the browser saved it somewhere else or you have not downloaded it yet. If a line says "could not move", the file is still in Downloads (for example because it is still downloading or `C:\lj\dl` is missing). Move it by hand. This box prints file names only, never a folder path.
 
 ## Step 3. Check each zip against the table
 
@@ -244,11 +248,11 @@ Get-ChildItem -LiteralPath $root -Recurse -File | Where-Object { $_.Name -in 'ph
 
 Craft apps keep working copies, recovery files and lists of recent files. For a surprise, you and I need to know exactly where each app puts them. These two lines only **read**. They print folder and file names with the start of your own user folder replaced by `%USERPROFILE%`, so the output is safe to paste. Please run both **within an hour of the test**, once per app, and paste both outputs in chat with the app's name above them.
 
-Line 1: the folders under `%APPDATA%` and `%LOCALAPPDATA%` that changed in the last hour (up to 80 lines for each of the two; it may take a minute; the Temp folder is left out because every program touches it):
+Line 1: the folders under `%APPDATA%` and `%LOCALAPPDATA%` that changed in the last hour, down to three levels (up to 80 lines for each of the two; it may take a minute; the Temp folder is left out because every program touches it; any folder name that contains an `@`, such as an e-mail address, is printed as `<redacted>`):
 
 <!-- lj:mode=readonly lj:kind=where_appdata -->
 ```powershell
-$since = (Get-Date).AddHours(-1); foreach ($r in @(@('%USERPROFILE%\AppData\Roaming', $env:APPDATA), @('%USERPROFILE%\AppData\Local', $env:LOCALAPPDATA))) { Get-ChildItem -LiteralPath $r[1] -Directory -Recurse -Depth 3 -Force -ErrorAction SilentlyContinue | ForEach-Object { $rel = $_.FullName.Substring($r[1].Length); if ($_.LastWriteTime -gt $since -and $rel -notmatch '^[\\/]Temp([\\/]|$)') { $r[0] + $rel } } | Select-Object -First 80 }
+$since = (Get-Date).AddHours(-1); foreach ($r in @(@('%USERPROFILE%\AppData\Roaming', $env:APPDATA), @('%USERPROFILE%\AppData\Local', $env:LOCALAPPDATA))) { Get-ChildItem -LiteralPath $r[1] -Directory -Recurse -Depth 2 -Force -ErrorAction SilentlyContinue | ForEach-Object { $rel = $_.FullName.Substring($r[1].Length) -replace '[^\\/]*@[^\\/]*', '<redacted>'; if ($_.LastWriteTime -gt $since -and $rel -notmatch '^[\\/]Temp([\\/]|$)') { $r[0] + $rel } } | Select-Object -First 80 }
 ```
 
 Line 2: the files under the app's own folder that changed in the last hour (programs and libraries are left out). **Change the folder on the first line to the app you just tested**:

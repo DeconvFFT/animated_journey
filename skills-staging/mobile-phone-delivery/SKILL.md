@@ -1,17 +1,17 @@
 ---
 name: mobile-phone-delivery
-description: Makes, encodes and checks the phone deliverables for the Life Journey film (the phone master P1, the small P2 copy, phone captions, the phone-safe frame and the project-phone protocol), and sets the keepsake and sharing rules for her phone and relatives' phones. Use when a phone file, phone caption, phone-safe shot, keepsake route, relatives' copy or any on-phone image is planned, encoded, tested or signed off.
+description: Makes, encodes and checks the phone deliverables for the Life Journey film (the two phone files PH1 and PH2, phone captions, the phone-safe frame and the project-phone protocol), and sets the keepsake and sharing rules for her phone and relatives' phones. Use when a phone file, phone caption, phone-safe shot, keepsake route, relatives' copy or any on-phone image is planned, encoded, tested or signed off.
 ---
 
 # Mobile phone delivery
 
 ## Purpose
 
-Make every Life Journey deliverable play beautifully on a phone (D-27) without weakening the venue master. There is one phone master, cut from the ProRes master, with measured phone floors and a repeatable device test. The reasoning, the decision tables and the open questions live in `playbooks/mobile-delivery.md`. This skill is the agent form of that playbook.
+Make every Life Journey deliverable play beautifully on a phone (D-27) without weakening the venue master. There is one picture and two phone files, PH1 and PH2, cut from the ProRes master, with measured phone floors and a repeatable device test (W-63). The reasoning, the decision tables and the open questions live in `playbooks/mobile-delivery.md`. This skill is the agent form of that playbook.
 
 ## When to use
 
-- Encoding or checking P1 (the phone master) or P2 (the small copy).
+- Encoding or checking PH1 or PH2.
 - Setting phone caption burn-in, the phone-safe frame, the fill-crop card or the dark-step tests.
 - Choosing or testing her keepsake route, or a relative's copy.
 - Reviewing any image that appears on a phone surface: lock screen, thumbnail, icon, page frame or forwarded frame.
@@ -19,35 +19,35 @@ Make every Life Journey deliverable play beautifully on a phone (D-27) without w
 ## When not to use
 
 - The venue master, DCP, venue captions or hall loudness: use `theatrical-delivery-and-rights`.
-- Story choices, or which deity or motif to show: those are the maker's decisions (O-42, O-44). This skill applies only the phone constraints.
+- Story choices, or which deity or motif to show: those are the maker's decisions (O-64, which absorbs O-42; O-44). This skill applies only the phone constraints.
 - ArtCraft app steps: use `craft-apps-visual-refinement` or `craft-apps-motion-refinement`.
 - Consent or labels for AI-altered photos: use `ai-photo-to-animation-pipeline`.
 - Any send or upload of the film before the reveal. That is never allowed.
 
 ## Procedure
 
-1. Confirm the phone unknowns (O-43 and the backup state) from the maker's written answers (the intake table is `research/mobile-delivery.md`, Follow-up research, Q-F7). The backup questions are: does Google Photos back up, **is "Back up all device folders" on (K1's first question)**, does the phone manufacturer's gallery sync run (Samsung Gallery to OneDrive; others UNVERIFIED), is the account shared. Never check her phone (D-02). Anything unknown defaults to "treat it as on" (K1).
+1. Confirm the phone unknowns (O-54, which absorbs O-43, and the backup state) from the maker's written answers (the intake table is `research/mobile-delivery.md`, Follow-up research, Q-F7). The backup questions are: does Google Photos back up, **is "Back up all device folders" on (K1's first question)**, does the phone manufacturer's gallery sync run (Samsung Gallery to OneDrive; others UNVERIFIED), is the account shared. Never check her phone (D-02). Anything unknown defaults to "treat it as on" (K1).
 2. Start from the ProRes 422 HQ master (W-15). Never start from the venue file or from RGB frames.
-3. Encode P1 with the T-M1 template: `-crf 20`, `-maxrate 8M -bufsize 16M`, High 4.1, AAC-LC 192k, `+faststart`, metadata stripped. Keep the bracketed `lut3d` step out until Trim P is signed.
-4. Encode P2 (720p, `-crf 22`, `-maxrate 4M`, AAC-LC 160k) for low-storage phones and for relatives.
-5. Burn the phone captions: Latin text at FontSize 28, MarginV 40, Outline 2, white, at most 36 characters a line, two lines. Size Gujarati by the height of KA (K2), not by FontSize 28: **Noto Sans Gujarati is the default caption face (FontSize 26.2 for the 3.8% target)**, citing the sibling's Q9 Gujarati paragraph: Hind Vadodara has no Gujarati digits (U+0AE6 to U+0AEF), so any date falls back to FreeSerif, while Noto Sans Gujarati carries the digits, the Om sign and every conjunct; use Hind Vadodara (24.8) only for lines without digits. Run the shaping check first (it also checks the build: `subtitles` before ffmpeg n9.0 shapes in simple mode). The master carries a BT.709 tag; an `.ass` carries `YCbCr Matrix: TV.709`.
+3. Encode PH1 with the T-M1 template: `-crf 20`, `-maxrate 8M -bufsize 16M`, High 4.1, AAC-LC 192k, `+faststart`, metadata stripped. Keep the bracketed `lut3d` step out until Trim P is signed.
+4. Encode PH2 (720p, `-crf 22`, `-maxrate 4M`, AAC-LC 160k) for low-storage phones and for relatives.
+5. Burn the phone captions: Latin text at FontSize 28, MarginV 40, Outline 2, white, at most 36 characters a line, two lines. Size Gujarati by the height of KA (K2), not by FontSize 28: **Noto Sans Gujarati is the caption face (FontSize 26.2 for the 3.8% target; W-18, W-21)**. Hind Vadodara is not used for any date or Samvat (no Gujarati digits, U+0AE6 to U+0AEF, so a date falls back to FreeSerif), and Mukta Vaani is not used for Gujarati text (unfused conjuncts when tagged Gujarati); Noto Sans Gujarati carries the digits, the Om sign and every conjunct. Her script on cards and verse is shaped outlines, never live text (W-21). Run the shaping check first, once, at P-LOCK (it also checks the build): on any ffmpeg older than n9.0 the `subtitles` filter shapes in simple mode, so burn an Indic line with the `ass` filter on an ASS file made from the SRT, never `subtitles` or `drawtext` (W-75). The master carries a BT.709 tag; an `.ass` carries `YCbCr Matrix: TV.709`.
 6. Run the colour-patch test (within ±3/255, twelve patches) on the PC build of each template (W-16), and the twelve-patch caption colour test (Exercise 3 step 5 of the playbook). Tinted caption colours are allowed only on a build that passes it.
 7. Measure the final MP4: the ffprobe fields, atom order (`moov` before `mdat`), true peak at or below -1.0 dBTP and loudness at -16 LUFS. Re-encode with `volume=-0.5dB` if the peak is too high.
 8. Check each shot's frame: must-read type at x-height 3.2% or more (3.8% target), strokes 4 px or more, action and hands inside the central 80%, caption zone clear, safe-area overlay on three frames.
-9. Set a thumbnail with light in it: the first frame of her object or her hands in the opening (W-32, W-33), never a title card and never a deity (O-42); the same frame marks the folder on the venue sticks. Name the file with a neutral code until the reveal.
+9. Set a thumbnail with light in it: the first frame of her object or her hands in the opening (W-32, W-33), never a title card and never a deity (O-64); the same frame marks the folder on the venue sticks. Name the file with a neutral code until the reveal.
 10. Run the project-phone protocol (T-M6, thirteen rows) on an Android in the 2019 to 2021 class and an iPhone, with no accounts on either. A failed row gets fixed and re-run.
-11. Choose the route with K1 (her phone: cable, with her yes, after the reveal; ask first whether "Back up all device folders" is on, since the app-folder route is safe only if it is off; otherwise the tablet or the stick) and K4 (relatives: P2 as a WhatsApp document, after the ledger closes). Free space first (keyed on O-43): P1's 737 MB ceiling plus a 200 MB margin means at least 1 GB free on her phone; if O-43 reports less, P2 goes on by cable and P1 waits for the tablet or the stick.
+11. Choose the route with K1 (her phone: cable, with her yes, after the reveal; ask first whether "Back up all device folders" is on, since the app-folder route is safe only if it is off; otherwise the tablet or the stick; ask the same question again in the her-turn conversation, Sun 7 Mar after about 14:00, W-48; after the copy rename the file to the film's title in her script and offer the lock-screen still, W-73, W-74) and K4 (relatives: PH2 as a WhatsApp document, after the ledger closes). Free space first (keyed on O-54): PH1's 737 MB ceiling plus a 200 MB margin means at least 1 GB free on her phone; if O-54 reports less, PH2 goes on by cable and PH1 waits for the tablet or the stick.
 12. Log every send in the rights log (T8 `phone_share`) and the sharing table (T-M4). Nothing is sent before the reveal or before the ledger closes.
 
 ## Checklists
 
 **File checks (every output)**
-- ffprobe: H.264 High; level 4.1 for P1 and 3.1 for P2; yuv420p; color range tv; bt709 primaries, transfer and matrix; 24/1 fps; frame count equal to the timeline.
+- ffprobe: H.264 High; level 4.1 for PH1 and 3.1 for PH2; yuv420p; color range tv; bt709 primaries, transfer and matrix; 24/1 fps; frame count equal to the timeline.
 - The master carries `color_space=bt709` before any burn-in; atom order `ftyp, moov, ..., mdat`; `+faststart` present.
 - Metadata: no title, comment or location. The hash is recorded in the manifest.
-- Colour patches within ±3/255 (P1 and P2 measured at 3/255 and 2/255 in the container).
+- Colour patches within ±3/255 (PH1 and PH2 measured at 3/255 and 2/255 in the container).
 - Final MP4 true peak at or below -1.0 dBTP; loudness -16 LUFS.
-- P1 grain survival at least 70% of the master (CRF 20 gives 73%; CRF 22 gives 43%, which fails).
+- PH1 grain survival at least 70% of the master (CRF 20 gives 73%; CRF 22 gives 43%, which fails).
 - File name is a neutral code before the reveal.
 
 **Frame checks (every shot with `phone_safe`)**
@@ -55,10 +55,10 @@ Make every Life Journey deliverable play beautifully on a phone (D-27) without w
 - Caption zone: venue 78% to 93% of height; phone 68% to 86%.
 - Strokes: 4 px for meaning-bearing lines, 3 px for decoration, dots 6 px, holes 4 px, hatch 3 px on 9 px pitch. No 1 px lines and no hairlines.
 - Text contrast at least 4.5:1 (target 7:1). Captions white or neutral by default; a tinted caption colour only after the twelve-patch caption test passes on the PC build.
-- No deity image on any phone surface without the maker's written decision (O-42).
+- No deity image on any phone surface without the maker's written decision (O-64, which absorbs O-42).
 
 **Protocol rows (T-M6)**
-1 hygiene; 2 copy by cable; 3 one-tap play; 4 fill-crop card per player; 5 caption burn-in read at 35 cm and 50 cm; 6 dark steps at 100 and 500 lux; 7 strokes and colour; 8 thumbnail and sort position; 9 chat round trip (fixture only, optional); 10 sound tone ladder; 11 Gujarati shaping on the PC (P-LOCK); 12 slice fixture played from the project phone's gallery (P-LOCK); 13 scrubber page opened from the project Android's file manager and from Files on the iPhone, recording whether the video plays (measures the page's demotion).
+1 hygiene; 2 copy by cable; 3 one-tap play; 4 fill-crop card per player; 5 caption burn-in read at 35 cm and 50 cm; 6 dark steps at 100 and 500 lux; 7 strokes and colour; 8 thumbnail and sort position; 9 chat round trip (fixture only, optional); 10 sound tone ladder, then each cue and both hum takes (W-19, W-65); 11 Gujarati shaping on the PC (P-LOCK; the single shaping gate); 12 slice fixture played from the project phone's gallery (P-LOCK); 13 scrubber page opened from the project Android's file manager and from Files on the iPhone, recording whether the video plays (measures the page's demotion).
 
 **Sharing checks**
 - Before the reveal: nothing reaches any phone.
@@ -70,14 +70,14 @@ Make every Life Journey deliverable play beautifully on a phone (D-27) without w
 
 - Must-read type: x-height 3.2% (hard floor) and 3.8% (target), which is 41 px at 1080p.
 - Phone captions: FontSize 28, white, at most 36 characters a line, two lines, 20 characters a second.
-- A phone copy is a faithful reduction: master to P1 to a chat proxy equals master straight to the proxy, within 0.01 (M).
+- A phone copy is a faithful reduction: master to PH1 to a chat proxy equals master straight to the proxy, within 0.01 (M).
 - Every number is labelled (M), (C), (J) or UNVERIFIED. Gallery, messenger and fill behaviour are measured, not assumed.
 - Black is pinned at code 16. The Trim P starting value is 4 to 7 IRE at codes 24 to 40 (J), tuned on the phone.
 
 ## Guardrails
 
-- **Respect and the Hindu-only rule (D-28).** "Indian" always means Hindu: Sanatan Dharma and its sanskriti. No Mughal or other Islamic motifs and no Christian motifs, ever. Leave out shared or ambiguous decoration by default: jaali, paisley, mehndi borders, arches, tile patterns. Church-shaped bells, candles where a diya belongs, a flat gold-disc halo drawn as in a church icon, crosses, winged figures: Christian or colonial layer, none. The ghanta (temple bell), the diya and the prabhavali or prabhamandala are Hindu and are not excluded by this rule. The swastika in a thumbnail or lock-screen still is out by default (O-44).
-- **Deities** are shown with correct iconography and respect. No deity image on a phone surface until the maker decides in writing, as her proxy (O-42). The default is her script's end-card line, a lamp or the object.
+- **Respect and the Hindu-only rule (D-28).** "Indian" always means Hindu: Sanatan Dharma and its sanskriti. No Mughal or other Islamic motifs and no Christian motifs, ever. Leave out shared or ambiguous decoration by default: jaali, paisley, mehndi borders, arches, tile patterns. Church-shaped bells, candles where a diya belongs, a flat gold-disc halo drawn as in a church icon, crosses, winged figures: Christian or colonial layer, none. The ghanta (temple bell), the diya and the prabhavali or prabhamandala are Hindu and are not excluded by this rule. The swastika in a thumbnail or lock-screen still is out by default (SW0, W-72); a sathiyo on a phone surface is the maker's call alone, with the room's reading (O-44, O-66).
+- **Deities** are shown with correct iconography and respect. The deity policy is class P1 for all eight deities: symbols and seva objects that are not a svarupa, and no deity drawn, generated or photographed (W-61); nothing in her seva space is photographed without her knowing (PR4). No deity image on a phone surface until the maker decides in writing, as her proxy (O-64, which absorbs O-42). The default is her script's end-card line, a lamp or the object.
 - **Rights.** Every forwarded copy is a public distribution, so no copy goes out before the ledger closes (W-48). Fonts must be OFL with a rights-log row (W-21). Nothing uncleared goes into a phone copy.
 - **Privacy.** No personal media in git. The repo is public, so use person IDs only. Project phones carry no accounts unless the maker decides otherwise (Decision 12). Nobody checks her phone before the reveal (D-02). No phone test or copy leaves the project phones before the reveal.
 - **Authority.** The register wins. This skill does not edit `DECISIONS.md`, `CHARTER.md`, `ROADMAP.md`, `CLAUDE.md` or anything under `.claude/`.
@@ -151,7 +151,7 @@ Make every Life Journey deliverable play beautifully on a phone (D-27) without w
 55. Wikipedia, "Lux" — https://en.wikipedia.org/wiki/Lux — read 2026-10-19 — office 320 to 500 lux; overcast 1,000; full daylight 10,000 to 25,000.
 56. Wikipedia, "Fresnel equations" — https://en.wikipedia.org/wiki/Fresnel_equations — read 2026-10-19 (first 100,000 characters) — about 4% reflectance per glass surface.
 57. Netflix Partner Help Center, "Timed Text Style Guide: General Requirements" — https://partnerhelp.netflixstudios.com/hc/en-us/articles/215758617-Timed-Text-Style-Guide-General-Requirements — read 2026-10-19 — two lines maximum; events 5/6 s to 7 s.
-58. Local: `CHARTER.md`; `DECISIONS.md` (D-02, D-05, D-15, D-24, D-27, D-28, D-31, W-04, W-15 to W-20, W-25, W-26, W-30, W-33, W-35, W-46 to W-48, O-30, O-43); commit `ac6711e`. O-42 to O-44 are defined in `reviews/04-hindu-mobile-briefs-review.md`.
+58. Local: `CHARTER.md`; `DECISIONS.md` (D-02, D-05, D-15, D-24, D-27, D-28, D-31, W-04, W-15 to W-20, W-25, W-26, W-30, W-33, W-35, W-46 to W-48, O-30, O-43); commit `ac6711e`. O-42 and O-43 were defined in `reviews/04-hindu-mobile-briefs-review.md`; the register (2026-10-19) absorbs them as O-64 and O-54, and O-44 is its own row.
 59. Local: `playbooks/theatrical-delivery.md` (Steps 4 to 8, T1, T2, T8, T9, T11); `playbooks/format.md` (Step 8, Decisions 8 and 11, Step 15); `playbooks/cinematic-quality.md` (T1 PR2 and PR3, T6, Exercise 2, TY1); `playbooks/surprise-ops.md` (Step 11, Decision 15); `playbooks/toolchain.md` (captions).
 60. Local: `research/hindu-visual.md` F3 (M-H1) and `research/hindu-visual-fixtures/phone_chart.svg`; `research/cinematic-quality.md` FQ1 (Legge and Bigelow 2011 and the BBC guidelines are cited there; neither was re-opened); `research/agent-pipeline.md` Q-F1; `reviews/04-hindu-mobile-briefs-review.md` Part 4.
 61. Local: this track's fixtures and measurements, 2026-10-19: `research/mobile-delivery-fixtures/` (README, SVG templates, CSVs, Gujarati and Devanagari shaping evidence).
@@ -167,3 +167,7 @@ Make every Life Journey deliverable play beautifully on a phone (D-27) without w
 71. Local: `research/sources/mobile-delivery-whatsapp-excerpts-2026-10-19.txt` — dated excerpts of [1] to [5].
 72. Local: `research/pushtimarg-world.md` (F6, PR2, PR4, PR10, PR14, open Q3).
 73. Local: round-1 fixtures in `research/mobile-delivery-fixtures/` (caption colour CSVs, `caption_ycbcr_matrix_example_2026-10-19.ass`, `scaler_bracket_720p_panel_2026-10-19.csv`, the re-cut Gujarati `.srt` and `.png`).
+
+## Changelog
+
+- 2026-10-19: Reconciled with DECISIONS.md after the her-world merge (2026-10-19): PH1 and PH2 replace the retired phone-file names throughout (S-57); the caption face is Noto Sans Gujarati only, with Hind Vadodara and Mukta Vaani not used, and the `ass` path before ffmpeg n9.0 (W-21, W-75); the shaping check is the single P-LOCK gate (W-06); the sound row and cold-open work follow W-19, W-65 and W-76; the her-turn conversation is Sun 7 Mar after about 14:00 (S-64, W-48); O-42 resolves to O-64 and O-43 to O-54; the deity and sathiyo rows follow W-61, PR4 and W-72.

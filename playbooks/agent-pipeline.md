@@ -1,10 +1,10 @@
 # Agent-First Production Pipeline: What the Agents Make, Where It Renders, How It Comes Back
 
-*Draft v3, 2026-10-18. Track `agent-pipeline`. Built from `research/agent-pipeline.md` (researcher Sonnet, 2026-10-18) and `CHARTER.md`, reconciled with [DECISIONS.md](../DECISIONS.md) (2026-10-18). Not yet reviewed. Open items are marked TODO(research).*
+*Draft v4, 2026-10-19. Track `agent-pipeline`. Built from `research/agent-pipeline.md` (researcher Sonnet, 2026-10-18) and `CHARTER.md`, reconciled with [DECISIONS.md](../DECISIONS.md) (2026-10-18, and again 2026-10-19 after the her-world merge). Not yet reviewed. Open items are marked TODO(research).*
 
 *How to read the labels: [n] points to the Sources list at the end. (M1) to (M21) are measurements taken on 2026-10-18 in the project's cloud container, using made-up test material only. (J) is the researcher's judgment. ESTIMATE is arithmetic on measured numbers. UNVERIFIED means nobody has checked it yet.*
 
-**Reconciled with DECISIONS.md (2026-10-18). The register wins (D-21).** The frame rate is settled at 24 fps on the settings card, Sun 1 Nov (W-14, W-16). The film is 9 or 12 minutes (W-01, W-02): a 12-minute film is a wrapper plus three 3:00 modules and a 9-minute film a wrapper plus two, so "chapter" below means a module of about 3:00 (W-04); the vertical slice is 100 seconds of C01 (W-07). Only-me (D-03): the maker is the proxy and nobody else reviews; hard chapters follow one-key-three-guards (D-04). Gathering starts Sun 15 Nov, after the L1 process lock on Sat 14 Nov (D-13, W-06). Family media stays on the PC and the encrypted drive: `cloud: none` by default, a second encrypted SSD, no cloud copy (D-15, W-24, W-25). Each row of the Decisions table carries its register status.
+**Reconciled with DECISIONS.md (2026-10-18). The register wins (D-21).** The frame rate is settled at 24 fps on the settings card, Sun 1 Nov (W-14, W-16). The film is 9 or 12 minutes (W-01, W-02): a 12-minute film is a wrapper plus three 3:00 modules and a 9-minute film a wrapper plus two, so "chapter" below means a module of about 3:00 (W-04); the vertical slice is 100 seconds of C01 (W-07). Only-me (D-03): the maker is the proxy and nobody else reviews; hard chapters follow one-key-three-guards (D-04). Gathering starts Sun 15 Nov, after the P-LOCK process lock on Sat 14 Nov (D-13, W-06). Family media stays on the PC and the encrypted drive: `cloud: none` by default, a second encrypted SSD, no cloud copy (D-15, W-24, W-25). **Added 2026-10-19 (her-world merge):** the five spikes are SP1 to SP5 (Codes); the shot brief carries the Hindu-world and phone fields of W-42, and G2, G4 and G6 carry the matching checks; the repo is public, so it holds ids and text only (D-14, D-26); the primary drawn idiom for Route A is the floor-art line at the phone floor (W-72, W-38 decision 3); no deity is drawn, generated or photographed (W-61); and the phone files are PH1 and PH2 (W-63). Each row of the Decisions table carries its register status.
 
 ## Why this matters for our life journey
 
@@ -21,7 +21,7 @@ The first real checkpoint is the one-chapter slice (G-SLICE: 100 seconds of C01,
 ## Core principles
 
 1. **Story before software.** Her voice, places and objects decide what goes on screen. Tools come second [1].
-2. **The agents build, you refine.** The source of truth is text in the private repo: scene code, shot briefs and the timeline. If you change a shot in a Craft app, export it and write down what you changed. The agents read your change back. They do not rebuild over it.
+2. **The agents build, you refine.** The source of truth is text in the repo (public, D-26: ids and text only): scene code, shot briefs and the timeline. If you change a shot in a Craft app, export it and write down what you changed. The agents read your change back. They do not rebuild over it.
 3. **A frame must be a function of time.** Ask for frame 48 twice and you must get the same picture both times. This lets an agent fix one shot without disturbing the others. In the probes, two runs of the same scene gave identical frames (M9, M10). Real-time animation did not repeat (M11). Any method that cannot step frame by frame is a prototype only.
 4. **Scripts travel to the photos. Photos stay home.** Each set of photos has a `cloud` level: `none`, `preview` or `full`. The default is `none`. Full-size scans stay on the PC and on the encrypted drive [2][4][5]. `full` is for non-family material only: no full-size family photo is ever raised to `full` or leaves the PC (D-15, W-24).
 5. **Avoid the template look on purpose.** Uniform easing, stock transitions, centred titles and the same slow zoom on every photo make any film look like a template. Random noise does not fix this. Deliberate variety, seeded so it can be repeated, and some asymmetry do [37].
@@ -34,7 +34,7 @@ The first real checkpoint is the one-chapter slice (G-SLICE: 100 seconds of C01,
 **Words first.**
 - **Shot:** one continuous picture between two cuts.
 - **Chapter:** a group of shots about one period of her life, told as a module of about 3:00 (W-04). The vertical slice builds 100 seconds of the first chapter, C01, which is 2,400 frames at 24 frames per second (W-07) [7].
-- **Route A:** scenes drawn in web code (SVG, GSAP animation, rough.js for hand-drawn edges, three.js for simple 3D). A headless browser (a browser with no window) captures them one frame at a time [22][24][25][26].
+- **Route A:** scenes drawn in web code (SVG, GSAP animation, rough.js for hand-drawn edges, three.js for simple 3D). A headless browser (a browser with no window) captures them one frame at a time [22][24][25][26]. The film's primary drawn idiom is the floor-art line of her region (W-72): a dot grid, one closed stroke per dot, `stroke-dashoffset` driven against `pathLength` from `seekTo(t)`, at the phone floor (meaning lines 4 px, decoration 3 px, dots and repeat units 6 px, holes 4 px, no hairlines).
 - **Route B:** real photos moved and finished with ImageMagick, Pillow and ffmpeg.
 - **Hand-off:** a file given to a Craft app, in a format both sides can read.
 - **Gate:** a review that ends with a written decision saved in `reviews/`.
@@ -50,18 +50,18 @@ The first real checkpoint is the one-chapter slice (G-SLICE: 100 seconds of C01,
 
 Optional: Claude Code can run natively on Windows with a PowerShell one-liner. It needs Windows 10 version 1809 or later and at least 4 GB of RAM. Sandboxing is not supported on native Windows [46]. Do not use the Claude desktop app for this work. The charter records that it uses too much memory on this PC [1].
 
-**Step 3. Run the spikes (week 1).** Five short tests decide which routes are real. Each has a pass mark. Fable reviews the results at the L1 process lock, Sat 14 Nov (W-06).
-- **S1:** the Craft command-line tools inside the container. The scope is in `research/craft-motion.md` (R8) [3].
-- **S2:** frame capture for Route A.
-- **S3:** Blender, for hero shots.
-- **S4:** how the cloud container behaves when idle. Open question: does a running background job keep it awake? TODO(research), not documented in the pages read.
-- **S5:** the validators (Templates).
+**Step 3. Run the spikes (week 1).** Five short tests decide which routes are real. Each has a pass mark. Fable reviews the results at the P-LOCK process lock, Sat 14 Nov (W-06).
+- **SP1:** the Craft command-line tools inside the container. The scope is in `research/craft-motion.md` (R8) [3].
+- **SP2:** frame capture for Route A.
+- **SP3:** Blender, for hero shots.
+- **SP4:** how the cloud container behaves when idle. Open question: does a running background job keep it awake? TODO(research), not documented in the pages read.
+- **SP5:** the validators (Templates).
 
 A route that fails its spike is dropped, or moved to the PC. Do not argue with the result.
 
-**Step 4. Write the shot brief (gate G0).** The agent drafts one short brief per shot. It says what the shot is for, where the material comes from (an album-session excerpt, a Card A slip or a document ID), how long it lasts, which route builds it, each input and its `cloud` level, the palette, the motion family, the seed, the audio cues and the checks it must pass. You approve or comment in `feedback/<shot>.md`. If an input is `cloud: none`, the agent still writes the brief, the script and the expected `render.json`, commits them and marks the shot `pc-render`. You run `lj.ps1 run <shot>` on the PC and push the validator JSON and the preview; only the cloud render is skipped. Raising the level is never the agent's move.
+**Step 4. Write the shot brief (gate G0).** The agent drafts one short brief per shot. It says what the shot is for, where the material comes from (an album-session excerpt, a Card A slip or a document ID), how long it lasts, which route builds it, each input and its `cloud` level, the palette, the motion family, the seed, the audio cues and the checks it must pass. Since 2026-10-19 it also carries the Hindu-world and phone fields of W-42: `motif_check` (W-66 values), `deity_form`, `deity_source`, `respect_check` (R1 to R20, VR-1 to VR-3, PR1 to PR25), `phone_stroke_ok`, `phone_safe`, `hands_box`, `object_box`, `caption_zone`, `place_id`, `political_room` (W-71), `kitchen_hour` (a T3b value, sheet only, never a card, W-62), `hands_making` and, for a swing or a seat, `seat_check` (W-67). You approve or comment in `feedback/<shot>.md`. If an input is `cloud: none`, the agent still writes the brief, the script and the expected `render.json`, commits them and marks the shot `pc-render`. You run `lj.ps1 run <shot>` on the PC and push the validator JSON and the preview; only the cloud render is skipped. Raising the level is never the agent's move.
 
-**Step 5. Approve three style frames (gate G1).** Before any motion, the agent makes three still frames that show the look. The palette is six colours or fewer, sampled from her prints. Type and textures are recorded with their licence files. You approve them; the first approved set is G1, Sun 15 Nov (W-38). Under only-me nobody else looks, and a hard chapter follows one-key-three-guards (D-04).
+**Step 5. Approve three style frames (gate G1).** Before any motion, the agent makes three still frames that show the look. The palette is six colours or fewer, sampled from her prints. Type and textures are recorded with their licence files; type is OFL only, with the Indic families of W-21. G1 locks the style bible's twelve decisions (W-38; decision 11 is `hindu_idiom`, decision 12 is moving footage), or a card-and-set sheet if the household keys are not answered by Sun 1 Nov (O-67). You approve them; the first approved set is G1, Sun 15 Nov (W-38). Under only-me nobody else looks, and a hard chapter follows one-key-three-guards (D-04).
 
 **Step 6. Build and render a draft (agent, 10 to 40 minutes per shot).**
 - Route A: the scene exposes `seekTo(t)`. That function sets the picture for time `t` and does nothing else. A repo script captures the frames in sharded, resumable jobs of 10 minutes or less, writing each frame to disk as it goes [49][50].
@@ -69,7 +69,7 @@ A route that fails its spike is dropped, or moved to the PC. Do not argue with t
 
 **Step 7. Self-check (agent, at most three fix loops).** The validators in Templates run before anything is handed on. A failure goes into the shot's review file. It is never hidden.
 
-**Step 8. Review pack and critic (gate G2).** The agent makes a contact sheet of eight timed frames, frame strips for key moments, full-resolution crops of faces and type, and a preview of 20 MB or less. It also writes `render.json`, which records the inputs, the seed, the tool versions and the file hashes. A fresh-context reviewer scores the six charter criteria. Run the critic twice with different frame orders and compare the answers. A critic that sees only stills cannot judge smoothness or sound [43].
+**Step 8. Review pack and critic (gate G2).** The agent makes a contact sheet of eight timed frames, frame strips for key moments, full-resolution crops of faces and type, and a preview of 20 MB or less. It also writes `render.json`, which records the inputs, the seed, the tool versions and the file hashes. A fresh-context reviewer scores the six charter criteria. Run the critic twice with different frame orders and compare the answers. A critic that sees only stills cannot judge smoothness or sound [43]. G2 also composites `safe_area_template.svg` on three frames per shot and carries the arm-and-attribute count on any deity symbol (W-42, W-63). Fable reads every flagged brief, every deity shot, every verse card, every capture-log entry that names a seva object and every phone surface.
 
 **Step 9. Your review (5 to 10 minutes per production day, W-42).** Watch the day's review packs with sound on, for no more than 5 to 10 minutes. Drop markers only (red cut, yellow hold, green breath, blue wrong photo) and approve nothing until 48 hours have passed. Write the comment file (Templates) from your markers. For any shot flagged for template risk, compare the draft with a variant. Do not be told which one the agent made.
 
@@ -80,9 +80,9 @@ A route that fails its spike is dropped, or moved to the PC. Do not argue with t
 **Step 12. Hand back and render the final (agent).** The agent validates the export, re-attaches the animation to the shapes by their IDs, renders at full resolution and saves a new approved version. Version numbers only go up.
 
 **Step 13. Assemble the chapter (you and the agents, 1 to 2 hours per chapter pass).** The agents write the timeline file. You open it in FilmCraft on the PC, adjust it and export ProRes 422 HQ. ffmpeg makes the access copy. Then three gates run.
-- G4: a reviewer checks pacing, variety of moves, continuity and captions.
+- G4: a reviewer checks pacing, variety of moves, continuity and captions. The per-chapter checks are split (W-42). **Gated:** MO8a/MO8b, captions inside the 90% box, -1 dBTP, colour-patch, L-label present, the AI-tells sweep including the Hindu tells, one still-still, the strangers' first question, and a `card_text` scan for the eight darshan names (PR16, W-62). **Reported, not gated until G-DRAFT (Sun 31 Jan):** shot-length CoV of 0.4 or more, move-family mix, holds of 35% or more, ΔE00 thresholds, half and double speed, sound-off and picture-off.
 - G5: dignity and facts. Fable flags in writing and the maker decides under one-key-three-guards (a decision sheet per item, the written flag, the maker's two decisions 72 hours apart, default OUT of the public cut on any doubt). Fable never passes G5 (D-04).
-- G6: a technical check. Run ffprobe and loudness measurement, check captions, test the file on a TV at about 3 metres [7], and make a safety copy.
+- G6: a technical check. Run ffprobe and loudness measurement, check captions, test the file on a TV at about 3 metres [7], and make a safety copy. The phone files get the checks of W-63 (G6 and G-MASTER): ffprobe fields and frame count equal to the timeline; `moov` before `mdat`; twelve colour patches within ±3/255 on the PC build; true peak after the AAC encode; baked-grain survival of 70% or more on PH1; type floors and strokes; the safe-area overlay on three frames; no metadata; and a neutral code as the file name before the reveal.
 
 **Step 14. Close the day (agent, about 10 minutes).** Update the manifests and the ledger. Commit text only. Run the backup on the PC. Delete old drafts. Write the day's note.
 
@@ -90,7 +90,7 @@ A route that fails its spike is dropped, or moved to the PC. Do not argue with t
 
 ## Learn-by-doing exercises
 
-Do these in order. Use only made-up or test material. No family photos until the L1 process lock (Sat 14 Nov); covert collection starts Sun 15 Nov (D-13). Times are for a first attempt (J).
+Do these in order. Use only made-up or test material. No family photos until the P-LOCK process lock (Sat 14 Nov); covert collection starts Sun 15 Nov (D-13). Times are for a first attempt (J).
 
 **Exercise 1. Know your PC.**
 - **Goal:** write down the five facts that decide the encryption route, the local model options and the export speed.
@@ -108,9 +108,9 @@ Do these in order. Use only made-up or test material. No family photos until the
 - **Goal:** see the agent's machine and its limits, with no private material in it.
 - **Steps:**
   1. Open claude.ai/code in a browser tab. This needs a Pro, Max, Team or Enterprise plan [50].
-  2. Start a session on a private repo that holds no personal files.
+  2. Start a session on a repo that holds no personal files (the project repo is public, so it holds none, D-26).
   3. Ask the agent: "Report the CPU count, total memory, free disk, the Playwright and Chromium versions and the ffmpeg version. Change nothing."
-  4. Close the tab. Come back after 10 minutes and check that the session and its files are still there. Expect the files to be there. A background job that was running when the machine was reclaimed is gone, and whether a pause alone ends one is still open (spike S4).
+  4. Close the tab. Come back after 10 minutes and check that the session and its files are still there. Expect the files to be there. A background job that was running when the machine was reclaimed is gone, and whether a pause alone ends one is still open (spike SP4).
 - **Time:** 30 minutes.
 - **What good looks like:** you can write down the four numbers. The research measured about 4 vCPU, 16 GB of RAM, 24 to 28 GB of free disk, Playwright 1.56.1, Chromium 141 and ffmpeg 6.1.1 on 2026-10-18 (M1 to M3) [67]. The numbers can change. You understand that idle sessions pause, and that a reclaimed machine does not restore background work that was still running [49][50].
 
@@ -131,6 +131,7 @@ Do these in order. Use only made-up or test material. No family photos until the
   2. Ask it to measure loudness and true peak with `ebur128` and report the results.
   3. Listen on headphones. Write down what the numbers did not tell you, such as whether the click is harsh or whether the start is abrupt.
   4. Ask for a second version with a 0.5-second fade in and out. Listen to it.
+  5. Play both versions on the project Android phone's own speaker at 50% volume and write down what disappears (W-19, W-76). A phone speaker drops a low hum and room tone, so the phone pass is part of the listening test.
 - **Time:** 45 minutes.
 - **What good looks like:** you can say what the numbers reported and what your ears reported, and why they differ. You know that the agent cannot make this judgment for you [43][38].
 
@@ -177,6 +178,10 @@ Do these in order. Use only made-up or test material. No family photos until the
 | Master | ProRes 422 HQ | About 590 MB per minute on a test pattern (M5) |
 | Alpha overlay | ProRes 4444, yuva444p10le, BT.709 | Not a master. Encode with the ProRes 4444 chain in `skills/agent-first-production-pipeline/SKILL.md` step 8 (measured in research Q-F1). Tags are not enough: the colour-patch test must pass (Validator checklist). An RGBA PNG sequence from EffectCraft is preferred (`research/craft-motion.md`, issue #340) |
 | Access copy | H.264 High, yuv420p, BT.709, limited range, faststart, CRF 16 to 18 | [3]. Encode with the chain in SKILL step 8, then pass the colour-patch test (Validator checklist). The venue file is CRF 18 with a 20 Mbps cap and AAC-LC 256 kbps (W-17) |
+| Phone file PH1 | 1920x1080p24 H.264 High 4.1, yuv420p, BT.709 tags on the master before the burn-in, CRF 20 with an 8 Mb/s cap, AAC-LC 192 kbps, `+faststart`, `-map_metadata -1` | From the ProRes master, never the venue file; SDR only, no HEVC (its saving is the grain); -16 LUFS and -1 dBTP on the final MP4 (W-63, W-19) |
+| Phone file PH2 | 1280x720, CRF 22, 4 Mb/s cap, level 3.1 | Captions burned on the 1080 frame before the downscale; for low-storage phones and WhatsApp's 64 MB document limit (W-63) |
+| Captions | Burned in; venue `FontSize=23`, `MarginV` 20 or more; phone `FontSize=28`, `MarginV` 40 | Indic text through the `ass` filter before ffmpeg n9.0 (W-18, W-75) |
+| Fonts | OFL only; Indic families per W-21 | A T8 `font` row with the `OFL.txt` hash and the libass `fontselect:` line pasted; her script on titles and verse cards as shaped outlines, never live text |
 | Safety copy | 1080p24 H.264, Main profile, level 4.0, about 8 Mbps | The register's backup copy (W-17) [3] |
 
 **Shot brief** (one file per shot, `brief.yaml`)
@@ -193,17 +198,32 @@ route: B            # A | B | blender | craft
 inputs:
   - {id: LJ-B03-0042-F__L1, role: main, cloud: preview, crop: "keep both faces; no silent crop"}
 look:
-  palette: [paper-cream, tomato-red, ink-brown, faded-green]   # six or fewer
-  type: {family: Caveat, license: OFL-1.1, use: "captions only"}
+  palette: [paper-cream, tomato-red, ink-brown, faded-green]   # six or fewer, sampled from her prints (W-38)
+  type: {family: Noto Sans Gujarati, license: OFL-1.1, font_row: T8-font-001, use: "captions"}   # OFL only, Indic families per W-21; her script on titles and verse cards is shaped outlines, never live text
 motion:
   camera: "slow push, drift left, settle at 4.8 s"   # a family, not a recipe
   ease_family: asymmetric-settle
   hold_on_twos: true
   seed: 20261024
 audio: {voice: none, room: LJ-A02-0007, music_cue: m03, sync_points: ["3.2 s: the kettle clicks off"]}   # premiere cut: no recorded living voice except one HER-PUBLIC line if it passed (D-05)
-constraints: [no invented faces, no lower thirds, no beat-synced zoom, reconstructions visibly stylised]
+constraints: [no invented faces, no lower thirds, no beat-synced zoom, reconstructions visibly stylised, no deity drawn, generated or photographed]
 acceptance: ["first and last 0.3 s clean", "face never cropped", "hold 0.75 s or more after the click"]
 output_level: L4a   # label ladder level of the result [2]
+# Hindu-world and phone fields (W-42), filled at G0 and read at G2:
+motif_check: Hindu-Gujarati   # hindu | Hindu-Gujarati | flagged | excluded | jain_flag | adivasi_flag | political-room, with a source (W-66)
+deity_form: none              # none | symbol | seva object that is not a svarupa (class P1, W-61); a generative route never touches a deity
+deity_source: none            # a logged source, or none
+respect_check: pending        # R1 to R20, VR-1 to VR-3, PR1 to PR25 on any deity or seva-object shot
+phone_stroke_ok: true         # meaning lines 4 px or more at 1080, decoration 3, dots 6, holes 4, no hairlines (W-38 decision 3)
+phone_safe: {action_inside_central80: true, text_inside_phone_box: true, caption_zone_clear: true}
+hands_box: null               # pixels at 1080p, inside the central 80% of height
+object_box: null
+caption_zone: venue           # none | venue | phone (venue 78 to 93% of height, phone 68 to 86%)
+place_id: null                # a saurashtra-world place id, if a place is shown
+political_room: false         # true for Somnath, Dwarka or anything of Ayodhya (W-71)
+kitchen_hour: null            # a T3b value, sheet only, never a card (W-62)
+hands_making: null            # a pushtimarg T4 or saurashtra Template B id
+seat_check: null              # for a swing or a seat (W-67)
 ```
 
 **Feedback comment file** (`feedback/LJ-C01-S014.md`, written by you)
@@ -223,13 +243,13 @@ craft-app-needed: no
 Severity words are `blocker`, `should` and `nice`. The agent answers each line in `render.json` with `done`, `declined (reason)` or `question`.
 
 **Gate checklist** (each gate is a file in `reviews/<chapter>/`)
-- **G0 brief:** Does the beat come from a named source? Is the camera, ease, palette, type and seed named? Does every input have a consent status, and is its `cloud` level allowed for this use? Are the acceptance checks testable?
-- **G1 style frames:** Could this be any family's film? Six colours or fewer, sampled from her prints? Every font and texture has a licence file? Reconstructions visibly stylised?
-- **G2 shot draft:** Validators green, with the JSON attached? Hold of 0.75 s or more after each payoff? No loops or stretches to fill a slot? Faces and type checked on full-resolution crops? Template-risk output reviewed? Open items listed, not hidden?
+- **G0 brief:** Does the beat come from a named source? Is the camera, ease, palette, type and seed named? Does every input have a consent status, and is its `cloud` level allowed for this use? Are the acceptance checks testable? Are the W-42 fields filled: `motif_check` not `excluded` (a `flagged` brief goes to Fable), `deity_form` and `deity_source` (default P1, no generative route), `respect_check`, `phone_stroke_ok`, `phone_safe`, the boxes, `political_room` where it applies?
+- **G1 style frames:** Could this be any family's film? Six colours or fewer, sampled from her prints? Every font and texture has a licence file (OFL, Indic families per W-21)? Reconstructions visibly stylised? The never list and the Hindu tells checked (W-38 decision 10, W-66)?
+- **G2 shot draft:** Validators green, with the JSON attached? Hold of 0.75 s or more after each payoff? No loops or stretches to fill a slot? Faces and type checked on full-resolution crops? Template-risk output reviewed? The safe-area overlay composited on three frames, and the arm-and-attribute count present on any deity symbol? Open items listed, not hidden?
 - **G3 refine:** Your changes pass the hand-back validators? Nothing you did was lost? Labelled as yours?
 - **G4 chapter:** Varied move families, holds and silence? Palette and type continuous? Captions within the length and reading-speed limits in the format track [7]? Loudness plan? No more than three class-A shots in a row without a held still, a class B, C or D shot, or a voice-only beat? At least one shot per chapter where the photo does not move at all?
-- **G5 dignity (the maker, under one-key-three-guards):** Each hard topic (loss, illness, separation, money, conflict) has a decision sheet, Fable's written flag and the maker's two decisions 72 hours apart, and is cleared or OUT? Anything HOLD or PRIVATE, and anything she might not want seen in front of a public room, is out of the public cut? Fable flags and never passes G5 (D-04).
-- **G6 technical:** Master is ProRes 422 HQ. Access copy is H.264, yuv420p, BT.709, limited range. Frame count, duration and 48 kHz audio are right. Loudness holds -1 dBTP, with the venue master chosen at the Mon 22 Feb run (W-19). The file plays on the venue-class TV. Checksums are logged. The second copy is a second encrypted SSD kept elsewhere, verified (W-25).
+- **G5 dignity (the maker, under one-key-three-guards):** Each hard topic (loss, illness, separation, money, conflict) has a decision sheet, Fable's written flag and the maker's two decisions 72 hours apart, and is cleared or OUT? Anything HOLD or PRIVATE, and anything she might not want seen in front of a public room, is out of the public cut? Fable flags and never passes G5 (D-04). A hard chapter in her tradition also uses the Template G sheet of `playbooks/hindu-frameworks.md` (W-78).
+- **G6 technical:** Master is ProRes 422 HQ. Access copy is H.264, yuv420p, BT.709, limited range. Frame count, duration and 48 kHz audio are right. Loudness holds -1 dBTP, with the venue master chosen at the Mon 22 Feb run (W-19). The file plays on the venue-class TV. The phone files pass the W-63 checks, with -16 LUFS and -1 dBTP measured on the final MP4 after the AAC encode. Checksums are logged. The second copy is a second encrypted SSD kept elsewhere, verified (W-25).
 
 A gate passes only when every score is 4 or higher and nothing critical is open [1].
 
@@ -241,7 +261,9 @@ A gate passes only when every score is 4 or higher and nothing critical is open 
 - **ORA:** the zip opens, `stack.xml` parses, every layer file exists, and names match the ID pattern.
 - **Timeline (OTIO):** parses, every media file exists, every clip sits inside its available range, and the rate matches the project.
 - **Audio:** 48 kHz, 24-bit. Record loudness and true peak with `ffmpeg -i <file> -af ebur128=peak=true -f null -`; true peak must be at or below -1 dBTP (W-19).
-- **Fonts and textures:** each has a licence file. Handwriting fonts are OFL or Apache licensed [29]. Textures from ambientCG are CC0 [28]. Each texture has a source URL and a date.
+- **Fonts and textures:** each has a licence file. Fonts are OFL only (W-21): every family has a T8 `font` row with its `OFL.txt` hash and the libass `fontselect:` line pasted; Noto Sans Gujarati for captions, Rasa or Baloo Bhai 2 for cards, Noto Serif Gujarati for verse; not used: Hind Vadodara for dates, Mukta Vaani for Gujarati text, the plain name "Anek Gujarati", variable fonts except as static instances. Her script on titles and verse cards is shaped outlines, never live text. Handwriting fonts are OFL or Apache licensed [29]. Textures from ambientCG are CC0 [28]. Each texture has a source URL and a date.
+- **Phone floor (pixels):** every meaning line is 4 px or more at 1080 (decoration 3, dots and repeat units 6, holes 4, hatch 3 at 9 px pitch); no hairlines; must-read type x-height 3.2% of picture height as the hard floor and 3.8% as the target; hands and the object inside the central 80% of height; text box 5 to 95% across and 12 to 88% down (W-38 decision 3, W-63).
+- **Deity and darshan:** `deity_form` and `deity_source` filled on any shot that carries a deity symbol or a seva object; no generative route touched a deity; a `card_text` scan finds none of the eight darshan names on any card (PR16, W-62).
 - **Pacing and repeat:** no shot under 1.5 seconds except impact frames. Two renders of one frame compare equal, or within the agreed tolerance.
 
 **Before anything goes to the cloud**
@@ -250,7 +272,7 @@ A gate passes only when every score is 4 or higher and nothing critical is open 
 - Only made-up or stock images, or proxy-sized images of a set the maker raised to `preview`, are used (D-15, W-24).
 - No family photo goes to a hosted renderer or to any hosted "memorial video" service.
 - API keys go in the environment's network secrets, never in chat, in environment variables or in the repo [49].
-- The repo holds person IDs such as `P-001`, not names. The key that maps IDs to names stays offline.
+- The repo holds person IDs such as `P-001`, not names. The key that maps IDs to names stays offline. The repo is public (D-26): no names, addresses, the name of any specific haveli or temple she attends, or other identifying data (places and traditions in general are fine).
 
 **Shot classes and maker time (ESTIMATE, J)**
 
@@ -291,9 +313,9 @@ For each decision: the options, then our current lean and why. The lean is a sta
 ## Pitfalls
 
 1. **The template feel.** Agents default to uniform easing, stock transitions and tidy symmetry. Fix: seeded variety per shot, a look-lock before motion, the template check, and your blind comparison at G2. If it still looks generic, cut the effect or hold the shot longer.
-2. **Nobody listens.** Loudness numbers are not a listening test. Fix: you listen at G2 and G4, on the TV or speakers the film will use [38][43].
+2. **Nobody listens.** Loudness numbers are not a listening test. Fix: you listen at G2 and G4, on the TV or speakers the film will use [38][43], and on the project Android's own speaker at 50% volume for every cue (W-19).
 3. **Live filters are slow and not repeatable.** A full-frame grain filter ran at 1.2 frames per second, and two runs with two filters differed in 5 of 36 frames by 12 to 80 pixels (M10). Fix: bake grain and paper into overlays. The cause of the small differences is UNVERIFIED (TODO(research)).
-4. **The container pauses and can be reclaimed.** Work that was still running is not restored [49][50]. Whether a running job keeps it awake is unknown (spike S4). Fix: jobs of 10 minutes or less, resumable frames, state kept in Git. Fallback: run long jobs on the PC or on a rented machine.
+4. **The container pauses and can be reclaimed.** Work that was still running is not restored [49][50]. Whether a running job keeps it awake is unknown (spike SP4). Fix: jobs of 10 minutes or less, resumable frames, state kept in Git. Fallback: run long jobs on the PC or on a rented machine.
 5. **Disks fill up.** A 12-minute film at 24 frames per second is 17,280 frames (the research counted a 10-minute film, 14,400 frames). Textured PNG frames are about 2 MB each, so loose frames would need about 35 GB. The container has about 24 to 28 GB free (M1, M10). Fix: pipe frames straight into ffmpeg, or encode each chunk and delete its frames.
 6. **Colour range mistakes.** Remotion's default output was full-range and tagged `bt470bg` (M13). Fix: set BT.709 and limited range explicitly, and check with ffprobe. The ffmpeg chains are not interchangeable across builds: the bare `-pix_fmt yuva444p10le` ProRes 4444 encode gave BT.601 pixels under BT.709 tags on ffmpeg 6.1.1 (10-bit luma 326 against 250) and correct pixels on 9.0.2 (Q-F1). On the Gyan 7.1.1, 8.1.2 and 9.0.2 builds tested, `-color_primaries` and `-color_trc` did not reach the stream, so the `setparams` filter restores them. Check the pixels with the colour-patch test, not only the tags. EffectCraft's ProRes 4444 is "tagged bt709 but sRGB-encoded" (open issue #340, `research/craft-motion.md`): prefer the RGBA PNG sequence, and use ProRes 4444 only after the colour-patch test passes.
 7. **Alpha software.** The Craft apps are early alpha and release often [3][4]. EffectCraft's command-line syntax is read from its source at tag v0.11.1 [68]. Fix: every step has a non-Craft fallback. Render to a new file name each time. Read the import report. Keep the source files regenerable.
@@ -305,7 +327,8 @@ For each decision: the options, then our current lean and why. The lean is a sta
 13. **Cost creep.** An unattended 22-agent run cost $207.58 and about 8 hours for a 90-second film [38]. Fix: no unattended multi-agent studios on this project. Use one shot per agent, at most three in parallel, and two revision rounds.
 14. **Licence and price drift.** Remotion says its licence changes in version 5.0 [9]. GSAP's licence may be revised, though earlier versions stay usable [15]. Google's pricing page announces changes on 2026-12-01 and 2027-01-01 for Gemini 4 Argon, Gemini 3.8 and 3.6 Flash, the 3.8 TTS models and Robotics ER 2, and names no image or video model among them [65]. Fix: pin versions, keep vendored copies with the licence files, and re-read each page before you upgrade.
 15. **Memory on Windows.** Several reports describe the Claude Code process on Windows growing to very large sizes (search results only). One was closed as fixed in version 2.1.74, according to its reporter [53]. Fix: keep most work in the cloud, keep local sessions short, and watch Task Manager in week 1.
-16. **Words in her mouth.** Do not clone a voice, do not have an agent sing a relative's words, and do not type new sentences in her handwriting font. Her handwriting may be used only for words she actually wrote [2][1].
+16. **Words in her mouth.** Do not clone a voice, do not have an agent sing a relative's words, and do not type new sentences in her handwriting font. Her handwriting may be used only for words she actually wrote [2][1]. No model recites, sings or transliterates a devotional text, and there is no AI voice of any devotional text in Gujarati, Braj or Sanskrit, ever (W-79).
+17. **A deity by accident.** A generator, a stock icon pack or a museum scan can slip a deity, a niche, a Mughal-court layer or a shared-origin motif (paisley, jaali, chhatri, cusped arch) into a frame. Fix: Route A and B scenes use only the symbols and the seva objects that are not a svarupa (W-61); `motif_check` and `deity_form` catch it at G0, the arm-and-attribute count and the Hindu tells at G2, and Fable reads every flagged brief and every deity shot (W-42, W-66).
 
 ## Best references
 
@@ -327,7 +350,7 @@ Also useful, though not in the top eight: Louise de Sadeleer's note that "the bo
 Project files (read 2026-10-18)
 - [1] Life Journey Project Charter, `CHARTER.md`, 2026-10-18. Roles, rubric, principles, constraints, open decisions.
 - [2] AI imagery and motion from real photos, `research/ai-imagery.md`, 2026-10-18. Verified privacy terms, label ladder, scanning rules, GPU tiers.
-- [3] ArtCraft motion and sound apps as refinement layers, `research/craft-motion.md`, 2026-10-18. FilmCraft, EffectCraft and SoundCraft facts, conform rules, interchange, spike S1.
+- [3] ArtCraft motion and sound apps as refinement layers, `research/craft-motion.md`, 2026-10-18. FilmCraft, EffectCraft and SoundCraft facts, conform rules, interchange, spike SP1.
 - [4] ArtCraft visual apps as refinement layers, `research/craft-visual.md`, 2026-10-18. PhotoCraft OpenRaster contract, VectorCraft id contract, control channels.
 - [5] Charter review 00, `reviews/00-charter-review.md`, 2026-10-18. Raw-material storage rule.
 - [6] Free desktop toolchain and core techniques, `research/toolchain.md`, 2026-10-18. Blender recipes and era grades.
@@ -389,7 +412,8 @@ First-hand
   - The project container has Playwright 1.56.1 and Chromium 141 preinstalled (M3). Earlier notes in `research/craft-motion.md` (R8) and `research/ai-imagery.md` said it did not. Corrected here.
   - Headless EEVEE rendered in the container through bpy 5.2.2 (M14). Earlier notes marked it unverified. It is now "works, slow, not yet proven across images".
   - The Gemini 2.5 Flash Image shutdown date (2026-10-02) has passed [65].
-  - Spike S1 is still the gate for any Craft command-line use inside the container.
-- **Open items (TODO(research)):** the maker's PC specifications; whether a running job keeps the cloud container awake (S4); whether cloud sessions accept image attachments; Remote Control on native Windows; memory of a browser tab and the local CLI; plan usage limits for 19 weeks; GitHub LFS personal rates; which Gemini models change price and whether Veo has a batch discount; prices for external SSDs, Hetzner Storage Box and Replicate editing models (Kontext, Qwen-Image-Edit); Remotion 5.0 licence text; the cause of SVG filter differences; cloud Cycles and EEVEE stability across container images; HyperFrames determinism rules; the Manim apt route; the Windows package IDs for ffmpeg and Python; `rclone` is not installed in the container, so backups run from the PC.
+  - Spike SP1 is still the gate for any Craft command-line use inside the container.
+- **Open items (TODO(research)):** the maker's PC specifications; whether a running job keeps the cloud container awake (SP4); whether cloud sessions accept image attachments; Remote Control on native Windows; memory of a browser tab and the local CLI; plan usage limits for 19 weeks; GitHub LFS personal rates; which Gemini models change price and whether Veo has a batch discount; prices for external SSDs, Hetzner Storage Box and Replicate editing models (Kontext, Qwen-Image-Edit); Remotion 5.0 licence text; the cause of SVG filter differences; cloud Cycles and EEVEE stability across container images; HyperFrames determinism rules; the Manim apt route; the Windows package IDs for ffmpeg and Python; `rclone` is not installed in the container, so backups run from the PC.
 - **2026-10-18, v2 (round-1 review nudges).** Colour chains replaced with the measured Q-F1 lines (the review's "`format=` before `scale=`" sentence was not applied, because the follow-up could not reproduce it); colour-patch validator added; M12 marked "tags verified, matrix not verified, corrected"; Gemini wording corrected (no image or video model named, no batch date forced); `cloud: none` now routes to the PC as `pc-render` instead of stopping the shot; class A renamed "parameterised photo move" with a G4 cap; winget ids added to Step 2; `lj.ps1 doctor` must not print user or machine names.
+- **2026-10-19, v4.** Reconciled with DECISIONS.md after the her-world merge (2026-10-19): the Sat 14 Nov lock is P-LOCK and the five spikes are SP1 to SP5 (Codes); the shot brief carries the W-42 Hindu-world and phone fields, and G0, G1, G2, G4, G5 and G6 carry the matching checks (W-42, W-63, W-66, W-71, W-78); the settings card gains PH1, PH2, caption and font rows (W-16, W-18, W-21, W-63, W-75); the Validator checklist gains the phone floor and the deity and darshan checks (W-38, W-61, W-62); Route A's primary idiom is the floor-art line (W-72); the repo is public (D-14, D-26); phone-speaker listening added (W-19); no AI voice of any devotional text (W-79); Pitfall 17 added.
 - **2026-10-18, v3.** Reconciled with DECISIONS.md (2026-10-18): frame rate settled at 24 fps on the Sun 1 Nov settings card (W-14, W-16); runtime 9 or 12 minutes, chapters as 3:00 modules, the 100-second slice and the hours model replace "8 to 12 minutes", "100 seconds a chapter" and "10 hours a week, 190 hours" (W-01, W-02, W-04, W-07); proxy and G5 restated for only-me and one-key-three-guards (D-03, D-04); Decision 11 closed; Decision 12 restated as a mostly public gathering with the venue dated (D-08, W-17); second copy is a second encrypted SSD with no cloud copy, VeraCrypt container (W-25); cloud level and paid-generation guards (D-15, W-23, W-24); hero shots about five in the film (W-34); review is 5 to 10 minutes a production day with markers only (W-42); the example brief and feedback no longer assume a recorded living voice (D-05); gathering from Sun 15 Nov after the L1 lock (D-13); venue file and backup per W-17; true peak -1 dBTP (W-19); Craft boundary and no Launcher (D-12); charter principle number for "finish beats sprawl" corrected to 8 (D-24).

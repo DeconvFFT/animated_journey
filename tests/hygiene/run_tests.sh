@@ -71,15 +71,23 @@ if [[ "$MODE" == all ]]; then
   say "GROUP acceptance_on_the_real_tree"
   cmd_result stale_audit_allowlist_no_dead_entries 0 "--audit-allowlist:" -- python3 -I scripts/stale_check.py --audit-allowlist
   cmd_result stale_report_exits_1_as_expected 1 "report run:" -- python3 -I scripts/stale_check.py --json "$TMP/rep.json" --md "$TMP/rep.md"
-  if python3 -I - "$TMP/rep.json" <<'PY'
-import json, sys
+  if python3 -I - "$TMP/rep.json" DECISIONS.md <<'PY'
+import json, re, sys
 d = json.load(open(sys.argv[1]))
 ids = [r["row_id"] for r in d["rows"]]
-assert ids == ["S-%02d" % n for n in range(1, 42)] + ["W-29"], ids
+reg = []
+for line in open(sys.argv[2], encoding="utf-8-sig").read().split("\n"):
+    m = re.match(r"^\| (S-[0-9]+) \|", line)
+    if m and m.group(1) not in reg:
+        reg.append(m.group(1))
+assert len(reg) >= 65, "the register's Table 4 was not read: %d ids" % len(reg)
+assert set(ids) == set(reg) | {"W-29"} and len(ids) == len(set(ids)), sorted(set(reg) | {"W-29"} ^ set(ids))
 assert d["summary"]["fail"] > 0 and d["work_orders"] and "info_candidates" in d
+print("%d rows: every S-nn id of the register's Table 4 (%s to %s) plus W-29" % (len(ids), reg[0], reg[-1]))
 PY
-  then res PASS stale_report_lists_every_table_4_row "42 rows S-01..S-41 + W-29, work orders and INFO candidates present"; else res FAIL stale_report_lists_every_table_4_row "rows missing"; fi
-  cmd_result stale_baseline_then_new_only_exits_0 0 "--baseline (scratch file) then --new-only:" -- bash -c "python3 -I scripts/stale_check.py --baseline --baseline-file '$TMP/base.json' >/dev/null && python3 -I scripts/stale_check.py --new-only --baseline-file '$TMP/base.json'"
+  then res PASS stale_report_lists_every_table_4_row "rows read from DECISIONS.md Table 4 plus W-29; work orders and the INFO section present"; else res FAIL stale_report_lists_every_table_4_row "a Table 4 id of the register is missing from the report (add its row and patterns, re-cut the baseline)"; fi
+  # the live tree is shared: another package may save a file in the seconds between the two commands, so the pair gets one retry (a real defect fails both tries)
+  cmd_result stale_baseline_then_new_only_exits_0 0 "--baseline (scratch file) then --new-only:" -- bash -c "pair() { python3 -I scripts/stale_check.py --baseline --baseline-file '$TMP/base.json' >/dev/null && python3 -I scripts/stale_check.py --new-only --baseline-file '$TMP/base.json'; }; pair || { echo 'retrying once: the tree changed between the two commands'; pair; }"
   cmd_result public_lint_own_files_clean 0 "public_lint on WP-03's own files:" -- python3 -I scripts/public_lint.py --paths scripts/redaction_patterns.json scripts/lj_guard.sh scripts/stale_check.py scripts/stale_patterns.json scripts/stale_allowlist.json scripts/public_lint.py scripts/public_lint.config.json tests/hygiene build/evidence/wp03
   res UNVERIFIED windows_powershell_5_1_reads_the_pattern_file "win/step0_pc_tests.ps1 was exercised on PowerShell 7 only; Windows PowerShell 5.1 can not be run here"
 fi

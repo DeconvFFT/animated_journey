@@ -20,7 +20,12 @@
 #
 # Exit codes (build plan 4.3): 0 all done and passing; 1 a test failed or a hash did not match (a finding); 2 bad usage; 3 environment: the disk guard
 # refused or tripped, the lock was busy, or a download was blocked.
+# A REJECTED tarball (SHA-256 or size mismatch) is "stop and report", not "a test failed": --all must not fetch the 0.8.0 fallback or start EffectCraft for it.
+# So a stage returns a distinct INTERNAL code 4 for it (stage -> run_stage -> --all; the envelope says FAIL, "hash mismatch (stop and report)"). run_sp1.sh
+# itself never exits 4 to its caller: --only and --all turn it into exit 1. Only the hidden --stage-inner mode (called by run_stage, not by you) shows a 4.
+# A kept tarball in vendor/craft/_keep/ that fails the check is deleted and fetched again once in the same stage (ledger exception "kept tarball rejected").
 # Test overrides (used by tests/sp1/run_tests.sh, never needed otherwise): LJ_RELEASE_BASE LJ_SP1_ASSETS LJ_SP1_VENDOR LJ_SP1_EVIDENCE LJ_DF_CMD LJ_SCRATCH
+#   LJ_SP1_VERDICT (where --all writes the verdict file, so a test run against stand-ins can never overwrite VERDICT-SP1A.md)
 #   SP1_FAKE_MINI=1 (smaller test content for the fake CLIs). FORCE_BAD_ASSET=1 asks for a deliberately wrong asset name.
 # It reads df and the network; it writes only under vendor/craft/, build/evidence/wp07/ and (via the guard) the scratch ledgers. It never runs anything
 # outside the sandbox from a download, and never touches anything of the maker's.
@@ -54,7 +59,7 @@ commas() { printf '%s\n' "$1" | sed -e ':a' -e 's/\([0-9]\)\([0-9]\{3\}\)\($\|,\
 # ----------------------------------------------------------------------------- --list
 do_list() {
   need_tools
-  local avail id app tag bytes name sha keepmb a pr ok planned left refusals="" chosen="" want="$1" full_ok=0
+  local avail id app tag bytes name sha keepmb a pr ok planned left refusals="" chosen="" want="$1" full_ok=0 lean_ok=0
   avail="$(lj_df_avail_mb)"; [[ "$avail" =~ ^[0-9]+$ ]] || die "cannot read free disk space (df gave no number)" 3
   say "run_sp1.sh --list    (build plan 4.9 and WP-07; nothing is downloaded or written)"
   say ""
@@ -88,6 +93,7 @@ do_list() {
       [[ "$(stage_field "$id" keep_tarball)" == "true" ]] && a=$((a - keepmb))
     done
     [[ "$pr" == full ]] && full_ok="$ok"
+    [[ "$pr" == lean ]] && lean_ok="$ok"
     if (( ok )) && [[ -z "$chosen" ]] && { [[ "$want" == auto || "$want" == "$pr" ]]; }; then chosen="$pr"; fi
   done
   say ""
@@ -101,6 +107,11 @@ do_list() {
   f1=$(( $(stage_planned "$(jq -r '.stages[0].id' "$CFG")" full) + FLOOR )); l1=$(( $(stage_planned "$(jq -r '.stages[0].id' "$CFG")" lean) + FLOOR ))
   say "Chosen profile: none"
   printf '%s' "$refusals"
+  if [[ "$want" == full ]] && (( lean_ok )); then
+    say "the full profile is refused at this Avail; lean would fit: rerun with --profile lean (or auto). The first stage needs Avail of at least ${f1} MB for full and ${l1} MB for lean, and Avail is ${avail} MB."
+    say "Nothing was started and nothing was forced."
+    return 3
+  fi
   say "Neither profile fits: the first stage needs Avail of at least ${f1} MB for full or ${l1} MB for lean, and Avail is ${avail} MB."
   say "Remedy: answer Q-1 (the regenerable pip cache may be cleared), or free space, or use --wait SECONDS to poll; nothing was started and nothing was forced."
   return 3
@@ -154,6 +165,9 @@ run_stage() {  # run_stage APP TAG PROFILE_REQUEST T1ONLY WAIT
     say "TIMEOUT: stage $id ran for more than ${SP1_STAGE_TIMEOUT_S:-3600} s and was stopped; the disk lock is released and its folders removed. Split the work into shorter stages."
     rc=3
   fi
+  if (( rc == 4 )); then
+    say "STOP AND REPORT: the $id tarball did not match its SHA-256 (or its listed size). Nothing was extracted, the bad file is deleted and nothing was forced. A mismatch is a finding, never a reason to fall back to another version."
+  fi
   after="$(lj_df_avail_mb)"
   py "$DRV/finalize_stage.py" --id "$id" --profile "$prof" --planned "$planned" --exit "$rc" --df-before "${before:-0}" --df-after "${after:-0}" \
      --label "sp1-$id-$prof" --vendor "$VENDOR" || true
@@ -183,22 +197,49 @@ stage_inner() {  # runs inside lj_with_disk
   mkdir "$work" || die "cannot create a new empty folder" 3
   [[ -z "$(ls -A "$work")" ]] || die "the stage folder is not empty" 3
 
-  if [[ "$id" == "filmcraft-v0.9.0" && -f "$kept" ]]; then
-    say "[1/6] a kept, verified tarball exists in _keep/; using it in place (no second download)"
-    tb="$kept"; reused=1
-  else
+  fetch_tarball() {  # $1: ledger exception text, or empty for the first fetch. Sets the global rc; returns it.
     say "[1/6] curl -> new empty folder ${work#"$ROOT"/}"
     py "$DRV/asset_tool.py" get "$app" "$tag" --dest "$tb"; rc=$?
-    if (( rc != 0 )); then return "$rc"; fi
-    py "$DRV/asset_tool.py" ledger --add "$app" "$tag" --stage "$id" >/dev/null
+    (( rc != 0 )) && return "$rc"
+    if [[ -n "$1" ]]; then py "$DRV/asset_tool.py" ledger --add "$app" "$tag" --stage "$id" --exception "$1" >/dev/null
+    else py "$DRV/asset_tool.py" ledger --add "$app" "$tag" --stage "$id" >/dev/null; fi
+    return 0
+  }
+  verify_tarball() {  # prints asset_tool's answer; sets the global rc; sets rejected=1 only for a REJECTED answer (hash or size mismatch), not for a crash
+    local vout; rejected=0
+    vout="$(py "$DRV/asset_tool.py" verify "$tb" "$app" "$tag" 2>&1)"; rc=$?
+    say "$vout"
+    (( rc == 1 )) && [[ "$vout" == REJECTED:* ]] && rejected=1
+    return "$rc"
+  }
+  local rejected=0
+  if [[ "$id" == "filmcraft-v0.9.0" && -f "$kept" ]]; then
+    say "[1/6] a kept tarball exists in _keep/ (re-verified in the next step)"
+    tb="$kept"; reused=1
+  else
+    fetch_tarball "" || return "$rc"
   fi
   say "[2/6] SHA-256 before anything is extracted"
-  py "$DRV/asset_tool.py" verify "$tb" "$app" "$tag"; rc=$?
-  if (( rc != 0 )); then
-    py "$DRV/finalize_stage.py" --id "$id" --note "tarball rejected before extraction: hash or size mismatch (stop and report)" >/dev/null
-    (( reused )) || rm -f -- "$tb"
-    return 1
+  verify_tarball
+  if (( rc != 0 )) && (( reused )) && (( rejected )); then
+    # A corrupt kept tarball is removed at once, so no later run (and not WP-10's hand-off) can fail on it again; this stage recovers by fetching it once more.
+    rm -f -- "$kept"
+    say "      the kept tarball was corrupt and has been removed from _keep/; it is downloaded again in this stage (recorded as a ledger exception)"
+    py "$DRV/finalize_stage.py" --id "$id" --note "the kept tarball in _keep/ failed the SHA-256 check and was removed; fetched again in this stage (ledger exception: kept tarball rejected)" >/dev/null
+    reused=0; tb="$work/$asset"
+    fetch_tarball "kept tarball rejected" || return "$rc"
+    say "[2/6] SHA-256 of the new download, before anything is extracted"
+    verify_tarball
   fi
+  if (( rc != 0 )); then
+    if (( rejected )); then
+      py "$DRV/finalize_stage.py" --id "$id" --note "tarball rejected before extraction: hash or size mismatch (stop and report)" >/dev/null
+      rm -f -- "$tb"   # reused is 0 here: a kept tarball that fails was removed above, and the fresh copy is removed now
+      return 4         # the internal code for "stop and report" (see the header): --all neither falls back to 0.8.0 nor starts EffectCraft
+    fi
+    return "$rc"
+  fi
+  (( reused )) && say "      the kept tarball passed the check: used in place (no second download)"
   verified=1
   say "[3/6] listing the tarball (tar -tvzf writes nothing)"
   listing="$work/listing.txt"
@@ -262,7 +303,7 @@ while [[ $# -gt 0 ]]; do
     --ledger-check) MODE=ledger;;
     --verify-tarball) MODE=verify; V_FILE="${2:-}"; V_APP="${3:-}"; V_TAG="${4:-}"; shift 3 2>/dev/null || die "usage: --verify-tarball FILE APP TAG";;
     --stage-inner) MODE=inner; ONLY_APP="${2:-}"; ONLY_TAG="${3:-}"; PROFILE="${4:-}"; T1ONLY="${5:-0}"; shift 4;;
-    -h|--help) sed -n '2,32p' "$SELF"; exit 0;;
+    -h|--help) awk 'NR > 1 && /^#/ { print; next } NR > 1 { exit }' "$SELF"; exit 0;;
     *) die "unknown argument: $1 (try --help)";;
   esac
   shift
@@ -277,23 +318,35 @@ case "$MODE" in
   ledger) py "$DRV/asset_tool.py" ledger --check; exit $?;;
   verify) [[ -f "$V_FILE" ]] || die "no such file: $V_FILE"; py "$DRV/asset_tool.py" verify "$V_FILE" "$V_APP" "$V_TAG"; exit $?;;
   inner)  need_tools; stage_inner "$ONLY_APP" "$ONLY_TAG" "$PROFILE" "$T1ONLY"; exit $?;;
-  only)   need_tools; run_stage "$ONLY_APP" "$ONLY_TAG" "$PROFILE" "$T1ONLY" "$WAIT"; exit $?;;
+  only)   need_tools; run_stage "$ONLY_APP" "$ONLY_TAG" "$PROFILE" "$T1ONLY" "$WAIT"; rc=$?; (( rc == 4 )) && rc=1; exit "$rc";;   # 4 is internal: a rejected hash is exit 1
   all)
     need_tools
-    start_avail="$(lj_df_avail_mb)"; overall=0
+    start_avail="$(lj_df_avail_mb)"; overall=0; stopped=""
     say "run_sp1.sh --all: FilmCraft 0.9.0 then EffectCraft 0.11.1 (profile $PROFILE, wait ${WAIT}s per stage). df at start: Avail ${start_avail} MB."
+    rc1=0; rc2=0
     run_stage filmcraft v0.9.0 "$PROFILE" 0 "$WAIT"; rc1=$?
-    if (( rc1 == 1 )); then
+    if (( rc1 == 4 )); then
+      stopped="filmcraft 0.9.0"
+    elif (( rc1 == 1 )); then
       say "== FilmCraft 0.9.0 failed T1 or T2 (exit 1), so the fallback 0.8.0 is fetched (the only reason it ever is)"
       run_stage filmcraft v0.8.0 "$PROFILE" 0 "$WAIT"; rc1b=$?
-      (( rc1b > rc1 )) && rc1=$rc1b
+      if (( rc1b == 4 )); then stopped="filmcraft 0.8.0"; rc1=4; else (( rc1b > rc1 )) && rc1=$rc1b; fi
     fi
-    run_stage effectcraft v0.11.1 "$PROFILE" 0 "$WAIT"; rc2=$?
+    if [[ -n "$stopped" ]]; then
+      say "== STOP AND REPORT: the $stopped tarball was rejected by its SHA-256 (hash or size mismatch). The 0.8.0 fallback is not fetched for this and EffectCraft is not started; read the stage envelope and the REJECTED line above."
+      rc1=1
+    else
+      run_stage effectcraft v0.11.1 "$PROFILE" 0 "$WAIT"; rc2=$?
+      if (( rc2 == 4 )); then
+        say "== STOP AND REPORT: the effectcraft 0.11.1 tarball was rejected by its SHA-256 (hash or size mismatch); read the stage envelope and the REJECTED line above."
+        rc2=1
+      fi
+    fi
     (( rc1 > overall )) && overall=$rc1; (( rc2 > overall )) && overall=$rc2
     say "== after the run: $(py "$DRV/asset_tool.py" ledger --check)"
     left="$(ls -A "$VENDOR" 2>/dev/null | grep -v '^_keep$' | tr '\n' ' ')"
     say "== vendor/craft holds: ${left:-nothing but _keep/ (or nothing)}; df now Avail $(lj_df_avail_mb) MB (start ${start_avail} MB)"
-    py "$DRV/verdict.py" >/dev/null 2>&1 || true
+    py "$DRV/verdict.py" --out "${LJ_SP1_VERDICT:-$SP1/VERDICT-SP1A.md}" >/dev/null 2>&1 || true
     exit "$overall";;
   *) die "give one of --list --sums-only --only --all --verify-tarball --ledger-check (try --help)";;
 esac

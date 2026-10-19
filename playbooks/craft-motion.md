@@ -1,13 +1,14 @@
 # Craft Motion and Sound Apps as Refinement Layers
 
-*Draft v1.3, 2026-10-18. Track `craft-motion`. Built from `research/craft-motion.md` (researcher Sonnet, 2026-10-18) and `CHARTER.md`, reconciled with [DECISIONS.md](../DECISIONS.md) (2026-10-18). Not yet reviewed. Open items are marked TODO(research).*
+*Draft v1.4, 2026-10-19. Track `craft-motion`. Built from `research/craft-motion.md` (researcher Sonnet, 2026-10-18) and `CHARTER.md`, reconciled with [DECISIONS.md](../DECISIONS.md) (2026-10-18, and again 2026-10-19 after the her-world merge). Not yet reviewed. Open items are marked TODO(research).*
 
 **Reconciled with DECISIONS.md (2026-10-18). The register wins (D-21).** What changed here:
 
 - **Frame rate is 24 fps** (W-14), signed on the settings card Sun 1 Nov (W-16). Every guard value that said 25 now says 24: Timebase 24, `media.indeterminateTimebase` the string `"24"`, `zoompan d=120` for a 5 s proof. The research tested these at 25, so they are **UNVERIFIED at 24** until r1, r5 and the colour-patch test are re-run at 24 (container ffmpeg 6.1.1 and the PC's winget build) and the values are confirmed by hand. The recipe files under `skills/free-creative-toolchain/recipes/` still carry 25 until then.
 - **Loudness is -1 dBTP everywhere** with three venue masters chosen at the Mon 22 Feb run (W-19). **The venue file is CRF 18 with a 20 Mbps cap, AAC-LC 256 kbps** (W-17).
-- **Real material enters the tools after the L1 process lock, Sat 14 Nov 2026; covert collection starts Sun 15 Nov** (D-13, W-10).
+- **Real material enters the tools after the P-LOCK process lock, Sat 14 Nov 2026; covert collection starts Sun 15 Nov** (D-13, W-10).
 - **Only-me** (D-03): there is no co-keeper, no proxy reviewer and no second reader. The maker is the proxy, and hard chapters follow one-key-three-guards (D-04). The premiere cut has no recorded voice of a living person (D-05), no synthetic voice (W-46), and the April version carries the relatives' voices (D-06).
+- **Added 2026-10-19 (her-world merge).** Cards in the pichwai manner and floor-art cards keep the motion limits of W-72, which are tighter than the default weights in Step 9. Her script on a title or card arrives as shaped outlines, never live text typed into a Craft app (W-21, W-75). Must-read type clears the phone floor (W-63). No deity and no seva article is in any file a Craft app opens (W-61, W-70). The spike name is SP1 (Codes). The id-to-original map stays offline, because the repo is public (D-14, D-26).
 - Each Decision below carries its register status: decided (`DECISIONS.md` Table 1), default with a decide-by date (Table 2), or open for the maker (Table 3).
 
 ## Why this matters for our life journey
@@ -18,19 +19,20 @@ ArtCraft's apps are where your hands come in. FilmCraft is where you pick up a f
 
 Be careful with all three. They are free, open source and early alpha. They are about two and a half weeks old, and a new release tag appears every one to three days [39]. So nothing critical may depend on one of them. Every step has a fallback built from files the agents write. Those files open in DaVinci Resolve (free) or Kdenlive.
 
-Where things stand: the research reads the code, the vendors' claims and public issue reports. Nothing has been built or run yet. The container test (spike S1) is written but not run. Any number marked as a vendor claim or an estimate is not a measurement on your PC.
+Where things stand: the research reads the code, the vendors' claims and public issue reports. Nothing has been built or run yet. The container test (spike SP1) is written but not run. Any number marked as a vendor claim or an estimate is not a measurement on your PC.
 
 ## Core principles
 
 1. **The agents build, you refine.** The source of truth is text in the repo: the chapter spec, the OTIO file and the scripts. If you change a shot in FilmCraft, save, export the interchange files and write down what you changed. The agents read your changes back. They never rebuild a shot you have edited.
 2. **Pin a version by testing it, not by its date.** A newer FilmCraft can open files saved by an older one, but not the reverse [3]. Choose a tag, run the five-minute test, write down the tag and its SHA-256, and do not upgrade in the middle of a chapter.
 3. **Prepare media before an app touches it.** FilmCraft decodes each still whole into 8-bit colour and does not read EXIF rotation or ICC colour profiles [10]. So stills are rotated, converted to 8-bit sRGB and sized to the sequence before import. Phone and camcorder video is converted first.
-4. **Learn on test cards.** Until the L1 process lock (Sat 14 Nov 2026), use generated test cards (grids with numbers), not family photos. Real material comes in only after the pipeline is locked: covert collection starts Sun 15 Nov (charter; D-13, W-10).
+4. **Learn on test cards.** Until the P-LOCK process lock (Sat 14 Nov 2026), use generated test cards (grids with numbers), not family photos. Real material comes in only after the pipeline is locked: covert collection starts Sun 15 Nov (charter; D-13, W-10).
 5. **Every step has a fallback without a Craft app.** A Ken Burns move can be baked into plain video. Cuts and markers travel in OTIO, which Resolve and Kdenlive can read. Basic dissolves survive into Resolve [56]. In Kdenlive, cuts, gaps, markers and dissolves (as luma mixes, by code) survive; effects, metadata and image sequences do not; `file://` URLs are not decoded; the project profile is taken from the first still's pixel size [72]. Resolve's manual says FCP 7 XML Opacity, Position, Scale and Rotation keyframes import, with FilmCraft's numbers untested [74].
 6. **Know what each format drops, and read the import report every time.** Plain OTIO carries no Ken Burns moves, no opacity and no audio gain [6]. FilmCraft's own metadata inside an OTIO file keeps them, but only FilmCraft reads that part.
 7. **Keep the work private.** FilmCraft and EffectCraft write auto-save copies, caches and recent-file lists, next to the project or under AppData [2][31][33][38]. Use the portable zips, keep one encrypted working folder (inside the VeraCrypt container, W-25) that does not sync to the cloud, and never install or run the Launcher (D-12).
 8. **Real memories stay real.** You can restyle, animate and connect real photos. You cannot invent events or people, or put words in anyone's mouth. Reconstructed scenes are visibly labelled. No synthetic or cloned voice of any real person, living or dead, is ever used, even with consent (charter, principle 4; D-16), and the premiere cut carries no synthetic voice at all (W-46).
 9. **Stay inside the Craft boundary (D-12).** A Craft app may touch only a copy in a `work\` folder, a chapter whose spec and OTIO are in the repo, or a title whose SVG fallback exists. It is never the only writer or reader of a format, never the holder of the only copy of anything, and never a step in the week before the premiere (Sat 20 to Sat 27 Feb 2027). SoundCraft is learning-only and never in the delivery path.
+10. **No deity, and nothing from her seva space, in a Craft file (W-61, W-70).** No deity is drawn, generated or photographed, so none is ever in a chapter bundle, a graphic clip or an EffectCraft comp; a deity can appear only as a symbol or a seva object that is not a svarupa. Her morning sounds are captured under the W-70 rule and arrive as WAV; nothing here handles a seva article.
 
 ## How to do it, step by step
 
@@ -68,7 +70,7 @@ The last option draws on the processor instead of the graphics card, so it is sl
 - `build_info.json` (tool tags, hashes, and the frame rate and size used)
 - the spec file (the plain-text description of the chapter)
 
-If spike S1 fails, the bundle has no `ch01.xml`. After Step 8 the maker makes both interchange files from FilmCraft, each saved into the bundle folder: File > Export > Final Cut Pro XML… (`file.exportFcp7Xml`) writes the FCP7 XML as `ch01.xml`, and File > Export > OpenTimelineIO… (`file.exportOtio`) writes the OTIO as `ch01.otio`. FCPXML… and EDL… sit beside them in the same menu and are not part of this hand-off (Pitfall 8 covers FCPXML). The FCP7 XML is what goes into Resolve in Exercise 6.
+If spike SP1 fails, the bundle has no `ch01.xml`. After Step 8 the maker makes both interchange files from FilmCraft, each saved into the bundle folder: File > Export > Final Cut Pro XML… (`file.exportFcp7Xml`) writes the FCP7 XML as `ch01.xml`, and File > Export > OpenTimelineIO… (`file.exportOtio`) writes the OTIO as `ch01.otio`. FCPXML… and EDL… sit beside them in the same menu and are not part of this hand-off (Pitfall 8 covers FCPXML). The FCP7 XML is what goes into Resolve in Exercise 6.
 
 Copy it into `C:\LifeJourney\work\`. Keep the folder layout exactly as delivered. The OTIO points to its media with relative paths (`media/ch01_s01.png`), resolved against the `.otio` file's own folder [5]. Kdenlive does not decode `file://` URLs, so the OTIO must never carry one [72]. The FCP7 XML keeps absolute `file://localhost/C:/...` paths [8]. Keep `media/` beside `ch01.otio`. If you must move the folder, ask the agents first.
 
@@ -76,21 +78,24 @@ Copy it into `C:\LifeJourney\work\`. Keep the folder layout exactly as delivered
 
 **Step 9. Refine what FilmCraft is good at.**
 
-**Story pass first.** Before you touch a keyframe, watch the chapter once with its sound playing (her-world sound, the hummed tune and, if one passed one-key-three-guards, one HER-PUBLIC line; the premiere cut has no other recorded voice, D-05). Then ask four things. (a) Which photo carries this chapter? It is the weight-3 shot the agents marked (see below). Check they chose the right photo, then decide whether it needs more time than the full voice line gives it. (b) Is there a hard moment, such as a loss or a leaving? Cut there, do not dissolve. A dissolve softens the moment, and a cut states it. (c) Does every move end before the sentence it sits under ends? If not, shorten the move, not the sentence. (d) Is any face partly cropped? Check it against the crop decision recorded for that shot in the manifest (Template C).
+**Story pass first.** Before you touch a keyframe, watch the chapter once with its sound playing (her-world sound, the hummed tune in its venue or phone take (W-65) and, if one passed one-key-three-guards, one HER-PUBLIC line; the premiere cut has no other recorded voice, D-05). Then ask four things. (a) Which photo carries this chapter? It is the weight-3 shot the agents marked (see below). Check they chose the right photo, then decide whether it needs more time than the full voice line gives it. (b) Is there a hard moment, such as a loss or a leaving? Cut there, do not dissolve. A dissolve softens the moment, and a cut states it. (c) Does every move end before the sentence it sits under ends? If not, shorten the move, not the sentence. (d) Is any face partly cropped? Check it against the crop decision recorded for that shot in the manifest (Template C).
 
 By default the agents set each still's time and move from its `weight`, unless the spec overrides it. Weight 1: 3 to 4 seconds, with a 6 to 8 percent push. Weight 2: 5 to 6 seconds, with a 10 to 12 percent push that alternates between push-in and drift. Weight 3 (the photo that carries the chapter, at most one per chapter): the full voice line about it, at least 7 seconds, with no move or a push under 4 percent, and hard cuts on both sides. Every move ends on or before the end of the voice line under it. In the premiere cut a "voice line" is a card, an attributed-text beat or a sound cue, or the one HER-PUBLIC clip if it passed; recorded relatives' voices are April-version items (D-05, D-06), so read "voice line" as the card or cue under the shot. The agents mark the weight-3 shot in the spec; your first job is to check they chose the right photo.
+
+**Cards in her idiom move less (W-72).** The default weights above are for photographs. A card in the pichwai manner or a floor-art card is moved only by a push or pull of up to 8% or a pan of up to 5% over a still field, plus leaf sway, a water ripple on a band, a lamp flame, falling petals, or a gulal puff over hands and table (never over a deity or a face). Borders and bands never move, nothing with a face moves (cow friezes included), gold and silver stay flat, and there is no dissolve, wipe, burn or shatter on such a card. So the weight-2 push of 10 to 12 percent does not apply to it, and FilmCraft's default dissolve is retimed to a cut.
 
 Then work in this order:
 - **Ken Burns moves.** Drag the scale and position keyframes in Effect Controls. Use the value and velocity graphs to check the easing.
 - **Dissolves.** Retime them, or re-centre them on the cut.
-- **Titles.** Use the Type tool for simple titles and lower thirds.
-- **Music under voice.** Use Essential Sound > Music > Ducking against Dialogue. It writes volume keyframes [17].
+- **Titles.** Use the Type tool for simple Latin titles and lower thirds. Gujarati and Devanagari titles and cards arrive from the agents as shaped outlines and are placed as graphics, never typed as live text (W-21, W-75). Must-read type clears the phone floor: x-height 3.8% of picture height as the target, 3.2% as the hard floor (W-63).
+- **Sound under a voice.** Use Essential Sound > Music > Ducking against Dialogue. It writes volume keyframes [17]. In the premiere cut the only voice is a HER-PUBLIC clip if one passed (D-05) and there is no music bed (W-44), so ducking is used for her-world sound under that clip; music under voice is April-version work.
 - **Save** into the project folder. At the end of each session, choose File > Save a Copy as a second copy [2].
 
 **Step 10. Hand back the changes.** Export the interchange files (File > Export > OpenTimelineIO… and File > Export > Final Cut Pro XML…) and the marker list (Markers > Export Markers as CSV…, command `markers.exportCsv`, which needs an open sequence; the code places it under the Markers menu [83], so confirm the location on first use). Return them with a short change list: shot number, what you changed and why. The agents read the file, compare it with the spec, and update only the parts you did not touch.
 
 **Step 11. Make the final files.** Who runs this depends on Decision 1.
 - **Archive master.** Export with the preset "Apple ProRes 422 HQ", at the sequence size and frame rate, with 48 kHz 24-bit audio [11]. Use "Apple ProRes 4444" only if the film has transparency or smooth gradients that band.
+- **Phone files (W-63).** PH1 and PH2 are encoded from the ProRes master by the mobile-delivery recipes (`playbooks/mobile-delivery.md`), never from FilmCraft's own encoder and never from the venue file; they differ from the venue file only in Trim P, their caption burn-in and their encode.
 - **Venue copy (W-17).** Encode the master to a 1080p24 H.264 file with ffmpeg: `-c:v libx264 -preset slow -crf 18 -maxrate 20M -bufsize 40M -profile:v high -level 4.1 -pix_fmt yuv420p -colorspace bt709 -color_primaries bt709 -color_trc bt709 -movflags +faststart`, with AAC-LC at 256 kbps, 48 kHz stereo. Captions are burned in, the file name is neutral and the metadata is stripped. The research note tested CRF 16 with AAC at 320 kbps; the register's venue file is CRF 18 with a 20 Mbps cap. The research note gives this reason for not using FilmCraft's own encoder: it lacks several quality tools, such as trellis and psy-RD [18]. Also make a Main profile, level 4.0 backup at about 8 Mbps for the venue laptop (W-17). If the venue's written answer (due Sun 15 Nov) says it is a cinema with a DCP server, the 2K Flat DCP becomes the primary deliverable and is made on the PC, never in the container.
 - **Check.** Run ffprobe on each file: codec, pixel format, frame rate, and frame count against the expected duration. Measure the sound with `ebur128` [61] against the Decision 5 targets (W-19).
 
@@ -176,7 +181,7 @@ Times are our estimates, not measurements. Do Exercises 1 to 6 in order. Exercis
 
 ### Exercise 7 (optional). Duck music under a voice in Essential Sound
 
-- **Goal:** learn how FilmCraft ducks music under speech.
+- **Goal:** learn how FilmCraft ducks music under speech. This is mostly April-version work: the premiere cut has no music bed (W-44) and at most one HER-PUBLIC clip (D-05).
 - **Steps:**
   1. Ask the agents for a 30-second synthetic "voice" test track (tones with pauses), and a 30-second music bed. Use synthetic test material only.
   2. Import both onto separate tracks.
@@ -187,7 +192,7 @@ Times are our estimates, not measurements. Do Exercises 1 to 6 in order. Exercis
 
 ### Exercise 8 (optional). One EffectCraft title with alpha
 
-- **Goal:** learn the title path, and the font trap.
+- **Goal:** learn the title path, and the font trap. The test title is Latin, in an OFL font. EffectCraft's shaping of Gujarati and Devanagari has not been tested, so a title in her script is never typed into a comp: it arrives as shaped outlines (an SVG path) and is imported as a shape (W-21, W-75).
 - **Steps:**
   1. Ask the agents for a title spec (text, font, size, timing) and an EffectCraft project.
   2. Open the `.ecproj`. Check the font in the text layer's properties is the one you intended. If it shows Inter, the font is missing and was replaced [47][23]. Install the font first.
@@ -195,7 +200,7 @@ Times are our estimates, not measurements. Do Exercises 1 to 6 in order. Exercis
   4. Check that the PNGs have alpha.
   5. Import the sequence into FilmCraft as an image sequence: File > Import Image Sequence…, then pick the first numbered frame (or tick Import as Image Sequence in the Media Browser) [83]. Before the import, set Edit > Preferences > Media > Indeterminate Media Timebase to the comp's frame rate, because that setting, not the comp's rate, sets the imported rate. Keep 'Import numbered stills as image sequences' off for the stills chapters (Pitfall 23).
 - **Time (estimate):** 2 hours.
-- **What good looks like:** the right font, a transparent background, and the sequence plays over a colour in FilmCraft.
+- **What good looks like:** the right font, a transparent background, and the sequence plays over a colour in FilmCraft. The must-read type clears the phone floor (x-height 3.8% of picture height as the target, 3.2% as the hard floor; W-63).
 
 ## Templates and checklists
 
@@ -285,7 +290,7 @@ Sources: [6] for OTIO, [8] for FCP7 XML, [51], [52] and [72] for Kdenlive, [55],
 - [ ] The recent-file list is cleared before anyone else uses the PC.
 - [ ] No family names or file names in any bug report or forum post.
 - [ ] No cloud photo library connected to the working folder.
-- [ ] Working copies are named by shot id. The id-to-original map stays in the private repo only.
+- [ ] Working copies are named by shot id. The id-to-original map stays offline on the maker's PC, never in the repo, which is public (D-14, D-26).
 - [ ] From v0.9.0, FilmCraft opens stored media paths only on local drives or the document's own share. Do not put the project on a NAS or UNC path [65].
 
 ## Decisions you'll need to make
@@ -294,8 +299,8 @@ Each decision lists the options and our current lean. The lean can change after 
 
 ### Decision 1. Where heavy rendering runs
 
-- **Options:** (a) the Linux container, using the Craft command-line tools, if spike S1 passes; (b) the container, using ffmpeg and code only; (c) your Windows PC.
-- **Our lean:** (b) is the safe default. Use (a) only if S1 passes. Use (c) for interactive work and short exports. Revisit after S1, in weeks 1 and 2.
+- **Options:** (a) the Linux container, using the Craft command-line tools, if spike SP1 passes; (b) the container, using ffmpeg and code only; (c) your Windows PC.
+- **Our lean:** (b) is the safe default. Use (a) only if SP1 passes. Use (c) for interactive work and short exports. Revisit after SP1, in weeks 1 and 2.
 - **Register status (W-23, W-24, D-15):** decided. The container renders test cards, synthetic material and Route A drawn scenes only. Real family stills render on the PC (`lj.ps1 run <shot>`), because scripts travel to the photos and photos stay home. Every photo set carries `cloud: none` by default, and only the maker raises it.
 - **What we know:** the container has 4 CPUs, 16 GB of RAM and no GPU [62]. No minimum RAM, disk or GPU is published for any of the three apps [58]. At 24 fps a 12-minute film is 17,280 frames, a 9-minute film is 12,960 and the 6-minute F-0 fallback is 8,640. At our 4-to-16 fps estimate (made at 25 fps and not re-measured), that is about 18 to 72 minutes for the 12-minute film and 9 to 36 minutes for F-0 at 1080p [E]. The vendor's own figures are on other hardware [12].
 
@@ -331,7 +336,7 @@ Each decision lists the options and our current lean. The lean can change after 
 ### Decision 7. How much EffectCraft to use
 
 - **Options:** none; titles only; titles and one line-drawn sequence; 3D parallax as well.
-- **Our lean:** FilmCraft's own graphic clips for static titles and lower thirds. EffectCraft only for one SVG line-drawn sequence, and for text with expressions if it is needed. Skip classic 3D parallax for now, because there are no CPU timings for it and there is a known memory issue [47][22]. Any EffectCraft render uses the thread procedure in Pitfall 10, not `RAYON_NUM_THREADS=2`. Register (W-38, W-21, D-12): chapter titles come from the Card A slips traced in VectorCraft (Inkscape fallback), a title needs its SVG fallback, and fonts are OFL only.
+- **Our lean:** FilmCraft's own graphic clips for static titles and lower thirds. EffectCraft only for one SVG line-drawn sequence, and for text with expressions if it is needed. Skip classic 3D parallax for now, because there are no CPU timings for it and there is a known memory issue [47][22]. Any EffectCraft render uses the thread procedure in Pitfall 10, not `RAYON_NUM_THREADS=2`. Register (W-38, W-21, D-12): chapter titles come from the Card A slips traced in VectorCraft (Inkscape fallback), a title needs its SVG fallback, and fonts are OFL only; her script travels as shaped outlines, never live text, and the line-drawn sequence is the floor-art line at the phone floor (W-72).
 
 ### Decision 8. Who cleans up voice recordings
 
@@ -348,7 +353,7 @@ Each decision lists the options and our current lean. The lean can change after 
 
 - **Options:** only after the pipeline is locked and every test in this playbook passes (charter); or earlier, for learning.
 - **Our lean:** test cards only until the five-minute test and Exercises 1 to 6 pass, plus the Resolve check. Then the first real chapter, as a trial, in the encrypted working folder.
-- **Register status (D-13, W-06, W-07):** decided. "Locked" means the L1 process lock on Sat 14 Nov 2026, tested on synthetic material. Covert collection starts Sun 15 Nov, and the first real chapter is the slice, C01 (100 s, final Sun 20 Dec).
+- **Register status (D-13, W-06, W-07):** decided. "Locked" means the P-LOCK process lock on Sat 14 Nov 2026, tested on synthetic material. Covert collection starts Sun 15 Nov, and the first real chapter is the slice, C01 (100 s, final Sun 20 Dec).
 
 ## Pitfalls
 
@@ -363,7 +368,7 @@ Each decision lists the options and our current lean. The lean can change after 
 9. **The project format changes often.** FilmCraft's project schema moved from 13 to 15 in five days, and older builds refuse newer files [2][3]. Do not hand-write project files. Let the tool write them.
 10. **EffectCraft's CPU renders have no memory cap.** In one reported case, an out-of-memory crash left an MP4 without its index, so it would not play [47]. `RAYON_NUM_THREADS=2` is not a bound: the #1615 reporter measured 6.8 GB with it in their project [71]. Start every new comp at `RAYON_NUM_THREADS=1`. Render a 30-frame sample under `/usr/bin/time -v` (Task Manager on Windows) and record its peak memory. Raise the thread count only while peak memory stays under half of free RAM. Where that is too slow, render frame by frame with `render-frame` to PNG and encode with ffmpeg, which is what the reporter did [71]. `EFFECTCRAFT_CPU_INFLIGHT` exists only in open PR #1763 (no reviews on 2026-10-18) and does nothing in v0.11.1 [70]. Render one job at a time, and check each output with ffprobe [30]. One search summary, not opened by the research, reports heavy memory use on Windows 11 with an Intel Arc card [60].
 11. **EffectCraft can overwrite the previous output.** A cancelled or failed overwrite destroyed the previous file, in one open issue [47]. Always use a new file name.
-12. **Fonts fall back silently.** If a font is not installed, EffectCraft uses Inter instead [47][23].
+12. **Fonts fall back silently.** If a font is not installed, EffectCraft uses Inter instead [47][23]. A silent fallback is worse for Gujarati, where the wrong face can drop conjuncts or digits (W-21); her script is outlines, not live text.
 13. **EffectCraft's ProRes 4444 output is tagged as BT.709 but encoded as sRGB** (open issue #340) [22]. Use RGBA PNG sequences for alpha instead.
 14. **Windows graphics crashes at start-up.** Reported crash files include AMD `atio6axx.dll` and `amdvlk64.dll`, and Intel `igvk64.dll` [1][13][45][46]. Use the backend settings in Step 5. Do not reinstall the app.
 15. **Phone HEVC HLG video failed to import on Windows 10** (issue #1998) [46]. Convert it first.
@@ -375,6 +380,7 @@ Each decision lists the options and our current lean. The lean can change after 
 21. **Versions and numbers disagree across sources.** The website shows FilmCraft 0.6.0 while GitHub has v0.8.0. Feature counts also differ between the website and the README [41][1]. Quote tags and tests, not marketing numbers.
 22. **Numbers from issue pages are summaries.** The research read them through a summarising tool. Re-read the linked issue before you quote a number [45][46][47][48].
 23. **Image sequences need care in FilmCraft.** Our stills end in digit runs (`ch01_s01.png`). With Edit > Preferences > Media > 'Import numbered stills as image sequences' on, importing one still alone is taken as a sequence, so keep that preference off for the stills chapters [83].
+24. **FilmCraft's defaults break the card motion limits of W-72.** The weight-2 push (10 to 12 percent), a one-second dissolve and a graphic clip's default entrance are all outside what a pichwai-manner or floor-art card may do. Set the card's move and cut by hand and check the import report.
 
 ## Best references
 
@@ -459,4 +465,5 @@ Copied from the Sources list of `research/craft-motion.md`. The research read th
 - **2026-10-18, v1 draft.** First version, written by a Haiku scribe from `research/craft-motion.md` and `CHARTER.md`. Not yet reviewed. Open items are marked TODO(research): maker's hardware and export speed; minimum system requirements (none published); whether DaVinci Resolve (free) limits imports; whether Resolve keeps Ken Burns keyframes from FCP7 XML or FCPXML; whether Resolve accepts stills as FCPXML asset-clips; how Kdenlive treats still-image OTIO clips; proxies and memory release for stills in FilmCraft (spike S1); EffectCraft CPU timings for 3D, text animators and Trim Paths; Lottie in a real player; code signing of the downloads; colour management end to end; sync status of the maker's PC; the marker-list and image-sequence menu paths; release cadence over eight weeks (repos were 17 days old at the time of the research).
 - **2026-10-18, v1.1 (round 1 review nudges applied).** Added a story pass to Step 9; added the S1-failure fallback for `ch01.xml` to Step 7; corrected Exercise 2 sequence setup (no preset list, engine default 23.976); rewrote Pitfall 8 from the FCPXML evidence; working copies named by shot id (Templates C and H); Sources [68], [69] and [76] added.
 - **2026-10-18, v1.2 (round 2 review nudges applied).** Replaced the absolute `file:///` OTIO paths with relative ones and recorded Kdenlive's `file://` limit (Step 7, Pitfall 6, Core principle 5, Decision 3); replaced `RAYON_NUM_THREADS=2` with the thread-measure procedure and the 6.8 GB and PR #1763 facts (Pitfall 10, Decision 7); pinned FilmCraft v0.9.0 (test first, v0.8.0 fallback, v0.7.2 retired) with `filmcraft-<tag>` folder names (Steps 1 and 4, Exercise 1, Templates A and H, Decision 6); replaced the TODO export paths with File > Export > Final Cut Pro XML… and OpenTimelineIO… and the marker CSV under Markers (Steps 7 and 10); replaced the Resolve test with the 'Use sizing information' test, changed Template F's Resolve header and removed the 'manual not reachable' sentences (Exercise 6, Best references 7, Decision 3); added the sequence-first steps and the Indeterminate Media Timebase check to Template B and Step 8; added the default weight mapping and the weight-3 photo check to the Step 9 story pass; closed the Exercise 8 image-sequence TODO from the code (Exercise 8, Pitfall 23).
+- **2026-10-19, v1.4.** Reconciled with DECISIONS.md after the her-world merge (2026-10-19): the Sat 14 Nov lock is named P-LOCK and the Craft CLI spike is SP1 (Codes); card motion limits for her idiom (W-72); Indic titles as shaped outlines, never live text, with the phone type floor (W-21, W-75, W-63); the premiere sound under a voice (W-44, D-05) and the hum takes (W-65); PH1 and PH2 named in Step 11 (W-63); no deity and no seva article in a Craft file (W-61, W-70); the id-to-original map stays offline because the repo is public (D-14, D-26).
 - **2026-10-18, v1.3.** Reconciled with DECISIONS.md (2026-10-18). Frame rate 24 fps (W-14, W-16) in Exercise 2, Template B and Decisions 1 and 4, with the guard values marked UNVERIFIED at 24 until r1, r5 and the colour-patch test are re-run; loudness -1 dBTP with three venue masters (W-19); venue file CRF 18 with a 20 Mbps cap and a Main 4.0 backup (W-17); real material after the L1 lock Sat 14 Nov and collection from Sun 15 Nov (D-13); `zoompan` proofs only and MO8a/MO8b on the pre-encode master (W-41); Launcher never installed and the Craft boundary (D-12); second encrypted SSD, no cloud copy (W-25); cloud policy for family stills (D-15, W-23, W-24); no recorded living voice in the premiere cut (D-05). Decisions 1 to 10 carry their register status.

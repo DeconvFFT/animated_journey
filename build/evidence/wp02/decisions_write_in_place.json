@@ -2,9 +2,9 @@
  "actual": "in-place --write x2 then --check: exit 0, file unchanged",
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 605,
-  "avail_mb_min": 605,
-  "avail_mb_start": 605,
+  "avail_mb_end": 453,
+  "avail_mb_min": 453,
+  "avail_mb_start": 453,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

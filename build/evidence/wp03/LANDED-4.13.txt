@@ -1,1 +1,1 @@
-4.13 LANDED: scripts/redaction_patterns.json version 1, internal test passed (40 checks), sha256 1b10d10f21a4e3b74afefd54848171dd959ce25fe18d0de61915f61595b085bc
+4.13 LANDED: scripts/redaction_patterns.json version 1, internal test passed (40 checks), sha256 4d0e5ec967477ed5714a3958167d792ef1542ce295160229a15089ea7d3842d4

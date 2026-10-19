@@ -100,6 +100,7 @@ lj_with_disk() (
     _lj_say "usage: lj_with_disk PLANNED_MB LABEL -- COMMAND [ARGS...]"; exit 2
   fi
   if ! [[ "$planned" =~ ^[0-9]+$ ]]; then _lj_say "usage: PLANNED_MB must be a whole number of MB"; exit 2; fi
+  planned=$((10#$planned))   # a leading zero is decimal, not octal: 08 would abort the refusal test below (fail-open), 010 would be read as 8 and reach the ledger as invalid JSON
   shift 3
   label="$(_lj_label "$label_raw")"
   floor="${LJ_FLOOR_MB:-400}"; hard="${LJ_HARD_FLOOR_MB:-250}"; poll="${LJ_POLL_S:-5}"

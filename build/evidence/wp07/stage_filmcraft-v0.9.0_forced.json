@@ -1,0 +1,35 @@
+{
+  "actual": "not started: download blocked or asset missing: see blocked_proof.json",
+  "date_utc": "2026-10-19",
+  "detail": {
+    "exit_code": null,
+    "forced_bad_asset": true,
+    "guard_ledger": null,
+    "profile": "none",
+    "stage": "filmcraft-v0.9.0",
+    "vendor_craft_other_than_keep": []
+  },
+  "disk": {
+    "avail_mb_end": 458,
+    "avail_mb_min": 458,
+    "avail_mb_start": 458,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 0
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "the stage ran inside lj_with_disk, ended with exit 0, and left vendor/craft with nothing but _keep/",
+  "notes": "",
+  "package": "WP-07",
+  "schema": "lj-evidence/1",
+  "stage": "",
+  "status": "BLOCKED",
+  "test": "stage_filmcraft-v0.9.0_forced",
+  "unverified_reasons": []
+}

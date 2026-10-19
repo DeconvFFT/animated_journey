@@ -19,7 +19,7 @@ Her sound also carries reverence. Kirtan is offered as seva. A pada is not a moo
 1. **Hers first, and Hindu only (D-28, D-31).** "Indian themes" means Hindu. A sound enters because it is hers: her tradition, her region, her household. A shared or ambiguous origin is `ASK`, and an `ASK` still open on Mon 14 Dec becomes silence or room tone.
 2. **The premiere sounds like objects, rooms, the sea and the hum (D-05, D-07, W-44).** Sung devotion is an April column. A beat that seems to want a bhajan is written as silence plus one struck bell.
 3. **Two columns, always: composition and recording.** A public-domain text does not make a tune free, and a free tune does not make a recording free. A label's "Traditional" is entered `unknown` until a registry or the original record says otherwise.
-4. **The phone decides, not the model (D-27).** Hum on an open vowel. Open the film with a first sound above about 400 Hz. The maker's Android tone ladder at 50% volume settles every pass or fail in this playbook.
+4. **The phone decides, not the model (D-27).** The phone files carry the open-vowel hum; the hall may carry the closed-mouth take if the room carries it (W-65). Open the film with a first sound above about 400 Hz. The maker's Android tone ladder at 50% volume settles every pass or fail in this playbook.
 5. **Kirtan is seva (reverence).** No pada as a bed or a mood. Never cut a pada mid-line, because the poet's name sits in the last line [4]. No darshan name as a life stage. No raga claim unless a source names it.
 6. **The maker's hands, an empty house, nothing of her (D-02, D-17, W-10).** The sounds of objects and rooms are captured by the maker, with no recording of her and no relative asked to record, on a device that does not sync to a shared cloud.
 7. **Nothing narrows the field (D-02, D-03, D-15).** Outbound briefs are name-free. A hum is not sent to a vendor to be identified without the maker's OK. A test on her own phone is a decision, not a default.
@@ -34,11 +34,11 @@ Dates are the register's where one exists. Dates marked *suggested* are this pla
 4. **Run the phone checks before covert collection starts (suggested before Sat 14 Nov, P-LOCK).** Exercises 2 and 3. Covert collection starts Sun 15 Nov (D-13).
 5. **Build the cue sheet by Sat 14 Nov (W-44).** Use the cue-sheet header in the templates. Every row gets a `tradition`, separate `composition_status` and `recording_status`, a `premiere_cut` value and an `april_version` value. Flagged instruments get `maker_rule = ASK`.
 6. **Practise captures on stand-ins before Sun 15 Nov.** Your own household, or labelled stand-ins only.
-7. **Capture in her empty house from Mon 21 Dec to Sun 3 Jan (W-10).** The maker works alone. The bell and the jhanj are struck by the maker's own hand. The kitchen sounds are made with her out (W-20). No voice, no radio. Each capture gets a rights row marked `maker`.
+7. **Capture in her empty house from Mon 21 Dec to Sun 3 Jan (W-10).** The maker works alone. The bell and the jhanj are struck by the maker's own hand; the bell is a household hand-bell outside the mandir or the maker's own. No seva article is handled (W-70). The kitchen sounds are made with her out (W-20). No voice, no radio. No temple or haveli office is ever asked anything (W-10). Each capture gets a rights row marked `maker`.
 8. **Consult, once the country is known (W-55, by Fri 4 Dec).** One paid hour, asked as a hypothetical, using the T10 list in the templates. The premiere country (O-02) comes first.
 9. **Place the tune by Mon 14 Dec (W-44, O-29).** Exercise 4 and the hum log. Outcomes HC-1 to HC-7. Any cue still `ASK` or `unknown` that day becomes silence or room tone. An `unknown` on a MOTIF blocks lock.
 10. **Uttarayan, Thu 14 and Fri 15 Jan 2027, if the maker is somewhere kites are flown.** Kites, plain cotton thread only, no crowd. The Gujarat High Court direction is an SR item (Pitfall 9).
-11. **The her-turn conversation, Sat 6 Mar 2027 (W-48).** Only then is a voice commission asked (template H), because she can say whose voice, which poet and which family version. Response recordings run Sun 7 Mar to Sat 10 Apr. The April mix runs Sun 11 to Fri 23 Apr, and delivery is Sat 24 Apr (W-48). The commission window is about five weeks, with one revision [M5].
+11. **The her-turn conversation, Sun 7 Mar 2027 after about 14:00, else Mon 8 Mar (moved off Maha Shivaratri; W-48).** Only then is a voice commission asked (template H), because she can say whose voice, which poet and which family version. Response recordings run from the day after the conversation to Sat 10 Apr. The April mix runs Sun 11 to Fri 23 Apr, and delivery is Sat 24 Apr (W-48). The commission window is about five weeks, with one revision [M5].
 12. **Before any card or credit, check the family's word (question 13).** Until the maker says, no card says "haveli sangeet", and each cue carries the tradition value `haveli_sangeet`, never "kirtan" alone.
 
 **Gate for every row before it leaves the sheet:** run the checklists in the templates (text, tune, recording, instrument, capture, phone, reverence). Fable reviews at G1, G-SLICE, G-MID and at G4 for each chapter (D-22). G5 is flag-only, and Fable never passes it.
@@ -130,7 +130,7 @@ The note gives Gujarati script for three items only. Every other text is given i
 | T1-01 | Vaishnav Jan To | Gujarati bhajan | Gujarati Vaishnava; Vishnu/Krishna | PD (poet 15th century, dates unsettled [20]; earliest manuscript 1835, printed 1885 in *Prāchīn Kāvya*; the page also dates the first print of Mehta's poems generally to 1852 [21]) | `unknown` (the common tune is Narayan Khare's, 1920s; death year not found [21]) | P: hum only if the tune is placed. A: hum, a relative, or a commission | MOTIF or END; any |
 | T1-02 | Narsinh Mehta prabhatiya | Gujarati, dawn song | Gujarati Vaishnava | PD (name the edition) | `unknown` (melodies "cannot be confirmed or reconstructed" [20]) | A | BED at dawn. Do not map to the Mangla darshan: a different tradition |
 | T1-03 | Dayaram's garbi and dhol | Gujarati and Braj | Pushtimarg Gujarati; Bal Krishna | PD (1777 to 1852 or 1853 [23]) | `unknown`; treat as `PD_text_owned_tune` | A | Voice zone or bed, April |
-| T1-04 | Ashtachhap pada (any of the eight poets) | Braj Bhasha, pada | Haveli sangeet; Bal Krishna | PD (16th century [2][3]) | `unknown` (family or haveli tune, oral) | A (commission after 6 Mar) | Bed, with a darshan set |
+| T1-04 | Ashtachhap pada (any of the eight poets) | Braj Bhasha, pada | Haveli sangeet; Bal Krishna | PD (16th century [2][3]) | `unknown` (family or haveli tune, oral) | A (commission after the her-turn conversation) | Bed, with a darshan set |
 | T1-05 | Mirabai pada | Rajasthani and Braj (a Gujarati layer UNVERIFIED) | Krishna bhakti; not Pushtimarg | PD by age; attribution contested [24] | `unknown` | A | Only if hers |
 | T1-06 | Yamunashtakam | Sanskrit stotra | Pushtimarg; Yamuna Maharani | PD | text PD; tune `unknown` (sung; a recording's tune may be a named composer's) | A; card in P from the family's own copy | Pull-out card; dawn |
 | T1-07 | Madhurashtakam | Sanskrit, ashtakam | Pushtimarg; Krishna; attributed to Mahaprabhuji (Vallabhacharya) by tradition | PD by age; attribution traditional [13] | `unknown` | Card only | Card, printed as "attributed to" |
@@ -207,11 +207,11 @@ Every flag other than NONE carries `maker_rule = ASK` by default. An `ASK` that 
 | Hichko chain (two CC0 swing stand-ins) | 0.0; −3.1 | −0.1; −3.2 | PASS | Metal squeak |
 
 - **Not measured:** the real jhanj, been, sarangi, harmonium, duf, kite, kitchen board and griddle, and every room. Fixture: `research/gujarati-devotional-sound-fixtures/phone_speaker_haveli_instruments_2026-10-19.csv`.
-- **What it changes:** the pakhawaj's bass fails and the tanpura passes. The commissioning brief asks for treble-side strokes. The closed-mouth hum fails, so the premiere uses the open-vowel take. Room tone and a distant sea fail as first sounds.
+- **What it changes:** the pakhawaj's bass fails and the tanpura passes. The commissioning brief asks for treble-side strokes. The closed-mouth hum fails, so the phone files use the open-vowel take and the hall takes the closed-mouth take only if the room's lowest carried tone at TD-L2b is at or below about 300 Hz (W-65). Room tone and a distant sea fail as first sounds.
 
 ### Template E. Hum log (the note's T7, renamed to avoid a clash with H, which is the maker's hours)
 
-The note's `H-01` and `H-1` fields are renamed `HUM-01` and `HC-1` here. The "tone ladder low-cut" field is reworded to the protocol's "lowest audible tone", and that change is (J).
+The note's hum-log and hum-case labels are renamed `HUM-01` and `HC-1` to `HC-7` here, so they do not clash with H, the maker's hours. The "tone ladder low-cut" field is reworded to the protocol's "lowest audible tone", and that change is (J).
 
 ```
 hum_id: HUM-01                    date: ____   take: closed | open-vowel (record both)
@@ -245,14 +245,14 @@ raga: none claimed          credit line: (none) / "hummed by the maker"
 
 ### Template F. Sound captures (the note's T4, condensed)
 
-Rules: the maker records alone, in an empty house, on a device that does not sync (D-02). No voice and no intelligible music (D-05, D-17). Anything taken from her house waits until Sun 15 Nov (D-13). The holiday window is Mon 21 Dec to Sun 3 Jan (W-10). Each capture is a rights row marked `maker`. File names carry an ID, never a place or a name.
+Rules: the maker records alone, in an empty house, on a device that does not sync (D-02). No voice and no intelligible music (D-05, D-17). Anything taken from her house waits until Sun 15 Nov (D-13). The holiday window is Mon 21 Dec to Sun 3 Jan (W-10). Each capture is a rights row marked `maker`. File names carry an ID, never a place or a name. **A sound capture never handles her seva articles** (the jhari, the shankh in the prayer corner, the mandir's bell if it lives inside the mandir, vastra, thali, banta, the mandir's cloth), and no seva act is performed in her prayer corner without her (W-70, PR10, PR14). No temple or haveli office is ever asked anything (W-10).
 
 | id | Sound | Hers if | Where | Season | How | Slot | Phone (model) | Labelled stand-in (CC0 unless stated) |
 |---|---|---|---|---|---|---|---|---|
-| S-A1 | House bell (ghanta), brass hand-bell | It is on her shelf | Home, if the bell is the maker's; her bell needs her house | Any | The maker strikes it in the empty prayer corner, one strike and its tail | 21 Dec to 3 Jan | PASS | CC0 temple bell [R1] |
+| S-A1 | Household hand-bell (ghanta) outside the mandir, or the maker's own | A hand-bell outside the mandir is hers (O-71, O-46) | Home, outside the prayer corner; never the mandir's bell (W-70) | Any | The maker strikes it once, one strike and its tail, in an empty room outside the mandir | 21 Dec to 3 Jan | PASS | CC0 temple bell [R1] |
 | S-A2 | Jhanj (large cymbals) | The family has a pair | Her house | Any | Two or three strokes in the empty room | Same | PASS (stand-in); real pair unmeasured | CC0 finger cymbals (weaker) |
 | S-A3 | Manjira | A pair | Her house | Any | As S-A2 | Same | PASS | CC0 manjeera |
-| S-A4 | Conch (shankh) | In the prayer corner | Her house; the maker must be able to blow it | Any | Blown once in the empty room | Same | PASS (thin); her shell unmeasured | CC0 conch (a rooftop, not a temple) |
+| S-A4 | Conch (shankh) | A conch is hers (O-72) | The maker's own conch, blown outside the prayer corner; her shankh is a seva article and is never touched (W-70) | Any | Blown once in an empty room, or not at all (the Mangla reading does not need it) | Same | PASS (thin) | CC0 conch (a rooftop, not a temple), a labelled stand-in only if a conch is hers |
 | S-A5 | Haveli arti bells, jhalar | Her haveli | No | n/a | Not captured: D-02 and D-03, the haveli's recording rule is unread, and voices are present | n/a | n/a | None; use S-A1 |
 | S-A6 | Tanpura drone | A tanpura sounds in her house | Stand-in only | Any | None unless the family owns one and the maker plays it | n/a | PASS | CC0 tanpura. ASK (SHARED-LIGHT) |
 | S-B1 | Iron *tavdi* (griddle) with a *rotli* | She cooks on one | Her kitchen | Any | The maker cooks in her empty kitchen | 21 Dec to 3 Jan | Unmeasured | None found |
@@ -260,7 +260,8 @@ Rules: the maker records alone, in an empty house, on a device that does not syn
 | S-B3 | Pressure-cooker whistle | The cooker is hers | Her kitchen | Any | The maker runs it (fire safety) | Same | PASS | CC0 cooker |
 | S-B4 | Churning (*chhash*, *makhan*) | She churns | Her kitchen | Any | A small quantity | Same | Unmeasured | None found |
 | S-B5 | Steel *vati*, *thali*, glass; ladle; stove click | Daily objects | Her kitchen | Any | Hands only | Same | Likely PASS (unmeasured) | None |
-| S-B6 | Room tone: kitchen, prayer corner, hall | Always | Her house | Any | 60 s per room, door shut, phone in airplane mode | Same | FAIL as a first sound (rumble) | None |
+| S-B6 | Room tone: kitchen, hall | Always | Her house, not the prayer corner (W-70) | Any | 60 s per room, door shut, phone in airplane mode | Same | FAIL as a first sound (rumble); never the film's first sound (W-36) | None |
+| S-B7 | Water poured into a kitchen brass vessel (the first act of her morning; the W-76 candidate) | The home keeps Yamunajal in a jhari, filled first thing (O-77) | Her kitchen | Any | The maker pours tap water into a brass vessel of the kitchen, never her jhari; the sound is of filling, never emptying, and Yamunajal is never poured away (W-70) | Same | Unmeasured (splash has high-frequency content); measure before Sun 6 Dec | None |
 | S-C1 | Hichko or hindolo chain | One is in the house | Her house | Any | The maker pushes the empty bench | Same | PASS (stand-in swings) | CC0 swings |
 | S-D1 | Sea at Koliyak at low tide: swash and shore-break | If the household goes there | Needs Gujarat (O-02) | Tide hours about 10 a.m. to 2 p.m., strongest at new and full moon [51] | Water's edge, mic low, no voices | One trip | PASS for surf and swash; FAIL for the swell | CC0 surf on rocks |
 | S-D2 | Coast wind | As S-D1 | Needs Gujarat | Any | Wind on a bare mic cover | Same | Unmeasured | None |
@@ -286,8 +287,8 @@ beat_id,cue_type,source_in_her_life,hard_flag,advisor_flag_ref,notes,tradition,r
 | Sound | Premiere? | Phone verdict | Note |
 |---|---|---|---|
 | Silence and room tone | Yes, the default at each hard beat | Room tone's low rumble vanishes | Cannot be a first sound. The cold open needs a first sound above 400 Hz |
-| The maker's hum, uncleaned | Yes (motif and END) | Closed mouth FAIL; open vowel PASS | Use the open-vowel take on the phone file |
-| A relative's public-domain performance | No (April, D-06) | n/a | W-44 lists it in the spine. See Changelog |
+| The maker's hum, uncleaned | Yes (motif and END) | Closed mouth FAIL; open vowel PASS | Two takes, two masters: the phone files carry the open vowel; the venue master carries the closed-mouth take if the room carries it (`premiere_cut` = `S-HUM-closed` venue / `S-HUM-open` phone; W-65) |
+| A relative's performance of a public-domain tune | No (April, D-05, D-06) | n/a | The register's W-44 spine no longer lists it |
 | Bell, jhanj, manjira, conch, struck by the maker in an empty room | Yes | All PASS (jhanj by stand-in) | — |
 | Kitchen, sea, swing chain, kite (the maker's own) | Yes | Cooker PASS; surf PASS; swell FAIL | Seasonal windows as in Template F |
 | CC0 or CC BY | Only as a labelled stand-in, and only if it is hers | Tanpura, bell, conch PASS | A tanpura carries SHARED-LIGHT: `ASK` |
@@ -304,7 +305,7 @@ beat_id,cue_type,source_in_her_life,hard_flag,advisor_flag_ref,notes,tradition,r
 
 ### Template H. Name-free commission briefs (April only; never before the premiere under D-05 and D-07)
 
-**Cover rules for all three.** The brief has no name, no place, no deity, no festival, no family detail and no film title. It names the tradition only at the technical level (tala, instrument, text language). The intermediary sees the brief and the unsigned letter. The maker holds the signed letter and the rights row (`MU-` id) with its SHA-256. **Timing:** (a) and (b) after TD-L2c at the earliest; (c) after the her-turn conversation on Sat 6 Mar 2027.
+**Cover rules for all three.** The brief has no name, no place, no deity, no festival, no family detail and no film title. It names the tradition only at the technical level (tala, instrument, text language). The intermediary sees the brief and the unsigned letter. The maker holds the signed letter and the rights row (`MU-` id) with its SHA-256. **Timing:** (a) and (b) after TD-L2c at the earliest; (c) after the her-turn conversation on Sun 7 Mar 2027 after about 14:00 (else Mon 8 Mar).
 
 **(a) Solo pakhawaj and jhanj cue (instrumental)**
 ```
@@ -325,7 +326,7 @@ Deliver ... [as (a)]
 Letter points ... [as (a)]
 ```
 
-**(c) A Gujarati bhajan with voice** (April, or after Sat 6 Mar 2027; through a name-free intermediary if earlier)
+**(c) A Gujarati bhajan with voice** (April, or after the her-turn conversation on Sun 7 Mar 2027 after about 14:00; through a name-free intermediary if earlier)
 ```
 I am making an independent film that has not been released. I cannot say who it is about or where it will be shown. I need one devotional song in Gujarati, [2-4] minutes, sung by you with [tanpura / manjira / pakhawaj] only (harmonium only if I write IN).
 The text must be public domain: either I supply it [attached, with its source edition], or you choose one by a poet who died more than a century ago and tell me the poet and the edition you read.
@@ -359,7 +360,7 @@ Letter points: as (a), plus: (1) you assign or license the performance AND your 
 
 ### Template J. The T10 consult list (questions 29 to 40; ask as a hypothetical, once the country is known)
 
-The numbers continue after the sibling's list, which runs to 28 (the venue's PRO blanket licence). The sibling's patch list also says questions 21 to 28 are to be appended to the theatrical playbook's T10 (Changelog conflict). That must be reconciled. Each question assumes India unless stated.
+The numbers continue after the sibling's list, which runs to 28 (the venue's PRO blanket licence); `playbooks/theatrical-delivery.md` T10 now runs 1 to 43 once, with these as 29 to 40 and the saurashtra questions as 41 to 43 (`DECISIONS.md` W-55), so there is no numbering conflict left to reconcile. Each question assumes India unless stated.
 
 29. India: a Gujarati garba or bhajan is credited "Traditional" on a label's release, but its film or compilation credits name a composer (for example a 1960 film with a named music director and a track list that says "Traditional (Folk)"). How do I establish who owns the tune and the arrangement, and does an unnamed arrangement carry its own copyright? Which extract (IPRS repertoire, film credits, the original record label) would a lawyer accept?
 30. India and abroad: a composer died in 1984; his works run to the end of 2044 (s.22). A 1960 film or gramophone record of one of his songs may be out of term as a recording (ss.26 and 27) while the composition is not. If the premiere is in the US or UK, how do the terms differ for sound recordings and films? Does a re-issue or remaster by a label restart anything?
@@ -383,7 +384,7 @@ The numbers continue after the sibling's list, which runs to 28 (the venue's PRO
 - The goddesses keep their own registers. Jai Adhya Shakti, Harsiddhi and Ambe are Shakta registers, and each gets its own frames or chapter [R2 PR18].
 - Shiva's shore: the Koliyak shrine is Shiva's. A recording of the sea there is fine. A recording of the temple is a permission question (Pitfall 20).
 - Narsinh Mehta, Dayaram and Mahaprabhuji are tradition. Do not paraphrase them on a card beyond the family's own words.
-- Yamunaji and Mahaprabhuji are named on any card with the honorific the maker uses (O-49 in review 05; no register row yet), never as "the river goddess" or "the philosopher Vallabha".
+- Yamunaji and Mahaprabhuji are named on any card with the honorific the maker uses (O-49), never as "the river goddess" or "the philosopher Vallabha".
 - Do not tell the Akbar and Tansen legend about Mirabai (D-28).
 - Reverence norms for recording a kirtan outside a haveli rest on one 2021 study's interviews. No practitioner, label or musician was contacted (D-03). Treat them as the study's words, not as rules.
 
@@ -392,7 +393,7 @@ The numbers continue after the sibling's list, which runs to 28 (the venue's PRO
 | Item | Status | Why (source) |
 |---|---|---|
 | Sung kirtan, aarti, a garba crowd, a temple loudspeaker, a 6 a.m. devotional radio | Out of the premiere. April only, with rights (D-05) | Living voices or labels |
-| A commissioned musician before 6 Mar 2027 | Out (D-07, W-48) | Only the maker knows |
+| A commissioned musician before the premiere, and a commissioned voice before the her-turn conversation | Out (D-07, W-44, W-48) | Only the maker knows |
 | A bansuri bed | Out | A stock Krishna-flute bed is the pan-Hindu cliché (Principle 2), and the flute is `ASK`. The sanctum claim is a conflict, not a settled fact: [1] excludes it from temple ensembles, [3] lists Murali among instruments of divine service (Template D, I-29) |
 | A garba as a cue | Out | The season is over; the composer-credit trap; garba is worship |
 | Gaudiya and ISKCON kirtan; the CC0 Antwerp 2013 Hare Krishna recording | Out as haveli sangeet | Another tradition |
@@ -413,31 +414,31 @@ The numbers continue after the sibling's list, which runs to 28 (the venue's PRO
 
 ## Questions only you can answer
 
-The register's Table 3 ends at O-35. The questions below have a register row where one exists. The others have none yet, and the orchestrator assigns IDs at the merge. Avoid O-36 to O-45, which the sibling playbook already proposes.
+The register's Table 3 now carries a row for each of the questions below except question 9, in the last column; an absorbed ID resolves to the row that names it.
 
 | # | Question | Why it matters | Register row |
 |---|---|---|---|
-| 1 | Does she sing or hum prabhatiya, Narsinh Mehta, Dayaram's garbis, a halardu, haveli kirtan, dhol songs, or film bhajans? With a harmonium or without? | Decides the hum case (HC-1 to HC-7), the harmonium flag and which T1 rows are hers | O-07; O-10 |
+| 1 | Does she sing or hum prabhatiya, Narsinh Mehta, Dayaram's garbis, a halardu, haveli kirtan, dhol songs, or film bhajans? With a harmonium or without? | Decides the hum case (HC-1 to HC-7), the harmonium flag and which T1 rows are hers | O-07 (absorbs O-41, O-51, O-70); O-10 |
 | 2 | Can you type the first line of the tune she sang in Gujarati script (text only, sent nowhere), and say where you think you heard it (cassette, haveli, family, film)? | HC placement by Mon 14 Dec | O-07 |
-| 3 | Will you record both a closed-mouth and an open-vowel hum in week 1, uncleaned, on a device that does not sync? | The closed-mouth take fails the phone check | W-44; O-07 |
-| 4 | Are the harmonium, sarangi, shehnai, ravab and duf hers, kept, or out under D-28? Is a tanpura drone acceptable? | Every one defaults to `ASK`, and `ASK` on Mon 14 Dec becomes silence | None yet (the note cites O-41 and O-51) |
-| 5 | Which sounds are in her house that you can make in an empty room: a brass bell, a jhanj, a manjira, a shankh, a hichko, a griddle and board, a churn? | Sets Template F and Principle 2 | W-10 (no question row yet) |
+| 3 | Will you record both a closed-mouth and an open-vowel hum in week 1, uncleaned, on a device that does not sync? | The closed-mouth take fails the phone check | W-44, W-65; O-07, O-84 |
+| 4 | Are the harmonium, sarangi, shehnai, ravab and duf hers, kept, or out under D-28? Is a tanpura drone acceptable? | Every one defaults to `ASK`, and `ASK` on Mon 14 Dec becomes silence | O-68 (with O-07) |
+| 5 | Which sounds are in her house that you can make in an empty room: a brass bell, a jhanj, a manjira, a shankh, a hichko, a griddle and board, a churn? | Sets Template F and Principle 2 | O-71; W-10, W-70 |
 | 6 | Which country and city will you be in on Thu 14 Jan 2027, during the January and February recording window, and where will the premiere be? | The Koliyak shore needs Gujarat; Uttarayan needs a place where kites are flown; the rights column depends on the country | O-02 |
 | 7 | Which household aartis (Ambe, Ganesh, Lakshmi, Harsiddhi), and which printed book (its title page: publisher and year)? | No sourced Gujarati-language Ganesh or Lakshmi text exists in the research (T1-11 to T1-13), and the family's book is the check on the Jai Adhya Shakti verses (A2, A3) | O-10 |
-| 8 | Does the family keep the Pushtimarg kirtan at home: which darshans, and which book of padas? | The darshan sheet values, and whether a haveli voice is hers | None yet (the note cites O-46) |
-| 9 | Are saint-poet bhajans (Kabir and other panth poets) part of her house? | D-28 flags apply poet by poet | None yet |
-| 10 | Do you accept commissioning the April voices after the her-turn conversation on Sat 6 Mar 2027, so that she chooses whose voice and which family version? | Removes the D-07 problem for voices and keeps the secret in the premiere | W-48; O-31 |
-| 11 | Is a labelled CC0 bell, tanpura or surf acceptable where you cannot capture the sound yourself, given Principle 2? | Decides whether the stand-in column is used at all | None yet |
+| 8 | Does the family keep the Pushtimarg kirtan at home: which darshans, and which book of padas? | The darshan sheet values, and whether a haveli voice is hers | O-46 |
+| 9 | Are saint-poet bhajans (Kabir and other panth poets) part of her house? | D-28 flags apply poet by poet | No register row |
+| 10 | Do you accept commissioning the April voices after the her-turn conversation on Sun 7 Mar 2027 after about 14:00, so that she chooses whose voice and which family version? | Removes the D-07 problem for voices and keeps the secret in the premiere | W-48; O-31 |
+| 11 | Is a labelled CC0 bell, tanpura or surf acceptable where you cannot capture the sound yourself, given Principle 2? | Decides whether the stand-in column is used at all | O-72 |
 | 12 | Do you accept the lean: no capture at a haveli, and bells struck in an empty room? | "Permission means telling someone" is a D-02 and D-03 question, asked once at TD-L2c if at all | O-31 |
-| 13 | Which word does the family use for the kirtan: haveli sangeet, kirtan, pad, dhol? | Three accounts of the name's origin disagree [3][4]. No card uses "haveli sangeet" until you say | None yet (D-28) |
-| 14 | May a phone assistant identify the tune from your hum (which sends it to a vendor), or must placement be by text search only? | D-15 | None yet |
+| 13 | Which word does the family use for the kirtan: haveli sangeet, kirtan, pad, dhol? | Three accounts of the name's origin disagree [3][4]. No card uses "haveli sangeet" until you say | O-73 (W-75) |
+| 14 | May a phone assistant identify the tune from your hum (which sends it to a vendor), or must placement be by text search only? | D-15 | O-74 |
 
 **Also needed from you, from the register:** the premiere country (O-02), the music route by Mon 30 Nov (O-26), and every cue decided by Mon 14 Dec (O-29). The hard-chapter and TD-L2c decisions also bear on the voices (O-31).
 
 ## Pitfalls
 
-1. **The closed-mouth hum fails on the phone.** The model shows a loss of 6 to 21 dB at the 500 Hz corner. "The hum survives" is half true: it survives on an open vowel. The END cue and the motif need the open-vowel take (W-36, W-44).
-2. **A room-tone opening fails as a first sound.** W-36 says "black and one true room sound from her kitchen." On the phone, room tone's rumble is inaudible. The first sound needs energy above about 400 Hz: a struck bell, a spoon on a steel *vati*, the cooker whistle or the jhanj.
+1. **The closed-mouth hum fails on the phone.** The model shows a loss of 6 to 21 dB at the 500 Hz corner. "The hum survives" is half true: it survives on an open vowel. The phone files need the open-vowel take for the END cue and the motif; the hall may keep the closed-mouth take if the room carries it (W-65).
+2. **A room-tone opening fails as a first sound** (W-36, W-76). On the phone, room tone's rumble is inaudible. The first sound needs energy above about 400 Hz: a struck bell, a spoon on a steel *vati*, the cooker whistle or the jhanj.
 3. **A label's "Traditional" is a claim, not a clearance.** Three of twelve tracks on one 2022 compilation say "Traditional". One of them is a film song with a named music director [34][33].
 4. **A garba that is a film song is an owned composition.** Humming it is a performance of the work (HC-4). Chogada Tara, "based on 'Hey Ranglo' written & composed by Avinash Vyas" [35], is one example; the sources disagree on other attributions.
 5. **Attribution conflicts.** "Mehndi Te Vavi Malve" is credited "Traditional (Folk)" for lyrics in the film's track list, "Traditional" as composer on the compilation, and Avinash Vyas as lyricist on his Wikipedia table. "He Ranglo" is Vyas's on one page and Upadhyay's on another. Only a registry extract or the original label copy is authority. A web page is a lead.
@@ -449,10 +450,10 @@ The register's Table 3 ends at O-35. The questions below have a register row whe
 11. **Kites are a safety question first.** Plain cotton thread only. No crowd, no terrace shouting. The SR summary says glass-coated thread is restricted and that fatal injuries have happened in Gujarat in earlier years [53].
 12. **Testing on her own phone may tip her off (D-02).** The protocol's test device is the project's Android phone. Use hers only if you are sure it tells her nothing.
 13. **Identification by hum sends a recording to a vendor (D-15).** Not without the maker's OK (question 14).
-14. **The commission window is tight.** The brief says about five weeks for commission, performance, delivery and one revision. That is 6 Mar to about 10 Apr, when the April response recordings close (W-48). The April mix runs 11 to 23 Apr. Start the brief at once after 6 Mar, not later.
-15. **The briefs' cover line is resolved, pending a Fable read of the full letter.** The briefs now open "I am making an independent film that has not been released. I cannot say who it is about or where it will be shown." D-18 allows omission, not untruth, and "a private film" would not stay true of a public premiere. Fable reads the full letter, and checks the line against the date each brief goes out (briefs (a) and (b) after TD-L2c; (c) after Sat 6 Mar 2027, which is after the premiere), before any brief goes out.
-16. **Register ID clashes.** The note cites O-38, O-41, O-46, O-47, O-49, O-50, O-51 and O-54. None is a row of `DECISIONS.md` (Table 3 ends at O-35). O-51 appears to be the song question, O-07 in the register. The note's "H-1" to "H-7" clash with H (the maker's hours), so this playbook writes them HC-1 to HC-7. Its "S1" and "S2" source classes clash with the register's stranger screenings, so this playbook writes them E1-S1 and E1-S2. The note's "T8" header clashes with the rights log (T8), so this playbook names the consult list T10 only.
-17. **Sat 27 Feb 2027, the premiere day, is Shrinathji's Patotsav (Maha vad 7, Samvat 2083): UNVERIFIED at Nathdwara, supported by a Pushtimarg tippani.** The tippani on pushtimarg.net prints "श्रीनाथजीको पाटोत्सव" against Sat 27 Feb 2027 and names no publisher [60]; `pushtimarg-world` holds the sampradaya's account of the day (R2 F10, FU4). The Nathdwara temple's own site gave the fetch tool only its title [67]. If it holds, review 05 section 0.6's row for Sat 27 Feb ("nothing marked for Pushtimarg") is wrong and the premiere falls on a Shrinathji utsav; the lead is handed to `pushtimarg-world` and the orchestrator. It is a motif-and-light fact only: no card, and nothing is designed on it until the maker has answered `pushtimarg-world`'s Q1 (does she keep it, and which house's tippani; the seven houses can differ by a day). The other two dates, Dhanurmas from Wed 16 Dec and the Vasant season from Thu 11 Feb, are Bhavnagar reads by `saurashtra-world` (R7).
+14. **The commission window is tight.** The brief says about five weeks for commission, performance, delivery and one revision. That is Sun 7 Mar (after about 14:00) to about 10 Apr, when the April response recordings close (W-48). The April mix runs 11 to 23 Apr. Start the brief at once after the her-turn conversation, not later.
+15. **The briefs' cover line is resolved, pending a Fable read of the full letter.** The briefs now open "I am making an independent film that has not been released. I cannot say who it is about or where it will be shown." D-18 allows omission, not untruth, and "a private film" would not stay true of a public premiere. Fable reads the full letter, and checks the line against the date each brief goes out (briefs (a) and (b) after TD-L2c; (c) after the her-turn conversation on Sun 7 Mar 2027, which is after the premiere), before any brief goes out.
+16. **Register ID clashes (resolved by the merge).** The note cited O-38, O-41, O-46, O-47, O-49, O-50, O-51 and O-54 before they were rows; Table 3 now carries them (O-38 became O-47, O-41 and O-51 became O-07, O-50 became O-56; O-46, O-49 and O-54 stand). The note's hum-case and source-class labels clash with H (the maker's hours) and with the stranger screenings S1 and S2, so the register's Codes retire them and this playbook writes HC-1 to HC-7 and E1-S1 / E1-S2. The note's "T8" header clashes with the rights log (T8), so this playbook names the consult list T10 only.
+17. **Sat 27 Feb 2027, the premiere day, is Shrinathji's Patotsav (Maha vad 7, Samvat 2083): UNVERIFIED at Nathdwara, supported by a Pushtimarg tippani.** The tippani on pushtimarg.net prints "श्रीनाथजीको पाटोत्सव" against Sat 27 Feb 2027 and names no publisher [60]; `pushtimarg-world` holds the sampradaya's account of the day (R2 F10, FU4). The Nathdwara temple's own site gave the fetch tool only its title [67]. If it holds, the premiere falls on a Shrinathji utsav; the register now carries the lead (W-12, asked as O-75) and `pushtimarg-world` holds the sampradaya's account. It is a motif-and-light fact only: no card, and nothing is designed on it until the maker has answered `pushtimarg-world`'s Q1 (does she keep it, and which house's tippani; the seven houses can differ by a day). The other two dates, Dhanurmas from Wed 16 Dec and the Vasant season from Thu 11 Feb, are Bhavnagar reads by `saurashtra-world` (R7).
 18. **No garba or dhol capture is possible before Sept 2027.** The next Sharad Navratri runs Thu 30 Sep to Sat 9 Oct 2027 [52] (Drik Panchang, New Delhi; re-read for Bhavnagar, geoname id 1276032, on 2026-10-19: the same dates [59]), after the April version. Do not use a stand-in without a label.
 19. **The "Shivanand Swami" signature is a signature, not a documented person.** It appears in two aartis. In Jai Adhya Shakti it is in the third verse from the end, and the aarti's own fifth verse from the end carries two Samvat years (1657 and 1622 as read on [27]) and names Reva, the Narmada, so the c. 1601 date is the text's own signature, not only a 2017 post. The Surat identification still rests on that post and popular sites (SR) [28]. Who Shivanand Swami was stays UNVERIFIED; the public-domain lead is stronger. Do not print "written by" on a card. Confirm the verse against the family's printed aarti book (question 7).
 20. **The Koliyak temple is Shiva's, and its Pandava story needs a citation.** The shrine is reachable only at low tide, and tides are strongest at new and full moon [51]. Plan each day from that day's tide table. Record the water's edge, mic low, not the far swell.
@@ -558,28 +559,28 @@ Format: `[n] title — URL — date — status — note`. The numbers are the re
 - **2026-10-19, v0.1 (first draft).** Written by the Haiku scribe from `research/gujarati-devotional-sound.md` (Sonnet researcher, 2026-10-19), `CHARTER.md` and `DECISIONS.md`. Conflicts and gaps are flagged, not resolved.
 - **2026-10-19, v0.2 (round-1 review applied by the Sonnet implementor).** Applied `reviews/gujarati-devotional-sound-round1.md` in place from the note's new follow-up research: Yamunashtakam tune `unknown` and the Yamuna Maharani address rule (A6, T1-06); the flute as a source conflict (I-29); the Jai Adhya Shakti verse position and the text's own Samvat years (A2, A3, Pitfall 19); the city on the Navratri date (S-F1, Pitfall 18); the Patotsav lead (Pitfall 17); the cover line "an independent film that has not been released" (Template H, Pitfall 15); the 1885 print and the Khare escape (T1-01, HC-2); sources [59] to [69] added.
 
-**Existing playbook sections that the findings change.** Named as each file's own headings. Where the note used a different name, the correct one is given.
+**Existing playbook sections that the findings changed (record).** Named as each file's own headings. Where the note used a different name, the correct one is given. Status as of the 2026-10-19 merge: *applied* rows were made in the target file by the reconciliation pass of that date or are in the register; *open* rows belong to a file that pass did not touch, and `DECISIONS.md` Table 4 tracks them where it has a row.
 
-| File | Section | What changes |
-|---|---|---|
-| `playbooks/music-sound.md` | Step 3, "Choose your music route (by 2026-11-30)" | Add the premiere spine: objects, rooms, sea, hum; sung devotion is April. The note cites "the Decision 8 spine", but Decision 8 is the licence-log rule. Corrected here: the spine belongs under Step 3. |
-| `playbooks/music-sound.md` | Step 5, "Build the cue map (by 2026-11-14)"; Template A, "Licence log header" | `tradition` gains `haveli_sangeet` and `gujarati_devotional`. `time_of_day_or_season` gains `midday` and `darshan:<name>`, in the sheet only. Add `premiere_cut`, `april_version` and `phone_ref`. `composition_status` and `recording_status` become mandatory separate columns. A label's "Traditional" is entered `unknown`. |
-| `playbooks/music-sound.md` | Decision 5, "AI is a labelled bed, a temp, or a sound effect" | Confirmed for devotional text: no AI voice for Gujarati, Braj or Sanskrit, and no source documents support in any tool (SR, 2026-10-19). The note cites "Decision 4 (AI music)", but Decision 4 is about royalty-free music. Corrected here. |
-| `playbooks/music-sound.md` | Exercise 6, "Mono and small-speaker check"; Template I, "Sound-recording notes for the room" | Per-instrument phone verdicts. Closed-versus-open hum test. The capture list (Template F here) with `where`, `season_available` and `phone_speaker`. "Never at a haveli during darshan." |
-| `playbooks/devotional-sound-script.md` | T-4, "Instrument and form flags (Template C, condensed)" | Add I-24 to I-29 (jhanj, been, sarangi flag, ravab, duf, upang and kinnari, the bansuri and murali source conflict). The pakhawaj phone cell becomes FAIL and the tanpura PASS, both measured. |
-| `playbooks/devotional-sound-script.md` | T-6, "The name-free commission brief and the signed letter (Template H)" | Commission timing moves to after Sat 6 Mar 2027. Add briefs (a), (b) and (c). Voice commissions add text and tune warranties. |
-| `playbooks/devotional-sound-script.md` | T-5, "Source vetting checklist and verdicts" (Template E, E4); T-1, "The cue map" | Add the G1 to G6 source rows. Reconcile the consult numbering: this note uses 29 to 40. The sibling's own patch list (its T-12, around line 400) says questions 21 to 28 are to be appended to the theatrical T10. That conflict is unresolved (see below). |
-| `playbooks/theatrical-delivery.md` | T8, "Rights-clearance log"; T10, "Consult question list" | `composition_status` and `recording_status` mandatory. Questions 29 to 40 appended after the reconciliation above. |
-| `playbooks/mobile-delivery.md` | T-M6, "The project-phone protocol", row 10 (Sound); Exercise 6, "The cold-open sound ladder" | Add the closed and open hum, a struck bell and a pakhawaj stroke. Record the lowest audible tone. First-sound rule: spoon, latch, bell or cooker, not a rumble. |
-| `playbooks/film-story.md` | Template 1, "Treatment", row 11, "Music plan" | Cue types gain the darshan hour and a premiere-versus-April column. The kitchen-hour monotony check reads the sheet. |
-| `DECISIONS.md` (orchestrator; not edited here) | W-36, W-44, W-10, W-48; Table 3 | W-36: the first sound must be above 400 Hz on the phone; the END hum is on an open vowel. W-44: a relative's public-domain performance is April-only under D-05, so it does not belong in the premiere spine. W-10: the Gujarati capture slots (Template F) and "never at a haveli during darshan". W-48: the commission window is about five weeks. Table 3: add questions 1 to 14 (none has an ID yet). |
+| File | Section | What changes | Status |
+|---|---|---|---|
+| `playbooks/music-sound.md` | Step 3, "Choose your music route (by 2026-11-30)" | The premiere spine: objects, rooms, the sea, the hum; sung devotion is April. The note cites "the Decision 8 spine", but Decision 8 is the licence-log rule; the spine belongs under Step 3 | applied 2026-10-19 |
+| `playbooks/music-sound.md` | Step 5, "Build the cue map (by 2026-11-14)"; Template A, "Licence log header" | `tradition` gains `haveli_sangeet` and `gujarati_devotional`. `time_of_day_or_season` gains `midday` and `darshan:<name>`, in the sheet only. Add `premiere_cut`, `april_version` and `phone_ref`. `composition_status` and `recording_status` become mandatory separate columns. A label's "Traditional" is entered `unknown` | applied 2026-10-19 (the cue map takes the Template G header; Template A gains the two status columns) |
+| `playbooks/music-sound.md` | Core principle 5 (the note's "Decision 5"), "AI is a labelled bed, a temp, or a sound effect" | Confirmed for devotional text: no AI voice for Gujarati, Braj or Sanskrit, and no source documents support in any tool (SR, 2026-10-19). The note cites "Decision 4 (AI music)", but Decision 4 is about royalty-free music | applied 2026-10-19 |
+| `playbooks/music-sound.md` | Exercise 6, "Mono and small-speaker check"; Template I, "Sound-recording notes for the room" | Per-instrument phone verdicts. Closed-versus-open hum test. The capture list (Template F here) with `where`, `season_available` and `phone_speaker`. "Never at a haveli during darshan" | applied 2026-10-19 |
+| `playbooks/devotional-sound-script.md` | T-4, "Instrument and form flags (Template C, condensed)" | Add I-24 to I-29 (jhanj, been, sarangi flag, ravab, duf, upang and kinnari, the bansuri and murali source conflict). The pakhawaj phone cell becomes FAIL and the tanpura PASS, both measured | applied 2026-10-19 |
+| `playbooks/devotional-sound-script.md` | T-6, "The name-free commission brief and the signed letter (Template H)" | Commission timing moves to after the her-turn conversation (Sun 7 Mar 2027). Add briefs (a), (b) and (c). Voice commissions add text and tune warranties | open: T-6 keeps the single instrumental brief; briefs (a) to (c) live in Template H here |
+| `playbooks/devotional-sound-script.md` | T-5, "Source vetting checklist and verdicts" (Template E, E4); T-1, "The cue map" | Add the G1 to G6 source rows. Reconcile the consult numbering | the numbering is applied 2026-10-19 (T10 runs 1 to 43, W-55); the T-1 header is applied; the G1 to G6 source rows are open |
+| `playbooks/theatrical-delivery.md` | T8, "Rights-clearance log"; T10, "Consult question list" | `composition_status` and `recording_status` mandatory. Questions 29 to 40 appended | applied 2026-10-19 (T8 columns; T10 questions 29 to 40 as written) |
+| `playbooks/mobile-delivery.md` | T-M6, "The project-phone protocol", row 10 (Sound); Exercise 6, "The cold-open sound ladder" | Add the closed and open hum, a struck bell and a pakhawaj stroke. Record the lowest audible tone. First-sound rule: spoon, latch, bell or cooker, not a rumble | open (another implementor's file); the first-sound rule is already there |
+| `playbooks/film-story.md` | Template 1, "Treatment", row 11, "Music plan" | Cue types gain the darshan hour and a premiere-versus-April column. The kitchen-hour monotony check reads the sheet | open (S-52) |
+| `DECISIONS.md` | W-36, W-44, W-10, W-48; Table 3 | W-36: the first sound must be above 400 Hz on the phone; the END hum is on an open vowel. W-44: a relative's performance of a public-domain tune is April-only under D-05, so it does not belong in the premiere spine. W-10: the Gujarati capture slots (Template F) and "never at a haveli during darshan". W-48: the commission window is about five weeks. Table 3: add questions 1 to 14 | applied by the 2026-10-19 merge (W-36, W-44, W-65, W-10, W-70, W-48; Table 3 rows O-07, O-46, O-68, O-71 to O-74, O-84) |
 
-**Conflicts found in the register and the note (not resolved here).**
-- **W-36 and the first sound.** The register's "one true room sound" cannot be the first sound on a phone (Pitfall 2).
-- **W-44 spine.** The register lists "a relative's public-domain performance" as a spine item. D-05 keeps it out of the premiere. Treated here as April-only.
-- **Unregistered IDs.** The note cites O-38, O-41, O-46, O-47, O-49, O-50, O-51 and O-54. None is a row of `DECISIONS.md`, which ends at O-35. O-51 appears to match O-07.
-- **Source-class and hum-case names.** The note's "S1" and "S2" (sibling E1) and "H-1" to "H-7" clash with the register's codes. This playbook writes E1-S1, E1-S2 and HC-1 to HC-7.
-- **Consult numbering.** The sibling's patch list says 21 to 28; this note says 29 to 40; the sibling's E4 runs to 28. Reconcile before the consult is booked (W-55, by Fri 4 Dec).
+**Conflicts found in the register and the note (resolved at the merge).**
+- **W-36 and the first sound.** Resolved: W-36 now makes the first sound the first act of her morning above about 400 Hz, and room tone fails as a first sound (W-76; Pitfall 2).
+- **W-44 spine.** Resolved: the register's spine no longer lists a relative's performance of a public-domain tune; D-05 keeps it out of the premiere, and it is April-only here.
+- **Unregistered IDs.** Resolved: Table 3 now carries the rows (O-38 became O-47; O-41 and O-51 became O-07; O-50 became O-56; O-46, O-49 and O-54 stand).
+- **Source-class and hum-case names.** Resolved: the register's Codes retire the note's spellings and write HC-1 to HC-7 and E1-S1 / E1-S2, as this playbook does.
+- **Consult numbering.** Resolved: one T10 list, renumbered once on 2026-10-19 (W-55): this note's questions are 29 to 40 as written.
 
 **Gaps, all TODO(research).**
 - The death year of Narayan Khare, whose tune is the common "Vaishnav Jan To" tune. Not found on any page read [55][62], including the round-1 follow-up. A printed biography is needed, and it is not needed at all if the tune she sang is the family's own (HC-3).
@@ -595,4 +596,5 @@ Format: `[n] title — URL — date — status — note`. The numbers are the re
 - Not consulted: no practitioner, label or musician (D-03). The reverence norms rest on one 2021 study.
 - Sat 27 Feb 2027 as Shrinathji's Patotsav is on a Pushtimarg tippani [60] but not on the Nathdwara temple's own calendar, which was not readable [67] (Pitfall 17). Dhanurmas and the Vasant season are Bhavnagar reads by `saurashtra-world` (R7).
 - Iconography for each deity is outside this note. TODO(research): check it against the sibling tracks.
-- Questions 1 to 14 are unanswered. The register holds none of them yet.
+- Questions 1 to 14 are unanswered. Table 3 of the register now holds a row for each except question 9.
+- **2026-10-19, v0.3, Reconciled with DECISIONS.md after the her-world merge (2026-10-19).** Sonnet implementor pass against the merged register (S-59, S-63, S-64 and the W-10, W-36, W-44, W-48, W-55, W-65, W-70, W-75 rows): the hum cases are HC-1 to HC-7 and the source classes E1-S1 / E1-S2 throughout (S-59); the her-turn conversation is Sun 7 Mar after about 14:00, else Mon 8 Mar, and the commission windows follow it (W-48; S-64); the capture list carries the seva-article rule, adds the water-into-brass capture and drops the prayer corner from room tone (W-10, W-70); the hum's two takes map to two masters (W-65); a relative's performance of a public-domain tune is no longer in the premiere spine; the O-rows in Questions are re-keyed to Table 3; the old first-sound quotation is removed (S-63); the table of changes to other files is a record with a Status column. Citations kept; no research note or review touched.

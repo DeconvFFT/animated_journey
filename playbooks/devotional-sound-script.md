@@ -29,12 +29,12 @@ The first question is not "which raga?" It is "which of her things is this?" A s
 
 1. **Hers first, pan-Hindu second.** (D-28, D-31; charter Principle 2.) A sound, a deity, a festival or a script enters the film because it is hers. A generic "Indian" sound, such as a stock temple bell or a dhak drum, is a labelled fallback only where she cannot be recorded, and it is never a motif by default. [Template I; note Summary 15]
 2. **The words can be free while the tune is owned.** "Devotional means free" is wrong in five ways. The words may be public domain (Tulsidas, died 1623 [14, SR]; Annamacharya, died 1503 [56]; Phillauri, died 1881 [12]) while the tune, the arrangement, the recording and the performance belong to someone. Check each of the four separately. [note Summary 6; Q3]
-3. **Origin is a question for the maker, not a ruling for the team.** Where a sound, a form or a name has a shared or court history (sitar, sarod, tabla, shehnai, santoor, khayal, harmonium, tanpura, ektara), flag it and default to leaving it out until the maker rules. The default cell value is `ASK`, which means silence or room tone in the render. [Template C; note Summary 13]
-4. **No raga is assigned to her tradition until a named source or a teacher names it.** Raga-to-rasa is our inference, not the tradition's. Time-of-day windows differ between sources. No raga name goes on screen or in credits unless the recording's own metadata carries it. Where a name is needed, use Carnatic Kalyani or no name. [Q1; Template B]
+3. **Origin is a question for the maker, not a ruling for the team.** Where a sound, a form or a name has a shared or court history (sitar, sarod, tabla, shehnai, santoor, khayal, harmonium, tanpura, ektara), flag it and default to leaving it out until the maker rules (O-68). The default cell value is `ASK`, which means silence or room tone in the render. Out by default: sitar, sarod, santoor, khayal, ghazal, qawwali and the Ragamala idiom. `ASK`: harmonium, tabla, bansuri, tanpura, shehnai, sarangi, ektara, the Carnatic violin, been, ravab and duf (W-44). [Template C; note Summary 13]
+4. **No raga is assigned to her tradition until a named source or a teacher names it.** Raga-to-rasa is our inference, not the tradition's. Time-of-day windows differ between sources. No raga name goes on screen or in credits unless the recording's own metadata carries it. No raga name goes on screen or in credits anywhere (`DECISIONS.md` W-44). [Q1; Template B]
 5. **Licence by item and by country.** An uploader's licence field is a claim. The Great 78 Project says its audio is for "research, teaching, and private study only" [25]. ND cannot go under picture. NC and SA need a decision. A free, unticketed premiere is still a public showing. [Q4, Q5; Template F]
 6. **Test Indic text on the real burn-in path, on the real machine.** Complex shaping is what we want. Before ffmpeg n9.0 the `subtitles` filter runs libass in simple shaping, which breaks conjuncts without any warning [96]. Fonts must be the ones the renderer will actually find. Size and wrap by measured width and base-letter height, not by a character count. [Q10; Template K; Template L1]
 7. **Plan the sound and the text for a phone as well.** A phone speaker keeps a drone's jawari buzz but loses its body. Room rumble vanishes. Her Android phone is the device that counts for the live-text captions. [note Summary 14; Template L2; D-31]
-8. **No AI voice of devotional text, and AI music is a poor fit.** The current AI music terms bar film use or allow only personal or non-commercial use, and no tool is shown to handle raga grammar, gamaka, tala or Sanskrit pronunciation. A locally run instrumental drone, labelled, is the only AI-adjacent option, and it almost never belongs in the premiere cut. [Template G]
+8. **No AI voice of devotional text, ever, and AI music is closed for the premiere.** The current AI music terms bar film use or allow only personal or non-commercial use, and no tool is shown to handle raga grammar, gamaka, tala or Sanskrit pronunciation. There is no AI bed in the premiere cut because there is no voice for one to sit under (`DECISIONS.md` W-44, W-79). [Template G]
 
 *Terms used here, in plain words:* **raga** is a melodic framework; **tala** is a rhythmic cycle; **gamaka** is an ornament on a note; **sync** is permission to put music against picture; **master** is permission to use one particular recording; **ND, NC and SA** are Creative Commons terms (no derivatives, non-commercial, share-alike); **shaping** is how a script's letters combine into the glyphs drawn on screen; a **conjunct** joins two consonants into one form; the **reph** is a ra mark drawn above a letter; the **short-i** is a vowel sign drawn to the left of its consonant but spoken after it (general knowledge).
 
@@ -44,17 +44,17 @@ The first question is not "which raga?" It is "which of her things is this?" A s
 
 **Step 1. Settle the premiere country (O-02, TD-7). By Sunday 25 October.** Every term, every reading of the Indian section 52 exemption, and every performing-rights question depends on it. Until it is answered, every rights line reads "not yet known; confirm" (W-46). *Done when:* the country is written in the register.
 
-**Step 2. Read the rows that bind this track.** Read D-05, D-16, D-17, D-28 and D-31 in `DECISIONS.md`, and the open rows O-36 and O-41. The proposed rows O-36 to O-45 are in `reviews/04-hindu-mobile-briefs-review.md` but are not yet rows in `DECISIONS.md`; the orchestrator must enter them before this track's decisions count. Note that `reviews/05-her-world-briefs-review.md` records the state, district, language and script (O-36) as answered; the script for Sanskrit verse is still open.
+**Step 2. Read the rows that bind this track.** Read D-05, D-16, D-17, D-28 and D-31 in `DECISIONS.md`, and the Table 3 rows this track's questions became: O-07 (the tune and the instruments she uses; absorbs O-41, O-51, O-70), O-68 (the instrument rulings and the reading of D-28 for sound), O-15 and O-62 (the script stack and the native reader), O-54 (her phone; absorbs O-43), O-64 (deity images; absorbs O-42, O-52) and O-39 (festivals). The state, district, language and script (O-36) are answered by D-31; the script for Sanskrit verse is settled by O-15 as Devanagari unless the family reads it in Gujarati script.
 
-**Step 3. Build the tradition and text sheet (Template N, T-2 below).** One row per deity, festival or text in D-31. Fill "Source says" only from a page you have read, and quote it exactly. Mark a row `hers` only when the maker says so (O-38, O-39, O-41). *By:* rows for the script and settings card, Sunday 1 November; the cue map, Saturday 14 November.
+**Step 3. Build the tradition and text sheet (Template N, T-2 below).** One row per deity, festival or text in D-31. Fill "Source says" only from a page you have read, and quote it exactly. Mark a row `hers` only when the maker says so (O-47, O-39, O-07). *By:* rows for the script and settings card, Sunday 1 November; the cue map, Saturday 14 November.
 
-**Step 4. Decide the script stack (O-36).** Use the decision table in T-7. The Gujarati caption set, the Devanagari verse strings and the title art all go on the settings card on Sunday 1 November.
+**Step 4. Decide the script stack (O-15, W-75).** Use the font table in T-7. The Gujarati caption set, the Devanagari verse strings and the title art all go on the settings card on Sunday 1 November; cards are in Gujarati, captions in the room's language, her script on titles and verse cards as shaped outlines.
 
-**Step 5. Run the shaping gate on the PC (Template K, T-8).** Start with the ten-minute A/B in T-8 item 6 (Template K item 8 in the note). It decides whether the project's SRT template can burn Indic text at all. The full gate takes about an hour (item 2 of Template K, per the note). Sign the settings card only when all four gate conditions pass.
+**Step 5. Run the shaping gate on the PC (Template K, T-8).** This is the same gate as `playbooks/mobile-delivery.md` Exercise 7 and T-M6 row 11, run once and not twice (`DECISIONS.md` W-06, S-65). Start with the ten-minute A/B in T-8 item 6 (Template K item 8 in the note): it decides on the Sun 1 Nov settings card whether the PC burns with `subtitles` or with `ass` (W-16). The full gate takes about an hour (item 2 of Template K, per the note) and is a P-LOCK condition (Sat 14 Nov). Sign the settings card only when all four gate conditions pass.
 
-**Step 6. Size and wrap captions by measured width (T-9 and T-10).** Keep Tamil and Malayalam faces within the 90% box. Break only at word boundaries.
+**Step 6. Size and wrap captions by measured width (T-9 and T-10).** Keep Gujarati and Devanagari lines within the 90% box; Gujarati is sized by KA height (W-18). Break only at word boundaries.
 
-**Step 7. Make the sound list (T-3).** The maker records the house alone, when it is empty, on a device that does not sync to a shared cloud. The register's holiday window (Monday 21 December to Sunday 3 January, W-10) is the planned slot. Nothing records her. Each capture is a T8 `audio` row marked `maker`. Asking a temple's permission means telling someone a recording is being made (D-03, D-02). Default: record bells from the public hall only where recording is openly allowed without asking anyone; otherwise skip S-13 and use S-02, the household's own bell.
+**Step 7. Make the sound list (T-3).** The maker records the house alone, when it is empty, on a device that does not sync to a shared cloud. The register's holiday window (Monday 21 December to Sunday 3 January, W-10) is the planned slot. Nothing records her. Each capture is a T8 `audio` row marked `maker`. Asking a temple's permission means telling someone a recording is being made (D-03, D-02), and no temple or haveli office is ever asked anything (W-10). Default: do not record at a temple or haveli at all (S-13 is skipped); use S-02, a household hand-bell outside the mandir or the maker's own. A sound capture never handles her seva articles (W-70).
 
 **Step 8. Flag every instrument (T-4).** Any flagged item defaults to `maker_rule = ASK`.
 
@@ -75,7 +75,7 @@ Times marked "estimate" are ours. The note gives the times for Template K item 2
 ### Exercise 1. Key your sheet to your unknowns
 
 - **Goal.** See which decisions wait on which answers.
-- **Steps.** (1) List the open items in the register and the proposed O-36 to O-45. (2) For each, write which table it unlocks (T-11). (3) Mark each row answered or `ASK`.
+- **Steps.** (1) List the open items in Table 3 of the register that this track's questions became (Step 2). (2) For each, write which table it unlocks (T-11). (3) Mark each row answered or `ASK`.
 - **Time.** About 45 minutes (estimate).
 - **What good looks like.** Every row in T-11 has an answer or `ASK`. No row is filled by a guess from a surname, a place or a photo.
 
@@ -135,13 +135,14 @@ Times marked "estimate" are ours. The note gives the times for Template K item 2
 
 ### T-1. The cue map (extends `playbooks/music-sound.md` Step 5; Template A)
 
-The first six columns are the existing Step 5 columns, unchanged. The other nineteen are new.
+The first six columns are the existing Step 5 columns, unchanged. The other twenty-two are new, and the last three (`premiere_cut`, `april_version`, `phone_ref`) are the `playbooks/gujarati-devotional-sound.md` Template G additions, so this is the register's Template G header (`DECISIONS.md` W-44), due with the cue map on Sat 14 Nov.
 
 ```
-beat_id,cue_type,source_in_her_life,hard_flag,advisor_flag_ref,notes,tradition,raga_or_mode,raga_id,time_of_day_or_season,rasa,rasa_basis,instruments,origin_flag,maker_rule,source_route,licence_log_ref,composition_status,recording_status,performer_status,voice_present,phone_check,mono_check,not_before,date_read
+beat_id,cue_type,source_in_her_life,hard_flag,advisor_flag_ref,notes,tradition,raga_or_mode,raga_id,time_of_day_or_season,rasa,rasa_basis,instruments,origin_flag,maker_rule,source_route,licence_log_ref,composition_status,recording_status,performer_status,voice_present,phone_check,mono_check,not_before,date_read,premiere_cut,april_version,phone_ref
 ```
 
-- `tradition`: `hindustani`, `carnatic`, `temple_ritual`, `folk_regional:<name>`, `domestic_sound`, `none`.
+- `tradition`: `haveli_sangeet`, `gujarati_devotional`, `hindustani`, `carnatic`, `temple_ritual`, `folk_regional:<name>`, `domestic_sound`, `none`. `haveli_sangeet` is a sheet value only; no card or credit uses the phrase until the family's word is known (O-73).
+- `premiere_cut`: a sound id from Template F of the Gujarati sound playbook, `SILENCE` or `ROOM_TONE`; for the hum, `S-HUM-closed` (venue) / `S-HUM-open` (phone) (W-65). `april_version`: what is added, or `same`. `phone_ref`: the project-phone verdict and the lowest audible tone. `time_of_day_or_season` also takes `midday` and `darshan:<Mangla|Shringar|Gwal|Rajbhog|Utthapan|Bhog|Sandhya|Shayan>`, in the sheet only (W-62).
 - `raga_or_mode`: a raga name only if a named source or a teacher identifies it, or the cue is a vetted public-domain recording whose metadata says so. Otherwise use `none (drone only)`, `her tune (raga unknown)` or `pentatonic mode (not named)`.
 - `raga_id`: R-01 to R-24 from the note's Template B, or blank. The full table is in `research/devotional-sound-script.md`.
 - `time_of_day_or_season`: `dawn`, `morning`, `afternoon`, `dusk`, `evening`, `night`, `late_night`, `monsoon`, `any`, `n/a`. This is the same field as `season_or_time_of_day` in `research/hindu-frameworks.md`, so the two sheets join.
@@ -149,17 +150,17 @@ beat_id,cue_type,source_in_her_life,hard_flag,advisor_flag_ref,notes,tradition,r
 - `instruments`: I-ids from T-4, separated by `;`.
 - `origin_flag`: `NONE`, `SHARED`, `COURT`, `SUFI`, `CHURCH`, `COLONIAL_EUROPEAN`, `DHARMIC_NOT_HINDU`, `UNVERIFIED` (several allowed). `CHURCH` = a documented church or missionary channel. `COLONIAL_EUROPEAN` = a European instrument adopted in the colonial era, with no church channel shown. A flag says what the source says and no more.
 - `maker_rule`: blank, `IN`, `OUT` or `ASK`. Default for any flagged instrument or form is `ASK`.
-- `source_route`: in this order, `SILENCE`, `HER_TUNE_HUMMED`, `PD_PERFORMANCE_EXISTING`, `MAKER_OWN_SOUND`, `CC0`, `CC_BY`, `LOCAL_AI_BED`, `LICENSED_SONG`. Lean: none of the last two.
+- `source_route`: in this order, `SILENCE`, `HER_TUNE_HUMMED` (two takes, W-65), `MAKER_OWN_SOUND`, `CC0_STANDIN` (labelled; only if the sound is hers, O-72), then the April-column routes `PD_PERFORMANCE_EXISTING`, `CC_BY`, `LOCAL_AI_BED` and `LICENSED_SONG` (`not_before=APRIL`, except a licensed song with a written answer by Mon 14 Dec). Lean: none of the last two; no AI bed and no sung recording in the premiere (W-44, D-05).
 - `licence_log_ref`: the T8 `asset_id` (`MU-` for music, `FN-` for fonts).
 - `composition_status`: `PD_text_and_tune`, `PD_text_owned_tune`, `owned`, `unknown`. `recording_status`: `n/a`, `PD:<countries>`, `owned:<label>`, `CC:<type>`, `maker`. `performer_status`: `maker`, `relative:release_pending`, `hired:written_consent_s38A2`, `n/a`.
 - `voice_present`: `yes` or `no`. A `yes` row cannot enter the premiere cut unless it is her HER-PUBLIC clip (D-05).
 - `not_before`: `PREMIERE`, `TD-L2c` or `APRIL` (D-07 and D-06).
 
-**Rules.** (1) No MOTIF or CLOCK row without `source_in_her_life`. (2) A row with a `raga_id` but no named source is invalid. (3) Every `LOCAL_AI_BED` row has `voice_present=yes`, is labelled, never sits on the emotional peak, and is marked `APRIL`. (4) Any `origin_flag` other than `NONE` needs a `maker_rule` by Monday 14 December. (5) `composition_status=unknown` on a MOTIF blocks lock.
+**Rules.** (1) No MOTIF or CLOCK row without `source_in_her_life`. (2) A row with a `raga_id` but no named source is invalid. (3) Every `LOCAL_AI_BED` row has `voice_present=yes`, is labelled, never sits on the emotional peak, and is marked `APRIL` (the premiere has none, W-44). (4) Any `origin_flag` other than `NONE` needs a `maker_rule` by Monday 14 December. (5) `composition_status=unknown` on a MOTIF blocks lock.
 
 ### T-2. Tradition and text sheet (Template N, condensed)
 
-Columns: **Row · Item · What the source says · Text · Tune and recording · Use before April · Flag.** Under D-05, any recording of a living voice is a note for the April version unless it says otherwise.
+Columns: **Row · Item · What the source says · Text · Tune and recording · Use before April · Flag.** Under D-05, any recording of a living voice is a note for the April version unless it says otherwise. "Haveli sangeet" is this sheet's working name; it is not a card or credit label until the family's word is known (O-73, W-75).
 
 | Row | Item | What the source says | Text | Tune and recording | Use before April | Flag |
 |---|---|---|---|---|---|---|
@@ -171,7 +172,7 @@ Columns: **Row · Item · What the source says · Text · Tune and recording · 
 | N6 | "Vaishnava Jana To" | Narsinh Mehta's best-known composition; the best-known melody is a semi-classical arrangement set in the 1920s by Narayan Khare at Sabarmati Ashram, in Mishra Khamaj [92] | Public domain. The tool did not reproduce the first Gujarati line, so do not caption from this note | The arranger's death year is UNVERIFIED (not found in round 1 either [113]; the note's Follow-up 3 has the term table keyed on the year); recordings are owned | Text only | Whether her family sings this tune |
 | N7 | Aarti: "Om Jai Jagdish Hare"; the Ambe Maa and Shiva, Lakshmi and Ganesh aartis | Phillauri wrote "Om Jai Jagdish Hare" c. 1870, and died 1881 [12]. Wikipedia credits the Marathi Ganesh aarti "Sukhakarta Dukhaharta" to Samarth Ramdas (1608 to 1682) [103]. No page opened names an author or a date for "Jai Adhya Shakti" or for the Shiva, Lakshmi or "Jai Ganesh Deva" aartis [112]; a sibling note reports a "Shivanand Swami" signature in the Shiva and Amba aartis, no date [R8]; the lead from memory (Shivanand Swami, 18th century) stays UNVERIFIED | Free to caption as text: "Om Jai Jagdish Hare"; "Sukhakarta Dukhaharta" only if it is hers. Every other aarti: unknown | Arrangements, printed editions and recordings owned | No other aarti text captioned until its author is read from a page opened | Do not caption any other aarti text before then |
 | N8 | Garba and raas at Navaratri | A circle dance round an image of Amba or a clay pot with a flame; "the dhol and dholak (Indian drums), cymbals and shehnai" [93] | Traditional lines unknown | Film and album garbas are label property; a crowd recorded at an event is living voices | None (D-05) | The dhol is the only sound a source names; the shehnai carries an origin flag |
-| N9 | Harsiddhi | "a regional Hindu goddess, popular in Gujarat, Madhya Pradesh, adjoining Maharashtra"; one aspect of Durga; kuldevi of many families [94]. No aarti named | n/a | n/a | None | Which song her home sings for her (O-38) |
+| N9 | Harsiddhi | "a regional Hindu goddess, popular in Gujarat, Madhya Pradesh, adjoining Maharashtra"; one aspect of Durga; kuldevi of many families [94]. No aarti named | n/a | n/a | None | Which song her home sings for her (O-47) |
 | N10 | Shiva: "Om Namah Shivaya"; the Mahamrityunjaya mantra | Not re-read by the researcher (mantra text; traditional) | Traditional | Recordings owned (the note's row) | Card only, never audio | Fixture strings test its marks |
 | N11 | Women's songs at festivals ("dhol songs") | "in Gujarat lay devotees, mainly women, sing dhol songs" [89]; [89] cites Mallison (1986), whose first page says the dhola are sung "essentiellement, sinon exclusivement, par des femmes" [101] | Traditional | A recording of living people | None (D-05, D-17) | That they sit outside the temple liturgy is [89]'s claim; only p. 79 of the primary was read |
 | N12 | Ganesh and Lakshmi songs | Not researched | n/a | n/a | n/a | Add after the maker names which songs her home sings |
@@ -182,19 +183,19 @@ Rules that decide every row: D-17 (never record her), D-05 (no living voice in t
 
 | id | Sound | Hers if | How to capture without recording her | Voice risk (D-05) | Phone (note's model) | Stand-in (only if hers; label it) |
 |---|---|---|---|---|---|---|
-| S-01 | Morning conch | She blows one at puja (O-38, O-39) | The maker blows or strikes the household's shell in the empty prayer corner | None | Survives | CC0 conch, 10.9 s [37] |
-| S-02 | Brass hand-bell | A bell is on her shelf | The maker rings it at arm's length | None | Survives | CC0 temple bell, 30.5 s [37] |
-| S-03 | Lamp, match, incense | She lights them daily | The maker strikes a match in the empty room | None | The hiss survives | None needed |
+| S-01 | Morning conch | She blows one at puja (O-46, O-39) | The maker's own conch, blown outside the prayer corner; her shankh is a seva article and is never touched, and a stand-in is used only if a conch is hers (W-70, O-72), or nothing | None | Survives (thin) | CC0 conch, 10.9 s [37] |
+| S-02 | Brass hand-bell | A household hand-bell outside the mandir is hers (O-71) | The maker rings it once at arm's length, outside the mandir, or uses the maker's own bell; never the mandir's bell (W-70) | None | Survives | CC0 temple bell, 30.5 s [37] |
+| S-03 | Lamp, match, incense | She lights them daily | The maker strikes a match in the empty room, not in the prayer corner (W-70) | None | The hiss survives | None needed |
 | S-04 | Pressure-cooker whistle | The cooker is hers | The maker runs it, house empty (fire safety first) | None | Survives | CC0 cooker, location unknown [37] |
 | S-05 | Tadka sizzle | She tempers (ask only by looking at the pans) | The maker tempers in her pan | None | Survives | None |
 | S-06 | Mixer-grinder | She owns one | Run it empty or with water | None | Mid band survives; low motor rumble weak | None |
 | S-07 | Grinding stone | The stone is kept | The maker turns it | None | Partly survives | None |
 | S-08 | Rice washing, steel tumbler and ladle | Daily kitchen objects | The maker, hands only | None | Survives | None |
-| S-09 | Kolam or rangoli, powder swish | She draws (O-40) | The maker draws a test pattern in rice flour; no sand product | None | Very quiet; weak | None |
+| S-09 | Rangoli or sathiyo, powder swish | She draws (O-06) | The maker draws a test pattern in rice flour; no sand product | None | Very quiet; weak | None |
 | S-10 | Bangles, anklets, a brass box | They are hers | The maker handles the objects in the box; never worn | None | Survives | None |
-| S-11 | Room tone (kitchen, prayer corner, hall; W-10) | Always | 60 seconds per room, door shut, phone in airplane mode | None | Low rumble vanishes (-19.6 dB in one sample) | None |
+| S-11 | Room tone (kitchen, hall; W-10) | Always | 60 seconds per room, door shut, phone in airplane mode; not the prayer corner (W-70). Never the film's first sound (W-36) | None | Low rumble vanishes (-19.6 dB in one sample) | None |
 | S-12 | Koel at dawn, crows | The garden or balcony had them | From the maker's own spot at dawn | None | Survives | CC0 koel, Singapore park, 7.8 s [37]; season UNVERIFIED |
-| S-13 | Temple aarti at dusk | Her temple (O-38) | Bells, ghanta and drums only, from the public hall at off-peak times; the temple's own recording rule governs; no sung words. Asking a temple's permission means telling someone a recording is being made (D-03, D-02). Default: record bells from the public hall only where recording is openly allowed without asking anyone; otherwise skip S-13 and use S-02, the household's own bell. No rule allowing it was found at a haveli or temple of her tradition [100][110][111] | **High**: the congregation and priests are living voices | Survives | CC0 "Temple Ambience" has some people in it; check for speech [37] |
+| S-13 | Temple aarti at dusk | Her haveli or temple (O-46) | **Not captured.** No recording at a haveli or temple, and no temple or haveli office is ever asked anything (W-10, W-70; asking is telling, D-02, D-03); use S-02. No rule allowing it was found at a haveli or temple of her tradition [100][110][111] | **High**: the congregation and priests are living voices | n/a | CC0 "Temple Ambience" has some people in it; check for speech [37] |
 | S-14 | Temple loudspeaker from the street | The family hears one | An unintelligible distant wash only, if D-05 allows (open question 4) | High | n/a | None |
 | S-15 | The 6 a.m. devotional radio | She keeps one | The radio's click and hiss with no station; never the programme | High | Survives | None |
 | S-16 | Diwali crackers | She keeps Diwali (O-39) | From the maker's own street on the night | Street voices | Survives | Licence not verified (SR) |
@@ -205,7 +206,7 @@ Rules that decide every row: D-17 (never record her), D-05 (no living voice in t
 
 ### T-4. Instrument and form flags (Template C, condensed)
 
-Every flag other than NONE defaults to `maker_rule = ASK`. The flags come from the sources named; general-knowledge flags are marked UNVERIFIED. Flag vocabulary: NONE, SHARED, COURT, SUFI, CHURCH (a documented church or missionary channel), COLONIAL_EUROPEAN (a European instrument adopted in the colonial era, no church channel shown), DHARMIC_NOT_HINDU, UNVERIFIED. The skill's two lists equal the Default column: out = sitar, sarod, santoor, khayal; `ASK` = bansuri, tanpura, ektara, tabla, shehnai, harmonium and the Carnatic violin.
+Every flag other than NONE defaults to `maker_rule = ASK`. The flags come from the sources named; general-knowledge flags are marked UNVERIFIED. Flag vocabulary: NONE, SHARED, COURT, SUFI, CHURCH (a documented church or missionary channel), COLONIAL_EUROPEAN (a European instrument adopted in the colonial era, no church channel shown), DHARMIC_NOT_HINDU, UNVERIFIED. The skill's two lists equal the Default column and `DECISIONS.md` W-44: out = sitar, sarod, santoor, khayal, ghazal, qawwali and the Ragamala idiom; `ASK` = harmonium, tabla, bansuri, tanpura, shehnai, sarangi, ektara, the Carnatic violin, been, ravab and duf; in because hers if the house owns them and the maker can strike them = ghanta, shankha, jhanj, manjira, pakhawaj, dhol. The maker rules (O-68).
 
 | id | Instrument or form | Flag | Note and source | Default |
 |---|---|---|---|---|
@@ -214,7 +215,7 @@ Every flag other than NONE defaults to `maker_rule = ASK`. The flags come from t
 | I-03 | Damaru | NONE (UNVERIFIED) | Hourglass drum; shared with Tibetan Buddhist ritual (general knowledge) | IN if hers |
 | I-04 | Manjira, kartal | NONE (UNVERIFIED) | Bhakti and kirtan | IN if hers |
 | I-05 | Mridangam | NONE (UNVERIFIED) | Carnatic and temple; the tabla page carries a legend of Krishna halving a barrel drum [47] | IN if hers |
-| I-06 | Pakhawaj | NONE; court use UNVERIFIED | Prakrit name (Sanskrit *pakṣavādya*); wooden body from the 14th century [51] | IN if hers |
+| I-06 | Pakhawaj | NONE; court use UNVERIFIED | Prakrit name (Sanskrit *pakṣavādya*); wooden body from the 14th century [51]; its bass strokes fail a phone speaker (−8.1 dB median at 500 Hz in the Gujarati sound track's model), so a commissioned cue asks for treble-side strokes | IN if hers |
 | I-07 | Nadaswaram and thavil | NONE | "mangala vadyam", "very auspicious" [53] | IN if hers |
 | I-08 | Chenda, edakka | NONE or SHARED (UNVERIFIED) | Also played at church festivals in Kerala (general knowledge) | Ask only if her region is Kerala |
 | I-09 | Dhak | NONE | Bengal Durga Puja | Not hers on D-31's region |
@@ -224,14 +225,20 @@ Every flag other than NONE defaults to `maker_rule = ASK`. The flags come from t
 | I-13 | Ektara | SHARED | Baul and kirtan use; "used by Hindu Sadhus and Islamic Sufi saints" [50] | **ASK** |
 | I-14 | Sitar | COURT | First use of the word dated 1739; not in iconography before 1790 [46] | Out unless hers |
 | I-15 | Sarod | COURT (AFGHAN) | From the instrument still played in Afghanistan, Pakistan and Kashmir; first mention about 1830 [46] | Out unless hers |
-| I-16 | Tabla | SHARED (disputed) | "Clear pictorial evidence of the drum emerges only from about 1745" [47] | **ASK** (O-41) |
+| I-16 | Tabla | SHARED (disputed) | "Clear pictorial evidence of the drum emerges only from about 1745" [47] | **ASK** (O-68) |
 | I-17 | Shehnai | SHARED | Persian name or folk pungi; part of the royal naubat and of temple use [54, SR] | **ASK**; not chosen because it "sounds Indian" |
 | I-18 | Santoor | SUFI or PERSIAN | "directly borrowed from the Persian santoor" [48] | Out |
-| I-19 | Harmonium | COLONIAL_EUROPEAN (missionary channel: 'possibly' per [44]; unproven) | Arrived "possibly with missionaries or traders" in the mid-19th century; banned from All India Radio 1940 to 1971; widely used in bhajan and kirtan [44]. Used in her sampradaya's temple music, per [88], a 2026 peer-reviewed paper [97] and a 2021 field study [98] | **ASK** (O-41) |
+| I-19 | Harmonium | COLONIAL_EUROPEAN (missionary channel: 'possibly' per [44]; unproven) | Arrived "possibly with missionaries or traders" in the mid-19th century; banned from All India Radio 1940 to 1971; widely used in bhajan and kirtan [44]. Used in her sampradaya's temple music, per [88], a 2026 peer-reviewed paper [97] and a 2021 field study [98] | **ASK** (O-68) |
 | I-20 | Khayal (form) | COURT | A Persian or Arabic word that "entered India through the medium of the Persian language"; shaped in the Delhi Sultanate and at Mughal courts [49] | Out as a form unless hers |
 | I-21 | Violin in Carnatic music | COLONIAL_EUROPEAN (UNVERIFIED) | General knowledge | Ask if her tradition is Carnatic |
 | I-22 | Khol or mridanga with karatals (Gaudiya kirtan) | NONE (UNVERIFIED) | No page opened | IN if hers |
 | I-23 | Ghazal and qawwali | OUT (D-28) | The harmonium is "almost all Qawwals'" instrument [44] | Out |
+| I-24 | Jhanj (large hand cymbals) | NONE (origin UNVERIFIED) | Named in the haveli ensembles of two sources; no origin page opened. Phone: PASS on a stand-in; re-run on the real pair | IN if hers |
+| I-25 | Been (bin) | UNVERIFIED (court suspected) | Named in the sanctum lists; a digest of Akbar's court instruments lists been and tanpura. Phone: not measured | **ASK** |
+| I-26 | Sarangi | COURT (inherited from the brief; UNVERIFIED) | Named in the sanctum lists; the page read gives no origin or court history. Phone: not measured | **ASK** |
+| I-27 | Ravab | UNVERIFIED | In the 36-instrument list as printed; if it is the rabab, an Afghan or Persian-world lute (UNVERIFIED) | **ASK** |
+| I-28 | Duf, upang, kinnari | UNVERIFIED | Added in spring for the Hori season; the duf's name looks Arabic or Persian (UNVERIFIED). Upang and kinnari not read | **ASK** |
+| I-29 | Bansuri and murali (the source conflict) | UNVERIFIED | The same instrument as I-11: one tagged page excludes it from the sanctum, another source lists Murali among instruments of divine service. Not a stock bed | **ASK** |
 
 ### T-5. Source vetting checklist and verdicts
 
@@ -241,10 +248,10 @@ Every flag other than NONE defaults to `maker_rule = ASK`. The flags come from t
 
 | Source (host and item) | Licence field | What we could establish | Verdict |
 |---|---|---|---|
-| Asuchanti Brajabasi, 1906 (archive.org) | Public Domain Mark | An Odia song recorded in Calcutta in March 1906 for G&T; published before 1925 [26][16] | Best candidate for a public-domain vocal. A 1906 singer is not living, but W-46's "the dead ... voiced" may apply (open question 4). Needs a second date source |
-| Mridangam sample, V. Raghuraman, 2004 (archive.org) | CC public-domain dedication | A performer's sample; the identity of the uploader and performer is UNVERIFIED [26] | Candidate for stroke sounds if provenance is shown |
-| Veena items, L. Ramakrishnan (2004) and K. G. Vijayakrishnan (2003) | CC public-domain dedication | Living performers; a gmail-hosted uploader | Candidates only if the uploader is the performer; instrumental, not voice |
-| Veena Raja Rao 1930s album | CC public-domain dedication | Out of Indian and UK term; US 100-year rule | India only |
+| Asuchanti Brajabasi, 1906 (archive.org) | Public Domain Mark | An Odia song recorded in Calcutta in March 1906 for G&T; published before 1925 [26][16] | Out of the premiere: W-46 bars a historic recording of a deceased singer whatever its term, and D-05 bars sung recordings before April. An April question only; needs a second date source |
+| Mridangam sample, V. Raghuraman, 2004 (archive.org) | CC public-domain dedication | A performer's sample; the identity of the uploader and performer is UNVERIFIED [26] | April candidate for stroke sounds if provenance is shown; not hers, so not in the premiere (W-44) |
+| Veena items, L. Ramakrishnan (2004) and K. G. Vijayakrishnan (2003) | CC public-domain dedication | Living performers; a gmail-hosted uploader | April candidates only if the uploader is the performer; instrumental, not voice; not hers, so not in the premiere (W-44) |
+| Veena Raja Rao 1930s album | CC public-domain dedication | Out of Indian and UK term; US 100-year rule | India only; April at the earliest (not hers) |
 | VintageSense Vintage Indian Music | CC BY 3.0 | Digitised commercial film songs, including 1968; a private uploader [26] | **Reject** |
 | M. S. Subbulakshmi concert (1999); N. Ramani and R. Pitchumani Iyer (2000) | Public Domain Mark | Recordings of 1999 and 2000; performers' and label rights run [26] | **Reject** (wrong licence) |
 | Hindi Bhajans and Gujarati Bhajan items | CC0 or Public Domain Mark | Uploader-asserted; performers unverified | Reject unless provenance is shown |
@@ -259,6 +266,8 @@ Every flag other than NONE defaults to `maker_rule = ASK`. The flags come from t
 | Freesound conch labelled for Hindu use; Kerala temple percussion (SR) | CC BY-NC | NC | Decide |
 | BBC Sound Effects (SR) | RemArc: personal, educational or research | Commercial use needs a licence | **Reject** |
 | Musopen | Unread (403) | n/a | Unknown |
+
+Every "candidate" verdict above is for the April version, or for a labelled stand-in that is hers (W-44, O-72); none enters the premiere as a generic sound.
 
 **Country table (read 2026-10-19, not legal advice; for T10):**
 
@@ -289,33 +298,33 @@ I cannot say who the film is about or where it will be shown. It will be shown t
 
 **The seven s.19 clauses the letter must carry** (India; not legal advice; from the note's Template H and Q6): (i) identify each cue; (ii) list the rights (reproduce in the film, exhibit and communicate to the public in a hall, private online link, archive, a later cinema or festival); (iii) say "worldwide, perpetual", because silence means five years and India only (s.19(5), (6)); (iv) state the consideration (s.19(3)); (v) record the performer's written consent to incorporation in a cinematograph film and the royalty position on commercial use (s.38A(2)); (vi) state the credit (s.38B); (vii) note that an author's equal share of royalties for uses other than cinema-hall exhibition cannot be assigned away (s.19(9), (10)) [1]. Also: confidentiality past 27 February (D-07). A platform's default text, such as Fiverr's or Upwork's, is not this letter [70][71].
 
-### T-7. Font decision table keyed on O-36 (Template J, condensed)
+### T-7. Font table (O-36 answered by D-31: Gujarati; W-21, W-75; Template J, condensed)
 
-All families below are SIL OFL 1.1 in their own `OFL.txt` (read 2026-10-19 from github.com/google/fonts [73]). The full measured table is `research/devotional-sound-script-fixtures/font_table_2026-10-19.csv`, with the copyright line, the Reserved Font Name flag and the SHA-256 of each file.
+All families below are SIL OFL 1.1 in their own `OFL.txt` (read 2026-10-19 from github.com/google/fonts [73]). The full measured table is `research/devotional-sound-script-fixtures/font_table_2026-10-19.csv`, with the copyright line, the Reserved Font Name flag and the SHA-256 of each file. Every family used has a T8 `font` row with its `OFL.txt` hash and the libass `fontselect:` line pasted in the notes.
 
-| If O-36 (script) is | Test these first | Caption face to try first | Watch for |
-|---|---|---|---|
-| Hindi, Marathi, Sanskrit (Devanagari) | Devanagari (16 strings) | Mukta, or Tiro Devanagari Hindi or Marathi | Vedic marks if verses are shown; IAST fallback |
-| **Gujarati (D-31)** | Gujarati (18 strings) plus the Devanagari verse strings for Sanskrit text | **Noto Sans Gujarati** for captions; Rasa or Baloo Bhai 2 for cards; Noto Serif or Tiro Sanskrit for verse | Digits (Hind Vadodara fails); Om sign (Farsan fails); boxes on IAST letters in some faces; Kumar One collapse; whether she reads Sanskrit in Gujarati or Devanagari script |
-| Tamil | Tamil (6), plus Devanagari strings if prayers are in Sanskrit | Hind Madurai | Line width; Sri ligature differences |
-| Malayalam | Malayalam (6) | Hind Kochi | Chillus; width |
-| Telugu or Kannada | Telugu or Kannada (6) | Hind Guntur, or Noto Sans Kannada | Vowel signs |
-| Bengali or Odia | Bengali or Odia (6 or 5) | Hind Siliguri, or Noto Sans Oriya | Reph and ra-zophola |
-| Gurmukhi (Punjabi) | Gurmukhi (3) | Mukta Mahee | Gurmukhi is used by Hindus and Sikhs alike; Gurbani is out of scope |
-| She prays in Sanskrit and speaks another language | Both scripts and a mixed line | The regional face plus Tiro Sanskrit | Use `<font face>` in the SRT |
-| Not yet answered | Devanagari and the room's language | Mukta | Do not guess a region from a surname |
+| Use | Face | Watch for |
+|---|---|---|
+| Captions, Gujarati | **Noto Sans Gujarati** (resolves by name; draws Om, Gujarati digits and fused conjuncts) | Digits matter for dates: Hind Vadodara fails them |
+| Cards with a Gujarati line and an IAST line in one face | Rasa or Baloo Bhai 2 | Boxes on IAST letters in some faces |
+| Gujarati verse | Noto Serif Gujarati (KA 2.78%; about 25.6) | The native reader approves its look (O-62) |
+| Devanagari verse (Sanskrit, unless the family reads it in Gujarati script, O-15) | Noto Serif or Tiro Sanskrit | Vedic marks if verses are shown; IAST fallback |
+| Title art, outlined only | Shrikhand, Farsan, Kumar One | Shrikhand's થ and ચ need the native reader's check; Farsan has no Om; Kumar One collapses in libass |
+| Latin with IAST, mixed lines | Noto Sans, Noto Serif, Gentium Plus, Charis SIL, Cardo; Mukta, Tiro, Baloo 2, Gotu | Poppins, Hind and Yatra One lack the Vedic svara marks |
+| **Not used** | Hind Vadodara for any date or Samvat (no Gujarati digits); Mukta Vaani for Gujarati text (unfused conjuncts when tagged Gujarati); the plain name "Anek Gujarati" (only "Anek Gujarati Medium" resolves); variable fonts (Anek, Catamaran) except as static instances; any Gujarati caption face without digits for dates; commercial fonts under an Adobe or Monotype subscription | |
 
-**Gujarati family notes (read 2026-10-19 [73][95]).** Noto Sans Gujarati is the default caption face: it carries digits, the Om sign and every conjunct string, and clears the 3.1% working floor at FontSize 23 (KA at 3.33%). Android's own Gujarati sans is the same family (AOSP `fonts.xml`, read 2026-10-19 [105]; her model's skin may differ: UNVERIFIED). **Hind Vadodara has no Gujarati digits**: a year such as સંવત ૨૦૮૩ falls back silently to FreeSerif, with the log line `Glyph 0xAE8 not found`; the foundry's own source has no digit glyphs either, so it is not a Google Fonts packaging difference [109]. **Farsan has no Om sign** (U+0AD0). **Kumar One collapses under libass** (53 px of ink for a 44-code-point line where HarfBuzz predicts about 1,900). Cause found in round 1: its TrueType `prep` program fails in FreeType ("execution context too long") because its `maxp` declares no storage or stack, in the Google Fonts build and the foundry's own build alike [108]. It is outlined title art only (T-10 item 2) and never a libass caption face. **Mogra's two caption lines touch** at FontSize 23. **Mukta Vaani draws conjuncts as a half form plus a base** (3 or 4 glyphs where the others give 1 or 2); a Gujarati reader must approve its look before it captions anything. **Rasa** and **Baloo Bhai 2** hold the IAST letters the cards need (ṇ ṛ ṣ included).
+Her script on titles and verse cards travels as shaped outlines, never live text. The rows for Hindi, Marathi, Tamil, Malayalam, Telugu, Kannada, Bengali, Odia and Gurmukhi that the research note prepared for an unknown state are not needed under D-31 and stay in `research/devotional-sound-script.md` Template J.
+
+**Gujarati family notes (read 2026-10-19 [73][95]).** Noto Sans Gujarati is the default caption face: it carries digits, the Om sign and every conjunct string, and clears the 3.1% working floor at FontSize 23 (KA at 3.33%). Android's own Gujarati sans is the same family (AOSP `fonts.xml`, read 2026-10-19 [105]; her model's skin may differ: UNVERIFIED). **Hind Vadodara has no Gujarati digits**: a year such as સંવત ૨૦૮૩ falls back silently to FreeSerif, with the log line `Glyph 0xAE8 not found`; the foundry's own source has no digit glyphs either, so it is not a Google Fonts packaging difference [109]. **Farsan has no Om sign** (U+0AD0). **Kumar One collapses under libass** (53 px of ink for a 44-code-point line where HarfBuzz predicts about 1,900). Cause found in round 1: its TrueType `prep` program fails in FreeType ("execution context too long") because its `maxp` declares no storage or stack, in the Google Fonts build and the foundry's own build alike [108]. It is outlined title art only (T-10 item 2) and never a libass caption face. **Mogra's two caption lines touch** at FontSize 23. **Mukta Vaani draws conjuncts as a half form plus a base** (3 or 4 glyphs where the others give 1 or 2; unfused conjuncts when tagged Gujarati) and is not used for Gujarati text (`DECISIONS.md` W-21). **Shrikhand and Farsan** are outlined title art only: Shrikhand's થ and ચ need the native reader's check (O-62), and Farsan has no Om sign. **Rasa** and **Baloo Bhai 2** hold the IAST letters the cards need (ṇ ṛ ṣ included).
 
 **Latin with IAST, for mixed lines:** Noto Sans, Noto Serif, Gentium Plus, Charis SIL and Cardo carry the full core set. Mukta, Tiro, Baloo 2 and Gotu carry Latin with IAST for mixed Indic lines. Poppins, Hind and Yatra One lack the Vedic svara marks U+0951 and U+0952 [note Summary 4].
 
-**Anek and Catamaran.** Anek variable fonts have default instance Medium (500), and Catamaran's default is Thin (100). libass does not resolve them by plain family name and silently falls back (Inter, FreeSans, FreeSerif or Unifont) [note Summary 2]. Use a static instance (fontTools' instancer, with `--update-name-table`), or the name libass prints (for example "Anek Telugu Medium"). For a Reserved Font Name family (Arya, Charis SIL, Gentium Plus, Gentium Book Plus, Martel, Libre Baskerville, Lora, Merriweather, Playfair Display, PT Serif), do not rename or modify [74].
+**Anek and Catamaran.** Anek variable fonts have default instance Medium (500), and Catamaran's default is Thin (100). libass does not resolve them by plain family name and silently falls back (Inter, FreeSans, FreeSerif or Unifont) [note Summary 2]. Use a static instance (fontTools' instancer, with `--update-name-table`), or the name libass prints (for example "Anek Gujarati Medium"; the plain name "Anek Gujarati" does not resolve). For a Reserved Font Name family (Arya, Charis SIL, Gentium Plus, Gentium Book Plus, Martel, Libre Baskerville, Lora, Merriweather, Playfair Display, PT Serif), do not rename or modify [74].
 
 **T8 font row.** `asset_id=FN-nnn`, `type=font`, `title_or_description=<family> <style>`, `where_used=captions | cards | title art`, `how_obtained_and_by_whom=downloaded by the maker from github.com/google/fonts ofl/<dir> on <date>`, `rights_holder_and_contact=<designer>; the copyright line from OFL.txt`, `permission_type=SIL OFL 1.1`, `scope=rasterised in video; embedded in a DCP subtitle track only if OFL (FAQ 1.12)`, `fee=0`, `status=GRANTED`, `evidence_ref_and_sha256=the font file and OFL.txt, both hashes`, `notes=RFN y/n; static or variable default; scripts covered; the libass "fontselect:" line pasted`.
 
 ### T-8. The shaping gate (Template K, condensed)
 
-1. **Gate order.** The font table and the fixture come first. The maker signs the settings card on Sunday 1 November only if: (a) every font has a T8 row with an `OFL.txt` hash; (b) the PC's `ffmpeg -buildconf` shows libass and libharfbuzz, and `ffmpeg -version` is n9.0 or later (or the burn-in uses the `ass` filter); (c) the A/B in item 6 shows the real caption path matches the complex frame; (d) the fixture for her script passes on the PC's burn-in, and Chromium on the PC and a phone browser pass for any live text.
+1. **Gate order.** This is the one shaping gate of the register (W-06, S-65), the same as `playbooks/mobile-delivery.md` Exercise 7; run it once. The font table and the fixture come first. The maker signs the settings card on Sunday 1 November only if: (a) every font has a T8 row with an `OFL.txt` hash; (b) the PC's `ffmpeg -buildconf` shows libass and libharfbuzz, and `ffmpeg -version` is n9.0 or later (or the burn-in uses the `ass` filter); (c) the A/B in item 6 shows the real caption path matches the complex frame; (d) the fixture for her script passes on the PC's burn-in, and Chromium on the PC and a phone browser pass for any live text.
 2. **Pass criteria.** No dotted circle, no tofu, no visible halant where a conjunct belongs, no standalone reph, no unmoved short-i, no detached matra, no fallback face. Every `fontselect:` line maps to the intended file, and no `Glyph 0x... not found` line appears. A caption line's ink width is within about 10% of the HarfBuzz advance sum for that font.
 3. **Three renderings, one row per script.** The libass burn-in on the PC, Chromium on the PC, and a phone browser: pass or the tell, and the string id. For a browser page, load the faces with `@font-face` from local files and set `font-synthesis: none`, so the browser cannot fake a weight or style [86]; which font was used must be read in developer tools (UNVERIFIED here).
 4. **`drawtext`.** Use it for a card only after running with `-loglevel verbose` and seeing `shape: script=<tag>`. On any ffmpeg older than n9.0, do not use `drawtext` for Indic text. From n6.1.1 to n8.1.1 its HarfBuzz code sets the Latin script before shaping [77].
@@ -351,6 +360,8 @@ At FontSize 23, libass sets the line pitch near 86 px (7.96 to 8.06% of 1080) fo
 
 The Tamil and Malayalam figures were measured with complex shaping on the n9.0.2 `subtitles` filter. A first run on 6.1.1, which shapes in simple mode, overstated the other figures and gave 104.9% for Tamil and 111.0% for Malayalam [note L1(d)]. Maximum code points in the box: Tamil 40 (Noto) or 46 (Hind Madurai); Malayalam 49; Gujarati 72 (Noto Sans) to 90 (Anek). **The rule:** a caption line must fit the 90% box at the chosen face and size. The count of 42 is a guide, not the rule. Break at word boundaries only (a hyphenated break is allowed only at orthographic syllable boundaries [79]).
 
+Only the Gujarati and Devanagari rows apply to her (D-31); the other rows stay as measured evidence that the count of 42 is not the rule. The register sizes Gujarati by KA height: Noto Sans Gujarati at FontSize 23 gives KA 3.33%, enough for the venue; the phone's 3.8% target needs 26.2, so the phone file carries its own caption setting (`FontSize=28`, `MarginV` 40, at most 36 characters; W-18).
+
 **Phone geometry (inputs for the mobile track).** Assume a 6.1-inch 19.5:9 phone, about 64.9 by 140.7 mm (computed). Landscape, a 16:9 picture fitted to the height is about 64.9 mm tall; KA at 3.06% is about 2.0 mm, or about 19 arc minutes at 35 cm. Portrait, the letterbox is about 36.5 mm wide and KA is about 1.1 mm, or about 11 arc minutes. A 20:9 phone showing a 16:9 picture full-bleed crops about 10% of the picture height at the top and bottom (computed), so a caption in the 5% margin is half cut. The arc-minute threshold for comfortable reading is UNVERIFIED. The maker's reader, on her own phone, decides it.
 
 ### T-10. Bilingual caption and card lines (Template L3, condensed)
@@ -360,7 +371,7 @@ The Tamil and Malayalam figures were measured with complex shaping on the n9.0.2
 3. A **verse or blessing card** is two lines: line 1 her script (or Sanskrit in Devanagari); line 2 the maker's plain line in the room's language. IAST is not a third line. It goes in the printed programme or the archive text. Hindu-frameworks caps the cards at two by default and never more than five.
 4. A sung or spoken line in her language: no recorded voice before April (D-05).
 5. A mixed Latin and Indic caption line: one family that holds both (Mukta, Tiro, Baloo 2 or Gotu), or `<font face="...">` around the other run in the SRT (verified in the note), or `{\fn...}` in ASS. Never one `FontName` for a whole file. The `<font face>` run works in the burn-in only: YouTube says "No style info (markup) is recognized" for a sidecar SRT [107].
-6. Names: popular spelling on screen (Krishna, Lakshmi, Ganesha). A deity is named in a caption only if she is hers (O-38).
+6. Names: popular spelling on screen (Krishna, Lakshmi, Ganesha); the on-screen spelling of Yamuna Maharani is O-49. A deity is named in a caption only if she is hers (O-47). A darshan name is never printed (PR16); "Mataji" is never used for her; "Saal Mubarak" is flagged (Nutan Varshabhinandan is the alternative); no raga name anywhere (W-35, W-75).
 7. Phone render: lift the caption block, enlarge it, and check it at 200%. Do not restyle the venue file (W-18).
 8. Sidecar SRT and VTT are UTF-8, with a `lang` tag per cue where the player supports it.
 
@@ -371,49 +382,46 @@ The Tamil and Malayalam figures were measured with complex shaping on the n9.0.2
 | Key | If the answer is | Then |
 |---|---|---|
 | O-36 home region and language (answered for D-31) | Gujarati; Pushtimarg Vaishnav family; deities as named in D-31; Android | Template N rows; Gujarati font set (T-7); `maker_rule=ASK` on I-19 and I-11; no raga for her tradition until a source names one; an Android check on the phone pass |
-| O-36 script for Sanskrit verse (open) | Devanagari | Verse cards in Devanagari with Tiro or Noto Serif verse faces |
-| O-36 script for Sanskrit verse (open) | Gujarati | Verse cards in Gujarati script; test the Gujarati verse strings; the Devanagari strings stay in the fixture only |
+| O-15 script for Sanskrit verse (W-75) | Devanagari (the default) | Verse cards in Devanagari with Tiro or Noto Serif verse faces |
+| O-15 script for Sanskrit verse (W-75) | Gujarati, if the family reads it so | Verse cards in Gujarati script; test the Gujarati verse strings; the Devanagari strings stay in the fixture only |
 | O-37 sampradaya (answered as Pushtimarg in D-31) | Vaishnava | Invocations and forms as in hindu-frameworks F2 |
-| O-38 shelf and kuldevi | A named deity | A raga named for that deity is a label only if the deity is hers (Bhairav and Bhairavi: Shiva and Devi; Durga: the Goddess; Brindavani Sarang: Krishna) |
+| O-47 shelf and kuldevi (the open half of O-38) | A named deity | A raga named for that deity is a label only if the deity is hers (Bhairav and Bhairavi: Shiva and Devi; Durga: the Goddess; Brindavani Sarang: Krishna) |
 | O-39 festivals she keeps | Holi, Janmashtami, Nagapanchami, Annakuta [89]; Navaratri and garba [93]; whether she keeps them: O-39 | Capture slots and stand-ins only for what she keeps; the hindu-frameworks note owns the dates |
-| O-41 songs: a lullaby | Yes | MOTIF = the hum; place the tune (traditional or owned) before lock |
-| O-41: a bhajan with a harmonium | Yes | `maker_rule = ASK` on I-19 |
-| O-41: film devotionals | Yes | Label property; lean none (W-44) |
-| O-41: lines said by heart | Yes | Best card candidate; no music needed |
-| O-41: no songs | Yes | Silence and room tone |
-| O-43 her phone model and player (open) | Not yet answered | Phone pass waits; once the model is known, the Android check runs on her phone by cable |
-| O-42 deity images on a public screen (proposed; not decided here) | Belongs to the hindu-visual track | This playbook does not decide it |
+| O-07 songs: a lullaby (absorbs O-41) | Yes | MOTIF = the hum; place the tune (traditional or owned) before lock |
+| O-07: a bhajan with a harmonium | Yes | `maker_rule = ASK` on I-19 (O-68) |
+| O-07: film devotionals | Yes | Label property; lean none (W-44) |
+| O-07: lines said by heart (O-25's Q33) | Yes | Best card candidate; no music needed |
+| O-07: no songs | Yes | Silence and room tone |
+| O-54 her phone (absorbs O-43) | Answered from the maker's own knowledge, never by looking at her phone | The phone pass runs on the project phone of her class; her own phone is tested only after the reveal, with her yes (W-26, W-73) |
+| O-64 deity images on a public screen (absorbs O-42, O-52) | Decided in the register: P1, no deity drawn, generated or photographed (W-61) | This playbook decides nothing about images; a deity's name in a caption follows T-10 item 6 |
 
-### T-12. Patch list for existing playbooks
+### T-12. Record of changes this playbook asked of other files
 
-Each row names a section that was checked by heading on 2026-10-19. The changes are proposals for the maker and the orchestrator. None is applied in this sprint.
+Each row names a section checked by heading on 2026-10-19. Status as of the 2026-10-19 merge: *applied* rows were made in the target file in the reconciliation pass of that date; *open* rows belong to a file that pass did not touch, and `DECISIONS.md` Table 4 tracks them where it has a row.
 
-| File | Section (checked) | What changes |
-|---|---|---|
-| `playbooks/music-sound.md` | Step 5 "Build the cue map" (line 66) and its columns | Add the nineteen new columns of T-1 and the five rules. `maker_rule=ASK` blocks lock on 14 December. `origin_flag` takes the split flags `CHURCH` and `COLONIAL_EUROPEAN` (round 1) |
-| `playbooks/music-sound.md` | Step 3 "Choose your music route" (line 51) | After the relative's public-domain performance: a sung recording is a living voice (D-05), so only instrumentals qualify before April. Add that ND audio is excluded because sync is an adaptation (CC 4.0 and CC 3.0 [31][33]); SA and NC rules |
-| `playbooks/music-sound.md` | Step 2 "Decide the premiere country" (line 47) and the rights table | Add the country table (T-5), the s.52 reading, and the 2025 IPRS scheme and 2026 PPL, Novex and RMPL changes |
-| `playbooks/music-sound.md` | Template A "Licence log header" (line 217) and Template E "Composer checklist" (line 288) | Add `tradition_origin` and `composition_status`; Template E gains the s.19, s.38A(2) and s.38B clauses of T-6 |
-| `playbooks/music-sound.md` | Template I "Sound-recording notes for the room" (line 389) and Step 16 "Venue test" (line 140) | Add the capture list S-01 to S-20 (T-3). Add the phone-speaker model (300 Hz and 500 Hz high-pass) to the mono and 50% checks; room rumble, not the drone, is what vanishes. The placement of the phone check in Step 16 is a proposal, not verified. S-13 defaults to skip (use S-02) unless recording is openly allowed without asking anyone (round 1) |
-| `playbooks/music-sound.md` | "Decisions you'll need to make" (line 426) and "Pitfalls" (line 472) | Replace "Suno's free tier is non-commercial" with the terms of 2026-08-10. Add ElevenLabs (film excluded below Enterprise), MusicGen (CC-BY-NC weights [63]) and ACE-Step [64] rows. Add "no AI voice of any devotional text" as a named rule. Pitfalls: "devotional means free" and "an uploader's licence is not a licence" |
-| `playbooks/theatrical-delivery.md` | T8 "Rights-clearance log" (line 387) | Add the `type=font` guide (T-7), the Anek and Catamaran note, a `tradition_origin` column and a `phone_share` scope |
-| `playbooks/theatrical-delivery.md` | T10 "Consult question list" (line 449) | Append questions 21 to 28 from the note's Template E4 |
-| `playbooks/theatrical-delivery.md` | Step 6 "Burn in the captions" (line 74) and TD-3 (line 490) | W-18's "42 characters" gains a width rule: the line must fit the 90% box in the chosen face. UTF-8 only |
-| `playbooks/format.md` | Step 8 "Harden the slice", captions bullets (lines 79 to 81) | `FontSize=23` is not font-independent for Indic faces: size by base-letter height (T-9). The `subtitles` filter shapes Indic text in simple mode before n9.0: use `ass`. Use `<font face>` for mixed lines. Add the portrait-phone caption lift for the mobile track. A sidecar SRT loses `<font face>` markup on YouTube [107]: per-run faces are for the burn-in only (round 1) |
-| `playbooks/toolchain.md` | "Step 11: Captions" (line 156) | The `subtitles` filter shapes Indic text in simple mode on n5.1 to n8.1.1; burn Indic captions with `ass` on those versions; `drawtext` only on n9.0 or later after the fixture. The gate is the A/B of T-8 item 6 and the `fontselect:` lines. `fontsdir`, variable fonts and static instances |
-| `playbooks/agent-pipeline.md` | "Project settings card" (line 169) and W-16 | Add the font rows and the libass and HarfBuzz check. Record that the PC's ffmpeg (Gyan full, 9.0.2) and Kdenlive's 8.1.1 differ, with the date the A/B passed |
-| `playbooks/cinematic-quality.md` | TY1 (line 290), TY3 and "T2. Style bible" (line 299) | TY1's caption floor is stated for Latin x-height; add the Indic analogue (KA height 3.1%) and the per-face FontSize. TY3: every font has an `OFL.txt` and a hash. T2 gains the Indic families and the title-art-as-outlines rule. Kumar One is outlined title art only and Hind Vadodara is not used for dates (round 1) |
-| `playbooks/film-story.md` | "Template 5. The 'who is she' brief" (line 281) and the cards (W-35) | A verse card is two lines: her script, then the maker's plain line. IAST is not a third line. Names in popular spelling |
-| `playbooks/animated.md` | None | **No change from this note.** The deity iconography and the look of Hindu devotional imagery belong to the hindu-visual track |
-| `playbooks/ai-imagery.md` | None | **No change from this note.** Gap: AI image models' rendering of Devanagari and Gujarati text was not researched (TODO(research)) |
-| `research/hindu-frameworks.md` | Template B, F6, O-36 and Template C | `season_or_time_of_day` is the join field. F6's harmonium flag is answered by I-19 (now `COLONIAL_EUROPEAN`) and the open question. The raga set per darshan is given by two sources that disagree [97][100]; no source maps a season to a raga set or names a tala per darshan |
+| File | Section (checked) | What changes | Status |
+|---|---|---|---|
+| `playbooks/music-sound.md` | Step 5 "Build the cue map" | The cue map takes the T-1 header (the Template G header, W-44); `maker_rule=ASK` blocks lock on 14 December; `origin_flag` takes the split flags `CHURCH` and `COLONIAL_EUROPEAN` | applied 2026-10-19 (header and rule); the `origin_flag` split is open |
+| `playbooks/music-sound.md` | Step 3 "Choose your music route" | The premiere spine; a sung recording is a living voice (D-05); ND audio is excluded because sync is an adaptation (CC 4.0 and CC 3.0 [31][33]); SA and NC rules | applied 2026-10-19 (spine and the sung-voice rule; W-46 states the ND rule) |
+| `playbooks/music-sound.md` | Step 2 and the rights table | The country table (T-5), the s.52 reading, the 2025 IPRS scheme and the 2026 PPL, Novex and RMPL changes | applied 2026-10-19 as a pointer to W-79; the full table stays in T-5 here |
+| `playbooks/music-sound.md` | Template A and Template E | Template A gains `composition_status`, `recording_status`, `tradition_origin` and `phone_share`; Template E gains the s.19, s.38A(2) and s.38B clauses of T-6 | Template A applied 2026-10-19; Template E open |
+| `playbooks/music-sound.md` | Template I, Exercise 6 and the venue test | The capture list with the seva-article rule; the phone-speaker pass; S-13 is skipped | applied 2026-10-19 |
+| `playbooks/music-sound.md` | Decisions and Pitfalls | No AI voice of any devotional text; "devotional means free"; an uploader's licence is not a licence | applied 2026-10-19 for the first two; the MusicGen and ACE-Step rows are open |
+| `playbooks/theatrical-delivery.md` | T8 and T10 | The `font` guide, a `tradition_origin` column and a `phone_share` scope; the consult list renumbered once | applied 2026-10-19 (T10 now runs 1 to 43; this track's items sit at 26 to 28) |
+| `playbooks/theatrical-delivery.md` | Step 6 and TD-3 | W-18's "42 characters" gains a width rule; UTF-8 only | applied 2026-10-19 |
+| `playbooks/format.md` | Step 8 captions | `FontSize=23` is not font-independent for Indic faces (size by KA height); burn Indic text with `ass` before n9.0; per-run `<font face>` is for the burn-in only | applied 2026-10-19 for the sizing and the `ass` path; the sidecar note is open |
+| `playbooks/toolchain.md` | Step 11 "Captions" | The `subtitles` filter shapes Indic text in simple mode on n5.1 to n8.1.1; the gate is the T-8 A/B; static instances for variable fonts | open (another file's owner) |
+| `playbooks/agent-pipeline.md` | Project settings card | The font rows and the libass-plus-HarfBuzz check; the PC's ffmpeg and Kdenlive's differ | open; the settings card itself carries them (W-16) |
+| `playbooks/cinematic-quality.md` | TY1, TY3, T2 | The Indic analogue of the caption floor; every font has an `OFL.txt` and a hash; Kumar One outlined only | open (S-42, S-54) |
+| `playbooks/film-story.md` | Template 5 and the cards | A verse card is two lines; IAST is not a third line; popular spelling | open (S-51, S-52); W-35 states the rule |
+| `playbooks/animated.md`, `playbooks/ai-imagery.md` | None | No change from this note | n/a |
+| `research/hindu-frameworks.md` | Template B, F6, O-36, Template C | A research note; not patched | n/a |
 
-**Proposed `DECISIONS.md` rows (for the orchestrator; not entered here).**
-- **W-16 and W-21:** burn Indic captions with `ass` on ffmpeg older than n9.0 (the `subtitles` filter shapes in simple mode there). Static instances only for variable fonts. The libass `fontselect:` line goes in the T8 notes. No Gujarati caption face without digits for dates.
-- **W-18:** a width rule for Indic scripts (the line must fit the 90% box in the chosen face). The "42 characters" count is a guide.
-- **W-44:** ND-licensed audio excluded. A sung recording is a living voice under D-05. An AI bed has almost no home in the premiere cut. **Conflict to resolve:** W-44 lists "a relative's public-domain performance" as a source, which D-05 bars for a sung recording before the premiere.
-- **A new O-row** for the harmonium and tabla ruling (O-41).
-- **O-36 to O-45:** enter the proposed rows from `reviews/04-hindu-mobile-briefs-review.md` in `DECISIONS.md`. O-43 (her phone model) and O-42 (deity images) are not yet rows.
+**Register rows this note proposed, now entered or resolved.**
+- **W-16, W-18 and W-21:** the `ass` burn-in rule before n9.0, the width rule for Indic scripts, static instances only, the libass `fontselect:` line in the notes and no Gujarati caption face without digits for dates are in the register (W-18, W-21, W-75).
+- **W-44:** ND audio is excluded (W-46), and the conflict over a relative's performance of a public-domain tune is resolved by the merge: it left the premiere spine, and a sung recording is an April item (D-05).
+- **A new O-row for the harmonium and tabla ruling:** entered as O-68 (with O-07 for the tune).
+- **O-36 to O-45:** O-36 and O-37 are answered by D-31; O-38 became O-47; O-39 stands; O-40 became O-06; O-41 became O-07 and O-68; O-42 became O-64; O-43 became O-54; O-44 and O-45 stand as Table 3 rows.
 
 ---
 
@@ -428,7 +436,7 @@ The rule is D-28: "Indian themes" always means Hindu themes, and no Mughal, othe
 | Sitar and sarod as showpieces | Court histories [46] | Out unless a family source says they were hers |
 | Shehnai, santoor | Persian origin or name [48][54] | Shehnai: ASK. Santoor: out |
 | Mughal-era pictures as images | The ragamala idea of a raga-by-hour is old and Hindu in subject, but the images are Mughal and Deccani in lineage (note, hindu-frameworks flag 14) | The raga idea may be a label. The images are out |
-| Raga names on screen (Yaman, Malhar, Todi, Bilaval) | Several names carry Persian-court or Akbar-court attributions on the pages read [39][41] | No raga name on screen. Use Carnatic Kalyani or no name |
+| Raga names on screen (Yaman, Malhar, Todi, Bilaval) | Several names carry Persian-court or Akbar-court attributions on the pages read [39][41] | No raga name on screen or in credits anywhere (W-44) |
 | Desh as a motif | Political and Tagore-era associations; "Vande Mataram" uses it [39] | Avoid |
 | Gurbani, Sikh kirtan, Jain and Buddhist chants (including a Mahabodhi recording) | Dharmic but not Hindu | Out unless the maker rules |
 | Shyama Sangeet by Tagore or Nazrul | The composers are outside the Shakta line | Restrict to Ramprasad and the Shakta line |
@@ -436,10 +444,12 @@ The rule is D-28: "Indian themes" always means Hindu themes, and no Mughal, othe
 | Film devotionals and modern album settings (T-Series, Saregama, Times Music) | Owned lyrics, tunes and recordings (W-44) | Lean none |
 | AI-made devotional songs; any AI voice of a real singer | D-16; W-44; devotional communities' unease [66][67] | Out |
 | Generic "Indian" stand-ins (a temple bell, a dhak, a koel, a sitar pad) | Principle 2: a generic Indian sound is out unless it is hers | Only as a labelled fallback where she cannot be recorded |
-| A stock "Krishna flute" bed | The flute is the deity's emblem, placed or withheld darshan by darshan [99]; one tagged page says her sampradaya's temple custom also keeps the bansuri out of the sanctum [88], which a 2026 paper's instrument list contradicts [97] (UNVERIFIED, contested) | Do not buy. Ask (O-41) |
+| A stock "Krishna flute" bed | The flute is the deity's emblem, placed or withheld darshan by darshan [99]; one tagged page says her sampradaya's temple custom also keeps the bansuri out of the sanctum [88], which a 2026 paper's instrument list contradicts [97] (UNVERIFIED, contested) | Do not buy. Ask (O-68) |
 | Sung aarti, kirtan or garba recordings | Living voices (D-05) | April version only |
 | Any aarti text whose author is not read | Rights and attribution unknown (N7) | Do not caption |
-| A deity's name in a caption | Names are only hers (O-38) | Only if she is hers |
+| A deity's name in a caption | Names are only hers (O-47) | Only if she is hers; a darshan name never (PR16) |
+| A seva article handled to get a sound | The jhari, her shankh, the mandir's bell and cloth are not props (W-70, PR10, PR14) | Out; use a kitchen vessel, a household hand-bell outside the mandir or the maker's own |
+| "Haveli sangeet" as a card or credit label | The family's own word is unknown (O-73) | Not until the maker says (W-75) |
 | The S-17 dhak drum | D-31 places her region outside Bengal | Out unless she says otherwise |
 | Reference images and stock "Indian" pictures | Stock results can show Mughal or Islamic architecture (general knowledge; not checked in the note) | Check each image's subject and origin before use. A check, not a sourced claim |
 
@@ -449,15 +459,15 @@ The rule is D-28: "Indian themes" always means Hindu themes, and no Mughal, othe
 
 Each decision lists the options and our lean. The lean is a suggestion for you to confirm, not a decision.
 
-**D1. Does D-28 cover motifs only, or also the faith of performers and composers?** (Open question 5.)
+**D1. Does D-28 cover motifs only, or also the faith of performers and composers?** (Open question 5; O-68 in the register.)
 - *Options:* (a) motifs and the world of the film only; (b) also the faith of the performers and composers of any recording or tune we use.
 - *Our lean:* (a). Many film bhajans are by Muslim composers, lyricists or singers (general knowledge, UNVERIFIED here). Under (b) the rule would bar most of the Indian film-music catalogue. Decide before the cue map (Saturday 14 November).
 
-**D2. Which script for Sanskrit verse? (O-36, open.)**
+**D2. Which script for Sanskrit verse? (O-15, W-75.)**
 - *Options:* Devanagari for verse cards and Gujarati for her spoken lines; Gujarati for everything; Devanagari for everything.
 - *Our lean (inference):* Devanagari for Sanskrit verse (the note's Template J names Noto Serif or Tiro Sanskrit for verse), and Gujarati for her spoken lines, until she says her family reads Sanskrit in Gujarati script. Test both on the settings card (Sunday 1 November).
 
-**D3. Harmonium, tabla and bansuri (O-41).** (Open question 2 and question 12.)
+**D3. Harmonium, tabla and bansuri (O-68, O-07).** (Open question 2 and question 12.)
 - *Options:* (a) keep them because they are hers; (b) take them out of the film's sound; (c) ask her proxy case by case.
 - *Our lean:* (c), with the default `ASK`, which means silence or room tone in the render until ruled. The harmonium arrived in the colonial period by a route the sources call "possibly" missionary, the tabla's origin is disputed, and three sources put the harmonium in her sampradaya's temple music [88][97][98], while the bansuri's exclusion rests on one tagged page and is contested [88][97]. Ruling due Monday 14 December.
 
@@ -467,7 +477,7 @@ Each decision lists the options and our lean. The lean is a suggestion for you t
 
 **D5. Does a historic recording of a deceased singer count as a voice under D-05 and W-46?** (Open question 4; for example the 1963 Suprabhatam recording.)
 - *Options:* (a) allow it as music where the country's term has run out; (b) allow it with a cited archive and a country-by-country check; (c) keep it out.
-- *Our lean:* (c) for the premiere cut. W-46 bars "the dead ... voiced" and the recording is a famous singer's voice, which the room would hear. Put the question to T10 in any case. The 1963 recording is out of India's term on our computation (published 1963; term ends 2023 [1][13]) but protected in the US until 2067-02-15 and in the UK to 2033 [16][R1]. The premiere country decides.
+- *Our lean:* (c) for the premiere cut, and the register now says so: W-46 bars "the dead ... voiced", and a historic recording of a deceased singer is out of the premiere whatever its term. Put the question to T10 in any case. The 1963 recording is out of India's term on our computation (published 1963; term ends 2023 [1][13]) but protected in the US until 2067-02-15 and in the UK to 2033 [16][R1]. The premiere country decides.
 
 **D6. Does D-05 cover a temple's chanting crowd at a distance, or a radio?** (Open question 4.)
 - *Options:* out entirely; or an unintelligible distant wash only.
@@ -478,7 +488,7 @@ Each decision lists the options and our lean. The lean is a suggestion for you t
 - *Our lean:* answer it by Sunday 25 October. Every term in T-5 changes with it, and a 1930s Indian record can be free in one country and owned in another [note Q5].
 
 **D8. The Gujarati caption face and the card faces.**
-- *Options:* Noto Sans Gujarati (captions); Rasa or Baloo Bhai 2 (cards); Mukta Vaani only after a Gujarati reader approves its half forms; Kumar One as outlined title art only (its libass collapse traces to a font defect; the PC's FreeType is untested).
+- *Options:* Noto Sans Gujarati (captions); Rasa or Baloo Bhai 2 (cards); Noto Serif Gujarati (verse); Shrikhand and Farsan as outlined title art only; Kumar One as outlined title art only (its libass collapse traces to a font defect; the PC's FreeType is untested); Mukta Vaani is not used for Gujarati text (W-21).
 - *Our lean:* Noto Sans Gujarati for captions, Rasa for a card with both a Gujarati line and an IAST line. Hind Vadodara is not used for dates. Decide on Sunday 1 November.
 
 **D9. Live-text captions for her phone.**
@@ -493,23 +503,23 @@ Each decision lists the options and our lean. The lean is a suggestion for you t
 - *Options:* contact now; wait until after the premiere.
 - *Our lean:* wait. Access needs an email and a VPN account, which breaks secrecy, and its vocal content fails D-05 anyway.
 
-**D12. The consult budget and the T10 list (O-04, W-55).** The list now has eight music questions (T10 items 21 to 28).
+**D12. The consult budget and the T10 list (O-04, W-55).** The list was renumbered once on 2026-10-19 and now runs 1 to 43 in `playbooks/theatrical-delivery.md` T10: this track's music questions sit at 26 to 28, with its items on the IPRS tariff, s.52 and the 1963 recording term folded into 28, 30 and 36 to 38.
 - *Options:* one paid hour by Friday 4 December with the full list; or a shorter list.
 - *Our lean:* one hour with the full list, asked as a hypothetical once the country is known.
 
-**D13. Her phone (O-43 and open question 8).**
-- *Options:* ask for the model and the player now; or run the phone pass on a stand-in Android device.
-- *Our lean:* ask by Sunday 1 November, so the phone caption pass and the speaker sweep run on her class of device, by cable.
+**D13. Her phone (O-54 and open question 8).**
+- *Options:* answer the make, model and player from the maker's own knowledge; or run the phone pass on a stand-in Android device.
+- *Our lean:* answer from the maker's own knowledge at the sitting (Sunday 25 October), so the phone caption pass and the speaker sweep run on a project phone of her class. Her own phone is never looked at or tested before the reveal (W-26, W-73).
 
 **D14. AI music.**
 - *Options:* closed; a locally run, labelled instrumental drone under voice only, April at the earliest; a paid Enterprise contract.
-- *Our lean:* closed for the premiere. Stable Audio 3.0, run locally, has community-licence terms that allow commercial use under USD 1M of annual revenue [61]; the note treats it as the only local route. It still has almost no home in the premiere cut.
+- *Our lean:* closed for the premiere (W-44, W-79). Stable Audio 3.0, run locally, has community-licence terms that allow commercial use under USD 1M of annual revenue [61]; the note treats it as the only local route. It still has almost no home in the premiere cut.
 
 **D15. The burn-in path on the PC.**
 - *Options:* the project's own `subtitles=` burn, only if the PC A/B (T-8 item 6) passes; or the `ass` filter on an ASS file made from the SRT.
-- *Our lean:* `ass`, unless the PC A/B passes for `subtitles`. Decide on Sunday 1 November.
+- *Our lean:* `ass`, unless the PC A/B passes for `subtitles` (W-16, W-75). Decide on Sunday 1 November.
 
-**D16. Deity images on a public screen (O-42).** Not decided here; the hindu-visual track owns it.
+**D16. Deity images on a public screen (O-64).** Decided in the register, not here: P1, no deity drawn, generated or photographed, AI never (W-61).
 
 ---
 
@@ -530,8 +540,8 @@ Each decision lists the options and our lean. The lean is a suggestion for you t
 - **A phone loses the body of a drone.** A crude phone model with a 300 Hz or 500 Hz high-pass keeps about 96% of a real tanpura's energy above 300 Hz, but loses room rumble and low "temple ambience" by about 20 dB [note Summary 14]. This model is a rule of thumb (about 250 to 500 Hz [87]); the maker's own sweep decides.
 - **Live-text (sidecar) captions are shaped by the player.** Test the sidecar in her player. YouTube drops SRT markup [107].
 - **Naming a raga on screen** is a claim a teacher or a metadata field must back. Never print one unless it does.
-- **A hum is not free.** The maker's hum of a tune that is a film or album song is a performance of an owned composition (S2 in the note's Template E1). "A hum is free" is not a rule.
-- **The sung voice in W-44.** "A relative's public-domain performance" as a source conflicts with D-05 for sung recordings. Use instrumentals only before April.
+- **A hum is not free.** The maker's hum of a tune that is a film or album song is a performance of an owned composition (an E1-S2 case in the note's Template E1; hum cases HC-4 to HC-6 in `playbooks/gujarati-devotional-sound.md`). "A hum is free" is not a rule.
+- **The sung voice.** The register's W-44 spine (objects, rooms, the sea's surf, the hum) has no sung recording: a relative's performance of a public-domain tune is an April item (D-05), and an instrumental that is not hers waits for April too (D-07, W-44).
 - **Sanskrit and Gujarati strings copied from memory.** Copy every string from its source and mark any transliteration the source does not give as TODO(research).
 
 ### Gaps the research did not close (TODO(research))
@@ -539,7 +549,7 @@ Each decision lists the options and our lean. The lean is a suggestion for you t
 - **The maker's three renderings** (Windows ffmpeg burn-in, Chromium on the PC, a phone browser including her Android) have not been run. Every shaping result comes from Linux builds (ffmpeg 6.1.1 and a source-built n9.0.2, libass 0.17.1, HarfBuzz 8.3.0). Whether the Windows build's `subtitles` shapes correctly is UNVERIFIED. The A/B in T-8 item 6 (on `ab.srt`) settles it; record the `Raster: FreeType` and `Shaper:` debug lines with the result.
 - **Kumar One's libass collapse** is explained (round 1): a hinting program that fails in FreeType; a newer libass, other FreeType releases and the Windows build are untested [108].
 - **Mukta Vaani's half-form conjuncts** need a Gujarati reader's judgement.
-- **Which Gujarati font Android ships:** AOSP maps Gujarati to Noto Sans Gujarati [105]; her model's skin and her player are UNVERIFIED (O-43).
+- **Which Gujarati font Android ships:** AOSP maps Gujarati to Noto Sans Gujarati [105]; her model's skin and her player are UNVERIFIED (O-54).
 - **Raga sets per darshan or season** for her tradition: two sources give sets per darshan and they disagree [97][100]; none maps a season to a raga set or names a tala per darshan. `raga_id` stays blank.
 - **Aarti authorship** for "Jai Adhya Shakti" and the Shiva, Lakshmi and "Jai Ganesh Deva" aartis was not found in round 1 either; only the Ganesh aarti "Sukhakarta Dukhaharta" (Samarth Ramdas) was added [103].
 - **The Khare arrangement's composer dates** were not found in round 1 either [113].
@@ -551,9 +561,9 @@ Each decision lists the options and our lean. The lean is a suggestion for you t
 - **Sync desks and Gujarati film or garba labels** were not reached (404 or blocked).
 - **Musopen, OneMusic (403 today), Wikimedia Commons and the Fiverr and Upwork terms** were not read.
 - **AI image tools and Indic lettering** (how image models render Devanagari and Gujarati text on a plate) were not researched.
-- **Her Android model and her player** (open question 8; O-43).
-- **Deity iconography**, the look of Hindu devotional imagery, and O-42 belong to the hindu-visual track.
-- **The sibling track's Exercise 7** in `playbooks/mobile-delivery.md` ("The Gujarati shaping check on the PC") overlaps Template K here. Reconcile the two before either is run.
+- **Her Android model and her player** (open question 8; O-54, answered from the maker's own knowledge; her phone is tested only after the reveal).
+- **Deity iconography**, the look of Hindu devotional imagery, and the deity policy (O-64: P1, W-61) belong to the hindu-visual track.
+- **The sibling track's Exercise 7** in `playbooks/mobile-delivery.md` ("The Gujarati shaping check on the PC") and Template K here are one shaping gate, run once at P-LOCK (W-06, S-65).
 
 ---
 
@@ -704,7 +714,7 @@ Format: `[n] title — URL — date — status`. The numbers are the researcher'
 
 - **2026-10-19, v0.1 (first draft).** Written by the Haiku scribe from `research/devotional-sound-script.md` (Sonnet researcher, 2026-10-19) and `CHARTER.md`, with `DECISIONS.md` as the register. Conflicts and gaps are flagged, not resolved:
   - **Register.** O-36 to O-45 are proposed in `reviews/04-hindu-mobile-briefs-review.md` but are not rows in `DECISIONS.md`. O-42 and O-43 are not yet rows. The orchestrator must enter them.
-  - **W-44 and D-05.** W-44 lists "a relative's public-domain performance" as a source. D-05 bars a sung recording before the premiere. This playbook treats sung recordings as living voices and allows only instrumentals before April.
+  - **W-44 and D-05.** W-44 then listed a relative's performance of a public-domain tune as a source. D-05 bars a sung recording before the premiere. This playbook treats sung recordings as living voices and allows only instrumentals before April.
   - **W-18.** "42 characters" needs a width rule, measured on Tamil and Malayalam faces (T-9). Proposed, not entered.
   - **W-16 and W-21.** The `ass` burn-in rule for ffmpeg before n9.0, and the static-instance rule for variable fonts, are proposed, not entered.
   - **Pointers checked.** The note's pointer to `format.md` Step 8 for captions is correct: the caption bullets sit under Step 8 "Harden the slice" (lines 79 to 81), although the step title does not say so. The note's "Template A (licence log)" and "Template E (composer checklist)" are correct for `music-sound.md`. The note's "Step 16" for the phone-speaker check is a proposal: Step 16 of `music-sound.md` is the venue test, and the placement is not verified.
@@ -714,3 +724,4 @@ Format: `[n] title — URL — date — status`. The numbers are the researcher'
   - **Stand-in not hers.** S-17 (the dhak drum) is out on D-31's region (not Bengal), although the note's Template I listed it as a stand-in.
   - **Not done.** No playbook or register edits were made beyond this file. The skill is staged in `skills-staging/devotional-music-and-indic-scripts/`. Nothing is committed. The draft awaits `fable-advisor` review against the rubric in `CHARTER.md`.
 - **2026-10-19, v0.2 (round 1).** Applied `reviews/devotional-sound-script-round1.md` in place (Sonnet implementor): the brief no longer says "private" and states public exhibition (T-6); the A/B runs on `ab.srt`, test syllables only, with the never-run-FAIL-on-sacred-text rule (T-8 item 6, Exercise 2); the shehnai and Carnatic violin are `ASK` in the skill, matching T-4, and D4 now says the same; Navaratri and garba re-cited to [93] (T-11); the TODO(research) string cells filled from the fixture and the fixture-README line above corrected; `SHAPING_OPTIONS` named in T-8; `CHURCH_COLONIAL` split into `CHURCH` and `COLONIAL_EUROPEAN` (T-1, T-4); the S-13 caveat restored with a skip default (T-3, Step 7). The eight follow-ups are answered in the note's "Follow-up research (round 1)": harmonium confirmed and bansuri contested (N1, I-11, I-19), N7 partly closed, the Khare death year and the Jai Adhya Shakti author still not found, Android's Gujarati font, Kumar One's cause, Hind Vadodara's digits, no recording rule found, the PC A/B still the maker's. Also fixed: Step 5 and T-8 item 1(c) pointed to "item 8" for the A/B, which is T-8 item 6; the header said Sunday for Monday 2026-10-19; Step 7 repeated itself. Not applied (not in the nudge list): the advisor insight on the darshan clock and the pakhawaj-first brief, and the tanpura one-liner for the Sun 25 Oct sitting.
+- **2026-10-19, Reconciled with DECISIONS.md after the her-world merge (2026-10-19).** Sonnet implementor pass against the merged register (S-59, S-65 and the W-16, W-18, W-21, W-44, W-46, W-61, W-70, W-75 rows): the cue map header is the register's Template G header (28 columns) with the April-column source routes; the capture list carries the seva-article rule, S-13 is skipped and no haveli or temple is ever asked (W-10, W-70); the instrument flags match W-44 (I-24 to I-29 added; sarangi, been, ravab and duf are `ASK`) and no raga name appears anywhere; the font table is the Gujarati and Devanagari families of W-21 with the not-used list; the shaping gate is one gate run once at P-LOCK (W-06); AI music is closed for the premiere and the conflict over a relative's public-domain performance is resolved by the register (W-44); the O-rows are re-keyed to Table 3 (O-07, O-15, O-47, O-54, O-64, O-68); T-12 is now a record of changes with a Status column. Citations kept; no research note or review touched.

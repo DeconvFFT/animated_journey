@@ -1,23 +1,23 @@
 {
  "schema": "lj-stale-baseline/1",
  "date_utc": "2026-10-19",
- "patterns_version": 1,
+ "patterns_version": 2,
  "note": "Today's hits: counts and locations. --new-only compares the fingerprint (file, pattern, normalised line text), not the line number, so inserting lines does not make old hits look new.",
  "counts": {
-  "FAIL": 184,
-  "WARN": 12,
+  "FAIL": 350,
+  "WARN": 18,
   "by_row": {
    "S-01": {
-    "FAIL": 16,
+    "FAIL": 19,
     "WARN": 0
    },
    "S-05": {
-    "FAIL": 4,
+    "FAIL": 6,
     "WARN": 0
    },
    "S-08": {
-    "FAIL": 4,
-    "WARN": 10
+    "FAIL": 6,
+    "WARN": 13
    },
    "S-09": {
     "FAIL": 3,
@@ -44,7 +44,7 @@
     "WARN": 0
    },
    "S-18": {
-    "FAIL": 19,
+    "FAIL": 22,
     "WARN": 0
    },
    "S-19": {
@@ -52,7 +52,7 @@
     "WARN": 0
    },
    "S-20": {
-    "FAIL": 8,
+    "FAIL": 9,
     "WARN": 0
    },
    "S-26": {
@@ -72,18 +72,66 @@
     "WARN": 0
    },
    "S-38": {
-    "FAIL": 70,
+    "FAIL": 40,
     "WARN": 0
    },
    "S-39": {
-    "FAIL": 37,
+    "FAIL": 22,
     "WARN": 0
    },
-   "S-40": {
-    "FAIL": 3,
+   "S-42": {
+    "FAIL": 9,
     "WARN": 0
    },
-   "S-41": {
+   "S-43": {
+    "FAIL": 1,
+    "WARN": 0
+   },
+   "S-44": {
+    "FAIL": 16,
+    "WARN": 0
+   },
+   "S-45": {
+    "FAIL": 56,
+    "WARN": 0
+   },
+   "S-46": {
+    "FAIL": 17,
+    "WARN": 0
+   },
+   "S-47": {
+    "FAIL": 18,
+    "WARN": 0
+   },
+   "S-48": {
+    "FAIL": 8,
+    "WARN": 0
+   },
+   "S-49": {
+    "FAIL": 5,
+    "WARN": 0
+   },
+   "S-50": {
+    "FAIL": 44,
+    "WARN": 0
+   },
+   "S-51": {
+    "FAIL": 1,
+    "WARN": 0
+   },
+   "S-56": {
+    "FAIL": 14,
+    "WARN": 1
+   },
+   "S-61": {
+    "FAIL": 10,
+    "WARN": 2
+   },
+   "S-64": {
+    "FAIL": 4,
+    "WARN": 0
+   },
+   "S-65": {
     "FAIL": 1,
     "WARN": 0
    }
@@ -171,6 +219,30 @@
    "severity": "FAIL"
   },
   {
+   "fp": "fb9bab43319e84a1",
+   "file": ".claude/skills/animated-biography-patterns/SKILL.md",
+   "line": 66,
+   "row_id": "S-50",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "4a8630eea5fc9229",
+   "file": ".claude/skills/animated-biography-patterns/SKILL.md",
+   "line": 66,
+   "row_id": "S-50",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "4a8630eea5fc9229",
+   "file": ".claude/skills/animated-biography-patterns/SKILL.md",
+   "line": 66,
+   "row_id": "S-50",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
    "fp": "393df0344773b26a",
    "file": ".claude/skills/animation-production-planning/SKILL.md",
    "line": 51,
@@ -195,6 +267,14 @@
    "severity": "FAIL"
   },
   {
+   "fp": "32e0d5d646f3cba4",
+   "file": ".claude/skills/animation-production-planning/SKILL.md",
+   "line": 73,
+   "row_id": "S-61",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
    "fp": "064f85fada15e406",
    "file": ".claude/skills/animation-production-planning/SKILL.md",
    "line": 104,
@@ -203,11 +283,75 @@
    "severity": "FAIL"
   },
   {
+   "fp": "267f00037c746353",
+   "file": ".claude/skills/animation-production-planning/SKILL.md",
+   "line": 108,
+   "row_id": "S-64",
+   "pattern": "S-64.her-turn-sat-6-mar",
+   "severity": "FAIL"
+  },
+  {
    "fp": "aec90c803350aafb",
    "file": ".claude/skills/animation-production-planning/SKILL.md",
    "line": 120,
    "row_id": "S-39",
    "pattern": "S-39.range",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "189cf376ad383393",
+   "file": ".claude/skills/cinematic-quality-bar/SKILL.md",
+   "line": 116,
+   "row_id": "S-42",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "5718f3f49d0df6dd",
+   "file": ".claude/skills/cinematic-quality-bar/SKILL.md",
+   "line": 116,
+   "row_id": "S-42",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "4b3c25b181fb84e3",
+   "file": ".claude/skills/cinematic-quality-bar/SKILL.md",
+   "line": 116,
+   "row_id": "S-42",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "4b3c25b181fb84e3",
+   "file": ".claude/skills/cinematic-quality-bar/SKILL.md",
+   "line": 116,
+   "row_id": "S-42",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "daff424a95e74079",
+   "file": ".claude/skills/cinematic-quality-bar/SKILL.md",
+   "line": 155,
+   "row_id": "S-42",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "daff424a95e74079",
+   "file": ".claude/skills/cinematic-quality-bar/SKILL.md",
+   "line": 155,
+   "row_id": "S-42",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "0e5ccee45d0ffe81",
+   "file": ".claude/skills/cinematic-quality-bar/SKILL.md",
+   "line": 176,
+   "row_id": "S-42",
+   "pattern": "D-29.voxel",
    "severity": "FAIL"
   },
   {
@@ -259,11 +403,75 @@
    "severity": "FAIL"
   },
   {
+   "fp": "dc45ee69e0c888f1",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 3,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "e21b518ebfb705f4",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 16,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
    "fp": "420322a00827ee5b",
    "file": ".claude/skills/creator-recipe-library/SKILL.md",
    "line": 25,
    "row_id": "S-38",
    "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "0ef1b47e4b14b564",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 34,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "0ef1b47e4b14b564",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 34,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "0ef1b47e4b14b564",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 34,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "0ef1b47e4b14b564",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 34,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "f9869379c8a53a81",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 34,
+   "row_id": "S-47",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "fb449a5a78488825",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 46,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
    "severity": "FAIL"
   },
   {
@@ -275,11 +483,83 @@
    "severity": "FAIL"
   },
   {
+   "fp": "cf832ae00702aa1a",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 122,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "e2aed38623db0568",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 122,
+   "row_id": "S-47",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "b61d959fb0785d66",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 122,
+   "row_id": "S-47",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "97449c18f280925e",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 162,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "1960556c5c5bb1a8",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 168,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "1960556c5c5bb1a8",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 168,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "eef9ffb4f5458366",
+   "file": ".claude/skills/creator-recipe-library/SKILL.md",
+   "line": 185,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
    "fp": "ccd9b365b15891ab",
    "file": ".claude/skills/creator-recipe-library/SKILL.md",
    "line": 185,
    "row_id": "S-38",
    "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "92870d7139985717",
+   "file": ".claude/skills/free-creative-toolchain/SKILL.md",
+   "line": 3,
+   "row_id": "S-46",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "92870d7139985717",
+   "file": ".claude/skills/free-creative-toolchain/SKILL.md",
+   "line": 3,
+   "row_id": "S-46",
+   "pattern": "D-29.voxel",
    "severity": "FAIL"
   },
   {
@@ -299,6 +579,30 @@
    "severity": "FAIL"
   },
   {
+   "fp": "56e2b5b10c829718",
+   "file": ".claude/skills/free-creative-toolchain/SKILL.md",
+   "line": 18,
+   "row_id": "S-46",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "605de1ca1d0d09f7",
+   "file": ".claude/skills/free-creative-toolchain/SKILL.md",
+   "line": 18,
+   "row_id": "S-46",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "0e43f32c77edc35f",
+   "file": ".claude/skills/free-creative-toolchain/SKILL.md",
+   "line": 36,
+   "row_id": "S-46",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
    "fp": "6a4206df96de36cb",
    "file": ".claude/skills/free-creative-toolchain/SKILL.md",
    "line": 51,
@@ -315,11 +619,115 @@
    "severity": "FAIL"
   },
   {
+   "fp": "a7defba3c7c19eb2",
+   "file": ".claude/skills/free-creative-toolchain/SKILL.md",
+   "line": 78,
+   "row_id": "S-46",
+   "pattern": "D-29.blockbench",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "ac10cbb27efa5b25",
+   "file": ".claude/skills/free-creative-toolchain/SKILL.md",
+   "line": 78,
+   "row_id": "S-46",
+   "pattern": "D-29.magicavoxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "3224ce816546a324",
+   "file": ".claude/skills/free-creative-toolchain/SKILL.md",
+   "line": 80,
+   "row_id": "S-46",
+   "pattern": "D-29.magicavoxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "029a49d9ea9e5e32",
+   "file": ".claude/skills/free-creative-toolchain/SKILL.md",
+   "line": 89,
+   "row_id": "S-46",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "203005fea5d22e1a",
+   "file": ".claude/skills/free-creative-toolchain/SKILL.md",
+   "line": 132,
+   "row_id": "S-46",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
    "fp": "ceac59b01be0335f",
    "file": ".claude/skills/free-creative-toolchain/SKILL.md",
    "line": 173,
    "row_id": "S-38",
    "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "21f57ed6067ecf43",
+   "file": ".claude/skills/free-creative-toolchain/recipes/r4_photo2vox.py",
+   "line": 1,
+   "row_id": "S-46",
+   "pattern": "D-29.magicavoxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "2f53c959a65876d4",
+   "file": ".claude/skills/free-creative-toolchain/recipes/r4_photo2vox.py",
+   "line": 9,
+   "row_id": "S-46",
+   "pattern": "D-29.blockbench",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "34afaec377358b00",
+   "file": ".claude/skills/free-creative-toolchain/recipes/r4_photo2vox.py",
+   "line": 9,
+   "row_id": "S-46",
+   "pattern": "D-29.magicavoxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "f2d95b9ce092c6a9",
+   "file": ".claude/skills/free-creative-toolchain/recipes/r4_render_voxel.py",
+   "line": 1,
+   "row_id": "S-46",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "c7190015785eefe9",
+   "file": ".claude/skills/free-creative-toolchain/references.md",
+   "line": 25,
+   "row_id": "S-46",
+   "pattern": "D-29.magicavoxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "59f44d6eb18dc44b",
+   "file": ".claude/skills/journey-format-architecture/SKILL.md",
+   "line": 33,
+   "row_id": "S-44",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "1edf7104391f6c99",
+   "file": ".claude/skills/journey-format-architecture/SKILL.md",
+   "line": 34,
+   "row_id": "S-44",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "d680c6e1fe362a22",
+   "file": ".claude/skills/journey-format-architecture/SKILL.md",
+   "line": 45,
+   "row_id": "S-44",
+   "pattern": "D-29.minecraft",
    "severity": "FAIL"
   },
   {
@@ -336,6 +744,110 @@
    "line": 54,
    "row_id": "S-38",
    "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "af2c6a636b106053",
+   "file": ".claude/skills/journey-format-architecture/SKILL.md",
+   "line": 124,
+   "row_id": "S-44",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "8ff64d781970c30e",
+   "file": ".claude/skills/journey-format-architecture/SKILL.md",
+   "line": 158,
+   "row_id": "S-44",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "8ff64d781970c30e",
+   "file": ".claude/skills/journey-format-architecture/SKILL.md",
+   "line": 158,
+   "row_id": "S-44",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "b2a1185360e0f1af",
+   "file": ".claude/skills/journey-format-architecture/SKILL.md",
+   "line": 158,
+   "row_id": "S-44",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "be4dbc895e58abd9",
+   "file": ".claude/skills/journey-format-architecture/SKILL.md",
+   "line": 163,
+   "row_id": "S-44",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "8d768d08c1b27f33",
+   "file": ".claude/skills/journey-format-architecture/SKILL.md",
+   "line": 164,
+   "row_id": "S-44",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "8d768d08c1b27f33",
+   "file": ".claude/skills/journey-format-architecture/SKILL.md",
+   "line": 164,
+   "row_id": "S-44",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "8d768d08c1b27f33",
+   "file": ".claude/skills/journey-format-architecture/SKILL.md",
+   "line": 164,
+   "row_id": "S-44",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "4bdad6d93ba25fd8",
+   "file": ".claude/skills/journey-format-architecture/SKILL.md",
+   "line": 164,
+   "row_id": "S-44",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "946df4dc720ec9d2",
+   "file": ".claude/skills/life-film-music-and-sound/SKILL.md",
+   "line": 57,
+   "row_id": "S-49",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "d4ca9f04a959c499",
+   "file": ".claude/skills/life-film-music-and-sound/SKILL.md",
+   "line": 106,
+   "row_id": "S-49",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "84b843ed30ab3bb7",
+   "file": ".claude/skills/life-film-music-and-sound/SKILL.md",
+   "line": 135,
+   "row_id": "S-49",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "84b843ed30ab3bb7",
+   "file": ".claude/skills/life-film-music-and-sound/SKILL.md",
+   "line": 135,
+   "row_id": "S-49",
+   "pattern": "D-29.minecraft",
    "severity": "FAIL"
   },
   {
@@ -395,6 +907,14 @@
    "severity": "FAIL"
   },
   {
+   "fp": "b4a13f6a13004ac5",
+   "file": ".claude/skills/life-story-interviewing/SKILL.md",
+   "line": 70,
+   "row_id": "S-64",
+   "pattern": "S-64.her-turn-sat-6-mar",
+   "severity": "FAIL"
+  },
+  {
    "fp": "33a23a5f6f261d1b",
    "file": ".claude/skills/life-story-interviewing/SKILL.md",
    "line": 75,
@@ -435,6 +955,14 @@
    "severity": "FAIL"
   },
   {
+   "fp": "1c4d71e57d5d944e",
+   "file": ".claude/skills/life-story-interviewing/beat-sheet.md",
+   "line": 10,
+   "row_id": "S-51",
+   "pattern": "S-63.one-true-room-sound",
+   "severity": "FAIL"
+  },
+  {
    "fp": "2bf32badc7bb636b",
    "file": ".claude/skills/life-story-interviewing/surprise-runbook.md",
    "line": 54,
@@ -443,11 +971,427 @@
    "severity": "FAIL"
   },
   {
+   "fp": "ea6de168348d7b84",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 3,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "b509bad4dd737f6f",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 8,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "b509bad4dd737f6f",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 8,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "b509bad4dd737f6f",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 8,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "9247b333277384bc",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 8,
+   "row_id": "S-45",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "75118706d6227ac4",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 8,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "75118706d6227ac4",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 8,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "a5de7afb3b319443",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 16,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "5adb643382c3d29f",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 18,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "6677171b13196f0c",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 27,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "cb46f3b9fd7ae87a",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 41,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "5a70ec4c4abe7395",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 42,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "74d225eebf7fed1d",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 42,
+   "row_id": "S-45",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "489c386c97e89809",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 42,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "489c386c97e89809",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 42,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "b21c2bdeabb03d14",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 57,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "ff3488437993b62c",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 75,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "bf18b9ec0cb7586e",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 76,
+   "row_id": "S-45",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "9563f87e06bf6866",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 104,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "8157cf88accb422a",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 104,
+   "row_id": "S-45",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "e5977500e95fe372",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 138,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "e5977500e95fe372",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 138,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "ab75edc738020012",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 138,
+   "row_id": "S-45",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "d5acd0e0b5633290",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 139,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "d5acd0e0b5633290",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 139,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "8b74f1f952582f91",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 139,
+   "row_id": "S-45",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "eda7d561dddfafd6",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 141,
+   "row_id": "S-45",
+   "pattern": "D-29.blockbench",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "eda7d561dddfafd6",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 141,
+   "row_id": "S-45",
+   "pattern": "D-29.blockbench",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "8c8e2078ce6624af",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 142,
+   "row_id": "S-45",
+   "pattern": "D-29.blockbench",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "8c8e2078ce6624af",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 142,
+   "row_id": "S-45",
+   "pattern": "D-29.blockbench",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "c8a8cf227c87d004",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 143,
+   "row_id": "S-45",
+   "pattern": "D-29.magicavoxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "c8a8cf227c87d004",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 143,
+   "row_id": "S-45",
+   "pattern": "D-29.magicavoxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "315bc448f93e9863",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 144,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "315bc448f93e9863",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 144,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "4a27b7d9f5a70e9c",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 145,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "903d2563e388edf5",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 146,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "903d2563e388edf5",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 146,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "813a5ca9d7fa8a88",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 147,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "813a5ca9d7fa8a88",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 147,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "26d103272def555c",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 148,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "26d103272def555c",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 148,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "24b528e5f47174e3",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 149,
+   "row_id": "S-45",
+   "pattern": "D-29.magicavoxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "53a1ced569aa4dd4",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 150,
+   "row_id": "S-45",
+   "pattern": "D-29.magicavoxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "c8465166b23a4244",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 154,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "643ec273a353e642",
+   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
+   "line": 154,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
    "fp": "85d73a6c2bd727d4",
    "file": ".claude/skills/surprise-tribute-operations/SKILL.md",
    "line": 8,
    "row_id": "S-38",
    "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "7412887426248fdf",
+   "file": ".claude/skills/surprise-tribute-operations/SKILL.md",
+   "line": 45,
+   "row_id": "S-64",
+   "pattern": "S-64.her-turn-sat-6-mar",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "1285088b975dc9c4",
+   "file": ".claude/skills/surprise-tribute-operations/SKILL.md",
+   "line": 47,
+   "row_id": "S-64",
+   "pattern": "S-64.her-turn-sat-6-mar",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "e8233827d969cab2",
+   "file": ".claude/skills/surprise-tribute-operations/SKILL.md",
+   "line": 84,
+   "row_id": "S-56",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "e8233827d969cab2",
+   "file": ".claude/skills/surprise-tribute-operations/SKILL.md",
+   "line": 84,
+   "row_id": "S-56",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "1ef810559029d898",
+   "file": ".claude/skills/surprise-tribute-operations/SKILL.md",
+   "line": 164,
+   "row_id": "S-56",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "1ef810559029d898",
+   "file": ".claude/skills/surprise-tribute-operations/SKILL.md",
+   "line": 164,
+   "row_id": "S-56",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "0ef13b15662aa445",
+   "file": ".claude/skills/surprise-tribute-operations/SKILL.md",
+   "line": 166,
+   "row_id": "S-56",
+   "pattern": "S-61.placeholder-observances",
    "severity": "FAIL"
   },
   {
@@ -467,41 +1411,81 @@
    "severity": "FAIL"
   },
   {
-   "fp": "15c78bfb92e8edfc",
-   "file": "playbooks/agent-pipeline.md",
-   "line": 7,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "7c81e9f1b9eb74dc",
-   "file": "playbooks/agent-pipeline.md",
+   "fp": "ceff24c751ce2b42",
+   "file": ".claude/skills/theatrical-delivery-and-rights/SKILL.md",
    "line": 53,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
+   "row_id": "S-48",
+   "pattern": "D-29.mojang",
    "severity": "FAIL"
   },
   {
-   "fp": "bd767a1783fc50ec",
-   "file": "playbooks/agent-pipeline.md",
-   "line": 93,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
+   "fp": "132a11e44a2e9905",
+   "file": ".claude/skills/theatrical-delivery-and-rights/SKILL.md",
+   "line": 86,
+   "row_id": "S-48",
+   "pattern": "D-29.mojang",
    "severity": "FAIL"
   },
   {
-   "fp": "e248719a4ecaa935",
-   "file": "playbooks/agent-pipeline.md",
+   "fp": "ffde08ac476bd8fc",
+   "file": ".claude/skills/theatrical-delivery-and-rights/SKILL.md",
    "line": 113,
-   "row_id": "S-39",
-   "pattern": "S-39.spike-s",
+   "row_id": "S-48",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "5de74ef0ae19f055",
+   "file": ".claude/skills/theatrical-delivery-and-rights/SKILL.md",
+   "line": 113,
+   "row_id": "S-48",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "27fee0e3382fa869",
+   "file": ".claude/skills/theatrical-delivery-and-rights/SKILL.md",
+   "line": 123,
+   "row_id": "S-48",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "27fee0e3382fa869",
+   "file": ".claude/skills/theatrical-delivery-and-rights/SKILL.md",
+   "line": 123,
+   "row_id": "S-48",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "f90de3c7b3d4a5cf",
+   "file": ".claude/skills/theatrical-delivery-and-rights/SKILL.md",
+   "line": 152,
+   "row_id": "S-48",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "f90de3c7b3d4a5cf",
+   "file": ".claude/skills/theatrical-delivery-and-rights/SKILL.md",
+   "line": 152,
+   "row_id": "S-48",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "bbbef4fcda78ddee",
+   "file": "pipeline/scenes/testcard/smoke3d.html",
+   "line": 8,
+   "row_id": "S-50",
+   "pattern": "D-29.voxel",
    "severity": "FAIL"
   },
   {
    "fp": "6e9b1112310f1128",
    "file": "playbooks/agent-pipeline.md",
-   "line": 278,
+   "line": 300,
    "row_id": "S-19",
    "pattern": "S-19.eight-to-twelve",
    "severity": "FAIL"
@@ -509,39 +1493,15 @@
   {
    "fp": "d4f6f7d0848f9103",
    "file": "playbooks/agent-pipeline.md",
-   "line": 284,
+   "line": 306,
    "row_id": "S-31",
    "pattern": "S-31.backblaze",
    "severity": "FAIL"
   },
   {
-   "fp": "0953ea596469a93c",
-   "file": "playbooks/agent-pipeline.md",
-   "line": 296,
-   "row_id": "S-39",
-   "pattern": "S-39.spike-s",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "80ad0f66df717474",
-   "file": "playbooks/agent-pipeline.md",
-   "line": 330,
-   "row_id": "S-39",
-   "pattern": "S-39.spike-s",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "8947d3806b546ca7",
-   "file": "playbooks/agent-pipeline.md",
-   "line": 392,
-   "row_id": "S-39",
-   "pattern": "S-39.spike-s",
-   "severity": "FAIL"
-  },
-  {
    "fp": "655b75d1a36db76f",
    "file": "playbooks/agent-pipeline.md",
-   "line": 395,
+   "line": 419,
    "row_id": "S-19",
    "pattern": "S-19.eight-to-twelve",
    "severity": "FAIL"
@@ -549,31 +1509,7 @@
   {
    "fp": "0150c2572a41b7ac",
    "file": "playbooks/agent-pipeline.md",
-   "line": 395,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "ca4da68ecdc600a1",
-   "file": "playbooks/ai-imagery.md",
-   "line": 17,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "3331ec4bb3787c18",
-   "file": "playbooks/ai-imagery.md",
-   "line": 207,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "a2da0f34258c53ff",
-   "file": "playbooks/ai-imagery.md",
-   "line": 323,
+   "line": 419,
    "row_id": "S-38",
    "pattern": "S-38.l1-lock",
    "severity": "FAIL"
@@ -581,7 +1517,7 @@
   {
    "fp": "def1634f0b86b8b6",
    "file": "playbooks/ai-imagery.md",
-   "line": 445,
+   "line": 450,
    "row_id": "S-08",
    "pattern": "S-08.insider",
    "severity": "WARN"
@@ -589,33 +1525,17 @@
   {
    "fp": "9a4ed7f7fa30bc8f",
    "file": "playbooks/ai-imagery.md",
-   "line": 579,
+   "line": 584,
    "row_id": "S-08",
    "pattern": "S-08.insider",
    "severity": "WARN"
   },
   {
-   "fp": "4f6b99f93bf02173",
-   "file": "playbooks/animated.md",
-   "line": 41,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "1bea839e9b076b0a",
-   "file": "playbooks/animated.md",
-   "line": 45,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "a4efaf695be8a828",
-   "file": "playbooks/animated.md",
-   "line": 119,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
+   "fp": "cdd778e3d859b7d8",
+   "file": "playbooks/ai-imagery.md",
+   "line": 586,
+   "row_id": "S-43",
+   "pattern": "D-29.voxel",
    "severity": "FAIL"
   },
   {
@@ -627,17 +1547,17 @@
    "severity": "WARN"
   },
   {
-   "fp": "2873c18ae3edd2f7",
+   "fp": "d1dadfb8791eeda8",
    "file": "playbooks/animated.md",
-   "line": 312,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
+   "line": 319,
+   "row_id": "S-46",
+   "pattern": "D-29.voxel",
    "severity": "FAIL"
   },
   {
-   "fp": "085213e40d7cceed",
-   "file": "playbooks/cinematic-quality.md",
-   "line": 7,
+   "fp": "2873c18ae3edd2f7",
+   "file": "playbooks/animated.md",
+   "line": 319,
    "row_id": "S-38",
    "pattern": "S-38.l1-lock",
    "severity": "FAIL"
@@ -645,55 +1565,23 @@
   {
    "fp": "5c6d606002002cc1",
    "file": "playbooks/cinematic-quality.md",
-   "line": 692,
+   "line": 766,
    "row_id": "S-08",
    "pattern": "S-08.insider",
    "severity": "WARN"
   },
   {
-   "fp": "be771e30d1376295",
-   "file": "playbooks/craft-motion.md",
-   "line": 9,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "8eae01d0ff4984a9",
-   "file": "playbooks/craft-motion.md",
-   "line": 21,
-   "row_id": "S-39",
-   "pattern": "S-39.spike-s",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "ea7baca47d632bdd",
-   "file": "playbooks/craft-motion.md",
-   "line": 28,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "6cd67ccc1e5eacad",
-   "file": "playbooks/craft-motion.md",
-   "line": 71,
-   "row_id": "S-39",
-   "pattern": "S-39.spike-s",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "6580f201ebef4c4d",
-   "file": "playbooks/craft-motion.md",
-   "line": 297,
-   "row_id": "S-39",
-   "pattern": "S-39.spike-s",
+   "fp": "9302e4051847f5bd",
+   "file": "playbooks/cinematic-quality.md",
+   "line": 865,
+   "row_id": "S-42",
+   "pattern": "D-29.voxel",
    "severity": "FAIL"
   },
   {
    "fp": "5c1b54cbd2e0f8cf",
    "file": "playbooks/craft-motion.md",
-   "line": 300,
+   "line": 305,
    "row_id": "S-01",
    "pattern": "S-01.at-25-fps",
    "severity": "FAIL"
@@ -701,7 +1589,7 @@
   {
    "fp": "4a861a30d32d305f",
    "file": "playbooks/craft-motion.md",
-   "line": 316,
+   "line": 321,
    "row_id": "S-01",
    "pattern": "S-01.at-25-fps",
    "severity": "FAIL"
@@ -709,23 +1597,15 @@
   {
    "fp": "bef513432bb00f33",
    "file": "playbooks/craft-motion.md",
-   "line": 321,
+   "line": 326,
    "row_id": "S-28",
    "pattern": "S-28.minus-1.5-dbtp",
    "severity": "FAIL"
   },
   {
-   "fp": "358d45040a504e23",
-   "file": "playbooks/craft-motion.md",
-   "line": 351,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
    "fp": "6984b49bb277c382",
    "file": "playbooks/craft-motion.md",
-   "line": 459,
+   "line": 465,
    "row_id": "S-39",
    "pattern": "S-39.spike-s",
    "severity": "FAIL"
@@ -733,69 +1613,45 @@
   {
    "fp": "c3330e5a9e054ac1",
    "file": "playbooks/craft-motion.md",
-   "line": 462,
+   "line": 469,
    "row_id": "S-38",
    "pattern": "S-38.l1-lock",
    "severity": "FAIL"
   },
   {
-   "fp": "54e1fa3e71498386",
-   "file": "playbooks/craft-visual.md",
-   "line": 5,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "5926134ad9f4b579",
-   "file": "playbooks/craft-visual.md",
-   "line": 245,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "df99e6ca84fbea9c",
-   "file": "playbooks/craft-visual.md",
-   "line": 476,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "6edca22bbc5c18e5",
+   "fp": "417785ddaf27c6be",
    "file": "playbooks/creator-threads.md",
-   "line": 40,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
+   "line": 309,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
    "severity": "FAIL"
   },
   {
-   "fp": "60e319712ec9440e",
+   "fp": "68b3a98e63783c4a",
    "file": "playbooks/creator-threads.md",
-   "line": 50,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "f425cea5e9fd33fd",
-   "file": "playbooks/creator-threads.md",
-   "line": 114,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
+   "line": 312,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
    "severity": "FAIL"
   },
   {
    "fp": "da0c8c08863a6caa",
    "file": "playbooks/creator-threads.md",
-   "line": 333,
+   "line": 312,
    "row_id": "S-38",
    "pattern": "S-38.l1-lock",
    "severity": "FAIL"
   },
   {
-   "fp": "9bd02ab0666656b4",
+   "fp": "6a9fc52932940977",
+   "file": "playbooks/devotional-sound-script.md",
+   "line": 723,
+   "row_id": "S-65",
+   "pattern": "S-65.two-shaping-gates",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "4547e24c89b3afef",
    "file": "playbooks/film-story.md",
    "line": 5,
    "row_id": "S-18",
@@ -813,7 +1669,7 @@
   {
    "fp": "918b65682bfc7d63",
    "file": "playbooks/film-story.md",
-   "line": 268,
+   "line": 276,
    "row_id": "S-18",
    "pattern": "S-18.shared-private-cut",
    "severity": "FAIL"
@@ -821,7 +1677,7 @@
   {
    "fp": "c00423a5435b4e0f",
    "file": "playbooks/film-story.md",
-   "line": 344,
+   "line": 351,
    "row_id": "S-18",
    "pattern": "S-18.shared-private-cut",
    "severity": "FAIL"
@@ -829,7 +1685,7 @@
   {
    "fp": "ff01433f8b5ab2a1",
    "file": "playbooks/film-story.md",
-   "line": 415,
+   "line": 424,
    "row_id": "S-18",
    "pattern": "S-18.shared-private-cut",
    "severity": "FAIL"
@@ -837,7 +1693,7 @@
   {
    "fp": "ca3144028d31f45d",
    "file": "playbooks/film-story.md",
-   "line": 557,
+   "line": 569,
    "row_id": "S-08",
    "pattern": "S-08.insider",
    "severity": "WARN"
@@ -845,7 +1701,7 @@
   {
    "fp": "9982e92ddbc13c41",
    "file": "playbooks/film-story.md",
-   "line": 571,
+   "line": 583,
    "row_id": "S-18",
    "pattern": "S-18.shared-private-cut",
    "severity": "FAIL"
@@ -859,17 +1715,9 @@
    "severity": "FAIL"
   },
   {
-   "fp": "77da8ec3c2975c3b",
-   "file": "playbooks/format.md",
-   "line": 50,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
    "fp": "70b73d94121d6f02",
    "file": "playbooks/format.md",
-   "line": 60,
+   "line": 61,
    "row_id": "S-20",
    "pattern": "S-20.hours",
    "severity": "FAIL"
@@ -877,7 +1725,7 @@
   {
    "fp": "90014dc066cc48ee",
    "file": "playbooks/format.md",
-   "line": 222,
+   "line": 221,
    "row_id": "S-20",
    "pattern": "S-20.hours",
    "severity": "FAIL"
@@ -885,7 +1733,7 @@
   {
    "fp": "79e268984ec4713b",
    "file": "playbooks/format.md",
-   "line": 271,
+   "line": 269,
    "row_id": "S-19",
    "pattern": "S-19.eight-to-twelve",
    "severity": "FAIL"
@@ -893,73 +1741,145 @@
   {
    "fp": "0776bb593024c081",
    "file": "playbooks/format.md",
-   "line": 273,
+   "line": 271,
    "row_id": "S-20",
    "pattern": "S-20.hours",
    "severity": "FAIL"
   },
   {
-   "fp": "6f2edbad3d271a51",
+   "fp": "04204cbbb0e81a0e",
    "file": "playbooks/format.md",
-   "line": 466,
+   "line": 452,
+   "row_id": "S-44",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "6b5745358bbfca84",
+   "file": "playbooks/format.md",
+   "line": 454,
    "row_id": "S-20",
    "pattern": "S-20.hours",
    "severity": "FAIL"
   },
   {
-   "fp": "db30a5689ef92b9b",
+   "fp": "2db6f06fa7b9bc16",
    "file": "playbooks/format.md",
-   "line": 466,
+   "line": 455,
+   "row_id": "S-20",
+   "pattern": "S-20.hours",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "135c7e8d5bfdf31f",
+   "file": "playbooks/format.md",
+   "line": 456,
+   "row_id": "S-44",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "64e80c2c8fbbb28c",
+   "file": "playbooks/format.md",
+   "line": 456,
+   "row_id": "S-44",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "10a8f47c5ec3a554",
+   "file": "playbooks/format.md",
+   "line": 456,
    "row_id": "S-38",
    "pattern": "S-38.l1-lock",
    "severity": "FAIL"
   },
   {
-   "fp": "dc7f37c99f222744",
-   "file": "playbooks/format.md",
-   "line": 467,
-   "row_id": "S-20",
-   "pattern": "S-20.hours",
+   "fp": "cd7fa318a481bfed",
+   "file": "playbooks/games.md",
+   "line": 247,
+   "row_id": "S-45",
+   "pattern": "D-29.magicavoxel",
    "severity": "FAIL"
   },
   {
-   "fp": "7940e50f70fd1f58",
-   "file": "playbooks/format.md",
-   "line": 467,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
+   "fp": "f326adcc505b27da",
+   "file": "playbooks/games.md",
+   "line": 247,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
    "severity": "FAIL"
   },
   {
-   "fp": "6b93fb867a32f926",
-   "file": "playbooks/hindu-visual.md",
-   "line": 636,
-   "row_id": "S-40",
-   "pattern": "S-40.deltas-to-existing",
+   "fp": "1bf3afa6ff1e46d0",
+   "file": "playbooks/games.md",
+   "line": 248,
+   "row_id": "S-45",
+   "pattern": "D-29.magicavoxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "8a7b42ef2fb4718a",
+   "file": "playbooks/games.md",
+   "line": 249,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "12ef397bcc9ee46e",
+   "file": "playbooks/games.md",
+   "line": 249,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "6c343e24113398fe",
+   "file": "playbooks/games.md",
+   "line": 250,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "9ca3f2fcdc8abbc0",
+   "file": "playbooks/games.md",
+   "line": 250,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "3098809e627f9d6b",
+   "file": "playbooks/hindu-frameworks.md",
+   "line": 348,
+   "row_id": "S-61",
+   "pattern": "S-61.chhath-constraint",
    "severity": "FAIL"
   },
   {
    "fp": "29102e024ec62346",
    "file": "playbooks/music-sound.md",
-   "line": 302,
+   "line": 309,
    "row_id": "S-19",
    "pattern": "S-19.eight-to-twelve",
    "severity": "FAIL"
   },
   {
-   "fp": "ccec3fa65d9a9585",
+   "fp": "69d3bbd225112a34",
    "file": "playbooks/music-sound.md",
-   "line": 402,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
+   "line": 539,
+   "row_id": "S-28",
+   "pattern": "S-28.minus-1.5-dbtp",
    "severity": "FAIL"
   },
   {
-   "fp": "69d3bbd225112a34",
+   "fp": "1fe3b576fbdf7bee",
    "file": "playbooks/music-sound.md",
-   "line": 526,
-   "row_id": "S-28",
-   "pattern": "S-28.minus-1.5-dbtp",
+   "line": 662,
+   "row_id": "S-49",
+   "pattern": "D-29.minecraft",
    "severity": "FAIL"
   },
   {
@@ -1011,67 +1931,11 @@
    "severity": "FAIL"
   },
   {
-   "fp": "418f54d89c39e6d6",
-   "file": "playbooks/production-scale.md",
-   "line": 157,
-   "row_id": "S-39",
-   "pattern": "S-39.range",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "6c1738a0349adb33",
-   "file": "playbooks/production-scale.md",
-   "line": 157,
-   "row_id": "S-39",
-   "pattern": "S-39.spike-s",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "098592736a119a81",
-   "file": "playbooks/production-scale.md",
-   "line": 159,
-   "row_id": "S-39",
-   "pattern": "S-39.range",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "324e987524c9b906",
-   "file": "playbooks/production-scale.md",
-   "line": 159,
-   "row_id": "S-39",
-   "pattern": "S-39.spike-s",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "9f40c75bf42780b3",
-   "file": "playbooks/production-scale.md",
-   "line": 173,
-   "row_id": "S-39",
-   "pattern": "S-39.spike-s",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "590936fa6f53cf60",
-   "file": "playbooks/production-scale.md",
-   "line": 181,
-   "row_id": "S-39",
-   "pattern": "S-39.spike-s",
-   "severity": "FAIL"
-  },
-  {
    "fp": "b38ab8baefd1c9f0",
    "file": "playbooks/production-scale.md",
    "line": 242,
    "row_id": "S-18",
    "pattern": "S-18.shared-private-cut",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "3801664cdc4d9a85",
-   "file": "playbooks/production-scale.md",
-   "line": 380,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
    "severity": "FAIL"
   },
   {
@@ -1083,25 +1947,9 @@
    "severity": "FAIL"
   },
   {
-   "fp": "d525cb0ababd7c33",
-   "file": "playbooks/production-scale.md",
-   "line": 469,
-   "row_id": "S-39",
-   "pattern": "S-39.range",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "5c23b529ccc127d8",
-   "file": "playbooks/production-scale.md",
-   "line": 469,
-   "row_id": "S-39",
-   "pattern": "S-39.spike-s",
-   "severity": "FAIL"
-  },
-  {
    "fp": "b48e59be94e4c98f",
    "file": "playbooks/production-scale.md",
-   "line": 612,
+   "line": 613,
    "row_id": "S-18",
    "pattern": "S-18.shared-private-cut",
    "severity": "FAIL"
@@ -1109,7 +1957,7 @@
   {
    "fp": "178416269ffb0159",
    "file": "playbooks/production-scale.md",
-   "line": 613,
+   "line": 614,
    "row_id": "S-16",
    "pattern": "S-16.runtime-floor",
    "severity": "FAIL"
@@ -1117,7 +1965,7 @@
   {
    "fp": "adc60d83f6130f14",
    "file": "playbooks/production-scale.md",
-   "line": 661,
+   "line": 662,
    "row_id": "S-18",
    "pattern": "S-18.shared-private-cut",
    "severity": "FAIL"
@@ -1125,7 +1973,7 @@
   {
    "fp": "491a208d10484370",
    "file": "playbooks/production-scale.md",
-   "line": 670,
+   "line": 671,
    "row_id": "S-17",
    "pattern": "S-17.four-chapters",
    "severity": "FAIL"
@@ -1133,7 +1981,7 @@
   {
    "fp": "8085f68065603268",
    "file": "playbooks/production-scale.md",
-   "line": 712,
+   "line": 715,
    "row_id": "S-18",
    "pattern": "S-18.shared-private-cut",
    "severity": "FAIL"
@@ -1141,7 +1989,7 @@
   {
    "fp": "ae3cb2ff530c6840",
    "file": "playbooks/production-scale.md",
-   "line": 760,
+   "line": 763,
    "row_id": "S-19",
    "pattern": "S-19.eight-to-twelve",
    "severity": "FAIL"
@@ -1149,7 +1997,7 @@
   {
    "fp": "0e852e889a46e4f3",
    "file": "playbooks/production-scale.md",
-   "line": 760,
+   "line": 763,
    "row_id": "S-20",
    "pattern": "S-20.hours",
    "severity": "FAIL"
@@ -1163,19 +2011,51 @@
    "severity": "FAIL"
   },
   {
-   "fp": "1336a2142cbe8517",
-   "file": "playbooks/story.md",
-   "line": 7,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
+   "fp": "e82a32151091eecd",
+   "file": "playbooks/production-scale.md",
+   "line": 835,
+   "row_id": "S-61",
+   "pattern": "S-61.christmas-bare",
+   "severity": "WARN"
+  },
+  {
+   "fp": "d6f942f4e3e404b8",
+   "file": "playbooks/production-scale.md",
+   "line": 835,
+   "row_id": "S-61",
+   "pattern": "S-61.placeholder-observances",
    "severity": "FAIL"
   },
   {
-   "fp": "15543fafd249ca79",
-   "file": "playbooks/story.md",
-   "line": 32,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
+   "fp": "d6f942f4e3e404b8",
+   "file": "playbooks/production-scale.md",
+   "line": 835,
+   "row_id": "S-61",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "d6f942f4e3e404b8",
+   "file": "playbooks/production-scale.md",
+   "line": 835,
+   "row_id": "S-61",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "d6f942f4e3e404b8",
+   "file": "playbooks/production-scale.md",
+   "line": 835,
+   "row_id": "S-61",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "d6f942f4e3e404b8",
+   "file": "playbooks/production-scale.md",
+   "line": 835,
+   "row_id": "S-61",
+   "pattern": "S-61.placeholder-observances",
    "severity": "FAIL"
   },
   {
@@ -1184,38 +2064,6 @@
    "line": 138,
    "row_id": "S-18",
    "pattern": "S-18.shared-private-cut",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "f3d36fb6694166f4",
-   "file": "playbooks/story.md",
-   "line": 144,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "0ffce3f1ae926eb0",
-   "file": "playbooks/story.md",
-   "line": 148,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "11859e084da5f1df",
-   "file": "playbooks/story.md",
-   "line": 293,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "abd0b5a8f02a719d",
-   "file": "playbooks/story.md",
-   "line": 294,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
    "severity": "FAIL"
   },
   {
@@ -1259,31 +2107,15 @@
    "severity": "FAIL"
   },
   {
-   "fp": "4abd62390d16d0e0",
-   "file": "playbooks/surprise-ops.md",
-   "line": 13,
+   "fp": "5863dab0549367ec",
+   "file": "playbooks/story.md",
+   "line": 408,
    "row_id": "S-38",
    "pattern": "S-38.l1-lock",
    "severity": "FAIL"
   },
   {
-   "fp": "f3e24c433f8425fd",
-   "file": "playbooks/surprise-ops.md",
-   "line": 36,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "c727155f05538e0e",
-   "file": "playbooks/surprise-ops.md",
-   "line": 38,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "67d6c4fa06327afc",
+   "fp": "3620a666b4e2f4dc",
    "file": "playbooks/surprise-ops.md",
    "line": 55,
    "row_id": "S-11",
@@ -1291,25 +2123,9 @@
    "severity": "FAIL"
   },
   {
-   "fp": "230181fc788c0a7a",
-   "file": "playbooks/surprise-ops.md",
-   "line": 175,
-   "row_id": "S-41",
-   "pattern": "S-41.host-distractor",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "511e9d3de3b2f889",
-   "file": "playbooks/surprise-ops.md",
-   "line": 267,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
    "fp": "0e5a6941d439008d",
    "file": "playbooks/surprise-ops.md",
-   "line": 287,
+   "line": 290,
    "row_id": "S-09",
    "pattern": "S-09.contributors-confirm",
    "severity": "FAIL"
@@ -1317,23 +2133,15 @@
   {
    "fp": "32a1dfbd77d8bf7d",
    "file": "playbooks/surprise-ops.md",
-   "line": 431,
+   "line": 434,
    "row_id": "S-09",
    "pattern": "S-09.contributors-confirm",
    "severity": "FAIL"
   },
   {
-   "fp": "e7294eaf99765bc5",
-   "file": "playbooks/surprise-ops.md",
-   "line": 556,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
    "fp": "74d0082bd62ca8ba",
    "file": "playbooks/surprise-ops.md",
-   "line": 567,
+   "line": 570,
    "row_id": "S-18",
    "pattern": "S-18.shared-private-cut",
    "severity": "FAIL"
@@ -1341,15 +2149,39 @@
   {
    "fp": "69712a3b1f90fba8",
    "file": "playbooks/surprise-ops.md",
-   "line": 571,
+   "line": 574,
    "row_id": "S-26",
    "pattern": "S-26.living-room",
    "severity": "FAIL"
   },
   {
+   "fp": "c7cf0263d1068e61",
+   "file": "playbooks/surprise-ops.md",
+   "line": 866,
+   "row_id": "S-56",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "7a718eb4bfa3fb82",
+   "file": "playbooks/surprise-ops.md",
+   "line": 867,
+   "row_id": "S-56",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "d427983e1ab2b280",
+   "file": "playbooks/surprise-ops.md",
+   "line": 868,
+   "row_id": "S-56",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
    "fp": "49b1f5d25773bfe5",
    "file": "playbooks/surprise-ops.md",
-   "line": 871,
+   "line": 869,
    "row_id": "S-05",
    "pattern": "S-05.co-keeper",
    "severity": "FAIL"
@@ -1357,7 +2189,7 @@
   {
    "fp": "78c74192d274f4fd",
    "file": "playbooks/surprise-ops.md",
-   "line": 871,
+   "line": 869,
    "row_id": "S-05",
    "pattern": "S-05.two-or-both-keys",
    "severity": "FAIL"
@@ -1365,15 +2197,79 @@
   {
    "fp": "c53f41ff316df03b",
    "file": "playbooks/surprise-ops.md",
-   "line": 871,
+   "line": 869,
    "row_id": "S-38",
    "pattern": "S-38.l1-lock",
    "severity": "FAIL"
   },
   {
-   "fp": "370de363c4d7c4a8",
+   "fp": "ad109d5131b72972",
+   "file": "playbooks/surprise-ops.md",
+   "line": 870,
+   "row_id": "S-38",
+   "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "67f84854ef507735",
+   "file": "playbooks/surprise-ops.md",
+   "line": 870,
+   "row_id": "S-56",
+   "pattern": "S-61.christmas-bare",
+   "severity": "WARN"
+  },
+  {
+   "fp": "dee30511b81b1b43",
+   "file": "playbooks/surprise-ops.md",
+   "line": 870,
+   "row_id": "S-56",
+   "pattern": "S-61.christmas-new-year-household",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "723c996960f8dc86",
+   "file": "playbooks/surprise-ops.md",
+   "line": 870,
+   "row_id": "S-56",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "723c996960f8dc86",
+   "file": "playbooks/surprise-ops.md",
+   "line": 870,
+   "row_id": "S-56",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "723c996960f8dc86",
+   "file": "playbooks/surprise-ops.md",
+   "line": 870,
+   "row_id": "S-56",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "723c996960f8dc86",
+   "file": "playbooks/surprise-ops.md",
+   "line": 870,
+   "row_id": "S-56",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "723c996960f8dc86",
+   "file": "playbooks/surprise-ops.md",
+   "line": 870,
+   "row_id": "S-56",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "c53dfde12fa1a088",
    "file": "playbooks/theatrical-delivery.md",
-   "line": 331,
+   "line": 361,
    "row_id": "S-09",
    "pattern": "S-09.contributors-confirm",
    "severity": "FAIL"
@@ -1381,42 +2277,10 @@
   {
    "fp": "6cf29fa07fa7ad40",
    "file": "playbooks/theatrical-delivery.md",
-   "line": 428,
+   "line": 462,
    "row_id": "S-13",
    "pattern": "S-13.voice-and-photos-warn",
    "severity": "WARN"
-  },
-  {
-   "fp": "cc3716673d8d723a",
-   "file": "playbooks/theatrical-delivery.md",
-   "line": 722,
-   "row_id": "S-40",
-   "pattern": "S-40.deltas-to-existing",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "3e3fff8602e64ca0",
-   "file": "playbooks/toolchain.md",
-   "line": 8,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "90756ca62ee483a5",
-   "file": "playbooks/toolchain.md",
-   "line": 16,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "55672d7ca3b39745",
-   "file": "playbooks/toolchain.md",
-   "line": 65,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
   },
   {
    "fp": "ebb67b5b4993d3ce",
@@ -1459,15 +2323,7 @@
    "severity": "FAIL"
   },
   {
-   "fp": "abe4f0c55e08d31f",
-   "file": "playbooks/toolchain.md",
-   "line": 146,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "8cc8cc23af83a918",
+   "fp": "22737ee1f5ec7503",
    "file": "playbooks/toolchain.md",
    "line": 154,
    "row_id": "S-28",
@@ -1475,25 +2331,17 @@
    "severity": "FAIL"
   },
   {
-   "fp": "1b61e181913e0da4",
+   "fp": "69642c6f24fe517c",
    "file": "playbooks/toolchain.md",
-   "line": 206,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "6e48bfce2d7f74ec",
-   "file": "playbooks/toolchain.md",
-   "line": 294,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
+   "line": 652,
+   "row_id": "S-46",
+   "pattern": "D-29.voxel",
    "severity": "FAIL"
   },
   {
    "fp": "5d3603a56999068e",
    "file": "playbooks/toolchain.md",
-   "line": 649,
+   "line": 652,
    "row_id": "S-38",
    "pattern": "S-38.l1-lock",
    "severity": "FAIL"
@@ -1515,6 +2363,14 @@
    "severity": "FAIL"
   },
   {
+   "fp": "e37f8fdd8cdc5c98",
+   "file": "research/production-scale-fixtures/followup2-s3-container-results.txt",
+   "line": 1,
+   "row_id": "S-50",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
    "fp": "1652cc465517f66d",
    "file": "research/production-scale-fixtures/followup2-s3-container-results.txt",
    "line": 1,
@@ -1531,11 +2387,43 @@
    "severity": "FAIL"
   },
   {
+   "fp": "28f32492725828de",
+   "file": "research/production-scale-fixtures/followup2-s3-kitchen-standin.py",
+   "line": 2,
+   "row_id": "S-50",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
    "fp": "4a3d8e38d7b32daf",
    "file": "research/production-scale-fixtures/followup2-s3-kitchen-standin.py",
    "line": 2,
    "row_id": "S-39",
    "pattern": "S-39.spike-s",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "c9fcf0a1b535c07c",
+   "file": "research/production-scale-fixtures/followup2-s3-kitchen-standin.py",
+   "line": 55,
+   "row_id": "S-50",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "c7a7326bce07cd4e",
+   "file": "research/production-scale-fixtures/followup2-s3-kitchen-standin.py",
+   "line": 127,
+   "row_id": "S-50",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "be38225a8cc85f0e",
+   "file": "research/production-scale-fixtures/followup2-s3-kitchen-standin.py",
+   "line": 135,
+   "row_id": "S-50",
+   "pattern": "D-29.voxel",
    "severity": "FAIL"
   },
   {
@@ -1552,6 +2440,14 @@
    "line": 2,
    "row_id": "S-39",
    "pattern": "S-39.spike-s",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "3da0de9ebb7fefab",
+   "file": "research/production-scale-fixtures/gates.csv",
+   "line": 8,
+   "row_id": "S-61",
+   "pattern": "S-61.placeholder-observances",
    "severity": "FAIL"
   },
   {
@@ -1603,6 +2499,278 @@
    "severity": "FAIL"
   },
   {
+   "fp": "2a592c519127220e",
+   "file": "research/sources/check_mojang_quotes.py",
+   "line": 2,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "037755e1723064dd",
+   "file": "research/sources/check_mojang_quotes.py",
+   "line": 18,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "a2fc9f8d889a1985",
+   "file": "research/sources/check_mojang_quotes.py",
+   "line": 30,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "af6240eeefe90738",
+   "file": "research/sources/check_mojang_quotes.py",
+   "line": 31,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "227671ff4180bc74",
+   "file": "research/sources/check_mojang_quotes.py",
+   "line": 37,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "7e701fd22c75cbe6",
+   "file": "research/sources/format-round1/README.txt",
+   "line": 11,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "7e701fd22c75cbe6",
+   "file": "research/sources/format-round1/README.txt",
+   "line": 11,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "c8f7608f5d3bd1f9",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 1,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "c8f7608f5d3bd1f9",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 1,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "a27ad528c348ceca",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 2,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "57e3a4723e777c06",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 5,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "8a2334e218310c04",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 6,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "620834ca6a06e398",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 23,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "ed01425eb1666bf2",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 24,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "3900dfd8983649fc",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 24,
+   "row_id": "S-50",
+   "pattern": "D-29.mojang",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "1a5c161e0c120510",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 27,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "1a5c161e0c120510",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 27,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "81f3596368f60266",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 29,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "b97368ef58d6c1f1",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 34,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "b97368ef58d6c1f1",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 34,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "898fa10de699f50b",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 35,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "898fa10de699f50b",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 35,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "53623e46caacccc2",
+   "file": "research/sources/minecraft-eula-and-extra-clauses-2026-10-18.txt",
+   "line": 36,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "a1b3e148afe62f6b",
+   "file": "research/sources/minecraft-usage-guidelines-2026-10-18.txt",
+   "line": 1,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "e717359050993186",
+   "file": "research/sources/minecraft-usage-guidelines-2026-10-18.txt",
+   "line": 5,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "40308b13dc20073b",
+   "file": "research/sources/minecraft-usage-guidelines-2026-10-18.txt",
+   "line": 7,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "40308b13dc20073b",
+   "file": "research/sources/minecraft-usage-guidelines-2026-10-18.txt",
+   "line": 7,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "40308b13dc20073b",
+   "file": "research/sources/minecraft-usage-guidelines-2026-10-18.txt",
+   "line": 7,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "eb77876e038330bd",
+   "file": "research/sources/minecraft-usage-guidelines-2026-10-18.txt",
+   "line": 24,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "261d4a387aa4ad97",
+   "file": "research/sources/minecraft-usage-guidelines-2026-10-18.txt",
+   "line": 25,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "9cf4db184a824df9",
+   "file": "research/sources/minecraft-usage-guidelines-2026-10-18.txt",
+   "line": 40,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "304f6f7d5112ff5f",
+   "file": "research/sources/minecraft-usage-guidelines-2026-10-18.txt",
+   "line": 41,
+   "row_id": "S-50",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "235109aef58dca12",
+   "file": "research/sources/saurashtra-world-licence-excerpts-2026-10-19.txt",
+   "line": 55,
+   "row_id": "S-61",
+   "pattern": "S-61.placeholder-observances",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "aaef9b7d7865d81c",
+   "file": "research/sources/theatrical-delivery-round2-excerpts-2026-10-18.txt",
+   "line": 51,
+   "row_id": "S-61",
+   "pattern": "S-61.christmas-bare",
+   "severity": "WARN"
+  },
+  {
    "fp": "98246d8dab02769f",
    "file": "research/toolchain-fixtures/step0_pc_tests.ps1",
    "line": 105,
@@ -1651,11 +2819,267 @@
    "severity": "FAIL"
   },
   {
-   "fp": "775ac769744b06a7",
-   "file": "skills-staging/hindu-visual-language/SKILL.md",
-   "line": 97,
-   "row_id": "S-40",
-   "pattern": "S-40.deltas-to-existing",
+   "fp": "111840e97da1eed2",
+   "file": "skills-staging/agent-first-production-pipeline/SKILL.md",
+   "line": 133,
+   "row_id": "S-38",
+   "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "6790a63dbb801464",
+   "file": "skills-staging/animation-production-planning/SKILL.md",
+   "line": 51,
+   "row_id": "S-18",
+   "pattern": "S-18.shared-private-cut",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "187f8a6b6a632cb0",
+   "file": "skills-staging/cinematic-quality-bar/SKILL.md",
+   "line": 180,
+   "row_id": "S-42",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "e9359a8fa8e9c48e",
+   "file": "skills-staging/craft-apps-motion-refinement/SKILL.md",
+   "line": 198,
+   "row_id": "S-38",
+   "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "85f8d4483d51dad6",
+   "file": "skills-staging/craft-apps-visual-refinement/SKILL.md",
+   "line": 167,
+   "row_id": "S-38",
+   "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "5a0becbb193e54e1",
+   "file": "skills-staging/creator-recipe-library/SKILL.md",
+   "line": 184,
+   "row_id": "S-47",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "959f14da604e778d",
+   "file": "skills-staging/creator-recipe-library/SKILL.md",
+   "line": 184,
+   "row_id": "S-38",
+   "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "80067c3e963f0f2a",
+   "file": "skills-staging/free-creative-toolchain/SKILL.md",
+   "line": 12,
+   "row_id": "S-01",
+   "pattern": "S-01.atsc-25",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "259cc7b08c4bde7e",
+   "file": "skills-staging/free-creative-toolchain/SKILL.md",
+   "line": 60,
+   "row_id": "S-01",
+   "pattern": "S-01.atsc-25",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "152194e621c0f010",
+   "file": "skills-staging/free-creative-toolchain/SKILL.md",
+   "line": 176,
+   "row_id": "S-38",
+   "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "6c7dee5237ada232",
+   "file": "skills-staging/hindu-life-story-frameworks/SKILL.md",
+   "line": 134,
+   "row_id": "S-61",
+   "pattern": "S-61.chhath-constraint",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "d6aa8d7b062b83c1",
+   "file": "skills-staging/journey-format-architecture/SKILL.md",
+   "line": 45,
+   "row_id": "S-20",
+   "pattern": "S-20.hours",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "80978c79df7b6f0b",
+   "file": "skills-staging/journey-format-architecture/SKILL.md",
+   "line": 178,
+   "row_id": "S-44",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "6319b71855c03205",
+   "file": "skills-staging/life-film-story-structure/SKILL.md",
+   "line": 12,
+   "row_id": "S-08",
+   "pattern": "S-08.insider",
+   "severity": "WARN"
+  },
+  {
+   "fp": "f7c2cf64fd40289d",
+   "file": "skills-staging/life-film-story-structure/SKILL.md",
+   "line": 31,
+   "row_id": "S-18",
+   "pattern": "S-18.shared-private-cut",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "dc91e7365915665a",
+   "file": "skills-staging/life-film-story-structure/SKILL.md",
+   "line": 225,
+   "row_id": "S-18",
+   "pattern": "S-18.shared-private-cut",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "1ed111ac3475039e",
+   "file": "skills-staging/life-story-interviewing/SKILL.md",
+   "line": 8,
+   "row_id": "S-08",
+   "pattern": "S-08.closest-insider",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "df4c703a7ec23586",
+   "file": "skills-staging/life-story-interviewing/SKILL.md",
+   "line": 8,
+   "row_id": "S-08",
+   "pattern": "S-08.insider",
+   "severity": "WARN"
+  },
+  {
+   "fp": "c8738902541192aa",
+   "file": "skills-staging/life-story-interviewing/SKILL.md",
+   "line": 181,
+   "row_id": "S-08",
+   "pattern": "S-08.closest-insider",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "06c54bce9106ea0e",
+   "file": "skills-staging/life-story-interviewing/SKILL.md",
+   "line": 181,
+   "row_id": "S-08",
+   "pattern": "S-08.insider",
+   "severity": "WARN"
+  },
+  {
+   "fp": "c7b78ef4d24b8aae",
+   "file": "skills-staging/life-story-interviewing/SKILL.md",
+   "line": 181,
+   "row_id": "S-38",
+   "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "495808ee41fc565f",
+   "file": "skills-staging/life-story-interviewing/SKILL.md",
+   "line": 182,
+   "row_id": "S-38",
+   "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "d71cc4fdbc4a998a",
+   "file": "skills-staging/meaningful-game-mechanics/SKILL.md",
+   "line": 142,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "b7e324f1453f6c7d",
+   "file": "skills-staging/meaningful-game-mechanics/SKILL.md",
+   "line": 142,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "6abbcdb9a327d791",
+   "file": "skills-staging/meaningful-game-mechanics/SKILL.md",
+   "line": 143,
+   "row_id": "S-45",
+   "pattern": "D-29.minecraft",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "8fea5eb99fc2e654",
+   "file": "skills-staging/meaningful-game-mechanics/SKILL.md",
+   "line": 143,
+   "row_id": "S-45",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "d5f910767fba5f03",
+   "file": "skills-staging/surprise-tribute-operations/SKILL.md",
+   "line": 192,
+   "row_id": "S-05",
+   "pattern": "S-05.co-keeper",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "81bc2a40d948abd8",
+   "file": "skills-staging/surprise-tribute-operations/SKILL.md",
+   "line": 192,
+   "row_id": "S-05",
+   "pattern": "S-05.two-or-both-keys",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "0d97928dfc715f5e",
+   "file": "skills-staging/surprise-tribute-operations/SKILL.md",
+   "line": 193,
+   "row_id": "S-38",
+   "pattern": "S-38.l1-lock",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "27bd5e51b0da08aa",
+   "file": "spikes/sp1_craft_cli/drivers/t2_filmcraft.py",
+   "line": 285,
+   "row_id": "S-01",
+   "pattern": "S-01.at-25-fps",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "3881cfe4ce3cb823",
+   "file": "spikes/sp2_route_a/VERDICT-SP2.md",
+   "line": 26,
+   "row_id": "S-50",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "ccc017a31e392907",
+   "file": "spikes/sp2_route_a/collect_results.py",
+   "line": 40,
+   "row_id": "S-50",
+   "pattern": "D-29.voxel",
+   "severity": "FAIL"
+  },
+  {
+   "fp": "56ff56c86755d140",
+   "file": "spikes/sp2_route_a/results.json",
+   "line": 28,
+   "row_id": "S-50",
+   "pattern": "D-29.voxel",
    "severity": "FAIL"
   }
  ]

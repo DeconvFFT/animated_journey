@@ -4,12 +4,14 @@
   python3 -I tests/roundtrip/run_checks.py --mode quick|all [--work renders/wp06] [--evidence build/evidence/wp06] [--keep]
 
 One line per test:  PASS|FAIL|UNVERIFIED|SKIPPED|BLOCKED  name  detail
-and one evidence envelope per test (build plan 4.2) appended to <evidence>/tests.jsonl. Exit 0 if no line is FAIL or BLOCKED, 1 if a line FAILs,
+and one evidence envelope per test (build plan 4.2) written to <evidence>/tests_<mode>.jsonl (tests_quick.jsonl or tests_all.jsonl: one file per mode, so a later
+--quick run, for example the shared WP-11a runner's, can not overwrite the --all evidence). Exit 0 if no line is FAIL or BLOCKED, 1 if a line FAILs,
 3 if a line is BLOCKED. UNVERIFIED (Windows or Craft-app behaviour) and SKIPPED are listed and never counted as a pass.
+Set LJ_WP06_COUNTS=PATH to also write the run's peak size and lowest free space there (make_evidence.sh does; a normal run leaves no extra file).
 
 What it covers (the WP-06 acceptance list): the ORA emitter and validator (R8 rules, the reused make_ora.py and at-layers.ora as references, nineteen planted
-defects), the SVG rig through Inkscape plain-SVG export and the reused check_ids.py (clean pass-through, three planted defects, the Inkscape data-* finding),
-the OTIO emitter and validator (rebased from the 25 fps template, JSON-level rules, the opentimelineio 0.18.1 load, twenty-two planted defects), kb_scale.py
+defects, and a test that holds a reference file to the same value rules), the SVG rig through Inkscape plain-SVG export and the reused check_ids.py (clean pass-through, three planted defects, the Inkscape data-* finding),
+the OTIO emitter and validator (rebased from the 25 fps template, JSON-level rules, the opentimelineio 0.18.1 load, twenty-seven planted defects), kb_scale.py
 (45.0, 53.3, 66.67), and adapter_probe.sh (reused make_otio.py unchanged).
 
 Everything is generated at test time from synthetic content (test cards, a sine tone, a geometric rig) under the --work folder (git-ignored renders/wp06) and
@@ -274,14 +276,74 @@ def t_lint():
     check("hygiene.theme_guard", rc == 0, "the D-28 keyword guard finds nothing in the owned paths", last(o, 2))
 
 
+PYCACHE_BASES = ("pipeline/roundtrip", "tests/roundtrip")
+
+
+def pycache_snapshot():
+    """{__pycache__ folder relative to the repo: {(file name, mtime_ns, size)}} for every __pycache__ under the owned paths (an empty folder is an empty set)."""
+    snap = {}
+    for base in PYCACHE_BASES:
+        for dp, dn, fn in os.walk(os.path.join(ROOT, base)):
+            if os.path.basename(dp) != "__pycache__":
+                continue
+            files = set()
+            for f in fn:
+                try:
+                    st = os.lstat(os.path.join(dp, f))
+                    files.add((f, st.st_mtime_ns, st.st_size))
+                except OSError:
+                    pass
+            snap[os.path.relpath(dp, ROOT).replace(os.sep, "/")] = files
+    return snap
+
+
+def pycache_new(before, after):
+    """What appeared between two snapshots: a new __pycache__ folder (name/), or a new or rewritten file inside an old one (name/file)."""
+    out = []
+    for folder, files in sorted(after.items()):
+        if folder not in before:
+            out.append(folder + "/")
+        else:
+            out += ["%s/%s" % (folder, f[0]) for f in sorted(files - before[folder])]
+    return out
+
+
 @test("hygiene.no_pycache")
 def t_pycache():
-    found = []
-    for base in ("pipeline/roundtrip", "tests/roundtrip"):
-        for dp, dn, fn in os.walk(os.path.join(ROOT, base)):
-            if "__pycache__" in dn:
-                found.append(os.path.relpath(dp, ROOT))
-    check("hygiene.no_pycache", not found, "no __pycache__ folder under the owned paths", ", ".join(found) or "none")
+    # A __pycache__ that was already there when the run began is not this package's doing (any later tool that imports plant.py without -B leaves one),
+    # so it is only a failure if git would not ignore it. What this run must not do is make one, or write into one.
+    new = pycache_new(S.get("pycache_start", {}), pycache_snapshot())
+    old = sorted(S.get("pycache_start", {}))
+    unignored = []
+    for folder in old:
+        try:
+            rc, o, e = sh(["git", "check-ignore", "-q", folder])
+        except OSError:
+            break                      # no git here: nothing to compare with, the folder is only reported
+        if rc == 1:
+            unignored.append(folder)
+    detail = "none created during the run" + ("; %d already there at the start, all git-ignored, left alone" % len(old) if old and not unignored else "")
+    if new:
+        detail = "created during the run: " + ", ".join(new[:6])
+    elif unignored:
+        detail = "already there and NOT git-ignored (it could be committed): " + ", ".join(unignored[:6])
+    check("hygiene.no_pycache", not new and not unignored,
+          "the run creates no __pycache__ folder or .pyc file under the owned paths (one that was already there and is git-ignored is not this run's)", detail)
+
+
+@test("hygiene.no_pycache_detects")
+def t_pycache_detects():
+    a = {"tests/roundtrip/__pycache__": {("plant.cpython-313.pyc", 1, 10)}}
+    cases = [("nothing changed", a, dict(a), []),
+             ("a new folder", a, dict(a, **{"pipeline/roundtrip/__pycache__": set()}), ["pipeline/roundtrip/__pycache__/"]),
+             ("a new file in an old folder", a, {"tests/roundtrip/__pycache__": a["tests/roundtrip/__pycache__"] | {("rt_common.cpython-313.pyc", 2, 20)}},
+              ["tests/roundtrip/__pycache__/rt_common.cpython-313.pyc"]),
+             ("a rewritten file", a, {"tests/roundtrip/__pycache__": {("plant.cpython-313.pyc", 3, 10)}}, ["tests/roundtrip/__pycache__/plant.cpython-313.pyc"]),
+             ("a folder that went away", a, {}, []),
+             ("nothing before, a folder after", {}, a, ["tests/roundtrip/__pycache__/"])]
+    bad = [n for n, b, c, want in cases if pycache_new(b, c) != want]
+    check("hygiene.no_pycache_detects", not bad, "the comparison used by hygiene.no_pycache sees a new folder, a new file and a rewritten file, and ignores one that was already there",
+          "all %d cases right" % len(cases) if not bad else "wrong: " + ", ".join(bad))
 
 
 # ----------------------------------------------------------------------------------------------- kb_scale
@@ -396,6 +458,27 @@ def t_ora_at():
     check("ora.at_layers_strict", rc2 == 1 and {"layer_name_invalid", "asfound_not_bottom"} <= failed_codes(o2),
           "under --profile pipeline the same file fails on its names and the missing L00_asfound (so the reference profile is a choice, not a blind spot)",
           "exit %d; %s" % (rc2, last(o2)))
+
+
+@test("ora.reference_values_strict")
+def t_ora_ref_values():
+    # review r1, break test B4: a bad layer value in a file under the reference profile (at-layers.ora) was only a WARN. Values are structural, so it must fail there too.
+    src = os.path.join(CRAFT_VIS, "at-layers.ora")
+    cases = [("opacity 1.5", 'opacity="0.6"', 'opacity="1.5"'), ("opacity not a number", 'opacity="0.6"', 'opacity="high"'),
+             ("visibility shown", 'visibility="visible"', 'visibility="shown"'), ("composite-op unknown", 'composite-op="svg:multiply"', 'composite-op="svg:bogus"'),
+             ("x fractional", 'x="24"', 'x="12.5"'), ("y not a number", 'y="24"', 'y="-"')]
+    rows = []
+    for name, old, new in cases:
+        dst = work("ref_value_%d.ora" % len(rows))
+        m = plant.read_members(src)
+        plant._stack(m, lambda t, old=old, new=new: t.replace(old, new, 1))
+        plant.write_members(dst, m)
+        rc, o, e = sh(PY + [tool("validate_ora.py"), dst])
+        rows.append((name, rc, failed_codes(o), "profile=reference" in o))
+        os.remove(dst)
+    ok = all(rc == 1 and got == {"layer_value_invalid"} and ref for _, rc, got, ref in rows)
+    check("ora.reference_values_strict", ok, "a bad opacity, visibility, composite-op, x or y in at-layers.ora (reference profile) exits 1 naming layer_value_invalid, not a WARN",
+          "; ".join("%s -> exit %d %s%s" % (n, rc, sorted(got), "" if ref else " (NOT the reference profile)") for n, rc, got, ref in rows))
 
 
 @test("ora.usage")
@@ -853,8 +936,9 @@ def main():
     ap.add_argument("--keep", action="store_true", help="leave the generated files in --work")
     ARGS = ap.parse_args()
     ARGS.work, ARGS.evidence = os.path.abspath(ARGS.work), os.path.abspath(ARGS.evidence)
-    ARGS.jsonl = os.path.join(ARGS.evidence, "tests.jsonl")
+    ARGS.jsonl = os.path.join(ARGS.evidence, "tests_%s.jsonl" % ARGS.mode)       # one file per mode: a later --quick run never overwrites the --all evidence
     ARGS.t_start = avail_mb()
+    S["pycache_start"] = pycache_snapshot()
     os.makedirs(ARGS.evidence, exist_ok=True)
     shutil.rmtree(ARGS.work, ignore_errors=True)
     os.makedirs(ARGS.work, exist_ok=True)
@@ -871,8 +955,10 @@ def main():
             record(name, "FAIL", "the test runs to the end", "%s: %s" % (type(e).__name__, str(e)[:200]))
     n = STATE["counts"]
     print("TOTAL: PASS %d, FAIL %d, UNVERIFIED %d, SKIPPED %d, BLOCKED %d (%d s)" % (n["PASS"], n["FAIL"], n["UNVERIFIED"], n["SKIPPED"], n["BLOCKED"], time.time() - t0))
-    with open(os.path.join(ARGS.evidence, ".counts.json"), "w") as f:
-        json.dump({"peak_work_mb": round(STATE["peak_work_mb"], 1), "min_avail": STATE["min_avail"], "counts": n}, f)
+    counts_path = os.environ.get("LJ_WP06_COUNTS")              # only make_evidence.sh asks for this; a normal run leaves no extra file in the evidence folder
+    if counts_path:
+        with open(counts_path, "w") as f:
+            json.dump({"peak_work_mb": round(STATE["peak_work_mb"], 1), "min_avail": STATE["min_avail"], "counts": n}, f)
     if not ARGS.keep:
         shutil.rmtree(ARGS.work, ignore_errors=True)
     return 3 if n["BLOCKED"] else (1 if n["FAIL"] else 0)

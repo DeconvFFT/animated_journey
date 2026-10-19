@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LJ phone test master</title>
+<meta name="viewport" content="width=1920">
+<!--
+  WP-08 phone test master: a synthetic, style-neutral 1920x1080 card for the phone check (D-27). Nothing here is a design decision for the film.
+  Render it with the WP-04 harness, then mux the tone ladder (tests/phone/make_master.py does both):
+    node pipeline/bin/render.mjs --dir tests/phone/scene --page phone_scene.html --mount /vendor=vendor --mount /lib=pipeline/lib
+         --mount /phone=pipeline/phone --mount /scenes=pipeline/scenes --seconds 10 --chain prores422hq_master --ffmpeg OUT.mov --json REPORT.json
+  The words and numbers on the card are NOT typed here: the title and the headline are read from /phone/test_strings.json (the fixed allowlist, build plan 4.10/4.15);
+  the ruler labels are bare digits. The lower 40% of the picture is deliberately empty and static: the burned captions go there, and the check finds them by differencing.
+  Parts: Latin title (cap height well above 5% of picture height); Devanagari headline (every script with strings and headline:true); a moving bar in the top band
+  (so the picture is not a still); a stroke ladder (1, 2, 3, 4 and 6 px lines and 6 px dots, horizontal and vertical); three colour patches; percentage rulers on both
+  edges (the maker reads the first number still visible at the top and the bottom when the phone fills the screen). window.ljReport() returns the boxes in 1080p pixels.
+  seekTo(t) is a pure function of t.
+-->
+<style>
+  :root { --fg: #f2f2f2; --dim: #9aa3b5; }
+  html, body { margin: 0; padding: 0; width: 1920px; height: 1080px; overflow: hidden; background: #1d2330; color: var(--fg); font-family: 'Noto Sans', sans-serif; }
+  #stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; background: linear-gradient(180deg, #1b2130 0%, #262e40 60%, #323b52 100%); }
+  #stage > * { position: absolute; box-sizing: border-box; }
+  #title { left: 100px; top: 40px; font-weight: 700; font-size: 110px; line-height: 130px; white-space: nowrap; }
+  #headline { left: 900px; top: 24px; font-weight: 700; font-size: 124px; line-height: 150px; white-space: nowrap; }
+  #track { left: 100px; top: 220px; width: 1720px; height: 24px; border: 1px solid #4b5568; background: #20283a; overflow: hidden; }
+  #bar { position: absolute; left: 0; top: 0; width: 60px; height: 22px; background: #4aa3a2; }
+  #ladder { left: 100px; top: 290px; width: 900px; height: 330px; }
+  #ladder > div { position: absolute; background: #ffffff; }
+  #patches { left: 1100px; top: 290px; width: 720px; height: 140px; display: flex; }
+  #patches > div { width: 240px; height: 140px; }
+  .tick { position: absolute; height: 2px; background: #c8d0e0; }
+  .lab { position: absolute; font-size: 22px; line-height: 24px; color: #c8d0e0; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="title"></div>
+  <div id="headline"></div>
+  <div id="track"><div id="bar"></div></div>
+  <div id="ladder"></div>
+  <div id="patches"><div style="background:rgb(255,0,0)"></div><div style="background:rgb(128,128,128)"></div><div style="background:rgb(224,172,140)"></div></div>
+  <div id="rulers"></div>
+</div>
+<script src="/scenes/testcard/common.js"></script>
+<script>
+(function () {
+  'use strict';
+  var FPS = LJ.FPS, el = function (id) { return document.getElementById(id); }, report = { layout: {}, scene: 'lj-phone-master/1' };
+  function box(node) { var r = node.getBoundingClientRect(); return { x0: r.left, y0: r.top, x1: r.right, y1: r.bottom }; }
+
+  function seekTo(t) {
+    el('bar').style.transform = 'translateX(' + ((t * 240) % 1650) + 'px)';
+    return true;
+  }
+  window.seekTo = seekTo;
+  window.ljReport = function () { return report; };
+
+  function buildLadder() {
+    var host = el('ladder'), widths = [1, 2, 3, 4, 6], y = 10, i, d, rec = [];
+    for (i = 0; i < widths.length; i++) {                                         /* horizontal lines, 800 px long */
+      d = document.createElement('div'); d.style.left = '10px'; d.style.top = y + 'px'; d.style.width = '800px'; d.style.height = widths[i] + 'px';
+      host.appendChild(d); rec.push({ kind: 'hline', width_px: widths[i] }); rec[rec.length - 1].node = d; y += widths[i] + 26;
+    }
+    var x = 20;
+    for (i = 0; i < widths.length; i++) {                                         /* vertical lines, 120 px long, in a row below */
+      d = document.createElement('div'); d.style.left = x + 'px'; d.style.top = '190px'; d.style.width = widths[i] + 'px'; d.style.height = '120px';
+      host.appendChild(d); rec.push({ kind: 'vline', width_px: widths[i] }); rec[rec.length - 1].node = d; x += widths[i] + 40;
+    }
+    d = document.createElement('div'); d.style.left = '400px'; d.style.top = '200px'; d.style.width = '6px'; d.style.height = '6px';
+    host.appendChild(d); rec.push({ kind: 'dot', width_px: 6 }); rec[rec.length - 1].node = d;
+    return rec;
+  }
+
+  function buildRulers() {                                                         /* ticks every 5% of picture height on both edges; labels every 10%; amber ticks at 12 and 88 */
+    var host = el('rulers'), p, key = { 12: 1, 88: 1 };
+    function add(cls, left, top, width, color) {
+      var t = document.createElement('div'); t.className = cls; t.style.left = left + 'px'; t.style.top = top + 'px'; t.style.width = width + 'px';
+      if (color) { t.style.background = color; } host.appendChild(t);
+    }
+    function label(text, x, y, right, color) {
+      var l = document.createElement('div'); l.className = 'lab'; l.textContent = text; l.style[right ? 'right' : 'left'] = x + 'px';
+      l.style.top = Math.max(2, Math.min(1052, y - 12)) + 'px'; if (color) { l.style.color = color; } host.appendChild(l);
+    }
+    var list = [], i;
+    for (i = 0; i <= 100; i += 5) { list.push(i); }
+    list.push(12); list.push(88);
+    list.forEach(function (p) {
+      var y = Math.min(1078, Math.round(p * 10.8)), major = (p % 10 === 0), amber = !!key[p], len = amber ? 90 : (major ? 60 : 30);
+      add('tick', 0, y, len, amber ? '#f0b323' : null); add('tick', 1920 - len, y, len, amber ? '#f0b323' : null);
+      if (major) { label(String(p), 66, y, false, null); label(String(p), 66, y, true, null); }
+      if (amber) { label(String(p), 96, y, false, '#f0b323'); label(String(p), 96, y, true, '#f0b323'); }
+    });
+  }
+
+  (async function init() {
+    try {
+      var lock = await LJ.json(LJ.lockUrl), strings = await LJ.json(LJ.stringsUrl);
+      LJ.installFonts(lock);
+      var latin = strings.scripts.latin.strings[0].text, need = [{ family: 'Noto Sans', weight: 700, px: 110, text: latin }, { family: 'Noto Sans', weight: 400, px: 22, text: '0123456789' }];
+      el('title').textContent = latin; el('title').lang = 'en';
+      var headScript = null;
+      Object.keys(strings.scripts).forEach(function (k) { var s = strings.scripts[k]; if (!headScript && k !== 'latin' && s.headline && s.strings && s.strings.length) { headScript = k; } });
+      if (headScript) {                                                           /* the first headline string of the first headline script that has strings */
+        var fam = LJ.scriptFamily(lock, headScript), txt = strings.scripts[headScript].strings.filter(function (s) { return s.kind === 'word'; })[0].text;
+        el('headline').textContent = txt; el('headline').lang = LJ.LANG[headScript] || 'und'; el('headline').style.fontFamily = "'" + fam + "', 'Noto Sans', sans-serif";
+        need.push({ family: fam, weight: 700, px: 124, text: txt }); report.headline_script = headScript;
+      }
+      var rec = buildLadder(); buildRulers();
+      var states = await LJ.loadFonts(need); await document.fonts.ready;
+      if (states.indexOf('rejected') >= 0) { throw new Error('a test font failed to load (run pipeline/lib/fetch_libs.sh and serve /vendor)'); }
+      report.layout.title = box(el('title')); report.layout.headline = headScript ? box(el('headline')) : null;
+      report.layout.strokes = rec.map(function (r) { var b = box(r.node); return { kind: r.kind, width_px: r.width_px, box: b }; });
+      report.layout.patches = Array.prototype.map.call(el('patches').children, function (n) { return box(n); });
+      report.layout.track = box(el('track'));
+      seekTo(0); window.ready = true;
+    } catch (e) { LJ.fail(e); }
+  })();
+})();
+</script>
+</body>
+</html>

@@ -4,6 +4,9 @@
 USAGE  finalize_stage.py --id ID --profile P --planned MB --exit RC --df-before MB --df-after MB --label LABEL --vendor DIR
        finalize_stage.py --id ID --status BLOCKED --reason TEXT --profile none     (a stage that never started)
        finalize_stage.py --id ID --note TEXT                                        (append a note for the final envelope)
+Exit 4 is run_sp1.sh's internal code for "the tarball was rejected by its SHA-256": status FAIL, reason "hash mismatch (stop and report)", exit_code 1 and
+hash_rejected true in the detail. A stage run with FORCE_BAD_ASSET=1 (the deliberate wrong-asset test) is written to stage_<id>_forced.json with
+forced_bad_asset true in the detail; verdict.py and make_summary.py skip such envelopes, as verdict.py skips a forced blocked_proof.json.
 It merges the disk guard's own ledger line (start, minimum and end Avail) into the stage envelope and into every driver envelope of
 that stage (build plan 4.2: the `disk` object is required), checks that vendor/craft holds nothing but _keep/, and flags a stage whose
 Avail dropped by more than 25% over its planned figure (build plan 4.9: a finding, not a failure).
@@ -60,12 +63,21 @@ def main(argv):
         notes = [x.rstrip("\n") for x in open(notes_path, "r", encoding="utf-8")]
         os.remove(notes_path)
     led = ledger_line(a.label) if a.label else None
+    forced = os.environ.get("FORCE_BAD_ASSET") == "1"
+    hash_rejected = a.exit == 4
+    if hash_rejected:
+        a.exit = 1  # the internal code 4 is shown as the exit code run_sp1.sh gives its caller
+        a.reason = a.reason or "hash mismatch (stop and report)"
     if a.status:
         status = a.status
     else:
         status = {0: "PASS", 1: "FAIL", 2: "UNVERIFIED", 3: "BLOCKED"}.get(a.exit, "FAIL")  # 2: the harness could not drive the CLI, not a verdict on it
     disk = None
     detail = {"stage": a.id, "profile": a.profile, "exit_code": a.exit, "guard_ledger": None}
+    if hash_rejected:
+        detail["hash_rejected"] = True
+    if forced:
+        detail["forced_bad_asset"] = True  # a deliberate wrong-asset test run: not a real result for this stage
     if led:
         disk = {"avail_mb_start": led["avail_mb_start"], "planned_write_mb": led["planned_mb"], "avail_mb_min": led["avail_mb_min"],
                 "avail_mb_end": led["avail_mb_end"], "floor_mb": led["floor_mb"], "hard_floor_mb": led["hard_floor_mb"]}
@@ -104,7 +116,8 @@ def main(argv):
         notes.append("vendor/craft still holds: " + ", ".join(left))
     if notes:
         detail["notes"] = notes
-    L.envelope("stage_" + a.id, status, "the stage ran inside lj_with_disk, ended with exit 0, and left vendor/craft with nothing but _keep/",
+    env_name = "stage_" + a.id + ("_forced" if forced else "")
+    L.envelope(env_name, status, "the stage ran inside lj_with_disk, ended with exit 0, and left vendor/craft with nothing but _keep/",
                ("exit %s" % a.exit if a.exit is not None else "not started") + ((": " + a.reason) if a.reason else ""), notes="; ".join(notes), disk=disk, extra=detail)
     # put the guard's final disk figures into every driver envelope of this stage
     if led and a.label:
@@ -113,7 +126,7 @@ def main(argv):
                 d = json.load(open(p, "r", encoding="utf-8"))
             except ValueError:
                 continue
-            if isinstance(d, dict) and d.get("schema") == "lj-evidence/1" and d.get("stage") == a.label and os.path.basename(p) != "stage_%s.json" % a.id:
+            if isinstance(d, dict) and d.get("schema") == "lj-evidence/1" and d.get("stage") == a.label and os.path.basename(p) != env_name + ".json":
                 d["disk"] = disk
                 L.write_json(p, d)
     print("stage %s: %s%s" % (a.id, status, (" (" + a.reason + ")") if a.reason else ""))

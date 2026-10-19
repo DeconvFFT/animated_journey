@@ -143,8 +143,82 @@ def read(rel):
         return fh.read()
 
 
+_D2C = []
+
+
+def d2c_module():
+    """scripts/decisions_to_csv.py, loaded only for its ONE definition of a register row (ROW_RE);
+    ops_lint.py reads the same definition, so the tests no longer carry copies of it."""
+    if not _D2C:
+        import importlib.util
+        sys.dont_write_bytecode = True
+        spec = importlib.util.spec_from_file_location("lj_decisions_to_csv", os.path.join(ROOT, "scripts", "decisions_to_csv.py"))
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        _D2C.append(mod)
+    return _D2C[0]
+
+
 def register_ids():
-    return re.findall(r"^\|\s*([DWOS]-[0-9]{2})\s*\|", read("DECISIONS.md"), re.M)
+    """Every register ID, one per line the shared row pattern matches (annotated ID cells included)."""
+    rx = d2c_module().ROW_RE
+    ids = []
+    for line in read("DECISIONS.md").split("\n"):
+        m = rx.match(line)
+        if m:
+            ids.append("%s-%s" % (m.group(1), m.group(2)))
+    return ids
+
+
+def loose_row_count(text):
+    """An independent, deliberately dumb count: lines that START like a register row (`| O-6...`).
+    It does not share the row pattern, so a pattern that silently drops rows cannot also fool this."""
+    return len(re.findall(r"^\|\s*[DWOS]-[0-9]", text, re.M))
+
+
+def next_id(prefix):
+    """The next unused register ID of a prefix (O-36 while the register ends at O-35), so the
+    tests that add a row never depend on a snapshot of the register's size."""
+    nums = [int(i[2:]) for i in register_ids() if i[0] == prefix]
+    return "%s-%02d" % (prefix, max(nums) + 1)
+
+
+def last_row_line(reg, prefix):
+    """The register line of the last row with this prefix (an anchor to insert after)."""
+    rx = d2c_module().ROW_RE
+    return [l for l in reg.split("\n") if rx.match(l) and rx.match(l).group(1) == prefix][-1]
+
+
+def make_fixtures_module():
+    import importlib.util
+    sys.dont_write_bytecode = True
+    spec = importlib.util.spec_from_file_location("lj_make_fixtures", os.path.join(ROOT, "tests", "ops", "make_fixtures.py"))
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def pattern_mask():
+    """The mask section of the pattern file in use: keep, fill, cap (public_lint's defaults when absent)."""
+    with open(PATTERN_FILE, "r", encoding="utf-8") as fh:
+        mk = (json.load(fh).get("mask") or {})
+    return {"keep": int(mk.get("keep", 2)), "fill": str(mk.get("fill", "*")) or "*", "cap": int(mk.get("cap", 8))}
+
+
+def pattern_files():
+    """The real pattern file first (the planted strings follow WP-03's file), then the override."""
+    return [os.path.join(ROOT, "scripts", "redaction_patterns.json"), PATTERN_FILE]
+
+
+def planted_email():
+    """The first positive sample of the email category, joined: a non-reserved shape that the
+    pattern file does flag. It is read from the file so the fixture can not drift from its exemptions."""
+    return make_fixtures_module().email_sample(*pattern_files())
+
+
+def exempt_email():
+    """An address the pattern file exempts (reserved example domain), from its own negative samples."""
+    return make_fixtures_module().email_sample(*pattern_files(), kind="negative_samples", need="@")
 
 
 def csv_rows(path):
@@ -177,15 +251,16 @@ def _(ctx):
     ids = register_ids()
     rows = csv_rows(os.path.join(ROOT, "ops", "decisions.csv"))
     ok(len(rows) == len(ids) == len(set(ids)), "row count %d vs independent count %d" % (len(rows), len(ids)))
+    loose = loose_row_count(read("DECISIONS.md"))
+    ok(loose == len(ids), "%d lines start like a register row but the row pattern found %d: a row is being dropped" % (loose, len(ids)))
     c = {k: sum(1 for i in ids if i[0] == k) for k in "DWOS"}
     got = {k: sum(1 for r in rows if r["id"][0] == k) for k in "DWOS"}
     ok(c == got, "per-prefix counts differ: %s vs %s" % (c, got))
     ctx.say(out.strip())
-    if (len(rows), c) != (166, {"D": 30, "W": 60, "O": 35, "S": 41}):
-        ctx.notes.append("the register no longer has the 2026-10-19 snapshot size (166 rows: D 30, W 60, O 35, S 41); now %d %s"
-                         % (len(rows), c))
-    else:
-        ctx.say("snapshot 2026-10-19 matches: 166 rows (D 30, W 60, O 35, S 41)")
+    # the register, not a number written in the plan or in this test, sets the count
+    has(out, "%d rows (D %d, W %d, O %d, S %d" % (len(ids), c["D"], c["W"], c["O"], c["S"]))
+    ctx.say("live register: %d rows (D %d, W %d, O %d, S %d); the CSV and the --check output agree"
+            % (len(ids), c["D"], c["W"], c["O"], c["S"]))
 
 
 @test("decisions_write_twice", "--write twice is byte-identical, and equals the committed file when no orchestrator cell is set")
@@ -238,23 +313,24 @@ def _(ctx):
     ok("superseded by D-29" in rows["D-23"]["note"] and rows["D-23"]["status"] == "superseded", "D-23 note/status")
     ok(rows["O-05"]["status"] == "answered" and rows["O-13"]["status"] == "answered", "O-05/O-13 must be answered")
     ok(all(rows[i]["maker_answer"] == "" and rows[i]["last_changed"] == "" for i in rows), "owner cells must start empty")
-    ok(all(rows["D-%02d" % n]["status"] in ("decided", "superseded") for n in range(1, 31)), "D rows")
+    ok(all(r["status"] in ("decided", "superseded") for i, r in rows.items() if i[0] == "D"), "D rows")
     ok(all(r["status"] == "default" for i, r in rows.items() if i[0] == "W"), "W rows are defaults")
     ok(all(r["status"] in ("applied", "outstanding") for i, r in rows.items() if i[0] == "S"), "S rows carry the Table 4 status")
     # expectations derived from the register text itself (a plain split, not the generator's parser)
     want_out, want_pend, want_ans = set(), set(), set()
     for line in read("DECISIONS.md").split("\n"):
-        m = re.match(r"^\|\s*([SO]-[0-9]{2})\s*\|(.*)$", line)
-        if not m:
+        m = d2c_module().ROW_RE.match(line)
+        if not m or m.group(1) not in "SO":
             continue
-        cells = [c.strip() for c in m.group(2).split("|")]
-        if m.group(1)[0] == "S" and cells[-2].lower().startswith("**outstanding"):
-            want_out.add(m.group(1))
-        if m.group(1)[0] == "O":
+        rid = "%s-%s" % (m.group(1), m.group(2))
+        cells = [c.strip() for c in line[m.end():].split("|")]  # the cells after the ID cell
+        if rid[0] == "S" and cells[-2].lower().startswith("**outstanding"):
+            want_out.add(rid)
+        if rid[0] == "O":
             if cells[0].lower().startswith("answered"):
-                want_ans.add(m.group(1))
+                want_ans.add(rid)
             elif cells[1].startswith("**(pending"):
-                want_pend.add(m.group(1))
+                want_pend.add(rid)
     got = lambda st, pre: {i for i, r in rows.items() if i[0] == pre and r["status"] == st}
     ok(got("outstanding", "S") == want_out, "outstanding S rows: %s vs register %s" % (sorted(got("outstanding", "S")), sorted(want_out)))
     ok(got("pending", "O") == want_pend, "pending O rows: %s vs register %s" % (sorted(got("pending", "O")), sorted(want_pend)))
@@ -347,25 +423,123 @@ def _(ctx):
 @test("decisions_register_growth", "an added register row (for example a new O-36) is picked up with no code change")
 def _(ctx):
     reg = read("DECISIONS.md")
-    anchor = [l for l in reg.split("\n") if l.startswith("| O-35 |")][0]
-    new = anchor + "\n| O-36 | Sun 1 Nov | A synthetic test question? | A synthetic recommendation. |"
+    current = register_ids()
+    new_id = next_id("O")  # O-36 while the register ends at O-35; computed, not a snapshot
+    n_o = sum(1 for i in current if i[0] == "O")
+    anchor = last_row_line(reg, "O")
+    new = anchor + "\n| %s | Sun 1 Nov | A synthetic test question? | A synthetic recommendation. |" % new_id
     p = ctx.write("DECISIONS.md", reg.replace(anchor, new, 1))
     out = os.path.join(ctx.tmp, "g.csv")
     rc, o = ctx.run(["scripts/decisions_to_csv.py", "--write", out, "--register", p]); ok(rc == 0, o)
-    has(o, "167 rows", "O 36")
+    has(o, "%d rows" % (len(current) + 1), "O %d" % (n_o + 1))
     rc, o = ctx.run(["scripts/decisions_to_csv.py", "--check", os.path.join(ROOT, "ops", "decisions.csv"), "--register", p])
-    ok(rc == 1, o); has(o, "O-36", "missing")
-    ctx.say("167 rows with O-36 added; the old CSV is reported stale")
+    ok(rc == 1, o); has(o, new_id, "missing")
+    ctx.say("%d rows (live register %d + %s); the old CSV is reported stale" % (len(current) + 1, len(current), new_id))
+
+
+@test("decisions_three_digit_id", "negative: a W-100 row in a register copy reaches the CSV (it was silently dropped when IDs had to be two digits)")
+def _(ctx):
+    reg = read("DECISIONS.md")
+    current = register_ids()
+    anchor = last_row_line(reg, "W")
+    row = "| W-100 | A synthetic three-digit default | A synthetic value. | Sun 1 Nov | Maker | synthetic |"
+    p = ctx.write("DECISIONS.md", reg.replace(anchor, anchor + "\n" + row, 1))
+    n_w = sum(1 for i in current if i[0] == "W")
+    out = os.path.join(ctx.tmp, "w100.csv")
+    rc, o = ctx.run(["scripts/decisions_to_csv.py", "--write", out, "--register", p]); ok(rc == 0, o)
+    has(o, "%d rows" % (len(current) + 1), "W %d" % (n_w + 1))
+    ok("W-100" in [r["id"] for r in csv_rows(out)], "W-100 did not reach the CSV")
+    rc, o = ctx.run(["scripts/decisions_to_csv.py", "--check", out, "--register", p]); ok(rc == 0, o)
+    # the committed CSV is now stale: --check names W-100, and so does ops_lint's independent scan
+    rc, o = ctx.run(["scripts/decisions_to_csv.py", "--check", os.path.join(ROOT, "ops", "decisions.csv"), "--register", p])
+    ok(rc == 1, o); has(o, "W-100", "missing")
+    repo = ctx.clone()
+    shutil.copy(p, os.path.join(repo, "DECISIONS.md"))
+    rc, o = ctx.lint(root=repo); ok(rc == 1, o); has(o, "W-100", "id_set")
+    shutil.copy(out, os.path.join(repo, "ops", "decisions.csv"))
+    rc, o = ctx.lint(root=repo); ok(rc == 0, "a CSV regenerated from the W-100 register must pass: " + o)
+    # a three-digit ID cited in an ops document is checked against the register as well
+    edit(repo, "ops/GATHER.md", "# GATHER: what to collect, and when", "# GATHER: what to collect, and when\n\nSee W-101.")
+    rc, o = ctx.lint(root=repo); ok(rc == 1, o); has(o, "W-101", "cited_id")
+    ctx.say("W-100 reaches the CSV (%d rows), --check and ops_lint report it missing from a stale CSV and pass on a fresh one; a cited W-101 is flagged" % (len(current) + 1))
+
+
+@test("decisions_annotated_id", "negative: an annotated ID cell (| O-NN (absorbs O-MM) |) reaches the CSV with the annotation in note; a row that cannot be parsed is exit 2, never dropped in silence")
+def _(ctx):
+    reg = read("DECISIONS.md")
+    current = register_ids()
+    n_o = sum(1 for i in current if i[0] == "O")
+    n_w = sum(1 for i in current if i[0] == "W")
+    oid, wid = next_id("O"), next_id("W")
+    gone = "O-%02d" % (int(oid[2:]) + 1)  # the ID the annotation says was absorbed: not a register row
+    o_anchor, w_anchor = last_row_line(reg, "O"), last_row_line(reg, "W")
+    o_row = "| %s (absorbs %s) | Sun 1 Nov | A synthetic test question? | A synthetic recommendation. |" % (oid, gone)
+    w_row = "| %s (revises W-05) | A synthetic default | A synthetic value. | Sun 1 Nov | Maker | synthetic |" % wid
+    text = reg.replace(o_anchor, o_anchor + "\n" + o_row, 1)
+    text = text.replace(w_anchor, w_anchor + "\n" + w_row, 1)
+    p = ctx.write("annotated.md", text)
+    ok(loose_row_count(text) == len(current) + 2, "test setup: the two synthetic rows were not inserted")
+    out = os.path.join(ctx.tmp, "annotated.csv")
+    rc, o = ctx.run(["scripts/decisions_to_csv.py", "--write", out, "--register", p]); ok(rc == 0, o)
+    has(o, "%d rows" % (len(current) + 2), "O %d" % (n_o + 1), "W %d" % (n_w + 1))
+    rows = {r["id"]: r for r in csv_rows(out)}
+    ok(oid in rows and wid in rows, "%s / %s did not reach the CSV" % (oid, wid))
+    ok(rows[oid]["note"] == "absorbs " + gone and rows[oid]["status"] == "open", "O note/status: %r %r" % (rows[oid]["note"], rows[oid]["status"]))
+    ok(rows[wid]["note"] == "revises W-05" and rows[wid]["status"] == "default", "W note/status: %r %r" % (rows[wid]["note"], rows[wid]["status"]))
+    ok("(" not in rows[oid]["note"] and "(" not in rows[wid]["note"], "the parentheses must be stripped")
+    rc, o = ctx.run(["scripts/decisions_to_csv.py", "--check", out, "--register", p]); ok(rc == 0, o)
+    # the live register's own annotated ID cells: every annotation is in the committed CSV's note
+    live = {r["id"]: r for r in csv_rows(os.path.join(ROOT, "ops", "decisions.csv"))}
+    annotated = []
+    for line in reg.split("\n"):
+        m = re.match(r"^\|\s*([DWOS]-[0-9]{2,3})\s+\((.+?)\)\s*\|", line)  # independent of the shared row pattern
+        if m:
+            annotated.append(m.group(1))
+            ok(live.get(m.group(1), {}).get("note", "").startswith(m.group(2).replace("**", "")),
+               "%s: the annotation %r is not at the start of its note in ops/decisions.csv" % (m.group(1), m.group(2)))
+    # the committed CSV is stale against the copy: --check and ops_lint name both new IDs
+    rc, o = ctx.run(["scripts/decisions_to_csv.py", "--check", os.path.join(ROOT, "ops", "decisions.csv"), "--register", p])
+    ok(rc == 1, o); has(o, oid, wid, "missing")
+    repo = ctx.clone()
+    shutil.copy(p, os.path.join(repo, "DECISIONS.md"))
+    rc, o = ctx.lint(root=repo); ok(rc == 1, o); has(o, oid, "id_set"); lacks(o, "[parser]")
+    shutil.copy(out, os.path.join(repo, "ops", "decisions.csv"))
+    rc, o = ctx.lint(root=repo); ok(rc == 0, "a CSV regenerated from the annotated register must pass: " + o)
+    # a citation of the annotated IDs in an ops document is accepted; the absorbed ID, which is not a row, is flagged
+    edit(repo, "ops/GATHER.md", "# GATHER: what to collect, and when", "# GATHER: what to collect, and when\n\nSee %s and %s." % (oid, wid))
+    rc, o = ctx.lint(root=repo); ok(rc == 0, "cited_id must accept %s and %s: %s" % (oid, wid, o))
+    edit(repo, "ops/GATHER.md", "See %s and %s." % (oid, wid), "See %s, %s and %s." % (oid, wid, gone))
+    rc, o = ctx.lint(root=repo); ok(rc == 1, o); has(o, "%s is cited but is not in DECISIONS.md" % gone, "cited_id"); lacks(o, "%s is cited" % oid)
+    # a row that cannot be parsed is a malformed register (exit 2 from the generator), never a row that vanishes
+    cases = {
+        "pipe": ("| %s|broken" % oid, "has 2 cells"),
+        "suffix": ("| %sx | Sun 1 Nov | A synthetic question? | A synthetic recommendation. |" % oid, "looks like a register row but does not parse"),
+        "digits": ("| O-%d | Sun 1 Nov | A synthetic question? | A synthetic recommendation. |" % 1234, "looks like a register row but does not parse"),
+        "space": ("| O-6 | Sun 1 Nov | A synthetic question? | A synthetic recommendation. |", "looks like a register row but does not parse"),
+    }
+    for name, (line, why) in cases.items():
+        bp = ctx.write("broken_%s.md" % name, reg.replace(o_anchor, o_anchor + "\n" + line, 1))
+        bout = os.path.join(ctx.tmp, "broken_%s.csv" % name)
+        rc, o = ctx.run(["scripts/decisions_to_csv.py", "--write", bout, "--register", bp])
+        ok(rc == 2, "%s: --write exit %d: %s" % (name, rc, o)); has(o, "malformed", why)
+        ok(not os.path.exists(bout), "%s: a CSV was written from a malformed register" % name)
+        rc, o = ctx.run(["scripts/decisions_to_csv.py", "--check", os.path.join(ROOT, "ops", "decisions.csv"), "--register", bp])
+        ok(rc == 2, "%s: --check exit %d: %s" % (name, rc, o))
+    shutil.copy(bp, os.path.join(repo, "DECISIONS.md"))  # the last broken copy: ops_lint reports it, it does not skip the row
+    rc, o = ctx.lint(root=repo); ok(rc == 1, o); has(o, "the register is malformed")
+    ctx.say("%s and %s reach the CSV (%d rows) with notes 'absorbs %s' and 'revises W-05'; %d live annotated ID cells carry their note; "
+            "ops_lint accepts a citation of the new IDs and flags %s; four unparseable rows exit 2 and ops_lint reports the register malformed"
+            % (oid, wid, len(current) + 2, gone, len(annotated), gone))
 
 
 @test("decisions_bad_register", "a malformed register (wrong cell count, duplicate ID, ID in the wrong table) exits 2")
 def _(ctx):
     reg = read("DECISIONS.md")
-    anchor = [l for l in reg.split("\n") if l.startswith("| O-35 |")][0]
+    anchor = last_row_line(reg, "O")
     cases = {
-        "cells": reg.replace(anchor, anchor + "\n| O-36 | only two cells |", 1),
+        "cells": reg.replace(anchor, anchor + "\n| %s | only two cells |" % next_id("O"), 1),
         "dup": reg.replace(anchor, anchor + "\n" + anchor, 1),
-        "table": reg.replace(anchor, anchor + "\n| W-61 | Sun 1 Nov | wrong table | x |", 1),
+        "table": reg.replace(anchor, anchor + "\n| %s | Sun 1 Nov | wrong table | x |" % next_id("W"), 1),
     }
     for name, text in cases.items():
         p = ctx.write(name + ".md", text)
@@ -429,12 +603,12 @@ def _(ctx):
 def _(ctx):
     h = "date,shot_or_chapter,activity,minutes,who,note\n"
     cases = [
-        ("date,activity,minutes\n2026-10-19,learn,5\n", "line 1", "header must be exactly"),
-        (h + "19/10/2026,-,learn,30,maker,x\n", "line 2", "date '19/10/2026'"),
-        (h + "2026-02-30,-,learn,30,maker,x\n", "line 2", "not a real calendar date"),
-        (h + "2026-10-19,-,learn,1.5h,maker,x\n", "line 2", "minutes '1.5h'"),
+        ("date,activity,minutes\n2026-10-19,learn,5\n", "line 1", "header must be exactly", "found 3 column(s), masked: da**,ac******,mi*****"),
+        (h + "19/10/2026,-,learn,30,maker,x\n", "line 2", "date '19********'"),
+        (h + "2026-02-30,-,learn,30,maker,x\n", "line 2", "date '20********' is not a real calendar date"),
+        (h + "2026-10-19,-,learn,1.5h,maker,x\n", "line 2", "minutes '1.**'"),
         (h + "2026-10-19,-,learn,0,maker,x\n", "line 2", "minutes '0'"),
-        (h + "2026-10-19,-,learn,1441,maker,x\n", "line 2", "minutes '1441'"),
+        (h + "2026-10-19,-,learn,1441,maker,x\n", "line 2", "minutes '14**'"),
         (h + "2026-10-19,album pages,learn,30,maker,x\n", "line 2", "shot_or_chapter 'al"),
         (h + "2026-10-19,-,learn,30,maker,one, two\n", "line 2", "expected 6 columns, found 7"),
         (h + "2026-10-19,-,learn,30,,x\n", "line 2", "who '' must be exactly maker or agent"),
@@ -447,7 +621,25 @@ def _(ctx):
         rc, o = hours(ctx, text)
         ok(rc == 1, "exit %d for %r: %s" % (rc, text[:50], o)); has(o, *needles)
         lacks(o, "someone", "album pages")
-    ctx.say("%d invalid files, each exit 1 with the line and the problem" % len(cases))
+    # a shifted row can put a name in any column: no echoed cell may print it (date, minutes, the
+    # header line); the model is hours_note_never_printed
+    tok1, tok2 = "Zqx" + "name", "Sur" + "xname"
+    shifted = [
+        (h + "%s %s,-,learn,30,maker,x\n" % (tok1, tok2), "line 2", "date 'Zq"),
+        (h + "2026-10-19,-,learn,%s %s,maker,x\n" % (tok1, tok2), "line 2", "minutes 'Zq"),
+        (h + "%s %s,-,learn,%s %s,maker,x\n" % (tok1, tok2, tok1, tok2), "line 2", "date 'Zq", "minutes 'Zq"),
+        (h + "2026-10-19,-,learn,%s,maker,x\n" % (tok1 + "9" * 40), "line 2", "minutes 'Zq"),
+        ("%s,%s,learn,30,maker,x\n" % (tok1, tok2), "line 1", "header must be exactly", "masked: Zq"),
+        ("%s;%s\n2026-10-19;learn\n" % (tok1, tok2), "line 1", "semicolon"),
+    ]
+    for text, *needles in shifted:
+        rc, o = hours(ctx, text)
+        ok(rc == 1, "exit %d for a shifted row: %s" % (rc, o)); has(o, *needles)
+        lacks(o, tok1, tok2, tok1.lower(), tok2.lower(), tok1[2:], tok2[2:])
+    rc, o = hours(ctx, shifted[2][0], "--json")
+    ok(rc == 1, o); lacks(o, tok1, tok2)
+    ctx.say("%d invalid files, each exit 1 with the line and the problem; %d shifted rows and headers never print the planted tokens"
+            % (len(cases), len(shifted)))
 
 
 @test("hours_usage", "missing file and bad --week-start exit 2")
@@ -542,6 +734,9 @@ def _(ctx):
 @test("lint_bad_note", "ops_lint --hours hours_bad_note.csv: exit 1, line + category (e-mail, profile path, deny-list name), masked", needs_patterns=True)
 def _(ctx):
     need_patterns()
+    email = planted_email()
+    ok("@" in email and email.rsplit(".", 1)[-1] not in ("example", "invalid", "test", "localhost"),
+       "the planted e-mail must be a non-reserved shape, not one the pattern file exempts")
     rc0, o0 = ctx.run(["tests/ops/make_fixtures.py"])
     ok(rc0 == 0, o0)
     try:
@@ -553,10 +748,18 @@ def _(ctx):
     has(o, "hours_bad_note.csv:2 [email]", "hours_bad_note.csv:3 [profile_path", "hours_bad_note.csv:4 [local_deny]",
         "hours_bad_note.csv:5 [ipv4]", "hours_bad_note.csv:6 [handle]", "WARN hours_bad_note.csv:7 [note_length]")
     # masked: first two characters and asterisks, never the full value
-    planted = ["invalid@" + "mailbox", "qzx" + "user", "Qzx" + "plorp", "172" + ".16", "qzx" + "_handle"]
+    planted = [email, email.split("@", 1)[0], email.split("@", 1)[1], "qzx" + "user", "Qzx" + "plorp", "172" + ".16", "qzx" + "_handle"]
     lacks(o, *planted)
-    ok(re.search(r"\[email\] note: masked hit pa\*+", o), "e-mail not masked as 'pa***'")
-    ok(re.search(r"\[local_deny\] note: masked hit Qz\*+", o), "deny-list name not masked as 'Qz***'")
+    # the mask is exactly the pattern file's: keep, then fill up to cap (so a long hit does not leak its length)
+    mk = pattern_mask()
+    want_email = email[:mk["keep"]] + mk["fill"] * min(len(email) - mk["keep"], mk["cap"])
+    ok(re.search(r"\[email\] note: masked hit " + re.escape(want_email) + r"$", o, re.M),
+       "e-mail not masked exactly as '%s' (keep %d, cap %d)" % (want_email, mk["keep"], mk["cap"]))
+    ok(len(email) - mk["keep"] > mk["cap"], "test setup: the planted e-mail must be longer than keep + cap to prove the cap")
+    deny_name = "Qzx" + "plorp"
+    want_deny = deny_name[:mk["keep"]] + mk["fill"] * min(len(deny_name) - mk["keep"], mk["cap"])
+    ok(re.search(r"\[local_deny\] note: masked hit " + re.escape(want_deny) + r"$", o, re.M),
+       "deny-list name not masked exactly as '%s'" % want_deny)
     ctx.say(o.strip())
 
 
@@ -579,6 +782,21 @@ def _(ctx):
     p80 = ctx.write("ok80.csv", "date,shot_or_chapter,activity,minutes,who,note\n2026-10-19,-,learn,30,maker,%s\n" % ("x" * 80))
     rc, o = ctx.lint("--hours", p80, "--strict"); ok(rc == 0, o); lacks(o, "WARN")
     ctx.say("81 chars warns, 80 chars does not")
+
+
+@test("lint_hours_shifted_masked", "ops_lint --hours on a shifted row (a name in date and minutes) exits 1 and never prints the planted tokens")
+def _(ctx):
+    tok1, tok2 = "Zqx" + "name", "Sur" + "xname"
+    h = "date,shot_or_chapter,activity,minutes,who,note\n"
+    p = ctx.write("shifted.csv", h + "%s %s,-,learn,%s %s,maker,x\n" % (tok1, tok2, tok1, tok2))
+    rc, o = ctx.lint("--hours", p)
+    ok(rc == 1, o); has(o, "shifted.csv:2 [hours_format]", "date 'Zq", "minutes 'Zq")
+    lacks(o, tok1, tok2, tok1.lower(), tok2.lower())
+    p1 = ctx.write("nohdr.csv", "%s,%s,learn,30,maker,x\n" % (tok1, tok2))
+    rc, o = ctx.lint("--hours", p1)
+    ok(rc == 1, o); has(o, "nohdr.csv:1 [hours_format]", "header must be exactly")
+    lacks(o, tok1, tok2, tok1.lower(), tok2.lower())
+    ctx.say("ops_lint --hours: exit 1 on a shifted row and on a header-less file; no planted token printed")
 
 
 def edit(repo, rel, old, new, count=1):
@@ -664,7 +882,7 @@ def _(ctx):
 @test("lint_neg_planted_text", "negative: identifying strings planted in the ops files are found, with file:line and a masked hit", needs_patterns=True)
 def _(ctx):
     need_patterns()
-    email = "pat" + "." + "invalid" + "@" + "mailbox-" + "nowhere" + "." + "example"
+    email = planted_email()  # the pattern file's own positive sample (a non-reserved shape), joined
     ip = "172" + "." + "16" + "." + "4" + "." + "9"
     path = "C:" + "\\" + "Users" + "\\" + "qzxuser" + "\\" + "Desktop"
     handle = "@" + "qzx" + "_handle"
@@ -688,6 +906,12 @@ def _(ctx):
         ok(rc == 1, "%s: exit %d: %s" % (name, rc, o))
         has(o, "ops/GATHER.md:3 [%s]" % cat)
         lacks(o, planted)
+    # the exemption works the other way too: an address on a reserved example domain (the pattern file's own
+    # negative sample, which is the shape the fixture used before r1) passes; skipped for a development file
+    if not USING_OVERRIDE:
+        repo = ctx.clone()
+        edit(repo, "ops/GATHER.md", "# GATHER: what to collect, and when", "# GATHER: what to collect, and when\n\nContact: " + exempt_email())
+        rc, o = ctx.lint(root=repo); ok(rc == 0, "a reserved-domain address must pass: " + o)
     # a 64-character SHA-256 is public build identity and must NOT be flagged (4.13 exemption)
     repo = ctx.clone()
     edit(repo, "ops/GATHER.md", "# GATHER: what to collect, and when", "# GATHER: what to collect, and when\n\nChecksum: " + "0123456789abcdef" * 4)
@@ -767,15 +991,43 @@ def _(ctx):
         cats.append({"id": cid, "scope": "both", "action": "refuse", "regex": "ZZNEVER" + cid.upper(), "flags": ""})
     cats[0]["regex"] = "zzflagme[a-z]*"          # the only category that can match
     cats.append({"id": "custom_probe", "scope": "text", "action": "refuse", "regex": "probeword[0-9]+", "flags": "i"})
-    pf = ctx.write("mini.json", json.dumps({"schema": "synthetic", "version": "mini", "categories": cats, "mask": {"keep": 3, "fill": "#"}}))
+    pf = ctx.write("mini.json", json.dumps({"schema": "synthetic", "version": "mini", "categories": cats, "mask": {"keep": 3, "fill": "#", "cap": 4}}))
     h = "date,shot_or_chapter,activity,minutes,who,note\n"
     p = ctx.write("m.csv", h + "2026-10-19,-,learn,30,maker,here is zzflagmeplease and PROBEWORD77\n"
                   "2026-10-19,-,learn,30,maker,someone" + "@" + "elsewhere" + ".example is not flagged by this file\n")
     rc, o = ctx.run(["scripts/ops_lint.py", "--patterns", pf, "--hours", p])
     ok(rc == 1, o)
-    has(o, "m.csv:2 [email]", "m.csv:2 [custom_probe]", "masked hit zzf###", "masked hit PRO###")
-    lacks(o, "m.csv:3")
-    ctx.say("the mini file flagged only what it defines; the mask settings came from the file as well")
+    has(o, "m.csv:2 [email]", "m.csv:2 [custom_probe]")
+    # keep 3, fill '#', cap 4 come from the file: 'zzflagmeplease' (14 characters) shows 3 + 4, not 3 + 11
+    ok(re.search(r"\[email\] note: masked hit zzf####$", o, re.M), "mask keep/fill/cap not taken from the file:\n" + o)
+    ok(re.search(r"\[custom_probe\] note: masked hit PRO####$", o, re.M), "mask keep/fill/cap not taken from the file:\n" + o)
+    lacks(o, "m.csv:3", "zzf#####")
+    ctx.say("the mini file flagged only what it defines; the mask keep, fill and cap came from the file as well")
+
+
+@test("lint_mask_parity", "ops_lint and public_lint print the same mask for the same hit (keep, fill and cap from the pattern file)")
+def _(ctx):
+    import importlib.util
+    sys.dont_write_bytecode = True
+    mods = {}
+    for name in ("ops_lint", "public_lint"):
+        spec = importlib.util.spec_from_file_location("lj_parity_" + name, os.path.join(ROOT, "scripts", name + ".py"))
+        mods[name] = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mods[name])
+    for label, pf in (("the pattern file in use", ctx.patterns()),
+                      ("a file with keep 3, fill # and cap 4", ctx.write("parity.json", json.dumps(
+                          {"version": "parity", "categories": [{"id": c, "scope": "both", "regex": "ZZNEVER" + c, "flags": ""} for c in
+                           ["email", "ipv4", "ipv6", "mac", "profile_path_windows", "profile_path_linux", "token_shape", "guid_serial", "handle"]],
+                           "mask": {"keep": 3, "fill": "#", "cap": 4}})))):
+        ops = mods["ops_lint"].Patterns(pf)
+        pub = mods["public_lint"].Patterns(json.load(open(pf, encoding="utf-8")))
+        for value in ["a", "ab", "abc", "abcdefghij", "x" * 40, "someone" + "@" + "a-long-domain-name" + ".org"]:
+            want = mods["public_lint"].mask(value, ops.keep, ops.fill, ops.cap)
+            ok(ops.mask(value) == want, "%s: ops_lint masks %r as %r, public_lint as %r" % (label, value, ops.mask(value), want))
+            ok(pub.mask(value) == ops.mask(value), "%s: public_lint's own Patterns masks %r differently" % (label, value))
+        long_mask = ops.mask("x" * 40)
+        ok(len(long_mask) == ops.keep + ops.cap, "%s: a 40-character hit is masked to %d characters, not %d" % (label, len(long_mask), ops.keep + ops.cap))
+    ctx.say("ops_lint.mask equals public_lint.mask for six values under two mask settings; a 40-character hit shows keep + cap characters")
 
 
 @test("lint_readonly", "ops_lint, hours_report and decisions_to_csv --check modify nothing in the repository")
@@ -806,10 +1058,15 @@ def _(ctx):
         ok(n in t, "card lacks %r" % n)
     ok("WP-08 may refine the numbers before Sun 1 Nov" in t and "pipeline/phone/PHONE-ROW.md" in t, "phone row paste instruction")
     ids = set(register_ids())
-    cited = set("%s-%s" % m for m in re.findall(r"\b([DWOS])-([0-9]{2})\b", t))
+    cited = set("%s-%s" % m for m in re.findall(r"\b([DWOS])-([0-9]{2,3})\b", t))
     ok(cited and cited <= ids, "cited IDs not in the register: %s" % sorted(cited - ids))
-    for rid in ["W-14", "W-15", "W-16", "W-17", "W-18", "W-19", "D-27", "O-14", "O-15", "W-57"]:
+    for rid in ["W-14", "W-15", "W-16", "W-17", "W-18", "W-19", "D-27", "D-31", "O-14", "O-15", "W-57"]:
         ok(rid in cited, "%s should be cited" % rid)
+    status = [ln for ln in t.split("\n") if ln.startswith("*Status when drafted")]
+    ok(status and "Gujarati" in status[0] and "D-31" in status[0] and "pending_O-10" in status[0]
+       and "must pass before this card is signed" in status[0],
+       "the status paragraph must say the Gujarati test is the one that counts (D-31, pending_O-10)")
+    ok("<date>" in t and "Scripts tested:" in t, "the <date> and 'Scripts tested:' paste-over convention must stay")
     ok(not re.search(r"25 ?fps|-1\.5 ?dBTP|fps=25", t), "stale value in the card")
     ctx.say("card cites %d register IDs, all present: %s" % (len(cited), ", ".join(sorted(cited))))
 
@@ -830,6 +1087,16 @@ def _(ctx):
         ok("LJ-ST-%04d-F" % i in g and "LJ-ST-%04d-B" % i in g, "stand-in %d" % i)
     for n in ["O-06", "O-07", "O-08", "O-09", "O-10", "O-11", "DEV-01", "OBJ-01", "REC-01"]:
         ok(n in g, "GATHER lacks %r" % n)
+    # A1 rows O-07 and O-08 follow the register's current wording (two candidate tunes, two takes each, W-65; the hichko question, W-67)
+    o07 = [ln for ln in g.split("\n") if ln.startswith("| [ ] | O-07")]
+    ok(o07 and "W-65" in o07[0].split("|")[2], "the O-07 row's Register cell must cite W-65")
+    ok(all(n in o07[0] for n in ("HUM-01", "HUM-04", "closed-mouth", "open-vowel", "birth or a wedding", "originals/", "uncleaned")),
+       "the O-07 row must ask for two candidate tunes, a closed-mouth and an open-vowel take of each, uncleaned, into originals/ (HUM-01 to HUM-04)")
+    o08 = [ln for ln in g.split("\n") if ln.startswith("| [ ] | O-08")]
+    ok(o08 and "W-67" in o08[0].split("|")[2], "the O-08 row's Register cell must cite W-67")
+    ok(all(n in o08[0] for n in ("hichko", "every evening", "at what hour", "travel with her")), "the O-08 row must ask the hichko question")
+    o10 = [ln for ln in g.split("\n") if ln.startswith("| [ ] | O-10")]
+    ok(o10 and "D-31" in o10[0].split("|")[2], "the O-10 row's Register cell must cite D-31")
     for n in ["id", "class", "holder", "cloud", "consent_state", "allowed_use", "as_found_photographed", "scanned", "returned"]:
         ok("`%s`" % n in g, "Part B field %s" % n)
     ctx.say("HOURS-HOWTO %d lines, %d words; GATHER structure present" % (len(h.split("\n")), len(h.split())))

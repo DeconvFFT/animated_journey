@@ -26,6 +26,10 @@ COLUMNS
   * Long values are cut so the cell is at most 300 characters and ends in
     `... see DECISIONS.md`. Markdown bold/italic/backtick marks are removed, and the
     public repository owner account name is written as <owner> (D-26: no usernames).
+  * An ID cell may carry an annotation (`| O-06 (absorbs O-40) |`): the row is read as O-06
+    and the words inside the parentheses (`absorbs O-40`) go first in `note`. A line that
+    starts like a register row (`| O-`, `| W-`, `| D-`, `| S-` and a digit) but does not parse
+    is a malformed register (exit 2), so a row can never vanish from the mirror in silence.
   * `maker_answer` and `last_changed` belong to the orchestrator: they are empty when a
     row is first created, are never overwritten, and are carried over by --write when the
     file already exists. --check ignores them.
@@ -60,9 +64,18 @@ CUT_SUFFIX = "... see DECISIONS.md"
 # the text takes over and this entry can be deleted.
 KNOWN_SUPERSEDED = {"D-14": "D-26"}
 
-ROW_RE = re.compile(r"^\|\s*([DWOS])-([0-9]{2})\s*\|")
-SUPERSEDED_BY_RE = re.compile(r"superseded by (D-[0-9]{2})", re.I)
-REPLACES_RE = re.compile(r"\b(?:replaces|supersedes) (D-[0-9]{2})\b", re.I)
+# What a register row is: the ONE definition, shared with scripts/ops_lint.py (which loads this
+# file through load_sibling) so the generator, the lint and the tests cannot drift apart.
+# Register IDs have two or three digits (W-60 today; W-100 is possible), so the digit run is {2,3}.
+# The ID cell may carry a trailing annotation, for example `| O-06 (absorbs O-40) |`: \b ends the
+# ID at the digits and [^|]* takes whatever else is in that cell (group 3).
+REGISTER_ROW_PATTERN = r"^\|\s*([DWOS])-([0-9]{2,3})\b([^|]*)\|"
+ROW_RE = re.compile(REGISTER_ROW_PATTERN)
+# A line that LOOKS like a register row (starts `| O-6`, `| W-1x`, ...). If it does not match
+# ROW_RE the register is malformed: the row must never vanish from the mirror in silence.
+NEAR_MISS_RE = re.compile(r"^\|\s*[DWOS]-[0-9]")
+SUPERSEDED_BY_RE = re.compile(r"superseded by (D-[0-9]{2,3})", re.I)
+REPLACES_RE = re.compile(r"\b(?:replaces|supersedes) (D-[0-9]{2,3})\b", re.I)
 # The repository owner is a public account name (a username). The register keeps it; this
 # mirror does not copy it (D-26: no usernames in generated files): github.com/<owner>/...
 # and <owner>/animated_journey are written with the placeholder <owner>.
@@ -100,9 +113,19 @@ def split_cells(line):
     return [c.strip() for c in inner.split("|")]
 
 
+def annotation_of(raw):
+    """The text after the ID in the ID cell, outer parentheses removed: ' (absorbs O-40) ' ->
+    'absorbs O-40'. Empty when the cell is just the ID."""
+    t = clean(raw)
+    if t.startswith("(") and t.endswith(")"):
+        t = t[1:-1].strip()
+    return t
+
+
 def parse_register(text):
-    """Return a list of raw rows: dict(id, table, cells[]). Raises ValueError on a
-    malformed register (wrong cell count, duplicate ID, ID in the wrong table)."""
+    """Return a list of raw rows: dict(id, table, cells[], annotation). Raises ValueError on a
+    malformed register (wrong cell count, duplicate ID, ID in the wrong table, or a line that
+    starts like a register row but does not parse)."""
     rows, seen = [], {}
     table = None
     for n, line in enumerate(text.splitlines(), 1):
@@ -122,6 +145,8 @@ def parse_register(text):
             table = None
         m = ROW_RE.match(line)
         if not m:
+            if NEAR_MISS_RE.match(line):
+                raise ValueError("line %d: looks like a register row but does not parse" % n)
             continue
         prefix, rid = m.group(1), "%s-%s" % (m.group(1), m.group(2))
         want = {"D": ("T1",), "W": ("T2.1", "T2.2", "T2.3"), "O": ("T3",), "S": ("T4",)}[prefix]
@@ -134,7 +159,7 @@ def parse_register(text):
         if rid in seen:
             raise ValueError("line %d: %s appears twice (first on line %d)" % (n, rid, seen[rid]))
         seen[rid] = n
-        rows.append({"id": rid, "table": table, "cells": cells})
+        rows.append({"id": rid, "table": table, "cells": cells, "annotation": annotation_of(m.group(3))})
     if not rows:
         raise ValueError("no register rows found: is this DECISIONS.md?")
     return rows
@@ -188,6 +213,8 @@ def build_rows(raw):
             status = word.group(1).lower() if word else ""
             row.update(short_title=stale, value_or_default=canon, status=status, source=where)
             row["note"] = "" if status_text.lower() == status else status_text
+        if r.get("annotation"):  # the ID cell's own words (e.g. 'absorbs O-40') must not be lost
+            row["note"] = r["annotation"] + ("; " + row["note"] if row["note"] else "")
         for k in ("short_title", "value_or_default", "decide_by", "owner", "source", "note"):
             row[k] = cut(row[k])
         out.append(row)

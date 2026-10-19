@@ -20,13 +20,14 @@ RULES (each is a named check; a failing check prints FAIL <code> and the detail)
   layer_name_pattern      names match ^[A-Za-z][A-Za-z0-9._-]*$                                       layer_name_invalid     (WARN in the reference profile)
   attributes_supported    only the attributes PhotoCraft reads: image version w h xres yres;          attribute_unsupported  (WARN in the reference profile)
                           layer name src x y opacity visibility composite-op; stack adds isolation
-  values_valid            opacity 0..1, visibility visible|hidden, composite-op a known svg: operator, x and y whole numbers     layer_value_invalid
+  values_valid            opacity 0..1, visibility visible|hidden, composite-op a known svg: operator, x and y whole numbers     layer_value_invalid    (FAIL in both profiles)
   asfound_bottom          pipeline profile only: the bottom layer (last in stack.xml) is L00_asfound   asfound_not_bottom
   mergedimage             mergedimage.png exists and is as large as the canvas                        mergedimage_missing, mergedimage_size
 
 PROFILES  A file we author names its layers by id (L00_asfound, L10_sky ...), so the pipeline profile fails on an invalid name and
   requires L00_asfound at the bottom (W-27). A foreign or reference file (for example the PhotoCraft acceptance fixture, whose layers are
   called 'Title tint' and 'Photo') is checked with the reference profile: the same structural rules, but the naming rules are WARN.
+  Layer values (opacity, visibility, composite-op, whole-number x and y) are structural, not naming: a bad value is a FAIL in both profiles.
   auto (the default) picks pipeline when any layer name starts with L and two digits and an underscore, else reference.
 
 EXIT CODES (build plan 4.3)  0 every check passes (WARN lines allowed)   1 a check failed   2 bad usage or no such file   3 environment problem
@@ -196,8 +197,7 @@ def validate(path, profile="auto", allow_offcanvas=False):
                 for a in ("x", "y"):
                     if whole(L.get(a, "0")) is None:
                         problems.append("%s %s %r" % (nme, a, L.get(a)))
-            rep.check(not problems, "values_valid", "layer_value_invalid", "; ".join(problems[:6]), "opacity, visibility, composite-op, x, y are valid",
-                      soft=not strict)
+            rep.check(not problems, "values_valid", "layer_value_invalid", "; ".join(problems[:6]), "opacity, visibility, composite-op, x, y are valid")   # structural: FAIL in both profiles
 
             # -------- layer images (one row per kind of problem, listing every layer that has it)
             P = {"layer_src_missing": [], "src_path_unsafe": [], "layer_png_missing": [], "layer_png_invalid": [], "layer_png_format": [],

@@ -1,10 +1,10 @@
 # Writing a biographical animated film: structure, narration and runtime
 
-*Track: film-story · Version 0.4 (reconciled with DECISIONS.md, 2026-10-18) · Written 2026-10-18 · Built from `research/film-story.md` (researcher notes, 2026-10-18) and `CHARTER.md`.*
+*Track: film-story · Version 0.5 (reconciled with DECISIONS.md, 2026-10-19) · Written 2026-10-18 · Built from `research/film-story.md` (researcher notes, 2026-10-18) and `CHARTER.md`.*
 
-**Reconciled with `DECISIONS.md` (2026-10-18); the register wins (D-21).** The runtime is 12 minutes (wrapper plus three 3:00 modules) if the maker's hours H are at least 16 a week, and 9 if H is below 14; 15 to 18 is a stretch only at G-SLICE; F-0 is 6 minutes; there is no 25-minute private cut, because the April version is the same locked picture with relatives' voices (W-01 to W-05, D-06). Under only-me (D-03) no relative's recorded voice is in the premiere cut (D-05); hard chapters follow one-key-three-guards (D-04). Where a decision below is marked decided or defaulted, its register row is cited by ID.
+**Reconciled with `DECISIONS.md` (2026-10-19, after the her-world merge); the register wins (D-21).** Her world shapes the film's grammar (D-28, D-31): cards in Gujarati with captions in the room's language (W-35, W-75); a cold open on the first act of her morning, a sound above about 400 Hz with a first light within about 4 s (W-36, W-76); an ending that runs open chapter card, object, hum, the hichko seat if there is one, a last card if her family says it, the room's sound (W-67, W-69); the hum in two takes (W-65); the darshan hour as a kitchen light and never a life clock (W-62); festivals that open or frame a module and never structure the film (W-77). The runtime is 12 minutes (wrapper plus three 3:00 modules) if the maker's hours H are at least 16 a week, and 9 if H is below 14; 15 to 18 is a stretch only at G-SLICE; F-0 is 6 minutes; there is no 25-minute private cut, because the April version is the same locked picture with relatives' voices (W-01 to W-05, D-06). Under only-me (D-03) no relative's recorded voice is in the premiere cut (D-05); hard chapters follow one-key-three-guards (D-04). Where a decision below is marked decided or defaulted, its register row is cited by ID.
 
-*Reading key: [n] points to a source in the Sources list at the end. [P1] to [P8] are project files, also listed there. "Summary" and "Q1" to "Q10" are sections of the research note, `research/film-story.md`. "(inference)" marks our own reasoning, not something a source says. "UNVERIFIED" means we could not confirm it. "Snippet only" means we saw the source in search results but did not open it. "Paraphrase" means the wording is not exact. "Not timed" means nobody has put a stopwatch on it. "TODO(research): ..." marks a gap.*
+*Reading key: [n] points to a source in the Sources list at the end. [P1] to [P8] are project files, also listed there (the labels are not the deity classes P0 to P4 of the register). "Summary" and "Q1" to "Q10" are sections of the research note, `research/film-story.md`. "(inference)" marks our own reasoning, not something a source says. "UNVERIFIED" means we could not confirm it. "Snippet only" means we saw the source in search results but did not open it. "Paraphrase" means the wording is not exact. "Not timed" means nobody has put a stopwatch on it. "TODO(research): ..." marks a gap.*
 
 ## Why this matters for our film
 
@@ -74,7 +74,7 @@ Work in this order. Each step has an output and a test. Do not skip a test. The 
 
 **Step 5. Paper-edit each chapter.** Use two columns, as in documentary practice: picture or asset ID on the left, and quote or card text with its source on the right [58]. Add two columns of your own: evidence ID and consent status. Test two things. Traceability: every spoken or printed word maps to a quote ID or to a fact with an evidence ID. The radio test: the chapter must work with your eyes closed.
 
-**Step 6. Assemble the radio cut.** Build an audio-only version from her found voice (HER-PUBLIC, if it passes), room sound, the hum and placeholder music. Witness quotes are attributed text in the premiere cut (D-05), so test them as cards, not as audio; the voiced radio cut belongs to the April version (D-06). Edit sound first, then pictures. *Flee* did this: a "master assembly" of sound plus storyboards came before animation [2]. *Waltz with Bashir* recorded interviews first and edited them before the drawings [5]. Test: does the first two minutes hold a listener who cannot see? If you have chosen a language, measure subtitle load here (Decision 4).
+**Step 6. Assemble the radio cut.** Build an audio-only version from her found voice (HER-PUBLIC, if it passes), the sounds of her world (the maker's captures, the sea's surf, the hum in its two takes: W-44, W-65; room tone is never a first sound) and, only as a labelled stand-in and only if the sound is hers, a CC0 sound (O-72); there is no placeholder music bed (W-44). Witness quotes are attributed text in the premiere cut (D-05), so test them as cards, not as audio; the voiced radio cut belongs to the April version (D-06). Edit sound first, then pictures. *Flee* did this: a "master assembly" of sound plus storyboards came before animation [2]. *Waltz with Bashir* recorded interviews first and edited them before the drawings [5]. Test: does the first two minutes hold a listener who cannot see? If you have chosen a language, measure subtitle load here (Decision 4).
 
 **Step 7. Storyboard from IDs.** One frame per phrase. Each frame cites an asset ID, or it is a grey SLOT frame. Test: no frame shows anything without an ID or a testimony ID (Template 6).
 
@@ -86,7 +86,7 @@ Work in this order. Each step has an output and a test. Do not skip a test. The 
 
 **Step 11. Choose the ending.** Pick the ending for your runtime (Decision 5 and Template 8). Hold a card, and let the house lights rise. Do not frame the room. Do not speak to her in the second person. Where a real person or object can replace a stand-in, let it, as *Tower* does with its real survivor [34] and *Waltz* does at its close [5][6].
 
-**Step 12. Keep the cue sheet and credits log as you go.** Log every generative element, music cue and archival source the moment it enters the film. The Archival Producers Alliance recommends cue sheets for all generative-AI elements and listing them in the credits [61]. Music, photos taken by others, archival footage, fonts and the voices of people who appear must be cleared for public screening [P7]. The music-sound track owns the details.
+**Step 12. Keep the cue sheet and credits log as you go.** Log every generative element, music cue and archival source the moment it enters the film. The Archival Producers Alliance recommends cue sheets for all generative-AI elements and listing them in the credits [61]. Music, photos taken by others, archival footage, fonts and the voices of people who appear must be cleared for public screening [P7]; fonts are OFL only, each family with a `font` row in the rights log (W-21). The music-sound track owns the details.
 
 ### Working with uneven material
 
@@ -180,55 +180,63 @@ Fill it now. Fill the middle column as material arrives. Never leave the right c
 | 0. Title and working code name | Neutral; no name that leaks | |
 | 1. Logline | One sentence: who, what she keeps doing, what the film does for the room | Whether "keeps doing" is true in two witnesses' words |
 | 2. Through-line candidates (three) | Each: one sentence, three timestamped quotes, one counter-example | Whether any survives the five tests: own words, independence, counter-example, would she say it, no default redemption |
-| 3. The room | Who is present; who knows her; strangers; children; older relatives; languages | Language decision; guest list; seating; her birthday status |
-| 4. First two minutes | The "who is she" brief (Template 5) | Which object, saying or voice to open on |
-| 5. Spine and carrying device | Chapter-by-teller, object clock and light searcher frame; the time-passing device per chapter | Which object persists across decades; whether any letters exist |
-| 6. Chapters | N modules of about 3 minutes: working title, era, teller, place, object, device, hard flag | Titles; eras; tellers; every date |
+| 3. The room | Who is present; who knows her; strangers; children; older relatives; languages (Gujarati first, D-31) | Language decision; guest list; seating; her birthday status (O-11); the share of the room that reads Gujarati (O-44) |
+| 4. First two minutes | The "who is she" brief (Template 5): the Mangla cold open of W-36 | Which first sound (W-76: the home keeps Yamunajal in a jhari, O-77; the morning bell is hers, O-46); which object or saying; the word her children call her (O-49, O-61) |
+| 5. Spine and carrying device | Chapter-by-teller, object clock and light searcher frame; the time-passing device per chapter; the object clock is never a seva article (W-32) and the hichko is the wrapper's seat, never the clock (W-67) | Which object persists across decades (O-08); whether any letters exist |
+| 6. Chapters | N modules of about 3 minutes: working title, era, teller, place (`place_id`, `political_room`), object, device, `hands_making` for the opening shot (W-33), the card dated by her calendar where the house reckons that way (W-68), hard flag | Titles; eras; tellers; every date; whether the house dates by tithi (O-83) |
 | 7. Narration stance | The stack and fallback ladder (Template 3); your on-screen presence cap | Whether her voice exists on any recording |
-| 8. Reconstruction policy | One hand-made material; the disclosure card; a label per chapter | Which chapters have no photographs at all |
+| 8. Reconstruction policy | One hand-made material, whatever her own hands actually made (where that is seva craft, the making and never the finished article: W-38 decision 2); the disclosure card; a label per chapter | Which chapters have no photographs at all; what her hands made (O-06) |
 | 9. Hard chapters | Decision-sheet IDs; default OUT for the public cut on any doubt | Which events exist; who else is in them |
 | 10. Humour plan | Where relief sits; whose attributed line or which found sound carries it; the saying and its three beats | Whether she has a saying at all |
-| 11. Music plan | Cue types, not songs: opening, chapter bed, payoff (the shortest), ending silence | Which songs are hers and can be cleared |
-| 12. Ending | The shape for the chosen runtime (Template 8) | Whether an open chapter in her name suits her |
+| 11. Sound plan | Cue types, not songs, each with its darshan hour in `time_of_day_or_season` where it is a kitchen hour (W-62, never a life stage) and a premiere-versus-April column (the premiere: objects, rooms, the sea's surf and the hum; sung devotion, kirtan, aarti and any commissioned voice are April: W-44): opening (a sound above about 400 Hz, no rhythm instrument), chapter bed, payoff (the shortest), ending (the hum returning, then the room's own sound) | Which tune she sang (O-07); which instruments are hers (O-68); which songs are hers and can be cleared |
+| 12. Ending | The shape for the chosen runtime (Template 8) in the order of W-69 | Whether an open chapter in her name suits her; the wording and pronoun (O-61); whether there is a hichko she sits in (O-08); whether her family says "Jai Shri Krishna" (O-49) |
 | 13. Runtime plan | Target 12 (wrapper plus three modules) if H >= 16, else 9; F-0 6; stretch 15 to 18 only at G-SLICE; modules, kill-or-cut dates | How many modules reach S4 |
-| 14. Language plan | The option from Decision 4 | The room's languages, and hers |
+| 14. Language plan | The option from Decision 4: cards in Gujarati; captions in the room's language, burned in, with the Gregorian date and any gloss (W-57, W-75) | The room's languages, and the prayer language of the house (O-10) |
 | 15. Risks and stop conditions | What makes you cut a chapter | |
+| 16. Markers and festivals | Samskara and festival markers from `playbooks/hindu-frameworks.md` Template A: a marker exists only where a photograph, object or witness exists; a festival becomes a motif only when `kept_by_her` is yes; a festival may open or frame a module and never structures the film (W-77, W-39) | Which rites and festivals exist in evidence; what she keeps (O-39, O-56) |
+| 17. Rasa per module | One dominant rasa per 3:00 module, its accent sampled from her own print or object (Template B); vatsalya is her household's own bhava, shown as her hands and the seva objects and never the deity; no card assigns a bhava to her (W-77) | Which accent asset each module has |
+| 18. Invocation cards and the last card | Two by default, five at most, about 20 seconds in all; the order of choice is the line she says by heart, then the D-31 block, then the pan-Hindu fallback (W-35); the last card per W-69 | The line she says by heart (O-25); whether her family says "Jai Shri Krishna" (O-49) |
 
 ### Template 2. Beat sheet (CSV)
 
 Header line. The required columns come first, as the brief asked, and the working columns follow:
 
 ```
-beat_id,time_start_s,dur_target_s,dur_actual_s,chapter,device,evidence_ids,label_L,consent_status,hard_flag,narration_src,music_cue,slot_state,function,evidence_need,sound_state,humour,stranger_test,borrowed_structure,borrowed_licence,unknowns
+beat_id,time_start_s,dur_target_s,dur_actual_s,chapter,device,evidence_ids,label_L,consent_status,hard_flag,narration_src,music_cue,slot_state,function,evidence_need,sound_state,humour,stranger_test,borrowed_structure,borrowed_licence,unknowns,place_id,political_room,motif_check,samskara_or_festival,rasa
 ```
 
 Allowed values:
 
 - **beat_id**: `C<chapter>-B<n>`; wrapper beats are `W-B<n>`.
 - **time and duration**: seconds. The `dur_target_s` values must sum to the runtime budget.
-- **device**: OBJECT_CLOCK, PORTRAIT_LADDER, LETTER, SCALE_ZOOM, LONG_HOLD, BLACK_FRAME, TUESDAY, WITNESS_LINE, FOUND_VOICE, TEXT_CARD, STAND_IN_L5, ARCHIVE_REAL, GAME_GRAMMAR. The first six come from the animated notes [P2]. GAME_GRAMMAR (inventory, crafting recipe, map reveal, save point) is allowed only when it passes the Florence / Unpacking test and is defined in `playbooks/games.md`; never captured footage or brand assets in the public cut (review 02, 0.6). FOUND_VOICE follows the HER split in narration_src below.
+- **device**: OBJECT_CLOCK, PORTRAIT_LADDER, LETTER, SCALE_ZOOM, LONG_HOLD, BLACK_FRAME, TUESDAY, WITNESS_LINE, FOUND_VOICE, TEXT_CARD, STAND_IN_L5, ARCHIVE_REAL, GAME_GRAMMAR. The first six come from the animated notes [P2]. GAME_GRAMMAR (an object-ledger reveal, a map that fills in, a trophies-aside reveal, a pause chime) is allowed only when it passes the swap-the-subject test and is defined in `playbooks/games.md`; no game's footage, look or assets in the public cut (D-29, review 02, 0.6). FOUND_VOICE follows the HER split in narration_src below.
 - **evidence_ids**: asset IDs and quote IDs from the ledger, separated by `;`. Empty only in S0 or S1.
 - **label_L**: L0 scan; L1 cleaned; L2 enhanced; L3 restyled; L4a/b/c animated (parallax, image-to-video, generated in-between); L5 reconstruction. An L5 beat must cite a testimony quote ID and carry the caption "Reconstructed from [name]'s memory, 2026" [P5].
 - **consent_status**: asked-ok; asked-ok-with-limits; not-asked (surprise hold); declined; third-party-needs-check; bottom-drawer (do not use) [P1]. Hard chapters also carry maker-proxy-72h-1 and maker-proxy-72h-2 [P4].
 - **hard_flag**: NONE, SHARED-LIGHT, PRIVATE, HOLD, OUT [P3].
-- **narration_src**: HER-PUBLIC (her found voice, verbatim, from a recording made in company and for company; public cut only after the 72-hour double decision and a written "would she play this to strangers herself" line); HER-PRIVATE (voicemail, voice note, answering machine; never in the public cut, post-reveal only, W-45, surprise-ops Decision 18); WIT:<name> (witness quote, verbatim; attributed text with no voice in the premiere cut, D-05, spoken only in the April version); CARD:<quote id>; MAK-CARD (your contract card or gap card; Core principle 1); MAK-VOICE (your recorded voice: the hum, and at most one plain factual fragment of 5 to 10 s tested in the slice and kept at G-SLICE, W-35; otherwise none); SND (wordless).
+- **narration_src**: HER-PUBLIC (her found voice, verbatim, from a recording made in company and for company; public cut only after the 72-hour double decision and a written "would she play this to strangers herself" line); HER-PRIVATE (voicemail, voice note, answering machine; never in the public cut, post-reveal only, W-45, surprise-ops Decision 18); WIT:<name> (witness quote, verbatim; attributed text with no voice in the premiere cut, D-05, spoken only in the April version); CARD:<quote id>; MAK-CARD (your contract card or gap card; Core principle 1); MAK-VOICE (your recorded voice: the hum, in two takes, closed-mouth for the hall if the room carries it and open vowel for the phone, W-65; and at most one plain factual fragment of 5 to 10 s tested in the slice and kept at G-SLICE, W-35; otherwise none); SND (wordless).
 - **music_cue**: a cue ID, or "placeholder," or "silence," plus cleared=Y, N or pending [P7].
 - **slot_state**: S0 empty; S1 evidence promised; S2 evidence in hand, IDs assigned; S3 drafted, paper edit and boards exist; S4 reviewed, 48-hour review and stranger-read passed; S5 locked.
 - **borrowed_licence**: must read NONE on every beat. Any other value blocks the beat from S3.
+- **place_id**: a place from `playbooks/saurashtra-world.md` (P01 to P10, F1 to F3), or blank. Places are settings and transitions, never chapters (W-72).
+- **political_room**: blank, or the flag `playbooks/saurashtra-world.md` sets on any beat that touches Somnath, Dwarka or anything of Ayodhya (the three-places rule, W-71); a beat with a word on a card goes to the D-04 decision sheet.
+- **motif_check**: one of `hindu`, `Hindu-Gujarati`, `flagged`, `excluded`, `jain_flag`, `adivasi_flag`, `political-room` (W-66), with its source in `unknowns`; `excluded` blocks the beat from S3 and every `flagged` beat goes to Fable.
+- **samskara_or_festival**: a `marker_id` from `playbooks/hindu-frameworks.md` Template A, or blank; filled only where `evidence_ids` is filled and, for a festival, `kept_by_her` is yes (W-77).
+- **rasa**: the module's dominant rasa from `playbooks/hindu-frameworks.md` Template B, or blank; never a bhava assigned to her (W-77).
 - **evidence_need**: the slot library's "evidence it asks for" for the function. For any FOUND_VOICE beat (HER-PUBLIC or HER-PRIVATE), four inventory fields are mandatory: addressee; knowing recording; sensitivity (health, money, conflict or a third party); other voices on the recording. A blank field keeps the beat at S1.
 
 Placeholder rows, labelled as practice and not her facts:
 
 ```
-W-B1,0,75,,W,OBJECT_CLOCK,,L0,not-asked (surprise hold),NONE,MAK-CARD,cue-open,S1,COLD_OPEN,"a name written or said by someone who loves her + one object + one laugh",ambient,<whose laugh>,n/a,"Up: object clock",NONE,who wrote or said the name?
-C1-B1,75,15,,C1,SCALE_ZOOM,,L5,not-asked (surprise hold),NONE,CARD:<quote id>,silence,S0,PLACE,"1 image of first home or a drawn plan + 1 sense detail",ambient,none,n/a,"The Missing Picture: one hand-made material",NONE,no photo may exist
+W-B1,0,75,,W,OBJECT_CLOCK,,L0,not-asked (surprise hold),NONE,MAK-CARD,cue-open,S1,COLD_OPEN,"the first act of her morning as a sound above about 400 Hz + one object + one laugh + a name written or said by someone who loves her",ambient,<whose laugh>,n/a,"Up: object clock",NONE,who wrote or said the name?,,,hindu,,hasya
+C1-B1,75,15,,C1,SCALE_ZOOM,,L5,not-asked (surprise hold),NONE,CARD:<quote id>,silence,S0,PLACE,"1 image of first home or a drawn plan + 1 sense detail",ambient,none,n/a,"The Missing Picture: one hand-made material",NONE,no photo may exist,<place id or blank>,,hindu,,
 ```
 
 **Slot library (function, starting duration, evidence it asks for).**
 
 | Function | Starting duration | Evidence it asks for |
 |---|---|---|
-| COLD_OPEN | 60 to 90 s | A name written or said by someone who loves her (in the maker's hand; a relative's voice only in the April version); one object; one laugh |
+| COLD_OPEN | 60 to 90 s | The first act of her morning as a sound above about 400 Hz with a first light within about 4 s (W-36, W-76); one object in use; one laugh; a name written or said by someone who loves her (in the maker's hand; a relative's voice only in the April version) |
 | PLACE | 8 to 20 s | One image of a place, and one sense detail |
 | OBJECT | 5 to 15 s | The object, and a witness line about what it did |
 | TUESDAY | 30 to 40 s | One ordinary day, from a witness who was there |
@@ -238,8 +246,8 @@ C1-B1,75,15,,C1,SCALE_ZOOM,,L5,not-asked (surprise hold),NONE,CARD:<quote id>,si
 | HARD_GLIMPSE | 5 to 10 s | A trait, not an incident; no cause named unless the closest family said so [P3] |
 | TIME_PASS | 5 to 20 s | A device from the list above |
 | CHAPTER_CARD | 3 to 5 s | The teller's name and the title, in their own words |
-| EMPTY_CHAPTER | 6 to 10 s | A held card in her name [P8] |
-| ENDING | about 1:45 including credits (9 and 12 minutes; W-04, W-36) | By scenario (Template 8) |
+| EMPTY_CHAPTER | 6 to 10 s | A held card in her name, in native Gujarati from `playbooks/saurashtra-world.md` Template F (W-37) [P8] |
+| ENDING | about 1:45 including credits (9 and 12 minutes; W-04, W-36, W-69) | By scenario (Template 8) |
 
 ### Template 3. Narration matrix (summary)
 
@@ -252,7 +260,7 @@ Ratings run from 1 (poor) to 5 (strong). For cost and risk, 5 means low cost and
 | **B. Relatives' recollections as attributed text, gathered discreetly** | 4: verbatim and attributed ("X remembers") | 4: low-key asks only; nobody is read the consent card before the premiere (D-03); no recorded voice before the April version (D-05) | 4: name and relation in one caption | 3 | *Stories We Tell* [20]; *My Architect* [22]; *Flee* (one witness) [2]; *Tower* [34] | Paraphrasing into smoother lines; merging two relatives into one voice; quoting a "bottom drawer" remark |
 | **C. You as narrator (cards plus the hum by default; W-35)** | 4: honest if limited to what you saw and did | 5: no one else needed | 4 | 2: self-centring; you are in the room | *My Architect* [22]; *Rocks in My Pockets* [64] (snippet only); *Minding the Gap* [26] | Narrating her inner life; "I am her" narration |
 | **D. Neutral narrator** | 3: the words are ours; easy to drift into claiming her feelings | 1: a hired voice breaks the sole-keeper rule | 5 | 2 | *Mary and Max* [11]; *The Missing Picture* (another voice reads Panh's own text) [36][37] | A neutral voice speaking as her |
-| **E. Text cards** | 5: every word checkable | 5 | 3: reading load for children and older viewers [60] | 4: slideshow feel if overused | *Tarnation* [27]; *Mary and Max* letters [11] | Cards that explain a joke or state her feelings |
+| **E. Text cards** (in Gujarati, with the room-language caption: W-35, W-75) | 5: every word checkable | 5 | 3: reading load for children and older viewers [60] | 4: slideshow feel if overused | *Tarnation* [27]; *Mary and Max* letters [11] | Cards that explain a joke or state her feelings |
 | **F. Wordless with score** | 3: honest only where the pictures are real | 3: music is the cost | 5 | 3: strangers learn less about her | *The Red Turtle* [16][17][18]; *Father and Daughter* [19]; *Up*'s montage [P1]; *Robot Dreams*, where music is "the voice of the characters" [12] | A swelling score doing the picture's work [P2] |
 
 **Fallback ladder per beat:** HER-PUBLIC (if it exists and is decided), then B, then E, then F. HER-PRIVATE never enters the public cut. Use C as cards (MAK-CARD) and the hum; one plain factual "I remember" fragment (5 to 10 s, about the object) only if it is tested in the slice and kept at G-SLICE with the S1 sheets (W-35). Do not use D: a neutral or hired narrator is out (D-07).
@@ -295,12 +303,11 @@ Most of the room does not know her. If the opening is written for family alone, 
 
 | Time | Beat | Rule |
 |---|---|---|
-| 0:00 to 0:08 | Black; one room sound | A true sound from her life if we have one; no stock |
-| 0:08 to 0:25 | Her name, written or said by someone who loves her: hands and the contract card in the maker's hand; a relative's voice only in the April version (W-36, D-05) | The name and the relation on screen; no recorded relative's voice in the premiere cut |
-| 0:25 to 0:50 | One object in use: hands, not face | A real photograph of her hands, or a labelled stand-in. No new face of her is generated |
-| 0:50 to 1:10 | The first laugh: her own laugh or remark if HER-PUBLIC passed, otherwise a found photograph of her laughing, held (W-36) | Humour from loving sources only; a fond line may be attributed text |
-| 1:10 to 1:25 | The contract card, in your hand: "[Name], told by the people who were there. What is drawn is marked." | Disclosure said once. Check the wording at the advisor gate |
-| 1:25 to 1:30 | Title | The title card comes last, not first |
+| 0:00 to 0:08 | Black; then the first act of her morning as a sound above about 400 Hz, and a visible first light within about 4 s: one flame against blue-black kitchen glass at the 05:30 hour (L0 to L2, never AI) | The sound is chosen from the measured ladder on the project Android (W-76): water poured into brass if the home keeps Yamunajal in a jhari (O-77; a stand-in kitchen vessel, never her jhari, W-70), the household bell if the morning bell is hers (O-46), else a spoon on steel or the cooker. No rhythm instrument, no card, no name. Room tone alone fails as a first sound on a phone. To a Vaishnav in the room this is Mangla; to everyone else it is a kitchen before dawn; both are true |
+| 0:08 to 0:30 | One object in use: hands, not face; the hummed tune under (the closed-mouth take in the hall if the room carries it, the open vowel on the phone: W-65) | A real photograph of her hands, or a labelled stand-in. No new face of her is generated |
+| 0:30 to 0:55 | The first laugh: her own laugh or remark if HER-PUBLIC passed, otherwise a found photograph of her laughing, held (W-36) | Humour from loving sources only; a fond line may be attributed text |
+| 0:55 to 1:20 | Her name, written or said by someone who loves her: the contract card in the maker's hand, "[Name]. What is drawn is marked." A relative's voice only in the April version (W-36, D-05) | The name and the relation on screen; no recorded relative's voice in the premiere cut; the card is in Gujarati with the room-language caption (W-35). Disclosure said once. Check the wording at the advisor gate |
+| 1:20 to 1:30 | Title | The title card comes last, not first; a title epigraph, if any, only after the first sound (W-35, W-36) |
 
 **Rules.**
 
@@ -308,12 +315,12 @@ Most of the room does not know her. If the opening is written for family alone, 
 2. Do not say the whole arc. Offer a promise. Stanton: "Don't give them 4. Give them 2+2" [59].
 3. Include one thing the relatives have not seen, so the opening is news to them too.
 4. No hard beat before about a quarter to a third of the way in [P1].
-5. The first sound must be understandable to the youngest viewer [50].
+5. The first sound must be understandable to the youngest viewer [50] and audible on a phone speaker, which means energy above about 400 Hz (W-76).
 6. No second-person address to her. The room is the audience.
 7. Check it on strangers. If a reader cannot answer exit questions 1 to 4, rewrite.
 8. Stranger-read copies substitute a code name for her and `[relation]` tokens for every named teller. The exit test asks whether a name was said by someone who loves her and who in relation is telling it, not which name. Real names live only in the private repo.
 
-**Fallback** (the default under only-me, since no relative's voice exists before the April version): open on your plain title card and the object, and bring in the first attributed witness line (text) at about 0:30. The structure holds; the order changes.
+**Fallback** (the default under only-me, since no relative's voice exists before the April version): the opening above is already voice-free; a first attributed witness line (text) may follow the first light at about 0:30 (W-35, item 3 of the stack). If the home keeps no ghar seva, use Alternative A of W-76 (the kitchen clock: a spoon on steel or the cooker, the kitchen window at the 05:30 hour). The structure holds; the order changes.
 
 ### Template 6. Claims table
 
@@ -339,7 +346,7 @@ One card per chosen scenario:
 
 `scenario | ending shape | last image | last sound | last card text | what the room does | what she is asked to do (must be: nothing) | house lights`
 
-- **9 and 12 minutes, "the trace and the open chapter" (W-36, W-37).** The 1:45 ending, including end credits, opens on a held EMPTY_CHAPTER card (6 to 10 s) in her name: "Chapter [N]: [Her name]. To be told by her." Then the object where it sits today, the hum returning in the maker's plainly recorded voice, then the sound of the room the audience sits in, then a hard cut to black and the credits with the cue sheet. It sits inside the 1:45 ending budget: empty chapter 0:08, object, hum and room sound 0:50, black 0:05, credits 0:42 (sum 1:45). The object is the surviving object, plus a few seconds of her handwriting, or HER-PUBLIC if it exists and is decided under one-key-three-guards (never a voicemail, which is HER-PRIVATE). House lights up. No music tail. The open-chapter card goes in at any runtime unless the maker, as proxy, decides it does not suit her.
+- **9 and 12 minutes, "the trace and the open chapter" (W-36, W-37, W-69).** The 1:45 ending, including end credits, runs in this order. (1) A held EMPTY_CHAPTER card (6 to 10 s) in her name, in native Gujarati from `playbooks/saurashtra-world.md` Template F (lean the third wording, "એમની વાત, એમના શબ્દોમાં", the quietest, no verb; the pronoun is the maker's, O-61), proofed by the native reader (O-62). (2) The object where it sits today, the maker's hands setting it down. (3) The hum returning: the closed-mouth take in the hall if the room carries it, the open vowel on the phone (W-65). (4) From the seat of the hichko, the kitchen doorway swinging gently into and out of frame and the chain's creak, at the hour she actually sits in it, keyed `evening`, nobody in frame and nothing hung on it (W-67), only if she has one and sits in it (O-08). (5) The last card "જય શ્રી કૃષ્ણ" alone on the frame, in her script, at the phone floor, its romanisation alone in the caption track, no translation, no gloss, only if her family says it on the phone, at the door, in greeting (O-49); if not, the open chapter card is the last card and nothing else changes. (6) The sound of the room the audience sits in. (7) A hard cut to black and the credits with the cue sheet. It sits inside the 1:45 ending budget: open chapter card 0:08, object and hum 0:30, hichko seat 0:12, last card 0:05, room sound 0:08, black 0:05, credits 0:37 (sum 1:45); without the hichko seat or the last card their seconds go to the object and the hum. The object is the surviving object, plus a few seconds of her handwriting, or HER-PUBLIC if it exists and is decided under one-key-three-guards (never a voicemail, which is HER-PRIVATE). No *oṃ śāntiḥ* as a last card (it closes memorial rites), no Gita 2.22, no *mṛtyor mā*. House lights up. No music tail. The open-chapter card goes in at any runtime unless the maker, as proxy, decides it does not suit her.
 - **15 to 18 minutes (stretch), "the trace and the open chapter."** The same ending.
 - **25 minutes (retired).** There is no 25-minute plan (D-06); the open chapter now closes every length.
 - **45 and 90 minutes.** Not planned (D-24).
@@ -373,6 +380,7 @@ These listings are one US snapshot and they change. Check your own country first
 - [ ] No UNSUPPORTED rows in the claims table.
 - [ ] Any humour comes from a found line or a witness line, and sits beside a loss, not on it.
 - [ ] Every L5 frame cites a testimony quote ID and carries the caption.
+- [ ] `motif_check` is filled and is not `excluded`; a `flagged` beat has gone to Fable; `political_room` is set on any beat for Somnath, Dwarka or Ayodhya (W-66, W-71).
 
 **Checklist B. Balance checks (run on every save).**
 
@@ -383,6 +391,7 @@ These listings are one US snapshot and they change. Check your own country first
 5. Label mix: L5 seconds per chapter, each with a testimony ID.
 6. Unlocked consent: any not-asked beat that features an identifiable third party.
 7. Claims: any unsupported claim.
+8. Hindu-world flags: any beat whose `motif_check` is `flagged`, `excluded`, `jain_flag`, `adivasi_flag` or `political-room`; any card that names a darshan (PR16); any festival used to structure rather than open or frame a module (W-77).
 
 **Checklist C. Lock a chapter (S5). All six must pass.**
 
@@ -418,9 +427,9 @@ Each decision lists the options, our current lean, and what it depends on. They 
 
 **Decision 3. Her found voice.** Status: decided (W-45, D-05); which recordings exist is O-09, by Sun 25 Oct. The question: does any recording of her voice exist, and will you use it in public? The voice is split in two. **HER-PUBLIC** is a recording made in company and for company (home video at a family event, a filmed toast). It may enter the public cut only after the 72-hour double decision and a written line on the decision sheet: "would she play this to strangers herself." **HER-PRIVATE** is a recording addressed to one person (voicemail, voice note, answering machine). It never enters the public cut and waits for her decision after the reveal (W-45; surprise-ops Decision 18, which this track adopts). Options: HER-PUBLIC, if it passes; or relatives' recollections, text cards and wordless passages (B, E, F). Our lean: HER-PUBLIC only if it passes; otherwise B, E and F. HER-PRIVATE stays out of the public cut. The 72-hour rule is a hard-chapter guard, not a consent substitute. The recording must never be cloned, synthesised or re-cut into new sentences.
 
-**Decision 4. Language.** Status: defaulted (W-57), to be decided by Sun 1 Nov (O-15). Options (Q10): one language with subtitles; her found voice in its own language with subtitles in the room's language; a few words kept untranslated where the picture explains them (*Coco* kept Spanish in context [43]); stacked bilingual text cards (no exemplar found; inference); two narration versions, each with a narrator (*Flee* did this [7], but a hired voice breaks the sole-keeper rule); wordless passages. Default (W-57): one language with subtitles; her found voice in its own language with room-language subtitles; a few words untranslated where the picture explains them. Decide before the radio cut, because subtitle load is measured there; captions are burned in (W-18). The subtitle limits are 42 characters per line, two lines, and at most 20 characters per second for adults and 17 for children's programmes [60]. Aim for fewer than about one subtitle per 8 to 10 seconds in any chapter that children and older relatives must follow (inference).
+**Decision 4. Language.** Status: defaulted (W-57), to be decided by Sun 1 Nov (O-15). Options (Q10): one language with subtitles; her found voice in its own language with subtitles in the room's language; a few words kept untranslated where the picture explains them (*Coco* kept Spanish in context [43]); stacked bilingual text cards (no exemplar found; inference); two narration versions, each with a narrator (*Flee* did this [7], but a hired voice breaks the sole-keeper rule); wordless passages. Default (W-57, W-75): cards in Gujarati; captions in the room's language, burned in, carrying the Gregorian date and any gloss; her found voice in its own language with room-language subtitles; a few words untranslated where the picture explains them; Sanskrit verse in Devanagari unless the family reads it in Gujarati script; every Gujarati string read by a native reader (O-62). Decide before the radio cut, because subtitle load is measured there; captions are burned in (W-18). The subtitle limits are two lines and at most 20 characters per second for adults and 17 for children's programmes [60]; "42 characters a line" is a guide, and the rule is that a line fits the 90% box in its face (Indic faces overflow earlier) and breaks at word boundaries (W-18); the phone file carries its own caption setting, two lines of at most 36 characters (W-18). Aim for fewer than about one subtitle per 8 to 10 seconds in any chapter that children and older relatives must follow (inference).
 
-**Decision 5. Ending.** Status: defaulted (W-36, W-37). Options: "the trace"; "the trace and the open chapter"; "the return" (45 minutes, not planned). Default: include the open chapter card at any runtime, unless the maker, as proxy, decides it does not suit her. Whether an open chapter in her name suits her is unknown (Template 1).
+**Decision 5. Ending.** Status: defaulted (W-36, W-37, W-69). Options: "the trace"; "the trace and the open chapter"; "the return" (45 minutes, not planned). Default: include the open chapter card at any runtime, unless the maker, as proxy, decides it does not suit her. Whether an open chapter in her name suits her is unknown (Template 1). The order is W-69; the hichko seat only if O-08 says she has one and sits in it; the last card only if O-49 says her family says it.
 
 **Decision 6. Opening on an object, not on her face.** Our lean: yes. The room is already looking at her. An object, a sound and a laugh pull the eyes to the screen (Template 5, rule 1).
 
@@ -451,6 +460,9 @@ Each decision lists the options, our current lean, and what it depends on. They 
 - **Nostalgia kitsch.** Avocado appliances, Cooper Black, heavy grain and Kodak sentimentality are decade clichés [P2]. Use her own scans.
 - **Humour that fails.** The failure modes in Q9: a roast that laughs at her; cringe, meaning narrator irony; an in-joke reel that only the family gets; a gag on top of a loss; and deflection, where jokes replace the hard chapter instead of arriving before and after it. The test: would she tell this about herself to a room of strangers? If you are unsure, cut it. Show the effect of a family saying on the person who hears it, rather than explaining it (inference, Q9; compare Stanton's "Don't give them 4. Give them 2+2" [59]). Dry narration can carry humour, as in *Mary and Max*, where the humour balances the loneliness (snippet only) [66].
 - **Subtitle overload.** Decide the language before the radio cut (Decision 4).
+- **A festival or a darshan as the spine.** A festival opens or frames a module and never structures the film (W-77, W-39). The eight darshans are a day-clock for the kitchen's light and the cue map's hour, never a life clock: Shayan is never "the present", and no card names a darshan (W-62, PR16).
+- **Generic India and generic Gujarat.** Stock aarti or Varanasi footage, a Taj silhouette, Rann salt, garba-night stock and thali top-shots are tells, not her world (W-38 decision 10, W-66). The look is hers: the floor-art line, the kitchen, the objects (W-72).
+- **The seva space as set dressing.** A deity or a seva article is never drawn, generated, photographed, dissolved or moved as a transition; the home mandir's doors appear once, closed (W-61, W-70).
 
 ## Best references (top 8)
 
@@ -569,3 +581,4 @@ Each decision lists the options, our current lean, and what it depends on. They 
   - Windows steps for local transcription (Whisper or whisper.cpp): UNVERIFIED [P1].
   - Vendor paper-edit tool names (Reduct, Storyflow, Rev): uncited.
 - **0.4 (2026-10-18).** Reconciled with DECISIONS.md (2026-10-18). Runtime: 12 target (wrapper plus three 3:00 modules) if H >= 16, 9 if H < 14, 15 to 18 stretch only at G-SLICE, F-0 6 minutes, no 25-minute private cut (W-01 to W-05, D-06); the 12-minute budget is the wrapper plus three modules (W-04); maker voice is cards plus the hum by default (W-35); the cold open's name is written or said by someone who loves her, with a relative's voice only in the April version (W-36, D-05); no recorded relative voice in the premiere cut (D-05); only-me and one-key-three-guards (D-03, D-04); the open chapter closes every length (W-36, W-37); Decisions 1 to 9 carry their register status.
+- **0.5 (2026-10-19).** Reconciled with DECISIONS.md after the her-world merge (2026-10-19). Template 5 and the cold open follow W-36 and W-76 (the first act of her morning above about 400 Hz and a first light within about 4 s; the name arrives with the contract card; the title last); Template 8 follows W-69 (open chapter card, object, hum, hichko seat, last card, room sound); Template 1 gains rows 16 to 18 (markers and festivals, rasa, invocation and last card) and Template 2 gains `place_id`, `political_room`, `motif_check`, `samskara_or_festival` and `rasa` (W-66, W-71, W-77); the sound plan row carries the darshan hour and a premiere-versus-April column (W-44, W-62); Decision 4 follows W-57, W-75 and W-18; GAME_GRAMMAR is re-scoped (D-29); the radio cut has no placeholder music bed (W-44); three pitfalls added (darshan and festival as spine, generic India and Gujarat, the seva space).

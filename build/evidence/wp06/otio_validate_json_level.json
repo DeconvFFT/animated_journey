@@ -2,7 +2,7 @@
   "checks": [
     {
       "code": "json_parses",
-      "detail": "20167 bytes",
+      "detail": "20210 bytes",
       "status": "PASS"
     },
     {
@@ -46,6 +46,11 @@
       "status": "PASS"
     },
     {
+      "code": "target_url_inside_folder",
+      "detail": "all 5 clips",
+      "status": "PASS"
+    },
+    {
       "code": "media_exists",
       "detail": "all 5 clips",
       "status": "PASS"
@@ -53,6 +58,16 @@
     {
       "code": "source_in_available",
       "detail": "all 5 clips",
+      "status": "PASS"
+    },
+    {
+      "code": "clips_present",
+      "detail": "4 clip(s) on the Video track(s)",
+      "status": "PASS"
+    },
+    {
+      "code": "track_children_flat",
+      "detail": "every track holds clips, gaps and transitions only",
       "status": "PASS"
     },
     {
@@ -108,7 +123,7 @@
   ],
   "counts": {
     "FAIL": 0,
-    "PASS": 21,
+    "PASS": 24,
     "WARN": 0
   },
   "extra": {},

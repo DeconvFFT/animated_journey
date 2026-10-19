@@ -54,17 +54,28 @@ def result_word(envs):
         return "FAIL"
     if (e.get("detail") or {}).get("harness_error"):
         return "INCONCLUSIVE (the driver could not drive the CLI)"
+    if (e.get("detail") or {}).get("partial"):
+        return "INCOMPLETE (the stage ended before this test finished; the criteria measured so far are in section 3)"
     return e["status"]
+
+
+def stage_envelopes():
+    """The real stage envelopes: the ones written by the deliberate wrong-asset test (detail.forced_bad_asset) are skipped, as build() skips a forced blocked_proof.json."""
+    out = []
+    for p in sorted(glob.glob(os.path.join(L.EVID, "stage_*.json"))):
+        try:
+            d = L.read_json(p)
+        except (OSError, ValueError):
+            continue
+        if isinstance(d, dict) and not (d.get("detail") or {}).get("forced_bad_asset"):
+            out.append((p, d))
+    return out
 
 
 def stage_reason(app=None):
     reasons = []
-    for p in sorted(glob.glob(os.path.join(L.EVID, "stage_*.json"))):
+    for p, d in stage_envelopes():
         if app and ("stage_" + app) not in os.path.basename(p):
-            continue
-        try:
-            d = L.read_json(p)
-        except (OSError, ValueError):
             continue
         if d["status"] in ("BLOCKED", "FAIL") or (d.get("detail") or {}).get("exit_code") not in (0, None):
             reasons.append("%s: %s (%s)" % (d["test"], d["status"], d["actual"]))
@@ -154,6 +165,9 @@ def build():
             A("| `%s` | %s | %s | %s |" % (c["id"], str(c["measured"]).replace("|", "/"), str(c["mark"]).replace("|", "/"), "PASS" if c["pass"] else "FAIL"))
         A("")
         A("Timing validity: contaminated = %s (a run with another job's load visible is marked contaminated)." % d.get("contaminated", "?"))
+        if d.get("partial"):
+            A("")
+            A("**Partial result:** %s" % env["actual"])
         if d.get("harness_error"):
             A("")
             A("Harness error (a command-surface surprise, not a verdict on the app): %s" % d["harness_error"])
@@ -168,11 +182,10 @@ def build():
     A("")
     A("## 5. Disk")
     A("")
-    for p in sorted(glob.glob(os.path.join(L.EVID, "stage_*.json"))):
-        d = L.read_json(p)
+    for p, d in stage_envelopes():
         dk = d["disk"]
         A("- `%s`: %s; Avail start %s MB, minimum %s MB, end %s MB; planned %s MB; profile %s." % (d["test"], d["status"], dk["avail_mb_start"], dk["avail_mb_min"], dk["avail_mb_end"], dk["planned_write_mb"], (d.get("detail") or {}).get("profile")))
-    if not glob.glob(os.path.join(L.EVID, "stage_*.json")):
+    if not stage_envelopes():
         A("- No stage has run.")
     A("")
     A("## 6. What this does not say")

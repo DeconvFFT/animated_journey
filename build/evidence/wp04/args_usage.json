@@ -118,13 +118,13 @@
     "want": 3
    }
   ],
-  "seconds": 3.1
+  "seconds": 3.3
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 465,
-  "avail_mb_min": 465,
-  "avail_mb_start": 465,
+  "avail_mb_end": 484,
+  "avail_mb_min": 484,
+  "avail_mb_start": 484,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

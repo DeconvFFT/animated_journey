@@ -42,6 +42,13 @@
      ".org"
     ],
     [
+     "Some",
+     "one",
+     "@",
+     "Example",
+     ".ORG"
+    ],
+    [
      "write to the",
      " maintainer ",
      "at",
@@ -539,8 +546,8 @@
    "id": "reserved_example_email_domains",
    "category": "email",
    "regex": "(?<![A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@(?:example\\.(?:com|org|net)|[A-Za-z0-9-]+\\.(?:example|invalid|test|localhost))(?![A-Za-z0-9-])",
-   "flags": "",
-   "description": "Addresses on the domains reserved for documentation (example.com, example.org, example.net and the .example, .invalid, .test and .localhost names) identify nobody. Added in v1 beside the required samples."
+   "flags": "i",
+   "description": "Addresses on the domains reserved for documentation (example.com, example.org, example.net and the .example, .invalid, .test and .localhost names) identify nobody. Case-insensitive, like an e-mail address itself (review r1 of WP-03). Added in v1 beside the required samples."
   },
   {
    "id": "url_embedded_ids",

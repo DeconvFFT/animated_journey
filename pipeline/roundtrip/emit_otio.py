@@ -6,7 +6,7 @@
   python3 -I pipeline/roundtrip/emit_otio.py pipeline/roundtrip/spec/neutral_timeline.example.json renders/wp06/ch.otio
 
 Input   a spec of schema lj-neutral-timeline/1 (pipeline/roundtrip/spec/neutral_timeline.example.json): frame rate, sequence size, ordered shots
-        {id, source, source_size, duration_frames, motion, transition_out, markers}, sequence markers, audio cues. See the README for every field.
+        {id, source, source_size, duration_frames, motion, transition_out, markers}, sequence markers, audio cues. Every field, with its limits, is in pipeline/roundtrip/README.md (section "The neutral timeline spec").
 Output  OUT.otio, 24 frames a second (W-14, S-01), rebased from the 25 fps E2 template of research/craft-motion.md R3: Timeline.1 / Stack.1 / Track.1
         (V1 Video, A1 Audio) / Clip.2 / Transition.1 (SMPTE_Dissolve) / Marker.2 / Gap.1, one ExternalReference per clip with a RELATIVE target_url (Kdenlive
         and FilmCraft read relative paths; absolute file:// URLs are not found, craft-motion.md F3) and an available_range, and metadata.filmcraft on each

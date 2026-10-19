@@ -187,7 +187,17 @@ def run_all(T):
     scene = "// scene one\nconst a = 'Mughal garden at dusk';\nconst b = 'Christmas card';\nconst c = 'crossfade to the next shot'; // across, Churchill\nconst d = 'Taj Mahal';\n"
     write(root, "pipeline/scenes/scene1.js", scene)
     write(root, "pipeline/scenes/scene_ok.js", "const t = 'crossfade'; // across the frame, a Churchill-sized title\n")
-    write(root, "pipeline/scenes/scene_rules.md", "No Mughal or other Islamic motifs and no Christian motifs.\nExcluded: Mughal or Islamic, Christian items.\nMughal and Islamic motifs, Christian motifs are out.\nA Mughal garden, not too dark.\n")
+    # Rule statements are NOTEs only in prose (.md) and only when the cue (no, never, not, excluded, out of scope ...) comes
+    # within 40 characters BEFORE the keyword (review r1, C-1). Bare 'out', 'no' and 'without' after or far from the keyword are animation words.
+    write(root, "skills-staging/rules/scene_rules.md", "No Mughal or other Islamic motifs and no Christian motifs.\nExcluded: Mughal or Islamic, Christian items.\nOut of scope: Mughal and Islamic motifs, Christian motifs.\nA Mughal garden, not too dark.\n"
+          "Fade out to a Taj Mahal silhouette.\nA church without a steeple.\nChristmas lights left out on the porch.\n"
+          "No new shots today, so keep every frame bright and warm, then add a Mughal arch.\n"
+          "No Mughal garden here. Later the camera pulls back across a long hall to a Mughal arch.\n")
+    # scene code: every string is rendered, so animation words must never excuse a keyword (the four lines of the r1 review)
+    write(root, "pipeline/scenes/scene_anim.js", "const a = 'fade out to a Taj Mahal silhouette';\nconst b = 'no fog over the Mughal garden tonight';\nconst c = 'a church without a steeple';\nconst d = 'Christmas lights left out on the porch';\n")
+    # even a plain rule sentence is not demoted under pipeline/scenes/ or in the phone test strings
+    write(root, "pipeline/scenes/notes.md", "No Mughal or other Islamic motifs in this scene.\n")
+    write(root, "pipeline/phone/test_strings.json", '["never a Taj Mahal here", "avoid every church"]\n')
     write(root, "docs/outside_theme_paths.md", "A Mughal garden here is not in a theme-bearing path.\n")
     rc, out = run(root, "--theme")
     ls = [l for l in out.splitlines() if l.startswith("FINDING")]
@@ -196,12 +206,27 @@ def run_all(T):
     result("theme_guard_flags_Taj_Mahal", any("scene1.js:5" in l and "taj-mahal" in l for l in ls), "")
     result("theme_guard_does_not_flag_crossfade_across_or_Churchill", not any("scene1.js:4" in l or "scene_ok.js" in l for l in ls), "; ".join(l for l in ls if "scene1.js:4" in l or "scene_ok" in l))
     result("theme_guard_ignores_files_outside_the_theme_paths", not any("outside_theme_paths" in l for l in ls), "")
+    notes_ = [l for l in out.splitlines() if l.startswith("NOTE")]
     result("theme_guard_shows_rule_statements_as_NOTE_not_findings", not any("scene_rules.md:1" in l or "scene_rules.md:2" in l or "scene_rules.md:3" in l for l in ls)
-           and any(l.startswith("NOTE") and "scene_rules.md:1" in l for l in out.splitlines()), "; ".join(l for l in out.splitlines() if "scene_rules" in l)[:200])
+           and all(any("scene_rules.md:%d" % n in l for l in notes_) for n in (1, 2, 3)), "; ".join(l for l in out.splitlines() if "scene_rules" in l)[:200])
     result("theme_guard_still_flags_a_use_with_only_a_plain_not", any("scene_rules.md:4" in l and "mughal" in l for l in ls), "")
+    # review r1, C-1: the four animation lines in scene code are FINDINGs, never NOTEs
+    for n, kid in ((1, "taj-mahal"), (2, "mughal"), (3, "church"), (4, "christmas")):
+        result("theme_guard_flags_animation_word_line_%d_in_scene_code" % n, any("scene_anim.js:%d" % n in l and kid in l for l in ls) and not any("scene_anim.js:%d" % n in l for l in notes_),
+               "; ".join(l for l in out.splitlines() if "scene_anim.js:%d" % n in l)[:160])
+    # ... and also in prose: 'out' and 'without' are no cue, and a cue AFTER the keyword never counts
+    result("theme_guard_flags_fade_out_and_without_in_markdown", any("scene_rules.md:5" in l and "taj-mahal" in l for l in ls) and any("scene_rules.md:6" in l and "church" in l for l in ls), "")
+    result("theme_guard_does_not_demote_a_cue_after_the_keyword_or_far_before_it", any("scene_rules.md:7" in l and "christmas" in l for l in ls) and any("scene_rules.md:8" in l and "mughal" in l for l in ls), "")
+    result("theme_guard_judges_every_occurrence_on_a_line", any("scene_rules.md:9" in l and "mughal" in l for l in ls) and not any(l.startswith("NOTE") and "scene_rules.md:9" in l for l in out.splitlines()), "")
+    # never demote under pipeline/scenes/ (even in a .md) or in the phone test strings
+    result("theme_guard_never_demotes_under_pipeline_scenes_or_phone_test_strings",
+           any("pipeline/scenes/notes.md:1" in l for l in ls) and any("test_strings.json:1" in l and "taj-mahal" in l for l in ls) and any("test_strings.json:1" in l and "church" in l for l in ls)
+           and not any(l.startswith("NOTE") and ("pipeline/scenes/" in l or "test_strings" in l) for l in notes_), "")
     result("theme_guard_exits_1_and_states_its_limit", rc == 1 and "can NOT judge iconography" in out, "exit %d" % rc)
     rc, out = run(root, "--theme", "--paths", "pipeline/scenes/scene_ok.js")
     result("theme_guard_passes_crossfade_alone", rc == 0, out.strip().splitlines()[0])
+    rc, out = run(root, "--theme", "--paths", "pipeline/scenes/scene_anim.js")
+    result("theme_guard_exits_1_on_a_scene_file_of_only_animation_word_lines", rc == 1 and len([l for l in out.splitlines() if l.startswith("FINDING")]) == 4 and not any(l.startswith("NOTE") for l in out.splitlines()), "exit %d" % rc)
     rc, out = run(root, "--theme", "--paths", "docs/outside_theme_paths.md")
     result("theme_guard_with_explicit_paths_scans_what_it_is_given", rc == 1 and "mughal" in out, "")
     # a changed (not new) theme-bearing file: only its added lines count
