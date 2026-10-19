@@ -1,0 +1,133 @@
+font,id,code_points,glyphs,glyph_names
+AnekGujarati_wdth-wght_.ttf,guj-shri,4,2,ShaRa.gj MatraIi.gj
+AnekGujarati_wdth-wght_.ttf,guj-ksha,3,1,KaSsa.gj
+AnekGujarati_wdth-wght_.ttf,guj-jna,3,1,JaNya.gj
+AnekGujarati_wdth-wght_.ttf,guj-dharma,4,3,Dha.gj Ma.gj Reph.gj
+AnekGujarati_wdth-wght_.ttf,guj-mantra,19,15,ShaRa.gj MatraIi.gj space Ka.gj MatraRu.gj SsaNna.gj Visarga.gj space Sha.gj Ra.gj Nna.gj Bindu.gj space Ma.gj Ma.gj
+AnekGujarati_wdth-wght_.ttf,guj-jaishri,13,9,Ja.gj Ya.gj space ShaRa.gj MatraIi.gj space Ka.gj MatraRu.gj SsaNna.gj
+AnekGujarati_wdth-wght_.ttf,guj-vaishnav,25,23,Va.gj MatraAi.gj SsaNna.gj Va.gj space Ja.gj Na.gj space Ta.gj MatraO.gj space Ta.gj MatraE.gj Na.gj MatraE.gj space Ra.gj MatraE_alt.gj space Ka.gj Ha.gj MatraIi2.gj VowelE.gj
+AnekGujarati_wdth-wght_.ttf,guj-adhya,33,25,Ja.gj Ya.gj space VowelAa.gj DaYa.gj MatraA.gj space Sha.gj MatraI11.gj KaTa.gj comma space Ma.gj MatraA.gj space Ja.gj Ya.gj space VowelAa.gj DaYa.gj MatraA.gj space Sha.gj MatraI11.gj KaTa.gj
+AnekGujarati_wdth-wght_.ttf,guj-yamuna,11,9,Ya.gj Ma.gj MatraU.gj Na.gj MatraA.gj SsaTta.gj Ka.gj Ma.gj Halant.gj
+AnekGujarati_wdth-wght_.ttf,guj-lakshmi,7,3,La.gj KaSsaMa.gj MatraIi.gj
+AnekGujarati_wdth-wght_.ttf,guj-harsiddhi,13,11,Ha.gj Ra.gj MatraI4.gj Sa.gj MatraI5.gj DaDha.gj space Ma.gj MatraA.gj Ta.gj MatraA.gj
+AnekGujarati_wdth-wght_.ttf,guj-shrinathji,9,6,ShaRa.gj MatraIi.gj Na.gj MatraA.gj Tha.gj JaMatraIi.gj
+BalooBhai2_wght_.ttf,guj-shri,4,2,ShaRa.gj MatraIi.gj
+BalooBhai2_wght_.ttf,guj-ksha,3,1,KaSsa.gj
+BalooBhai2_wght_.ttf,guj-jna,3,1,JaNya.gj
+BalooBhai2_wght_.ttf,guj-dharma,4,3,Dha.gj Ma.gj Reph.gj
+BalooBhai2_wght_.ttf,guj-mantra,19,16,ShaRa.gj MatraIi.gj space Ka.gj MatraRu.gj SsaHalf.gj Nna.gj Visarga.gj space Sha.gj Ra.gj Nna.gj Bindu.gj space Ma.gj Ma.gj
+BalooBhai2_wght_.ttf,guj-jaishri,13,10,Ja.gj Ya.gj space ShaRa.gj MatraIi.gj space Ka.gj MatraRu.gj SsaHalf.gj Nna.gj
+BalooBhai2_wght_.ttf,guj-vaishnav,25,24,Va.gj MatraAi.gj SsaHalf.gj Nna.gj Va.gj space Ja.gj Na.gj space Ta.gj MatraO.gj space Ta.gj MatraE.gj Na.gj MatraE.gj space Ra.gj MatraE_alt.gj space Ka.gj Ha.gj MatraIi2.gj VowelE.gj
+BalooBhai2_wght_.ttf,guj-adhya,33,27,Ja.gj Ya.gj space VowelAa.gj DaYa.gj MatraA.gj space Sha.gj MatraI14.gj KaHalf.gj Ta.gj comma space Ma.gj MatraA.gj space Ja.gj Ya.gj space VowelAa.gj DaYa.gj MatraA.gj space Sha.gj MatraI14.gj KaHalf.gj Ta.gj
+BalooBhai2_wght_.ttf,guj-yamuna,11,10,Ya.gj Ma.gj MatraU.gj Na.gj MatraA.gj SsaHalf.gj Tta.gj Ka.gj Ma.gj Halant.gj
+BalooBhai2_wght_.ttf,guj-lakshmi,7,4,La.gj KaSsaHalf.gj Ma.gj MatraIi.gj
+BalooBhai2_wght_.ttf,guj-harsiddhi,13,11,Ha.gj Ra.gj MatraI6.gj Sa.gj MatraI6.gj DaDha.gj space Ma.gj MatraA.gj Ta.gj MatraA.gj
+BalooBhai2_wght_.ttf,guj-shrinathji,9,6,ShaRa.gj MatraIi.gj Na.gj MatraA.gj Tha.gj JaMatraIi.gj
+Farsan-Regular.ttf,guj-shri,4,2,gjShRa gjIisign
+Farsan-Regular.ttf,guj-ksha,3,1,gjKSsa
+Farsan-Regular.ttf,guj-jna,3,1,gjJNya
+Farsan-Regular.ttf,guj-dharma,4,3,gjDha gjMa gjReph
+Farsan-Regular.ttf,guj-mantra,19,16,gjShRa gjIisign space gjKa gjRvocalsign gjSs gjNna gjVisarga space gjSha gjRa gjNna gjAnusvara space gjMa gjMa
+Farsan-Regular.ttf,guj-jaishri,13,10,gjJa gjYa space gjShRa gjIisign space gjKa gjRvocalsign gjSs gjNna
+Farsan-Regular.ttf,guj-vaishnav,25,24,gjVa gjAisign gjSs gjNna gjVa space gjJa gjNa space gjTa gjOsign space gjTa gjEsign gjNa gjEsign space gjRa gjEsign space gjKa gjHa gjIisign.alt1 gjE
+Farsan-Regular.ttf,guj-adhya,33,25,gjJa gjYa space gjAa gjDYa gjAasign space gjSha gjIsign.alt7 gjKTa comma space gjMa gjAasign space gjJa gjYa space gjAa gjDYa gjAasign space gjSha gjIsign.alt7 gjKTa
+Farsan-Regular.ttf,guj-yamuna,11,9,gjYa gjMa gjUsign gjNa gjAasign gjSsTta gjKa gjMa gjVirama
+Farsan-Regular.ttf,guj-lakshmi,7,3,gjLa gjKSsMa gjIisign
+Farsan-Regular.ttf,guj-harsiddhi,13,11,gjHa gjRa gjIsign.alt4 gjSa gjIsign.alt2 gjDDha space gjMa gjAasign gjTa gjAasign
+Farsan-Regular.ttf,guj-shrinathji,9,6,gjShRa gjIisign gjNa gjAasign gjTha gjJa_mIi
+HindVadodara-Regular.ttf,guj-shri,4,2,gjSH_RA gjmII
+HindVadodara-Regular.ttf,guj-ksha,3,1,gjK_SSA
+HindVadodara-Regular.ttf,guj-jna,3,1,gjJ_NYA
+HindVadodara-Regular.ttf,guj-dharma,4,3,gjDHA gjMA gjReph
+HindVadodara-Regular.ttf,guj-mantra,19,15,gjSH_RA gjmII space gjKA gjmvR gjSS_NNA gjVisarga space gjSHA gjRA gjNNA gjAnusvara space gjMA gjMA
+HindVadodara-Regular.ttf,guj-jaishri,13,9,gjJA gjYA space gjSH_RA gjmII space gjKA gjmvR gjSS_NNA
+HindVadodara-Regular.ttf,guj-vaishnav,25,25,gjVA gjmAI gjSS_NNA gjVA space gjJA gjNA space gjTA gjmAA gjmE space gjTA gjmE gjNA gjmE space gjRA gjmE space gjKA gjHA gjmII gjA gjmE
+HindVadodara-Regular.ttf,guj-adhya,33,27,gjJA gjYA space gjA gjmAA gjD_YA gjmAA space gjSHA gjmI.alt14 gjK_TA comma space gjMA gjmAA space gjJA gjYA space gjA gjmAA gjD_YA gjmAA space gjSHA gjmI.alt14 gjK_TA
+HindVadodara-Regular.ttf,guj-yamuna,11,9,gjYA gjMA gjmU gjNA gjmAA gjSS_TTA gjKA gjMA gjVirama
+HindVadodara-Regular.ttf,guj-lakshmi,7,4,gjLA gjK_SS gjMA gjmII
+HindVadodara-Regular.ttf,guj-harsiddhi,13,11,gjHA gjRA gjmI.alt06 gjSA gjmI.alt05 gjD_DHA space gjMA gjmAA gjTA gjmAA
+HindVadodara-Regular.ttf,guj-shrinathji,9,6,gjSH_RA gjmII gjNA gjmAA gjTHA gjJA_mII
+KumarOne-Regular.ttf,guj-shri,4,2,gjSH_RA gjmII
+KumarOne-Regular.ttf,guj-ksha,3,1,gjK_SSA
+KumarOne-Regular.ttf,guj-jna,3,1,gjJ_NYA
+KumarOne-Regular.ttf,guj-dharma,4,3,gjDHA gjMA gjReph
+KumarOne-Regular.ttf,guj-mantra,19,15,gjSH_RA gjmII space gjKA gjmvR gjSS_NNA gjVisarga space gjSHA gjRA gjNNA gjAnusvara space gjMA gjMA
+KumarOne-Regular.ttf,guj-jaishri,13,9,gjJA gjYA space gjSH_RA gjmII space gjKA gjmvR gjSS_NNA
+KumarOne-Regular.ttf,guj-vaishnav,25,25,gjVA gjmAI gjSS_NNA gjVA space gjJA gjNA space gjTA gjmAA gjmE space gjTA gjmE gjNA gjmE space gjRA gjmE space gjKA gjHA gjmII gjA gjmE
+KumarOne-Regular.ttf,guj-adhya,33,27,gjJA gjYA space gjA gjmAA gjD_YA gjmAA space gjSHA gjmI gjK_TA comma space gjMA gjmAA space gjJA gjYA space gjA gjmAA gjD_YA gjmAA space gjSHA gjmI gjK_TA
+KumarOne-Regular.ttf,guj-yamuna,11,9,gjYA gjMA gjmU gjNA gjmAA gjSS_TTA gjKA gjMA gjVirama
+KumarOne-Regular.ttf,guj-lakshmi,7,4,gjLA gjK_SS gjMA gjmII
+KumarOne-Regular.ttf,guj-harsiddhi,13,11,gjHA gjRA gjmI gjSA gjmI gjD_DHA space gjMA gjmAA gjTA gjmAA
+KumarOne-Regular.ttf,guj-shrinathji,9,6,gjSH_RA gjmII gjNA gjmAA gjTHA gjJA_mII
+Mogra-Regular.ttf,guj-shri,4,2,gjSH_RA gjmII
+Mogra-Regular.ttf,guj-ksha,3,1,gjK_SSA
+Mogra-Regular.ttf,guj-jna,3,1,gjJ_NYA
+Mogra-Regular.ttf,guj-dharma,4,3,gjDHA gjMA gjReph
+Mogra-Regular.ttf,guj-mantra,19,15,gjSH_RA gjmII space gjKA gjmvR gjSS_NNA gjVisarga space gjSHA gjRA gjNNA gjAnusvara space gjMA gjMA
+Mogra-Regular.ttf,guj-jaishri,13,9,gjJA gjYA space gjSH_RA gjmII space gjKA gjmvR gjSS_NNA
+Mogra-Regular.ttf,guj-vaishnav,25,25,gjVA gjmAI gjSS_NNA gjVA space gjJA gjNA space gjTA gjmAA gjmE space gjTA gjmE gjNA gjmE space gjRA gjmE space gjKA gjHA gjmII gjA gjmE
+Mogra-Regular.ttf,guj-adhya,33,27,gjJA gjYA space gjA gjmAA gjD_YA gjmAA space gjSHA gjmI gjK_TA comma space gjMA gjmAA space gjJA gjYA space gjA gjmAA gjD_YA gjmAA space gjSHA gjmI gjK_TA
+Mogra-Regular.ttf,guj-yamuna,11,9,gjYA gjMA gjmU gjNA gjmAA gjSS_TTA gjKA gjMA gjVirama
+Mogra-Regular.ttf,guj-lakshmi,7,3,gjLA gjK_SS_MA gjmII
+Mogra-Regular.ttf,guj-harsiddhi,13,11,gjHA gjRA gjmI gjSA gjmI gjD_DHA space gjMA gjmAA gjTA gjmAA
+Mogra-Regular.ttf,guj-shrinathji,9,6,gjSH_RA gjmII gjNA gjmAA gjTHA gjJA_mII
+MuktaVaani-Regular.ttf,guj-shri,4,4,Sha.gj Halant.gj Ra.gj MatraIi.gj
+MuktaVaani-Regular.ttf,guj-ksha,3,3,Ka.gj Halant.gj Ssa.gj
+MuktaVaani-Regular.ttf,guj-jna,3,3,Ja.gj Halant.gj Nya.gj
+MuktaVaani-Regular.ttf,guj-dharma,4,4,Dha.gj Ra.gj Halant.gj Ma.gj
+MuktaVaani-Regular.ttf,guj-mantra,19,19,Sha.gj Halant.gj Ra.gj MatraIi.gj space Ka.gj MatraRu.gj Ssa.gj Halant.gj Nna.gj Visarga.gj space Sha.gj Ra.gj Nna.gj Bindu.gj space Ma.gj Ma.gj
+MuktaVaani-Regular.ttf,guj-jaishri,13,13,Ja.gj Ya.gj space Sha.gj Halant.gj Ra.gj MatraIi.gj space Ka.gj MatraRu.gj Ssa.gj Halant.gj Nna.gj
+MuktaVaani-Regular.ttf,guj-vaishnav,25,25,Va.gj MatraAi.gj Ssa.gj Halant.gj Nna.gj Va.gj space Ja.gj Na.gj space Ta.gj MatraO.gj space Ta.gj MatraE.gj Na.gj MatraE.gj space Ra.gj MatraE.gj space Ka.gj Ha.gj MatraIi.gj VowelE.gj
+MuktaVaani-Regular.ttf,guj-adhya,33,33,Ja.gj Ya.gj space VowelAa.gj Da.gj Halant.gj Ya.gj MatraA.gj space Sha.gj Ka.gj Halant.gj MatraI.gj Ta.gj comma space Ma.gj MatraA.gj space Ja.gj Ya.gj space VowelAa.gj Da.gj Halant.gj Ya.gj MatraA.gj space Sha.gj Ka.gj Halant.gj MatraI.gj Ta.gj
+MuktaVaani-Regular.ttf,guj-yamuna,11,11,Ya.gj Ma.gj MatraU.gj Na.gj MatraA.gj Ssa.gj Halant.gj Tta.gj Ka.gj Ma.gj Halant.gj
+MuktaVaani-Regular.ttf,guj-lakshmi,7,7,La.gj Ka.gj Halant.gj Ssa.gj Halant.gj Ma.gj MatraIi.gj
+MuktaVaani-Regular.ttf,guj-harsiddhi,13,13,Ha.gj Ra.gj MatraI.gj Sa.gj Da.gj Halant.gj MatraI.gj Dha.gj space Ma.gj MatraA.gj Ta.gj MatraA.gj
+MuktaVaani-Regular.ttf,guj-shrinathji,9,9,Sha.gj Halant.gj Ra.gj MatraIi.gj Na.gj MatraA.gj Tha.gj Ja.gj MatraIi.gj
+NotoSansGujarati_wdth-wght_.ttf,guj-shri,4,2,sharagujr iivowelsigngujr
+NotoSansGujarati_wdth-wght_.ttf,guj-ksha,3,1,kassagujr
+NotoSansGujarati_wdth-wght_.ttf,guj-jna,3,1,janyagujr
+NotoSansGujarati_wdth-wght_.ttf,guj-dharma,4,3,dhagujr magujr rephgujr
+NotoSansGujarati_wdth-wght_.ttf,guj-mantra,19,16,sharagujr iivowelsigngujr space kagujr rvocalicvowelsigngujr ssaprehalfgujr nnagujr visargagujr space shagujr ragujr nnagujr anusvaragujr space magujr magujr
+NotoSansGujarati_wdth-wght_.ttf,guj-jaishri,13,10,jagujr yagujr space sharagujr iivowelsigngujr space kagujr rvocalicvowelsigngujr ssaprehalfgujr nnagujr
+NotoSansGujarati_wdth-wght_.ttf,guj-vaishnav,25,24,vagujr aivowelsigngujr ssaprehalfgujr nnagujr vagujr space jagujr nagujr space tagujr ovowelsigngujr space tagujr evowelsigngujr nagujr evowelsigngujr space ragujr evowelsigngujr space kagujr hagujr iivowelsign2gujr egujr
+NotoSansGujarati_wdth-wght_.ttf,guj-adhya,33,27,jagujr yagujr space aagujr dayagujr aavowelsigngujr space shagujr ivowelsigndefaultgujr kaprehalfgujr tagujr comma space magujr aavowelsigngujr space jagujr yagujr space aagujr dayagujr aavowelsigngujr space shagujr ivowelsigndefaultgujr kaprehalfgujr tagujr
+NotoSansGujarati_wdth-wght_.ttf,guj-yamuna,11,9,yagujr mastemgujr uvowelsigngujr nagujr aavowelsigngujr ssattagujr kagujr magujr viramagujr
+NotoSansGujarati_wdth-wght_.ttf,guj-lakshmi,7,4,lagujr kassaprehalfgujr magujr iivowelsigngujr
+NotoSansGujarati_wdth-wght_.ttf,guj-harsiddhi,13,11,hagujr ragujr ivowelsign4gujr sagujr ivowelsign3gujr dadhagujr space magujr aavowelsigngujr tagujr aavowelsigngujr
+NotoSansGujarati_wdth-wght_.ttf,guj-shrinathji,9,6,sharagujr iivowelsigngujr nagujr aavowelsigngujr thagujr jaiivowelgujr
+NotoSerifGujarati_wght_.ttf,guj-shri,4,2,uni0AB60ACD0AB0 uni0AC0
+NotoSerifGujarati_wght_.ttf,guj-ksha,3,1,uni0A950ACD0AB7
+NotoSerifGujarati_wght_.ttf,guj-jna,3,1,uni0A9C0ACD0A9E
+NotoSerifGujarati_wght_.ttf,guj-dharma,4,3,uni0AA7 uni0AAE uni0AB00ACD
+NotoSerifGujarati_wght_.ttf,guj-mantra,19,16,uni0AB60ACD0AB0 uni0AC0 space uni0A95 uni0AC3 uni0AB70ACD uni0AA3 uni0A83 space uni0AB6 uni0AB0 uni0AA3 uni0A82 space uni0AAE uni0AAE
+NotoSerifGujarati_wght_.ttf,guj-jaishri,13,10,uni0A9C uni0AAF space uni0AB60ACD0AB0 uni0AC0 space uni0A95 uni0AC3 uni0AB70ACD uni0AA3
+NotoSerifGujarati_wght_.ttf,guj-vaishnav,25,24,uni0AB5 uni0AC8 uni0AB70ACD uni0AA3 uni0AB5 space uni0A9C uni0AA8 space uni0AA4 uni0ACB space uni0AA4 uni0AC7 uni0AA8 uni0AC7 space uni0AB0 uni0AC7 space uni0A95 uni0AB9 uni0AC0 uni0A8F
+NotoSerifGujarati_wght_.ttf,guj-adhya,33,27,uni0A9C uni0AAF space uni0A86 uni0AA60ACD0AAF uni0ABE space uni0AB6 uni0ABF.07 uni0A950ACD uni0AA4 comma space uni0AAE uni0ABE space uni0A9C uni0AAF space uni0A86 uni0AA60ACD0AAF uni0ABE space uni0AB6 uni0ABF.07 uni0A950ACD uni0AA4
+NotoSerifGujarati_wght_.ttf,guj-yamuna,11,9,uni0AAF uni0AAE uni0AC1 uni0AA8 uni0ABE uni0AB70ACD0A9F uni0A95 uni0AAE uni0ACD
+NotoSerifGujarati_wght_.ttf,guj-lakshmi,7,4,uni0AB2 uni0A950ACD0AB70ACD uni0AAE uni0AC0
+NotoSerifGujarati_wght_.ttf,guj-harsiddhi,13,11,uni0AB9 uni0AB0 uni0ABF.04 uni0AB8 uni0ABF.04 uni0AA60ACD0AA7 space uni0AAE uni0ABE uni0AA4 uni0ABE
+NotoSerifGujarati_wght_.ttf,guj-shrinathji,9,6,uni0AB60ACD0AB0 uni0AC0 uni0AA8 uni0ABE uni0AA5 uni0A9C0AC0
+Rasa_wght_.ttf,guj-shri,4,2,gjShRa gjMatraIi
+Rasa_wght_.ttf,guj-ksha,3,1,gjKSsa
+Rasa_wght_.ttf,guj-jna,3,1,gjJNya
+Rasa_wght_.ttf,guj-dharma,4,3,gjDha gjMa gjReph
+Rasa_wght_.ttf,guj-mantra,19,16,gjShRa gjMatraIi space gjKa gjMatraVocalicR gjSs.calt gjNna gjVisarga space gjSha gjRa gjNna gjAnusvara space gjMa gjMa
+Rasa_wght_.ttf,guj-jaishri,13,10,gjJa gjYa space gjShRa gjMatraIi space gjKa gjMatraVocalicR gjSs.calt gjNna
+Rasa_wght_.ttf,guj-vaishnav,25,26,gjVa gjMatraAi gjSs.calt gjNna gjVa space gjJa gjNa space gjTa gjMatraAa gjMatraE space gjTa gjMatraE gjNa gjMatraE space gjRa gjMatraE space gjKa gjHa gjMatraIi gjA gjMatraE
+Rasa_wght_.ttf,guj-adhya,33,25,gjJa gjYa space gjAa gjDYa gjMatraAa space gjSha gjMatraI gjKTa comma.gujr space gjMa gjMatraAa space gjJa gjYa space gjAa gjDYa gjMatraAa space gjSha gjMatraI gjKTa
+Rasa_wght_.ttf,guj-yamuna,11,9,gjYa gjMa gjMatraU gjNa gjMatraAa gjSsTta gjKa gjMa gjVirama
+Rasa_wght_.ttf,guj-lakshmi,7,4,gjLa gjKSs gjMa gjMatraIi
+Rasa_wght_.ttf,guj-harsiddhi,13,11,gjHa gjRa gjMatraI.2 gjSa gjMatraI.2 gjDDha space gjMa gjMatraAa gjTa gjMatraAa
+Rasa_wght_.ttf,guj-shrinathji,9,6,gjShRa gjMatraIi gjNa gjMatraAa gjTha gjJa_gjMatraIi
+Shrikhand-Regular.ttf,guj-shri,4,2,gjSH_RA gjmII
+Shrikhand-Regular.ttf,guj-ksha,3,1,gjK_SSA
+Shrikhand-Regular.ttf,guj-jna,3,1,gjJ_NYA
+Shrikhand-Regular.ttf,guj-dharma,4,3,gjDHA gjMA gjReph
+Shrikhand-Regular.ttf,guj-mantra,19,15,gjSH_RA gjmII space gjKA gjmvR gjSS_NNA gjVisarga space gjSHA gjRA gjNNA gjAnusvara space gjMA gjMA
+Shrikhand-Regular.ttf,guj-jaishri,13,9,gjJA gjYA space gjSH_RA gjmII space gjKA gjmvR gjSS_NNA
+Shrikhand-Regular.ttf,guj-vaishnav,25,25,gjVA gjmAI gjSS_NNA gjVA space gjJA gjNA space gjTA gjmAA gjmE space gjTA gjmE gjNA gjmE space gjRA gjmE space gjKA gjHA gjmII gjA gjmE
+Shrikhand-Regular.ttf,guj-adhya,33,27,gjJA gjYA space gjA gjmAA gjD_YA gjmAA space gjSHA gjmI gjK_TA comma space gjMA gjmAA space gjJA gjYA space gjA gjmAA gjD_YA gjmAA space gjSHA gjmI gjK_TA
+Shrikhand-Regular.ttf,guj-yamuna,11,9,gjYA gjMA gjmU gjNA gjmAA gjSS_TTA gjKA gjMA gjVirama
+Shrikhand-Regular.ttf,guj-lakshmi,7,3,gjLA gjK_SS_MA gjmII
+Shrikhand-Regular.ttf,guj-harsiddhi,13,11,gjHA gjRA gjmI.02 gjSA gjmI.02 gjD_DHA space gjMA gjmAA gjTA gjmAA
+Shrikhand-Regular.ttf,guj-shrinathji,9,6,gjSH_RA gjmII gjNA gjmAA gjTHA gjJA_mII

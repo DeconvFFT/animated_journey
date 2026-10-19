@@ -1,0 +1,31 @@
+scaler,line_width_px_at_1080p,min_over_12_phases,mean,max
+catmull-rom (support-scaled),1,0.36,0.5,0.62
+catmull-rom (support-scaled),2,0.67,0.85,1.0
+catmull-rom (support-scaled),3,0.88,1.01,1.09
+catmull-rom (support-scaled),4,1.0,1.04,1.05
+catmull-rom (support-scaled),6,1.01,1.03,1.05
+lanczos3 (support-scaled),1,0.37,0.52,0.63
+lanczos3 (support-scaled),2,0.69,0.89,1.04
+lanczos3 (support-scaled),3,0.91,1.04,1.1
+lanczos3 (support-scaled),4,1.01,1.07,1.08
+lanczos3 (support-scaled),6,1.01,1.05,1.08
+area / box average,1,0.38,0.56,1.0
+area / box average,2,0.75,0.9,1.0
+area / box average,3,1.0,1.0,1.0
+area / box average,4,1.0,1.0,1.0
+area / box average,6,1.0,1.0,1.0
+"bilinear, support-scaled",1,0.33,0.44,0.55
+"bilinear, support-scaled",2,0.61,0.77,0.89
+"bilinear, support-scaled",3,0.83,0.93,1.0
+"bilinear, support-scaled",4,0.94,0.99,1.0
+"bilinear, support-scaled",6,1.0,1.0,1.0
+"bilinear single-tap (GPU, no prefilter)",1,0.25,0.52,0.75
+"bilinear single-tap (GPU, no prefilter)",2,0.63,0.86,1.0
+"bilinear single-tap (GPU, no prefilter)",3,0.88,0.98,1.0
+"bilinear single-tap (GPU, no prefilter)",4,1.0,1.0,1.0
+"bilinear single-tap (GPU, no prefilter)",6,1.0,1.0,1.0
+nearest,1,0.0,0.58,1.0
+nearest,2,0.5,0.92,1.0
+nearest,3,1.0,1.0,1.0
+nearest,4,1.0,1.0,1.0
+nearest,6,1.0,1.0,1.0

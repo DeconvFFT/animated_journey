@@ -1,18 +1,28 @@
 script,font,code_points,base_letters,ink_width_px,width_pct_of_frame,pct_of_90pct_box,px_per_code_point,max_code_points_in_90pct_box
 latn,DejaVu Sans,43,43,1555,81.0,90.0,36.2,47
 latn,Noto Sans,43,43,1110,57.8,64.2,25.8,66
-deva,Noto Sans Devanagari,46,33,820,42.7,47.5,17.8,96
-deva,Tiro Devanagari Sanskrit,46,33,963,50.2,55.7,20.9,82
+deva,Noto Sans Devanagari,46,33,821,42.8,47.5,17.8,96
+deva,Tiro Devanagari Sanskrit,46,33,975,50.8,56.4,21.2,81
 deva,Mukta,46,33,874,45.5,50.6,19.0,90
 deva,Hind,46,33,945,49.2,54.7,20.5,84
 deva,Poppins,46,33,1031,53.7,59.7,22.4,77
-deva,Baloo 2,46,33,941,49.0,54.5,20.5,84
-taml,Noto Sans Tamil,41,25,1813,94.4,104.9,44.2,39
-taml,Hind Madurai,41,25,1516,79.0,87.7,37.0,46
-mlym,Noto Sans Malayalam,50,30,1918,99.9,111.0,38.4,45
-beng,Noto Sans Bengali,41,31,1196,62.3,69.2,29.2,59
-telu,Noto Sans Telugu,40,25,1057,55.1,61.2,26.4,65
-knda,Noto Sans Kannada,51,31,1378,71.8,79.7,27.0,63
-gujr,Noto Sans Gujarati,44,31,1043,54.3,60.4,23.7,72
-orya,Noto Sans Oriya,47,33,1404,73.1,81.2,29.9,57
-guru,Noto Sans Gurmukhi,48,33,1209,63.0,70.0,25.2,68
+deva,Baloo 2,46,33,944,49.2,54.6,20.5,84
+taml,Noto Sans Tamil,41,25,1745,90.9,101.0,42.6,40
+taml,Hind Madurai,41,25,1536,80.0,88.9,37.5,46
+mlym,Noto Sans Malayalam,50,30,1743,90.8,100.9,34.9,49
+beng,Noto Sans Bengali,41,31,1089,56.7,63.0,26.6,65
+telu,Noto Sans Telugu,40,25,956,49.8,55.3,23.9,72
+knda,Noto Sans Kannada,51,31,1006,52.4,58.2,19.7,87
+gujr,Noto Sans Gujarati,44,31,1045,54.4,60.5,23.8,72
+gujr,Noto Serif Gujarati,44,31,850,44.3,49.2,19.3,89
+gujr,Hind Vadodara,44,31,1049,54.6,60.7,23.8,72
+gujr,Mukta Vaani,44,31,902,47.0,52.2,20.5,84
+gujr,Anek Gujarati Medium,44,31,838,43.6,48.5,19.0,90
+gujr,Baloo Bhai 2,44,31,928,48.3,53.7,21.1,81
+gujr,Rasa,44,31,942,49.1,54.5,21.4,80
+gujr,Shrikhand,44,31,1203,62.7,69.6,27.3,63
+gujr,Farsan,44,31,848,44.2,49.1,19.3,89
+gujr,Kumar One,44,31,53,2.8,3.1,1.2,1434
+gujr,Mogra,44,31,1469,76.5,85.0,33.4,51
+orya,Noto Sans Oriya,47,33,1237,64.4,71.6,26.3,65
+guru,Noto Sans Gurmukhi,48,33,1210,63.0,70.0,25.2,68

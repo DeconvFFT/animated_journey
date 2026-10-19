@@ -1,0 +1,32 @@
+master,ffmpeg_build,caption_variant,patches,worst_max_abs_err,worst_patch,patches_over_3_of_255
+BT.709-tagged ProRes master,6.1.1 (Ubuntu apt),SRT + force_style PrimaryColour (P1 template path),12,23,red_pure,4
+BT.709-tagged ProRes master,6.1.1 (Ubuntu apt),SRT <font color> tags,12,23,red_pure,4
+BT.709-tagged ProRes master,6.1.1 (Ubuntu apt),"ASS, no YCbCr Matrix header",12,23,red_pure,4
+BT.709-tagged ProRes master,6.1.1 (Ubuntu apt),"ASS, YCbCr Matrix: None",12,23,red_pure,4
+BT.709-tagged ProRes master,6.1.1 (Ubuntu apt),"ASS, YCbCr Matrix: TV.709",12,23,red_pure,4
+BT.709-tagged ProRes master,6.1.1 (Ubuntu apt),"ASS, YCbCr Matrix: TV.601",12,23,red_pure,4
+BT.709-tagged ProRes master,n7.0,SRT + force_style PrimaryColour (P1 template path),12,3,red_film,0
+BT.709-tagged ProRes master,n7.0,SRT <font color> tags,12,3,red_film,0
+BT.709-tagged ProRes master,n7.0,"ASS, no YCbCr Matrix header",12,3,red_film,0
+BT.709-tagged ProRes master,n7.0,"ASS, YCbCr Matrix: None",12,3,red_film,0
+BT.709-tagged ProRes master,n7.0,"ASS, YCbCr Matrix: TV.709",12,3,red_film,0
+BT.709-tagged ProRes master,n7.0,"ASS, YCbCr Matrix: TV.601",12,3,red_film,0
+BT.709-tagged ProRes master,n8.0,SRT + force_style PrimaryColour (P1 template path),12,3,red_film,0
+BT.709-tagged ProRes master,n8.0,SRT <font color> tags,12,3,red_film,0
+BT.709-tagged ProRes master,n8.0,"ASS, no YCbCr Matrix header",12,23,red_pure,4
+BT.709-tagged ProRes master,n8.0,"ASS, YCbCr Matrix: None",12,3,red_film,0
+BT.709-tagged ProRes master,n8.0,"ASS, YCbCr Matrix: TV.709",12,3,red_film,0
+BT.709-tagged ProRes master,n8.0,"ASS, YCbCr Matrix: TV.601",12,23,red_pure,4
+BT.709-tagged ProRes master,n9.0.2,SRT + force_style PrimaryColour (P1 template path),12,3,red_film,0
+BT.709-tagged ProRes master,n9.0.2,SRT <font color> tags,12,3,red_film,0
+BT.709-tagged ProRes master,n9.0.2,"ASS, no YCbCr Matrix header",12,23,red_pure,4
+BT.709-tagged ProRes master,n9.0.2,"ASS, YCbCr Matrix: None",12,3,red_film,0
+BT.709-tagged ProRes master,n9.0.2,"ASS, YCbCr Matrix: TV.709",12,3,red_film,0
+BT.709-tagged ProRes master,n9.0.2,"ASS, YCbCr Matrix: TV.601",12,23,red_pure,4
+untagged ProRes master,6.1.1 (Ubuntu apt),SRT + force_style PrimaryColour (P1 template path),12,23,red_pure,4
+untagged ProRes master,n7.0,SRT + force_style PrimaryColour (P1 template path),12,23,red_pure,4
+untagged ProRes master,n8.0,SRT + force_style PrimaryColour (P1 template path),12,23,red_pure,4
+untagged ProRes master,n9.0.2,SRT + force_style PrimaryColour (P1 template path),12,23,red_pure,4
+untagged ProRes master + setparams=bt709 before subtitles,n7.0,SRT + force_style PrimaryColour (P1 template path),5,2,cream,0
+untagged ProRes master + setparams=bt709 before subtitles,n9.0.2,SRT + force_style PrimaryColour (P1 template path),5,2,cream,0
+untagged ProRes master + setparams=bt709 before subtitles,6.1.1 (Ubuntu apt),SRT + force_style PrimaryColour (P1 template path),5,23,red_pure,4

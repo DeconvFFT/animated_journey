@@ -23,6 +23,24 @@ D. SRT burn-in with one force_style FontName falls back silently for any other s
   Fix verified: <font face="Noto Sans Tamil">...</font> inside the SRT cue gives
   fontselect: (Noto Sans Tamil, 400, 0) -> NotoSansTamil-Regular
 
-E. Shaper line (proof that the complex shaper is on):
+E. Shaper line (printed at start-up; it is NOT proof that complex shaping is on):
   Shaper: FriBidi 1.0.13 (SIMPLE) HarfBuzz-ng 8.3.0 (COMPLEX)
-  The ass/subtitles filter option shaping=auto (default) gave a byte-identical frame to shaping=complex; shaping=simple gave the broken forms.
+  The line is identical for ffmpeg 6.1.1's subtitles filter (which ffmpeg then switches to SIMPLE through ass_set_shaper, because the option is missing there and the field is 0),
+  for 6.1.1's ass filter and for n9.0.2's subtitles filter (both complex). Only the pixels show the mode: use README command 3b and subtitles_vs_ass_shaping_*.csv.
+  For the ass filter, shaping=auto (default) gave frames identical to shaping=complex; shaping=simple gave the broken forms.
+
+F. Gujarati run (ass filter, ffmpeg 6.1.1, libass 0.17.1, fontsdir = the fetched files, -loglevel debug), added after D-31:
+  fontselect: (Noto Sans Gujarati, 400, 0) -> NotoSansGujarati-Regular
+  fontselect: (Noto Serif Gujarati, 400, 0) -> NotoSerifGujarati-Regular
+  fontselect: (Hind Vadodara, 400, 0) -> HindVadodara-Regular
+  Glyph 0xAE8 not found, selecting one more font for (Hind Vadodara, 400, 0)                <- the Gujarati digit 2 (U+0AE8) is missing from Hind Vadodara
+  fontselect: (Hind Vadodara, 400, 0) -> .../freefont/FreeSerif.ttf, 0, FreeSerif            <- silent fallback for the numerals in the guj-digits string
+  fontselect: (Mukta Vaani, 400, 0) -> MuktaVaani-Regular
+  fontselect: (Anek Gujarati Medium, 400, 0) -> AnekGujarati-Medium                          (the plain name "Anek Gujarati" does not resolve; see A)
+  fontselect: (Baloo Bhai 2, 400, 0) -> BalooBhai2-Regular
+  fontselect: (Rasa, 400, 0) -> Rasa-Regular
+  fontselect: (Shrikhand, 400, 0) -> Shrikhand-Regular
+  fontselect: (Farsan, 400, 0) -> Farsan-Regular
+  fontselect: (Kumar One, 400, 0) -> KumarOne-Regular                                        <- resolves, but the line then renders as overlapping glyphs (collapse); no log line warns of it
+  fontselect: (Mogra, 400, 0) -> Mogra-Regular
+  See libass_gujarati_fonts_2026-10-19.png for the frames.
