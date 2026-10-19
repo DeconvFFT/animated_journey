@@ -1,6 +1,6 @@
 # Life Journey — Project Charter
 
-**What we're making.** An animated film of one person's life, from childhood to today (she is 50+): a feature film of her life journey, crafted to a standard that could screen in a theatre. It covers every major milestone and, just as much, the texture between milestones: routines, places, objects, jokes, people. It is not a presentation, not a slideshow, not a reel and not a template. Game-world visual language (Minecraft and others) is welcome wherever it says something true about the life; playable pieces become an optional companion keepsake, not the main event.
+**What we're making.** An animated film of one person's life, from childhood to today (she is 50+): a feature film of her life journey, crafted to a standard that could screen in a theatre. It covers every major milestone and, just as much, the texture between milestones: routines, places, objects, jokes, people. It is not a presentation, not a slideshow, not a reel and not a template. Its visual and thematic world is Hindu: Sanatan Dharma and its sanskriti (deities, epics, temple architecture, classical and folk arts, Sanskrit and her own regional language and traditions), rendered as animated design she will love. It must work beautifully on a mobile phone as well as on the big screen. Minecraft was only an example of the playful, crafted feel the maker wants; no Minecraft assets are used. Playable pieces are an optional companion keepsake, not the main event.
 
 **Deadline.** Premiere on Saturday, Feb 27, 2027, at a mostly public gathering (about 19 weeks from Sunday, Oct 18, 2026).
 
@@ -8,7 +8,10 @@
 
 ## Known facts (updated Oct 18, 2026)
 
-- **Who:** the maker's mother (50+).
+- **Who:** the maker's mother (50+). She is from India and Hindu.
+- **Theme (maker's definition, 2026-10-19):** when the maker says "Indian themes" it always means Hindu themes: Sanatan Dharma and its sanskriti. Hindu gods, epics, Hindu history, temple architecture and Hindu art traditions are welcome. No Mughal or other Islamic motifs and no Christian motifs, ever. Deities are depicted with correct iconography and respect.
+- **Phone first, too:** the film and any keepsake must play beautifully on a mobile phone, not only on the venue screen.
+- **Build approved (2026-10-19):** the maker approved moving from Learn to building the process on synthetic material, and merging the Learn work into `main`.
 - **It's a surprise.** She doesn't know. All story gathering is covert, and nothing may tip her off (shared devices, cloud photo libraries, family group chats).
 - **Only the maker knows.** The maker is the sole producer and nobody else is in on it. Relatives and friends can still be sources (stories, photos, recordings) through low-key asks that don't reveal the project, unless the maker later decides to bring someone in. The maker is her proxy for hard chapters, with the Fable advisor flagging anything sensitive.
 - **Occasion and venue:** a premiere at a mostly public gathering on Feb 27. The maker wants it good enough to show in theatres, so treat it as a film with a public audience, not a family slideshow.
@@ -20,7 +23,7 @@
 ## Principles
 
 1. **Story before software.** Her real voice, places, objects and turning points drive every design choice. Tools come second.
-2. **Mechanics and devices must mean something.** Every visual device, game motif or transition has to express something about the life (the *Florence* / *Unpacking* test). No decoration for its own sake.
+2. **Mechanics and devices must mean something.** Every visual device, motif or transition has to express something about her life (the *Florence* / *Unpacking* test). A Hindu motif earns its place by being hers (her deity, her temple, her festivals, her region's art), not by being generically "Indian". No decoration for its own sake.
 3. **Texture over checklist.** Milestones give the skeleton. The life lives in the gaps: habits, sayings, smells, songs, the kitchen table.
 4. **Real memories stay real.** AI may restore, restyle, animate and connect real photos and stories. It does not invent events, fake people, or put words in anyone's mouth (no cloned voices). Reconstructed scenes are visibly reconstructions.
 5. **Dignity, even as a surprise.** She can't approve it in advance, so the maker acts as her proxy for hard chapters (loss, illness, separation, money, conflict), with the Fable advisor flagging sensitive material for a deliberate decision. Anything she might not want shown in front of a public audience stays out.

@@ -7,6 +7,8 @@ This repo holds the production of a surprise animated film about the maker's mot
 - **Secrecy.** It's a surprise and only the maker knows. Never contact anyone, post anything, or put project details anywhere outside this repo and the maker's own machine.
 - **Privacy.** Personal media (photos, scans, home video, letters, interview audio) is never committed to git and never uploaded to a third-party service without the maker's explicit OK for that service. Keep it in `media/` (git-ignored) or the maker's own storage.
 - **The repo is public** (the maker's choice). Use person IDs, never names, addresses or other identifying details; the ID key stays offline on the maker's machine.
+- **Hindu theme only.** "Indian themes" in this project always means Hindu / Sanatan Dharma and its sanskriti: deities, epics, temple architecture, Hindu history and Hindu art traditions. No Mughal or other Islamic motifs and no Christian motifs. Depict deities with correct iconography and respect; when a motif's origin is ambiguous, leave it out or ask the maker.
+- **Phone and big screen.** Every deliverable must work on a mobile phone as well as on the venue screen.
 - **Real memories stay real.** Restore, restyle, animate and connect real material. Never invent events, fabricate people, or clone voices. Reconstructions must read as reconstructions.
 - **Theatrical bar and rights.** Every shot must hold up on a big screen, and everything shown in public must be cleared (music, other people's photos, footage, fonts, voices).
 
