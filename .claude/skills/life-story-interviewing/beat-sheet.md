@@ -7,7 +7,7 @@ Standalone part of the `life-story-interviewing` skill. Moved from Recipes 5 and
 **Scoring (per milestone)**: Turn / Motif / Scene / Voice / Dignity / Variety (Q4). Mark `dramatise`, `glimpse`, `mention`, `hold`.
 
 **Starting time budget for the 9-or-12-minute public cut (`DECISIONS.md` W-01, W-02, W-04; the former ~25-minute budget is retired, D-06, S-16; our heuristic, to be tested on the vertical slice; not from a source):**
-- Cold open: about 1:15 (black and one true room sound; hands and the object; the contract card; the title last)
+- Cold open: about 1:15 (black; the first act of her morning as a sound above about 400 Hz with a first light within about 4 s, chosen from the ladder measured on the project Android (`DECISIONS.md` W-36, W-76; room tone alone fails as a first sound on a phone, S-51, S-63); hands and the object; the contract card; the title last)
 - Two modules (9 minutes) or three (12 minutes) of about 3:00 each: one place, one object, one device, one turn; each opens on hands and the as-found frame; one dramatised beat (60-90 s) + 2-3 glimpses (5-10 s each) + one texture sequence (30-60 s) + a visible card between modules (5-8 s)
 - Repetition with variation lives inside the modules (the object clock, the hum), not in separate interludes
 - First hard beat not before ~25% of the runtime (see Up) [17]
@@ -21,3 +21,5 @@ Standalone part of the `life-story-interviewing` skill. Moved from Recipes 5 and
 2. *Three candidates*: write three through-lines, each in one sentence, each with three timestamped quotes and one counter-example.
 3. *Test*: apply the five checks in `research/story.md`, Q4 (also playbook Step 15); pick one; name what it excludes.
 4. *Check with a person who loves them* (the subject if collaborative). Under only-me there is no insider (D-03, S-08): the check is the maker's own cold read with Fable's written flag, asking "Does this sound like her? What's missing?" [53]; relatives answer the same question in the April version, after they have seen the film (D-06).
+
+*2026-10-19 (Fable advisor): the cold-open line re-keyed to the first-sound rule of `DECISIONS.md` W-36 and W-76 (S-51, S-63); staged copy for the orchestrator to install over `.claude/skills/life-story-interviewing/beat-sheet.md`.*

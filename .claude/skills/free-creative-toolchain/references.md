@@ -22,7 +22,7 @@ The round 2 scribe revision (2026-10-18) adds [102] to [124], [140] and [141], t
 - [46] GIMP — Downloads — https://www.gimp.org/downloads/ — 3.2.6 (2026-09-10); macOS 11+; AppImage needs Debian 13+.
 - [51] Krita — Download — https://krita.org/en/download/ — 5.3.4.1 released 2026-10-07; system requirements.
 - [55] Photopea — Learn: Introduction — https://www.photopea.com/learn/ — vendor statement on local processing.
-- [56] MagicaVoxel — https://ephtracy.github.io/mv_main.html ; https://ephtracy.github.io/mv_renderer.html ; https://ephtracy.github.io/mv_commands.html — 0.99.7.2 [7/12/2025]; licence; renderer; export; console; FAQ.
+- [56] Retired 2026-10-19: the block-model tool this entry named is out of scope under `DECISIONS.md` D-29 (S-46); the number is kept so the research note's citations still resolve.
 - [63] FFmpeg Filters Documentation — https://ffmpeg.org/ffmpeg-filters.html — zoompan, xfade, subtitles, lut3d, colorbalance, curves, loudnorm.
 - [64] ImageMagick — Download; Command-line Processing — https://imagemagick.org/download/ ; https://imagemagick.org/command-line-processing/ — 7.1.2-34 AppImage; `magick`.
 - [66] MDN — stroke-dashoffset — https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/stroke-dashoffset — resolved against `pathLength`.
@@ -48,7 +48,7 @@ The round 2 scribe revision (2026-10-18) adds [102] to [124], [140] and [141], t
 - [94] RFC 9559 — Matroska Media Container Format Specification — https://www.rfc-editor.org/rfc/rfc9559.html
 - [96] Wikipedia — File Allocation Table — https://en.wikipedia.org/wiki/File_Allocation_Table — FAT32 max file 4 GB − 1.
 - [97] Wikipedia — EBU R 128 — https://en.wikipedia.org/wiki/EBU_R_128 — target −23 LUFS.
-- [100] Sandbox verification runs, 2026-10-18 — local, not a URL — ffmpeg 6.1.1, ImageMagick 6.9.12, Blender `bpy` 5.2.2 (Python 3.13), Inkscape 1.2.2, MLT melt 7.22.0, Synfig 1.5.1, Goxel 0.11.0 (Xvfb), librsvg 2.58.0, svgpathtools, Pillow; outputs inspected with `ffprobe` and by eye. Runnable copies of research recipes R1 to R5 and R7 to R9 are in `.claude/skills/free-creative-toolchain/recipes/` (R6 and R3b remain in the research notes only).
+- [100] Sandbox verification runs, 2026-10-18 — local, not a URL — ffmpeg 6.1.1, ImageMagick 6.9.12, Blender `bpy` 5.2.2 (Python 3.13), Inkscape 1.2.2, MLT melt 7.22.0, Synfig 1.5.1, librsvg 2.58.0, svgpathtools, Pillow; outputs inspected with `ffprobe` and by eye. Runnable copies of research recipes R1 to R3, R5 and R7 to R9 are in `.claude/skills/free-creative-toolchain/recipes/` (R6 and R3b remain in the research notes only; the two R4 recipes are retired under `DECISIONS.md` D-29, S-46, and the floor-art line card on `r3_linedraw.py` replaces them, W-72).
 - [102] PyPI, `bpy` — https://pypi.org/pypi/bpy/json (JSON of https://pypi.org/project/bpy/) — release list, wheel file names and sizes, `requires_python`, README text; 5.2.2 uploaded 2026-09-15.
 - [103] Blender 5.2 downloads — https://download.blender.org/release/Blender5.2/ — `blender-5.2.2-windows-x64.zip` (404,453,484 B, SHA-256 `3849d17a…b535`) and `blender-5.2.2-linux-x64.tar.xz` (383,295,504 B, SHA-256 `84098912…a168`), both matching `blender-5.2.2.sha256` on the same page.
 - [104] Kdenlive download page and installers — https://kdenlive.org/download/ ; https://download.kde.org/stable/kdenlive/26.08/windows/kdenlive-26.08.2.exe ; https://download.kde.org/stable/kdenlive/26.08/windows/kdenlive-26.08.2_standalone.exe — sizes and hashes in F1; contents listed with 7-Zip.

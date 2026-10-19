@@ -668,7 +668,7 @@ For hard chapters the process is one-key-three-guards: a decision sheet per cand
 
 ### 13. Chapter count
 
-- **Options**: the wrapper plus three modules of about 3:00 (the recommendation for 12 minutes), or film-story's own 12-minute row of four chapters of 2:15 [7]. The model's seven 100-second units are the learning-curve unit, not a cut option.
+- **Options**: the wrapper plus three modules of about 3:00 (W-04; the 12-minute shape). Film-story's earlier row of four chapters of 2:15 [7] is retired (S-17). The model's seven 100-second units are the learning-curve unit, not a cut option.
 - **Lean**: the wrapper plus three 3:00 modules. Decided (`DECISIONS.md` W-04). film-story's 2:15 row is superseded (see Words, item a); the cost model is unchanged either way.
 
 ### 14. Shot tracking
