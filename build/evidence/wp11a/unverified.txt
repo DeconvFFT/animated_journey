@@ -1,0 +1,8 @@
+WP-11a: what is UNVERIFIED or only partly checked, and why
+
+- Both scripts were run on Linux only. Nothing here says anything about Windows: neither script is meant for Windows, and no Windows behaviour is claimed.
+- public_lint.py --text does not exist yet (WP-03). The runner's call to it (text on stdin, exit 0 = clean) is an assumed contract, exercised only against tests/runner/lint_stub.py.
+- The 60 s / 900 s per-area limits, the 300 s quick budget and the 16 MB output cap are plan numbers or defaults chosen here; the real areas' run times were observed once, on a shared and nearly full disk.
+- Deleting with cleanup_scratch.sh --yes was exercised on fake trees only; it was never run with --yes on the real scratch folder, vendor/ or renders/.
+- A real full disk was met once by accident while the runner ran (another job filled the volume): the runner then stopped with a misleading exit 2. That was corrected to exit 3 (environment), and the corrected path is tested with a scanner stub that raises OSError, not on a really full disk.
+- Process-group handling (setsid, kill of the whole group, zombie-aware checks) was tested on Linux in this container only.

@@ -1,0 +1,459 @@
+{
+ "schema": "lj-week2-summary/1",
+ "mode": "quick",
+ "generated_utc": "2026-10-19T06:27:12Z",
+ "result": "FAIL",
+ "exit_code": 1,
+ "per_area_timeout_s": 60,
+ "elapsed_s": 142,
+ "budget_s": 300,
+ "over_budget": false,
+ "env": {
+  "platform": "linux",
+  "nproc": 4,
+  "python": "3.13.16",
+  "bash": "5.2.21"
+ },
+ "disk": {
+  "avail_mb_start": 465,
+  "avail_mb_min": 464,
+  "avail_mb_end": 464,
+  "hard_floor_mb": 250,
+  "lowest_envelope_avail_mb_min": 71,
+  "lowest_envelope_entry": "WP-06",
+  "entries_below_hard_floor": [
+   "WP-04",
+   "WP-06"
+  ]
+ },
+ "public_lint_text": "not available yet",
+ "totals": {
+  "areas": 13,
+  "landed": 8,
+  "pass": 6,
+  "fail": 2,
+  "timeout": 0,
+  "not_landed": 5
+ },
+ "envelope_totals": {
+  "PASS": 518,
+  "FAIL": 8,
+  "UNVERIFIED": 5,
+  "SKIPPED": 0,
+  "BLOCKED": 4
+ },
+ "checks": [],
+ "areas": [
+  {
+   "order": 1,
+   "area": "hygiene",
+   "entry": "WP-03",
+   "wave": "1",
+   "owner": "sonnet-implementor (tests/hygiene/)",
+   "result": "PASS",
+   "exit_code": 0,
+   "exit_text": "0",
+   "seconds": 22,
+   "timeout_s": 60,
+   "landed": true,
+   "note": "",
+   "counts": {
+    "PASS": 146,
+    "FAIL": 0,
+    "UNVERIFIED": 1,
+    "SKIPPED": 0,
+    "BLOCKED": 0
+   },
+   "envelopes": 147,
+   "avail_mb_min": 372,
+   "envelopes_refreshed_this_run": false,
+   "unknown_status_envelopes": 0,
+   "unreadable_evidence_files": 0,
+   "evidence": [
+    "wp03/",
+    "wp03/summary.json",
+    "wp03/tests_quick.txt",
+    "wp03/tests_all.txt",
+    "wp11a/area_hygiene_quick.txt"
+   ]
+  },
+  {
+   "order": 2,
+   "area": "win",
+   "entry": "WP-01a",
+   "wave": "1",
+   "owner": "sonnet-implementor (tests/win/)",
+   "result": "PASS",
+   "exit_code": 0,
+   "exit_text": "0",
+   "seconds": 10,
+   "timeout_s": 60,
+   "landed": true,
+   "note": "",
+   "counts": {
+    "PASS": 45,
+    "FAIL": 0,
+    "UNVERIFIED": 0,
+    "SKIPPED": 0,
+    "BLOCKED": 0
+   },
+   "envelopes": 45,
+   "avail_mb_min": 465,
+   "envelopes_refreshed_this_run": true,
+   "unknown_status_envelopes": 0,
+   "unreadable_evidence_files": 0,
+   "evidence": [
+    "wp01a/",
+    "wp01a/summary.json",
+    "wp01a/tests_quick.txt",
+    "wp01a/tests_all.txt",
+    "wp11a/area_win_quick.txt"
+   ]
+  },
+  {
+   "order": 3,
+   "area": "ops",
+   "entry": "WP-02",
+   "wave": "1",
+   "owner": "sonnet-implementor (tests/ops/)",
+   "result": "FAIL",
+   "exit_code": 1,
+   "exit_text": "1",
+   "seconds": 7,
+   "timeout_s": 60,
+   "landed": true,
+   "note": "",
+   "counts": {
+    "PASS": 35,
+    "FAIL": 7,
+    "UNVERIFIED": 1,
+    "SKIPPED": 0,
+    "BLOCKED": 0
+   },
+   "envelopes": 43,
+   "avail_mb_min": 462,
+   "envelopes_refreshed_this_run": true,
+   "unknown_status_envelopes": 0,
+   "unreadable_evidence_files": 0,
+   "evidence": [
+    "wp02/",
+    "wp02/summary.json",
+    "wp11a/area_ops_quick.txt"
+   ]
+  },
+  {
+   "order": 4,
+   "area": "validators",
+   "entry": "WP-05",
+   "wave": "1",
+   "owner": "sonnet-implementor (tests/validators/)",
+   "result": "PASS",
+   "exit_code": 0,
+   "exit_text": "0",
+   "seconds": 21,
+   "timeout_s": 60,
+   "landed": true,
+   "note": "",
+   "counts": {
+    "PASS": 18,
+    "FAIL": 0,
+    "UNVERIFIED": 0,
+    "SKIPPED": 0,
+    "BLOCKED": 0
+   },
+   "envelopes": 36,
+   "avail_mb_min": 402,
+   "envelopes_refreshed_this_run": true,
+   "unknown_status_envelopes": 0,
+   "unreadable_evidence_files": 0,
+   "evidence": [
+    "wp05/",
+    "wp05/summary.json",
+    "wp05/tests_quick.txt",
+    "wp05/tests_all.txt",
+    "wp11a/area_validators_quick.txt"
+   ]
+  },
+  {
+   "order": 5,
+   "area": "render",
+   "entry": "WP-04",
+   "wave": "1",
+   "owner": "sonnet-implementor (tests/render/)",
+   "result": "PASS",
+   "exit_code": 0,
+   "exit_text": "0",
+   "seconds": 27,
+   "timeout_s": 60,
+   "landed": true,
+   "note": "",
+   "counts": {
+    "PASS": 27,
+    "FAIL": 0,
+    "UNVERIFIED": 0,
+    "SKIPPED": 0,
+    "BLOCKED": 1
+   },
+   "envelopes": 66,
+   "avail_mb_min": 192,
+   "envelopes_refreshed_this_run": true,
+   "unknown_status_envelopes": 0,
+   "unreadable_evidence_files": 0,
+   "evidence": [
+    "wp04/",
+    "wp04/summary.json",
+    "wp04/tests_quick.txt",
+    "wp04/tests_all.txt",
+    "wp11a/area_render_quick.txt"
+   ]
+  },
+  {
+   "order": 6,
+   "area": "roundtrip",
+   "entry": "WP-06",
+   "wave": "1",
+   "owner": "sonnet-implementor (tests/roundtrip/)",
+   "result": "FAIL",
+   "exit_code": 1,
+   "exit_text": "1",
+   "seconds": 11,
+   "timeout_s": 60,
+   "landed": true,
+   "note": "",
+   "counts": {
+    "PASS": 100,
+    "FAIL": 1,
+    "UNVERIFIED": 2,
+    "SKIPPED": 0,
+    "BLOCKED": 0
+   },
+   "envelopes": 206,
+   "avail_mb_min": 71,
+   "envelopes_refreshed_this_run": true,
+   "unknown_status_envelopes": 0,
+   "unreadable_evidence_files": 0,
+   "evidence": [
+    "wp06/",
+    "wp06/summary.json",
+    "wp06/tests_quick.txt",
+    "wp06/tests_all.txt",
+    "wp11a/area_roundtrip_quick.txt"
+   ]
+  },
+  {
+   "order": 7,
+   "area": "sp1",
+   "entry": "WP-07",
+   "wave": "1",
+   "owner": "sonnet-implementor (tests/sp1/)",
+   "result": "PASS",
+   "exit_code": 0,
+   "exit_text": "0",
+   "seconds": 11,
+   "timeout_s": 60,
+   "landed": true,
+   "note": "",
+   "counts": {
+    "PASS": 20,
+    "FAIL": 0,
+    "UNVERIFIED": 1,
+    "SKIPPED": 0,
+    "BLOCKED": 3
+   },
+   "envelopes": 37,
+   "avail_mb_min": 409,
+   "envelopes_refreshed_this_run": true,
+   "unknown_status_envelopes": 0,
+   "unreadable_evidence_files": 0,
+   "evidence": [
+    "wp07/",
+    "wp07/summary.json",
+    "wp07/tests_quick.txt",
+    "wp07/tests_all.txt",
+    "wp11a/area_sp1_quick.txt"
+   ]
+  },
+  {
+   "order": 8,
+   "area": "win_lj",
+   "entry": "WP-01b",
+   "wave": "2",
+   "owner": "sonnet-implementor (tests/win_lj/)",
+   "result": "NOT LANDED",
+   "exit_code": null,
+   "exit_text": "-",
+   "seconds": 0,
+   "timeout_s": 60,
+   "landed": false,
+   "note": "tests/win_lj/run_tests.sh does not exist yet",
+   "counts": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 0,
+    "SKIPPED": 0,
+    "BLOCKED": 0
+   },
+   "envelopes": 0,
+   "avail_mb_min": null,
+   "envelopes_refreshed_this_run": null,
+   "unknown_status_envelopes": 0,
+   "unreadable_evidence_files": 0,
+   "evidence": [
+    "wp11a/area_win_lj_quick.txt"
+   ]
+  },
+  {
+   "order": 9,
+   "area": "win_kit2",
+   "entry": "WP-09",
+   "wave": "1+2",
+   "owner": "sonnet-implementor (tests/win_kit2/)",
+   "result": "NOT LANDED",
+   "exit_code": null,
+   "exit_text": "-",
+   "seconds": 0,
+   "timeout_s": 60,
+   "landed": false,
+   "note": "tests/win_kit2/run_tests.sh does not exist yet",
+   "counts": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 0,
+    "SKIPPED": 0,
+    "BLOCKED": 0
+   },
+   "envelopes": 0,
+   "avail_mb_min": null,
+   "envelopes_refreshed_this_run": null,
+   "unknown_status_envelopes": 0,
+   "unreadable_evidence_files": 0,
+   "evidence": [
+    "wp11a/area_win_kit2_quick.txt"
+   ]
+  },
+  {
+   "order": 10,
+   "area": "phone",
+   "entry": "WP-08",
+   "wave": "2",
+   "owner": "sonnet-implementor (tests/phone/)",
+   "result": "NOT LANDED",
+   "exit_code": null,
+   "exit_text": "-",
+   "seconds": 0,
+   "timeout_s": 60,
+   "landed": false,
+   "note": "tests/phone/run_tests.sh does not exist yet",
+   "counts": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 0,
+    "SKIPPED": 0,
+    "BLOCKED": 0
+   },
+   "envelopes": 0,
+   "avail_mb_min": null,
+   "envelopes_refreshed_this_run": null,
+   "unknown_status_envelopes": 0,
+   "unreadable_evidence_files": 0,
+   "evidence": [
+    "wp11a/area_phone_quick.txt"
+   ]
+  },
+  {
+   "order": 11,
+   "area": "spikes",
+   "entry": "WP-10",
+   "wave": "2",
+   "owner": "sonnet-implementor (tests/spikes/)",
+   "result": "NOT LANDED",
+   "exit_code": null,
+   "exit_text": "-",
+   "seconds": 0,
+   "timeout_s": 60,
+   "landed": false,
+   "note": "tests/spikes/run_tests.sh does not exist yet",
+   "counts": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 0,
+    "SKIPPED": 0,
+    "BLOCKED": 0
+   },
+   "envelopes": 0,
+   "avail_mb_min": null,
+   "envelopes_refreshed_this_run": null,
+   "unknown_status_envelopes": 0,
+   "unreadable_evidence_files": 0,
+   "evidence": [
+    "wp11a/area_spikes_quick.txt"
+   ]
+  },
+  {
+   "order": 12,
+   "area": "runner",
+   "entry": "WP-11a",
+   "wave": "1",
+   "owner": "sonnet-implementor (tests/runner/)",
+   "result": "PASS",
+   "exit_code": 0,
+   "exit_text": "0",
+   "seconds": 33,
+   "timeout_s": 60,
+   "landed": true,
+   "note": "",
+   "counts": {
+    "PASS": 127,
+    "FAIL": 0,
+    "UNVERIFIED": 0,
+    "SKIPPED": 0,
+    "BLOCKED": 0
+   },
+   "envelopes": 250,
+   "avail_mb_min": 463,
+   "envelopes_refreshed_this_run": true,
+   "unknown_status_envelopes": 0,
+   "unreadable_evidence_files": 0,
+   "evidence": [
+    "wp11a/",
+    "wp11a/summary.json",
+    "wp11a/tests_quick.txt",
+    "wp11a/tests_all.txt",
+    "wp11a/area_runner_quick.txt"
+   ]
+  },
+  {
+   "order": 13,
+   "area": "integration",
+   "entry": "WP-11b",
+   "wave": "3",
+   "owner": "sonnet-implementor (tests/integration/)",
+   "result": "NOT LANDED",
+   "exit_code": null,
+   "exit_text": "-",
+   "seconds": 0,
+   "timeout_s": 60,
+   "landed": false,
+   "note": "tests/integration/run_tests.sh does not exist yet",
+   "counts": {
+    "PASS": 0,
+    "FAIL": 0,
+    "UNVERIFIED": 0,
+    "SKIPPED": 0,
+    "BLOCKED": 0
+   },
+   "envelopes": 0,
+   "avail_mb_min": null,
+   "envelopes_refreshed_this_run": null,
+   "unknown_status_envelopes": 0,
+   "unreadable_evidence_files": 0,
+   "evidence": [
+    "wp11a/area_integration_quick.txt"
+   ]
+  }
+ ],
+ "notes": [
+  "counts come from lj-evidence/1 envelopes under each entry's evidence folder (one per package+test, newest wins); they are not the area's exit code",
+  "a NOT LANDED entry may still show envelopes written before its run_tests.sh existed"
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "actual": "ok",
+ "data": {
+  "devanagari_ids": [
+   "dev-digits",
+   "dev-din",
+   "dev-pariksha",
+   "dev-pustak",
+   "dev-sankhya",
+   "dev-shabd"
+  ],
+  "pending": [
+   "tamil",
+   "telugu",
+   "kannada",
+   "malayalam",
+   "bengali",
+   "gujarati"
+  ],
+  "scripts_with_strings": [
+   "latin",
+   "devanagari"
+  ],
+  "seconds": 0.0
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 465,
+  "avail_mb_min": 465,
+  "avail_mb_start": 465,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": null,
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "4.15 v1: Latin entry, Devanagari digits and five plain nouns with marks[] and checked_by_reader false, six empty pending_O-10 blocks, neutral characters only",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "strings_file",
+ "unverified_reasons": []
+}

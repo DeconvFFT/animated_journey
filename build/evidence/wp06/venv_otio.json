@@ -1,0 +1,26 @@
+{
+  "created_by": "python3 -m venv, then pip install --no-cache-dir opentimelineio==0.18.1, run directly because the lj_with_disk stage was refused (guard_stage_venv.json, venv_guard_refusal.txt)",
+  "exists": true,
+  "guard_ledger_line": {
+    "avail_mb_end": 304,
+    "avail_mb_min": 304,
+    "avail_mb_start": 304,
+    "date_utc": "2026-10-19",
+    "ended_utc": "2026-10-19T05:09:58Z",
+    "exit": 3,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "label": "wp06-venv",
+    "lock_wait_s": 0,
+    "planned_mb": 60,
+    "started_utc": "2026-10-19T05:09:58Z",
+    "status": "refused"
+  },
+  "opentimelineio": "0.18.1",
+  "pip_packages": [
+    "OpenTimelineIO==0.18.1",
+    "pip==26.2.1"
+  ],
+  "size_mb": 12.7,
+  "wheel_download": "843 kB"
+}

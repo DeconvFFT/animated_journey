@@ -1,0 +1,21 @@
+# area=validators entry=WP-05 mode=quick result=PASS exit=0 seconds=21 masked_values=0
+WP-05 validator tests (quick). ffmpeg 6.1.1, python 3.13, Avail 465 MB at start.
+PASS       hygiene.python_compiles                        6 files
+PASS       hygiene.validators_stdlib_only                 stdlib only
+PASS       hygiene.windows_portable_python                none found
+PASS       hygiene.mo8_audit_reused_in_place              copies=0, git diff rc=0, gate uses -I: True
+PASS       json.chains_shape                              6 chains ok
+PASS       json.settings_mirror_of_card                   mirrors 12 card values; 5 profiles agree with their chains
+PASS       colour_patch.selftest_python_I                 exit 0; colour_patch --selftest: ALL PASS
+PASS       spec_check.selftest_python_I                   exit 0; spec_check --selftest: ALL PASS
+PASS       colour_patch.usage_and_environment_errors      got (2, 2, 3, 2, 2)
+PASS       colour_patch.derive_drops_planted_flags        validated with the jsonschema module against pc_chains.schema.json; public_lint clean on derived (exit 0), flags the planted raw (exit 2)
+PASS       colour_patch.derive_rejects_bad_raw            {'wrong_schema': 2, 'no_worst': 2, 'bad_sha': 2, 'path_as_name': 2}
+PASS       spec_check.good.g_master_hq.mov                exit 0; failed: none (0.4s)
+PASS       spec_check.good.g_venue_m18.mp4                exit 0; failed: none (0.4s)
+PASS       spec_check.defect.d_25fps.mp4                  exit 1; failed: video.fps, video.frame_count (0.4s)
+PASS       spec_check.defect.d_44k1_audio.mp4             exit 1; failed: audio.sample_rate (0.4s)
+PASS       spec_check.defect.d_title_tag.mp4              exit 1; failed: metadata.neutral (0.4s)
+PASS       spec_check.defect.d_truncated.mp4              exit 1; failed: container.readable, container.moov, container.atoms, container.faststart (0.2s)
+PASS       stage.disk_guard                               measured peak of the generated files: 1.0 MB
+TOTAL: PASS 18, FAIL 0, UNVERIFIED 0, SKIPPED 0, BLOCKED 0   (21 s, Avail min 464 MB)

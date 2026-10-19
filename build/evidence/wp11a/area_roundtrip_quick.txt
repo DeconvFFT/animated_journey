@@ -1,0 +1,105 @@
+# area=roundtrip entry=WP-06 mode=quick result=FAIL exit=1 seconds=11 masked_values=0
+PASS       hygiene.py_compile                             11 files compile
+PASS       hygiene.python38_grammar                       all pipeline/roundtrip tools parse
+PASS       hygiene.bash_syntax                            4 scripts parse
+PASS       hygiene.stdlib_only                            Pillow only in emit_ora_layers.py, make_media.py, run_checks.py
+PASS       hygiene.validators_need_no_pillow              none do
+PASS       hygiene.not_a_photo                            no Image.open, no jpg/heic/tif in any generator
+PASS       hygiene.reused_unchanged                       git diff empty, status clean
+PASS       hygiene.spec_json                              fps 24, 4 shots
+PASS       hygiene.no_stale_rate                          no hits
+PASS       hygiene.public_lint                            public_lint: mode paths, 38 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+PASS       hygiene.theme_guard                            theme guard: 17 file(s) scanned (explicit paths), 0 finding(s), 0 exclusion statement(s) shown as NOTE | LIMIT: this is a keyword scan of text only. It can NOT judge icon
+FAIL       hygiene.no_pycache                             tests/roundtrip
+PASS       kb_scale.selftest                              PASS kb_scale selftest: fit 45.0, cover 53.3 (53.34), 2880x1620 66.67 for both, rounding, edge safety
+PASS       kb_scale.values                                3600x2400 fit 45.0 cover 53.3 (53.34); 2880x1620 fit 66.67 cover 66.67
+PASS       kb_scale.cli_errors                            exits 2 2 2
+PASS       ora.emit                                       wrote ./renders/wp06/layers.ora: 640x360 canvas, layers top-first L30_label, L20_figure, L10_restored, L00_asfound
+PASS       ora.validate_emitted                           exit 0; RESULT validate_ora: 22 checks, 0 FAIL, 0 WARN (profile=pipeline)
+PASS       ora.determinism                                sha256 c09a364dc789f4e2
+PASS       ora.layer_content                              names ['L30_label', 'L20_figure', 'L10_restored', 'L00_asfound']; modes ['RGBA']; partial alpha True; merged (640, 360)
+PASS       ora.reference_make_ora_runs                    wrote ./renders/wp06/make_ora_ref.ora
+PASS       ora.reference_make_ora_validates               RESULT validate_ora: 21 checks, 0 FAIL, 1 WARN (profile=reference)
+PASS       ora.reference_matches_fixture                  identical members: stack.xml, data/title.png, data/photo.png, mergedimage.png
+PASS       ora.at_layers                                  exit 0; profile reference; WARN ['layer_name_invalid']
+PASS       ora.at_layers_strict                           exit 1; FAILED: asfound_not_bottom, layer_name_invalid
+PASS       ora.usage                                      exits 2 2 2
+PASS       ora.plant.missing_layer_png                    exit 1; FAILED ['layer_png_missing']
+PASS       ora.plant.duplicate_name                       exit 1; FAILED ['layer_name_duplicate']
+PASS       ora.plant.layer_outside_canvas                 exit 1; FAILED ['layer_outside_canvas']
+PASS       ora.plant.mimetype_not_first                   exit 1; FAILED ['mimetype_not_first']
+PASS       ora.plant.mimetype_not_stored                  exit 1; FAILED ['mimetype_not_stored']
+PASS       ora.plant.mimetype_wrong                       exit 1; FAILED ['mimetype_wrong']
+PASS       ora.plant.layer_name_invalid                   exit 1; FAILED ['layer_name_invalid']
+PASS       ora.plant.asfound_not_bottom                   exit 1; FAILED ['asfound_not_bottom']
+PASS       ora.plant.zip_unreadable                       exit 1; FAILED ['zip_unreadable']
+PASS       ora.plant.stack_xml_unparseable                exit 1; FAILED ['stack_xml_unparseable']
+PASS       ora.plant.stack_xml_dtd                        exit 1; FAILED ['stack_xml_dtd']
+PASS       ora.plant.attribute_unsupported                exit 1; FAILED ['attribute_unsupported']
+PASS       ora.plant.layer_png_format                     exit 1; FAILED ['layer_png_format']
+PASS       ora.plant.layer_png_invalid                    exit 1; FAILED ['layer_png_invalid']
+PASS       ora.plant.mergedimage_size                     exit 1; FAILED ['mergedimage_size']
+PASS       ora.plant.src_path_unsafe                      exit 1; FAILED ['src_path_unsafe']
+PASS       ora.plant.layer_src_missing                    exit 1; FAILED ['layer_src_missing']
+PASS       ora.plant.layer_value_invalid                  exit 1; FAILED ['layer_value_invalid']
+PASS       ora.plant.no_stack_xml                         exit 1; FAILED ['stack_xml_missing']
+PASS       ora.nested_groups                              exits 0 0 0; RESULT validate_ora: 23 checks, 0 FAIL, 1 WARN (profile=pipeline)
+PASS       ora.offcanvas_option                           RESULT validate_ora: 22 checks, 0 FAIL, 1 WARN (profile=pipeline)
+PASS       svg.rig_rules                                  19 ids, 6 data-pivot, 8 data-z, viewBox 0 0 640 360
+PASS       svg.roundtrip_script                           exit 0; 7 PASS lines; RESULT svg_roundtrip: all expectations held (clean pass-through 0; three planted defects 1 each; touch-ups 0)
+PASS       svg.clean_passthrough                          raw_exit 0 gate_exit 0 authored 17
+PASS       svg.planted_ids_stripped                       gate_exit 1 reasons ids_lost raw_exit 1
+PASS       svg.planted_kind_changed                       gate_exit 1 reasons element_kind_changed raw_exit 0
+PASS       svg.planted_pivot_dropped                      gate_exit 1 reasons data_attr_changed raw_exit 1
+PASS       svg.finding_check_ids_kind_gap                 raw check_ids.py exit 0, kind_changed disc-a, gate exit 1
+PASS       svg.ids_survive                                survived 17 of 17; lost []; kind changed []
+PASS       svg.finding_data_attributes                    kept 18 of 18 verbatim; changed 0; dropped 0; by element kind {'circle': '2/2', 'ellipse': '1/1', 'g': '8/8', 'linearGradient': '1/1', 'path': '1/1', 'rect': '1/1', 'text
+PASS       svg.finding_other                              viewBox 0 0 640 360 -> 0 0 640 360; 6 tool-made ids (e.g. defs10, g27, rect7); inkscape/sodipodi attributes 0; plain output namespaces ['xlink', 'svg']; group move adds t
+PASS       svg.gate_usage                                 gate exit 3
+PASS       svg.usage_exits                                exits 2 2 2 3
+PASS       otio.venv                                      opentimelineio 0.18.1, venv 13 MB
+PASS       otio.emit                                      wrote ./renders/wp06/ch.otio: 4 clips, 3 dissolves, 3 markers, 1 audio cue(s), 480 frames at 24 fps (20.0 s); generated 5 test media file(s)
+PASS       otio.validate_json_level                       exit 0; RESULT validate_otio: 21 checks, 0 FAIL, 0 WARN
+PASS       otio.validate_with_otio                        exit 0; RESULT validate_otio: 27 checks, 0 FAIL, 0 WARN
+PASS       otio.determinism                               sha256 2fa7ce880c2e2967
+PASS       otio.content                                   clips 4; dissolves 3; urls media/ch01_s01.png; shot 1 scale [66.67, 80.0] position [(960.0, 540.0), (930.0, 520.0)]; shot 3 scale 80.0 -> 66.67
+PASS       otio.template_parity                           template rates [25.0]; 0 difference(s)
+PASS       otio.plant.clip_outside_available_range        exit 1; FAILED ['clip_outside_available_range']
+PASS       otio.plant.rate_not_24_one_time                exit 1; FAILED ['rate_not_24']
+PASS       otio.plant.rate_not_24_whole_file              exit 1; FAILED ['filmcraft_ticks_mismatch', 'rate_not_24']
+PASS       otio.plant.media_missing                       exit 1; FAILED ['media_missing']
+PASS       otio.plant.dissolve_longer_than_neighbour      exit 1; FAILED ['dissolve_longer_than_neighbour']
+PASS       otio.plant.dissolve_pair_too_long              exit 1; FAILED ['dissolve_longer_than_neighbour']
+PASS       otio.plant.target_url_absolute                 exit 1; FAILED ['target_url_absolute']
+PASS       otio.plant.target_url_backslash                exit 1; FAILED ['target_url_backslash']
+PASS       otio.plant.image_sequence_reference            exit 1; FAILED ['image_sequence_reference']
+PASS       otio.plant.media_reference_missing             exit 1; FAILED ['media_reference_missing']
+PASS       otio.plant.markers_missing                     exit 1; FAILED ['markers_missing']
+PASS       otio.plant.filmcraft_key_unknown               exit 1; FAILED ['filmcraft_key_unknown']
+PASS       otio.plant.filmcraft_effect_unknown            exit 1; FAILED ['filmcraft_effect_unknown']
+PASS       otio.plant.filmcraft_value_shape               exit 1; FAILED ['filmcraft_value_shape']
+PASS       otio.plant.filmcraft_keyframe_time             exit 1; FAILED ['filmcraft_keyframe_time']
+PASS       otio.plant.filmcraft_ticks_mismatch            exit 1; FAILED ['filmcraft_ticks_mismatch']
+PASS       otio.plant.motion_edge_exposed                 exit 1; FAILED ['motion_edge_exposed']
+PASS       otio.plant.dissolve_without_neighbour          exit 1; FAILED ['dissolve_without_neighbour']
+PASS       otio.plant.no_video_track                      exit 1; FAILED ['no_video_track']
+PASS       otio.plant.schema_not_timeline                 exit 1; FAILED ['schema_not_timeline']
+PASS       otio.plant.otio_json_invalid                   exit 1; FAILED ['otio_json_invalid']
+PASS       otio.plant.clip_duration_invalid               exit 1; FAILED ['clip_duration_invalid', 'dissolve_longer_than_neighbour', 'filmcraft_ticks_mismatch']
+PASS       otio.no_media_check                            RESULT validate_otio: 21 checks, 0 FAIL, 1 WARN
+PASS       otio.lenient_filmcraft                         RESULT validate_otio: 21 checks, 0 FAIL, 1 WARN
+PASS       otio.exit_codes                                exits 2 3 3
+PASS       otio.with_otio_auto_skips                      RESULT validate_otio: 22 checks, 0 FAIL, 1 WARN
+PASS       otio.accepts_utf8_bom                          RESULT validate_otio: 21 checks, 0 FAIL, 0 WARN
+PASS       otio.weird_shapes                              list_root -> exit 1; string_rate -> exit 1; metadata_list_with_filmcraft -> exit 1
+PASS       ora.random_bytes                               exit 1; FAILED: zip_unreadable
+PASS       otio.emit_refusals                             old_rate -> 2; abs_source -> 2; backslash_source -> 2; dup_id -> 2; last_dissolve -> 2; black_edge -> 2; bad_colour -> 2; size_4k -> 2; bad_ease -> 2; too_long -> 2
+PASS       otio.emit_usage                                exit 2
+PASS       otio.emit_needs_output                         exit 2
+PASS       otio.never_creates_media_without_the_flag      exit 0; media folder created: False
+PASS       otio.adapter_probe                             exit 0; working with the core install alone: none; opentimelineio 0.18.1 ships only otio_json, otioz, otiod; adapters that wrote a file with it alone: none
+PASS       otio.adapter_probe_exit_codes                  exits 2 3
+PASS       otio.adapter_probe_no_paths                    clean
+UNVERIFIED windows.validators                             standard library only, os.path joins, UTF-8 and BOM reading, ASCII output, no shell=True; not run on Windows
+UNVERIFIED craft_apps.accept_files                        not run: no Craft app was started in this package
+TOTAL: PASS 100, FAIL 1, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (10 s)

@@ -1,0 +1,86 @@
+{
+  "schema": "lj-chains/1",
+  "version": 1,
+  "owner": "WP-05",
+  "about": "Encode chains for every deliverable. vf is: scale first (BT.709 matrix, limited range), then format=, then setparams (research Q-F1). The colour-patch test (pipeline/validators/colour_patch.py), not this text, decides whether a chain may say approved:true: a chain above 3/255 on any build tested is not approved. expect.profile is null on purpose: render.mjs compares every non-null expect key with a fixed ffprobe set that has no profile, so a filled profile would give a false mismatch after every render; the profile is asserted through expect_extra (colour_patch.py) and by spec_check profiles. Extra keys beyond the 4.5 shape, all additive: alpha, expect_extra, approved, measured (per ffmpeg version, 6.1.1 only until the maker runs the PC build, 9.0.2 UNVERIFIED), used_for. approved:true means approved on the builds listed in measured.",
+  "chains": {
+    "h264_venue": {
+      "container": "mp4",
+      "alpha": false,
+      "used_for": "venue file (W-17): 1080p24 H.264 High 4.1, CRF 18 with a 20 Mbps cap, AAC-LC 48 kHz stereo 256 kbps, faststart, metadata stripped",
+      "vf": "scale=out_color_matrix=bt709:out_range=tv,format=yuv420p,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:range=tv",
+      "video_args": ["-c:v", "libx264", "-profile:v", "high", "-level", "4.1", "-crf", "18", "-maxrate", "20M", "-bufsize", "40M", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-color_range", "tv", "-movflags", "+faststart", "-map_metadata", "-1"],
+      "audio_args": ["-c:a", "aac", "-b:a", "256k", "-ar", "48000", "-ac", "2"],
+      "expect": {"codec": "h264", "profile": null, "pix_fmt": "yuv420p", "color_range": "tv", "color_space": "bt709", "color_primaries": "bt709", "color_transfer": "bt709"},
+      "expect_extra": {"profile": "High"},
+      "approved": true,
+      "measured": {"6.1.1": {"worst_error": 1, "worst_error_accurate_decode": 1, "date": "2026-10-19"}},
+      "notes": "Q-F1 recommended H.264 line plus the W-17 venue limits. Loudness is set by the audio stage, not here (three venue masters, W-19)."
+    },
+    "h264_backup_main40": {
+      "container": "mp4",
+      "alpha": false,
+      "used_for": "backup venue file (W-17): Main 4.0 at about 8 Mbps for old players",
+      "vf": "scale=out_color_matrix=bt709:out_range=tv,format=yuv420p,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:range=tv",
+      "video_args": ["-c:v", "libx264", "-profile:v", "main", "-level", "4.0", "-b:v", "8M", "-maxrate", "10M", "-bufsize", "16M", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-color_range", "tv", "-movflags", "+faststart", "-map_metadata", "-1"],
+      "audio_args": ["-c:a", "aac", "-b:a", "256k", "-ar", "48000", "-ac", "2"],
+      "expect": {"codec": "h264", "profile": null, "pix_fmt": "yuv420p", "color_range": "tv", "color_space": "bt709", "color_primaries": "bt709", "color_transfer": "bt709"},
+      "expect_extra": {"profile": "Main"},
+      "approved": true,
+      "measured": {"6.1.1": {"worst_error": 1, "worst_error_accurate_decode": 1, "date": "2026-10-19"}},
+      "notes": "Bitrate figures are the register's 'about 8 Mbps'; maxrate 10M and bufsize 16M are the planner's proposal (J)."
+    },
+    "h264_online": {
+      "container": "mp4",
+      "alpha": false,
+      "used_for": "online / private-link copy (W-19: -16 LUFS, -1 dBTP) and the access copy",
+      "vf": "scale=out_color_matrix=bt709:out_range=tv,format=yuv420p,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:range=tv",
+      "video_args": ["-c:v", "libx264", "-profile:v", "high", "-level", "4.1", "-crf", "20", "-maxrate", "10M", "-bufsize", "20M", "-colorspace", "bt709", "-color_primaries", "bt709", "-color_trc", "bt709", "-color_range", "tv", "-movflags", "+faststart", "-map_metadata", "-1"],
+      "audio_args": ["-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2"],
+      "expect": {"codec": "h264", "profile": null, "pix_fmt": "yuv420p", "color_range": "tv", "color_space": "bt709", "color_primaries": "bt709", "color_transfer": "bt709"},
+      "expect_extra": {"profile": "High"},
+      "approved": true,
+      "measured": {"6.1.1": {"worst_error": 1, "worst_error_accurate_decode": 1, "date": "2026-10-19"}},
+      "notes": "CRF 20, 10 Mbps cap and AAC 192 kbps are the planner's proposal (J); the register fixes only the colour, -16 LUFS and -1 dBTP."
+    },
+    "prores422hq_master": {
+      "container": "mov",
+      "alpha": false,
+      "used_for": "the master (W-15): ProRes 422 HQ, 10-bit 4:2:2, Rec.709 limited range, PCM 24-bit 48 kHz",
+      "vf": "scale=out_color_matrix=bt709:out_range=tv,format=yuv422p10le,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:range=tv",
+      "video_args": ["-c:v", "prores_ks", "-profile:v", "3", "-map_metadata", "-1"],
+      "audio_args": ["-c:a", "pcm_s24le", "-ar", "48000", "-ac", "2"],
+      "expect": {"codec": "prores", "profile": null, "pix_fmt": "yuv422p10le", "color_range": null, "color_space": "bt709", "color_primaries": "bt709", "color_transfer": "bt709"},
+      "expect_extra": {"profile": "HQ"},
+      "approved": true,
+      "measured": {"6.1.1": {"worst_error": 2, "worst_error_accurate_decode": 0, "date": "2026-10-19"}},
+      "notes": "color_range is null (not asserted): ffmpeg 6.1.1 leaves a ProRes range tag 'unknown'; newer builds may write tv. spec_check accepts both for ProRes."
+    },
+    "prores4444_alpha": {
+      "container": "mov",
+      "alpha": true,
+      "used_for": "alpha overlays only (titles, grain, line-draws). Not a master.",
+      "vf": "scale=out_color_matrix=bt709:out_range=tv,format=yuva444p10le,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:range=tv",
+      "video_args": ["-c:v", "prores_ks", "-profile:v", "4444", "-map_metadata", "-1"],
+      "audio_args": [],
+      "expect": {"codec": "prores", "profile": null, "pix_fmt": "yuva444p12le", "color_range": null, "color_space": "bt709", "color_primaries": "bt709", "color_transfer": "bt709"},
+      "expect_extra": {"profile": "4444"},
+      "approved": true,
+      "measured": {"6.1.1": {"worst_error": 0, "worst_error_accurate_decode": 0, "date": "2026-10-19"}},
+      "notes": "ffprobe on 6.1.1 reports yuva444p12le for a yuva444p10le encode; another build may report yuva444p10le (spec_check accepts both). The bare -pix_fmt yuva444p10le encode is BT.601 on 6.1.1: never use it. EffectCraft issue #340: prefer an RGBA PNG sequence."
+    },
+    "ffv1_lossless": {
+      "container": "mkv",
+      "alpha": false,
+      "used_for": "lossless intermediate and the pre-encode master for the MO8 gate (4:4:4 10-bit, BT.709 limited, so it is tagged and survives a later conversion)",
+      "vf": "scale=out_color_matrix=bt709:out_range=tv,format=yuv444p10le,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:range=tv",
+      "video_args": ["-c:v", "ffv1", "-level", "3", "-coder", "1", "-context", "1", "-g", "1", "-slicecrc", "1", "-map_metadata", "-1"],
+      "audio_args": ["-c:a", "pcm_s24le", "-ar", "48000", "-ac", "2"],
+      "expect": {"codec": "ffv1", "profile": null, "pix_fmt": "yuv444p10le", "color_range": "tv", "color_space": "bt709", "color_primaries": "bt709", "color_transfer": "bt709"},
+      "expect_extra": {},
+      "approved": true,
+      "measured": {"6.1.1": {"worst_error": 0, "worst_error_accurate_decode": 0, "date": "2026-10-19"}},
+      "notes": "Lossless relative to the 4:4:4 YCbCr, not relative to an RGB source (the RGB to YCbCr step rounds). Files are large: keep clips short (MO8 uses at most 96 frames)."
+    }
+  }
+}

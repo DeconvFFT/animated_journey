@@ -1,0 +1,30 @@
+{
+ "actual": "6/6 frames identical",
+ "data": {
+  "seconds": 4.4
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 465,
+  "avail_mb_min": 465,
+  "avail_mb_start": 465,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "two separate processes, frames 0-5: identical SHA-256 (the full 48-frame A1 runs under --all)",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "a1_determinism_lite",
+ "unverified_reasons": []
+}

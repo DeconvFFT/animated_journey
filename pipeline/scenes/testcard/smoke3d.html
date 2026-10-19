@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LJ WebGL and 3D smoke</title>
+<meta name="viewport" content="width=1920">
+<!--
+  WebGL / SwiftShader smoke (replaces the dropped three.js voxel diorama, D-29; SP2 c): one CSS 3D-transformed plane and one raw WebGL
+  triangle with a uniform angle, no library. window.ljReport() returns the GL renderer string so the test can record that the SwiftShader
+  flags give a working context. seekTo(t) is a pure function of t. Style-neutral geometry only.
+-->
+<style>
+  html, body { margin: 0; padding: 0; width: 1920px; height: 1080px; overflow: hidden; background: #20242c; }
+  #wrap { position: absolute; left: 60px; top: 90px; width: 1000px; height: 900px; perspective: 1400px; }
+  #plane { position: absolute; left: 150px; top: 200px; width: 700px; height: 394px; transform-style: preserve-3d; transform-origin: 50% 50%;
+           background: linear-gradient(135deg, #4aa3a2 0%, #e3b341 100%);
+           background-image: linear-gradient(135deg, #4aa3a2 0%, #e3b341 100%), repeating-linear-gradient(0deg, rgba(0,0,0,.35) 0 2px, transparent 2px 40px), repeating-linear-gradient(90deg, rgba(0,0,0,.35) 0 2px, transparent 2px 40px);
+           background-blend-mode: normal, multiply, multiply; border: 4px solid #e9ebef; box-sizing: border-box; }
+  #gl { position: absolute; left: 1120px; top: 190px; width: 720px; height: 720px; border: 2px solid #4b5361; }
+  #lab { position: absolute; left: 60px; top: 30px; font: 28px/40px sans-serif; color: #949cab; }
+</style>
+</head>
+<body>
+<div id="lab">CSS 3D plane + WebGL triangle (SwiftShader smoke)</div>
+<div id="wrap"><div id="plane"></div></div>
+<canvas id="gl" width="720" height="720"></canvas>
+<script>
+(function () {
+  'use strict';
+  var info = { webgl: false, renderer: null, vendor: null, version: null, error: null };
+  var gl = null, uAngle = null, prog = null;
+  try {
+    var cv = document.getElementById('gl');
+    gl = cv.getContext('webgl', { preserveDrawingBuffer: true, antialias: false }) || cv.getContext('experimental-webgl', { preserveDrawingBuffer: true });
+    if (!gl) { throw new Error('no WebGL context'); }
+    var dbg = gl.getExtension('WEBGL_debug_renderer_info');
+    info.webgl = true; info.version = gl.getParameter(gl.VERSION);
+    info.renderer = dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER);
+    info.vendor = dbg ? gl.getParameter(dbg.UNMASKED_VENDOR_WEBGL) : gl.getParameter(gl.VENDOR);
+    var sh = function (type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { throw new Error(gl.getShaderInfoLog(s)); } return s; };
+    prog = gl.createProgram();
+    gl.attachShader(prog, sh(gl.VERTEX_SHADER, 'attribute vec2 p; attribute vec3 c; uniform float a; varying vec3 v; void main(){ float s=sin(a), k=cos(a); gl_Position=vec4(k*p.x-s*p.y, s*p.x+k*p.y, 0.0, 1.0); v=c; }'));
+    gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, 'precision mediump float; varying vec3 v; void main(){ gl_FragColor=vec4(v,1.0); }'));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { throw new Error(gl.getProgramInfoLog(prog)); }
+    gl.useProgram(prog);
+    var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0.0, 0.8, 0.9, 0.7, 0.2, -0.7, -0.6, 0.2, 0.7, 0.7, 0.7, -0.6, 0.7, 0.3, 0.6]), gl.STATIC_DRAW);
+    var lp = gl.getAttribLocation(prog, 'p'), lc = gl.getAttribLocation(prog, 'c');
+    gl.enableVertexAttribArray(lp); gl.vertexAttribPointer(lp, 2, gl.FLOAT, false, 20, 0);
+    gl.enableVertexAttribArray(lc); gl.vertexAttribPointer(lc, 3, gl.FLOAT, false, 20, 8);
+    uAngle = gl.getUniformLocation(prog, 'a');
+  } catch (e) { info.error = String(e && e.message || e); }
+  window.ljReport = function () { return info; };
+  window.seekTo = function (t) {
+    document.getElementById('plane').style.transform = 'rotateY(' + (35 * Math.sin(t * 1.1)) + 'deg) rotateX(' + (18 * Math.sin(t * 0.8)) + 'deg) translateZ(' + (60 * Math.sin(t * 0.6)) + 'px)';
+    if (gl) { gl.viewport(0, 0, 720, 720); gl.clearColor(0.17, 0.19, 0.23, 1); gl.clear(gl.COLOR_BUFFER_BIT); gl.uniform1f(uAngle, t * 0.9); gl.drawArrays(gl.TRIANGLES, 0, 3); }
+    return true;
+  };
+  window.seekTo(0);
+  if (info.error) { window.readyError = 'WebGL smoke failed: ' + info.error; } else { window.ready = true; }
+})();
+</script>
+</body>
+</html>

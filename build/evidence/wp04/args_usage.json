@@ -1,0 +1,147 @@
+{
+ "actual": "19 of 19 cases as wanted",
+ "data": {
+  "bad": [],
+  "cases": [
+   {
+    "args": "--bogus",
+    "exit": 2,
+    "stderr": "render.mjs: unknown option --bogus (try --help)",
+    "want": 2
+   },
+   {
+    "args": "",
+    "exit": 2,
+    "stderr": "render.mjs: --page is required (try --help)",
+    "want": 2
+   },
+   {
+    "args": "--page x --shard 3/2",
+    "exit": 2,
+    "stderr": "render.mjs: --shard must look like i/n with 0 <= i < n <= 1000, got \"3/2\"",
+    "want": 2
+   },
+   {
+    "args": "--page x --seconds 1 --frames 0:5",
+    "exit": 2,
+    "stderr": "render.mjs: give --seconds or --frames, not both",
+    "want": 2
+   },
+   {
+    "args": "--page x --fps abc",
+    "exit": 2,
+    "stderr": "render.mjs: --fps must be a number, got \"abc\"",
+    "want": 2
+   },
+   {
+    "args": "--dir pipeline --page nope.html",
+    "exit": 2,
+    "stderr": "render.mjs: page not found under --dir or a --mount: /nope.html",
+    "want": 2
+   },
+   {
+    "args": "--dir pipeline --page ../README.md",
+    "exit": 2,
+    "stderr": "render.mjs: page not found under --dir or a --mount: /../README.md",
+    "want": 2
+   },
+   {
+    "args": "--dir pipeline --page scenes/testcard/flat.html --mount novalue",
+    "exit": 2,
+    "stderr": "render.mjs: --mount must look like /urlpath=folder, got \"novalue\"",
+    "want": 2
+   },
+   {
+    "args": "--dir pipeline --page scenes/testcard/flat.html --mount /v=does-not-exist",
+    "exit": 2,
+    "stderr": "render.mjs: --mount /v folder not found: does-not-exist",
+    "want": 2
+   },
+   {
+    "args": "--dir pipeline --page scenes/testcard/flat.html --mount /=pipeline",
+    "exit": 2,
+    "stderr": "render.mjs: --mount path \"\" is not a plain /name or /a/b path",
+    "want": 2
+   },
+   {
+    "args": "--dir pipeline --page scenes/testcard/flat.html --chain nosuch --ffmpeg x.mp4",
+    "exit": 2,
+    "stderr": "render.mjs: unknown chain \"nosuch\" (built-in: h264; chain file: pipeline/lib/chains.json)",
+    "want": 2
+   },
+   {
+    "args": "--dir pipeline --page scenes/testcard/flat.html --chain h264 --shard 0/2",
+    "exit": 2,
+    "stderr": "render.mjs: video mode needs the whole shot in one process: do not combine --chain/--ffmpeg with --shard (render PNG shards, then run --encode)",
+    "want": 2
+   },
+   {
+    "args": "--dir pipeline --page scenes/testcard/flat.html --frames 5:5",
+    "exit": 2,
+    "stderr": "render.mjs: --frames 5:5: A must be less than B",
+    "want": 2
+   },
+   {
+    "args": "--dir pipeline --page scenes/testcard/flat.html --concurrency 9",
+    "exit": 2,
+    "stderr": "render.mjs: --concurrency must be between 1 and 8, got 9",
+    "want": 2
+   },
+   {
+    "args": "--dir pipeline --page scenes/testcard/flat.html --w 5",
+    "exit": 2,
+    "stderr": "render.mjs: --w must be between 16 and 8192, got 5",
+    "want": 2
+   },
+   {
+    "args": "--dir pipeline --page scenes/testcard/flat.html --alpha=yes",
+    "exit": 2,
+    "stderr": "render.mjs: --alpha takes no value",
+    "want": 2
+   },
+   {
+    "args": "--dir pipeline --page scenes/testcard/flat.html --out renders/wp04/_usage --seconds 1",
+    "exit": 3,
+    "stderr": "render.mjs: PW_CHROMIUM points to a file that does not exist: /nonexistent/chrome",
+    "want": 3
+   },
+   {
+    "args": "--help",
+    "exit": 0,
+    "mentions_seekTo": true,
+    "want": 0
+   },
+   {
+    "args": "--ffmpeg-bin /nonexistent",
+    "exit": 3,
+    "stderr": "render.mjs: the output of this run was removed",
+    "want": 3
+   }
+  ],
+  "seconds": 3.1
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 465,
+  "avail_mb_min": 465,
+  "avail_mb_start": 465,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": null,
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "19 bad-usage and environment cases exit 2 or 3 with a message; --help exits 0",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "args_usage",
+ "unverified_reasons": []
+}

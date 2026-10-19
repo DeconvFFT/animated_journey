@@ -1,0 +1,41 @@
+{
+ "actual": "first run stopped with 64 of 240 frames (remaining 176); second run skipped 64, now 240 frames; equal to uninterrupted: True",
+ "data": {
+  "first": {
+   "complete": false,
+   "frames_rendered": 64,
+   "remaining": 176,
+   "resume_hint": "soft cap reached: run the same command again to resume (finished frames are skipped)"
+  },
+  "second": {
+   "complete": true,
+   "frames_rendered": 176,
+   "frames_skipped_existing": 64
+  },
+  "seconds": 43.3
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 403,
+  "avail_mb_min": 403,
+  "avail_mb_start": 403,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "--max-seconds 6 stops early with exit 0, complete=false and a resume hint; the same command then finishes and equals an uninterrupted run",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "max_seconds_resume",
+ "unverified_reasons": []
+}

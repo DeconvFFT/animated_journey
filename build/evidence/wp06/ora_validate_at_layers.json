@@ -1,0 +1,121 @@
+{
+  "checks": [
+    {
+      "code": "zip_opens",
+      "detail": "5 members",
+      "status": "PASS"
+    },
+    {
+      "code": "zip_names_unique",
+      "detail": "no duplicate member names",
+      "status": "PASS"
+    },
+    {
+      "code": "zip_paths_safe",
+      "detail": "member paths are plain relative paths",
+      "status": "PASS"
+    },
+    {
+      "code": "zip_size_bounded",
+      "detail": "uncompressed size 4328 bytes",
+      "status": "PASS"
+    },
+    {
+      "code": "mimetype_first",
+      "detail": "'mimetype' is the first member",
+      "status": "PASS"
+    },
+    {
+      "code": "mimetype_stored",
+      "detail": "'mimetype' is stored",
+      "status": "PASS"
+    },
+    {
+      "code": "mimetype_content",
+      "detail": "'mimetype' says image/openraster",
+      "status": "PASS"
+    },
+    {
+      "code": "stack_xml_parses",
+      "detail": "root <image>",
+      "status": "PASS"
+    },
+    {
+      "code": "canvas_size",
+      "detail": "canvas 320x200",
+      "status": "PASS"
+    },
+    {
+      "code": "attributes_supported",
+      "detail": "only supported attributes",
+      "status": "PASS"
+    },
+    {
+      "code": "layer_names_present",
+      "detail": "every layer has a name",
+      "status": "PASS"
+    },
+    {
+      "code": "layer_name_unique",
+      "detail": "layer names are unique",
+      "status": "PASS"
+    },
+    {
+      "code": "layer_name_invalid",
+      "detail": "names that do not match ^[A-Za-z][A-Za-z0-9._-]*$: 'Title tint'",
+      "status": "WARN"
+    },
+    {
+      "code": "values_valid",
+      "detail": "opacity, visibility, composite-op, x, y are valid",
+      "status": "PASS"
+    },
+    {
+      "code": "layer_src",
+      "detail": "all 2 layers",
+      "status": "PASS"
+    },
+    {
+      "code": "layer_src_safe",
+      "detail": "all 2 layers",
+      "status": "PASS"
+    },
+    {
+      "code": "layer_png_present",
+      "detail": "all 2 layers",
+      "status": "PASS"
+    },
+    {
+      "code": "layer_png_valid",
+      "detail": "all 2 layers",
+      "status": "PASS"
+    },
+    {
+      "code": "layer_png_8bit_rgba",
+      "detail": "all 2 layers",
+      "status": "PASS"
+    },
+    {
+      "code": "layer_inside_canvas",
+      "detail": "all 2 layers",
+      "status": "PASS"
+    },
+    {
+      "code": "mergedimage_size_ok",
+      "detail": "mergedimage.png matches the canvas",
+      "status": "PASS"
+    }
+  ],
+  "counts": {
+    "FAIL": 0,
+    "PASS": 20,
+    "WARN": 1
+  },
+  "extra": {
+    "profile": "reference"
+  },
+  "failed_codes": [],
+  "schema": "lj-roundtrip-report/1",
+  "subject": "at-layers.ora",
+  "tool": "validate_ora"
+}

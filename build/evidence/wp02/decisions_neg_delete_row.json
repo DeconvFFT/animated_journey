@@ -2,9 +2,9 @@
  "actual": "--check and ops_lint: exit 1, W-10 named",
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 605,
-  "avail_mb_min": 605,
-  "avail_mb_start": 605,
+  "avail_mb_end": 464,
+  "avail_mb_min": 464,
+  "avail_mb_start": 464,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0
@@ -15,7 +15,7 @@
   "python": "3.13.x"
  },
  "expected": "negative: a deleted ID row makes --check and ops_lint exit 1 naming the ID",
- "notes": "ran with a synthetic mini pattern file because scripts/redaction_patterns.json is absent (mechanism test only)",
+ "notes": "",
  "package": "WP-02",
  "schema": "lj-evidence/1",
  "status": "PASS",

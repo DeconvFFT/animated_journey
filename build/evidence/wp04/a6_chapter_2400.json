@@ -1,0 +1,49 @@
+{
+ "actual": "guard: lj_guard: REFUSED: Avail 278 MB minus planned 12 MB leaves 266 MB, below the 400 MB floor (wp04-a6-chapter). Lean-profile hint: plan a smaller stage, delete downloads you no longer need, or ask the orchestrator about the regenerable caches (Q-1).",
+ "data": {
+  "guard": [
+   "lj_guard: REFUSED: Avail 278 MB minus planned 12 MB leaves 266 MB, below the 400 MB floor (wp04-a6-chapter). Lean-profile hint: plan a smaller stage, delete downloads you no longer need, or ask the orchestrator about the regenerable caches (Q-1)."
+  ],
+  "ledger": {
+   "avail_mb_end": 278,
+   "avail_mb_min": 278,
+   "avail_mb_start": 278,
+   "date_utc": "2026-10-19",
+   "ended_utc": "2026-10-19T05:15:24Z",
+   "exit": 3,
+   "floor_mb": 400,
+   "hard_floor_mb": 250,
+   "label": "wp04-a6-chapter",
+   "lock_wait_s": 0,
+   "planned_mb": 12,
+   "started_utc": "2026-10-19T05:15:24Z",
+   "status": "refused"
+  },
+  "seconds": 774.1,
+  "waited_for_disk_s": 600
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 278,
+  "avail_mb_min": 278,
+  "avail_mb_start": 407,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 12
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "2,400 frames piped into ffmpeg under one lj_with_disk stage",
+ "notes": "the guard refused the plan's 250 MB at Avail 278 MB (lj_guard: REFUSED: Avail 278 MB minus planned 250 MB leaves 28 MB, below the 400 MB floor (wp04-a6-chapter). Lean-profile hint: plan a smaller stage, delete downloads you no longer need, or ask the orchestrator about the regenerable caches (Q-1).); PLANNED_MB recomputed from a measured 240-frame clip (440565 bytes): 12 MB Waited 600 s for headroom first.",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "BLOCKED",
+ "test": "a6_chapter_2400",
+ "unverified_reasons": []
+}

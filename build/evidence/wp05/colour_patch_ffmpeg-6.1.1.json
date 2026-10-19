@@ -1,0 +1,1133 @@
+{
+  "schema": "lj-colour-patch/1",
+  "tool_version": 1,
+  "date_utc": "2026-10-19",
+  "platform": {
+    "system": "Linux",
+    "machine": "x86_64",
+    "python": "3.13.16"
+  },
+  "ffmpeg": {
+    "version_line": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+    "version": "6.1.1-3ubuntu5",
+    "configure": [
+      "--prefix=/usr",
+      "--extra-version=3ubuntu5",
+      "--toolchain=hardened",
+      "--libdir=/usr/lib/x86_64-linux-gnu",
+      "--incdir=/usr/include/x86_64-linux-gnu",
+      "--arch=amd64",
+      "--enable-gpl",
+      "--disable-stripping",
+      "--disable-omx",
+      "--enable-gnutls",
+      "--enable-libaom",
+      "--enable-libass",
+      "--enable-libbs2b",
+      "--enable-libcaca",
+      "--enable-libcdio",
+      "--enable-libcodec2",
+      "--enable-libdav1d",
+      "--enable-libflite",
+      "--enable-libfontconfig",
+      "--enable-libfreetype",
+      "--enable-libfribidi",
+      "--enable-libglslang",
+      "--enable-libgme",
+      "--enable-libgsm",
+      "--enable-libharfbuzz",
+      "--enable-libmp3lame",
+      "--enable-libmysofa",
+      "--enable-libopenjpeg",
+      "--enable-libopenmpt",
+      "--enable-libopus",
+      "--enable-librubberband",
+      "--enable-libshine",
+      "--enable-libsnappy",
+      "--enable-libsoxr",
+      "--enable-libspeex",
+      "--enable-libtheora",
+      "--enable-libtwolame",
+      "--enable-libvidstab",
+      "--enable-libvorbis",
+      "--enable-libvpx",
+      "--enable-libwebp",
+      "--enable-libx265",
+      "--enable-libxml2",
+      "--enable-libxvid",
+      "--enable-libzimg",
+      "--enable-openal",
+      "--enable-opencl",
+      "--enable-opengl",
+      "--disable-sndio",
+      "--enable-libvpl",
+      "--disable-libmfx",
+      "--enable-libdc1394",
+      "--enable-libdrm",
+      "--enable-libiec61883",
+      "--enable-chromaprint",
+      "--enable-frei0r",
+      "--enable-ladspa",
+      "--enable-libbluray",
+      "--enable-libjack",
+      "--enable-libpulse",
+      "--enable-librabbitmq",
+      "--enable-librist",
+      "--enable-libsrt",
+      "--enable-libssh",
+      "--enable-libsvtav1",
+      "--enable-libx264",
+      "--enable-libzmq",
+      "--enable-libzvbi",
+      "--enable-lv2",
+      "--enable-sdl2",
+      "--enable-libplacebo",
+      "--enable-librav1e",
+      "--enable-pocketsphinx",
+      "--enable-librsvg",
+      "--enable-libjxl",
+      "--enable-shared"
+    ],
+    "sha256": "ed16af623947494a72e284b6eb8ff225f2da22b38b5d5069c2fd4b4ba3384e41"
+  },
+  "tolerance": 3,
+  "patches": [
+    {
+      "name": "red",
+      "rgb": [
+        255,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "grey50",
+      "rgb": [
+        128,
+        128,
+        128
+      ]
+    },
+    {
+      "name": "skin",
+      "rgb": [
+        224,
+        172,
+        140
+      ]
+    }
+  ],
+  "decode": "scale=in_color_matrix=bt709:in_range=tv:out_range=pc,format=rgb24",
+  "chain_file": "chains.json",
+  "chains": [
+    {
+      "name": "h264_venue",
+      "kind": "chain",
+      "container": "mp4",
+      "alpha": false,
+      "encode_ok": true,
+      "error": null,
+      "patches": [
+        {
+          "name": "red",
+          "source": [
+            255,
+            0,
+            0
+          ],
+          "decoded": [
+            254,
+            0,
+            0
+          ],
+          "error": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "grey50",
+          "source": [
+            128,
+            128,
+            128
+          ],
+          "decoded": [
+            128,
+            128,
+            128
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "skin",
+          "source": [
+            224,
+            172,
+            140
+          ],
+          "decoded": [
+            223,
+            171,
+            139
+          ],
+          "error": [
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ],
+      "worst_error": 1,
+      "pass": true,
+      "worst_error_accurate": 1,
+      "max_pixel_error": 1,
+      "tags": {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_primaries": "bt709",
+        "color_transfer": "bt709"
+      },
+      "tags_match_expect": true,
+      "tag_mismatches": [],
+      "alpha_error": null,
+      "approved_in_file": true
+    },
+    {
+      "name": "h264_backup_main40",
+      "kind": "chain",
+      "container": "mp4",
+      "alpha": false,
+      "encode_ok": true,
+      "error": null,
+      "patches": [
+        {
+          "name": "red",
+          "source": [
+            255,
+            0,
+            0
+          ],
+          "decoded": [
+            254,
+            0,
+            0
+          ],
+          "error": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "grey50",
+          "source": [
+            128,
+            128,
+            128
+          ],
+          "decoded": [
+            128,
+            128,
+            128
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "skin",
+          "source": [
+            224,
+            172,
+            140
+          ],
+          "decoded": [
+            223,
+            171,
+            139
+          ],
+          "error": [
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ],
+      "worst_error": 1,
+      "pass": true,
+      "worst_error_accurate": 1,
+      "max_pixel_error": 1,
+      "tags": {
+        "codec_name": "h264",
+        "profile": "Main",
+        "pix_fmt": "yuv420p",
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_primaries": "bt709",
+        "color_transfer": "bt709"
+      },
+      "tags_match_expect": true,
+      "tag_mismatches": [],
+      "alpha_error": null,
+      "approved_in_file": true
+    },
+    {
+      "name": "h264_online",
+      "kind": "chain",
+      "container": "mp4",
+      "alpha": false,
+      "encode_ok": true,
+      "error": null,
+      "patches": [
+        {
+          "name": "red",
+          "source": [
+            255,
+            0,
+            0
+          ],
+          "decoded": [
+            254,
+            0,
+            0
+          ],
+          "error": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "grey50",
+          "source": [
+            128,
+            128,
+            128
+          ],
+          "decoded": [
+            128,
+            128,
+            128
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "skin",
+          "source": [
+            224,
+            172,
+            140
+          ],
+          "decoded": [
+            223,
+            171,
+            139
+          ],
+          "error": [
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ],
+      "worst_error": 1,
+      "pass": true,
+      "worst_error_accurate": 1,
+      "max_pixel_error": 1,
+      "tags": {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_primaries": "bt709",
+        "color_transfer": "bt709"
+      },
+      "tags_match_expect": true,
+      "tag_mismatches": [],
+      "alpha_error": null,
+      "approved_in_file": true
+    },
+    {
+      "name": "prores422hq_master",
+      "kind": "chain",
+      "container": "mov",
+      "alpha": false,
+      "encode_ok": true,
+      "error": null,
+      "patches": [
+        {
+          "name": "red",
+          "source": [
+            255,
+            0,
+            0
+          ],
+          "decoded": [
+            253,
+            0,
+            0
+          ],
+          "error": [
+            -2,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "grey50",
+          "source": [
+            128,
+            128,
+            128
+          ],
+          "decoded": [
+            126,
+            126,
+            126
+          ],
+          "error": [
+            -2,
+            -2,
+            -2
+          ]
+        },
+        {
+          "name": "skin",
+          "source": [
+            224,
+            172,
+            140
+          ],
+          "decoded": [
+            222,
+            171,
+            138
+          ],
+          "error": [
+            -2,
+            -1,
+            -2
+          ]
+        }
+      ],
+      "worst_error": 2,
+      "pass": true,
+      "worst_error_accurate": 0,
+      "max_pixel_error": 2,
+      "tags": {
+        "codec_name": "prores",
+        "profile": "HQ",
+        "pix_fmt": "yuv422p10le",
+        "color_range": "unknown",
+        "color_space": "bt709",
+        "color_primaries": "bt709",
+        "color_transfer": "bt709"
+      },
+      "tags_match_expect": true,
+      "tag_mismatches": [],
+      "alpha_error": null,
+      "approved_in_file": true
+    },
+    {
+      "name": "prores4444_alpha",
+      "kind": "chain",
+      "container": "mov",
+      "alpha": true,
+      "encode_ok": true,
+      "error": null,
+      "patches": [
+        {
+          "name": "red",
+          "source": [
+            255,
+            0,
+            0
+          ],
+          "decoded": [
+            255,
+            0,
+            0
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "grey50",
+          "source": [
+            128,
+            128,
+            128
+          ],
+          "decoded": [
+            128,
+            128,
+            128
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "skin",
+          "source": [
+            224,
+            172,
+            140
+          ],
+          "decoded": [
+            224,
+            172,
+            140
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "worst_error": 0,
+      "pass": true,
+      "worst_error_accurate": 0,
+      "max_pixel_error": 0,
+      "tags": {
+        "codec_name": "prores",
+        "profile": "4444",
+        "pix_fmt": "yuva444p12le",
+        "color_range": "unknown",
+        "color_space": "bt709",
+        "color_primaries": "bt709",
+        "color_transfer": "bt709"
+      },
+      "tags_match_expect": true,
+      "tag_mismatches": [],
+      "alpha_error": 1,
+      "approved_in_file": true
+    },
+    {
+      "name": "ffv1_lossless",
+      "kind": "chain",
+      "container": "mkv",
+      "alpha": false,
+      "encode_ok": true,
+      "error": null,
+      "patches": [
+        {
+          "name": "red",
+          "source": [
+            255,
+            0,
+            0
+          ],
+          "decoded": [
+            255,
+            0,
+            0
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "grey50",
+          "source": [
+            128,
+            128,
+            128
+          ],
+          "decoded": [
+            128,
+            128,
+            128
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "skin",
+          "source": [
+            224,
+            172,
+            140
+          ],
+          "decoded": [
+            224,
+            172,
+            140
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "worst_error": 0,
+      "pass": true,
+      "worst_error_accurate": 0,
+      "max_pixel_error": 0,
+      "tags": {
+        "codec_name": "ffv1",
+        "profile": null,
+        "pix_fmt": "yuv444p10le",
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_primaries": "bt709",
+        "color_transfer": "bt709"
+      },
+      "tags_match_expect": true,
+      "tag_mismatches": [],
+      "alpha_error": null,
+      "approved_in_file": true
+    }
+  ],
+  "controls": [
+    {
+      "name": "control_h264_scale_first_B",
+      "kind": "control",
+      "container": "mp4",
+      "alpha": false,
+      "encode_ok": true,
+      "error": null,
+      "patches": [
+        {
+          "name": "red",
+          "source": [
+            255,
+            0,
+            0
+          ],
+          "decoded": [
+            254,
+            0,
+            0
+          ],
+          "error": [
+            -1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "grey50",
+          "source": [
+            128,
+            128,
+            128
+          ],
+          "decoded": [
+            128,
+            128,
+            128
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "skin",
+          "source": [
+            224,
+            172,
+            140
+          ],
+          "decoded": [
+            223,
+            171,
+            139
+          ],
+          "error": [
+            -1,
+            -1,
+            -1
+          ]
+        }
+      ],
+      "worst_error": 1,
+      "pass": true,
+      "worst_error_accurate": 1,
+      "max_pixel_error": 1,
+      "tags": {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_primaries": "bt709",
+        "color_transfer": "bt709"
+      },
+      "tags_match_expect": null,
+      "tag_mismatches": [],
+      "alpha_error": null,
+      "approved_in_file": null,
+      "control_expect": "pass",
+      "trap_present": null,
+      "control_ok": true,
+      "notes": "Q-F1 chain B: scale first. Must pass on every build (about 1/255)."
+    },
+    {
+      "name": "control_h264_format_first_A",
+      "kind": "control",
+      "container": "mp4",
+      "alpha": false,
+      "encode_ok": true,
+      "error": null,
+      "patches": [
+        {
+          "name": "red",
+          "source": [
+            255,
+            0,
+            0
+          ],
+          "decoded": [
+            251,
+            0,
+            0
+          ],
+          "error": [
+            -4,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "grey50",
+          "source": [
+            128,
+            128,
+            128
+          ],
+          "decoded": [
+            124,
+            126,
+            126
+          ],
+          "error": [
+            -4,
+            -2,
+            -2
+          ]
+        },
+        {
+          "name": "skin",
+          "source": [
+            224,
+            172,
+            140
+          ],
+          "decoded": [
+            221,
+            169,
+            135
+          ],
+          "error": [
+            -3,
+            -3,
+            -5
+          ]
+        }
+      ],
+      "worst_error": 5,
+      "pass": false,
+      "worst_error_accurate": 4,
+      "max_pixel_error": 5,
+      "tags": {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_primaries": "bt709",
+        "color_transfer": "bt709"
+      },
+      "tags_match_expect": null,
+      "tag_mismatches": [],
+      "alpha_error": null,
+      "approved_in_file": null,
+      "control_expect": "build-dependent",
+      "trap_present": true,
+      "control_ok": true,
+      "notes": "Q-F1 chain A: format before scale converts twice (5/255 on 6.1.1, 7.1.1, 8.1.2 and 9.0.2)."
+    },
+    {
+      "name": "control_h264_bare_pix_fmt",
+      "kind": "control",
+      "container": "mp4",
+      "alpha": false,
+      "encode_ok": true,
+      "error": null,
+      "patches": [
+        {
+          "name": "red",
+          "source": [
+            255,
+            0,
+            0
+          ],
+          "decoded": [
+            255,
+            23,
+            0
+          ],
+          "error": [
+            0,
+            23,
+            0
+          ]
+        },
+        {
+          "name": "grey50",
+          "source": [
+            128,
+            128,
+            128
+          ],
+          "decoded": [
+            128,
+            128,
+            128
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "skin",
+          "source": [
+            224,
+            172,
+            140
+          ],
+          "decoded": [
+            227,
+            173,
+            136
+          ],
+          "error": [
+            3,
+            1,
+            -4
+          ]
+        }
+      ],
+      "worst_error": 23,
+      "pass": false,
+      "worst_error_accurate": 24,
+      "max_pixel_error": 23,
+      "tags": {
+        "codec_name": "h264",
+        "profile": "High",
+        "pix_fmt": "yuv420p",
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_primaries": "bt709",
+        "color_transfer": "bt709"
+      },
+      "tags_match_expect": null,
+      "tag_mismatches": [],
+      "alpha_error": null,
+      "approved_in_file": null,
+      "control_expect": "build-dependent",
+      "trap_present": true,
+      "control_ok": true,
+      "notes": "Bare -pix_fmt: BT.601 pixels under BT.709 tags on 6.1.1 (about 23); BT.709 from 7.1 (about 1). Tags pass either way."
+    },
+    {
+      "name": "control_prores4444_bare",
+      "kind": "control",
+      "container": "mov",
+      "alpha": true,
+      "encode_ok": true,
+      "error": null,
+      "patches": [
+        {
+          "name": "red",
+          "source": [
+            255,
+            0,
+            0
+          ],
+          "decoded": [
+            255,
+            25,
+            0
+          ],
+          "error": [
+            0,
+            25,
+            0
+          ]
+        },
+        {
+          "name": "grey50",
+          "source": [
+            128,
+            128,
+            128
+          ],
+          "decoded": [
+            128,
+            128,
+            128
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "skin",
+          "source": [
+            224,
+            172,
+            140
+          ],
+          "decoded": [
+            229,
+            175,
+            138
+          ],
+          "error": [
+            5,
+            3,
+            -2
+          ]
+        }
+      ],
+      "worst_error": 25,
+      "pass": false,
+      "worst_error_accurate": 25,
+      "max_pixel_error": 25,
+      "tags": {
+        "codec_name": "prores",
+        "profile": "4444",
+        "pix_fmt": "yuva444p12le",
+        "color_range": "unknown",
+        "color_space": "bt709",
+        "color_primaries": "bt709",
+        "color_transfer": "bt709"
+      },
+      "tags_match_expect": null,
+      "tag_mismatches": [],
+      "alpha_error": 1,
+      "approved_in_file": null,
+      "control_expect": "build-dependent",
+      "trap_present": true,
+      "control_ok": true,
+      "notes": "Bare -pix_fmt yuva444p10le: BT.601 pixels on 6.1.1 (about 25); correct on 9.0.2."
+    },
+    {
+      "name": "control_wrong_matrix_bt601",
+      "kind": "control",
+      "container": "mkv",
+      "alpha": false,
+      "encode_ok": true,
+      "error": null,
+      "patches": [
+        {
+          "name": "red",
+          "source": [
+            255,
+            0,
+            0
+          ],
+          "decoded": [
+            255,
+            25,
+            0
+          ],
+          "error": [
+            0,
+            25,
+            0
+          ]
+        },
+        {
+          "name": "grey50",
+          "source": [
+            128,
+            128,
+            128
+          ],
+          "decoded": [
+            128,
+            128,
+            128
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "skin",
+          "source": [
+            224,
+            172,
+            140
+          ],
+          "decoded": [
+            229,
+            175,
+            138
+          ],
+          "error": [
+            5,
+            3,
+            -2
+          ]
+        }
+      ],
+      "worst_error": 25,
+      "pass": false,
+      "worst_error_accurate": 25,
+      "max_pixel_error": 25,
+      "tags": {
+        "codec_name": "ffv1",
+        "profile": null,
+        "pix_fmt": "yuv444p10le",
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_primaries": "bt709",
+        "color_transfer": "bt709"
+      },
+      "tags_match_expect": null,
+      "tag_mismatches": [],
+      "alpha_error": null,
+      "approved_in_file": null,
+      "control_expect": "fail",
+      "trap_present": null,
+      "control_ok": true,
+      "notes": "Deliberately BT.601 under BT.709 tags, lossless 4:4:4. Must fail on every build: if it passes, this tool is broken."
+    },
+    {
+      "name": "control_lossless_709",
+      "kind": "control",
+      "container": "mkv",
+      "alpha": false,
+      "encode_ok": true,
+      "error": null,
+      "patches": [
+        {
+          "name": "red",
+          "source": [
+            255,
+            0,
+            0
+          ],
+          "decoded": [
+            255,
+            0,
+            0
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "grey50",
+          "source": [
+            128,
+            128,
+            128
+          ],
+          "decoded": [
+            128,
+            128,
+            128
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "skin",
+          "source": [
+            224,
+            172,
+            140
+          ],
+          "decoded": [
+            224,
+            172,
+            140
+          ],
+          "error": [
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "worst_error": 0,
+      "pass": true,
+      "worst_error_accurate": 0,
+      "max_pixel_error": 0,
+      "tags": {
+        "codec_name": "ffv1",
+        "profile": null,
+        "pix_fmt": "yuv444p10le",
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_primaries": "bt709",
+        "color_transfer": "bt709"
+      },
+      "tags_match_expect": null,
+      "tag_mismatches": [],
+      "alpha_error": null,
+      "approved_in_file": null,
+      "control_expect": "pass",
+      "trap_present": null,
+      "control_ok": true,
+      "notes": "Lossless 4:4:4 with the BT.709 matrix. Must pass on every build; it needs no x264 or ProRes encoder (self-test)."
+    }
+  ],
+  "summary": {
+    "chains": 6,
+    "chains_failed": [],
+    "approval_violations": [],
+    "controls_misbehaved": [],
+    "traps_present": [
+      "control_h264_format_first_A",
+      "control_h264_bare_pix_fmt",
+      "control_prores4444_bare"
+    ]
+  }
+}

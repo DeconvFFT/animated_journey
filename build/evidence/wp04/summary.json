@@ -1,0 +1,23 @@
+{
+ "chromium": "141.0.7390.37",
+ "counts": {
+  "PASS": 10
+ },
+ "date_utc": "2026-10-19",
+ "mode": "quick",
+ "package": "WP-04",
+ "schema": "lj-evidence-summary/1",
+ "seconds": 26.5,
+ "tests": {
+  "a10_alpha": "PASS",
+  "a1_determinism_lite": "PASS",
+  "a8_errors": "PASS",
+  "a9_path_safety": "PASS",
+  "args_usage": "PASS",
+  "chain_parity": "PASS",
+  "colour_patches": "PASS",
+  "fetch_libs_offline": "PASS",
+  "libs_lock": "PASS",
+  "strings_file": "PASS"
+ }
+}

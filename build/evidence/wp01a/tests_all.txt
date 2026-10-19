@@ -63,7 +63,7 @@ PASS       pwsh.selfscan_hex65_refuses                  exit 2; category=guid_se
 PASS       pwsh.selfscan_version_strings_pass           exit 0; 
 PASS       pwsh.selfscan_sha256_passes                  exit 0; 
 PASS       pwsh.every_fixture_through_the_script_scan   all 19 as expected
-PASS       pwsh.directory_hash_only_out_files_created   kit hash dbfc6700919f7d85 unchanged; files: collision.json sha.json versions.json 
+PASS       pwsh.directory_hash_only_out_files_created   kit hash b87cda1371016d4d unchanged; files: collision.json sha.json versions.json 
 PASS       patterns.python_and_powershell_agree         exit 0; samples: 100, python/powershell disagreements or declared-expectation misses: 0, versions: 1/1|
 PASS       failclosed.step0_without_pattern_file        exit 2; REDACTION PATTERNS UNAVAILABLE, nothing was collected and nothing was written: scripts\redaction_patterns.json
 PASS       failclosed.windows_check_without_pattern_file exit 2
@@ -95,4 +95,4 @@ PASS       tools.fetch_pwsh_disk_rule_refuses           exit 3; fetch_pwsh: DISK
 PASS       tools.fetch_pwsh_disk_refusal_created_nothing absent
 UNVERIFIED windows.claims_awaiting_first_real_run       15 claim groups listed in build/evidence/wp01a/unverified.txt
 ---
-WP-01a all: PASS=93 FAIL=0 UNVERIFIED=1 SKIPPED=1 BLOCKED=0  (df Avail 595 -> 593 MB)
+WP-01a all: PASS=93 FAIL=0 UNVERIFIED=1 SKIPPED=1 BLOCKED=0  (df Avail 592 -> 591 MB)

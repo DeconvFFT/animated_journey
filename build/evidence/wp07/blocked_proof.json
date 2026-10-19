@@ -1,0 +1,26 @@
+{
+  "bytes_received": 0,
+  "context": {
+    "app": "filmcraft",
+    "forced_bad_asset": true,
+    "head_curl_exit": 0,
+    "head_status": 404,
+    "probe_status": 404,
+    "step": "head",
+    "tag": "v0.9.0"
+  },
+  "curl_exit_code": 22,
+  "curl_stderr_verbatim": "curl: (22) The requested URL returned error: 404",
+  "curl_stderr_was_scrubbed": false,
+  "fallback": "spikes/sp1_craft_cli/FALLBACK.md",
+  "http_status": 404,
+  "http_status_lines": [
+    "HTTP/1.1 200 Connection Established",
+    "HTTP/1.1 404 Not Found"
+  ],
+  "package": "WP-07",
+  "proxy": "outbound HTTPS goes through the session's agent proxy (address and credentials deliberately not recorded)",
+  "schema": "lj-blocked-proof/1",
+  "time_utc": "2026-10-19T06:26:16Z",
+  "url": "https://github.com/storytold/filmcraft/releases/download/v0.9.0/filmcraft-0.9.0-linux-x86_64.tar.gz.does-not-exist"
+}

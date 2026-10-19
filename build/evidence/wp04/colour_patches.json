@@ -1,0 +1,75 @@
+{
+ "actual": "[{\"want\": [255, 0, 0], \"all_equal\": true, \"sample\": [255, 0, 0]}, {\"want\": [128, 128, 128], \"all_equal\": true, \"sample\": [128, 128, 128]}, {\"want\": [224, 172, 140], \"all_equal\": true, \"sample\": [224, 172, 140]}]",
+ "data": {
+  "patches": [
+   {
+    "all_equal": true,
+    "sample": [
+     255,
+     0,
+     0
+    ],
+    "want": [
+     255,
+     0,
+     0
+    ]
+   },
+   {
+    "all_equal": true,
+    "sample": [
+     128,
+     128,
+     128
+    ],
+    "want": [
+     128,
+     128,
+     128
+    ]
+   },
+   {
+    "all_equal": true,
+    "sample": [
+     224,
+     172,
+     140
+    ],
+    "want": [
+     224,
+     172,
+     140
+    ]
+   }
+  ],
+  "seconds": 1.7,
+  "size": [
+   1920,
+   1080
+  ]
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 465,
+  "avail_mb_min": 465,
+  "avail_mb_start": 465,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "the three-patch strip is exactly 255,0,0 / 128,128,128 / 224,172,140 in the PNG (no colour management shift), frame 1920x1080",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "colour_patches",
+ "unverified_reasons": []
+}

@@ -1,0 +1,45 @@
+{
+ "actual": "differing pixels per frame (frames 0,8,...,88): [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; GSAP 3.15.0",
+ "data": {
+  "differing_px": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "gsap_version": "3.15.0",
+  "seconds": 7.7
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 403,
+  "avail_mb_min": 403,
+  "avail_mb_start": 403,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "the same ease through GSAP's paused timeline, tl.time(t,false), matches the cosine ease: at most 100 differing pixels (fuzz 1%) on 12 frames of the push",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "gsap_equivalence",
+ "unverified_reasons": []
+}

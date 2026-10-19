@@ -1,0 +1,217 @@
+# WP-06 acceptance commands, run on their own (the same commands run_tests.sh runs, in the order of the work package)
+
+$ lj_with_disk 60 wp06-venv -- bash -c 'python3 -m venv <scratch>/venv-otio && <scratch>/venv-otio/bin/pip install opentimelineio==0.18.1'
+(refused by the guard when it was tried; see venv_guard_refusal.txt and guard_stage_venv.json. The same two commands were then run directly, which is allowed for a write under 100 MB.)
+lj_guard: REFUSED: Avail 304 MB minus planned 60 MB leaves 244 MB, below the 400 MB floor (wp06-venv). Lean-profile hint: plan a smaller stage, delete downloads you no longer need, or ask the orchestrator about the regenerable caches (Q-1).
+
+$ <scratch>/venv-otio/bin/python -I -c 'import opentimelineio; print(opentimelineio.__version__)'
+0.18.1
+exit=0
+
+$ python3 -I pipeline/roundtrip/emit_ora_layers.py renders/wp06/layers.ora && python3 -I pipeline/roundtrip/validate_ora.py renders/wp06/layers.ora
+wrote renders/wp06/layers.ora: 640x360 canvas, layers top-first L30_label, L20_figure, L10_restored, L00_asfound
+PASS zip_opens                          7 members
+PASS zip_names_unique                   no duplicate member names
+PASS zip_paths_safe                     member paths are plain relative paths
+PASS zip_size_bounded                   uncompressed size 47231 bytes
+PASS mimetype_first                     'mimetype' is the first member
+PASS mimetype_stored                    'mimetype' is stored
+PASS mimetype_content                   'mimetype' says image/openraster
+PASS stack_xml_parses                   root <image>
+PASS canvas_size                        canvas 640x360
+PASS attributes_supported               only supported attributes
+PASS layer_names_present                every layer has a name
+PASS layer_name_unique                  layer names are unique
+PASS layer_name_pattern                 layer names match the id pattern
+PASS values_valid                       opacity, visibility, composite-op, x, y are valid
+PASS layer_src                          all 4 layers
+PASS layer_src_safe                     all 4 layers
+PASS layer_png_present                  all 4 layers
+PASS layer_png_valid                    all 4 layers
+PASS layer_png_8bit_rgba                all 4 layers
+PASS layer_inside_canvas                all 4 layers
+PASS asfound_bottom                     L00_asfound is the bottom layer
+PASS mergedimage_size_ok                mergedimage.png matches the canvas
+RESULT validate_ora: 22 checks, 0 FAIL, 0 WARN (profile=pipeline)
+exit=0
+
+$ python3 -I pipeline/roundtrip/validate_ora.py research/craft-visual-fixtures/at-layers.ora
+PASS zip_opens                          5 members
+PASS zip_names_unique                   no duplicate member names
+PASS zip_paths_safe                     member paths are plain relative paths
+PASS zip_size_bounded                   uncompressed size 4328 bytes
+PASS mimetype_first                     'mimetype' is the first member
+PASS mimetype_stored                    'mimetype' is stored
+PASS mimetype_content                   'mimetype' says image/openraster
+PASS stack_xml_parses                   root <image>
+PASS canvas_size                        canvas 320x200
+PASS attributes_supported               only supported attributes
+PASS layer_names_present                every layer has a name
+PASS layer_name_unique                  layer names are unique
+WARN layer_name_invalid                 names that do not match ^[A-Za-z][A-Za-z0-9._-]*$: 'Title tint'
+PASS values_valid                       opacity, visibility, composite-op, x, y are valid
+PASS layer_src                          all 2 layers
+PASS layer_src_safe                     all 2 layers
+PASS layer_png_present                  all 2 layers
+PASS layer_png_valid                    all 2 layers
+PASS layer_png_8bit_rgba                all 2 layers
+PASS layer_inside_canvas                all 2 layers
+PASS mergedimage_size_ok                mergedimage.png matches the canvas
+RESULT validate_ora: 21 checks, 0 FAIL, 1 WARN (profile=reference)
+exit=0
+
+$ bash pipeline/roundtrip/svg_roundtrip.sh
+svg_roundtrip: output folder renders/wp06/svg, touching tool: Inkscape 1.2.2 (b0a8486541, 2022-12-01)
+[1/6] generating the synthetic rig (svg_rig.py gen) ...
+wrote rig.svg
+[2/6] Inkscape plain-SVG export, the stand-in touching tool ...
+      ok (3053 bytes)
+[3/6] check_ids.py (reused unchanged): clean pass-through, rig versus Inkscape plain-SVG ...
+PASS svg.clean_passthrough  gate_exit=0 (wanted 0)  none
+[4/6] planting three defects in a copy of the Inkscape output ...
+      planted ids_stripped: removed 23 unreferenced ids, kept ['bg-grad', 'tick']
+PASS svg.planted_ids_stripped  gate_exit=1 (wanted 1)  ids_lost
+      planted kind_changed: circle disc-a became an ellipse (same id, same data-*)
+PASS svg.planted_kind_changed  gate_exit=1 (wanted 1)  element_kind_changed
+      planted pivot_dropped: removed data-pivot from 6 elements
+PASS svg.planted_pivot_dropped  gate_exit=1 (wanted 1)  data_attr_changed
+[5/6] two real touch-ups through Inkscape (move a child, move a group) and Inkscape's own SVG format ...
+PASS svg.touch_child_moved  gate_exit=0 (wanted 0)  none
+PASS svg.touch_group_moved  gate_exit=0 (wanted 0)  none
+PASS svg.inkscape_svg_format  gate_exit=0 (wanted 0)  none
+[6/6] writing the Inkscape finding (data-* attributes, ids, viewBox, namespaces) ...
+      Inkscape plain-SVG export kept 18 of 18 data-* attributes verbatim (changed 0, dropped 0) and 17 of 17 authored ids; it added 6 ids of its own to elements that had none.
+        inkscape_svg_format: data-* kept 18 of 18 (changed 0, dropped 0), ids 17 of 17, transform added to nothing
+        touch_child_moved: data-* kept 18 of 18 (changed 0, dropped 0), ids 17 of 17, transform added to nothing
+        touch_group_moved: data-* kept 18 of 18 (changed 0, dropped 0), ids 17 of 17, transform added to orbit
+files written: the .svg files and gate_lines.txt in the output folder, the finding JSON; the throw-away Inkscape profile is removed
+RESULT svg_roundtrip: all expectations held (clean pass-through 0; three planted defects 1 each; touch-ups 0)
+exit=0
+
+$ python3 -I pipeline/roundtrip/emit_otio.py pipeline/roundtrip/spec/neutral_timeline.example.json renders/wp06/ch.otio
+wrote renders/wp06/ch.otio: 4 clips, 3 dissolves, 3 markers, 1 audio cue(s), 480 frames at 24 fps (20.0 s); generated 5 test media file(s)
+exit=0
+
+$ python3 -I pipeline/roundtrip/validate_otio.py renders/wp06/ch.otio --with-otio <scratch>/venv-otio/bin/python
+PASS json_parses                        20167 bytes
+PASS timeline_schema                    Timeline.1, 2 tracks
+PASS video_track_present                a Video track exists
+PASS rate_24                            all 33 times are at 24 fps
+PASS clip_duration                      all 5 clips
+PASS media_reference                    all 5 clips
+PASS media_reference_single_file        all 5 clips
+PASS target_url_relative                all 5 clips
+PASS target_url_forward_slashes         all 5 clips
+PASS media_exists                       all 5 clips
+PASS source_in_available                all 5 clips
+PASS dissolve_between_clips             3 dissolve(s)
+PASS dissolve_offsets_valid             3 dissolve(s)
+PASS dissolve_fits                      3 dissolve(s)
+PASS markers_present                    3 markers (2 on the stack, 1 on clips)
+PASS filmcraft_keys_known               5 clip(s) carry metadata.filmcraft
+PASS filmcraft_effects                  5 clip(s) carry metadata.filmcraft
+PASS filmcraft_values                   5 clip(s) carry metadata.filmcraft
+PASS filmcraft_keyframes                5 clip(s) carry metadata.filmcraft
+PASS filmcraft_ticks                    5 clip(s) carry metadata.filmcraft
+PASS motion_edge_safe                   5 clip(s) carry metadata.filmcraft
+PASS otio_loads                         opentimelineio 0.18.1 read the file
+PASS otio_version_pinned                0.18.1
+PASS otio_counts_match                  5 clips, 3 transitions, 3 markers
+PASS otio_duration_matches              480 frames at 24 fps
+PASS otio_global_start_rate             rate 24
+PASS otio_filmcraft_preserved           5 clip(s): unchanged after write and read
+RESULT validate_otio: 27 checks, 0 FAIL, 0 WARN
+exit=0
+
+$ bash pipeline/roundtrip/adapter_probe.sh
+[1/5] looking for the opentimelineio interpreter (<scratch>/venv-otio by default) ...
+      ok
+[2/5] writing the synthetic 24 fps timeline169.json from the neutral spec (no media files are created) ...
+      ok
+[3/5] running the reused make_otio.py, unchanged, in the scratch folder (core adapters only) ...
+      FAIL  cmx_3600 NotSupportedError Could not find plugin: 'cmx_3600' in kind_list: 'adapters'. options: [otio.adapter.Adapter(name='otio_json', filepath='otio_json.py', suffixes=['otio']), otio.adapter.Adapter(name='otioz', filepath='o
+      FAIL  fcpx_xml NotSupportedError Could not find plugin: 'fcpx_xml' in kind_list: 'adapters'. options: [otio.adapter.Adapter(name='otio_json', filepath='otio_json.py', suffixes=['otio']), otio.adapter.Adapter(name='otioz', filepath='o
+      FAIL  kdenlive NotSupportedError Could not find plugin: 'kdenlive' in kind_list: 'adapters'. options: [otio.adapter.Adapter(name='otio_json', filepath='otio_json.py', suffixes=['otio']), otio.adapter.Adapter(name='otioz', filepath='o
+      FAIL  mlt_xml NotSupportedError Could not find plugin: 'mlt_xml' in kind_list: 'adapters'. options: [otio.adapter.Adapter(name='otio_json', filepath='otio_json.py', suffixes=['otio']), otio.adapter.Adapter(name='otioz', filepath='ot
+      read back clips: ['ch01_s01', 'ch01_s02', 'ch01_s03', 'ch01_s04', 'voice']
+      make_otio.py exit 0
+[4/5] plug-in venv: skipped (add --with-plugins to build it and probe again)
+[5/5] turning the output into JSON (folders replaced by <work>) ...
+{
+  "core_adapters_installed": [
+    "otio_json",
+    "otioz",
+    "otiod"
+  ],
+  "core_only": {
+    "adapters": {
+      "cmx_3600": {
+        "bytes": null,
+        "error": "NotSupportedError: Could not find plugin: 'cmx_3600' in kind_list: 'adapters'.",
+        "label": "EDL (CMX 3600)",
+        "plugin_package": "otio-cmx3600-adapter",
+        "worked": false
+      },
+      "fcpx_xml": {
+        "bytes": null,
+        "error": "NotSupportedError: Could not find plugin: 'fcpx_xml' in kind_list: 'adapters'.",
+        "label": "FCPXML",
+        "plugin_package": "otio-fcpx-xml-adapter",
+        "worked": false
+      },
+      "kdenlive": {
+        "bytes": null,
+        "error": "NotSupportedError: Could not find plugin: 'kdenlive' in kind_list: 'adapters'.",
+        "label": "Kdenlive project",
+        "plugin_package": "otio-kdenlive-adapter",
+        "worked": false
+      },
+      "mlt_xml": {
+        "bytes": null,
+        "error": "NotSupportedError: Could not find plugin: 'mlt_xml' in kind_list: 'adapters'.",
+        "label": "MLT XML",
+        "plugin_package": "otio-mlt-adapter",
+        "worked": false
+      }
+    },
+    "make_otio_exit": 0,
+    "plain_otio_written": true,
+    "read_back_clips": [
+      "ch01_s01",
+      "ch01_s02",
+      "ch01_s03",
+      "ch01_s04",
+      "voice"
+    ],
+    "working": []
+  },
+  "finding": "opentimelineio 0.18.1 ships only otio_json, otioz, otiod; adapters that wrote a file with it alone: none",
+  "make_otio_sha256": "27855321755767b14e858e803c293aa2ed9082bf7acc1c02991486a94acb4871",
+  "make_otio_unchanged_in_git": true,
+  "opentimelineio": "0.18.1",
+  "schema": "lj-adapter-probe/1",
+  "timeline169": {
+    "fps": 24,
+    "shots": 4,
+    "size": [
+      1920,
+      1080
+    ]
+  },
+  "with_plugins": null,
+  "working_core_only": []
+}
+files written: none (the scratch folder <scratch>/wp06/ is cleaned up; nothing under the repo changes)
+exit=0
+
+$ python3 -I pipeline/roundtrip/kb_scale.py 3600 2400; python3 -I pipeline/roundtrip/kb_scale.py 2880 1620; python3 -I pipeline/roundtrip/kb_scale.py --selftest
+source 3600x2400 into 1920x1080
+  fit   45.00   (45.0 to one decimal)
+  cover 53.34   (53.3 to one decimal; rounded up so the frame stays covered)
+  Ken Burns 53.34 -> 64.01 (x1.20)
+source 2880x1620 into 1920x1080
+  fit   66.67   (66.7 to one decimal)
+  cover 66.67   (66.7 to one decimal; rounded up so the frame stays covered)
+  Ken Burns 66.67 -> 80.00 (x1.20)
+PASS kb_scale selftest: fit 45.0, cover 53.3 (53.34), 2880x1620 66.67 for both, rounding, edge safety
+exit=0

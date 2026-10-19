@@ -1,0 +1,181 @@
+#!/usr/bin/env python3
+"""A STAND-IN for effectcraft-cli, used only to test the SP1 harness. It is not EffectCraft and says nothing about EffectCraft.
+It implements the command surface the T1/T4 drivers use (apps/effectcraft-cli usage text and docs/agents.md): exec, set, render, render-frame, info, commands.
+Planted defects are switched on by the words in fake_bug.txt next to this script: noalpha, nondeterministic, slow, badprores, nodecode, oom. Standard library, Pillow, ffmpeg."""
+import hashlib, json, os, subprocess, sys, tempfile, time
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+BUGS = set(open(os.path.join(HERE, "fake_bug.txt")).read().split()) if os.path.exists(os.path.join(HERE, "fake_bug.txt")) else set()
+VERSION = os.environ.get("FAKE_VERSION") or (open(os.path.join(HERE, "fake_version.txt")).read().strip() if os.path.exists(os.path.join(HERE, "fake_version.txt")) else "0.11.1")
+IDS = ["comp.new", "layer.newText", "layer.newSolid", "layer.newShape", "layer.addShapeItem", "edit.pasteSvg", "layer.setSwitch", "layer.newCamera", "prop.addKey", "prop.set"]
+
+
+def die(msg, code=1):
+    sys.stderr.write("effectcraft-cli: %s\n" % msg)
+    sys.exit(code)
+
+
+def load(p):
+    return json.load(open(p)) if p and os.path.exists(p) else {"comps": {}, "active": None}
+
+
+def frame_png(st, comp, frame, out, transparent=True):
+    from PIL import Image, ImageDraw
+    c = st["comps"][comp]
+    W, H = c["w"], c["h"]
+    layers = c["layers"]
+    solid = any(l["kind"] == "solid" for l in layers)
+    im = Image.new("RGBA", (W, H), (16, 24, 32, 255) if solid else (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    t = frame / float(c["fps"])
+    for l in layers:
+        if l["kind"] == "text":
+            wob = (int(hashlib.sha256(("%s%d" % (l["name"], frame)).encode()).hexdigest()[:2], 16) % 9) - 4
+            if "nondeterministic" in BUGS:
+                wob = os.urandom(1)[0] % 9
+            d.text((W // 4 + wob, H // 2), l.get("text", ""), fill=(255, 255, 255, int(min(1.0, t) * 255)))
+        elif l["kind"] == "shape":
+            z = l.get("z", 0)
+            r = max(8, W // 8 - z // 40)
+            cx = W // 2 + l.get("dx", 0)
+            d.ellipse([cx - r, H // 2 - r, cx + r, H // 2 + r], fill=(200, 160, 80, 255))
+        elif l["kind"] == "svg":
+            end = min(1.0, t / 2.0)
+            d.line([(W // 10, H * 9 // 10), (W // 10 + int(W * 0.8 * end), H // 10)], fill=(255, 255, 255, 255), width=6)
+    if "nondeterministic" in BUGS:
+        im.putpixel((1, 1), tuple(os.urandom(3)) + (255,))  # a different pixel every run
+    if "noalpha" in BUGS:
+        im = im.convert("RGB")
+    im.save(out)
+
+
+def main(argv):
+    if argv and argv[0] == "--version":
+        print("effectcraft-cli %s" % VERSION)
+        return 0
+    proj = save_to = None
+    do_save = False
+    rest = []
+    i = 0
+    while i < len(argv):
+        a = argv[i]
+        if a == "--project":
+            proj = argv[i + 1]; i += 2
+        elif a == "--save-as":
+            save_to = argv[i + 1]; i += 2
+        elif a == "--save":
+            do_save = True; i += 1
+        elif a in ("--empty", "--demo", "--json", "--gpu"):
+            i += 1
+        else:
+            rest.append(a); i += 1
+    if not rest:
+        die("usage", 2)
+    sub, args = rest[0], rest[1:]
+    st = load(proj)
+    if "oom" in BUGS and sub == "render":
+        b = bytearray(11 * 1024 * 1048576)
+        for k in range(0, len(b), 4096):
+            b[k] = 1
+    if sub == "info":
+        print(json.dumps({"app": "effectcraft", "version": VERSION, "comps": len(st["comps"]), "renderer": "cpu"}))
+        return 0
+    if sub == "commands":
+        for k in range(40):
+            print("cmd.%02d  a stand-in command" % k)
+        for c in IDS:
+            print(c)
+        return 0
+    if sub == "exec" and args and args[0] == "--list":
+        f = args[args.index("--filter") + 1] if "--filter" in args else ""
+        print(json.dumps([{"id": c, "params": "stand-in"} for c in IDS if f in c]))
+        return 0
+    if sub == "exec":
+        cid = args[0]
+        p = json.loads(args[args.index("--params") + 1]) if "--params" in args else {}
+        res = {}
+        compname = p.get("comp") or st["active"]
+        if cid == "comp.new":
+            st["comps"][p["name"]] = {"w": p["width"], "h": p["height"], "fps": p["frameRate"], "dur": p["duration"], "layers": []}
+            st["active"] = p["name"]
+            res = {"comp": p["name"]}
+        elif cid in ("layer.newText", "layer.newSolid", "layer.newShape", "layer.newCamera"):
+            kind = {"layer.newText": "text", "layer.newSolid": "solid", "layer.newShape": "shape", "layer.newCamera": "camera"}[cid]
+            st["comps"][compname]["layers"].append({"name": p["name"], "kind": kind, "text": p.get("text", "")})
+            res = {"layer": len(st["comps"][compname]["layers"])}
+        elif cid == "edit.pasteSvg":
+            st["comps"][compname]["layers"].append({"name": p.get("name", "svg"), "kind": "svg"})
+            res = {"layer": len(st["comps"][compname]["layers"]), "skipped": 0}
+        elif cid == "layer.addShapeItem":
+            res = {"uid": 7, "path": "contents/trim"}
+        elif cid == "layer.setSwitch":
+            pass
+        else:
+            die("unknown command id %s" % cid)
+        print(json.dumps(res))
+    elif sub == "set":
+        comp, layer, path, value = args[0], args[1], args[2], args[3]
+        if "--expression" in args:
+            pass
+        if path == "transform/position" and layer.startswith("P"):
+            for l in st["comps"][comp]["layers"]:
+                if l["name"] == layer:
+                    v = json.loads(value)
+                    l["z"] = int(v[2]) if len(v) > 2 else 0
+                    l["dx"] = int(v[0] - st["comps"][comp]["w"] / 2)
+        print(json.dumps({"ok": True}))
+    elif sub == "render-frame":
+        comp = args[args.index("--comp") + 1]
+        out = args[args.index("--out") + 1]
+        frame_png(st, comp, int(round(float(args[args.index("--time") + 1]) * st["comps"][comp]["fps"])), out)
+        print(json.dumps({"path": out}))
+        return 0
+    elif sub == "render":
+        comp = args[args.index("--comp") + 1]
+        out = args[args.index("--out") + 1]
+        fmt = args[args.index("--format") + 1]
+        a0 = float(args[args.index("--start") + 1]) if "--start" in args else 0.0
+        a1 = float(args[args.index("--end") + 1]) if "--end" in args else st["comps"][comp]["dur"]
+        c = st["comps"][comp]
+        n = max(1, int(round((a1 - a0) * c["fps"])))
+        if "nodecode" in BUGS and fmt == "prores":
+            n = n  # frames are fine; the file is corrupted below
+        tmp = tempfile.mkdtemp(prefix="fe_")
+        for k in range(n):
+            if "slow" in BUGS and comp == "Parallax":
+                time.sleep(0.2)
+            if fmt == "png":
+                frame_png(st, comp, k, out.replace("[#####]", "%05d" % k))
+            else:
+                frame_png(st, comp, k, os.path.join(tmp, "f%05d.png" % k))
+        if fmt == "prores":
+            pf = "yuva444p12le" if "badprores" not in BUGS else "yuv422p10le"
+            r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-framerate", str(c["fps"]), "-i", os.path.join(tmp, "f%05d.png"), "-c:v", "prores_ks", "-profile:v", "4", "-pix_fmt", pf, "-vendor", "apl0", out],
+                               capture_output=True, text=True)
+            if r.returncode:
+                die("encode: " + r.stderr[-200:])
+            if "nodecode" in BUGS:
+                with open(out, "r+b") as f:
+                    f.seek(os.path.getsize(out) // 2)
+                    f.write(b"\xff" * 4096)
+        elif fmt == "h264":
+            r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-framerate", str(c["fps"]), "-i", os.path.join(tmp, "f%05d.png"), "-c:v", "libx264", "-preset", "ultrafast", "-pix_fmt", "yuv420p", out],
+                               capture_output=True, text=True)
+            if r.returncode:
+                die("encode: " + r.stderr[-200:])
+        for f in os.listdir(tmp):
+            os.remove(os.path.join(tmp, f))
+        os.rmdir(tmp)
+        print(json.dumps({"frames": n}))
+        return 0
+    else:
+        die("unknown subcommand %s" % sub, 2)
+    if save_to:
+        json.dump(st, open(save_to, "w"))
+    elif do_save and proj:
+        json.dump(st, open(proj, "w"))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

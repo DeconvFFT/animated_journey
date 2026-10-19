@@ -1,0 +1,227 @@
+#!/usr/bin/env python3
+"""A STAND-IN for filmcraft-cli, used only to test the SP1 harness. It is not FilmCraft and says nothing about FilmCraft.
+It implements the command surface the T1/T2 drivers use (the shape of research/cinematic-quality-fixtures/filmcraft_push.py and docs/agents.md) with the
+model the T2 driver checks: scale 100 = native pixels, position (960,540) = centre of the frame, keyframes linear. Planted defects are switched on by
+the words in the file fake_bug.txt next to this script: leak, offset, dropframe, offline, dissolve, crash. No network, no GPU, standard library, Pillow, ffmpeg."""
+import json, os, re, subprocess, sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+BUGS = set(open(os.path.join(HERE, "fake_bug.txt")).read().split()) if os.path.exists(os.path.join(HERE, "fake_bug.txt")) else set()
+TICKS = 254016000000
+VERSION = os.environ.get("FAKE_VERSION") or (open(os.path.join(HERE, "fake_version.txt")).read().strip() if os.path.exists(os.path.join(HERE, "fake_version.txt")) else "0.9.0")
+IDS = ["file.newProject", "file.import", "file.newSequence", "timeline.place", "effects.setParam", "effects.setInterpolation", "sequence.applyVideoTransition", "file.exportInterchange"]
+
+
+def die(msg, code=1):
+    sys.stderr.write("filmcraft-cli: %s\n" % msg)
+    sys.exit(code)
+
+
+def touch_memory(mb):
+    b = bytearray(int(mb * 1048576))
+    for i in range(0, len(b), 4096):
+        b[i] = 1
+    return b
+
+
+def load(path):
+    if path and os.path.exists(path):
+        return json.load(open(path))
+    return {"next": 1, "items": {}, "seq": None, "clips": []}
+
+
+def save(st, path):
+    json.dump(st, open(path, "w"))
+
+
+def alloc(st):
+    i = st["next"]
+    st["next"] += 1
+    return i
+
+
+def scale_at(clip, t):
+    keys = sorted(clip.get("keys", {}).get("scale", []))
+    if not keys:
+        return None
+    if t <= keys[0][0]:
+        return keys[0][1]
+    if t >= keys[-1][0]:
+        return keys[-1][1]
+    for (t0, v0), (t1, v1) in zip(keys, keys[1:]):
+        if t0 <= t <= t1:
+            return v0 + (v1 - v0) * (t - t0) / float(t1 - t0)
+
+
+def render_frame(st, sec):
+    from PIL import Image
+    seq = st["seq"]
+    W, H, fps = seq["w"], seq["h"], seq["fps"]
+    t = int(round(sec * TICKS))
+
+    def of(clip):
+        im = Image.open(st["items"][str(clip["item"])]["path"]).convert("RGB")
+        w, h = im.size
+        s = scale_at(clip, t - clip["start"])
+        s = (max(W / float(w), H / float(h)) * 100.0) if s is None else s
+        k = s / 100.0
+        dx = 3.0 if "offset" in BUGS else 0.0
+        return im.transform((W, H), Image.AFFINE, (1 / k, 0, w / 2.0 - (W / 2.0 - dx) / k, 0, 1 / k, h / 2.0 - (H / 2.0) / k), resample=Image.BILINEAR)
+
+    cur = [c for c in st["clips"] if c["start"] <= t < c["start"] + c["dur"]]
+    if not cur:
+        return Image.new("RGB", (W, H), (0, 0, 0))
+    base = of(cur[-1])
+    for tr in st.get("transitions", []):
+        clip = next((c for c in st["clips"] if c["id"] == tr["clip"]), None)
+        if not clip:
+            continue
+        half = tr["frames"] * (TICKS // fps) // 2
+        if clip["start"] - half <= t < clip["start"] + half:
+            prev = [c for c in st["clips"] if c["start"] + c["dur"] == clip["start"]]
+            if prev:
+                a = (t - (clip["start"] - half)) / float(2 * half)
+                a = a * 0.8 if "dissolve" in BUGS else a
+                return Image.blend(of(prev[0]), of(clip), a)
+    return base
+
+
+def main(argv):
+    if argv and argv[0] == "--version":
+        print("filmcraft-cli %s" % VERSION)
+        return 0
+    proj = save_to = None
+    do_save = False
+    rest = []
+    i = 0
+    while i < len(argv):
+        a = argv[i]
+        if a == "--project":
+            proj = argv[i + 1]; i += 2
+        elif a == "--save-as":
+            save_to = argv[i + 1]; i += 2
+        elif a == "--save":
+            do_save = True; i += 1
+        elif a in ("--demo", "--compact", "--keep-going"):
+            i += 1
+        else:
+            rest.append(a); i += 1
+    if not rest:
+        die("usage: filmcraft-cli [OPTIONS] <SUBCOMMAND>", 2)
+    sub, args = rest[0], rest[1:]
+    st = load(proj)
+    n_items = len(st["items"])
+    if "leak" in BUGS:
+        touch_memory(30 + 120 * n_items)
+    else:
+        touch_memory(30 + 1.0 * n_items)
+    if sub == "commands":
+        for k in range(40):
+            print("cmd.%02d   a stand-in command" % k)
+        for c in IDS:
+            print(c)
+        return 0
+    if sub == "describe":
+        if args and args[0] in IDS:
+            print(json.dumps({"id": args[0], "params": {"doc": "stand-in"}}))
+            return 0
+        die("unknown command", 1)
+    if sub == "inspect":
+        what = args[0] if args else "sequence"
+        if what == "project":
+            print(json.dumps({"items": [{"id": int(k), "name": os.path.basename(v["path"]), "path": v["path"]} for k, v in st["items"].items()]}))
+        else:
+            seq = st["seq"] or {"w": 1920, "h": 1080, "fps": 24}
+            print(json.dumps({"sequence": dict(seq, durationFrames=0), "clips": [{"id": c["id"], "item": c["item"], "track": "V1", "start": c["start"], "duration": c["dur"]} for c in st["clips"]]}))
+        return 0
+    cmds = []
+    if sub == "exec":
+        cid = args[0]
+        params = {}
+        for a in args[1:]:
+            if a.startswith("{"):
+                params = json.loads(a)
+            elif "=" in a:
+                k, v = a.split("=", 1)
+                params[k] = v
+        cmds = [(cid, params)]
+    elif sub == "run":
+        for ln in open(args[0]):
+            ln = ln.strip()
+            if ln and not ln.startswith("#"):
+                d = json.loads(ln)
+                cmds.append((d["id"], d.get("params", {})))
+    if cmds:
+        out = []
+        for cid, p in cmds:
+            res = {}
+            if cid == "file.newProject":
+                st = {"next": 1, "items": {}, "seq": None, "clips": []}
+            elif cid == "file.import":
+                if "crash" in BUGS and len(p["paths"]) >= 12:
+                    os._exit(139)
+                ids = []
+                for path in p["paths"]:
+                    i2 = alloc(st); st["items"][str(i2)] = {"path": path}; ids.append(i2)
+                res = {"items": ids}
+            elif cid == "file.newSequence":
+                st["seq"] = {"w": p["width"], "h": p["height"], "fps": p["fps"]}
+                st["next"] = max(st["next"], 8)
+            elif cid == "timeline.place":
+                items = p.get("items") or [p["item"]]
+                made = []
+                for k, it in enumerate(items):
+                    c = {"id": alloc(st), "item": it, "start": int(round(p.get("seconds", k) * TICKS)), "dur": int(p.get("duration", 5 * TICKS)), "keys": {}}
+                    st["clips"].append(c); made.append(c["id"])
+                res = {"clips": made}
+            elif cid == "effects.setParam":
+                c = next(c for c in st["clips"] if c["id"] == p["clip"])
+                c.setdefault("keys", {}).setdefault(p["param"], []).append([p.get("time", 0), p["value"]])
+            elif cid == "effects.setInterpolation":
+                pass
+            elif cid == "sequence.applyVideoTransition":
+                st.setdefault("transitions", []).append({"clip": p["clip"], "frames": p["frames"]})
+            else:
+                die("unknown command id %s" % cid, 1)
+            out.append({"id": cid, "ok": True, "result": res})
+        if len(out) == 1 and sub == "exec":
+            print(json.dumps(out[0]["result"]))
+        else:
+            for k, o in enumerate(out):
+                print(json.dumps({"line": k + 1, "id": o["id"], "ok": True, "result": o["result"]}))
+        if save_to:
+            save(st, save_to)
+        elif do_save and proj:
+            save(st, proj)
+        return 0
+    if sub == "render":
+        sec = float(args[args.index("--seconds") + 1]); out = args[args.index("--out") + 1]
+        render_frame(st, sec).save(out)
+        print(json.dumps({"path": out}))
+        return 0
+    if sub == "export":
+        out = args[0]
+        preset = args[args.index("--preset") + 1] if "--preset" in args else ""
+        seq = st["seq"]
+        total = max((c["start"] + c["dur"] for c in st["clips"]), default=0)
+        a0 = float(args[args.index("--start") + 1]) if "--start" in args else 0.0
+        a1 = float(args[args.index("--end") + 1]) if "--end" in args else total / float(TICKS)
+        frames = int(round((a1 - a0) * seq["fps"])) - (1 if "dropframe" in BUGS else 0)
+        offline = [{"item": int(k), "path": v["path"], "status": "missing"} for k, v in st["items"].items() if not os.path.exists(v["path"])]
+        if "offline" in BUGS:
+            offline = [{"item": 1, "path": "x", "status": "missing"}]
+        if "ProRes" in preset:
+            codec = ["-c:v", "prores_ks", "-profile:v", "3", "-pix_fmt", "yuv422p10le", "-vendor", "apl0"]
+        else:
+            codec = ["-c:v", "libx264", "-preset", "ultrafast", "-pix_fmt", "yuv420p"]
+        r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "color=c=0x305070:s=320x180:r=%d" % seq["fps"], "-frames:v", str(frames)] + codec + [out],
+                           capture_output=True, text=True)
+        if r.returncode:
+            die("encode failed: " + r.stderr[-200:], 1)
+        print(json.dumps({"path": out, "frames": frames, "offlineMedia": offline}))
+        return 1 if offline else 0
+    die("unknown subcommand %s" % sub, 2)
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

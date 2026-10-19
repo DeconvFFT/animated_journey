@@ -1,0 +1,29 @@
+{
+  "schema": "lj-neutral-timeline/1",
+  "name": "Chapter 01 synthetic test",
+  "synthetic_media": true,
+  "fps": 24,
+  "sequence": {"width": 1920, "height": 1080},
+  "still_available_frames": 240,
+  "markers": [
+    {"name": "Chapter 01", "at_frame": 0, "color": "GREEN", "comment": "synthetic test chapter"},
+    {"name": "Cue: title in", "at_frame": 216, "color": "YELLOW", "comment": "marker at the start of the third shot's dissolve"}
+  ],
+  "shots": [
+    {"id": "ch01_s01", "source": "media/ch01_s01.png", "source_size": [2880, 1620], "duration_frames": 120,
+     "motion": {"scale": {"from": "cover", "zoom": 1.2}, "position": [[960, 540], [930, 520]], "ease": "EaseOut"},
+     "transition_out": {"type": "dissolve", "frames": 24},
+     "markers": [{"name": "beat 1", "at_frame": 60, "color": "BLUE", "comment": ""}]},
+    {"id": "ch01_s02", "source": "media/ch01_s02.png", "source_size": [2880, 1620], "duration_frames": 120,
+     "motion": {"scale": {"from": "cover", "zoom": 1.12}, "position": [[960, 540], [1000, 540]], "ease": "EaseOut"},
+     "transition_out": {"type": "dissolve", "frames": 24}},
+    {"id": "ch01_s03", "source": "media/ch01_s03.png", "source_size": [2880, 1620], "duration_frames": 120,
+     "motion": {"scale": {"from": "cover", "zoom": 1.2, "direction": "out"}, "position": [[930, 520], [960, 540]], "ease": "EaseOut"},
+     "transition_out": {"type": "dissolve", "frames": 24}},
+    {"id": "ch01_s04", "source": "media/ch01_s04.png", "source_size": [2880, 1620], "duration_frames": 120,
+     "motion": {"scale": {"from": "cover", "zoom": 1.0}, "position": [[960, 540], [960, 540]], "ease": "Linear"}}
+  ],
+  "audio": [
+    {"id": "music_bed", "source": "media/mix_ch01.wav", "start_frame": 0, "duration_frames": 480, "gain_db": -18.0, "duck_against": null}
+  ]
+}

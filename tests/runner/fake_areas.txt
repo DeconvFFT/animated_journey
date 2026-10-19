@@ -1,0 +1,7 @@
+# Fake areas for the runner tests (build plan WP-11a). Format: area|entry|evidence-subfolder|wave|title
+# fk_missing has no tests/ folder on purpose: it is the "not landed" case.
+fk_pass|FK-1|fk-pass|1|passing fake area (writes 3 counted envelopes and one older duplicate)
+fk_fail|FK-2|fk-fail|1|failing fake area (exits 1)
+fk_missing|FK-3|fk-missing|1|fake area that has not landed
+fk_hang|FK-4|fk-hang|1|fake area that hangs and ignores TERM
+fk_email|FK-5|fk-email|1|fake area whose output holds a planted e-mail-shaped string

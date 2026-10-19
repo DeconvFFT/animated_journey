@@ -1,0 +1,41 @@
+{
+  "schema": "lj-teststrings/1",
+  "rules": "only these strings may appear as test text; neutral; Sanskrit-derived where there is a choice (4.10)",
+  "scripts": {
+    "latin": {
+      "font_script_tag": "Latn",
+      "strings": [
+        {"id": "lat-test", "text": "Test 0123", "kind": "word", "checked_by_reader": false}
+      ]
+    },
+    "devanagari": {
+      "font_script_tag": "Deva",
+      "noto_family": "Noto Sans Devanagari",
+      "headline": true,
+      "strings": [
+        {"id": "dev-digits", "text": "०१२३४५६७८९", "kind": "digits", "marks": [], "checked_by_reader": false},
+        {"id": "dev-pariksha", "text": "परीक्षण", "gloss": "test", "kind": "word",
+         "marks": [{"codepoints": ["U+0940"], "kind": "post_base"}, {"codepoints": ["U+094D"], "kind": "conjunct"}],
+         "checked_by_reader": false},
+        {"id": "dev-pustak", "text": "पुस्तक", "gloss": "book", "kind": "word",
+         "marks": [{"codepoints": ["U+0941"], "kind": "below"}, {"codepoints": ["U+094D"], "kind": "conjunct"}],
+         "checked_by_reader": false},
+        {"id": "dev-din", "text": "दिन", "gloss": "day", "kind": "word",
+         "marks": [{"codepoints": ["U+093F"], "kind": "pre_base"}],
+         "checked_by_reader": false},
+        {"id": "dev-sankhya", "text": "संख्या", "gloss": "number", "kind": "word",
+         "marks": [{"codepoints": ["U+0902"], "kind": "above"}, {"codepoints": ["U+094D"], "kind": "conjunct"}],
+         "checked_by_reader": false},
+        {"id": "dev-shabd", "text": "शब्द", "gloss": "word", "kind": "word",
+         "marks": [{"codepoints": ["U+094D"], "kind": "conjunct"}],
+         "checked_by_reader": false}
+      ]
+    },
+    "tamil": {"status": "pending_O-10", "strings": []},
+    "telugu": {"status": "pending_O-10", "strings": []},
+    "kannada": {"status": "pending_O-10", "strings": []},
+    "malayalam": {"status": "pending_O-10", "strings": []},
+    "bengali": {"status": "pending_O-10", "strings": []},
+    "gujarati": {"status": "pending_O-10", "strings": []}
+  }
+}

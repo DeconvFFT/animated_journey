@@ -1,0 +1,72 @@
+{
+ "actual": "ffprobe: {\"width\": 1920, \"height\": 1080, \"r_frame_rate\": \"24/1\", \"nb_frames\": \"48\", \"pix_fmt\": \"yuv420p\", \"color_range\": \"tv\", \"color_space\": \"bt709\", \"color_primaries\": \"bt709\", \"color_transfer\": \"bt709\", \"codec_name\": \"h264\"}; mismatches: {}; decode errors: ''; --encode from PNG frames mismatches: {}; piped and PNG-encoded files byte-identical: True",
+ "data": {
+  "builtin_byte_identical_to_chains_json": true,
+  "builtin_chain_ffprobe": {
+   "codec_name": "h264",
+   "color_primaries": "bt709",
+   "color_range": "tv",
+   "color_space": "bt709",
+   "color_transfer": "bt709",
+   "height": 1080,
+   "nb_frames": "48",
+   "pix_fmt": "yuv420p",
+   "r_frame_rate": "24/1",
+   "width": 1920
+  },
+  "byte_identical_pipe_vs_png": true,
+  "chain_check_in_report": true,
+  "chain_source": "chains.json:h264_venue",
+  "encode_from_frames_ffprobe": {
+   "codec_name": "h264",
+   "color_primaries": "bt709",
+   "color_range": "tv",
+   "color_space": "bt709",
+   "color_transfer": "bt709",
+   "height": 1080,
+   "nb_frames": "48",
+   "pix_fmt": "yuv420p",
+   "r_frame_rate": "24/1",
+   "width": 1920
+  },
+  "ffprobe": {
+   "codec_name": "h264",
+   "color_primaries": "bt709",
+   "color_range": "tv",
+   "color_space": "bt709",
+   "color_transfer": "bt709",
+   "height": 1080,
+   "nb_frames": "48",
+   "pix_fmt": "yuv420p",
+   "r_frame_rate": "24/1",
+   "width": 1920
+  },
+  "file_bytes": 527394,
+  "profile": "High",
+  "seconds": 28.9
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 406,
+  "avail_mb_min": 406,
+  "avail_mb_start": 406,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "--chain h264 writes 48 frames; ffprobe 1920x1080, r_frame_rate 24/1, nb_frames 48, yuv420p, tv, bt709 matrix/primaries/transfer; decodes clean; no PNGs written in video mode",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "a5_chain_output",
+ "unverified_reasons": []
+}

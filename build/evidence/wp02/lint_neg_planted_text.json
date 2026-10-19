@@ -1,10 +1,10 @@
 {
- "actual": "scripts/redaction_patterns.json (WP-03, build plan 4.13) has not landed; ops_lint fails closed without it. Set LJ_PATTERNS to run against another file.",
+ "actual": "expected 'ops/GATHER.md:3 [email]' in the output; got:\nisions.csv [decisions_mismatch] D-31 is in DECISIONS.md but missing from the CSV\n  FAIL ops/decisions.csv [decisions_mismatch] O-02: column 'short_title' differs from the register (csv: 'Country and state of the premiere (TD-7), her home state and' / register: 'Country and state of the premiere (TD-7), and the countries ')\n  FAIL ops/decisions.csv [decisions_mismatch] O-02: column 'note' differs from the register (csv: 'she is from India' / register: 'she is from Bhavnagar, Gujarat, D-31')\n  FAIL ops/decisions.csv [id_set] missing from the CSV: D-31\nops_lint: FAIL (4 failure(s), 0 warning(s))\n",
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 605,
-  "avail_mb_min": 605,
-  "avail_mb_start": 605,
+  "avail_mb_end": 464,
+  "avail_mb_min": 464,
+  "avail_mb_start": 464,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0
@@ -18,7 +18,7 @@
  "notes": "",
  "package": "WP-02",
  "schema": "lj-evidence/1",
- "status": "BLOCKED",
+ "status": "FAIL",
  "test": "lint_neg_planted_text",
  "unverified_reasons": []
 }

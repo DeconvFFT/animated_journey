@@ -1,0 +1,115 @@
+{
+ "schema": "lj-sp2-results/1",
+ "sources": "build/evidence/wp04/*.json",
+ "rows": [
+  {
+   "item": "(a) flat scene speed",
+   "test": "a6_flat_fps",
+   "status": "PASS",
+   "pass_mark": ">= 8 fps",
+   "measured_fps": 11.82,
+   "peak_rss": {
+    "browser_tree_mb": 689,
+    "ffmpeg_mb": 0,
+    "node_mb": 93,
+    "note": "RSS counts shared pages in every process, so the sum over-counts",
+    "sum_mb": 782
+   }
+  },
+  {
+   "item": "(b) rough.js + GSAP + baked grain",
+   "test": "replaced",
+   "status": "REPLACED",
+   "note": "rough.js is a style choice for G1 and adds nothing to a harness test; the seeded-LCG texture with a float-precision push from a cosine ease (and its GSAP twin, gsap_equivalence) covers the determinism and MO8 questions",
+   "gsap_equivalence": "PASS",
+   "mo8_precheck": "PASS"
+  },
+  {
+   "item": "(c) three.js voxel diorama",
+   "test": "dropped (D-29); WebGL/SwiftShader smoke instead",
+   "status": "PASS",
+   "pass_mark": "(was >= 2 fps for the diorama; the smoke has no pass mark, it records fps)",
+   "measured_fps": 5.26,
+   "gl_renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)"
+  },
+  {
+   "item": "(d) self-hosted OFL fonts per script",
+   "test": "a7_fonts (+ a7_add_script)",
+   "status": "PASS",
+   "add_a_script": "PASS",
+   "scripts_tested": [
+    "latin",
+    "devanagari"
+   ],
+   "NOT_TESTED": [
+    "tamil",
+    "telugu",
+    "kannada",
+    "malayalam",
+    "bengali",
+    "gujarati"
+   ]
+  },
+  {
+   "item": "(e) 1, 2 and 4 concurrent pages",
+   "test": "a6_concurrency",
+   "status": "PASS",
+   "fps_by_pages": {
+    "1": 11.76,
+    "2": 17.93,
+    "4": 22.64
+   },
+   "best_pages": 4
+  },
+  {
+   "item": "(f) 2,400-frame chapter piped to ffmpeg",
+   "test": "a6_chapter_2400 (+ a6_chapter_2400_ram)",
+   "status": "BLOCKED",
+   "fallback_status": "PASS",
+   "measured_by": "RAM-output fallback (the guarded stage was BLOCKED)",
+   "frames": 2400,
+   "seconds": 118.344,
+   "fps": 20.28,
+   "peak_rss": {
+    "browser_tree_mb": 1166,
+    "ffmpeg_mb": 608,
+    "node_mb": 152,
+    "note": "RSS counts shared pages in every process, so the sum over-counts",
+    "sum_mb": 1914
+   },
+   "png_files_seen": 0,
+   "output_bytes": 4427392
+  },
+  {
+   "item": "(g) kill at 50% and resume",
+   "test": "a4_kill_resume",
+   "status": "PASS",
+   "detail": "killed with 120 frames on disk; resume rendered 121, skipped 119; final 240 frames equal reference: True; .tmp left: 0; browser processes left behind: 0"
+  }
+ ],
+ "r11": {
+  "rule": "Pass: (a) at least 8 fps, at most 100 differing pixels per frame between two runs, no OOM, resume works, tags correct. Fail: Route A moves to HyperFrames or Remotion (pinned) or to the maker's PC",
+  "a_fps_ge_8": true,
+  "determinism_le_100_px": true,
+  "negative_control_catches_nondeterminism": true,
+  "no_oom": true,
+  "resume_works": true,
+  "tags_correct": true,
+  "verdict": "PASS",
+  "open_item": "the guarded lj_with_disk 2,400-frame stage is BLOCKED; rerun `bash tests/render/run_tests.sh --all --only a6_chapter_2400` when Avail - planned >= 400 MB"
+ },
+ "other_tests": {
+  "a3_shards_resume": "PASS",
+  "a5_chain_output": "PASS",
+  "a8_errors": "PASS",
+  "a9_path_safety": "PASS",
+  "a10_alpha": "PASS",
+  "gsap_equivalence": "PASS",
+  "mo8_precheck": "PASS",
+  "a11_mo8_gate": "PASS",
+  "history_independence": "PASS",
+  "max_seconds_resume": "PASS",
+  "chain_parity": "PASS",
+  "testcard_fps": "PASS"
+ }
+}

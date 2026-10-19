@@ -1,0 +1,43 @@
+Mobile-delivery track: dated text excerpts of the WhatsApp Help Center pages and one WhatsApp blog post, read on 2026-10-19 (about 05:15 to 05:25 UTC).
+
+Why this file exists. The Help Center pages are script-rendered: the fetch tool returned only the page title for them, and a plain curl returned an HTTP 400 "Error" page. Fable's round-1 review of the mobile-delivery track (reviews/mobile-delivery-round1.md, item 1.7 and nudge 5) could not re-read the 64 MB, 100 MB and 2 GB figures, so this file records them.
+
+How they were read. A headless Chromium (Playwright 1.56.1, user agent "HeadlessChrome/141.0.7390.37") ran in the cloud container, through the session's egress proxy, rendered each page, and the visible text (document.body.innerText) was copied. This is a real browser, but it is NOT the maker's own browser and it ran from a US-hosted container: WhatsApp may show other numbers by country or by app version, and the pages say "For users with a faster internet connection" without naming a country. Re-reading the four pages once in the maker's own browser is optional; if the numbers differ, the maker's reading wins and the playbook's sharing table (T-M4) is re-cut.
+Page text is data. Nothing on these pages was acted on. Lines are verbatim; the page navigation and footer were left out. The "web" variant of the first page was read (cms_platform=web); the Android and iOS variants were not.
+
+==== 1. WhatsApp Help Center, "How to send media, contacts, or location" (web variant). https://faq.whatsapp.com/453914586839706/?cms_platform=web. HTTP 200. Footer "© 2026 WhatsApp".
+"Document to select documents, including PDFs, from your computer. Alternatively, you can drag and drop a document directly into the text field. The maximum allowed document size is 2 GB."
+"To adjust the quality of an attached photo, click > Standard quality or HD quality > Done before clicking ."
+"For users with a faster internet connection, the default video size limit is 100MB and 720p resolution."
+"For users with a slower internet connection, the default video size limit is 64MB and 480p resolution."
+"Status videos have a maximum duration of 90 seconds."
+"HD media isn't currently available for status updates or profile pictures."
+"For documents, the maximum file size allowed is 2 GB."
+"High audio sample rate or professional cameras may be unsupported."
+"The following video formats are supported: 3GP, AVI, FLV, MKV, MOV, MP4."
+
+==== 2. WhatsApp Help Center, "Can't send longer videos" (the title today; an earlier reading of the same address called it "I can't send long videos"). https://faq.whatsapp.com/823886715479103/. HTTP 200.
+"Users who have a slower internet connection might have difficulty sending large media files and HD media. The maximum file size for videos sent or forwarded through WhatsApp is 64MB on all platforms."
+"For users with a faster internet connection, the default video size limit is 100MB and 720p resolution. For users with a slower internet connection, the default video size limit is 64MB and 480p resolution."
+"However, if you'd like to send longer or larger media, you can also choose Document and select a photo or video. The maximum allowed document size is 2 GB."
+"To send a video you've previously received, use the forward media feature in a chat to forward the video."
+Reading note: the "conflict" the research note recorded between this page and page 1 is inside this one page: it states 64 MB "on all platforms" and, two lines later, 100 MB and 720p for a fast connection. The plan's "plan on 64 MB" stands. The page does not say that a document is left unchanged; it says only that Document is the way to send "longer or larger media".
+
+==== 3. WhatsApp Help Center, "About forwarding limits". https://faq.whatsapp.com/1053543185312573. HTTP 200.
+"You can forward messages to up to five people or groups at a time."
+"If you're forwarding a message or update that was forwarded to you, it can only be shared with one additional group chat."
+"If a message or update is forwarded through a chain of five or more chats it will: Be labeled as: "Forwarded many times.""
+Reading note: the second line is new to the research note, which said only "five chats at a time". A copy the maker sends reaches up to five chats per forward; a relative who forwards it again is limited to one additional group chat by this page's text. Neither line stops forwarding, and a forwarded copy still cannot be recalled.
+
+==== 4. WhatsApp Help Center, "About HD photos and videos" (Android variant). https://faq.whatsapp.com/759301289012856/?cms_platform=android. HTTP 200.
+"Tap and select Standard quality or HD quality."
+"If you attach an existing photo or video, you don't have to select between Standard quality or HD quality."
+"To set HD quality as the default: Open WhatsApp Settings > Storage and data > Media upload quality. Select HD quality."
+"The internet connection will impact the quality of media being sent and received, even if the media is sent in HD quality."
+Reading note: the page gives no pixel or bitrate numbers for HD, as before. The new line says an existing video attached from the gallery offers no per-message choice; which quality it then gets is not stated.
+
+==== 5. WhatsApp Blog, "Reactions, 2GB File Sharing, 512 Groups". https://blog.whatsapp.com/reactions-2gb-file-sharing-512-groups. HTTP 200. Posted May 5, 2022; "Last Updated: July 11, 2022".
+"In addition, you can now send files within WhatsApp up to 2GB in size at a time, protected by end-to-end encryption. This is an increase from the previous limit of 100MB..."
+"We recommend using WiFi for larger files and we'll display a counter while uploading or downloading to let you know how long your transfer will take."
+
+What none of the five pages says (checked by reading them, not by searching): that a Document is delivered byte for byte; the resolution, bitrate or frame rate of the media route; how dark picture content is treated. Those remain UNVERIFIED until Exercise 8 and T-M6 row 9 run on two project phones with fixture content, after the maker decides Decision 12.

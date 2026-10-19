@@ -1,0 +1,1470 @@
+{
+ "schema": "lj-stale-patterns/1",
+ "version": 1,
+ "owner": "WP-03",
+ "date_utc": "2026-10-19",
+ "source": "DECISIONS.md Table 4 (S-01 to S-41) as written 2026-10-18, and W-29. Statuses are a copy: update a row's status here when Table 4 changes (for example when the Haiku pass applies S-01).",
+ "dialect": "Python re. Matched per line. flags is '' or 'i'. FAIL = unambiguous stale value; WARN = needs a human.",
+ "scan": {
+  "include": [
+   "playbooks/",
+   ".claude/skills/",
+   "skills-staging/",
+   "research/*-fixtures/",
+   "research/sources/",
+   "win/",
+   "pipeline/",
+   "scripts/",
+   "ops/",
+   "spikes/"
+  ],
+  "exclude": [
+   "research/*.md",
+   "reviews/",
+   "DECISIONS.md",
+   "ROADMAP.md",
+   "PLAN-ON-A-PAGE.md",
+   "CHARTER.md",
+   "CLAUDE.md",
+   "build/",
+   "scripts/stale_patterns.json",
+   "scripts/stale_allowlist.json",
+   "scripts/stale_baseline.json",
+   "scripts/stale_check.py",
+   "ops/decisions.csv",
+   "tests/",
+   "vendor/",
+   "renders/",
+   "exports/",
+   "media/",
+   ".git/",
+   "node_modules/",
+   "__pycache__/"
+  ],
+  "exclude_reasons": {
+   "research/*.md": "historical record (Table 4 header)",
+   "reviews/": "historical record",
+   "build/": "the plan and evidence quote the stale strings on purpose",
+   "scripts/stale_*": "this tool's own pattern, allowlist and baseline files quote the stale strings on purpose",
+   "ops/decisions.csv": "generated mirror of DECISIONS.md, which quotes every stale value by design (deviation from the plan's list, which names ops/ whole)",
+   "tests/": "test fixtures quote the stale strings on purpose"
+  },
+  "max_file_bytes": 2000000
+ },
+ "rows": [
+  {
+   "row_id": "S-01",
+   "status": "outstanding",
+   "coverage": "full",
+   "stale": "25 fps as the project rate (fps=25, -r 25, -framerate 25, d=125, Timebase 25, indeterminateTimebase 25, atsc_1080p_25, 9,000 frames)",
+   "canonical": "24 fps (W-14); d=120 for 5 s; indeterminateTimebase \"24\"; re-run r1, r5 and the colour-patch test at 24 before changing guard values",
+   "owner": "Haiku, week 2, by hand, after the 24 fps re-runs (never search-and-replace)"
+  },
+  {
+   "row_id": "S-02",
+   "status": "applied",
+   "coverage": "partial",
+   "stale": "Frame rate still 'proposed' or 'may change in week 2'",
+   "canonical": "Settled 24 fps at the settings card, Sun 1 Nov (W-14, W-16)",
+   "owner": "Haiku",
+   "coverage_note": "The stale value is a status word ('proposed', 'may change in week 2'). Only the two phrasings the register names are searched; a reworded 'still open' is not found."
+  },
+  {
+   "row_id": "S-03",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Fri 19 Feb 2027: Withdrawals close; picture lock'",
+   "canonical": "Picture lock Sat 6 Feb (G-LOCK); Fri 19 Feb is withdrawals close, removals only (W-08)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-04",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'If you prefer one session, move picture lock to Saturday 13 February 2027'",
+   "canonical": "Two stranger sessions decided (W-43); Sat 13 Feb is G-MIX, not an option",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-05",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "Ring 1: co-keeper plus two proxy keys; Key 1 / Key 2; both keys",
+   "canonical": "Only-me (D-03); one-key-three-guards (D-04); no partner role",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-06",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Proxy views the shared cut / private cut'",
+   "canonical": "The maker's cold read of the locked public cut Sun 7 Feb and the private cut Sun 14 Feb (D-03)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-07",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'A trusted close relative as proxy for hard chapters'",
+   "canonical": "The maker is the proxy; nobody else (D-03, D-04)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-08",
+   "status": "applied today",
+   "coverage": "full",
+   "stale": "'the closest insider'",
+   "canonical": "Under only-me there is no insider (O-11)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-09",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Contributors confirm their clip'; 'each person told only their part'",
+   "canonical": "Void under only-me; dated placeholders (D-03, W-08)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-10",
+   "status": "applied today",
+   "coverage": "full",
+   "stale": "Consent card read aloud on the recording; relative briefed about the secret first; recorded relative interviews after the gate",
+   "canonical": "Album-and-hands sessions (W-49); recorded relative voices arrive in the April version (D-06)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-11",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "Interviews 'start from Decision 0's start week'; 'Can wait for pipeline lock'; week-2 interviews",
+   "canonical": "Covert collection starts Sun 15 Nov after P-LOCK (D-13, W-10)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-12",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Pipeline locked' means Step 8 has passed on Chapter 1; no collection until G9; slice weeks 4 to 6",
+   "canonical": "P-LOCK Sat 14 Nov; collection from Sun 15 Nov; the slice is 100 s of C01 (D-13, W-06, W-07)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-13",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "Fallback F-0 'voice and photos'",
+   "canonical": "F-0 'object and photos', 6 minutes, no voice (W-05)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-14",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "Venue master 'decided by the theatrical-delivery track by G13'",
+   "canonical": "The venue's written answer by Sun 15 Nov decides file or DCP (W-17)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-15",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Deadline to confirm full-surprise mode' / 'Ring 1 named'",
+   "canonical": "Only-me recorded; the one re-open point is TD-L2c Sun 3 Jan (D-03)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-16",
+   "status": "applied today",
+   "coverage": "full",
+   "stale": "Runtime 12 floor, 15 target, 25 private stretch; the 12-minute floor",
+   "canonical": "12 target if H >= 16; 9 if H < 14; 15-18 stretch only at G-SLICE; no 25-minute private cut (W-01 to W-05, D-06)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-17",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'four chapters of 2:15'",
+   "canonical": "12 minutes = wrapper plus three 3:00 modules (W-04)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-18",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Shared cut 6 to 10 minutes'; 'private cut 20 to 30 minutes'",
+   "canonical": "Public cut 9 or 12 minutes; the April version replaces a private cut (W-02, D-06)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-19",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'A film of 8 to 12 minutes'; the 8-minute tier",
+   "canonical": "9 or 12 minutes (W-01, W-02)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-20",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Film 100 to 150 h' / '6 to 10 hours per finished minute'",
+   "canonical": "The production-scale model (W-02)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-21",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'No maker voice in the public cut. Use cards.'",
+   "canonical": "Cards plus the hum by default; one factual fragment decided at G-SLICE (W-35)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-22",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Her name, said by a relative's voice'; 'a name said by a loved one'",
+   "canonical": "'A name for her, written or said by someone who loves her' (W-36, D-05)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-23",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'A recorded relative's voice exists or is scheduled'",
+   "canonical": "Her-world sound and, if passed, one HER-PUBLIC line (D-05, D-06)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-24",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Releases are gathered under the truthful partial pretext'; 'Ask under the partial pretext'",
+   "canonical": "Nobody is asked before the premiere (W-46, W-48)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-25",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Pro8mm unscheduled home-movie queue'; 'latest ship-by date for an 8-week lab'; 'Fri 11 to Fri 18 Dec'",
+   "canonical": "Fri 30 Oct pilot; fast ship-by Fri 11 Dec (W-11)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-26",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'a living room for four to eight'",
+   "canonical": "A mostly public gathering (D-08, W-54)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-27",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Plan for a private gathering until the venue is known'",
+   "canonical": "A mostly public gathering treated as a public screening (D-08)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-28",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "-1.5 dBTP; loudnorm TP=-1.5",
+   "canonical": "-1 dBTP everywhere (W-19)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-29",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "MO8 'no more than 1.3 times a Pillow sub-pixel reference'; 'the ratio is what MO8 tests'",
+   "canonical": "MO8a <= 0.05 px and MO8b <= 0.04 px on the pre-encode master (W-41)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-30",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'do not use a voxel look until the Minecraft rule is resolved'",
+   "canonical": "Her own hand-made material at G1 (W-38, D-23)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-31",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Backblaze B2 with rclone crypt'",
+   "canonical": "A second encrypted SSD kept elsewhere (W-25)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-32",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Use 4K only after the venue screen is confirmed'",
+   "canonical": "1080p master; 2K Flat DCP derived (W-15)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-33",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'Udio's terms could not be read'",
+   "canonical": "Udio cannot supply a file; treat it as closed (W-44)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-34",
+   "status": "applied",
+   "coverage": "partial",
+   "stale": "Stranger read 'Lean: none recorded... nobody is approached'",
+   "canonical": "Strangers to her at S1 and S2 (W-43)",
+   "owner": "Haiku",
+   "coverage_note": "The stale value is a missing decision ('Lean: none recorded... nobody is approached'). Only that phrasing is searched; a reader must check what the stranger-read decision now says."
+  },
+  {
+   "row_id": "S-35",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "Lever 3 'none until two dated quotes'",
+   "canonical": "Do it yourself for the premiere cut (W-50)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-36",
+   "status": "applied",
+   "coverage": "partial",
+   "stale": "DCP or file 'Lean: none recorded... theatrical-delivery sets this before G-SLICE'",
+   "canonical": "The venue's written answer by Sun 15 Nov decides it (W-17)",
+   "owner": "Haiku",
+   "coverage_note": "The stale value is a missing decision ('Lean: none recorded... theatrical-delivery sets this before G-SLICE'). Only that phrasing is searched; a reader must check what the DCP-or-file decision now says."
+  },
+  {
+   "row_id": "S-37",
+   "status": "applied",
+   "coverage": "full",
+   "stale": "'or the earlier 30 January that the 25-minute plan uses'",
+   "canonical": "Sat 6 Feb; there is no 25-minute plan (W-08, D-06)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "S-38",
+   "status": "outstanding",
+   "coverage": "full",
+   "stale": "'L1 process lock', 'L1 lock', 'at L1', 'for L1' meaning the Sat 14 Nov process lock",
+   "canonical": "P-LOCK; 'L1' means only honesty level 1",
+   "owner": "Haiku before Fri 30 Oct"
+  },
+  {
+   "row_id": "S-39",
+   "status": "outstanding",
+   "coverage": "full",
+   "stale": "'spikes S1-S5', 'spike S1', 'S1 T1-T6' meaning the Sonnet spikes",
+   "canonical": "SP1-SP5; 'S1' means only the first stranger screening",
+   "owner": "Haiku before Fri 30 Oct"
+  },
+  {
+   "row_id": "S-40",
+   "status": "outstanding",
+   "coverage": "full",
+   "stale": "'Deltas to existing playbooks' written as a scribe to-do; 'so that a scribe can patch them'",
+   "canonical": "Converted to a record with a Status column; four rows still to apply",
+   "owner": "Haiku before Fri 30 Oct"
+  },
+  {
+   "row_id": "S-41",
+   "status": "applied today",
+   "coverage": "full",
+   "stale": "'HOST and DISTRACTOR belong to the true plan'; 'Distractor brings her'",
+   "canonical": "The maker brings her; one briefed guest holds the room; TECH holds the first frame (O-32, W-12)",
+   "owner": "Haiku"
+  },
+  {
+   "row_id": "W-29",
+   "status": "check",
+   "coverage": "full",
+   "stale": "Scribe-to-do phrases: 'not applied here', 'for the scribe', 'pending scribe'",
+   "canonical": "Resolve or remove the phrase (W-29)",
+   "owner": "Haiku"
+  }
+ ],
+ "patterns": [
+  {
+   "id": "W-29.not-applied-here",
+   "row_id": "W-29",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "not applied here",
+   "positive_samples": [
+    "the broadcast anchor is not applied here"
+   ],
+   "negative_samples": [
+    "the filter was applied here"
+   ],
+   "note": "",
+   "canonical": "Resolve or remove the phrase (W-29)"
+  },
+  {
+   "id": "W-29.for-the-scribe",
+   "row_id": "W-29",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bfor the scribe\\b",
+   "positive_samples": [
+    "a note for the scribe"
+   ],
+   "negative_samples": [
+    "a note for the maker",
+    "for the scribes' hands"
+   ],
+   "note": "",
+   "canonical": "Resolve or remove the phrase (W-29)"
+  },
+  {
+   "id": "W-29.pending-scribe",
+   "row_id": "W-29",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bpending scribe\\b",
+   "positive_samples": [
+    "status: pending scribe pass"
+   ],
+   "negative_samples": [
+    "status: pending decision"
+   ],
+   "note": "",
+   "canonical": "Resolve or remove the phrase (W-29)"
+  },
+  {
+   "id": "S-40.deltas-to-existing",
+   "row_id": "S-40",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bDeltas to existing\\b",
+   "positive_samples": [
+    "## Deltas to existing playbooks"
+   ],
+   "negative_samples": [
+    "## Record of changes to playbooks"
+   ],
+   "note": "",
+   "canonical": "Converted to a record with a Status column; four rows still to apply"
+  },
+  {
+   "id": "S-40.scribe-can-patch",
+   "row_id": "S-40",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "so that a scribe can patch",
+   "positive_samples": [
+    "listed so that a scribe can patch them"
+   ],
+   "negative_samples": [
+    "listed so the maker can read them"
+   ],
+   "note": "",
+   "canonical": "Converted to a record with a Status column; four rows still to apply"
+  },
+  {
+   "id": "S-38.l1-lock",
+   "row_id": "S-38",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\bL1 (?:process |pipeline )?lock\\b",
+   "positive_samples": [
+    "Fable reviews at the L1 process lock, Sat 14 Nov",
+    "waits for the L1 lock"
+   ],
+   "negative_samples": [
+    "Fable reviews at the P-LOCK process lock",
+    "honesty level L1 labels the photo",
+    "the L10 lock"
+   ],
+   "note": "",
+   "canonical": "P-LOCK; 'L1' means only honesty level 1"
+  },
+  {
+   "id": "S-38.at-or-for-l1",
+   "row_id": "S-38",
+   "severity": "WARN",
+   "flags": "",
+   "regex": "\\b(?:at|for) L1\\b",
+   "positive_samples": [
+    "a restored photo is shown at L1",
+    "no photos before the lock for L1"
+   ],
+   "negative_samples": [
+    "at P-LOCK",
+    "at L10",
+    "for level 2"
+   ],
+   "note": "WARN: 'at L1' / 'for L1' can be a legitimate honesty level; a human decides",
+   "canonical": "P-LOCK; 'L1' means only honesty level 1"
+  },
+  {
+   "id": "S-39.spike-s",
+   "row_id": "S-39",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\b[Ss]pikes? S[1-5]\\b",
+   "positive_samples": [
+    "Whether a running job keeps it awake is unknown (spike S4)",
+    "Run the spikes S1 to S5"
+   ],
+   "negative_samples": [
+    "the SP1 spike",
+    "spikes SP1 to SP5",
+    "stranger screening S1"
+   ],
+   "note": "",
+   "canonical": "SP1-SP5; 'S1' means only the first stranger screening"
+  },
+  {
+   "id": "S-39.range",
+   "row_id": "S-39",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\bS1 ?(?:[-‐-―−]|to) ?S5\\b",
+   "positive_samples": [
+    "spikes S1-S5",
+    "S1 to S5 pass or fallbacks named",
+    "S1–S5"
+   ],
+   "negative_samples": [
+    "SP1-SP5",
+    "SP1 to SP5",
+    "S1 and S2 strangers"
+   ],
+   "note": "",
+   "canonical": "SP1-SP5; 'S1' means only the first stranger screening"
+  },
+  {
+   "id": "S-39.t1-t6",
+   "row_id": "S-39",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\bS1 T[1-6]\\b",
+   "positive_samples": [
+    "the S1 T1–T6 results"
+   ],
+   "negative_samples": [
+    "the S1 T7 questions",
+    "SP1 T1 to T6"
+   ],
+   "note": "",
+   "canonical": "SP1-SP5; 'S1' means only the first stranger screening"
+  },
+  {
+   "id": "S-01.fps-eq-25",
+   "row_id": "S-01",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\bfps=25(?![0-9.])",
+   "positive_samples": [
+    "zoompan=...:s=1920x1080:fps=25,format=yuv420p",
+    "make an access copy with `fps=25`"
+   ],
+   "negative_samples": [
+    "fps=24",
+    "fps=250"
+   ],
+   "note": "",
+   "canonical": "24 fps (W-14); d=120 for 5 s; indeterminateTimebase \"24\"; re-run r1, r5 and the colour-patch test at 24 before changing guard values"
+  },
+  {
+   "id": "S-01.r-25",
+   "row_id": "S-01",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "(?<![A-Za-z0-9_-])-r 25(?![0-9.])",
+   "positive_samples": [
+    "ffmpeg -r 25 -i in.png out.mp4"
+   ],
+   "negative_samples": [
+    "ffmpeg -r 24 -i in.png",
+    "ffmpeg -r 250 -i in.png",
+    "ffmpeg -ar 25 x"
+   ],
+   "note": "",
+   "canonical": "24 fps (W-14); d=120 for 5 s; indeterminateTimebase \"24\"; re-run r1, r5 and the colour-patch test at 24 before changing guard values"
+  },
+  {
+   "id": "S-01.framerate-25",
+   "row_id": "S-01",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "-framerate 25(?![0-9.])",
+   "positive_samples": [
+    "ffmpeg -framerate 25 -i renders/p_%04d.png"
+   ],
+   "negative_samples": [
+    "ffmpeg -framerate 24 -i renders/p_%04d.png"
+   ],
+   "note": "",
+   "canonical": "24 fps (W-14); d=120 for 5 s; indeterminateTimebase \"24\"; re-run r1, r5 and the colour-patch test at 24 before changing guard values"
+  },
+  {
+   "id": "S-01.d-125",
+   "row_id": "S-01",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\bd=125\\b",
+   "positive_samples": [
+    "zoompan=z=1.15:d=125:s=1920x1080"
+   ],
+   "negative_samples": [
+    "d=120",
+    "d=1250"
+   ],
+   "note": "",
+   "canonical": "24 fps (W-14); d=120 for 5 s; indeterminateTimebase \"24\"; re-run r1, r5 and the colour-patch test at 24 before changing guard values"
+  },
+  {
+   "id": "S-01.timebase-25",
+   "row_id": "S-01",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bTimebase 25\\b",
+   "positive_samples": [
+    "Set Timebase 25 in the sequence"
+   ],
+   "negative_samples": [
+    "Timebase 24",
+    "Timebase 250"
+   ],
+   "note": "",
+   "canonical": "24 fps (W-14); d=120 for 5 s; indeterminateTimebase \"24\"; re-run r1, r5 and the colour-patch test at 24 before changing guard values"
+  },
+  {
+   "id": "S-01.indeterminate-25",
+   "row_id": "S-01",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "indeterminateTimebase\\W{0,8}25\\b",
+   "positive_samples": [
+    "media.indeterminateTimebase \"25\"",
+    "indeterminateTimebase = 25"
+   ],
+   "negative_samples": [
+    "media.indeterminateTimebase \"24\"",
+    "indeterminateTimebase becomes the string 24"
+   ],
+   "note": "",
+   "canonical": "24 fps (W-14); d=120 for 5 s; indeterminateTimebase \"24\"; re-run r1, r5 and the colour-patch test at 24 before changing guard values"
+  },
+  {
+   "id": "S-01.atsc-25",
+   "row_id": "S-01",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "atsc_1080p_25\\b",
+   "positive_samples": [
+    "melt story.mlt -profile atsc_1080p_25"
+   ],
+   "negative_samples": [
+    "atsc_1080p_24"
+   ],
+   "note": "",
+   "canonical": "24 fps (W-14); d=120 for 5 s; indeterminateTimebase \"24\"; re-run r1, r5 and the colour-patch test at 24 before changing guard values"
+  },
+  {
+   "id": "S-01.at-25-fps",
+   "row_id": "S-01",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bat 25 fps\\b",
+   "positive_samples": [
+    "lean 1920x1080 at 25 fps",
+    "tested at 25 fps"
+   ],
+   "negative_samples": [
+    "at 24 fps",
+    "a 25 fps access copy",
+    "at 250 fps"
+   ],
+   "note": "",
+   "canonical": "24 fps (W-14); d=120 for 5 s; indeterminateTimebase \"24\"; re-run r1, r5 and the colour-patch test at 24 before changing guard values"
+  },
+  {
+   "id": "S-01.9000-frames",
+   "row_id": "S-01",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\b9,000 frames\\b",
+   "positive_samples": [
+    "a 6-minute film at 25 fps is 9,000 frames"
+   ],
+   "negative_samples": [
+    "a 12-minute film at 24 fps is 17,280 frames"
+   ],
+   "note": "",
+   "canonical": "24 fps (W-14); d=120 for 5 s; indeterminateTimebase \"24\"; re-run r1, r5 and the colour-patch test at 24 before changing guard values"
+  },
+  {
+   "id": "S-01.25-a-second",
+   "row_id": "S-01",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\b25 frames (?:a|per) second\\b",
+   "positive_samples": [
+    "Good looks like 25 frames a second"
+   ],
+   "negative_samples": [
+    "24 frames a second"
+   ],
+   "note": "",
+   "canonical": "24 fps (W-14); d=120 for 5 s; indeterminateTimebase \"24\"; re-run r1, r5 and the colour-patch test at 24 before changing guard values"
+  },
+  {
+   "id": "S-28.minus-1.5-dbtp",
+   "row_id": "S-28",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "[-−–]1\\.5 ?dBTP\\b",
+   "positive_samples": [
+    "Peaks at or below -1.5 dBTP",
+    "provisional -18 LUFS, −1.5 dBTP"
+   ],
+   "negative_samples": [
+    "Peaks at or below -1 dBTP",
+    "-1.5 dB of gain"
+   ],
+   "note": "",
+   "canonical": "-1 dBTP everywhere (W-19)"
+  },
+  {
+   "id": "S-28.tp-eq-1.5",
+   "row_id": "S-28",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\bTP=-1\\.5\\b",
+   "positive_samples": [
+    "loudnorm I=-16:TP=-1.5:LRA=11"
+   ],
+   "negative_samples": [
+    "loudnorm I=-16:TP=-1.0:LRA=11"
+   ],
+   "note": "",
+   "canonical": "-1 dBTP everywhere (W-19)"
+  },
+  {
+   "id": "S-03.withdrawals-picture-lock",
+   "row_id": "S-03",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "Withdrawals close;? picture lock",
+   "positive_samples": [
+    "Fri 19 Feb 2027: Withdrawals close; picture lock"
+   ],
+   "negative_samples": [
+    "Fri 19 Feb 2027: withdrawals close (removals only)"
+   ],
+   "note": "",
+   "canonical": "Picture lock Sat 6 Feb (G-LOCK); Fri 19 Feb is withdrawals close, removals only (W-08)"
+  },
+  {
+   "id": "S-04.one-session",
+   "row_id": "S-04",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "If you prefer one session|move picture lock to Saturday 13 February",
+   "positive_samples": [
+    "If you prefer one session, move picture lock to Saturday 13 February 2027"
+   ],
+   "negative_samples": [
+    "Sat 13 Feb is G-MIX"
+   ],
+   "note": "",
+   "canonical": "Two stranger sessions decided (W-43); Sat 13 Feb is G-MIX, not an option"
+  },
+  {
+   "id": "S-05.co-keeper",
+   "row_id": "S-05",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bco-?keepers?\\b",
+   "positive_samples": [
+    "tell your co-keeper within an hour",
+    "choose the item with the cokeeper"
+   ],
+   "negative_samples": [
+    "the keeper of the secret",
+    "sole keeper"
+   ],
+   "note": "",
+   "canonical": "Only-me (D-03); one-key-three-guards (D-04); no partner role"
+  },
+  {
+   "id": "S-05.key-1-2",
+   "row_id": "S-05",
+   "severity": "FAIL",
+   "flags": "",
+   "regex": "\\bKey [12]\\b",
+   "positive_samples": [
+    "Key 1 / Key 2 decision sheet"
+   ],
+   "negative_samples": [
+    "Key 12",
+    "the API key 1x"
+   ],
+   "note": "",
+   "canonical": "Only-me (D-03); one-key-three-guards (D-04); no partner role"
+  },
+  {
+   "id": "S-05.two-or-both-keys",
+   "row_id": "S-05",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\b(?:two|both) keys\\b|\\btwo-key\\b|\\bproxy keys?\\b",
+   "positive_samples": [
+    "Decide the hard chapters with two keys",
+    "with both keys",
+    "the two-key rule",
+    "one co-keeper plus two proxy keys"
+   ],
+   "negative_samples": [
+    "one key, three guards",
+    "the second key"
+   ],
+   "note": "",
+   "canonical": "Only-me (D-03); one-key-three-guards (D-04); no partner role"
+  },
+  {
+   "id": "S-05.ring-1",
+   "row_id": "S-05",
+   "severity": "WARN",
+   "flags": "i",
+   "regex": "rings? 1",
+   "positive_samples": [
+    "Ring 1: one co-keeper",
+    "Set the rings: Ring 1 and Ring 2"
+   ],
+   "negative_samples": [
+    "Ring 0 is you",
+    "Ring 2 is empty"
+   ],
+   "note": "WARN and deliberately loose (a plain case-insensitive grep, as W-29 describes): it also hits 'gathering 14', which the allowlist covers",
+   "canonical": "Only-me (D-03); one-key-three-guards (D-04); no partner role"
+  },
+  {
+   "id": "S-06.proxy-views",
+   "row_id": "S-06",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "Proxy views the (?:shared|private|locked|rough)? ?cut",
+   "positive_samples": [
+    "Sun 7 Feb 2027: Proxy views the shared cut",
+    "Sun 14 Feb 2027: Proxy views the private cut"
+   ],
+   "negative_samples": [
+    "the maker's cold read of the locked public cut"
+   ],
+   "note": "",
+   "canonical": "The maker's cold read of the locked public cut Sun 7 Feb and the private cut Sun 14 Feb (D-03)"
+  },
+  {
+   "id": "S-07.proxy-relative",
+   "row_id": "S-07",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "trusted close relative as (?:a )?proxy|name one proxy",
+   "positive_samples": [
+    "A trusted close relative as proxy for hard chapters",
+    "name one proxy for the hard chapters"
+   ],
+   "negative_samples": [
+    "the maker is the proxy"
+   ],
+   "note": "",
+   "canonical": "The maker is the proxy; nobody else (D-03, D-04)"
+  },
+  {
+   "id": "S-08.closest-insider",
+   "row_id": "S-08",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\bclosest insider\\b",
+   "positive_samples": [
+    "ask the closest insider if it sounds like her"
+   ],
+   "negative_samples": [
+    "the maker answers from their own knowledge"
+   ],
+   "note": "",
+   "canonical": "Under only-me there is no insider (O-11)"
+  },
+  {
+   "id": "S-08.insider",
+   "row_id": "S-08",
+   "severity": "WARN",
+   "flags": "i",
+   "regex": "\\binsiders?\\b",
+   "positive_samples": [
+    "the insider sees the piece first"
+   ],
+   "negative_samples": [
+    "a consider",
+    "outsider"
+   ],
+   "note": "WARN: the negations ('there is no insider') are allowlisted; anything else needs a human",
+   "canonical": "Under only-me there is no insider (O-11)"
+  },
+  {
+   "id": "S-09.contributors-confirm",
+   "row_id": "S-09",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "Contributors? confirm(?:s)? their clip|each person told only their part",
+   "positive_samples": [
+    "Mon 15 Feb 2027: Contributors confirm their clip",
+    "the brief sent; each person told only their part"
+   ],
+   "negative_samples": [
+    "contributors are not used under only-me"
+   ],
+   "note": "",
+   "canonical": "Void under only-me; dated placeholders (D-03, W-08)"
+  },
+  {
+   "id": "S-10.consent-read-aloud",
+   "row_id": "S-10",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "read aloud on the recording|Consent card read aloud|relative is briefed about the secret first|spoken consent that names the Feb 27 use|Recorded relative interviews after the gate|Review with the proxy\\.? Veto window",
+   "positive_samples": [
+    "Consent card read aloud; spoken yes captured",
+    "the card is read aloud on the recording",
+    "in surprise mode the relative is briefed about the secret first",
+    "Recorded relative interviews after the gate: six to ten at about 45 minutes"
+   ],
+   "negative_samples": [
+    "album-and-hands sessions under a true sentence"
+   ],
+   "note": "",
+   "canonical": "Album-and-hands sessions (W-49); recorded relative voices arrive in the April version (D-06)"
+  },
+  {
+   "id": "S-11.start-week",
+   "row_id": "S-11",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "start from Decision 0['’]?s start week|Can wait for pipeline lock|interviews in week 2 \\(Oct 25 to 31\\)",
+   "positive_samples": [
+    "Interviews proper start from Decision 0's start week",
+    "Can wait for pipeline lock",
+    "starts interviews in week 2 (Oct 25 to 31)"
+   ],
+   "negative_samples": [
+    "covert collection starts Sun 15 Nov"
+   ],
+   "note": "",
+   "canonical": "Covert collection starts Sun 15 Nov after P-LOCK (D-13, W-10)"
+  },
+  {
+   "id": "S-12.pipeline-locked",
+   "row_id": "S-12",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "Pipeline locked['’”\\\"]? means Step 8|No new covert collection starts until G9|vertical slice \\(weeks 4 to 6\\)",
+   "positive_samples": [
+    "'Pipeline locked' means Step 8 has passed on Chapter 1",
+    "No new covert collection starts until G9 passes",
+    "Step 7. Make Chapter 1 as a vertical slice (weeks 4 to 6)"
+   ],
+   "negative_samples": [
+    "P-LOCK Sat 14 Nov"
+   ],
+   "note": "",
+   "canonical": "P-LOCK Sat 14 Nov; collection from Sun 15 Nov; the slice is 100 s of C01 (D-13, W-06, W-07)"
+  },
+  {
+   "id": "S-13.voice-and-photos",
+   "row_id": "S-13",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "F-0\\W{0,12}[^\\n]{0,30}voice and photos",
+   "positive_samples": [
+    "Fallback F-0 \"voice and photos\", 5 to 6 minutes"
+   ],
+   "negative_samples": [
+    "Fallback F-0 \"object and photos\""
+   ],
+   "note": "",
+   "canonical": "F-0 'object and photos', 6 minutes, no voice (W-05)"
+  },
+  {
+   "id": "S-13.voice-and-photos-warn",
+   "row_id": "S-13",
+   "severity": "WARN",
+   "flags": "i",
+   "regex": "\\bvoice and photos\\b",
+   "positive_samples": [
+    "a film of voice and photos"
+   ],
+   "negative_samples": [
+    "object and photos"
+   ],
+   "note": "WARN: only meaningful as the old F-0 name",
+   "canonical": "F-0 'object and photos', 6 minutes, no voice (W-05)"
+  },
+  {
+   "id": "S-14.g13",
+   "row_id": "S-14",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "decided by the theatrical-delivery track by G13|reconcile before G13",
+   "positive_samples": [
+    "The venue projection master is decided by the theatrical-delivery track by G13",
+    "reconcile before G13"
+   ],
+   "negative_samples": [
+    "the venue's written answer decides"
+   ],
+   "note": "",
+   "canonical": "The venue's written answer by Sun 15 Nov decides file or DCP (W-17)"
+  },
+  {
+   "id": "S-15.deadline-mode",
+   "row_id": "S-15",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "Deadline to confirm full-surprise mode|Ring 1 named",
+   "positive_samples": [
+    "Sun 1 Nov 2026: Deadline to confirm full-surprise mode",
+    "Ring 1 named"
+   ],
+   "negative_samples": [
+    "the mode is a charter fact"
+   ],
+   "note": "",
+   "canonical": "Only-me recorded; the one re-open point is TD-L2c Sun 3 Jan (D-03)"
+  },
+  {
+   "id": "S-16.runtime-floor",
+   "row_id": "S-16",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\b12[- ]minute floor\\b|12 \\(floor\\), 15 \\(public target, cap 18\\), 25 \\(private stretch\\)|budgets of 12, 15 and 25 minutes|runtime pending decision|~?25[- ]minute piece",
+   "positive_samples": [
+    "a 12-minute floor, never cut below",
+    "drop to the 12-minute floor",
+    "12 (floor), 15 (public target, cap 18), 25 (private stretch)",
+    "runtime budgets of 12, 15 and 25 minutes",
+    "mark each output 'runtime pending decision'",
+    "a ~25 minute piece"
+   ],
+   "negative_samples": [
+    "12 minutes is the target",
+    "a 9-minute fallback"
+   ],
+   "note": "",
+   "canonical": "12 target if H >= 16; 9 if H < 14; 15-18 stretch only at G-SLICE; no 25-minute private cut (W-01 to W-05, D-06)"
+  },
+  {
+   "id": "S-17.four-chapters",
+   "row_id": "S-17",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "four chapters of 2:15",
+   "positive_samples": [
+    "cold open 1:15; four chapters of 2:15 (9:00); ending 1:45"
+   ],
+   "negative_samples": [
+    "wrapper plus three 3:00 modules"
+   ],
+   "note": "",
+   "canonical": "12 minutes = wrapper plus three 3:00 modules (W-04)"
+  },
+  {
+   "id": "S-18.shared-private-cut",
+   "row_id": "S-18",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "Shared cut 6 to 10 minutes|private cut 20 to 30 minutes|\\b25[- ]minute (?:private|plan|stretch)",
+   "positive_samples": [
+    "Shared cut 6 to 10 minutes with a hard cap of 12",
+    "private cut 20 to 30 minutes",
+    "the 25-minute private cut",
+    "the 25-minute plan uses"
+   ],
+   "negative_samples": [
+    "the April version has voices"
+   ],
+   "note": "",
+   "canonical": "Public cut 9 or 12 minutes; the April version replaces a private cut (W-02, D-06)"
+  },
+  {
+   "id": "S-19.eight-to-twelve",
+   "row_id": "S-19",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\b8 to 12 minutes?\\b|\\b8[- ]minute tier\\b|8 to 12 minute plan",
+   "positive_samples": [
+    "A film of 8 to 12 minutes",
+    "the notes' 8 to 12 minute plan",
+    "the 8-minute tier"
+   ],
+   "negative_samples": [
+    "a 9 or 12 minute film"
+   ],
+   "note": "",
+   "canonical": "9 or 12 minutes (W-01, W-02)"
+  },
+  {
+   "id": "S-20.hours",
+   "row_id": "S-20",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "\\b100 to 150 h(?:ours?)?\\b|\\b6 to 10 hours per finished minute",
+   "positive_samples": [
+    "Film 100 to 150 h",
+    "6 to 10 hours per finished minute"
+   ],
+   "negative_samples": [
+    "about 284 hours in the Base case"
+   ],
+   "note": "",
+   "canonical": "The production-scale model (W-02)"
+  },
+  {
+   "id": "S-21.no-maker-voice",
+   "row_id": "S-21",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "No maker voice in the public cut",
+   "positive_samples": [
+    "No maker voice in the public cut. Use cards."
+   ],
+   "negative_samples": [
+    "a cards-plus-hum default"
+   ],
+   "note": "",
+   "canonical": "Cards plus the hum by default; one factual fragment decided at G-SLICE (W-35)"
+  },
+  {
+   "id": "S-22.relative-voice-name",
+   "row_id": "S-22",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "said by a relative['’]?s voice|a name said by a loved one",
+   "positive_samples": [
+    "Her name, said by a relative's voice, with the name and relation on screen",
+    "cold open: a name said by a loved one"
+   ],
+   "negative_samples": [
+    "a name written or said by someone who loves her"
+   ],
+   "note": "",
+   "canonical": "'A name for her, written or said by someone who loves her' (W-36, D-05)"
+  },
+  {
+   "id": "S-23.recorded-voice",
+   "row_id": "S-23",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "recorded relative['’]?s voice exists or is scheduled",
+   "positive_samples": [
+    "A recorded relative's voice exists or is scheduled"
+   ],
+   "negative_samples": [
+    "her-world sound is present"
+   ],
+   "note": "",
+   "canonical": "Her-world sound and, if passed, one HER-PUBLIC line (D-05, D-06)"
+  },
+  {
+   "id": "S-24.partial-pretext",
+   "row_id": "S-24",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "gathered under the truthful partial pretext|Ask under the partial pretext",
+   "positive_samples": [
+    "Releases are gathered under the truthful partial pretext",
+    "Tier B: Ask under the partial pretext"
+   ],
+   "negative_samples": [
+    "nobody is asked before the premiere"
+   ],
+   "note": "",
+   "canonical": "Nobody is asked before the premiere (W-46, W-48)"
+  },
+  {
+   "id": "S-25.pro8mm-queue",
+   "row_id": "S-25",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "unscheduled home-movie queue|latest ship-by date for an 8-week lab|Fri 11 to Fri 18 Dec",
+   "positive_samples": [
+    "Pro8mm unscheduled home-movie queue",
+    "the latest ship-by date for an 8-week lab",
+    "Fast: Fri 11 to Fri 18 Dec"
+   ],
+   "negative_samples": [
+    "Fri 30 Oct is the pilot"
+   ],
+   "note": "",
+   "canonical": "Fri 30 Oct pilot; fast ship-by Fri 11 Dec (W-11)"
+  },
+  {
+   "id": "S-26.living-room",
+   "row_id": "S-26",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "a living room for four to eight",
+   "positive_samples": [
+    "Reveal room lean: a living room for four to eight"
+   ],
+   "negative_samples": [
+    "a mostly public gathering"
+   ],
+   "note": "",
+   "canonical": "A mostly public gathering (D-08, W-54)"
+  },
+  {
+   "id": "S-27.private-gathering",
+   "row_id": "S-27",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "Plan for a private gathering until the venue is known",
+   "positive_samples": [
+    "Plan for a private gathering until the venue is known"
+   ],
+   "negative_samples": [
+    "treated as a public screening"
+   ],
+   "note": "",
+   "canonical": "A mostly public gathering treated as a public screening (D-08)"
+  },
+  {
+   "id": "S-29.mo8-ratio",
+   "row_id": "S-29",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "1\\.3 times a Pillow sub-pixel|the ratio is what MO8 tests|roughness is no more than 1\\.3 times",
+   "positive_samples": [
+    "MO8 passes only when roughness is no more than 1.3 times a Pillow sub-pixel reference",
+    "the ratio is what MO8 tests"
+   ],
+   "negative_samples": [
+    "MO8a <= 0.05 px"
+   ],
+   "note": "",
+   "canonical": "MO8a <= 0.05 px and MO8b <= 0.04 px on the pre-encode master (W-41)"
+  },
+  {
+   "id": "S-30.voxel-marker",
+   "row_id": "S-30",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "do not use a voxel look until the Minecraft rule is resolved",
+   "positive_samples": [
+    "do not use a voxel look until the Minecraft rule is resolved"
+   ],
+   "negative_samples": [
+    "the marker is her own hand-made material"
+   ],
+   "note": "",
+   "canonical": "Her own hand-made material at G1 (W-38, D-23)"
+  },
+  {
+   "id": "S-31.backblaze",
+   "row_id": "S-31",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "Backblaze B2 with rclone crypt",
+   "positive_samples": [
+    "Second copy off-site: Backblaze B2 with rclone crypt"
+   ],
+   "negative_samples": [
+    "a second encrypted SSD kept elsewhere"
+   ],
+   "note": "",
+   "canonical": "A second encrypted SSD kept elsewhere (W-25)"
+  },
+  {
+   "id": "S-32.four-k",
+   "row_id": "S-32",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "Use 4K only after the venue screen is confirmed",
+   "positive_samples": [
+    "Use 4K only after the venue screen is confirmed"
+   ],
+   "negative_samples": [
+    "1080p master; 2K Flat DCP derived"
+   ],
+   "note": "",
+   "canonical": "1080p master; 2K Flat DCP derived (W-15)"
+  },
+  {
+   "id": "S-33.udio",
+   "row_id": "S-33",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "Udio['’]?s terms could not be read",
+   "positive_samples": [
+    "Udio's terms could not be read (UNVERIFIED)"
+   ],
+   "negative_samples": [
+    "Udio cannot supply a file"
+   ],
+   "note": "",
+   "canonical": "Udio cannot supply a file; treat it as closed (W-44)"
+  },
+  {
+   "id": "S-34.stranger-read",
+   "row_id": "S-34",
+   "severity": "WARN",
+   "flags": "i",
+   "regex": "Lean: none recorded[^\\n]{0,80}nobody is approached",
+   "positive_samples": [
+    "Lean: none recorded; nobody is approached"
+   ],
+   "negative_samples": [
+    "strangers to her at S1 and S2"
+   ],
+   "note": "WARN: partial coverage; the stale value is an absent decision",
+   "canonical": "Strangers to her at S1 and S2 (W-43)"
+  },
+  {
+   "id": "S-35.two-quotes",
+   "row_id": "S-35",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "none until two dated quotes",
+   "positive_samples": [
+    "Lever 3: none until two dated quotes"
+   ],
+   "negative_samples": [
+    "do it yourself for the premiere cut"
+   ],
+   "note": "",
+   "canonical": "Do it yourself for the premiere cut (W-50)"
+  },
+  {
+   "id": "S-36.dcp-or-file",
+   "row_id": "S-36",
+   "severity": "WARN",
+   "flags": "i",
+   "regex": "theatrical-delivery sets this before G-SLICE",
+   "positive_samples": [
+    "Lean: none recorded; theatrical-delivery sets this before G-SLICE"
+   ],
+   "negative_samples": [
+    "the venue's written answer decides"
+   ],
+   "note": "WARN: partial coverage",
+   "canonical": "The venue's written answer by Sun 15 Nov decides it (W-17)"
+  },
+  {
+   "id": "S-37.thirty-january",
+   "row_id": "S-37",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "earlier 30 January that the 25-minute plan uses",
+   "positive_samples": [
+    "Picture lock Sat 6 Feb, or the earlier 30 January that the 25-minute plan uses"
+   ],
+   "negative_samples": [
+    "Picture lock Sat 6 Feb"
+   ],
+   "note": "",
+   "canonical": "Sat 6 Feb; there is no 25-minute plan (W-08, D-06)"
+  },
+  {
+   "id": "S-02.frame-rate-proposed",
+   "row_id": "S-02",
+   "severity": "WARN",
+   "flags": "i",
+   "regex": "frame rate[^\\n.]{0,40}\\b(?:proposed|may change in week 2)\\b|\\bmay change in week 2\\b",
+   "positive_samples": [
+    "the frame rate is proposed and may change in week 2"
+   ],
+   "negative_samples": [
+    "the frame rate is settled at 24"
+   ],
+   "note": "WARN: partial coverage",
+   "canonical": "Settled 24 fps at the settings card, Sun 1 Nov (W-14, W-16)"
+  },
+  {
+   "id": "S-41.host-distractor",
+   "row_id": "S-41",
+   "severity": "FAIL",
+   "flags": "i",
+   "regex": "HOST and DISTRACTOR belong to the true plan|Distractor brings her",
+   "positive_samples": [
+    "HOST and DISTRACTOR belong to the true plan and are told only that plan",
+    "Distractor brings her"
+   ],
+   "negative_samples": [
+    "the maker brings her"
+   ],
+   "note": "",
+   "canonical": "The maker brings her; one briefed guest holds the room; TECH holds the first frame (O-32, W-12)"
+  }
+ ],
+ "info": [
+  {
+   "id": "INFO.minecraft",
+   "suggested_row": "D-29 (Minecraft dropped, replaces D-23)",
+   "flags": "i",
+   "regex": "\\bMinecraft\\b",
+   "description": "'Minecraft' in a playbook, skill or fixture now contradicts D-29 (no Minecraft or voxel chapter, assets or name).",
+   "positive_samples": [
+    "a Minecraft tour recipe"
+   ],
+   "negative_samples": [
+    "a minesweeper clone"
+   ]
+  },
+  {
+   "id": "INFO.voxel",
+   "suggested_row": "D-29",
+   "flags": "i",
+   "regex": "\\bvoxels?\\b",
+   "description": "'voxel' in a playbook, skill or fixture now contradicts D-29 (the look comes from D-28).",
+   "positive_samples": [
+    "an original voxel asset",
+    "Voxels"
+   ],
+   "negative_samples": [
+    "a voluntary pixel"
+   ]
+  },
+  {
+   "id": "INFO.mojang",
+   "suggested_row": "D-29",
+   "flags": "i",
+   "regex": "\\bMojang\\b",
+   "description": "'Mojang' (textures, sounds, UI, footage) now contradicts D-29.",
+   "positive_samples": [
+    "No Mojang textures"
+   ],
+   "negative_samples": [
+    "a mohawk"
+   ]
+  },
+  {
+   "id": "INFO.holiday-placeholders",
+   "suggested_row": "C-08 / D-28 (the household is Hindu; generic holiday slots do not match)",
+   "flags": "i",
+   "regex": "\\b(?:Hanukkah|Christmas|Ramadan|Ash Wednesday|Lunar New Year)\\b",
+   "description": "Generic holiday placeholders (calendar slots) that sit beside a Hindu household's actual observances; replacing them waits for the family profile (O-10).",
+   "positive_samples": [
+    "Hanukkah",
+    "Christmas week",
+    "Ash Wednesday",
+    "Lunar New Year",
+    "during Ramadan"
+   ],
+   "negative_samples": [
+    "Diwali this week if kept",
+    "Navaratri nine nights"
+   ]
+  }
+ ]
+}

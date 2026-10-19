@@ -1,0 +1,78 @@
+{
+ "actual": "fps by pages: {'1': 7.67, '4': 11.36}; average PNG 314 KB",
+ "data": {
+  "by_pages": {
+   "1": {
+    "avg_png_kb": 314,
+    "bench": {
+     "contaminated": "no",
+     "loadavg_start": "0.81 1.25 1.79",
+     "nproc": 4
+    },
+    "exit": 0,
+    "frames": 96,
+    "peak_rss": {
+     "browser_tree_mb": 777,
+     "ffmpeg_mb": 0,
+     "node_mb": 110,
+     "note": "RSS counts shared pages in every process, so the sum over-counts",
+     "sum_mb": 887
+    },
+    "settle": {
+     "load1": 0.81,
+     "settled": true,
+     "waited_s": 0
+    },
+    "throughput_fps": 7.67
+   },
+   "4": {
+    "avg_png_kb": 314,
+    "bench": {
+     "contaminated": "no",
+     "loadavg_start": "0.97 1.26 1.78",
+     "nproc": 4
+    },
+    "exit": 0,
+    "frames": 96,
+    "peak_rss": {
+     "browser_tree_mb": 1422,
+     "ffmpeg_mb": 0,
+     "node_mb": 149,
+     "note": "RSS counts shared pages in every process, so the sum over-counts",
+     "sum_mb": 1531
+    },
+    "settle": {
+     "load1": 0.97,
+     "settled": true,
+     "waited_s": 10
+    },
+    "throughput_fps": 11.36
+   }
+  },
+  "seconds": 34.0
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 407,
+  "avail_mb_min": 407,
+  "avail_mb_start": 408,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "speed of the full test card recorded for budgeting (no pass mark)",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "testcard_fps",
+ "unverified_reasons": []
+}

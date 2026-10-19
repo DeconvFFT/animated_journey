@@ -1,0 +1,24 @@
+{
+  "schema": "lj-r8-hashes/1",
+  "source": "research/craft-motion.md: the Q1 pin table, the F7 table (FilmCraft v0.9.0) and the R8 table. Every value was copied from that release's SHA256SUMS.txt on 2026-10-18.",
+  "independence": "These values were read one day before WP-07 fetched the same files (2026-10-19), in a different run. A match shows that no asset was replaced between the two reads. It does not show who published the file, because both reads come from the same host.",
+  "expected": [
+    {"app": "filmcraft", "tag": "v0.9.0", "kind": "linux_x86_64_tarball", "sha256": "ea67953cc754bfd8272e0e5fa940518e16068ae96f6b72a2dce566ed69a61632", "where": "research/craft-motion.md Q1 and F7; spikes header of research/cinematic-quality-fixtures/filmcraft_push.py"},
+    {"app": "filmcraft", "tag": "v0.9.0", "kind": "windows_x64_portable_zip", "sha256": "d370cac8ed2edd729c8129aa55f75d0123716ba3cddbf9c5e4e3f0fdaa101a5e", "where": "research/craft-motion.md Q1 and F7"},
+    {"app": "filmcraft", "tag": "v0.8.0", "kind": "linux_x86_64_tarball", "sha256": "b166877905ae8a1b5505066d6dde60d7ce05831cfb309bacd5d7970f4bb017e1", "where": "research/craft-motion.md Q1 and R8"},
+    {"app": "filmcraft", "tag": "v0.8.0", "kind": "windows_x64_portable_zip", "sha256": "0119afd59dfd6ecb94470ba6b3a48108ade87dabd4972898dd6c04e1db396b0b", "where": "research/craft-motion.md Q1"},
+    {"app": "effectcraft", "tag": "v0.11.1", "kind": "linux_x86_64_tarball", "sha256": "b9cb2ce68dd66458cc164437e431376e94e38e33e3b6529fa8fd45f8cf968934", "where": "research/craft-motion.md Q1 and R8"},
+    {"app": "effectcraft", "tag": "v0.11.1", "kind": "windows_x64_portable_zip", "sha256": "78bd7f63c6bd814bc33f07bd523b003a5f8d095244c5f67bd70e902448fd6e34", "where": "research/craft-motion.md Q1"}
+  ],
+  "no_independent_value": ["photocraft v0.10.0", "vectorcraft v0.13.1", "lightcraft v0.9.1"],
+  "no_independent_value_note": "No earlier hash was recorded for these three pins. Their hashes come from the same host as the files, so they prove integrity only.",
+  "expected_linux_tarball_bytes": {
+    "photocraft v0.10.0": 83037328,
+    "vectorcraft v0.13.1": 124613940,
+    "lightcraft v0.9.1": 108938717,
+    "filmcraft v0.9.0": 69756500,
+    "filmcraft v0.8.0": 69692976,
+    "effectcraft v0.11.1": 64039300
+  },
+  "expected_linux_tarball_bytes_source": "build/BUILD-PLAN-W1-2.md F-04, measured with HEAD requests on 2026-10-19"
+}

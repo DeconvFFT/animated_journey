@@ -1,0 +1,154 @@
+{
+  "asfound_not_bottom": {
+    "described_as": "L10_restored and L00_asfound swap places in stack.xml",
+    "exit": 1,
+    "expected_code": "asfound_not_bottom",
+    "failed_codes": [
+      "asfound_not_bottom"
+    ]
+  },
+  "attribute_unsupported": {
+    "described_as": "layer L20_figure gets edit-locked=\"true\" (locks do not round-trip)",
+    "exit": 1,
+    "expected_code": "attribute_unsupported",
+    "failed_codes": [
+      "attribute_unsupported"
+    ]
+  },
+  "duplicate_name": {
+    "described_as": "layer L20_figure is renamed L10_restored",
+    "exit": 1,
+    "expected_code": "layer_name_duplicate",
+    "failed_codes": [
+      "layer_name_duplicate"
+    ]
+  },
+  "layer_name_invalid": {
+    "described_as": "layer L20_figure is renamed 'L20 figure' (a space)",
+    "exit": 1,
+    "expected_code": "layer_name_invalid",
+    "failed_codes": [
+      "layer_name_invalid"
+    ]
+  },
+  "layer_outside_canvas": {
+    "described_as": "layer L20_figure moved to x=500 so it leaves the 640x360 canvas",
+    "exit": 1,
+    "expected_code": "layer_outside_canvas",
+    "failed_codes": [
+      "layer_outside_canvas"
+    ]
+  },
+  "layer_png_format": {
+    "described_as": "layer L10_restored is an RGB PNG without alpha",
+    "exit": 1,
+    "expected_code": "layer_png_format",
+    "failed_codes": [
+      "layer_png_format"
+    ]
+  },
+  "layer_png_invalid": {
+    "described_as": "the PNG of layer L10_restored is cut short",
+    "exit": 1,
+    "expected_code": "layer_png_invalid",
+    "failed_codes": [
+      "layer_png_invalid"
+    ]
+  },
+  "layer_src_missing": {
+    "described_as": "layer L20_figure has no src attribute",
+    "exit": 1,
+    "expected_code": "layer_src_missing",
+    "failed_codes": [
+      "layer_src_missing"
+    ]
+  },
+  "layer_value_invalid": {
+    "described_as": "layer L20_figure opacity is 1.5",
+    "exit": 1,
+    "expected_code": "layer_value_invalid",
+    "failed_codes": [
+      "layer_value_invalid"
+    ]
+  },
+  "mergedimage_size": {
+    "described_as": "mergedimage.png is 10x10",
+    "exit": 1,
+    "expected_code": "mergedimage_size",
+    "failed_codes": [
+      "mergedimage_size"
+    ]
+  },
+  "mimetype_not_first": {
+    "described_as": "stack.xml is written before mimetype",
+    "exit": 1,
+    "expected_code": "mimetype_not_first",
+    "failed_codes": [
+      "mimetype_not_first"
+    ]
+  },
+  "mimetype_not_stored": {
+    "described_as": "mimetype is deflated instead of stored",
+    "exit": 1,
+    "expected_code": "mimetype_not_stored",
+    "failed_codes": [
+      "mimetype_not_stored"
+    ]
+  },
+  "mimetype_wrong": {
+    "described_as": "mimetype says image/png",
+    "exit": 1,
+    "expected_code": "mimetype_wrong",
+    "failed_codes": [
+      "mimetype_wrong"
+    ]
+  },
+  "missing_layer_png": {
+    "described_as": "the PNG of layer L20_figure is removed from the archive",
+    "exit": 1,
+    "expected_code": "layer_png_missing",
+    "failed_codes": [
+      "layer_png_missing"
+    ]
+  },
+  "no_stack_xml": {
+    "described_as": "the stack.xml member is removed",
+    "exit": 1,
+    "expected_code": "stack_xml_missing",
+    "failed_codes": [
+      "stack_xml_missing"
+    ]
+  },
+  "src_path_unsafe": {
+    "described_as": "layer L20_figure src is an absolute path",
+    "exit": 1,
+    "expected_code": "src_path_unsafe",
+    "failed_codes": [
+      "src_path_unsafe"
+    ]
+  },
+  "stack_xml_dtd": {
+    "described_as": "stack.xml carries an entity declaration",
+    "exit": 1,
+    "expected_code": "stack_xml_dtd",
+    "failed_codes": [
+      "stack_xml_dtd"
+    ]
+  },
+  "stack_xml_unparseable": {
+    "described_as": "stack.xml is not XML",
+    "exit": 1,
+    "expected_code": "stack_xml_unparseable",
+    "failed_codes": [
+      "stack_xml_unparseable"
+    ]
+  },
+  "zip_unreadable": {
+    "described_as": "the file is cut short",
+    "exit": 1,
+    "expected_code": "zip_unreadable",
+    "failed_codes": [
+      "zip_unreadable"
+    ]
+  }
+}

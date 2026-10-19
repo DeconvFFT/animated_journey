@@ -1,10 +1,10 @@
 {
- "actual": "absent: noted; devanagari with strings: pass; without strings or broken file: exit 1",
+ "actual": "ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv\n  note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded\n  note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked\n  FAIL ops/decisions.csv [decisions_mismatch] D-31 is in DECISIONS.md but missing from the CSV\n  FAIL ops/decisions.csv [decisions_mismatch] O-02: column 'short_title' differs from the register (csv: 'Country and state of the premiere (TD-7), her home state and' / register: 'Country and state of the premiere (TD-7), and the countries ')\n  FAIL ops/decisions.csv [decisions_mismatch] O-02: column 'note' differs from the register (csv: 'she is from India' / register: 'she is from Bhavnagar, Gujarat, D-31')\n  FAIL ops/decisions.csv [id_set] missing from the CSV: D-31\nops_lint: FAIL (4 failure(s), 0 warning(s))\n",
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 605,
-  "avail_mb_min": 605,
-  "avail_mb_start": 605,
+  "avail_mb_end": 464,
+  "avail_mb_min": 464,
+  "avail_mb_start": 464,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0
@@ -15,10 +15,10 @@
   "python": "3.13.x"
  },
  "expected": "the card's tested-script claim is cross-checked with pipeline/phone/test_strings.json when that file exists",
- "notes": "ran with a synthetic mini pattern file because scripts/redaction_patterns.json is absent (mechanism test only)",
+ "notes": "",
  "package": "WP-02",
  "schema": "lj-evidence/1",
- "status": "PASS",
+ "status": "FAIL",
  "test": "lint_card_scripts",
  "unverified_reasons": []
 }

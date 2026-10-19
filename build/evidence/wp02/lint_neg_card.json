@@ -2,9 +2,9 @@
  "actual": "9 card mutations, each exit 1 naming the problem",
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 604,
-  "avail_mb_min": 604,
-  "avail_mb_start": 605,
+  "avail_mb_end": 462,
+  "avail_mb_min": 462,
+  "avail_mb_start": 464,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0
@@ -15,7 +15,7 @@
   "python": "3.13.x"
  },
  "expected": "negative: card without Phone / with an invented ID / without the Language line / signed with <date>",
- "notes": "ran with a synthetic mini pattern file because scripts/redaction_patterns.json is absent (mechanism test only)",
+ "notes": "",
  "package": "WP-02",
  "schema": "lj-evidence/1",
  "status": "PASS",

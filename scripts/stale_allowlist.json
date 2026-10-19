@@ -1,0 +1,153 @@
+{
+ "schema": "lj-stale-allowlist/1",
+ "version": 1,
+ "owner": "WP-03",
+ "source": "DECISIONS.md W-29 allowlist, exactly: (1) playbooks/music-sound.md DX-gated check ('not applied here' is body text about a broadcast anchor); (2) negations ('no co-keeper', 'Rings 1 and 2 are empty', 'there is no insider'); (3) a 25 next to 'tested at 25, UNVERIFIED at 24' or 'access copy only if a 50 Hz venue judders'; (4) 'Ring 1' inside 'gathering 14'. Nothing else may be added by an implementor: a new entry is an orchestrator decision.",
+ "how_it_works": "A hit is allowed when its file matches 'file' (a glob under the repo root), its row is in 'rows', and context_regex matches somewhere in the hit's line and the 'window' lines before and after it. --audit-allowlist fails on any entry that suppresses nothing.",
+ "entries": [
+  {
+   "id": "AL-1-music-sound-dx-gated",
+   "register_row": "W-29",
+   "file": "playbooks/music-sound.md",
+   "rows": [
+    "W-29"
+   ],
+   "context_regex": "broadcast anchor[^\\n]{0,80}not applied here",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "'not applied here' is body text about a broadcast anchor in the DX-gated loudness check, not a scribe note",
+   "positive_samples": [
+    "Keep 6 LU as the starting threshold (inference; the broadcast anchor in research G3 is not applied here): if"
+   ],
+   "negative_samples": [
+    "TODO: the fix is not applied here"
+   ]
+  },
+  {
+   "id": "AL-2a-no-co-keeper",
+   "register_row": "W-29",
+   "file": "*",
+   "rows": [
+    "S-05"
+   ],
+   "context_regex": "\\bno (?:second key,? no |partner role,? no )?co-?keepers?\\b|\\bthere is no co-?keeper\\b",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "negation: the text says there is no co-keeper",
+   "positive_samples": [
+    "There is no co-keeper to tell under only-me.",
+    "there is no co-keeper, no second key and no partner role"
+   ],
+   "negative_samples": [
+    "tell your co-keeper within an hour"
+   ]
+  },
+  {
+   "id": "AL-2b-rings-empty",
+   "register_row": "W-29",
+   "file": "*",
+   "rows": [
+    "S-05"
+   ],
+   "context_regex": "\\bRings? 1\\b[^\\n]{0,90}\\b(?:are|is) empty\\b|\\bRings 1 and 2 are empty\\b",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "negation: Rings 1 and 2 are empty under only-me",
+   "positive_samples": [
+    "no partner role; Rings 1 and 2 are empty.",
+    "Ring 1 (a co-keeper and proxy keys) and Ring 2 (contributors) are empty."
+   ],
+   "negative_samples": [
+    "Set the rings: Ring 1 is the co-keeper"
+   ]
+  },
+  {
+   "id": "AL-2c-no-insider",
+   "register_row": "W-29",
+   "file": "*",
+   "rows": [
+    "S-08"
+   ],
+   "context_regex": "\\bthere (?:is|are) no insiders?\\b|\\bno insiders? list\\b|\\bno insiders?\\b",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "negation: under only-me there is no insider",
+   "positive_samples": [
+    "There is no insider under only-me.",
+    "under only-me there is no insiders list."
+   ],
+   "negative_samples": [
+    "ask the closest insider"
+   ]
+  },
+  {
+   "id": "AL-3a-tested-at-25-unverified-at-24",
+   "register_row": "W-29",
+   "file": "*",
+   "rows": [
+    "S-01"
+   ],
+   "context_regex": "tested (?:form )?(?:at |in |as )?25\\b[^\\n]{0,90}UNVERIFIED at 24",
+   "window": {
+    "before": 3,
+    "after": 0
+   },
+   "reason": "a 25 next to 'tested at 25, UNVERIFIED at 24': the tested form is kept until the 24 fps re-run (S-01)",
+   "positive_samples": [
+    "ffmpeg -framerate 25 -i x  # tested at 25, UNVERIFIED at 24"
+   ],
+   "negative_samples": [
+    "ffmpeg -framerate 25 -i x"
+   ]
+  },
+  {
+   "id": "AL-3b-access-copy-50hz",
+   "register_row": "W-29",
+   "file": "*",
+   "rows": [
+    "S-01"
+   ],
+   "context_regex": "access copy[^\\n]{0,60}50 Hz[^\\n]{0,40}judder|50 Hz[^\\n]{0,60}judder[^\\n]{0,80}access copy|access copy[^\\n]{0,80}judder",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "a 25 fps access copy only if a 50 Hz-only venue judders (W-14)",
+   "positive_samples": [
+    "A 25 fps access copy (`fps=25`) only if a 50 Hz-only venue judders",
+    "A 50 Hz-only venue whose test clip judders. Then make a 25 fps access copy with `fps=25`"
+   ],
+   "negative_samples": [
+    "render the film with `fps=25`"
+   ]
+  },
+  {
+   "id": "AL-4-gathering-14",
+   "register_row": "W-29",
+   "file": "playbooks/production-scale.md",
+   "rows": [
+    "S-05"
+   ],
+   "context_regex": "\\bgathering 14\\b",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "'Ring 1' is a substring of 'gathering 14' (hours budget: story 12, gathering 14)",
+   "positive_samples": [
+    "Story takes 12 hours, gathering 14, the risk reserve 15"
+   ],
+   "negative_samples": [
+    "Ring 1 is the co-keeper"
+   ]
+  }
+ ]
+}

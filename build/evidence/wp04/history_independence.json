@@ -1,0 +1,37 @@
+{
+ "actual": "defaults: 0 of 96 frames differ; control without the two flags: 62 of 96 frames differ",
+ "data": {
+  "control_differing_frames": 62,
+  "defaults_differing_frames": 0,
+  "dropped_flags": [
+   "--disable-partial-raster",
+   "--disable-gpu-compositing"
+  ],
+  "frames": 96,
+  "seconds": 33.0
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 409,
+  "avail_mb_min": 409,
+  "avail_mb_start": 410,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "with the harness defaults 1 page and 4 pages give identical frames (0 of 96 differ); with both flags dropped (negative control) they differ",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "history_independence",
+ "unverified_reasons": []
+}

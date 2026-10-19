@@ -1,0 +1,910 @@
+{
+  "extra": {
+    "inkscape_svg_format": {
+      "data_attributes": {
+        "by_element_kind": {
+          "circle": {
+            "kept": 2,
+            "total": 2
+          },
+          "ellipse": {
+            "kept": 1,
+            "total": 1
+          },
+          "g": {
+            "kept": 8,
+            "total": 8
+          },
+          "linearGradient": {
+            "kept": 1,
+            "total": 1
+          },
+          "path": {
+            "kept": 1,
+            "total": 1
+          },
+          "rect": {
+            "kept": 1,
+            "total": 1
+          },
+          "text": {
+            "kept": 2,
+            "total": 2
+          },
+          "use": {
+            "kept": 2,
+            "total": 2
+          }
+        },
+        "changed": [],
+        "detail": [
+          {
+            "attr": "data-note",
+            "element": "#bg-grad",
+            "in": "def-probe",
+            "out": "def-probe",
+            "state": "kept",
+            "tag": "linearGradient"
+          },
+          {
+            "attr": "data-z",
+            "element": "#scene",
+            "in": "0",
+            "out": "0",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#orbit",
+            "in": "320,180",
+            "out": "320,180",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-z",
+            "element": "#orbit",
+            "in": "2",
+            "out": "2",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-role",
+            "element": "#disc-a",
+            "in": "body",
+            "out": "body",
+            "state": "kept",
+            "tag": "circle"
+          },
+          {
+            "attr": "data-role",
+            "element": "#disc-b",
+            "in": "satellite",
+            "out": "satellite",
+            "state": "kept",
+            "tag": "circle"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#bar",
+            "in": "320, 90",
+            "out": "320, 90",
+            "state": "kept",
+            "tag": "rect"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#arm",
+            "in": "120,300",
+            "out": "120,300",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-z",
+            "element": "#arm",
+            "in": "3",
+            "out": "3",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#arm-lower",
+            "in": "120.50,220.0",
+            "out": "120.50,220.0",
+            "state": "kept",
+            "tag": "path"
+          },
+          {
+            "attr": "data-z",
+            "element": "#hand",
+            "in": "1",
+            "out": "1",
+            "state": "kept",
+            "tag": "ellipse"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#dots",
+            "in": "500,300",
+            "out": "500,300",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-z",
+            "element": "#dots",
+            "in": "4",
+            "out": "4",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-role",
+            "element": "g[data-role=wrapper-without-id]",
+            "in": "wrapper-without-id",
+            "out": "wrapper-without-id",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-z",
+            "element": "#tick-1",
+            "in": "5",
+            "out": "5",
+            "state": "kept",
+            "tag": "use"
+          },
+          {
+            "attr": "data-z",
+            "element": "#tick-2",
+            "in": "5",
+            "out": "5",
+            "state": "kept",
+            "tag": "use"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#label",
+            "in": "24,340",
+            "out": "24,340",
+            "state": "kept",
+            "tag": "text"
+          },
+          {
+            "attr": "data-z",
+            "element": "#label",
+            "in": "6",
+            "out": "6",
+            "state": "kept",
+            "tag": "text"
+          }
+        ],
+        "dropped": [],
+        "kept_verbatim": 18,
+        "total": 18
+      },
+      "has_class_or_style": false,
+      "ids": {
+        "added_by_tool": 7,
+        "added_examples": [
+          "defs10",
+          "g27",
+          "namedview33",
+          "rect7",
+          "stop2",
+          "stop4",
+          "svg31"
+        ],
+        "authored": 17,
+        "kind_changed": [],
+        "lost": [],
+        "survived": 17
+      },
+      "inkscape_or_sodipodi_attributes": 5,
+      "namespaces_in_output": [
+        "http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd",
+        "http://www.inkscape.org/namespaces/inkscape",
+        "http://www.w3.org/1999/xlink",
+        "http://www.w3.org/2000/svg"
+      ],
+      "size": {
+        "in": [
+          "640",
+          "360"
+        ],
+        "out": [
+          "640",
+          "360"
+        ]
+      },
+      "transform_added_to": [],
+      "viewBox": {
+        "in": "0 0 640 360",
+        "out": "0 0 640 360"
+      }
+    },
+    "touch_child_moved": {
+      "data_attributes": {
+        "by_element_kind": {
+          "circle": {
+            "kept": 2,
+            "total": 2
+          },
+          "ellipse": {
+            "kept": 1,
+            "total": 1
+          },
+          "g": {
+            "kept": 8,
+            "total": 8
+          },
+          "linearGradient": {
+            "kept": 1,
+            "total": 1
+          },
+          "path": {
+            "kept": 1,
+            "total": 1
+          },
+          "rect": {
+            "kept": 1,
+            "total": 1
+          },
+          "text": {
+            "kept": 2,
+            "total": 2
+          },
+          "use": {
+            "kept": 2,
+            "total": 2
+          }
+        },
+        "changed": [],
+        "detail": [
+          {
+            "attr": "data-note",
+            "element": "#bg-grad",
+            "in": "def-probe",
+            "out": "def-probe",
+            "state": "kept",
+            "tag": "linearGradient"
+          },
+          {
+            "attr": "data-z",
+            "element": "#scene",
+            "in": "0",
+            "out": "0",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#orbit",
+            "in": "320,180",
+            "out": "320,180",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-z",
+            "element": "#orbit",
+            "in": "2",
+            "out": "2",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-role",
+            "element": "#disc-a",
+            "in": "body",
+            "out": "body",
+            "state": "kept",
+            "tag": "circle"
+          },
+          {
+            "attr": "data-role",
+            "element": "#disc-b",
+            "in": "satellite",
+            "out": "satellite",
+            "state": "kept",
+            "tag": "circle"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#bar",
+            "in": "320, 90",
+            "out": "320, 90",
+            "state": "kept",
+            "tag": "rect"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#arm",
+            "in": "120,300",
+            "out": "120,300",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-z",
+            "element": "#arm",
+            "in": "3",
+            "out": "3",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#arm-lower",
+            "in": "120.50,220.0",
+            "out": "120.50,220.0",
+            "state": "kept",
+            "tag": "path"
+          },
+          {
+            "attr": "data-z",
+            "element": "#hand",
+            "in": "1",
+            "out": "1",
+            "state": "kept",
+            "tag": "ellipse"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#dots",
+            "in": "500,300",
+            "out": "500,300",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-z",
+            "element": "#dots",
+            "in": "4",
+            "out": "4",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-role",
+            "element": "g[data-role=wrapper-without-id]",
+            "in": "wrapper-without-id",
+            "out": "wrapper-without-id",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-z",
+            "element": "#tick-1",
+            "in": "5",
+            "out": "5",
+            "state": "kept",
+            "tag": "use"
+          },
+          {
+            "attr": "data-z",
+            "element": "#tick-2",
+            "in": "5",
+            "out": "5",
+            "state": "kept",
+            "tag": "use"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#label",
+            "in": "24,340",
+            "out": "24,340",
+            "state": "kept",
+            "tag": "text"
+          },
+          {
+            "attr": "data-z",
+            "element": "#label",
+            "in": "6",
+            "out": "6",
+            "state": "kept",
+            "tag": "text"
+          }
+        ],
+        "dropped": [],
+        "kept_verbatim": 18,
+        "total": 18
+      },
+      "has_class_or_style": false,
+      "ids": {
+        "added_by_tool": 6,
+        "added_examples": [
+          "defs10",
+          "g27",
+          "rect7",
+          "stop2",
+          "stop4",
+          "svg31"
+        ],
+        "authored": 17,
+        "kind_changed": [],
+        "lost": [],
+        "survived": 17
+      },
+      "inkscape_or_sodipodi_attributes": 0,
+      "namespaces_in_output": [
+        "http://www.w3.org/1999/xlink",
+        "http://www.w3.org/2000/svg"
+      ],
+      "size": {
+        "in": [
+          "640",
+          "360"
+        ],
+        "out": [
+          "640",
+          "360"
+        ]
+      },
+      "transform_added_to": [],
+      "viewBox": {
+        "in": "0 0 640 360",
+        "out": "0 0 640 360"
+      }
+    },
+    "touch_group_moved": {
+      "data_attributes": {
+        "by_element_kind": {
+          "circle": {
+            "kept": 2,
+            "total": 2
+          },
+          "ellipse": {
+            "kept": 1,
+            "total": 1
+          },
+          "g": {
+            "kept": 8,
+            "total": 8
+          },
+          "linearGradient": {
+            "kept": 1,
+            "total": 1
+          },
+          "path": {
+            "kept": 1,
+            "total": 1
+          },
+          "rect": {
+            "kept": 1,
+            "total": 1
+          },
+          "text": {
+            "kept": 2,
+            "total": 2
+          },
+          "use": {
+            "kept": 2,
+            "total": 2
+          }
+        },
+        "changed": [],
+        "detail": [
+          {
+            "attr": "data-note",
+            "element": "#bg-grad",
+            "in": "def-probe",
+            "out": "def-probe",
+            "state": "kept",
+            "tag": "linearGradient"
+          },
+          {
+            "attr": "data-z",
+            "element": "#scene",
+            "in": "0",
+            "out": "0",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#orbit",
+            "in": "320,180",
+            "out": "320,180",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-z",
+            "element": "#orbit",
+            "in": "2",
+            "out": "2",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-role",
+            "element": "#disc-a",
+            "in": "body",
+            "out": "body",
+            "state": "kept",
+            "tag": "circle"
+          },
+          {
+            "attr": "data-role",
+            "element": "#disc-b",
+            "in": "satellite",
+            "out": "satellite",
+            "state": "kept",
+            "tag": "circle"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#bar",
+            "in": "320, 90",
+            "out": "320, 90",
+            "state": "kept",
+            "tag": "rect"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#arm",
+            "in": "120,300",
+            "out": "120,300",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-z",
+            "element": "#arm",
+            "in": "3",
+            "out": "3",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#arm-lower",
+            "in": "120.50,220.0",
+            "out": "120.50,220.0",
+            "state": "kept",
+            "tag": "path"
+          },
+          {
+            "attr": "data-z",
+            "element": "#hand",
+            "in": "1",
+            "out": "1",
+            "state": "kept",
+            "tag": "ellipse"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#dots",
+            "in": "500,300",
+            "out": "500,300",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-z",
+            "element": "#dots",
+            "in": "4",
+            "out": "4",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-role",
+            "element": "g[data-role=wrapper-without-id]",
+            "in": "wrapper-without-id",
+            "out": "wrapper-without-id",
+            "state": "kept",
+            "tag": "g"
+          },
+          {
+            "attr": "data-z",
+            "element": "#tick-1",
+            "in": "5",
+            "out": "5",
+            "state": "kept",
+            "tag": "use"
+          },
+          {
+            "attr": "data-z",
+            "element": "#tick-2",
+            "in": "5",
+            "out": "5",
+            "state": "kept",
+            "tag": "use"
+          },
+          {
+            "attr": "data-pivot",
+            "element": "#label",
+            "in": "24,340",
+            "out": "24,340",
+            "state": "kept",
+            "tag": "text"
+          },
+          {
+            "attr": "data-z",
+            "element": "#label",
+            "in": "6",
+            "out": "6",
+            "state": "kept",
+            "tag": "text"
+          }
+        ],
+        "dropped": [],
+        "kept_verbatim": 18,
+        "total": 18
+      },
+      "has_class_or_style": false,
+      "ids": {
+        "added_by_tool": 6,
+        "added_examples": [
+          "defs10",
+          "g27",
+          "rect7",
+          "stop2",
+          "stop4",
+          "svg31"
+        ],
+        "authored": 17,
+        "kind_changed": [],
+        "lost": [],
+        "survived": 17
+      },
+      "inkscape_or_sodipodi_attributes": 0,
+      "namespaces_in_output": [
+        "http://www.w3.org/1999/xlink",
+        "http://www.w3.org/2000/svg"
+      ],
+      "size": {
+        "in": [
+          "640",
+          "360"
+        ],
+        "out": [
+          "640",
+          "360"
+        ]
+      },
+      "transform_added_to": [
+        "orbit"
+      ],
+      "viewBox": {
+        "in": "0 0 640 360",
+        "out": "0 0 640 360"
+      }
+    }
+  },
+  "plain_svg": {
+    "data_attributes": {
+      "by_element_kind": {
+        "circle": {
+          "kept": 2,
+          "total": 2
+        },
+        "ellipse": {
+          "kept": 1,
+          "total": 1
+        },
+        "g": {
+          "kept": 8,
+          "total": 8
+        },
+        "linearGradient": {
+          "kept": 1,
+          "total": 1
+        },
+        "path": {
+          "kept": 1,
+          "total": 1
+        },
+        "rect": {
+          "kept": 1,
+          "total": 1
+        },
+        "text": {
+          "kept": 2,
+          "total": 2
+        },
+        "use": {
+          "kept": 2,
+          "total": 2
+        }
+      },
+      "changed": [],
+      "detail": [
+        {
+          "attr": "data-note",
+          "element": "#bg-grad",
+          "in": "def-probe",
+          "out": "def-probe",
+          "state": "kept",
+          "tag": "linearGradient"
+        },
+        {
+          "attr": "data-z",
+          "element": "#scene",
+          "in": "0",
+          "out": "0",
+          "state": "kept",
+          "tag": "g"
+        },
+        {
+          "attr": "data-pivot",
+          "element": "#orbit",
+          "in": "320,180",
+          "out": "320,180",
+          "state": "kept",
+          "tag": "g"
+        },
+        {
+          "attr": "data-z",
+          "element": "#orbit",
+          "in": "2",
+          "out": "2",
+          "state": "kept",
+          "tag": "g"
+        },
+        {
+          "attr": "data-role",
+          "element": "#disc-a",
+          "in": "body",
+          "out": "body",
+          "state": "kept",
+          "tag": "circle"
+        },
+        {
+          "attr": "data-role",
+          "element": "#disc-b",
+          "in": "satellite",
+          "out": "satellite",
+          "state": "kept",
+          "tag": "circle"
+        },
+        {
+          "attr": "data-pivot",
+          "element": "#bar",
+          "in": "320, 90",
+          "out": "320, 90",
+          "state": "kept",
+          "tag": "rect"
+        },
+        {
+          "attr": "data-pivot",
+          "element": "#arm",
+          "in": "120,300",
+          "out": "120,300",
+          "state": "kept",
+          "tag": "g"
+        },
+        {
+          "attr": "data-z",
+          "element": "#arm",
+          "in": "3",
+          "out": "3",
+          "state": "kept",
+          "tag": "g"
+        },
+        {
+          "attr": "data-pivot",
+          "element": "#arm-lower",
+          "in": "120.50,220.0",
+          "out": "120.50,220.0",
+          "state": "kept",
+          "tag": "path"
+        },
+        {
+          "attr": "data-z",
+          "element": "#hand",
+          "in": "1",
+          "out": "1",
+          "state": "kept",
+          "tag": "ellipse"
+        },
+        {
+          "attr": "data-pivot",
+          "element": "#dots",
+          "in": "500,300",
+          "out": "500,300",
+          "state": "kept",
+          "tag": "g"
+        },
+        {
+          "attr": "data-z",
+          "element": "#dots",
+          "in": "4",
+          "out": "4",
+          "state": "kept",
+          "tag": "g"
+        },
+        {
+          "attr": "data-role",
+          "element": "g[data-role=wrapper-without-id]",
+          "in": "wrapper-without-id",
+          "out": "wrapper-without-id",
+          "state": "kept",
+          "tag": "g"
+        },
+        {
+          "attr": "data-z",
+          "element": "#tick-1",
+          "in": "5",
+          "out": "5",
+          "state": "kept",
+          "tag": "use"
+        },
+        {
+          "attr": "data-z",
+          "element": "#tick-2",
+          "in": "5",
+          "out": "5",
+          "state": "kept",
+          "tag": "use"
+        },
+        {
+          "attr": "data-pivot",
+          "element": "#label",
+          "in": "24,340",
+          "out": "24,340",
+          "state": "kept",
+          "tag": "text"
+        },
+        {
+          "attr": "data-z",
+          "element": "#label",
+          "in": "6",
+          "out": "6",
+          "state": "kept",
+          "tag": "text"
+        }
+      ],
+      "dropped": [],
+      "kept_verbatim": 18,
+      "total": 18
+    },
+    "has_class_or_style": false,
+    "ids": {
+      "added_by_tool": 6,
+      "added_examples": [
+        "defs10",
+        "g27",
+        "rect7",
+        "stop2",
+        "stop4",
+        "svg31"
+      ],
+      "authored": 17,
+      "kind_changed": [],
+      "lost": [],
+      "survived": 17
+    },
+    "inkscape_or_sodipodi_attributes": 0,
+    "namespaces_in_output": [
+      "http://www.w3.org/1999/xlink",
+      "http://www.w3.org/2000/svg"
+    ],
+    "size": {
+      "in": [
+        "640",
+        "360"
+      ],
+      "out": [
+        "640",
+        "360"
+      ]
+    },
+    "transform_added_to": [],
+    "viewBox": {
+      "in": "0 0 640 360",
+      "out": "0 0 640 360"
+    }
+  },
+  "question": "What does Inkscape do to data-* attributes (and ids, viewBox) on a clean pass-through of the synthetic rig?",
+  "schema": "lj-svg-finding/1",
+  "summary": "Inkscape plain-SVG export kept 18 of 18 data-* attributes verbatim (changed 0, dropped 0) and 17 of 17 authored ids; it added 6 ids of its own to elements that had none.",
+  "tool": "Inkscape",
+  "version": "Inkscape 1.2.2 (b0a8486541, 2022-12-01)"
+}

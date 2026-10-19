@@ -1,0 +1,39 @@
+{
+ "actual": "differing pixels per frame: [511016, 511015, 511015, 511016, 511018, 511007]",
+ "data": {
+  "differing_px": [
+   511016,
+   511015,
+   511015,
+   511016,
+   511018,
+   511007
+  ],
+  "hash_identical": 0,
+  "seconds": 5.0
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 410,
+  "avail_mb_min": 410,
+  "avail_mb_start": 410,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "?random=1 frames from two processes differ by more than 100 pixels (the determinism test catches a nondeterministic scene)",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "a2_negative_control",
+ "unverified_reasons": []
+}

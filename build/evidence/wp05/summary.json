@@ -1,0 +1,100 @@
+{
+  "schema": "lj-evidence-summary/1",
+  "package": "WP-05",
+  "date_utc": "2026-10-19",
+  "all_run": {
+    "PASS": 64,
+    "FAIL": 0,
+    "UNVERIFIED": 3,
+    "SKIPPED": 1,
+    "BLOCKED": 0
+  },
+  "quick_run": {
+    "PASS": 18,
+    "FAIL": 0,
+    "UNVERIFIED": 0,
+    "SKIPPED": 0,
+    "BLOCKED": 0
+  },
+  "groups": {
+    "hygiene": {
+      "PASS": 7,
+      "FAIL": 0,
+      "UNVERIFIED": 0,
+      "SKIPPED": 0,
+      "BLOCKED": 0
+    },
+    "json": {
+      "PASS": 2,
+      "FAIL": 0,
+      "UNVERIFIED": 0,
+      "SKIPPED": 0,
+      "BLOCKED": 0
+    },
+    "colour_patch": {
+      "PASS": 16,
+      "FAIL": 0,
+      "UNVERIFIED": 1,
+      "SKIPPED": 0,
+      "BLOCKED": 0
+    },
+    "spec_check": {
+      "PASS": 32,
+      "FAIL": 0,
+      "UNVERIFIED": 1,
+      "SKIPPED": 0,
+      "BLOCKED": 0
+    },
+    "validators": {
+      "PASS": 1,
+      "FAIL": 0,
+      "UNVERIFIED": 0,
+      "SKIPPED": 0,
+      "BLOCKED": 0
+    },
+    "chains": {
+      "PASS": 1,
+      "FAIL": 0,
+      "UNVERIFIED": 0,
+      "SKIPPED": 0,
+      "BLOCKED": 0
+    },
+    "mo8_gate": {
+      "PASS": 5,
+      "FAIL": 0,
+      "UNVERIFIED": 0,
+      "SKIPPED": 0,
+      "BLOCKED": 0
+    },
+    "windows": {
+      "PASS": 0,
+      "FAIL": 0,
+      "UNVERIFIED": 1,
+      "SKIPPED": 0,
+      "BLOCKED": 0
+    },
+    "stage": {
+      "PASS": 0,
+      "FAIL": 0,
+      "UNVERIFIED": 0,
+      "SKIPPED": 1,
+      "BLOCKED": 0
+    }
+  },
+  "disk": {
+    "stage_label": "wp05-validators",
+    "planned_mb": 30,
+    "avail_mb_start": 406,
+    "avail_mb_min": 406,
+    "avail_mb_end": 406,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "measured_peak_of_generated_files_mb": 20.2,
+    "guard_status": "refused"
+  },
+  "unverified": [
+    "colour_patch.ffmpeg_9.0.2_results",
+    "spec_check.prores_range_tag_on_windows_builds",
+    "windows.behaviour_unverified"
+  ]
+}

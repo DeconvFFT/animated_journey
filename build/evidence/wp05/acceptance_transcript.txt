@@ -1,0 +1,54 @@
+# WP-05 acceptance commands, run on their own (the same commands run_tests.sh --all runs inside its stage)
+
+$ python3 -I pipeline/validators/colour_patch.py --ffmpeg ffmpeg --chain-file pipeline/lib/chains.json --all --json build/evidence/wp05/colour_patch_ffmpeg-6.1.1.json
+colour_patch: ffmpeg 6.1.1 (sha256 ed16af623947...)
+colour_patch: encodes 2 frames per chain into a temporary folder (deleted at the end), decodes them back, compares with the source.
+colour_patch: tolerance 3/255 per channel (W-16). Pass/fail is on pixels; tags are shown for information.
+  h264_venue                     PASS  worst 1/255  accurate-decode 1   [red -1/+0/+0  grey50 +0/+0/+0  skin -1/-1/-1]
+  h264_backup_main40             PASS  worst 1/255  accurate-decode 1   [red -1/+0/+0  grey50 +0/+0/+0  skin -1/-1/-1]
+  h264_online                    PASS  worst 1/255  accurate-decode 1   [red -1/+0/+0  grey50 +0/+0/+0  skin -1/-1/-1]
+  prores422hq_master             PASS  worst 2/255  accurate-decode 0   [red -2/+0/+0  grey50 -2/-2/-2  skin -2/-1/-2]
+  prores4444_alpha               PASS  worst 0/255  accurate-decode 0  alpha-error 1   [red +0/+0/+0  grey50 +0/+0/+0  skin +0/+0/+0]
+  ffv1_lossless                  PASS  worst 0/255  accurate-decode 0   [red +0/+0/+0  grey50 +0/+0/+0  skin +0/+0/+0]
+  control_h264_scale_first_B     PASS  worst 1/255  accurate-decode 1   [red -1/+0/+0  grey50 +0/+0/+0  skin -1/-1/-1]
+  control_h264_format_first_A    FAIL  worst 5/255  accurate-decode 4  TRAP PRESENT   [red -4/+0/+0  grey50 -4/-2/-2  skin -3/-3/-5]
+  control_h264_bare_pix_fmt      FAIL  worst 23/255  accurate-decode 24  TRAP PRESENT   [red +0/+23/+0  grey50 +0/+0/+0  skin +3/+1/-4]
+  control_prores4444_bare        FAIL  worst 25/255  accurate-decode 25  alpha-error 1  TRAP PRESENT   [red +0/+25/+0  grey50 +0/+0/+0  skin +5/+3/-2]
+  control_wrong_matrix_bt601     FAIL  worst 25/255  accurate-decode 25   [red +0/+25/+0  grey50 +0/+0/+0  skin +5/+3/-2]
+  control_lossless_709           PASS  worst 0/255  accurate-decode 0   [red +0/+0/+0  grey50 +0/+0/+0  skin +0/+0/+0]
+
+RESULT chains: 6 of 6 within 3/255
+RESULT controls: TRAP PRESENT on this build for: control_h264_format_first_A, control_h264_bare_pix_fmt, control_prores4444_bare
+colour_patch: wrote the RAW record colour_patch_ffmpeg-6.1.1.json. It holds build flags: the maker pastes it in chat only; never file it.
+exit=0
+
+$ python3 -I pipeline/validators/colour_patch.py --selftest
+colour_patch --selftest: ffmpeg 6.1.1. Needs only ffmpeg; writes only to a temporary folder.
+  PASS  frame.size                                   6220800 bytes
+  PASS  frame.patch_values                           read back exactly 255,0,0 / 128,128,128 / 224,172,140
+  PASS  mechanism.lossless_709_passes                worst 0/255 (want 1 or less)
+  PASS  mechanism.wrong_matrix_is_caught             worst 25/255 (want above 10)
+  PASS  mechanism.tolerance_edge                     3 passes, 4 fails, tolerance 3
+  PASS  derive.round_trip                            pass flags follow worst_error; schema mirror accepts it
+  PASS  derive.drops_build_flags                     no configure flags in the derived record
+colour_patch --selftest: ALL PASS
+exit=0
+
+$ python3 -I pipeline/validators/spec_check.py --selftest
+spec_check --selftest: ffmpeg 6.1.1. Needs only ffmpeg and ffprobe; writes only to a temporary folder.
+  PASS  good_online_clip                   exit 0, all 27 checks pass
+  PASS  planted_wrong_frame_rate           exit 1 naming video.fps
+  PASS  planted_44k1_audio                 exit 1 naming audio.sample_rate
+  PASS  planted_title_tag                  exit 1 naming metadata.neutral
+  PASS  planted_loud_peak                  exit 1 naming audio.true_peak
+  PASS  planted_frame_count_vs_duration    exit 1 naming video.frame_count
+spec_check --selftest: ALL PASS
+exit=0
+
+$ python3 -I pipeline/validators/spec_check.py --list-profiles
+master_prores422hq           settings.json          master: ProRes 422 HQ, 10-bit 4:2:2, Rec.709 limited, PCM 24-bit 48 kHz
+online_h264                  settings.json          online / private-link copy: H.264 High 4.1, BT.709, AAC-LC, -16 LUFS, -1 dBTP
+overlay_prores4444_alpha     settings.json          alpha overlay (not a master): ProRes 4444 with an alpha plane, Rec.709; no audio required
+venue_h264                   settings.json          venue file: 1080p24 H.264 High 4.1, yuv420p, BT.709, AAC-LC 48 kHz stereo, faststart, three loudness candidates
+venue_h264_backup_main40     settings.json          backup venue file: H.264 Main 4.0 at about 8 Mbps for old players
+exit=0

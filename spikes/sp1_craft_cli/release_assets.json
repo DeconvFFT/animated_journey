@@ -1,0 +1,283 @@
+{
+  "disk_note": "No tarball is downloaded by this tool. FilmCraft 0.9.0 and EffectCraft 0.11.1 are fetched once each by run_sp1.sh; the other three by WP-10.",
+  "fetched_by": "WP-07 spikes/sp1_craft_cli/drivers/fetch_sums.py",
+  "fetched_date_utc": "2026-10-19",
+  "integrity_note": "These hashes prove integrity only, not origin. Every hash in this file comes from the SHA256SUMS.txt that GitHub serves next to the asset, so a file that matches is complete and unaltered since publication, but the listing and the file share one host and a match does not show who published it. Only the values marked r8_compared were also read independently on 2026-10-18.",
+  "pins": [
+    {
+      "app": "photocraft",
+      "assets_listed": 25,
+      "linux_x86_64_tarball": {
+        "bytes": 83037328,
+        "name": "photocraft-0.10.0-linux-x86_64.tar.gz",
+        "sha256": "c5d455785d9c2eaf695bf8e6327c4d6d23a39ddb956a6114f0c5b64326f984e1"
+      },
+      "role": "pin",
+      "sums_file": "build/evidence/wp07/sums/photocraft-v0.10.0-SHA256SUMS.txt",
+      "sums_file_bytes": 2614,
+      "sums_file_sha256": "1dc38967c0e4c300f125f3f91b535b73216038016bbd1981dedb727892955237",
+      "tag": "v0.10.0",
+      "tarball_fetched_by": "WP-10",
+      "version": "0.10.0",
+      "windows_x64_msi": {
+        "bytes": 70746112,
+        "name": "photocraft-0.10.0-windows-x64.msi",
+        "sha256": "96a2a77093d3cdbfe72e989c9fb5bddcdcec94abb0261ad0617b07e893f4542b"
+      },
+      "windows_x64_portable_zip": {
+        "bytes": 84828713,
+        "name": "photocraft-0.10.0-windows-x64-portable.zip",
+        "sha256": "66b7e47d66589eb6947c8d7417c80fa44621cf83823ffdc47f42024eb03bd5d2"
+      }
+    },
+    {
+      "app": "vectorcraft",
+      "assets_listed": 25,
+      "linux_x86_64_tarball": {
+        "bytes": 124613940,
+        "name": "vectorcraft-0.13.1-linux-x86_64.tar.gz",
+        "sha256": "35c0fcf6d3f9ebff6f33d257ff70eef414296f37f0d81f284e6f970e20fdb2c8"
+      },
+      "role": "pin",
+      "sums_file": "build/evidence/wp07/sums/vectorcraft-v0.13.1-SHA256SUMS.txt",
+      "sums_file_bytes": 2639,
+      "sums_file_sha256": "2803a50a8154e9fb4bb3b4d8485d8bb282f63b9d4cc8050f0ce42ddb1182507b",
+      "tag": "v0.13.1",
+      "tarball_fetched_by": "WP-10",
+      "version": "0.13.1",
+      "windows_x64_msi": {
+        "bytes": 103026688,
+        "name": "vectorcraft-0.13.1-windows-x64.msi",
+        "sha256": "35dce2b616e121dfd6caa592c337669a290ba8f5ba4aab3fcf628c3583e28792"
+      },
+      "windows_x64_portable_zip": {
+        "bytes": 127521525,
+        "name": "vectorcraft-0.13.1-windows-x64-portable.zip",
+        "sha256": "6c46505e20dfd637b37ff8e1ead9aa69758acdc877ae46cc8b3338463e078b51"
+      }
+    },
+    {
+      "app": "lightcraft",
+      "assets_listed": 25,
+      "linux_x86_64_tarball": {
+        "bytes": 108938717,
+        "name": "lightcraft-0.9.1-linux-x86_64.tar.gz",
+        "sha256": "7f6297d3a159aa391b13aac049397730305cc04a8dbf12ab0ff61f86f551f7a9"
+      },
+      "role": "pin",
+      "sums_file": "build/evidence/wp07/sums/lightcraft-v0.9.1-SHA256SUMS.txt",
+      "sums_file_bytes": 2589,
+      "sums_file_sha256": "c9b0f4621c997f6ce141b32b11d5d18697f98b84741f23eade32c68c16dae46f",
+      "tag": "v0.9.1",
+      "tarball_fetched_by": "WP-10",
+      "version": "0.9.1",
+      "windows_x64_msi": {
+        "bytes": 89956352,
+        "name": "lightcraft-0.9.1-windows-x64.msi",
+        "sha256": "fd1d5a4235a274cec1bd654067ad48b914f6f59d1ccadbcffc45a1ce35d16ad4"
+      },
+      "windows_x64_portable_zip": {
+        "bytes": 109590391,
+        "name": "lightcraft-0.9.1-windows-x64-portable.zip",
+        "sha256": "a90476da5bc09771b0ced468a5967a0c80dc658d037a371de63717b4d2acbf31"
+      }
+    },
+    {
+      "app": "filmcraft",
+      "assets_listed": 25,
+      "linux_x86_64_tarball": {
+        "bytes": 69756500,
+        "name": "filmcraft-0.9.0-linux-x86_64.tar.gz",
+        "r8_compared": true,
+        "sha256": "ea67953cc754bfd8272e0e5fa940518e16068ae96f6b72a2dce566ed69a61632"
+      },
+      "role": "pin",
+      "sums_file": "build/evidence/wp07/sums/filmcraft-v0.9.0-SHA256SUMS.txt",
+      "sums_file_bytes": 2564,
+      "sums_file_sha256": "c04215e42a3e6929e54859fdcf955914f0b34b7708d7f900bbdd1cbd7ed2f674",
+      "tag": "v0.9.0",
+      "tarball_fetched_by": "WP-07 (kept for WP-10 T3 when the keep rule allows)",
+      "version": "0.9.0",
+      "windows_x64_msi": {
+        "bytes": 57266176,
+        "name": "filmcraft-0.9.0-windows-x64.msi",
+        "sha256": "5db43e23998939bb1edbf20b1413df6bea23ca108b40af7ad7059bdca800540f"
+      },
+      "windows_x64_portable_zip": {
+        "bytes": 70686984,
+        "name": "filmcraft-0.9.0-windows-x64-portable.zip",
+        "r8_compared": true,
+        "sha256": "d370cac8ed2edd729c8129aa55f75d0123716ba3cddbf9c5e4e3f0fdaa101a5e"
+      }
+    },
+    {
+      "app": "filmcraft",
+      "assets_listed": 25,
+      "linux_x86_64_tarball": {
+        "bytes": 69692976,
+        "name": "filmcraft-0.8.0-linux-x86_64.tar.gz",
+        "r8_compared": true,
+        "sha256": "b166877905ae8a1b5505066d6dde60d7ce05831cfb309bacd5d7970f4bb017e1"
+      },
+      "role": "fallback",
+      "sums_file": "build/evidence/wp07/sums/filmcraft-v0.8.0-SHA256SUMS.txt",
+      "sums_file_bytes": 2564,
+      "sums_file_sha256": "759eca99a30fc92fe0eed7ac384703b76ad68d4de7ba23b0a4cf3a5381782647",
+      "tag": "v0.8.0",
+      "tarball_fetched_by": "WP-07, only if 0.9.0 fails T1 or T2",
+      "version": "0.8.0",
+      "windows_x64_msi": {
+        "bytes": 57221120,
+        "name": "filmcraft-0.8.0-windows-x64.msi",
+        "sha256": "038fcb458217c5d542daa0fb9d1abf3e4703a3afec780f58254f52e7ad5f91b4"
+      },
+      "windows_x64_portable_zip": {
+        "bytes": 70629030,
+        "name": "filmcraft-0.8.0-windows-x64-portable.zip",
+        "r8_compared": true,
+        "sha256": "0119afd59dfd6ecb94470ba6b3a48108ade87dabd4972898dd6c04e1db396b0b"
+      }
+    },
+    {
+      "app": "effectcraft",
+      "assets_listed": 25,
+      "linux_x86_64_tarball": {
+        "bytes": 64039300,
+        "name": "effectcraft-0.11.1-linux-x86_64.tar.gz",
+        "r8_compared": true,
+        "sha256": "b9cb2ce68dd66458cc164437e431376e94e38e33e3b6529fa8fd45f8cf968934"
+      },
+      "role": "pin",
+      "sums_file": "build/evidence/wp07/sums/effectcraft-v0.11.1-SHA256SUMS.txt",
+      "sums_file_bytes": 2639,
+      "sums_file_sha256": "1f64db3691b29b392d6da15ba1921ce848086c3a96bf12dafac08b0bc323c9a6",
+      "tag": "v0.11.1",
+      "tarball_fetched_by": "WP-07",
+      "version": "0.11.1",
+      "windows_x64_msi": {
+        "bytes": 51019776,
+        "name": "effectcraft-0.11.1-windows-x64.msi",
+        "sha256": "c712bdf9c0c84c3427ff449465a1814639805f35a816f0f78ec6ff49aabd4245"
+      },
+      "windows_x64_portable_zip": {
+        "bytes": 67300587,
+        "name": "effectcraft-0.11.1-windows-x64-portable.zip",
+        "r8_compared": true,
+        "sha256": "78bd7f63c6bd814bc33f07bd523b003a5f8d095244c5f67bd70e902448fd6e34"
+      }
+    }
+  ],
+  "r8_comparison": {
+    "not_compared": [
+      "photocraft v0.10.0",
+      "vectorcraft v0.13.1",
+      "lightcraft v0.9.1"
+    ],
+    "not_compared_note": "No earlier hash was recorded for these three pins. Their hashes come from the same host as the files, so they prove integrity only.",
+    "rows": [
+      {
+        "app": "filmcraft",
+        "independent_sha256": "ea67953cc754bfd8272e0e5fa940518e16068ae96f6b72a2dce566ed69a61632",
+        "kind": "linux_x86_64_tarball",
+        "listing_sha256": "ea67953cc754bfd8272e0e5fa940518e16068ae96f6b72a2dce566ed69a61632",
+        "status": "match",
+        "tag": "v0.9.0",
+        "where": "research/craft-motion.md Q1 and F7; spikes header of research/cinematic-quality-fixtures/filmcraft_push.py"
+      },
+      {
+        "app": "filmcraft",
+        "independent_sha256": "d370cac8ed2edd729c8129aa55f75d0123716ba3cddbf9c5e4e3f0fdaa101a5e",
+        "kind": "windows_x64_portable_zip",
+        "listing_sha256": "d370cac8ed2edd729c8129aa55f75d0123716ba3cddbf9c5e4e3f0fdaa101a5e",
+        "status": "match",
+        "tag": "v0.9.0",
+        "where": "research/craft-motion.md Q1 and F7"
+      },
+      {
+        "app": "filmcraft",
+        "independent_sha256": "b166877905ae8a1b5505066d6dde60d7ce05831cfb309bacd5d7970f4bb017e1",
+        "kind": "linux_x86_64_tarball",
+        "listing_sha256": "b166877905ae8a1b5505066d6dde60d7ce05831cfb309bacd5d7970f4bb017e1",
+        "status": "match",
+        "tag": "v0.8.0",
+        "where": "research/craft-motion.md Q1 and R8"
+      },
+      {
+        "app": "filmcraft",
+        "independent_sha256": "0119afd59dfd6ecb94470ba6b3a48108ade87dabd4972898dd6c04e1db396b0b",
+        "kind": "windows_x64_portable_zip",
+        "listing_sha256": "0119afd59dfd6ecb94470ba6b3a48108ade87dabd4972898dd6c04e1db396b0b",
+        "status": "match",
+        "tag": "v0.8.0",
+        "where": "research/craft-motion.md Q1"
+      },
+      {
+        "app": "effectcraft",
+        "independent_sha256": "b9cb2ce68dd66458cc164437e431376e94e38e33e3b6529fa8fd45f8cf968934",
+        "kind": "linux_x86_64_tarball",
+        "listing_sha256": "b9cb2ce68dd66458cc164437e431376e94e38e33e3b6529fa8fd45f8cf968934",
+        "status": "match",
+        "tag": "v0.11.1",
+        "where": "research/craft-motion.md Q1 and R8"
+      },
+      {
+        "app": "effectcraft",
+        "independent_sha256": "78bd7f63c6bd814bc33f07bd523b003a5f8d095244c5f67bd70e902448fd6e34",
+        "kind": "windows_x64_portable_zip",
+        "listing_sha256": "78bd7f63c6bd814bc33f07bd523b003a5f8d095244c5f67bd70e902448fd6e34",
+        "status": "match",
+        "tag": "v0.11.1",
+        "where": "research/craft-motion.md Q1"
+      }
+    ],
+    "status": "all match"
+  },
+  "schema": "lj-release-assets/1",
+  "size_comparison": {
+    "rows": [
+      {
+        "head_bytes": 83037328,
+        "pin": "photocraft v0.10.0",
+        "planned_bytes": 83037328,
+        "status": "match"
+      },
+      {
+        "head_bytes": 124613940,
+        "pin": "vectorcraft v0.13.1",
+        "planned_bytes": 124613940,
+        "status": "match"
+      },
+      {
+        "head_bytes": 108938717,
+        "pin": "lightcraft v0.9.1",
+        "planned_bytes": 108938717,
+        "status": "match"
+      },
+      {
+        "head_bytes": 69756500,
+        "pin": "filmcraft v0.9.0",
+        "planned_bytes": 69756500,
+        "status": "match"
+      },
+      {
+        "head_bytes": 69692976,
+        "pin": "filmcraft v0.8.0",
+        "planned_bytes": 69692976,
+        "status": "match"
+      },
+      {
+        "head_bytes": 64039300,
+        "pin": "effectcraft v0.11.1",
+        "planned_bytes": 64039300,
+        "status": "match"
+      }
+    ],
+    "status": "all match"
+  },
+  "soundcraft": {
+    "reason": "D-12: SoundCraft is learning-only and unpinned; W-06 lists five pins; SP1 T5 is cut (nudge 7).",
+    "status": "not pinned, not fetched"
+  },
+  "source_pattern": "https://github.com/storytold/<app>/releases/download/<tag>/<asset>",
+  "usable": true
+}

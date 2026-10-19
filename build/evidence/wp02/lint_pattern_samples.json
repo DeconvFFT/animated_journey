@@ -1,10 +1,10 @@
 {
- "actual": "scripts/redaction_patterns.json (WP-03, build plan 4.13) has not landed; ops_lint fails closed without it. Set LJ_PATTERNS to run against another file.",
+ "actual": "88 samples in 9 text categories behave as declared",
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 605,
-  "avail_mb_min": 605,
-  "avail_mb_start": 605,
+  "avail_mb_end": 464,
+  "avail_mb_min": 464,
+  "avail_mb_start": 464,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0
@@ -18,7 +18,7 @@
  "notes": "",
  "package": "WP-02",
  "schema": "lj-evidence/1",
- "status": "BLOCKED",
+ "status": "PASS",
  "test": "lint_pattern_samples",
  "unverified_reasons": []
 }

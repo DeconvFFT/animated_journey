@@ -1,0 +1,7 @@
+WP-07 UNVERIFIED items (generated from tests.jsonl; the standing list is in build/reports/WP-07.md)
+
+UNVERIFIED  guide.windows_behaviour: no Windows PC here: PowerShell 5.1 parsing is covered by ps_lint.py rules and pwsh 7 on Linux only; where the zips unpack, portable.txt handling and each app's writes wait for the maker's Sat 24 Oct paste
+
+Standing: nothing about Windows is verified (PowerShell 5.1 itself, where each zip unpacks, portable.txt handling, what each app writes);
+the real CLIs' parameter names and the FilmCraft keyframe convention for clips that do not start at 0 are assumptions until T2 runs;
+the Parallax comp uses solids and shapes, not footage; timings are valid only when contaminated=no.

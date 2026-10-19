@@ -1,0 +1,98 @@
+{
+  "schema": "lj-settings/1",
+  "version": 1,
+  "owner": "WP-05",
+  "signed": false,
+  "signed_date": null,
+  "source": "ops/SETTINGS-CARD.md (proposal, to be signed Sun 1 Nov 2026; nothing here is signed by an agent)",
+  "about": "Machine-readable mirror of the settings card. DECISIONS.md and the signed card win over this file. spec_check.py reads the profiles; colour_patch.py reads pipeline/lib/chains.json. Values marked (J) are the team's judgement and can still move before the card is signed.",
+  "decisions": ["W-14", "W-15", "W-16", "W-17", "W-19", "W-20", "W-21", "D-27"],
+  "picture": {"width": 1920, "height": 1080, "aspect": "16:9", "stills_long_edge_px": 3840, "decision": "W-15"},
+  "fps": {"num": 24, "den": 1, "text": "24/1", "decision": "W-14"},
+  "colour": {
+    "video": "Rec.709 / BT.1886 (gamma about 2.4)", "stills": "sRGB",
+    "tags": {"color_range": "tv", "color_space": "bt709", "color_primaries": "bt709", "color_transfer": "bt709"},
+    "colour_patch_tolerance_of_255": 3, "colour_patch_patches": ["255,0,0", "128,128,128", "224,172,140"],
+    "decision": ["W-15", "W-16"]
+  },
+  "audio": {"sample_rate_hz": 48000, "master_bit_depth": 24, "master_codec": "pcm_s24le", "delivery_codec": "aac", "delivery_profile": "LC", "channels": 2, "decision": ["W-15", "W-20"]},
+  "master": {"codec": "prores", "profile": "HQ", "pix_fmt": "yuv422p10le", "container": "mov", "decision": "W-15"},
+  "captions": {"font_size": 23, "max_chars_per_line": 42, "lines": 2, "max_chars_per_second": 20, "safe_box_percent": 90, "burned_in": true, "fonts": "OFL only", "decision": ["W-16", "W-21"]},
+  "loudness": {
+    "true_peak_max_dbtp": -1.0,
+    "online_lufs": -16,
+    "venue_lufs_candidates": [-23, -18, -16],
+    "venue_choice": "chosen at the Mon 22 Feb 2027 venue run; -18 first if no reading can be taken",
+    "tolerance_lu": 1.0,
+    "decision": "W-19"
+  },
+  "dcp": {"status": "contingent on the venue's written answer (due Sun 15 Nov 2026)", "standard": "SMPTE", "container": "2K Flat 1998x1080", "fps": 24, "reel": "single", "encrypted": false, "decision": "W-17"},
+  "phone": {
+    "status": "proposed (J); WP-08 supplies pipeline/phone/profile.json and may refine the numbers before Sun 1 Nov",
+    "profile_file": "pipeline/phone/profile.json",
+    "check_with": "spec_check.py FILE --profiles-file pipeline/phone/profile.json --profile phone_1080",
+    "decision": "D-27"
+  },
+  "profile_fields": "container (mp4|mov|mkv), faststart, video{codec, profile[], level[], pix_fmt[], width, height, fps, color_range[], color_space[], color_primaries[], color_transfer[], alpha, max_mbps}, audio{required, codec, profile[], sample_rate, channels[], bits_per_sample}, loudness{true_peak_max_dbtp, integrated_lufs[], tolerance_lu}, metadata ('neutral'), chain (name in pipeline/lib/chains.json). A null or absent field is not checked. A list means 'any of these'.",
+  "profiles": {
+    "master_prores422hq": {
+      "description": "master: ProRes 422 HQ, 10-bit 4:2:2, Rec.709 limited, PCM 24-bit 48 kHz",
+      "decision": ["W-15", "W-19", "W-20"],
+      "chain": "prores422hq_master",
+      "container": "mov",
+      "faststart": false,
+      "video": {"codec": "prores", "profile": ["HQ"], "level": null, "pix_fmt": ["yuv422p10le"], "width": 1920, "height": 1080, "fps": "24/1",
+                "color_range": ["tv", "unknown"], "color_space": ["bt709"], "color_primaries": ["bt709"], "color_transfer": ["bt709"], "alpha": false},
+      "audio": {"required": true, "codec": ["pcm_s24le"], "sample_rate": 48000, "channels": [2], "bits_per_sample": 24},
+      "loudness": {"true_peak_max_dbtp": -1.0, "integrated_lufs": null, "tolerance_lu": 1.0},
+      "metadata": "neutral"
+    },
+    "venue_h264": {
+      "description": "venue file: 1080p24 H.264 High 4.1, yuv420p, BT.709, AAC-LC 48 kHz stereo, faststart, three loudness candidates",
+      "decision": ["W-17", "W-19"],
+      "chain": "h264_venue",
+      "container": "mp4",
+      "faststart": true,
+      "video": {"codec": "h264", "profile": ["High"], "level": [41], "pix_fmt": ["yuv420p"], "width": 1920, "height": 1080, "fps": "24/1",
+                "color_range": ["tv"], "color_space": ["bt709"], "color_primaries": ["bt709"], "color_transfer": ["bt709"], "alpha": false, "max_mbps": 20},
+      "audio": {"required": true, "codec": ["aac"], "profile": ["LC"], "sample_rate": 48000, "channels": [2]},
+      "loudness": {"true_peak_max_dbtp": -1.0, "integrated_lufs": [-23, -18, -16], "tolerance_lu": 1.0},
+      "metadata": "neutral"
+    },
+    "venue_h264_backup_main40": {
+      "description": "backup venue file: H.264 Main 4.0 at about 8 Mbps for old players",
+      "decision": ["W-17", "W-19"],
+      "chain": "h264_backup_main40",
+      "container": "mp4",
+      "faststart": true,
+      "video": {"codec": "h264", "profile": ["Main"], "level": [40], "pix_fmt": ["yuv420p"], "width": 1920, "height": 1080, "fps": "24/1",
+                "color_range": ["tv"], "color_space": ["bt709"], "color_primaries": ["bt709"], "color_transfer": ["bt709"], "alpha": false},
+      "audio": {"required": true, "codec": ["aac"], "profile": ["LC"], "sample_rate": 48000, "channels": [2]},
+      "loudness": {"true_peak_max_dbtp": -1.0, "integrated_lufs": [-23, -18, -16], "tolerance_lu": 1.0},
+      "metadata": "neutral"
+    },
+    "online_h264": {
+      "description": "online / private-link copy: H.264 High 4.1, BT.709, AAC-LC, -16 LUFS, -1 dBTP",
+      "decision": ["W-19"],
+      "chain": "h264_online",
+      "container": "mp4",
+      "faststart": true,
+      "video": {"codec": "h264", "profile": ["High"], "level": [41], "pix_fmt": ["yuv420p"], "width": 1920, "height": 1080, "fps": "24/1",
+                "color_range": ["tv"], "color_space": ["bt709"], "color_primaries": ["bt709"], "color_transfer": ["bt709"], "alpha": false},
+      "audio": {"required": true, "codec": ["aac"], "profile": ["LC"], "sample_rate": 48000, "channels": [2]},
+      "loudness": {"true_peak_max_dbtp": -1.0, "integrated_lufs": [-16], "tolerance_lu": 1.0},
+      "metadata": "neutral"
+    },
+    "overlay_prores4444_alpha": {
+      "description": "alpha overlay (not a master): ProRes 4444 with an alpha plane, Rec.709; no audio required",
+      "decision": ["W-15", "W-16"],
+      "chain": "prores4444_alpha",
+      "container": "mov",
+      "faststart": false,
+      "video": {"codec": "prores", "profile": ["4444"], "level": null, "pix_fmt": ["yuva444p10le", "yuva444p12le"], "width": 1920, "height": 1080, "fps": "24/1",
+                "color_range": ["tv", "unknown"], "color_space": ["bt709"], "color_primaries": ["bt709"], "color_transfer": ["bt709"], "alpha": true},
+      "audio": {"required": false},
+      "metadata": "neutral"
+    }
+  }
+}

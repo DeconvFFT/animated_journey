@@ -1,0 +1,5 @@
+WP-03 behaviour that could not be verified here (all of it needs a Windows PC):
+- Windows PowerShell 5.1 reading scripts/redaction_patterns.json (win/step0_pc_tests.ps1 was run on PowerShell 7 only; the regex dialect is the common subset of Python re and .NET, but .NET Framework on 5.1 was not run).
+- scripts/public_lint.py, scripts/stale_check.py and tests on Windows (py -3 -I): only run on Linux here; paths use forward slashes internally and pathlib, but Windows was not exercised.
+- win/kit2/run_checks_pc.ps1 (WP-09) had not landed when this ran: its -PatternSelfTest consumer is SKIPPED: not landed.
+- the disk guard is Linux only (flock, df, /proc/loadavg); on the maker's PC it is not used.

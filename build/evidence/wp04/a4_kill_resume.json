@@ -1,0 +1,43 @@
+{
+ "actual": "killed with 120 frames on disk; resume rendered 121, skipped 119; final 240 frames equal reference: True; .tmp left: 0; browser processes left behind: 0",
+ "data": {
+  "frames_after_kill": 120,
+  "killed_at_frames": 120,
+  "leaked_children": 0,
+  "planted": {
+   "tmp": "f_000239.png.tmp",
+   "truncated": "f_000060.png"
+  },
+  "resume": {
+   "frames_rendered": 121,
+   "frames_skipped_existing": 119
+  },
+  "scene": "flat.html",
+  "seconds": 43.5,
+  "tmp_after_kill": 0
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 408,
+  "avail_mb_min": 408,
+  "avail_mb_start": 410,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "SIGKILL a 240-frame run at about 50%; the rerun completes; no .tmp files; 240 frames; hashes equal an uninterrupted run",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "a4_kill_resume",
+ "unverified_reasons": []
+}

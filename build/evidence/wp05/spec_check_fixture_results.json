@@ -1,0 +1,367 @@
+{
+  "schema": "lj-wp05-speccheck-fixtures/1",
+  "ffmpeg": "6.1.1",
+  "results": [
+    {
+      "file": "g_master_hq.mov",
+      "profile": "master_prores422hq",
+      "expected": "pass",
+      "exit": 0,
+      "failed_checks": [],
+      "must_fail": null,
+      "isolated": false,
+      "ok": true,
+      "why": "good file for the master_prores422hq profile"
+    },
+    {
+      "file": "g_venue_m18.mp4",
+      "profile": "venue_h264",
+      "expected": "pass",
+      "exit": 0,
+      "failed_checks": [],
+      "must_fail": null,
+      "isolated": false,
+      "ok": true,
+      "why": "good file for the venue_h264 profile"
+    },
+    {
+      "file": "g_venue_m23.mp4",
+      "profile": "venue_h264",
+      "expected": "pass",
+      "exit": 0,
+      "failed_checks": [],
+      "must_fail": null,
+      "isolated": false,
+      "ok": true,
+      "why": "good file for the venue_h264 profile"
+    },
+    {
+      "file": "g_venue_m16.mp4",
+      "profile": "venue_h264",
+      "expected": "pass",
+      "exit": 0,
+      "failed_checks": [],
+      "must_fail": null,
+      "isolated": false,
+      "ok": true,
+      "why": "good file for the venue_h264 profile"
+    },
+    {
+      "file": "g_backup_main40.mp4",
+      "profile": "venue_h264_backup_main40",
+      "expected": "pass",
+      "exit": 0,
+      "failed_checks": [],
+      "must_fail": null,
+      "isolated": false,
+      "ok": true,
+      "why": "good file for the venue_h264_backup_main40 profile"
+    },
+    {
+      "file": "g_online_m16.mp4",
+      "profile": "online_h264",
+      "expected": "pass",
+      "exit": 0,
+      "failed_checks": [],
+      "must_fail": null,
+      "isolated": false,
+      "ok": true,
+      "why": "good file for the online_h264 profile"
+    },
+    {
+      "file": "g_online_m16_edge.mp4",
+      "profile": "online_h264",
+      "expected": "pass",
+      "exit": 0,
+      "failed_checks": [],
+      "must_fail": null,
+      "isolated": false,
+      "ok": true,
+      "why": "good file for the online_h264 profile"
+    },
+    {
+      "file": "g_overlay_4444.mov",
+      "profile": "overlay_prores4444_alpha",
+      "expected": "pass",
+      "exit": 0,
+      "failed_checks": [],
+      "must_fail": null,
+      "isolated": false,
+      "ok": true,
+      "why": "good file for the overlay_prores4444_alpha profile"
+    },
+    {
+      "file": "g_phone_1080.mp4",
+      "profile": "phone_1080",
+      "expected": "pass",
+      "exit": 0,
+      "failed_checks": [],
+      "must_fail": null,
+      "isolated": false,
+      "ok": true,
+      "why": "good file for the phone_1080 profile"
+    },
+    {
+      "file": "d_yuvj420p.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "video.pix_fmt",
+        "video.color_range"
+      ],
+      "must_fail": [
+        "video.pix_fmt"
+      ],
+      "isolated": false,
+      "ok": true,
+      "why": "full-range yuvj420p instead of yuv420p"
+    },
+    {
+      "file": "d_25fps.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "video.fps",
+        "video.frame_count"
+      ],
+      "must_fail": [
+        "video.fps"
+      ],
+      "isolated": false,
+      "ok": true,
+      "why": "25 fps instead of 24"
+    },
+    {
+      "file": "d_720p.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "video.size"
+      ],
+      "must_fail": [
+        "video.size"
+      ],
+      "isolated": true,
+      "ok": true,
+      "why": "1280x720 instead of 1920x1080"
+    },
+    {
+      "file": "d_bt601_under_709_tags.mp4",
+      "profile": "venue_h264",
+      "expected": "pass",
+      "exit": 0,
+      "failed_checks": [],
+      "must_fail": [],
+      "isolated": true,
+      "ok": true,
+      "why": "bare -pix_fmt yuv420p from RGB with BT.709 tags: BT.601 pixels on ffmpeg 6.1.1; the tags pass"
+    },
+    {
+      "file": "d_prores4444_no_alpha.mov",
+      "profile": "overlay_prores4444_alpha",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "video.pix_fmt",
+        "video.alpha"
+      ],
+      "must_fail": [
+        "video.alpha"
+      ],
+      "isolated": false,
+      "ok": true,
+      "why": "ProRes 4444 without an alpha plane"
+    },
+    {
+      "file": "d_true_peak.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "audio.true_peak"
+      ],
+      "must_fail": [
+        "audio.true_peak"
+      ],
+      "isolated": true,
+      "ok": true,
+      "why": "a 2 ms click near full scale: true peak above -1 dBTP, loudness still about -18"
+    },
+    {
+      "file": "d_44k1_audio.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "audio.sample_rate"
+      ],
+      "must_fail": [
+        "audio.sample_rate"
+      ],
+      "isolated": true,
+      "ok": true,
+      "why": "44.1 kHz audio"
+    },
+    {
+      "file": "d_16bit_master.mov",
+      "profile": "master_prores422hq",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "audio.codec",
+        "audio.bits"
+      ],
+      "must_fail": [
+        "audio.bits"
+      ],
+      "isolated": false,
+      "ok": true,
+      "why": "16-bit PCM under the master profile"
+    },
+    {
+      "file": "d_title_tag.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "metadata.neutral"
+      ],
+      "must_fail": [
+        "metadata.neutral"
+      ],
+      "isolated": true,
+      "ok": true,
+      "why": "a title metadata tag"
+    },
+    {
+      "file": "d_truncated.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "container.readable",
+        "container.moov",
+        "container.atoms",
+        "container.faststart"
+      ],
+      "must_fail": [
+        "container.readable",
+        "container.moov"
+      ],
+      "isolated": false,
+      "ok": true,
+      "why": "MP4 cut to 60 percent: the moov atom is gone"
+    },
+    {
+      "file": "d_frame_count.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "video.frame_count"
+      ],
+      "must_fail": [
+        "video.frame_count"
+      ],
+      "isolated": true,
+      "ok": true,
+      "why": "48 frames but duration 1.5 s (edit list): 48 != round(1.5 x 24)"
+    },
+    {
+      "file": "d_not_faststart.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "container.faststart"
+      ],
+      "must_fail": [
+        "container.faststart"
+      ],
+      "isolated": true,
+      "ok": true,
+      "why": "moov after mdat"
+    },
+    {
+      "file": "d_untagged.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "video.color_range",
+        "video.color_space",
+        "video.color_primaries",
+        "video.color_transfer"
+      ],
+      "must_fail": [
+        "video.color_space"
+      ],
+      "isolated": false,
+      "ok": true,
+      "why": "no colour tags at all (no setparams, no tag flags)"
+    },
+    {
+      "file": "d_online_too_loud.mp4",
+      "profile": "online_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "audio.integrated"
+      ],
+      "must_fail": [
+        "audio.integrated"
+      ],
+      "isolated": true,
+      "ok": true,
+      "why": "integrated loudness -13 LUFS under the -16 profile"
+    },
+    {
+      "file": "d_level40.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "video.level"
+      ],
+      "must_fail": [
+        "video.level"
+      ],
+      "isolated": true,
+      "ok": true,
+      "why": "H.264 level 4.0 under the High 4.1 venue profile"
+    },
+    {
+      "file": "d_no_audio.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "audio.present"
+      ],
+      "must_fail": [
+        "audio.present"
+      ],
+      "isolated": true,
+      "ok": true,
+      "why": "no audio stream"
+    },
+    {
+      "file": "d_mono.mp4",
+      "profile": "venue_h264",
+      "expected": "fail",
+      "exit": 1,
+      "failed_checks": [
+        "audio.channels"
+      ],
+      "must_fail": [
+        "audio.channels"
+      ],
+      "isolated": true,
+      "ok": true,
+      "why": "mono audio"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "checks": [
+    {
+      "code": "json_parses",
+      "detail": "20167 bytes",
+      "status": "PASS"
+    },
+    {
+      "code": "timeline_schema",
+      "detail": "Timeline.1, 2 tracks",
+      "status": "PASS"
+    },
+    {
+      "code": "video_track_present",
+      "detail": "a Video track exists",
+      "status": "PASS"
+    },
+    {
+      "code": "rate_24",
+      "detail": "all 33 times are at 24 fps",
+      "status": "PASS"
+    },
+    {
+      "code": "clip_duration",
+      "detail": "all 5 clips",
+      "status": "PASS"
+    },
+    {
+      "code": "media_reference",
+      "detail": "all 5 clips",
+      "status": "PASS"
+    },
+    {
+      "code": "media_reference_single_file",
+      "detail": "all 5 clips",
+      "status": "PASS"
+    },
+    {
+      "code": "target_url_relative",
+      "detail": "all 5 clips",
+      "status": "PASS"
+    },
+    {
+      "code": "target_url_forward_slashes",
+      "detail": "all 5 clips",
+      "status": "PASS"
+    },
+    {
+      "code": "media_exists",
+      "detail": "all 5 clips",
+      "status": "PASS"
+    },
+    {
+      "code": "source_in_available",
+      "detail": "all 5 clips",
+      "status": "PASS"
+    },
+    {
+      "code": "dissolve_between_clips",
+      "detail": "3 dissolve(s)",
+      "status": "PASS"
+    },
+    {
+      "code": "dissolve_offsets_valid",
+      "detail": "3 dissolve(s)",
+      "status": "PASS"
+    },
+    {
+      "code": "dissolve_fits",
+      "detail": "3 dissolve(s)",
+      "status": "PASS"
+    },
+    {
+      "code": "markers_present",
+      "detail": "3 markers (2 on the stack, 1 on clips)",
+      "status": "PASS"
+    },
+    {
+      "code": "filmcraft_keys_known",
+      "detail": "5 clip(s) carry metadata.filmcraft",
+      "status": "PASS"
+    },
+    {
+      "code": "filmcraft_effects",
+      "detail": "5 clip(s) carry metadata.filmcraft",
+      "status": "PASS"
+    },
+    {
+      "code": "filmcraft_values",
+      "detail": "5 clip(s) carry metadata.filmcraft",
+      "status": "PASS"
+    },
+    {
+      "code": "filmcraft_keyframes",
+      "detail": "5 clip(s) carry metadata.filmcraft",
+      "status": "PASS"
+    },
+    {
+      "code": "filmcraft_ticks",
+      "detail": "5 clip(s) carry metadata.filmcraft",
+      "status": "PASS"
+    },
+    {
+      "code": "motion_edge_safe",
+      "detail": "5 clip(s) carry metadata.filmcraft",
+      "status": "PASS"
+    }
+  ],
+  "counts": {
+    "FAIL": 0,
+    "PASS": 21,
+    "WARN": 0
+  },
+  "extra": {},
+  "failed_codes": [],
+  "schema": "lj-roundtrip-report/1",
+  "subject": "ch.otio",
+  "tool": "validate_otio"
+}

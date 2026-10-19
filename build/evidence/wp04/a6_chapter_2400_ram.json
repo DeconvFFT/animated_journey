@@ -1,0 +1,67 @@
+{
+ "actual": "2400 frames in 118.3 s (20.28 fps, 4 pages); output 4427392 bytes; PNG files seen anywhere during the run: 0; peak RSS {'node_mb': 152, 'browser_tree_mb': 1166, 'ffmpeg_mb': 608, 'sum_mb': 1914, 'note': 'RSS counts shared pages in every process, so the sum over-counts'}; volume Avail 273 -> 273 MB (min seen 192 MB, other jobs write to it)",
+ "data": {
+  "bench": {
+   "contaminated": false,
+   "load1_start": 0.57,
+   "nproc": 4
+  },
+  "concurrency": 4,
+  "ffprobe": {
+   "height": 1080,
+   "nb_frames": "2400",
+   "pix_fmt": "yuv420p",
+   "r_frame_rate": "24/1",
+   "width": 1920
+  },
+  "frames": 2400,
+  "output_bytes": 4427392,
+  "peak_rss": {
+   "browser_tree_mb": 1166,
+   "ffmpeg_mb": 608,
+   "node_mb": 152,
+   "note": "RSS counts shared pages in every process, so the sum over-counts",
+   "sum_mb": 1914
+  },
+  "png_files_max_seen": 0,
+  "samples": 60,
+  "seconds": 120.1,
+  "seconds_render": 118.344,
+  "settle": {
+   "load1": 0.57,
+   "settled": true,
+   "waited_s": 0
+  },
+  "throughput_fps": 20.28,
+  "tmp_files_max_seen": 0,
+  "volume_avail_mb": {
+   "end": 273,
+   "min": 192,
+   "start": 273
+  }
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 273,
+  "avail_mb_min": 192,
+  "avail_mb_start": 273,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "a 2,400-frame (100 s) run piped straight into ffmpeg completes with no PNG accumulation, peak RSS recorded; output in RAM-backed /dev/shm (volume untouched)",
+ "notes": "FALLBACK variant: the guarded lj_with_disk stage (a6_chapter_2400) was BLOCKED by the guard because the shared volume had no headroom; it is not replaced by this test and is rerun when Avail - planned >= 400 MB.",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "a6_chapter_2400_ram",
+ "unverified_reasons": []
+}

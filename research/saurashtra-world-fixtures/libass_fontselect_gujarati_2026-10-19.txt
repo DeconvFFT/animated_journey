@@ -1,0 +1,44 @@
+libass font selection log for the Gujarati fixture (research/saurashtra-world.md).
+Run 2026-10-19 in the cloud container: ffmpeg 6.1.1-3ubuntu5, libass 0.17.1, HarfBuzz 8.3.0, FriBidi 1.0.13, FreeType 2.13.2, font provider fontconfig.
+Command: ffmpeg -loglevel debug -f lavfi -i color=c=0x14110f:s=1920x1080:r=1:d=22 -vf "ass=shaping_fixture_gujarati_libass.ass:fontsdir=fonts" -frames:v 22 page_%02d.png
+(fonts/ held the ten Gujarati families, each file downloaded from github.com/google/fonts main on 2026-10-19; the label font 'Noto Sans' is not installed and falls to Inter, which is expected).
+Reading it: the first fontselect line per family is the font libass picked for the name written in the style; any later line for the same family is a fallback face drawn for glyphs the first font does not have.
+
+  Glyph 0x15A not found, selecting one more font for (Anek Gujarati Medium, 400, 0)
+  Glyph 0x1E5B not found, selecting one more font for (Kumar One, 400, 0)
+  Glyph 0x1E5B not found, selecting one more font for (Noto Sans Gujarati, 400, 0)
+  Glyph 0x1E5B not found, selecting one more font for (Noto Serif Gujarati, 400, 0)
+  Glyph 0x1E5B not found, selecting one more font for (Shrikhand, 400, 0)
+  Glyph 0xAB6 not found, selecting one more font for (Anek Gujarati, 400, 0)
+  Glyph 0xAD0 not found, selecting one more font for (Farsan, 400, 0)
+  Glyph 0xAE6 not found, selecting one more font for (Hind Vadodara, 400, 0)
+  Shaper: FriBidi 1.0.13 (SIMPLE) HarfBuzz-ng 8.3.0 (COMPLEX)
+  Using font provider fontconfig
+  fontselect: (Anek Gujarati Medium, 400, 0) -> /usr/share/fonts/opentype/inter/Inter-Regular.otf, 0, Inter-Regular
+  fontselect: (Anek Gujarati Medium, 400, 0) -> AnekGujarati-Medium, 0, AnekGujarati-Medium
+  fontselect: (Anek Gujarati, 400, 0) -> /usr/share/fonts/opentype/inter/Inter-Regular.otf, 0, Inter-Regular
+  fontselect: (Anek Gujarati, 400, 0) -> /usr/share/fonts/truetype/freefont/FreeSerif.ttf, 0, FreeSerif
+  fontselect: (Baloo Bhai 2, 400, 0) -> BalooBhai2-Regular, 0, BalooBhai2-Regular
+  fontselect: (Farsan, 400, 0) -> /usr/share/fonts/truetype/freefont/FreeSerif.ttf, 0, FreeSerif
+  fontselect: (Farsan, 400, 0) -> Farsan-Regular, 0, Farsan-Regular
+  fontselect: (Hind Vadodara, 400, 0) -> /usr/share/fonts/truetype/freefont/FreeSerif.ttf, 0, FreeSerif
+  fontselect: (Hind Vadodara, 400, 0) -> HindVadodara-Regular, 0, HindVadodara-Regular
+  fontselect: (Kumar One, 400, 0) -> /usr/share/fonts/opentype/inter/Inter-Regular.otf, 0, Inter-Regular
+  fontselect: (Kumar One, 400, 0) -> KumarOne-Regular, 0, KumarOne-Regular
+  fontselect: (Mukta Vaani, 400, 0) -> MuktaVaani-Regular, 0, MuktaVaani-Regular
+  fontselect: (Noto Sans Gujarati, 400, 0) -> /usr/share/fonts/opentype/inter/Inter-Regular.otf, 0, Inter-Regular
+  fontselect: (Noto Sans Gujarati, 400, 0) -> NotoSansGujarati-Regular, 0, NotoSansGujarati-Regular
+  fontselect: (Noto Sans, 400, 0) -> /usr/share/fonts/opentype/inter/Inter-Regular.otf, 0, Inter-Regular
+  fontselect: (Noto Serif Gujarati, 400, 0) -> /usr/share/fonts/opentype/inter/Inter-Regular.otf, 0, Inter-Regular
+  fontselect: (Noto Serif Gujarati, 400, 0) -> NotoSerifGujarati-Regular, 0, NotoSerifGujarati-Regular
+  fontselect: (Rasa, 400, 0) -> Rasa-Regular, 0, Rasa-Regular
+  fontselect: (Shrikhand, 400, 0) -> /usr/share/fonts/opentype/inter/Inter-Regular.otf, 0, Inter-Regular
+  fontselect: (Shrikhand, 400, 0) -> Shrikhand-Regular, 0, Shrikhand-Regular
+
+Readings
+  - Resolved by plain family name: Noto Sans Gujarati, Noto Serif Gujarati, Hind Vadodara, Mukta Vaani, Baloo Bhai 2, Rasa, Shrikhand, Farsan, Kumar One.
+  - NOT resolved: 'Anek Gujarati' (plain name) went to FreeSerif, then Inter; 'Anek Gujarati Medium' resolves to AnekGujarati-Medium (the variable file's default instance is Medium, name ID 1 is 'Anek Gujarati Medium').
+  - Silent fallbacks (the drawn glyph comes from another face; the picture alone may not show it): Hind Vadodara for Gujarati digits (Glyph 0xAE6) -> FreeSerif; Farsan for Om (Glyph 0xAD0) -> FreeSerif;
+    IAST letters (Glyph 0x1E5B = r with dot below) -> Inter for Shrikhand, Noto Serif Gujarati, Noto Sans Gujarati, Kumar One; Glyph 0x15A (S acute) for Anek Gujarati Medium.
+  - Kumar One resolves and logs no error, yet the Gujarati lines collapse onto one point (see libass_kumar_one_shipped_vs_unhinted_copy_*.png). Cause found in this track: its TrueType hinting program fails in FreeType (see README).
+  - Mukta Vaani resolves and logs nothing, yet conjuncts come out unfused with visible halant marks (see libass_mukta_vaani_unfused_conjuncts_*.png). Cause found in this track: its 'GUJ ' language-system record lacks the conjunct features.

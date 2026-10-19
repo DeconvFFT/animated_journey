@@ -1,0 +1,30 @@
+PASS     args_usage               3.2s  19 of 19 cases as wanted
+PASS     strings_file             0.0s  ok
+PASS     libs_lock                0.1s  ok (13 file records, 6 pending script fonts)
+PASS     fetch_libs_offline       0.3s  exit 3; stderr (first lines): fetch_libs: npm failed (exit 1): npm view gsap version --json | npm error code ECONNREFUSED | npm error syscall connect | npm error errno ECONNREFUSED | npm error FetchError: request to http://127.0.0
+PASS     a9_path_safety           0.3s  25 checks, 0 wrong
+PASS     a8_errors               11.5s  10 checks, 0 failed
+PASS     a10_alpha                3.5s  with --alpha: 'srgba false', corner alpha 0, text alpha 255; without: 'srgb true'
+PASS     colour_patches           1.6s  [{"want": [255, 0, 0], "all_equal": true, "sample": [255, 0, 0]}, {"want": [128, 128, 128], "all_equal": true, "sample": [128, 128, 128]}, {"want": [224, 172, 140], "all_equal": true, "sample": [224, 172, 140]}]
+PASS     chain_parity             0.3s  differences: none; with the file: h264	chains.json:h264_venue	mp4; without: h264	built-in	mp4
+PASS     a1_determinism_lite      4.1s  6/6 frames identical
+PASS     a1_determinism          34.8s  filter off: 48/48 identical; filter on: max 0 differing px (48 hash-identical); filter changes 18873 px
+PASS     a2_negative_control      5.0s  differing pixels per frame: [511016, 511015, 511015, 511016, 511018, 511007]
+PASS     a3_shards_resume        15.8s  equal=True shard frames 24/24; rerun shard: {'frames': 0, 'skipped': 24}; rerun whole: {'frames': 0, 'skipped': 48}; refused different scene: True
+PASS     history_independence    33.0s  defaults: 0 of 96 frames differ; control without the two flags: 62 of 96 frames differ
+PASS     a4_kill_resume          43.5s  killed with 120 frames on disk; resume rendered 121, skipped 119; final 240 frames equal reference: True; .tmp left: 0; browser processes left behind: 0
+PASS     a5_chain_output         28.9s  ffprobe: {"width": 1920, "height": 1080, "r_frame_rate": "24/1", "nb_frames": "48", "pix_fmt": "yuv420p", "color_range": "tv", "color_space": "bt709", "color_primaries": "bt709", "color_transfer": "bt709", "codec_name": "h264"}; m
+PASS     a6_flat_fps             54.0s  11.82 fps over 96 frames (8.1 s), peak RSS {'node_mb': 93, 'browser_tree_mb': 689, 'ffmpeg_mb': 0, 'sum_mb': 782, 'note': 'RSS counts shared pages in every process, so the sum over-counts'}
+PASS     a6_concurrency          35.8s  fps by pages: {'1': 11.76, '2': 17.93, '4': 22.64}; best 4 pages; frame digests identical across levels: True
+PASS     testcard_fps            34.0s  fps by pages: {'1': 7.67, '4': 11.36}; average PNG 314 KB
+BLOCKED  a6_chapter_2400        774.1s  guard: lj_guard: REFUSED: Avail 278 MB minus planned 12 MB leaves 266 MB, below the 400 MB floor (wp04-a6-chapter). Lean-profile hint: plan a smaller stage, delete downloads you no longer need, or ask the orchestrator about the re
+PASS     a6_chapter_2400_ram    120.1s  2400 frames in 118.3 s (20.28 fps, 4 pages); output 4427392 bytes; PNG files seen anywhere during the run: 0; peak RSS {'node_mb': 152, 'browser_tree_mb': 1166, 'ffmpeg_mb': 608, 'sum_mb': 1914, 'note': 'RSS counts shared pages in
+PASS     a7_fonts                 2.0s  latin PASS (Noto Sans); devanagari PASS (Noto Sans Devanagari); NOT TESTED: tamil, telugu, kannada, malayalam, bengali, gujarati; negative control fails (a) as required: True; problems: none
+PASS     a7_add_script            5.2s  scripts tested ['latin', 'devanagari', 'tamil']; NOT TESTED ['telugu', 'kannada', 'malayalam', 'bengali', 'gujarati']; scene caption rows ['devanagari', 'latin', 'tamil']; per script {'latin': 'PASS', 'devanagari': 'PASS', 'tamil'
+PASS     max_seconds_resume      43.3s  first run stopped with 64 of 240 frames (remaining 176); second run skipped 64, now 240 frames; equal to uninterrupted: True
+PASS     webgl_smoke             30.6s  5.26 fps over 24 frames; GL renderer 'ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)'; distinct frames 24/24; GL canvas luminance std 42.2
+PASS     gsap_equivalence         7.7s  differing pixels per frame (frames 0,8,...,88): [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; GSAP 3.15.0
+PASS     mo8_precheck            29.2s  transform: MO8a 0.0023 px, MO8b 0.0039 px; layout: MO8a 0.242 px, MO8b 0.45 px (48 frames, ?view=detail)
+PASS     a11_mo8_gate            29.6s  transform: exit 0 ['RESULT: PASS'] ['MO8a centre jitter   0.0023 px   limit 0.05   PASS', 'MO8b edge jitter     0.0039 px   limit 0.04   PASS']; layout: exit 1 ['RESULT: FAIL'] ['MO8a centre jitter   0.2420 px   limit 0.05   FAIL'
+
+{"BLOCKED": 1, "PASS": 27}

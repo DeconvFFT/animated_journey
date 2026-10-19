@@ -1,0 +1,399 @@
+{
+  "schema": "lj-libs/1",
+  "registry": "https://registry.npmjs.org/",
+  "note": "Written and updated by pipeline/lib/fetch_libs.sh. Libraries and fonts are fetched with npm pack + tar into the git-ignored vendor/ folder; this file (text only) records what was fetched and its SHA-256, and the licence text copied to pipeline/lib/licences/. Nothing here is a binary. Adding a script is one more entry in fonts[] and one block in pipeline/phone/test_strings.json.",
+  "libs": [
+    {
+      "id": "gsap",
+      "kind": "js",
+      "npm": "gsap",
+      "expected_version": "3.15.0",
+      "version": "3.15.0",
+      "licence_spdx": "LicenseRef-GSAP-Standard-No-Charge",
+      "licence_file": "licences/gsap-LICENSE.txt",
+      "committed": false,
+      "members": [
+        {
+          "member": "package/dist/gsap.min.js",
+          "to": "js/gsap.min.js"
+        }
+      ],
+      "licence_declared": "Standard 'no charge' license: https://gsap.com/standard-license.",
+      "fetched_utc_date": "2026-10-19",
+      "tarball": {
+        "sha256": "d2e33ad202d4811e9084883f7ff9a27967ac4095caef51ca4c9d20697a253b1c",
+        "integrity": "sha512-dMW4CWBTUK1AEEDeZc1g4xpPGIrSf9fJF960qbTZmN/QwZIWY5wgliS6JWl9/25fpTGJrMRtSjGtOmPnfjZB+A==",
+        "bytes": 1697897
+      },
+      "files": [
+        {
+          "to": "js/gsap.min.js",
+          "sha256": "92bb9a96476f983d212a2bc4f54c889039c1696dd4461d40a736860938570fbb",
+          "bytes": 72927
+        }
+      ]
+    }
+  ],
+  "fonts": [
+    {
+      "id": "noto-sans",
+      "family": "Noto Sans",
+      "role": "script_family",
+      "scripts": [
+        "latin"
+      ],
+      "npm": "@fontsource/noto-sans",
+      "status": "day1",
+      "subsets": [
+        "latin"
+      ],
+      "weights": [
+        400,
+        700
+      ],
+      "version": "5.3.0",
+      "licence_spdx": "OFL-1.1",
+      "licence_file": "licences/noto-sans-OFL.txt",
+      "licence_declared": "OFL-1.1",
+      "fetched_utc_date": "2026-10-19",
+      "tarball": {
+        "sha256": "f62f8ed40e378f15134e32bed2fd5718d81e9ec7a5603d1022d7b385e2297abc",
+        "integrity": "sha512-fBCog2PY7DiVVTEEqtI/Qdinx/knobHYfoGpjFXdfBX5RoJaBp1Prw2G75p0OIsdlMZg3cLo0c+YbIUYOxnQJw==",
+        "bytes": 6927031
+      },
+      "faces": [
+        {
+          "subset": "latin",
+          "weight": 400,
+          "style": "normal",
+          "unicode_range": "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+          "files": {
+            "woff2": {
+              "to": "fonts/noto-sans-latin-400-normal.woff2",
+              "sha256": "09aee8065d25508f23a4c3d92cd777ac869c52d93fd868a88f025d888a7937d6",
+              "bytes": 13120
+            },
+            "woff": {
+              "to": "fonts/noto-sans-latin-400-normal.woff",
+              "sha256": "18e2e5b23a9bc5e8e636d6c7984b8ac6635aefc1c497ed1c5012f3c637761b91",
+              "bytes": 16688
+            }
+          }
+        },
+        {
+          "subset": "latin",
+          "weight": 700,
+          "style": "normal",
+          "unicode_range": "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+          "files": {
+            "woff2": {
+              "to": "fonts/noto-sans-latin-700-normal.woff2",
+              "sha256": "e77bfe1db912f687b0319b60de158cfada67f89c8ee4f8e2bd6020f970accbfb",
+              "bytes": 13464
+            }
+          }
+        }
+      ],
+      "fetched": true
+    },
+    {
+      "id": "kalam",
+      "family": "Kalam",
+      "role": "hand",
+      "scripts": [
+        "latin",
+        "devanagari"
+      ],
+      "npm": "@fontsource/kalam",
+      "status": "day1",
+      "subsets": [
+        "latin",
+        "devanagari"
+      ],
+      "weights": [
+        400
+      ],
+      "version": "5.3.0",
+      "licence_spdx": "OFL-1.1",
+      "licence_file": "licences/kalam-OFL.txt",
+      "licence_declared": "OFL-1.1",
+      "fetched_utc_date": "2026-10-19",
+      "tarball": {
+        "sha256": "0aaf22523f3c57ae19f32c4f4df0d43d6efd01b7563a19cf4ed818cd5601426d",
+        "integrity": "sha512-FDkVoDfPDCSN/eO81FOYtUI67eMgpVBJmjBtAqSL0PmEhJyeFY2biC+CR+yEttksgXR9+swpFdYmQTyjwBq80Q==",
+        "bytes": 720217
+      },
+      "faces": [
+        {
+          "subset": "latin",
+          "weight": 400,
+          "style": "normal",
+          "unicode_range": "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+          "files": {
+            "woff2": {
+              "to": "fonts/kalam-latin-400-normal.woff2",
+              "sha256": "954410601a823f37e219f7930b7446f86afa15621326a7078d56fb9c910135cb",
+              "bytes": 22336
+            },
+            "woff": {
+              "to": "fonts/kalam-latin-400-normal.woff",
+              "sha256": "70ab8c1d2c10a28f213c6f1c359888624d5e650ffcd64f93a8194c3e14403746",
+              "bytes": 17668
+            }
+          }
+        },
+        {
+          "subset": "devanagari",
+          "weight": 400,
+          "style": "normal",
+          "unicode_range": "U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09",
+          "files": {
+            "woff2": {
+              "to": "fonts/kalam-devanagari-400-normal.woff2",
+              "sha256": "b79d6614aac600d3bf950ae2d6924f72725366d9b5cfb8e9ff88dbc5152044c0",
+              "bytes": 109320
+            },
+            "woff": {
+              "to": "fonts/kalam-devanagari-400-normal.woff",
+              "sha256": "d7ad7274d07b49ff26e365dc13921f57a56164346f3494f857ae58bc151dfad1",
+              "bytes": 74560
+            }
+          }
+        }
+      ],
+      "fetched": true
+    },
+    {
+      "id": "noto-sans-devanagari",
+      "family": "Noto Sans Devanagari",
+      "role": "script_family",
+      "scripts": [
+        "devanagari"
+      ],
+      "npm": "@fontsource/noto-sans-devanagari",
+      "status": "day1",
+      "subsets": [
+        "devanagari",
+        "latin"
+      ],
+      "weights": [
+        400,
+        700
+      ],
+      "version": "5.3.0",
+      "licence_spdx": "OFL-1.1",
+      "licence_file": "licences/noto-sans-devanagari-OFL.txt",
+      "licence_declared": "OFL-1.1",
+      "fetched_utc_date": "2026-10-19",
+      "tarball": {
+        "sha256": "8d42be0e944481b61e68c7702037d4143e96bf48dbb72d19ea05d0cacc1323d5",
+        "integrity": "sha512-7khYmipS/5KAUUmrO1DKir8yL8XI00d0+ZE9BqbS8XF1jzObv6CpPOk3UeYxF+Pvi8bx9bBvprBCOcbx/eQWTQ==",
+        "bytes": 1422371
+      },
+      "faces": [
+        {
+          "subset": "devanagari",
+          "weight": 400,
+          "style": "normal",
+          "unicode_range": "U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09",
+          "files": {
+            "woff2": {
+              "to": "fonts/noto-sans-devanagari-devanagari-400-normal.woff2",
+              "sha256": "f86f14cbd1004f5795689ee9cc70d5d87d915f5135b30283525c1c7b8f0eb192",
+              "bytes": 50416
+            },
+            "woff": {
+              "to": "fonts/noto-sans-devanagari-devanagari-400-normal.woff",
+              "sha256": "f2c45dc8e9b6644845cb9468f09a6da34a9e458c23018e0b1f1ef06ee98f0f20",
+              "bytes": 68468
+            }
+          }
+        },
+        {
+          "subset": "latin",
+          "weight": 400,
+          "style": "normal",
+          "unicode_range": "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+          "files": {
+            "woff2": {
+              "to": "fonts/noto-sans-devanagari-latin-400-normal.woff2",
+              "sha256": "1ea6a2f05ad1e2218d23fc9a788bcbce03c1a83e33eeb7078354ebe5f5e8d4e7",
+              "bytes": 10512
+            }
+          }
+        },
+        {
+          "subset": "devanagari",
+          "weight": 700,
+          "style": "normal",
+          "unicode_range": "U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+20F0,U+25CC,U+A830-A839,U+A8E0-A8FF,U+11B00-11B09",
+          "files": {
+            "woff2": {
+              "to": "fonts/noto-sans-devanagari-devanagari-700-normal.woff2",
+              "sha256": "6a68069c959d7f3c02f4062dd9be85327448b5d753e95455b1c0320f37f68fc1",
+              "bytes": 53984
+            }
+          }
+        },
+        {
+          "subset": "latin",
+          "weight": 700,
+          "style": "normal",
+          "unicode_range": "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+          "files": {
+            "woff2": {
+              "to": "fonts/noto-sans-devanagari-latin-700-normal.woff2",
+              "sha256": "9a66b62e21bcffd97e49f8cfc3630a08e70c3295e1f41f13214847281efbc252",
+              "bytes": 10604
+            }
+          }
+        }
+      ],
+      "fetched": true
+    },
+    {
+      "id": "noto-sans-tamil",
+      "family": "Noto Sans Tamil",
+      "role": "script_family",
+      "scripts": [
+        "tamil"
+      ],
+      "npm": "@fontsource/noto-sans-tamil",
+      "status": "pending_O-10",
+      "subsets": [
+        "tamil",
+        "latin"
+      ],
+      "weights": [
+        400
+      ],
+      "version": null,
+      "licence_spdx": "OFL-1.1",
+      "licence_file": "licences/noto-sans-tamil-OFL.txt",
+      "package_confirmed": true,
+      "confirmed_version": "5.3.0",
+      "confirmed_utc_date": "2026-10-19",
+      "unverified": "package name exists; subsets, file names and glyph coverage not yet checked (no strings for this script until O-10)"
+    },
+    {
+      "id": "noto-sans-telugu",
+      "family": "Noto Sans Telugu",
+      "role": "script_family",
+      "scripts": [
+        "telugu"
+      ],
+      "npm": "@fontsource/noto-sans-telugu",
+      "status": "pending_O-10",
+      "subsets": [
+        "telugu",
+        "latin"
+      ],
+      "weights": [
+        400
+      ],
+      "version": null,
+      "licence_spdx": "OFL-1.1",
+      "licence_file": "licences/noto-sans-telugu-OFL.txt",
+      "package_confirmed": true,
+      "confirmed_version": "5.3.0",
+      "confirmed_utc_date": "2026-10-19",
+      "unverified": "package name exists; subsets, file names and glyph coverage not yet checked (no strings for this script until O-10)"
+    },
+    {
+      "id": "noto-sans-kannada",
+      "family": "Noto Sans Kannada",
+      "role": "script_family",
+      "scripts": [
+        "kannada"
+      ],
+      "npm": "@fontsource/noto-sans-kannada",
+      "status": "pending_O-10",
+      "subsets": [
+        "kannada",
+        "latin"
+      ],
+      "weights": [
+        400
+      ],
+      "version": null,
+      "licence_spdx": "OFL-1.1",
+      "licence_file": "licences/noto-sans-kannada-OFL.txt",
+      "package_confirmed": true,
+      "confirmed_version": "5.3.0",
+      "confirmed_utc_date": "2026-10-19",
+      "unverified": "package name exists; subsets, file names and glyph coverage not yet checked (no strings for this script until O-10)"
+    },
+    {
+      "id": "noto-sans-malayalam",
+      "family": "Noto Sans Malayalam",
+      "role": "script_family",
+      "scripts": [
+        "malayalam"
+      ],
+      "npm": "@fontsource/noto-sans-malayalam",
+      "status": "pending_O-10",
+      "subsets": [
+        "malayalam",
+        "latin"
+      ],
+      "weights": [
+        400
+      ],
+      "version": null,
+      "licence_spdx": "OFL-1.1",
+      "licence_file": "licences/noto-sans-malayalam-OFL.txt",
+      "package_confirmed": true,
+      "confirmed_version": "5.3.0",
+      "confirmed_utc_date": "2026-10-19",
+      "unverified": "package name exists; subsets, file names and glyph coverage not yet checked (no strings for this script until O-10)"
+    },
+    {
+      "id": "noto-sans-bengali",
+      "family": "Noto Sans Bengali",
+      "role": "script_family",
+      "scripts": [
+        "bengali"
+      ],
+      "npm": "@fontsource/noto-sans-bengali",
+      "status": "pending_O-10",
+      "subsets": [
+        "bengali",
+        "latin"
+      ],
+      "weights": [
+        400
+      ],
+      "version": null,
+      "licence_spdx": "OFL-1.1",
+      "licence_file": "licences/noto-sans-bengali-OFL.txt",
+      "package_confirmed": true,
+      "confirmed_version": "5.3.0",
+      "confirmed_utc_date": "2026-10-19",
+      "unverified": "package name exists; subsets, file names and glyph coverage not yet checked (no strings for this script until O-10)"
+    },
+    {
+      "id": "noto-sans-gujarati",
+      "family": "Noto Sans Gujarati",
+      "role": "script_family",
+      "scripts": [
+        "gujarati"
+      ],
+      "npm": "@fontsource/noto-sans-gujarati",
+      "status": "pending_O-10",
+      "subsets": [
+        "gujarati",
+        "latin"
+      ],
+      "weights": [
+        400
+      ],
+      "version": null,
+      "licence_spdx": "OFL-1.1",
+      "licence_file": "licences/noto-sans-gujarati-OFL.txt",
+      "package_confirmed": true,
+      "confirmed_version": "5.3.0",
+      "confirmed_utc_date": "2026-10-19",
+      "unverified": "package name exists; subsets, file names and glyph coverage not yet checked (no strings for this script until O-10)"
+    }
+  ]
+}

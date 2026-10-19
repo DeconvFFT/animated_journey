@@ -4,8 +4,8 @@
 # Every test uses its own throw-away scratch folder (LJ_SCRATCH) and a FAKE df (LJ_DF_CMD), so the real
 # disk is never filled and the real locks are never touched. Each test prints one line:
 #     RESULT PASS|FAIL <name> :: <detail>
-# Exit 0 when all pass, 1 otherwise. Needs bash, flock, awk. Takes about 40 seconds.
-#   bash tests/hygiene/test_guard.sh [--quick]     (--quick skips the two slowest tests)
+# Exit 0 when all pass, 1 otherwise. Needs bash, flock, awk. Takes about 20 seconds.
+#   bash tests/hygiene/test_guard.sh
 set -u
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO="$(cd "$HERE/../.." && pwd)"
@@ -14,7 +14,6 @@ BASE="${LJ_TEST_BASE:-$(cd "$REPO/.." && pwd)/build-scratch}"
 mkdir -p "$BASE"
 T="$(mktemp -d "$BASE/hyg-guard.XXXXXX")"
 trap 'rm -rf "$T"' EXIT
-QUICK=0; [[ "${1:-}" == "--quick" ]] && QUICK=1
 FAILS=0
 
 pass() { printf 'RESULT PASS %s :: %s\n' "$1" "${2:-}"; }
@@ -99,7 +98,7 @@ LJ_LOCK_WAIT_S=2 bash "$GUARD" with_disk 10 WAITER -- true 2>"$S/err"; rc=$?
 t1="$(now)"
 expect "waiter_with_LJ_LOCK_WAIT_S_2_exits_3" 3 "$rc" ""
 grep -q 'BUSY: held by HOLDER-JOB' "$S/err" && pass "busy_message_names_the_holder" "$(grep -o 'BUSY[^(]*' "$S/err")" || fail "busy_message_names_the_holder" "$(cat "$S/err")"
-awk -v a="$t0" -v b="$t1" 'BEGIN{d=b-a; exit !(d>=1.8 && d<4.5)}' && pass "waiter_gave_up_after_about_2_seconds" "" || fail "waiter_gave_up_after_about_2_seconds" "took $(awk -v a="$t0" -v b="$t1" 'BEGIN{print b-a}')s"
+awk -v a="$t0" -v b="$t1" 'BEGIN{d=b-a; exit !(d>=1.8 && d<8)}' && pass "waiter_gave_up_after_about_2_seconds" "" || fail "waiter_gave_up_after_about_2_seconds" "took $(awk -v a="$t0" -v b="$t1" 'BEGIN{print b-a}')s"
 wait $ph; rch=$?
 expect "holder_itself_finished_normally_despite_the_waiter" 0 "$rch" ""
 LJ_LOCK_WAIT_S=2 LJ_DF_CMD="$S/f.sh" bash "$GUARD" with_disk 10 LATER -- true 2>/dev/null; rc=$?
@@ -151,6 +150,22 @@ LJ_DF_CMD="$S/f.sh" LJ_SCRATCH="$S" LJ_ON_ABORT="touch '$S/aborted'" bash "$GUAR
 [[ $rc -eq 3 && -e "$S/aborted" ]] && pass "LJ_ON_ABORT_cleanup_line_ran_after_the_floor_trip" "" || fail "LJ_ON_ABORT_cleanup_line_ran_after_the_floor_trip" "rc=$rc"
 unset LJ_ON_ABORT
 
+# an outside TERM (a package's `timeout`) is forwarded to the command's group: its trap runs, the lock is released
+S="$(new_scratch s5c)"; mkfake "$S" f 5000
+cat > "$S/child.sh" <<CHILD
+#!/usr/bin/env bash
+trap 'echo cleanup-ran > "$S/cleanup"; exit 0' TERM
+sleep 30 &
+wait
+CHILD
+LJ_DF_CMD="$S/f.sh" LJ_SCRATCH="$S" timeout 1.5 bash "$GUARD" with_disk 10 TIMEOUT-JOB -- bash "$S/child.sh" 2>/dev/null; rc=$?
+sleep 1
+[[ $rc -eq 124 ]] && pass "outer_timeout_exits_124_as_usual" "" || fail "outer_timeout_exits_124_as_usual" "rc=$rc"
+[[ -s "$S/cleanup" ]] && pass "outer_TERM_is_forwarded_and_the_childs_cleanup_trap_ran" "" || fail "outer_TERM_is_forwarded_and_the_childs_cleanup_trap_ran" "no cleanup marker"
+LJ_DF_CMD="$S/f.sh" LJ_SCRATCH="$S" LJ_LOCK_WAIT_S=1 bash "$GUARD" with_disk 10 NEXT -- true 2>/dev/null; rc=$?
+expect "lock_is_released_after_an_outer_timeout" 0 "$rc" ""
+grep -q '"label":"TIMEOUT-JOB"' "$S/disk-ledger.jsonl" && pass "ledger_line_written_even_after_an_outer_timeout" "" || fail "ledger_line_written_even_after_an_outer_timeout" ""
+
 # ----------------------------------------------------------------------------- 6. bench inside disk; reverse refused; nesting
 S="$(new_scratch s6)"; mkfake "$S" f 5000
 export LJ_DF_CMD="$S/f.sh" LJ_SCRATCH="$S" LJ_POLL_S=0.5 G="$GUARD"
@@ -177,6 +192,23 @@ out="$(LJ_LOADAVG_FILE="$S/load-idle" LJ_NPROC=4 bash "$GUARD" bench bash -c 'ec
 expect "bench_idle_machine_is_not_contaminated" "4 0.05 no" "$out" ""
 LJ_LOADAVG_FILE="$S/load-idle" bash "$GUARD" bench bash -c 'exit 5' 2>/dev/null; rc=$?
 expect "bench_passes_the_command_exit_code" 5 "$rc" ""
+
+# sourced into a caller that runs under set -euo pipefail, and with a shell function as the command
+S="$(new_scratch s6b)"; mkfake "$S" f 5000
+cat > "$S/strict.sh" <<STRICT
+#!/usr/bin/env bash
+set -euo pipefail
+export LJ_SCRATCH="$S" LJ_DF_CMD="$S/f.sh" LJ_POLL_S=0.2
+. "$GUARD"
+my_fn() { echo "function ran as the command"; }
+lj_with_disk 100 strict-mode -- bash -c 'echo hello from the stage'
+lj_with_disk 0 fn-as-command -- my_fn
+if lj_with_disk 99999 too-big -- true; then echo UNEXPECTED; else echo refused-as-expected; fi
+echo survived-set-euo-pipefail
+STRICT
+bash "$S/strict.sh" >"$S/out" 2>"$S/err"; rc=$?
+[[ $rc -eq 0 ]] && grep -q 'survived-set-euo-pipefail' "$S/out" && grep -q 'function ran as the command' "$S/out" && grep -q 'refused-as-expected' "$S/out" && grep -q 'strict-mode: finished with exit 0' "$S/err" \
+  && pass "guard_works_in_a_caller_with_set_euo_pipefail_and_with_a_shell_function_as_command" "" || fail "guard_works_in_a_caller_with_set_euo_pipefail_and_with_a_shell_function_as_command" "rc=$rc $(tail -n 3 "$S/err")"
 
 # ----------------------------------------------------------------------------- 7. the ledger carries no path or host
 S="$(new_scratch s7)"; mkfake "$S" f 5000

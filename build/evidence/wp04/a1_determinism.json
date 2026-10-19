@@ -1,0 +1,49 @@
+{
+ "actual": "filter off: 48/48 identical; filter on: max 0 differing px (48 hash-identical); filter changes 18873 px",
+ "data": {
+  "filter_changes_pixels": 18873,
+  "filter_off": {
+   "exit": [
+    0,
+    0
+   ],
+   "frames": 48,
+   "identical": 48,
+   "report_hashes_match_files": true
+  },
+  "filter_on": {
+   "exit": [
+    0,
+    0
+   ],
+   "frames": 48,
+   "hash_identical": 48,
+   "max_differing_px": 0
+  },
+  "seconds": 34.8
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 410,
+  "avail_mb_min": 410,
+  "avail_mb_start": 411,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "two processes, frames 0-47: identical SHA-256 per frame (filter off); at most 100 differing pixels per frame with ?filter=1 (compare -metric AE -fuzz 1%)",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "a1_determinism",
+ "unverified_reasons": []
+}

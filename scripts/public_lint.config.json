@@ -1,0 +1,137 @@
+{
+ "schema": "lj-public-lint-config/1",
+ "version": 1,
+ "owner": "WP-03",
+ "max_file_bytes": 1000000,
+ "allow_binary": [
+  "research/craft-visual-fixtures/*.ora",
+  "research/production-scale-fixtures/*.blend"
+ ],
+ "allow_binary_note": "Two synthetic fixtures committed earlier and reused unchanged (an OpenRaster zip built by make_ora.py and a stand-in Blender scene built by a script). Add a glob here only for a reviewed, small, non-personal file; at most three review images may be force-added (CLAUDE.md, Git).",
+ "fixture_dirs": [
+  {
+   "dir": "tests/win/fixtures/",
+   "demote": [
+    "guid_serial"
+   ],
+   "reason": "synthetic PC reports; one of them quotes a 65-hex run on purpose. Only guid_serial is demoted to a NOTE; every other category still fails there."
+  }
+ ],
+ "allow": [
+  {
+   "id": "ipv4-looking-software-versions",
+   "category": "ipv4",
+   "paths": [
+    "playbooks/**",
+    "research/**",
+    "reviews/**",
+    ".claude/skills/**"
+   ],
+   "value_regex": "0\\.99\\.[67]\\.[0-9]|5\\.3\\.4\\.1|2\\.55\\.0\\.5|0\\.2\\.5\\.0|0\\.1\\.3\\.2|5\\.0\\.0\\.93|8\\.4\\.3\\.2|2\\.5\\.8\\.0|1\\.8\\.4\\.7",
+   "reason": "four-part software versions and one DCI section number cited in research notes (MagicaVoxel, Krita, Git, Real-ESRGAN, OpenCV, DCI spec, DCP-o-matic, ttfautohint): shaped like an address, not one (F-15). A NEW four-part number still fails and a person decides."
+  },
+  {
+   "id": "git-commit-ids-in-notes",
+   "category": "guid_serial",
+   "paths": [
+    "playbooks/**",
+    "research/**",
+    "reviews/**",
+    ".claude/skills/**"
+   ],
+   "value_regex": "[0-9a-f]{40}",
+   "reason": "a 40-hex git commit id (SHA-1) of a cited third-party repository tag; public build identity like the 64-hex SHA-256 exemption, but kept out of the shared pattern file because 32 to 63 hex stays a hit there."
+  },
+  {
+   "id": "store-product-id-python-manager",
+   "category": "guid_serial",
+   "paths": [
+    "research/creator-threads.md"
+   ],
+   "value_regex": "9NQ[0-9]{4}CXL[0-9A-Z]{2}",
+   "reason": "the public Microsoft Store product id of the Python install manager, quoted from the Python documentation"
+  },
+  {
+   "id": "verbatim-licence-texts",
+   "category": [
+    "email",
+    "handle"
+   ],
+   "paths": [
+    "pipeline/lib/licences/**"
+   ],
+   "value_regex": ".+",
+   "reason": "verbatim third-party licence texts (OFL, MIT and similar) must keep their authors' public copyright contact lines (W-21); the build plan commits these licences as text (4.9). Nothing else under this path is allowed."
+  }
+ ],
+ "allow_note": "This list is deliberately short and only for public identifiers that are not about any person or machine. E-mail addresses, creator handles and session ids are NOT allowed here: they are reported to the orchestrator.",
+ "theme": {
+  "paths": [
+   "pipeline/scenes/",
+   "pipeline/phone/test_strings.json",
+   "ops/GATHER.md",
+   "skills-staging/"
+  ],
+  "info_paths": [
+   "playbooks/",
+   ".claude/skills/",
+   "research/"
+  ],
+  "limit": "keyword scan of text only; it cannot judge iconography",
+  "keywords": [
+   {
+    "id": "mughal",
+    "regex": "\\bMughals?\\b|\\bMoghuls?\\b|\\bMogul (?:empire|era|architecture|garden)s?\\b",
+    "why": "Mughal motif"
+   },
+   {
+    "id": "islamic",
+    "regex": "\\bIslam(?:ic)?\\b|\\bMuslims?\\b|\\bQur'?an\\b|\\bKoran\\b",
+    "why": "Islamic motif"
+   },
+   {
+    "id": "mosque",
+    "regex": "\\bmosques?\\b|\\bminarets?\\b|\\bmasjid\\b|\\bdargah\\b",
+    "why": "Islamic building"
+   },
+   {
+    "id": "taj-mahal",
+    "regex": "\\bTaj Mahal\\b",
+    "why": "Mughal monument"
+   },
+   {
+    "id": "red-fort",
+    "regex": "\\bRed Fort\\b",
+    "why": "Mughal monument"
+   },
+   {
+    "id": "church",
+    "regex": "\\bchurch(?:es)?\\b|\\bcathedrals?\\b|\\bchapels?\\b",
+    "why": "Christian building"
+   },
+   {
+    "id": "crucifix",
+    "regex": "\\bcrucifix(?:es)?\\b|\\bnativity\\b",
+    "why": "Christian symbol"
+   },
+   {
+    "id": "christmas",
+    "regex": "\\bChristmas\\b|\\bSanta Claus\\b",
+    "why": "Christian holiday"
+   },
+   {
+    "id": "christian",
+    "regex": "\\bChristian(?:ity)?\\b|\\bJesus\\b|\\bthe Bible\\b",
+    "why": "Christian motif"
+   }
+  ],
+  "exclusion_cue_regex": "\\b(?:no|never|exclu[a-z]*|out|left out|leave out|avoid[a-z]*|without|forbidden|not (?:allowed|used|shown|included|wanted)|default out|out of scope)\\b",
+  "exclusion_cue_window": 120,
+  "exclusion_note": "A line that names a D-28 keyword AND says it is excluded (no, never, excluded, out, avoid, without) is a statement of the rule, not a use of the motif, and is printed as a NOTE for a person to read instead of a finding. 'Mughal garden, not too dark' is still a finding (a plain 'not' is no cue)."
+ },
+ "denylist_exempt_globs": [
+  "**/*.schema.json"
+ ],
+ "denylist_exempt_note": "A JSON Schema that describes a report (win/schema/pc_report.schema.json) holds no data. The frozen glob **/pc_report*.json would refuse it by name; this is the one added exemption.",
+ "handle_note": "In .md files an at sign inside inline code or a fenced block is PowerShell splatting or a decorator, not a social handle, and is skipped."
+}

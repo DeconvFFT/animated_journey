@@ -1,0 +1,34 @@
+{
+  "actual": "not started: REFUSED: Avail 461 MB minus planned 300 MB leaves 161 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB.",
+  "date_utc": "2026-10-19",
+  "detail": {
+    "exit_code": null,
+    "guard_ledger": null,
+    "profile": "none",
+    "stage": "effectcraft-v0.11.1",
+    "vendor_craft_other_than_keep": []
+  },
+  "disk": {
+    "avail_mb_end": 461,
+    "avail_mb_min": 461,
+    "avail_mb_start": 461,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 300
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "the stage ran inside lj_with_disk, ended with exit 0, and left vendor/craft with nothing but _keep/",
+  "notes": "",
+  "package": "WP-07",
+  "schema": "lj-evidence/1",
+  "stage": "",
+  "status": "BLOCKED",
+  "test": "stage_effectcraft-v0.11.1",
+  "unverified_reasons": []
+}

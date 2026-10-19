@@ -1,0 +1,208 @@
+{
+  "clip_duration_invalid": {
+    "allowed_companions": [
+      "filmcraft_ticks_mismatch",
+      "dissolve_longer_than_neighbour"
+    ],
+    "described_as": "ch01_s02 has a zero-length source_range",
+    "exit": 1,
+    "expected_code": "clip_duration_invalid",
+    "failed_codes": [
+      "clip_duration_invalid",
+      "dissolve_longer_than_neighbour",
+      "filmcraft_ticks_mismatch"
+    ]
+  },
+  "clip_outside_available_range": {
+    "allowed_companions": [],
+    "described_as": "the available_range of ch01_s02 is cut to 100 frames while the clip uses 120",
+    "exit": 1,
+    "expected_code": "clip_outside_available_range",
+    "failed_codes": [
+      "clip_outside_available_range"
+    ]
+  },
+  "dissolve_longer_than_neighbour": {
+    "allowed_companions": [],
+    "described_as": "the first dissolve is 400 frames (in_offset 200) next to a 120-frame clip",
+    "exit": 1,
+    "expected_code": "dissolve_longer_than_neighbour",
+    "failed_codes": [
+      "dissolve_longer_than_neighbour"
+    ]
+  },
+  "dissolve_pair_too_long": {
+    "allowed_companions": [],
+    "described_as": "the two dissolves around ch01_s02 need 140 frames and the clip has 120",
+    "exit": 1,
+    "expected_code": "dissolve_longer_than_neighbour",
+    "failed_codes": [
+      "dissolve_longer_than_neighbour"
+    ]
+  },
+  "dissolve_without_neighbour": {
+    "allowed_companions": [],
+    "described_as": "a dissolve is the last item of the track",
+    "exit": 1,
+    "expected_code": "dissolve_without_neighbour",
+    "failed_codes": [
+      "dissolve_without_neighbour"
+    ]
+  },
+  "filmcraft_effect_unknown": {
+    "allowed_companions": [],
+    "described_as": "an effect named blur is added",
+    "exit": 1,
+    "expected_code": "filmcraft_effect_unknown",
+    "failed_codes": [
+      "filmcraft_effect_unknown"
+    ]
+  },
+  "filmcraft_key_unknown": {
+    "allowed_companions": [],
+    "described_as": "metadata.filmcraft gets a key FilmCraft does not read",
+    "exit": 1,
+    "expected_code": "filmcraft_key_unknown",
+    "failed_codes": [
+      "filmcraft_key_unknown"
+    ]
+  },
+  "filmcraft_keyframe_time": {
+    "allowed_companions": [],
+    "described_as": "a keyframe sits beyond the end of the clip",
+    "exit": 1,
+    "expected_code": "filmcraft_keyframe_time",
+    "failed_codes": [
+      "filmcraft_keyframe_time"
+    ]
+  },
+  "filmcraft_ticks_mismatch": {
+    "allowed_companions": [],
+    "described_as": "duration_ticks says 6 s for a 5 s clip",
+    "exit": 1,
+    "expected_code": "filmcraft_ticks_mismatch",
+    "failed_codes": [
+      "filmcraft_ticks_mismatch"
+    ]
+  },
+  "filmcraft_value_shape": {
+    "allowed_companions": [],
+    "described_as": "the scale value is a bare number instead of {\"Float\": n}",
+    "exit": 1,
+    "expected_code": "filmcraft_value_shape",
+    "failed_codes": [
+      "filmcraft_value_shape"
+    ]
+  },
+  "image_sequence_reference": {
+    "allowed_companions": [],
+    "described_as": "ch01_s01 uses an ImageSequenceReference",
+    "exit": 1,
+    "expected_code": "image_sequence_reference",
+    "failed_codes": [
+      "image_sequence_reference"
+    ]
+  },
+  "markers_missing": {
+    "allowed_companions": [],
+    "described_as": "every marker is removed",
+    "exit": 1,
+    "expected_code": "markers_missing",
+    "failed_codes": [
+      "markers_missing"
+    ]
+  },
+  "media_missing": {
+    "allowed_companions": [],
+    "described_as": "ch01_s03 points at media/ch01_s99.png, which does not exist",
+    "exit": 1,
+    "expected_code": "media_missing",
+    "failed_codes": [
+      "media_missing"
+    ]
+  },
+  "media_reference_missing": {
+    "allowed_companions": [],
+    "described_as": "ch01_s01 has a MissingReference",
+    "exit": 1,
+    "expected_code": "media_reference_missing",
+    "failed_codes": [
+      "media_reference_missing"
+    ]
+  },
+  "motion_edge_exposed": {
+    "allowed_companions": [],
+    "described_as": "ch01_s01 drifts 200 px sideways at the start scale, so black shows",
+    "exit": 1,
+    "expected_code": "motion_edge_exposed",
+    "failed_codes": [
+      "motion_edge_exposed"
+    ]
+  },
+  "no_video_track": {
+    "allowed_companions": [],
+    "described_as": "the Video track is renamed Audio",
+    "exit": 1,
+    "expected_code": "no_video_track",
+    "failed_codes": [
+      "no_video_track"
+    ]
+  },
+  "otio_json_invalid": {
+    "allowed_companions": [],
+    "described_as": "the file is cut short",
+    "exit": 1,
+    "expected_code": "otio_json_invalid",
+    "failed_codes": [
+      "otio_json_invalid"
+    ]
+  },
+  "rate_not_24_one_time": {
+    "allowed_companions": [],
+    "described_as": "global_start_time is written at the old project rate",
+    "exit": 1,
+    "expected_code": "rate_not_24",
+    "failed_codes": [
+      "rate_not_24"
+    ]
+  },
+  "rate_not_24_whole_file": {
+    "allowed_companions": [
+      "filmcraft_ticks_mismatch"
+    ],
+    "described_as": "every rate in the file is the old project rate (an un-rebased template)",
+    "exit": 1,
+    "expected_code": "rate_not_24",
+    "failed_codes": [
+      "filmcraft_ticks_mismatch",
+      "rate_not_24"
+    ]
+  },
+  "schema_not_timeline": {
+    "allowed_companions": [],
+    "described_as": "the root is a Stack",
+    "exit": 1,
+    "expected_code": "schema_not_timeline",
+    "failed_codes": [
+      "schema_not_timeline"
+    ]
+  },
+  "target_url_absolute": {
+    "allowed_companions": [],
+    "described_as": "ch01_s01 uses a file:// URL with a drive letter",
+    "exit": 1,
+    "expected_code": "target_url_absolute",
+    "failed_codes": [
+      "target_url_absolute"
+    ]
+  },
+  "target_url_backslash": {
+    "allowed_companions": [],
+    "described_as": "ch01_s01 uses media\\ch01_s01.png",
+    "exit": 1,
+    "expected_code": "target_url_backslash",
+    "failed_codes": [
+      "target_url_backslash"
+    ]
+  }
+}

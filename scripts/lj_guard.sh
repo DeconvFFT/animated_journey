@@ -93,6 +93,7 @@ lj_ledger_last() {
 
 # ----------------------------------------------------------------------------- lj_with_disk
 lj_with_disk() (
+  set +e   # a subshell: the caller's own 'set -e' must not abort the guard half way (wait of a killed watchdog returns 143)
   local planned="${1:-}" label_raw="${2:-}" scratch lock ledger floor hard poll waitmax grace label
   local fd avail_start avail_end avail_min st_dir pid wd_pid rc status started ended t0 t1 waited holder
   if [[ -z "$planned" || -z "$label_raw" || "${3:-}" != "--" || $# -lt 4 ]]; then
@@ -147,11 +148,12 @@ lj_with_disk() (
   set -m
   "$@" <&7 7<&- {fd}>&- &
   pid=$!
+  set +m   # keep the process group, but stop the shell from printing "[1]+ Done" job notices
   exec 7<&-
 
   # watchdog: polls df; below the hard floor it stops the command's group
   (
-    trap 'kill "${sl:-0}" 2>/dev/null; exit 0' TERM
+    trap '[[ -n "${sl:-}" ]] && kill "$sl" 2>/dev/null; exit 0' TERM
     m="$avail_start"
     while kill -0 "$pid" 2>/dev/null; do
       a="$(lj_df_avail_mb)"
@@ -206,6 +208,7 @@ lj_with_disk() (
 
 # ----------------------------------------------------------------------------- lj_bench
 lj_bench() (
+  set +e
   local scratch lock ledger fd waitmax holder nproc_n load1 loadline frac contaminated rc label started ended t0 waited
   if [[ $# -lt 1 ]]; then _lj_say "usage: lj_bench COMMAND [ARGS...]"; exit 2; fi
   if [[ -n "${LJ_HOLDS_BENCH:-}" ]]; then

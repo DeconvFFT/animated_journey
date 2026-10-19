@@ -1,0 +1,30 @@
+{
+  "schema": "lj-sp1-config/1",
+  "note": "The numbers of build plan 4.9 (budgets) and WP-07 (pins, profiles, keep rule). run_sp1.sh and the drivers read this file; nothing else holds these figures.",
+  "pins": [
+    {"app": "photocraft",  "tag": "v0.10.0", "role": "pin",      "tarball_fetched_by": "WP-10"},
+    {"app": "vectorcraft", "tag": "v0.13.1", "role": "pin",      "tarball_fetched_by": "WP-10"},
+    {"app": "lightcraft",  "tag": "v0.9.1",  "role": "pin",      "tarball_fetched_by": "WP-10"},
+    {"app": "filmcraft",   "tag": "v0.9.0",  "role": "pin",      "tarball_fetched_by": "WP-07 (kept for WP-10 T3 when the keep rule allows)"},
+    {"app": "filmcraft",   "tag": "v0.8.0",  "role": "fallback", "tarball_fetched_by": "WP-07, only if 0.9.0 fails T1 or T2"},
+    {"app": "effectcraft", "tag": "v0.11.1", "role": "pin",      "tarball_fetched_by": "WP-07"}
+  ],
+  "soundcraft": {"status": "not pinned, not fetched", "reason": "D-12: SoundCraft is learning-only and unpinned; W-06 lists five pins; SP1 T5 is cut (nudge 7)."},
+  "disk": {"floor_mb": 400, "hard_floor_mb": 250, "keep_threshold_mb": 700, "download_allowance_mb": 2048},
+  "stages": [
+    {"id": "filmcraft-v0.9.0",  "app": "filmcraft",   "tag": "v0.9.0",  "order": 1, "planned_mb": {"full": 600, "lean": 350}, "tests": ["t1", "t2"], "keep_tarball": true},
+    {"id": "effectcraft-v0.11.1", "app": "effectcraft", "tag": "v0.11.1", "order": 2, "planned_mb": {"full": 400, "lean": 300}, "tests": ["t1", "t4"], "keep_tarball": false},
+    {"id": "filmcraft-v0.8.0",  "app": "filmcraft",   "tag": "v0.8.0",  "order": 3, "planned_mb": {"full": 600, "lean": 350}, "tests": ["t1", "t2"], "keep_tarball": false, "only_if": "filmcraft-v0.9.0 fails T1 or T2"}
+  ],
+  "profiles": {
+    "full": {"extract": "all", "prores_seconds": 3},
+    "lean": {"extract": "cli-only", "prores_seconds": 1}
+  },
+  "t2": {
+    "n_large": [5, 20, 100], "large_size": [3600, 2400], "n_conformed": 300, "conformed_size": [2880, 1620],
+    "export_stills": 20, "seconds_per_still": 5, "fps": 24, "sequence": [1920, 1080],
+    "rss_kill_mb": 10240, "rss_slope_max_mb_per_still": 40, "rss_n300_max_mb": 12288,
+    "h264_min_fps": 5, "h264_max_seconds": 480
+  },
+  "t4": {"fps": 24, "size": [1920, 1080], "rayon_threads": 1, "prores_seconds": {"full": 3, "lean": 1}, "parallax_max_seconds_per_frame": 3, "parallax_max_rss_mb": 6144}
+}

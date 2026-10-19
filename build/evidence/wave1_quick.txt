@@ -1,0 +1,54 @@
+Life Journey week 1-2 checks: mode quick, 13 areas in fixed order, per-area limit 60 s, budget 300 s
+Avail at start: 465 MB (hard floor 250 MB). Output is masked with scripts/redaction_patterns.json.
+[ 1/13] hygiene      WP-03    PASS          22 s  exit 0      
+        last line: hygiene tests (quick): 0 failed; Avail 465 MB at start, 465 MB minimum seen
+[ 2/13] win          WP-01a   PASS          10 s  exit 0      
+        last line: WP-01a quick: PASS=44 FAIL=0 UNVERIFIED=0 SKIPPED=0 BLOCKED=0  (df Avail 465 -> 465 MB)
+[ 3/13] ops          WP-02    FAIL           7 s  exit 1      
+        | PASS       lint_deny_list               deny list: whole word, case-insensitive, short entries skipped, --deny-file and LJ_DENY_FILE honoured
+        | PASS       lint_fail_closed             fail closed: missing, invalid or incomplete pattern file exits 2 and checks nothing
+        | PASS       lint_data_driven             patterns come from the file: a tiny synthetic pattern file changes what is flagged (no regex inside ops_lint)
+        | PASS       lint_readonly                ops_lint, hours_report and decisions_to_csv --check modify nothing in the repository
+        | PASS       card_content                 SETTINGS-CARD: TD-1..TD-4, Phone, D-27, Language and script line, signed: no, every cited ID exists
+        | PASS       howto_gather_content         HOURS-HOWTO has the 'no names in note' sentence; GATHER has Part A/Part B, the gate, five stand-in scans, IDs only
+        | PASS       ops_hygiene                  ops files: no stale values, no D-28 exclusions, no Minecraft, no names/emails/IPs by a plain look (patterns checked by ops_lint)
+        | PASS       scripts_compile              the three scripts compile and print --help (usage exits 0)
+        | PASS       public_lint_own_files        scripts/public_lint.py (WP-03), when present, finds nothing in WP-02's own files
+        | UNVERIFIED windows_unverified           Windows behaviour of the WP-02 files (Excel handling of hours.csv, py -3 -I on PowerShell 5.1/7) is UNVERIFIED
+        | ------------------------------------------------------------
+        | WP-02 ops tests (quick): 7 FAIL, 33 PASS, 1 UNVERIFIED
+[ 4/13] validators   WP-05    PASS          21 s  exit 0      
+        last line: TOTAL: PASS 18, FAIL 0, UNVERIFIED 0, SKIPPED 0, BLOCKED 0   (21 s, Avail min 464 MB)
+[ 5/13] render       WP-04    PASS          27 s  exit 0      
+        last line: summary: {"PASS": 10} in 27 s
+[ 6/13] roundtrip    WP-06    FAIL          11 s  exit 1      
+        | PASS       otio.weird_shapes                              list_root -> exit 1; string_rate -> exit 1; metadata_list_with_filmcraft -> exit 1
+        | PASS       ora.random_bytes                               exit 1; FAILED: zip_unreadable
+        | PASS       otio.emit_refusals                             old_rate -> 2; abs_source -> 2; backslash_source -> 2; dup_id -> 2; last_dissolve -> 2; black_edge -> 2; bad_col
+        | PASS       otio.emit_usage                                exit 2
+        | PASS       otio.emit_needs_output                         exit 2
+        | PASS       otio.never_creates_media_without_the_flag      exit 0; media folder created: False
+        | PASS       otio.adapter_probe                             exit 0; working with the core install alone: none; opentimelineio 0.18.1 ships only otio_json, otioz, otiod; ada
+        | PASS       otio.adapter_probe_exit_codes                  exits 2 3
+        | PASS       otio.adapter_probe_no_paths                    clean
+        | UNVERIFIED windows.validators                             standard library only, os.path joins, UTF-8 and BOM reading, ASCII output, no shell=True; not run on Windows
+        | UNVERIFIED craft_apps.accept_files                        not run: no Craft app was started in this package
+        | TOTAL: PASS 100, FAIL 1, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (10 s)
+[ 7/13] sp1          WP-07    PASS          11 s  exit 0      
+        last line: SUMMARY quick: 12 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED
+[ 8/13] win_lj       WP-01b   NOT LANDED  tests/win_lj/run_tests.sh does not exist yet (not an error)
+[ 9/13] win_kit2     WP-09    NOT LANDED  tests/win_kit2/run_tests.sh does not exist yet (not an error)
+[10/13] phone        WP-08    NOT LANDED  tests/phone/run_tests.sh does not exist yet (not an error)
+[11/13] spikes       WP-10    NOT LANDED  tests/spikes/run_tests.sh does not exist yet (not an error)
+[12/13] runner       WP-11a   PASS          33 s  exit 0      
+        last line: envelopes written: 123 {'PASS': 123, 'FAIL': 0, 'UNVERIFIED': 0, 'SKIPPED': 0}
+[13/13] integration  WP-11b   NOT LANDED  tests/integration/run_tests.sh does not exist yet (not an error)
+----
+Areas: 13 | landed 8 | PASS 6 | FAIL 2 | TIMEOUT 0 | NOT LANDED 5
+Elapsed 142 s against the 300 s quick budget (within)
+Disk: Avail 465 MB at start, 464 MB lowest between areas, 464 MB at end (hard floor 250 MB)
+Envelopes: 535 counted (PASS 518, FAIL 8, UNVERIFIED 5, SKIPPED 0, BLOCKED 4)
+Lowest avail_mb_min in any envelope: 71 MB (WP-06); below the 250 MB hard floor: WP-04, WP-06
+public_lint --text: not available yet (the built-in masker above, driven by scripts/redaction_patterns.json, was applied)
+Writing: build/evidence/INDEX.md, build/evidence/week2_summary.json, build/evidence/wave1_quick.txt, and build/evidence/wp11a/area_<area>_quick.txt
+RESULT: FAIL (runner exit 1)

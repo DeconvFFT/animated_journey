@@ -1,0 +1,124 @@
+{
+  "core_adapters_installed": [
+    "otio_json",
+    "otioz",
+    "otiod"
+  ],
+  "core_only": {
+    "adapters": {
+      "cmx_3600": {
+        "bytes": null,
+        "error": "NotSupportedError: Could not find plugin: 'cmx_3600' in kind_list: 'adapters'.",
+        "label": "EDL (CMX 3600)",
+        "plugin_package": "otio-cmx3600-adapter",
+        "worked": false
+      },
+      "fcpx_xml": {
+        "bytes": null,
+        "error": "NotSupportedError: Could not find plugin: 'fcpx_xml' in kind_list: 'adapters'.",
+        "label": "FCPXML",
+        "plugin_package": "otio-fcpx-xml-adapter",
+        "worked": false
+      },
+      "kdenlive": {
+        "bytes": null,
+        "error": "NotSupportedError: Could not find plugin: 'kdenlive' in kind_list: 'adapters'.",
+        "label": "Kdenlive project",
+        "plugin_package": "otio-kdenlive-adapter",
+        "worked": false
+      },
+      "mlt_xml": {
+        "bytes": null,
+        "error": "NotSupportedError: Could not find plugin: 'mlt_xml' in kind_list: 'adapters'.",
+        "label": "MLT XML",
+        "plugin_package": "otio-mlt-adapter",
+        "worked": false
+      }
+    },
+    "make_otio_exit": 0,
+    "plain_otio_written": true,
+    "read_back_clips": [
+      "ch01_s01",
+      "ch01_s02",
+      "ch01_s03",
+      "ch01_s04",
+      "voice"
+    ],
+    "working": []
+  },
+  "finding": "opentimelineio 0.18.1 ships only otio_json, otioz, otiod; adapters that wrote a file with it alone: none",
+  "make_otio_sha256": "27855321755767b14e858e803c293aa2ed9082bf7acc1c02991486a94acb4871",
+  "make_otio_unchanged_in_git": true,
+  "opentimelineio": "0.18.1",
+  "schema": "lj-adapter-probe/1",
+  "timeline169": {
+    "fps": 24,
+    "shots": 4,
+    "size": [
+      1920,
+      1080
+    ]
+  },
+  "with_plugins": {
+    "adapters": {
+      "cmx_3600": {
+        "bytes": 986,
+        "error": null,
+        "frame_rate_found_in_output": "last timecode 00:00:20:00",
+        "label": "EDL (CMX 3600)",
+        "plugin_package": "otio-cmx3600-adapter",
+        "worked": true
+      },
+      "fcpx_xml": {
+        "bytes": 2566,
+        "error": null,
+        "frame_rate_found_in_output": "25/600s",
+        "label": "FCPXML",
+        "plugin_package": "otio-fcpx-xml-adapter",
+        "worked": true
+      },
+      "kdenlive": {
+        "bytes": 4971,
+        "error": null,
+        "frame_rate_found_in_output": "24",
+        "label": "Kdenlive project",
+        "plugin_package": "otio-kdenlive-adapter",
+        "worked": true
+      },
+      "mlt_xml": {
+        "bytes": 2014,
+        "error": null,
+        "frame_rate_found_in_output": "24",
+        "label": "MLT XML",
+        "plugin_package": "otio-mlt-adapter",
+        "worked": true
+      }
+    },
+    "adapters_installed": [
+      "kdenlive",
+      "cmx_3600",
+      "fcpx_xml",
+      "mlt_xml",
+      "otio_json",
+      "otioz",
+      "otiod"
+    ],
+    "make_otio_exit": 0,
+    "opentimelineio": "0.18.1",
+    "plain_otio_written": true,
+    "read_back_clips": [
+      "ch01_s01",
+      "ch01_s02",
+      "ch01_s03",
+      "ch01_s04",
+      "voice"
+    ],
+    "working": [
+      "cmx_3600",
+      "fcpx_xml",
+      "kdenlive",
+      "mlt_xml"
+    ]
+  },
+  "working_core_only": []
+}

@@ -1,0 +1,52 @@
+{
+ "actual": "equal=True shard frames 24/24; rerun shard: {'frames': 0, 'skipped': 24}; rerun whole: {'frames': 0, 'skipped': 48}; refused different scene: True",
+ "data": {
+  "identical": 48,
+  "refusal": "render.mjs: renders/wp04/a3p holds frames from a different scene or settings (page scenes/testcard/scene.html, 1920x1080 at 24 fps). Use a new --out, or --overwrite to render everything again.",
+  "second_invocation": [
+   {
+    "complete": true,
+    "frames": 0,
+    "remaining": 0,
+    "seconds": 1.037,
+    "shard": "0/2",
+    "skipped": 24,
+    "throughput_fps": 0
+   },
+   {
+    "complete": true,
+    "frames": 0,
+    "remaining": 0,
+    "seconds": 1.081,
+    "shard": "0/1",
+    "skipped": 48,
+    "throughput_fps": 0
+   }
+  ],
+  "seconds": 15.8
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 410,
+  "avail_mb_min": 410,
+  "avail_mb_start": 410,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "shards 0/2 + 1/2 equal a single run frame for frame (hash-identical, disjoint); a second invocation renders 0 frames; a changed scene in the same folder is refused",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "a3_shards_resume",
+ "unverified_reasons": []
+}

@@ -1,0 +1,86 @@
+{
+  "all_run": {
+    "BLOCKED": 0,
+    "FAIL": 0,
+    "PASS": 102,
+    "SKIPPED": 0,
+    "UNVERIFIED": 2
+  },
+  "date_utc": "2026-10-19",
+  "disk": {
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "measured_peak_of_generated_files_mb": 2.3,
+    "test_run_min_avail_mb": 70,
+    "venv_size_mb": 12.7,
+    "venv_stage_avail_mb_start": 304,
+    "venv_stage_label": "wp06-venv",
+    "venv_stage_planned_mb": 60,
+    "venv_stage_status": "refused"
+  },
+  "groups": {
+    "craft_apps": {
+      "BLOCKED": 0,
+      "FAIL": 0,
+      "PASS": 0,
+      "SKIPPED": 0,
+      "UNVERIFIED": 1
+    },
+    "hygiene": {
+      "BLOCKED": 0,
+      "FAIL": 0,
+      "PASS": 12,
+      "SKIPPED": 0,
+      "UNVERIFIED": 0
+    },
+    "kb_scale": {
+      "BLOCKED": 0,
+      "FAIL": 0,
+      "PASS": 3,
+      "SKIPPED": 0,
+      "UNVERIFIED": 0
+    },
+    "ora": {
+      "BLOCKED": 0,
+      "FAIL": 0,
+      "PASS": 32,
+      "SKIPPED": 0,
+      "UNVERIFIED": 0
+    },
+    "otio": {
+      "BLOCKED": 0,
+      "FAIL": 0,
+      "PASS": 43,
+      "SKIPPED": 0,
+      "UNVERIFIED": 0
+    },
+    "svg": {
+      "BLOCKED": 0,
+      "FAIL": 0,
+      "PASS": 12,
+      "SKIPPED": 0,
+      "UNVERIFIED": 0
+    },
+    "windows": {
+      "BLOCKED": 0,
+      "FAIL": 0,
+      "PASS": 0,
+      "SKIPPED": 0,
+      "UNVERIFIED": 1
+    }
+  },
+  "package": "WP-06",
+  "quick_run": {
+    "BLOCKED": 0,
+    "FAIL": 0,
+    "PASS": 101,
+    "SKIPPED": 0,
+    "UNVERIFIED": 2
+  },
+  "schema": "lj-evidence-summary/1",
+  "skipped": [],
+  "unverified": [
+    "craft_apps.accept_files",
+    "windows.validators"
+  ]
+}

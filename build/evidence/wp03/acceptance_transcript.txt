@@ -1,0 +1,276 @@
+WP-03 acceptance transcript. Paths are repo-relative. Avail at start: 375M
+
+===== [1] pattern file is internally consistent (writes LANDED-4.13.txt)
+$ python3 -I tests/hygiene/test_patterns.py
+PASS  file has schema, version, dialect
+PASS  every required category id is present
+PASS  category ids are unique
+PASS  every category has id, scope, action=refuse, regex, flags ('' or 'i'), description and samples
+PASS  handle is text-scope (never applied to a PC report)
+PASS  all other required categories apply to reports as well as text
+PASS  every regex compiles in Python (this also proves lookbehinds are fixed-width)
+PASS  no regex uses a construct outside the Python/.NET common subset
+PASS  no regex is slow on hostile input
+PASS  dialect scanner self-check: it does flag named groups, \d and possessive quantifiers
+PASS  every category has >=1 positive and >=1 negative sample, positives split into fragments, and each behaves
+PASS  every cross-cutting sample gives exactly its declared answer
+PASS  required negative samples are present
+PASS  required negative: /home/user/build-scratch reads as <scratch> and is not flagged
+PASS  required negative: a 64-hex SHA-256
+PASS  required negative: a splatting variable in PowerShell code
+PASS  required positive: e-mail on an invented domain
+PASS  required positive: IPv4 outside the documentation ranges
+PASS  required positive: full IPv6
+PASS  required positive: MAC
+PASS  required positive: Windows profile path under a real-looking user name
+PASS  required positive: Linux home path under a name other than user
+PASS  required positive: GitHub-token-shaped string of full length
+PASS  required positive: GUID
+PASS  required positive: 32-hex run
+PASS  required positive: 65-hex run
+PASS  required positive: serial-like token
+PASS  required positive: at-sign handle in prose
+PASS  required positive: 32-to-63 hex still flagged next to the 64 exemption
+PASS  the raw file text raises no hit in any category (it does not trip the lint on itself)
+PASS  no flagged sample appears joined anywhere in the raw file text
+PASS  positive samples are all split into fragments
+PASS  exemption sha256_64hex exists for guid_serial and matches exactly 64 hex not flanked by hex digits
+PASS  without the exemption the guid_serial regex WOULD flag a 64-hex (the exemption is what saves it)
+PASS  field_exemptions covers ipv4 in the version fields
+PASS  name_checks: sources, min_name_len 3, fragment_len 4, hardware fields, report-not-refuse
+PASS  mask keeps 2 characters and fills with *
+PASS  placeholders list the four generic paths (and <scratch> is the alias of the last)
+PASS  path_denylist has the three raw-report globs and the fixture dir is the only exemption
+PASS  local_deny names the git-ignored deny file
+
+40 checks, 40 passed, 0 failed
+wrote build/evidence/wp03/LANDED-4.13.txt
+[exit 0]
+
+===== [2] guard, stale and lint tests (--all)
+$ bash tests/hygiene/run_tests.sh --all
+WP-03 hygiene tests, mode all (Avail at start: 385 MB)
+GROUP patterns
+RESULT PASS pattern_file_internal_test :: 40 checks passed, 0 failed, exit 0
+GROUP guard
+RESULT PASS avail_parses_fake_df_P_format :: (fake df -P style output)
+RESULT PASS avail_accepts_a_bare_integer :: 
+RESULT PASS avail_matches_real_df :: guard 377 MB, df 377 MB (the volume is shared, so a small drift is normal)
+RESULT PASS usage_missing_dashdash_exits_2 :: lj_guard: usage: lj_with_disk PLANNED_MB LABEL -- COMMAND [ARGS...]
+RESULT PASS usage_planned_not_a_number_exits_2 :: 
+RESULT PASS command_exit_code_passes_through :: 
+RESULT PASS command_success_exits_0 :: 
+RESULT PASS df700_planned_300_runs_boundary_exactly_400_left :: Avail 700 - 300 = 400 is allowed (floor is >= 400)
+RESULT PASS df700_planned_350_refused_350_left :: REFUSED: Avail 700 MB minus planned 350 MB leaves 350 MB, below the 400 MB floor (p350). Lean-profile hint: pl
+RESULT PASS refusal_message_has_exact_figures_350 :: 
+RESULT PASS df700_planned_320_refused :: 
+RESULT PASS refusal_message_has_exact_figures_320 :: 
+RESULT PASS refusal_message_carries_the_lean_profile_hint :: 
+RESULT PASS df700_planned_301_refused_one_over :: 
+RESULT PASS refused_command_never_started :: 
+RESULT PASS two_jobs_both_succeed :: 
+RESULT PASS two_jobs_serialise_start_end_start_end :: (order of start/end markers written by the jobs)
+RESULT PASS second_job_started_after_first_ended :: 
+RESULT PASS ledger_has_one_line_per_job :: 
+RESULT PASS ledger_shows_them_one_after_the_other :: A ended 2026-10-19T04:13:24Z, B started 2026-10-19T04:13:24Z
+RESULT PASS ledger_records_that_the_second_job_waited :: 
+RESULT PASS waiter_with_LJ_LOCK_WAIT_S_2_exits_3 :: 
+RESULT PASS busy_message_names_the_holder :: BUSY: held by HOLDER-JOB 
+RESULT PASS waiter_gave_up_after_about_2_seconds :: 
+RESULT PASS holder_itself_finished_normally_despite_the_waiter :: 
+RESULT PASS lock_is_free_again_after_the_holder_finished :: 
+RESULT PASS floor_trip_exits_3 :: 
+RESULT PASS floor_trip_prints_DISK-FLOOR :: DISK-FLOOR: Avail fell to 200 MB, below the 250 MB hard floor, while FLOOR-JOB was running; its process group was stopped 
+RESULT PASS childs_cleanup_trap_ran :: 
+RESULT PASS child_process_group_is_gone :: 
+RESULT PASS floor_trip_did_not_wait_for_the_30s_sleep :: took 2.8s
+RESULT PASS lock_was_held_through_the_cleanup :: waiter started after the cleanup finished
+RESULT PASS ledger_records_status_floor :: 
+RESULT PASS ledger_min_is_below_the_hard_floor :: min 200 MB
+RESULT PASS LJ_ON_ABORT_cleanup_line_ran_after_the_floor_trip :: 
+RESULT PASS outer_timeout_exits_124_as_usual :: 
+RESULT PASS outer_TERM_is_forwarded_and_the_childs_cleanup_trap_ran :: 
+RESULT PASS lock_is_released_after_an_outer_timeout :: 
+RESULT PASS ledger_line_written_even_after_an_outer_timeout :: 
+RESULT PASS lj_bench_inside_lj_with_disk_works :: bench: nproc=4 loadavg_start=1.73 1.26 1.23 contaminated=yes 
+RESULT PASS reverse_order_lj_with_disk_inside_lj_bench_refused :: exit 3 with the lock-order message
+RESULT PASS nested_lj_with_disk_refused_not_deadlocked :: 
+RESULT PASS nested_lj_bench_refused_not_deadlocked :: 
+RESULT PASS bench_lock_is_exclusive_and_names_the_holder :: 
+RESULT PASS bench_exports_nproc_load_and_flags_a_busy_machine_contaminated :: 
+RESULT PASS bench_idle_machine_is_not_contaminated :: 
+RESULT PASS bench_passes_the_command_exit_code :: 
+RESULT PASS guard_works_in_a_caller_with_set_euo_pipefail_and_with_a_shell_function_as_command :: 
+RESULT PASS ledger_lines_carry_no_path_host_or_user :: 2 disk + 1 bench lines checked
+RESULT PASS label_is_sanitised_slashes_and_at_signs_become_underscores :: 
+RESULT PASS ledger_lines_are_valid_json_with_the_envelope_fields :: 
+RESULT PASS guard_writes_only_its_lock_and_ledger_files :: (new entries in the scratch folder; the state folder is removed)
+GROUP self_tests
+RESULT PASS stale_check_self_test :: python3 -I scripts/stale_check.py --self-test: exit 0; self-test: 558 checks, 0 problems
+RESULT PASS public_lint_self_test :: python3 -I scripts/public_lint.py --self-test: exit 0; note: Windows PowerShell 5.1 was not available in this run; win/step0_pc_tests.ps1 was exercised on PowerShell 7 only (5.1 behaviour UNVERIFIED until 
+GROUP stale
+... (97 more lines)
+[exit 0]
+
+===== [3] stale_check self-test
+$ python3 -I scripts/stale_check.py --self-test
+self-test: 558 checks, 0 problems
+[exit 0]
+
+===== [4] stale_check allowlist audit (no dead entries)
+$ python3 -I scripts/stale_check.py --audit-allowlist
+AL-1-music-sound-dx-gated                  suppresses   1 hit(s)
+AL-2a-no-co-keeper                         suppresses  13 hit(s)
+AL-2b-rings-empty                          suppresses   8 hit(s)
+AL-2c-no-insider                           suppresses  25 hit(s)
+AL-3a-tested-at-25-unverified-at-24        suppresses  16 hit(s)
+AL-3b-access-copy-50hz                     suppresses   3 hit(s)
+AL-4-gathering-14                          suppresses   1 hit(s)
+audit: no dead entries (7 entries)
+[exit 0]
+
+===== [5] stale_check first run: report written, exit 1 expected
+$ python3 -I scripts/stale_check.py --json build/evidence/wp03/stale_check_report.json --md build/evidence/wp03/stale_check_report.md
+stale_check: scanned 234 files, 34341 lines
+  FAIL 184, WARN 12, allowlisted 67, REGRESSIONS 70, outstanding-row hits 126, INFO candidate hits 411
+  S-01  outstanding   FAIL  16 WARN   0 allowlisted  19
+  S-05  applied       FAIL   4 WARN   0 allowlisted  22
+  S-08  applied today FAIL   4 WARN  10 allowlisted  25
+  S-09  applied       FAIL   3 WARN   0 allowlisted   0
+  S-10  applied today FAIL   1 WARN   0 allowlisted   0
+  S-11  applied       FAIL   1 WARN   0 allowlisted   0
+  S-13  applied       FAIL   0 WARN   2 allowlisted   0
+  S-16  applied today FAIL   1 WARN   0 allowlisted   0
+  S-17  applied       FAIL   2 WARN   0 allowlisted   0
+  S-18  applied       FAIL  19 WARN   0 allowlisted   0
+  S-19  applied       FAIL   8 WARN   0 allowlisted   0
+  S-20  applied       FAIL   8 WARN   0 allowlisted   0
+  S-26  applied       FAIL   1 WARN   0 allowlisted   0
+  S-28  applied       FAIL   3 WARN   0 allowlisted   0
+  S-29  applied       FAIL   1 WARN   0 allowlisted   0
+  S-31  applied       FAIL   1 WARN   0 allowlisted   0
+  S-38  outstanding   FAIL  70 WARN   0 allowlisted   0
+  S-39  outstanding   FAIL  37 WARN   0 allowlisted   0
+  S-40  outstanding   FAIL   3 WARN   0 allowlisted   0
+  S-41  applied today FAIL   1 WARN   0 allowlisted   0
+  report written to the --json / --md paths
+[exit 1]
+
+===== [6] stale_check --baseline then --new-only (exit 0 straight after)
+$ bash -c python3 -I scripts/stale_check.py --baseline && python3 -I scripts/stale_check.py --new-only
+baseline written: 184 FAIL and 12 WARN hits recorded (file: scripts/stale_baseline.json)
+new-only: 0 new FAIL hit(s), 0 new WARN hit(s); 0 baseline hit(s) no longer present
+[exit 0]
+
+===== [7] public_lint self-test (4.13 disagreement test)
+$ python3 -I scripts/public_lint.py --self-test
+self-test: 110 samples (built from fragments into <scratch>); patterns version 1
+consumer scripts/public_lint.py: ok (own regex set read from scripts/redaction_patterns.json; 110 samples)
+consumer scripts/windows_check.py: ok (110 samples compared on the report-scope categories)
+consumer win/step0_pc_tests.ps1: ok (110 samples compared on the report-scope categories via PowerShell 7.5.4)
+consumer win/kit2/run_checks_pc.ps1: SKIPPED: not landed
+self-test: no disagreement between consumers (skipped: win/kit2/run_checks_pc.ps1)
+note: Windows PowerShell 5.1 was not available in this run; win/step0_pc_tests.ps1 was exercised on PowerShell 7 only (5.1 behaviour UNVERIFIED until the maker's PC runs this self-test).
+[exit 0]
+
+===== [8] public_lint --self-test --fail-on-skip (WP-11b's final form; a skip is a failure)
+$ python3 -I scripts/public_lint.py --self-test --fail-on-skip
+self-test: 110 samples (built from fragments into <scratch>); patterns version 1
+consumer scripts/public_lint.py: ok (own regex set read from scripts/redaction_patterns.json; 110 samples)
+consumer scripts/windows_check.py: ok (110 samples compared on the report-scope categories)
+consumer win/step0_pc_tests.ps1: ok (110 samples compared on the report-scope categories via PowerShell 7.5.4)
+consumer win/kit2/run_checks_pc.ps1: SKIPPED: not landed
+skipped consumers are failures with --fail-on-skip: win/kit2/run_checks_pc.ps1
+self-test: 1 problem(s)
+note: Windows PowerShell 5.1 was not available in this run; win/step0_pc_tests.ps1 was exercised on PowerShell 7 only (5.1 behaviour UNVERIFIED until the maker's PC runs this self-test).
+[exit 1]
+
+===== [9] public_lint on WP-03's own files and evidence
+$ python3 -I scripts/public_lint.py --paths scripts/redaction_patterns.json scripts/lj_guard.sh scripts/stale_check.py scripts/stale_patterns.json scripts/stale_allowlist.json scripts/stale_baseline.json scripts/public_lint.py scripts/public_lint.config.json tests/hygiene build/evidence/wp03
+public_lint: mode paths, 26 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+[exit 0]
+
+===== [10] public_lint whole-tree audit of the real repository (findings are for the orchestrator, nothing is fixed here)
+$ python3 -I scripts/public_lint.py --all --json build/evidence/wp03/public_lint_all_tree.json
+FINDING identifying email                .claude/skills/craft-apps-motion-refinement/SKILL.md:176 hit=kd********
+FINDING identifying email                playbooks/cinematic-quality.md:721 hit=us********
+FINDING identifying email                playbooks/craft-motion.md:432 hit=kd********
+FINDING identifying email                playbooks/surprise-ops.md:331 hit=in********
+FINDING identifying email                playbooks/surprise-ops.md:839 hit=in********
+FINDING identifying handle               research/ai-imagery.md:870 hit=@n********
+FINDING identifying email                research/cinematic-quality.md:863 hit=us********
+FINDING identifying guid_serial          research/craft-motion.md:657 hit=80********
+FINDING identifying email                research/craft-motion.md:723 hit=kd********
+FINDING identifying profile_path_linux   research/craft-motion.md:761 hit=/U*******
+FINDING identifying email                research/craft-visual.md:1006 hit=in********
+FINDING identifying handle               research/creator-threads.md:321 hit=@N********
+FINDING identifying handle               research/creator-threads.md:322 hit=@m********
+FINDING identifying handle               research/creator-threads.md:323 hit=@d********
+FINDING identifying email                research/creator-threads.md:390 hit=R@********
+FINDING identifying email                research/film-story.md:1011 hit=fa********
+FINDING identifying email                research/music-sound.md:746 hit=TV********
+FINDING identifying guid_serial          research/production-scale-fixtures/followup1-classroom-cpu-timing.py:11 hit=80********
+FINDING identifying guid_serial          research/production-scale-fixtures/followup2-s3-run-sweep.sh:2 hit=80********
+FINDING identifying guid_serial          research/production-scale-fixtures/followup2-s3-run-sweep.sh:4 hit=80********
+FINDING identifying email                research/sources/format-round2/clearance-and-venue-excerpts-2026-10-18.txt:105 hit=AT********
+FINDING identifying email                research/sources/hindu-visual-licence-excerpts-2026-10-19.txt:15 hit=op********
+FINDING identifying email                research/sources/hindu-visual-licence-excerpts-2026-10-19.txt:53 hit=va********
+FINDING identifying email                research/surprise-ops.md:1324 hit=in********
+FINDING identifying email                research/surprise-ops.md:1421 hit=in********
+FINDING identifying handle               research/toolchain.md:835 hit=@d********
+FINDING identifying email                research/toolchain.md:851 hit=te********
+FINDING identifying email                research/toolchain.md:851 hit=te********
+FINDING identifying guid_serial          reviews/01-addendum-briefs-review.md:96 hit=80********
+FINDING identifying handle               reviews/cinematic-quality-round4.md:33 hit=@O*******
+FINDING identifying guid_serial          reviews/surprise-ops-round4.md:31 hit=80********
+FINDING identifying email                reviews/toolchain-round3.md:41 hit=te********
+FINDING binary      nul_byte             .claude/skills/free-creative-toolchain/recipes/__pycache__/r2_param.cpython-313.pyc  (binary file (NUL byte); personal media never goes in git)
+FINDING binary      nul_byte             research/cinematic-quality-fixtures/__pycache__/zoom_velocity_classifier.cpython-313.pyc  (binary file (NUL byte); personal media never goes in git)
+FINDING binary      nul_byte             research/cinematic-quality-fixtures/__pycache__/zoompan_vs_subpixel_prints.cpython-313.pyc  (binary file (NUL byte); personal media never goes in git)
+FINDING binary      nul_byte             research/sources/__pycache__/check_mojang_quotes.cpython-313.pyc  (binary file (NUL byte); personal media never goes in git)
+FINDING binary      nul_byte             research/toolchain-fixtures/__pycache__/derive_album_look.cpython-313.pyc  (binary file (NUL byte); personal media never goes in git)
+FINDING binary      nul_byte             research/toolchain-fixtures/__pycache__/make_venue_test_kit.cpython-313.pyc  (binary file (NUL byte); personal media never goes in git)
+NOTE    fixture-note guid_serial          tests/win/fixtures/report_hex65_leak.json:141 hit=3f********  (synthetic fixture folder: planted values are expected here)
+public_lint: mode all, 455 file(s) scanned, 32 identifying-data finding(s), 6 hygiene finding(s), 1 fixture note(s), 125 suppressed by the config allow list
+[exit 2]
+
+===== [11] public_lint default mode: diff against HEAD plus untracked files
+$ python3 -I scripts/public_lint.py
+FINDING binary      nul_byte             research/cinematic-quality-fixtures/__pycache__/zoom_velocity_classifier.cpython-313.pyc  (binary file (NUL byte); personal media never goes in git)
+FINDING binary      nul_byte             research/cinematic-quality-fixtures/__pycache__/zoompan_vs_subpixel_prints.cpython-313.pyc  (binary file (NUL byte); personal media never goes in git)
+public_lint: mode diff, 68 file(s) scanned, 0 identifying-data finding(s), 2 hygiene finding(s), 0 fixture note(s), 10 suppressed by the config allow list
+[exit 1]
+
+===== [12] theme guard on the real tree (new or changed theme-bearing files; existing text is INFO only)
+$ python3 -I scripts/public_lint.py --theme
+FINDING theme       mughal               skills-staging/hindu-visual-language/SKILL.md:36 hit=Mughal  (D-28 exclusion keyword: Mughal motif)
+FINDING theme       mughal               skills-staging/hindu-visual-language/SKILL.md:109 hit=Mughal  (D-28 exclusion keyword: Mughal motif)
+FINDING theme       islamic              skills-staging/hindu-visual-language/SKILL.md:111 hit=Islamic  (D-28 exclusion keyword: Islamic motif)
+NOTE    theme-excl  mughal               skills-staging/hindu-life-story-frameworks/SKILL.md:14 hit=Mughal  (the line says the motif is excluded: a statement of the rule, not a use)
+NOTE    theme-excl  islamic              skills-staging/hindu-life-story-frameworks/SKILL.md:14 hit=Islamic  (the line says the motif is excluded: a statement of the rule, not a use)
+NOTE    theme-excl  christian            skills-staging/hindu-life-story-frameworks/SKILL.md:14 hit=Christian  (the line says the motif is excluded: a statement of the rule, not a use)
+NOTE    theme-excl  mughal               skills-staging/hindu-life-story-frameworks/SKILL.md:36 hit=Mughal  (the line says the motif is excluded: a statement of the rule, not a use)
+NOTE    theme-excl  islamic              skills-staging/hindu-life-story-frameworks/SKILL.md:36 hit=Islamic  (the line says the motif is excluded: a statement of the rule, not a use)
+NOTE    theme-excl  church               skills-staging/hindu-life-story-frameworks/SKILL.md:36 hit=church  (the line says the motif is excluded: a statement of the rule, not a use)
+NOTE    theme-excl  christian            skills-staging/hindu-life-story-frameworks/SKILL.md:36 hit=Christian  (the line says the motif is excluded: a statement of the rule, not a use)
+NOTE    theme-excl  mughal               skills-staging/hindu-life-story-frameworks/SKILL.md:88 hit=Mughal  (the line says the motif is excluded: a statement of the rule, not a use)
+NOTE    theme-excl  islamic              skills-staging/hindu-life-story-frameworks/SKILL.md:88 hit=Islamic  (the line says the motif is excluded: a statement of the rule, not a use)
+NOTE    theme-excl  christian            skills-staging/hindu-life-story-frameworks/SKILL.md:88 hit=Christian  (the line says the motif is excluded: a statement of the rule, not a use)
+NOTE    theme-excl  mughal               skills-staging/hindu-visual-language/SKILL.md:12 hit=Mughal  (the line says the motif is excluded: a statement of the rule, not a use)
+NOTE    theme-excl  islamic              skills-staging/hindu-visual-language/SKILL.md:12 hit=Islamic  (the line says the motif is excluded: a statement of the rule, not a use)
+NOTE    ... 4 more exclusion statements
+theme guard: 8 file(s) scanned (new or changed theme-bearing files), 3 finding(s), 16 exclusion statement(s) shown as NOTE
+LIMIT: this is a keyword scan of text only. It can NOT judge iconography: a person (and the Fable review) must look at every picture against D-28.
+INFO only (existing playbooks, skills and research are never failed): .claude/skills: 3 keyword hit(s), playbooks: 13 keyword hit(s), research: 165 keyword hit(s)
+[exit 1]
+
+===== [13] disk guard smoke test on the real volume (planned 0 MB, label only)
+$ bash scripts/lj_guard.sh with_disk 0 wp03-smoke -- true
+lj_guard: wp03-smoke: planned 0 MB, Avail 451 MB, floor 400 MB, hard floor 250 MB
+lj_guard: wp03-smoke: finished with exit 0; Avail start 451 MB, min 451 MB, end 451 MB
+[exit 0]
+
+===== [14] bench guard smoke test (nproc and load recorded)
+$ bash scripts/lj_guard.sh bench true
+lj_guard: bench: nproc=4 loadavg_start=1.80 1.39 1.28 contaminated=yes (true)
+[exit 0]

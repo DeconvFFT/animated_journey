@@ -1,0 +1,82 @@
+{
+ "actual": "10 checks, 0 failed",
+ "data": {
+  "checks": [
+   {
+    "check": "throw=1 exit 2",
+    "detail": "exit 2",
+    "ok": true
+   },
+   {
+    "check": "throw=1 leaves no frame and no .tmp",
+    "detail": "left: ['.render-meta.json']",
+    "ok": true
+   },
+   {
+    "check": "throw=1 message names the planned error",
+    "detail": "render.mjs: frame 12: page.evaluate: Error: lj-testcard: ?throw=1 planned scene error at t=0.5",
+    "ok": true
+   },
+   {
+    "check": "throw=1 report records the error and the removal",
+    "detail": "{\"kind\": \"scene\", \"message\": \"frame 12: page.evaluate: Error: lj-testcard: ?throw=1 planned scene error at t=0.5\"}",
+    "ok": true
+   },
+   {
+    "check": "throw=async default: all frames kept, exit 2",
+    "detail": "exit 2, 12 frames",
+    "ok": true
+   },
+   {
+    "check": "throw=async --fail-on-pageerror: exit 2, no frames",
+    "detail": "exit 2, left ['.render-meta.json']",
+    "ok": true
+   },
+   {
+    "check": "throw=1 in video mode: exit 2, no output file, no .partial",
+    "detail": "exit 2, left []",
+    "ok": true
+   },
+   {
+    "check": "net=1 exit 2",
+    "detail": "exit 2",
+    "ok": true
+   },
+   {
+    "check": "net=1 names the blocked URL",
+    "detail": "render.mjs: network access is off: the scene requested https://example.invalid/lj-net-probe.png (blocked). A scene must be self-contained: put the file under --dir or a --mount.",
+    "ok": true
+   },
+   {
+    "check": "net=1 leaves no frame",
+    "detail": "left []",
+    "ok": true
+   }
+  ],
+  "seconds": 12.0
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 465,
+  "avail_mb_min": 465,
+  "avail_mb_start": 465,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "?throw=1 exits 2 with no partial output; ?net=1 exits 2 naming the URL; --fail-on-pageerror stops at the first uncaught error",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "a8_errors",
+ "unverified_reasons": []
+}

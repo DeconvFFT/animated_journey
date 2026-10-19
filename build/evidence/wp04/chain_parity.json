@@ -1,0 +1,31 @@
+{
+ "actual": "differences: none; with the file: h264\tchains.json:h264_venue\tmp4; without: h264\tbuilt-in\tmp4",
+ "data": {
+  "differences": {},
+  "seconds": 0.4
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 465,
+  "avail_mb_min": 465,
+  "avail_mb_start": 465,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "built-in h264 equals h264_venue (container, vf, video_args, expect); --chain h264 resolves to the file when present and to the built-in when it is not",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "chain_parity",
+ "unverified_reasons": []
+}

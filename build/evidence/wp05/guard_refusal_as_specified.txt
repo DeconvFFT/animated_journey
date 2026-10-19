@@ -1,0 +1,2 @@
+lj_guard: REFUSED: Avail 394 MB minus planned 150 MB leaves 244 MB, below the 400 MB floor (wp05-validators-as-specified). Lean-profile hint: plan a smaller stage, delete downloads you no longer need, or ask the orchestrator about the regenerable caches (Q-1).
+exit=3

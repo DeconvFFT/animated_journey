@@ -1,0 +1,50 @@
+{
+ "actual": "transform: MO8a 0.0023 px, MO8b 0.0039 px; layout: MO8a 0.242 px, MO8b 0.45 px (48 frames, ?view=detail)",
+ "data": {
+  "layout": {
+   "audit_exit": 0,
+   "ease_class": "ease in-out",
+   "frames": 48,
+   "mo8a_centre_jit_px": 0.1901,
+   "mo8a_d4_px": 0.242,
+   "mo8b_d4_px": 0.45,
+   "mo8b_edge_jit_px": 0.3354,
+   "render_exit": 0
+  },
+  "seconds": 29.2,
+  "transform": {
+   "audit_exit": 0,
+   "ease_class": "ease in-out",
+   "frames": 48,
+   "mo8a_centre_jit_px": 0.0023,
+   "mo8a_d4_px": 0.0023,
+   "mo8b_d4_px": 0.0039,
+   "mo8b_edge_jit_px": 0.0511,
+   "render_exit": 0
+  }
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 402,
+  "avail_mb_min": 402,
+  "avail_mb_start": 403,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "PRE-CHECK for A11 with the existing research/mo8_audit.py (the WP-05 gate is not used here): ?push=transform within MO8a 0.05 px and MO8b 0.04 px (4th-difference numbers); ?push=layout over both limits",
+ "notes": "Not A11. A11 is run by WP-11b with pipeline/validators/mo8_gate.py once WP-05 lands.",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "mo8_precheck",
+ "unverified_reasons": []
+}

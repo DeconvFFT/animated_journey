@@ -1,10 +1,10 @@
 {
- "actual": "167 rows with O-36 added; the old CSV is reported stale",
+ "actual": "expected '167 rows' in the output; got:\nwrote g.csv: 168 rows (D 31, W 60, O 36, S 41; by table T1 31, T2.1 13, T2.2 16, T2.3 31, T3 36, T4 41); orchestrator-owned cells carried over: 0 row(s)\n",
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 605,
-  "avail_mb_min": 605,
-  "avail_mb_start": 605,
+  "avail_mb_end": 464,
+  "avail_mb_min": 464,
+  "avail_mb_start": 464,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0
@@ -18,7 +18,7 @@
  "notes": "",
  "package": "WP-02",
  "schema": "lj-evidence/1",
- "status": "PASS",
+ "status": "FAIL",
  "test": "decisions_register_growth",
  "unverified_reasons": []
 }

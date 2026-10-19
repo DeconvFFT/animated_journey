@@ -1,0 +1,42 @@
+{
+  "date_utc": "2026-10-19",
+  "guide": "spikes/sp1_craft_cli/MAKER-CRAFT-ZIPS.md",
+  "results": [
+    {
+      "id": "G1.fences_marked_and_ascii",
+      "status": "PASS",
+      "text": "14 PowerShell fences; without a mode marker: none; non-ASCII characters: 0"
+    },
+    {
+      "id": "G2.pwsh_parses_every_fence",
+      "status": "PASS",
+      "text": "pwsh 7 Parser::ParseFile on 14 fences: parse errors: 0"
+    },
+    {
+      "id": "G3.ps51_lint_every_fence",
+      "status": "PASS",
+      "text": "14 fences linted (readonly fences in read-only mode); problems: none"
+    },
+    {
+      "id": "G4.names_sizes_hashes_match_assets",
+      "status": "PASS",
+      "text": "6 table rows, 6 distinct 64-hex strings; problems: none"
+    },
+    {
+      "id": "G5.hash_fence_rejects_one_flipped_byte",
+      "status": "PASS",
+      "text": "intact -> OK, one byte flipped -> MISMATCH, missing -> MISSING (pwsh on Linux, made-up files; Windows UNVERIFIED)"
+    },
+    {
+      "id": "G6.where_did_it_write_prints_only_generalised_paths",
+      "status": "PASS",
+      "text": "line 1 printed 4 lines, line 2 printed 1; not in %USERPROFILE% form: none; leaks of the made-up profile or user: none; Temp listed: none; tree unchanged: True; exit 0/0 "
+    },
+    {
+      "id": "G7.flipped_tarball_rejected_before_extraction",
+      "status": "PASS",
+      "text": "intact tarball -> exit 0 (OK: filmcraft-0.9.0-); one byte flipped -> exit 1 (REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 96863); verify call at run_sp1.sh line 196 precedes the first tar -xzf at line 217: True"
+    }
+  ],
+  "schema": "lj-guide-check/1"
+}

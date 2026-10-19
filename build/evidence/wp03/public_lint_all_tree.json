@@ -1,0 +1,320 @@
+{
+ "mode": "all",
+ "scanned": 455,
+ "identifying": [
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": ".claude/skills/craft-apps-motion-refinement/SKILL.md",
+   "line": 176,
+   "hit": "kd********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "playbooks/cinematic-quality.md",
+   "line": 721,
+   "hit": "us********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "playbooks/craft-motion.md",
+   "line": 432,
+   "hit": "kd********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "playbooks/surprise-ops.md",
+   "line": 331,
+   "hit": "in********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "playbooks/surprise-ops.md",
+   "line": 839,
+   "hit": "in********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "handle",
+   "file": "research/ai-imagery.md",
+   "line": 870,
+   "hit": "@n********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "research/cinematic-quality.md",
+   "line": 863,
+   "hit": "us********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "guid_serial",
+   "file": "research/craft-motion.md",
+   "line": 657,
+   "hit": "80********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "research/craft-motion.md",
+   "line": 723,
+   "hit": "kd********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "profile_path_linux",
+   "file": "research/craft-motion.md",
+   "line": 761,
+   "hit": "/U*******",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "research/craft-visual.md",
+   "line": 1006,
+   "hit": "in********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "handle",
+   "file": "research/creator-threads.md",
+   "line": 321,
+   "hit": "@N********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "handle",
+   "file": "research/creator-threads.md",
+   "line": 322,
+   "hit": "@m********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "handle",
+   "file": "research/creator-threads.md",
+   "line": 323,
+   "hit": "@d********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "research/creator-threads.md",
+   "line": 390,
+   "hit": "R@********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "research/film-story.md",
+   "line": 1011,
+   "hit": "fa********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "research/music-sound.md",
+   "line": 746,
+   "hit": "TV********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "guid_serial",
+   "file": "research/production-scale-fixtures/followup1-classroom-cpu-timing.py",
+   "line": 11,
+   "hit": "80********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "guid_serial",
+   "file": "research/production-scale-fixtures/followup2-s3-run-sweep.sh",
+   "line": 2,
+   "hit": "80********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "guid_serial",
+   "file": "research/production-scale-fixtures/followup2-s3-run-sweep.sh",
+   "line": 4,
+   "hit": "80********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "research/sources/format-round2/clearance-and-venue-excerpts-2026-10-18.txt",
+   "line": 105,
+   "hit": "AT********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "research/sources/hindu-visual-licence-excerpts-2026-10-19.txt",
+   "line": 15,
+   "hit": "op********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "research/sources/hindu-visual-licence-excerpts-2026-10-19.txt",
+   "line": 53,
+   "hit": "va********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "research/surprise-ops.md",
+   "line": 1324,
+   "hit": "in********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "research/surprise-ops.md",
+   "line": 1421,
+   "hit": "in********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "handle",
+   "file": "research/toolchain.md",
+   "line": 835,
+   "hit": "@d********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "research/toolchain.md",
+   "line": 851,
+   "hit": "te********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "research/toolchain.md",
+   "line": 851,
+   "hit": "te********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "guid_serial",
+   "file": "reviews/01-addendum-briefs-review.md",
+   "line": 96,
+   "hit": "80********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "handle",
+   "file": "reviews/cinematic-quality-round4.md",
+   "line": 33,
+   "hit": "@O*******",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "guid_serial",
+   "file": "reviews/surprise-ops-round4.md",
+   "line": 31,
+   "hit": "80********",
+   "note": ""
+  },
+  {
+   "kind": "identifying",
+   "category": "email",
+   "file": "reviews/toolchain-round3.md",
+   "line": 41,
+   "hit": "te********",
+   "note": ""
+  }
+ ],
+ "hygiene": [
+  {
+   "kind": "binary",
+   "category": "nul_byte",
+   "file": ".claude/skills/free-creative-toolchain/recipes/__pycache__/r2_param.cpython-313.pyc",
+   "line": null,
+   "hit": null,
+   "note": "binary file (NUL byte); personal media never goes in git"
+  },
+  {
+   "kind": "binary",
+   "category": "nul_byte",
+   "file": "research/cinematic-quality-fixtures/__pycache__/zoom_velocity_classifier.cpython-313.pyc",
+   "line": null,
+   "hit": null,
+   "note": "binary file (NUL byte); personal media never goes in git"
+  },
+  {
+   "kind": "binary",
+   "category": "nul_byte",
+   "file": "research/cinematic-quality-fixtures/__pycache__/zoompan_vs_subpixel_prints.cpython-313.pyc",
+   "line": null,
+   "hit": null,
+   "note": "binary file (NUL byte); personal media never goes in git"
+  },
+  {
+   "kind": "binary",
+   "category": "nul_byte",
+   "file": "research/sources/__pycache__/check_mojang_quotes.cpython-313.pyc",
+   "line": null,
+   "hit": null,
+   "note": "binary file (NUL byte); personal media never goes in git"
+  },
+  {
+   "kind": "binary",
+   "category": "nul_byte",
+   "file": "research/toolchain-fixtures/__pycache__/derive_album_look.cpython-313.pyc",
+   "line": null,
+   "hit": null,
+   "note": "binary file (NUL byte); personal media never goes in git"
+  },
+  {
+   "kind": "binary",
+   "category": "nul_byte",
+   "file": "research/toolchain-fixtures/__pycache__/make_venue_test_kit.cpython-313.pyc",
+   "line": null,
+   "hit": null,
+   "note": "binary file (NUL byte); personal media never goes in git"
+  }
+ ],
+ "notes": 1,
+ "suppressed_by_allow": {
+  "ipv4-looking-software-versions": 107,
+  "verbatim-licence-texts": 4,
+  "git-commit-ids-in-notes": 11,
+  "store-product-id-python-manager": 3
+ },
+ "date_utc": "2026-10-19"
+}

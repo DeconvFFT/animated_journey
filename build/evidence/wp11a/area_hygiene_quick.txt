@@ -1,0 +1,62 @@
+# area=hygiene entry=WP-03 mode=quick result=PASS exit=0 seconds=22 masked_values=0
+WP-03 hygiene tests, mode quick (Avail at start: 465 MB)
+GROUP patterns
+RESULT PASS pattern_file_internal_test :: 40 checks passed, 0 failed, exit 0
+GROUP guard
+RESULT PASS avail_parses_fake_df_P_format :: (fake df -P style output)
+RESULT PASS avail_accepts_a_bare_integer :: 
+RESULT PASS avail_matches_real_df :: guard 465 MB, df 465 MB (the volume is shared, so a small drift is normal)
+RESULT PASS usage_missing_dashdash_exits_2 :: lj_guard: usage: lj_with_disk PLANNED_MB LABEL -- COMMAND [ARGS...]
+RESULT PASS usage_planned_not_a_number_exits_2 :: 
+RESULT PASS command_exit_code_passes_through :: 
+RESULT PASS command_success_exits_0 :: 
+RESULT PASS df700_planned_300_runs_boundary_exactly_400_left :: Avail 700 - 300 = 400 is allowed (floor is >= 400)
+RESULT PASS df700_planned_350_refused_350_left :: REFUSED: Avail 700 MB minus planned 350 MB leaves 350 MB, below the 400 MB floor (p350). Lean-profile hint: pl
+RESULT PASS refusal_message_has_exact_figures_350 :: 
+RESULT PASS df700_planned_320_refused :: 
+RESULT PASS refusal_message_has_exact_figures_320 :: 
+RESULT PASS refusal_message_carries_the_lean_profile_hint :: 
+RESULT PASS df700_planned_301_refused_one_over :: 
+RESULT PASS refused_command_never_started :: 
+RESULT PASS two_jobs_both_succeed :: 
+RESULT PASS two_jobs_serialise_start_end_start_end :: (order of start/end markers written by the jobs)
+RESULT PASS second_job_started_after_first_ended :: 
+RESULT PASS ledger_has_one_line_per_job :: 
+RESULT PASS ledger_shows_them_one_after_the_other :: A ended 2026-10-19T06:24:52Z, B started 2026-10-19T06:24:52Z
+RESULT PASS ledger_records_that_the_second_job_waited :: 
+RESULT PASS waiter_with_LJ_LOCK_WAIT_S_2_exits_3 :: 
+RESULT PASS busy_message_names_the_holder :: BUSY: held by HOLDER-JOB 
+RESULT PASS waiter_gave_up_after_about_2_seconds :: 
+RESULT PASS holder_itself_finished_normally_despite_the_waiter :: 
+RESULT PASS lock_is_free_again_after_the_holder_finished :: 
+RESULT PASS floor_trip_exits_3 :: 
+RESULT PASS floor_trip_prints_DISK-FLOOR :: DISK-FLOOR: Avail fell to 200 MB, below the 250 MB hard floor, while FLOOR-JOB was running; its process group was stopped 
+RESULT PASS childs_cleanup_trap_ran :: 
+RESULT PASS child_process_group_is_gone :: 
+RESULT PASS floor_trip_did_not_wait_for_the_30s_sleep :: took 2.8s
+RESULT PASS lock_was_held_through_the_cleanup :: waiter started after the cleanup finished
+RESULT PASS ledger_records_status_floor :: 
+RESULT PASS ledger_min_is_below_the_hard_floor :: min 200 MB
+RESULT PASS LJ_ON_ABORT_cleanup_line_ran_after_the_floor_trip :: 
+RESULT PASS outer_timeout_exits_124_as_usual :: 
+RESULT PASS outer_TERM_is_forwarded_and_the_childs_cleanup_trap_ran :: 
+RESULT PASS lock_is_released_after_an_outer_timeout :: 
+RESULT PASS ledger_line_written_even_after_an_outer_timeout :: 
+RESULT PASS lj_bench_inside_lj_with_disk_works :: bench: nproc=4 loadavg_start=0.62 0.97 0.95 contaminated=no 
+RESULT PASS reverse_order_lj_with_disk_inside_lj_bench_refused :: exit 3 with the lock-order message
+RESULT PASS nested_lj_with_disk_refused_not_deadlocked :: 
+RESULT PASS nested_lj_bench_refused_not_deadlocked :: 
+RESULT PASS bench_lock_is_exclusive_and_names_the_holder :: 
+RESULT PASS bench_exports_nproc_load_and_flags_a_busy_machine_contaminated :: 
+RESULT PASS bench_idle_machine_is_not_contaminated :: 
+RESULT PASS bench_passes_the_command_exit_code :: 
+RESULT PASS guard_works_in_a_caller_with_set_euo_pipefail_and_with_a_shell_function_as_command :: 
+RESULT PASS ledger_lines_carry_no_path_host_or_user :: 2 disk + 1 bench lines checked
+RESULT PASS label_is_sanitised_slashes_and_at_signs_become_underscores :: 
+RESULT PASS ledger_lines_are_valid_json_with_the_envelope_fields :: 
+RESULT PASS guard_writes_only_its_lock_and_ledger_files :: (new entries in the scratch folder; the state folder is removed)
+GROUP self_tests
+RESULT PASS stale_check_self_test :: python3 -I scripts/stale_check.py --self-test: exit 0; self-test: 558 checks, 0 problems
+RESULT PASS public_lint_self_test :: python3 -I scripts/public_lint.py --self-test: exit 0; note: Windows PowerShell 5.1 was not available in this run; win/step0_pc_tests.ps1 was exercised on PowerShell 7 only (5.1 behaviour UNVERIFIED until 
+
+hygiene tests (quick): 0 failed; Avail 465 MB at start, 465 MB minimum seen

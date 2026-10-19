@@ -1,0 +1,14 @@
+track,title_as_printed,singer_as_printed,composer_credit_as_printed,composer_death_year_if_read,composition_status_proposed,recording_status,note
+1,Khamma Khamma Ma Jagne Lok,Ranjan Joshi,Avinash Vyas,1984 (Wikipedia: died 20 Aug 1984),owned (Indian term ends 31 Dec 2044),owned: Saregama (album dated 16-09-2022),a 'folk-sounding' goddess garba with a named composer
+2,Aavi Aasoni Navaratra,Kaumudi Munshi,Ninu Muzumdar,not read,owned (assume alive or recently dead until read),owned: Saregama,
+3,Garabe Ghumva Halo,Purnima Zaveri,Madhubhai Patel,not read,owned (same),owned: Saregama,
+4,Chokhaliyali Chundadi Ma,Vasumati Divetia,Avinash Vyas,1984,owned (to end 2044),owned: Saregama,
+5,"Maa Pavate Gadhathi Utarya, Lok Geet",Asha Bhosle,Traditional,n/a,unknown (label says traditional; the label's arrangement and recording are its own),owned: Saregama,the label's word 'traditional' is a claim about the song not about this arrangement
+6,Saathiya Puravo Dware,Anand Kumar C.,Ramesh Gupta,not read,owned (assume),owned: Saregama,
+7,Ghor Andhari Re Raatladi,Harshada Rawal,Avinash Vyas,1984,owned (to end 2044),owned: Saregama,
+8,Maa Ye Garbo Koravyo Gagan Gokhman Re,Hansa Dave,Kanti Ashok,not read,owned (assume),owned: Saregama,
+9,Rangtali Re Rangman Rangtali,Shivkumar Nakar,Venibhai Purohit,not read,owned (assume),owned: Saregama,
+10,Garbe Ramvane Gori Nisaryan Re Lol,Kaumudi Munshi,Dayaram,1852 or 1853 (sources differ),PD_text_owned_tune (text by a 19th-century poet; the label's tune credit is the poet's name only),owned: Saregama,a label crediting 'Dayaram' as composer does not say who composed the TUNE
+11,Mehndi Te Vavi Malve,Lata Mangeshkar,Traditional (label); lyrics 'Traditional (Folk)' (film track list on Wikipedia); lyricist Avinash Vyas (Wikipedia's Avinash Vyas songs table),n/a,unknown: three sources give three attributions; the film (Mendi Rang Lagyo 1960) has music by Avinash Vyas,owned: Saregama (HMV lineage; label not stated by Wikipedia),the clearest case of a 'folk' garba with a named film composer on its record
+12,"Maa Tu Pavani Patrani, Lok Geet",Asha Bhosle,Traditional,n/a,unknown,owned: Saregama,
+# Source: Deezer album page 'Navratri Garba Songs' by Various Artists, label shown as Saregama, release date 16-09-2022, read 2026-10-19 (https://www.deezer.com/en/album/357201807). Composer credits are the platform's metadata, not a registry (IPRS) extract; death years from Wikipedia where read.

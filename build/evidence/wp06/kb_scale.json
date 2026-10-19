@@ -1,0 +1,36 @@
+{
+  "2880x1620": {
+    "cover": 66.67,
+    "cover_1dp": 66.7,
+    "fit": 66.67,
+    "fit_1dp": 66.7,
+    "kenburns_end": 80.0,
+    "kenburns_start": 66.67,
+    "sequence": [
+      1920,
+      1080
+    ],
+    "source": [
+      2880,
+      1620
+    ],
+    "zoom": 1.2
+  },
+  "3600x2400": {
+    "cover": 53.34,
+    "cover_1dp": 53.3,
+    "fit": 45.0,
+    "fit_1dp": 45.0,
+    "kenburns_end": 64.01,
+    "kenburns_start": 53.34,
+    "sequence": [
+      1920,
+      1080
+    ],
+    "source": [
+      3600,
+      2400
+    ],
+    "zoom": 1.2
+  }
+}

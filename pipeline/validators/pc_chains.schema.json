@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "lj-pc-chains/1",
+  "description": "The FILED form of a colour-patch run (build plan 4.16): produced by colour_patch.py --derive-from RAW --out DERIVED. Version number, binary SHA-256, chain names, worst errors and pass flags. No configure flags, no paths, no names. The same constraints are mirrored by hand in colour_patch.py validate_derived(); pass must equal (worst_error <= tolerance), which a JSON schema cannot say.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "ffmpeg", "tolerance", "chains"],
+  "properties": {
+    "schema": {"const": "lj-pc-chains/1"},
+    "ffmpeg": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "sha256"],
+      "properties": {
+        "version": {"type": "string", "pattern": "^([0-9]+(\\.[0-9]+){1,3}|N-[0-9]+-g[0-9a-f]{7,12})$"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "tolerance": {"type": "integer", "minimum": 0, "maximum": 255},
+    "chains": {"type": "array", "items": {"$ref": "#/definitions/row"}},
+    "controls": {"type": "array", "items": {"$ref": "#/definitions/row"}}
+  },
+  "definitions": {
+    "row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "worst_error", "pass"],
+      "properties": {
+        "name": {"type": "string", "pattern": "^[A-Za-z0-9_.-]{1,60}$"},
+        "worst_error": {"type": "integer", "minimum": 0, "maximum": 255},
+        "pass": {"type": "boolean"}
+      }
+    }
+  }
+}

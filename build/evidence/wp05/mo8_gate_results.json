@@ -1,0 +1,97 @@
+{
+  "schema": "lj-wp05-mo8/1",
+  "limits": {
+    "mo8a_d4_px": 0.05,
+    "mo8b_d4_px": 0.04
+  },
+  "note": "clips are H.264 CRF 14 stand-ins for a master (disk budget); round 2 reported about 0.003 px (Pillow) and about 0.6 px (zoompan, 1080p source) on other content",
+  "rows": [
+    {
+      "case": "pillow96",
+      "exit": 0,
+      "result": {
+        "input": "mo8_pillow96.mp4",
+        "input_kind": "lossy-clip (h264)",
+        "frames": 96,
+        "master_before_encode": false,
+        "mo8a_d4_px": 0.0046,
+        "mo8a_limit": 0.05,
+        "mo8a_pass": true,
+        "mo8b_d4_px": 0.0095,
+        "mo8b_limit": 0.04,
+        "mo8b_pass": true,
+        "informational": {
+          "mo8c_rough": 0.0303,
+          "mo8a_centre_jit_px_9frame": 0.0033,
+          "mo8b_edge_jit_px_9frame": 0.013,
+          "zoom_total_pct": 4.25,
+          "ease_class": "ease in-out"
+        },
+        "note": "this clip is lossy (h264), so it is a delivery-style encode: the codec adds up to about 0.015 px to the numbers. The gate applies to the master BEFORE the delivery encode (W-41); measure the master when you have it.",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "case": "zoompan96",
+      "exit": 1,
+      "result": {
+        "input": "mo8_zoompan96.mp4",
+        "input_kind": "lossy-clip (h264)",
+        "frames": 96,
+        "master_before_encode": false,
+        "mo8a_d4_px": 0.8187,
+        "mo8a_limit": 0.05,
+        "mo8a_pass": false,
+        "mo8b_d4_px": 0.3018,
+        "mo8b_limit": 0.04,
+        "mo8b_pass": false,
+        "informational": {
+          "mo8c_rough": 0.5745,
+          "mo8a_centre_jit_px_9frame": 0.5866,
+          "mo8b_edge_jit_px_9frame": 0.2506,
+          "zoom_total_pct": 4.316,
+          "ease_class": "ease in-out"
+        },
+        "note": "this clip is lossy (h264), so it is a delivery-style encode: the codec adds up to about 0.015 px to the numbers. The gate applies to the master BEFORE the delivery encode (W-41); measure the master when you have it.",
+        "verdict": "FAIL"
+      }
+    },
+    {
+      "case": "pillow_png_folder",
+      "exit": 0,
+      "result": {
+        "input": "mo8_pillow_frames",
+        "input_kind": "png-folder",
+        "frames": 12,
+        "master_before_encode": true,
+        "mo8a_d4_px": 0.0013,
+        "mo8a_limit": 0.05,
+        "mo8a_pass": true,
+        "mo8b_d4_px": 0.0015,
+        "mo8b_limit": 0.04,
+        "mo8b_pass": true,
+        "informational": {
+          "mo8c_rough": 0.0051,
+          "mo8a_centre_jit_px_9frame": 0.0016,
+          "mo8b_edge_jit_px_9frame": 0.0035,
+          "zoom_total_pct": 0.775,
+          "ease_class": "LINEAR/uniform (flag)"
+        },
+        "note": "a folder of PNG frames is the best input: it is the master itself",
+        "verdict": "PASS"
+      }
+    },
+    {
+      "case": "refusals",
+      "exit": 2,
+      "result": {
+        "mo8_long97.mp4 ": "mo8_gate: REFUSED: mo8_long97.mp4 has 97 frames, over the limit of 96. mo8_audit loads every frame into memory (about 6 MB each at 1080p), so cut a window of at most 96 frames, for example: ffmpeg -i IN -frames:v 96 -c:v ffv1 OUT.mkv",
+        "mo8_long121.mp4 ": "mo8_gate: REFUSED: mo8_long121.mp4 has 121 frames, over the limit of 96. mo8_audit loads every frame into memory (about 6 MB each at 1080p), so cut a window of at most 96 frames, for example: ffmpeg -i IN -frames:v 96 -c:v ffv1 OUT.mkv",
+        "mo8_long130.mp4 ": "mo8_gate: REFUSED: mo8_long130.mp4 has 130 frames, over the limit of 96. mo8_audit loads every frame into memory (about 6 MB each at 1080p), so cut a window of at most 96 frames, for example: ffmpeg -i IN -frames:v 96 -c:v ffv1 OUT.mkv",
+        "mo8_long121.mp4 --max-frames 120": "mo8_gate: REFUSED: mo8_long121.mp4 has 121 frames, over the limit of 120. mo8_audit loads every frame into memory (about 6 MB each at 1080p), so cut a window of at most 120 frames, for example: ffmpeg -i IN -frames:v 96 -c:v ffv1 OUT.mkv",
+        "mo8_long130.mp4 --max-frames 200": "mo8_gate: REFUSED: --max-frames 200 is over the hard ceiling of 120 frames (RAM)",
+        "mo8_short6.mp4 ": "mo8_gate: REFUSED: mo8_short6.mp4 has 6 frame(s); at least 12 are needed for the fourth-difference estimate"
+      }
+    }
+  ]
+}

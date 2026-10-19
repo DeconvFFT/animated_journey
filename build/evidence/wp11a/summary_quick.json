@@ -1,0 +1,104 @@
+{
+ "schema": "lj-evidence-summary/1",
+ "package": "WP-11a",
+ "mode": "quick",
+ "date_utc": "2026-10-19",
+ "env": {
+  "platform": "linux",
+  "nproc": 4,
+  "python": "3.13.16",
+  "bash": null
+ },
+ "groups": {
+  "full_fake_set_quick": {
+   "PASS": 25,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
+  "exit_semantics": {
+   "PASS": 11,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
+  "list_and_usage": {
+   "PASS": 12,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
+  "redaction_fail_closed_and_lint_text": {
+   "PASS": 11,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
+  "lock_and_disk_line": {
+   "PASS": 4,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
+  "environment_failures": {
+   "PASS": 3,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
+  "interrupt": {
+   "PASS": 3,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
+  "static": {
+   "PASS": 4,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
+  "edge_cases": {
+   "PASS": 11,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
+  "dry_run": {
+   "PASS": 9,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
+  "yes_deletes_only_the_list": {
+   "PASS": 7,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
+  "refusals": {
+   "PASS": 16,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
+  "links_lock_and_odd_trees": {
+   "PASS": 6,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
+  "hygiene_of_the_owned_files": {
+   "PASS": 1,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  }
+ },
+ "counts": {
+  "PASS": 123,
+  "FAIL": 0,
+  "UNVERIFIED": 0,
+  "SKIPPED": 0
+ }
+}

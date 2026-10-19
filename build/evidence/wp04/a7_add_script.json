@@ -1,0 +1,61 @@
+{
+ "actual": "scripts tested ['latin', 'devanagari', 'tamil']; NOT TESTED ['telugu', 'kannada', 'malayalam', 'bengali', 'gujarati']; scene caption rows ['devanagari', 'latin', 'tamil']; per script {'latin': 'PASS', 'devanagari': 'PASS', 'tamil': 'PASS'}; problems none",
+ "data": {
+  "NOT_TESTED": [
+   "telugu",
+   "kannada",
+   "malayalam",
+   "bengali",
+   "gujarati"
+  ],
+  "per_script": {
+   "devanagari": {
+    "family": "Noto Sans Devanagari",
+    "status": "PASS",
+    "strings": 6
+   },
+   "latin": {
+    "family": "Noto Sans",
+    "status": "PASS",
+    "strings": 1
+   },
+   "tamil": {
+    "family": "Noto Sans Tamil",
+    "status": "PASS",
+    "strings": 1
+   }
+  },
+  "scripts_tested": [
+   "latin",
+   "devanagari",
+   "tamil"
+  ],
+  "seconds": 5.2
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 403,
+  "avail_mb_min": 403,
+  "avail_mb_start": 403,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "a script with strings is picked up by the font check and the caption area with no code change: Tamil digits added to a throw-away copy; the other five stay NOT TESTED",
+ "notes": "",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "a7_add_script",
+ "unverified_reasons": [
+  "Tamil glyph coverage was checked on neutral digits only; a reader of the script has not looked at them (pending_O-10)"
+ ]
+}

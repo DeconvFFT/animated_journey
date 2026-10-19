@@ -1,0 +1,112 @@
+{
+  "schema": "lj-wp05-oracle/1",
+  "ffmpeg": "6.1.1",
+  "tolerance": 1,
+  "rows": [
+    {
+      "test": "oracle.h264_chain_B_scale_first",
+      "result": "control_h264_scale_first_B",
+      "note": "Q-F1 chain B",
+      "expected_worst_error": 1,
+      "expected": "PASS",
+      "observed_worst_error": 1,
+      "observed": "PASS",
+      "delta": 0,
+      "within_tolerance_of_1": true,
+      "polarity_matches": true,
+      "finding": null
+    },
+    {
+      "test": "oracle.h264_venue_chain",
+      "result": "h264_venue",
+      "note": "Q-F1 chain B plus setparams and the venue arguments",
+      "expected_worst_error": 1,
+      "expected": "PASS",
+      "observed_worst_error": 1,
+      "observed": "PASS",
+      "delta": 0,
+      "within_tolerance_of_1": true,
+      "polarity_matches": true,
+      "finding": null
+    },
+    {
+      "test": "oracle.h264_format_first_A",
+      "result": "control_h264_format_first_A",
+      "note": "Q-F1 chain A",
+      "expected_worst_error": 5,
+      "expected": "FAIL",
+      "observed_worst_error": 5,
+      "observed": "FAIL",
+      "delta": 0,
+      "within_tolerance_of_1": true,
+      "polarity_matches": true,
+      "finding": null
+    },
+    {
+      "test": "oracle.h264_bare_pix_fmt",
+      "result": "control_h264_bare_pix_fmt",
+      "note": "Q-F1 chain C: BT.601 pixels under BT.709 tags",
+      "expected_worst_error": 23,
+      "expected": "FAIL",
+      "observed_worst_error": 23,
+      "observed": "FAIL",
+      "delta": 0,
+      "within_tolerance_of_1": true,
+      "polarity_matches": true,
+      "finding": null
+    },
+    {
+      "test": "oracle.prores4444_bare",
+      "result": "control_prores4444_bare",
+      "note": "Q-F1 bare -pix_fmt yuva444p10le",
+      "expected_worst_error": 25,
+      "expected": "FAIL",
+      "observed_worst_error": 25,
+      "observed": "FAIL",
+      "delta": 0,
+      "within_tolerance_of_1": true,
+      "polarity_matches": true,
+      "finding": null
+    },
+    {
+      "test": "oracle.prores4444_chain",
+      "result": "prores4444_alpha",
+      "note": "Q-F1 ProRes 4444 chain",
+      "expected_worst_error": 0,
+      "expected": "PASS",
+      "observed_worst_error": 0,
+      "observed": "PASS",
+      "delta": 0,
+      "within_tolerance_of_1": true,
+      "polarity_matches": true,
+      "finding": null
+    }
+  ],
+  "findings": [],
+  "f12": {
+    "prores422hq_master": {
+      "worst_error": 2,
+      "worst_error_accurate_decode": 0,
+      "pass": true,
+      "tags_match_expect": true
+    },
+    "h264_venue": {
+      "worst_error": 1,
+      "worst_error_accurate_decode": 1,
+      "pass": true,
+      "tags_match_expect": true
+    },
+    "h264_backup_main40": {
+      "worst_error": 1,
+      "worst_error_accurate_decode": 1,
+      "pass": true,
+      "tags_match_expect": true
+    },
+    "h264_online": {
+      "worst_error": 1,
+      "worst_error_accurate_decode": 1,
+      "pass": true,
+      "tags_match_expect": true
+    }
+  }
+}

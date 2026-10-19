@@ -1,0 +1,49 @@
+$ export PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers
+$ bash pipeline/lib/fetch_libs.sh
+fetch_libs: vendor folder vendor
+fetch_libs: free disk before: 274 MB
+[ok ] gsap 3.15.0 already in vendor/, matches the lock
+[ok ] noto-sans 5.3.0 already in vendor/, matches the lock
+[ok ] kalam 5.3.0 already in vendor/, matches the lock
+[ok ] noto-sans-devanagari 5.3.0 already in vendor/, matches the lock
+fetch_libs: tarballs downloaded: 0 bytes; free disk after: 274 MB; work folder removed
+fetch_libs: done
+exit=0
+
+$ node pipeline/bin/render.mjs --dir pipeline --page scenes/testcard/scene.html --mount /vendor=vendor --out renders/wp04/a --seconds 2 --json renders/wp04/a.json
+[render] 39/48 frames, 7.73 fps
+{"shard":"0/1","frames":48,"skipped":0,"remaining":0,"seconds":7.355,"throughput_fps":7.61,"complete":true}
+exit=0
+
+$ ls renders/wp04/a | wc -l
+48
+$ python3 (report summary)
+  schema                 lj-render-report/1
+  ok                     True
+  complete               True
+  page                   scenes/testcard/scene.html
+  fps                    24
+  w                      1920
+  h                      1080
+  mode                   png
+  frames_rendered        48
+  frames_skipped_existing 0
+  seconds                7.355
+  throughput_fps         7.61
+  peak_rss               {'node_mb': 108, 'browser_tree_mb': 772, 'ffmpeg_mb': 0, 'sum_mb': 877, 'note': 'RSS counts shared pages in every process, so the sum over-counts'}
+  chromium               141.0.7390.37
+  playwright             1.56.1
+  node                   v22.22.0
+  chain                  None
+  alpha                  False
+  shard                  0/1
+  concurrency            1
+  page_errors            []
+  asset_errors           []
+  blocked_requests       []
+  frame_sha256_digest    0cb9d406da8a982d1489beb9d1179ec0d94d6f4cac63bffa62a6d0386d98980c
+  fingerprint            86ebc429fdc6dc4403037edfa2601ff3aa716ac2c3c75acc6b44180e8eff2745
+  frame_sha256 entries    48 (first: frame 0 = dfb6d0f863e82e80...)
+  chromium_flags          --force-device-scale-factor=1 --hide-scrollbars --disable-lcd-text --font-render-hinting=none --force-color-profile=srgb --use-gl=angle --use-angle=swiftshader --enable-unsafe-swiftshader --ignore-gpu-blocklist --disable-partial-raster --disable-gpu-compositing --disable-renderer-backgrounding --disable-background-timer-throttling --disable-backgrounding-occluded-windows --no-proxy-server --host-resolver-rules=MAP * ~NOTFOUND , EXCLUDE 127.0.0.1 , EXCLUDE localhost
+  scene_report.fonts      [('Noto Sans', True, True), ('Noto Sans', True, True), ('Kalam', True, True), ('Noto Sans', True, True), ('Noto Sans Devanagari', True, True)]
+  scene_report.strings    {'latin': {'family': 'Noto Sans', 'count': 1}, 'devanagari': {'family': 'Noto Sans Devanagari', 'count': 6}}

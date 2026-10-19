@@ -1,0 +1,52 @@
+{
+ "actual": "transform: exit 0 ['RESULT: PASS'] ['MO8a centre jitter   0.0023 px   limit 0.05   PASS', 'MO8b edge jitter     0.0039 px   limit 0.04   PASS']; layout: exit 1 ['RESULT: FAIL'] ['MO8a centre jitter   0.2420 px   limit 0.05   FAIL', 'MO8b edge jitter     0.4500 px   limit 0.04   FAIL']",
+ "data": {
+  "layout": {
+   "gate_exit": 1,
+   "lines": [
+    "MO8a centre jitter   0.2420 px   limit 0.05   FAIL",
+    "MO8b edge jitter     0.4500 px   limit 0.04   FAIL"
+   ],
+   "render_exit": 0,
+   "result_line": [
+    "RESULT: FAIL"
+   ]
+  },
+  "seconds": 29.6,
+  "transform": {
+   "gate_exit": 0,
+   "lines": [
+    "MO8a centre jitter   0.0023 px   limit 0.05   PASS",
+    "MO8b edge jitter     0.0039 px   limit 0.04   PASS"
+   ],
+   "render_exit": 0,
+   "result_line": [
+    "RESULT: PASS"
+   ]
+  }
+ },
+ "date_utc": "2026-10-19",
+ "disk": {
+  "avail_mb_end": 401,
+  "avail_mb_min": 401,
+  "avail_mb_start": 402,
+  "floor_mb": 400,
+  "hard_floor_mb": 250,
+  "planned_write_mb": 0
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "node": "22.22.0",
+  "nproc": 4,
+  "platform": "linux",
+  "python": "3.13.x"
+ },
+ "expected": "?push=transform passes the MO8 gate (exit 0) and ?push=layout fails it (exit 1), 48 frames of ?view=detail",
+ "notes": "WP-11b repeats this with the final gate. The frame set for the gate is ?view=detail, 48 to 96 frames.",
+ "package": "WP-04",
+ "schema": "lj-evidence/1",
+ "status": "PASS",
+ "test": "a11_mo8_gate",
+ "unverified_reasons": []
+}

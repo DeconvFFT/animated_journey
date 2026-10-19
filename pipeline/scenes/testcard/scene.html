@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LJ test card</title>
+<meta name="viewport" content="width=1920">
+<!--
+  Style-neutral synthetic test card for the Route A harness (build plan WP-04, SP2). Nothing here is a design decision for the film.
+  Serve with:  node pipeline/bin/render.mjs --dir pipeline --page scenes/testcard/scene.html --mount /vendor=vendor ...
+  Parts: title area; frame-counter grid; moving bar (judder check); fine-detail texture panel that pushes in (cosine in-out ease,
+  style.transform written at full float precision); three-patch colour strip; caption area (a Latin line plus one line per script that has
+  strings in /phone/test_strings.json: the text is read from that file, never typed here); a hairline pair.
+  seekTo(t) is a pure function of t. Query variants:
+    ?push=transform (default) | ?push=layout (animates width/height/left/top: the negative control that MO8 must fail)
+    ?random=1  Math.random seeds the texture (determinism negative control)      ?filter=1  an SVG filter (100-pixel tolerance path)
+    ?gsap=1    the same ease through GSAP's paused timeline, tl.time(t,false)    ?throw=1   a page error (planned; an uncaught error at load and a throw in seekTo from t=0.5)  ?throw=async  only the uncaught error
+    ?net=1     requests an external URL (must be blocked)                        ?alpha=1   transparent background (for --alpha)
+    ?view=detail  only the texture panel, full frame (what the MO8 gate measures)   ?dur=S  push length in seconds   ?amt=A  push amount
+-->
+<style>
+  :root { --bg: #20242c; --panel: #2b303a; --fg: #e9ebef; --dim: #949cab; --line: #4b5361; }
+  html, body { margin: 0; padding: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); color: var(--fg); font-family: 'Noto Sans', sans-serif; }
+  html.alpha, html.alpha body { background: transparent; }
+  #stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; }
+  #stage > * { position: absolute; box-sizing: border-box; }
+  html.alpha #bg { display: none; }
+  #bg { left: 0; top: 0; width: 1920px; height: 1080px; background: var(--bg); }
+  #title { left: 60px; top: 28px; font-weight: 700; font-size: 76px; line-height: 90px; letter-spacing: 2px; white-space: nowrap; }
+  #sub { left: 62px; top: 112px; font-size: 28px; line-height: 40px; color: var(--dim); white-space: nowrap; }
+  #hand { left: 1200px; top: 116px; font-family: 'Kalam', sans-serif; font-size: 30px; line-height: 40px; color: var(--dim); white-space: nowrap; }
+  #readout { left: 1200px; top: 40px; width: 660px; font-size: 34px; line-height: 50px; text-align: right; font-variant-numeric: tabular-nums; white-space: pre; }
+  #ribbon { left: 900px; top: 28px; width: 260px; height: 100px; }
+  #grid { left: 60px; top: 175px; width: 840px; height: 420px; display: grid; grid-template-columns: repeat(12, 70px); grid-template-rows: repeat(6, 70px); border: 1px solid var(--line); }
+  .c { box-sizing: border-box; border: 1px solid #343b47; font-size: 20px; line-height: 68px; text-align: center; color: var(--dim); font-variant-numeric: tabular-nums; }
+  .c.past { background: #2a3b45; }
+  .c.on { background: #e3b341; color: #20242c; font-weight: 700; }
+  #counter { left: 60px; top: 604px; font-weight: 700; font-size: 64px; line-height: 80px; font-variant-numeric: tabular-nums; white-space: pre; }
+  #tc { left: 520px; top: 616px; font-size: 44px; line-height: 60px; color: var(--dim); font-variant-numeric: tabular-nums; white-space: pre; }
+  #track { left: 60px; top: 705px; width: 840px; height: 40px; border: 1px solid var(--line); background: var(--panel); overflow: hidden; }
+  #bar { position: absolute; left: 0; top: 0; width: 30px; height: 38px; background: #4aa3a2; }
+  #tracklab { left: 60px; top: 750px; font-size: 22px; line-height: 30px; color: var(--dim); white-space: nowrap; }
+  #panel { left: 930px; top: 175px; width: 960px; height: 540px; overflow: hidden; border: 1px solid var(--line); background: #000; }
+  #tex { position: absolute; left: 0; top: 0; transform-origin: 50% 50%; display: block; }
+  #strip { left: 930px; top: 735px; width: 960px; height: 64px; display: flex; }
+  #strip > div { width: 320px; height: 64px; }
+  #p1 { background: rgb(255, 0, 0); } #p2 { background: rgb(128, 128, 128); } #p3 { background: rgb(224, 172, 140); }
+  #striplab { left: 930px; top: 802px; width: 960px; font-size: 22px; line-height: 30px; color: var(--dim); white-space: pre; font-variant-numeric: tabular-nums; }
+  #captions { left: 60px; top: 835px; width: 1800px; height: 196px; }
+  .row { display: flex; align-items: baseline; height: var(--rowh); overflow: hidden; }
+  .lab { flex: 0 0 390px; font-size: 22px; color: var(--dim); white-space: nowrap; }
+  .txt { flex: 1 1 auto; font-size: var(--fs); line-height: var(--rowh); white-space: nowrap; }
+  .txt span { margin-right: 56px; }
+  #hair1, #hair2 { left: 60px; width: 1800px; height: 1px; }
+  #hair1 { top: 1048px; background: #ffffff; } #hair2 { top: 1054px; background: #8b93a3; }
+  /* ?view=detail: the texture panel alone, full frame, nothing else moving or changing */
+  body.detail #stage > :not(#panel):not(#bg) { display: none; }
+  body.detail #panel { left: 0; top: 0; width: 1920px; height: 1080px; border: 0; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="bg"></div>
+  <div id="title">TEST CARD</div>
+  <div id="sub">synthetic · style-neutral · 1920×1080 · 24 fps · BT.709</div>
+  <div id="hand">hand font sample · Kalam 0123</div>
+  <div id="readout"></div>
+  <svg id="ribbon" width="260" height="100" viewBox="0 0 260 100" style="display:none">
+    <defs>
+      <filter id="ft" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02 0.09" numOctaves="3" seed="7" result="n"/>
+        <feDisplacementMap id="disp" in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G" result="d"/>
+        <feGaussianBlur in="d" stdDeviation="0.6"/>
+      </filter>
+    </defs>
+    <g filter="url(#ft)"><rect x="10" y="10" width="240" height="80" fill="#4aa3a2"/><rect x="10" y="40" width="240" height="20" fill="#e3b341"/></g>
+  </svg>
+  <div id="grid"></div>
+  <div id="counter"></div>
+  <div id="tc"></div>
+  <div id="track"><div id="bar"></div></div>
+  <div id="tracklab">moving bar: 240 px per second, 10 px per frame</div>
+  <div id="panel"><canvas id="tex"></canvas></div>
+  <div id="strip"><div id="p1"></div><div id="p2"></div><div id="p3"></div></div>
+  <div id="striplab">255,0,0            128,128,128            224,172,140</div>
+  <div id="captions"></div>
+  <div id="hair1"></div><div id="hair2"></div>
+</div>
+<script src="common.js"></script>
+<script>
+(function () {
+  'use strict';
+  var q = LJ.q, FPS = LJ.FPS;
+  var PUSH = q.get('push') || 'transform';
+  var DUR = parseFloat(q.get('dur')) || (95 / 24);          /* 96 frames: frame 95 reaches the end value, as in the MO8 experiments */
+  var AMT = parseFloat(q.get('amt')) || 0.04;
+  var DETAIL = q.get('view') === 'detail';
+  var USE_GSAP = q.get('gsap') === '1', RANDOM = q.get('random') === '1', FILTER = q.get('filter') === '1';
+  if (PUSH !== 'transform' && PUSH !== 'layout') { LJ.fail(new Error('unknown ?push=' + PUSH)); return; }
+  if (q.get('alpha') === '1') { document.documentElement.classList.add('alpha'); }
+  if (DETAIL) { document.body.classList.add('detail'); }
+
+  var el = function (id) { return document.getElementById(id); };
+  var tex = el('tex'), cells = [], tl = null, proxy = { p: 0 }, report = { variant: location.search, fonts: {}, strings: {} };
+  var PW = DETAIL ? 1920 : 960, PH = DETAIL ? 1080 : 540;
+
+  function applyScale(p) {                                    /* p = eased progress 0..1 */
+    var s = 1 + AMT * p;
+    if (PUSH === 'layout') {                                  /* NEGATIVE CONTROL: layout properties, snapped by the engine */
+      tex.style.transform = 'none';
+      tex.style.width = (PW * s) + 'px'; tex.style.height = (PH * s) + 'px';
+      tex.style.left = (-(PW * (s - 1)) / 2) + 'px'; tex.style.top = (-(PH * (s - 1)) / 2) + 'px';
+    } else {
+      tex.style.transform = 'scale(' + s + ')';              /* full float precision, no will-change, no force3D */
+    }
+  }
+
+  function seekTo(t) {
+    var f = Math.round(t * FPS);
+    if (q.get('throw') === '1' && t >= 0.5) { throw new Error('lj-testcard: ?throw=1 planned scene error at t=' + t); }
+    if (!DETAIL) {
+      el('readout').textContent = 't = ' + t.toFixed(3) + ' s    f = ' + f;
+      el('counter').textContent = 'F ' + LJ.pad(f, 6);
+      var s = Math.floor(f / FPS), ff = f % FPS;
+      el('tc').textContent = LJ.pad(Math.floor(s / 3600), 2) + ':' + LJ.pad(Math.floor(s / 60) % 60, 2) + ':' + LJ.pad(s % 60, 2) + ':' + LJ.pad(ff, 2);
+      var idx = f % cells.length;
+      for (var i = 0; i < cells.length; i++) { cells[i].className = i === idx ? 'c on' : (i < idx ? 'c past' : 'c'); }
+      el('bar').style.transform = 'translateX(' + ((t * 240) % 810) + 'px)';
+      if (FILTER) { el('disp').setAttribute('scale', String(10 + 6 * Math.sin(t * 2.1))); }
+    }
+    if (USE_GSAP) { tl.time(t, false); } else { applyScale(LJ.ease(t / DUR)); }
+    return true;
+  }
+  window.seekTo = seekTo;
+  window.ljReport = function () { return report; };
+
+  function buildCaptions(lock, strings) {
+    var names = Object.keys(strings.scripts).filter(function (k) { var s = strings.scripts[k].strings; return s && s.length; });
+    names.sort(function (a, b) { return (a === 'latin' ? -1 : 0) - (b === 'latin' ? -1 : 0); });
+    var host = el('captions'), rowH = Math.floor(196 / Math.max(names.length, 1)), fs = Math.min(60, Math.floor(rowH * 0.66));
+    host.style.setProperty('--rowh', rowH + 'px'); host.style.setProperty('--fs', fs + 'px');
+    var need = [{ family: 'Noto Sans', weight: 700, px: 76, text: 'TEST CARD' }, { family: 'Noto Sans', weight: 400, px: 28, text: 'synthetic · style-neutral · 1920×1080 · 24 fps · BT.709 0123' },
+      { family: 'Kalam', weight: 400, px: 30, text: 'hand font sample · Kalam 0123' }];
+    names.forEach(function (name) {
+      var fam = LJ.scriptFamily(lock, name), spec = strings.scripts[name];
+      if (!fam) { throw new Error('no fetched font for script ' + name + ' in libs.lock.json (run pipeline/lib/fetch_libs.sh)'); }
+      var row = document.createElement('div'); row.className = 'row';
+      var lab = document.createElement('div'); lab.className = 'lab'; lab.textContent = name + ' · ' + fam;
+      var txt = document.createElement('div'); txt.className = 'txt'; txt.lang = LJ.LANG[name] || 'und'; txt.style.fontFamily = "'" + fam + "', 'Noto Sans', sans-serif";
+      var all = '';
+      spec.strings.forEach(function (st) { var sp = document.createElement('span'); sp.textContent = st.text; txt.appendChild(sp); all += st.text; });
+      row.appendChild(lab); row.appendChild(txt); host.appendChild(row);
+      need.push({ family: fam, weight: 400, px: fs, text: all });
+      report.strings[name] = { family: fam, count: spec.strings.length };
+    });
+    return need;
+  }
+
+  (async function init() {
+    try {
+      var lock = await LJ.json(LJ.lockUrl), strings = await LJ.json(LJ.stringsUrl);
+      LJ.installFonts(lock);
+      var g = el('grid');
+      for (var i = 0; i < 72; i++) { var c = document.createElement('div'); c.className = 'c'; c.textContent = String(i); g.appendChild(c); cells.push(c); }
+      if (FILTER) { el('ribbon').style.display = 'block'; }
+      var need = buildCaptions(lock, strings);
+      /* the fine-detail texture: backing store is 2x the panel's CSS size */
+      tex.width = PW * 2; tex.height = PH * 2;
+      tex.style.width = PW + 'px'; tex.style.height = PH + 'px';
+      var seed = RANDOM ? Math.floor(Math.random() * 4294967296) : 20261019;   /* ?random=1 is the one place Math.random is used */
+      LJ.drawTexture(tex, LJ.lcg(seed));
+      report.texture_seed = RANDOM ? 'Math.random' : seed;
+      if (USE_GSAP) {
+        await LJ.script(LJ.vendor + '/js/gsap.min.js');
+        tl = gsap.timeline({ paused: true });
+        tl.to(proxy, { p: 1, duration: DUR, ease: 'sine.inOut', onUpdate: function () { applyScale(proxy.p); } });
+        report.gsap = gsap.version;
+      }
+      var states = await LJ.loadFonts(need);
+      await document.fonts.ready;
+      if (states.indexOf('rejected') >= 0) { throw new Error('a test font failed to load (run pipeline/lib/fetch_libs.sh, serve /vendor with --mount /vendor=vendor)'); }
+      report.fonts = need.map(function (n, i) { return { family: n.family, weight: n.weight, loaded: states[i] === 'fulfilled', check: document.fonts.check(n.weight + ' ' + n.px + 'px "' + n.family + '"', n.text) }; });
+      if (q.get('net') === '1') { var im = new Image(); im.src = 'https://example.invalid/lj-net-probe.png'; document.body.appendChild(im); }   /* must be blocked */
+      if (q.get('throw') === '1' || q.get('throw') === 'async') { setTimeout(function () { throw new Error('lj-testcard: ?throw=1 planned uncaught error'); }, 50); }
+      if (USE_GSAP) { applyScale(0); }
+      seekTo(0);
+      window.ready = true;
+    } catch (e) { LJ.fail(e); }
+  })();
+})();
+</script>
+</body>
+</html>

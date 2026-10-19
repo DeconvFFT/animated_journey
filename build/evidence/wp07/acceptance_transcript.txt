@@ -1,0 +1,114 @@
+WP-07 acceptance commands, run from the repository root on 2026-10-19 (df Avail at start: 466M)
+
+$ bash spikes/sp1_craft_cli/run_sp1.sh --list
+run_sp1.sh --list    (build plan 4.9 and WP-07; nothing is downloaded or written)
+
+Planned downloads (each tarball once in the fortnight; the six SHA256SUMS.txt are fetched separately by --sums-only):
+  1. filmcraft-0.9.0-linux-x86_64.tar.gz  69,756,500 bytes  sha256 ea67953cc754...  (t1+t2)
+  2. effectcraft-0.11.1-linux-x86_64.tar.gz  64,039,300 bytes  sha256 b9cb2ce68dd6...  (t1+t4)
+  (3) filmcraft-0.8.0-linux-x86_64.tar.gz  69,692,976 bytes  sha256 b166877905ae...  only if filmcraft-v0.9.0 fails T1 or T2
+  total for the two stages: 128 MB of the 2048 MB allowance (the fallback adds about 70 MB, only if it is needed)
+  not fetched here: PhotoCraft, VectorCraft, LightCraft (WP-10); SoundCraft (not pinned, not fetched: D-12, T5 cut)
+
+Disk: df says Avail 466 MB now. Floor 400 MB (Avail minus planned must stay at or above it), hard floor 250 MB, keep rule 700 MB.
+Stage budgets (planned peak MB, from build plan 4.9; the FilmCraft tarball, ~70 MB, stays on disk for the EffectCraft stage if kept):
+  full: filmcraft-v0.9.0 plans 600 MB, Avail 466 MB, leaves -134 MB: REFUSED (needs Avail of at least 1000 MB)
+  lean: filmcraft-v0.9.0 plans 350 MB, Avail 466 MB, leaves 116 MB: REFUSED (needs Avail of at least 750 MB)
+
+Chosen profile: none
+REFUSED: Avail 466 MB minus planned 600 MB leaves -134 MB, below the 400 MB floor (filmcraft-v0.9.0, full profile).
+REFUSED: Avail 466 MB minus planned 350 MB leaves 116 MB, below the 400 MB floor (filmcraft-v0.9.0, lean profile).
+Neither profile fits: the first stage needs Avail of at least 1000 MB for full or 750 MB for lean, and Avail is 466 MB.
+Remedy: answer Q-1 (the regenerable pip cache may be cleared), or free space, or use --wait SECONDS to poll; nothing was started and nothing was forced.
+[exit 3]
+
+$ bash spikes/sp1_craft_cli/run_sp1.sh --sums-only
+[fetch] photocraft v0.10.0 SHA256SUMS.txt
+[fetch] vectorcraft v0.13.1 SHA256SUMS.txt
+[fetch] lightcraft v0.9.1 SHA256SUMS.txt
+[fetch] filmcraft v0.9.0 SHA256SUMS.txt
+[fetch] filmcraft v0.8.0 SHA256SUMS.txt
+[fetch] effectcraft v0.11.1 SHA256SUMS.txt
+wrote spikes/sp1_craft_cli/release_assets.json (6 pins, R8 comparison: all match, sizes: all match)
+[exit 0]
+
+$ env FORCE_BAD_ASSET=1 bash spikes/sp1_craft_cli/run_sp1.sh --only filmcraft v0.9.0
+== stage filmcraft-v0.9.0: preflight HEAD (no disk planned yet)
+BLOCKED: filmcraft-0.9.0-linux-x86_64.tar.gz -> HTTP 404, curl exit 22, curl said: curl: (22) The requested URL returned error: 404. Proof: build/evidence/wp07/blocked_proof.json. Fallback: spikes/sp1_craft_cli/FALLBACK.md
+[exit 3]
+
+$ env LJ_DF_CMD=spikes/sp1_craft_cli/tests/fake_df_900.sh bash spikes/sp1_craft_cli/run_sp1.sh --list
+run_sp1.sh --list    (build plan 4.9 and WP-07; nothing is downloaded or written)
+
+Planned downloads (each tarball once in the fortnight; the six SHA256SUMS.txt are fetched separately by --sums-only):
+  1. filmcraft-0.9.0-linux-x86_64.tar.gz  69,756,500 bytes  sha256 ea67953cc754...  (t1+t2)
+  2. effectcraft-0.11.1-linux-x86_64.tar.gz  64,039,300 bytes  sha256 b9cb2ce68dd6...  (t1+t4)
+  (3) filmcraft-0.8.0-linux-x86_64.tar.gz  69,692,976 bytes  sha256 b166877905ae...  only if filmcraft-v0.9.0 fails T1 or T2
+  total for the two stages: 128 MB of the 2048 MB allowance (the fallback adds about 70 MB, only if it is needed)
+  not fetched here: PhotoCraft, VectorCraft, LightCraft (WP-10); SoundCraft (not pinned, not fetched: D-12, T5 cut)
+
+Disk: df says Avail 900 MB now. Floor 400 MB (Avail minus planned must stay at or above it), hard floor 250 MB, keep rule 700 MB.
+Stage budgets (planned peak MB, from build plan 4.9; the FilmCraft tarball, ~70 MB, stays on disk for the EffectCraft stage if kept):
+  full: filmcraft-v0.9.0 plans 600 MB, Avail 900 MB, leaves 300 MB: REFUSED (needs Avail of at least 1000 MB)
+  lean: filmcraft-v0.9.0 plans 350 MB, Avail 900 MB, leaves 550 MB: ok
+  lean: effectcraft-v0.11.1 plans 300 MB, Avail 833 MB, leaves 533 MB: ok
+
+Chosen profile: lean (the full profile is refused at this Avail)
+OK: a lean run fits. Start it with: bash spikes/sp1_craft_cli/run_sp1.sh --all --profile lean
+[exit 0]
+
+$ env LJ_DF_CMD=spikes/sp1_craft_cli/tests/fake_df_600.sh bash spikes/sp1_craft_cli/run_sp1.sh --list
+run_sp1.sh --list    (build plan 4.9 and WP-07; nothing is downloaded or written)
+
+Planned downloads (each tarball once in the fortnight; the six SHA256SUMS.txt are fetched separately by --sums-only):
+  1. filmcraft-0.9.0-linux-x86_64.tar.gz  69,756,500 bytes  sha256 ea67953cc754...  (t1+t2)
+  2. effectcraft-0.11.1-linux-x86_64.tar.gz  64,039,300 bytes  sha256 b9cb2ce68dd6...  (t1+t4)
+  (3) filmcraft-0.8.0-linux-x86_64.tar.gz  69,692,976 bytes  sha256 b166877905ae...  only if filmcraft-v0.9.0 fails T1 or T2
+  total for the two stages: 128 MB of the 2048 MB allowance (the fallback adds about 70 MB, only if it is needed)
+  not fetched here: PhotoCraft, VectorCraft, LightCraft (WP-10); SoundCraft (not pinned, not fetched: D-12, T5 cut)
+
+Disk: df says Avail 600 MB now. Floor 400 MB (Avail minus planned must stay at or above it), hard floor 250 MB, keep rule 700 MB.
+Stage budgets (planned peak MB, from build plan 4.9; the FilmCraft tarball, ~70 MB, stays on disk for the EffectCraft stage if kept):
+  full: filmcraft-v0.9.0 plans 600 MB, Avail 600 MB, leaves 0 MB: REFUSED (needs Avail of at least 1000 MB)
+  lean: filmcraft-v0.9.0 plans 350 MB, Avail 600 MB, leaves 250 MB: REFUSED (needs Avail of at least 750 MB)
+
+Chosen profile: none
+REFUSED: Avail 600 MB minus planned 600 MB leaves 0 MB, below the 400 MB floor (filmcraft-v0.9.0, full profile).
+REFUSED: Avail 600 MB minus planned 350 MB leaves 250 MB, below the 400 MB floor (filmcraft-v0.9.0, lean profile).
+Neither profile fits: the first stage needs Avail of at least 1000 MB for full or 750 MB for lean, and Avail is 600 MB.
+Remedy: answer Q-1 (the regenerable pip cache may be cleared), or free space, or use --wait SECONDS to poll; nothing was started and nothing was forced.
+[exit 3]
+
+$ bash spikes/sp1_craft_cli/run_sp1.sh --only effectcraft v0.11.1 --t1-only
+== stage effectcraft-v0.11.1: preflight HEAD (no disk planned yet)
+{"name": "effectcraft-0.11.1-linux-x86_64.tar.gz", "status": 200, "bytes": 64039300, "expected_bytes": 64039300, "size_matches_table": true}
+REFUSED: Avail 466 MB minus planned 300 MB leaves 166 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB. Remedy: answer Q-1 (clear the regenerable pip cache) or free space, or pass --wait SECONDS. Nothing was downloaded and nothing was forced.
+[exit 3]
+
+$ bash spikes/sp1_craft_cli/run_sp1.sh --all
+run_sp1.sh --all: FilmCraft 0.9.0 then EffectCraft 0.11.1 (profile auto, wait 0s per stage). df at start: Avail 466 MB.
+== stage filmcraft-v0.9.0: preflight HEAD (no disk planned yet)
+{"name": "filmcraft-0.9.0-linux-x86_64.tar.gz", "status": 200, "bytes": 69756500, "expected_bytes": 69756500, "size_matches_table": true}
+REFUSED: Avail 466 MB minus planned 350 MB leaves 116 MB, below the 400 MB floor (filmcraft-v0.9.0, lean profile); full would need Avail of at least 1000 MB and lean at least 750 MB. Remedy: answer Q-1 (clear the regenerable pip cache) or free space, or pass --wait SECONDS. Nothing was downloaded and nothing was forced.
+== stage effectcraft-v0.11.1: preflight HEAD (no disk planned yet)
+{"name": "effectcraft-0.11.1-linux-x86_64.tar.gz", "status": 200, "bytes": 64039300, "expected_bytes": 64039300, "size_matches_table": true}
+REFUSED: Avail 466 MB minus planned 300 MB leaves 166 MB, below the 400 MB floor (effectcraft-v0.11.1, lean profile); full would need Avail of at least 800 MB and lean at least 700 MB. Remedy: answer Q-1 (clear the regenerable pip cache) or free space, or pass --wait SECONDS. Nothing was downloaded and nothing was forced.
+== after the run: ledger: 0 fetches, 0 distinct assets, 0.0 MB in total (allowance 2048 MB)
+== vendor/craft holds: nothing but _keep/ (or nothing); df now Avail 466 MB (start 466 MB)
+[exit 3]
+
+$ python3 -I spikes/sp1_craft_cli/check_guide.py
+PASS       G1.fences_marked_and_ascii  14 PowerShell fences; without a mode marker: none; non-ASCII characters: 0
+PASS       G2.pwsh_parses_every_fence  pwsh 7 Parser::ParseFile on 14 fences: parse errors: 0
+PASS       G3.ps51_lint_every_fence  14 fences linted (readonly fences in read-only mode); problems: none
+PASS       G4.names_sizes_hashes_match_assets  6 table rows, 6 distinct 64-hex strings; problems: none
+PASS       G5.hash_fence_rejects_one_flipped_byte  intact -> OK, one byte flipped -> MISMATCH, missing -> MISSING (pwsh on Linux, made-up files; Windows UNVERIFIED)
+PASS       G6.where_did_it_write_prints_only_generalised_paths  line 1 printed 4 lines, line 2 printed 1; not in %USERPROFILE% form: none; leaks of the made-up profile or user: none; Temp listed: none; tree unchanged: True; exit 0/0 
+PASS       G7.flipped_tarball_rejected_before_extraction  intact tarball -> exit 0 (OK: filmcraft-0.9.0-); one byte flipped -> exit 1 (REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 96af0); verify call at run_sp1.sh line 196 precedes the first tar -xzf at line 217: True
+check_guide: 7 PASS, 0 FAIL, 0 UNVERIFIED
+[exit 0]
+
+$ python3 -I spikes/sp1_craft_cli/drivers/verdict.py
+wrote spikes/sp1_craft_cli/VERDICT-SP1A.md
+[exit 0]
+

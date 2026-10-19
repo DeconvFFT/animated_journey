@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LJ font check</title>
+<meta name="viewport" content="width=1920">
+<!--
+  Font check page (build plan A7, SP2 d). Two uses.
+  1. As a scene: renders every string of every script in /phone/test_strings.json in that script's Noto family (libs.lock.json), black on
+     white, labelled. The text comes from the file, never from this page. seekTo is a no-op.
+  2. As a probe (?probe=1): window.probe(items) lays out [{id, text, family, px, weight}] each in its own fixed box and reports, per item,
+     the box rectangle, document.fonts.check(...) and the status of every FontFace of that family. The test takes the screenshots, once with
+     the fonts served and once with /vendor/fonts blocked, and compares the ink. No font stack fallback is given on purpose, so a blocked or
+     missing font shows the browser's own fallback and the comparison catches it.
+-->
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; color: #000; }
+  body { width: 1920px; min-height: 1080px; }
+  .lab { font: 20px/28px 'Noto Sans', sans-serif; color: #555; margin: 18px 0 0 40px; }
+  .it { position: absolute; left: 40px; width: 1500px; overflow: hidden; background: #fff; color: #000; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div id="host"></div>
+<script src="common.js"></script>
+<script>
+(function () {
+  'use strict';
+  var q = LJ.q, PROBE = q.get('probe') === '1', lock = null;
+  window.seekTo = function () { return true; };
+
+  function faceStatus(family) {
+    var out = [];
+    document.fonts.forEach(function (f) {
+      if (f.family.replace(/^["']|["']$/g, '') === family) { out.push({ status: f.status, weight: f.weight, unicodeRange: f.unicodeRange }); }
+    });
+    return out;
+  }
+
+  /* probe(items) -> Promise of [{id, rect, check, faces}] ; items are laid out one under the other, each box px*2 high */
+  window.probe = async function (items) {
+    var host = document.getElementById('host'); host.textContent = '';
+    var y = 20, boxes = [];
+    items.forEach(function (it) {
+      var d = document.createElement('div'); d.className = 'it'; d.id = 'it-' + it.id;
+      var px = it.px || 96, h = Math.ceil(px * 2.1);
+      d.style.top = y + 'px'; d.style.height = h + 'px'; d.style.fontSize = px + 'px'; d.style.lineHeight = h + 'px';
+      d.style.fontWeight = String(it.weight || 400); d.style.fontFamily = '"' + it.family + '"';
+      d.lang = it.lang || 'und';
+      d.textContent = it.text; host.appendChild(d); boxes.push({ d: d, it: it, top: y, h: h }); y += h + 12;
+    });
+    document.body.style.minHeight = (y + 20) + 'px';
+    var states = await LJ.loadFonts(items.map(function (it) { return { family: it.family, weight: it.weight || 400, px: it.px || 96, text: it.text }; }));
+    await Promise.race([document.fonts.ready, new Promise(function (r) { setTimeout(r, 2500); })]);
+    await new Promise(function (r) { requestAnimationFrame(function () { requestAnimationFrame(r); }); });
+    return boxes.map(function (b, i) {
+      var spec = (b.it.weight || 400) + ' ' + (b.it.px || 96) + 'px "' + b.it.family + '"';
+      return { id: b.it.id, rect: { x: 40, y: b.top, width: 1500, height: b.h }, check: document.fonts.check(spec, b.it.text), load: states[i], faces: faceStatus(b.it.family) };
+    });
+  };
+
+  (async function init() {
+    try {
+      lock = await LJ.json(LJ.lockUrl);
+      LJ.installFonts(lock);
+      if (PROBE) { window.ready = true; return; }
+      var strings = await LJ.json(LJ.stringsUrl), items = [], k = 0;
+      Object.keys(strings.scripts).forEach(function (name) {
+        var spec = strings.scripts[name];
+        if (!spec.strings || !spec.strings.length) { return; }
+        var fam = LJ.scriptFamily(lock, name);
+        if (!fam) { throw new Error('no fetched font for script ' + name + ' (run pipeline/lib/fetch_libs.sh)'); }
+        spec.strings.forEach(function (st) { items.push({ id: name + '-' + (k++), text: st.text, family: fam, px: 96, lang: LJ.LANG[name] }); });
+      });
+      var rep = await window.probe(items);
+      var bad = rep.filter(function (r) { return !r.check; });
+      if (bad.length) { throw new Error('document.fonts.check false for ' + bad.map(function (b) { return b.id; }).join(', ')); }
+      window.ljReport = function () { return rep; };
+      window.ready = true;
+    } catch (e) { LJ.fail(e); }
+  })();
+})();
+</script>
+</body>
+</html>
