@@ -10,9 +10,9 @@
     "vendor_craft_other_than_keep": []
   },
   "disk": {
-    "avail_mb_end": 14544,
-    "avail_mb_min": 14544,
-    "avail_mb_start": 14544,
+    "avail_mb_end": 14533,
+    "avail_mb_min": 14533,
+    "avail_mb_start": 14533,
     "floor_mb": 400,
     "hard_floor_mb": 250,
     "planned_write_mb": 0

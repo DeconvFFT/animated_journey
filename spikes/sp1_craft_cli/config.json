@@ -24,7 +24,8 @@
     "n_large": [5, 20, 100], "large_size": [3600, 2400], "n_conformed": 300, "conformed_size": [2880, 1620],
     "export_stills": 20, "seconds_per_still": 5, "fps": 24, "sequence": [1920, 1080],
     "rss_kill_mb": 10240, "rss_slope_max_mb_per_still": 40, "rss_n300_max_mb": 12288,
-    "h264_min_fps": 5, "h264_max_seconds": 480
+    "h264_min_fps": 5, "h264_max_seconds": 480,
+    "dissolve_frames": 12, "dissolve_mid_tolerance_levels": 2, "dissolve_min_levels": 11, "dissolve_level_gap": 1.0
   },
   "t4": {"fps": 24, "size": [1920, 1080], "rayon_threads": 1, "prores_seconds": {"full": 3, "lean": 1}, "parallax_max_seconds_per_frame": 3, "parallax_max_rss_mb": 6144}
 }

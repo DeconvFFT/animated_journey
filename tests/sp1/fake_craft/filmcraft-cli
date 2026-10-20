@@ -2,7 +2,13 @@
 """A STAND-IN for filmcraft-cli, used only to test the SP1 harness. It is not FilmCraft and says nothing about FilmCraft.
 It implements the command surface the T1/T2 drivers use (the shape of research/cinematic-quality-fixtures/filmcraft_push.py and docs/agents.md) with the
 model the T2 driver checks: scale 100 = native pixels, position (960,540) = centre of the frame, keyframes linear. Planted defects are switched on by
-the words in the file fake_bug.txt next to this script: leak, offset, dropframe, offline, dissolve, crash. No network, no GPU, standard library, Pillow, ffmpeg."""
+the words in the file fake_bug.txt next to this script: leak, offset, dropframe, offline, dissolve, crash, stepped, encodedblend. No network, no GPU, Pillow, ffmpeg;
+numpy for the dissolve.
+THE DISSOLVE (amended Tue 20 Oct 2026 with the T2.mid_dissolve mark): like FilmCraft 0.9.0 and 0.8.0, which the first real run measured, the stand-in blends in LINEAR LIGHT
+(the sRGB transfer function), so its half-way frame is the linear-light mix of the neighbours. `encodedblend` brings back the old behaviour (Pillow's Image.blend of the encoded
+values, which is also what ffmpeg xfade and the Chromium route show); it must make T2.mid_dissolve fail. `stepped` holds each blend level for two frames (the stepping the single-frame
+probe of 20 Oct showed in FilmCraft); it must make T2.dissolve_steps fail. `dissolve` scales the blend weight by 0.8 (a wrong mid-point).
+EXPORT: a flat-colour clip, except that an export of at most 120 frames whose window touches a transition renders the real frames of the project (what T2.dissolve_steps reads)."""
 import json, os, re, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -53,6 +59,37 @@ def scale_at(clip, t):
             return v0 + (v1 - v0) * (t - t0) / float(t1 - t0)
 
 
+_LUT = {}
+
+
+def blend(im1, im2, a):
+    """Blend two PIL RGB images with weight a for im2: in linear light (the default), or on the encoded values under the planted defect `encodedblend`."""
+    from PIL import Image
+    if "encodedblend" in BUGS:
+        return Image.blend(im1, im2, a)
+    import numpy as np
+    if not _LUT:
+        v = np.arange(256) / 255.0
+        _LUT["lin"] = np.where(v <= 0.04045, v / 12.92, ((v + 0.055) / 1.055) ** 2.4).astype(np.float32)
+        l = np.arange(65536) / 65535.0
+        enc = np.where(l <= 0.0031308, 12.92 * l, 1.055 * l ** (1 / 2.4) - 0.055)
+        _LUT["inv"] = np.clip(np.rint(enc * 255.0), 0, 255).astype(np.uint8)
+    mixed = (1.0 - a) * _LUT["lin"][np.asarray(im1)] + a * _LUT["lin"][np.asarray(im2)]
+    return Image.fromarray(_LUT["inv"][np.clip(np.rint(mixed * 65535.0), 0, 65535).astype(np.uint16)], "RGB")
+
+
+def in_transition(st, t0, t1):
+    """Does any transition's blend window overlap the span [t0, t1) (ticks)?"""
+    fps = st["seq"]["fps"]
+    for tr in st.get("transitions", []):
+        clip = next((c for c in st["clips"] if c["id"] == tr["clip"]), None)
+        if clip:
+            half = tr["frames"] * (TICKS // fps) // 2
+            if clip["start"] - half < t1 and t0 < clip["start"] + half:
+                return True
+    return False
+
+
 def render_frame(st, sec):
     from PIL import Image
     seq = st["seq"]
@@ -81,8 +118,10 @@ def render_frame(st, sec):
             prev = [c for c in st["clips"] if c["start"] + c["dur"] == clip["start"]]
             if prev:
                 a = (t - (clip["start"] - half)) / float(2 * half)
+                if "stepped" in BUGS:  # each blend level held for two frames
+                    a = (int(round(a * tr["frames"])) // 2 * 2) / float(tr["frames"])
                 a = a * 0.8 if "dissolve" in BUGS else a
-                return Image.blend(of(prev[0]), of(clip), a)
+                return blend(of(prev[0]), of(clip), a)
     return base
 
 
@@ -214,10 +253,21 @@ def main(argv):
             codec = ["-c:v", "prores_ks", "-profile:v", "3", "-pix_fmt", "yuv422p10le", "-vendor", "apl0"]
         else:
             codec = ["-c:v", "libx264", "-preset", "ultrafast", "-pix_fmt", "yuv420p"]
-        r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "color=c=0x305070:s=320x180:r=%d" % seq["fps"], "-frames:v", str(frames)] + codec + [out],
-                           capture_output=True, text=True)
-        if r.returncode:
-            die("encode failed: " + r.stderr[-200:], 1)
+        if 0 < frames <= 120 and in_transition(st, int(round(a0 * TICKS)), int(round(a1 * TICKS))):
+            # the real frames of the project: what a dissolve-stepping check reads back from the export
+            pr = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "%dx%d" % (seq["w"], seq["h"]), "-r", str(seq["fps"]), "-i", "-"] + codec + [out],
+                                  stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+            for i in range(frames):
+                pr.stdin.write(render_frame(st, a0 + i / float(seq["fps"])).tobytes())
+            pr.stdin.close()
+            err = pr.stderr.read().decode("utf-8", "replace")
+            if pr.wait():
+                die("encode failed: " + err[-200:], 1)
+        else:
+            r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "color=c=0x305070:s=320x180:r=%d" % seq["fps"], "-frames:v", str(frames)] + codec + [out],
+                               capture_output=True, text=True)
+            if r.returncode:
+                die("encode failed: " + r.stderr[-200:], 1)
         print(json.dumps({"path": out, "frames": frames, "offlineMedia": offline}))
         return 1 if offline else 0
     die("unknown subcommand %s" % sub, 2)

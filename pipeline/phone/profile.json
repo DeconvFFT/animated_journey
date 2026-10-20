@@ -32,7 +32,7 @@
       "bitrate_cap_mbps": 3.5,
       "approved": false,
       "measured": {"6.1.1": {"worst_error": 1, "date": "2026-10-19", "by": "colour_patch.py --chain-file pipeline/phone/profile.json --chain phone_720_share"}},
-      "notes": "The plan says about 3.5 Mbps; W-63 says a 4 Mbps cap. 3.5 is inside both. colour_patch.py measures a chain at its own output size, so it tests this 1280x720 chain directly (worst 1/255 on 6.1.1, build/evidence/wp08); approved stays false until a maker's-PC build has been tested (W-16)."
+      "notes": "The register's PH2 cap is 3.5 Mb/s (W-63, amended 2026-10-20), which is this chain's -maxrate 3500k. colour_patch.py measures a chain at its own output size, so it tests this 1280x720 chain directly (worst 1/255 on 6.1.1, build/evidence/wp08); approved stays false until a maker's-PC build has been tested (W-16)."
     }
   },
   "profiles": {
@@ -63,7 +63,7 @@
   },
   "caption": {
     "decision": ["D-27", "W-18", "W-21", "W-63", "W-75"],
-    "status": "(J) the size is picked from the measured candidates in build/evidence/wp08/caption_candidates.json, not guessed; see the rule in the 'chosen_by' field; max_chars_per_line 32 is the build plan's figure (W-18 says 36)",
+    "status": "(J) the size is picked from the measured candidates in build/evidence/wp08/caption_candidates.json, not guessed; see the rule in the 'chosen_by' field; max_chars_per_line 32 is the register's figure (W-18, amended 2026-10-20 to at most 32 characters a line, the value measured to fit the 90% box in both scripts)",
     "burn_in": {
       "filter": "ass",
       "why": "ffmpeg before n9.0 draws the `subtitles` filter in simple shaping and breaks Indic conjuncts and vowel signs without any warning (W-75; measured again here, build/evidence/wp08/shaping_paths.json). The `ass` filter on an ASS file made from the SRT shaped correctly on 6.1.1 in the same test. The same path is used for every script and every build.",

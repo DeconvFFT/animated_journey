@@ -305,6 +305,12 @@ out2="$(fkrun ok t1all --all --profile lean)"; rc2=$?; LAST_OUT="$out2"
 led="$W/e_t1all/download_ledger.jsonl"; nled="$(nlines "$led")"; lex3="$(sed -n 3p "$led" 2>/dev/null | jq -r '.asset + " | " + .exception' 2>/dev/null)"
 LJ_SP1_EVIDENCE="$W/e_t1all" LJ_SP1_ASSETS="$W/ok-assets.json" python3 -I "$DRV/asset_tool.py" ledger --check >/dev/null 2>&1; lrc=$?
 check fake.t1only_then_all_ledger_clean "$([ "$rc1" = 0 ] && [ "$rc2" = 0 ] && [ "$nled" = 3 ] && [ "$lex3" = 'effectcraft-0.11.1-linux-x86_64.tar.gz | re-fetch: the earlier copy (stage effectcraft-v0.11.1, t1-only) was deleted with its tree' ] && grep -q 'second fetch is recorded with the exception' <<<"$out2" && ! grep -q 'LEDGER PROBLEM' <<<"$out2" && [ "$lrc" = 0 ] && echo 1 || echo 0)" "--t1-only exit $rc1, then --all exit $rc2; ledger lines $nled; line 3: ${lex3:-none}; --ledger-check exit $lrc; LEDGER PROBLEM shown: $(grep -c 'LEDGER PROBLEM' <<<"$out2")" "--only effectcraft --t1-only followed by --all fetches EffectCraft twice with the second fetch recorded as an exception, so --ledger-check stays at exit 0"
+# SP1_LEDGER_EXCEPTION: the real reason replaces the generic text on a repeat fetch, and a first fetch stays without an exception (week-2 gate review, nudge 6)
+out1="$(SP1_LEDGER_EXCEPTION='re-fetch: stand-in reason, the kept copy was consumed by an earlier test' fkrun ok exc --only effectcraft v0.11.1 --t1-only --profile lean)"; rc1=$?
+out2="$(SP1_LEDGER_EXCEPTION='re-fetch: stand-in reason, the kept copy was consumed by an earlier test' fkrun ok exc --only effectcraft v0.11.1 --profile lean)"; rc2=$?; LAST_OUT="$out2"
+led="$W/e_exc/download_ledger.jsonl"; nled="$(nlines "$led")"; ex1="$(sed -n 1p "$led" 2>/dev/null | jq -r '.exception' 2>/dev/null)"; ex2="$(sed -n 2p "$led" 2>/dev/null | jq -r '.exception' 2>/dev/null)"
+LJ_SP1_EVIDENCE="$W/e_exc" LJ_SP1_ASSETS="$W/ok-assets.json" python3 -I "$DRV/asset_tool.py" ledger --check >/dev/null 2>&1; lrc=$?
+check fake.ledger_exception_names_real_reason "$([ "$rc1" = 0 ] && [ "$rc2" = 0 ] && [ "$nled" = 2 ] && [ -z "$ex1" ] && [ "$ex2" = 're-fetch: stand-in reason, the kept copy was consumed by an earlier test' ] && [ "$lrc" = 0 ] && echo 1 || echo 0)" "exit $rc1 then $rc2; ledger lines $nled; first fetch exception: ${ex1:-none}; repeat fetch exception: ${ex2:-none}; --ledger-check exit $lrc" "SP1_LEDGER_EXCEPTION replaces the generic repeat-fetch text with the real reason, leaves a first fetch without an exception, and --ledger-check stays at exit 0"
 # a ledger that fails its check makes --all say so and exit 1 (two earlier EffectCraft fetches with no exception are seeded by hand through the ledger tool)
 mkdir -p "$W/e_lp"
 for _ in 1 2; do LJ_SP1_EVIDENCE="$W/e_lp" LJ_SP1_ASSETS="$W/ok-assets.json" python3 -I "$DRV/asset_tool.py" ledger --add effectcraft v0.11.1 --stage seeded >/dev/null 2>&1; done
@@ -357,6 +363,8 @@ bugrun filmcraft leak T2.rss_slope
 bugrun filmcraft offset T2.kenburns_positions
 bugrun filmcraft dropframe T2.h264_frame_count,T2.prores_frame_count
 bugrun filmcraft dissolve T2.mid_dissolve
+bugrun filmcraft encodedblend T2.mid_dissolve
+bugrun filmcraft stepped T2.dissolve_steps
 bugrun filmcraft offline has:T2.offline_media_empty
 bugrun filmcraft crash T2.no_crash_n12_conformed,T2.rss_n12
 bugrun effectcraft noalpha T4.title_png_has_alpha,T4.line_png_has_alpha

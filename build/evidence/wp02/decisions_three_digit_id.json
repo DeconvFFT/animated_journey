@@ -2,9 +2,9 @@
  "actual": "W-100 reaches the CSV (251 rows), --check and ops_lint report it missing from a stale CSV and pass on a fresh one; a cited W-101 is flagged",
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 14538,
-  "avail_mb_min": 14538,
-  "avail_mb_start": 14539,
+  "avail_mb_end": 14533,
+  "avail_mb_min": 14533,
+  "avail_mb_start": 14534,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

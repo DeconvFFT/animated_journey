@@ -2,9 +2,9 @@
  "actual": "ops_lint --hours: exit 1 on a shifted row and on a header-less file; no planted token printed",
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 14539,
-  "avail_mb_min": 14539,
-  "avail_mb_start": 14539,
+  "avail_mb_end": 14534,
+  "avail_mb_min": 14534,
+  "avail_mb_start": 14534,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

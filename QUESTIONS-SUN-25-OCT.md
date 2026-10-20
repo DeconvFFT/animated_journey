@@ -4,7 +4,7 @@ One quiet evening, one person, answering from memory and by looking at the house
 
 ## Before you start
 - Answer from your own knowledge. Never ask her or any relative anything, and do not record the evening.
-- On this evening, never photograph or touch her seva articles (the things used in her worship). Looking is fine. (Later the rule is narrower: her Thakorji, chitraji or any picture of hers is never photographed without her knowing; other seva articles only by sight, untouched, on an unsynced phone.)
+- On this evening, never photograph or touch her seva articles (the things used in her worship). Looking is fine. Later the rule is narrower: her Thakorji, chitraji, any picture of hers and anything inside the mandir are never photographed without her knowing; a seva article outside the mandir (the jhari in its cloth, the lamp, the closed doors) may be photographed by sight, untouched, on an unsynced phone (O-58), each logged as a G5 flag (O-48).
 - "Don't know" is a complete answer. Any part of the film that depends on a no or a don't-know simply falls away.
 - Write no names of people, havelis or temples. Say "a haveli in town", or describe a place by what it is. The big pilgrimage places (Somnath, Dwarka, Ambaji) are fine by name in general; which of them she goes to, and the one in town, are not: for the places question (Q19) we record only that it was answered, which places are hers lives in your offline notes, and a shot's place id for a place she goes to is an opaque code resolved there.
 - Send your answers in chat and keep your own copy. We write down only yes, no or a number; the rest stays in your notes. The repo is public, so nothing identifying goes in it.
@@ -34,7 +34,7 @@ These decide the first things due in October and November. Four plain numbers fi
    - Why it matters: it shapes the look and the chapter openers. Anything she makes for worship is shown as making, never as the object itself.
    - Skip if unsure: yes. One line for each part of her life is enough.
 4. Which everyday objects followed her through every home? Think of the velan and patlo, the masala box, the thepla tin, a named vessel, the tiffin, or a door toran. [O-08]
-   - Why it matters: one everyday object becomes the thread through the film, chosen by Sun 15 Nov. Photographs come later, by sight, untouched and on an unsynced phone; never her Thakorji, chitraji or any picture of hers without her knowing.
+   - Why it matters: one everyday object becomes the thread through the film, chosen by Sun 15 Nov. Photographs come later, under the seva-article rule (PR4): her Thakorji, chitraji, any picture of hers and anything inside the mandir are never photographed without her knowing; a seva article outside the mandir (the jhari in its cloth, the lamp, the closed doors) may be photographed by sight, untouched, on an unsynced phone (O-58), each logged as a G5 flag (O-48).
    - Skip if unsure: yes.
 ### Her words and greetings
 5. Which languages and scripts do she and each close relative use? In which language does the house pray: kirtan in Braj, stotras in Sanskrit, or speech in Gujarati? [O-10]
@@ -69,7 +69,7 @@ These shape the film's details. Each can wait a few weeks.
     - Why it matters: the morning bell may be the film's first sound, and her visits decide how outings are shown.
     - Skip if unsure: yes.
 16. Is there a painting or print of Shrinathji or Mahaprabhuji in the house? Is any of them in seva, served daily? Does the household change a cloth by season for an occasion? [O-48]
-    - Why it matters: her Thakorji, chitraji or any picture of hers is never photographed without her knowing. A seasonal cloth may open one shrine scene.
+    - Why it matters: her Thakorji, chitraji, any picture of hers and anything inside the mandir are never photographed without her knowing; a seva article outside the mandir (the jhari in its cloth, the lamp, the closed doors) may be photographed by sight, untouched, on an unsynced phone (O-58), each logged as a G5 flag (O-48). A seasonal cloth may open one shrine scene.
     - Skip if unsure: yes.
 17. Does the house keep Yamunajal (sacred water) in a jhari, filled each morning before anything else? [O-77]
     - Why it matters: if yes, water poured into brass may be the first sound. If no, the bell or the kitchen opens the film.

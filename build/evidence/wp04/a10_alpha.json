@@ -4,14 +4,14 @@
   "alpha_identify": "srgba false",
   "corner_alpha": 0,
   "plain_identify": "srgb true",
-  "seconds": 4.6,
+  "seconds": 4.2,
   "text_alpha": 255
  },
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 14540,
-  "avail_mb_min": 14540,
-  "avail_mb_start": 14540,
+  "avail_mb_end": 14534,
+  "avail_mb_min": 14534,
+  "avail_mb_start": 14534,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

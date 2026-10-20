@@ -1138,7 +1138,7 @@ def _(ctx):
     phone, td3 = row("**Phone"), row("**TD-3")
     ok("D-27" in phone[3] and "W-63" in phone[3] and "W-18" in phone[3], "Phone row Register cell: %r" % phone[3])
     ok("PH1" in phone[2] and "PH2" in phone[2], "the Phone row must name PH1 and PH2 (W-63)")
-    # the PH2 cap and the caption line length are read from the register (W-63, W-18), which wins: 4 Mb/s and 36 characters today, whatever the orchestrator settles on later
+    # the PH2 cap and the caption line length are read from the register (W-63, W-18), which wins: 3.5 Mb/s and 32 characters since the register's amendment of 2026-10-20, and whatever the register says later
     reg_all = read("DECISIONS.md")
     m63 = re.search(r"^\| W-63 \|.*$", reg_all, re.M)
     m18 = re.search(r"^\| W-18 \|.*$", reg_all, re.M)

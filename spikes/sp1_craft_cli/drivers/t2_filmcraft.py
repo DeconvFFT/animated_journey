@@ -13,7 +13,12 @@ WHAT IT MEASURES (low-entropy JPEG stills from gen_stills.py; every call is one 
             lean profile): frame count equals seconds x 24 and the decode is silent.
   kenburns  a gridded still with a marker of known position: first and last frame positions within 1 px of the computed values (scale 100 = native
             pixels, position 960,540 = centre of 1920x1080, as research/cinematic-quality-fixtures/filmcraft_push.py found for 0.9.0).
-  dissolve  a cross dissolve between two flat-centre stills: the frame nearest the half-way mix within 2 levels of the average of the neighbours.
+  dissolve  a 12-frame cross dissolve between two flat-centre stills (the single-frame probe is `render --seconds`, the stepping probe is an exported H.264):
+            T2.mid_dissolve   the frame nearest the half-way mix is within 2 levels of the 50/50 mix of the neighbours IN LINEAR LIGHT (sRGB transfer function).
+                              Amended Tue 20 Oct 2026 (week-2 gate, nudge 1): the first wording compared with the average of the ENCODED values, which no gamma-correct
+                              compositor can pass (FilmCraft measured (149, 81, 151) against a linear-light mix of (149.5, 81.3, 151.4)). The tolerance is unchanged.
+            T2.dissolve_steps in a 2-second H.264 export around the cut, the 12 frames from one frame before the first blended frame hold at least 11 distinct
+                              levels (the single-frame probe of 20 Oct showed 8): a dissolve that steps in pairs of identical frames judders on the venue screen.
 EXIT CODES  0 all pass; 1 a measured criterion failed (a finding); 2 the harness could not drive the CLI (a command-surface surprise, NOT a verdict on FilmCraft).
 THE ENVELOPE IS WRITTEN AFTER EVERY PHASE (describe, scaling, export, kenburns+dissolve), with status UNVERIFIED, detail.partial true and the note "stage still
 running", and replaced by the final one when the run ends. The whole stage is capped at 60 minutes (run_sp1.sh, build plan 4.9) and the disk guard can stop it at
@@ -24,6 +29,7 @@ import argparse
 import json
 import os
 import shutil
+import subprocess
 import sys
 import time
 
@@ -35,6 +41,32 @@ import gen_stills as G  # noqa: E402
 TICKS = 254016000000
 PRESET_H264 = "High Quality 1080p HD"
 PRESET_PRORES = "Apple ProRes 422 HQ"
+
+
+def srgb_to_linear(v):
+    """8-bit sRGB code value (0..255) to linear light (0..1), the piecewise IEC 61966-2-1 transfer function."""
+    c = v / 255.0
+    return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
+
+
+def linear_to_srgb(lin):
+    """Linear light (0..1) to an 8-bit sRGB code value as a float (0..255)."""
+    c = 12.92 * lin if lin <= 0.0031308 else 1.055 * (lin ** (1.0 / 2.4)) - 0.055
+    return 255.0 * c
+
+
+def linear_light_mix(a, b, w=0.5):
+    """The mix of two RGB triples in linear light, returned as float code values: what a gamma-correct compositor shows at blend weight w."""
+    return [linear_to_srgb((1.0 - w) * srgb_to_linear(x) + w * srgb_to_linear(y)) for x, y in zip(a, b)]
+
+
+def distinct_levels(values, gap):
+    """Greedy count of distinct levels: a value within `gap` code values of a level already counted is the same level. Returns the list of levels."""
+    levels = []
+    for v in values:
+        if all(abs(v - lv) > gap for lv in levels):
+            levels.append(v)
+    return levels
 
 
 class HarnessError(Exception):
@@ -282,7 +314,7 @@ class T2:
         self.criterion("T2.h264_completes", ok(rx), "exit %s after %.0f s" % (rx["rc"], rx["wall_s"]), "export finishes without crash, hang or the 10 GB kill")
         mark_s = cfg["h264_max_seconds"]
         self.criterion("T2.h264_speed", ok(rx) and info.get("fps_measured", 0) >= cfg["h264_min_fps"], "%s fps (%d frames in %.0f s)" % (info.get("fps_measured"), frames, rx["wall_s"]),
-                       "at least %d fps, i.e. under %d s for %d frames (R8 pass mark scaled from 3,000 frames at 25 fps)" % (cfg["h264_min_fps"], mark_s, frames))
+                       "at least %d fps, i.e. under %d s for %d frames (R8 pass mark, scaled to 2,400 frames at this film's 24 fps from R8's 3,000-frame figure)" % (cfg["h264_min_fps"], mark_s, frames))
         self.criterion("T2.h264_frame_count", info.get("frames_counted") == frames, "%s counted, %d expected, rate %s" % (info.get("frames_counted"), frames, info.get("r_frame_rate")), "ffprobe frame count equals expected")
         self.criterion("T2.h264_decode_silent", ok(rx) and info.get("decode_errors", "x") == "", repr(info.get("decode_errors", "no file"))[:200], "ffmpeg -v error -i out -f null - prints nothing")
         self.criterion("T2.offline_media_empty", info.get("offline_media") == [], repr(info.get("offline_media")), "offlineMedia: [] in the export result")
@@ -363,13 +395,18 @@ class T2:
         self.R["kenburns"] = kb
         self.criterion("T2.kenburns_positions", worst <= 1.0, "worst error %.2f px at the first and last keyframes" % worst, "within 1 px of the computed positions")
 
-        # dissolve between the two clips
-        rt = self.fc(proj, ["exec", "sequence.applyVideoTransition", json.dumps({"clip": clips[1], "effect": "cross_dissolve", "frames": 12})], "exec applyVideoTransition")
+        # dissolve between the two clips: T2.mid_dissolve (single-frame probe) and T2.dissolve_steps (exported H.264)
+        tol = float(cfg["dissolve_mid_tolerance_levels"])
+        nfr = int(cfg["dissolve_frames"])
+        mark_mid = "within %g levels of the 50/50 mix of the neighbours in linear light (sRGB transfer function)" % tol
+        mark_steps = "at least %d distinct levels over the %d exported frames that start one frame before the first blended frame" % (cfg["dissolve_min_levels"], nfr)
+        rt = self.fc(proj, ["exec", "sequence.applyVideoTransition", json.dumps({"clip": clips[1], "effect": "cross_dissolve", "frames": nfr})], "exec applyVideoTransition")
         dis = {"transition_exit": rt["rc"]}
         if not ok(rt):
             dis["error"] = why(rt)
             self.R["dissolve"] = dis
-            self.criterion("T2.mid_dissolve", False, dis["error"][:200], "mid-dissolve pixel within 2 levels of the average of the neighbours")
+            self.criterion("T2.mid_dissolve", False, dis["error"][:200], mark_mid)
+            self.criterion("T2.dissolve_steps", False, "not measured: the transition could not be applied", mark_steps)
             return
         A, B = G.centre_colour(s1), G.centre_colour(s2)
         cut = 3.0
@@ -389,20 +426,97 @@ class T2:
         if "error" in dis or not samples:
             dis.setdefault("error", "no frames")
             self.R["dissolve"] = dis
-            self.criterion("T2.mid_dissolve", False, dis["error"][:200], "mid-dissolve pixel within 2 levels of the average of the neighbours")
+            self.criterion("T2.mid_dissolve", False, dis["error"][:200], mark_mid)
+            self.criterion("T2.dissolve_steps", False, "not measured: the single-frame probe did not finish", mark_steps)
             return
-        avg = [(A[i] + B[i]) / 2.0 for i in range(3)]
-        best = min(samples, key=lambda s: sum(abs(s[1][i] - avg[i]) for i in range(3)))
-        dev = max(abs(best[1][i] - avg[i]) for i in range(3))
+        # the half-way mix a gamma-correct compositor shows: the 50/50 mix in linear light. (The first wording of this mark used the average of the encoded
+        # values, (A + B) / 2, which is what Pillow's Image.blend and ffmpeg xfade show; it is kept in the envelope as `average_encoded` for the record.)
+        mid = linear_light_mix(A, B, 0.5)
+        avg_encoded = [(A[i] + B[i]) / 2.0 for i in range(3)]
+        best = min(samples, key=lambda s: sum(abs(s[1][i] - mid[i]) for i in range(3)))
+        dev = max(abs(best[1][i] - mid[i]) for i in range(3))
+        dev_encoded = max(abs(best[1][i] - avg_encoded[i]) for i in range(3))
         alphas = []
         for k, p in samples:
             denom = (B[0] - A[0]) or 1
             alphas.append(round((p[0] - A[0]) / float(denom), 3))
-        dis.update(neighbour_a=list(A), neighbour_b=list(B), average=[round(v, 1) for v in avg], nearest_frame_offset=best[0], nearest_pixel=[round(v, 1) for v in best[1]],
-                   deviation_levels=round(dev, 2), alpha_by_frame=dict(zip([k for k, _ in samples], alphas)))
+        dis.update(neighbour_a=list(A), neighbour_b=list(B), midpoint_linear_light=[round(v, 1) for v in mid], average_encoded=[round(v, 1) for v in avg_encoded],
+                   nearest_frame_offset=best[0], nearest_pixel=[round(v, 1) for v in best[1]], deviation_levels=round(dev, 2), deviation_from_encoded_average=round(dev_encoded, 2),
+                   alpha_by_frame_encoded_red=dict(zip([k for k, _ in samples], alphas)))
         self.R["dissolve"] = dis
-        self.criterion("T2.mid_dissolve", dev <= 2.0, "%.2f levels at frame offset %+d (neighbours %s and %s, average %s)" % (dev, best[0], A, B, [round(v) for v in avg]),
-                       "within 2 levels of the average of the neighbours")
+        self.criterion("T2.mid_dissolve", dev <= tol, "%.2f levels at frame offset %+d (neighbours %s and %s, linear-light mix %s; the average of the encoded values %s would be %.2f levels away)"
+                       % (dev, best[0], A, B, [round(v) for v in mid], [round(v) for v in avg_encoded], dev_encoded), mark_mid)
+        self.dissolve_steps(proj, cut, nfr, cfg, mark_steps)
+
+    def dissolve_steps(self, proj, cut, nfr, cfg, mark):
+        """T2.dissolve_steps: export 2 s of the dissolve project as H.264, read the centre patch of every frame, and count the distinct levels in the dissolve.
+
+        The window is `nfr` frames long and starts one frame before the first blended frame (so it holds the last pure frame of the first still and the blended frames);
+        two frames are the same level when their patch means are within cfg['dissolve_level_gap'] code values. The channel with the widest spread between the
+        two stills is read. The first and last exported frames are the pure neighbours, so the count does not depend on the colour matrix of the decode."""
+        fps = 24
+        gap = float(cfg["dissolve_level_gap"])
+        out = os.path.join(self.exp, "dissolve_steps.mp4")
+        rx = self.cli.json(["--project", proj, "export", out, "--preset", PRESET_H264, "--start", "%g" % (cut - 1.0), "--end", "%g" % (cut + 1.0)], "export dissolve window (2 s)", timeout_s=600)
+        info = {"window_s": [cut - 1.0, cut + 1.0], "rc": rx["rc"], "wall_s": rx["wall_s"], "frames_expected": 2 * fps, "cut_frame_index": fps, "min_levels": cfg["dissolve_min_levels"], "level_gap": gap}
+        if not ok(rx) or not os.path.exists(out):
+            info["error"] = why(rx)
+            self.R["dissolve_export"] = info
+            self.criterion("T2.dissolve_steps", False, "not measured: " + info["error"][:160], mark)
+            return
+        try:
+            n, rgb = exported_patch_means(out, 960, 540, 5)
+        except (OSError, ValueError, subprocess.SubprocessError) as e:
+            info["error"] = "could not read the exported frames: %s" % e
+            self.R["dissolve_export"] = info
+            self.criterion("T2.dissolve_steps", False, "not measured: " + info["error"][:160], mark)
+            return
+        finally:
+            if os.path.exists(out):
+                os.remove(out)
+        info["frames_read"] = n
+        first, last = rgb[0], rgb[-1]
+        ch = max(range(3), key=lambda c: abs(last[c] - first[c]))
+        vals = [row[ch] for row in rgb]
+        span = abs(vals[-1] - vals[0])
+        info.update(channel="RGB"[ch], pure_first=round(vals[0], 1), pure_last=round(vals[-1], 1), levels_by_frame=[round(v, 1) for v in vals])
+        if n < 2 * fps - 2 or span < 20.0:
+            info["error"] = "the export did not show two flat colours (%d frames, spread %.1f)" % (n, span)
+            self.R["dissolve_export"] = info
+            self.criterion("T2.dissolve_steps", False, "not measured: " + info["error"], mark)
+            return
+        blended = [i for i, v in enumerate(vals) if abs(v - vals[0]) > gap and abs(v - vals[-1]) > gap]
+        if not blended:
+            info.update(blended_frames=0, distinct_levels=0)
+            self.R["dissolve_export"] = info
+            self.criterion("T2.dissolve_steps", False, "no blended frame at all in the exported window: a hard cut", mark)
+            return
+        f0, f1 = blended[0], blended[-1]
+        start = max(0, f0 - 1)
+        window = vals[start:start + nfr]
+        levels = distinct_levels(window, gap)
+        info.update(blended_frames=len(blended), first_blended_index=f0, last_blended_index=f1, window_start_index=start, window_frames=len(window),
+                    distinct_levels=len(levels), window_levels=[round(v, 1) for v in window], distinct_levels_in_whole_export=len(distinct_levels(vals, gap)))
+        self.R["dissolve_export"] = info
+        self.criterion("T2.dissolve_steps", len(levels) >= cfg["dissolve_min_levels"],
+                       "%d distinct levels over %d exported frames (%d blended frames, from index %d, channel %s, levels %s)" % (len(levels), len(window), len(blended), f0, "RGB"[ch], [round(v) for v in window]), mark)
+
+
+def exported_patch_means(path, cx, cy, half):
+    """Decode every frame of an exported file and return (number of frames, [(r, g, b) mean of the square patch of side 2*half around (cx, cy)] per frame), via one ffmpeg pipe.
+    The side is even on purpose: ffmpeg rounds a crop of a 4:2:0 picture down to even sizes, so an odd side would silently change the frame size and the frame count read back."""
+    import numpy as np
+    w = 2 * half
+    p = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-vf", "crop=%d:%d:%d:%d,format=rgb24" % (w, w, cx - half, cy - half), "-f", "rawvideo", "-"], capture_output=True, timeout=300)
+    if p.returncode != 0:
+        raise ValueError("ffmpeg exit %s: %s" % (p.returncode, L.scrub(p.stderr.decode("utf-8", "replace")[-200:])))
+    arr = np.frombuffer(p.stdout, dtype=np.uint8)
+    per = w * w * 3
+    n = arr.size // per
+    if n == 0:
+        raise ValueError("ffmpeg produced no frames")
+    arr = arr[:n * per].reshape(n, w * w, 3).astype(np.float64)
+    return n, [tuple(float(x) for x in frame.mean(axis=0)) for frame in arr]
 
 
 def write_envelope(t, a, cfg, t0, phase_done, err=None, stopped=None, final=False):
@@ -429,7 +543,8 @@ def write_envelope(t, a, cfg, t0, phase_done, err=None, stopped=None, final=Fals
         actual = "%d criteria, %d failed%s" % (len(t.crit), len(failed), (": " + "; ".join(c["id"] for c in failed)) if failed else "")
     L.envelope("t2_%s_%s" % (a.app, a.tag) + ("_mini" if a.mini else ""), status,
                "all of: no crash at N=100 and N=300; RSS slope under 40 MB per still; RSS(N=300) under 12 GB; 2,400-frame H.264 at 5 fps or more with the right frame count and silent decode; "
-               "ProRes frame count; Ken Burns first/last within 1 px; mid-dissolve within 2 levels; offlineMedia empty",
+               "ProRes frame count; Ken Burns first/last within 1 px; mid-dissolve within 2 levels of the linear-light mix of its neighbours (mark amended 2026-10-20); "
+               "dissolve steps: at least 11 distinct levels over 12 exported frames (criterion added 2026-10-20); offlineMedia empty",
                actual, notes=("stage still running" if (not final and not stopped) else "A Linux CLI pass proves nothing about Windows. Timing is only valid when contaminated=no."),
                unverified_reasons=unv,
                extra={"profile": a.profile, "mini": a.mini, "criteria": t.crit, "results": t.R, "calls": t.rec.calls[-60:], "calls_total": len(t.rec.calls), "harness_error": err,

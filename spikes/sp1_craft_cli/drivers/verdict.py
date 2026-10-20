@@ -125,7 +125,7 @@ def build():
 
     row("T1 FilmCraft", "`--version`, command list, state query, describe, clean stderr, libraries", t1["filmcraft"], why_for("filmcraft"), "`t1_filmcraft_*.json`")
     row("T1 EffectCraft", "the same for `effectcraft-cli`", t1["effectcraft"], why_for("effectcraft"), "`t1_effectcraft_*.json`")
-    row("T2 FilmCraft stills", "N = 5, 20, 100 at 3600x2400 and 300 at 2880x1620: no crash, RSS slope under 40 MB per still, RSS(300) under 12 GB; 2,400-frame H.264 at 5 fps or more; ProRes frame count; Ken Burns within 1 px; dissolve within 2 levels; offlineMedia empty", t2, why_for("filmcraft"), "`t2_filmcraft_*.json`")
+    row("T2 FilmCraft stills", "N = 5, 20, 100 at 3600x2400 and 300 at 2880x1620: no crash, RSS slope under 40 MB per still, RSS(300) under 12 GB; 2,400-frame H.264 at 5 fps or more; ProRes frame count; Ken Burns within 1 px; mid-dissolve within 2 levels of the linear-light mix of its neighbours (mark amended 20 Oct 2026); at least 11 distinct levels over a 12-frame exported dissolve (criterion added 20 Oct 2026); offlineMedia empty", t2, why_for("filmcraft"), "`t2_filmcraft_*.json`")
     A("| T3 interchange | OTIO, FCP7 XML, FCPXML, EDL import and export | done in WP-10 (from the FilmCraft tarball kept in `vendor/craft/_keep/` when the keep rule allowed) | WP-10 |")
     row("T4 EffectCraft", "title, line-draw and parallax at 1080p24 with `RAYON_NUM_THREADS=1`: no OOM, PNG alpha, parallax under 3 s/frame and 6 GB, ProRes 4444 and H.264 decode, determinism", t4, why_for("effectcraft"), "`t4_effectcraft_*.json`")
     A("| T5 SoundCraft | bounce and loudness | not run: SoundCraft is unpinned and learning-only (D-12); no decision depends on it | none |")
@@ -165,6 +165,12 @@ def build():
             A("| `%s` | %s | %s | %s |" % (c["id"], str(c["measured"]).replace("|", "/"), str(c["mark"]).replace("|", "/"), "PASS" if c["pass"] else "FAIL"))
         A("")
         A("Timing validity: contaminated = %s (a run with another job's load visible is marked contaminated)." % d.get("contaminated", "?"))
+        if env["test"].startswith("t2_") and not any(c["id"] == "T2.dissolve_steps" for c in d.get("criteria", [])) and any(
+                any(c["id"] == "T2.dissolve_steps" for c in (e.get("detail") or {}).get("criteria", [])) for e in t2):
+            A("")
+            A("**Mark note:** this run is from before the T2 mark amendment of Tue 20 Oct 2026 (week-2 gate, nudge 1). Its `T2.mid_dissolve` compared the frame with the average of the "
+              "ENCODED values, which no gamma-correct compositor can pass, and it had no `T2.dissolve_steps` criterion. It was not re-run (the fallback is fetched only when the pin fails); "
+              "read it for the other criteria, and take the dissolve result from the run that has `T2.dissolve_steps`.")
         if d.get("partial"):
             A("")
             A("**Partial result:** %s" % env["actual"])

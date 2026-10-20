@@ -5,7 +5,7 @@ USAGE  python3 -I tests/sp1/make_fake_release.py --out DIR [--bug WORDS] [--bug-
 Writes DIR/www/<app>/releases/download/<tag>/<asset> for the six pins of spikes/sp1_craft_cli/config.json: SHA256SUMS.txt, the Linux tarball, the Windows
 portable zip and the MSI (all tiny stand-ins), and DIR/r8.json (the "independent" hashes, for LJ_SP1_R8). The FilmCraft and EffectCraft tarballs hold the
 stand-in CLIs of tests/sp1/fake_craft/ (a Python script as bin/<app>-cli, a zero-filled bin/<app> standing in for the GUI, a LICENSE, a small lib/ file).
---bug puts words in the FilmCraft fake_bug.txt (leak offset dropframe offline dissolve crash); --bug-effect does the same for EffectCraft
+--bug puts words in the FilmCraft fake_bug.txt (leak offset dropframe offline dissolve crash stepped encodedblend); --bug-effect does the same for EffectCraft
 (noalpha nondeterministic slow badprores nodecode oom). --bug and --bug-effect take effect only under run_sp1.sh --profile full (the lean plan does
 not extract bin/fake_bug.txt). --flip-byte APP flips one byte of that tarball AFTER the sums were written (a corrupted download).
 Serve DIR/www with: python3 -u -m http.server 0 --bind 127.0.0.1 --directory DIR/www   (the test runner does).

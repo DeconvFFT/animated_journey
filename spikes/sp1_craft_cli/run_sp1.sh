@@ -23,6 +23,8 @@
 # A REJECTED tarball (SHA-256 or size mismatch) is "stop and report", not "a test failed": --all must not fetch the 0.8.0 fallback or start EffectCraft for it.
 # So a stage returns a distinct INTERNAL code 4 for it (stage -> run_stage -> --all; the envelope says FAIL, "hash mismatch (stop and report)"). run_sp1.sh
 # itself never exits 4 to its caller: --only and --all turn it into exit 1. Only the hidden --stage-inner mode (called by run_stage, not by you) shows a 4.
+# SP1_LEDGER_EXCEPTION="reason text" (environment) replaces that generic text with the real reason, for a repeat fetch only (week-2 gate review, nudge 6; first used for the
+# 20 Oct re-run of FilmCraft 0.9.0 after the T2.mid_dissolve amendment).
 # A kept tarball in vendor/craft/_keep/ that fails the check is deleted and fetched again once in the same stage (ledger exception "kept tarball rejected").
 # A tarball the download ledger already holds is fetched again with a recorded exception ("re-fetch: the earlier copy (stage ID, t1-only) was deleted with its
 # tree": EffectCraft's --t1-only run, then --all), so --ledger-check stays at exit 0. --all prints "LEDGER PROBLEM:" and exits 1 if the ledger check fails.
@@ -208,7 +210,12 @@ stage_inner() {  # runs inside lj_with_disk
     # A tarball the ledger already holds (EffectCraft after its --t1-only run: the tree and the tarball are deleted together) is fetched again with a
     # recorded exception, so --ledger-check stays at exit 0 and the second fetch is visibly justified. An explicit exception ($1) wins.
     local exc="$1" t1flag=()
-    if [[ -z "$exc" ]]; then exc="$(py "$DRV/asset_tool.py" ledger --refetch-exception "$app" "$tag")"; fi
+    if [[ -z "$exc" ]]; then
+      exc="$(py "$DRV/asset_tool.py" ledger --refetch-exception "$app" "$tag")"
+      # SP1_LEDGER_EXCEPTION names the real reason for a repeat fetch (for example "kept copy consumed by WP-10 T3, re-run after the T2.mid_dissolve amendment"); it replaces the
+      # generic "deleted with its tree" text, and only when the ledger already holds this tarball (a first fetch needs no exception and gets none)
+      [[ -n "$exc" && -n "${SP1_LEDGER_EXCEPTION:-}" ]] && exc="$SP1_LEDGER_EXCEPTION"
+    fi
     [[ "$t1only" == 1 ]] && t1flag=(--t1only)
     say "[1/6] curl -> new empty folder ${work#"$ROOT"/}"
     [[ -n "$exc" ]] && say "      this tarball is already in the download ledger; the second fetch is recorded with the exception: $exc"
