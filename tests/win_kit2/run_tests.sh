@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # tests/win_kit2/run_tests.sh [--quick|--all]    WP-09: Windows kit B (Ken Burns at 24 fps, archive init and verify, PC colour and spec runner)
 #
-#   --quick  (at most 60 s, no downloads, no timed runs) lint and parse, the archive scripts, the runner's test modes and refusals,
+#   --quick  (37 to 47 s measured on the 4-vCPU container, about 80 CPU-seconds; the runner gives this area 90 s instead of the common 60 s, since Tue 20 Oct 2026, because the hosts differ by 1.4x to 2x:
+#            DEFAULT_AREAS in scripts/run_week2_checks.sh; no downloads, no timed runs) lint and parse, the archive scripts, the runner's test modes and refusals,
 #            quoting, the wrappers' error paths, geometry, loading and a one-second render
 #   --all    everything in --quick plus the acceptance lines of the build plan (the full Ken Burns self-test, spec_check, the MO8
 #            gate on the sub-pixel push and on the zoompan proof), the real run of run_checks_pc.ps1 on this container's ffmpeg and

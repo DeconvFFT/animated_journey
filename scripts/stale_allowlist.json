@@ -1,9 +1,9 @@
 {
  "schema": "lj-stale-allowlist/1",
- "version": 2,
+ "version": 3,
  "owner": "WP-03",
- "source": "DECISIONS.md W-29 allowlist, exactly (register v3 of 2026-10-19): (1) playbooks/music-sound.md DX-gated check ('not applied here' is body text about a broadcast anchor); (2) negations ('no co-keeper', 'Rings 1 and 2 are empty', 'there is no insider', 'Chhath is not hers', 'Minecraft is dropped', 'Minecraft was only an example'); (3) a 25 next to 'tested at 25, UNVERIFIED at 24' or 'access copy only if a 50 Hz venue judders'; (4) 'Ring 1' inside 'gathering 14'; (5) the P-class definition in playbooks/pushtimarg-world.md T1 (it defines P3, it does not permit it). Reviews and research notes are not entries: they are outside the scan (a historical record). Nothing else may be added by an implementor: a new entry is an orchestrator decision.",
- "how_it_works": "A hit is allowed when its file matches 'file' (a glob under the repo root), its row is in 'rows', and context_regex matches somewhere in the hit's line and the 'window' lines before and after it. --audit-allowlist fails on any entry that suppresses nothing, except an entry marked \"structural\": true with a structural_reason, which is printed as 'unused by design' (it suppresses nothing on today's tree: its sample line no longer hits, or no scanned line carries the words yet; --self-test still proves the entry would suppress its own sample).",
+ "source": "DECISIONS.md W-29 allowlist, exactly (register v3 of 2026-10-19): (1) playbooks/music-sound.md DX-gated check ('not applied here' is body text about a broadcast anchor); (2) negations ('no co-keeper', 'Rings 1 and 2 are empty', 'there is no insider', 'Chhath is not hers', 'Minecraft is dropped', 'Minecraft was only an example'); (3) a 25 next to 'tested at 25, UNVERIFIED at 24' or 'access copy only if a 50 Hz venue judders'; (4) 'Ring 1' inside 'gathering 14'; (5) the P-class definition in playbooks/pushtimarg-world.md T1 (it defines P3, it does not permit it). Reviews and research notes are not entries: they are outside the scan (a historical record). Nothing else may be added by an implementor: a new entry is an orchestrator decision. Amended 2026-10-20 (week-2 close-out, on the orchestrator's instruction): entries AL-6a to AL-6e allow the history of the two retired phone figures '4 Mb/s' and '36 characters' (patterns W-29.phone-ph2-cap-4mbps and W-29.phone-caption-36-chars) in research fixtures, research notes, reviews, build/evidence and build/reports; only AL-6a suppresses a hit today (two research fixture lines), the other four are structural.",
+ "how_it_works": "A hit is allowed when its file matches 'file' (a glob under the repo root), its row is in 'rows', and context_regex matches somewhere in the hit's line and the 'window' lines before and after it. --audit-allowlist fails on any entry that suppresses nothing, except an entry marked \"structural\": true with a structural_reason, which is printed as 'unused by design' (it suppresses nothing on today's tree: its sample line no longer hits, or no scanned line carries the words yet; --self-test still proves the entry would suppress its own sample). An entry's 'file' is '*' (any file), a path, or a glob (* stops at a slash, ** crosses it); --self-test plants a glob entry's samples at a concrete path under the glob (reviews/** gets reviews/sample, research/*-fixtures/** gets research/x-fixtures/sample).",
  "entries": [
   {
    "id": "AL-1-music-sound-dx-gated",
@@ -254,6 +254,119 @@
    ],
    "negative_samples": [
     "Take the maker's own photograph of a three-dimensional murti on her shelf."
+   ]
+  },
+  {
+   "id": "AL-6a-phone-figures-history-research-fixtures",
+   "file": "research/*-fixtures/**",
+   "register_row": "W-29",
+   "rows": [
+    "W-29"
+   ],
+   "context_regex": "\\b(?:PH[12]|P[12]|small copy|phone|caps?|captions?|subtitles?|lines?|FontSize|W-63|W-18|maxrate|bufsize|CRF|WhatsApp)\\b|bitrate_cap|max_chars",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "history: a research fixture that records the phone sizing before the register's amendment of 2026-10-20 (W-63 had PH2 at a 4 Mb/s cap; W-18 had 36 characters a phone caption line); the figure is the record of what was measured then, not an instruction",
+   "positive_samples": [
+    "cap bound,P2 4 Mbps cap + AAC 160k,4.00,270,281,360,374",
+    "P2 uses scale=1280:720 (lanczos) -crf 22 -maxrate 4M -bufsize 8M -level:v 3.1"
+   ],
+   "negative_samples": [
+    "The hotel uplink ran at 4 Mb/s."
+   ]
+  },
+  {
+   "id": "AL-6b-phone-figures-history-research-notes",
+   "file": "research/*.md",
+   "register_row": "W-29",
+   "rows": [
+    "W-29"
+   ],
+   "context_regex": "\\b(?:PH[12]|P[12]|small copy|phone|caps?|captions?|subtitles?|lines?|FontSize|W-63|W-18|maxrate|bufsize|CRF|WhatsApp)\\b|bitrate_cap|max_chars",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "history: the research notes quote the phone figures as they stood before the amendment of 2026-10-20 (research/mobile-delivery.md: PH2 4 Mb/s cap, 36 characters a line)",
+   "structural": true,
+   "structural_reason": "scripts/stale_patterns.json scan.exclude lists research/*.md (historical record, W-29), so no scanned line is in this path today and the entry suppresses nothing now; kept because the orchestrator asked for the history of the retired phone figures (4 Mb/s, 36 characters) to be allowlisted, so that it stays clean if the exclusion is ever narrowed. --self-test still proves the entry would suppress its own sample.",
+   "positive_samples": [
+    "3. **P2 (the small copy) is 1280x720 24p H.264, CRF 22, cap 4 Mb/s, AAC 160 kbps.**",
+    "FS 28, white, outline 2, at most 36 characters a line, two lines"
+   ],
+   "negative_samples": [
+    "The hotel uplink ran at 4 Mb/s."
+   ]
+  },
+  {
+   "id": "AL-6c-phone-figures-history-reviews",
+   "file": "reviews/**",
+   "register_row": "W-29",
+   "rows": [
+    "W-29"
+   ],
+   "context_regex": "\\b(?:PH[12]|P[12]|small copy|phone|caps?|captions?|subtitles?|lines?|FontSize|W-63|W-18|maxrate|bufsize|CRF|WhatsApp)\\b|bitrate_cap|max_chars",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "history: Fable's reviews quote the phone figures as the register held them before the amendment of 2026-10-20",
+   "structural": true,
+   "structural_reason": "scripts/stale_patterns.json scan.exclude lists reviews/ (historical record), so no scanned line is in this path today and the entry suppresses nothing now; kept because the orchestrator asked for the history of the retired phone figures (4 Mb/s, 36 characters) to be allowlisted, so that it stays clean if the exclusion is ever narrowed. --self-test still proves the entry would suppress its own sample.",
+   "positive_samples": [
+    "PH1 (1080p24, CRF 20, 8 Mb/s cap) and PH2 (720p, CRF 22, 4 Mb/s, under 64 MB) agree in W-63",
+    "W-18 says at most 36 characters a line on the phone"
+   ],
+   "negative_samples": [
+    "The hotel uplink ran at 4 Mb/s."
+   ]
+  },
+  {
+   "id": "AL-6d-phone-figures-history-build-evidence",
+   "file": "build/evidence/**",
+   "register_row": "W-29",
+   "rows": [
+    "W-29"
+   ],
+   "context_regex": "\\b(?:PH[12]|P[12]|small copy|phone|caps?|captions?|subtitles?|lines?|FontSize|W-63|W-18|maxrate|bufsize|CRF|WhatsApp)\\b|bitrate_cap|max_chars",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "history: committed test envelopes and transcripts recorded the register's old phone figures while the profile held the measured ones (WP-08, WP-11b)",
+   "structural": true,
+   "structural_reason": "scripts/stale_patterns.json scan.exclude lists build/ (the plan and evidence quote the stale strings on purpose), so no scanned line is in this path today and the entry suppresses nothing now; kept because the orchestrator asked for the history of the retired phone figures (4 Mb/s, 36 characters) to be allowlisted, so that it stays clean if the exclusion is ever narrowed. --self-test still proves the entry would suppress its own sample.",
+   "positive_samples": [
+    "FAIL parity.phone_profile_vs_register PH2 cap: profile.json 3.5 Mb/s, register 4 Mb/s",
+    "phone caption characters a line: profile.json 32, register 36 characters a line"
+   ],
+   "negative_samples": [
+    "The hotel uplink ran at 4 Mb/s."
+   ]
+  },
+  {
+   "id": "AL-6e-phone-figures-history-build-reports",
+   "file": "build/reports/**",
+   "register_row": "W-29",
+   "rows": [
+    "W-29"
+   ],
+   "context_regex": "\\b(?:PH[12]|P[12]|small copy|phone|caps?|captions?|subtitles?|lines?|FontSize|W-63|W-18|maxrate|bufsize|CRF|WhatsApp)\\b|bitrate_cap|max_chars",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "history: package reports describe the phone figures before and after the amendment of 2026-10-20",
+   "structural": true,
+   "structural_reason": "scripts/stale_patterns.json scan.exclude lists build/ (the plan and evidence quote the stale strings on purpose), so no scanned line is in this path today and the entry suppresses nothing now; kept because the orchestrator asked for the history of the retired phone figures (4 Mb/s, 36 characters) to be allowlisted, so that it stays clean if the exclusion is ever narrowed. --self-test still proves the entry would suppress its own sample.",
+   "positive_samples": [
+    "W-63 says PH2 has a 4 Mb/s cap and W-18 says at most 36 characters a line",
+    "the profile carries 32 (stricter, inside 36 characters a line)"
+   ],
+   "negative_samples": [
+    "The hotel uplink ran at 4 Mb/s."
    ]
   }
  ]

@@ -118,7 +118,7 @@ Human-facing guide: `playbooks/craft-motion.md`. Evidence and gaps: `research/cr
 
 **Good**
 - Stills fill the frame at the computed cover scale. On a gridded test card, the grid lines up at start and end within 1 px.
-- Dissolves are centred on the cut. A mid-dissolve pixel is within 2 levels of the average of its neighbours.
+- Dissolves are centred on the cut. A mid-dissolve pixel is within 2 levels of the 50/50 mix of its neighbours in linear light (FilmCraft blends in linear light; the average of the encoded values, which ffmpeg `xfade` shows, is 28 levels away on the spike's colour pair), and an exported 12-frame dissolve shows at least 11 distinct levels (SP1 T2, amended 2026-10-20). One chapter, one dissolve route.
 - The import report lists nothing unexpected, and there is no offline media.
 - The ducking shows as volume keyframes, and the music does not clip.
 - Every file has a manifest row and a hash. Every claim has a tag or a test behind it.
@@ -194,6 +194,7 @@ Sources cited in this skill (from the research note; not re-opened here):
 
 ## Changelog
 
+- 2026-10-20: Quality bar: the mid-dissolve mark is the linear-light mix of the neighbours, not the average of the encoded values, and an exported dissolve is checked for stepping (SP1 T2 amendment, week-2 gate nudge 1); the rule "one chapter, one dissolve route" is added. No other procedure, figure or check changed.
 - 2026-10-20: Stale-wording sweep (2026-10-20): the 2026-10-18 entry names the process lock as P-LOCK instead of its retired spelling (S-38). No procedure, figure or check changed.
 - 2026-10-19: Reconciled with DECISIONS.md after the her-world merge (2026-10-19): the Sat 14 Nov lock is named P-LOCK and the Craft CLI spike is SP1 (Codes); card motion limits for her idiom (W-72); Indic titles as shaped outlines with the phone type floor (W-21, W-75, W-63); PH1 and PH2 named in the finals (W-63); no deity or seva article in a Craft file (W-61, W-70); the id-to-original map stays offline because the repo is public (D-14, D-26).
 - 2026-10-18: Reconciled with DECISIONS.md (2026-10-18): frame rate 24 fps (W-14) with every guard value (`-r 24`, `d=120`, `on/119`, `fps` 24, `indeterminateTimebase` `"24"`) marked UNVERIFIED at 24 until r1, r5 and the colour-patch test are re-run; `zoompan` proofs only and MO8a/MO8b on the pre-encode master (W-41); venue file CRF 18 with a 20 Mbps cap and a Main 4.0 backup (W-17); loudness -1 dBTP with three venue masters (W-19); real material after the process lock (P-LOCK) Sat 14 Nov (D-13); Craft boundary and no Launcher (D-12); maker is the proxy (D-03, D-04); no recorded living voice or synthetic voice in the premiere cut (D-05, D-16, W-46).

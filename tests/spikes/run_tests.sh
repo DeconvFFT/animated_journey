@@ -126,8 +126,9 @@ avail="$(sed -n 's/^  free disk          Avail \([0-9]*\) MB now.*/\1/p' <<<"$ou
 want=$([ "${avail:-0}" -ge 3500 ] && echo 0 || echo 3)
 check sp3.check_live "$([ "$rc" = "$want" ] && grep -q '401,697,653 bytes' <<<"$out" && grep -q '383,295,504 bytes' <<<"$out" && ( [ "$want" = 0 ] || grep -q 'NOT RUN: needs >= 3.5 GB free' <<<"$out" ) && echo 1 || echo 0)" "Avail ${avail} MB: exit $rc (expected $want); $(grep -E '^(NOT RUN|READY)' <<<"$out" | cut -c1-120)" "prints df, the wheel size, the tarball size and 'NOT RUN: needs >= 3.5 GB free' (exit 3) when under 3,500 MB"
 LAST_OUT="$out"
-out="$(LJ_DF_CMD="$(fakedf 5000)" SP3_DRYRUN=1 bash "$ROOT/spikes/sp3_blender/run_sp3.sh" --run 2>&1)"; rc=$?
-check sp3.dry_run_ready "$([ $rc = 0 ] && grep -q '^READY: Avail 5000 MB' <<<"$out" && grep -q 'lj_with_disk 3100 sp3-blender' <<<"$out" && grep -q 'pip install --no-cache-dir bpy==5.2.2' <<<"$out" && echo 1 || echo 0)" "exit $rc; $(grep -E '^(READY|SP3_DRYRUN)' <<<"$out" | tr '\n' ' ' | cut -c1-240)" "with enough (fake) room the dry run prints the stage it would run and does none of it"
+: > "$WORK/empty_ledger.jsonl"
+out="$(LJ_SP3_LEDGER="$WORK/empty_ledger.jsonl" LJ_DF_CMD="$(fakedf 5000)" SP3_DRYRUN=1 bash "$ROOT/spikes/sp3_blender/run_sp3.sh" --run 2>&1)"; rc=$?
+check sp3.dry_run_ready "$([ $rc = 0 ] && grep -q '^READY: Avail 5000 MB' <<<"$out" && grep -q 'lj_with_disk 3100 sp3-blender' <<<"$out" && grep -q 'pip install --no-cache-dir --require-hashes -r spikes/sp3_blender/requirements-bpy.txt' <<<"$out" && echo 1 || echo 0)" "exit $rc; $(grep -E '^(READY|SP3_DRYRUN)' <<<"$out" | tr '\n' ' ' | cut -c1-240)" "with enough (fake) room the dry run prints the stage it would run and does none of it"
 LAST_OUT="$out"
 out="$(LJ_DF_CMD="$(fakedf 3499)" bash "$ROOT/spikes/sp3_blender/run_sp3.sh" --run 2>&1)"; rc=$?
 check sp3.run_refused_under_3500 "$([ $rc = 3 ] && grep -q 'NOT RUN: needs >= 3.5 GB free (Avail 3499 MB; short by 1 MB)' <<<"$out" && grep -q 'Nothing was started and nothing was forced' <<<"$out" && [ ! -d "$SCRATCH_ROOT/sp3" ] && echo 1 || echo 0)" "exit $rc; $(grep -E '^NOT RUN' <<<"$out" | cut -c1-120)" "--run at 3,499 MB is refused (exit 3), nothing started, no scratch folder made"
@@ -136,6 +137,70 @@ python3 -c "import py_compile,sys; py_compile.compile(sys.argv[1], cfile=sys.arg
 check sp3.py_compile "$([ $rc = 0 ] && echo 1 || echo 0)" "py_compile of research/production-scale-fixtures/followup2-s3-kitchen-standin.py (reused, not copied; the acceptance line python3 -m py_compile gives the same answer)" "the reused scene script parses"
 bash -n "$ROOT/research/production-scale-fixtures/followup2-s3-run-sweep.sh" 2>/dev/null; rc=$?
 check sp3.sweep_referenced "$([ $rc = 0 ] && ! grep -q 'run_sp3.*followup2-s3-run-sweep.sh --run' "$ROOT/spikes/sp3_blender/run_sp3.sh" && echo 1 || echo 0)" "followup2-s3-run-sweep.sh parses (bash -n) and is referenced, not executed" "the stale sweep script is documented, not run"
+
+# SP3: the cleanup regression (test_cleanup.sh: run_inner runs to its end against a stand-in python; PASS means exit 0, the work folder gone, no "unbound variable"). It needs no disk and no network; it also catches a
+# clean run that ends with a non-zero status, which the edit of 20 Oct (the hash-pinned install and the ledger row) once did.
+out="$(bash "$ROOT/spikes/sp3_blender/test_cleanup.sh" 2>&1)"; rc=$?
+check sp3.cleanup_regression "$([ $rc = 0 ] && grep -q '^PASS: the work folder is removed' <<<"$out" && echo 1 || echo 0)" "exit $rc; $(head -1 <<<"$out" | cut -c1-160)" "run_sp3.sh --run-inner removes its work folder and exits 0 when it runs to the end"
+LAST_OUT="$out"
+# SP3: the pip install is hash-pinned and its fetches are on the download ledger (gate w2, nudge 6; SP3 review nudge 1)
+out="$(python3 -I "$ROOT/spikes/sp3_blender/ledger_row.py" check 2>&1)"; rc=$?
+check sp3.requirements_pinned "$([ $rc = 0 ] && grep -q '12 pinned requirements, --require-hashes line present' <<<"$out" && grep -q '12 compared with the pip report' <<<"$out" && grep -q 'OK$' <<<"$out" && echo 1 || echo 0)" "exit $rc; $(cut -c1-230 <<<"$out")" "requirements-bpy.txt: the --require-hashes line, 12 requirements pinned with == and one sha256 each, the same names, versions, files and digests as the pip report of 20 Oct 2026"
+LAST_OUT="$out"
+R="$ROOT/spikes/sp3_blender/requirements-bpy.txt"
+sed 's/6ffa07666f8da0eef81d149934a626d0d95fbd6838432a33e66245423a9062c0/6ffa07666f8da0eef81d149934a626d0d95fbd6838432a33e66245423a9062c1/' "$R" > "$WORK/req_digest.txt"
+grep -v '^--require-hashes$' "$R" > "$WORK/req_noflag.txt"
+awk '/^numpy==/ { print "numpy==2.5.4"; getline; next } { print }' "$R" > "$WORK/req_nohash.txt"
+bad=""
+for v in digest noflag nohash; do python3 -I "$ROOT/spikes/sp3_blender/ledger_row.py" check --requirements "$WORK/req_$v.txt" >/dev/null 2>&1; [ $? = 1 ] || bad="$bad $v"; done
+check sp3.requirements_planted_defects "$([ -z "$bad" ] && echo 1 || echo 0)" "a changed digest, a missing --require-hashes line and a requirement without a hash each make the check exit 1; not caught:${bad:- none}" "each planted defect is refused"
+FW="$WORK/pipfake"; mkdir -p "$FW"
+python3 -I - "$FW" <<'PY'
+import hashlib, sys, zipfile
+d = sys.argv[1]
+whl = d + "/ljfake-1.0-py3-none-any.whl"
+with zipfile.ZipFile(whl, "w") as z:
+    z.writestr("ljfake/__init__.py", "X = 1\n")
+    z.writestr("ljfake-1.0.dist-info/METADATA", "Metadata-Version: 2.1\nName: ljfake\nVersion: 1.0\n")
+    z.writestr("ljfake-1.0.dist-info/WHEEL", "Wheel-Version: 1.0\nGenerator: lj\nRoot-Is-Purelib: true\nTag: py3-none-any\n")
+    z.writestr("ljfake-1.0.dist-info/RECORD", "")
+h = hashlib.sha256(open(whl, "rb").read()).hexdigest()
+open(d + "/good.txt", "w").write("--require-hashes\nljfake==1.0 \\\n    --hash=sha256:%s\n" % h)
+open(d + "/bad.txt", "w").write("--require-hashes\nljfake==1.0 \\\n    --hash=sha256:%s\n" % ("0" * 64))
+open(d + "/nohash.txt", "w").write("--require-hashes\nljfake==1.0\n")
+PY
+pipx() { python3 -m pip install --dry-run --no-index --find-links "$FW" --disable-pip-version-check --require-hashes -r "$FW/$1.txt" 2>&1; }
+g="$(pipx good)"; grc=$?; b="$(pipx bad)"; brc=$?; n="$(pipx nohash)"; nrc=$?
+check sp3.pip_require_hashes_mode "$([ $grc = 0 ] && [ $brc != 0 ] && [ $nrc != 0 ] && grep -q 'DO NOT MATCH THE HASHES' <<<"$b" && grep -q 'Hashes are required' <<<"$n" && echo 1 || echo 0)" "offline, a tiny local wheel and this machine's pip: the right digest installs (exit $grc), a wrong digest is refused (exit $brc, DO NOT MATCH THE HASHES), a requirement with no hash is refused (exit $nrc); so the line run_sp3.sh uses does what it says" "pip --require-hashes accepts the pinned digest and refuses a mismatch or a missing hash"
+L2="$WORK/ledger_pip.jsonl"; : > "$L2"
+a1="$(python3 -I "$ROOT/spikes/sp3_blender/ledger_row.py" append --ledger "$L2" --stage t1 --date 2026-10-20 2>&1)"; r1=$?
+a2="$(python3 -I "$ROOT/spikes/sp3_blender/ledger_row.py" append --ledger "$L2" --stage t2 --date 2026-10-21 2>&1)"; r2=$?; n2="$(wc -l < "$L2")"
+a3="$(python3 -I "$ROOT/spikes/sp3_blender/ledger_row.py" append --ledger "$L2" --stage t3 --date 2026-10-21 --exception "test reason: confirm a fix" 2>&1)"; r3=$?; n3="$(wc -l < "$L2")"
+check sp3.second_fetch_needs_a_reason "$([ $r1 = 0 ] && [ $r2 = 3 ] && [ "$n2" = 1 ] && [ $r3 = 0 ] && [ "$n3" = 2 ] && [ "$(python3 -I "$ROOT/spikes/sp3_blender/ledger_row.py" count --ledger "$L2")" = 2 ] && [ "$(jq -r '.fetch' <<<"$(sed -n 2p "$L2")")" = 2 ] && [ "$(jq -r '.bytes' <<<"$(sed -n 2p "$L2")")" = 428225665 ] && echo 1 || echo 0)" "first fetch recorded (exit $r1); a second without a reason is refused (exit $r2, ledger still $n2 line); with a reason it is recorded as fetch 2 (exit $r3, $n3 lines, 428,225,665 bytes a row)" "a later fetch of the bpy wheel set needs a recorded exception, as for a Craft tarball"
+PE="$WORK/pip_ev"; mkdir -p "$PE"      # an empty evidence folder: the stage envelope planted by the test above must not leak into this one
+out="$(python3 -I "$SP/check_ledger.py" --wp10 "$L2" --wp07 "$L/wp07/none.jsonl" --disk-ledger "$L/scratch/none.jsonl" --evidence "$PE" 2>&1)"; rc=$?
+sed -e 's/"exception": "test reason: confirm a fix"/"exception": ""/' "$L2" > "$WORK/ledger_pip_bad.jsonl"
+out2="$(python3 -I "$SP/check_ledger.py" --wp10 "$WORK/ledger_pip_bad.jsonl" --wp07 "$L/wp07/none.jsonl" --disk-ledger "$L/scratch/none.jsonl" --evidence "$PE" 2>&1)"; rc2=$?
+check ledger.pip_rows_counted_and_held_to_the_rule "$([ $rc = 0 ] && grep -q ' 816\.[0-9] MB of the 2048 MB' <<<"$(sed -n 1p <<<"$out")" && grep -q 'bpy-5.2.2-wheelset-cp313-linux-x86_64 .*pip wheel set from PyPI, 2 fetch' <<<"$out" && [ $rc2 = 1 ] && grep -q 'bpy-5.2.2-wheelset-cp313-linux-x86_64 was fetched 2 times and a later fetch has no recorded exception' <<<"$out2" && echo 1 || echo 0)" "two pip fetches count 816.7 MB toward the total (exit $rc, $(sed -n 1p <<<"$out" | cut -c1-150)); the same ledger with the reason removed exits $rc2" "pip fetches count toward the 2 GB allowance and a repeat without a reason is a problem"
+LAST_OUT="$out"
+out="$(python3 -I "$SP/check_ledger.py" 2>&1)"; rc=$?
+mb="$(sed -n '1s/.*, \([0-9.]*\) MB of the 2048 MB allowance.*/\1/p' <<<"$out")"
+check ledger.real_includes_pip_fetches "$([ $rc = 0 ] && grep -q 'bpy-5.2.2-wheelset-cp313-linux-x86_64 .*pip wheel set from PyPI, 2 fetch' <<<"$out" && awk -v m="${mb:-0}" 'BEGIN { exit !(m >= 1400 && m < 2048) }' && echo 1 || echo 0)" "the real ledgers: exit $rc, ${mb:-?} MB of the 2048 MB allowance, the bpy wheel set listed with its 2 fetches (it read 623.6 MB before the pip fetches were put on the ledger)" "the allowance check reads about 1.5 GB, not 0.6 GB"
+LAST_OUT="$out"
+printf '%s\n' '{"app":"bpy","asset":"bpy-5.2.2-wheelset-cp313-linux-x86_64","bytes":428225665,"date_utc":"2026-10-20","exception":"","fetch":1,"kind":"pip-wheel-set","sha256":"x","stage":"t1","tag":"5.2.2"}' > "$WORK/ledger_one.jsonl"
+out="$(LJ_SP3_LEDGER="$WORK/ledger_one.jsonl" LJ_DF_CMD="$(fakedf 5000)" bash "$ROOT/spikes/sp3_blender/run_sp3.sh" --run 2>&1)"; rc=$?
+out2="$(LJ_SP3_LEDGER="$WORK/ledger_one.jsonl" LJ_DF_CMD="$(fakedf 5000)" SP3_DRYRUN=1 SP3_FETCH_REASON="test reason" bash "$ROOT/spikes/sp3_blender/run_sp3.sh" --run 2>&1)"; rc2=$?
+check sp3.run_refused_without_a_reason "$([ $rc = 3 ] && grep -q 'NOT RUN: the download ledger already holds 1 fetch(es) of the bpy wheel set' <<<"$out" && grep -q 'Nothing was started and nothing was forced' <<<"$out" && [ ! -d "$SCRATCH_ROOT/sp3" ] && [ $rc2 = 0 ] && grep -q '^READY: Avail 5000 MB' <<<"$out2" && echo 1 || echo 0)" "with one fetch already on the ledger, --run at a fake 5,000 MB is refused without SP3_FETCH_REASON (exit $rc, nothing started) and the dry run with a reason is READY (exit $rc2)" "a further fetch of the bpy wheel set needs a reason before anything is downloaded"
+LAST_OUT="$out"
+# the install step of run_inner itself, offline: a tiny local wheel stands in for bpy (PIP_NO_INDEX and PIP_FIND_LINKS point pip at it, LJ_SP3_REQ at a hash-pinned file for it);
+# no network, no 402 MB wheel, no bpy. A wrong digest must stop the install and leave nothing behind; the right digest installs, the fetch goes on the (temporary) ledger, and the run then stops at the bpy import
+# because the stand-in is not bpy (exit 1).
+SCR="$WORK/sp3scr"; mkdir -p "$SCR"; : > "$WORK/inner_ledger.jsonl"
+out="$(PIP_NO_INDEX=1 PIP_FIND_LINKS="$FW" LJ_SP3_REQ="$FW/bad.txt" LJ_SP3_LEDGER="$WORK/inner_ledger.jsonl" LJ_SCRATCH="$SCR" bash "$ROOT/spikes/sp3_blender/run_sp3.sh" --run-inner 2>&1)"; rc=$?
+out2="$(PIP_NO_INDEX=1 PIP_FIND_LINKS="$FW" LJ_SP3_REQ="$FW/good.txt" LJ_SP3_LEDGER="$WORK/inner_ledger.jsonl" LJ_SCRATCH="$SCR" bash "$ROOT/spikes/sp3_blender/run_sp3.sh" --run-inner 2>&1)"; rc2=$?
+check sp3.inner_install_is_hash_checked "$([ $rc = 3 ] && grep -q 'pip install (hash-pinned) failed' <<<"$out" && [ ! -d "$SCR/sp3" ] && [ $rc2 = 1 ] && grep -q 'pip compared every download with the sha256' <<<"$out2" && grep -q 'the fetch is on the download ledger' <<<"$out2" && grep -q 'bpy did not import' <<<"$out2" && [ ! -d "$SCR/sp3" ] && [ "$(wc -l < "$WORK/inner_ledger.jsonl")" = 1 ] && echo 1 || echo 0)" "run_inner with a wrong digest: exit $rc (the install stopped, no work folder left); with the right digest: the install ran, the fetch was recorded (ledger $(wc -l < "$WORK/inner_ledger.jsonl") row), then exit $rc2 at the bpy import because the stand-in is not bpy, and the work folder was removed" "the install step of run_sp3.sh uses --require-hashes, records its fetch on the ledger and cleans up on both paths"
+LAST_OUT="$out
+$out2"
 
 # SP4
 L1="$WORK/job_quick.log"
@@ -158,6 +223,28 @@ LAST_OUT="$o"
 # the verdict table and the evidence
 out="$(python3 -I "$T/check_verdicts.py" 2>&1)"; rc=$?
 check verdicts.complete "$([ $rc = 0 ] && echo 1 || echo 0)" "$out" "VERDICTS-W2.md has five SP rows, six T lines under SP1 (T5 and T6 not run) and no row without an existing evidence path"
+# one writer per verdict file (gate w2, nudge 6): VERDICTS-W2.md is generated from spikes/verdicts/ (template.md and SP1.md to SP5.md)
+AS="$ROOT/spikes/verdicts/assemble.py"
+out="$(python3 -I "$AS" check 2>&1)"; rc=$?
+check verdicts.assembled "$([ $rc = 0 ] && echo 1 || echo 0)" "$(head -1 <<<"$out" | cut -c1-200)" "VERDICTS-W2.md is exactly what spikes/verdicts/template.md and the five spike files assemble to (nobody edited the generated file by hand, and no part changed without a new assembly)"
+LAST_OUT="$out"
+VT="$WORK/verdicts_try"; mkdir -p "$VT"
+cp "$ROOT/spikes/VERDICTS-W2.md" "$VT/V.md"
+python3 -I "$AS" import --verdicts "$VT/V.md" --dir "$VT/parts" >/dev/null 2>&1; i1=$?
+python3 -I "$AS" --verdicts "$VT/V2.md" --dir "$VT/parts" >/dev/null 2>&1; i2=$?
+# the round trip keeps every line of the file except the generated-file banner (and the order of the SP3 and SP4 "does not say" bullets)
+rt="$(diff <(grep -v '^<!-- GENERATED by' "$VT/V.md" | sort) <(grep -v '^<!-- GENERATED by' "$VT/V2.md" | sort) | wc -l)"
+python3 -I "$AS" check --verdicts "$VT/V2.md" --dir "$VT/parts" >/dev/null 2>&1; c0=$?
+sed -e 's/^| \*\*SP2\*\* | /| **SP2** | HAND EDIT /' "$VT/V2.md" > "$VT/V3.md"
+python3 -I "$AS" check --verdicts "$VT/V3.md" --dir "$VT/parts" >/dev/null 2>&1; c1=$?
+cp -r "$VT/parts" "$VT/parts_bad1"; sed -i 's/^| \*\*SP2\*\* /| **SP3** /' "$VT/parts_bad1/SP2.md"
+python3 -I "$AS" --verdicts "$VT/V4.md" --dir "$VT/parts_bad1" >/dev/null 2>&1; b1=$?
+cp -r "$VT/parts" "$VT/parts_bad2"; printf '<!-- part: tests -->\n| **T1** x |\n' >> "$VT/parts_bad2/SP2.md"
+python3 -I "$AS" --verdicts "$VT/V5.md" --dir "$VT/parts_bad2" >/dev/null 2>&1; b2=$?
+cp -r "$VT/parts" "$VT/parts_bad3"; printf '<!-- part: rule -->\n* SP1, a rule in the wrong spike file.\n' >> "$VT/parts_bad3/SP2.md"
+python3 -I "$AS" --verdicts "$VT/V6.md" --dir "$VT/parts_bad3" >/dev/null 2>&1; b3=$?
+check verdicts.assemble_machinery "$([ $i1 = 0 ] && [ $i2 = 0 ] && [ "$rt" = 0 ] && [ $c0 = 0 ] && [ $c1 = 1 ] && [ $b1 = 2 ] && [ $b2 = 2 ] && [ $b3 = 2 ] && [ ! -e "$VT/V4.md" ] && echo 1 || echo 0)" "on a copy: import $i1, assemble $i2, the round trip differs in $rt sorted line(s) (0 expected: the banner is set aside, and the SP3 and SP4 bullets may swap places, which sorting hides), check of the clean result $c0, of a hand-edited result $c1 (1 expected), a row in the wrong file $b1, test rows outside SP1 $b2, a rule in the wrong file $b3 (2 expected each, nothing written)" "the assembler splits and joins without losing a line, refuses a hand edit and refuses a part in the wrong file"
+LAST_OUT=""
 bad="$(python3 -I - "$EVID" <<'PY'
 import glob, json, os, sys
 d = sys.argv[1]; bad = []

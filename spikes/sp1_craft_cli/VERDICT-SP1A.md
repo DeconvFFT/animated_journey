@@ -10,7 +10,7 @@
 |---|---|---|---|
 | T1 FilmCraft | `--version`, command list, state query, describe, clean stderr, libraries | PASS | `t1_filmcraft_*.json` |
 | T1 EffectCraft | the same for `effectcraft-cli` | PASS | `t1_effectcraft_*.json` |
-| T2 FilmCraft stills | N = 5, 20, 100 at 3600x2400 and 300 at 2880x1620: no crash, RSS slope under 40 MB per still, RSS(300) under 12 GB; 2,400-frame H.264 at 5 fps or more; ProRes frame count; Ken Burns within 1 px; dissolve within 2 levels; offlineMedia empty | FAIL | `t2_filmcraft_*.json` |
+| T2 FilmCraft stills | N = 5, 20, 100 at 3600x2400 and 300 at 2880x1620: no crash, RSS slope under 40 MB per still, RSS(300) under 12 GB; 2,400-frame H.264 at 5 fps or more; ProRes frame count; Ken Burns within 1 px; mid-dissolve within 2 levels of the linear-light mix of its neighbours (mark amended 20 Oct 2026); at least 11 distinct levels over a 12-frame exported dissolve (criterion added 20 Oct 2026); offlineMedia empty | PASS | `t2_filmcraft_*.json` |
 | T3 interchange | OTIO, FCP7 XML, FCPXML, EDL import and export | done in WP-10 (from the FilmCraft tarball kept in `vendor/craft/_keep/` when the keep rule allowed) | WP-10 |
 | T4 EffectCraft | title, line-draw and parallax at 1080p24 with `RAYON_NUM_THREADS=1`: no OOM, PNG alpha, parallax under 3 s/frame and 6 GB, ProRes 4444 and H.264 decode, determinism | PASS | `t4_effectcraft_*.json` |
 | T5 SoundCraft | bounce and loudness | not run: SoundCraft is unpinned and learning-only (D-12); no decision depends on it | none |
@@ -20,7 +20,9 @@
 
 R8 decision rule (research/craft-motion.md): if T2 and T4 pass, agents may render drafts and chapters with the Craft CLIs in the container (still producing OTIO and ffmpeg fallbacks); if T2 fails, FilmCraft stays maker-side and the container renders with ffmpeg and code; if T4 fails on memory or speed, EffectCraft is limited to titles and line-draw on the maker's PC.
 
-**Outcome (per app):** FilmCraft: T2 is FAIL, so FilmCraft stays maker-side and the container renders with ffmpeg and code; EffectCraft: T4 passed, so titles, line-draw and parallax drafts are allowed in the container.
+**Outcome: agents may render drafts and chapters with the Craft CLIs in the container.** T2 and T4 passed on Linux CPU. Every chapter still keeps its OTIO and ffmpeg fallback (D-11, D-12), and nothing here says the apps run on the maker's PC.
+
+**This T2 pass rests on the mark as amended on Tue 20 Oct 2026** (week-2 gate, nudge 1): the first run of the same pin (01:20 UTC) failed `T2.mid_dissolve` by 28.50 levels, because the first wording compared the frame with the average of the ENCODED values, which no gamma-correct compositor can pass; the mark became the 50/50 mix in linear light (same 2-level tolerance), `T2.dissolve_steps` was added, and the one 0.9.0 stage was re-run. The first run's envelopes are kept in `build/evidence/wp07/first-mark/`. The fallback 0.8.0 was not re-run (it is fetched only when the pin fails). **Practical rule: one chapter, one dissolve route.** FilmCraft blends in linear light; ffmpeg `xfade` and headless Chromium blend the encoded values, so the same dissolve has a different mid-tone on each (`build/evidence/wp07/dissolve_routes.json`, from `drivers/dissolve_routes.py`).
 
 ## 3. Measurements
 
@@ -33,7 +35,7 @@ R8 decision rule (research/craft-motion.md): if T2 and T4 pass, agents may rende
 | `T2.rss_slope` | 26.31 MB per still (RSS(100) 3342 - RSS(20) 1237 over 80 stills) | under 40 MB per still | PASS |
 | `T2.rss_n300` | 5426 MB | under 12288 MB (watchdog kills at 10240 MB) | PASS |
 | `T2.h264_completes` | exit 0 after 204 s | export finishes without crash, hang or the 10 GB kill | PASS |
-| `T2.h264_speed` | 11.76 fps (2400 frames in 204 s) | at least 5 fps, i.e. under 480 s for 2400 frames (R8 pass mark scaled from 3,000 frames at 25 fps) | PASS |
+| `T2.h264_speed` | 11.76 fps (2400 frames in 204 s) | at least 5 fps, i.e. under 480 s for 2400 frames (R8 pass mark scaled to 2,400 frames at this film's 24 fps from R8's 3,000-frame figure) | PASS |
 | `T2.h264_frame_count` | 2400 counted, 2400 expected, rate 24/1 | ffprobe frame count equals expected | PASS |
 | `T2.h264_decode_silent` | '' | ffmpeg -v error -i out -f null - prints nothing | PASS |
 | `T2.offline_media_empty` | [] | offlineMedia: [] in the export result | PASS |
@@ -44,23 +46,26 @@ R8 decision rule (research/craft-motion.md): if T2 and T4 pass, agents may rende
 
 Timing validity: contaminated = yes (a run with another job's load visible is marked contaminated).
 
+**Mark note:** this run is from before the T2 mark amendment of Tue 20 Oct 2026 (week-2 gate, nudge 1). Its `T2.mid_dissolve` compared the frame with the average of the ENCODED values, which no gamma-correct compositor can pass, and it had no `T2.dissolve_steps` criterion. It was not re-run (the fallback is fetched only when the pin fails); read it for the other criteria, and take the dissolve result from the run that has `T2.dissolve_steps`.
+
 ### t2_filmcraft_v0.9.0 (lean profile, 2026-10-20)
 
 | Criterion | Measured | Mark | Result |
 |---|---|---|---|
 | `T2.no_crash_n100_large` | no crash or hang | no crash or hang at N=100 (3600x2400) | PASS |
 | `T2.no_crash_n300_conformed` | no crash or hang | no crash or hang at N=300 (2880x1620) | PASS |
-| `T2.rss_slope` | 25.84 MB per still (RSS(100) 3342 - RSS(20) 1275 over 80 stills) | under 40 MB per still | PASS |
+| `T2.rss_slope` | 25.74 MB per still (RSS(100) 3342 - RSS(20) 1283 over 80 stills) | under 40 MB per still | PASS |
 | `T2.rss_n300` | 5426 MB | under 12288 MB (watchdog kills at 10240 MB) | PASS |
-| `T2.h264_completes` | exit 0 after 205 s | export finishes without crash, hang or the 10 GB kill | PASS |
-| `T2.h264_speed` | 11.68 fps (2400 frames in 205 s) | at least 5 fps, i.e. under 480 s for 2400 frames (R8 pass mark scaled from 3,000 frames at 25 fps) | PASS |
+| `T2.h264_completes` | exit 0 after 251 s | export finishes without crash, hang or the 10 GB kill | PASS |
+| `T2.h264_speed` | 9.56 fps (2400 frames in 251 s) | at least 5 fps, i.e. under 480 s for 2400 frames (R8 pass mark, scaled to 2,400 frames at this film's 24 fps from R8's 3,000-frame figure) | PASS |
 | `T2.h264_frame_count` | 2400 counted, 2400 expected, rate 24/1 | ffprobe frame count equals expected | PASS |
 | `T2.h264_decode_silent` | '' | ffmpeg -v error -i out -f null - prints nothing | PASS |
 | `T2.offline_media_empty` | [] | offlineMedia: [] in the export result | PASS |
 | `T2.prores_frame_count` | 24 counted, 24 expected, codec prores HQ | ffprobe frame count equals 1 s x 24 fps | PASS |
 | `T2.prores_decode_silent` | '' | decode silent | PASS |
 | `T2.kenburns_positions` | worst error 0.63 px at the first and last keyframes | within 1 px of the computed positions | PASS |
-| `T2.mid_dissolve` | 28.50 levels at frame offset +0 (neighbours (201, 70, 60) and (40, 91, 200), average [120, 80, 130]) | within 2 levels of the average of the neighbours | FAIL |
+| `T2.mid_dissolve` | 0.47 levels at frame offset +0 (neighbours (201, 70, 60) and (40, 91, 200), linear-light mix [149, 81, 151]; the average of the encoded values [120, 80, 130] would be 28.50 levels away) | within 2 levels of the 50/50 mix of the neighbours in linear light (sRGB transfer function) | PASS |
+| `T2.dissolve_steps` | 12 distinct levels over 12 exported frames (11 blended frames, from index 19, channel R, levels [199, 193, 186, 177, 169, 160, 148, 137, 126, 111, 94, 74]) | at least 11 distinct levels over the 12 exported frames that start one frame before the first blended frame | PASS |
 
 Timing validity: contaminated = no (a run with another job's load visible is marked contaminated).
 
@@ -84,13 +89,13 @@ Timing validity: contaminated = yes (a run with another job's load visible is ma
 
 - `release_assets.json` (fetched 2026-10-20): usable = True; independent (R8) hash comparison: **all match** over 6 values; sizes against the plan's HEAD figures: **all match**.
 - PhotoCraft, VectorCraft and LightCraft have no independent value; their hashes prove integrity only. SoundCraft: not pinned, not fetched.
-- Download ledger: 5 tarball fetches recorded; effectcraft-0.11.1-linux-x86_64.tar.gz (effectcraft-v0.11.1, 61.1 MB); filmcraft-0.9.0-linux-x86_64.tar.gz (filmcraft-v0.9.0, 66.5 MB); filmcraft-0.9.0-linux-x86_64.tar.gz (filmcraft-v0.9.0, 66.5 MB); filmcraft-0.8.0-linux-x86_64.tar.gz (filmcraft-v0.8.0, 66.5 MB); effectcraft-0.11.1-linux-x86_64.tar.gz (effectcraft-v0.11.1, 61.1 MB).
+- Download ledger: 6 tarball fetches recorded; effectcraft-0.11.1-linux-x86_64.tar.gz (effectcraft-v0.11.1, 61.1 MB); filmcraft-0.9.0-linux-x86_64.tar.gz (filmcraft-v0.9.0, 66.5 MB); filmcraft-0.9.0-linux-x86_64.tar.gz (filmcraft-v0.9.0, 66.5 MB); filmcraft-0.8.0-linux-x86_64.tar.gz (filmcraft-v0.8.0, 66.5 MB); effectcraft-0.11.1-linux-x86_64.tar.gz (effectcraft-v0.11.1, 61.1 MB); filmcraft-0.9.0-linux-x86_64.tar.gz (filmcraft-v0.9.0, 66.5 MB).
 
 ## 5. Disk
 
 - `stage_effectcraft-v0.11.1`: PASS; Avail start 13459 MB, minimum 13322 MB, end 13457 MB; planned 300 MB; profile lean.
 - `stage_filmcraft-v0.8.0`: FAIL; Avail start 13459 MB, minimum 13294 MB, end 13459 MB; planned 350 MB; profile lean.
-- `stage_filmcraft-v0.9.0`: FAIL; Avail start 14547 MB, minimum 14382 MB, end 14480 MB; planned 350 MB; profile lean.
+- `stage_filmcraft-v0.9.0`: PASS; Avail start 14533 MB, minimum 14366 MB, end 14464 MB; planned 350 MB; profile lean.
 
 ## 6. What this does not say
 

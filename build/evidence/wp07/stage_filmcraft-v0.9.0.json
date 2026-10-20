@@ -1,19 +1,19 @@
 {
-  "actual": "exit 1",
+  "actual": "exit 0",
   "date_utc": "2026-10-20",
   "detail": {
     "avail_drop_includes_other_writers": true,
-    "avail_drop_mb": 165,
-    "df_after_mb": 14480,
+    "avail_drop_mb": 167,
+    "df_after_mb": 14464,
     "df_back_within_10mb_of_start_plus_kept": true,
-    "df_before_mb": 14547,
-    "df_delta_mb": 67,
+    "df_before_mb": 14533,
+    "df_delta_mb": 69,
     "df_note": "the volume is shared; a concurrent writer moves this figure, the vendor listing below is the exact one",
-    "exit_code": 1,
+    "exit_code": 0,
     "guard_ledger": {
-      "exit": 1,
+      "exit": 0,
       "lock_wait_s": 0,
-      "status": "command-failed"
+      "status": "ok"
     },
     "kept_mb": 66.5,
     "kept_tarballs": [
@@ -24,9 +24,9 @@
     "vendor_craft_other_than_keep": []
   },
   "disk": {
-    "avail_mb_end": 14480,
-    "avail_mb_min": 14382,
-    "avail_mb_start": 14547,
+    "avail_mb_end": 14464,
+    "avail_mb_min": 14366,
+    "avail_mb_start": 14533,
     "floor_mb": 400,
     "hard_floor_mb": 250,
     "planned_write_mb": 350
@@ -43,7 +43,7 @@
   "package": "WP-07",
   "schema": "lj-evidence/1",
   "stage": "",
-  "status": "FAIL",
+  "status": "PASS",
   "test": "stage_filmcraft-v0.9.0",
   "unverified_reasons": []
 }

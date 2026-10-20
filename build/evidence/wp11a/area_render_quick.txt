@@ -1,12 +1,12 @@
-# area=render entry=WP-04 mode=quick result=PASS exit=0 seconds=33 masked_values=0
-PASS     args_usage               3.7s  19 of 19 cases as wanted
+# area=render entry=WP-04 mode=quick result=PASS exit=0 seconds=30 masked_values=0
+PASS     args_usage               3.8s  19 of 19 cases as wanted
 PASS     strings_file             0.0s  ok
 PASS     libs_lock                0.1s  ok (13 file records, 6 pending script fonts)
-PASS     fetch_libs_offline       0.4s  exit 3; stderr (first lines): fetch_libs: npm failed (exit 1): npm view gsap version --json | npm error code ECONNREFUSED | npm error syscall connect | npm error errno ECONNREFUSED | npm error FetchError: request to http://127.0.0
+PASS     fetch_libs_offline       0.5s  exit 3; stderr (first lines): fetch_libs: npm failed (exit 1): npm view gsap version --json | npm error code ECONNREFUSED | npm error syscall connect | npm error errno ECONNREFUSED | npm error FetchError: request to http://127.0.0
 PASS     a9_path_safety           0.3s  25 checks, 0 wrong
-PASS     a8_errors               15.2s  10 checks, 0 failed
-PASS     a10_alpha                4.2s  with --alpha: 'srgba false', corner alpha 0, text alpha 255; without: 'srgb true'
-PASS     colour_patches           1.9s  [{"want": [255, 0, 0], "all_equal": true, "sample": [255, 0, 0]}, {"want": [128, 128, 128], "all_equal": true, "sample": [128, 128, 128]}, {"want": [224, 172, 140], "all_equal": true, "sample": [224, 172, 140]}]
+PASS     a8_errors               13.4s  10 checks, 0 failed
+PASS     a10_alpha                4.0s  with --alpha: 'srgba false', corner alpha 0, text alpha 255; without: 'srgb true'
+PASS     colour_patches           1.8s  [{"want": [255, 0, 0], "all_equal": true, "sample": [255, 0, 0]}, {"want": [128, 128, 128], "all_equal": true, "sample": [128, 128, 128]}, {"want": [224, 172, 140], "all_equal": true, "sample": [224, 172, 140]}]
 PASS     chain_parity             0.4s  differences: none; with the file: h264	chains.json:h264_venue	mp4; without: h264	built-in	mp4
-PASS     a1_determinism_lite      5.7s  6/6 frames identical
-summary: {"PASS": 10} in 33 s
+PASS     a1_determinism_lite      5.0s  6/6 frames identical
+summary: {"PASS": 10} in 30 s

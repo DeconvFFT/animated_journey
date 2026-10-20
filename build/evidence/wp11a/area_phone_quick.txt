@@ -1,7 +1,7 @@
-# area=phone entry=WP-08 mode=quick result=PASS exit=0 seconds=38 masked_values=0
+# area=phone entry=WP-08 mode=quick result=PASS exit=0 seconds=30 masked_values=0
 PASS       static_compile                           all compile and parse
 PASS       json_shape                               profile and thresholds are well formed: phone_1080 CRF 20 maxrate 8M faststart no metadata; caption FontSize 28 vs venue 23, 32 characters, 2 lines, bottom <= 88%
-PASS       lint_allowlist_clean                     lint_strings: 15 file(s) scanned, 0 finding(s)
+PASS       lint_allowlist_clean                     lint_strings: 13 file(s) scanned, 0 finding(s)
 PASS       lint_allowlist_negative_controls         latin_srt_line=1, indic_in_source=1, no_marks_key=1, latin_family_phrase=1, allowlisted_lines_pass=0
 PASS       encode_plan_relative_names               exit 0; filter: ass=caps.ass:fontsdir=fonts,scale=out_color_matrix=bt709:out_range=tv,format=yuv420p,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:rang
 PASS       encode_dry_run_writes_nothing            none written

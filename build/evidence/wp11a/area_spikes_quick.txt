@@ -1,35 +1,46 @@
-# area=spikes entry=WP-10 mode=quick result=PASS exit=0 seconds=17 masked_values=0
-tests/spikes/run_tests.sh --quick   (df now: Avail 14539M)
+# area=spikes entry=WP-10 mode=quick result=PASS exit=0 seconds=28 masked_values=0
+tests/spikes/run_tests.sh --quick   (df now: Avail 14523M)
 PASS       syntax.bash  bash -n on run_sp1b.sh, run_sp3.sh, job.sh and run_tests.sh; failing: none
 PASS       syntax.python  ast.parse on every .py file and the four stand-in CLIs; failing: none
 PASS       lib.selftest  sp1b_lib --selftest: 8 PASS, 0 FAIL (synthetic inputs build, layer-name reading)
 PASS       lib.reused_sp1_lib_selftest  the reused WP-07 library: 8 PASS, 0 FAIL
 PASS       t3.selftest  t3_filmcraft --selftest: 13 PASS, 0 FAIL (planted differences in clips, frames, dissolves and keyframes are found)
-PASS       list.live  exit 0 (expected 0: exit 3 exactly when a stage's Avail minus planned is under 400 MB); Disk: df says Avail 14539 MB now. Floor 400 MB (Avail minus planned must stay at or above it), hard floor 250 MB. Each stage re-reads df live; the guard is the 
+PASS       list.live  exit 0 (expected 0: exit 3 exactly when a stage's Avail minus planned is under 400 MB); Disk: df says Avail 14523 MB now. Floor 400 MB (Avail minus planned must stay at or above it), hard floor 250 MB. Each stage re-reads df live; the guard is the 
 PASS       list.fake_650  exit 3; REFUSED: Avail 650 MB minus planned 286 MB leaves 364 MB, below the 400 MB floor (vectorcraft-v0.13.1). REFUSED: Avail 650 MB minus planned 254 MB leaves 396 MB, below the 400 MB floor (lightcraft-v0.9.1). 
 PASS       list.fake_2000  exit 0; OK: every stage that has not run yet fits at today's Avail. Start them with: bash spikes/sp1b_readback/run_sp1b.sh --all
 PASS       list.fake_450  exit 3; 4 REFUSED lines; remedy: Remedy: answer Q-1 (the orchestrator may clear the regenerable pip cache, about 418 MB), or free space, or move this read-back to the maker's PC (the Sat 24 Oct
 PASS       list.ran_stages_not_counted  4 stage(s) shown as already run and not counted against the disk (a fake 450 MB would refuse them if they were); exit 0
 PASS       budget.numbers  planned MB: PhotoCraft 202 (80 tarball + 92 CLI + 30), VectorCraft 286 (119 + 137 + 30), LightCraft 254 (104 + 120 + 30); the plan table's estimates were 300, 450, 350
 PASS       budget.after_download  plan picks only the CLI member (90.6 MB); the exact need (121 MB) fits at 700 MB and does not at 500 MB
-PASS       ledger.real  ledger: 8 fetches in the two ledgers, 5 of the 5 pinned tarballs fetched, 623.6 MB of the 2048 MB allowance; each fetched once or with a recorded exception: OK
+PASS       ledger.real  ledger: 11 fetches in the two ledgers, 5 of the 5 pinned tarballs fetched, 1506.9 MB of the 2048 MB allowance; each fetched once or with a recorded exception: OK
 PASS       ledger.planted_double_fetch  exit 1; ledger: 2 fetches in the two ledgers, 1 of the 5 pinned tarballs fetched, 158.4 MB of the 2048 MB allowance; PROBLEMS: photocraft-0.10.0-linux-x86_64.tar.gz was fetched 2 times and a later fetch has n
 PASS       ledger.planted_exception_listed  exit 0; exceptions: photocraft-0.10.0-linux-x86_64.tar.gz -> wp10 (stage s2): re-fetch: test reason
 PASS       ledger.require_all  exit 1
 PASS       ledger.planted_soundcraft  exit 1
 PASS       ledger.planted_fetch_not_recorded  exit 1
-PASS       sp3.check_live  Avail 14539 MB: exit 0 (expected 0); READY: Avail 14539 MB is at least 3500 MB. Start it with: bash spikes/sp3_blender/run_sp3.sh --run
+PASS       sp3.check_live  Avail 14523 MB: exit 0 (expected 0); READY: Avail 14523 MB is at least 3500 MB. Start it with: bash spikes/sp3_blender/run_sp3.sh --run
 PASS       sp3.dry_run_ready  exit 0; READY: Avail 5000 MB is at least 3500 MB. Start it with: bash spikes/sp3_blender/run_sp3.sh --run SP3_DRYRUN=1: would run  lj_with_disk 3100 sp3-blender -- bash spikes/sp3_blender/run_sp3.sh --run-inner 
 PASS       sp3.run_refused_under_3500  exit 3; NOT RUN: needs >= 3.5 GB free (Avail 3499 MB; short by 1 MB). Justified deferral: SP3 runs in week 3 on the maker's PC (
 PASS       sp3.py_compile  py_compile of research/production-scale-fixtures/followup2-s3-kitchen-standin.py (reused, not copied; the acceptance line python3 -m py_compile gives the same answer)
 PASS       sp3.sweep_referenced  followup2-s3-run-sweep.sh parses (bash -n) and is referenced, not executed
+PASS       sp3.cleanup_regression  exit 0; run_inner exit code: 0; work folder left behind: no; 'unbound variable' in the output: no
+PASS       sp3.requirements_pinned  exit 0; requirements-bpy.txt: 12 pinned requirements, --require-hashes line present, 428,225,665 bytes in all (the bpy wheel 401,697,653); 12 compared with the pip report of 20 Oct 2026; OK
+PASS       sp3.requirements_planted_defects  a changed digest, a missing --require-hashes line and a requirement without a hash each make the check exit 1; not caught: none
+PASS       sp3.pip_require_hashes_mode  offline, a tiny local wheel and this machine's pip: the right digest installs (exit 0), a wrong digest is refused (exit 1, DO NOT MATCH THE HASHES), a requirement with no hash is refused (exit 1); so the line run_sp3.sh uses does what it says
+PASS       sp3.second_fetch_needs_a_reason  first fetch recorded (exit 0); a second without a reason is refused (exit 3, ledger still 1 line); with a reason it is recorded as fetch 2 (exit 0, 2 lines, 428,225,665 bytes a row)
+PASS       ledger.pip_rows_counted_and_held_to_the_rule  two pip fetches count 816.7 MB toward the total (exit 0, ledger: 2 fetches in the two ledgers, 0 of the 5 pinned tarballs fetched, 816.8 MB of the 2048 MB allowance; each fetched once or with a recorded exce); the same ledger with the reason removed exits 1
+PASS       ledger.real_includes_pip_fetches  the real ledgers: exit 0, 1506.9 MB of the 2048 MB allowance, the bpy wheel set listed with its 2 fetches (it read 623.6 MB before the pip fetches were put on the ledger)
+PASS       sp3.run_refused_without_a_reason  with one fetch already on the ledger, --run at a fake 5,000 MB is refused without SP3_FETCH_REASON (exit 3, nothing started) and the dry run with a reason is READY (exit 0)
+PASS       sp3.inner_install_is_hash_checked  run_inner with a wrong digest: exit 3 (the install stopped, no work folder left); with the right digest: the install ran, the fetch was recorded (ledger 1 row), then exit 1 at the bpy import because the stand-in is not bpy, and the work folder was removed
 PASS       sp4.job_quick  job.sh 6 s at 1 s: exit 0, 6 ticks; gaps.py exit 0: maximum gap: 1 s (limit for listing: 5 s) VERDICT: kept awake 
 PASS       sp4.fixture_verdicts  clean 0 kept awake; 5-minute gap 1 paused; killed 1; ended by TERM 1 killed; 19 s hiccup 0 kept awake; unreadable 2; still running 3; wrong: none
 PASS       sp4.planted_gap_exit1  exit 1; maximum gap: 310 s (limit for listing: 30 s)   gap of 310 s after tick 60 (600 s into the run) 
 PASS       verdicts.complete  check_verdicts: 5 main rows, 6 SP1 test rows; complete
+PASS       verdicts.assembled  assemble: VERDICTS-W2.md is exactly what the parts assemble to (72 lines)
+PASS       verdicts.assemble_machinery  on a copy: import 0, assemble 0, the round trip differs in 0 sorted line(s) (0 expected: the banner is set aside, and the SP3 and SP4 bullets may swap places, which sorting hides), check of the clean result 0, of a hand-edited result 1 (1 expected), a row in the wrong file 2, test rows outside SP1 2, a rule in the wrong file 2 (2 expected each, nothing written)
 PASS       evidence.labelled_and_disk  4 stage envelopes; problems: none
 PASS       hygiene.after_sp1b  vendor/craft-sp1b holds: nothing; vendor/craft/_keep: gone
-PASS       lint.public  public_lint: mode paths, 55 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
-PASS       lint.theme  exit 0; theme guard: 34 file(s) scanned (explicit paths), 0 finding(s), 0 exclusion statement(s) shown as NOTE
+PASS       lint.public  public_lint: mode paths, 57 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+PASS       lint.theme  exit 0; theme guard: 36 file(s) scanned (explicit paths), 0 finding(s), 0 exclusion statement(s) shown as NOTE
 UNVERIFIED windows.craft_behaviour  no Windows PC here: every Craft result of this package is a Linux CLI result. Whether PhotoCraft, VectorCraft, LightCraft and FilmCraft on Windows keep the same layer names, ids, keyframes and exports, what the apps write to the profile folders, and every PowerShell step are for the maker's Sat 24 Oct five-minute tests (spikes/sp1_craft_cli/MAKER-CRAFT-ZIPS.md)
-SUMMARY quick: 31 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED
+SUMMARY quick: 42 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED

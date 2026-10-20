@@ -1,20 +1,21 @@
 ---
 name: mobile-phone-delivery
-description: Makes, encodes and checks the phone deliverables for the Life Journey film (the two phone files PH1 and PH2, phone captions, the phone-safe frame and the project-phone protocol), and sets the keepsake and sharing rules for her phone and relatives' phones. Use when a phone file, phone caption, phone-safe shot, keepsake route, relatives' copy or any on-phone image is planned, encoded, tested or signed off.
+description: Makes, encodes and checks the phone deliverables for the Life Journey film (the two phone files PH1 and PH2, phone captions, the phone-safe frame and the project-phone protocol), runs the phone tools (encode_phone, phone_check, sim_share) with their exact commands and thresholds, and sets the keepsake and sharing rules for her phone and relatives' phones. Use when a phone file, phone caption, phone-safe shot, keepsake route, relatives' copy or any on-phone image is planned, encoded, tested or signed off, when a caption size, margin or script is changed, or when the Phone row of the settings card is refreshed.
 ---
 
 # Mobile phone delivery
 
 ## Purpose
 
-Make every Life Journey deliverable play beautifully on a phone (D-27) without weakening the venue master. There is one picture and two phone files, PH1 and PH2, cut from the ProRes master, with measured phone floors and a repeatable device test (W-63). The reasoning, the decision tables and the open questions live in `playbooks/mobile-delivery.md`. This skill is the agent form of that playbook.
+Make every Life Journey deliverable play beautifully on a phone (D-27) without weakening the venue master. There is one picture and two phone files, PH1 and PH2, cut from the ProRes master, with measured phone floors and a repeatable device test (W-63). The reasoning, the decision tables and the open questions live in `playbooks/mobile-delivery.md`. This skill is the agent form of that playbook. It also holds the operational side: how the three phone tools in `pipeline/phone/` (WP-08) are run, what their thresholds mean and what to say when a check fails. The numbers are a model; the phone is the measurement.
 
 ## When to use
 
-- Encoding or checking PH1 or PH2.
-- Setting phone caption burn-in, the phone-safe frame, the fill-crop card or the dark-step tests.
+- Encoding or checking PH1 or PH2, and running or reading `encode_phone`, `phone_check` or `sim_share`.
+- Setting phone caption burn-in, the phone-safe frame, the fill-crop card or the dark-step tests; changing a caption size, margin or script.
 - Choosing or testing her keepsake route, or a relative's copy.
 - Reviewing any image that appears on a phone surface: lock screen, thumbnail, icon, page frame or forwarded frame.
+- Refreshing the Phone row of the settings card (`pipeline/phone/PHONE-ROW.md`).
 
 ## When not to use
 
@@ -27,26 +28,47 @@ Make every Life Journey deliverable play beautifully on a phone (D-27) without w
 ## Procedure
 
 1. Confirm the phone unknowns (O-54, which absorbs O-43, and the backup state) from the maker's written answers (the intake table is `research/mobile-delivery.md`, Follow-up research, Q-F7). The backup questions are: does Google Photos back up, **is "Back up all device folders" on (K1's first question)**, does the phone manufacturer's gallery sync run (Samsung Gallery to OneDrive; others UNVERIFIED), is the account shared. Never check her phone (D-02). Anything unknown defaults to "treat it as on" (K1).
-2. Start from the ProRes 422 HQ master (W-15). Never start from the venue file or from RGB frames.
-3. Encode PH1 with the T-M1 template: `-crf 20`, `-maxrate 8M -bufsize 16M`, High 4.1, AAC-LC 192k, `+faststart`, metadata stripped. Keep the bracketed `lut3d` step out until Trim P is signed.
-4. Encode PH2 (720p, `-crf 22`, `-maxrate 3500k -bufsize 7M`, AAC-LC 160k) for low-storage phones and for relatives.
-5. Burn the phone captions: Latin text at FontSize 28, MarginV 40, Outline 2, white, at most 32 characters a line (it fits the 90% by 90% box in both scripts; the venue file keeps its own guide of 42), two lines. Size Gujarati by the height of KA (K2), not by FontSize 28: **Noto Sans Gujarati is the caption face (FontSize 26.2 for the 3.8% target; W-18, W-21)**. Hind Vadodara is not used for any date or Samvat (no Gujarati digits, U+0AE6 to U+0AEF, so a date falls back to FreeSerif), and Mukta Vaani is not used for Gujarati text (unfused conjuncts when tagged Gujarati); Noto Sans Gujarati carries the digits, the Om sign and every conjunct. Her script on cards and verse is shaped outlines, never live text (W-21). Run the shaping check first, once, at P-LOCK (it also checks the build): on any ffmpeg older than n9.0 the `subtitles` filter shapes in simple mode, so burn an Indic line with the `ass` filter on an ASS file made from the SRT, never `subtitles` or `drawtext` (W-75). The master carries a BT.709 tag; an `.ass` carries `YCbCr Matrix: TV.709`.
-6. Run the colour-patch test (within ±3/255, twelve patches) on the PC build of each template (W-16), and the twelve-patch caption colour test (Exercise 3 step 5 of the playbook). Tinted caption colours are allowed only on a build that passes it.
-7. Measure the final MP4: the ffprobe fields, atom order (`moov` before `mdat`), true peak at or below -1.0 dBTP and loudness at -16 LUFS. Re-encode with `volume=-0.5dB` if the peak is too high.
-8. Check each shot's frame: must-read type at x-height 3.2% or more (3.8% target), strokes 4 px or more, action and hands inside the central 80%, caption zone clear, safe-area overlay on three frames.
-9. Set a thumbnail with light in it: the first frame of her object or her hands in the opening (W-32, W-33), never a title card and never a deity (O-64); the same frame marks the folder on the venue sticks. Name the file with a neutral code until the reveal.
-10. Run the project-phone protocol (T-M6, thirteen rows) on an Android in the 2019 to 2021 class and an iPhone, with no accounts on either. A failed row gets fixed and re-run.
-11. Choose the route with K1 (her phone: cable, with her yes, after the reveal; ask first whether "Back up all device folders" is on, since the app-folder route is safe only if it is off; otherwise the tablet or the stick; ask the same question again in the her-turn conversation, Sun 7 Mar after about 14:00, W-48; after the copy rename the file to the film's title in her script and offer the lock-screen still, W-73, W-74) and K4 (relatives: PH2 as a WhatsApp document, after the ledger closes). Free space first (keyed on O-54): PH1's 737 MB ceiling plus a 200 MB margin means at least 1 GB free on her phone; if O-54 reports less, PH2 goes on by cable and PH1 waits for the tablet or the stick.
-12. Log every send in the rights log (T8 `phone_share`) and the sharing table (T-M4). Nothing is sent before the reveal or before the ledger closes.
+2. Start from the ProRes 422 HQ master (W-15). Never start from the venue file or from RGB frames, and the phone file never replaces the venue file (W-63). One picture, 16:9: no crop, no reframing, no vertical cut.
+3. Set the phone captions: Latin text at FontSize 28, MarginV 40, Outline 2, white, at most 32 characters a line (it fits the 90% by 90% box in both scripts; the venue file keeps its own guide of 42), two lines, 20 characters a second. Size Gujarati by the height of KA (K2), not by FontSize 28: **Noto Sans Gujarati is the caption face (FontSize 26.2 for the 3.8% target; W-18, W-21)**. Hind Vadodara is not used for any date or Samvat (no Gujarati digits, U+0AE6 to U+0AEF, so a date falls back to FreeSerif), and Mukta Vaani is not used for Gujarati text (unfused conjuncts when tagged Gujarati); Noto Sans Gujarati carries the digits, the Om sign and every conjunct. Her script on cards and verse is shaped outlines, never live text (W-21).
+4. Fix the burn-in path (the tool does it; do not hand-roll it). Captions are drawn with the `ass` filter on an ASS file made from the SRT (`YCbCr Matrix: TV.709` in its header; the master carries a BT.709 tag), on the 1080 frame, before the downscale and the chain, on every build and for every script. Before ffmpeg n9.0 the `subtitles` filter shapes in simple mode and breaks Indic text without a warning, so never use `subtitles` or `drawtext` for an Indic line (W-75; measured again in `build/evidence/wp08/shaping_paths.json`). Run the shaping check first, once, at P-LOCK (it also checks the build; protocol row 11). Its container form, `phone_check.py --shaping-paths`, covers only scripts that have test strings, so the Gujarati burn on the PC stays a P-LOCK condition (W-06, W-75). The tool runs ffmpeg in its own work folder, so only the relative names `caps.ass` and `fonts` appear in the filter string and a Windows drive-letter colon never reaches it. **Fill-crop rule.** A 20:9 phone set to fill crops about 10% (19.5:9: about 9%) off the top and the bottom, so the caption box must end at or above the `fill_20x9` limit in the thresholds table (a smaller percentage of the height) and the whole bottom line stays. The venue margin (5%) does not do that; never move the venue file's margin to fix the phone file.
+5. Encode. Check the disk first (`df -h`); the script runs inside the guard (`lj_with_disk 100`), and a 12-minute PH1 can reach 737 MB, so set `LJ_PLANNED_MB=800` for the film.
+   ```bash
+   bash pipeline/phone/encode_phone.sh MASTER.mov CAPTIONS.srt OUT.mp4 [--layout scene_report.json] [--profile phone_720_share] [--overwrite]
+   ```
+   PH1 is the default profile `phone_1080` (the T-M1 template: `-crf 20`, `-maxrate 8M -bufsize 16M`, High 4.1, AAC-LC 192k, `+faststart`, metadata stripped). PH2 is `--profile phone_720_share` (720p, `-crf 22`, `-maxrate 3500k -bufsize 7M`, High 3.1, AAC-LC 160k) for low-storage phones and for relatives. Keep the bracketed `lut3d` step out until Trim P is signed. The caller names the output (File checks: a neutral code before the reveal); the chain uses `-map_metadata -1` and `-fflags +bitexact`, and the tools print base names only and never caption text. The encode prints each step and checks size, fps, frame count, tags, level, bitrate (cap + 10%), `moov` before `mdat`, loudness and metadata (File checks), and writes `OUT.mp4.ass` and `OUT.mp4.phone.json` beside the file. Exit 1 means the file was made but one of its own checks failed.
+6. Validate with the WP-05 tools (use `phone_720_share` in both for PH2):
+   ```bash
+   python3 -I pipeline/validators/spec_check.py OUT.mp4 --profiles-file pipeline/phone/profile.json --profile phone_1080
+   python3 -I pipeline/validators/colour_patch.py --chain-file pipeline/phone/profile.json --chain phone_1080
+   ```
+   Run the colour-patch test (within ±3/255, twelve patches) on the PC build of each template (W-16), and the twelve-patch caption colour test (Exercise 3 step 5 of the playbook); tinted caption colours are allowed only on a build that passes it. The encode repeats its audio with a lower true-peak target when the AAC file reads above -1.0 dBTP; for a file made without the tool, measure the final MP4 by hand (ffprobe fields, atom order, loudness) and re-encode with `volume=-0.5dB` if the peak is too high.
+7. Check legibility in the five views, and the fill crop on its own:
+   ```bash
+   python3 -I pipeline/phone/phone_check.py OUT.mp4                       # portrait, landscape, small_portrait, shared, fill_20x9
+   python3 -I pipeline/phone/phone_check.py OUT.mp4 --scenario fill_20x9  # prints the caption bottom as a percentage of picture height
+   python3 -I pipeline/phone/phone_check.py OUT.mp4 --scenario fill_20x9 --aspect 19.5:9
+   python3 -I pipeline/phone/phone_check.py --style phone --json phone_style.json --scripts-json scripts_tested.json
+   ```
+   A file check needs its `.ass` and `.phone.json` beside it and a caption-free frame in the file; it reads the lines that are allowlisted test strings (a real film's free text is measured for position, size and contrast only). The shaping, mark-survival and size checks loop over every script in `pipeline/phone/test_strings.json` that has strings. A script without strings is NOT TESTED, never a pass. As of 2026-10-20 that leaves Latin and Devanagari (neutral strings, `checked_by_reader: false`); her language, Gujarati (D-31), is NOT TESTED until reader-confirmed strings with `marks[]` are added (three small steps, build plan 4.10). Then check each shot's frame against Frame checks, with the safe-area overlay on three frames.
+8. Simulate sharing, then check the copy:
+   ```bash
+   bash pipeline/phone/sim_share.sh OUT.mp4 SHARED.mp4 && python3 -I pipeline/phone/phone_check.py SHARED.mp4
+   ```
+   `sim_share.sh` never overwrites its input (hash compared before and after) and copies the caption file and sidecar next to the copy.
+9. After any change to the caption style, the strings or the size, run `phone_check.py --candidates`, `--finding-fs23 --out ...` (what FontSize 23, the venue size, does on a phone as measured; a finding, never asserted by the self-test) and `--shaping-paths`, then `--write-row pipeline/phone/PHONE-ROW.md` (the orchestrator pastes it over the card's Phone row and the `Scripts tested:` line over the language note), then `bash tests/phone/run_tests.sh --all`.
+10. Set a thumbnail with light in it: the first frame of her object or her hands in the opening (W-32, W-33), never a title card and never a deity (O-64); the same frame marks the folder on the venue sticks.
+11. Run the project-phone protocol (T-M6, thirteen rows) on an Android in the 2019 to 2021 class and an iPhone, with no accounts on either. A failed row gets fixed and re-run. Then put the synthetic test file on a real phone and have the maker answer `pipeline/phone/PHONE-TEST.md` (seven questions, including "when you zoom to fill, is the bottom line still whole?").
+12. Choose the route with K1 (her phone: cable, with her yes, after the reveal; ask first whether "Back up all device folders" is on, since the app-folder route is safe only if it is off; otherwise the tablet or the stick; ask the same question again in the her-turn conversation, Sun 7 Mar after about 14:00, W-48; after the copy rename the file to the film's title in her script and offer the lock-screen still, W-73, W-74) and K4 (relatives: PH2 as a WhatsApp document, after the ledger closes). Free space first (keyed on O-54): PH1's 737 MB ceiling plus a 200 MB margin means at least 1 GB free on her phone; if O-54 reports less, PH2 goes on by cable and PH1 waits for the tablet or the stick.
+13. Log every send in the rights log (T8 `phone_share`) and the sharing table (T-M4). Nothing is sent before the reveal or before the ledger closes.
 
 ## Checklists
 
-**File checks (every output)**
+**File checks (every output; `encode_phone` and `spec_check` check most of these, grain survival is a template measurement)**
 - ffprobe: H.264 High; level 4.1 for PH1 and 3.1 for PH2; yuv420p; color range tv; bt709 primaries, transfer and matrix; 24/1 fps; frame count equal to the timeline.
 - The master carries `color_space=bt709` before any burn-in; atom order `ftyp, moov, ..., mdat`; `+faststart` present.
 - Metadata: no title, comment or location. The hash is recorded in the manifest.
-- Colour patches within ±3/255 (PH1 and PH2 measured at 3/255 and 2/255 in the container).
-- Final MP4 true peak at or below -1.0 dBTP; loudness -16 LUFS.
+- Colour patches within ±3/255 (research fixtures: PH1 3/255, PH2 2/255; the WP-08 chains measured worst 1/255 on ffmpeg 6.1.1, 2026-10-19).
+- Final MP4 true peak at or below -1.0 dBTP; loudness -16 LUFS (measured on the AAC file).
 - PH1 grain survival at least 70% of the master (CRF 20 gives 73%; CRF 22 gives 43%, which fails).
 - File name is a neutral code before the reveal.
 
@@ -54,7 +76,7 @@ Make every Life Journey deliverable play beautifully on a phone (D-27) without w
 - Action and hands inside 10% to 90% of the height; text inside 5% to 95% across and 12% to 88% down.
 - Caption zone: venue 78% to 93% of height; phone 68% to 86%.
 - Strokes: 4 px for meaning-bearing lines, 3 px for decoration, dots 6 px, holes 4 px, hatch 3 px on 9 px pitch. No 1 px lines and no hairlines.
-- Text contrast at least 4.5:1 (target 7:1). Captions white or neutral by default; a tinted caption colour only after the twelve-patch caption test passes on the PC build.
+- Must-read type and text contrast as in the thresholds table. Captions white or neutral by default.
 - No deity image on any phone surface without the maker's written decision (O-64, which absorbs O-42).
 
 **Protocol rows (T-M6)**
@@ -66,24 +88,53 @@ Make every Life Journey deliverable play beautifully on a phone (D-27) without w
 - Relatives: only after the ledger closes (W-48), with the maker's yes, as a WhatsApp document. Log `phone_share = relatives_after_ledger`. Release lines 4d to 4g apply.
 - Guests: no QR code and no live link on the night.
 
-## Quality bar
+## Thresholds and quality bar
 
-- Must-read type: x-height 3.2% (hard floor) and 3.8% (target), which is 41 px at 1080p.
-- Phone captions: FontSize 28, white, at most 32 characters a line, two lines, 20 characters a second.
+`phone_check` reads these from `pipeline/phone/thresholds.json`. Every number is labelled (M), (C), (J) or UNVERIFIED; gallery, messenger and fill behaviour are measured, not assumed.
+
+| What | Value | Status |
+|---|---|---|
+| Must-read letter height (Latin x-height, or the base-letter band for other scripts) | at least 3.2% of picture height (hard floor); target 3.8%, which is 41 px at 1080p | W-63 (settled) |
+| Visual angle of that height | at least 18 arcmin at 35 cm (target 21) | (J); the arcminute minimum is UNVERIFIED (ISO 9241-3 recalled, not re-read) |
+| Viewing distance | 35 cm design, 40 cm margin | (J) |
+| Contrast, fill against outline | at least 4.5:1 (target 7:1), WCAG | (J) |
+| Stroke width after the scenario's smallest grid | 10th percentile at least 1 px; a gated line (3 px or more) keeps at least half its contrast | (J); the drawn floors are under Frame checks (W-38) |
+| Caption inside the 90% box | 5% to 95% both ways | settled (W-18) |
+| Caption bottom in `fill_20x9` | at most 88% of picture height, measured from the top, so the box ends at 88% or higher up (the 90% crop line minus 2 points); top at least 12% | (J) |
+| Title height | at least 5% of picture height | ROADMAP section 6 |
+| Mark survival | at least 2 px of ink in the zone after the downscale, and closer to the reference with the mark than without | (J) |
+| Shaping IoU, libass against Pillow-raqm | at least 0.9 | (J) |
+| Viewports, the 480p / 1 Mbps / veryfast "messenger" | the table in the file | UNVERIFIED: typical phones, not a measured handset and not any service's encoder |
+
 - A phone copy is a faithful reduction: master to PH1 to a chat proxy equals master straight to the proxy, within 0.01 (M).
-- Every number is labelled (M), (C), (J) or UNVERIFIED. Gallery, messenger and fill behaviour are measured, not assumed.
 - Black is pinned at code 16. The Trim P starting value is 4 to 7 IRE at codes 24 to 40 (J), tuned on the phone.
+- Measured on synthetic material (`pipeline/phone/PHONE-ROW.md`, 2026-10-19): FontSize 28 in Noto Sans gives a Latin x-height of 3.44% of the picture height, above the 3.2% floor and under the 3.8% target, and the maker's phone test decides whether a step up is wanted. The venue size, FontSize 23, measures 2.82%, under the floor, which is why the phone file has its own caption setting.
+
+## What to say when a check fails
+
+- **A size check fails in `portrait` or `small_portrait` (advisory):** expected. Upright viewing is degraded by design; the answer is the hand-over line "turn it sideways", not a bigger caption.
+- **`landscape` or `shared` fails on size:** raise the FontSize one step (the table in `caption_candidates.json` shows the cost in block height), re-run `--candidates`, and say that the maker's phone test is what confirms it.
+- **`caption_bottom_pct` fails in `fill_20x9`:** the block sits too low. Raise `MarginV` (one unit is 3.75 px at 1080p) or shorten to one line.
+- **A mark is lost, or the shaping IoU is under 0.9:** a shaping finding for that script. First check the build (`--shaping-paths`: is the `ass` filter used, is the font the lock file's?); then the font; then the size. Never fix it by editing the test strings.
+- **A hairline fails `shared`:** the line is thinner than the floor for what a messenger keeps. Redraw it at 4 px or drop it (W-38); do not widen the share profile.
+- **A script says NOT TESTED:** say so in the settings card (the `Scripts tested:` line does).
+- **Anything about a real phone, a real messenger, or Windows:** say UNVERIFIED and what would verify it.
+
+## Windows and the PC (UNVERIFIED)
+
+`encode_phone.py` and `phone_check.py` are Python (standard library, plus numpy and Pillow with raqm for the checker) and call ffmpeg; `sim_share.sh`, `encode_phone.sh` and the tests are bash and run in the container. On the maker's PC run `py -3 -I pipeline\phone\encode_phone.py MASTER CAPTIONS.srt OUT.mp4` from the project folder. Nothing here has been run on Windows; the PC's ffmpeg (9.0.2 expected) and Pillow's raqm support are untested there.
 
 ## Guardrails
 
 - **Respect and the Hindu-only rule (D-28).** "Indian" always means Hindu: Sanatan Dharma and its sanskriti. No Mughal or other Islamic motifs and no Christian motifs, ever. Leave out shared or ambiguous decoration by default: jaali, paisley, mehndi borders, arches, tile patterns. Church-shaped bells, candles where a diya belongs, a flat gold-disc halo drawn as in a church icon, crosses, winged figures: Christian or colonial layer, none. The ghanta (temple bell), the diya and the prabhavali or prabhamandala are Hindu and are not excluded by this rule. The swastika in a thumbnail or lock-screen still is out by default (SW0, W-72); a sathiyo on a phone surface is the maker's call alone, with the room's reading (O-44, O-66).
 - **Deities** are shown with correct iconography and respect. The deity policy is class P1 for all eight deities: symbols and seva objects that are not a svarupa, and no deity drawn, generated or photographed (W-61); nothing in her seva space is photographed without her knowing (PR4). No deity image on a phone surface until the maker decides in writing, as her proxy (O-64, which absorbs O-42). The default is her script's end-card line, a lamp or the object.
 - **Rights.** Every forwarded copy is a public distribution, so no copy goes out before the ledger closes (W-48). Fonts must be OFL with a rights-log row (W-21). Nothing uncleared goes into a phone copy.
-- **Privacy.** No personal media in git. The repo is public, so use person IDs only. Project phones carry no accounts unless the maker decides otherwise (Decision 12). Nobody checks her phone before the reveal (D-02). No phone test or copy leaves the project phones before the reveal.
+- **Privacy.** No personal media in git. The repo is public, so use person IDs only. Project phones carry no accounts unless the maker decides otherwise (Decision 12). Nobody checks her phone before the reveal (D-02). No phone test or copy leaves the project phones before the reveal. Test material for the tools is synthetic: no real photo, voice or caption of the family goes through them in the container (D-15).
 - **Authority.** The register wins. This skill does not edit `DECISIONS.md`, `CHARTER.md`, `ROADMAP.md`, `CLAUDE.md` or anything under `.claude/`.
 
 ## References
 
+- `pipeline/phone/`: `profile.json` (chains, profiles and caption styles), `thresholds.json`, `encode_phone.py` and `.sh`, `phone_check.py`, `sim_share.sh`, `test_strings.json` (WP-04's allowlist, read-only), `PHONE-TEST.md`, `PHONE-ROW.md`. `tests/phone/`: `run_tests.sh --quick|--all`. Evidence in `build/evidence/wp08/`.
 - `playbooks/mobile-delivery.md`: the maker's playbook. It holds the full reasoning, the decision tables (K1 to K5, Decisions 1 to 14) and the proposed edits to other playbooks.
 - `research/mobile-delivery.md`: the research notes. Summary, Q1 to Q10, templates T-M1 to T-M9 and the changes table.
 - `research/mobile-delivery-fixtures/`: `safe_area_template.svg`, `phone_test_p1_fillcrop.svg`, the CSVs and the README.
@@ -172,3 +223,4 @@ Make every Life Journey deliverable play beautifully on a phone (D-27) without w
 
 - 2026-10-19: Reconciled with DECISIONS.md after the her-world merge (2026-10-19): PH1 and PH2 replace the retired phone-file names throughout (S-57); the caption face is Noto Sans Gujarati only, with Hind Vadodara and Mukta Vaani not used, and the `ass` path before ffmpeg n9.0 (W-21, W-75); the shaping check is the single P-LOCK gate (W-06); the sound row and cold-open work follow W-19, W-65 and W-76; the her-turn conversation is Sun 7 Mar after about 14:00 (S-64, W-48); O-42 resolves to O-64 and O-43 to O-54; the deity and sathiyo rows follow W-61, PR4 and W-72.
 - 2026-10-20: Stale-wording sweep (2026-10-20): the register's phone figures, at most 32 characters a phone caption line (W-18) in procedure step 5 and the quality bar, and a PH2 cap of 3.5 Mb/s (W-63), written as `-maxrate 3500k -bufsize 7M` in procedure step 4 as in `pipeline/phone/profile.json`. No floor, check or decision changed.
+- 2026-10-20: Folded in the build sprint's operational phone skill (WP-08), so there is one phone skill and `phone-delivery` is not installed: the `encode_phone`, `phone_check` and `sim_share` commands, the thresholds table and the failure answers now live here (procedure steps 3 to 9 and the two sections after the checklists). Procedure steps were renumbered, and the quality-bar bullets that restated the caption line (now step 3) and the type height (now the thresholds table) were merged into those places. No floor, check or decision changed.

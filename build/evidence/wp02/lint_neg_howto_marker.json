@@ -2,9 +2,9 @@
  "actual": "both mutations: exit 1",
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 14533,
-  "avail_mb_min": 14533,
-  "avail_mb_start": 14534,
+  "avail_mb_end": 14521,
+  "avail_mb_min": 14521,
+  "avail_mb_start": 14522,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

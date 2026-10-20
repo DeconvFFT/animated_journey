@@ -1,14 +1,14 @@
 {
   "counts": {
-    "PASS": 44,
+    "PASS": 47,
     "SKIPPED": 1,
     "UNVERIFIED": 1
   },
   "date_utc": "2026-10-20",
-  "lowest_avail_mb_seen_by_the_tests": 14541,
+  "lowest_avail_mb_seen_by_the_tests": 14509,
   "mode": "all",
   "package": "WP-07",
-  "real_run_state": "Real CLI results: T1 FilmCraft PASS/PASS; T2 FilmCraft FAIL/FAIL; T1 EffectCraft PASS; T4 EffectCraft PASS. The harness is also proven against stand-in CLIs, which say nothing about FilmCraft or EffectCraft.",
+  "real_run_state": "Real CLI results: T1 FilmCraft PASS/PASS; T2 FilmCraft FAIL/PASS; T1 EffectCraft PASS; T4 EffectCraft PASS. The harness is also proven against stand-in CLIs, which say nothing about FilmCraft or EffectCraft.",
   "real_stages": [
     {
       "disk": {
@@ -38,16 +38,16 @@
     },
     {
       "disk": {
-        "avail_mb_end": 14480,
-        "avail_mb_min": 14382,
-        "avail_mb_start": 14547,
+        "avail_mb_end": 14464,
+        "avail_mb_min": 14366,
+        "avail_mb_start": 14533,
         "floor_mb": 400,
         "hard_floor_mb": 250,
         "planned_write_mb": 350
       },
-      "reason": "exit 1",
+      "reason": "exit 0",
       "stage": "stage_filmcraft-v0.9.0",
-      "status": "FAIL"
+      "status": "PASS"
     }
   ],
   "schema": "lj-wp-summary/1",
@@ -169,6 +169,10 @@
       "status": "PASS"
     },
     {
+      "name": "fake.ledger_exception_names_real_reason",
+      "status": "PASS"
+    },
+    {
       "name": "fake.all_prints_ledger_problem",
       "status": "PASS"
     },
@@ -193,6 +197,10 @@
       "status": "PASS"
     },
     {
+      "name": "fake.verify_flipped_byte",
+      "status": "PASS"
+    },
+    {
       "name": "fake.defect_filmcraft_leak",
       "status": "PASS"
     },
@@ -206,6 +214,14 @@
     },
     {
       "name": "fake.defect_filmcraft_dissolve",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.defect_filmcraft_encodedblend",
+      "status": "PASS"
+    },
+    {
+      "name": "fake.defect_filmcraft_stepped",
       "status": "PASS"
     },
     {
@@ -230,10 +246,6 @@
     },
     {
       "name": "fake.defect_effectcraft_slow",
-      "status": "PASS"
-    },
-    {
-      "name": "fake.verify_flipped_byte",
       "status": "PASS"
     }
   ]

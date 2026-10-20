@@ -23,7 +23,10 @@ HOW TO RUN   (python3 -I on Linux, py -3 -I on Windows)
   python3 -I scripts/stale_check.py --strict                 the pre-gate mode: prints only the failing hits
   python3 -I scripts/stale_check.py --baseline               writes scripts/stale_baseline.json (today's hits; re-cut it the
                                                              same day Table 4 or the patterns grow, or --new-only lists old
-                                                             copies as new)
+                                                             copies as new). A re-cut is an orchestrator decision tied to a
+                                                             register or pattern change: add a dated line to the file's
+                                                             "provenance" list (what, why, hit count before and after); the
+                                                             lines already there are kept by --baseline
   python3 -I scripts/stale_check.py --new-only               exit 1 only for FAIL hits not in the baseline
                                                              (used by lj.ps1 close until the Haiku passes land)
   python3 -I scripts/stale_check.py --audit-allowlist        lists allowlist entries that suppress nothing (an entry marked
@@ -504,6 +507,15 @@ def write_baseline(path, doc, hits):
             "note": "Today's hits: counts and locations. --new-only compares the fingerprint (file, pattern, normalised line text), not the line number, so inserting lines does not make old hits look new.",
             "counts": {"FAIL": sum(1 for h in live if h["severity"] == "FAIL"), "WARN": sum(1 for h in live if h["severity"] == "WARN"), "by_row": dict(sorted(by_row.items()))},
             "hits": [{"fp": h["fp"], "file": h["file"], "line": h["line"], "row_id": h["row_id"], "pattern": h["pattern"], "severity": h["severity"]} for h in live]}
+    # A re-cut is tied to a register or pattern change and carries a dated line of its own (what was re-cut, why, the hit count before and after). The lines of
+    # the file being replaced are kept, so a later --baseline does not erase the history; the person re-cutting appends the new line (added 2026-10-20).
+    try:
+        prev = json.loads(Path(path).read_text(encoding="utf-8-sig")).get("provenance")
+    except (OSError, ValueError, AttributeError):
+        prev = None
+    if isinstance(prev, list) and prev:
+        items = list(data.items())
+        data = dict(items[:4] + [("provenance", prev)] + items[4:])
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text(json.dumps(data, indent=1) + "\n", encoding="utf-8", newline="\n")
     return data
@@ -567,6 +579,15 @@ def last_number(register, prefix):
 
 
 # ----------------------------------------------------------------------------- self-test
+def sample_rel(file_glob):
+    """A concrete path under an allowlist entry's file glob, where --self-test plants the entry's samples: '*' stands for any file (a playbook), a path without a
+    wildcard is itself, and a directory glob gets a file name in place of ** and 'x' in place of a single * (reviews/** -> reviews/sample, research/*-fixtures/** ->
+    research/x-fixtures/sample). Added 2026-10-20 with the AL-6 entries, the first that are scoped by a glob."""
+    if file_glob == "*":
+        return "playbooks/sample.md"
+    return file_glob.replace("**", "\0").replace("*", "x").replace("\0", "sample")
+
+
 def self_test(doc, pats, infos, rows, adoc, entries, register=None, register_label="DECISIONS.md"):
     problems = []
     ok = 0
@@ -632,7 +653,7 @@ def self_test(doc, pats, infos, rows, adoc, entries, register=None, register_lab
         tdp = Path(td)
         for e in entries:
             chk(len(e.get("positive_samples") or []) >= 1 and len(e.get("negative_samples") or []) >= 1, "allowlist %s needs a positive and a negative sample" % e["id"])
-            rel = e["file"] if "*" not in e["file"] else "playbooks/sample.md"
+            rel = sample_rel(e["file"])
             (tdp / rel).parent.mkdir(parents=True, exist_ok=True)
             for sample, expect_allowed in [(s, True) for s in e.get("positive_samples", [])] + [(s, False) for s in e.get("negative_samples", [])]:
                 (tdp / rel).write_text("# sample\n" + sample + "\n", encoding="utf-8")

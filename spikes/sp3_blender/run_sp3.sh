@@ -5,7 +5,9 @@
 #   bash spikes/sp3_blender/run_sp3.sh --check     the entry conditions and the numbers: df, the bpy wheel size (PyPI), the Blender tarball size (HEAD request), Python, the reused
 #                                                   research scripts (py_compile). Prints "NOT RUN: needs >= 3.5 GB free" and exits 3 on a volume with less than 3,500 MB free;
 #                                                   prints READY and exits 0 when the entry condition holds. Downloads nothing; writes nothing.
-#   bash spikes/sp3_blender/run_sp3.sh --run       only when --check says READY: ONE disk stage (lj_with_disk 3100) that makes a venv, installs bpy==5.2.2 (a 402 MB wheel),
+#   bash spikes/sp3_blender/run_sp3.sh --run       only when --check says READY: ONE disk stage (lj_with_disk 3100) that makes a venv, installs bpy 5.2.2 from spikes/sp3_blender/requirements-bpy.txt
+#                                                   with pip --require-hashes (12 wheels, 428 MB, each pinned by sha256; the 402 MB bpy wheel is one of them; a digest mismatch stops the install),
+#                                                   records the fetch on the download ledger (build/evidence/wp10/download_ledger.jsonl; a second or later fetch needs SP3_FETCH_REASON='why', as for a Craft tarball),
 #                                                   times the stand-in kitchen scene at a few sample counts under lj_bench, writes the RESULT lines to build/evidence/wp10/sp3_results.txt
 #                                                   and deletes the venv. SP3_DRYRUN=1 prints what it would do and does none of it.
 #   bash spikes/sp3_blender/run_sp3.sh --help
@@ -26,6 +28,7 @@ SWEEP="$ROOT/research/production-scale-fixtures/followup2-s3-run-sweep.sh"
 RESULTS="$ROOT/research/production-scale-fixtures/followup2-s3-container-results.txt"
 EVID="${LJ_SP3_EVIDENCE:-$ROOT/build/evidence/wp10}"
 ENTRY_MB="${SP3_ENTRY_MB:-3500}"; PLANNED_MB=3100
+REQ="${LJ_SP3_REQ:-$SP/requirements-bpy.txt}"; LROW="$SP/ledger_row.py"; LEDGER="${LJ_SP3_LEDGER:-$ROOT/build/evidence/wp10/download_ledger.jsonl}"   # LJ_SP3_REQ and LJ_SP3_LEDGER are for the tests (tests/spikes/run_tests.sh)
 WHEEL_RECORDED=401697653; BLENDER_RECORDED=383295504   # PyPI bpy 5.2.2 cp313 manylinux_2_28 x86_64 and blender-5.2.2-linux-x64.tar.xz (playbooks/toolchain.md [102][103]), 18 Oct 2026
 # shellcheck disable=SC1091
 . "$ROOT/scripts/lj_guard.sh"
@@ -68,6 +71,8 @@ do_check() {
   say "Entry conditions"
   say "  free disk          Avail ${avail} MB now; needed at least ${ENTRY_MB} MB (planned ${PLANNED_MB} MB + the 400 MB floor of scripts/lj_guard.sh)"
   say "  bpy wheel          $(commas "$wb") bytes ($((wb / 1048576)) MiB), cp313 manylinux_2_28 x86_64, ${w#*|}; the venv it makes is about 1 GB on disk (R9/M14)"
+  say "  wheel set          $(python3 -I "$LROW" check 2>&1 | head -1)"
+  say "  pip fetches        $(python3 -I "$LROW" count --ledger "$LEDGER" 2>/dev/null || echo '?') of the bpy wheel set are on the download ledger already (about 428 MB each); a further fetch needs SP3_FETCH_REASON and a look at the 2 GB allowance (python3 -I spikes/sp1b_readback/check_ledger.py)"
   say "  Blender tarball    $(commas "$bb") bytes ($((bb / 1048576)) MiB), blender-5.2.2-linux-x64.tar.xz, ${b#*|}; NOT used by this script (bpy is the route); listed for the PC route"
   say "  python             ${pyv:-none} at ${py:-none} (the wheel is cp313 only, so 3.13 is required)"
   say "  reused scene       research/production-scale-fixtures/followup2-s3-kitchen-standin.py: ${ok_scene}; primitives only, no photograph, no family imagery"
@@ -75,6 +80,10 @@ do_check() {
   say "  earlier numbers    followup2-s3-container-results.txt (stand-in, 1080p, Cycles CPU, 4 vCPU): 64 samples with denoise 110-115 s, 128 without 192-232 s, 24 with denoise 51-59 s"
   say "  pass mark          one real hero frame within 2x the table: cannot be judged before the real kitchen exists (G1); this run times the stand-in only"
   say ""
+  if ! python3 -I "$LROW" check >/dev/null 2>&1; then
+    say "NOT RUN: spikes/sp3_blender/requirements-bpy.txt fails its check (python3 -I spikes/sp3_blender/ledger_row.py check); no unchecked install is allowed."
+    return 3
+  fi
   if (( avail >= ENTRY_MB )) && [[ "$ok_scene" == "py_compile ok" ]] && [[ "$pyv" == 3.13.* ]]; then
     say "READY: Avail ${avail} MB is at least ${ENTRY_MB} MB. Start it with: bash spikes/sp3_blender/run_sp3.sh --run"
     return 0
@@ -96,8 +105,14 @@ run_inner() {
   rm -rf -- "$S"; mkdir -p "$S" "$EVID" || die "cannot create the scratch folder" 3
   say "[1/5] python3 -m venv <scratch>/sp3/venv"
   python3 -m venv "$S/venv" || die "venv failed" 3
-  say "[2/5] pip install --no-cache-dir bpy==5.2.2   (a 402 MB wheel; no pip cache is written)"
-  "$S/venv/bin/python" -m pip install --no-cache-dir --disable-pip-version-check -q bpy==5.2.2 || die "pip install bpy failed" 3
+  say "[2/5] pip install --no-cache-dir --require-hashes -r spikes/sp3_blender/requirements-bpy.txt   (12 wheels, 428 MB; every download is compared with its pinned sha256; no pip cache is written)"
+  "$S/venv/bin/python" -m pip install --no-cache-dir --disable-pip-version-check --require-hashes -q -r "$REQ" || die "pip install (hash-pinned) failed: a digest mismatch, a withdrawn file or no network; nothing was installed unchecked" 3
+  say "      pip compared every download with the sha256 in requirements-bpy.txt (bpy wheel $(grep -A1 '^bpy==' "$REQ" | grep -o 'sha256:[0-9a-f]*' | cut -c8-))"
+  if python3 -I "$LROW" append --ledger "$LEDGER" --stage "sp3-blender-$(date -u +%Y%m%dT%H%MZ)" --exception "${SP3_FETCH_REASON:-}" --note "recorded by run_sp3.sh --run after the install" >/dev/null; then
+    say "      the fetch is on the download ledger (build/evidence/wp10/download_ledger.jsonl)"
+  else
+    say "      WARNING: the fetch could NOT be recorded on the download ledger; record it by hand with spikes/sp3_blender/ledger_row.py append"; LEDGER_FAIL=1
+  fi
   PYV="$("$S/venv/bin/python" -c 'import bpy; print(bpy.app.version_string)' 2>/dev/null)"
   say "[3/5] bpy imports: Blender ${PYV:-unknown}"
   [[ "$PYV" == 5.2.* ]] || die "bpy did not import as Blender 5.2.x" 1
@@ -109,14 +124,25 @@ run_inner() {
     lj_bench "$S/venv/bin/python" "$SCENE" -- "$S/out" 1920 1080 "$1" "$2" "$3" 2>/dev/null | grep RESULT | tee -a "$out"
   done
   say "[5/5] cleanup: the venv and the renders are deleted; results are in ${out#"$ROOT"/}"
+  if [[ "${LEDGER_FAIL:-0}" == 1 ]]; then return 1; fi    # (an `&&` here would make a clean run end with the status of a false test)
 }
 
 do_run() {
   do_check; local rc=$?
   (( rc != 0 )) && { say "Nothing was started and nothing was forced."; return 3; }
+  local nf; nf="$(python3 -I "$LROW" count --ledger "$LEDGER" 2>/dev/null || echo 0)"
+  if [[ "$nf" =~ ^[0-9]+$ ]] && (( nf >= 1 )) && [[ -z "${SP3_FETCH_REASON:-}" ]]; then
+    if [[ "${SP3_DRYRUN:-}" == 1 ]]; then
+      say "SP3_DRYRUN=1: the ledger holds $nf fetch(es) of the bpy wheel set, so a real --run would stop here unless SP3_FETCH_REASON='why another fetch' is set."
+    else
+      say "NOT RUN: the download ledger already holds $nf fetch(es) of the bpy wheel set (about 428 MB each); a further fetch needs SP3_FETCH_REASON='why another fetch' (it is recorded as the exception), as for a Craft tarball, and a look at the 2 GB allowance: python3 -I spikes/sp1b_readback/check_ledger.py"
+      say "Nothing was started and nothing was forced."
+      return 3
+    fi
+  fi
   if [[ "${SP3_DRYRUN:-}" == 1 ]]; then
     say "SP3_DRYRUN=1: would run  lj_with_disk ${PLANNED_MB} sp3-blender -- bash spikes/sp3_blender/run_sp3.sh --run-inner"
-    say "  python3 -m venv <scratch>/sp3/venv ; <venv>/bin/python -m pip install --no-cache-dir bpy==5.2.2"
+    say "  python3 -m venv <scratch>/sp3/venv ; <venv>/bin/python -m pip install --no-cache-dir --require-hashes -r spikes/sp3_blender/requirements-bpy.txt ; ledger_row.py append"
     say "  for \"8 0 0\" \"64 0 0\" \"64 1 0\" \"128 1 0\": lj_bench <venv>/bin/python followup2-s3-kitchen-standin.py -- <scratch>/sp3/out 1920 1080 SAMPLES DENOISE ADAPTIVE"
     say "  rm -rf <scratch>/sp3"
     return 0

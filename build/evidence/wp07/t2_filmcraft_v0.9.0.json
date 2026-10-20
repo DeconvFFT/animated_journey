@@ -1,47 +1,40 @@
 {
-  "actual": "13 criteria, 1 failed: T2.mid_dissolve",
+  "actual": "14 criteria, 0 failed",
   "date_utc": "2026-10-20",
   "detail": {
     "calls": [
       {
-        "call": "render one frame (N=5)",
-        "killed": null,
-        "max_rss_mb": 211.4,
-        "rc": 0,
-        "wall_s": 0.25
-      },
-      {
         "call": "export 2 s draft (N=5)",
         "killed": null,
-        "max_rss_mb": 1283.1,
+        "max_rss_mb": 1303.9,
         "rc": 0,
-        "wall_s": 4.8
+        "wall_s": 7.58
       },
       {
         "call": "exec file.newProject",
         "killed": null,
-        "max_rss_mb": 85.0,
+        "max_rss_mb": 85.2,
         "rc": 0,
-        "wall_s": 0.27
+        "wall_s": 0.25
       },
       {
         "call": "exec file.import (20)",
         "killed": null,
-        "max_rss_mb": 698.0,
+        "max_rss_mb": 698.5,
         "rc": 0,
         "wall_s": 1.01
       },
       {
         "call": "exec file.newSequence",
         "killed": null,
-        "max_rss_mb": 85.0,
+        "max_rss_mb": 85.2,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "run place (20)",
         "killed": null,
-        "max_rss_mb": 85.0,
+        "max_rss_mb": 85.2,
         "rc": 0,
         "wall_s": 0.25
       },
@@ -55,14 +48,14 @@
       {
         "call": "export 2 s draft (N=20)",
         "killed": null,
-        "max_rss_mb": 1274.8,
+        "max_rss_mb": 1282.9,
         "rc": 0,
-        "wall_s": 5.06
+        "wall_s": 6.06
       },
       {
         "call": "exec file.newProject",
         "killed": null,
-        "max_rss_mb": 85.0,
+        "max_rss_mb": 85.2,
         "rc": 0,
         "wall_s": 0.26
       },
@@ -71,61 +64,61 @@
         "killed": null,
         "max_rss_mb": 3342.2,
         "rc": 0,
-        "wall_s": 14.64
+        "wall_s": 17.15
       },
       {
         "call": "exec file.newSequence",
         "killed": null,
-        "max_rss_mb": 85.0,
+        "max_rss_mb": 85.2,
         "rc": 0,
-        "wall_s": 0.26
+        "wall_s": 0.25
       },
       {
         "call": "run place (100)",
         "killed": null,
-        "max_rss_mb": 85.0,
+        "max_rss_mb": 85.2,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "render one frame (N=100)",
         "killed": null,
-        "max_rss_mb": 212.4,
+        "max_rss_mb": 211.7,
         "rc": 0,
-        "wall_s": 0.25
+        "wall_s": 0.51
       },
       {
         "call": "export 2 s draft (N=100)",
         "killed": null,
-        "max_rss_mb": 1288.8,
+        "max_rss_mb": 1259.3,
         "rc": 0,
-        "wall_s": 5.06
+        "wall_s": 5.8
       },
       {
         "call": "exec file.newProject",
         "killed": null,
-        "max_rss_mb": 85.0,
+        "max_rss_mb": 85.2,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "exec file.import (300)",
         "killed": null,
-        "max_rss_mb": 5425.7,
+        "max_rss_mb": 5425.6,
         "rc": 0,
-        "wall_s": 26.27
+        "wall_s": 29.0
       },
       {
         "call": "exec file.newSequence",
         "killed": null,
-        "max_rss_mb": 85.0,
+        "max_rss_mb": 85.2,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "run place (300)",
         "killed": null,
-        "max_rss_mb": 257.3,
+        "max_rss_mb": 257.5,
         "rc": 0,
         "wall_s": 0.51
       },
@@ -134,19 +127,19 @@
         "killed": null,
         "max_rss_mb": 137.5,
         "rc": 0,
-        "wall_s": 0.26
+        "wall_s": 0.25
       },
       {
         "call": "export 2 s draft (N=300)",
         "killed": null,
-        "max_rss_mb": 939.3,
+        "max_rss_mb": 981.9,
         "rc": 0,
-        "wall_s": 4.3
+        "wall_s": 4.8
       },
       {
         "call": "exec file.newProject",
         "killed": null,
-        "max_rss_mb": 85.0,
+        "max_rss_mb": 85.2,
         "rc": 0,
         "wall_s": 0.25
       },
@@ -155,42 +148,42 @@
         "killed": null,
         "max_rss_mb": 698.1,
         "rc": 0,
-        "wall_s": 1.26
+        "wall_s": 1.01
       },
       {
         "call": "exec file.newSequence",
         "killed": null,
-        "max_rss_mb": 85.0,
+        "max_rss_mb": 85.2,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "run place (20)",
         "killed": null,
-        "max_rss_mb": 85.0,
+        "max_rss_mb": 85.2,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "run keyframes (40)",
         "killed": null,
-        "max_rss_mb": 85.0,
+        "max_rss_mb": 85.2,
         "rc": 0,
-        "wall_s": 0.26
+        "wall_s": 0.25
       },
       {
         "call": "export H.264 2400 frames",
         "killed": null,
-        "max_rss_mb": 1852.9,
+        "max_rss_mb": 1910.5,
         "rc": 0,
-        "wall_s": 205.43
+        "wall_s": 251.0
       },
       {
         "call": "export ProRes 1 s",
         "killed": null,
-        "max_rss_mb": 1193.9,
+        "max_rss_mb": 1178.0,
         "rc": 0,
-        "wall_s": 2.77
+        "wall_s": 3.03
       },
       {
         "call": "exec file.newProject",
@@ -202,7 +195,7 @@
       {
         "call": "exec file.import (2)",
         "killed": null,
-        "max_rss_mb": 104.7,
+        "max_rss_mb": 104.5,
         "rc": 0,
         "wall_s": 0.25
       },
@@ -218,7 +211,7 @@
         "killed": null,
         "max_rss_mb": 98.2,
         "rc": 0,
-        "wall_s": 0.26
+        "wall_s": 0.25
       },
       {
         "call": "run keyframes (Ken Burns test)",
@@ -232,14 +225,14 @@
         "killed": null,
         "max_rss_mb": 211.5,
         "rc": 0,
-        "wall_s": 0.25
+        "wall_s": 0.51
       },
       {
         "call": "render Ken Burns last frame",
         "killed": null,
-        "max_rss_mb": 211.3,
+        "max_rss_mb": 211.6,
         "rc": 0,
-        "wall_s": 0.26
+        "wall_s": 0.25
       },
       {
         "call": "exec applyVideoTransition",
@@ -251,28 +244,28 @@
       {
         "call": "render dissolve frame -12",
         "killed": null,
-        "max_rss_mb": 211.4,
+        "max_rss_mb": 211.2,
         "rc": 0,
-        "wall_s": 0.26
+        "wall_s": 0.25
       },
       {
         "call": "render dissolve frame -11",
         "killed": null,
-        "max_rss_mb": 211.4,
+        "max_rss_mb": 211.2,
         "rc": 0,
-        "wall_s": 0.26
+        "wall_s": 0.25
       },
       {
         "call": "render dissolve frame -10",
         "killed": null,
-        "max_rss_mb": 211.1,
+        "max_rss_mb": 211.6,
         "rc": 0,
         "wall_s": 0.51
       },
       {
         "call": "render dissolve frame -9",
         "killed": null,
-        "max_rss_mb": 211.5,
+        "max_rss_mb": 211.4,
         "rc": 0,
         "wall_s": 0.25
       },
@@ -281,61 +274,61 @@
         "killed": null,
         "max_rss_mb": 211.3,
         "rc": 0,
-        "wall_s": 0.26
+        "wall_s": 0.25
       },
       {
         "call": "render dissolve frame -7",
         "killed": null,
-        "max_rss_mb": 211.5,
+        "max_rss_mb": 211.4,
         "rc": 0,
-        "wall_s": 0.26
+        "wall_s": 0.51
       },
       {
         "call": "render dissolve frame -6",
         "killed": null,
-        "max_rss_mb": 301.4,
+        "max_rss_mb": 301.2,
         "rc": 0,
         "wall_s": 0.51
       },
       {
         "call": "render dissolve frame -5",
         "killed": null,
-        "max_rss_mb": 301.3,
+        "max_rss_mb": 301.2,
         "rc": 0,
         "wall_s": 0.51
       },
       {
         "call": "render dissolve frame -4",
         "killed": null,
-        "max_rss_mb": 301.6,
+        "max_rss_mb": 301.4,
         "rc": 0,
         "wall_s": 0.51
       },
       {
         "call": "render dissolve frame -3",
         "killed": null,
-        "max_rss_mb": 301.1,
+        "max_rss_mb": 301.6,
         "rc": 0,
         "wall_s": 0.51
       },
       {
         "call": "render dissolve frame -2",
         "killed": null,
-        "max_rss_mb": 301.5,
+        "max_rss_mb": 301.4,
         "rc": 0,
         "wall_s": 0.51
       },
       {
         "call": "render dissolve frame -1",
         "killed": null,
-        "max_rss_mb": 301.4,
+        "max_rss_mb": 301.3,
         "rc": 0,
         "wall_s": 0.51
       },
       {
         "call": "render dissolve frame 0",
         "killed": null,
-        "max_rss_mb": 301.1,
+        "max_rss_mb": 301.6,
         "rc": 0,
         "wall_s": 0.51
       },
@@ -349,7 +342,7 @@
       {
         "call": "render dissolve frame 2",
         "killed": null,
-        "max_rss_mb": 301.4,
+        "max_rss_mb": 301.0,
         "rc": 0,
         "wall_s": 0.51
       },
@@ -370,16 +363,16 @@
       {
         "call": "render dissolve frame 5",
         "killed": null,
-        "max_rss_mb": 301.2,
+        "max_rss_mb": 301.5,
         "rc": 0,
         "wall_s": 0.51
       },
       {
         "call": "render dissolve frame 6",
         "killed": null,
-        "max_rss_mb": 211.4,
+        "max_rss_mb": 211.7,
         "rc": 0,
-        "wall_s": 0.26
+        "wall_s": 0.25
       },
       {
         "call": "render dissolve frame 7",
@@ -393,38 +386,45 @@
         "killed": null,
         "max_rss_mb": 211.7,
         "rc": 0,
-        "wall_s": 0.26
+        "wall_s": 0.25
       },
       {
         "call": "render dissolve frame 9",
         "killed": null,
-        "max_rss_mb": 211.3,
+        "max_rss_mb": 211.5,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "render dissolve frame 10",
         "killed": null,
-        "max_rss_mb": 211.4,
+        "max_rss_mb": 211.5,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "render dissolve frame 11",
         "killed": null,
-        "max_rss_mb": 211.1,
+        "max_rss_mb": 211.7,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "render dissolve frame 12",
         "killed": null,
-        "max_rss_mb": 211.0,
+        "max_rss_mb": 211.5,
         "rc": 0,
-        "wall_s": 0.25
+        "wall_s": 0.26
+      },
+      {
+        "call": "export dissolve window (2 s)",
+        "killed": null,
+        "max_rss_mb": 1534.0,
+        "rc": 0,
+        "wall_s": 7.32
       }
     ],
-    "calls_total": 65,
+    "calls_total": 66,
     "contaminated": "no",
     "criteria": [
       {
@@ -442,7 +442,7 @@
       {
         "id": "T2.rss_slope",
         "mark": "under 40 MB per still",
-        "measured": "25.84 MB per still (RSS(100) 3342 - RSS(20) 1275 over 80 stills)",
+        "measured": "25.74 MB per still (RSS(100) 3342 - RSS(20) 1283 over 80 stills)",
         "pass": true
       },
       {
@@ -454,13 +454,13 @@
       {
         "id": "T2.h264_completes",
         "mark": "export finishes without crash, hang or the 10 GB kill",
-        "measured": "exit 0 after 205 s",
+        "measured": "exit 0 after 251 s",
         "pass": true
       },
       {
         "id": "T2.h264_speed",
-        "mark": "at least 5 fps, i.e. under 480 s for 2400 frames (R8 pass mark scaled from 3,000 frames at 25 fps)",
-        "measured": "11.68 fps (2400 frames in 205 s)",
+        "mark": "at least 5 fps, i.e. under 480 s for 2400 frames (R8 pass mark, scaled to 2,400 frames at this film's 24 fps from R8's 3,000-frame figure)",
+        "measured": "9.56 fps (2400 frames in 251 s)",
         "pass": true
       },
       {
@@ -501,9 +501,15 @@
       },
       {
         "id": "T2.mid_dissolve",
-        "mark": "within 2 levels of the average of the neighbours",
-        "measured": "28.50 levels at frame offset +0 (neighbours (201, 70, 60) and (40, 91, 200), average [120, 80, 130])",
-        "pass": false
+        "mark": "within 2 levels of the 50/50 mix of the neighbours in linear light (sRGB transfer function)",
+        "measured": "0.47 levels at frame offset +0 (neighbours (201, 70, 60) and (40, 91, 200), linear-light mix [149, 81, 151]; the average of the encoded values [120, 80, 130] would be 28.50 levels away)",
+        "pass": true
+      },
+      {
+        "id": "T2.dissolve_steps",
+        "mark": "at least 11 distinct levels over the 12 exported frames that start one frame before the first blended frame",
+        "measured": "12 distinct levels over 12 exported frames (11 blended frames, from index 19, channel R, levels [199, 193, 186, 177, 169, 160, 148, 137, 126, 111, 94, 74])",
+        "pass": true
       }
     ],
     "harness_error": null,
@@ -523,7 +529,7 @@
         "shortcuts": []
       },
       "dissolve": {
-        "alpha_by_frame": {
+        "alpha_by_frame_encoded_red": {
           "-1": 0.199,
           "-10": -0.0,
           "-11": -0.0,
@@ -550,12 +556,18 @@
           "8": 1.0,
           "9": 1.0
         },
-        "average": [
+        "average_encoded": [
           120.5,
           80.5,
           130.0
         ],
-        "deviation_levels": 28.5,
+        "deviation_from_encoded_average": 28.5,
+        "deviation_levels": 0.47,
+        "midpoint_linear_light": [
+          149.5,
+          81.3,
+          151.4
+        ],
         "nearest_frame_offset": 0,
         "nearest_pixel": [
           149.0,
@@ -574,9 +586,96 @@
         ],
         "transition_exit": 0
       },
+      "dissolve_export": {
+        "blended_frames": 11,
+        "channel": "R",
+        "cut_frame_index": 24,
+        "distinct_levels": 12,
+        "distinct_levels_in_whole_export": 13,
+        "first_blended_index": 19,
+        "frames_expected": 48,
+        "frames_read": 48,
+        "last_blended_index": 29,
+        "level_gap": 1.0,
+        "levels_by_frame": [
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          199.0,
+          193.0,
+          186.0,
+          177.0,
+          169.0,
+          160.0,
+          148.0,
+          137.0,
+          126.0,
+          111.0,
+          94.0,
+          74.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0,
+          39.0
+        ],
+        "min_levels": 11,
+        "pure_first": 199.0,
+        "pure_last": 39.0,
+        "rc": 0,
+        "wall_s": 7.32,
+        "window_frames": 12,
+        "window_levels": [
+          199.0,
+          193.0,
+          186.0,
+          177.0,
+          169.0,
+          160.0,
+          148.0,
+          137.0,
+          126.0,
+          111.0,
+          94.0,
+          74.0
+        ],
+        "window_s": [
+          2.0,
+          4.0
+        ],
+        "window_start_index": 18
+      },
       "h264_export": {
         "decode_errors": "",
-        "fps_measured": 11.68,
+        "fps_measured": 9.56,
         "frames_counted": 2400,
         "frames_expected": 2400,
         "killed": null,
@@ -584,10 +683,10 @@
         "pix_fmt": "yuv420p",
         "r_frame_rate": "24/1",
         "rc": 0,
-        "rss_mb": 1852.9,
+        "rss_mb": 1910.5,
         "size": "1920x1080",
         "size_mb": 8.5,
-        "wall_s": 205.43
+        "wall_s": 251.0
       },
       "kenburns": {
         "frames": [
@@ -628,49 +727,49 @@
       "prores_export": {
         "codec": "prores",
         "decode_errors": "",
-        "fps_measured": 8.66,
+        "fps_measured": 7.92,
         "frames_counted": 24,
         "frames_expected": 24,
         "pix_fmt": "yuv422p10le",
         "profile": "HQ",
         "rc": 0,
-        "rss_mb": 1193.9,
+        "rss_mb": 1178.0,
         "seconds": 1,
         "size_mb": 3.6,
-        "wall_s": 2.77
+        "wall_s": 3.03
       },
-      "rss_slope_mb_per_still": 25.84,
+      "rss_slope_mb_per_still": 25.74,
       "scaling": [
         {
           "calls_ok": true,
           "n": 5,
-          "peak_rss_mb": 1283.1,
+          "peak_rss_mb": 1303.9,
           "rss_mb": {
-            "export_2s": 1283.1,
-            "import": 203.6,
+            "export_2s": 1303.9,
+            "import": 203.4,
             "render": 211.4
           },
           "set": "5@3600x2400",
-          "wall_total_s": 6.1,
+          "wall_total_s": 9.6,
           "walls_s": {
-            "export_2s": 4.8,
-            "import": 0.26,
-            "render": 0.25
+            "export_2s": 7.58,
+            "import": 0.76,
+            "render": 0.51
           }
         },
         {
           "calls_ok": true,
           "n": 20,
-          "peak_rss_mb": 1274.8,
+          "peak_rss_mb": 1282.9,
           "rss_mb": {
-            "export_2s": 1274.8,
-            "import": 698.0,
+            "export_2s": 1282.9,
+            "import": 698.5,
             "render": 211.8
           },
           "set": "20@3600x2400",
-          "wall_total_s": 7.1,
+          "wall_total_s": 8.1,
           "walls_s": {
-            "export_2s": 5.06,
+            "export_2s": 6.06,
             "import": 1.01,
             "render": 0.25
           }
@@ -680,33 +779,33 @@
           "n": 100,
           "peak_rss_mb": 3342.2,
           "rss_mb": {
-            "export_2s": 1288.8,
+            "export_2s": 1259.3,
             "import": 3342.2,
-            "render": 212.4
+            "render": 211.7
           },
           "set": "100@3600x2400",
-          "wall_total_s": 20.7,
+          "wall_total_s": 24.2,
           "walls_s": {
-            "export_2s": 5.06,
-            "import": 14.64,
-            "render": 0.25
+            "export_2s": 5.8,
+            "import": 17.15,
+            "render": 0.51
           }
         },
         {
           "calls_ok": true,
           "n": 300,
-          "peak_rss_mb": 5425.7,
+          "peak_rss_mb": 5425.6,
           "rss_mb": {
-            "export_2s": 939.3,
-            "import": 5425.7,
+            "export_2s": 981.9,
+            "import": 5425.6,
             "render": 137.5
           },
           "set": "300@2880x1620",
-          "wall_total_s": 31.8,
+          "wall_total_s": 35.1,
           "walls_s": {
-            "export_2s": 4.3,
-            "import": 26.27,
-            "render": 0.26
+            "export_2s": 4.8,
+            "import": 29.0,
+            "render": 0.25
           }
         }
       ],
@@ -717,12 +816,12 @@
       "rss_kill_mb": 10240
     },
     "stopped": null,
-    "wall_s": 314.2
+    "wall_s": 381.1
   },
   "disk": {
-    "avail_mb_end": 14480,
-    "avail_mb_min": 14382,
-    "avail_mb_start": 14547,
+    "avail_mb_end": 14464,
+    "avail_mb_min": 14366,
+    "avail_mb_start": 14533,
     "floor_mb": 400,
     "hard_floor_mb": 250,
     "planned_write_mb": 350
@@ -734,12 +833,12 @@
     "platform": "linux",
     "python": "3.13"
   },
-  "expected": "all of: no crash at N=100 and N=300; RSS slope under 40 MB per still; RSS(N=300) under 12 GB; 2,400-frame H.264 at 5 fps or more with the right frame count and silent decode; ProRes frame count; Ken Burns first/last within 1 px; mid-dissolve within 2 levels; offlineMedia empty",
+  "expected": "all of: no crash at N=100 and N=300; RSS slope under 40 MB per still; RSS(N=300) under 12 GB; 2,400-frame H.264 at 5 fps or more with the right frame count and silent decode; ProRes frame count; Ken Burns first/last within 1 px; mid-dissolve within 2 levels of the linear-light mix of its neighbours (mark amended 2026-10-20); dissolve steps: at least 11 distinct levels over 12 exported frames (criterion added 2026-10-20); offlineMedia empty",
   "notes": "A Linux CLI pass proves nothing about Windows. Timing is only valid when contaminated=no.",
   "package": "WP-07",
   "schema": "lj-evidence/1",
   "stage": "sp1-filmcraft-v0.9.0-lean",
-  "status": "FAIL",
+  "status": "PASS",
   "test": "t2_filmcraft_v0.9.0",
   "unverified_reasons": [
     "Windows behaviour is not tested by a Linux CLI run"

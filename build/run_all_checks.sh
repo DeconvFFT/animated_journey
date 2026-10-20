@@ -6,7 +6,7 @@
 #   bash build/run_all_checks.sh --quick        the same with each area's  --quick  (about 5 minutes instead of about 40)
 #   bash build/run_all_checks.sh --global-only  only the global checks of Part A (about 2 minutes); no package area
 #   bash build/run_all_checks.sh --list         print what would run, write nothing
-#   options: --timeout SECONDS   per-area limit, passed to scripts/run_week2_checks.sh (default 900 for --all, 60 for --quick)
+#   options: --timeout SECONDS   per-area limit, passed to scripts/run_week2_checks.sh (default 900 for --all, 60 for --quick; win_kit2 has its own 90 s in --quick unless this option is given)
 #
 # WHAT RUNS (in this order; sequential, never parallel, because the render, timing and disk stages share one CPU budget)
 #   Part A, global checks (each one command, expected exit 0; the same commands the build plan names in its acceptance lines)

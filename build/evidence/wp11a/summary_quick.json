@@ -22,6 +22,12 @@
    "UNVERIFIED": 0,
    "SKIPPED": 0
   },
+  "per_area_quick_limit": {
+   "PASS": 6,
+   "FAIL": 0,
+   "UNVERIFIED": 0,
+   "SKIPPED": 0
+  },
   "list_and_usage": {
    "PASS": 12,
    "FAIL": 0,
@@ -96,7 +102,7 @@
   }
  },
  "counts": {
-  "PASS": 123,
+  "PASS": 129,
   "FAIL": 0,
   "UNVERIFIED": 0,
   "SKIPPED": 0

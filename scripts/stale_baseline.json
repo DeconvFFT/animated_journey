@@ -1,54 +1,25 @@
 {
  "schema": "lj-stale-baseline/1",
  "date_utc": "2026-10-20",
- "patterns_version": 2,
+ "patterns_version": 3,
  "note": "Today's hits: counts and locations. --new-only compares the fingerprint (file, pattern, normalised line text), not the line number, so inserting lines does not make old hits look new.",
+ "provenance": [
+  "2026-10-20, re-cut once (week-2 close-out implementor, on the orchestrator's instruction; Fable gate nudge 4 of reviews/build/w2-gate-r1.md): after the close-out packages c1 (FilmCraft dissolve ruling), c2 (phone wording, folded mobile-phone-delivery skill) and c3 (evidence and verdicts) landed, with the 16 reconciled skills installed (f474039) and patterns v3 in force. Why: the previous baseline (85 hits, 83 FAIL and 2 WARN, patterns v2) still listed 22 hits that were gone (19 in .claude/skills, fixed by the install; 3 in spikes/sp1_craft_cli, reworded by c1), so --new-only no longer guarded those spots, and patterns v3 added W-29.phone-ph2-cap-4mbps and W-29.phone-caption-36-chars. Hit count before: 85 (83 FAIL, 2 WARN). After: 63 (62 FAIL, 1 WARN); 22 removed, 0 added. The two new patterns found 2 hits, both in research/mobile-delivery-fixtures and both allowlisted by AL-6a, so they are not in the baseline. What is left is the record of research fixtures and sources (34 in research/sources, 25 in research/*-fixtures), 3 in spikes/sp2_route_a and 1 in pipeline/scenes/testcard, rows S-01, S-29, S-39, S-50 and S-61; none is a stale copy in a playbook, a skill or an ops file. A later re-cut adds its own dated line here and is tied to a register or pattern change."
+ ],
  "counts": {
-  "FAIL": 83,
-  "WARN": 2,
+  "FAIL": 62,
+  "WARN": 1,
   "by_row": {
    "S-01": {
-    "FAIL": 11,
-    "WARN": 0
-   },
-   "S-05": {
-    "FAIL": 2,
-    "WARN": 0
-   },
-   "S-08": {
-    "FAIL": 1,
-    "WARN": 1
-   },
-   "S-10": {
-    "FAIL": 1,
-    "WARN": 0
-   },
-   "S-18": {
-    "FAIL": 3,
+    "FAIL": 7,
     "WARN": 0
    },
    "S-29": {
     "FAIL": 1,
     "WARN": 0
    },
-   "S-38": {
-    "FAIL": 6,
-    "WARN": 0
-   },
    "S-39": {
     "FAIL": 11,
-    "WARN": 0
-   },
-   "S-42": {
-    "FAIL": 1,
-    "WARN": 0
-   },
-   "S-45": {
-    "FAIL": 2,
-    "WARN": 0
-   },
-   "S-47": {
-    "FAIL": 1,
     "WARN": 0
    },
    "S-50": {
@@ -62,158 +33,6 @@
   }
  },
  "hits": [
-  {
-   "fp": "6f7863270893dcaf",
-   "file": ".claude/skills/agent-first-production-pipeline/SKILL.md",
-   "line": 133,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "393df0344773b26a",
-   "file": ".claude/skills/animation-production-planning/SKILL.md",
-   "line": 51,
-   "row_id": "S-18",
-   "pattern": "S-18.shared-private-cut",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "0e5ccee45d0ffe81",
-   "file": ".claude/skills/cinematic-quality-bar/SKILL.md",
-   "line": 180,
-   "row_id": "S-42",
-   "pattern": "D-29.voxel",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "2296038c8a2b356f",
-   "file": ".claude/skills/craft-apps-motion-refinement/SKILL.md",
-   "line": 198,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "a712d6b70b5b6fd1",
-   "file": ".claude/skills/craft-apps-visual-refinement/SKILL.md",
-   "line": 167,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "eef9ffb4f5458366",
-   "file": ".claude/skills/creator-recipe-library/SKILL.md",
-   "line": 184,
-   "row_id": "S-47",
-   "pattern": "D-29.minecraft",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "ccd9b365b15891ab",
-   "file": ".claude/skills/creator-recipe-library/SKILL.md",
-   "line": 184,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "98d82d38886b7124",
-   "file": ".claude/skills/free-creative-toolchain/SKILL.md",
-   "line": 60,
-   "row_id": "S-01",
-   "pattern": "S-01.atsc-25",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "ceac59b01be0335f",
-   "file": ".claude/skills/free-creative-toolchain/SKILL.md",
-   "line": 176,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "347438cf4a422551",
-   "file": ".claude/skills/life-film-story-structure/SKILL.md",
-   "line": 31,
-   "row_id": "S-18",
-   "pattern": "S-18.shared-private-cut",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "598fdb2cd4ad9906",
-   "file": ".claude/skills/life-film-story-structure/SKILL.md",
-   "line": 225,
-   "row_id": "S-18",
-   "pattern": "S-18.shared-private-cut",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "12df27894b8e3a3d",
-   "file": ".claude/skills/life-story-interviewing/SKILL.md",
-   "line": 181,
-   "row_id": "S-08",
-   "pattern": "S-08.closest-insider",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "72835e371dca2924",
-   "file": ".claude/skills/life-story-interviewing/SKILL.md",
-   "line": 181,
-   "row_id": "S-08",
-   "pattern": "S-08.insider",
-   "severity": "WARN"
-  },
-  {
-   "fp": "9e6a91c0e1090e24",
-   "file": ".claude/skills/life-story-interviewing/SKILL.md",
-   "line": 181,
-   "row_id": "S-38",
-   "pattern": "S-38.l1-lock",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "2bf32badc7bb636b",
-   "file": ".claude/skills/life-story-interviewing/surprise-runbook.md",
-   "line": 54,
-   "row_id": "S-10",
-   "pattern": "S-10.consent-read-aloud",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "c8465166b23a4244",
-   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
-   "line": 142,
-   "row_id": "S-45",
-   "pattern": "D-29.minecraft",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "643ec273a353e642",
-   "file": ".claude/skills/meaningful-game-mechanics/SKILL.md",
-   "line": 142,
-   "row_id": "S-45",
-   "pattern": "D-29.voxel",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "96e12744f3297441",
-   "file": ".claude/skills/surprise-tribute-operations/SKILL.md",
-   "line": 192,
-   "row_id": "S-05",
-   "pattern": "S-05.co-keeper",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "0234556f30ebe8c0",
-   "file": ".claude/skills/surprise-tribute-operations/SKILL.md",
-   "line": 192,
-   "row_id": "S-05",
-   "pattern": "S-05.two-or-both-keys",
-   "severity": "FAIL"
-  },
   {
    "fp": "bbbef4fcda78ddee",
    "file": "pipeline/scenes/testcard/smoke3d.html",
@@ -692,30 +511,6 @@
    "line": 219,
    "row_id": "S-01",
    "pattern": "S-01.atsc-25",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "c38654d67a2f171f",
-   "file": "spikes/sp1_craft_cli/VERDICT-SP1A.md",
-   "line": 36,
-   "row_id": "S-01",
-   "pattern": "S-01.at-25-fps",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "629201d4650d8cad",
-   "file": "spikes/sp1_craft_cli/VERDICT-SP1A.md",
-   "line": 56,
-   "row_id": "S-01",
-   "pattern": "S-01.at-25-fps",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "27bd5e51b0da08aa",
-   "file": "spikes/sp1_craft_cli/drivers/t2_filmcraft.py",
-   "line": 285,
-   "row_id": "S-01",
-   "pattern": "S-01.at-25-fps",
    "severity": "FAIL"
   },
   {

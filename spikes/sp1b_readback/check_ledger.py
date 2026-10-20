@@ -8,7 +8,8 @@ SOURCES  build/evidence/wp07/download_ledger.jsonl (EffectCraft and FilmCraft, w
          ledger in the scratch folder (a guard line per stage, with its status). A BLOCKED stage fetched nothing and is listed as such.
 RULES  each of the five pinned tarballs (PhotoCraft 0.10.0, VectorCraft 0.13.1, LightCraft 0.9.1, FilmCraft 0.9.0, EffectCraft 0.11.1) has at most one fetch, or a later fetch that carries a recorded
        exception (printed with its reason); the FilmCraft 0.8.0 fallback and SoundCraft have none unless the ledger says why; the total stays under the 2 GB allowance; a stage envelope that says
-       it fetched must have its ledger line.
+       it fetched must have its ledger line. A pip fetch (a row with "kind": "pip-wheel-set", written by spikes/sp3_blender/ledger_row.py: the bpy wheel and its dependency wheels for SP3)
+       counts toward the total like a tarball, and a later fetch of the same set needs a recorded exception too (added Tue 20 Oct 2026, gate w2 nudge 6: pip fetches were outside the ledger).
 EXIT CODES (build plan 4.3)  0 the rules hold (a tarball not fetched yet is listed, not a failure)   1 a rule is broken, or --require-all and a tarball was not fetched   2 bad usage / unreadable file
 Prints no path, host or user name.
 """
@@ -93,7 +94,20 @@ def main(argv):
         if a.require_all and len(mine) == 0:
             problems.append("%s was not fetched (--require-all)" % tb.get("name"))
     known = {tb.get("name") for tb in (assets.get(k, {}) for k in FIVE)}
+    pip_sets = {}
     for r in rows:
+        if r.get("kind") == "pip-wheel-set":
+            pip_sets.setdefault(r.get("asset"), []).append(r)
+    for asset, mine in sorted(pip_sets.items()):
+        exc = [(r.get("fetch"), r.get("ledger"), r.get("stage"), r.get("exception")) for r in mine if r.get("exception")]
+        if len(mine) > 1 and not all(r.get("exception") for r in mine[1:]):
+            problems.append("%s was fetched %d times and a later fetch has no recorded exception" % (asset, len(mine)))
+        state = "pip wheel set from PyPI, %d fetch(es) of %s bytes each (%s)" % (len(mine), "{:,}".format(int(mine[0].get("bytes") or 0)), ", ".join(str(r.get("stage")) for r in mine))
+        table.append({"asset": asset, "bytes": int(mine[0].get("bytes") or 0), "fetches": len(mine), "state": state, "exceptions": [{"ledger": e[1], "stage": e[2], "reason": e[3]} for e in exc],
+                      "guard_stage_lines": []})
+    for r in rows:
+        if r.get("kind") == "pip-wheel-set":
+            continue
         if r.get("asset") not in known:
             note = "the FilmCraft 0.8.0 fallback" if "0.8.0" in str(r.get("asset")) else "an asset outside the five pinned tarballs"
             if "soundcraft" in str(r.get("asset")):

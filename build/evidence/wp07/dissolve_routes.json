@@ -1,0 +1,89 @@
+{
+  "actual": "chromium_opacity: encoded average; ffmpeg_xfade: encoded average; filmcraft_0.9.0: linear-light mix",
+  "date_utc": "2026-10-20",
+  "detail": {
+    "colour_pair": [
+      [
+        201,
+        70,
+        60
+      ],
+      [
+        40,
+        91,
+        200
+      ]
+    ],
+    "encoded_average": [
+      120.5,
+      80.5,
+      130.0
+    ],
+    "linear_light_mix": [
+      149.5,
+      81.3,
+      151.4
+    ],
+    "routes": {
+      "chromium_opacity": {
+        "blends_in": "encoded average",
+        "levels_from_encoded_average": 0.5,
+        "levels_from_linear_light_mix": 29.47,
+        "pixel": [
+          120,
+          81,
+          130
+        ],
+        "route": "headless Chromium, one flat layer at opacity 0.5 over the other (Route A / CSS cross-fade)"
+      },
+      "ffmpeg_xfade": {
+        "blends_in": "encoded average",
+        "ffmpeg": "6.1.1-3ubuntu5",
+        "frames_read": 36,
+        "levels_from_encoded_average": 0.5,
+        "levels_from_linear_light_mix": 29.47,
+        "pixel": [
+          120,
+          80,
+          130
+        ],
+        "route": "ffmpeg xfade=fade (Route B)"
+      },
+      "filmcraft_0.9.0": {
+        "blends_in": "linear-light mix",
+        "levels_from_encoded_average": 28.5,
+        "levels_from_linear_light_mix": 0.47,
+        "pixel": [
+          149.0,
+          81.0,
+          151.0
+        ],
+        "route": "FilmCraft 0.9.0 CLI, frame nearest the cut (read from t2_filmcraft_v0.9.0.json, not measured here)"
+      }
+    },
+    "tolerance_levels": 2.0
+  },
+  "disk": {
+    "avail_mb_end": 14527,
+    "avail_mb_min": 14527,
+    "avail_mb_start": 14527,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 0
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "each route's half-way pixel of the same cross dissolve lands on the encoded average or the linear-light mix (within 2 levels)",
+  "notes": "Flat colours, Linux container only; says which space a route blends in, nothing about photographs or Windows.",
+  "package": "WP-07",
+  "schema": "lj-evidence/1",
+  "stage": "",
+  "status": "PASS",
+  "test": "dissolve_routes",
+  "unverified_reasons": []
+}

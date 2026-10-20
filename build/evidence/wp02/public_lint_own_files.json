@@ -2,9 +2,9 @@
  "actual": "public_lint: mode paths, 67 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list",
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 14534,
-  "avail_mb_min": 14534,
-  "avail_mb_start": 14534,
+  "avail_mb_end": 14522,
+  "avail_mb_min": 14522,
+  "avail_mb_start": 14522,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

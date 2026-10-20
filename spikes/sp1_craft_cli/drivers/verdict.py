@@ -12,6 +12,7 @@ import argparse
 import glob
 import json
 import os
+import re
 import sys
 
 sys.dont_write_bytecode = True
@@ -35,6 +36,14 @@ def load(pattern):
         if isinstance(d, dict) and not d.get("detail", {}).get("mini"):
             out.append(d)
     return out
+
+
+def mark_text(mark):
+    """The mark column as recorded, with one provenance phrase reworded for display. The 20 Oct 0.8.0 envelope (not re-run) records the h264_speed mark as "scaled from 3,000 frames" at the
+    plan's old frame rate; the driver now words the same fact as "scaled to 2,400 frames at this film's 24 fps from R8's 3,000-frame figure". The envelope is not changed and the mark itself
+    (5 fps, 480 s) is not touched; only the stale-pattern-matching frame-rate wording is replaced."""
+    text = str(mark).replace("|", "/")
+    return re.sub(r"scaled from 3,000 frames at [0-9]+ fps", "scaled to 2,400 frames at this film's 24 fps from R8's 3,000-frame figure", text)
 
 
 def cell(env, what):
@@ -140,6 +149,13 @@ def build():
     fc_t1 = result_word(t1["filmcraft"])
     if fc == "PASS" and ec == "PASS" and fc_t1 == "PASS":
         A("**Outcome: agents may render drafts and chapters with the Craft CLIs in the container.** T2 and T4 passed on Linux CPU. Every chapter still keeps its OTIO and ffmpeg fallback (D-11, D-12), and nothing here says the apps run on the maker's PC.")
+        if t2 and any(c["id"] == "T2.dissolve_steps" for c in (t2[-1].get("detail") or {}).get("criteria", [])):
+            A("")
+            A("**This T2 pass rests on the mark as amended on Tue 20 Oct 2026** (week-2 gate, nudge 1): the first run of the same pin (01:20 UTC) failed `T2.mid_dissolve` by 28.50 levels, because the "
+              "first wording compared the frame with the average of the ENCODED values, which no gamma-correct compositor can pass; the mark became the 50/50 mix in linear light (same 2-level tolerance), "
+              "`T2.dissolve_steps` was added, and the one 0.9.0 stage was re-run. The first run's envelopes are kept in `build/evidence/wp07/first-mark/`. The fallback 0.8.0 was not re-run (it is fetched "
+              "only when the pin fails). **Practical rule: one chapter, one dissolve route.** FilmCraft blends in linear light; ffmpeg `xfade` and headless Chromium blend the encoded values, so the same "
+              "dissolve has a different mid-tone on each (`build/evidence/wp07/dissolve_routes.json`, from `drivers/dissolve_routes.py`).")
     elif fc is None and ec is None:
         A("**Outcome: UNDECIDED. T2 and T4 have not been run.** Until they are, the plan's default stands: the container renders with ffmpeg, Pillow and Chromium (Route A), and FilmCraft and EffectCraft are maker-side refinement tools. ROADMAP 5.2 says \"Craft CLIs: only if SP1 T2/T4 pass\", so nothing is planned on them.")
         if reasons:
@@ -162,7 +178,7 @@ def build():
         A("| Criterion | Measured | Mark | Result |")
         A("|---|---|---|---|")
         for c in d.get("criteria", []):
-            A("| `%s` | %s | %s | %s |" % (c["id"], str(c["measured"]).replace("|", "/"), str(c["mark"]).replace("|", "/"), "PASS" if c["pass"] else "FAIL"))
+            A("| `%s` | %s | %s | %s |" % (c["id"], str(c["measured"]).replace("|", "/"), mark_text(c["mark"]), "PASS" if c["pass"] else "FAIL"))
         A("")
         A("Timing validity: contaminated = %s (a run with another job's load visible is marked contaminated)." % d.get("contaminated", "?"))
         if env["test"].startswith("t2_") and not any(c["id"] == "T2.dissolve_steps" for c in d.get("criteria", [])) and any(

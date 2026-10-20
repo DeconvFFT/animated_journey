@@ -16,19 +16,24 @@
 #            a corrupt kept tarball that is removed and fetched again, T2's partial envelope surviving a TERM, the guard's refusal, a disk-floor abort that
 #            cleans up, and planted defects (each must make exactly its own criterion FAIL). The stand-ins are not FilmCraft or EffectCraft and prove nothing about them.
 # Options: --skip-network  skip the real network lines (for a machine without the proxy); --real-all  run the real hours-long `--all` if the guard allows it.
+#          --skip-defects / --defects-only  split a full --all in two for a host where it passes 10 minutes (about 13 on the 20 Oct 2026 container): `--all --skip-defects` runs everything
+#          except the planted-defect lines (the 12 `fake.defect_*` lines) and writes tests.jsonl; `--defects-only` (it implies --all) runs just those lines and APPENDS them to tests.jsonl, so
+#          the two runs together leave the lines of one full --all (the flipped-byte line now runs before the defect lines, in part 1). Run them one after the other, never at the same time.
 #
 # One line per test:  PASS|FAIL|UNVERIFIED|SKIPPED|BLOCKED  name  detail.  Exit 0 only if no line is FAIL or BLOCKED; exit 1 if a line FAILs; exit 3 if a line is
 # BLOCKED (the disk guard refused a real stage: that is an environment fact, not a defect). Every line also writes an evidence envelope (build plan 4.2) to
 # build/evidence/wp07/tests.jsonl (--all) or tests_quick.jsonl (--quick). Writes only under build/evidence/wp07/, vendor/craft/ (real stages) and a scratch folder it removes again.
 set -u
 export LC_ALL=C PYTHONDONTWRITEBYTECODE=1
-MODE=--quick; REAL_ALL=0; NET=1
+MODE=--quick; REAL_ALL=0; NET=1; SKIP_DEFECTS=0; DEFECTS_ONLY=0
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --quick|--all) MODE="$1";;
     --real-all) REAL_ALL=1;;
     --skip-network) NET=0;;
-    *) echo "usage: run_tests.sh [--quick|--all] [--real-all] [--skip-network]" >&2; exit 2;;
+    --skip-defects) SKIP_DEFECTS=1;;
+    --defects-only) DEFECTS_ONLY=1; MODE=--all;;
+    *) echo "usage: run_tests.sh [--quick|--all] [--real-all] [--skip-network] [--skip-defects|--defects-only]" >&2; exit 2;;
   esac
   shift
 done
@@ -40,7 +45,7 @@ mkdir -p "$EVID" "$SCRATCH_ROOT"
 # Another runner (WP-11a's run_week2_checks.sh) may call this script's --quick while a --all is running: each mode has its own evidence file and its own lock.
 JSONL="$EVID/tests.jsonl"; [ "$MODE" = "--quick" ] && JSONL="$EVID/tests_quick.jsonl"
 exec 9>"$SCRATCH_ROOT/wp07-tests-${MODE#--}.lock"; flock -w 1200 9 || { echo "BUSY: another run_tests.sh $MODE holds the lock"; exit 3; }
-: > "$JSONL"
+[ "$DEFECTS_ONLY" = 1 ] || : > "$JSONL"   # --defects-only appends to the file the first part wrote
 FAILS=0; BLOCKED=0; UNV=0; NPASS=0
 rec() {  # STATUS NAME DETAIL [EXPECTED]
   local st="$1" name="$2" detail="$3" exp="${4:-the check passes}"
@@ -64,6 +69,7 @@ avail_mb() { df -BM / | awk 'NR==2{gsub("M","",$4); print $4}'; }
 
 echo "tests/sp1/run_tests.sh $MODE   (df now: Avail $(df -BM / | awk 'NR==2{print $4}'))"
 
+if [ "$DEFECTS_ONLY" != 1 ]; then
 # ------------------------------------------------------------------ QUICK
 bad=""; for f in "$SP1/run_sp1.sh" "$T/run_tests.sh" "$SP1/tests/fake_df_900.sh" "$SP1/tests/fake_df_600.sh" "$T/fake_df_2000.sh" "$T/fake_df_flag.sh"; do bash -n "$f" 2>/dev/null || bad="$bad $(basename "$f")"; done
 check syntax.bash "$([ -z "$bad" ] && echo 1 || echo 0)" "bash -n on run_sp1.sh, run_tests.sh and the fake df scripts; failing:${bad:- none}" "every shell script parses"
@@ -201,11 +207,13 @@ else
   rec SKIPPED all.staged_run "the guard would allow it, but it takes hours: run 'bash spikes/sp1_craft_cli/run_sp1.sh --all' in the background, or pass --real-all" "full staged run"
 fi
 
+fi   # DEFECTS_ONLY
 # ------------------------------------------------------------------ ALL: the mechanism tests with stand-ins
 W="$(mktemp -d "$SCRATCH_ROOT/wp07-fake.XXXXXX")"
 SRV=""
 cleanup() { [ -n "$SRV" ] && kill "$SRV" 2>/dev/null; rm -rf "$W"; }
 trap cleanup EXIT
+if [ "$DEFECTS_ONLY" != 1 ]; then
 python3 -I "$T/make_fake_release.py" --out "$W/ok" >/dev/null && python3 -I "$T/make_fake_release.py" --out "$W/flip" --flip-byte filmcraft >/dev/null
 # the 'bug' tree: both FilmCraft tarballs carry the planted dissolve defect (it takes effect only under --profile full); the 'tamper' tree is the ok tree with one
 # digit of the independent (R8) FilmCraft 0.9.0 tarball hash changed
@@ -345,6 +353,16 @@ FLAG="$W/floor.flag"; ( sleep 7; touch "$FLAG" ) 9>&- &
 out="$(LJ_FAKE_DF_FLAG="$FLAG" LJ_POLL_S=1 LJ_TERM_GRACE_S=15 FAKE_DF="$T/fake_df_flag.sh" fkrun ok flo --only filmcraft v0.9.0 --profile lean)"; rc=$?
 left="$(ls -A "$W/v_flo" | tr '\n' ' ')"; stat="$(tail -1 "$W/s_flo/disk-ledger.jsonl" 2>/dev/null | jq -r '.status' 2>/dev/null)"
 check fake.disk_floor_abort_cleans_up "$([ $rc = 3 ] && grep -q 'DISK-FLOOR' <<<"$out" && [ "$stat" = floor ] && [ -z "$left" ] && echo 1 || echo 0)" "exit $rc; guard status ${stat}; leftovers in vendor/craft: ${left:-none}" "when Avail falls under 250 MB mid-stage the guard stops the stage (exit 3) and the stage's trap removes its folders"
+# the flipped-byte check on the Linux side by itself
+good="$(ls "$W/ok/www/filmcraft/releases/download/v0.9.0/"*.tar.gz)"; cp "$good" "$W/good.tgz"; cp "$good" "$W/bad.tgz"
+python3 -I - "$W/bad.tgz" <<'PY'
+import sys
+b = bytearray(open(sys.argv[1], "rb").read()); b[len(b) // 2] ^= 1; open(sys.argv[1], "wb").write(bytes(b))
+PY
+o1="$(LJ_SP1_ASSETS="$W/ok-assets.json" LJ_SP1_R8="$W/ok/r8.json" bash "$SP1/run_sp1.sh" --verify-tarball "$W/good.tgz" filmcraft v0.9.0 2>&1)"; r1=$?
+o2="$(LJ_SP1_ASSETS="$W/ok-assets.json" LJ_SP1_R8="$W/ok/r8.json" bash "$SP1/run_sp1.sh" --verify-tarball "$W/bad.tgz" filmcraft v0.9.0 2>&1)"; r2=$?
+check fake.verify_flipped_byte "$([ $r1 = 0 ] && [ $r2 = 1 ] && grep -q 'Nothing was extracted' <<<"$o2" && echo 1 || echo 0)" "intact -> exit $r1; one byte flipped -> exit $r2: $(cut -c1-90 <<<"$o2")" "--verify-tarball accepts the intact copy and rejects the copy with one byte flipped"
+fi   # DEFECTS_ONLY
 # planted defects: each must fail exactly its own criterion
 bugrun() {  # bugrun APP BUGWORD EXPECTED_CRITERION [extra driver args]
   local app="$1" bug="$2" want="$3"; shift 3
@@ -359,6 +377,7 @@ bugrun() {  # bugrun APP BUGWORD EXPECTED_CRITERION [extra driver args]
   check "fake.defect_${app}_$bug" "$okk" "driver exit $rc; failing criteria: ${got:-none} (expected ${want#has:}$([ "${want#has:}" != "$want" ] && echo ' among others'))" "planted defect '$bug' makes $want fail and nothing unrelated"
   rm -rf "$W/hw_${app}_$bug" "$d"
 }
+if [ "$SKIP_DEFECTS" != 1 ]; then
 bugrun filmcraft leak T2.rss_slope
 bugrun filmcraft offset T2.kenburns_positions
 bugrun filmcraft dropframe T2.h264_frame_count,T2.prores_frame_count
@@ -371,16 +390,8 @@ bugrun effectcraft noalpha T4.title_png_has_alpha,T4.line_png_has_alpha
 bugrun effectcraft nondeterministic T4.determinism
 bugrun effectcraft nodecode T4.prores4444_decodes
 bugrun effectcraft slow T4.parallax_speed --parallax-max-s 0.05
-# the flipped-byte check on the Linux side by itself
-good="$(ls "$W/ok/www/filmcraft/releases/download/v0.9.0/"*.tar.gz)"; cp "$good" "$W/good.tgz"; cp "$good" "$W/bad.tgz"
-python3 -I - "$W/bad.tgz" <<'PY'
-import sys
-b = bytearray(open(sys.argv[1], "rb").read()); b[len(b) // 2] ^= 1; open(sys.argv[1], "wb").write(bytes(b))
-PY
-o1="$(LJ_SP1_ASSETS="$W/ok-assets.json" LJ_SP1_R8="$W/ok/r8.json" bash "$SP1/run_sp1.sh" --verify-tarball "$W/good.tgz" filmcraft v0.9.0 2>&1)"; r1=$?
-o2="$(LJ_SP1_ASSETS="$W/ok-assets.json" LJ_SP1_R8="$W/ok/r8.json" bash "$SP1/run_sp1.sh" --verify-tarball "$W/bad.tgz" filmcraft v0.9.0 2>&1)"; r2=$?
-check fake.verify_flipped_byte "$([ $r1 = 0 ] && [ $r2 = 1 ] && grep -q 'Nothing was extracted' <<<"$o2" && echo 1 || echo 0)" "intact -> exit $r1; one byte flipped -> exit $r2: $(cut -c1-90 <<<"$o2")" "--verify-tarball accepts the intact copy and rejects the copy with one byte flipped"
+fi   # SKIP_DEFECTS
 
-echo "SUMMARY all: $NPASS PASS, $FAILS FAIL, $BLOCKED BLOCKED, $UNV UNVERIFIED, $(grep -c SKIPPED "$JSONL") SKIPPED"
+echo "SUMMARY all$([ "$SKIP_DEFECTS" = 1 ] && echo " (part 1: the planted-defect lines are skipped; run --defects-only next)")$([ "$DEFECTS_ONLY" = 1 ] && echo " (part 2: the planted-defect lines only; counts are this run's)"): $NPASS PASS, $FAILS FAIL, $BLOCKED BLOCKED, $UNV UNVERIFIED, $(grep -c SKIPPED "$JSONL") SKIPPED"
 python3 -I "$T/make_summary.py" all >/dev/null 2>&1
 [ "$FAILS" -gt 0 ] && exit 1; [ "$BLOCKED" -gt 0 ] && exit 3; exit 0

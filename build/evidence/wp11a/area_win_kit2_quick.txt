@@ -1,5 +1,5 @@
-# area=win_kit2 entry=WP-09 mode=quick result=PASS exit=0 seconds=47 masked_values=0
-WP-09 tests (--quick). pwsh: present  ffmpeg: 6.1.1-3ubuntu5  patterns file: present  disk avail: 14540 MB
+# area=win_kit2 entry=WP-09 mode=quick result=PASS exit=0 seconds=39 masked_values=0
+WP-09 tests (--quick). pwsh: present  ffmpeg: 6.1.1-3ubuntu5  patterns file: present  disk avail: 14523 MB
 PASS       lint.kit2_ps1_scripts                                exit 0; TOTAL: 0 error(s), 0 warning(s) in 4 file(s)|
 PASS       lint.readme_fences                                   exit 0; TOTAL: 0 error(s), 0 warning(s) in 1 file(s)|
 PASS       parse.scripts_and_readme_fences                      exit 0; PARSED 58 item(s), 0 parse error(s)|
@@ -101,7 +101,7 @@ PASS       redact.ctrl_c_prints_one_line_and_no_traceback       exit 3; stderr '
 PASS       redact.out_below_an_existing_file_is_exit_3_with_no_traceback_and_no_path exit 3: kenburns_24: environment problem: cannot create the output folder for x.mp4
 PASS       redact.ffmpeg_output_open_failure_is_exit_3_and_the_folder_is_masked exit 3; the error line says <out>, not the folder; folder after: ['x.mp4.part.mp4']
 PASS       redact.unplanned_exception_on_the_command_line_has_no_traceback exit 3: kenburns_24: unexpected error (OverflowError). Nothing of yours was changed; paste this one line in chat.
-PASS       redact.pc_helpers_clip_output_failure_masks_the_folder exit 3: pc_helpers: environment problem: ffmpeg could not make the clip: [out#0/mp4 @ 0x563088d8b700] Error opening output <out>/c.mp4: Not a direct
+PASS       redact.pc_helpers_clip_output_failure_masks_the_folder exit 3: pc_helpers: environment problem: ffmpeg could not make the clip: [out#0/mp4 @ 0x55914a701700] Error opening output <out>/c.mp4: Not a direct
 PASS       redact.pc_helpers_merge_chains_into_a_missing_folder_is_exit_3_with_no_traceback exit 3: pc_helpers: environment problem: cannot write m.json (is its folder there, and writable?)
 PASS       helpers.clip_passes_online_h264_with_the_tone_at_16_lufs pc_helpers clip exit 0, spec_check exit 0: ['PASS audio.integrated       want within +-1.0 LU of -16 LUFS; got -16.0 LUFS']
 PASS       helpers.clip_without_ffmpeg_is_exit_3                pc_helpers: environment problem: ffmpeg not found (no-ffmpeg)
@@ -127,4 +127,4 @@ UNVERIFIED windows.winget_ids_and_pip_wheels                    ids read from wi
 UNVERIFIED windows.ffmpeg_9_0_2_pixels_and_spec                 measured on 6.1.1 only; the maker's run of run_checks_pc.ps1 is the test
 UNVERIFIED windows.tiff_standins_open_in_windows_photos         valid per ImageMagick and Pillow; no Windows viewer here
 
-WP-09 quick: PASS=119 FAIL=0 UNVERIFIED=7 SKIPPED=0 BLOCKED=0 (47 s)  disk: start 14540 MB, min 14539 MB, end 14539 MB
+WP-09 quick: PASS=119 FAIL=0 UNVERIFIED=7 SKIPPED=0 BLOCKED=0 (39 s)  disk: start 14523 MB, min 14522 MB, end 14522 MB

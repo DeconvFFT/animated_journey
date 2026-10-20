@@ -1,0 +1,5 @@
+<!-- owner: the package that runs SP2 (Route A, WP-04); the only writer of this file. Edit it, then run: python3 -I spikes/verdicts/assemble.py -->
+<!-- part: row -->
+| **SP2** | Whether Route A (headless Chromium, `seekTo(t)`, frames piped into ffmpeg) is a real route | **Done** | `spikes/sp2_route_a/VERDICT-SP2.md`, `spikes/sp2_route_a/results.json`, `build/reports/WP-04.md` | The R11 rule passes in the container: 11.8 fps on a flat scene (mark 8), 0 differing pixels between two runs (limit 100), no out-of-memory, resume works, tags correct. One stage, the guarded 2,400-frame `a6_chapter_2400`, was BLOCKED by the disk guard; the same run with its output in RAM passed (2,400 frames in 118.3 s). Three.js (SP2 c) is dropped under D-29 | Rerun `bash tests/render/run_tests.sh --all --only a6_chapter_2400` when Avail is at least 415 MB; reopen SP2 (c) only if hero shots later need three.js | 2026-10-19 |
+<!-- part: rule -->
+* SP2, `spikes/sp2_route_a/VERDICT-SP2.md`: "The rule of R11 is: at least 8 fps on a flat scene, at most 100 differing pixels per frame between two runs, no out-of-memory, resume works, tags correct."

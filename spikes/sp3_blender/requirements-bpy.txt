@@ -1,0 +1,44 @@
+# requirements-bpy.txt: the exact wheel set that `pip install bpy==5.2.2` fetched for SP3 on Tue 20 Oct 2026 (run 2, 02:05 UTC; run 1 fetched the same twelve files), pinned by sha256.
+# Used by spikes/sp3_blender/run_sp3.sh: pip install --no-cache-dir --require-hashes -r spikes/sp3_blender/requirements-bpy.txt
+# --require-hashes makes pip refuse any file whose sha256 is not listed here, and any package that is not listed (so no dependency can arrive unchecked).
+# The digests are the ones pip recorded in build/evidence/w2-sp3/run2_pip_summary.json and equal the digests PyPI publishes for these files (read from the PyPI JSON API, Tue 20 Oct 2026).
+# Linux x86_64 and Python 3.13 only (the digests are those of the cp313 manylinux wheels); nothing here was tried on Windows.
+# Each requirement is preceded by a comment line `# <file name> <bytes> bytes`; spikes/sp3_blender/ledger_row.py reads those sizes for the download ledger. Change a line only with a new date and a new run of the check:
+#   python3 -I spikes/sp3_blender/ledger_row.py check
+--require-hashes
+# bpy-5.2.2-cp313-cp313-manylinux_2_28_x86_64.whl 401697653 bytes
+bpy==5.2.2 \
+    --hash=sha256:3dfd1a9e7a5aec0f0fe95a1b01d10cd66e212b16ea38b77d132159dc9a666d45
+# numpy-2.5.4-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl 16718044 bytes
+numpy==2.5.4 \
+    --hash=sha256:6ffa07666f8da0eef81d149934a626d0d95fbd6838432a33e66245423a9062c0
+# cattrs-26.2.1-py3-none-any.whl 74843 bytes
+cattrs==26.2.1 \
+    --hash=sha256:a12aaa3453dc8f633a815293179f08b7421ed18d2575c459c3c736f840beac24
+# attrs-26.1.0-py3-none-any.whl 67548 bytes
+attrs==26.1.0 \
+    --hash=sha256:c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309
+# typing_extensions-4.16.0-py3-none-any.whl 45571 bytes
+typing_extensions==4.16.0 \
+    --hash=sha256:481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8
+# cython-3.3.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl 3407705 bytes
+Cython==3.3.0 \
+    --hash=sha256:23942b0662642927a55676e4b26e6840fb166dd7d76436384685227e7e8619a4
+# requests-2.34.2-py3-none-any.whl 73075 bytes
+requests==2.34.2 \
+    --hash=sha256:2a0d60c172f83ac6ab31e4554906c0f3b3588d37b5cb939b1c061f4907e278e0
+# charset_normalizer-3.5.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl 254660 bytes
+charset-normalizer==3.5.2 \
+    --hash=sha256:7218e8f32b0956cfcd048fd42d9d5779809745ca1d86113ca56f66e7ae1549c4
+# idna-3.20-py3-none-any.whl 69583 bytes
+idna==3.20 \
+    --hash=sha256:ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c
+# urllib3-2.8.0-py3-none-any.whl 135717 bytes
+urllib3==2.8.0 \
+    --hash=sha256:0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3
+# certifi-2026.10.18-py3-none-any.whl 134093 bytes
+certifi==2026.10.18 \
+    --hash=sha256:73191c47aaa79da394e8fee2dbc2ec827432cab56311122c9e47abf79e390f62
+# zstandard-0.25.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl 5547173 bytes
+zstandard==0.25.0 \
+    --hash=sha256:8e735494da3db08694d26480f1493ad2cf86e99bdd53e8e9771b2752a5c0246a

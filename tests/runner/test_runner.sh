@@ -136,6 +136,20 @@ EV="$T/ev6"; mkdir -p "$EV"; rr "$EV" "$T/a_pass.txt" FK_SLEEP=2 LJ_RUNNER_BUDGE
 [[ "$RC" -eq 0 ]] && has 'OVER BUDGET' "$EV/INDEX.md"; chk over_budget_is_flagged_not_failed "exit $RC; OVER BUDGET in INDEX" $?
 t over_budget_in_json "over_budget true" python3 -I -c "import json,sys;d=json.load(open('$EV/week2_summary.json'));sys.exit(0 if d['over_budget'] is True else 1)"
 
+echo "GROUP per_area_quick_limit"
+# an area may carry its own quick limit as a sixth field (win_kit2 has 90 s in DEFAULT_AREAS); it applies to --quick only, and an explicit --timeout or LJ_RUNNER_TIMEOUT_S switches it off
+printf 'fk_pass|FK-1|fk-pass|1|passing fake area with its own quick limit of 1 s|1\n' > "$T/a_qlim.txt"
+EV="$T/ev40"; mkdir -p "$EV"; rr "$EV" "$T/a_qlim.txt" FK_SLEEP=1.5 LJ_RUNNER_TIMEOUT_S= -- --quick
+[[ "$RC" -eq 1 ]] && has 'fk_pass +FK-1 +TIMEOUT' "$T/out" && has 'no result in 1 s' "$T/out"; chk area_quick_limit_applies_without_an_explicit_limit "exit $RC; the 1.5 s area was stopped at its own 1 s, not at the 60 s default" $?
+has 'per-area limit 60 s \(own limit: fk_pass 1 s\)' "$T/out" && has 'per-area limit 60 s; own limit: fk_pass 1 s\.' "$EV/INDEX.md"; chk own_limit_is_named_in_console_and_index "console and INDEX.md say which area has its own limit" $?
+t own_limit_is_in_the_json "areas[0].timeout_s is 1 and per_area_timeout_s is 60" python3 -I -c "import json,sys;d=json.load(open('$EV/week2_summary.json'));sys.exit(0 if d['areas'][0]['timeout_s']==1 and d['per_area_timeout_s']==60 else 1)"
+EV="$T/ev41"; mkdir -p "$EV"; rr "$EV" "$T/a_qlim.txt" FK_SLEEP=1.5 LJ_RUNNER_TIMEOUT_S= -- --quick --timeout 4
+[[ "$RC" -eq 0 ]] && has 'fk_pass +FK-1 +PASS' "$T/out" && ! has 'own limit' "$T/out"; chk timeout_option_switches_the_area_limit_off "exit $RC; --timeout 4 beat the area's 1 s and no own limit is claimed" $?
+printf 'fk_pass|FK-1|fk-pass|1|bad|zero|\n' > "$T/a_qbad.txt"; printf 'fk_pass|FK-1|fk-pass|1|bad|0\n' > "$T/a_qzero.txt"
+EV="$T/ev42"; mkdir -p "$EV"; rr "$EV" "$T/a_qbad.txt" -- --quick; r1=$RC; rr "$EV" "$T/a_qzero.txt" -- --quick; r2=$RC
+[[ "$r1" -eq 2 && "$r2" -eq 2 ]] && has 'bad quick limit' "$T/err"; chk bad_area_limit_is_refused "a non-number and 0 are both usage errors (exit $r1, $r2)" $?
+t default_area_list_gives_win_kit2_90_s "the real list: win_kit2 has 90 and no other area has an own limit" test "$(grep -cE '^  "[a-z0-9_]+\|[^"]*\|[0-9]+"$' "$RUNNER")" = 1 -a "$(grep -cE '^  "win_kit2\|[^"]*\|90"$' "$RUNNER")" = 1
+
 echo "GROUP list_and_usage"
 EV="$T/ev8"
 h0="$(dirhash "$EV")"; rr "$EV" "$AREAS" -- --list; h1="$(dirhash "$EV")"
@@ -260,6 +274,14 @@ EV="$T/ev26"; mkdir -p "$EV"; rr "$EV" "$T/a_edge.txt" FK_EDGE=exit3 -- --quick
 has '^Check: fk_edge \(FK-6\) did not pass but no FAIL or BLOCKED envelope' "$T/out"; chk fail_without_any_envelope_is_called_out "exit 3 area with no envelopes" $?
 EV="$T/ev27"; mkdir -p "$EV"; rr "$EV" "$AREAS" -- --quick
 ! has '^Check: fk_(pass|fail|email)' "$T/out"; chk consistent_areas_raise_no_check "fk_pass, fk_fail, fk_email: exit and envelopes agree" $?
+
+if [[ "$MODE" == "all" ]]; then
+  echo "GROUP per_area_quick_limit_all_mode"
+  EV="$T/ev43"; mkdir -p "$EV"; rr "$EV" "$T/a_qlim.txt" FK_SLEEP=1.5 LJ_RUNNER_TIMEOUT_S= -- --all
+  [[ "$RC" -eq 0 ]] && has 'fk_pass +FK-1 +PASS' "$T/out" && ! has 'own limit' "$T/out"; chk area_quick_limit_is_not_used_by_all "exit $RC; the 1.5 s area passed under the --all default (900 s)" $?
+  EV="$T/ev44"; mkdir -p "$EV"; rr "$EV" "$T/a_qlim.txt" FK_SLEEP=1.5 LJ_RUNNER_TIMEOUT_S=4 -- --quick
+  [[ "$RC" -eq 0 ]] && has 'fk_pass +FK-1 +PASS' "$T/out"; chk environment_limit_switches_the_area_limit_off "exit $RC; LJ_RUNNER_TIMEOUT_S=4 beat the area's 1 s" $?
+fi
 
 if [[ "$MODE" == "all" ]]; then
   echo "GROUP rerun_all_mode"

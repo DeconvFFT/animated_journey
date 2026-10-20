@@ -24,6 +24,7 @@ trap 'rm -rf -- "$T"' EXIT
 mkdir -p "$T/root/spikes/sp3_blender" "$T/root/scripts" "$T/root/build/evidence/wp10" "$T/scratch" "$T/shim"
 cp "$ROOT/scripts/lj_guard.sh" "$T/root/scripts/lj_guard.sh"
 cp "$SUT" "$T/root/spikes/sp3_blender/run_sp3.sh"
+cp "$HERE/ledger_row.py" "$HERE/requirements-bpy.txt" "$T/root/spikes/sp3_blender/" 2>/dev/null   # run_inner reads the pinned set and writes its ledger row (here into the temporary root, never the real ledger)
 cat > "$T/shim/python3" <<'EOF'
 #!/usr/bin/env bash
 if [[ "${1:-}" == "-m" && "${2:-}" == "venv" ]]; then

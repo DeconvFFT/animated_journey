@@ -70,6 +70,17 @@ def table4_ids(register):
     return ids
 
 
+def planted_rel(e):
+    """Where an allowlist entry's samples are planted: the entry's own path; '*' (any file) a playbook; a directory glob (the AL-6 entries, 2026-10-20) a file under it:
+    ** becomes allowed_<id>.md and a single * becomes x (reviews/** -> reviews/allowed_<id>.md, research/*-fixtures/** -> research/x-fixtures/allowed_<id>.md)."""
+    f = e["file"]
+    if "*" not in f:
+        return f
+    if f == "*":
+        return "playbooks/allowed_%s.md" % e["id"]
+    return f.replace("**", "allowed_%s.md" % e["id"]).replace("*", "x")
+
+
 def git(root, *args):
     return subprocess.run(["git", "-C", str(root), "-c", "user.name=stale-test", "-c", "user.email=stale-test@example.invalid"] + list(args), capture_output=True, text=True)
 
@@ -108,7 +119,7 @@ def run_all(T):
         write(tree, rel, body)
     # the allowlisted contexts, one per allowlist entry, using the entry's own positive samples
     for e in adoc["entries"]:
-        rel = e["file"] if "*" not in e["file"] else "playbooks/allowed_%s.md" % e["id"]
+        rel = planted_rel(e)
         for k, s in enumerate(e["positive_samples"]):
             r = rel if k == 0 else rel.replace(".md", "_%d.md" % k)
             write(tree, r, "# allowed context\n" + s + "\n")
@@ -158,9 +169,10 @@ def run_all(T):
     md = mdp.read_text(encoding="utf-8")
     result("markdown_report_has_the_required_sections",
            all(x in md for x in ["## Every Table 4 row", "## REGRESSIONS", "## WORK ORDERS", "## Not machine-checkable (prose)", "## INFO: candidate new Table 4 rows"]), "")
+    # S-65 was in this list until the register flipped it to applied on 2026-10-20 (skills installed in 51f4789); S-64 is still outstanding
     outstanding = {r["row_id"] for r in doc["rows"] if r["status"] == "outstanding"}
     result("outstanding_rows_become_work_orders_and_applied_rows_regressions",
-           {w["row_id"] for w in report["work_orders"]} == outstanding and {"S-01", "S-38", "S-42", "S-61", "S-65"} <= outstanding and any(h["row_id"] == "S-05" for h in report["regressions"]),
+           {w["row_id"] for w in report["work_orders"]} == outstanding and {"S-01", "S-38", "S-42", "S-61", "S-64"} <= outstanding and any(h["row_id"] == "S-05" for h in report["regressions"]),
            "%d outstanding rows" % len(outstanding))
 
     # INFO candidates are counted but never fail the check. Register v3 made Minecraft and the rest FAIL patterns, so the mechanism is tested with a synthetic info entry.

@@ -7,18 +7,18 @@
   "UNVERIFIED": 0
  },
  "date_utc": "2026-10-20",
- "lowest_avail_mb": 14547,
+ "lowest_avail_mb": 14526,
  "mode": "quick",
  "package": "WP-11b",
  "partial_run_only": [
-  "parity.phone_profile_vs_register"
+  "readiness.map_statuses_and_evidence"
  ],
  "schema": "lj-evidence-summary/1",
  "seconds": 0.0,
  "slowest": [
   {
    "seconds": 0.0,
-   "test": "parity.phone_profile_vs_register"
+   "test": "readiness.map_statuses_and_evidence"
   }
  ]
 }

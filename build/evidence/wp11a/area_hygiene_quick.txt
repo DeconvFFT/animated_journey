@@ -1,11 +1,11 @@
-# area=hygiene entry=WP-03 mode=quick result=FAIL exit=1 seconds=25 masked_values=0
-WP-03 hygiene tests, mode quick (Avail at start: 14535 MB)
+# area=hygiene entry=WP-03 mode=quick result=PASS exit=0 seconds=25 masked_values=0
+WP-03 hygiene tests, mode quick (Avail at start: 14523 MB)
 GROUP patterns
 RESULT PASS pattern_file_internal_test :: 40 checks passed, 0 failed, exit 0
 GROUP guard
 RESULT PASS avail_parses_fake_df_P_format :: (fake df -P style output)
 RESULT PASS avail_accepts_a_bare_integer :: 
-RESULT PASS avail_matches_real_df :: guard 14535 MB, df 14535 MB (the volume is shared, so a small drift is normal)
+RESULT PASS avail_matches_real_df :: guard 14523 MB, df 14523 MB (the volume is shared, so a small drift is normal)
 RESULT PASS usage_missing_dashdash_exits_2 :: lj_guard: usage: lj_with_disk PLANNED_MB LABEL -- COMMAND [ARGS...]
 RESULT PASS usage_planned_not_a_number_exits_2 :: 
 RESULT PASS command_exit_code_passes_through :: 
@@ -36,7 +36,7 @@ RESULT PASS two_jobs_both_succeed ::
 RESULT PASS two_jobs_serialise_start_end_start_end :: (order of start/end markers written by the jobs)
 RESULT PASS second_job_started_after_first_ended :: 
 RESULT PASS ledger_has_one_line_per_job :: 
-RESULT PASS ledger_shows_them_one_after_the_other :: A ended 2026-10-20T03:35:38Z, B started 2026-10-20T03:35:38Z
+RESULT PASS ledger_shows_them_one_after_the_other :: A ended 2026-10-20T05:08:37Z, B started 2026-10-20T05:08:37Z
 RESULT PASS ledger_records_that_the_second_job_waited :: 
 RESULT PASS waiter_with_LJ_LOCK_WAIT_S_2_exits_3 :: 
 RESULT PASS busy_message_names_the_holder :: BUSY: held by HOLDER-JOB 
@@ -56,7 +56,7 @@ RESULT PASS outer_timeout_exits_124_as_usual ::
 RESULT PASS outer_TERM_is_forwarded_and_the_childs_cleanup_trap_ran :: 
 RESULT PASS lock_is_released_after_an_outer_timeout :: 
 RESULT PASS ledger_line_written_even_after_an_outer_timeout :: 
-RESULT PASS lj_bench_inside_lj_with_disk_works :: bench: nproc=4 loadavg_start=1.52 0.97 0.84 contaminated=yes 
+RESULT PASS lj_bench_inside_lj_with_disk_works :: bench: nproc=4 loadavg_start=0.48 0.47 0.62 contaminated=no 
 RESULT PASS reverse_order_lj_with_disk_inside_lj_bench_refused :: exit 3 with the lock-order message
 RESULT PASS nested_lj_with_disk_refused_not_deadlocked :: 
 RESULT PASS nested_lj_bench_refused_not_deadlocked :: 
@@ -70,7 +70,7 @@ RESULT PASS label_is_sanitised_slashes_and_at_signs_become_underscores ::
 RESULT PASS ledger_lines_are_valid_json_with_the_envelope_fields :: 
 RESULT PASS guard_writes_only_its_lock_and_ledger_files :: (new entries in the scratch folder; the state folder is removed)
 GROUP self_tests
-RESULT FAIL stale_check_self_test :: python3 -I scripts/stale_check.py --self-test: exit 1, wanted 0;   FAIL row S-65 has status 'outstanding' but Table 4 says 'applied' (update the row's status here when Table 4 changes)
+RESULT PASS stale_check_self_test :: python3 -I scripts/stale_check.py --self-test: exit 0; self-test: 1069 checks, 0 problems
 RESULT PASS public_lint_self_test :: python3 -I scripts/public_lint.py --self-test: exit 0; note: Windows PowerShell 5.1 was not available in this run; win/step0_pc_tests.ps1 was exercised on PowerShell 7 only (5.1 behaviour UNVERIFIED until 
 
-hygiene tests (quick): 1 failed; Avail 14535 MB at start, 14535 MB minimum seen
+hygiene tests (quick): 0 failed; Avail 14523 MB at start, 14523 MB minimum seen

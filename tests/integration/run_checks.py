@@ -346,7 +346,7 @@ def rate_mbps(arg):
 
 
 def register_phone_facts(dec_text):
-    """What DECISIONS.md says about the phone files. The register wins over every package file (CLAUDE.md, D-21), so every figure W-63 and W-18 state is read here
+    """What DECISIONS.md says about the phone files. (Since 2026-10-20 W-63 carries an in-row "(**Amended 2026-10-20:** was 4 Mb/s; ...)" marker between the PH2 cap and the level; the pattern below allows it, and the planted registers of ctrl.checkers_fail_on_planted_defects are built to match with or without it.) The register wins over every package file (CLAUDE.md, D-21), so every figure W-63 and W-18 state is read here
     the way t_pins reads W-22. Returns (facts, problems); a figure a row no longer states in the shape read here is a problem (fail closed), never a silent default."""
     facts, probs = {}, []
     w63 = re.search(r"^\| W-63 \|.*$", dec_text, re.M)
@@ -359,7 +359,7 @@ def register_phone_facts(dec_text):
             facts["ph1_crf"], facts["ph1_cap_mbps"] = m.group(1), float(m.group(2))
         else:
             probs.append("W-63 no longer states 'PH1 ... CRF n with a n Mb/s cap' in the shape this test reads")
-        m = re.search(r"PH2, the small copy:\*\*\s*1280x720, CRF (\d+), ([0-9.]+) Mb/s cap, level ([0-9.]+),", w63.group(0))
+        m = re.search(r"PH2, the small copy:\*\*\s*1280x720, CRF (\d+), ([0-9.]+) Mb/s cap(?: \(\*\*Amended[^)]*\))?, level ([0-9.]+),", w63.group(0))
         if m:
             facts["ph2_crf"], facts["ph2_cap_mbps"], facts["ph2_level"] = m.group(1), float(m.group(2)), m.group(3)
         else:
@@ -1233,16 +1233,17 @@ def t_ledger():
     ok_line = "each fetched once or with a recorded exception: OK" in out
     # independent recount of the two download ledgers
     fetches = {}
+    pip_sets = {}      # the pip fetches of SP3 (kind "pip-wheel-set", written by spikes/sp3_blender/ledger_row.py): counted in the total and held to the same second-fetch rule, never among the tarballs
     for f in (p("build", "evidence", "wp07", "download_ledger.jsonl"), p("build", "evidence", "wp10", "download_ledger.jsonl")):
         if os.path.isfile(f):
             for line in read_text(f).splitlines():
                 if line.strip():
                     r = json.loads(line)
-                    fetches.setdefault(r["asset"], []).append(r)
-    twice = {a: [(r.get("fetch"), r.get("exception")) for r in v] for a, v in fetches.items() if len(v) > 1}
+                    (pip_sets if r.get("kind") == "pip-wheel-set" else fetches).setdefault(r["asset"], []).append(r)
+    twice = {a: [(r.get("fetch"), r.get("exception")) for r in v] for a, v in list(fetches.items()) + list(pip_sets.items()) if len(v) > 1}
     unexplained = {a: v for a, v in twice.items() if any(not e for _, e in v[1:])}
     sound = [a for a in fetches if a.startswith("soundcraft")]
-    total = sum(r["bytes"] for v in fetches.values() for r in v)
+    total = sum(r["bytes"] for v in list(fetches.values()) + list(pip_sets.values()) for r in v)
     S["ledger_total_bytes"] = total
     S["ledger_assets"] = len(fetches)   # pinned tarballs plus the 0.8.0 fallback when it was fetched
     first = (out.strip().splitlines() or [""])[0]
@@ -1252,7 +1253,7 @@ def t_ledger():
     pins = [a for a in fetches if a not in fallback]
     check("disk.each_tarball_downloaded_once", rc == 0 and ok_line and not unexplained and not sound and len(pins) == 5 and len(fallback) <= 1,
           "check_ledger.py exits 0 and an independent recount of the WP-07 and WP-10 download ledgers shows each of the five pinned Craft tarballs fetched once (any second fetch carries a recorded exception), the FilmCraft 0.8.0 fallback (not a pin) at most once, and no SoundCraft file",
-          "check_ledger exit %d: %s; recount: %d pinned tarballs and %d fallback, %d with a second fetch (all explained: %s), %.1f MB in total" % (rc, first[:170], len(pins), len(fallback), len(twice), not unexplained, total / 1e6))
+          "check_ledger exit %d: %s; recount: %d pinned tarballs and %d fallback, %d pip wheel set(s) in %d fetch(es), %d with a second fetch (all explained: %s), %.1f MB in total" % (rc, first[:170], len(pins), len(fallback), len(pip_sets), sum(len(v) for v in pip_sets.values()), len(twice), not unexplained, total / 1e6))
 
 
 def pwsh_tarball_bytes():
@@ -1301,12 +1302,12 @@ def t_allowance():
     libs = read_json(p("pipeline", "lib", "libs.lock.json"))
     npm = sum((x.get("tarball") or {}).get("bytes", 0) for x in libs["libs"] + libs["fonts"])
     wheel = 1_000_000                                               # the OTIO wheel (about 0.8 MB)
-    exp = "the Craft tarballs (ledgers) + PowerShell (its size read from the guarded fetch's evidence) + the npm packs of libs.lock.json + the OTIO wheel stay under the 2 GB allowance"
+    exp = "the Craft tarballs and the SP3 pip wheel sets (both on the ledgers) + PowerShell (its size read from the guarded fetch's evidence) + the npm packs of libs.lock.json + the OTIO wheel stay under the 2 GB allowance"
     if pwsh is None or pprobs:
         return check("disk.downloads_under_2gb_allowance", False, exp, "the PowerShell tarball size could not be taken from evidence: %s" % listing(pprobs, 3))
     grand = total + pwsh + npm + wheel
     check("disk.downloads_under_2gb_allowance", grand < 2 * 1024 ** 3, exp,
-          "%.0f MB Craft + %.1f MB PowerShell (%d bytes, from the fetch evidence) + %.0f MB npm packs + about 1 MB wheel = %.0f MB of 2048 MB" % (total / 1e6, pwsh / 1e6, pwsh, npm / 1e6, grand / 1e6))
+          "%.0f MB on the ledgers (Craft tarballs and the SP3 pip wheel sets) + %.1f MB PowerShell (%d bytes, from the fetch evidence) + %.0f MB npm packs + about 1 MB wheel = %.0f MB of 2048 MB" % (total / 1e6, pwsh / 1e6, pwsh, npm / 1e6, grand / 1e6))
 
 
 def parse_cleanup(out):
@@ -1622,8 +1623,13 @@ def t_pipeline_readme():
 @test("docs.staged_skill_update")
 def t_skill():
     d = p("skills-staging", "agent-first-production-pipeline")
+    where = "skills-staging/agent-first-production-pipeline/"
+    if not (os.path.isfile(os.path.join(d, "SKILL.md")) and os.path.isfile(os.path.join(d, "CHANGES.md"))):
+        # the orchestrator installs a staged skill and removes its staging folder in the same commit (f474039 did so for this one): from then on the same requirements
+        # hold for the installed skill, so this test neither fails on the missing staging folder nor goes silent (retargeted 2026-10-20, week-2 close-out)
+        d, where = p(".claude", "skills", "agent-first-production-pipeline"), ".claude/skills/agent-first-production-pipeline/ (installed; the staging folder is gone)"
     sk, ch = os.path.join(d, "SKILL.md"), os.path.join(d, "CHANGES.md")
-    exp = "skills-staging/agent-first-production-pipeline/ has SKILL.md (same name, every heading of the installed skill kept) and CHANGES.md, points steps 8 to 16 and the validator checklist at the real scripts, records F-12, the lj.ps1 commands that exist and what they do not do yet, rule 4.13 and the raw-versus-derived rule"
+    exp = where + " has SKILL.md (same name, every heading of the installed skill kept) and CHANGES.md, points steps 8 to 16 and the validator checklist at the real scripts, records F-12, the lj.ps1 commands that exist and what they do not do yet, rule 4.13 and the raw-versus-derived rule"
     if not (os.path.isfile(sk) and os.path.isfile(ch)):
         return check("docs.staged_skill_update", False, exp, "SKILL.md or CHANGES.md missing")
     new, old = read_text(sk), read_text(p(".claude", "skills", "agent-first-production-pipeline", "SKILL.md"))
@@ -1818,11 +1824,11 @@ def t_controls():
     noticed("profile.json with only the line length off the register", [x[0] for x in phone_register_problems(planted_profile("4M", 32), {"ph2_cap_mbps": 4.0, "max_chars": 36})] == ["phone caption characters a line"])
     passes("profile.json regenerated to the register (4 Mb/s, 36 characters)", not phone_register_problems(p4, {"ph2_cap_mbps": 4.0, "max_chars": 36}))
     # these planted registers are made with regular expressions, so they work whether DECISIONS.md still says 4 Mb/s and 36 characters or was amended to 3.5 and 32 (gate review r1)
-    dec_35_32 = re.sub(r"([0-9.]+) Mb/s cap, level", "3.5 Mb/s cap, level", dec, count=1)
+    dec_35_32 = re.sub(r"([0-9.]+) Mb/s cap(?: \(\*\*Amended[^)]*\))?, level", "3.5 Mb/s cap, level", dec, count=1)
     dec_35_32 = re.sub(r"(two lines, at most )\d+( characters)", r"\g<1>32\g<2>", dec_35_32, count=1)
     reg_amended = register_phone_facts(dec_35_32)
     passes("a register amended to 3.5 Mb/s and 32 characters against the profile that holds them", not reg_amended[1] and not phone_register_problems(p35, reg_amended[0]))
-    noticed("a register row that no longer states the PH2 cap in the shape the test reads (fails closed)", bool(register_phone_facts(re.sub(r"[0-9.]+ Mb/s cap, level", "four megabit cap, level", dec, count=1))[1]))
+    noticed("a register row that no longer states the PH2 cap in the shape the test reads (fails closed)", bool(register_phone_facts(re.sub(r"[0-9.]+ Mb/s cap(?: \(\*\*Amended[^)]*\))?, level", "four megabit cap, level", dec, count=1))[1]))
     noticed("a register without a W-18 row (fails closed)", bool(register_phone_facts(dec.replace("| W-18 |", "| W-18x |"))[1]))
     reg_row = phone_needles(p4, fill, register={"ph2_cap_mbps": 4.0, "max_chars": 36})
     passes("the card row pasted from a PHONE-ROW.md regenerated to the register (4 Mb/s, 36 characters)", not need(row4, reg_row, "x"))

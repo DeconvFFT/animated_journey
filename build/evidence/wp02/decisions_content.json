@@ -2,9 +2,9 @@
  "actual": "250 rows; 112 cut cells; longest cell 300 characters",
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 14534,
-  "avail_mb_min": 14534,
-  "avail_mb_start": 14534,
+  "avail_mb_end": 14522,
+  "avail_mb_min": 14522,
+  "avail_mb_start": 14522,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0
