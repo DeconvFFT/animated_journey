@@ -1,0 +1,759 @@
+{
+  "actual": "35 criteria, 0 failed",
+  "date_utc": "2026-10-19",
+  "detail": {
+    "app": "filmcraft",
+    "calls": [
+      {
+        "call": "exec file.newProject",
+        "killed": null,
+        "max_rss_mb": 20.9,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "import plain OTIO",
+        "killed": null,
+        "max_rss_mb": 100.3,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "inspect sequence",
+        "killed": null,
+        "max_rss_mb": 21.1,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec file.newProject",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "import OTIO with metadata.filmcraft",
+        "killed": null,
+        "max_rss_mb": 100.1,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "inspect sequence",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "exec file.newProject",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "import OTIO without its media (negative control)",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec file.exportInterchange otio",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "exec file.exportInterchange otio",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "exec file.exportInterchange xml",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec file.exportInterchange fcpxml",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec file.exportInterchange edl",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.3
+      },
+      {
+        "call": "exec file.newProject",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "re-import otio_beside",
+        "killed": null,
+        "max_rss_mb": 100.5,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "inspect sequence",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec file.exportInterchange otio",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec file.newProject",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "re-import xml",
+        "killed": null,
+        "max_rss_mb": 100.6,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "inspect sequence",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "exec file.exportInterchange otio",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "exec file.newProject",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "re-import fcpxml",
+        "killed": null,
+        "max_rss_mb": 100.0,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "inspect sequence",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "exec file.exportInterchange otio",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "exec file.newProject",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "re-import edl",
+        "killed": null,
+        "max_rss_mb": 100.4,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "inspect sequence",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "exec file.exportInterchange otio",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "exec file.exportInterchange otio",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec file.newProject",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "import FCPXML with a bare <video>",
+        "killed": null,
+        "max_rss_mb": 82.6,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "inspect sequence",
+        "killed": null,
+        "max_rss_mb": 21.2,
+        "rc": 0,
+        "wall_s": 0.25
+      }
+    ],
+    "checks": [
+      {
+        "id": "T3.inputs.validate_otio_ok",
+        "measured": "RESULT validate_otio: 24 checks, 0 FAIL, 0 WARN",
+        "note": "the WP-06 validator accepts the input before FilmCraft sees it",
+        "pass": true
+      },
+      {
+        "id": "T3.plain.import_ok",
+        "measured": "format OpenTimelineIO, linkedMedia 5, offlineMedia [], errors [], report []",
+        "note": "file.import reads the OTIO, finds all 5 media, reports no error",
+        "pass": true
+      },
+      {
+        "id": "T3.plain.clips_and_durations",
+        "measured": "video clips [('ch01_s01', 0, 120), ('ch01_s02', 120, 240), ('ch01_s03', 240, 360), ('ch01_s04', 360, 480)]",
+        "note": "four 120-frame clips back to back (480 frames, 20 s at 24 fps)",
+        "pass": true
+      },
+      {
+        "id": "T3.plain.dissolves",
+        "measured": "transitions [{'effect': 'cross_dissolve', 'frames': 24, 'start': 108}, {'effect': 'cross_dissolve', 'frames': 24, 'start': 228}, {'effect': 'cross_dissolve', 'frames': 24, 'start': 348}]",
+        "note": "three 24-frame cross dissolves centred on the cuts (R8: correct durations and dissolve)",
+        "pass": true
+      },
+      {
+        "id": "T3.plain.markers_audio_settings",
+        "measured": "markers [('Chapter 01', 0), ('Cue: title in', 228)], audio [('music_bed', 0, 480)], fps [24, 1], size [1920, 1080], duration 480",
+        "note": "two sequence markers (frames 0 and 228), one 480-frame audio clip, 1920x1080 at 24/1, 480 frames",
+        "pass": true
+      },
+      {
+        "id": "T3.plain.no_motion_keyframes",
+        "measured": "keyframed parameters across all clips: 0; motion.scale values ['Float(100.0)', 'Float(100.0)', 'Float(100.0)', 'Float(100.0)']",
+        "note": "R8 T3: plain OTIO gives correct durations and dissolve and NO motion (expected)",
+        "pass": true
+      },
+      {
+        "id": "T3.meta.import_ok",
+        "measured": "format OpenTimelineIO, linkedMedia 5, offlineMedia [], errors [], report []",
+        "note": "file.import reads the OTIO, finds all 5 media, reports no error",
+        "pass": true
+      },
+      {
+        "id": "T3.meta.clips_and_durations",
+        "measured": "video clips [('ch01_s01', 0, 120), ('ch01_s02', 120, 240), ('ch01_s03', 240, 360), ('ch01_s04', 360, 480)]",
+        "note": "four 120-frame clips back to back (480 frames, 20 s at 24 fps)",
+        "pass": true
+      },
+      {
+        "id": "T3.meta.dissolves",
+        "measured": "transitions [{'effect': 'cross_dissolve', 'frames': 24, 'start': 108}, {'effect': 'cross_dissolve', 'frames': 24, 'start': 228}, {'effect': 'cross_dissolve', 'frames': 24, 'start': 348}]",
+        "note": "three 24-frame cross dissolves centred on the cuts (R8: correct durations and dissolve)",
+        "pass": true
+      },
+      {
+        "id": "T3.meta.markers_audio_settings",
+        "measured": "markers [('Chapter 01', 0), ('Cue: title in', 228)], audio [('music_bed', 0, 480)], fps [24, 1], size [1920, 1080], duration 480",
+        "note": "two sequence markers (frames 0 and 228), one 480-frame audio clip, 1920x1080 at 24/1, 480 frames",
+        "pass": true
+      },
+      {
+        "id": "T3.meta.motion_keyframes",
+        "measured": "keyframes per clip [{'motion.position': 2, 'motion.scale': 2}, {'motion.position': 2, 'motion.scale': 2}, {'motion.position': 2, 'motion.scale': 2}, {'motion.position': 2, 'motion.scale': 2}]",
+        "note": "R8 T3: OTIO with metadata.filmcraft gives the motion keyframes (2 on position, 2 on scale for each of the 4 clips)",
+        "pass": true
+      },
+      {
+        "id": "T3.motion_only_with_metadata",
+        "measured": "plain: 0 keyframed parameters, with metadata: 8",
+        "note": "the keyframes survive only with the metadata",
+        "pass": true
+      },
+      {
+        "id": "T3.relative.negative_control_offline",
+        "measured": "exit 0, offlineMedia entries 5, linkedMedia 0",
+        "note": "an OTIO copied alone (no media/ folder beside it) reports its 5 media offline, so the offline report is real",
+        "pass": true
+      },
+      {
+        "id": "T3.relative.resolved_from_the_otio_folder",
+        "measured": "offline media after the plain and metadata imports: {'plain': 0, 'meta': 0}; the CLI's working folder is not the hand-off folder: True",
+        "note": "relative target_url resolve against the .otio's own folder, not the working folder",
+        "pass": true
+      },
+      {
+        "id": "T3.export.otio_beside.written",
+        "measured": "exit 0, 33700 bytes, report []",
+        "note": "file.exportInterchange writes the file",
+        "pass": true
+      },
+      {
+        "id": "T3.export.otio_beside.json",
+        "measured": "JSON parse",
+        "note": "the exported OTIO is JSON",
+        "pass": true
+      },
+      {
+        "id": "T3.export.otio_beside.sequence_settings",
+        "measured": "metadata.filmcraft.settings: 1920x1080 at {'den': 1, 'num': 24}",
+        "note": "R8: FilmCraft's own OTIO export carries the sequence settings (a template for them)",
+        "pass": true
+      },
+      {
+        "id": "T3.export.otio_sub.written",
+        "measured": "exit 0, 33755 bytes, report []",
+        "note": "file.exportInterchange writes the file",
+        "pass": true
+      },
+      {
+        "id": "T3.export.otio_sub.json",
+        "measured": "JSON parse",
+        "note": "the exported OTIO is JSON",
+        "pass": true
+      },
+      {
+        "id": "T3.export.otio_sub.sequence_settings",
+        "measured": "metadata.filmcraft.settings: 1920x1080 at {'den': 1, 'num': 24}",
+        "note": "R8: FilmCraft's own OTIO export carries the sequence settings (a template for them)",
+        "pass": true
+      },
+      {
+        "id": "T3.export.xml.written",
+        "measured": "exit 0, 23017 bytes, report ['Bezier keyframe easing is written as FCP curve keyframes (handles not preserved) (\u00d76)', 'clip gain was folded into Audio Levels']",
+        "note": "file.exportInterchange writes the file",
+        "pass": true
+      },
+      {
+        "id": "T3.export.xml.xmllint",
+        "measured": "xmllint --noout",
+        "note": "the exported XML is well formed",
+        "pass": true
+      },
+      {
+        "id": "T3.export.fcpxml.written",
+        "measured": "exit 0, 6226 bytes, report ['clip markers on V1 are written as primary-storyline markers and import as sequence markers']",
+        "note": "file.exportInterchange writes the file",
+        "pass": true
+      },
+      {
+        "id": "T3.export.fcpxml.xmllint",
+        "measured": "xmllint --noout",
+        "note": "the exported XML is well formed",
+        "pass": true
+      },
+      {
+        "id": "T3.export.edl.written",
+        "measured": "exit 0, 1414 bytes, report ['a transition needs more source media than available; its source in was clamped to 0 (\u00d73)']",
+        "note": "file.exportInterchange writes the file",
+        "pass": true
+      },
+      {
+        "id": "T3.export.otio_beside.relative",
+        "measured": "forms ['relative'], all resolve True",
+        "note": "an OTIO exported beside media/ writes relative references that resolve (research/craft-motion.md F3)",
+        "pass": true
+      },
+      {
+        "id": "T3.export.edl.relative",
+        "measured": "forms ['relative, one level up (../)']",
+        "note": "the EDL names its source files relative to itself",
+        "pass": true
+      },
+      {
+        "id": "T3.roundtrip.otio_identical",
+        "measured": "differences none; keyframes {'clips': 4, 'same_clips': True, 'counts_equal': True, 'times_equal': True, 'values_equal': True, 'interp_changes': []}",
+        "note": "FilmCraft's OTIO export re-imports with the same clips, dissolves, markers and every keyframe (time, value, interpolation name)",
+        "pass": true
+      },
+      {
+        "id": "T3.roundtrip.xml_structure",
+        "measured": "differences none",
+        "note": "clips, frames, dissolves, markers and audio survive xml",
+        "pass": true
+      },
+      {
+        "id": "T3.roundtrip.xml_keyframes_time_and_value",
+        "measured": "{'clips': 4, 'same_clips': True, 'counts_equal': True, 'times_equal': True, 'values_equal': True, 'interp_changes': ['EaseOut->Bezier']}",
+        "note": "the motion keyframes (count, time, value within 0.011) survive xml",
+        "pass": true
+      },
+      {
+        "id": "T3.roundtrip.fcpxml_structure",
+        "measured": "differences none",
+        "note": "clips, frames, dissolves, markers and audio survive fcpxml",
+        "pass": true
+      },
+      {
+        "id": "T3.roundtrip.fcpxml_keyframes_time_and_value",
+        "measured": "{'clips': 4, 'same_clips': True, 'counts_equal': True, 'times_equal': True, 'values_equal': True, 'interp_changes': ['EaseOut->Linear']}",
+        "note": "the motion keyframes (count, time, value within 0.011) survive fcpxml",
+        "pass": true
+      },
+      {
+        "id": "T3.roundtrip.edl_no_motion",
+        "measured": "keyframed parameters 0; video clip names ['ch01_s01', 'ch01_s02', 'ch01_s03', 'ch01_s04']",
+        "note": "an EDL carries cuts and dissolves only: no motion keyframes (expected), clip names kept",
+        "pass": true
+      },
+      {
+        "id": "T3.plain.export_still_no_motion",
+        "measured": "OTIO export of the plain-import project: 0 keyframed motion parameters",
+        "note": "nothing invents motion: a plain import stays plain through an export",
+        "pass": true
+      },
+      {
+        "id": "T3.fcpxml_bare_video.skip_warning",
+        "measured": "report ['FCPXML <video> elements are not supported and were skipped']; clips imported ['ch01_s02', 'ch01_s03', 'ch01_s04']",
+        "note": "R8 T3: a bare storyline <video> is skipped with a warning (the clip is not imported)",
+        "pass": true
+      }
+    ],
+    "findings": [
+      {
+        "finding": "how otio_beside writes media references",
+        "id": "export.otio_beside.media_refs",
+        "implication": "portable: the file and its media/ folder can be copied together",
+        "measured": "5 reference(s), form(s): ['relative'], all resolve from the file's own folder: True"
+      },
+      {
+        "finding": "how otio_sub writes media references",
+        "id": "export.otio_sub.media_refs",
+        "implication": "portable: the file and its media/ folder can be copied together",
+        "measured": "5 reference(s), form(s): ['relative, one level up (../)'], all resolve from the file's own folder: True"
+      },
+      {
+        "finding": "how xml writes media references",
+        "id": "export.xml.media_refs",
+        "implication": "the file holds the exporting machine's absolute folder names (on the maker's PC: the profile folder): never commit it, never paste it; relink the media by hand in a fallback editor, or hand over the OTIO instead",
+        "measured": "5 reference(s), form(s): ['absolute file URL'], all resolve from the file's own folder: True"
+      },
+      {
+        "finding": "how fcpxml writes media references",
+        "id": "export.fcpxml.media_refs",
+        "implication": "the file holds the exporting machine's absolute folder names (on the maker's PC: the profile folder): never commit it, never paste it; relink the media by hand in a fallback editor, or hand over the OTIO instead",
+        "measured": "5 reference(s), form(s): ['absolute file URL'], all resolve from the file's own folder: True"
+      },
+      {
+        "finding": "how edl writes media references",
+        "id": "export.edl.media_refs",
+        "implication": "portable: the file and its media/ folder can be copied together",
+        "measured": "8 reference(s), form(s): ['relative, one level up (../)'], all resolve from the file's own folder: True"
+      },
+      {
+        "finding": "the interpolation name changes through xml (the ease the spec asked for is not carried)",
+        "id": "roundtrip.xml.ease",
+        "implication": "",
+        "measured": [
+          "EaseOut->Bezier"
+        ]
+      },
+      {
+        "finding": "FCPXML export writes a clip marker as a storyline marker; it re-imports as a SEQUENCE marker",
+        "id": "roundtrip.fcpxml.clip_markers",
+        "implication": "put chapter cues on the sequence, not on clips, when the FCPXML route matters",
+        "measured": [
+          [
+            "beat 1",
+            60
+          ]
+        ]
+      },
+      {
+        "finding": "the interpolation name changes through fcpxml (the ease the spec asked for is not carried)",
+        "id": "roundtrip.fcpxml.ease",
+        "implication": "",
+        "measured": [
+          "EaseOut->Linear"
+        ]
+      },
+      {
+        "finding": "the EDL re-imports with different cut frames (a dissolve is written as a cut plus a transition event)",
+        "id": "roundtrip.edl.cut_points",
+        "implication": "",
+        "measured": [
+          "video clip ch01_s01 frames 0-120 vs 0-108",
+          "video clip ch01_s02 frames 120-240 vs 108-228",
+          "video clip ch01_s03 frames 240-360 vs 228-348",
+          "video clip ch01_s04 frames 360-480 vs 348-480"
+        ]
+      },
+      {
+        "finding": "the frame rate FCP7 XML and FCPXML give the still media files, next to the sequence's own",
+        "id": "export.still_rate",
+        "implication": "a still is written at 29.97 in these two formats while the sequence stays 24 fps; the maker-side Resolve import check (research/craft-motion.md F2) must look at the durations of the stills",
+        "measured": {
+          "fcp7_xml_file_rates": [
+            "24",
+            "30 NTSC"
+          ],
+          "fcp7_xml_sequence_timebase": [
+            "24"
+          ],
+          "fcpxml_format_frame_durations": [
+            "1/24s",
+            "1001/30000s"
+          ]
+        }
+      }
+    ],
+    "formats": {
+      "edl": {
+        "bytes": 1414,
+        "exit": 0,
+        "format": "edl",
+        "keyframe_fidelity": {
+          "clips": 4,
+          "counts_equal": false,
+          "interp_changes": [],
+          "same_clips": true,
+          "times_equal": true,
+          "values_equal": true
+        },
+        "media_refs": {
+          "all_resolve_from_the_file_folder": true,
+          "count": 8,
+          "forms": [
+            "relative, one level up (../)"
+          ]
+        },
+        "reimport": {
+          "differences_from_original": [
+            "video clip ch01_s01 frames 0-120 vs 0-108",
+            "video clip ch01_s02 frames 120-240 vs 108-228",
+            "video clip ch01_s03 frames 240-360 vs 228-348",
+            "video clip ch01_s04 frames 360-480 vs 348-480"
+          ],
+          "errors": [],
+          "format": "CMX 3600 EDL",
+          "keyframed_parameters": 0,
+          "linkedMedia": 5,
+          "offlineMedia": 0,
+          "report": [
+            "EDL has no frame rate; assumed 24 fps (set ImportOptions::edl_frame_rate to override)"
+          ]
+        },
+        "report": [
+          "a transition needs more source media than available; its source in was clamped to 0 (\u00d73)"
+        ],
+        "where": "sub-folder out/"
+      },
+      "fcpxml": {
+        "bytes": 6226,
+        "exit": 0,
+        "format": "fcpxml",
+        "keyframe_fidelity": {
+          "clips": 4,
+          "counts_equal": true,
+          "interp_changes": [
+            "EaseOut->Linear"
+          ],
+          "same_clips": true,
+          "times_equal": true,
+          "values_equal": true
+        },
+        "media_refs": {
+          "all_resolve_from_the_file_folder": true,
+          "count": 5,
+          "forms": [
+            "absolute file URL"
+          ]
+        },
+        "reimport": {
+          "clip_markers_promoted_to_sequence_markers": [
+            [
+              "beat 1",
+              60
+            ]
+          ],
+          "differences_from_original": [],
+          "errors": [],
+          "format": "FCPXML",
+          "keyframed_parameters": 8,
+          "linkedMedia": 5,
+          "offlineMedia": 0,
+          "report": []
+        },
+        "report": [
+          "clip markers on V1 are written as primary-storyline markers and import as sequence markers"
+        ],
+        "well_formed_xmllint": true,
+        "where": "sub-folder out/"
+      },
+      "otio_beside": {
+        "bytes": 33700,
+        "exit": 0,
+        "format": "otio",
+        "json_parses": true,
+        "keyframe_fidelity": {
+          "clips": 4,
+          "counts_equal": true,
+          "interp_changes": [],
+          "same_clips": true,
+          "times_equal": true,
+          "values_equal": true
+        },
+        "media_refs": {
+          "all_resolve_from_the_file_folder": true,
+          "count": 5,
+          "forms": [
+            "relative"
+          ]
+        },
+        "reimport": {
+          "differences_from_original": [],
+          "errors": [],
+          "format": "OpenTimelineIO",
+          "keyframed_parameters": 8,
+          "linkedMedia": 5,
+          "offlineMedia": 0,
+          "report": []
+        },
+        "report": [],
+        "where": "beside the media folder",
+        "wp06_validator": {
+          "exit": 0,
+          "tail": [
+            "PASS motion_edge_safe                   5 clip(s) carry metadata.filmcraft",
+            "RESULT validate_otio: 24 checks, 0 FAIL, 3 WARN"
+          ]
+        }
+      },
+      "otio_sub": {
+        "bytes": 33755,
+        "exit": 0,
+        "format": "otio",
+        "json_parses": true,
+        "media_refs": {
+          "all_resolve_from_the_file_folder": true,
+          "count": 5,
+          "forms": [
+            "relative, one level up (../)"
+          ]
+        },
+        "report": [],
+        "where": "sub-folder out/",
+        "wp06_validator": {
+          "exit": 1,
+          "tail": [
+            "RESULT validate_otio: 24 checks, 1 FAIL, 3 WARN",
+            "FAILED: target_url_escapes_folder"
+          ]
+        }
+      },
+      "xml": {
+        "bytes": 23017,
+        "exit": 0,
+        "format": "xml",
+        "keyframe_fidelity": {
+          "clips": 4,
+          "counts_equal": true,
+          "interp_changes": [
+            "EaseOut->Bezier"
+          ],
+          "same_clips": true,
+          "times_equal": true,
+          "values_equal": true
+        },
+        "media_refs": {
+          "all_resolve_from_the_file_folder": true,
+          "count": 5,
+          "forms": [
+            "absolute file URL"
+          ]
+        },
+        "reimport": {
+          "differences_from_original": [],
+          "errors": [],
+          "format": "Final Cut Pro XML",
+          "keyframed_parameters": 8,
+          "linkedMedia": 5,
+          "offlineMedia": 0,
+          "report": []
+        },
+        "report": [
+          "Bezier keyframe easing is written as FCP curve keyframes (handles not preserved) (\u00d76)",
+          "clip gain was folded into Audio Levels"
+        ],
+        "well_formed_xmllint": true,
+        "where": "sub-folder out/"
+      }
+    },
+    "inputs": "synthetic: WP-06 emit_otio.py example spec (4 test cards, 1 sine WAV)",
+    "label": "linux-cli",
+    "label_text": "Linux CLI result; not evidence for Windows",
+    "partial": false,
+    "sandbox": {
+      "cwd": "a scratch folder that is not the hand-off folder",
+      "env": "env -i with HOME, TMPDIR, XDG_*, PATH only",
+      "network_isolation": "unshare -rn",
+      "rss_kill_mb": 10240,
+      "timeout_s": 300
+    },
+    "tag": "v0.9.0"
+  },
+  "disk": {
+    "avail_mb_end": 743,
+    "avail_mb_min": 610,
+    "avail_mb_start": 690,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 90
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "R8 T3: plain OTIO gives correct durations and dissolves and NO motion; OTIO with metadata.filmcraft gives the motion keyframes; the exports are well formed and re-import; FCPXML <video> gives the documented skip warning",
+  "notes": "Linux CLI result; not evidence for Windows.",
+  "package": "WP-10",
+  "schema": "lj-evidence/1",
+  "stage": "sp1b-filmcraft-v0.9.0",
+  "status": "PASS",
+  "test": "t3_filmcraft_v0.9.0",
+  "unverified_reasons": [
+    "Windows behaviour is not tested by a Linux CLI run (the maker's Windows five-minute test is the real evidence)"
+  ]
+}

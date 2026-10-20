@@ -1,0 +1,189 @@
+{
+  "schema": "lj-speccheck/1",
+  "tool_version": 1,
+  "date_utc": "2026-10-20",
+  "file": "master.mov",
+  "profile": "master_prores422hq",
+  "profile_description": "master: ProRes 422 HQ, 10-bit 4:2:2, Rec.709 limited, PCM 24-bit 48 kHz",
+  "ffmpeg": "6.1.1",
+  "verdict": "PASS",
+  "failed": [],
+  "checks": [
+    {
+      "id": "container.readable",
+      "status": "PASS",
+      "expected": "ffprobe opens the file",
+      "actual": "ok",
+      "detail": ""
+    },
+    {
+      "id": "container.moov",
+      "status": "PASS",
+      "expected": "moov atom present",
+      "actual": "present",
+      "detail": ""
+    },
+    {
+      "id": "container.atoms",
+      "status": "PASS",
+      "expected": "atoms run to the end of the file",
+      "actual": "complete",
+      "detail": ""
+    },
+    {
+      "id": "container.type",
+      "status": "PASS",
+      "expected": "QuickTime brand",
+      "actual": "'qt  '",
+      "detail": ""
+    },
+    {
+      "id": "video.streams",
+      "status": "PASS",
+      "expected": "exactly 1 video stream",
+      "actual": "1",
+      "detail": ""
+    },
+    {
+      "id": "video.codec",
+      "status": "PASS",
+      "expected": "prores",
+      "actual": "prores",
+      "detail": ""
+    },
+    {
+      "id": "video.profile",
+      "status": "PASS",
+      "expected": "HQ",
+      "actual": "HQ",
+      "detail": ""
+    },
+    {
+      "id": "video.pix_fmt",
+      "status": "PASS",
+      "expected": "yuv422p10le",
+      "actual": "yuv422p10le",
+      "detail": ""
+    },
+    {
+      "id": "video.alpha",
+      "status": "PASS",
+      "expected": "no alpha plane",
+      "actual": "no alpha plane (pix_fmt yuv422p10le)",
+      "detail": ""
+    },
+    {
+      "id": "video.size",
+      "status": "PASS",
+      "expected": "1920x1080",
+      "actual": "1920x1080",
+      "detail": ""
+    },
+    {
+      "id": "video.fps",
+      "status": "PASS",
+      "expected": "r_frame_rate = avg_frame_rate = 24/1",
+      "actual": "r=24/1 avg=24/1",
+      "detail": ""
+    },
+    {
+      "id": "video.frame_count",
+      "status": "PASS",
+      "expected": "nb_frames = round(duration x 24/1) = 144",
+      "actual": "144 (duration 6.000 s)",
+      "detail": ""
+    },
+    {
+      "id": "video.color_range",
+      "status": "PASS",
+      "expected": "tv/unknown",
+      "actual": "unknown",
+      "detail": "accepted: this ProRes range tag is 'unknown' on ffmpeg 6.1.1"
+    },
+    {
+      "id": "video.color_space",
+      "status": "PASS",
+      "expected": "bt709",
+      "actual": "bt709",
+      "detail": ""
+    },
+    {
+      "id": "video.color_primaries",
+      "status": "PASS",
+      "expected": "bt709",
+      "actual": "bt709",
+      "detail": ""
+    },
+    {
+      "id": "video.color_transfer",
+      "status": "PASS",
+      "expected": "bt709",
+      "actual": "bt709",
+      "detail": ""
+    },
+    {
+      "id": "audio.present",
+      "status": "PASS",
+      "expected": "at least 1 audio stream",
+      "actual": "1",
+      "detail": ""
+    },
+    {
+      "id": "audio.codec",
+      "status": "PASS",
+      "expected": "pcm_s24le",
+      "actual": "pcm_s24le",
+      "detail": ""
+    },
+    {
+      "id": "audio.sample_rate",
+      "status": "PASS",
+      "expected": "48000 Hz",
+      "actual": "48000 Hz",
+      "detail": ""
+    },
+    {
+      "id": "audio.channels",
+      "status": "PASS",
+      "expected": "2",
+      "actual": "2",
+      "detail": ""
+    },
+    {
+      "id": "audio.bits",
+      "status": "PASS",
+      "expected": "24-bit",
+      "actual": "24-bit",
+      "detail": ""
+    },
+    {
+      "id": "audio.true_peak",
+      "status": "PASS",
+      "expected": "at most -1.0 dBTP",
+      "actual": "-35.6 dBTP",
+      "detail": ""
+    },
+    {
+      "id": "integrity.decode",
+      "status": "PASS",
+      "expected": "decodes with nothing on stderr",
+      "actual": "clean",
+      "detail": ""
+    },
+    {
+      "id": "metadata.neutral",
+      "status": "PASS",
+      "expected": "no tags except encoder (and structural tags)",
+      "actual": "clean",
+      "detail": ""
+    }
+  ],
+  "notes": [
+    "video.color_range is 'unknown' (accepted for ProRes: ffmpeg 6.1.1 does not write it)",
+    "integrated loudness -41.5 LUFS (informational for this profile)"
+  ],
+  "limits": [
+    "pixels are not read: a BT.601 matrix under BT.709 tags passes here; run colour_patch.py",
+    "loudness is read to 0.1 dB"
+  ]
+}

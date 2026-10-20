@@ -1,0 +1,82 @@
+{
+  "schema": "lj-pc-chains/1",
+  "ffmpeg": {
+    "version": "6.1.1",
+    "sha256": "ed16af623947494a72e284b6eb8ff225f2da22b38b5d5069c2fd4b4ba3384e41"
+  },
+  "tolerance": 3,
+  "chains": [
+    {
+      "name": "h264_venue",
+      "worst_error": 1,
+      "pass": true
+    },
+    {
+      "name": "h264_backup_main40",
+      "worst_error": 1,
+      "pass": true
+    },
+    {
+      "name": "h264_online",
+      "worst_error": 1,
+      "pass": true
+    },
+    {
+      "name": "prores422hq_master",
+      "worst_error": 2,
+      "pass": true
+    },
+    {
+      "name": "prores4444_alpha",
+      "worst_error": 0,
+      "pass": true
+    },
+    {
+      "name": "ffv1_lossless",
+      "worst_error": 0,
+      "pass": true
+    },
+    {
+      "name": "phone_1080",
+      "worst_error": 1,
+      "pass": true
+    },
+    {
+      "name": "phone_720_share",
+      "worst_error": 1,
+      "pass": true
+    }
+  ],
+  "controls": [
+    {
+      "name": "control_h264_scale_first_B",
+      "worst_error": 1,
+      "pass": true
+    },
+    {
+      "name": "control_h264_format_first_A",
+      "worst_error": 5,
+      "pass": false
+    },
+    {
+      "name": "control_h264_bare_pix_fmt",
+      "worst_error": 23,
+      "pass": false
+    },
+    {
+      "name": "control_prores4444_bare",
+      "worst_error": 25,
+      "pass": false
+    },
+    {
+      "name": "control_wrong_matrix_bt601",
+      "worst_error": 25,
+      "pass": false
+    },
+    {
+      "name": "control_lossless_709",
+      "worst_error": 0,
+      "pass": true
+    }
+  ]
+}

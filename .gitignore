@@ -36,3 +36,41 @@ desktop.ini
 # Python bytecode caches
 __pycache__/
 *.pyc
+
+# Build packages (appended Mon 19 Oct 2026, build plan Q-3 and WP-11b): scratch, local-only, raw-report and download names
+# Raw PC reports are a hardware fingerprint of the maker's machine; only derived tier files are ever filed (4.13, 4.16)
+pc_report*.json
+colour_patch_pc*.json
+maker-pc*.json
+!pc_report.schema.json
+# Local-only files: the maker's private deny list, lj.config.local.json, anything named *.local.*
+*.local.*
+scripts/public_lint.deny.local.txt
+# Logs, per-spike work folders, stray process and partial-write files, package caches, the scratch folder beside the repo
+logs/
+spikes/**/work/
+*.pid
+*.partial
+*.tmp
+node_modules/
+build-scratch/
+# Downloads and archives (the Craft zips, pwsh and library tarballs live in vendor/ or the scratch folder, never in git)
+*.zip
+*.tar
+*.tgz
+*.tar.gz
+*.tar.xz
+*.7z
+# More media containers and codecs a render or a download could leave behind
+*.webm
+*.flac
+*.ogg
+*.opus
+*.aac
+*.m4v
+*.mxf
+*.gif
+*.bmp
+*.exr
+*.heif
+*.avif

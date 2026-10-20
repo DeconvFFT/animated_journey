@@ -63,7 +63,7 @@ Exit codes for `doctor`: `0` the report is fine and nothing needs a human; `1` t
 
 ### Set it up once
 
-1. In File Explorer, open the `win` folder, copy `lj.config.example.json`, and rename the copy to `lj.config.local.json`. The copy stays on your PC (it is not for the project folder).
+1. In File Explorer, open the `win` folder, copy `lj.config.example.json`, and rename the copy to `lj.config.local.json`. The copy is for your PC only: never add it to git, and never paste it in chat.
 2. Open the copy in Notepad:
 
 ```powershell
@@ -103,7 +103,7 @@ The script prints each step before it does it, then the result. Then:
 
 - **WOULD REMOVE** is the numbered list. Nothing is removed in version 0. Each line says what it is, how many files, how big, and where (`<root>` stands for your root folder). It lists:
   - `*.xmp` sidecar files under any folder named `work`, one line per file;
-  - folders named `Recovery`, `Auto-Save` or `cache` anywhere under the tools folder, **one line per folder** (the files inside are counted, not listed by name);
+  - folders named `Recovery`, `Auto-Save` or `cache` anywhere under the tools folder, **one line per folder** (the files inside are counted, not listed by name). You can add more folder names with `extra_tools_folder_names` in your config; a name with no letter or digit in it, such as `*`, is ignored and the script prints a `NOTE:` saying so;
   - the entries of the per-app lists (below).
 - **HELD BACK** lists things that look removable but that version 1 would not remove without you: a Recovery folder with a protected folder or a link inside it, or a per-app entry that was refused (and why).
 - **NOT ON THE LIST** are entries with nothing there, or already counted above.
@@ -127,7 +127,9 @@ After each app's test, the Craft zips guide (the section called "Where did it wr
 - a path that starts with `%USERPROFILE%\AppData\Local\` becomes `%LOCALAPPDATA%/`
 - a folder beside the program becomes a path relative to the tools folder, for example `lightcraft-0.9.1/LightCraftData/recent.json` (a `*` stands for "any version", for example `lightcraft-*/LightCraftData/recent.json`)
 
-An entry is accepted only if it sits **inside** the tools folder, `%APPDATA%` or `%LOCALAPPDATA%`, has a folder whose name contains the app's name, has no `..` in it, and does not go through a protected folder name or a link. Otherwise it is shown under HELD BACK as `REFUSED`, with the reason. The `note` text in the example config repeats what our notes say about each app; that text is **not** used to find anything.
+An entry is accepted only if it sits **inside** the tools folder, `%APPDATA%` or `%LOCALAPPDATA%`, has a folder whose name contains the app's name, has no `..` in it, and does not go through a protected folder name or a link. Otherwise it is shown under HELD BACK as `REFUSED`, with the reason.
+
+A `*` entry is checked again for every folder it finds: a folder that matches but is named `media` (or another protected name), is listed under `never_touch_paths`, or is a git repository is shown as `REFUSED` with its own path, and is not opened. A candidate folder that has a `never_touch_paths` folder inside it is HELD BACK as a whole. The `note` text in the example config repeats what our notes say about each app; that text is **not** used to find anything.
 
 Known gap in version 0: an `Auto-Save` folder that sits next to a project inside a `work` folder (FilmCraft writes one there) is not on the list, because the plan names only the tools folder for these folder names. Version 1 will decide this after the paste.
 
@@ -142,3 +144,5 @@ Version 1 (week 4) adds the real clean-up: removing the items on this list after
 ## What has not been checked on a real Windows PC (UNVERIFIED)
 
 Everything above was tested on Linux with made-up folders and links. Not yet checked on Windows: how links and junctions show up on NTFS; whether `py -3` and `python` behave as expected (including the Microsoft Store stub); every behaviour of Windows PowerShell 5.1; short 8.3 folder names; `%APPDATA%` and `%LOCALAPPDATA%` on a managed PC; and every per-app list. Your first run is the check, and what you paste back is the evidence.
+
+Typing `-Apply:` with nothing after the colon is dropped by PowerShell before the script sees it, so that one form runs as a plain dry run (seen on PowerShell 7; Windows PowerShell 5.1 is unchecked). Type the switch without a colon.

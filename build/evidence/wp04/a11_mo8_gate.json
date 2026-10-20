@@ -12,7 +12,7 @@
     "RESULT: FAIL"
    ]
   },
-  "seconds": 29.6,
+  "seconds": 28.6,
   "transform": {
    "gate_exit": 0,
    "lines": [
@@ -27,9 +27,9 @@
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 401,
-  "avail_mb_min": 401,
-  "avail_mb_start": 402,
+  "avail_mb_end": 754,
+  "avail_mb_min": 754,
+  "avail_mb_start": 754,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

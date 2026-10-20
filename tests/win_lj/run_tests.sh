@@ -333,12 +333,42 @@ PYEOF
   # ---- close: what is listed, what is not
   expect close.canaries_and_links_never_listed_as_removable 0 -n 'CANARY|OUTSIDE|secret' -m 'SKIPPED \(link\) <root>/work/link-out' -m 'SKIPPED \(link\) <root>/work/link-file.xmp' -m 'SKIPPED \(link\) <root>/work/broken.xmp' -m 'SKIPPED \(link\) <root>/tools/vectorcraft-0.13.1/Recovery' -m '<root>/media  \(protected folder name\)' -m '<root>/archive  \(protected folder name\)' -m '<root>/masters  \(protected folder name\)' -m '<root>/originals  \(protected folder name\)' -m '<root>/work/media  \(protected folder name\)' -m '<root>/otherrepo  \(another git repository\)' -m 'vault.hc  \(possible encrypted container file\)' -- LJ close -Config $T/planted.config.json -SkipChecks
   CL="$OUT"
-  for p in "stray.xmp" "link-out/" "tools/photocraft-0.10.0/stray.xmp" "<root>/cache  "; do
+  for p in "stray.xmp" "link-out/" "tools/soundcraft-0.8.0/stray.xmp" "<root>/cache  "; do
     if printf '%s\n' "$CL" | sed -n '/^WOULD REMOVE/,/^HELD BACK/p' | grep -qF -- "$p"; then record "close.not_in_the_would_remove_list.$(printf '%s' "$p" | tr -c 'A-Za-z0-9\n' '_')" FAIL "absent from WOULD REMOVE" "present: $p"
     else record "close.not_in_the_would_remove_list.$(printf '%s' "$p" | tr -c 'A-Za-z0-9\n' '_')" PASS "absent from WOULD REMOVE" "absent: $p"; fi
   done
-  expect close.held_back_with_reasons 0 -m "HELD\] Recovery: <root>/tools/filmcraft-0.9.0/Recovery - contains a protected item named 'media'" -m 'HELD\] Recovery: <root>/tools/effectcraft-0.11.1/Recovery - contains 1 link\(s\), which are never followed' -m "REFUSED\] filmcraft/cache: ../elsewhere/Recovery - '..' is not allowed" -m 'REFUSED\] filmcraft/cache: /etc/hostname - outside the tools folder' -m "REFUSED\] filmcraft/cache: filmcraft-0.9.0/Recovery/media - 'media' is a protected folder name" -m 'SKIPPED\] filmcraft/cache: %LJ_UNSET_VARIABLE%/x' -m 'ALREADY LISTED\] filmcraft/cache: <root>/tools/filmcraft-0.9.0/Auto-Save - already counted above' -- LJ close -Config $T/planted.config.json -SkipChecks
-  expect close.per_app_lists_are_marked_unverified 0 -m 'photocraft +recent_files: 0 +cache: 0 +\[UNVERIFIED, no entries yet\]' -m 'lightcraft +recent_files: 1 +cache: 1 +\[UNVERIFIED\]' -m 'Until then they stay UNVERIFIED' -- LJ close -Config $T/planted.config.json -SkipChecks
+  expect close.held_back_with_reasons 0 -m "HELD\] Recovery: <root>/tools/filmcraft-0.9.0/Recovery - contains a protected item named 'media'" -m 'HELD\] Recovery: <root>/tools/effectcraft-0.11.1/Recovery - contains 1 link\(s\), which are never followed' -m "REFUSED\] filmcraft/cache: ../elsewhere/Recovery - '..' is not allowed" -m 'REFUSED\] filmcraft/cache: /etc/hostname - outside the tools folder' -m "REFUSED\] filmcraft/cache: filmcraft-0.9.0/Recovery/media - 'media' is a protected folder name" -m 'SKIPPED\] filmcraft/cache: %LJ_UNSET_VARIABLE%/x' -m 'ALREADY LISTED\] filmcraft/cache: <root>/tools/filmcraft-0.9.0/Auto-Save - already counted above' -m "REFUSED\] photocraft/cache: .*media - 'media' is a protected folder name" -m 'REFUSED\] photocraft/cache: .*vault - listed in never_touch_paths' -m "HELD\] Auto-Save: <root>/tools/effectcraft-0.11.1/Auto-Save - contains a protected item named 'keep'" -n 'photocraft/cache \(folder\)' -- LJ close -Config $T/planted.config.json -SkipChecks
+  # r1: the never-touch guards apply to what a wildcard RESOLVES to, not only to the config text (variants of the planted config)
+  mk_variant() {  # mk_variant NAME 'python statements that change the dict cfg'
+    $PY - "$ROOT/$T/planted.config.json" "$TMP/$1.json" "$PL" "$2" <<'PYEOF'
+import json, sys
+src, dst, root, code = sys.argv[1:5]
+cfg = json.load(open(src, encoding="utf-8"))
+cfg["root"] = root
+exec(code)
+json.dump(cfg, open(dst, "w", encoding="utf-8"))
+PYEOF
+  }
+  mk_variant wild_middle 'cfg["apps"]["photocraft"]["cache"] = ["photocraft-*/*/cache", "photocraft-*/*"]'
+  expect_still close.wildcard_in_the_middle_of_a_path_does_not_open_protected_folders 0 -m "REFUSED\] photocraft/cache: .*media - 'media' is a protected folder name" -m 'REFUSED\] photocraft/cache: .*vault - listed in never_touch_paths' -n 'NOT PRESENT\] photocraft|CANARY|photocraft/cache \(folder\)' -- LJ close -Config "$TMP/wild_middle.json" -SkipChecks
+  # a never_touch_paths folder nested inside a removal candidate holds the candidate back, whoever found the candidate
+  expect close.nested_never_touch_path_holds_the_candidate_back 0 -m "HELD\] Auto-Save: <root>/tools/effectcraft-0.11.1/Auto-Save - contains a protected item named 'keep'" -n 'CANARY' -- LJ close -Config $T/planted.config.json -SkipChecks
+  if printf '%s\n' "$OUT" | sed -n '/^WOULD REMOVE/,/^HELD BACK/p' | grep -qF -- "<root>/tools/effectcraft-0.11.1/Auto-Save"; then record close.nested_never_touch_path_candidate_not_in_would_remove FAIL "absent from WOULD REMOVE" "present"
+  else record close.nested_never_touch_path_candidate_not_in_would_remove PASS "absent from WOULD REMOVE" "absent"; fi
+  # extra_tools_folder_names: an entry with no letter or digit would turn every app folder into a candidate, so it is ignored with a NOTE
+  mk_variant wild_extra 'cfg["extra_tools_folder_names"] = ["*", "?*", "*.*", "  "]'
+  expect_still close.wildcard_only_extra_tools_folder_name_is_ignored 0 -m "NOTE: extra_tools_folder_names entry '\*' has no letter or digit" -m "NOTE: extra_tools_folder_names entry '\*\.\*' has no letter or digit" -m 'files written: none' -- LJ close -Config "$TMP/wild_extra.json" -SkipChecks
+  printf '%s\n' "$OUT" > "$TMP/wild_extra_out.txt"
+  expect close.wildcard_only_extra_tools_folder_name_adds_no_row 0 -m 'rows: 12 expected: 12 listed-and-expected: 12' -m 'problems: 0' -- $PY $T/check_close.py "$TMP/wild_extra_out.txt" "$TREES/expected.json"
+  mk_variant extra_named 'cfg["extra_tools_folder_names"] = ["LightCraftData"]'
+  expect close.named_extra_tools_folder_name_still_works 0 -m 'LightCraftData \(folder\)' -n 'NOTE: extra_tools_folder_names' -- LJ close -Config "$TMP/extra_named.json" -SkipChecks
+  # what the maker typed is never echoed expanded: a profile path comes back as %USERPROFILE%, an option comes back by name only
+  FH="$TREES/fakehome/user1"
+  expect_still usage.unknown_command_echo_hides_the_profile_path 2 -m "Unknown command '%USERPROFILE%/x'" -n 'fakehome|user1' -- "${PWHOME[@]}" "$PWSH" -NoProfile -File win/lj.ps1 "$FH/x"
+  expect_still usage.unexpected_argument_echo_hides_the_profile_path 2 -m "Unexpected argument '%USERPROFILE%/x'" -n 'fakehome|user1' -- "${PWHOME[@]}" "$PWSH" -NoProfile -File win/lj.ps1 close "$FH/x"
+  expect_still usage.unknown_option_echo_shows_the_name_only 2 -m "Unknown option '-Bogus' for close" -n 'fakehome|user1' -- "${PWHOME[@]}" "$PWSH" -NoProfile -File win/lj.ps1 close "-Bogus:$FH/x"
+  expect_still usage.unknown_first_option_echo_shows_the_name_only 2 -m "Unknown option '-Bogus'\. " -n 'fakehome|user1' -- "${PWHOME[@]}" "$PWSH" -NoProfile -File win/lj.ps1 "-Bogus=$FH/x"
+  expect close.per_app_lists_are_marked_unverified 0 -m 'photocraft +recent_files: 0 +cache: 1 +\[UNVERIFIED\]' -m 'lightcraft +recent_files: 1 +cache: 1 +\[UNVERIFIED\]' -m 'Until then they stay UNVERIFIED' -- LJ close -Config $T/planted.config.json -SkipChecks
   # a shipped (example-like) config with empty lists, on the empty root, lists nothing
   mk_cfg empty_root "{\"schema\":\"lj-config/1\",\"root\":\"$TREES/empty\",\"apps\":{\"photocraft\":{\"status\":\"UNVERIFIED\",\"recent_files\":[],\"cache\":[]}}}"
   expect_still close.empty_root_lists_nothing 0 -m 'nothing: no sidecar, Recovery, Auto-Save or cache item was found' -m 'photocraft +recent_files: 0 +cache: 0 +\[UNVERIFIED, no entries yet\]' -m 'files written: none' -- LJ close -Config "$TMP/empty_root.json" -SkipChecks

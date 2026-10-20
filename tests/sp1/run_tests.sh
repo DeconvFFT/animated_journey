@@ -106,9 +106,19 @@ check assets.table "$([ $rc = 0 ] && echo 1 || echo 0)" "$out" "six pins, names 
 # --list: live, fake 900, fake 600
 out="$(bash "$SP1/run_sp1.sh" --list 2>&1)"; rc=$?
 avail="$(sed -n 's/^Disk: df says Avail \([0-9]*\) MB.*/\1/p' <<<"$out")"
-lean_need=$(( $(jq -r '.stages[0].planned_mb.lean' "$SP1/config.json") + 400 ))
+# --list plans the stages one after the other and the FilmCraft tarball is kept on disk for the EffectCraft stage, so the lean profile needs
+# Avail of at least max over the stages of (planned + floor + the tarballs kept so far): 350 + 400 = 750 for FilmCraft, then 300 + 400 + 67 = 767
+# for EffectCraft. Computed here the way run_sp1.sh --list computes it (gate review r1: the old one-stage figure of 750 was wrong between 750 and 767 MB).
+floor_mb="$(jq -r '.disk.floor_mb' "$SP1/config.json")"
+keep_mb=$(( ( $(jq -r '.pins[]|select(.app=="filmcraft" and .tag=="v0.9.0")|.linux_x86_64_tarball.bytes' "$SP1/release_assets.json") + 1048575 ) / 1048576 ))
+lean_need=0; kept_mb=0
+for sid in $(jq -r '.stages[]|select(.only_if==null)|.id' "$SP1/config.json"); do
+  need=$(( $(jq -r --arg id "$sid" '.stages[]|select(.id==$id)|.planned_mb.lean' "$SP1/config.json") + floor_mb + kept_mb ))
+  (( need > lean_need )) && lean_need=$need
+  [ "$(jq -r --arg id "$sid" '.stages[]|select(.id==$id)|.keep_tarball' "$SP1/config.json")" = true ] && kept_mb=$(( kept_mb + keep_mb ))
+done
 want_rc=$([ "${avail:-0}" -ge "$lean_need" ] && echo 0 || echo 3)
-check list.live "$([ "$rc" = "$want_rc" ] && grep -q 'Planned downloads' <<<"$out" && echo 1 || echo 0)" "Avail ${avail} MB: exit $rc (expected $want_rc: lean needs Avail of at least ${lean_need} MB); $(grep -E '^(Chosen profile|REFUSED)' <<<"$out" | head -2 | tr '\n' ' ')" "--list prints the plan and refuses (exit 3) exactly when Avail minus planned is under 400 MB"
+check list.live "$([ "$rc" = "$want_rc" ] && grep -q 'Planned downloads' <<<"$out" && echo 1 || echo 0)" "Avail ${avail} MB: exit $rc (expected $want_rc: lean needs Avail of at least ${lean_need} MB); $(grep -E '^(Chosen profile|REFUSED)' <<<"$out" | head -2 | tr '\n' ' ')" "--list prints the plan and refuses (exit 3) exactly when Avail minus the planned peak of any lean stage, with the kept FilmCraft tarball counted, is under 400 MB"
 out="$(LJ_DF_CMD="$SP1/tests/fake_df_900.sh" bash "$SP1/run_sp1.sh" --list 2>&1)"; rc=$?
 check list.fake_900 "$([ $rc = 0 ] && grep -q 'full: filmcraft-v0.9.0 plans 600 MB, Avail 900 MB, leaves 300 MB: REFUSED' <<<"$out" && grep -q 'Chosen profile: lean' <<<"$out" && echo 1 || echo 0)" "exit $rc; $(grep -E 'full: filmcraft|Chosen profile' <<<"$out" | tr '\n' ' ' | cut -c1-300)" "at a fake 900 MB the full profile is refused and lean is chosen"
 out="$(LJ_DF_CMD="$SP1/tests/fake_df_900.sh" bash "$SP1/run_sp1.sh" --list --profile full 2>&1)"; rc=$?

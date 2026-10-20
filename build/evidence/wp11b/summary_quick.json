@@ -1,0 +1,37 @@
+{
+ "counts": {
+  "BLOCKED": 0,
+  "FAIL": 2,
+  "PASS": 39,
+  "SKIPPED": 0,
+  "UNVERIFIED": 1
+ },
+ "date_utc": "2026-10-20",
+ "lowest_avail_mb": 741,
+ "mode": "quick",
+ "package": "WP-11b",
+ "schema": "lj-evidence-summary/1",
+ "seconds": 24.5,
+ "slowest": [
+  {
+   "seconds": 10.0,
+   "test": "hygiene.stale_check_new_only"
+  },
+  {
+   "seconds": 3.7,
+   "test": "hygiene.public_lint_over_the_build_folders"
+  },
+  {
+   "seconds": 2.9,
+   "test": "hygiene.theme_guard"
+  },
+  {
+   "seconds": 1.7,
+   "test": "redaction.derivation_tools_leak_nothing"
+  },
+  {
+   "seconds": 1.6,
+   "test": "hygiene.public_lint_over_the_diff"
+  }
+ ]
+}

@@ -188,7 +188,7 @@ Do **one app at a time**, then do the "where did it write" step below for that a
 
 Those playbooks were written before this guide and name other folders (`C:\Program Files\...` or `C:\LifeJourney\tools\...`). **Use the folder from Step 4 in their place**, for example `C:\lj\tools\filmcraft-@@V_filmcraft@@` instead of `C:\LifeJourney\tools\filmcraft-v0.9.0`.
 
-Open each program from its own folder in File Explorer by double-clicking the program file (not from the Start menu, and never from the Launcher). Watch Task Manager (Ctrl+Shift+Esc) for the memory it uses.
+Open each program from its own folder in File Explorer by double-clicking the program file (not from the Start menu, and never from the Launcher). Watch Task Manager (Ctrl+Shift+Esc) for the memory it uses. The first time you open each one, Windows may show a blue box, "Windows protected your PC". That is expected for these five programs; what you may do about it is in the last section, "If something goes wrong".
 
 **If a window flashes and closes** (the program starts and exits at once), try the three graphics fallbacks, one after the other, and write down which one worked. Open a PowerShell window in the app's folder first. For FilmCraft:
 
@@ -267,7 +267,8 @@ An empty answer is an answer: it means the app wrote nothing there. Read the lin
 ## If something goes wrong
 
 - **A MISMATCH twice, a missing file, or a message you do not understand:** stop and paste the exact text in chat. Do not try to fix it.
-- **Windows says "Windows protected your PC", or the antivirus removes or blocks a file:** stop. Do not turn the antivirus off and do not click past the warning. Paste what it says; we decide together.
+- **Windows shows a blue box, "Windows protected your PC" (SmartScreen), when you open one of the five programs:** this is expected. The programs are unsigned alpha software (the signature lines under "What to write down" print `NotSigned`, and that is normal here, not a fault), and files that came from the internet carry a "from the internet" mark. For these five programs only you may click **More info** and then **Run anyway**, and only when all three are true: the file is one of the five programs inside `C:\lj\tools`; Step 3 printed `OK` for the zip it came from; and you unzipped that zip yourself in Step 4. Write down which program you did it for. For any other file, or if the box looks different from this, stop and paste what it says.
+- **The antivirus removes, quarantines or blocks a file:** stop. Do not turn the antivirus off, do not restore the file and do not click past the warning. Paste what it says; we decide together.
 - **A group policy blocks scripts or the zip** (a work or school PC): stop and change nothing.
 - **An app crashes:** that is a result, not your mistake. Write down the exact words. When you report a bug anywhere, use the test files only (a report can be relayed to a public page).
 

@@ -1,22 +1,22 @@
 {
- "actual": "differing pixels per frame: [511016, 511015, 511015, 511016, 511018, 511007]",
+ "actual": "differing pixels per frame: [510884, 510884, 510883, 510883, 510883, 510871]",
  "data": {
   "differing_px": [
-   511016,
-   511015,
-   511015,
-   511016,
-   511018,
-   511007
+   510884,
+   510884,
+   510883,
+   510883,
+   510883,
+   510871
   ],
   "hash_identical": 0,
-  "seconds": 5.0
+  "seconds": 4.9
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 410,
-  "avail_mb_min": 410,
-  "avail_mb_start": 410,
+  "avail_mb_end": 753,
+  "avail_mb_min": 753,
+  "avail_mb_start": 753,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

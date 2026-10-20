@@ -62,9 +62,39 @@
    ],
    "value_regex": ".+",
    "reason": "verbatim third-party licence texts (OFL, MIT and similar) must keep their authors' public copyright contact lines (W-21); the build plan commits these licences as text (4.9). Nothing else under this path is allowed."
+  },
+  {
+   "id": "public-org-contact-addresses",
+   "category": "email",
+   "paths": [
+    ".claude/skills/**",
+    "playbooks/**",
+    "research/**",
+    "reviews/**"
+   ],
+   "value_regex": "kde\\-bugs\\-dist@kde\\.org|users@lists\\.dcpomatic\\.com|inkscape\\-user@lists\\.inkscape\\.org|info@pro8mm\\.com|TVCUESHEET@ascap\\.com|ATR\\.LitIII\\.Information@ATR\\.USDOJ\\.gov|openaccess@metmuseum\\.org|vaimages@vam\\.ac\\.uk|team@mixkit\\.co",
+   "reason": "the exact published contact addresses of two public mailing lists (KDE bugs, DCP-o-matic users, Inkscape users), a film-scanning vendor (Pro8mm), a collecting society's cue-sheet mailbox (ASCAP), a government information mailbox (US DOJ antitrust, quoted in a mail header), two museum image-rights offices (the Metropolitan Museum, the V&A) and a stock-music vendor's licence contact (Mixkit), as the research notes quote them from the sources they cite. None is about a person or about the maker. Matched by full value, so any other address in these folders still fails (gate review r1, nudge 6)"
+  },
+  {
+   "id": "python-matrix-operator-not-an-address",
+   "category": "email",
+   "paths": [
+    "research/creator-threads.md"
+   ],
+   "value_regex": "R@np\\.array",
+   "reason": "a line of Python in a fixture listing: R @ np.array(...) is a matrix product, not an address"
+  },
+  {
+   "id": "fcpxml-sample-path-from-public-repo",
+   "category": "profile_path_linux",
+   "paths": [
+    "research/craft-motion.md"
+   ],
+   "value_regex": "/Users/(?:aa)",
+   "reason": "the library location written inside a public repository's sample FCPXML file, quoted to show what Final Cut Pro writes; it is not a path on any machine of this project"
   }
  ],
- "allow_note": "This list is deliberately short and only for public identifiers that are not about any person or machine. E-mail addresses, creator handles and session ids are NOT allowed here: they are reported to the orchestrator.",
+ "allow_note": "This list is deliberately short and only for public identifiers that are not about any person or machine. Creator handles and session ids are NOT allowed here: they are reported to the orchestrator, or removed from the text. Added Tue 20 Oct 2026 (gate review r1, nudge 6): the exact published contact addresses of vendors, museums, a government information mailbox and public mailing lists that research notes quote, one code snippet that looks like an address and one sample path from a public repository, each matched by its full value in named folders so a new address anywhere still fails. A personal address is never added.",
  "theme": {
   "paths": [
    "pipeline/scenes/",

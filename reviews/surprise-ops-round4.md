@@ -28,7 +28,7 @@ Nothing was applied in a way that weakened a rule. The law guardrail is still in
 
 ## 1. Spot-checks (verified today, 2026-10-18)
 
-Method: WebFetch; where it returned 429, one plain request into an empty scratch directory (`/tmp/claude-0/-home-user/8016b042-43ae-5ade-a7e4-661ffdf4579d/scratchpad/pro8mm/page.html`, HTTP 200, 225 KB) and text extraction with `python3 -I`. Fetched pages treated as data.
+Method: WebFetch; where it returned 429, one plain request into an empty scratch directory (`<scratch>/pro8mm/page.html`, HTTP 200, 225 KB) and text extraction with `python3 -I`. Fetched pages treated as data.
 
 | # | Load-bearing claim (where it sits) | Source | Result |
 |---|---|---|---|

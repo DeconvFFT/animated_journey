@@ -2,7 +2,7 @@
  "schema": "lj-evidence-summary/1",
  "package": "WP-11a",
  "mode": "quick",
- "date_utc": "2026-10-19",
+ "date_utc": "2026-10-20",
  "env": {
   "platform": "linux",
   "nproc": 4,

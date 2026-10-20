@@ -1,0 +1,36 @@
+# area=phone entry=WP-08 mode=all result=PASS exit=0 seconds=197 masked_values=0
+PASS       static_compile                           all compile and parse
+PASS       json_shape                               profile and thresholds are well formed: phone_1080 CRF 20 maxrate 8M faststart no metadata; caption FontSize 28 vs venue 23, 32 characters, 2 lines, bottom <= 88%
+PASS       lint_allowlist_clean                     lint_strings: 15 file(s) scanned, 0 finding(s)
+PASS       lint_allowlist_negative_controls         latin_srt_line=1, indic_in_source=1, no_marks_key=1, latin_family_phrase=1, allowlisted_lines_pass=0
+PASS       encode_plan_relative_names               exit 0; filter: ass=caps.ass:fontsdir=fonts,scale=out_color_matrix=bt709:out_range=tv,format=yuv420p,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:rang
+PASS       encode_dry_run_writes_nothing            none written
+PASS       encode_refusals                          exits (2, 2, 2, 2); master hash unchanged: True
+PASS       encode_rerun_replaces_own_output         exits (0, 0, 2); the foreign file is untouched
+PASS       phone_check_usage                        exits (2, 2, 2, 2, 2)
+PASS       sim_share_rerun                          exits (0, 0); input hash unchanged: True
+PASS       sim_share_refusals                       exits (2, 2, 2, 2, 2); input hash unchanged: True
+PASS       selftest                                 exit 0; 17 mechanisms PASS, 0 FAIL; missing: none; FontSize=23 asserted: False
+PASS       style_run_phone                          tested ['latin', 'devanagari'] with IoU min {'latin': 0.95, 'devanagari': 0.928}; NOT TESTED ['tamil', 'telugu', 'kannada', 'malayalam', 'bengali', 'gujarati']; fill_20x9
+PASS       per_script_iou                           latin IoU min 0.95 over 1 strings (meets 0.9); devanagari IoU min 0.928 over 6 strings (meets 0.9)
+PASS       master_made                              exit 0; HQ 1920x1080 24/1 fps 240 frames; audio 48000 Hz; guard: start 754 min 640 end 640 MB
+PASS       encode_acceptance                        encode exit 0; spec_check exit 0 (RESULT: PASS (28 checks)); 0.86 Mbps against a cap of 8 + 10% = 8.80; atoms ftyp,moov,free,mdat
+PASS       encode_colon_in_input_path               exit 0; output made: True
+PASS       encode_720_share                         encode exit 0; spec_check exit 0; 0.43 Mbps against a cap of 3.5 + 10%
+PASS       colour_patch_phone_1080                  exit 0; worst 1/255 (RESULT chains: 1 of 1 within 3/255)
+PASS       colour_patch_phone_720_share             colour_patch.py worst 1/255; the cross-check worst 1/255 (the chain stays approved: false until the PC build is tested)
+PASS       sim_share                                exit 0; input hash unchanged: True; height 480; 0.91 Mbps; sidecar copied: True
+PASS       phone_check_shared_file                  exit 0; verdicts {'portrait': ('FAIL', 'advisory'), 'landscape': ('PASS', 'blocking'), 'small_portrait': ('FAIL', 'advisory'), 'shared': ('PASS', 'blocking'), 'fill_20x9'
+PASS       phone_check_fill_20x9                    phone: exit 0, caption bottom 85.37% (limit 88); venue-margin clip: exit 1, caption bottom 92.59%
+PASS       phone_check_aspect_19_5                  exit 0; crop 8.97% each; verdict PASS
+PASS       burn_match_negative_control              exit 1; burn match FAIL
+PASS       style_run_all_scenarios                  verdicts: {'fill_20x9': 'PASS/blocking', 'landscape': 'PASS/blocking', 'portrait': 'FAIL/advisory', 'shared': 'PASS/blocking', 'small_portrait': 'FAIL/advisory'}
+PASS       finding_fs23                             exit 0; verdicts (recorded, not asserted): {'fill_20x9': 'FAIL', 'landscape': 'FAIL', 'portrait': 'FAIL', 'shared': 'FAIL', 'small_portrait': 'FAIL'}
+PASS       caption_candidates                       exit 0; the rule picks 28, the profile says 28
+PASS       shaping_paths                            exit 0; devanagari: ass 0.928, subtitles 0.359, forced simple shaping 0.359
+PASS       phone_row                                exit 0; line quoted from scripts_tested.json: True; size, position, fill verdict present: True
+PASS       public_lint                              exit 0; public_lint: mode paths, 38 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+UNVERIFIED windows_behaviour_unverified             nothing here could be run on Windows; the drive-letter colon is covered on Linux by passing names that contain a colon (encode_colon_in_input_path), and Pillow's raqm lay
+PASS       cleanup                                  removed; Avail 640 MB before, 754 MB after
+
+Counts: PASS 32, FAIL 0, UNVERIFIED 1, SKIPPED 0, BLOCKED 0

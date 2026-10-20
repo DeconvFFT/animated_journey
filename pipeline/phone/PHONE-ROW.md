@@ -1,0 +1,34 @@
+# Phone row of the settings card (WP-08, measured 2026-10-19)
+
+*Written by `python3 -I pipeline/phone/phone_check.py --write-row` from the evidence files in `build/evidence/wp08/`, so the text and the measurements cannot disagree. Every figure is measured on synthetic, style-neutral test material (ffmpeg 6.1.1-3ubuntu5, Noto Sans and Noto Sans Devanagari) and stays a proposal (J) until the maker has looked at a real phone (`PHONE-TEST.md`). Nothing here is signed by an agent. UNVERIFIED: real phones, a messenger's own encoder, how a given player implements fill, the arcminute limits, and everything on the maker's Windows PC.*
+
+## 1. The row (the orchestrator pastes this over the Phone row of `ops/SETTINGS-CARD.md`)
+
+| Row | In plain words | Proposed value | Register | Command that proves it | If you change it |
+|---|---|---|---|---|---|
+| **Phone** (D-27) | The film and any keepsake must play beautifully on a phone: readable words, a frame that survives phone cropping, and a file that survives being shared. | **Proposed (J), measured on synthetic test material:** two phone files from the one locked timeline, never a second edit (W-63). **PH1**, the phone master: 1920x1080, 24 fps, H.264 High 4.1, yuv420p, BT.709 tags on the master before the burn-in, CRF 20 with an 8 Mb/s cap, AAC-LC 192 kbps 48 kHz stereo, `+faststart`. **PH2**, the small copy for a phone with little free storage: 1280x720, CRF 22, a 3.5 Mb/s cap (W-63), level 3.1, captions burned on the 1080 frame before the downscale. Both SDR only (no HDR), -16 LUFS integrated and -1 dBTP on the final MP4. **Phone captions** are burned in at their own setting, measured and not guessed: `FontSize=28`, `MarginV` 40, white with a black outline, two lines, at most 32 characters a line (W-18; 32 fits the 90% box in both scripts tested; the venue file keeps its own guide of 42), the block from **68.2% to 85.4% of the picture height**; the letters (Latin x-height 3.44%, Devanagari base letter 3.38% of the picture height) clear the 3.2% floor of W-63. **Filled to the screen** (a 20:9 phone set to fill crops about 10% off the top and the bottom): the box ends at **85.4%** against a limit of 88.0%, so the whole bottom line stays; verdict **PASS**. Moved to a phone by cable or a private link only. | D-27, W-63, W-18, W-19 | The ffprobe lines above on each phone file (PH1 reads 1920x1080; PH2 reads 1280x720, level 31); `python3 -I pipeline/phone/phone_check.py FILE.mp4` (five views: upright, sideways, small phone, after sharing, filled to the screen) and `python3 -I pipeline/phone/phone_check.py FILE.mp4 --scenario fill_20x9` (prints where the caption's bottom edge sits as a percentage of the picture height); then your own phone (`pipeline/phone/PHONE-TEST.md`, seven questions). UNVERIFIED until you try it. | The caption numbers can only move by the phone test, not by taste (Gujarati is sized by the height of its letter KA, not by `FontSize`). A smaller size loses the letter-height floor (FontSize 26 reads 3.17%, FontSize 24 2.94%); a larger one moves the block up (FontSize 32 starts at 66.1%). The venue caption (`FontSize=23`, `MarginV` 20) ends at 92.6%, so when a phone fills the screen up to 12% of its ink falls off the bottom (a caption burned at the venue's 5% margin would lose most of its lower line). PH1 goes to her phone by cable if 1 GB is free there, else PH2 (O-54). Sharing by a family chat or a cloud photo library is not allowed (D-02, D-15). |
+
+## 2. Caption size and position, measured
+
+| What | Value | Where it comes from |
+|---|---|---|
+| Caption size | `FontSize=28`, `MarginV` 40, outline 2 (about 7.5 px at 1080p), at most 32 characters a line, two lines | `profile.json` (J); the rule in `caption_candidates.json` picks 28 |
+| Letter height, Latin x-height | 3.44% of the picture height (37.1 px at 1080p); 22.0 arcmin at 35 cm sideways, 19.2 at 40 cm; floor 3.2% / 18 arcmin, target 3.8% / 21 | `phone_style.json`, landscape (arcminute limits UNVERIFIED) |
+| Letter height, Devanagari base letter | 3.38% of the picture height (36.5 px); 21.6 arcmin at 35 cm sideways | `phone_style.json`; an analogue of the x-height, not the same thing |
+| Letter height at arm's length (50 cm) | Latin x-height reads 15.4 arcmin sideways, below the 18 arcmin floor; filled to the screen it reads 20.6 | `phone_style.json` (INFO only; the maker's phone test, question 3, is the measurement) |
+| Caption position (picture height from the top) | block **68.2% to 85.4%**; the bottom edge must be at the 88% line or higher up the picture (a smaller percentage) | `fill_20x9_phone.json` (the encoded test file, differenced against a caption-free frame) |
+| Filled to a 20:9 screen (`fill_20x9`) | **PASS**: the box ends at 85.4% against the limit of 88.0% (the 90% crop line minus a 2-point margin); the whole bottom line stays | `fill_20x9_phone.json` |
+| The same file burned with the venue size and margin | **FAIL**: the box ends at 92.6% and up to 12% of the caption's ink falls off the bottom when the phone fills the screen | `fill_20x9_venue_margin.json` |
+| After sharing (480p, about 1 Mbps) | **PASS** (all blocking checks, marks included) | `phone_style.json` scenario `shared`; the encoded file through `sim_share.sh` is in `shared_phone_check.json` |
+| Upright in a chat or player (`portrait`) | letters read about 12 arcmin at 35 cm, below the 18 arcmin floor: **degraded by design**; the hand-over says "turn it sideways" | `phone_style.json`, an advisory view (W-18: the phone file is made for landscape) |
+
+## 3. FontSize=23 on a phone (a finding, not a pass condition)
+
+The venue caption (`FontSize=23`, `MarginV` 20, Noto Sans) measured the same way (`finding_fontsize23.json`): sideways the Latin x-height is 2.82% of the picture height (17.99 arcmin at 35 cm; floor 3.2% / 18); filled to the screen the box ends at 91.8% for Latin and 92.6% for Devanagari (limit 88.0%). Scenario verdicts: portrait FAIL, landscape FAIL, small_portrait FAIL, shared FAIL, fill_20x9 FAIL. The venue size is the venue's; the phone file carries its own.
+
+## 4. Language and script note (the orchestrator pastes this line into the card's language note)
+
+`Scripts tested: latin, devanagari (neutral strings) on 2026-10-19; NOT TESTED: tamil, telugu, kannada, malayalam, bengali, gujarati (name the maker's script, O-10)`
+
+The shaping and mark-survival tests loop over every script in `pipeline/phone/test_strings.json` that has strings: today Latin and Devanagari (neutral, plain Sanskrit-derived words, `checked_by_reader: false` until the maker confirms them). Her language is Gujarati (D-31) and it is **NOT TESTED**: adding it is the three small steps of the build plan (4.10): one font entry in `libs.lock.json`, one reader-confirmed block with `marks[]` in `test_strings.json`, and a rerun; nothing else changes.
+

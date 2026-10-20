@@ -1,0 +1,77 @@
+{
+  "schema": "lj-sp1b-config/1",
+  "note": "The numbers of build plan 4.9 and WP-10 for the SP1b stages. run_sp1b.sh and the drivers read this file; nothing else holds these figures.",
+  "disk": {
+    "floor_mb": 400,
+    "hard_floor_mb": 250
+  },
+  "budget": {
+    "cli_over_tarball_assumed": 1.15,
+    "cli_over_tarball_measured": {
+      "filmcraft 0.9.0": 0.897,
+      "photocraft 0.10.0": 0.814,
+      "vectorcraft 0.13.1": 0.796,
+      "lightcraft 0.9.1": 0.947
+    },
+    "outputs_mb": 30,
+    "stage_timeout_s": 3600,
+    "note": "Planned MB = tarball (when it is downloaded) + the CLI member + the stage's outputs. For FilmCraft the tarball is already on disk (kept by WP-07) and the CLI size is read from `tar -tvzf` before the guard is asked. For the other three the CLI size is not known before the download, so it is assumed to be 1.15 times the tarball (FilmCraft measured 0.90); after the download and the listing the stage re-checks with the exact figure and ends BLOCKED, with the tarball deleted, if the CLI plus the outputs would leave less than the floor. The ratios measured in the real run (19 Oct 2026) are recorded above; the largest, LightCraft's 0.947, is 18% under the assumed 1.15."
+  },
+  "plan_table_mb": {
+    "photocraft": 300,
+    "vectorcraft": 450,
+    "lightcraft": 350,
+    "filmcraft": 300
+  },
+  "stages": [
+    {
+      "id": "filmcraft-v0.9.0",
+      "app": "filmcraft",
+      "tag": "v0.9.0",
+      "order": 1,
+      "source": "kept",
+      "tests": [
+        "t3"
+      ],
+      "driver": "t3_filmcraft.py",
+      "why_first": "it deletes the kept tarball (about 67 MB) and so gives the next three stages more room"
+    },
+    {
+      "id": "photocraft-v0.10.0",
+      "app": "photocraft",
+      "tag": "v0.10.0",
+      "order": 2,
+      "source": "fetch",
+      "tests": [
+        "t1",
+        "readback"
+      ],
+      "driver": "visual_app.py"
+    },
+    {
+      "id": "vectorcraft-v0.13.1",
+      "app": "vectorcraft",
+      "tag": "v0.13.1",
+      "order": 3,
+      "source": "fetch",
+      "tests": [
+        "t1",
+        "readback"
+      ],
+      "driver": "visual_app.py"
+    },
+    {
+      "id": "lightcraft-v0.9.1",
+      "app": "lightcraft",
+      "tag": "v0.9.1",
+      "order": 4,
+      "source": "fetch",
+      "tests": [
+        "t1",
+        "readback"
+      ],
+      "driver": "visual_app.py"
+    }
+  ],
+  "remedy": "answer Q-1 (the orchestrator may clear the regenerable pip cache, about 418 MB), or free space, or move this read-back to the maker's PC (the Sat 24 Oct five-minute test); nothing was started and nothing was forced"
+}

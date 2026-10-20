@@ -1,0 +1,16 @@
+{
+  "avail_mb_end": 747,
+  "avail_mb_min": 747,
+  "avail_mb_start": 747,
+  "counts": {
+    "BLOCKED": 0,
+    "FAIL": 0,
+    "PASS": 14,
+    "SKIPPED": 0,
+    "UNVERIFIED": 0
+  },
+  "date_utc": "2026-10-20",
+  "mode": "quick",
+  "package": "WP-08",
+  "schema": "lj-evidence-summary/1"
+}

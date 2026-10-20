@@ -1,10 +1,10 @@
 {
- "actual": "O-85 and W-80 reach the CSV (251 rows) with notes 'absorbs O-86' and 'revises W-05'; 8 live annotated ID cells carry their note; ops_lint accepts a citation of the new IDs and flags O-86; six unparseable rows (including | **ID** | and | `ID` |) exit 2 and ops_lint reports the register malformed; with the guard removed the emphasised row is dropped by --write and ops_lint's `parser` finding fires",
- "date_utc": "2026-10-19",
+ "actual": "O-85 and W-80 reach the CSV (252 rows) with notes 'absorbs O-86' and 'revises W-05'; 8 live annotated ID cells carry their note; ops_lint accepts a citation of the new IDs and flags O-86; six unparseable rows (including | **ID** | and | `ID` |) exit 2 and ops_lint reports the register malformed; with the guard removed the emphasised row is dropped by --write and ops_lint's `parser` finding fires",
+ "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 1115,
-  "avail_mb_min": 1115,
-  "avail_mb_start": 1117,
+  "avail_mb_end": 744,
+  "avail_mb_min": 744,
+  "avail_mb_start": 746,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

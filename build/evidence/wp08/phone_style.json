@@ -1,0 +1,1308 @@
+{
+  "mode": "style",
+  "style": "phone",
+  "style_params": {
+    "font_size": 28,
+    "font_size_by_script": {},
+    "margin_v": 40,
+    "outline": 2,
+    "max_chars_per_line": 32,
+    "max_lines": 2
+  },
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "scenarios": {
+    "portrait": {
+      "geometry": {
+        "scenario": "portrait",
+        "gate": "advisory",
+        "description": "phone held upright, picture full width in a player or chat (the 'degraded by design' view of the research, K3)",
+        "css_w": 390.0,
+        "css_h": 844.0,
+        "dpr": 3.0,
+        "mode": "fit",
+        "aspect": null,
+        "device_px_per_source_px": 0.6094,
+        "picture_w_mm": 64.9,
+        "picture_h_mm": 36.5063,
+        "crop_each_pct": 0.0,
+        "visible_rows_pct": [
+          0.0,
+          100.0
+        ],
+        "share_px_per_source_px": null,
+        "smallest_grid_px_per_source_px": 0.6094
+      },
+      "gate": "advisory",
+      "scripts": {
+        "latin": {
+          "status": "FAIL",
+          "checks": [
+            {
+              "id": "x_height_arcmin",
+              "status": "FAIL",
+              "value": 12.33,
+              "limit": 18,
+              "detail": "x-height 37.1 px at 1080p = 1.26 mm on this picture = 12.33 arcmin at 35 cm (10.79 at 40 cm); floor 18', target 21' not reached (arcminute limits UNVERIFIED)"
+            },
+            {
+              "id": "x_height_arcmin_50cm",
+              "status": "INFO",
+              "value": 8.63,
+              "limit": 18,
+              "detail": "8.63 arcmin at 50 cm, the arm's-length proxy for a 50+ viewer (playbook Exercise 4); below the 18' floor; reported, never gated (the maker's phone test, question 3, is the measurement)"
+            },
+            {
+              "id": "x_height_pct",
+              "status": "PASS",
+              "value": 3.44,
+              "limit": 3.2,
+              "detail": "x-height is 3.44% of picture height (floor 3.2%, target 3.8%; W-63)"
+            },
+            {
+              "id": "stroke_width_px",
+              "status": "PASS",
+              "value": 3.05,
+              "limit": 1.0,
+              "detail": "10th percentile of the local stroke width of the caption letters on the scenario's smallest grid (0.609 of source) = 3.05 px (median 3.72)"
+            },
+            {
+              "id": "contrast_ratio",
+              "status": "PASS",
+              "value": 21.0,
+              "limit": 4.5,
+              "detail": "WCAG ratio of the fill (98th percentile) to the outline (2nd percentile) inside the caption box on the scenario's pixels; target 7"
+            },
+            {
+              "id": "box90",
+              "status": "PASS",
+              "value": "L24.6 R75.2 T68.5 B84.4",
+              "limit": "5..95 both ways",
+              "detail": "caption box as a percentage of picture width and height (W-18: inside the 90% by 90% box)"
+            },
+            {
+              "id": "caption_bottom_pct",
+              "status": "INFO",
+              "value": 84.4,
+              "limit": "<= 88 in fill_20x9",
+              "detail": "bottom of the caption box at 84.4%, top at 68.5% (the 88% limit is gated in fill_20x9; here only the 90% box is)"
+            }
+          ],
+          "sizes": {
+            "unit": "x-height",
+            "x_height_px_1080": 37.14,
+            "x_height_pct": 3.44,
+            "x_height_mm": 1.255,
+            "x_height_arcmin_35cm": 12.33,
+            "x_height_arcmin_40cm": 10.79,
+            "x_height_arcmin_50cm": 8.63,
+            "x_height_device_px": 22.63,
+            "cap_height_px_1080": 49.47,
+            "cap_height_pct": 4.58,
+            "cap_height_mm": 1.672,
+            "cap_height_arcmin_35cm": 16.43
+          },
+          "position": {
+            "caption_top_pct": 68.52,
+            "caption_bottom_pct": 84.35,
+            "caption_left_pct": 24.64,
+            "caption_right_pct": 75.21,
+            "visible_fraction": 1.0,
+            "crop_each_pct": 0.0,
+            "contrast_ratio": 21.0,
+            "bottom_limit_pct": 88.0
+          }
+        },
+        "devanagari": {
+          "status": "FAIL",
+          "checks": [
+            {
+              "id": "x_height_arcmin",
+              "status": "FAIL",
+              "value": 12.12,
+              "limit": 18,
+              "detail": "base-letter band 36.5 px at 1080p = 1.23 mm on this picture = 12.12 arcmin at 35 cm (10.60 at 40 cm); floor 18', target 21' not reached (arcminute limits UNVERIFIED)"
+            },
+            {
+              "id": "x_height_arcmin_50cm",
+              "status": "INFO",
+              "value": 8.48,
+              "limit": 18,
+              "detail": "8.48 arcmin at 50 cm, the arm's-length proxy for a 50+ viewer (playbook Exercise 4); below the 18' floor; reported, never gated (the maker's phone test, question 3, is the measurement)"
+            },
+            {
+              "id": "x_height_pct",
+              "status": "PASS",
+              "value": 3.38,
+              "limit": 3.2,
+              "detail": "base-letter band is 3.38% of picture height (floor 3.2%, target 3.8%; W-63)"
+            },
+            {
+              "id": "stroke_width_px",
+              "status": "PASS",
+              "value": 2.32,
+              "limit": 1.0,
+              "detail": "10th percentile of the local stroke width of the caption letters on the scenario's smallest grid (0.609 of source) = 2.32 px (median 2.73)"
+            },
+            {
+              "id": "contrast_ratio",
+              "status": "PASS",
+              "value": 21.0,
+              "limit": 4.5,
+              "detail": "WCAG ratio of the fill (98th percentile) to the outline (2nd percentile) inside the caption box on the scenario's pixels; target 7"
+            },
+            {
+              "id": "box90",
+              "status": "PASS",
+              "value": "L25.4 R74.6 T68.2 B85.4",
+              "limit": "5..95 both ways",
+              "detail": "caption box as a percentage of picture width and height (W-18: inside the 90% by 90% box)"
+            },
+            {
+              "id": "caption_bottom_pct",
+              "status": "INFO",
+              "value": 85.4,
+              "limit": "<= 88 in fill_20x9",
+              "detail": "bottom of the caption box at 85.4%, top at 68.2% (the 88% limit is gated in fill_20x9; here only the 90% box is)"
+            },
+            {
+              "id": "marks:dev-pariksha",
+              "status": "PASS",
+              "detail": "post_base U+0940: 49 px of ink in the zone (added zone, 156 px at 1080p); IoU with the mark 0.94, without 0.48 -> survives; conjunct U+094D: 155 px of ink in the zone (window_ink zone, 422 px at 1080p); IoU with the mark 0.96, without 0.31 -> survives"
+            },
+            {
+              "id": "marks:dev-pustak",
+              "status": "PASS",
+              "detail": "below U+0941: 60 px of ink in the zone (added zone, 173 px at 1080p); IoU with the mark 0.97, without 0.66 -> survives; conjunct U+094D: 5 px of ink in the zone (window_ink zone, 18 px at 1080p); IoU with the mark 0.83, without 0.67 -> survives"
+            },
+            {
+              "id": "marks:dev-din",
+              "status": "PASS",
+              "detail": "pre_base U+093F: 82 px of ink in the zone (added zone, 243 px at 1080p); IoU with the mark 0.96, without 0.24 -> survives"
+            },
+            {
+              "id": "marks:dev-sankhya",
+              "status": "PASS",
+              "detail": "above U+0902: 9 px of ink in the zone (added zone, 29 px at 1080p); IoU with the mark 0.96, without 0.86 -> survives; conjunct U+094D: 32 px of ink in the zone (window_ink zone, 91 px at 1080p); IoU with the mark 0.90, without 0.56 -> survives"
+            },
+            {
+              "id": "marks:dev-shabd",
+              "status": "PASS",
+              "detail": "conjunct U+094D: 12 px of ink in the zone (window_ink zone, 38 px at 1080p); IoU with the mark 0.94, without 0.80 -> survives"
+            }
+          ],
+          "sizes": {
+            "unit": "base-letter band",
+            "x_height_px_1080": 36.5,
+            "x_height_pct": 3.38,
+            "x_height_mm": 1.234,
+            "x_height_arcmin_35cm": 12.12,
+            "x_height_arcmin_40cm": 10.6,
+            "x_height_arcmin_50cm": 8.48,
+            "x_height_device_px": 22.24,
+            "cap_height_px_1080": 40.62,
+            "cap_height_pct": 3.76,
+            "cap_height_mm": 1.373,
+            "cap_height_arcmin_35cm": 13.49
+          },
+          "position": {
+            "caption_top_pct": 68.24,
+            "caption_bottom_pct": 85.37,
+            "caption_left_pct": 25.36,
+            "caption_right_pct": 74.64,
+            "visible_fraction": 1.0,
+            "crop_each_pct": 0.0,
+            "contrast_ratio": 21.0,
+            "bottom_limit_pct": 88.0
+          }
+        },
+        "tamil": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "telugu": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "kannada": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "malayalam": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "bengali": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "gujarati": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        }
+      },
+      "verdict": "FAIL",
+      "failed_checks": [
+        "latin:x_height_arcmin",
+        "devanagari:x_height_arcmin"
+      ]
+    },
+    "landscape": {
+      "geometry": {
+        "scenario": "landscape",
+        "gate": "blocking",
+        "description": "the same phone held sideways, 16:9 picture fitted to the height (bars at the sides): the intended view",
+        "css_w": 844.0,
+        "css_h": 390.0,
+        "dpr": 3.0,
+        "mode": "fit",
+        "aspect": null,
+        "device_px_per_source_px": 1.0833,
+        "picture_w_mm": 115.5829,
+        "picture_h_mm": 65.0154,
+        "crop_each_pct": 0.0,
+        "visible_rows_pct": [
+          0.0,
+          100.0
+        ],
+        "share_px_per_source_px": null,
+        "smallest_grid_px_per_source_px": 1.0833
+      },
+      "gate": "blocking",
+      "scripts": {
+        "latin": {
+          "status": "PASS",
+          "checks": [
+            {
+              "id": "x_height_arcmin",
+              "status": "PASS",
+              "value": 21.96,
+              "limit": 18,
+              "detail": "x-height 37.1 px at 1080p = 2.24 mm on this picture = 21.96 arcmin at 35 cm (19.22 at 40 cm); floor 18', target 21' reached (arcminute limits UNVERIFIED)"
+            },
+            {
+              "id": "x_height_arcmin_50cm",
+              "status": "INFO",
+              "value": 15.37,
+              "limit": 18,
+              "detail": "15.37 arcmin at 50 cm, the arm's-length proxy for a 50+ viewer (playbook Exercise 4); below the 18' floor; reported, never gated (the maker's phone test, question 3, is the measurement)"
+            },
+            {
+              "id": "x_height_pct",
+              "status": "PASS",
+              "value": 3.44,
+              "limit": 3.2,
+              "detail": "x-height is 3.44% of picture height (floor 3.2%, target 3.8%; W-63)"
+            },
+            {
+              "id": "stroke_width_px",
+              "status": "PASS",
+              "value": 5.47,
+              "limit": 1.0,
+              "detail": "10th percentile of the local stroke width of the caption letters on the scenario's smallest grid (1.083 of source) = 5.47 px (median 6.57)"
+            },
+            {
+              "id": "contrast_ratio",
+              "status": "PASS",
+              "value": 21.0,
+              "limit": 4.5,
+              "detail": "WCAG ratio of the fill (98th percentile) to the outline (2nd percentile) inside the caption box on the scenario's pixels; target 7"
+            },
+            {
+              "id": "box90",
+              "status": "PASS",
+              "value": "L24.6 R75.2 T68.5 B84.4",
+              "limit": "5..95 both ways",
+              "detail": "caption box as a percentage of picture width and height (W-18: inside the 90% by 90% box)"
+            },
+            {
+              "id": "caption_bottom_pct",
+              "status": "INFO",
+              "value": 84.4,
+              "limit": "<= 88 in fill_20x9",
+              "detail": "bottom of the caption box at 84.4%, top at 68.5% (the 88% limit is gated in fill_20x9; here only the 90% box is)"
+            }
+          ],
+          "sizes": {
+            "unit": "x-height",
+            "x_height_px_1080": 37.14,
+            "x_height_pct": 3.44,
+            "x_height_mm": 2.236,
+            "x_height_arcmin_35cm": 21.96,
+            "x_height_arcmin_40cm": 19.22,
+            "x_height_arcmin_50cm": 15.37,
+            "x_height_device_px": 40.23,
+            "cap_height_px_1080": 49.47,
+            "cap_height_pct": 4.58,
+            "cap_height_mm": 2.978,
+            "cap_height_arcmin_35cm": 29.25
+          },
+          "position": {
+            "caption_top_pct": 68.52,
+            "caption_bottom_pct": 84.35,
+            "caption_left_pct": 24.64,
+            "caption_right_pct": 75.21,
+            "visible_fraction": 1.0,
+            "crop_each_pct": 0.0,
+            "contrast_ratio": 21.0,
+            "bottom_limit_pct": 88.0
+          }
+        },
+        "devanagari": {
+          "status": "PASS",
+          "checks": [
+            {
+              "id": "x_height_arcmin",
+              "status": "PASS",
+              "value": 21.58,
+              "limit": 18,
+              "detail": "base-letter band 36.5 px at 1080p = 2.20 mm on this picture = 21.58 arcmin at 35 cm (18.88 at 40 cm); floor 18', target 21' reached (arcminute limits UNVERIFIED)"
+            },
+            {
+              "id": "x_height_arcmin_50cm",
+              "status": "INFO",
+              "value": 15.11,
+              "limit": 18,
+              "detail": "15.11 arcmin at 50 cm, the arm's-length proxy for a 50+ viewer (playbook Exercise 4); below the 18' floor; reported, never gated (the maker's phone test, question 3, is the measurement)"
+            },
+            {
+              "id": "x_height_pct",
+              "status": "PASS",
+              "value": 3.38,
+              "limit": 3.2,
+              "detail": "base-letter band is 3.38% of picture height (floor 3.2%, target 3.8%; W-63)"
+            },
+            {
+              "id": "stroke_width_px",
+              "status": "PASS",
+              "value": 4.16,
+              "limit": 1.0,
+              "detail": "10th percentile of the local stroke width of the caption letters on the scenario's smallest grid (1.083 of source) = 4.16 px (median 4.83)"
+            },
+            {
+              "id": "contrast_ratio",
+              "status": "PASS",
+              "value": 21.0,
+              "limit": 4.5,
+              "detail": "WCAG ratio of the fill (98th percentile) to the outline (2nd percentile) inside the caption box on the scenario's pixels; target 7"
+            },
+            {
+              "id": "box90",
+              "status": "PASS",
+              "value": "L25.4 R74.6 T68.2 B85.4",
+              "limit": "5..95 both ways",
+              "detail": "caption box as a percentage of picture width and height (W-18: inside the 90% by 90% box)"
+            },
+            {
+              "id": "caption_bottom_pct",
+              "status": "INFO",
+              "value": 85.4,
+              "limit": "<= 88 in fill_20x9",
+              "detail": "bottom of the caption box at 85.4%, top at 68.2% (the 88% limit is gated in fill_20x9; here only the 90% box is)"
+            },
+            {
+              "id": "marks:dev-pariksha",
+              "status": "PASS",
+              "detail": "post_base U+0940: 163 px of ink in the zone (added zone, 156 px at 1080p); IoU with the mark 0.89, without 0.48 -> survives; conjunct U+094D: 502 px of ink in the zone (window_ink zone, 422 px at 1080p); IoU with the mark 0.96, without 0.29 -> survives"
+            },
+            {
+              "id": "marks:dev-pustak",
+              "status": "PASS",
+              "detail": "below U+0941: 194 px of ink in the zone (added zone, 173 px at 1080p); IoU with the mark 0.97, without 0.65 -> survives; conjunct U+094D: 24 px of ink in the zone (window_ink zone, 18 px at 1080p); IoU with the mark 0.94, without 0.75 -> survives"
+            },
+            {
+              "id": "marks:dev-din",
+              "status": "PASS",
+              "detail": "pre_base U+093F: 256 px of ink in the zone (added zone, 243 px at 1080p); IoU with the mark 0.96, without 0.26 -> survives"
+            },
+            {
+              "id": "marks:dev-sankhya",
+              "status": "PASS",
+              "detail": "above U+0902: 30 px of ink in the zone (added zone, 29 px at 1080p); IoU with the mark 0.95, without 0.83 -> survives; conjunct U+094D: 104 px of ink in the zone (window_ink zone, 91 px at 1080p); IoU with the mark 0.97, without 0.57 -> survives"
+            },
+            {
+              "id": "marks:dev-shabd",
+              "status": "PASS",
+              "detail": "conjunct U+094D: 52 px of ink in the zone (window_ink zone, 38 px at 1080p); IoU with the mark 0.95, without 0.54 -> survives"
+            }
+          ],
+          "sizes": {
+            "unit": "base-letter band",
+            "x_height_px_1080": 36.5,
+            "x_height_pct": 3.38,
+            "x_height_mm": 2.197,
+            "x_height_arcmin_35cm": 21.58,
+            "x_height_arcmin_40cm": 18.88,
+            "x_height_arcmin_50cm": 15.11,
+            "x_height_device_px": 39.54,
+            "cap_height_px_1080": 40.62,
+            "cap_height_pct": 3.76,
+            "cap_height_mm": 2.446,
+            "cap_height_arcmin_35cm": 24.02
+          },
+          "position": {
+            "caption_top_pct": 68.24,
+            "caption_bottom_pct": 85.37,
+            "caption_left_pct": 25.36,
+            "caption_right_pct": 74.64,
+            "visible_fraction": 1.0,
+            "crop_each_pct": 0.0,
+            "contrast_ratio": 21.0,
+            "bottom_limit_pct": 88.0
+          }
+        },
+        "tamil": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "telugu": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "kannada": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "malayalam": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "bengali": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "gujarati": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        }
+      },
+      "verdict": "PASS",
+      "failed_checks": []
+    },
+    "small_portrait": {
+      "geometry": {
+        "scenario": "small_portrait",
+        "gate": "advisory",
+        "description": "a small upright phone, picture full width",
+        "css_w": 360.0,
+        "css_h": 800.0,
+        "dpr": 2.0,
+        "mode": "fit",
+        "aspect": null,
+        "device_px_per_source_px": 0.375,
+        "picture_w_mm": 68.1,
+        "picture_h_mm": 38.3062,
+        "crop_each_pct": 0.0,
+        "visible_rows_pct": [
+          0.0,
+          100.0
+        ],
+        "share_px_per_source_px": null,
+        "smallest_grid_px_per_source_px": 0.375
+      },
+      "gate": "advisory",
+      "scripts": {
+        "latin": {
+          "status": "FAIL",
+          "checks": [
+            {
+              "id": "x_height_arcmin",
+              "status": "FAIL",
+              "value": 12.94,
+              "limit": 18,
+              "detail": "x-height 37.1 px at 1080p = 1.32 mm on this picture = 12.94 arcmin at 35 cm (11.32 at 40 cm); floor 18', target 21' not reached (arcminute limits UNVERIFIED)"
+            },
+            {
+              "id": "x_height_arcmin_50cm",
+              "status": "INFO",
+              "value": 9.06,
+              "limit": 18,
+              "detail": "9.06 arcmin at 50 cm, the arm's-length proxy for a 50+ viewer (playbook Exercise 4); below the 18' floor; reported, never gated (the maker's phone test, question 3, is the measurement)"
+            },
+            {
+              "id": "x_height_pct",
+              "status": "PASS",
+              "value": 3.44,
+              "limit": 3.2,
+              "detail": "x-height is 3.44% of picture height (floor 3.2%, target 3.8%; W-63)"
+            },
+            {
+              "id": "stroke_width_px",
+              "status": "PASS",
+              "value": 1.87,
+              "limit": 1.0,
+              "detail": "10th percentile of the local stroke width of the caption letters on the scenario's smallest grid (0.375 of source) = 1.87 px (median 2.28)"
+            },
+            {
+              "id": "contrast_ratio",
+              "status": "PASS",
+              "value": 21.0,
+              "limit": 4.5,
+              "detail": "WCAG ratio of the fill (98th percentile) to the outline (2nd percentile) inside the caption box on the scenario's pixels; target 7"
+            },
+            {
+              "id": "box90",
+              "status": "PASS",
+              "value": "L24.6 R75.2 T68.5 B84.4",
+              "limit": "5..95 both ways",
+              "detail": "caption box as a percentage of picture width and height (W-18: inside the 90% by 90% box)"
+            },
+            {
+              "id": "caption_bottom_pct",
+              "status": "INFO",
+              "value": 84.4,
+              "limit": "<= 88 in fill_20x9",
+              "detail": "bottom of the caption box at 84.4%, top at 68.5% (the 88% limit is gated in fill_20x9; here only the 90% box is)"
+            }
+          ],
+          "sizes": {
+            "unit": "x-height",
+            "x_height_px_1080": 37.14,
+            "x_height_pct": 3.44,
+            "x_height_mm": 1.317,
+            "x_height_arcmin_35cm": 12.94,
+            "x_height_arcmin_40cm": 11.32,
+            "x_height_arcmin_50cm": 9.06,
+            "x_height_device_px": 13.93,
+            "cap_height_px_1080": 49.47,
+            "cap_height_pct": 4.58,
+            "cap_height_mm": 1.755,
+            "cap_height_arcmin_35cm": 17.24
+          },
+          "position": {
+            "caption_top_pct": 68.52,
+            "caption_bottom_pct": 84.35,
+            "caption_left_pct": 24.64,
+            "caption_right_pct": 75.21,
+            "visible_fraction": 1.0,
+            "crop_each_pct": 0.0,
+            "contrast_ratio": 21.0,
+            "bottom_limit_pct": 88.0
+          }
+        },
+        "devanagari": {
+          "status": "FAIL",
+          "checks": [
+            {
+              "id": "x_height_arcmin",
+              "status": "FAIL",
+              "value": 12.72,
+              "limit": 18,
+              "detail": "base-letter band 36.5 px at 1080p = 1.29 mm on this picture = 12.72 arcmin at 35 cm (11.13 at 40 cm); floor 18', target 21' not reached (arcminute limits UNVERIFIED)"
+            },
+            {
+              "id": "x_height_arcmin_50cm",
+              "status": "INFO",
+              "value": 8.9,
+              "limit": 18,
+              "detail": "8.90 arcmin at 50 cm, the arm's-length proxy for a 50+ viewer (playbook Exercise 4); below the 18' floor; reported, never gated (the maker's phone test, question 3, is the measurement)"
+            },
+            {
+              "id": "x_height_pct",
+              "status": "PASS",
+              "value": 3.38,
+              "limit": 3.2,
+              "detail": "base-letter band is 3.38% of picture height (floor 3.2%, target 3.8%; W-63)"
+            },
+            {
+              "id": "stroke_width_px",
+              "status": "PASS",
+              "value": 1.45,
+              "limit": 1.0,
+              "detail": "10th percentile of the local stroke width of the caption letters on the scenario's smallest grid (0.375 of source) = 1.45 px (median 1.74)"
+            },
+            {
+              "id": "contrast_ratio",
+              "status": "PASS",
+              "value": 21.0,
+              "limit": 4.5,
+              "detail": "WCAG ratio of the fill (98th percentile) to the outline (2nd percentile) inside the caption box on the scenario's pixels; target 7"
+            },
+            {
+              "id": "box90",
+              "status": "PASS",
+              "value": "L25.4 R74.6 T68.2 B85.4",
+              "limit": "5..95 both ways",
+              "detail": "caption box as a percentage of picture width and height (W-18: inside the 90% by 90% box)"
+            },
+            {
+              "id": "caption_bottom_pct",
+              "status": "INFO",
+              "value": 85.4,
+              "limit": "<= 88 in fill_20x9",
+              "detail": "bottom of the caption box at 85.4%, top at 68.2% (the 88% limit is gated in fill_20x9; here only the 90% box is)"
+            },
+            {
+              "id": "marks:dev-pariksha",
+              "status": "PASS",
+              "detail": "post_base U+0940: 18 px of ink in the zone (added zone, 156 px at 1080p); IoU with the mark 0.96, without 0.48 -> survives; conjunct U+094D: 59 px of ink in the zone (window_ink zone, 422 px at 1080p); IoU with the mark 0.95, without 0.28 -> survives"
+            },
+            {
+              "id": "marks:dev-pustak",
+              "status": "FAIL",
+              "detail": "below U+0941: 24 px of ink in the zone (added zone, 173 px at 1080p); IoU with the mark 0.99, without 0.70 -> survives; conjunct U+094D: 0 px of ink in the zone (window_ink zone, 18 px at 1080p); IoU with the mark 1.00, without 1.00 -> LOST"
+            },
+            {
+              "id": "marks:dev-din",
+              "status": "PASS",
+              "detail": "pre_base U+093F: 29 px of ink in the zone (added zone, 243 px at 1080p); IoU with the mark 0.96, without 0.34 -> survives"
+            },
+            {
+              "id": "marks:dev-sankhya",
+              "status": "PASS",
+              "detail": "above U+0902: 3 px of ink in the zone (added zone, 29 px at 1080p); IoU with the mark 0.84, without 0.75 -> survives; conjunct U+094D: 10 px of ink in the zone (window_ink zone, 91 px at 1080p); IoU with the mark 0.85, without 0.46 -> survives"
+            },
+            {
+              "id": "marks:dev-shabd",
+              "status": "PASS",
+              "detail": "conjunct U+094D: 3 px of ink in the zone (window_ink zone, 38 px at 1080p); IoU with the mark 1.00, without 0.80 -> survives"
+            }
+          ],
+          "sizes": {
+            "unit": "base-letter band",
+            "x_height_px_1080": 36.5,
+            "x_height_pct": 3.38,
+            "x_height_mm": 1.295,
+            "x_height_arcmin_35cm": 12.72,
+            "x_height_arcmin_40cm": 11.13,
+            "x_height_arcmin_50cm": 8.9,
+            "x_height_device_px": 13.69,
+            "cap_height_px_1080": 40.62,
+            "cap_height_pct": 3.76,
+            "cap_height_mm": 1.441,
+            "cap_height_arcmin_35cm": 14.15
+          },
+          "position": {
+            "caption_top_pct": 68.24,
+            "caption_bottom_pct": 85.37,
+            "caption_left_pct": 25.36,
+            "caption_right_pct": 74.64,
+            "visible_fraction": 1.0,
+            "crop_each_pct": 0.0,
+            "contrast_ratio": 21.0,
+            "bottom_limit_pct": 88.0
+          }
+        },
+        "tamil": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "telugu": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "kannada": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "malayalam": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "bengali": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "gujarati": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        }
+      },
+      "verdict": "FAIL",
+      "failed_checks": [
+        "latin:x_height_arcmin",
+        "devanagari:x_height_arcmin",
+        "devanagari:marks:dev-pustak"
+      ]
+    },
+    "shared": {
+      "geometry": {
+        "scenario": "shared",
+        "gate": "blocking",
+        "description": "the file after a messenger's recompression (480p, about 1 Mbps, veryfast), viewed sideways",
+        "css_w": 844.0,
+        "css_h": 390.0,
+        "dpr": 3.0,
+        "mode": "fit",
+        "aspect": null,
+        "device_px_per_source_px": 1.0833,
+        "picture_w_mm": 115.5829,
+        "picture_h_mm": 65.0154,
+        "crop_each_pct": 0.0,
+        "visible_rows_pct": [
+          0.0,
+          100.0
+        ],
+        "share_px_per_source_px": 0.4444,
+        "smallest_grid_px_per_source_px": 0.4444
+      },
+      "gate": "blocking",
+      "scripts": {
+        "latin": {
+          "status": "PASS",
+          "checks": [
+            {
+              "id": "x_height_arcmin",
+              "status": "PASS",
+              "value": 21.96,
+              "limit": 18,
+              "detail": "x-height 37.1 px at 1080p = 2.24 mm on this picture = 21.96 arcmin at 35 cm (19.22 at 40 cm); floor 18', target 21' reached (arcminute limits UNVERIFIED)"
+            },
+            {
+              "id": "x_height_arcmin_50cm",
+              "status": "INFO",
+              "value": 15.37,
+              "limit": 18,
+              "detail": "15.37 arcmin at 50 cm, the arm's-length proxy for a 50+ viewer (playbook Exercise 4); below the 18' floor; reported, never gated (the maker's phone test, question 3, is the measurement)"
+            },
+            {
+              "id": "x_height_pct",
+              "status": "PASS",
+              "value": 3.44,
+              "limit": 3.2,
+              "detail": "x-height is 3.44% of picture height (floor 3.2%, target 3.8%; W-63)"
+            },
+            {
+              "id": "stroke_width_px",
+              "status": "PASS",
+              "value": 2.19,
+              "limit": 1.0,
+              "detail": "10th percentile of the local stroke width of the caption letters on the scenario's smallest grid (0.444 of source) = 2.19 px (median 2.71)"
+            },
+            {
+              "id": "contrast_ratio",
+              "status": "PASS",
+              "value": 21.0,
+              "limit": 4.5,
+              "detail": "WCAG ratio of the fill (98th percentile) to the outline (2nd percentile) inside the caption box on the scenario's pixels; target 7"
+            },
+            {
+              "id": "box90",
+              "status": "PASS",
+              "value": "L24.6 R75.2 T68.5 B84.4",
+              "limit": "5..95 both ways",
+              "detail": "caption box as a percentage of picture width and height (W-18: inside the 90% by 90% box)"
+            },
+            {
+              "id": "caption_bottom_pct",
+              "status": "INFO",
+              "value": 84.4,
+              "limit": "<= 88 in fill_20x9",
+              "detail": "bottom of the caption box at 84.4%, top at 68.5% (the 88% limit is gated in fill_20x9; here only the 90% box is)"
+            }
+          ],
+          "sizes": {
+            "unit": "x-height",
+            "x_height_px_1080": 37.14,
+            "x_height_pct": 3.44,
+            "x_height_mm": 2.236,
+            "x_height_arcmin_35cm": 21.96,
+            "x_height_arcmin_40cm": 19.22,
+            "x_height_arcmin_50cm": 15.37,
+            "x_height_device_px": 40.23,
+            "cap_height_px_1080": 49.47,
+            "cap_height_pct": 4.58,
+            "cap_height_mm": 2.978,
+            "cap_height_arcmin_35cm": 29.25
+          },
+          "position": {
+            "caption_top_pct": 68.52,
+            "caption_bottom_pct": 84.35,
+            "caption_left_pct": 24.58,
+            "caption_right_pct": 75.21,
+            "visible_fraction": 1.0,
+            "crop_each_pct": 0.0,
+            "contrast_ratio": 21.0,
+            "bottom_limit_pct": 88.0
+          }
+        },
+        "devanagari": {
+          "status": "PASS",
+          "checks": [
+            {
+              "id": "x_height_arcmin",
+              "status": "PASS",
+              "value": 21.58,
+              "limit": 18,
+              "detail": "base-letter band 36.5 px at 1080p = 2.20 mm on this picture = 21.58 arcmin at 35 cm (18.88 at 40 cm); floor 18', target 21' reached (arcminute limits UNVERIFIED)"
+            },
+            {
+              "id": "x_height_arcmin_50cm",
+              "status": "INFO",
+              "value": 15.11,
+              "limit": 18,
+              "detail": "15.11 arcmin at 50 cm, the arm's-length proxy for a 50+ viewer (playbook Exercise 4); below the 18' floor; reported, never gated (the maker's phone test, question 3, is the measurement)"
+            },
+            {
+              "id": "x_height_pct",
+              "status": "PASS",
+              "value": 3.38,
+              "limit": 3.2,
+              "detail": "base-letter band is 3.38% of picture height (floor 3.2%, target 3.8%; W-63)"
+            },
+            {
+              "id": "stroke_width_px",
+              "status": "PASS",
+              "value": 1.72,
+              "limit": 1.0,
+              "detail": "10th percentile of the local stroke width of the caption letters on the scenario's smallest grid (0.444 of source) = 1.72 px (median 2.10)"
+            },
+            {
+              "id": "contrast_ratio",
+              "status": "PASS",
+              "value": 21.0,
+              "limit": 4.5,
+              "detail": "WCAG ratio of the fill (98th percentile) to the outline (2nd percentile) inside the caption box on the scenario's pixels; target 7"
+            },
+            {
+              "id": "box90",
+              "status": "PASS",
+              "value": "L25.4 R74.7 T68.2 B85.4",
+              "limit": "5..95 both ways",
+              "detail": "caption box as a percentage of picture width and height (W-18: inside the 90% by 90% box)"
+            },
+            {
+              "id": "caption_bottom_pct",
+              "status": "INFO",
+              "value": 85.4,
+              "limit": "<= 88 in fill_20x9",
+              "detail": "bottom of the caption box at 85.4%, top at 68.2% (the 88% limit is gated in fill_20x9; here only the 90% box is)"
+            },
+            {
+              "id": "marks:dev-pariksha",
+              "status": "PASS",
+              "detail": "post_base U+0940: 25 px of ink in the zone (added zone, 156 px at 1080p); IoU with the mark 0.90, without 0.53 -> survives; conjunct U+094D: 80 px of ink in the zone (window_ink zone, 422 px at 1080p); IoU with the mark 0.94, without 0.30 -> survives"
+            },
+            {
+              "id": "marks:dev-pustak",
+              "status": "PASS",
+              "detail": "below U+0941: 31 px of ink in the zone (added zone, 173 px at 1080p); IoU with the mark 0.97, without 0.70 -> survives; conjunct U+094D: 3 px of ink in the zone (window_ink zone, 18 px at 1080p); IoU with the mark 1.00, without 0.80 -> survives"
+            },
+            {
+              "id": "marks:dev-din",
+              "status": "PASS",
+              "detail": "pre_base U+093F: 45 px of ink in the zone (added zone, 243 px at 1080p); IoU with the mark 0.95, without 0.30 -> survives"
+            },
+            {
+              "id": "marks:dev-sankhya",
+              "status": "PASS",
+              "detail": "above U+0902: 4 px of ink in the zone (added zone, 29 px at 1080p); IoU with the mark 0.97, without 0.88 -> survives; conjunct U+094D: 15 px of ink in the zone (window_ink zone, 91 px at 1080p); IoU with the mark 0.94, without 0.54 -> survives"
+            },
+            {
+              "id": "marks:dev-shabd",
+              "status": "PASS",
+              "detail": "conjunct U+094D: 5 px of ink in the zone (window_ink zone, 38 px at 1080p); IoU with the mark 0.83, without 0.43 -> survives"
+            }
+          ],
+          "sizes": {
+            "unit": "base-letter band",
+            "x_height_px_1080": 36.5,
+            "x_height_pct": 3.38,
+            "x_height_mm": 2.197,
+            "x_height_arcmin_35cm": 21.58,
+            "x_height_arcmin_40cm": 18.88,
+            "x_height_arcmin_50cm": 15.11,
+            "x_height_device_px": 39.54,
+            "cap_height_px_1080": 40.62,
+            "cap_height_pct": 3.76,
+            "cap_height_mm": 2.446,
+            "cap_height_arcmin_35cm": 24.02
+          },
+          "position": {
+            "caption_top_pct": 68.24,
+            "caption_bottom_pct": 85.37,
+            "caption_left_pct": 25.36,
+            "caption_right_pct": 74.69,
+            "visible_fraction": 1.0,
+            "crop_each_pct": 0.0,
+            "contrast_ratio": 21.0,
+            "bottom_limit_pct": 88.0
+          }
+        },
+        "tamil": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "telugu": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "kannada": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "malayalam": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "bengali": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "gujarati": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        }
+      },
+      "verdict": "PASS",
+      "failed_checks": []
+    },
+    "fill_20x9": {
+      "geometry": {
+        "scenario": "fill_20x9",
+        "gate": "blocking",
+        "description": "a 20:9 phone held sideways with the player set to fill or zoom: the picture is scaled to the screen width, so it is 11.25 units tall on a 9-unit screen and about 10% of the picture height is cropped at the top and at the bottom",
+        "css_w": 800.0,
+        "css_h": 360.0,
+        "dpr": 3.0,
+        "mode": "fill",
+        "aspect": "20:9",
+        "device_px_per_source_px": 1.25,
+        "picture_w_mm": 155.2,
+        "picture_h_mm": 87.3,
+        "crop_each_pct": 10.0,
+        "visible_rows_pct": [
+          9.999999999999998,
+          90.0
+        ],
+        "share_px_per_source_px": null,
+        "smallest_grid_px_per_source_px": 1.25
+      },
+      "gate": "blocking",
+      "scripts": {
+        "latin": {
+          "status": "PASS",
+          "checks": [
+            {
+              "id": "x_height_arcmin",
+              "status": "PASS",
+              "value": 29.49,
+              "limit": 18,
+              "detail": "x-height 37.1 px at 1080p = 3.00 mm on this picture = 29.49 arcmin at 35 cm (25.80 at 40 cm); floor 18', target 21' reached (arcminute limits UNVERIFIED)"
+            },
+            {
+              "id": "x_height_arcmin_50cm",
+              "status": "INFO",
+              "value": 20.64,
+              "limit": 18,
+              "detail": "20.64 arcmin at 50 cm, the arm's-length proxy for a 50+ viewer (playbook Exercise 4); at or above the 18' floor; reported, never gated (the maker's phone test, question 3, is the measurement)"
+            },
+            {
+              "id": "x_height_pct",
+              "status": "PASS",
+              "value": 3.44,
+              "limit": 3.2,
+              "detail": "x-height is 3.44% of picture height (floor 3.2%, target 3.8%; W-63)"
+            },
+            {
+              "id": "stroke_width_px",
+              "status": "PASS",
+              "value": 6.33,
+              "limit": 1.0,
+              "detail": "10th percentile of the local stroke width of the caption letters on the scenario's smallest grid (1.250 of source) = 6.33 px (median 7.59)"
+            },
+            {
+              "id": "contrast_ratio",
+              "status": "PASS",
+              "value": 21.0,
+              "limit": 4.5,
+              "detail": "WCAG ratio of the fill (98th percentile) to the outline (2nd percentile) inside the caption box on the scenario's pixels; target 7"
+            },
+            {
+              "id": "box90",
+              "status": "PASS",
+              "value": "L24.6 R75.2 T68.5 B84.4",
+              "limit": "5..95 both ways",
+              "detail": "caption box as a percentage of picture width and height (W-18: inside the 90% by 90% box)"
+            },
+            {
+              "id": "caption_bottom_pct",
+              "status": "PASS",
+              "value": 84.4,
+              "limit": "<= 88.0",
+              "detail": "bottom of the caption box at 84.4% of picture height; a 20:9 fill crop removes the bottom 10.0%, so the limit is 88.0% (crop line 90.0% minus a 2-point margin, or 88% if lower) (J)"
+            },
+            {
+              "id": "caption_top_pct",
+              "status": "PASS",
+              "value": 68.5,
+              "limit": ">= 12.0",
+              "detail": "top of the caption box at 68.5% of picture height"
+            },
+            {
+              "id": "caption_visible_fraction",
+              "status": "PASS",
+              "value": 1.0,
+              "limit": ">= 0.999",
+              "detail": "fraction of the caption ink that stays on the screen when the player fills it"
+            }
+          ],
+          "sizes": {
+            "unit": "x-height",
+            "x_height_px_1080": 37.14,
+            "x_height_pct": 3.44,
+            "x_height_mm": 3.002,
+            "x_height_arcmin_35cm": 29.49,
+            "x_height_arcmin_40cm": 25.8,
+            "x_height_arcmin_50cm": 20.64,
+            "x_height_device_px": 46.42,
+            "cap_height_px_1080": 49.47,
+            "cap_height_pct": 4.58,
+            "cap_height_mm": 3.999,
+            "cap_height_arcmin_35cm": 39.28
+          },
+          "position": {
+            "caption_top_pct": 68.52,
+            "caption_bottom_pct": 84.35,
+            "caption_left_pct": 24.64,
+            "caption_right_pct": 75.21,
+            "visible_fraction": 1.0,
+            "crop_each_pct": 10.0,
+            "contrast_ratio": 21.0,
+            "bottom_limit_pct": 88.0
+          }
+        },
+        "devanagari": {
+          "status": "PASS",
+          "checks": [
+            {
+              "id": "x_height_arcmin",
+              "status": "PASS",
+              "value": 28.98,
+              "limit": 18,
+              "detail": "base-letter band 36.5 px at 1080p = 2.95 mm on this picture = 28.98 arcmin at 35 cm (25.36 at 40 cm); floor 18', target 21' reached (arcminute limits UNVERIFIED)"
+            },
+            {
+              "id": "x_height_arcmin_50cm",
+              "status": "INFO",
+              "value": 20.29,
+              "limit": 18,
+              "detail": "20.29 arcmin at 50 cm, the arm's-length proxy for a 50+ viewer (playbook Exercise 4); at or above the 18' floor; reported, never gated (the maker's phone test, question 3, is the measurement)"
+            },
+            {
+              "id": "x_height_pct",
+              "status": "PASS",
+              "value": 3.38,
+              "limit": 3.2,
+              "detail": "base-letter band is 3.38% of picture height (floor 3.2%, target 3.8%; W-63)"
+            },
+            {
+              "id": "stroke_width_px",
+              "status": "PASS",
+              "value": 4.85,
+              "limit": 1.0,
+              "detail": "10th percentile of the local stroke width of the caption letters on the scenario's smallest grid (1.250 of source) = 4.85 px (median 5.57)"
+            },
+            {
+              "id": "contrast_ratio",
+              "status": "PASS",
+              "value": 21.0,
+              "limit": 4.5,
+              "detail": "WCAG ratio of the fill (98th percentile) to the outline (2nd percentile) inside the caption box on the scenario's pixels; target 7"
+            },
+            {
+              "id": "box90",
+              "status": "PASS",
+              "value": "L25.4 R74.6 T68.2 B85.4",
+              "limit": "5..95 both ways",
+              "detail": "caption box as a percentage of picture width and height (W-18: inside the 90% by 90% box)"
+            },
+            {
+              "id": "caption_bottom_pct",
+              "status": "PASS",
+              "value": 85.4,
+              "limit": "<= 88.0",
+              "detail": "bottom of the caption box at 85.4% of picture height; a 20:9 fill crop removes the bottom 10.0%, so the limit is 88.0% (crop line 90.0% minus a 2-point margin, or 88% if lower) (J)"
+            },
+            {
+              "id": "caption_top_pct",
+              "status": "PASS",
+              "value": 68.2,
+              "limit": ">= 12.0",
+              "detail": "top of the caption box at 68.2% of picture height"
+            },
+            {
+              "id": "caption_visible_fraction",
+              "status": "PASS",
+              "value": 1.0,
+              "limit": ">= 0.999",
+              "detail": "fraction of the caption ink that stays on the screen when the player fills it"
+            },
+            {
+              "id": "marks:dev-pariksha",
+              "status": "PASS",
+              "detail": "post_base U+0940: 225 px of ink in the zone (added zone, 156 px at 1080p); IoU with the mark 0.88, without 0.48 -> survives; conjunct U+094D: 646 px of ink in the zone (window_ink zone, 422 px at 1080p); IoU with the mark 0.96, without 0.31 -> survives"
+            },
+            {
+              "id": "marks:dev-pustak",
+              "status": "PASS",
+              "detail": "below U+0941: 270 px of ink in the zone (added zone, 173 px at 1080p); IoU with the mark 0.98, without 0.67 -> survives; conjunct U+094D: 24 px of ink in the zone (window_ink zone, 18 px at 1080p); IoU with the mark 0.92, without 0.77 -> survives"
+            },
+            {
+              "id": "marks:dev-din",
+              "status": "PASS",
+              "detail": "pre_base U+093F: 357 px of ink in the zone (added zone, 243 px at 1080p); IoU with the mark 0.96, without 0.27 -> survives"
+            },
+            {
+              "id": "marks:dev-sankhya",
+              "status": "PASS",
+              "detail": "above U+0902: 39 px of ink in the zone (added zone, 29 px at 1080p); IoU with the mark 0.88, without 0.78 -> survives; conjunct U+094D: 135 px of ink in the zone (window_ink zone, 91 px at 1080p); IoU with the mark 0.96, without 0.57 -> survives"
+            },
+            {
+              "id": "marks:dev-shabd",
+              "status": "PASS",
+              "detail": "conjunct U+094D: 51 px of ink in the zone (window_ink zone, 38 px at 1080p); IoU with the mark 0.96, without 0.57 -> survives"
+            }
+          ],
+          "sizes": {
+            "unit": "base-letter band",
+            "x_height_px_1080": 36.5,
+            "x_height_pct": 3.38,
+            "x_height_mm": 2.95,
+            "x_height_arcmin_35cm": 28.98,
+            "x_height_arcmin_40cm": 25.36,
+            "x_height_arcmin_50cm": 20.29,
+            "x_height_device_px": 45.62,
+            "cap_height_px_1080": 40.62,
+            "cap_height_pct": 3.76,
+            "cap_height_mm": 3.284,
+            "cap_height_arcmin_35cm": 32.25
+          },
+          "position": {
+            "caption_top_pct": 68.24,
+            "caption_bottom_pct": 85.37,
+            "caption_left_pct": 25.36,
+            "caption_right_pct": 74.64,
+            "visible_fraction": 1.0,
+            "crop_each_pct": 10.0,
+            "contrast_ratio": 21.0,
+            "bottom_limit_pct": 88.0
+          }
+        },
+        "tamil": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "telugu": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "kannada": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "malayalam": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "bengali": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        },
+        "gujarati": {
+          "status": "NOT TESTED",
+          "reason": "no strings in test_strings.json (pending the maker's script, O-10)",
+          "checks": []
+        }
+      },
+      "verdict": "PASS",
+      "failed_checks": []
+    }
+  },
+  "iou": {
+    "latin": {
+      "status": "PASS",
+      "iou_min": 0.95,
+      "iou_limit": 0.9,
+      "iou_by_string": {
+        "lat-test": 0.95
+      },
+      "family": "Noto Sans",
+      "em_px": 69.29,
+      "strings_tested": 1,
+      "finding": null
+    },
+    "devanagari": {
+      "status": "PASS",
+      "iou_min": 0.928,
+      "iou_limit": 0.9,
+      "iou_by_string": {
+        "dev-digits": 0.943,
+        "dev-pariksha": 0.928,
+        "dev-pustak": 0.959,
+        "dev-din": 0.981,
+        "dev-sankhya": 0.945,
+        "dev-shabd": 0.981
+      },
+      "family": "Noto Sans Devanagari",
+      "em_px": 55.16,
+      "strings_tested": 6,
+      "finding": null
+    },
+    "tamil": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json (pending the maker's script, O-10)"
+    },
+    "telugu": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json (pending the maker's script, O-10)"
+    },
+    "kannada": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json (pending the maker's script, O-10)"
+    },
+    "malayalam": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json (pending the maker's script, O-10)"
+    },
+    "bengali": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json (pending the maker's script, O-10)"
+    },
+    "gujarati": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json (pending the maker's script, O-10)"
+    }
+  },
+  "scripts_tested": [
+    "latin",
+    "devanagari"
+  ],
+  "scripts_not_tested": [
+    "tamil",
+    "telugu",
+    "kannada",
+    "malayalam",
+    "bengali",
+    "gujarati"
+  ],
+  "scripts_partial": []
+}

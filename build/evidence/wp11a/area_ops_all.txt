@@ -1,0 +1,75 @@
+# area=ops entry=WP-02 mode=all result=FAIL exit=1 seconds=15 masked_values=0
+FAIL       decisions_check_real         decisions_to_csv --check ops/decisions.csv exits 0; independent count equals the CSV
+             D-32 is in DECISIONS.md but missing from the CSV
+           FAIL: decisions.csv does not match the register (1 problem(s)); regenerate with --write
+           
+FAIL       decisions_write_twice        --write twice is byte-identical, and equals the committed file when no orchestrator cell is set
+           the committed ops/decisions.csv differs from a fresh generation: run --write
+FAIL       decisions_write_in_place     literal acceptance: --write ops/decisions.csv twice leaves the tracked file unchanged
+           ops/decisions.csv was stale against DECISIONS.md (the test restored the old bytes)
+PASS       decisions_content            status vocabulary, D-14/D-23 notes, O-05/O-13 answered, S rows carry Table 4 status, 300-char cut
+PASS       decisions_carry_over         orchestrator-owned cells (maker_answer, last_changed) survive --write and are ignored by --check
+PASS       decisions_neg_delete_row     negative: a deleted ID row makes --check and ops_lint exit 1 naming the ID
+PASS       decisions_neg_invented_id    negative: an invented ID row makes --check and ops_lint exit 1 naming the ID
+PASS       decisions_neg_header         negative: a changed header name makes --check and ops_lint exit 1 naming the header
+PASS       decisions_neg_values         negative: a changed status/value and an invalid status word are named by ID and column
+PASS       decisions_register_growth    an added register row (for example a new O-36) is picked up with no code change
+PASS       decisions_three_digit_id     negative: a W-100 row in a register copy reaches the CSV (it was silently dropped when IDs had to be two digits)
+PASS       decisions_annotated_id       negative: an annotated ID cell (| O-NN (absorbs O-MM) |) reaches the CSV with the annotation in note; a row that cannot be parsed is exit 2, never dropped in silence
+PASS       decisions_bad_register       a malformed register (wrong cell count, duplicate ID, ID in the wrong table) exits 2
+PASS       hours_header_only            hours_report on the header-only ops/hours.csv: 'no rows yet', exit 0
+PASS       hours_9h30                   hours_9h30.csv: total 9.5 h and the '9 minutes' reading, exit 0
+PASS       hours_7h30                   hours_7h30.csv: 'under about 8 hours ... F-0 would become the plan', exit 0
+PASS       hours_bad_activity           hours_bad_activity.csv: exit 1 and the line number
+PASS       hours_thresholds             W-02 reading at every boundary (479/480/839/840/959/960 minutes)
+PASS       hours_validation             bad header, date, minutes, shot id, extra column, empty who: exit 1 with line numbers
+PASS       hours_usage                  missing file and bad --week-start exit 2
+PASS       hours_windows                windows: rows outside the window, non-maker rows, several weeks, --days, --json
+PASS       hours_encodings              Windows-style files: UTF-8 BOM, UTF-16 BOM, CRLF, blank rows, Windows-1252
+PASS       hours_note_never_printed     the note column is never printed, and only the file's base name appears
+PASS       hours_enum_parity            the activity enum equals the enum in research/production-scale-fixtures/hours.csv and the plan
+FAIL       lint_real                    ops_lint.py on the real ops files exits 0
+           ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+             note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+             FAIL ops/decisions.csv [decisions_mismatch] D-32 is in DECISIONS.md but missing from the CSV
+             FAIL ops/decisions.csv [id_set] missing from the CSV: D-32
+           ops_lint: FAIL (2 failure(s), 0 warning(s))
+           
+PASS       lint_bad_note                ops_lint --hours hours_bad_note.csv: exit 1, line + category (e-mail, profile path, deny-list name), masked
+PASS       lint_clean_hours             hours_9h30.csv and hours_7h30.csv pass the note check
+PASS       lint_note_length             a note over 80 characters is a WARNING (exit 0), and fails under --strict
+PASS       lint_hours_shifted_masked    ops_lint --hours on a shifted row (a name in date and minutes) exits 1 and never prints the planted tokens
+PASS       lint_neg_card                negative: card without Phone (W-63, FontSize=28) / Script stack / Fonts / Burn-in rows / TD-3 MarginV / an invented ID / without the Language line / signed with <date>
+FAIL       lint_card_scripts            the card's tested-script claim is cross-checked with pipeline/phone/test_strings.json when that file exists
+           ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+             note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+             note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+             FAIL ops/decisions.csv [decisions_mismatch] D-32 is in DECISIONS.md but missing from the CSV
+             FAIL ops/decisions.csv [id_set] missing from the CSV: D-32
+           ops_lint: FAIL (2 failure(s), 0 warning(s))
+           
+PASS       lint_neg_gather              negative: GATHER without the gate / a stand-in ID / with a stand-in in Part B / a real-box ID in Part A / without SND-01
+PASS       lint_neg_howto_marker        negative: HOURS-HOWTO without the 'no names in note' sentence; an unfinished-work marker
+FAIL       lint_neg_planted_text        negative: identifying strings planted in the ops files are found, with file:line and a masked hit
+           a reserved-domain address must pass: ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
+             note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
+             note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
+             FAIL ops/decisions.csv [decisions_mismatch] D-32 is in DECISIONS.md but missing from the CSV
+             FAIL ops/decisions.csv [id_set] missing from the CSV: D-32
+           ops_lint: FAIL (2 failure(s), 0 warning(s))
+           
+PASS       lint_pattern_samples         ops_lint's reading of the pattern file agrees with the file's own positive/negative samples
+PASS       lint_deny_list               deny list: whole word, case-insensitive, short entries skipped, --deny-file and LJ_DENY_FILE honoured
+PASS       lint_fail_closed             fail closed: missing, invalid or incomplete pattern file exits 2 and checks nothing
+PASS       lint_data_driven             patterns come from the file: a tiny synthetic pattern file changes what is flagged (no regex inside ops_lint)
+PASS       lint_mask_parity             ops_lint and public_lint print the same mask for the same hit (keep, fill and cap from the pattern file)
+PASS       lint_readonly                ops_lint, hours_report and decisions_to_csv --check modify nothing in the repository
+PASS       card_content                 SETTINGS-CARD: TD-1..TD-4, Phone, D-27, Language and script line, signed: no, every cited ID exists
+PASS       howto_gather_content         HOURS-HOWTO has the 'no names in note' sentence; GATHER has Part A/Part B, the gate, five stand-in scans, IDs only
+PASS       ops_hygiene                  ops files: no stale values, no D-28 exclusions, no Minecraft, no names/emails/IPs by a plain look (patterns checked by ops_lint)
+PASS       scripts_compile              the three scripts compile and print --help (usage exits 0)
+PASS       public_lint_own_files        scripts/public_lint.py (WP-03), when present, finds nothing in WP-02's own files
+PASS       card_commands_linux          the settings-card ffprobe/ffmpeg commands give the printed answers on tiny test files (Linux)
+UNVERIFIED windows_unverified           Windows behaviour of the WP-02 files (Excel handling of hours.csv, py -3 -I on PowerShell 5.1/7) is UNVERIFIED
+------------------------------------------------------------
+WP-02 ops tests (all): 6 FAIL, 40 PASS, 1 UNVERIFIED

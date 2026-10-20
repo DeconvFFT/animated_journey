@@ -1,0 +1,124 @@
+{
+  "actual": "5 checks, 0 failed",
+  "date_utc": "2026-10-19",
+  "detail": {
+    "app": "lightcraft",
+    "calls": [
+      {
+        "call": "--version",
+        "killed": null,
+        "max_rss_mb": 20.0,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "--help",
+        "killed": null,
+        "max_rss_mb": 20.1,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "commands",
+        "killed": null,
+        "max_rss_mb": 20.1,
+        "rc": 0,
+        "wall_s": 0.26
+      }
+    ],
+    "checks": [
+      {
+        "id": "T1.version_exit0",
+        "measured": "exit 0",
+        "note": "",
+        "pass": true
+      },
+      {
+        "id": "T1.version_names_tag",
+        "measured": "lightcraft-cli 0.9.1",
+        "note": "",
+        "pass": true
+      },
+      {
+        "id": "T1.usage_text",
+        "measured": "exit 0, 85 lines",
+        "note": "the CLI prints its usage",
+        "pass": true
+      },
+      {
+        "id": "T1.command_listing",
+        "measured": "`commands`: 742 non-empty lines (mark: at least 8); tried ['commands -> exit 0']",
+        "note": "the command surface can be listed and is not trivial",
+        "pass": true
+      },
+      {
+        "id": "T1.stderr_clean",
+        "measured": "patterns matched: none; GPU or CPU-renderer notices recorded, not failed: none",
+        "note": "no missing library, no GPU or adapter failure with VK_ICD_FILENAMES unset",
+        "pass": true
+      }
+    ],
+    "cli_bytes": 103204208,
+    "cli_sha256": "d90f9f14af57080a56fc0e68971d1fee687a84f7cc57fdeb36f00140deff0d7f",
+    "command_listing": {
+      "args": [
+        "commands"
+      ],
+      "counted": "non-empty lines",
+      "entries": 742,
+      "first_lines": [
+        "edit.undo                    Undo  [Cmd+Z]",
+        "                             params: {}",
+        "edit.redo                    Redo  [Cmd+Shift+Z]",
+        "                             params: {}",
+        "library.source               Show Source",
+        "                             params: {kind: all|recentlyAdded|album|recentlyDeleted|picks|missing|li"
+      ]
+    },
+    "gpu_notices": [],
+    "help_excerpt": "lightcraft-cli \u2014 headless LightCraft (photo library + raw developer)\n\nUSAGE:\n  lightcraft-cli run [OPTIONS] COMMAND [key=value | '{json}']\u2026 [COMMAND \u2026]\u2026\n      Run one or more commands (ids from `commands`, or control-protocol methods such as\n      engine.commands / ui.inspect / ui.screenshot) and print one JSON line per command:\n      {\"command\", \"ok\", \"result\" | \"error\", \"ms\"}. A word without `=` starts the next\n      command; values are JSON when they parse (1, true, [1,2], {\u2026}), else strings. Exit status\n      is non-zero when a command fails. Example:\n        lightcraft-cli run --import ~/Photos/a.jpg develop.set control=light.exposure value=0.7 \\\n            develop.auto app.export path=/tmp/a.jpg longEdge=1600\n      Options:\n        --demo            headless, the procedural demo library\n        --library DIR     headless, open (or create) a LightCraft library; edits are saved\n        --import PATH     headless, import a file or folder first (repeatable)\n        --connect [ADDR]  drive the running app (`lightcraft --control 7980`; default 127.0.0.1:7980)\n        --script FILE|-   also run JSON lines {\"command\": id, \"params\": {\u2026}} (or {\"method\": \u2026})\n        --keep-going      continue after a failed command\n  lightcraft-cli mcp [OPTIONS] [FILES/FOLDERS\u2026]\n      MCP server (JSON-RPC 2.0 over stdio). Headless by default: an in-process session with the\n      given files imported. Options:\n        --connect [ADDR]  drive a running app instead (`lightcraft --control 7980`; defa",
+    "label": "linux-cli",
+    "label_text": "Linux CLI result; not evidence for Windows",
+    "needed_libraries": [
+      "ld-linux-x86-64.so.2",
+      "libc.so.6",
+      "libgcc_s.so.1",
+      "libm.so.6"
+    ],
+    "profile": "cli-member-only",
+    "sandbox": {
+      "env": "env -i with HOME, TMPDIR, XDG_*, PATH only (LIGHTCRAFT_GPU=0 for LightCraft)",
+      "network_isolation": "unshare -rn",
+      "rss_kill_mb": 10240,
+      "timeout_s": 300,
+      "vk_icd_filenames": "unset"
+    },
+    "tag": "v0.9.1",
+    "version_line": "lightcraft-cli 0.9.1"
+  },
+  "disk": {
+    "avail_mb_end": 776,
+    "avail_mb_min": 672,
+    "avail_mb_start": 776,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 254
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "exit 0 where it has to work, the version names 0.9.1, the command listing is not trivial, no missing library or GPU error",
+  "notes": "Linux CLI result; not evidence for Windows.",
+  "package": "WP-10",
+  "schema": "lj-evidence/1",
+  "stage": "sp1b-lightcraft-v0.9.1",
+  "status": "PASS",
+  "test": "t1_lightcraft_v0.9.1",
+  "unverified_reasons": [
+    "Windows behaviour is not tested by a Linux CLI run (the maker's Windows five-minute test is the real evidence)"
+  ]
+}

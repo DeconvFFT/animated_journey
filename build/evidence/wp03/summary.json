@@ -36,7 +36,7 @@
    "SKIPPED": 0
   },
   "lint": {
-   "PASS": 95,
+   "PASS": 94,
    "FAIL": 0,
    "UNVERIFIED": 0,
    "SKIPPED": 0
@@ -49,14 +49,14 @@
   }
  },
  "total": {
-  "PASS": 214,
+  "PASS": 213,
   "FAIL": 0,
   "UNVERIFIED": 1,
   "SKIPPED": 0
  },
  "disk": {
-  "avail_mb_start": 1131,
-  "avail_mb_min": 1130,
-  "avail_mb_end": 1130
+  "avail_mb_start": 754,
+  "avail_mb_min": 753,
+  "avail_mb_end": 753
  }
 }

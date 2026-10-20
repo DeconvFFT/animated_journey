@@ -1,0 +1,172 @@
+WP-08 acceptance transcript (Linux container, ffmpeg 6.1.1-3ubuntu5), 2026-10-19
+
+$ python3 -I pipeline/phone/phone_check.py --selftest
+phone_check: ffmpeg 6.1.1-3ubuntu5; libass drawing, Pillow 12.3.0 with raqm 0.10.5; every figure marked (J) or UNVERIFIED in thresholds.json is a proposal or an assumption
+PASS  fill_crop_20x9_is_10_percent  10.00% of picture height off the top and again off the bottom
+PASS  fill_crop_19.5x9_is_about_9_percent  8.97%
+PASS  arcminute_arithmetic  2.0 mm at 35 cm = 19.64 arcmin
+PASS  wcag_white_on_black_is_21  21.0
+PASS  stroke_meter_tells_1px_from_4px  1 px line reads 1.00, 4 px line reads 4.00
+PASS  lint_flags_a_script_with_strings_and_no_marks  a block with strings and no marks[] is reported; the real file is clean
+PASS  tile_line_accepts_allowlisted_strings_only  two allowlisted words tile; an extra word does not
+PASS  known_tiny_caption_fails_portrait  FontSize 8: x-height 3.5 arcmin at 35 cm in portrait (floor 18)
+PASS  caption_at_twice_the_threshold_passes_portrait  FontSize 84: x-height 36.9 arcmin at 35 cm in portrait, which is 2.05 times the floor of 18; failed checks: none
+PASS  one_pixel_hairline_fails_shared  1 px line: 0.44 px on the share grid, keeps 0.26 of its contrast -> FAIL; 4 px control: 1.78 px, keeps 1.0 -> PASS
+PASS  thin_lines_are_reported_not_gated_at_the_default_gate  at the default gate (3 px) the 1 px line is reported (INFO), the 4 px line is gated (PASS)
+PASS  box_ending_at_95_percent_fails_fill_20x9  MarginV 9 puts the box bottom at 95.1% (limit <= 88.0) -> FAIL
+PASS  box_ending_at_85_percent_passes_fill_20x9  MarginV 38 puts the box bottom at 85.1% (limit <= 88.0) -> PASS
+PASS  the_cropped_caption_loses_ink  at 95% the share of the caption ink that stays on a filled 20:9 screen is 0.113
+PASS  marks_survive_in_the_correct_burn_in_(positive_control)  dev-pariksha PASS, dev-pustak PASS, dev-din PASS, dev-sankhya PASS, dev-shabd PASS
+PASS  deleted_mark_codepoints_fail_mark_survival_(negative_control)  dev-pariksha FAIL, dev-pustak FAIL, dev-din FAIL, dev-sankhya FAIL, dev-shabd FAIL
+PASS  script_without_strings_is_not_tested_never_pass  IoU status NOT TESTED, scenario status NOT TESTED, listed as not tested: True
+SELFTEST passed: every mechanism worked (no assertion about FontSize=23)
+[exit 0]
+
+$ python3 -I pipeline/phone/phone_check.py --finding-fs23 --out build/evidence/wp08/finding_fontsize23.json
+phone_check: ffmpeg 6.1.1-3ubuntu5; libass drawing, Pillow 12.3.0 with raqm 0.10.5; every figure marked (J) or UNVERIFIED in thresholds.json is a proposal or an assumption
+  scenario portrait ...
+  scenario landscape ...
+  scenario small_portrait ...
+  scenario shared ...
+  scenario fill_20x9 ...
+  scenario portrait ...
+  scenario landscape ...
+  scenario small_portrait ...
+  scenario shared ...
+  scenario fill_20x9 ...
+FINDING (not a pass condition): FontSize=23 (MarginV 20), the venue caption of the settings card, drawn by libass in Noto Sans on a 1080p frame and viewed in the five scenarios: sideways its Latin x-height is 2.82% of picture height (17.99 arcmin at 35 cm; floor 3.2% / 18 arcmin) and the caption box ends at 91.8% of picture height; against the 88.0% limit that applies when a 20:9 player fills the screen.
+  portrait       FAIL (advisory)  failed: latin:x_height_arcmin, latin:x_height_pct, devanagari:x_height_arcmin, devanagari:x_height_pct, devanagari:marks:dev-pustak
+  landscape      FAIL (blocking)  failed: latin:x_height_arcmin, latin:x_height_pct, devanagari:x_height_arcmin, devanagari:x_height_pct
+  small_portrait FAIL (advisory)  failed: latin:x_height_arcmin, latin:x_height_pct, devanagari:x_height_arcmin, devanagari:x_height_pct, devanagari:marks:dev-pustak, devanagari:marks:dev-shabd
+  shared         FAIL (blocking)  failed: latin:x_height_arcmin, latin:x_height_pct, devanagari:x_height_arcmin, devanagari:x_height_pct
+  fill_20x9      FAIL (blocking)  failed: latin:x_height_pct, latin:caption_bottom_pct, latin:caption_visible_fraction, devanagari:x_height_pct, devanagari:caption_bottom_pct, devanagari:caption_visible_fraction
+wrote finding_fontsize23.json
+[exit 0]
+
+$ bash pipeline/phone/encode_phone.sh renders/wp08/master10s.mov renders/wp08/caps.srt renders/wp08/phone.mp4
+encode_phone.sh: running inside lj_with_disk 100 (label wp08-encode)
+lj_guard: wp08-encode: planned 100 MB, Avail 568 MB, floor 400 MB, hard floor 250 MB
+[1/9] Reading profile.json and the options ...
+      4 cues; scripts: devanagari, latin; style phone: FontSize 28, MarginV 40, outline 2, at most 32 characters and 2 lines
+      ffmpeg 6.1.1-3ubuntu5
+[2/9] Probing the master (master10s.mov) ...
+      1920x1080, 24 fps, prores yuv422p10le, 240 frames, 10.00 s; audio pcm_s24le 48000 Hz
+[3/9] Plan ...
+      video filter: ass=caps.ass:fontsdir=fonts,scale=out_color_matrix=bt709:out_range=tv,format=yuv420p,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:range=tv
+      video args: -c:v libx264 -preset slow -profile:v high -level 4.1 -crf 20 -maxrate 8M -bufsize 16M -g 48 -colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv -movflags +faststart -map_metadata -1 -fflags +bitexact
+      audio: two-pass loudnorm to -16 LUFS / -1 dBTP, then -c:a aac -b:a 192k -ar 48000 -ac 2
+[4/9] Making the work folder (relative names only inside the filter) ...
+      wrote caps.srt, caps.ass (styles per script: devanagari, latin) and fonts/ (noto-sans-devanagari-devanagari-400-normal.woff, noto-sans-latin-400-normal.woff)
+[5/9] Encoding the video (captions burned on the 1080 frame, then the chain) ...
+      video.mp4 829750 bytes
+      libass: fontselect: (Noto Sans, 400, 0) -> NotoSans-Regular, 0, NotoSans-Regular
+      libass: fontselect: (Noto Sans Devanagari, 400, 0) -> NotoSansDevanagari-Regular, 0, NotoSansDevanagari-Regular
+[6/9] Encoding the sound ...
+      loudnorm pass 1 (measure), target -16 LUFS, true-peak target -1.5 dBTP
+      loudnorm pass 2 (linear) then AAC: measured input -42.0 LUFS, -35.1 dBTP
+      AAC file measures -15.5 LUFS, -9.6 dBTP
+[7/9] Muxing with faststart and no metadata ...
+[8/9] Checking the result ...
+      PASS  size  1920x1080 (profile 1920x1080)
+      PASS  fps  24/1
+      PASS  frame_count  240 frames (master 240)
+      PASS  tags  pix_fmt yuv420p, range tv, matrix bt709, primaries bt709, transfer bt709
+      PASS  codec  h264 High level 41
+      PASS  bitrate  0.86 Mbps average over the file (cap 8.00 Mbps + 10% = 8.80)
+      PASS  faststart  atoms: ftyp, moov, free, mdat
+      PASS  loudness  -15.5 LUFS integrated on the final file (target -16 +- 1)
+      PASS  true_peak  -9.6 dBTP on the final file (limit -1)
+      PASS  audio  aac 48000 Hz 2 ch
+      PASS  metadata  format tags other than the structural ones: none
+[9/9] Writing the sidecar and the caption file next to the output ...
+files written: phone.mp4, phone.mp4.ass, phone.mp4.phone.json
+RESULT: done, every check passed (0.86 Mbps, -15.5 LUFS, -9.6 dBTP)
+lj_guard: wp08-encode: finished with exit 0; Avail start 568 MB, min 568 MB, end 600 MB
+[exit 0]
+
+$ python3 -I pipeline/validators/spec_check.py renders/wp08/phone.mp4 --profiles-file pipeline/phone/profile.json --profile phone_1080
+spec_check: phone.mp4 against profile phone_1080 (phone file PH1: 1080p24 H.264 High 4.1, yuv420p, BT.709, AAC-LC 48 kHz stereo, faststart, -16 LUFS / -1 dBTP)
+  PASS container.readable     want ffprobe opens the file; got ok
+  PASS container.moov         want moov atom present; got present
+  PASS container.atoms        want atoms run to the end of the file; got complete
+  PASS container.faststart    want moov before mdat; got moov before mdat
+  PASS container.type         want MP4 brand (not QuickTime); got 'isom'
+  PASS video.streams          want exactly 1 video stream; got 1
+  PASS video.codec            want h264; got h264
+  PASS video.profile          want High; got High
+  PASS video.level            want 41; got 41
+  PASS video.pix_fmt          want yuv420p; got yuv420p
+  PASS video.alpha            want no alpha plane; got no alpha plane (pix_fmt yuv420p)
+  PASS video.size             want 1920x1080; got 1920x1080
+  PASS video.fps              want r_frame_rate = avg_frame_rate = 24/1; got r=24/1 avg=24/1
+  PASS video.frame_count      want nb_frames = round(duration x 24/1) = 240; got 240 (duration 10.000 s)
+  PASS video.color_range      want tv; got tv
+  PASS video.color_space      want bt709; got bt709
+  PASS video.color_primaries  want bt709; got bt709
+  PASS video.color_transfer   want bt709; got bt709
+  PASS video.bitrate          want at most 8.8 Mbps; got 0.66 Mbps
+  PASS audio.present          want at least 1 audio stream; got 1
+  PASS audio.codec            want aac; got aac
+  PASS audio.profile          want LC; got LC
+  PASS audio.sample_rate      want 48000 Hz; got 48000 Hz
+  PASS audio.channels         want 2; got 2
+  PASS audio.true_peak        want at most -1.0 dBTP; got -9.6 dBTP
+  PASS audio.integrated       want within +-1.0 LU of -16 LUFS; got -15.5 LUFS
+  PASS integrity.decode       want decodes with nothing on stderr; got clean
+  PASS metadata.neutral       want no tags except encoder (and structural tags); got clean
+RESULT: PASS (28 checks)
+[exit 0]
+
+$ python3 -I pipeline/validators/colour_patch.py --chain-file pipeline/phone/profile.json --chain phone_1080
+colour_patch: ffmpeg 6.1.1 (sha256 ed16af623947...)
+colour_patch: encodes 2 frames per chain into a temporary folder (deleted at the end), decodes them back, compares with the source.
+colour_patch: tolerance 3/255 per channel (W-16). Pass/fail is on pixels; tags are shown for information.
+  phone_1080                     PASS  worst 1/255  accurate-decode 1   [red -1/+0/+0  grey50 +0/+0/+0  skin -1/-1/-1]
+
+RESULT chains: 1 of 1 within 3/255
+[exit 0]
+
+$ bash pipeline/phone/sim_share.sh renders/wp08/phone.mp4 renders/wp08/shared.mp4
+sim_share.sh: phone.mp4 -> shared.mp4: 480p, 1000k (max 1200k), x264 veryfast main, AAC 96k, faststart, no metadata
+input SHA-256 before: e9f521890730a0e3...
+input SHA-256 after:  e9f521890730a0e3... (unchanged)
+files written: shared.mp4, shared.mp4.ass, shared.mp4.phone.json (1139990 bytes)
+[exit 0]
+
+$ python3 -I pipeline/phone/phone_check.py renders/wp08/shared.mp4 --quiet
+phone_check: ffmpeg 6.1.1-3ubuntu5; libass drawing, Pillow 12.3.0 with raqm 0.10.5; every figure marked (J) or UNVERIFIED in thresholds.json is a proposal or an assumption
+file shared.mp4: 854x480 h264, 0.91 Mbps average, 4 cues looked at, caption-free frame found, differenced True; input unchanged: True
+  burned captions against the libass drawing of the caption file: PASS (IoU min 0.875, limit 0.8)
+style phone: {"font_size": 28, "font_size_by_script": {}, "margin_v": 40, "outline": 2, "max_chars_per_line": 32, "max_lines": 2}
+  latin      shaping IoU against Pillow-raqm: PASS (min 0.921, limit 0.9, 4 strings)  family Noto Sans
+  devanagari shaping IoU against Pillow-raqm: PASS (min 0.932, limit 0.9, 4 strings)  family Noto Sans Devanagari
+  tamil      NOT TESTED (no strings in test_strings.json (pending the maker's script, O-10))
+  telugu     NOT TESTED (no strings in test_strings.json (pending the maker's script, O-10))
+  kannada    NOT TESTED (no strings in test_strings.json (pending the maker's script, O-10))
+  malayalam  NOT TESTED (no strings in test_strings.json (pending the maker's script, O-10))
+  bengali    NOT TESTED (no strings in test_strings.json (pending the maker's script, O-10))
+  gujarati   NOT TESTED (no strings in test_strings.json (pending the maker's script, O-10))
+portrait       FAIL (advisory)  latin FAIL; devanagari FAIL; tamil NOT TESTED; telugu NOT TESTED; kannada NOT TESTED; malayalam NOT TESTED; bengali NOT TESTED; gujarati NOT TESTED
+landscape      PASS (blocking)  latin PASS; devanagari PASS; tamil NOT TESTED; telugu NOT TESTED; kannada NOT TESTED; malayalam NOT TESTED; bengali NOT TESTED; gujarati NOT TESTED
+small_portrait FAIL (advisory)  latin FAIL; devanagari FAIL; tamil NOT TESTED; telugu NOT TESTED; kannada NOT TESTED; malayalam NOT TESTED; bengali NOT TESTED; gujarati NOT TESTED
+shared         PASS (blocking)  latin PASS; devanagari PASS; tamil NOT TESTED; telugu NOT TESTED; kannada NOT TESTED; malayalam NOT TESTED; bengali NOT TESTED; gujarati NOT TESTED
+fill_20x9      PASS (blocking)  latin PASS; devanagari PASS; tamil NOT TESTED; telugu NOT TESTED; kannada NOT TESTED; malayalam NOT TESTED; bengali NOT TESTED; gujarati NOT TESTED
+RESULT: no blocking scenario failed; advisory scenarios failed (listed above, not gated): portrait, small_portrait
+[exit 0]
+
+$ python3 -I pipeline/phone/phone_check.py renders/wp08/phone.mp4 --scenario fill_20x9 --quiet
+phone_check: ffmpeg 6.1.1-3ubuntu5; libass drawing, Pillow 12.3.0 with raqm 0.10.5; every figure marked (J) or UNVERIFIED in thresholds.json is a proposal or an assumption
+file phone.mp4: 1920x1080 h264, 0.86 Mbps average, 4 cues looked at, caption-free frame found, differenced True; input unchanged: True
+  burned captions against the libass drawing of the caption file: PASS (IoU min 0.95, limit 0.8)
+style phone: {"font_size": 28, "font_size_by_script": {}, "margin_v": 40, "outline": 2, "max_chars_per_line": 32, "max_lines": 2}
+  latin      shaping IoU against Pillow-raqm: PASS (min 0.921, limit 0.9, 4 strings)  family Noto Sans
+  devanagari shaping IoU against Pillow-raqm: PASS (min 0.932, limit 0.9, 4 strings)  family Noto Sans Devanagari
+  tamil      NOT TESTED (no strings in test_strings.json (pending the maker's script, O-10))
+  telugu     NOT TESTED (no strings in test_strings.json (pending the maker's script, O-10))
+  kannada    NOT TESTED (no strings in test_strings.json (pending the maker's script, O-10))
+  malayalam  NOT TESTED (no strings in test_strings.json (pending the maker's script, O-10))
+  bengali    NOT TESTED (no strings in test_strings.json (pending the maker's script, O-10))
+  gujarati   NOT TESTED (no strings in test_strings.json (pending the maker's script, O-10))
+fill_20x9      PASS (blocking)  latin PASS; devanagari PASS; tamil NOT TESTED; telugu NOT TESTED; kannada NOT TESTED; malayalam NOT TESTED; bengali NOT TESTED; gujarati NOT TESTED
+RESULT: no blocking scenario failed
+[exit 0]

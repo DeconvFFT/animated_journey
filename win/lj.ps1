@@ -377,6 +377,18 @@ function Test-ToolsTarget([string]$name) {
     return $null
 }
 
+function Get-ProtectedReason([string]$full) {
+    # Why this RESOLVED path must never be a removal candidate ('' when nothing protects it). The guards must be applied to
+    # what a pattern matched, not to the config text: a wildcard can resolve to a protected folder.
+    if (-not $full) { return '' }
+    $leaf = [System.IO.Path]::GetFileName((Trim-Sep $full))
+    if ($leaf -and (Test-NeverName $leaf)) { return ("'" + $leaf + "' is a protected folder name") }
+    if (Test-NeverPath $full) { return 'listed in never_touch_paths' }
+    if (Test-IsGitFolder $full) { return 'a git repository' }
+    if (Test-SameOrInside $full $script:RepoRoot) { return 'inside the project repository' }
+    return ''
+}
+
 function Show-Item([string]$full) {
     if (Test-Inside $full $script:Root) { return ('<root>' + $script:Sep + $full.Substring((Trim-Sep $script:Root).Length + 1)) }
     if (Test-SamePath $full $script:Root) { return '<root>' }
@@ -411,6 +423,7 @@ function Measure-Tree([string]$dir) {
             if (Test-LinkInfo $k) { $r.links++; Add-LinkSkip $k.FullName; continue }
             if ($k -is [System.IO.DirectoryInfo]) {
                 if (Test-NeverName $k.Name) { if (-not $r.protectedHit) { $r.protectedHit = $k.Name }; continue }
+                if (Test-NeverPath $k.FullName) { if (-not $r.protectedHit) { $r.protectedHit = $k.Name }; continue }
                 if ($k.Name -eq '.git') { if (-not $r.protectedHit) { $r.protectedHit = '.git' }; continue }
                 $r.folders++
                 $stack.Push($k.FullName)
@@ -428,6 +441,9 @@ function Measure-Candidate([string]$what, [string]$full, [string]$app) {
     $shown = Show-Item $full
     $rec = [pscustomobject]@{ what = $what; app = $app; full = $full; shown = $shown; files = 0; folders = 0; bytes = [long]0
         state = 'WOULD REMOVE'; why = ''; isDir = $false }
+    # never-touch guards first, so no caller can skip them: a protected path is neither opened nor measured
+    $prot = Get-ProtectedReason $full
+    if ($prot) { $rec.state = 'REFUSED'; $rec.why = $prot; return $rec }
     $fi = $null
     if ([System.IO.Directory]::Exists($full)) { $fi = New-Object System.IO.DirectoryInfo($full) }
     elseif ([System.IO.File]::Exists($full)) { $fi = New-Object System.IO.FileInfo($full) }
@@ -461,8 +477,10 @@ function Resolve-AppEntry([string]$app, [string]$listName, [string]$entry) {
     $recs = New-Object System.Collections.ArrayList
     $what = $app + '/' + $listName
     $refuse = {
-        param([string]$why)
-        return [pscustomobject]@{ what = $what; app = $app; full = ''; shown = $entry; files = 0; folders = 0; bytes = [long]0; state = 'REFUSED'; why = $why; isDir = $false }
+        param([string]$why, [string]$shownPath)
+        $sh = $entry
+        if ($shownPath) { $sh = $shownPath }   # a match of a wildcard is shown by its own (resolved) path
+        return [pscustomobject]@{ what = $what; app = $app; full = ''; shown = $sh; files = 0; folders = 0; bytes = [long]0; state = 'REFUSED'; why = $why; isDir = $false }
     }
     $ex = Expand-EnvText $entry
     if ($ex.unset) {
@@ -511,37 +529,44 @@ function Resolve-AppEntry([string]$app, [string]$listName, [string]$entry) {
     $cur = New-Object System.Collections.ArrayList
     [void]$cur.Add((Trim-Sep $base))
     $blocked = $false
-    foreach ($s in $segs) {
+    for ($si = 0; $si -lt $segs.Count; $si++) {
+        $s = $segs[$si]
+        $isLast = ($si -eq $segs.Count - 1)
         $next = New-Object System.Collections.ArrayList
         foreach ($c in $cur) {
-            if ($s.Contains('*') -or $s.Contains('?')) {
-                $rx = '^' + [regex]::Escape($s).Replace('\*', '.*').Replace('\?', '.') + '$'
-                foreach ($k in (Get-Kids $c)) {
-                    if ([regex]::IsMatch($k.Name, $rx, 'IgnoreCase')) {
-                        if (Test-LinkInfo $k) { Add-LinkSkip $k.FullName; $blocked = $true; continue }
-                        [void]$next.Add($k.FullName)
-                    }
+            $wild = ($s.Contains('*') -or $s.Contains('?'))
+            $rx = ''
+            if ($wild) { $rx = '^' + [regex]::Escape($s).Replace('\*', '.*').Replace('\?', '.') + '$' }
+            foreach ($k in (Get-Kids $c)) {
+                $hit = $false
+                if ($wild) { $hit = [regex]::IsMatch($k.Name, $rx, 'IgnoreCase') } else { $hit = [string]::Equals($k.Name, $s, $script:PathCmp) }
+                if (-not $hit) { continue }
+                if (Test-LinkInfo $k) { Add-LinkSkip $k.FullName; $blocked = $true; continue }
+                if (-not $isLast) {
+                    # a folder that is only on the way is not opened if it is protected (the last level is guarded below)
+                    $why = Get-ProtectedReason $k.FullName
+                    if ($why) { [void]$recs.Add((& $refuse $why (Show-Item $k.FullName))); continue }
                 }
-            } else {
-                foreach ($k in (Get-Kids $c)) {
-                    if ([string]::Equals($k.Name, $s, $script:PathCmp)) {
-                        if (Test-LinkInfo $k) { Add-LinkSkip $k.FullName; $blocked = $true } else { [void]$next.Add($k.FullName) }
-                    }
-                }
+                [void]$next.Add($k.FullName)
             }
         }
         $cur = $next
     }
     if ($cur.Count -eq 0) {
-        if ($blocked) {
-            [void]$recs.Add([pscustomobject]@{ what = $what; app = $app; full = ''; shown = (Show-Path $text); files = 0; folders = 0; bytes = [long]0; state = 'SKIPPED (link)'; why = 'a link on the way is never followed'; isDir = $false })
-        } else {
-            [void]$recs.Add([pscustomobject]@{ what = $what; app = $app; full = ''; shown = (Show-Path $text); files = 0; folders = 0; bytes = [long]0; state = 'NOT PRESENT'; why = 'nothing there'; isDir = $false })
+        # when every match on the way was refused, those REFUSED lines already say why: no second line
+        if ($recs.Count -eq 0) {
+            if ($blocked) {
+                [void]$recs.Add([pscustomobject]@{ what = $what; app = $app; full = ''; shown = (Show-Path $text); files = 0; folders = 0; bytes = [long]0; state = 'SKIPPED (link)'; why = 'a link on the way is never followed'; isDir = $false })
+            } else {
+                [void]$recs.Add([pscustomobject]@{ what = $what; app = $app; full = ''; shown = (Show-Path $text); files = 0; folders = 0; bytes = [long]0; state = 'NOT PRESENT'; why = 'nothing there'; isDir = $false })
+            }
         }
         return , $recs
     }
     foreach ($c in $cur) {
-        if (Test-SameOrInside $c $script:RepoRoot) { [void]$recs.Add((& $refuse 'inside the project repository')); continue }
+        # every resolved match is checked against the never-touch rules before it is opened or measured
+        $why = Get-ProtectedReason $c
+        if ($why) { [void]$recs.Add((& $refuse $why (Show-Item $c))); continue }
         [void]$recs.Add((Measure-Candidate $what $c $app))
     }
     return , $recs
@@ -662,7 +687,15 @@ function Invoke-Close($opt) {
     if ($wn.Count -eq 0) { [void]$script:WorkNames.Add('work') } else { foreach ($n in $wn) { [void]$script:WorkNames.Add($n) } }
     $script:ToolsFolderNames = New-Object System.Collections.ArrayList
     foreach ($n in @('Recovery', 'Auto-Save', 'cache')) { [void]$script:ToolsFolderNames.Add($n) }
-    foreach ($n in (To-List $cfg.extra_tools_folder_names)) { if ($n -notmatch '[\\/]') { [void]$script:ToolsFolderNames.Add($n) } }
+    foreach ($n in (To-List $cfg.extra_tools_folder_names)) {
+        if ($n -match '[\\/]') { continue }
+        if ($n -notmatch '[\p{L}\p{N}]') {
+            # a bare * (or ?*, *.*) would make every app folder under tools a candidate
+            Say ("      NOTE: extra_tools_folder_names entry '" + $n + "' has no letter or digit in it (only * and ? or punctuation) and was ignored")
+            continue
+        }
+        [void]$script:ToolsFolderNames.Add($n)
+    }
 
     # 3. the walk
     Begin-Step 'Walking the root, read-only (links are listed and never followed)'
@@ -904,6 +937,21 @@ function Get-OptionName([string]$tok) {
     return $t.ToLower()
 }
 
+function Show-Token([string]$tok) {
+    # Echo something the maker typed without ever printing an expanded profile path or a value:
+    # an option is shown by its name only; anything else goes through Show-Path; long text is cut short.
+    if ($null -eq $tok) { return '' }
+    $t = $tok
+    if ($t.StartsWith('-')) {
+        $cut = $t.IndexOfAny([char[]]@(':', '='))
+        if ($cut -ge 0) { $t = $t.Substring(0, $cut) }
+    } else {
+        $t = Show-Path (Convert-Sep $t)
+    }
+    if ($t.Length -gt 60) { $t = $t.Substring(0, 60) + '...' }
+    return $t
+}
+
 # 1. switches that do not exist in v0: answer first, whatever else was typed
 $notInV0 = @{ 'apply' = '-Apply'; 'commit' = '-Commit'; 'includewindowsrecent' = '-IncludeWindowsRecent' }
 foreach ($t in $tokens) {
@@ -925,11 +973,11 @@ $command = $tokens[0].ToLower()
 if ($command.StartsWith('-')) {
     $hn = Get-OptionName $command
     if ($hn -eq 'h' -or $hn -eq 'help' -or $hn -eq '?') { Show-Help; exit 0 }
-    Say ("Unknown option '" + $tokens[0] + "'. Nothing was done. Try: lj.ps1 help")
+    Say ("Unknown option '" + (Show-Token $tokens[0]) + "'. Nothing was done. Try: lj.ps1 help")
     exit 2
 }
 if ($command -ne 'doctor' -and $command -ne 'close' -and $command -ne 'help') {
-    Say ("Unknown command '" + $tokens[0] + "'. Nothing was done. Try: lj.ps1 help")
+    Say ("Unknown command '" + (Show-Token $tokens[0]) + "'. Nothing was done. Try: lj.ps1 help")
     exit 2
 }
 
@@ -943,7 +991,7 @@ $i = 1
 while ($i -lt $tokens.Count) {
     $t = $tokens[$i]
     if (-not $t.StartsWith('-')) {
-        Say ("Unexpected argument '" + $t + "'. Nothing was done. Try: lj.ps1 help")
+        Say ("Unexpected argument '" + (Show-Token $t) + "'. Nothing was done. Try: lj.ps1 help")
         exit 2
     }
     $n = Get-OptionName $t
@@ -953,11 +1001,11 @@ while ($i -lt $tokens.Count) {
     if ($valueOpts -contains $n) {
         if ($null -ne $inline -and $inline -ne '') { $opt[$n] = $inline; $i++ }
         elseif ($i + 1 -lt $tokens.Count -and -not $tokens[$i + 1].StartsWith('-')) { $opt[$n] = $tokens[$i + 1]; $i += 2 }
-        else { Say ("The option '" + $t + "' needs a value. Nothing was done. Try: lj.ps1 help"); exit 2 }
+        else { Say ("The option '" + (Show-Token $t) + "' needs a value. Nothing was done. Try: lj.ps1 help"); exit 2 }
     } elseif ($flagOpts -contains $n) {
         $opt[$n] = $true; $i++
     } else {
-        Say ("Unknown option '" + $t + "' for " + $command + ". Nothing was done. Try: lj.ps1 help")
+        Say ("Unknown option '" + (Show-Token $t) + "' for " + $command + ". Nothing was done. Try: lj.ps1 help")
         exit 2
     }
 }

@@ -1,0 +1,55 @@
+{
+  "actual": "exit 1",
+  "date_utc": "2026-10-19",
+  "detail": {
+    "app": "vectorcraft",
+    "avail_drop_includes_other_writers": true,
+    "avail_drop_mb": 119,
+    "avail_drop_over_plan_by_more_than_25_percent": false,
+    "df_after_mb": 740,
+    "df_before_mb": 743,
+    "df_delta_mb": -3,
+    "driver_envelopes_patched": [
+      "readback_vectorcraft_v0.13.1.json",
+      "t1_vectorcraft_v0.13.1.json"
+    ],
+    "exit_code": 1,
+    "fetched": true,
+    "guard_ledger": {
+      "exit": 1,
+      "lock_wait_s": 0,
+      "status": "command-failed"
+    },
+    "kept_tarball_deleted": true,
+    "label": "linux-cli",
+    "label_text": "Linux CLI result; not evidence for Windows",
+    "reason": "",
+    "stage": "vectorcraft-v0.13.1",
+    "tag": "v0.13.1"
+  },
+  "disk": {
+    "avail_mb_end": 740,
+    "avail_mb_min": 624,
+    "avail_mb_start": 743,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 286
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "the stage ran inside lj_with_disk, ended with exit 0 and left vendor/craft-sp1b empty",
+  "notes": "kept_tarball_deleted=0 Linux CLI result; not evidence for Windows.",
+  "package": "WP-10",
+  "schema": "lj-evidence/1",
+  "stage": "",
+  "status": "FAIL",
+  "test": "stage_vectorcraft-v0.13.1",
+  "unverified_reasons": [
+    "Windows behaviour is not tested by a Linux CLI run (the maker's Windows five-minute test is the real evidence)"
+  ]
+}

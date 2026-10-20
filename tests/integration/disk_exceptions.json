@@ -1,0 +1,20 @@
+{
+  "schema": "lj-disk-exceptions/1",
+  "owner": "WP-11b",
+  "about": "Evidence envelopes whose avail_mb_min is under the 250 MB hard floor of the disk guard (build plan 4.9), each with the reason it is accepted. The volume is shared with other jobs: a test with planned_write_mb 0 can see another job's writes. tests/integration/run_checks.py (disk.hard_floor_crossings_are_explained) fails on a crossing that is not listed here and on a listed entry that no envelope needs any more (such an entry moves to 'retired', which is only a record). Fable reviews this list; a stage that WRITES (planned_write_mb above 100) is never excused here: it has its own rule (disk.stage_budget_rule_from_envelopes).",
+  "exceptions": [
+    {
+      "package": "WP-10",
+      "test": "mech.disk_floor_abort_cleans_up",
+      "reason": "A mechanism test with a FAKE df (LJ_DF_CMD reporting 100 MB) to prove the guard's hard-floor abort and cleanup; 100 MB is the fake figure, not the real volume, which is not at risk in that test."
+    }
+  ],
+  "retired": [
+    {
+      "package": "WP-04",
+      "test": "a6_chapter_2400_ram",
+      "retired_on": "2026-10-19",
+      "reason": "The RAM-backed variant of the 2,400-frame run had seen 192 MB free while another job wrote to the shared volume (its envelope read avail_mb_min 192, planned_write_mb 0). The guarded stage a6_chapter_2400, which the guard had refused at 278 MB free, was run again by scripts/run_week2_checks.sh --all with 687 MB free at its lowest and passed (2,400 frames in 118.4 s, no PNG written); the RAM variant is then SKIPPED and its old envelope is replaced, so the exception is no longer needed."
+    }
+  ]
+}

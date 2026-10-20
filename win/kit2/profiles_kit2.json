@@ -1,0 +1,47 @@
+{
+ "schema": "lj-profiles/1",
+ "note": "WP-09. Derived from pipeline/settings.json online_h264 (the video block is identical; a test compares them). For silent exercise files only; a delivery file always has sound.",
+ "profiles": {
+  "online_h264_video_only": {
+   "description": "online_h264 for a video-only file (the Ken Burns exercise has no sound): the same video checks, no audio stream required",
+   "decision": [
+    "W-19"
+   ],
+   "chain": "h264_online",
+   "container": "mp4",
+   "faststart": true,
+   "video": {
+    "codec": "h264",
+    "profile": [
+     "High"
+    ],
+    "level": [
+     41
+    ],
+    "pix_fmt": [
+     "yuv420p"
+    ],
+    "width": 1920,
+    "height": 1080,
+    "fps": "24/1",
+    "color_range": [
+     "tv"
+    ],
+    "color_space": [
+     "bt709"
+    ],
+    "color_primaries": [
+     "bt709"
+    ],
+    "color_transfer": [
+     "bt709"
+    ],
+    "alpha": false
+   },
+   "audio": {
+    "required": false
+   },
+   "metadata": "neutral"
+  }
+ }
+}

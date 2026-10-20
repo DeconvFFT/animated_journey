@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+# A STAND-IN for filmcraft-cli (tests only). It starts and answers --version, but cannot import anything: the T3 driver must end as a HARNESS problem (exit 2, UNVERIFIED),
+# and the stage must then KEEP the kept tarball. It proves the stage's keep-on-harness-error rule, nothing about FilmCraft.
+import sys
+a = sys.argv[1:]
+if a[:1] == ["--version"]:
+    print("filmcraft-cli 0.9.0 (stand-in)"); sys.exit(0)
+sys.stderr.write("error: stand-in cannot do that\n"); sys.exit(1)

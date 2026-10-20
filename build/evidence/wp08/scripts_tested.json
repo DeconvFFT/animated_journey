@@ -1,0 +1,80 @@
+{
+  "schema": "lj-scripts-tested/1",
+  "date_utc": "2026-10-19",
+  "tool": "phone_check.py",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "style": "phone",
+  "strings_file": "test_strings.json",
+  "checked_by_reader": "false for every entry in test_strings.json until the maker confirms them: shape tests only, never shown to anyone",
+  "scripts_tested": [
+    "latin",
+    "devanagari"
+  ],
+  "scripts_not_tested": [
+    "tamil",
+    "telugu",
+    "kannada",
+    "malayalam",
+    "bengali",
+    "gujarati"
+  ],
+  "scripts": {
+    "latin": {
+      "status": "PASS",
+      "strings_tested": 1,
+      "shaping_iou_min": 0.95,
+      "shaping_iou_limit": 0.9,
+      "family": "Noto Sans",
+      "mark_checks": 0,
+      "mark_checks_passed": 0,
+      "scenarios": {
+        "portrait": "FAIL",
+        "landscape": "PASS",
+        "small_portrait": "FAIL",
+        "shared": "PASS",
+        "fill_20x9": "PASS"
+      }
+    },
+    "devanagari": {
+      "status": "PASS",
+      "strings_tested": 6,
+      "shaping_iou_min": 0.928,
+      "shaping_iou_limit": 0.9,
+      "family": "Noto Sans Devanagari",
+      "mark_checks": 25,
+      "mark_checks_passed": 24,
+      "scenarios": {
+        "portrait": "FAIL",
+        "landscape": "PASS",
+        "small_portrait": "FAIL",
+        "shared": "PASS",
+        "fill_20x9": "PASS"
+      }
+    },
+    "tamil": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json (pending the maker's script, O-10)"
+    },
+    "telugu": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json (pending the maker's script, O-10)"
+    },
+    "kannada": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json (pending the maker's script, O-10)"
+    },
+    "malayalam": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json (pending the maker's script, O-10)"
+    },
+    "bengali": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json (pending the maker's script, O-10)"
+    },
+    "gujarati": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json (pending the maker's script, O-10)"
+    }
+  },
+  "line": "Scripts tested: latin, devanagari (neutral strings) on 2026-10-19; NOT TESTED: tamil, telugu, kannada, malayalam, bengali, gujarati (name the maker's script, O-10)"
+}

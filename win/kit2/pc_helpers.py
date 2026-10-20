@@ -14,12 +14,14 @@ HOW TO RUN   (python3 -I on Linux, py -3 -I on Windows; no admin rights; nothing
 
 WHAT IT PRINTS. One line per action ("clip: ...", "merge-chains: ..."), file names by base name only, then "ok". It writes only
 the file named by --out. Exit codes (build plan 4.3): 0 ok, 2 bad usage or invalid input, 3 environment problem (ffmpeg not
-found, chain file missing, ffmpeg failed).
+found, chain file missing, ffmpeg failed, an unexpected error). Failure lines are redacted by design: no traceback is ever printed,
+and a folder (the output folder, the project folder, your user folder) is shown as <out>, <project> or <home>.
 UNVERIFIED on Windows until the maker runs it; the logic is plain subprocess with an argument list and os.path.
 """
 import argparse
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -49,6 +51,26 @@ class EnvError(Exception):
 def say(msg=""):
     print(msg)
     sys.stdout.flush()
+
+
+def scrub_paths(text, folders=()):
+    """Mask folders in text that is about to be printed: the folders named in `folders` (a list of (path, label), for example
+    (out_dir, "<out>")) plus the project folder (<project>) and the user's home folder (<home>). Longest path first, so the most
+    specific label wins; both slash styles and any letter case match (Windows paths); a path shorter than 4 characters is skipped
+    (a drive root or "/" would mangle the text). Nothing here reads the disk or the network."""
+    pairs = []
+    for path, label in list(folders) + [(REPO, "<project>"), (os.path.expanduser("~"), "<home>")]:
+        if not path:
+            continue
+        p = path.rstrip("\\/")
+        if len(p) < 4:
+            continue
+        for form in {p, p.replace("\\", "/"), p.replace("/", "\\")}:
+            pairs.append((form, label))
+    pairs.sort(key=lambda pl: -len(pl[0]))
+    for needle, label in pairs:
+        text = re.sub(re.escape(needle), lambda m, lab=label: lab, text, flags=re.IGNORECASE)
+    return text
 
 
 def tone_source(seconds):
@@ -98,8 +120,10 @@ def make_clip(ffmpeg, out, chains_path, seconds=3):
     except subprocess.TimeoutExpired:
         raise EnvError("ffmpeg took more than 5 minutes for a 3-second clip")
     if p.returncode != 0 or not os.path.isfile(out):
+        out_dir = os.path.dirname(os.path.abspath(out))
         tail = p.stderr.decode("utf-8", "replace").strip().splitlines()[-3:]
-        raise EnvError("ffmpeg could not make the clip: %s" % " | ".join(t[:160] for t in tail))
+        # scrub first, cut afterwards, so a cut can never leave half a folder name behind
+        raise EnvError("ffmpeg could not make the clip: %s" % " | ".join(scrub_paths(t, [(out_dir, "<out>")])[:160] for t in tail))
     return cmd
 
 
@@ -117,10 +141,13 @@ def merge_chains(out, base_path, extra_path):
     doc = {"schema": base.get("schema", "lj-chains/1"), "chains": chains,
            "note": "merged at run time from the project's chain files; holds chain definitions only"}
     tmp = out + ".part"
-    with open(tmp, "w", encoding="utf-8", newline="\n") as f:      # BOM-less UTF-8, LF
-        json.dump(doc, f, indent=1, ensure_ascii=True)
-        f.write("\n")
-    os.replace(tmp, out)
+    try:
+        with open(tmp, "w", encoding="utf-8", newline="\n") as f:      # BOM-less UTF-8, LF
+            json.dump(doc, f, indent=1, ensure_ascii=True)
+            f.write("\n")
+        os.replace(tmp, out)
+    except OSError:
+        raise EnvError("cannot write %s (is its folder there, and writable?)" % os.path.basename(out))
     return sorted(chains), added
 
 
@@ -169,6 +196,12 @@ def main(argv=None):
         return 2
     except EnvError as e:
         print("pc_helpers: environment problem: %s" % e, file=sys.stderr)
+        return 3
+    except KeyboardInterrupt:
+        print("pc_helpers: stopped by you (Ctrl+C). Nothing of yours was changed.", file=sys.stderr)
+        return 3
+    except Exception as e:                       # redacted by design: the kind of error only, never its text and never a traceback
+        print("pc_helpers: unexpected error (%s). Nothing of yours was changed; paste this one line in chat." % type(e).__name__, file=sys.stderr)
         return 3
 
 

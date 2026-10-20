@@ -1008,7 +1008,7 @@ Single JustWatch snapshots, times as printed (no time zone shown); they change. 
 
 **What is left for the maker, none of it a disclosure.**
 1. **Two-minute Mediathek check in a normal browser:** search "Mama Micra" on zdf.de and 3sat.de. Availability windows and geographic restrictions are not checked here (UNVERIFIED); German public broadcasters often limit availability by country and date, but I did not verify that for this film.
-2. **Courtesy link request (the maker's call):** interfilm Berlin (World Sales; general contact on its catalogue page [119]) or Fabian&Fred GmbH (producer; the German Documentaries page lists `fabian@fabianfred.com` [48b]). A short note asking for a research viewing link does not mention the surprise. The professional route if the Mediathek has nothing.
+2. **Courtesy link request (the maker's call):** interfilm Berlin (World Sales; general contact on its catalogue page [119]) or Fabian&Fred GmbH (producer; the German Documentaries page lists a contact address [48b]). A short note asking for a research viewing link does not mention the surprise. The professional route if the Mediathek has nothing.
 3. **Country:** needed to turn the three rows above into one answer.
 
 ### Q6. Stopwatch timings for the nine watch-plan items

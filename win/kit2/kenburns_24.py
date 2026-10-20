@@ -26,7 +26,7 @@ HOW TO RUN   (python3 -I on Linux, py -3 -I on Windows; needs Pillow and numpy: 
   py -3 -I win\\kit2\\kenburns_24.py --selftest --out renders\\wp09\\ex02.mp4                 synthetic stills only; checks itself
   Options: --moves push,pan,pull (one per still, repeated; also: drift)   --seconds 6   --fade 1   --focus X,Y (0..1, one pair
            for all stills or one pair per still; where the 16:9 window sits in a still that is not 16:9)   --ffmpeg PATH (FFMPEG)
-           --chains-file F   --gate-frames N (12..96)   --test-tone (adds a quiet -16 LUFS test tone so the file passes the full
+           --chains-file F   --check-libs (only test that Pillow and numpy import)   --gate-frames N (12..96)   --test-tone (adds a quiet -16 LUFS test tone so the file passes the full
            online_h264 profile; the self-test uses it)   --work DIR (where temporary files go; default a new folder under the
            system temp folder, deleted at the end)
 
@@ -40,7 +40,11 @@ WHAT IT NEVER TOUCHES. It reads the stills you name and nothing else; it never c
 installs anything.
 
 EXIT CODES (build plan 4.3)  0 done and the read-back passed   1 the read-back (or a self-test check) failed   2 bad usage or an
-unusable still   3 environment problem (ffmpeg, Pillow, numpy or the chain file missing, ffmpeg failed, no disk space)
+unusable still   3 environment problem (ffmpeg, Pillow, numpy or the chain file missing, ffmpeg failed, no disk space, an
+output folder that cannot be made) or an unexpected error.
+REDACTED BY DESIGN. Every failure ends in ONE plain line and an exit code: a Python traceback is never printed, an unexpected error
+shows only its kind ("unexpected error (OSError)"), and a folder in ffmpeg's own words is shown as <work> (the temporary folder),
+<out> (the output folder), <project> or <home>, so a line you paste in chat names no folder and no user.
 UNVERIFIED on Windows until the maker runs it. Verified on ffmpeg 6.1.1, Python 3.13, Pillow 12.3, numpy 2.5 (Linux).
 """
 import argparse
@@ -54,11 +58,16 @@ import sys
 import tempfile
 import time
 
+sys.dont_write_bytecode = True     # no .pyc files beside the project's scripts
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 if HERE not in sys.path:          # python -I does not put the script's folder on sys.path
     sys.path.insert(0, HERE)
-import pc_helpers                  # noqa: E402  (the test tone and the chain reader are shared with the PC runner)
+try:
+    import pc_helpers              # noqa: E402  (the test tone, the chain reader and the path scrubber are shared with the PC runner)
+except ImportError:                # a traceback here would carry the script's folder: say it in one line instead
+    print("kenburns_24: environment problem: pc_helpers.py is missing beside this script (download the WHOLE project folder, not single files)", file=sys.stderr)
+    sys.exit(3)
 
 FPS = 24
 W, H = 1920, 1080
@@ -79,7 +88,7 @@ MOVES = {
     "push":  {"z0": 1.00, "z1": 1.15, "c0": (0.50, 0.50), "c1": (0.50, 0.50), "what": "slow push-in on the middle"},
     "pan":   {"z0": 1.35, "z1": 1.35, "c0": (0.38, 0.50), "c1": (0.62, 0.50), "what": "slow pan from left to right, close up"},
     "pull":  {"z0": 1.20, "z1": 1.00, "c0": (0.44, 0.56), "c1": (0.50, 0.50), "what": "slow pull-out with a small drift"},
-    "drift": {"z0": 1.10, "z1": 1.25, "c0": (0.56, 0.44), "c1": (0.46, 0.54), "what": "push-in that drifts down and left"},
+    "drift": {"z0": 1.10, "z1": 1.25, "c0": (0.54, 0.46), "c1": (0.46, 0.54), "what": "push-in that drifts down and left"},
 }
 DEFAULT_MOVES = ["push", "pan", "pull"]
 
@@ -102,12 +111,33 @@ def say(msg=""):
 
 
 # ------------------------------------------------------------------------------------------------------ libraries and tools
-def need_libs():
+def ensure_user_site():
+    """`python -I` (which the project's tools run under) does not look in the folder that `pip install --user` fills, so Pillow and
+    numpy installed that way would be invisible. This adds that folder at the END of the search path (system folders still win)
+    when the first import fails. Returns the folder it added, or None."""
     try:
-        import numpy                                  # noqa: F401
-        from PIL import Image                         # noqa: F401
-    except ImportError as e:
-        raise EnvError("Pillow and numpy are needed (%s). Install them for your user with:  %s" % (str(e).split("'")[1] if "'" in str(e) else "import error", PIP_LINE))
+        import site
+        user = site.getusersitepackages()
+    except Exception:
+        return None
+    if user and os.path.isdir(user) and user not in sys.path:
+        site.addsitedir(user)
+        return user
+    return None
+
+
+def need_libs():
+    """Import Pillow and numpy (retrying once with the user's pip --user folder added). Returns their version strings."""
+    for attempt in (1, 2):
+        try:
+            import numpy
+            import PIL
+            return {"pillow": getattr(PIL, "__version__", "?"), "numpy": getattr(numpy, "__version__", "?")}
+        except ImportError as e:
+            if attempt == 1 and ensure_user_site():
+                continue
+            name = str(e).split("'")[1] if "'" in str(e) else "a library"
+            raise EnvError("Pillow and numpy are needed (%s is missing). Install them for your user with:  %s" % (name, PIP_LINE))
 
 
 def resolve_exe(name):
@@ -151,8 +181,9 @@ def base_window(sw, sh, focus=(0.5, 0.5)):
     return ((sw - bw) * fx, (sh - bh) * fy, bw, bh)
 
 
-def move_box(move, base, i, n):
-    """The source box (x0, y0, x1, y1), in floats, for frame i of n. Its shape is exactly 16:9 and it stays inside `base`."""
+def move_box(move, base, i, n, clamp=True):
+    """The source box (x0, y0, x1, y1), in floats, for frame i of n. Its shape is exactly 16:9 and it stays inside `base`
+    (clamp=False returns the path as asked, so a test can prove the built-in moves never need the clamp)."""
     bx, by, bw, bh = base
     t = ease(i / float(n - 1)) if n > 1 else 0.0
     z = move["z0"] + (move["z1"] - move["z0"]) * t
@@ -162,8 +193,9 @@ def move_box(move, base, i, n):
     h = bh / z
     x0 = bx + cx * bw - w / 2.0
     y0 = by + cy * bh - h / 2.0
-    x0 = min(max(x0, bx), bx + bw - w)            # never outside the window (a request to leave it is clamped, not an error)
-    y0 = min(max(y0, by), by + bh - h)
+    if clamp:
+        x0 = min(max(x0, bx), bx + bw - w)        # never outside the window (a request to leave it is clamped, not an error)
+        y0 = min(max(y0, by), by + bh - h)
     return (x0, y0, x0 + w, y0 + h)
 
 
@@ -282,28 +314,31 @@ def synthetic_still(index, size=(3000, 2000)):
 
 
 def make_synthetic_stills(folder, count=3):
-    """Write `count` synthetic JPEGs (quality 95, 4:4:4) into `folder`; returns [(path, info)]."""
+    """Write `count` synthetic PNGs into `folder` (lossless, so the colour read-back measures the video chain and not a JPEG); returns [(path, info)]."""
     out = []
     for k in range(count):
         img, info = synthetic_still(k)
-        p = os.path.join(folder, "still%d.jpg" % (k + 1))
-        img.save(p, "JPEG", quality=95, subsampling=0)
+        p = os.path.join(folder, "still%d.png" % (k + 1))
+        img.save(p, "PNG", compress_level=1)
         out.append((p, info))
     return out
 
 
 # ------------------------------------------------------------------------------------------------------ ffmpeg plumbing
-def tail_of(path, n=6):
+def scrub(text, work, out_dir=None):
+    """Mask every folder in a line that may be printed: the temporary folder (<work>), the output folder (<out>), the project folder
+    (<project>) and the user's home folder (<home>), longest first, any slash style and letter case (pc_helpers.scrub_paths)."""
+    return pc_helpers.scrub_paths(text, [(work, "<work>"), (out_dir, "<out>")])
+
+
+def tail_of(path, n=6, work=None, out_dir=None):
+    """The last n lines of ffmpeg's log, scrubbed and only then cut to 200 characters (a cut can never leave half a folder name)."""
     try:
         with open(path, "rb") as f:
             lines = f.read().decode("utf-8", "replace").strip().splitlines()
     except OSError:
         return []
-    return [ln[:200] for ln in lines[-n:]]
-
-
-def scrub(text, work):
-    return text.replace(work, "<work>") if work else text
+    return [scrub(ln, work, out_dir)[:200] for ln in lines[-n:]]
 
 
 def start_raw_encoder(ffmpeg, args_after_input, work, tag, fps=FPS):
@@ -311,14 +346,17 @@ def start_raw_encoder(ffmpeg, args_after_input, work, tag, fps=FPS):
     log = os.path.join(work, "ffmpeg_%s.log" % tag)
     cmd = [ffmpeg, "-hide_banner", "-nostdin", "-v", "error", "-y",
            "-f", "rawvideo", "-pix_fmt", "rgb24", "-video_size", "%dx%d" % (W, H), "-framerate", str(fps), "-i", "-"] + args_after_input
+    lf = open(log, "wb")
     try:
-        p = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.DEVNULL, stderr=open(log, "wb"))
+        p = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.DEVNULL, stderr=lf)
     except OSError:
         raise EnvError("cannot start ffmpeg")
+    finally:
+        lf.close()                       # the child keeps its own copy of the handle; closing ours lets the temp folder be deleted on Windows
     return p, log
 
 
-def finish_encoder(p, log, work, what):
+def finish_encoder(p, log, work, what, out_dir=None):
     try:
         if p.stdin:
             p.stdin.close()
@@ -326,11 +364,11 @@ def finish_encoder(p, log, work, what):
         pass
     rc = p.wait()
     if rc != 0:
-        tail = " | ".join(scrub(t, work) for t in tail_of(log))
+        tail = " | ".join(tail_of(log, work=work, out_dir=out_dir))
         raise EnvError("ffmpeg failed while making %s (exit %s): %s" % (what, rc, tail or "no message"))
 
 
-def write_frame(p, data, log, work, what):
+def write_frame(p, data, log, work, what, out_dir=None):
     try:
         p.stdin.write(data)
     except (BrokenPipeError, OSError):
@@ -338,7 +376,7 @@ def write_frame(p, data, log, work, what):
             p.wait(timeout=30)
         except subprocess.TimeoutExpired:
             pass
-        tail = " | ".join(scrub(t, work) for t in tail_of(log))
+        tail = " | ".join(tail_of(log, work=work, out_dir=out_dir))
         raise EnvError("ffmpeg stopped early while making %s: %s" % (what, tail or "no message"))
 
 
@@ -380,6 +418,7 @@ def render_movie(ffmpeg, stills, moves, out, chain, master_chain, seconds, fade,
     total = n * frames - (n - 1) * fade_frames
     lanczos = getattr(Image, "Resampling", Image).LANCZOS
     partial = out + ".part.mp4"                      # next to the output, so the final rename never crosses a drive
+    out_dir = os.path.dirname(os.path.abspath(out))   # only used to mask the folder in an ffmpeg error line (scrub)
     graph = build_graph(n, frames, fade_frames, chain["vf"])
     args = ["-filter_complex", graph]
     if tone:
@@ -399,7 +438,6 @@ def render_movie(ffmpeg, stills, moves, out, chain, master_chain, seconds, fade,
     gate_log = None
     gate_window = None
     if gate_path:
-        first = 0
         gate_len = min(gate_frames, frames - fade_frames)
         gate_start = max(0, frames - fade_frames - gate_len)         # the window ends where the first dissolve starts
         gate_window = (gate_start, gate_start + gate_len)
@@ -414,12 +452,12 @@ def render_movie(ffmpeg, stills, moves, out, chain, master_chain, seconds, fade,
             for i in range(frames):
                 box = clamp_box(move_box(mv, base, i, frames), img.size)
                 data = img.resize((W, H), lanczos, box=box).tobytes()
-                write_frame(enc, data, enc_log, work, "the movie")
+                write_frame(enc, data, enc_log, work, "the movie", out_dir)
                 if gate is not None and k == 0 and gate_window[0] <= i < gate_window[1]:
-                    write_frame(gate, data, gate_log, work, "the gate window")
-        finish_encoder(enc, enc_log, work, "the movie")
+                    write_frame(gate, data, gate_log, work, "the gate window", out_dir)
+        finish_encoder(enc, enc_log, work, "the movie", out_dir)
         if gate is not None:
-            finish_encoder(gate, gate_log, work, "the gate window")
+            finish_encoder(gate, gate_log, work, "the gate window", out_dir)
     except BaseException:
         for pr in (enc, gate):
             if pr is not None and pr.poll() is None:
@@ -448,7 +486,7 @@ def zoompan_filter(seconds, amount, fps=FPS):
 
 
 def make_zoompan_proof(ffmpeg, img, base, chain, master_chain, out_mp4, out_gate, work, seconds=5, amount=0.15, gate_frames=GATE_FRAMES, log=say):
-    """The playbook's zoompan push (crop to 16:9 first, scale up, zoompan) as a proof clip, plus a lossless window for the gate."""
+    """The playbook's zoompan push (crop to 16:9 first, scale up, zoompan) as a proof clip, plus (when out_gate is given) a lossless window for the gate."""
     bx, by, bw, bh = base
     cw = int(bw) // 2 * 2
     chh = min(int(round(cw * 9 / 16.0 / 2.0)) * 2, img.size[1])
@@ -461,22 +499,29 @@ def make_zoompan_proof(ffmpeg, img, base, chain, master_chain, out_mp4, out_gate
     pre = "scale=6000:-1:flags=lanczos,"
     glen = min(gate_frames, d - 12)
     g0 = 6
-    fc = ("[0:v]%s%s,format=rgb24,split=2[p][q];[p]%s[o];[q]trim=start_frame=%d:end_frame=%d,setpts=PTS-STARTPTS,%s[g]"
-          % (pre, zp, chain["vf"], g0, g0 + glen, master_chain["vf"]))
+    if out_gate:
+        fc = ("[0:v]%s%s,format=rgb24,split=2[p][q];[p]%s[o];[q]trim=start_frame=%d:end_frame=%d,setpts=PTS-STARTPTS,%s[g]"
+              % (pre, zp, chain["vf"], g0, g0 + glen, master_chain["vf"]))
+    else:
+        fc = "[0:v]%s%s,format=rgb24,%s[o]" % (pre, zp, chain["vf"])
     cmd = [ffmpeg, "-hide_banner", "-nostdin", "-v", "error", "-y", "-i", png, "-filter_complex", fc,
-           "-map", "[o]"] + list(chain["video_args"]) + ["-an", out_mp4 + ".part.mp4",
-           "-map", "[g]"] + list(master_chain["video_args"]) + [out_gate + ".part.mkv"]
+           "-map", "[o]"] + list(chain["video_args"]) + ["-an", out_mp4 + ".part.mp4"]
+    if out_gate:
+        cmd += ["-map", "[g]"] + list(master_chain["video_args"]) + [out_gate + ".part.mkv"]
     logf = os.path.join(work, "ffmpeg_proof.log")
-    log("  zoompan proof: %d frames (d=%d for %g s), then a %d-frame lossless window" % (d, d, seconds, glen))
+    out_dir = os.path.dirname(os.path.abspath(out_mp4))
+    log("  zoompan proof: %d frames (d=%d for %g s)%s" % (d, d, seconds, (", then a %d-frame lossless window" % glen) if out_gate else ""))
     try:
-        r = subprocess.run(cmd, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=open(logf, "wb"), timeout=1800)
+        with open(logf, "wb") as lf:
+            r = subprocess.run(cmd, stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=lf, timeout=1800)
     except (OSError, subprocess.TimeoutExpired):
         raise EnvError("ffmpeg could not make the zoompan proof")
     if r.returncode != 0:
-        raise EnvError("ffmpeg failed while making the zoompan proof: %s" % " | ".join(scrub(t, work) for t in tail_of(logf)))
+        raise EnvError("ffmpeg failed while making the zoompan proof: %s" % " | ".join(tail_of(logf, work=work, out_dir=out_dir)))
     replace_file(out_mp4 + ".part.mp4", out_mp4)
-    replace_file(out_gate + ".part.mkv", out_gate)
-    return d, glen
+    if out_gate:
+        replace_file(out_gate + ".part.mkv", out_gate)
+    return d, (glen if out_gate else 0)
 
 
 # ------------------------------------------------------------------------------------------------------ read-back
@@ -608,8 +653,8 @@ def run_job(a, stills_paths, selftest_info=None):
         raise Usage("--fade must be at least 1 frame and at most half of --seconds")
     if abs(frames - seconds * FPS) > 1e-6 or abs(fade_frames - fade * FPS) > 1e-6:
         raise Usage("--seconds and --fade must be whole numbers of frames at 24 fps (for example 6 and 1, or 5.5 and 0.5)")
-    if not 12 <= a.gate_frames <= GATE_FRAMES:
-        raise Usage("--gate-frames must be between 12 and %d" % GATE_FRAMES)
+    if not GATE_MIN <= a.gate_frames <= GATE_FRAMES:
+        raise Usage("--gate-frames must be between %d and %d" % (GATE_MIN, GATE_FRAMES))
 
     out = a.out
     out_dir = os.path.dirname(os.path.abspath(out))
@@ -619,10 +664,13 @@ def run_job(a, stills_paths, selftest_info=None):
     for sp in stills_paths:
         if os.path.abspath(sp) == os.path.abspath(out):
             raise Usage("--out is one of the stills; choose another name")
-    os.makedirs(out_dir, exist_ok=True)
+    try:
+        os.makedirs(out_dir, exist_ok=True)
+    except OSError:                                              # for example --out below an existing FILE: name the file, never the folder
+        raise EnvError("cannot create the output folder for %s" % os.path.basename(out))
     gate_path = os.path.join(out_dir, stem + "_push_only.mkv") if a.gate_window else None
     per_frame = 0.6 if a.selftest else 2.6                    # MB per lossless frame: synthetic textures versus real photographs
-    check_disk(out_dir, 100 + (a.gate_frames * per_frame if a.gate_window else 0) + (a.gate_frames * per_frame if a.proof_zoompan else 0), "the output files")
+    check_disk(out_dir, 100 + (a.gate_frames * per_frame if a.gate_window else 0) + (a.gate_frames * per_frame if (a.proof_zoompan and a.gate_window) else 0), "the output files")
 
     step("Loading %d still(s)" % len(stills_paths))
     loaded = []
@@ -641,8 +689,11 @@ def run_job(a, stills_paths, selftest_info=None):
         if narrowest < W:
             say("  WARNING still %d (%s): its closest window is only %d px wide, so it is enlarged to 1920 px (it will look soft on a big screen); use a bigger still or a gentler move" % (k + 1, mv["name"], int(narrowest)))
 
-    work = a.work or tempfile.mkdtemp(prefix="lj_kb_")
-    os.makedirs(work, exist_ok=True)
+    try:
+        work = a.work or tempfile.mkdtemp(prefix="lj_kb_")
+        os.makedirs(work, exist_ok=True)
+    except OSError:
+        raise EnvError("cannot create the temporary folder (is the disk full, or --work not writable?)")
     facts = {}
     try:
         step("Rendering %d moves of %g s with %g s dissolves (the picture is cut and scaled by Pillow, sub-pixel, then encoded by ffmpeg)" % (len(loaded), seconds, fade))
@@ -660,11 +711,14 @@ def run_job(a, stills_paths, selftest_info=None):
             step("Making the zoompan PROOF (not for delivery, W-41) so you can see the difference")
             img0, base0 = loaded[0]
             pz = os.path.join(out_dir, stem + "_zoompan_proof.mp4")
-            pg = os.path.join(out_dir, stem + "_push_only_zoompan.mkv")
+            pg = os.path.join(out_dir, stem + "_push_only_zoompan.mkv") if a.gate_window else None
             d, glen = make_zoompan_proof(ffmpeg, img0, base0, online, master, pz, pg, work, 5, 0.15, a.gate_frames)
             facts["zoompan_d"] = d
-            say("  ok: %s (5 s, d=%d) and %s (%d frames, lossless)" % (os.path.basename(pz), d, os.path.basename(pg), glen))
-            say("  Compare it with your push: the zoompan version jitters by about half a pixel; mo8_gate.py fails it and passes the sub-pixel push.")
+            if pg:
+                say("  ok: %s (5 s, d=%d) and %s (%d frames, lossless)" % (os.path.basename(pz), d, os.path.basename(pg), glen))
+            else:
+                say("  ok: %s (5 s, d=%d)" % (os.path.basename(pz), d))
+            say("  Compare it with your push: zoompan moves in whole pixels, so fine detail crawls a little. With --gate-window, mo8_gate.py fails its window and passes the sub-pixel push.")
 
         sel_failed = []
         if a.selftest:
@@ -739,6 +793,7 @@ def build_parser():
     p.add_argument("--test-tone", action="store_true", help="add a quiet 1 kHz tone at -16 LUFS (for checking the file against the full online profile)")
     p.add_argument("--work", default=None, help="folder for temporary files (default: a new temporary folder, deleted at the end)")
     p.add_argument("--selftest", action="store_true", help="make synthetic stills, run everything, check the result")
+    p.add_argument("--check-libs", action="store_true", help="only check that Pillow and numpy can be imported (the PowerShell front door uses this)")
     return p
 
 
@@ -747,6 +802,10 @@ def main(argv=None):
     a = build_parser().parse_args(argv)
     a._gate_frames_given = any(x == "--gate-frames" or x.startswith("--gate-frames=") for x in argv)
     try:
+        if a.check_libs:
+            v = need_libs()
+            say("ok: Pillow %s, numpy %s" % (v["pillow"], v["numpy"]))
+            return 0
         if a.selftest:
             if a.stills:
                 raise Usage("--selftest takes no stills (it makes its own)")
@@ -772,6 +831,12 @@ def main(argv=None):
         return 2
     except pc_helpers.EnvError as e:
         print("kenburns_24: environment problem: %s" % e, file=sys.stderr)
+        return 3
+    except KeyboardInterrupt:                    # the render cleans up its partial files and the temporary folder on the way out
+        print("kenburns_24: stopped by you (Ctrl+C). Nothing of yours was changed.", file=sys.stderr)
+        return 3
+    except Exception as e:                       # redacted by design: the kind of error only, never its text and never a traceback
+        print("kenburns_24: unexpected error (%s). Nothing of yours was changed; paste this one line in chat." % type(e).__name__, file=sys.stderr)
         return 3
 
 

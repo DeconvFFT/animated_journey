@@ -318,9 +318,9 @@ Selection is by documented relevance, not popularity. I could not vet quality (n
 
 | Who | Why | Where | Incentive/caveat |
 |---|---|---|---|
-| Noah Kalina | The reference case for a person's passage of time, rate and score | YouTube @NoahKalina [32] | Artist/photographer; his site's navigation lists Commissions [68] |
-| Mint Visual | Kdenlive paper-cutout transition | YouTube @mintvisual [44] | Unknown; check for paid assets |
-| Peter Thomson | Kdenlive pan and zoom | YouTube @dartmoorrambler [45] | Unknown |
+| Noah Kalina | The reference case for a person's passage of time, rate and score | YouTube channel (see [32]) | Artist/photographer; his site's navigation lists Commissions [68] |
+| Mint Visual | Kdenlive paper-cutout transition | YouTube channel (see [44]) | Unknown; check for paid assets |
+| Peter Thomson | Kdenlive pan and zoom | YouTube channel (see [45]) | Unknown |
 | Nuxttux Creative Studio | Broad Kdenlive series: keyframes, masks, drop shadow, text [40] | YouTube (listed on Kdenlive docs) | Titles only seen |
 | Arkengheist | Kdenlive rotoscoping, stabilization, motion tracking [40] | YouTube | Titles only seen |
 | Louis Erbkamm (Arnis) | Real-place Minecraft worlds [56] | GitHub | Open-source |

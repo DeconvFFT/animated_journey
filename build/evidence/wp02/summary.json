@@ -1,10 +1,10 @@
 {
  "counts": {
-  "PASS": 46,
+  "PASS": 44,
   "UNVERIFIED": 1
  },
- "date_utc": "2026-10-19",
- "mode": "all",
+ "date_utc": "2026-10-20",
+ "mode": "quick",
  "package": "WP-02",
  "schema": "lj-evidence-summary/1"
 }

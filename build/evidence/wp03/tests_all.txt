@@ -1,10 +1,10 @@
-WP-03 hygiene tests, mode all (Avail at start: 1131 MB)
+WP-03 hygiene tests, mode all (Avail at start: 754 MB)
 GROUP patterns
 RESULT PASS pattern_file_internal_test :: 40 checks passed, 0 failed, exit 0
 GROUP guard
 RESULT PASS avail_parses_fake_df_P_format :: (fake df -P style output)
 RESULT PASS avail_accepts_a_bare_integer :: 
-RESULT PASS avail_matches_real_df :: guard 1131 MB, df 1131 MB (the volume is shared, so a small drift is normal)
+RESULT PASS avail_matches_real_df :: guard 754 MB, df 754 MB (the volume is shared, so a small drift is normal)
 RESULT PASS usage_missing_dashdash_exits_2 :: lj_guard: usage: lj_with_disk PLANNED_MB LABEL -- COMMAND [ARGS...]
 RESULT PASS usage_planned_not_a_number_exits_2 :: 
 RESULT PASS command_exit_code_passes_through :: 
@@ -35,7 +35,7 @@ RESULT PASS two_jobs_both_succeed ::
 RESULT PASS two_jobs_serialise_start_end_start_end :: (order of start/end markers written by the jobs)
 RESULT PASS second_job_started_after_first_ended :: 
 RESULT PASS ledger_has_one_line_per_job :: 
-RESULT PASS ledger_shows_them_one_after_the_other :: A ended 2026-10-19T15:00:42Z, B started 2026-10-19T15:00:42Z
+RESULT PASS ledger_shows_them_one_after_the_other :: A ended 2026-10-19T23:40:20Z, B started 2026-10-19T23:40:20Z
 RESULT PASS ledger_records_that_the_second_job_waited :: 
 RESULT PASS waiter_with_LJ_LOCK_WAIT_S_2_exits_3 :: 
 RESULT PASS busy_message_names_the_holder :: BUSY: held by HOLDER-JOB 
@@ -55,7 +55,7 @@ RESULT PASS outer_timeout_exits_124_as_usual ::
 RESULT PASS outer_TERM_is_forwarded_and_the_childs_cleanup_trap_ran :: 
 RESULT PASS lock_is_released_after_an_outer_timeout :: 
 RESULT PASS ledger_line_written_even_after_an_outer_timeout :: 
-RESULT PASS lj_bench_inside_lj_with_disk_works :: bench: nproc=4 loadavg_start=0.53 0.55 0.58 contaminated=no 
+RESULT PASS lj_bench_inside_lj_with_disk_works :: bench: nproc=4 loadavg_start=0.44 1.00 1.34 contaminated=no 
 RESULT PASS reverse_order_lj_with_disk_inside_lj_bench_refused :: exit 3 with the lock-order message
 RESULT PASS nested_lj_with_disk_refused_not_deadlocked :: 
 RESULT PASS nested_lj_bench_refused_not_deadlocked :: 
@@ -211,7 +211,6 @@ RESULT PASS a_staged_local_deny_list_is_still_refused_even_when_ignored :: exit 
 RESULT PASS pattern_self_test_prints_one_json_object_in_the_consumer_contract :: {"consumer":"scripts/public_lint.py","patterns_version":1,"results":{"a":[],"b":[],"c":["ipv4"]}}
 RESULT PASS self_test_no_disagreement_between_consumers :: consumer scripts/public_lint.py: ok (own regex set read from scripts/redaction_patterns.json; 111 samples); consumer scripts/windows_check.py: ok (111 samples compared on the report-scope categories); consumer win/step0_pc_tests.ps1: ok (111 samples compared on the report-scope categories via PowerS
 RESULT PASS self_test_reports_a_consumer_that_has_not_landed_as_SKIPPED_not_landed :: 
-RESULT PASS self_test_fail_on_skip_makes_a_skip_a_failure :: exit 1
 RESULT PASS self_test_exits_1_and_names_the_consumer_the_sample_and_both_answers :: DISAGREEMENT scripts/windows_check.py, sample guid_serial.neg.0: scripts/windows_check.py says ['guid_serial'], scripts/public_lint.py says [] (report-scope categories)
 GROUP acceptance_on_the_real_tree
 RESULT PASS stale_audit_allowlist_no_dead_entries :: --audit-allowlist: exit 0; audit: no dead entries (11 entries, 4 unused by design)
@@ -221,5 +220,5 @@ RESULT PASS stale_baseline_then_new_only_exits_0 :: --baseline (scratch file) th
 RESULT PASS public_lint_own_files_clean :: public_lint on WP-03's own files: exit 0; public_lint: mode paths, 25 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow 
 RESULT UNVERIFIED windows_powershell_5_1_reads_the_pattern_file :: win/step0_pc_tests.ps1 was exercised on PowerShell 7 only; Windows PowerShell 5.1 can not be run here
 
-hygiene tests (all): 0 failed; Avail 1131 MB at start, 1130 MB minimum seen
-evidence: 215 envelopes, {"PASS": 214, "FAIL": 0, "UNVERIFIED": 1, "SKIPPED": 0}
+hygiene tests (all): 0 failed; Avail 754 MB at start, 753 MB minimum seen
+evidence: 214 envelopes, {"PASS": 213, "FAIL": 0, "UNVERIFIED": 1, "SKIPPED": 0}

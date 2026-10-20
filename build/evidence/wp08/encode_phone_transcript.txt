@@ -1,0 +1,36 @@
+encode_phone.sh: running inside lj_with_disk 100 (label wp08-encode)
+[1/9] Reading profile.json and the options ...
+      4 cues; scripts: devanagari, latin; style phone: FontSize 28, MarginV 40, outline 2, at most 32 characters and 2 lines
+      ffmpeg 6.1.1-3ubuntu5
+[2/9] Probing the master (master10s.mov) ...
+      1920x1080, 24 fps, prores yuv422p10le, 240 frames, 10.00 s; audio pcm_s24le 48000 Hz
+[3/9] Plan ...
+      video filter: ass=caps.ass:fontsdir=fonts,scale=out_color_matrix=bt709:out_range=tv,format=yuv420p,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:range=tv
+      video args: -c:v libx264 -preset slow -profile:v high -level 4.1 -crf 20 -maxrate 8M -bufsize 16M -g 48 -colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv -movflags +faststart -map_metadata -1 -fflags +bitexact
+      audio: two-pass loudnorm to -16 LUFS / -1 dBTP, then -c:a aac -b:a 192k -ar 48000 -ac 2
+[4/9] Making the work folder (relative names only inside the filter) ...
+      wrote caps.srt, caps.ass (styles per script: devanagari, latin) and fonts/ (noto-sans-devanagari-devanagari-400-normal.woff, noto-sans-latin-400-normal.woff)
+[5/9] Encoding the video (captions burned on the 1080 frame, then the chain) ...
+      video.mp4 829750 bytes
+      libass: fontselect: (Noto Sans, 400, 0) -> NotoSans-Regular, 0, NotoSans-Regular
+      libass: fontselect: (Noto Sans Devanagari, 400, 0) -> NotoSansDevanagari-Regular, 0, NotoSansDevanagari-Regular
+[6/9] Encoding the sound ...
+      loudnorm pass 1 (measure), target -16 LUFS, true-peak target -1.5 dBTP
+      loudnorm pass 2 (linear) then AAC: measured input -41.9 LUFS, -35.1 dBTP
+      AAC file measures -15.5 LUFS, -9.2 dBTP
+[7/9] Muxing with faststart and no metadata ...
+[8/9] Checking the result ...
+      PASS  size  1920x1080 (profile 1920x1080)
+      PASS  fps  24/1
+      PASS  frame_count  240 frames (master 240)
+      PASS  tags  pix_fmt yuv420p, range tv, matrix bt709, primaries bt709, transfer bt709
+      PASS  codec  h264 High level 41
+      PASS  bitrate  0.86 Mbps average over the file (cap 8.00 Mbps + 10% = 8.80)
+      PASS  faststart  atoms: ftyp, moov, free, mdat
+      PASS  loudness  -15.5 LUFS integrated on the final file (target -16 +- 1)
+      PASS  true_peak  -9.2 dBTP on the final file (limit -1)
+      PASS  audio  aac 48000 Hz 2 ch
+      PASS  metadata  format tags other than the structural ones: none
+[9/9] Writing the sidecar and the caption file next to the output ...
+files written: phone.mp4, phone.mp4.ass, phone.mp4.phone.json
+RESULT: done, every check passed (0.86 Mbps, -15.5 LUFS, -9.2 dBTP)

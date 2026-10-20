@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+# A STAND-IN for vectorcraft-cli (tests only; not VectorCraft). convert IN OUT copies the SVG, rewriting a non-zero viewBox origin to 0 0 (what the real one is documented to do).
+# FAKE_BUG words: dropids (strips every id), droppivot (strips data-pivot), nopdf.
+import json, os, re, sys
+BUG = os.environ.get("FAKE_BUG", "")
+args = sys.argv[1:]
+if not args or args[0] in ("-h", "--help"):
+    print("vectorcraft-cli - VectorCraft automation (stand-in)\nUSAGE:\n  vectorcraft-cli run [--in FILE] [--export FILE]... [--scale N]\n  vectorcraft-cli commands\n  vectorcraft-cli convert IN OUT\n  vectorcraft-cli info FILE\nReadable formats: .svg\nWritable formats: .svg, .png, .pdf"); sys.exit(0)
+if args[0] == "--version":
+    print("vectorcraft-cli " + (os.environ.get("FAKE_VERSION") or "0.13.1") + " (stand-in)"); sys.exit(0)
+if args[0] == "commands":
+    print(json.dumps({"commands": [{"id": "document.cmd%d" % i, "label": "x"} for i in range(40)]})); sys.exit(0)
+def rewrite(txt):
+    txt = re.sub(r'viewBox="\s*-?[\d.]+\s+-?[\d.]+\s+([\d.]+)\s+([\d.]+)"', r'viewBox="0 0 \1 \2"', txt)
+    if "dropids" in BUG: txt = re.sub(r'\sid="[^"]*"', "", txt)
+    if "droppivot" in BUG: txt = re.sub(r'\sdata-pivot="[^"]*"', "", txt)
+    return txt
+if args[0] == "convert":
+    txt = open(args[1], encoding="utf-8").read()
+    open(args[2], "w", encoding="utf-8").write(rewrite(txt))
+    out = {"ok": True, "path": os.path.basename(args[2])}
+    if "feColorMatrix" in txt: out["importWarnings"] = ["filter feColorMatrix is not supported and was ignored"]
+    print(json.dumps(out)); sys.exit(0)
+if args[0] == "info":
+    print(json.dumps({"file": os.path.basename(args[1]), "warnings": [], "artboards": [{"w": 400, "h": 300}], "kinds": {"path": 5}})); sys.exit(0)
+if args[0] == "run":
+    from PIL import Image
+    outs = [args[i + 1] for i, x in enumerate(args) if x == "--export"]
+    scale = int(args[args.index("--scale") + 1]) if "--scale" in args else 1
+    for o in outs:
+        if o.endswith(".png"): Image.new("RGB", (400 * scale, 300 * scale), (200, 220, 240)).save(o)
+        elif o.endswith(".pdf") and "nopdf" not in BUG: open(o, "wb").write(b"%PDF-1.4\n%stand-in\n")
+    print(json.dumps({"ok": True})); sys.exit(0)
+sys.stderr.write("error: unknown subcommand\n"); sys.exit(2)

@@ -654,7 +654,7 @@ Each tarball unpacks to `<name>-<ver>-linux-x86_64/bin/<app>` and `bin/<app>-cli
 
 ## Sources
 
-Repo evidence is cited as `repo/path @tag`. Tags: filmcraft **v0.8.0** (`f03e21556d8e3a7155b91892d958debd5255d7af`, 2026-10-14T10:15:06-04:00); effectcraft **v0.11.1** (`2a01226894c6bc58ae4fadcc24a10198d693acaa`, 2026-10-17T19:03:26-04:00); soundcraft **v0.8.0** (`2578ea69a388395ddadb6394d7b4ab40f21aa670`, 2026-10-17T17:16:15-04:00). Clone URLs: `https://github.com/storytold/filmcraft`, `https://github.com/storytold/effectcraft`, `https://github.com/storytold/soundcraft` (read 2026-10-18 into `/tmp/claude-0/-home-user/8016b042-43ae-5ade-a7e4-661ffdf4579d/scratchpad/vendor/<repo>`; scratch, ephemeral).
+Repo evidence is cited as `repo/path @tag`. Tags: filmcraft **v0.8.0** (`f03e21556d8e3a7155b91892d958debd5255d7af`, 2026-10-14T10:15:06-04:00); effectcraft **v0.11.1** (`2a01226894c6bc58ae4fadcc24a10198d693acaa`, 2026-10-17T19:03:26-04:00); soundcraft **v0.8.0** (`2578ea69a388395ddadb6394d7b4ab40f21aa670`, 2026-10-17T17:16:15-04:00). Clone URLs: `https://github.com/storytold/filmcraft`, `https://github.com/storytold/effectcraft`, `https://github.com/storytold/soundcraft` (read 2026-10-18 into `<scratch>/vendor/<repo>`; scratch, ephemeral).
 
 **FilmCraft**
 - [1] filmcraft/README.md @v0.8.0 — status, formats, export, interchange, agents, downloads, Windows `WGPU_BACKEND` note (vendor claims).

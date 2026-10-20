@@ -1,0 +1,210 @@
+{
+  "actual": "5 criteria, 1 failed: RB.lightcraft.exports_written: JPEG exports ['scan01-01.jpg'], TIFF exports ['scan01-01.tif'], JPEG magic True, TIFF magic True; 4 findings",
+  "date_utc": "2026-10-19",
+  "detail": {
+    "app": "lightcraft",
+    "calls": [
+      {
+        "call": "--version",
+        "killed": null,
+        "max_rss_mb": 20.0,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "--help",
+        "killed": null,
+        "max_rss_mb": 20.1,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "commands",
+        "killed": null,
+        "max_rss_mb": 20.1,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "render print.jpg (LIGHTCRAFT_GPU=0)",
+        "killed": null,
+        "max_rss_mb": 209.9,
+        "rc": 0,
+        "wall_s": 0.76
+      },
+      {
+        "call": "run --library --script (preset import, apply, two exports)",
+        "killed": null,
+        "max_rss_mb": 81.9,
+        "rc": 0,
+        "wall_s": 0.27
+      },
+      {
+        "call": "run preset.import (second time)",
+        "killed": null,
+        "max_rss_mb": 81.9,
+        "rc": 0,
+        "wall_s": 0.26
+      }
+    ],
+    "checks": [
+      {
+        "id": "RB.lightcraft.render_written",
+        "measured": "exit 0, JPEG True, size (2048, 1365)",
+        "note": "LIGHTCRAFT_GPU=0 render writes a JPEG with a 2048 px long edge (playbook five-minute test, step 2)",
+        "pass": true
+      },
+      {
+        "id": "RB.lightcraft.render_brighter",
+        "measured": "mean luma 110.9 -> 122.2 (exposure +0.3; mark: at least +2 levels, a planner's proposal)",
+        "note": "the file is brighter",
+        "pass": true
+      },
+      {
+        "id": "RB.lightcraft.script_ran",
+        "measured": "exit 0, 6 JSON result lines for 6 steps, 0 with ok=false",
+        "note": "the steps file runs: every result line parses and none says ok=false (playbook step 3)",
+        "pass": true
+      },
+      {
+        "id": "RB.lightcraft.preset_id_kept",
+        "measured": "result lines naming lj-faded-print-a: 1",
+        "note": "the .lcpreset import keeps the id lj-faded-print-a (no clash), so preset.apply can find it",
+        "pass": true
+      },
+      {
+        "id": "RB.lightcraft.exports_written",
+        "measured": "JPEG exports ['scan01-01.jpg'], TIFF exports ['scan01-01.tif'], JPEG magic True, TIFF magic True",
+        "note": "one JPEG and one 16-bit TIFF per print, named {name}-{seq:2}",
+        "pass": false
+      }
+    ],
+    "findings": [
+      {
+        "finding": "the key structure of one result line per step",
+        "id": "RB.lightcraft.result_line_shape",
+        "implication": "the playbook says each line must have ok true",
+        "measured": [
+          {
+            "command": "str",
+            "ms": "float",
+            "ok": "bool",
+            "result": {
+              "duplicates": "...",
+              "failed": "...",
+              "imported": "...",
+              "scanned": "...",
+              "sidecars": "..."
+            }
+          },
+          {
+            "command": "str",
+            "ms": "float",
+            "ok": "bool",
+            "result": {
+              "effectDividers": "...",
+              "effects": "...",
+              "failed": "...",
+              "imported": "...",
+              "skipped": "..."
+            }
+          },
+          {
+            "command": "str",
+            "ms": "float",
+            "ok": "bool",
+            "result": {
+              "selected": "..."
+            }
+          },
+          {
+            "command": "str",
+            "ms": "float",
+            "ok": "bool",
+            "result": "NoneType"
+          },
+          {
+            "command": "str",
+            "ms": "float",
+            "ok": "bool",
+            "result": {
+              "bytes": "...",
+              "files": "...",
+              "height": "...",
+              "path": "...",
+              "sidecars": "...",
+              "width": "..."
+            }
+          },
+          {
+            "command": "str",
+            "ms": "float",
+            "ok": "bool",
+            "result": {
+              "bytes": "...",
+              "files": "...",
+              "height": "...",
+              "path": "...",
+              "sidecars": "...",
+              "width": "..."
+            }
+          }
+        ]
+      },
+      {
+        "finding": "the start of the script run's output (so a surprise in the result shape can be read from the evidence)",
+        "id": "RB.lightcraft.run_stdout_excerpt",
+        "implication": "",
+        "measured": "{\"command\":\"library.import\",\"ms\":2.7,\"ok\":true,\"result\":{\"duplicates\":[{\"existing\":1,\"path\":\"<repo>/vendor/craft-sp1b/lightcraft-v0.9.1/lc/prints/scan02.jpg\",\"reason\":\"content\"},{\"existing\":1,\"path\":\"<repo>/vendor/craft-sp1b/lightcraft-v0.9.1/lc/prints/scan03.jpg\",\"reason\":\"content\"}],\"failed\":[],\"imported\":[1],\"scanned\":3,\"sidecars\":0}}\n{\"command\":\"preset.import\",\"ms\":0.9,\"ok\":true,\"result\":{\"effectDividers\":[],\"effects\":[],\"failed\":[],\"imported\":[{\"file\":\"<repo>/vendor/craft-sp1b/lightcraft-v0.9.1/lc/faded-print-a.lcpreset\",\"group\":\"Life Journey\",\"id\":\"lj-faded-print-a\",\"name\":\"LJ faded print A\",\"profile\":null,\"unmapped\":[]}],\"skipped\":0}}\n{\"command\":\"library.selectAll\",\"ms\":0.0,\"ok\":true,\"result\":{\"selected\":1}}\n{\"command\":\"preset.apply\",\"ms\":0.8,\"ok\":true,\"result\":null}\n{\"command\":\"app.export\",\"ms\":108.4,\"ok\":true,\"result\":{\"bytes\":110359,\"files\":[{\"bytes\":110359,\"height\":800,\"path\":"
+      },
+      {
+        "finding": "bit depth and colour space of the first TIFF export (ImageMagick identify)",
+        "id": "RB.lightcraft.tiff_depth",
+        "implication": "the steps ask for bitDepth 16",
+        "measured": "16 sRGB"
+      },
+      {
+        "finding": "the same preset imported a second time",
+        "id": "RB.lightcraft.preset_import_twice",
+        "implication": "the playbook says identical presets are skipped",
+        "measured": "exit 0: {\"command\":\"preset.import\",\"ms\":0.2,\"ok\":true,\"result\":{\"effectDividers\":[],\"effects\":[],\"failed\":[],\"imported\":[],\"skipped\":1}}"
+      }
+    ],
+    "inputs": "synthetic: WP-06 emitters and the reused fixtures of research/craft-visual-fixtures",
+    "label": "linux-cli",
+    "label_text": "Linux CLI result; not evidence for Windows",
+    "sandbox": {
+      "env": "env -i with HOME, TMPDIR, XDG_*, PATH only (LIGHTCRAFT_GPU=0 for LightCraft)",
+      "network_isolation": "unshare -rn",
+      "rss_kill_mb": 10240,
+      "timeout_s": 300,
+      "vk_icd_filenames": "unset"
+    },
+    "tag": "v0.9.1"
+  },
+  "disk": {
+    "avail_mb_end": 776,
+    "avail_mb_min": 672,
+    "avail_mb_start": 776,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 254
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "the playbook's read-back passes: the file is read, converted and written, the layer names or ids survive",
+  "notes": "Linux CLI result; not evidence for Windows.",
+  "package": "WP-10",
+  "schema": "lj-evidence/1",
+  "stage": "sp1b-lightcraft-v0.9.1",
+  "status": "FAIL",
+  "test": "readback_lightcraft_v0.9.1",
+  "unverified_reasons": [
+    "Windows behaviour is not tested by a Linux CLI run (the maker's Windows five-minute test is the real evidence)"
+  ]
+}

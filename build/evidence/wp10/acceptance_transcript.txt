@@ -1,0 +1,103 @@
+WP-10 acceptance transcript. Date 2026-10-19. Every Craft result is a Linux CLI result; not evidence for Windows.
+df at start: Avail 767M
+
+$ bash tests/spikes/run_tests.sh --quick   [exit 0; output in tests_quick.txt]
+SUMMARY quick: 31 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED
+
+$ bash tests/spikes/run_tests.sh --all   [exit 0; output in tests_all.txt]
+SUMMARY all: 59 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED
+
+$ bash spikes/sp1b_readback/run_sp1b.sh --list
+run_sp1b.sh --list    (build plan WP-10; nothing is downloaded or written)
+
+Stages, in this order (the FilmCraft stage runs first because it deletes the kept tarball and so gives the next three more room):
+  1. filmcraft    v0.9.0   tests: T3               already run: PASS; tarball 69,756,500 bytes (67 MB)
+       planned 90 MB at the time; Avail start 690, minimum 610, end 743 MB (build/evidence/wp10/stage_filmcraft-v0.9.0.json). --all skips it; --again would re-fetch with a recorded ledger exception
+  2. photocraft   v0.10.0  tests: T1+read-backs    already run: PASS; tarball 83,037,328 bytes (80 MB)
+       planned 202 MB at the time; Avail start 743, minimum 664, end 743 MB (build/evidence/wp10/stage_photocraft-v0.10.0.json). --all skips it; --again would re-fetch with a recorded ledger exception
+  3. vectorcraft  v0.13.1  tests: T1+read-backs    already run: FAIL; tarball 124,613,940 bytes (119 MB)
+       planned 286 MB at the time; Avail start 743, minimum 624, end 740 MB (build/evidence/wp10/stage_vectorcraft-v0.13.1.json). --all skips it; --again would re-fetch with a recorded ledger exception
+  4. lightcraft   v0.9.1   tests: T1+read-backs    already run: FAIL; tarball 108,938,717 bytes (104 MB)
+       planned 254 MB at the time; Avail start 776, minimum 672, end 776 MB (build/evidence/wp10/stage_lightcraft-v0.9.1.json). --all skips it; --again would re-fetch with a recorded ledger exception
+
+Plan table of build plan 4.9 for comparison (estimates, MB): photocraft 300, vectorcraft 450, lightcraft 350, filmcraft 300. The figures above are computed from the tarball sizes in release_assets.json and, for FilmCraft, the tarball listing.
+Disk: df says Avail 764 MB now. Floor 400 MB (Avail minus planned must stay at or above it), hard floor 250 MB. Each stage re-reads df live; the guard is the authority.
+Not fetched: SoundCraft (T5 cut, D-12). Fetched by WP-07: EffectCraft. Each tarball once; the ledger check is spikes/sp1b_readback/check_ledger.py.
+
+OK: every stage that has not run yet fits at today's Avail. Start them with: bash spikes/sp1b_readback/run_sp1b.sh --all
+[exit 0]
+
+$ bash spikes/sp1b_readback/run_sp1b.sh --all   (every stage already ran, so nothing is downloaded)
+run_sp1b.sh --all: FilmCraft T3, then PhotoCraft, VectorCraft and LightCraft T1 and read-backs. Linux CLIs only: every result below is a Linux CLI result, not evidence for Windows.
+df at start: Avail 764 MB (the kept FilmCraft tarball on disk: 0 MB).
+== stage filmcraft-v0.9.0: already run (status PASS, build/evidence/wp10/stage_filmcraft-v0.9.0.json); not run again, because its tarball is gone and a second fetch needs a recorded exception. Use --again to run it anyway.
+RESULT filmcraft v0.9.0: PASS (label: linux-cli; Linux CLI result; not evidence for Windows)
+== stage photocraft-v0.10.0: already run (status PASS, build/evidence/wp10/stage_photocraft-v0.10.0.json); not run again, because its tarball is gone and a second fetch needs a recorded exception. Use --again to run it anyway.
+RESULT photocraft v0.10.0: PASS (label: linux-cli; Linux CLI result; not evidence for Windows)
+== stage vectorcraft-v0.13.1: already run (status FAIL, build/evidence/wp10/stage_vectorcraft-v0.13.1.json); not run again, because its tarball is gone and a second fetch needs a recorded exception. Use --again to run it anyway.
+RESULT vectorcraft v0.13.1: FAIL (label: linux-cli; Linux CLI result; not evidence for Windows)
+== stage lightcraft-v0.9.1: already run (status FAIL, build/evidence/wp10/stage_lightcraft-v0.9.1.json); not run again, because its tarball is gone and a second fetch needs a recorded exception. Use --again to run it anyway.
+RESULT lightcraft v0.9.1: FAIL (label: linux-cli; Linux CLI result; not evidence for Windows)
+== after the run: 2 PASS, 2 FAIL or harness problem, 0 BLOCKED. vendor/craft-sp1b holds: nothing; the hand-off folder holds: nothing (gone or empty).
+== df now: Avail 764 MB (start 764 MB; the kept tarball's 0 MB is expected back; delta without it: 0 MB; other writers move this figure).
+== ledger: ledger: 5 fetches in the two ledgers, 5 of the 5 pinned tarballs fetched, 429.5 MB of the 2048 MB allowance; each fetched once or with a recorded exception: OK
+[exit 1]
+
+$ python3 -I spikes/sp1b_readback/check_ledger.py
+ledger: 5 fetches in the two ledgers, 5 of the 5 pinned tarballs fetched, 429.5 MB of the 2048 MB allowance; each fetched once or with a recorded exception: OK
+  photocraft-0.10.0-linux-x86_64.tar.gz        83,037,328 bytes  fetched once (wp10, stage photocraft-v0.10.0, 2026-10-19)
+  vectorcraft-0.13.1-linux-x86_64.tar.gz      124,613,940 bytes  fetched once (wp10, stage vectorcraft-v0.13.1, 2026-10-19)
+  lightcraft-0.9.1-linux-x86_64.tar.gz        108,938,717 bytes  fetched once (wp10, stage lightcraft-v0.9.1, 2026-10-19)
+  filmcraft-0.9.0-linux-x86_64.tar.gz          69,756,500 bytes  fetched once (wp07, stage filmcraft-v0.9.0, 2026-10-19)
+  effectcraft-0.11.1-linux-x86_64.tar.gz       64,039,300 bytes  fetched once (wp07, stage effectcraft-v0.11.1, 2026-10-19)
+exceptions: none
+[exit 0]
+
+$ bash spikes/sp3_blender/run_sp3.sh --check
+run_sp3.sh --check    (SP3: Blender hero-shot timing on a neutral stand-in scene; prepared, NOT run; nothing is downloaded or written)
+
+Entry conditions
+  free disk          Avail 764 MB now; needed at least 3500 MB (planned 3100 MB + the 400 MB floor of scripts/lj_guard.sh)
+  bpy wheel          401,697,653 bytes (383 MiB), cp313 manylinux_2_28 x86_64, read from PyPI just now; the venv it makes is about 1 GB on disk (R9/M14)
+  Blender tarball    383,295,504 bytes (365 MiB), blender-5.2.2-linux-x64.tar.xz, read by HEAD request just now; NOT used by this script (bpy is the route); listed for the PC route
+  python             3.13.16 at /usr/bin/python3 (the wheel is cp313 only, so 3.13 is required)
+  reused scene       research/production-scale-fixtures/followup2-s3-kitchen-standin.py: py_compile ok; primitives only, no photograph, no family imagery
+  reused sweep       research/production-scale-fixtures/followup2-s3-run-sweep.sh: bash -n ok (referenced, not executed: it holds a path of an earlier session)
+  earlier numbers    followup2-s3-container-results.txt (stand-in, 1080p, Cycles CPU, 4 vCPU): 64 samples with denoise 110-115 s, 128 without 192-232 s, 24 with denoise 51-59 s
+  pass mark          one real hero frame within 2x the table: cannot be judged before the real kitchen exists (G1); this run times the stand-in only
+
+NOT RUN: needs >= 3.5 GB free (Avail 764 MB; short by 2736 MB). Justified deferral: SP3 runs in week 3 on the maker's PC (toolchain Exercise 5) or here once 3.5 GB is free.
+[exit 3]
+
+$ python3 -m py_compile research/production-scale-fixtures/followup2-s3-kitchen-standin.py
+[exit 0]
+
+$ bash spikes/sp4_idle/job.sh --seconds 60 --interval 2 && python3 -I spikes/sp4_idle/gaps.py <log>
+log: <scratch>/sp4/acceptance-175925.log
+ticks: 30 of 30 expected, interval 2 s, span 61 s
+maximum gap: 3 s (limit for listing: 30 s)
+gaps over 30 s: none
+end line: yes (reason done); df Avail at start 764 MB, at end 756 MB
+VERDICT: kept awake
+[exit job.sh 0, gaps.py 0]
+
+$ python3 -I spikes/sp4_idle/gaps.py tests/spikes/fixtures/log_with_5min_gap.txt
+ticks: 150 of 150 expected, interval 10 s, span 1800 s
+maximum gap: 310 s (limit for listing: 30 s)
+  gap of 310 s after tick 60 (600 s into the run)
+end line: yes (reason done); df Avail at start 712 MB, at end 705 MB
+VERDICT: paused
+[exit 1]
+
+$ python3 -I tests/spikes/check_verdicts.py
+check_verdicts: 5 main rows, 6 SP1 test rows; complete
+[exit 0]
+
+$ after SP1b: ls -A vendor/craft-sp1b ; ls vendor/craft/_keep ; lowest avail_mb_min in the stage envelopes
+vendor/craft-sp1b holds: (nothing if blank)
+vendor/craft/_keep: gone
+  stage filmcraft-v0.9.0     PASS       Avail start 690, min 610, end 743 MB, planned 90 MB
+  stage lightcraft-v0.9.1    FAIL       Avail start 776, min 672, end 776 MB, planned 254 MB
+  stage photocraft-v0.10.0   PASS       Avail start 743, min 664, end 743 MB, planned 202 MB
+  stage vectorcraft-v0.13.1  FAIL       Avail start 743, min 624, end 740 MB, planned 286 MB
+  lowest avail_mb_min: 610 MB (the hard floor is 250)

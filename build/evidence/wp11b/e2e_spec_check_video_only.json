@@ -1,0 +1,165 @@
+{
+  "schema": "lj-speccheck/1",
+  "tool_version": 1,
+  "date_utc": "2026-10-20",
+  "file": "venue_video.mp4",
+  "profile": "venue_h264_video_only",
+  "profile_description": "video-only view of venue_h264 (derived at test time)",
+  "ffmpeg": "6.1.1",
+  "verdict": "PASS",
+  "failed": [],
+  "checks": [
+    {
+      "id": "container.readable",
+      "status": "PASS",
+      "expected": "ffprobe opens the file",
+      "actual": "ok",
+      "detail": ""
+    },
+    {
+      "id": "container.moov",
+      "status": "PASS",
+      "expected": "moov atom present",
+      "actual": "present",
+      "detail": ""
+    },
+    {
+      "id": "container.atoms",
+      "status": "PASS",
+      "expected": "atoms run to the end of the file",
+      "actual": "complete",
+      "detail": ""
+    },
+    {
+      "id": "container.faststart",
+      "status": "PASS",
+      "expected": "moov before mdat",
+      "actual": "moov before mdat",
+      "detail": ""
+    },
+    {
+      "id": "container.type",
+      "status": "PASS",
+      "expected": "MP4 brand (not QuickTime)",
+      "actual": "'isom'",
+      "detail": ""
+    },
+    {
+      "id": "video.streams",
+      "status": "PASS",
+      "expected": "exactly 1 video stream",
+      "actual": "1",
+      "detail": ""
+    },
+    {
+      "id": "video.codec",
+      "status": "PASS",
+      "expected": "h264",
+      "actual": "h264",
+      "detail": ""
+    },
+    {
+      "id": "video.profile",
+      "status": "PASS",
+      "expected": "High",
+      "actual": "High",
+      "detail": ""
+    },
+    {
+      "id": "video.level",
+      "status": "PASS",
+      "expected": "41",
+      "actual": "41",
+      "detail": ""
+    },
+    {
+      "id": "video.pix_fmt",
+      "status": "PASS",
+      "expected": "yuv420p",
+      "actual": "yuv420p",
+      "detail": ""
+    },
+    {
+      "id": "video.alpha",
+      "status": "PASS",
+      "expected": "no alpha plane",
+      "actual": "no alpha plane (pix_fmt yuv420p)",
+      "detail": ""
+    },
+    {
+      "id": "video.size",
+      "status": "PASS",
+      "expected": "1920x1080",
+      "actual": "1920x1080",
+      "detail": ""
+    },
+    {
+      "id": "video.fps",
+      "status": "PASS",
+      "expected": "r_frame_rate = avg_frame_rate = 24/1",
+      "actual": "r=24/1 avg=24/1",
+      "detail": ""
+    },
+    {
+      "id": "video.frame_count",
+      "status": "PASS",
+      "expected": "nb_frames = round(duration x 24/1) = 48",
+      "actual": "48 (duration 2.000 s)",
+      "detail": ""
+    },
+    {
+      "id": "video.color_range",
+      "status": "PASS",
+      "expected": "tv",
+      "actual": "tv",
+      "detail": ""
+    },
+    {
+      "id": "video.color_space",
+      "status": "PASS",
+      "expected": "bt709",
+      "actual": "bt709",
+      "detail": ""
+    },
+    {
+      "id": "video.color_primaries",
+      "status": "PASS",
+      "expected": "bt709",
+      "actual": "bt709",
+      "detail": ""
+    },
+    {
+      "id": "video.color_transfer",
+      "status": "PASS",
+      "expected": "bt709",
+      "actual": "bt709",
+      "detail": ""
+    },
+    {
+      "id": "video.bitrate",
+      "status": "PASS",
+      "expected": "at most 20 Mbps",
+      "actual": "2.10 Mbps",
+      "detail": ""
+    },
+    {
+      "id": "integrity.decode",
+      "status": "PASS",
+      "expected": "decodes with nothing on stderr",
+      "actual": "clean",
+      "detail": ""
+    },
+    {
+      "id": "metadata.neutral",
+      "status": "PASS",
+      "expected": "no tags except encoder (and structural tags)",
+      "actual": "clean",
+      "detail": ""
+    }
+  ],
+  "notes": [],
+  "limits": [
+    "pixels are not read: a BT.601 matrix under BT.709 tags passes here; run colour_patch.py",
+    "loudness is read to 0.1 dB"
+  ]
+}

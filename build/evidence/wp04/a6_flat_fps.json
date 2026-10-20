@@ -1,37 +1,37 @@
 {
- "actual": "11.82 fps over 96 frames (8.1 s), peak RSS {'node_mb': 93, 'browser_tree_mb': 689, 'ffmpeg_mb': 0, 'sum_mb': 782, 'note': 'RSS counts shared pages in every process, so the sum over-counts'}",
+ "actual": "11.90 fps over 96 frames (8.1 s), peak RSS {'node_mb': 93, 'browser_tree_mb': 687, 'ffmpeg_mb': 0, 'sum_mb': 780, 'note': 'RSS counts shared pages in every process, so the sum over-counts'}",
  "data": {
   "bench": {
    "contaminated": "no",
-   "loadavg_start": "1.00 1.87 2.13",
+   "loadavg_start": "0.95 1.38 1.30",
    "nproc": 4
   },
   "peak_rss": {
-   "browser_tree_mb": 689,
+   "browser_tree_mb": 687,
    "ffmpeg_mb": 0,
    "node_mb": 93,
    "note": "RSS counts shared pages in every process, so the sum over-counts",
-   "sum_mb": 782
+   "sum_mb": 780
   },
   "report_bench": {
    "contaminated": false,
-   "load1_start": 1,
+   "load1_start": 0.95,
    "nproc": 4
   },
-  "seconds": 54.0,
-  "seconds_render": 8.123,
+  "seconds": 44.0,
+  "seconds_render": 8.069,
   "settle": {
-   "load1": 1.0,
+   "load1": 0.95,
    "settled": true,
-   "waited_s": 45
+   "waited_s": 35
   },
-  "throughput_fps": 11.82
+  "throughput_fps": 11.9
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 405,
-  "avail_mb_min": 405,
-  "avail_mb_start": 406,
+  "avail_mb_end": 754,
+  "avail_mb_min": 754,
+  "avail_mb_start": 754,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

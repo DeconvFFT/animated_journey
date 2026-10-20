@@ -1,0 +1,374 @@
+WP-09 acceptance transcript, 2026-10-19. ffmpeg 6.1.1-3ubuntu5, pwsh 7.5.4, python 3.13.16.
+Container: Linux. Nothing here ran on Windows: every Windows claim is UNVERIFIED.
+
+## 1. lint and parse
+
+$ python3 -I win/tools/ps_lint.py win/kit2/*.ps1 && bash win/tools/ps_parse.sh | tail -4
+win/kit2/archive_init.ps1: 0 error(s), 0 warning(s)
+win/kit2/archive_verify.ps1: 0 error(s), 0 warning(s)
+win/kit2/kenburns_24.ps1: 0 error(s), 0 warning(s)
+win/kit2/run_checks_pc.ps1: 0 error(s), 0 warning(s)
+TOTAL: 0 error(s), 0 warning(s) in 4 file(s)
+OK   spikes/sp1_craft_cli/MAKER-CRAFT-ZIPS.md (fence starting at line 252)
+OK   spikes/sp1_craft_cli/MAKER-CRAFT-ZIPS.md (fence starting at line 259)
+PARSED 58 item(s), 0 parse error(s)
+ps_parse: 0 parse errors
+[exit 0]
+
+## 2. Ken Burns self-test, spec_check, MO8 gate (sub-pixel push passes; the zoompan proof fails, as documented)
+
+$ python3 -I win/kit2/kenburns_24.py --selftest --out renders/wp09/ex02.mp4
+selftest: three synthetic 3000x2000 stills (grey texture, a yellow disc, three flat colour patches); nothing of yours is read.
+[1/7] Checking Pillow, numpy and ffmpeg ...
+  ok: ffmpeg and ffprobe found; chain h264_online read from chains.json
+[2/7] Loading 3 still(s) ...
+  still 1: 3000x2000, not 16:9: a 16:9 window is cut, nothing is stretched
+  still 2: 3000x2000, not 16:9: a 16:9 window is cut, nothing is stretched
+  still 3: 3000x2000, not 16:9: a 16:9 window is cut, nothing is stretched
+[3/7] Rendering 3 moves of 6 s with 1 s dissolves (the picture is cut and scaled by Pillow, sub-pixel, then encoded by ffmpeg) ...
+  move 1 of 3: push, 144 frames (slow push-in on the middle)
+  move 2 of 3: pan, 144 frames (slow pan from left to right, close up)
+  move 3 of 3: pull, 144 frames (slow pull-out with a small drift)
+  ok: 384 frames, 16.0 s of video in 33 s
+  ok: lossless window of move 1, frames 72 to 119 (48 frames), for mo8_gate.py
+[4/7] Reading the finished file back with ffprobe ...
+  PASS width            want 1920      got 1920
+  PASS height           want 1080      got 1080
+  PASS r_frame_rate     want 24/1      got 24/1
+  PASS avg_frame_rate   want 24/1      got 24/1
+  PASS codec_name       want h264      got h264
+  PASS profile          want High      got High
+  PASS pix_fmt          want yuv420p   got yuv420p
+  PASS color_range      want tv        got tv
+  PASS color_space      want bt709     got bt709
+  PASS color_primaries  want bt709     got bt709
+  PASS color_transfer   want bt709     got bt709
+  PASS frames           want 384       got 384
+  PASS duration_s       want 16.000    got 16.000
+[5/7] Making the zoompan PROOF (not for delivery, W-41) so you can see the difference ...
+  zoompan proof: 120 frames (d=120 for 5 s), then a 48-frame lossless window
+  ok: ex02_zoompan_proof.mp4 (5 s, d=120) and ex02_push_only_zoompan.mkv (48 frames, lossless)
+  Compare it with your push: zoompan moves in whole pixels, so fine detail crawls a little. With --gate-window, mo8_gate.py fails its window and passes the sub-pixel push.
+[6/7] Self-test: a drawn disc must stay round, and flat colours must come out right ...
+  PASS disc_aspect       want 1.00 +- 0.01   got 1.000 (spread) and 1.000 (bounding box); 166647 px
+  PASS colour_red      want (255, 0, 0) got (254, 0, 0) worst 1.0/255 (limit 3, W-16)
+  PASS colour_grey50   want (128, 128, 128) got (128, 128, 128) worst 0.0/255 (limit 3, W-16)
+  PASS colour_skin     want (224, 172, 140) got (223, 171, 139) worst 1.0/255 (limit 3, W-16)
+[7/7] Cleaning up the temporary folder ...
+RESULT: PASS
+wrote: ex02.mp4, ex02_push_only.mkv
+[exit 0]
+
+$ ffprobe -v error -show_entries stream=width,height,r_frame_rate,codec_name -of csv=p=0 -select_streams v:0 renders/wp09/ex02.mp4
+h264,1920,1080,24/1
+[exit 0]
+
+$ python3 -I pipeline/validators/spec_check.py renders/wp09/ex02.mp4 --profile online_h264
+spec_check: ex02.mp4 against profile online_h264 (online / private-link copy: H.264 High 4.1, BT.709, AAC-LC, -16 LUFS, -1 dBTP)
+  PASS container.readable     want ffprobe opens the file; got ok
+  PASS container.moov         want moov atom present; got present
+  PASS container.atoms        want atoms run to the end of the file; got complete
+  PASS container.faststart    want moov before mdat; got moov before mdat
+  PASS container.type         want MP4 brand (not QuickTime); got 'isom'
+  PASS video.streams          want exactly 1 video stream; got 1
+  PASS video.codec            want h264; got h264
+  PASS video.profile          want High; got High
+  PASS video.level            want 41; got 41
+  PASS video.pix_fmt          want yuv420p; got yuv420p
+  PASS video.alpha            want no alpha plane; got no alpha plane (pix_fmt yuv420p)
+  PASS video.size             want 1920x1080; got 1920x1080
+  PASS video.fps              want r_frame_rate = avg_frame_rate = 24/1; got r=24/1 avg=24/1
+  PASS video.frame_count      want nb_frames = round(duration x 24/1) = 384; got 384 (duration 16.000 s)
+  PASS video.color_range      want tv; got tv
+  PASS video.color_space      want bt709; got bt709
+  PASS video.color_primaries  want bt709; got bt709
+  PASS video.color_transfer   want bt709; got bt709
+  PASS audio.present          want at least 1 audio stream; got 1
+  PASS audio.codec            want aac; got aac
+  PASS audio.profile          want LC; got LC
+  PASS audio.sample_rate      want 48000 Hz; got 48000 Hz
+  PASS audio.channels         want 2; got 2
+  PASS audio.true_peak        want at most -1.0 dBTP; got -15.3 dBTP
+  PASS audio.integrated       want within +-1.0 LU of -16 LUFS; got -16.0 LUFS
+  PASS integrity.decode       want decodes with nothing on stderr; got clean
+  PASS metadata.neutral       want no tags except encoder (and structural tags); got clean
+RESULT: PASS (27 checks)
+[exit 0]
+
+$ python3 -I pipeline/validators/mo8_gate.py renders/wp09/ex02_push_only.mkv
+mo8_gate: the gate applies to the MASTER before the delivery encode (W-41). Limits: MO8a 0.05 px, MO8b 0.04 px; at most 96 frames.
+mo8_gate: ex02_push_only.mkv  (48 frames, lossless-or-intermediate-clip (ffv1))
+  MO8a centre jitter   0.0067 px   limit 0.05   PASS
+  MO8b edge jitter     0.0162 px   limit 0.04   PASS
+  roughness (MO8c) 0.0118, ease class ease-out (decelerate), total zoom 6.015%   [information only, W-41]
+  NOTE a lossless / ProRes clip: good, this is a master
+  RESULT: PASS
+[exit 0]
+
+$ python3 -I pipeline/validators/mo8_gate.py renders/wp09/ex02_push_only_zoompan.mkv
+mo8_gate: the gate applies to the MASTER before the delivery encode (W-41). Limits: MO8a 0.05 px, MO8b 0.04 px; at most 96 frames.
+mo8_gate: ex02_push_only_zoompan.mkv  (48 frames, lossless-or-intermediate-clip (ffv1))
+  MO8a centre jitter   0.2026 px   limit 0.05   FAIL
+  MO8b edge jitter     0.0887 px   limit 0.04   FAIL
+  roughness (MO8c) 0.0587, ease class ease-in (accelerate), total zoom 6.176%   [information only, W-41]
+  NOTE a lossless / ProRes clip: good, this is a master
+  RESULT: FAIL
+[exit 1]
+
+$ python3 -I -B tests/win_kit2/dissolve_check.py renders/wp09/ex02.mp4
+dissolve 1 frame 119 (j=-1): fitted weight 0.003, expected 0.000, residual 0.70 grey levels ok
+dissolve 1 frame 120 (j= 0): fitted weight 0.004, expected 0.000, residual 0.71 grey levels ok
+dissolve 1 frame 126 (j= 6): fitted weight 0.250, expected 0.250, residual 1.01 grey levels ok
+dissolve 1 frame 132 (j=12): fitted weight 0.497, expected 0.500, residual 0.93 grey levels ok
+dissolve 1 frame 138 (j=18): fitted weight 0.745, expected 0.750, residual 1.12 grey levels ok
+dissolve 1 frame 143 (j=23): fitted weight 0.956, expected 0.958, residual 1.09 grey levels ok
+dissolve 1 frame 144 (j=24): fitted weight 0.993, expected 1.000, residual 0.77 grey levels ok
+dissolve 2 frame 239 (j=-1): fitted weight 0.007, expected 0.000, residual 0.73 grey levels ok
+dissolve 2 frame 240 (j= 0): fitted weight 0.007, expected 0.000, residual 0.73 grey levels ok
+dissolve 2 frame 246 (j= 6): fitted weight 0.255, expected 0.250, residual 1.07 grey levels ok
+dissolve 2 frame 252 (j=12): fitted weight 0.503, expected 0.500, residual 1.09 grey levels ok
+dissolve 2 frame 258 (j=18): fitted weight 0.751, expected 0.750, residual 1.08 grey levels ok
+dissolve 2 frame 263 (j=23): fitted weight 0.962, expected 0.958, residual 1.15 grey levels ok
+dissolve 2 frame 264 (j=24): fitted weight 0.997, expected 1.000, residual 0.81 grey levels ok
+DISSOLVES OK
+[exit 0]
+
+## 3. archive_init, archive_verify, the one-byte tamper test
+
+$ <scratch>/pwsh/pwsh -NoProfile -File win/kit2/archive_init.ps1 -Root renders/wp09/standin -Count 5
+[1/8] Checking the options and the folder you chose ... ok
+  folder: <project>/renders/wp09/standin
+  NOTE this folder is inside the project folder. That is fine for the practice stand-ins (renders\ is ignored by git). Real scans go in the encrypted container, never in the project folder.
+[2/8] Finding the project checksum scripts (mk_manifest.ps1 and verify_manifest.ps1) ... ok
+[3/8] Checking that the folder is new or empty ... ok
+[4/8] Creating the four folders (01_masters, 02_work, 03_exports, 04_reconstructions) ... ok
+[5/8] Writing manifest.csv and steps.csv (the header line only; you fill the rows) ... ok
+[6/8] Drawing 5 synthetic stand-in scan(s), box code ST, 16-bit TIFF, 300x200 (nothing of yours) ... ok
+[7/8] Writing checksums.txt for 01_masters with the project mk_manifest.ps1 (paths inside it are relative to 01_masters) ... ok
+[8/8] Reading it back with the project verify_manifest.ps1 ... 
+  checked 5 files, 0 problems
+Next: fill manifest.csv (one row per scan) in a spreadsheet or Notepad, then run  .\win\kit2\archive_verify.ps1 -Root <the same folder you gave here>
+files written (under <project>/renders/wp09/standin): 01_masters\; 02_work\; 03_exports\; 04_reconstructions\; manifest.csv; steps.csv; 01_masters\LJ-ST-0001-F.tif; 01_masters\LJ-ST-0002-F.tif; 01_masters\LJ-ST-0003-F.tif; 01_masters\LJ-ST-0004-F.tif; 01_masters\LJ-ST-0005-F.tif; checksums.txt
+[exit 0]
+
+$ <scratch>/pwsh/pwsh -NoProfile -File win/kit2/archive_verify.ps1 -Root renders/wp09/standin
+[1/5] Checking the folder you named ... ok (<project>/renders/wp09/standin)
+[2/5] Finding the project checksum script (verify_manifest.ps1) ... ok
+[3/5] Checking the four folders and the two record files ... 
+  ok      folder 01_masters
+  ok      folder 02_work
+  ok      folder 03_exports
+  ok      folder 04_reconstructions
+  ok      manifest.csv header (17 columns)
+  ok      steps.csv header (13 columns)
+[4/5] Checking every file in checksums.txt against its SHA-256 (verify_manifest.ps1, run inside 01_masters) ... 
+  checked 5 files, 0 problems
+[5/5] Looking for files in 01_masters that checksums.txt does not list ... 
+  unlisted files in 01_masters: 0 (information, not counted as a problem)
+RESULT: OK, no problems
+files written: none
+[exit 0]
+
+(one bit of one byte of LJ-ST-0003-F.tif flipped)
+
+$ <scratch>/pwsh/pwsh -NoProfile -File win/kit2/archive_verify.ps1 -Root renders/wp09/standin
+[1/5] Checking the folder you named ... ok (<project>/renders/wp09/standin)
+[2/5] Finding the project checksum script (verify_manifest.ps1) ... ok
+[3/5] Checking the four folders and the two record files ... 
+  ok      folder 01_masters
+  ok      folder 02_work
+  ok      folder 03_exports
+  ok      folder 04_reconstructions
+  ok      manifest.csv header (17 columns)
+  ok      steps.csv header (13 columns)
+[4/5] Checking every file in checksums.txt against its SHA-256 (verify_manifest.ps1, run inside 01_masters) ... 
+  MISMATCH LJ-ST-0003-F.tif
+  checked 5 files, 1 problems
+[5/5] Looking for files in 01_masters that checksums.txt does not list ... 
+  unlisted files in 01_masters: 0 (information, not counted as a problem)
+RESULT: 1 problem(s) found, see the PROBLEM, MISSING and MISMATCH lines above
+files written: none
+[exit 1]
+
+(file restored)
+
+$ <scratch>/pwsh/pwsh -NoProfile -File win/kit2/archive_verify.ps1 -Root renders/wp09/standin
+[1/5] Checking the folder you named ... ok (<project>/renders/wp09/standin)
+[2/5] Finding the project checksum script (verify_manifest.ps1) ... ok
+[3/5] Checking the four folders and the two record files ... 
+  ok      folder 01_masters
+  ok      folder 02_work
+  ok      folder 03_exports
+  ok      folder 04_reconstructions
+  ok      manifest.csv header (17 columns)
+  ok      steps.csv header (13 columns)
+[4/5] Checking every file in checksums.txt against its SHA-256 (verify_manifest.ps1, run inside 01_masters) ... 
+  checked 5 files, 0 problems
+[5/5] Looking for files in 01_masters that checksums.txt does not list ... 
+  unlisted files in 01_masters: 0 (information, not counted as a problem)
+RESULT: OK, no problems
+files written: none
+[exit 0]
+
+## 4. run_checks_pc.ps1: pattern self-test, planted refusal, clean fixture, derive, public_lint
+
+$ python3 -I -B tests/win_kit2/fixtures.py samples renders/wp09/samples.json
+samples: 111
+[exit 0]
+
+$ <scratch>/pwsh/pwsh -NoProfile -File win/kit2/run_checks_pc.ps1 -PatternSelfTest renders/wp09/samples.json 2>/dev/null | head -c 260; echo ' ...'
+{"consumer":"win/kit2/run_checks_pc.ps1","patterns_version":1,"results":{"email.pos.0":["email"],"email.pos.1":["email"],"email.neg.0":[],"email.neg.1":[],"email.neg.2":[],"email.neg.3":[],"ipv4.pos.0":["ipv4"],"ipv4.pos.1":["ipv4"],"ipv4.pos.2":["ipv4"],"ipv4 ...
+[exit 0]
+
+$ python3 -I scripts/public_lint.py --self-test
+self-test: 111 samples (built from fragments into <scratch>); patterns version 1
+consumer scripts/public_lint.py: ok (own regex set read from scripts/redaction_patterns.json; 111 samples)
+consumer scripts/windows_check.py: ok (111 samples compared on the report-scope categories)
+consumer win/step0_pc_tests.ps1: ok (111 samples compared on the report-scope categories via PowerShell 7.5.4)
+consumer win/kit2/run_checks_pc.ps1: ok (111 samples compared on the report-scope categories via PowerShell 7.5.4)
+self-test: no disagreement between consumers
+note: Windows PowerShell 5.1 was not available in this run; win/step0_pc_tests.ps1 was exercised on PowerShell 7 only (5.1 behaviour UNVERIFIED until the maker's PC runs this self-test).
+[exit 0]
+
+$ <scratch>/pwsh/pwsh -NoProfile -File win/kit2/run_checks_pc.ps1 -TestFixture renders/wp09/cp_raw_path.json -FakeUser <invented-user> -FakeComputer fakehost01 -FakeDomain fakedom -Out renders/wp09/cp_out_path.json
+[1/11] Loading the identifying-data patterns (scripts\redaction_patterns.json) ... ok
+TEST MODE: nothing was collected
+REDACTION CHECK FAILED, nothing was written
+category=profile_path_windows field=ffmpeg.configure[10] hit=C:********
+category=user_name field=ffmpeg.configure[10] hit=zo******
+category=user_name field=ffmpeg.configure[11] hit=zo******
+files written: none
+[exit 2]
+
+$ ls renders/wp09/cp_out_path.json 2>&1 | head -1
+ls: cannot access 'renders/wp09/cp_out_path.json': No such file or directory
+[exit 0]
+
+$ <scratch>/pwsh/pwsh -NoProfile -File win/kit2/run_checks_pc.ps1 -TestFixture renders/wp09/cp_raw_clean.json -FakeUser <invented-user> -FakeComputer fakehost01 -FakeDomain fakedom -Out renders/wp09/cp_out_clean.json
+[1/11] Loading the identifying-data patterns (scripts\redaction_patterns.json) ... ok
+TEST MODE: nothing was collected
+redaction check passed
+NOTE this file is inside the project folder. The raw record is for the chat only: do not commit it and do not move it into the project. (renders\ is ignored by git; the project also refuses files named colour_patch_pc*.json.)
+files written: <project>/renders/wp09/cp_out_clean.json
+[exit 0]
+
+$ python3 -I pipeline/validators/colour_patch.py --derive-from renders/wp09/cp_out_clean.json --out renders/wp09/cp_derived.json
+colour_patch: wrote the derived record cp_derived.json (ffmpeg 9.0.2, 4 chains, 2 controls). No build flags, no paths.
+[exit 0]
+
+$ python3 -I scripts/public_lint.py --paths renders/wp09/cp_derived.json
+public_lint: mode paths, 1 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+[exit 0]
+
+## 5. run_checks_pc.ps1, real run on this container's ffmpeg (6.1.1)
+
+$ env TEMP=<tmp> <scratch>/pwsh/pwsh -NoProfile -File win/kit2/run_checks_pc.ps1 -Out renders/wp09/cp_raw_real.json
+[1/11] Loading the identifying-data patterns (scripts\redaction_patterns.json) ... ok
+[2/11] Looking for Python 3 (py -3, python or python3) ... ok
+[3/11] Looking for ffmpeg (the one this PC will use) ... ok (ffmpeg 6.1.1)
+[4/11] Checking the project files this script uses ... ok
+[5/11] Making a 3-second test clip with this ffmpeg (a temporary folder under %TEMP%, deleted at the end) ... ok
+[6/11] Checking the clip against the online delivery profile (spec_check.py --profile online_h264) ... ok (all checks passed)
+[7/11] Joining the project chain file and the phone chain file for one run ... ok
+[8/11] Colour-patch test on this ffmpeg (colour_patch.py --all; this takes about a minute) ... ok (every chain within 3/255)
+[9/11] Scanning the record and the text below for identifying data (patterns file plus your own names) ... ok (nothing matched)
+NOTE name check skipped for a computer_name of 2 character(s): shorter than the minimum, so it would match ordinary words (the pattern checks still ran)
+
+  spec_check: clip.mp4 against profile online_h264 (online / private-link copy: H.264 High 4.1, BT.709, AAC-LC, -16 LUFS, -1 dBTP)
+    PASS container.readable     want ffprobe opens the file; got ok
+    PASS container.moov         want moov atom present; got present
+    PASS container.atoms        want atoms run to the end of the file; got complete
+    PASS container.faststart    want moov before mdat; got moov before mdat
+    PASS container.type         want MP4 brand (not QuickTime); got 'isom'
+    PASS video.streams          want exactly 1 video stream; got 1
+    PASS video.codec            want h264; got h264
+    PASS video.profile          want High; got High
+    PASS video.level            want 41; got 41
+    PASS video.pix_fmt          want yuv420p; got yuv420p
+    PASS video.alpha            want no alpha plane; got no alpha plane (pix_fmt yuv420p)
+    PASS video.size             want 1920x1080; got 1920x1080
+    PASS video.fps              want r_frame_rate = avg_frame_rate = 24/1; got r=24/1 avg=24/1
+    PASS video.frame_count      want nb_frames = round(duration x 24/1) = 72; got 72 (duration 3.000 s)
+    PASS video.color_range      want tv; got tv
+    PASS video.color_space      want bt709; got bt709
+    PASS video.color_primaries  want bt709; got bt709
+    PASS video.color_transfer   want bt709; got bt709
+    PASS audio.present          want at least 1 audio stream; got 1
+    PASS audio.codec            want aac; got aac
+    PASS audio.profile          want LC; got LC
+    PASS audio.sample_rate      want 48000 Hz; got 48000 Hz
+    PASS audio.channels         want 2; got 2
+    PASS audio.true_peak        want at most -1.0 dBTP; got -15.3 dBTP
+    PASS audio.integrated       want within +-1.0 LU of -16 LUFS; got -16.0 LUFS
+    PASS integrity.decode       want decodes with nothing on stderr; got clean
+    PASS metadata.neutral       want no tags except encoder (and structural tags); got clean
+  RESULT: PASS (27 checks)
+
+  colour_patch: ffmpeg 6.1.1 (sha256 ed16af623947...)
+  colour_patch: encodes 2 frames per chain into a temporary folder (deleted at the end), decodes them back, compares with the source.
+  colour_patch: tolerance 3/255 per channel (W-16). Pass/fail is on pixels; tags are shown for information.
+    h264_venue                     PASS  worst 1/255  accurate-decode 1   [red -1/+0/+0  grey50 +0/+0/+0  skin -1/-1/-1]
+    h264_backup_main40             PASS  worst 1/255  accurate-decode 1   [red -1/+0/+0  grey50 +0/+0/+0  skin -1/-1/-1]
+    h264_online                    PASS  worst 1/255  accurate-decode 1   [red -1/+0/+0  grey50 +0/+0/+0  skin -1/-1/-1]
+    prores422hq_master             PASS  worst 2/255  accurate-decode 0   [red -2/+0/+0  grey50 -2/-2/-2  skin -2/-1/-2]
+    prores4444_alpha               PASS  worst 0/255  accurate-decode 0  alpha-error 1   [red +0/+0/+0  grey50 +0/+0/+0  skin +0/+0/+0]
+    ffv1_lossless                  PASS  worst 0/255  accurate-decode 0   [red +0/+0/+0  grey50 +0/+0/+0  skin +0/+0/+0]
+    phone_1080                     PASS  worst 1/255  accurate-decode 1   [red -1/+0/+0  grey50 +0/+0/+0  skin -1/-1/-1]
+    phone_720_share                PASS  worst 1/255  accurate-decode 1  measured at 1280x720   [red -1/+0/+0  grey50 +0/+0/+0  skin -1/-1/-1]
+    control_h264_scale_first_B     PASS  worst 1/255  accurate-decode 1   [red -1/+0/+0  grey50 +0/+0/+0  skin -1/-1/-1]
+    control_h264_format_first_A    FAIL  worst 5/255  accurate-decode 4  TRAP PRESENT   [red -4/+0/+0  grey50 -4/-2/-2  skin -3/-3/-5]
+    control_h264_bare_pix_fmt      FAIL  worst 23/255  accurate-decode 24  TRAP PRESENT   [red +0/+23/+0  grey50 +0/+0/+0  skin +3/+1/-4]
+    control_prores4444_bare        FAIL  worst 25/255  accurate-decode 25  alpha-error 1  TRAP PRESENT   [red +0/+25/+0  grey50 +0/+0/+0  skin +5/+3/-2]
+    control_wrong_matrix_bt601     FAIL  worst 25/255  accurate-decode 25   [red +0/+25/+0  grey50 +0/+0/+0  skin +5/+3/-2]
+    control_lossless_709           PASS  worst 0/255  accurate-decode 0   [red +0/+0/+0  grey50 +0/+0/+0  skin +0/+0/+0]
+  RESULT chains: 8 of 8 within 3/255
+  RESULT controls: TRAP PRESENT on this build for: control_h264_format_first_A, control_h264_bare_pix_fmt, control_prores4444_bare
+  colour_patch: wrote the raw record (step 10 names the file). It holds build flags: the maker pastes it in chat only; never file it.
+
+[10/11] Writing the raw record (<project>/renders/wp09/cp_raw_real.json) ... ok
+NOTE this file is inside the project folder. The raw record is for the chat only: do not commit it and do not move it into the project. (renders\ is ignored by git; the project also refuses files named colour_patch_pc*.json.)
+[11/11] Deleting the temporary folder ... ok
+----- PASTE THIS IN THE CHAT, AFTER YOU HAVE READ IT -----
+ffmpeg 6.1.1  sha256 ed16af623947494a72e284b6eb8ff225f2da22b38b5d5069c2fd4b4ba3384e41
+spec_check online_h264: PASS
+colour_patch worst error per chain (limit 3, out of 255): h264_venue=1 h264_backup_main40=1 h264_online=1 prores422hq_master=2 prores4444_alpha=0 ffv1_lossless=0 phone_1080=1 phone_720_share=1
+controls: control_h264_scale_first_B=1 control_h264_format_first_A=5 control_h264_bare_pix_fmt=23 control_prores4444_bare=25 control_wrong_matrix_bt601=25 control_lossless_709=0
+raw record: <project>/renders/wp09/cp_raw_real.json  (open it in Notepad, read it, and paste its whole text in the chat too)
+Do not save it in the project folder and do not commit it. The project keeps only a short derived form made from your paste.
+----- END -----
+files written: <project>/renders/wp09/cp_raw_real.json
+[exit 0]
+
+$ python3 -I pipeline/validators/colour_patch.py --derive-from renders/wp09/cp_raw_real.json --out renders/wp09/cp_derived_real.json
+colour_patch: wrote the derived record cp_derived_real.json (ffmpeg 6.1.1, 8 chains, 6 controls). No build flags, no paths.
+[exit 0]
+
+$ python3 -I scripts/public_lint.py --paths renders/wp09/cp_derived_real.json
+public_lint: mode paths, 1 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+[exit 0]
+
+## 6. the refusal in the real flow (a build whose configure line carries a profile path and the user name)
+
+$ env USERNAME=<invented-user> TEMP=<tmp> <scratch>/pwsh/pwsh -NoProfile -File win/kit2/run_checks_pc.ps1 -Ffmpeg <tmp> -Out renders/wp09/cp_raw_refused.json
+[1/11] Loading the identifying-data patterns (scripts\redaction_patterns.json) ... ok
+[2/11] Looking for Python 3 (py -3, python or python3) ... ok
+[3/11] Looking for ffmpeg (the one this PC will use) ... ok (ffmpeg 6.1.1)
+[4/11] Checking the project files this script uses ... ok
+[5/11] Making a 3-second test clip with this ffmpeg (a temporary folder under %TEMP%, deleted at the end) ... ok
+[6/11] Checking the clip against the online delivery profile (spec_check.py --profile online_h264) ... ok (all checks passed)
+[7/11] Joining the project chain file and the phone chain file for one run ... ok
+[8/11] Colour-patch test on this ffmpeg (colour_patch.py --all; this takes about a minute) ... ok (every chain within 3/255)
+[9/11] Scanning the record and the text below for identifying data (patterns file plus your own names) ... REFUSED
+NOTE name check skipped for a computer_name of 2 character(s): shorter than the minimum, so it would match ordinary words (the pattern checks still ran)
+REDACTION CHECK FAILED, nothing was written
+category=profile_path_windows field=ffmpeg.configure[76] hit=C:********
+category=user_name field=ffmpeg.configure[76] hit=zo******
+[10/11] Writing the raw record (<project>/renders/wp09/cp_raw_refused.json) ... skipped (the scan refused)
+[11/11] Deleting the temporary folder ... ok
+files written: none
+[exit 2]
+
+$ ls renders/wp09/cp_raw_refused.json 2>&1 | head -1; echo temp entries left: $(ls -A <tmp> | wc -l)
+ls: cannot access 'renders/wp09/cp_raw_refused.json': No such file or directory
+temp entries left: 0
+[exit 0]

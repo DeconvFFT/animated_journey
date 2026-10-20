@@ -1,0 +1,30 @@
+WP-09 (Windows kit B) - everything that is UNVERIFIED, grouped. None of it is counted as a pass anywhere.
+Nothing in this package ran on Windows or on Windows PowerShell 5.1. What exists as evidence: PowerShell 7.5.4 on Linux (parsing, runs against
+Linux), ps_lint.py (5.1 syntax rules), and the Python tools on ffmpeg 6.1.1 (Linux). Each line below is also an UNVERIFIED envelope or a
+README statement.
+
+Windows behaviour of the scripts (kenburns_24.ps1, archive_init.ps1, archive_verify.ps1, run_checks_pc.ps1)
+ 1. Windows PowerShell 5.1: every cmdlet and .NET call (parsed by pwsh 7.5.4 and linted for 5.1 syntax only). Speed of the pixel loops that draw
+    the stand-in TIFFs (1.7 s for five on pwsh 7; 5.1 is slower).
+ 2. The py launcher (py -3), the Microsoft Store python stub (rejected by a text match on "Python 3.x"), and python / python3 as fallbacks.
+ 3. %TEMP% as the default for the raw colour file and for the temporary folder; a managed PC may differ; 8.3 short names in the temp path.
+ 4. Process start with argument quoting (Quote-Arg follows the CommandLineToArgvW rules): proven by a round trip on .NET on Linux, which parses
+    Arguments by the same rules, not on Windows.
+ 5. Execution-policy options A and B and Unblock-File (the same text as the first kit's README; never run on Windows).
+ 6. Show-Path: <project>, %TEMP% and %USERPROFILE% substitutions on Windows paths (exercised with Linux paths only).
+ 7. The 16-bit TIFF stand-ins opening in Windows apps (valid per ImageMagick and Pillow).
+ 8. Group Policy / constrained language mode behaviour (Add-Type is not used; .NET static calls are).
+
+Install and environment
+ 9. The winget ids Gyan.FFmpeg and Python.Python.3.13 (read from winget manifests on 2026-10-18; never run).
+10. Pillow and numpy installing as wheels with  py -3 -m pip install --user pillow numpy.
+11. python -I hides the pip --user folder (VERIFIED on Linux, see the report, finding F-1); kenburns_24.py adds that folder back for itself
+    (tested with a fake user site under -S); whether Windows' user site folder resolves the same way is UNVERIFIED.
+12. mo8_gate.py on the PC: its audit child runs under -I and so cannot see --user installs (finding F-1; the README says so).
+13. Memory use of ffmpeg while it joins the moves (0.76 GB maximum resident set on Linux) and the render time on the PC.
+
+ffmpeg 9.0.2 (the winget build)
+14. The h264_online and ffv1_lossless chains, the xfade join, the online_h264 profile (including the 1 kHz -16 LUFS test tone) and every
+    colour_patch result on ffmpeg 9.0.2: measured on 6.1.1 only. run_checks_pc.ps1 on the maker's PC is the test.
+15. Whether ffmpeg 9.0.2 prints a configuration line that trips a pattern (a user-name fragment, a path): the runner refuses and says so.
+16. Whether lavfi testsrc2 and sine exist in the winget build (they are in every normal build).

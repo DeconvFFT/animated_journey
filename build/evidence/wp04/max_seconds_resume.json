@@ -1,24 +1,24 @@
 {
- "actual": "first run stopped with 64 of 240 frames (remaining 176); second run skipped 64, now 240 frames; equal to uninterrupted: True",
+ "actual": "first run stopped with 66 of 240 frames (remaining 174); second run skipped 66, now 240 frames; equal to uninterrupted: True",
  "data": {
   "first": {
    "complete": false,
-   "frames_rendered": 64,
-   "remaining": 176,
+   "frames_rendered": 66,
+   "remaining": 174,
    "resume_hint": "soft cap reached: run the same command again to resume (finished frames are skipped)"
   },
   "second": {
    "complete": true,
-   "frames_rendered": 176,
-   "frames_skipped_existing": 64
+   "frames_rendered": 174,
+   "frames_skipped_existing": 66
   },
-  "seconds": 43.3
+  "seconds": 42.9
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 403,
-  "avail_mb_min": 403,
-  "avail_mb_start": 403,
+  "avail_mb_end": 754,
+  "avail_mb_min": 754,
+  "avail_mb_start": 754,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

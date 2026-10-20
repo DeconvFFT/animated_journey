@@ -1,0 +1,16 @@
+{
+  "schema": "lj-pc-chains/1",
+  "ffmpeg": {
+    "version": "6.1.1",
+    "sha256": "ed16af623947494a72e284b6eb8ff225f2da22b38b5d5069c2fd4b4ba3384e41"
+  },
+  "tolerance": 3,
+  "chains": [
+    {
+      "name": "phone_1080",
+      "worst_error": 1,
+      "pass": true
+    }
+  ],
+  "controls": []
+}

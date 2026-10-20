@@ -5,13 +5,13 @@
   "tools_root": "tools",
   "work_folder_names": ["work"],
   "never_touch_names": [],
-  "never_touch_paths": [],
+  "never_touch_paths": ["tools/photocraft-0.10.0/vault", "tools/effectcraft-0.11.1/Auto-Save/keep"],
   "apps": {
     "photocraft": {
       "status": "UNVERIFIED",
       "recent_files": [],
-      "cache": [],
-      "note": "synthetic test entry: an empty list is the shipped default"
+      "cache": ["photocraft-*/*"],
+      "note": "synthetic wildcard entry: it matches a media folder and a never_touch_paths folder, which must be REFUSED, not listed"
     },
     "lightcraft": {
       "status": "UNVERIFIED",

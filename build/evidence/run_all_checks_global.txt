@@ -1,0 +1,29 @@
+run_all_checks: mode global, started 2026-10-20T00:10:09Z
+tools: Python 3.13.16, node v22.22.0, ffmpeg version 6.1.1-3ubuntu5, pwsh 7.5.4
+branch: build/process-lock, head 22ed793, 225 changed or untracked path(s)
+disk: Avail 748 MB (plan floors: 400 soft, 250 hard)
+
+== Part A: global checks (15) ==
+[PASS   ] lint.self_test             exit 0      2s  note: Windows PowerShell 5.1 was not available in this run; win/step0_pc_tests.ps1 was exercised on PowerShell 7 only (5.1 behaviour UNVERIFIED until the maker's PC runs 
+[PASS   ] lint.diff_mode             exit 0      2s  public_lint: mode diff, 327 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 3 suppressed by the config allow list
+[PASS   ] lint.build_folders         exit 0      4s  public_lint: mode paths, 574 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 1 fixture note(s), 4 suppressed by the config allow list
+[PASS   ] lint.theme_guard           exit 0      2s  INFO only (existing playbooks, skills and research are never failed): .claude/skills: 65 keyword hit(s), playbooks: 183 keyword hit(s), research: 271 keyword hit(s)
+[PASS   ] stale.self_test            exit 0      1s  self-test: 1004 checks, 0 problems
+[PASS   ] stale.new_only             exit 0      9s  new-only: 0 new FAIL hit(s), 0 new WARN hit(s); 0 baseline hit(s) no longer present
+[PASS   ] ops.lint                   exit 0      1s  ops_lint: PASS (0 warning(s))
+[PASS   ] ops.decisions_mirror       exit 0      0s  OK: decisions.csv matches the register: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
+[PASS   ] ops.hours_report           exit 0      0s    no rows yet: log your real hours (see HOURS-HOWTO.md); the first logged week is read on Sun 1 Nov
+[PASS   ] win.ps_parse               exit 0      0s  ps_parse: 0 parse errors
+[PASS   ] win.ps_lint_read_only      exit 0      1s  TOTAL: 0 error(s), 0 warning(s) in 8 file(s)
+[PASS   ] win.ps_lint_writers        exit 0      0s  TOTAL: 0 error(s), 0 warning(s) in 2 file(s)
+[PASS   ] scratch.cleanup_dry_run    exit 0      0s  total that --yes would free: 209.1 MB in 9 item(s). Dry run: nothing was deleted.
+[PASS   ] repo.size_and_binary       exit 0      0s  size_and_binary: ok (0 over 1 MB, 0 binary, 2 allowed fixture(s))
+[PASS   ] repo.gitignore_coverage    exit 0      0s  gitignore_coverage: ok (0 not ignored, 0 hidden, 0 tracked-but-ignored)
+
+== Part B skipped (--global-only) ==
+
+== Summary ==
+Part A global checks: 15 PASS, 0 FAIL, 0 BLOCKED of 15
+disk: Avail 748 MB at start, lowest seen between stages 748 MB, 748 MB at end
+elapsed: 22 s
+RESULT: PASS (every global check and every landed area passed). Exit 0.

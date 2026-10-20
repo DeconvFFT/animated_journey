@@ -1,0 +1,55 @@
+{
+  "actual": "exit 0",
+  "date_utc": "2026-10-19",
+  "detail": {
+    "app": "filmcraft",
+    "avail_drop_includes_other_writers": true,
+    "avail_drop_mb": 80,
+    "avail_drop_over_plan_by_more_than_25_percent": false,
+    "df_after_mb": 743,
+    "df_before_mb": 690,
+    "df_delta_mb": 53,
+    "driver_envelopes_patched": [
+      "t3_filmcraft_v0.9.0.json",
+      "t3_filmcraft_v0.9.0.json"
+    ],
+    "exit_code": 0,
+    "fetched": false,
+    "guard_ledger": {
+      "exit": 0,
+      "lock_wait_s": 0,
+      "status": "ok"
+    },
+    "kept_tarball_deleted": true,
+    "label": "linux-cli",
+    "label_text": "Linux CLI result; not evidence for Windows",
+    "reason": "",
+    "stage": "filmcraft-v0.9.0",
+    "tag": "v0.9.0"
+  },
+  "disk": {
+    "avail_mb_end": 743,
+    "avail_mb_min": 610,
+    "avail_mb_start": 690,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 90
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "the stage ran inside lj_with_disk, ended with exit 0 and left vendor/craft-sp1b empty",
+  "notes": "kept_tarball_deleted=1 Linux CLI result; not evidence for Windows.",
+  "package": "WP-10",
+  "schema": "lj-evidence/1",
+  "stage": "",
+  "status": "PASS",
+  "test": "stage_filmcraft-v0.9.0",
+  "unverified_reasons": [
+    "Windows behaviour is not tested by a Linux CLI run (the maker's Windows five-minute test is the real evidence)"
+  ]
+}

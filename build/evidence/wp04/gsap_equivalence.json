@@ -16,13 +16,13 @@
    0
   ],
   "gsap_version": "3.15.0",
-  "seconds": 7.7
+  "seconds": 7.1
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 403,
-  "avail_mb_min": 403,
-  "avail_mb_start": 403,
+  "avail_mb_end": 754,
+  "avail_mb_min": 754,
+  "avail_mb_start": 754,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

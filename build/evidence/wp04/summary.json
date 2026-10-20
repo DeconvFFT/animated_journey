@@ -3,11 +3,11 @@
  "counts": {
   "PASS": 10
  },
- "date_utc": "2026-10-19",
+ "date_utc": "2026-10-20",
  "mode": "quick",
  "package": "WP-04",
  "schema": "lj-evidence-summary/1",
- "seconds": 26.1,
+ "seconds": 24.3,
  "tests": {
   "a10_alpha": "PASS",
   "a1_determinism_lite": "PASS",

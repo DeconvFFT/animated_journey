@@ -1,10 +1,10 @@
 {
  "actual": "e-mail, IPv4, IPv6, MAC, Windows and Linux profile paths, token, GUID, 65-hex run and handle planted: each found at its line, masked; a 64-hex SHA-256 passes",
- "date_utc": "2026-10-19",
+ "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 1115,
-  "avail_mb_min": 1115,
-  "avail_mb_start": 1117,
+  "avail_mb_end": 742,
+  "avail_mb_min": 742,
+  "avail_mb_start": 746,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

@@ -1,1 +1,1 @@
-{"label":"wp05-validators","planned_mb":150,"avail_mb_start":1120,"avail_mb_min":1099,"avail_mb_end":1121,"floor_mb":400,"hard_floor_mb":250,"date_utc":"2026-10-19","started_utc":"2026-10-19T15:12:01Z","ended_utc":"2026-10-19T15:14:49Z","lock_wait_s":0,"status":"ok","exit":0}
+{"label":"wp05-validators","planned_mb":150,"avail_mb_start":753,"avail_mb_min":738,"avail_mb_end":753,"floor_mb":400,"hard_floor_mb":250,"date_utc":"2026-10-19","started_utc":"2026-10-19T23:43:08Z","ended_utc":"2026-10-19T23:45:25Z","lock_wait_s":0,"status":"ok","exit":0}

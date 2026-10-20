@@ -1,0 +1,19 @@
+phone_check: ffmpeg 6.1.1-3ubuntu5; libass drawing, Pillow 12.3.0 with raqm 0.10.5; every figure marked (J) or UNVERIFIED in thresholds.json is a proposal or an assumption
+PASS  fill_crop_20x9_is_10_percent  10.00% of picture height off the top and again off the bottom
+PASS  fill_crop_19.5x9_is_about_9_percent  8.97%
+PASS  arcminute_arithmetic  2.0 mm at 35 cm = 19.64 arcmin
+PASS  wcag_white_on_black_is_21  21.0
+PASS  stroke_meter_tells_1px_from_4px  1 px line reads 1.00, 4 px line reads 4.00
+PASS  lint_flags_a_script_with_strings_and_no_marks  a block with strings and no marks[] is reported; the real file is clean
+PASS  tile_line_accepts_allowlisted_strings_only  two allowlisted words tile; an extra word does not
+PASS  known_tiny_caption_fails_portrait  FontSize 8: x-height 3.5 arcmin at 35 cm in portrait (floor 18)
+PASS  caption_at_twice_the_threshold_passes_portrait  FontSize 84: x-height 36.9 arcmin at 35 cm in portrait, which is 2.05 times the floor of 18; failed checks: none
+PASS  one_pixel_hairline_fails_shared  1 px line: 0.44 px on the share grid, keeps 0.26 of its contrast -> FAIL; 4 px control: 1.78 px, keeps 1.0 -> PASS
+PASS  thin_lines_are_reported_not_gated_at_the_default_gate  at the default gate (3 px) the 1 px line is reported (INFO), the 4 px line is gated (PASS)
+PASS  box_ending_at_95_percent_fails_fill_20x9  MarginV 9 puts the box bottom at 95.1% (limit <= 88.0) -> FAIL
+PASS  box_ending_at_85_percent_passes_fill_20x9  MarginV 38 puts the box bottom at 85.1% (limit <= 88.0) -> PASS
+PASS  the_cropped_caption_loses_ink  at 95% the share of the caption ink that stays on a filled 20:9 screen is 0.113
+PASS  marks_survive_in_the_correct_burn_in_(positive_control)  dev-pariksha PASS, dev-pustak PASS, dev-din PASS, dev-sankhya PASS, dev-shabd PASS
+PASS  deleted_mark_codepoints_fail_mark_survival_(negative_control)  dev-pariksha FAIL, dev-pustak FAIL, dev-din FAIL, dev-sankhya FAIL, dev-shabd FAIL
+PASS  script_without_strings_is_not_tested_never_pass  IoU status NOT TESTED, scenario status NOT TESTED, listed as not tested: True
+SELFTEST passed: every mechanism worked (no assertion about FontSize=23)

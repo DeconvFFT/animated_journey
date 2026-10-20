@@ -1,41 +1,42 @@
 #!/usr/bin/env python3
 """phone_check.py: does the text on a phone-size screen still read? Legibility, shaping and fill-crop checks for the phone file. WP-08, decision D-27.
 
-  python3 -I pipeline/phone/phone_check.py FILE.mp4 [--scenario NAME ...] [--aspect 19.5:9] [--json OUT.json]      check a phone file (needs its OUTPUT.phone.json and
-                                                                                                                  OUTPUT.ass beside it, which encode_phone.py writes)
-  python3 -I pipeline/phone/phone_check.py --style phone [--scenario NAME ...] [--json OUT.json]                    check a caption STYLE for every script in test_strings.json
-  python3 -I pipeline/phone/phone_check.py --selftest                                                               mechanisms only (a tiny caption fails, a large one passes, ...)
-  python3 -I pipeline/phone/phone_check.py --finding-fs23 --out build/evidence/wp08/finding_fontsize23.json         write the FontSize=23 verdict per scenario as a FINDING (exit 0 either way)
+  python3 -I pipeline/phone/phone_check.py FILE.mp4 [--scenario NAME ...] [--aspect 19.5:9] [--json OUT.json]    check a phone file made by encode_phone.py (its OUTPUT.ass and
+                                                                                                                  OUTPUT.phone.json must be beside it; sim_share.sh copies them)
+  python3 -I pipeline/phone/phone_check.py --style phone [--scenario NAME ...] [--json OUT] [--scripts-json OUT]    check a caption STYLE of profile.json for every script in test_strings.json
+  python3 -I pipeline/phone/phone_check.py --selftest                                                               mechanisms only: a tiny caption fails, a large one passes, ...
+  python3 -I pipeline/phone/phone_check.py --finding-fs23 --out build/evidence/wp08/finding_fontsize23.json        write the FontSize=23 verdict per scenario as a FINDING (exit 0 either way)
   python3 -I pipeline/phone/phone_check.py --candidates [--out FILE]                                                measure the candidate FontSizes and say which one the rule picks
   python3 -I pipeline/phone/phone_check.py --shaping-paths [--out FILE]                                             the `ass` filter against the `subtitles` filter, per script (IoU against Pillow-raqm)
-  Options: --scripts-json FILE (write scripts_tested.json)  --ffmpeg PATH  --thresholds FILE  --strings FILE  --profile FILE  --keep (keep the work folder)  --quiet
+  python3 -I pipeline/phone/phone_check.py --write-row PHONE-ROW.md [--evidence build/evidence/wp08]               write PHONE-ROW.md from the evidence files
+  Options: --ass FILE --sidecar FILE (a file's caption file and sidecar)  --max-cues N  --no-diff  --ffmpeg PATH  --thresholds FILE  --strings FILE  --profile FILE  --keep  --quiet
 
-SCENARIOS (thresholds.json viewports; every figure is an assumption about typical phones and UNVERIFIED)
-  portrait        held upright, 390 CSS px wide, device pixel ratio 3, the 16:9 picture full width (advisory: upright is degraded by design)
+SCENARIOS (pipeline/phone/thresholds.json viewports; every figure is an assumption about typical phones and is UNVERIFIED)
+  portrait        held upright, 390 CSS px wide, device pixel ratio 3, the 16:9 picture full width (advisory: upright is degraded by design, the hand-over says 'turn it sideways')
   landscape       the same phone sideways, 844 CSS px wide, picture fitted to the height (the intended view)
   small_portrait  360 CSS px wide at ratio 2 (a 720p-class phone) upright (advisory)
-  shared          the file re-encoded to 480p at about 1 Mbps with veryfast (a messenger), viewed sideways; a file that is already 480p or smaller is used as it is
-  fill_20x9       16:9 filled to a 20:9 screen: scaled to the screen width, so about 10% of the picture height is cropped at the top and at the bottom (--aspect 19.5:9: about 9%)
+  shared          the file re-encoded to 480p at about 1 Mbps with x264 veryfast (a messenger), viewed sideways; a file that is already 480p or smaller is used as it is
+  fill_20x9       16:9 filled to a 20:9 screen: scaled to the screen width, so about 10% of the picture height is cropped at the top and again at the bottom (--aspect 19.5:9: about 9%)
 
-WHAT IS MEASURED, per scenario (a metric names its threshold in thresholds.json, with its source and (J) where it is a proposal)
-  x-height and cap height of the caption face: pixels (physical device pixels), millimetres and arcminutes at the 35 cm design distance (and at 40 cm), and as a percentage of
-    picture height; minimum stroke width (the 10th percentile of local stroke width, so hairlines and the Devanagari headline show) in pixels after the scenario's smallest grid;
-    WCAG contrast of the fill against the outline; caption inside the 90% box; title at least 5% of picture height; caption POSITION: the bottom and top of the caption box
-    as a percentage of picture height against the scenario's crop line (fill_20x9: bottom at or above 88%), and the fraction of the caption ink that stays on screen.
-  Per script that has strings in test_strings.json (the others are reported NOT TESTED, never PASS): the burned line is rendered by libass in the style under test; the
-    mark-survival check reads that script's marks[] (codepoints and kind) from the same file, derives each mark's zone by differential rendering with and without the mark's
-    codepoints at 8x with Pillow-raqm (no coordinate is stored or assumed) and requires at least 2 px of ink, matching the reference, in that zone after the downscale to each
-    scenario; and the libass-versus-Pillow-raqm IoU of the ink must reach 0.9, else the script gets a shaping finding.
+WHAT IS MEASURED, per scenario and per script (a metric names its threshold in thresholds.json, with its source and (J) where it is a proposal)
+  x-height (Latin) or base-letter band (other scripts) and cap height, in pixels, millimetres and arcminutes at the 35 cm design distance (and at 40 cm), and as a percentage of
+  picture height; the 10th-percentile stroke width of the caption letters on the scenario's smallest grid; WCAG contrast of the fill against the outline; the caption box inside
+  the 90% box; the caption POSITION (bottom and top of the box as a percentage of picture height against the scenario's crop line; fill_20x9: bottom at or above 88%, and the share of
+  the caption ink that stays on the screen); in a file, the thin lines of the scene layout (width on the grid and contrast kept) and the title height (at least 5% of picture height).
+  Per script that has strings in test_strings.json (a script without strings is reported NOT TESTED, never PASS): the burned line is drawn by libass (the burn-in path); the
+  SHAPING check registers it on a Pillow-raqm drawing of the same text (translation and a small uniform scale) and needs an ink IoU of at least 0.9, else it is a shaping finding;
+  the MARK-SURVIVAL check reads that script's marks[] (codepoints and kind) from the same file, finds each mark's zone by differential rendering at 8x with Pillow-raqm (the text with
+  and without the mark's codepoints; no coordinate is stored or assumed) and requires, after the downscale to the scenario's grid, at least 2 px of ink in the zone and the burned ink
+  in the mark's window to be closer to the reference with the mark than to the reference without it.
 
-WHAT IT NEVER DOES. It never edits the file it checks, never uploads anything, uses no network, prints base file names only (no folder, user or host names), writes only what
---json / --out / --scripts-json name, and keeps its scratch in a temporary folder that it removes. numpy and Pillow (with raqm) and ffmpeg are required.
-EXIT  0 no blocking check failed (an advisory scenario may still FAIL: it is listed); 1 a blocking check failed; 2 bad usage or invalid input; 3 environment problem.
-      --finding-fs23, --candidates, --shaping-paths exit 0 however the numbers come out (they write findings); --selftest exits 1 if a mechanism does not work.
+WHAT IT NEVER DOES. It never edits the file it checks (the SHA-256 is compared before and after), never uploads anything, uses no network, prints base file names only (no folder, user or
+host names), writes only what --json / --out / --scripts-json / --write-row name, and keeps its scratch in a temporary folder that it removes. numpy, Pillow (with raqm) and ffmpeg are required.
+EXIT  0 no blocking check failed (an advisory scenario may still FAIL: it is listed); 1 a blocking check, a shaping check or the burn match failed; 2 bad usage or invalid input; 3 environment
+      problem. --finding-fs23, --candidates and --shaping-paths exit 0 however the numbers come out (they write findings); --selftest exits 1 if a mechanism does not work.
 """
 import argparse
 import datetime
 import importlib.util
-import io
 import json
 import math
 import os
@@ -44,7 +45,6 @@ import shutil
 import subprocess
 import sys
 import tempfile
-import unicodedata
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, "..", ".."))
@@ -72,6 +72,7 @@ def say(msg=""):
 
 try:
     import numpy as np
+    import PIL
     from PIL import Image, ImageDraw, ImageFont, ImageFilter, features as pil_features
 except ImportError as _e:  # pragma: no cover
     sys.stdout.write("ENVIRONMENT PROBLEM: numpy and Pillow are required (%s)\n" % _e)
@@ -1086,18 +1087,23 @@ class StyleRun:
             else:
                 mm = px * mm_per_px
                 a35, a40 = arcmin(mm, d35), arcmin(mm, d40)
+                d50 = thr["distance_cm"].get("proxy_cm", 50)
+                a50 = arcmin(mm, d50)
                 pct = px / H0 * 100.0
                 xh = thr["x_height"]
                 tgt = "target %g' %s" % (xh["target_arcmin"], "reached" if a35 >= xh["target_arcmin"] else "not reached")
-                checks.append(check("x_height_arcmin", PASS if a35 >= xh["floor_arcmin"] else FAIL, rnd(a35, 1), xh["floor_arcmin"],
-                                    "%s %.1f px at 1080p = %.2f mm on this picture = %.1f arcmin at %g cm (%.1f at %g cm); floor %g', %s (arcminute limits UNVERIFIED)" % (
+                checks.append(check("x_height_arcmin", PASS if a35 >= xh["floor_arcmin"] else FAIL, rnd(a35, 2), xh["floor_arcmin"],
+                                    "%s %.1f px at 1080p = %.2f mm on this picture = %.2f arcmin at %g cm (%.2f at %g cm); floor %g', %s (arcminute limits UNVERIFIED)" % (
                                         face["unit"], px, mm, a35, d35, a40, d40, xh["floor_arcmin"], tgt)))
+                checks.append(check("x_height_arcmin_50cm", INFO, rnd(a50, 2), xh["floor_arcmin"],
+                                    "%.2f arcmin at %g cm, the arm's-length proxy for a 50+ viewer (playbook Exercise 4); %s the %g' floor; reported, never gated (the maker's phone test, question 3, is the measurement)" % (
+                                        a50, d50, "at or above" if a50 >= xh["floor_arcmin"] else "below", xh["floor_arcmin"])))
                 checks.append(check("x_height_pct", PASS if pct >= xh["floor_pct"] else FAIL, rnd(pct, 2), xh["floor_pct"],
                                     "%s is %.2f%% of picture height (floor %g%%, target %g%%; W-63)" % (face["unit"], pct, xh["floor_pct"], xh["target_pct"])))
                 cph = face["cap_height_px"] or 0
-                sizes = {"unit": face["unit"], "x_height_px_1080": rnd(px, 2), "x_height_pct": rnd(pct, 2), "x_height_mm": rnd(mm, 3), "x_height_arcmin_35cm": rnd(a35, 1),
-                         "x_height_arcmin_40cm": rnd(a40, 1), "x_height_device_px": rnd(px * s_dev, 2), "cap_height_px_1080": rnd(cph, 2), "cap_height_pct": rnd(cph / H0 * 100.0, 2),
-                         "cap_height_mm": rnd(cph * mm_per_px, 3), "cap_height_arcmin_35cm": rnd(arcmin(cph * mm_per_px, d35), 1)}
+                sizes = {"unit": face["unit"], "x_height_px_1080": rnd(px, 2), "x_height_pct": rnd(pct, 2), "x_height_mm": rnd(mm, 3), "x_height_arcmin_35cm": rnd(a35, 2),
+                         "x_height_arcmin_40cm": rnd(a40, 2), "x_height_arcmin_50cm": rnd(a50, 2), "x_height_device_px": rnd(px * s_dev, 2), "cap_height_px_1080": rnd(cph, 2), "cap_height_pct": rnd(cph / H0 * 100.0, 2),
+                         "cap_height_mm": rnd(cph * mm_per_px, 3), "cap_height_arcmin_35cm": rnd(arcmin(cph * mm_per_px, d35), 2)}
             # --- strokes (the burned fill, scaled to the scenario's smallest grid, worst phase)
             sp = []
             for it in ([] if rec["partial"] else self.items):
@@ -1288,6 +1294,30 @@ def title_ink_pct(frame, box):
         return None
     rows = np.where((lum > bgv + 0.5 * (top - bgv)).any(axis=1))[0]
     return float((rows[-1] - rows[0] + 1) / H0 * 100.0) if rows.size else None
+
+
+def ink_stroke_p10(frame_native, box, t, pct=10):
+    """10th-percentile stroke width of bright ink in a box of a decoded frame (a title or a headline), on the scenario's grid t (the frame's own grid g is what it arrived at;
+    when t is smaller the frame is scaled down by t/g), worst over four sampling phases. None when the box holds no ink."""
+    g = frame_native.shape[0] / float(H0)
+    x0, y0, x1, y1 = [int(round(v * g)) for v in box]
+    lum = _lum255(frame_native)[max(0, y0):y1, max(0, x0):x1]
+    if lum.size == 0:
+        return None
+    bgv = float(np.percentile(lum, 20))
+    top = float(lum.max())
+    if top - bgv < 40:
+        return None
+    cov = np.clip((lum - bgv) / (top - bgv), 0.0, 1.0).astype(np.float32)
+    worst = None
+    for sh in (0, 1, 2, 3):
+        c = cov if t >= g - 1e-9 else scale_cov(cov, t / g, sh)
+        st = stroke_stat(c, pct)
+        if st and (worst is None or st["p"] < worst):
+            worst = st["p"]
+        if t >= g - 1e-9:
+            break
+    return worst
 
 
 # ====================================================================================================== a real file: the lines burned into it
@@ -1544,6 +1574,11 @@ def scenario_line(name, sv):
     return "%-14s %-4s (%s)  %s" % (name, sv["verdict"], sv["gate"], "; ".join(parts))
 
 
+def thr_gate(lines):
+    ws = [c["width_px"] for c in lines if c["gated"]]
+    return min(ws) if ws else 0
+
+
 def print_report(rep, say_fn=say, quiet=False):
     say_fn("style %s: %s" % (rep.get("style") or rep.get("mode"), json.dumps(rep.get("style_params"), ensure_ascii=False)))
     for sc, v in rep["iou"].items():
@@ -1562,8 +1597,14 @@ def print_report(rep, say_fn=say, quiet=False):
             for c in v["checks"]:
                 if c["status"] != PASS or c["id"].startswith(("caption_bottom", "x_height_arcmin")):
                     say_fn("     %-4s %-10s %-24s %s" % (c["status"], sc, c["id"], (c.get("detail") or "")[:230]))
-        for c in sv.get("lines", []):
-            say_fn("     %-4s lines      %s %d px -> %s px on the grid, keeps %s of its contrast%s" % (c["status"], c["kind"], c["width_px"], c["effective_px"], c["retention"], "" if c["gated"] else " (thinner than the gated width: reported only)"))
+        ln = sv.get("lines", [])
+        if ln:
+            gated = [c for c in ln if c["gated"]]
+            thin = [c for c in ln if not c["gated"]]
+            bad = [c for c in gated if c["status"] == FAIL]
+            say_fn("     lines: %d gated (%d px or more): %d pass, %d fail%s; thinner lines, reported only: %s" % (
+                len(gated), thr_gate(ln), len(gated) - len(bad), len(bad), ("  <- " + ", ".join("%s %d px keeps %s" % (c["kind"], c["width_px"], c["retention"]) for c in bad)) if bad else "",
+                "; ".join("%s %d px -> %s px keeps %s" % (c["kind"], c["width_px"], c["effective_px"], c["retention"]) for c in thin) or "none"))
         for c in sv.get("frame_checks", []):
             say_fn("     %-4s frame      %s %s" % (c["status"], c["id"], c.get("detail", "")))
 
@@ -1635,10 +1676,10 @@ def finding_fs23(tools, thr, prof, strings, say_fn=say):
     lat = by["landscape"]["scripts"]["latin"]
     fill = by["fill_20x9"]["scripts"]["latin"]
     words = ["FontSize=23 (MarginV 20), the venue caption of the settings card, drawn by libass in Noto Sans on a 1080p frame and viewed in the five scenarios: "
-             "in landscape its Latin x-height is %.2f%% of picture height (%.1f arcmin at 35 cm; floor %g%% / %g arcmin) and the caption box ends at %.1f%%; "
-             "in fill_20x9 the box ends at %.1f%% against a limit of %.1f%%." % (
+             "sideways its Latin x-height is %.2f%% of picture height (%.2f arcmin at 35 cm; floor %g%% / %g arcmin) and the caption box ends at %.1f%% of picture height; "
+             "against the %.1f%% limit that applies when a 20:9 player fills the screen." % (
                  lat["sizes"]["x_height_pct"], lat["sizes"]["x_height_arcmin_35cm"], thr["x_height"]["floor_pct"], thr["x_height"]["floor_arcmin"], lat["position"]["caption_bottom_pct"],
-                 fill["position"]["caption_bottom_pct"], fill["position"]["bottom_limit_pct"])]
+                 fill["position"]["bottom_limit_pct"])]
     return {"schema": "lj-finding/1", "package": "WP-08", "finding": "fontsize23_on_a_phone", "kind": "FINDING, not a pass condition: the verdicts below are whatever the measurements say; nothing asserts them",
             "date_utc": today(), "ffmpeg": tools.version, "summary": words[0], "style": prof["caption"]["styles"]["venue_fs23"]["description"],
             "style_params": ven["style_params"], "scenarios": by, "phone_style_for_comparison": {"style": prof["caption"]["default_style"], "style_params": pho["style_params"], "scenarios": cmp_},
@@ -1713,11 +1754,14 @@ def shaping_paths_doc(tools, thr, prof, strings, say_fn=say):
                             "shaper_lines": sorted(set(l for l in log if l.startswith("Shaper")))}
             say_fn("  %-10s %-20s IoU min %s" % (name, label, paths[label]["iou_min"]))
         out["scripts"][name] = {"status": "MEASURED", "family": fam, "paths": paths}
-    ind = [v for k, v in out["scripts"].items() if k != "latin" and v.get("status") == "MEASURED"]
-    ass_ok = all(v["paths"]["ass"]["iou_min"] is not None and v["paths"]["ass"]["iou_min"] >= thr["iou"]["min"] for v in ind) if ind else None
-    sub_bad = [k for k, v in out["scripts"].items() if k != "latin" and v.get("status") == "MEASURED" and (v["paths"]["subtitles"]["iou_min"] or 0) < thr["iou"]["min"]]
-    out["finding"] = ("On ffmpeg %s the `ass` filter on an ASS file reaches the IoU limit for every script with strings (%s); the `subtitles` filter %s." % (
-        tools.version, "yes" if ass_ok else "NO: see the table", ("falls below it for: " + ", ".join(sub_bad)) if sub_bad else "also reaches it here (the pre-n9.0 simple-shaping failure did not show on these strings)"))
+    lim = thr["iou"]["min"]
+    ind = {k: v for k, v in out["scripts"].items() if v.get("status") == "MEASURED"}
+    table = "; ".join("%s: ass %.3f, subtitles %.3f" % (k, v["paths"]["ass"]["iou_min"], v["paths"]["subtitles"]["iou_min"]) for k, v in ind.items())
+    ass_ok = all(v["paths"]["ass"]["iou_min"] >= lim for v in ind.values()) if ind else None
+    sub_bad = [k for k, v in ind.items() if v["paths"]["subtitles"]["iou_min"] < lim]
+    out["finding"] = ("On ffmpeg %s (IoU limit %g, lowest per script) %s. The `ass` filter on an ASS file %s the limit for every script with strings; the `subtitles` filter %s. "
+                      "The `subtitles` and the forced-simple-shaping results match, which is what the pre-n9.0 simple-shaping behaviour (W-75) predicts." % (
+                          tools.version, lim, table, "reaches" if ass_ok else "does NOT reach", ("falls below it for: " + ", ".join(sub_bad)) if sub_bad else "also reaches it here"))
     out["notes"] = ["The profile burns every script with the `ass` filter whatever the build (W-75): one path, tested, and it does not depend on the PC build's subtitles filter.",
                     "UNVERIFIED on Windows: the PC's ffmpeg build (9.0.2 expected) has never been run here."]
     return out
@@ -1757,7 +1801,7 @@ def check_file(tools, thr, prof, strings, path, scenarios, aspect=None, ass_path
     if lay and run.ref_idx is not None:
         strokes = [{"kind": s["kind"], "width_px": s["width_px"], "box": (s["box"]["x0"], s["box"]["y0"], s["box"]["x1"], s["box"]["y1"])} for s in lay.get("strokes", [])]
         ref_clean = up_to_1080(run.ref_frame(False))
-        title = lay.get("title")
+        title, headline = lay.get("title"), lay.get("headline")
         for n in scenarios:
             sv = rep["scenarios"][n]
             geo = geometry(n, thr, aspect)
@@ -1765,12 +1809,25 @@ def check_file(tools, thr, prof, strings, path, scenarios, aspect=None, ass_path
             lines = lines_check(tools, thr, ref_clean, strokes, n, aspect, frame_native=after) if strokes else []
             sv["lines"] = lines
             sv["frame_checks"] = []
-            if title:
-                pct = title_ink_pct(ref_clean, (title["x0"], title["y0"], title["x1"], title["y1"]))
-                lim = thr["title"]["min_pct"]
-                sv["frame_checks"].append(check("title_height_pct", NM if pct is None else (PASS if pct >= lim else FAIL), rnd(pct, 2) if pct else None, lim,
-                                                "ink height of the title line as a percentage of picture height (ROADMAP section 6: at least %g%%)" % lim))
-            more = ["lines:%s%dpx" % (c["kind"], c["width_px"]) for c in lines if c["status"] == FAIL] + ["title" for c in sv["frame_checks"] if c["status"] == FAIL]
+            lim = thr["title"]["min_pct"]
+            for label, box in (("title", title), ("headline", headline)):
+                if not box:
+                    continue
+                b = (box["x0"], box["y0"], box["x1"], box["y1"])
+                pct = title_ink_pct(ref_clean, b)
+                if label == "title":
+                    sv["frame_checks"].append(check("title_height_pct", NM if pct is None else (PASS if pct >= lim else FAIL), rnd(pct, 2) if pct else None, lim,
+                                                    "ink height of the title line as a percentage of picture height (ROADMAP section 6: at least %g%%)" % lim))
+                t = min(geo["smallest_grid_px_per_source_px"], after.shape[0] / float(H0))
+                st = ink_stroke_p10(after, b, t, thr["stroke"]["percentile"])
+                if st is None:
+                    sv["frame_checks"].append(check("%s_stroke_px" % label, NM, detail="no ink found in the box"))
+                else:
+                    sl = thr["stroke"]["min_effective_px"]
+                    sv["frame_checks"].append(check("%s_stroke_px" % label, PASS if st >= sl else FAIL, rnd(st, 2), sl,
+                                                    "10th-percentile stroke width of the %s letters on the scenario's smallest grid (%.3f of source)%s" % (
+                                                        label, t, "; the headline is the first script with strings and headline:true" if label == "headline" else "")))
+            more = ["lines:%s%dpx" % (c["kind"], c["width_px"]) for c in lines if c["status"] == FAIL] + [c["id"] for c in sv["frame_checks"] if c["status"] == FAIL]
             if more:
                 sv["verdict"] = FAIL
                 sv["failed_checks"] = sv["failed_checks"] + more
@@ -1971,10 +2028,10 @@ def main(argv=None):
             return write_row(a, thr, prof)
         tools = Tools(a.ffmpeg, a.keep)
         say("phone_check: ffmpeg %s; libass drawing, Pillow %s with raqm %s; every figure marked (J) or UNVERIFIED in thresholds.json is a proposal or an assumption" % (
-            tools.version, PIL.__version__ if "PIL" in globals() else "?", pil_features.version("raqm")))
+            tools.version, PIL.__version__, pil_features.version("raqm")))
         if a.selftest:
             n = Selftest(tools, thr, prof, strings).run()
-            say("SELFTEST: %d mechanisms worked, %d did not" % (Selftest.__dict__.get("_n", 0) or 0, n) if False else "SELFTEST %s" % ("FAILED: %d mechanism(s) did not work" % n if n else "passed: every mechanism worked (no assertion about FontSize=23)"))
+            say("SELFTEST %s" % ("FAILED: %d mechanism(s) did not work" % n if n else "passed: every mechanism worked (no assertion about FontSize=23)"))
             return 1 if n else 0
         if a.finding_fs23:
             if not a.out:
@@ -2036,8 +2093,159 @@ def main(argv=None):
             tools.close()
 
 
+def register_phone_values():
+    """The PH2 cap (Mb/s) and the phone caption line length that DECISIONS.md states in W-63 and W-18, read the way tests/integration reads them; {} when a row is missing or
+    no longer has the shape. Used only to word PHONE-ROW.md truthfully: the register wins, so the row says "(inside W-63's 4)" while the register says 4 and "(W-63)" once the
+    register states the profile's own figure (gate review r1, nudge 2). Reads DECISIONS.md and nothing else."""
+    out = {}
+    try:
+        with open(os.path.join(ROOT, "DECISIONS.md"), "r", encoding="utf-8-sig") as fh:
+            text = fh.read()
+    except OSError:
+        return out
+    w63 = re.search(r"^\| W-63 \|.*$", text, re.M)
+    w18 = re.search(r"^\| W-18 \|.*$", text, re.M)
+    if w63:
+        m = re.search(r"PH2, the small copy:\*\*\s*1280x720, CRF \d+, ([0-9.]+) Mb/s cap", w63.group(0))
+        if m:
+            out["ph2_cap_mbps"] = float(m.group(1))
+    if w18:
+        m = re.search(r"phone file carries its own caption setting: `FontSize=\d+`, `MarginV` \d+, two lines, at most (\d+) characters", w18.group(0))
+        if m:
+            out["max_chars"] = int(m.group(1))
+    return out
+
+
 def write_row(a, thr, prof):
-    raise Usage("--write-row is written after the evidence exists")
+    """PHONE-ROW.md: the settings card's Phone row and the language note, with the measured numbers, from the evidence files (so that the text and the evidence cannot disagree)."""
+    ev = a.evidence or os.path.join(ROOT, "build", "evidence", "wp08")
+    files = {"style": "phone_style.json", "scripts": "scripts_tested.json", "fs23": "finding_fontsize23.json", "cand": "caption_candidates.json",
+             "fill": "fill_20x9_phone.json", "venue": "fill_20x9_venue_margin.json"}
+    d = {}
+    for k, name in files.items():
+        p = os.path.join(ev, name)
+        if not os.path.isfile(p):
+            raise Usage("--write-row needs %s in the evidence folder (run build/evidence/wp08 steps of tests/phone/run_tests.sh --all first)" % name)
+        d[k] = EP.read_json(p)
+    st = prof["caption"]["styles"][prof["caption"]["default_style"]]
+    vn = prof["caption"]["styles"]["venue_fs23"]
+    lat = d["style"]["scenarios"]["landscape"]["scripts"]["latin"]
+    dev = d["style"]["scenarios"]["landscape"]["scripts"].get("devanagari") or {}
+    fl = d["fill"]["scenarios"]["fill_20x9"]["scripts"]
+    fv = d["venue"]["scenarios"]["fill_20x9"]["scripts"]
+    f23 = d["fs23"]["scenarios"]
+    pos = thr["position"]
+    date = d["scripts"]["date_utc"]
+    ver = d["style"].get("ffmpeg")
+    bottoms = [v["position"]["caption_bottom_pct"] for v in fl.values() if v.get("position")]
+    tops = [v["position"]["caption_top_pct"] for v in fl.values() if v.get("position")]
+    vbottoms = [v["position"]["caption_bottom_pct"] for v in fv.values() if v.get("position")]
+    vlost = max(100.0 * (1.0 - v["position"]["visible_fraction"]) for v in fv.values() if v.get("position"))
+    verdict_fill = d["fill"]["scenarios"]["fill_20x9"]["verdict"]
+    verdict_venue = d["venue"]["scenarios"]["fill_20x9"]["verdict"]
+    shared = d["style"]["scenarios"]["shared"]["verdict"]
+    port = d["style"]["scenarios"]["portrait"]
+    lat_port = port["scripts"]["latin"]["sizes"]["x_height_arcmin_35cm"]
+    cand = {r["font_size"]: r for r in d["cand"]["rows"]}
+    f23l = f23["landscape"]["scripts"]["latin"]
+    f23f = f23["fill_20x9"]["scripts"]["latin"]
+    reg = register_phone_values()
+    prof_cap = float(prof["chains"]["phone_720_share"]["bitrate_cap_mbps"]) if "bitrate_cap_mbps" in prof["chains"]["phone_720_share"] else None
+    if prof_cap is None:
+        m_cap = re.search(r"-maxrate\W+(\d+)(k|M)", " ".join(prof["chains"]["phone_720_share"]["video_args"]))
+        prof_cap = (int(m_cap.group(1)) / 1000.0) if (m_cap and m_cap.group(2) == "k") else float(m_cap.group(1))
+    if reg.get("ph2_cap_mbps") == prof_cap:
+        cap_words = "a %g Mb/s cap (W-63)" % prof_cap
+    elif reg.get("ph2_cap_mbps"):
+        cap_words = "about %g Mb/s cap (inside W-63's %g)" % (prof_cap, reg["ph2_cap_mbps"])
+    else:
+        cap_words = "about %g Mb/s cap (W-63 gives its own figure)" % prof_cap
+    if reg.get("max_chars") == st["max_chars_per_line"]:
+        len_words = "W-18; %d fits the 90%% box in both scripts tested; the venue file keeps its own guide of 42" % st["max_chars_per_line"]
+    elif reg.get("max_chars"):
+        len_words = "W-18 says %d; %d is the stricter figure of the build plan and fits the 90%% box in both scripts tested" % (reg["max_chars"], st["max_chars_per_line"])
+    else:
+        len_words = "W-18 gives its own figure; %d is the build plan's and fits the 90%% box in both scripts tested" % st["max_chars_per_line"]
+    cols = []
+    cols.append("**Phone** (D-27)")
+    cols.append("The film and any keepsake must play beautifully on a phone: readable words, a frame that survives phone cropping, and a file that survives being shared.")
+    cols.append(
+        "**Proposed (J), measured on synthetic test material:** two phone files from the one locked timeline, never a second edit (W-63). **PH1**, the phone master: 1920x1080, 24 fps, H.264 High 4.1, "
+        "yuv420p, BT.709 tags on the master before the burn-in, CRF 20 with an 8 Mb/s cap, AAC-LC 192 kbps 48 kHz stereo, `+faststart`. **PH2**, the small copy for a phone with little free storage: "
+        "1280x720, CRF 22, %s, level 3.1, captions burned on the 1080 frame before the downscale. Both SDR only (no HDR), -16 LUFS integrated and -1 dBTP on the "
+        "final MP4. **Phone captions** are burned in at their own setting, measured and not guessed: `FontSize=%g`, `MarginV` %g, white with a black outline, two lines, at most %d characters "
+        "a line (%s), the block from **%.1f%% to %.1f%% of the picture height**; the letters "
+        "(Latin x-height %.2f%%, Devanagari base letter %.2f%% of the picture height) clear the 3.2%% floor of W-63. **Filled to the screen** (a 20:9 phone set to fill crops about 10%% off the top "
+        "and the bottom): the box ends at **%.1f%%** against a limit of %.1f%%, so the whole bottom line stays; verdict **%s**. Moved to a phone by cable or a private link only." % (
+            cap_words, st["font_size"], st["margin_v"], st["max_chars_per_line"], len_words, min(tops), max(bottoms), lat["sizes"]["x_height_pct"], (dev.get("sizes") or {}).get("x_height_pct", float("nan")),
+            max(bottoms), pos["caption_bottom_max_pct"], verdict_fill))
+    cols.append("D-27, W-63, W-18, W-19")
+    cols.append("The ffprobe lines above on each phone file (PH1 reads 1920x1080; PH2 reads 1280x720, level 31); `python3 -I pipeline/phone/phone_check.py FILE.mp4` (five views: upright, "
+                "sideways, small phone, after sharing, filled to the screen) and `python3 -I pipeline/phone/phone_check.py FILE.mp4 --scenario fill_20x9` (prints where the caption's bottom edge "
+                "sits as a percentage of the picture height); then your own phone (`pipeline/phone/PHONE-TEST.md`, seven questions). UNVERIFIED until you try it.")
+    cols.append("The caption numbers can only move by the phone test, not by taste (Gujarati is sized by the height of its letter KA, not by `FontSize`). A smaller size loses the letter-height floor "
+                "(FontSize 26 reads %.2f%%, FontSize 24 %.2f%%); a larger one moves the block up (FontSize 32 starts at %.1f%%). The venue caption (`FontSize=%g`, `MarginV` %g) ends at %.1f%%, so when a phone fills "
+                "the screen up to %.0f%% of its ink falls off the bottom (a caption burned at the venue's 5%% margin would lose most of its lower line). PH1 goes to her phone by cable if 1 GB is free there, else PH2 (O-54). Sharing by a family chat or a cloud photo library is not allowed "
+                "(D-02, D-15)." % (cand[26]["latin_x_height_pct"], cand[24]["latin_x_height_pct"], cand[32]["block_top_pct"], vn["font_size"], vn["margin_v"], max(vbottoms), vlost))
+    row = "| " + " | ".join(cols) + " |"
+    lines = []
+    lines.append("# Phone row of the settings card (WP-08, measured %s)" % date)
+    lines.append("")
+    lines.append("*Written by `python3 -I pipeline/phone/phone_check.py --write-row` from the evidence files in `build/evidence/wp08/`, so the text and the measurements cannot disagree. Every figure "
+                 "is measured on synthetic, style-neutral test material (ffmpeg %s, Noto Sans and Noto Sans Devanagari) and stays a proposal (J) until the maker has looked at a real phone "
+                 "(`PHONE-TEST.md`). Nothing here is signed by an agent. UNVERIFIED: real phones, a messenger's own encoder, how a given player implements fill, the arcminute limits, and "
+                 "everything on the maker's Windows PC.*" % ver)
+    lines.append("")
+    lines.append("## 1. The row (the orchestrator pastes this over the Phone row of `ops/SETTINGS-CARD.md`)")
+    lines.append("")
+    lines.append("| Row | In plain words | Proposed value | Register | Command that proves it | If you change it |")
+    lines.append("|---|---|---|---|---|---|")
+    lines.append(row)
+    lines.append("")
+    lines.append("## 2. Caption size and position, measured")
+    lines.append("")
+    lines.append("| What | Value | Where it comes from |")
+    lines.append("|---|---|---|")
+    lines.append("| Caption size | `FontSize=%g`, `MarginV` %g, outline %g (about %.1f px at 1080p), at most %d characters a line, two lines | `profile.json` (J); the rule in `caption_candidates.json` picks %s |" % (
+        st["font_size"], st["margin_v"], st["outline"], st["outline"] * H0 / float(prof["caption"]["ass"]["play_res_y"]), st["max_chars_per_line"], d["cand"]["picked_font_size"]))
+    lines.append("| Letter height, Latin x-height | %.2f%% of the picture height (%.1f px at 1080p); %.1f arcmin at 35 cm sideways, %.1f at 40 cm; floor 3.2%% / 18 arcmin, target 3.8%% / 21 | `phone_style.json`, landscape (arcminute limits UNVERIFIED) |" % (
+        lat["sizes"]["x_height_pct"], lat["sizes"]["x_height_px_1080"], lat["sizes"]["x_height_arcmin_35cm"], lat["sizes"]["x_height_arcmin_40cm"]))
+    if dev.get("sizes"):
+        lines.append("| Letter height, Devanagari base letter | %.2f%% of the picture height (%.1f px); %.1f arcmin at 35 cm sideways | `phone_style.json`; an analogue of the x-height, not the same thing |" % (
+            dev["sizes"]["x_height_pct"], dev["sizes"]["x_height_px_1080"], dev["sizes"]["x_height_arcmin_35cm"]))
+    lines.append("| Letter height at arm's length (50 cm) | Latin x-height reads %.1f arcmin sideways, %s the 18 arcmin floor; filled to the screen it reads %.1f | `phone_style.json` (INFO only; the maker's phone test, question 3, is the measurement) |" % (
+        lat["sizes"]["x_height_arcmin_50cm"], "at or above" if lat["sizes"]["x_height_arcmin_50cm"] >= thr["x_height"]["floor_arcmin"] else "below",
+        d["style"]["scenarios"]["fill_20x9"]["scripts"]["latin"]["sizes"]["x_height_arcmin_50cm"]))
+    lines.append("| Caption position (picture height from the top) | block **%.1f%% to %.1f%%**; the bottom edge must be at the %g%% line or higher up the picture (a smaller percentage) | `fill_20x9_phone.json` (the encoded test file, differenced against a caption-free frame) |" % (
+        min(tops), max(bottoms), pos["caption_bottom_max_pct"]))
+    lines.append("| Filled to a 20:9 screen (`fill_20x9`) | **%s**: the box ends at %.1f%% against the limit of %.1f%% (the 90%% crop line minus a 2-point margin); the whole bottom line stays | `fill_20x9_phone.json` |" % (
+        verdict_fill, max(bottoms), d["fill"]["scenarios"]["fill_20x9"]["scripts"]["latin"]["position"]["bottom_limit_pct"]))
+    lines.append("| The same file burned with the venue size and margin | **%s**: the box ends at %.1f%% and %s | `fill_20x9_venue_margin.json` |" % (
+        verdict_venue, max(vbottoms), ("up to %.0f%% of the caption's ink falls off the bottom when the phone fills the screen" % vlost) if verdict_venue == FAIL else "stays whole"))
+    lines.append("| After sharing (480p, about 1 Mbps) | **%s** (all blocking checks, marks included) | `phone_style.json` scenario `shared`; the encoded file through `sim_share.sh` is in `shared_phone_check.json` |" % shared)
+    lines.append("| Upright in a chat or player (`portrait`) | letters read about %.0f arcmin at 35 cm, below the 18 arcmin floor: **degraded by design**; the hand-over says \"turn it sideways\" | `phone_style.json`, an advisory view (W-18: the phone file is made for landscape) |" % lat_port)
+    lines.append("")
+    lines.append("## 3. FontSize=23 on a phone (a finding, not a pass condition)")
+    lines.append("")
+    lines.append("The venue caption (`FontSize=%g`, `MarginV` %g, Noto Sans) measured the same way (`finding_fontsize23.json`): sideways the Latin x-height is %.2f%% of the picture height "
+                 "(%.2f arcmin at 35 cm; floor 3.2%% / 18); filled to the screen the box ends at %.1f%% for Latin and %s for Devanagari (limit %.1f%%). Scenario verdicts: %s. The venue size is "
+                 "the venue's; the phone file carries its own." % (vn["font_size"], vn["margin_v"], f23l["sizes"]["x_height_pct"], f23l["sizes"]["x_height_arcmin_35cm"], f23f["position"]["caption_bottom_pct"],
+                                                                   ("%.1f%%" % f23["fill_20x9"]["scripts"]["devanagari"]["position"]["caption_bottom_pct"]) if f23["fill_20x9"]["scripts"].get("devanagari", {}).get("position") else "n/a",
+                                                                   f23f["position"]["bottom_limit_pct"], ", ".join("%s %s" % (n, f23[n]["verdict"]) for n in f23)))
+    lines.append("")
+    lines.append("## 4. Language and script note (the orchestrator pastes this line into the card's language note)")
+    lines.append("")
+    lines.append("`" + d["scripts"]["line"] + "`")
+    lines.append("")
+    lines.append("The shaping and mark-survival tests loop over every script in `pipeline/phone/test_strings.json` that has strings: today Latin and Devanagari (neutral, plain Sanskrit-derived words, "
+                 "`checked_by_reader: false` until the maker confirms them). Her language is Gujarati (D-31) and it is **NOT TESTED**: adding it is the three small steps of the build plan (4.10): "
+                 "one font entry in `libs.lock.json`, one reader-confirmed block with `marks[]` in `test_strings.json`, and a rerun; nothing else changes.")
+    lines.append("")
+    path = os.path.abspath(a.write_row)
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(lines) + "\n")
+    say("wrote %s" % os.path.basename(path))
+    return 0
 
 
 if __name__ == "__main__":

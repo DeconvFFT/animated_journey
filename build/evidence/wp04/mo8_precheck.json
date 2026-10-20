@@ -11,7 +11,7 @@
    "mo8b_edge_jit_px": 0.3354,
    "render_exit": 0
   },
-  "seconds": 29.2,
+  "seconds": 28.4,
   "transform": {
    "audit_exit": 0,
    "ease_class": "ease in-out",
@@ -25,9 +25,9 @@
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 402,
-  "avail_mb_min": 402,
-  "avail_mb_start": 403,
+  "avail_mb_end": 754,
+  "avail_mb_min": 754,
+  "avail_mb_start": 754,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

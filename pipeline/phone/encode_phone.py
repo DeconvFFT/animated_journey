@@ -21,11 +21,12 @@ without any warning (W-75). The `ass` filter on an ASS file shapes correctly on 
 serves every script. ffmpeg runs with its working folder set to the work folder and only RELATIVE file names (caps.ass, fonts) inside the filter string,
 so a Windows drive-letter colon never reaches the filter (the caption_xheight round-2 lesson). The master and the output are ordinary arguments.
 
-WHAT IT NEVER TOUCHES. It never writes to the master, never edits the caption file, never uploads anything, and never uses the network. It writes only
+WHAT IT NEVER TOUCHES. It never writes to the master, never edits the caption file, never uploads anything, and never uses the network. It replaces an existing OUTPUT only when
+OUTPUT.phone.json says this tool made it (so the same command can be run again); any other existing file is refused unless --overwrite is given. It writes only
 OUTPUT, OUTPUT.phone.json, OUTPUT.ass and its own work folder (removed at the end unless --keep-work). It prints base names only, no folder paths, no user
 or host names. Caption text is never printed (a real film's captions are private); only cue numbers and character counts.
 
-OPTIONS  --profile NAME (phone_1080)   --style NAME (profile caption.default_style)   --no-captions   --layout FILE (a scene report's layout, copied into the sidecar)
+OPTIONS  --profile NAME (phone_1080)   --style NAME (profile caption.default_style)   --no-captions   --layout FILE (a render.mjs report or a scene report; its layout is copied into the sidecar for phone_check.py)
          --fontsdir DIR (extra .ttf/.otf/.woff files copied into the work folder's fonts)   --family SCRIPT=NAME (repeatable; font family name for a script)
          --ffmpeg PATH (or env FFMPEG)   --ffprobe PATH   --work DIR   --keep-work   --allow-long-lines   --overwrite   --dry-run (print the plan, run nothing)   --no-sidecar
 EXIT     0 done and every own check passed; 1 the file was made but one of its own checks failed (a finding); 2 bad usage or invalid input; 3 environment
@@ -443,6 +444,16 @@ def encode_audio(ffmpeg, src_abs, workdir, chain, enc, say_fn):
 
 
 # ------------------------------------------------------------------------------------------------ main
+def own_product(path):
+    """True when `path` is a file this tool wrote earlier (its sidecar says so), so that running the same command again replaces it and never anything else."""
+    side = path + ".phone.json"
+    try:
+        d = read_json(side)
+    except Usage:
+        return False
+    return d.get("tool") == "encode_phone.py" and (d.get("output") or {}).get("name") == os.path.basename(path)
+
+
 def layout_of(obj):
     """The scene layout from a render.mjs report (its scene_report.layout), from a scene report ({'layout': ...}) or from the layout itself."""
     obj = obj.get("scene_report", obj) or obj
@@ -503,8 +514,8 @@ def main(argv=None):
             raise Usage("the master %s does not exist" % os.path.basename(a.master))
         if os.path.normcase(master) == os.path.normcase(out_abs):
             raise Usage("the output is the master: refusing to overwrite it")
-        if os.path.exists(out_abs) and not a.overwrite:
-            raise Usage("%s already exists (use --overwrite)" % os.path.basename(a.output))
+        if os.path.exists(out_abs) and not a.overwrite and not own_product(out_abs):
+            raise Usage("%s already exists and is not a phone file this tool made earlier (use --overwrite to replace it)" % os.path.basename(a.output))
         cues, srt_text = None, None
         if not a.no_captions:
             if not a.captions:

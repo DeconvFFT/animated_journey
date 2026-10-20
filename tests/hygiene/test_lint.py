@@ -77,6 +77,11 @@ def run_all(T):
     root.mkdir()
     git(root, "init", "-q")
     shutil.copy(REPO / ".gitignore", root / ".gitignore")
+    # The real .gitignore now carries the Q-3 backstop for raw PC reports. This throw-away repository models a clone WITHOUT it, so
+    # the tests below keep proving the second belt: the lint refuses those names by path even where git would not have hidden them.
+    gi_lines = (root / ".gitignore").read_text(encoding="utf-8").splitlines()
+    q3 = ("pc_report*.json", "colour_patch_pc*.json", "maker-pc*.json")
+    (root / ".gitignore").write_text("\n".join(l for l in gi_lines if l.strip() not in q3) + "\n", encoding="utf-8")
     # the maker's clone must ignore the local deny list (the orchestrator adds the line, report F-6); the lint now says so when it does not (tested below)
     with open(root / ".gitignore", "a", encoding="utf-8") as fh:
         fh.write("\nscripts/public_lint.deny.local.txt\n")

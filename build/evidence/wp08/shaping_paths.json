@@ -1,0 +1,125 @@
+{
+  "schema": "lj-shaping-paths/1",
+  "package": "WP-08",
+  "date_utc": "2026-10-19",
+  "ffmpeg": "6.1.1-3ubuntu5",
+  "style": "phone",
+  "scripts": {
+    "latin": {
+      "status": "MEASURED",
+      "family": "Noto Sans",
+      "paths": {
+        "ass": {
+          "iou_by_string": {
+            "lat-test": 0.95
+          },
+          "iou_min": 0.95,
+          "meets_0.9": true,
+          "shaper_lines": [
+            "Shaper: FriBidi 1.0.13 (SIMPLE) HarfBuzz-ng 8.3.0 (COMPLEX)"
+          ]
+        },
+        "ass_simple_shaping": {
+          "iou_by_string": {
+            "lat-test": 0.863
+          },
+          "iou_min": 0.863,
+          "meets_0.9": false,
+          "shaper_lines": [
+            "Shaper: FriBidi 1.0.13 (SIMPLE) HarfBuzz-ng 8.3.0 (COMPLEX)"
+          ]
+        },
+        "subtitles": {
+          "iou_by_string": {
+            "lat-test": 0.863
+          },
+          "iou_min": 0.863,
+          "meets_0.9": false,
+          "shaper_lines": [
+            "Shaper: FriBidi 1.0.13 (SIMPLE) HarfBuzz-ng 8.3.0 (COMPLEX)"
+          ]
+        }
+      }
+    },
+    "devanagari": {
+      "status": "MEASURED",
+      "family": "Noto Sans Devanagari",
+      "paths": {
+        "ass": {
+          "iou_by_string": {
+            "dev-digits": 0.943,
+            "dev-pariksha": 0.928,
+            "dev-pustak": 0.959,
+            "dev-din": 0.981,
+            "dev-sankhya": 0.945,
+            "dev-shabd": 0.981
+          },
+          "iou_min": 0.928,
+          "meets_0.9": true,
+          "shaper_lines": [
+            "Shaper: FriBidi 1.0.13 (SIMPLE) HarfBuzz-ng 8.3.0 (COMPLEX)"
+          ]
+        },
+        "ass_simple_shaping": {
+          "iou_by_string": {
+            "dev-digits": 0.964,
+            "dev-pariksha": 0.359,
+            "dev-pustak": 0.569,
+            "dev-din": 0.492,
+            "dev-sankhya": 0.458,
+            "dev-shabd": 0.418
+          },
+          "iou_min": 0.359,
+          "meets_0.9": false,
+          "shaper_lines": [
+            "Shaper: FriBidi 1.0.13 (SIMPLE) HarfBuzz-ng 8.3.0 (COMPLEX)"
+          ]
+        },
+        "subtitles": {
+          "iou_by_string": {
+            "dev-digits": 0.964,
+            "dev-pariksha": 0.359,
+            "dev-pustak": 0.569,
+            "dev-din": 0.492,
+            "dev-sankhya": 0.458,
+            "dev-shabd": 0.418
+          },
+          "iou_min": 0.359,
+          "meets_0.9": false,
+          "shaper_lines": [
+            "Shaper: FriBidi 1.0.13 (SIMPLE) HarfBuzz-ng 8.3.0 (COMPLEX)"
+          ]
+        }
+      }
+    },
+    "tamil": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json"
+    },
+    "telugu": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json"
+    },
+    "kannada": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json"
+    },
+    "malayalam": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json"
+    },
+    "bengali": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json"
+    },
+    "gujarati": {
+      "status": "NOT TESTED",
+      "reason": "no strings in test_strings.json"
+    }
+  },
+  "notes": [
+    "The profile burns every script with the `ass` filter whatever the build (W-75): one path, tested, and it does not depend on the PC build's subtitles filter.",
+    "UNVERIFIED on Windows: the PC's ffmpeg build (9.0.2 expected) has never been run here."
+  ],
+  "finding": "On ffmpeg 6.1.1-3ubuntu5 (IoU limit 0.9, lowest per script) latin: ass 0.950, subtitles 0.863; devanagari: ass 0.928, subtitles 0.359. The `ass` filter on an ASS file reaches the limit for every script with strings; the `subtitles` filter falls below it for: latin, devanagari. The `subtitles` and the forced-simple-shaping results match, which is what the pre-n9.0 simple-shaping behaviour (W-75) predicts."
+}

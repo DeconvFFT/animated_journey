@@ -865,21 +865,21 @@ The five-photo bake-off needs a faded colour print, a small black-and-white prin
 
 **Partly met.** I could not reach an independent first-hand account. The Verge (the main 2021 news piece) and Reddit are blocked here, the Sage paper returned 403, TechNewsWorld returned 403, and Wikipedia has no page for the feature. What I did read:
 
-- **Vendor-curated first-hand quotes** [138]. MyHeritage's own blog (2021-03-04) embeds users' tweets from 2021-02-27 to 2021-03-04. The people are real and named, the words are theirs, but the company chose them and the post says so, so the mix is skewed to the positive. I saw the vendor's page, not the original tweets. Examples:
-  - Jean McKenney, photo of her mother, who died in 1992: "It brought tears to my eyes. She was so beautiful."
-  - Natasha (@ndelriego), great-grandfather's photo: "I just showed my grandmother and she broke down crying. This is amazing!" (a family elder's reaction).
-  - Tracy Iglesias, father's photo on the anniversary of his death: "Seeing his face move after decades was mind-blowing as we didn't have video of him."
-  - Diego R. Cáceres (in Spanish), whose father died when Diego was seven months old: all his life he dreamed of seeing his father alive for at least a moment.
-  - "Vegan Diva", aunt who survived the Holocaust: "I sort of feel more like I'm meeting her thanks to this animation."
-  - Mateja Kuhar: "I shed a few tears of joy last night. I saw my late grandpa once more, like in a dream."
+- **Vendor-curated first-hand quotes** [138]. MyHeritage's own blog (2021-03-04) embeds users' tweets from 2021-02-27 to 2021-03-04. The people are real and named in the source (names left out here under D-26), the words are theirs, but the company chose them and the post says so, so the mix is skewed to the positive. I saw the vendor's page, not the original tweets. Examples:
+  - A user, photo of her mother, who died in 1992: "It brought tears to my eyes. She was so beautiful."
+  - A user, great-grandfather's photo: "I just showed my grandmother and she broke down crying. This is amazing!" (a family elder's reaction).
+  - A user, father's photo on the anniversary of his death: "Seeing his face move after decades was mind-blowing as we didn't have video of him."
+  - A user (in Spanish), whose father died when the user was seven months old: all their life they dreamed of seeing their father alive for at least a moment.
+  - A user, aunt who survived the Holocaust: "I sort of feel more like I'm meeting her thanks to this animation."
+  - A user: "I shed a few tears of joy last night. I saw my late grandpa once more, like in a dream."
   - Jason Glisson, grandfather's WWII photo: "seeing it move really shocked me."
-  - Mixed or critical, same post: Ferris Jabr called it "an eerie yet captivating technology, raising many complex issues"; Robert Howard, after animating a bought antique portrait of a stranger, was "now... slightly afraid of it".
+  - Mixed or critical, same post: Ferris Jabr called it "an eerie yet captivating technology, raising many complex issues"; another user, after animating a bought antique portrait of a stranger, was "now... slightly afraid of it".
 - **Secondhand press** [140]. SingularityHub (2021-04-08) repeats MyHeritage's line that users "were moved to tears" and says many posted animations on Twitter; it quotes no individual and links only a hashtag page.
 - **No criticism on Wikipedia.** The MyHeritage article records the February 2021 launch and nearly 100 million animations but no reaction or ethics discussion [139]. It cites a 2025 paper, Kopelman and Frosh, "The 'algorithmic as if': Computational resurrection and the animation of the dead in Deep Nostalgia", *New Media & Society* 27(4): 2393 to 2413, DOI 10.1177/14614448231210268 [139]. That paper is the best lead for independent evidence; I could not read it.
 - IEEE Spectrum's "digital afterlife" feature has no first-hand accounts and does not mention photo animation [144].
 
 **What it means for Decision 4 (M).**
-1. The reactions that exist are strong, emotional and mostly tearful, including from an elderly relative (Natasha's grandmother). That is exactly the risk in a surprise reveal: the mother may see her own late parent move, in company, with no warning.
+1. The reactions that exist are strong, emotional and mostly tearful, including from an elderly relative (the grandmother in the great-grandfather example). That is exactly the risk in a surprise reveal: the mother may see her own late parent move, in company, with no warning.
 2. The only first-hand worries I found are about the uncanny ("eerie", "slightly afraid"), not about dignity or consent; nobody quoted is a relative who objected. That is the curation bias, not proof there were no objections.
 3. Keep the proposed default: no face or expression animation of people who have died. If the proxy relative wants it for a specific person, preview it with the proxy alone first, label it as animated, keep it short and silent, and never put it first in a group showing. The playbook's TODO(research) on this stays open until an independent account (or the Kopelman and Frosh paper) is read.
 

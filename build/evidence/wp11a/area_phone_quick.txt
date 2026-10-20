@@ -1,1 +1,17 @@
-NOT LANDED: tests/phone/run_tests.sh does not exist yet. This is not a failure; the runner exit code is unaffected.
+# area=phone entry=WP-08 mode=quick result=PASS exit=0 seconds=25 masked_values=0
+PASS       static_compile                           all compile and parse
+PASS       json_shape                               profile and thresholds are well formed: phone_1080 CRF 20 maxrate 8M faststart no metadata; caption FontSize 28 vs venue 23, 32 characters, 2 lines, bottom <= 88%
+PASS       lint_allowlist_clean                     lint_strings: 15 file(s) scanned, 0 finding(s)
+PASS       lint_allowlist_negative_controls         latin_srt_line=1, indic_in_source=1, no_marks_key=1, latin_family_phrase=1, allowlisted_lines_pass=0
+PASS       encode_plan_relative_names               exit 0; filter: ass=caps.ass:fontsdir=fonts,scale=out_color_matrix=bt709:out_range=tv,format=yuv420p,setparams=colorspace=bt709:color_primaries=bt709:color_trc=bt709:rang
+PASS       encode_dry_run_writes_nothing            none written
+PASS       encode_refusals                          exits (2, 2, 2, 2); master hash unchanged: True
+PASS       encode_rerun_replaces_own_output         exits (0, 0, 2); the foreign file is untouched
+PASS       phone_check_usage                        exits (2, 2, 2, 2, 2)
+PASS       sim_share_rerun                          exits (0, 0); input hash unchanged: True
+PASS       sim_share_refusals                       exits (2, 2, 2, 2, 2); input hash unchanged: True
+PASS       selftest                                 exit 0; 17 mechanisms PASS, 0 FAIL; missing: none; FontSize=23 asserted: False
+PASS       style_run_phone                          tested ['latin', 'devanagari'] with IoU min {'latin': 0.95, 'devanagari': 0.928}; NOT TESTED ['tamil', 'telugu', 'kannada', 'malayalam', 'bengali', 'gujarati']; fill_20x9
+PASS       per_script_iou                           latin IoU min 0.95 over 1 strings (meets 0.9); devanagari IoU min 0.928 over 6 strings (meets 0.9)
+
+Counts: PASS 14, FAIL 0, UNVERIFIED 0, SKIPPED 0, BLOCKED 0

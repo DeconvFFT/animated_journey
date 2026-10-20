@@ -13,14 +13,14 @@
    "frames_skipped_existing": 119
   },
   "scene": "flat.html",
-  "seconds": 43.5,
+  "seconds": 43.4,
   "tmp_after_kill": 0
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 408,
-  "avail_mb_min": 408,
-  "avail_mb_start": 410,
+  "avail_mb_end": 754,
+  "avail_mb_min": 754,
+  "avail_mb_start": 754,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

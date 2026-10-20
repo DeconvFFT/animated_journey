@@ -1,35 +1,63 @@
 {
- "actual": "guard: lj_guard: REFUSED: Avail 278 MB minus planned 12 MB leaves 266 MB, below the 400 MB floor (wp04-a6-chapter). Lean-profile hint: plan a smaller stage, delete downloads you no longer need, or ask the orchestrator about the regenerable caches (Q-1).",
+ "actual": "2400 frames in 108.7 s (22.08 fps, 4 pages); output 4427392 bytes; PNG files seen during the run: 0; peak RSS {'node_mb': 156, 'browser_tree_mb': 1160, 'ffmpeg_mb': 608, 'sum_mb': 1915, 'note': 'RSS counts shared pages in every process, so the sum over-counts'}; Avail 754 -> 750 MB; ledger min 672 MB",
  "data": {
-  "guard": [
-   "lj_guard: REFUSED: Avail 278 MB minus planned 12 MB leaves 266 MB, below the 400 MB floor (wp04-a6-chapter). Lean-profile hint: plan a smaller stage, delete downloads you no longer need, or ask the orchestrator about the regenerable caches (Q-1)."
-  ],
+  "bench": {
+   "contaminated": true,
+   "load1_start": 2.29,
+   "nproc": 4
+  },
+  "calibration_bytes_240": 440564,
+  "concurrency": 4,
+  "dir_bytes_max_seen": 4616254,
+  "ffprobe": {
+   "height": 1080,
+   "nb_frames": "2400",
+   "pix_fmt": "yuv420p",
+   "r_frame_rate": "24/1",
+   "width": 1920
+  },
+  "frames": 2400,
   "ledger": {
-   "avail_mb_end": 278,
-   "avail_mb_min": 278,
-   "avail_mb_start": 278,
+   "avail_mb_end": 750,
+   "avail_mb_min": 672,
+   "avail_mb_start": 754,
    "date_utc": "2026-10-19",
-   "ended_utc": "2026-10-19T05:15:24Z",
-   "exit": 3,
+   "ended_utc": "2026-10-19T23:13:51Z",
+   "exit": 0,
    "floor_mb": 400,
    "hard_floor_mb": 250,
    "label": "wp04-a6-chapter",
    "lock_wait_s": 0,
-   "planned_mb": 12,
-   "started_utc": "2026-10-19T05:15:24Z",
-   "status": "refused"
+   "planned_mb": 250,
+   "started_utc": "2026-10-19T23:12:01Z",
+   "status": "ok"
   },
-  "seconds": 774.1,
-  "waited_for_disk_s": 600
+  "output_bytes": 4427392,
+  "peak_rss": {
+   "browser_tree_mb": 1160,
+   "ffmpeg_mb": 608,
+   "node_mb": 156,
+   "note": "RSS counts shared pages in every process, so the sum over-counts",
+   "sum_mb": 1915
+  },
+  "plan_planned_mb": 250,
+  "png_files_max_seen": 0,
+  "samples": 56,
+  "seconds": 141.7,
+  "seconds_render": 108.717,
+  "throughput_fps": 22.08,
+  "tmp_files_max_seen": 0,
+  "used_planned_mb": 250,
+  "waited_for_disk_s": 0
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 278,
-  "avail_mb_min": 278,
-  "avail_mb_start": 407,
+  "avail_mb_end": 754,
+  "avail_mb_min": 672,
+  "avail_mb_start": 754,
   "floor_mb": 400,
   "hard_floor_mb": 250,
-  "planned_write_mb": 12
+  "planned_write_mb": 250
  },
  "env": {
   "chromium": "141.0.7390.37",
@@ -39,11 +67,11 @@
   "platform": "linux",
   "python": "3.13.x"
  },
- "expected": "2,400 frames piped into ffmpeg under one lj_with_disk stage",
- "notes": "the guard refused the plan's 250 MB at Avail 278 MB (lj_guard: REFUSED: Avail 278 MB minus planned 250 MB leaves 28 MB, below the 400 MB floor (wp04-a6-chapter). Lean-profile hint: plan a smaller stage, delete downloads you no longer need, or ask the orchestrator about the regenerable caches (Q-1).); PLANNED_MB recomputed from a measured 240-frame clip (440565 bytes): 12 MB Waited 600 s for headroom first.",
+ "expected": "a 2,400-frame (100 s) run piped straight into ffmpeg completes with no PNG accumulation (disk used equals the output size, not the frame count); peak RSS recorded",
+ "notes": "",
  "package": "WP-04",
  "schema": "lj-evidence/1",
- "status": "BLOCKED",
+ "status": "PASS",
  "test": "a6_chapter_2400",
  "unverified_reasons": []
 }

@@ -847,8 +847,9 @@ def edit(repo, rel, old, new, count=1):
 def _(ctx):
     cases = [
         ("no phone row", "| **Phone** (D-27)", "| **Handset** (D-27)", ["Phone", "card_row"]),
-        ("no D-27 in the row", "| D-27, W-63, W-18 |", "| D-26, W-63, W-18 |", ["D-27"]),
-        ("no W-63 on the Phone row", "| D-27, W-63, W-18 |", "| D-27, W-18 |", ["W-63", "card_row"]),
+        # the Register cell is "D-27, W-63, W-18" in the draft row and "D-27, W-63, W-18, W-19" once PHONE-ROW.md is pasted over it: match the common start
+        ("no D-27 in the row", "| D-27, W-63, W-18", "| D-26, W-63, W-18", ["D-27"]),
+        ("no W-63 on the Phone row", "| D-27, W-63, W-18", "| D-27, W-18", ["W-63", "card_row"]),
         ("Phone caption size missing", "`FontSize=28`", "`FontSize=26`", ["FontSize=28", "card_value"]),
         ("TD-3 without MarginV", "`MarginV` 20 or more (the default lets", "a margin (the default lets", ["MarginV", "card_value"]),
         ("no Script stack row", "| **Script stack** |", "| **Scripts** |", ["Script stack", "card_row"]),
@@ -1120,7 +1121,8 @@ def _(ctx):
     for n in ["TD-1", "TD-2", "TD-3", "TD-4", "Phone", "D-27", "Language and script", "Caption and font test ran in:", "NOT TESTED",
               "signed: no", "UNVERIFIED", "Proposed (J)"]:
         ok(n in t, "card lacks %r" % n)
-    ok("WP-08 may refine the numbers before Sun 1 Nov" in t and "pipeline/phone/PHONE-ROW.md" in t, "phone row paste instruction")
+    # the draft row carries the paste instruction; once PHONE-ROW.md is pasted over it (gate review r1) the row says it is measured on synthetic test material instead
+    ok(("WP-08 may refine the numbers before Sun 1 Nov" in t and "pipeline/phone/PHONE-ROW.md" in t) or "Proposed (J), measured on synthetic test material" in t, "phone row paste instruction (draft row) or the pasted measured row")
     ids = set(register_ids())
     cited = set("%s-%s" % m for m in re.findall(r"\b([DWOS])-([0-9]{2,3})\b", t))
     ok(cited and cited <= ids, "cited IDs not in the register: %s" % sorted(cited - ids))
@@ -1136,8 +1138,17 @@ def _(ctx):
     phone, td3 = row("**Phone"), row("**TD-3")
     ok("D-27" in phone[3] and "W-63" in phone[3] and "W-18" in phone[3], "Phone row Register cell: %r" % phone[3])
     ok("PH1" in phone[2] and "PH2" in phone[2], "the Phone row must name PH1 and PH2 (W-63)")
-    ok(all(n in phone[2] for n in ("1280x720", "CRF 20", "CRF 22", "8 Mb/s", "4 Mb/s", "level 3.1", "before the downscale")), "PH1/PH2 numbers (W-63)")
-    ok(all(n in phone[2] for n in ("`FontSize=28`", "`MarginV` 40", "36 characters", "68 to 86%")), "the phone caption numbers are W-18's")
+    # the PH2 cap and the caption line length are read from the register (W-63, W-18), which wins: 4 Mb/s and 36 characters today, whatever the orchestrator settles on later
+    reg_all = read("DECISIONS.md")
+    m63 = re.search(r"^\| W-63 \|.*$", reg_all, re.M)
+    m18 = re.search(r"^\| W-18 \|.*$", reg_all, re.M)
+    cap_m = re.search(r"PH2, the small copy:\*\*\s*1280x720, CRF \d+, ([0-9.]+) Mb/s cap", m63.group(0)) if m63 else None
+    len_m = re.search(r"phone file carries its own caption setting: `FontSize=\d+`, `MarginV` \d+, two lines, at most (\d+) characters", m18.group(0)) if m18 else None
+    ok(cap_m is not None and len_m is not None, "W-63 and W-18 must state the PH2 cap and the phone caption line length in the shape this test reads")
+    ph2_cap, max_chars = (cap_m.group(1) if cap_m else "4"), (len_m.group(1) if len_m else "36")
+    ok(all(n in phone[2] for n in ("1280x720", "CRF 20", "CRF 22", "8 Mb/s", "%s Mb/s" % ph2_cap, "level 3.1", "before the downscale")), "PH1/PH2 numbers (W-63; the PH2 cap is the register's %s Mb/s)" % ph2_cap)
+    ok(all(n in phone[2] for n in ("`FontSize=28`", "`MarginV` 40", "%s characters" % max_chars)) and re.search(r"\b68(?:\.\d)?%? to 8[56](?:\.\d)?%", phone[2]) is not None,
+       "the phone caption numbers are W-18's (line length %s from the register; the block 68 to 86%% in the draft row or the measured 68.2%% to 85.4%% in the pasted one)" % max_chars)
     ok("to be set by the phone test" not in t, "the Phone row must not defer to the phone test: W-18 fixes the phone caption size")
     ok("`MarginV` 20 or more" in td3[2] and "W-16" in td3[3] and "W-18" in td3[3], "TD-3 must carry MarginV 20 (W-16, W-18)")
     for prefix, regs, needles in [("**Script stack", ("W-75", "O-15"), ("Gujarati", "Devanagari", "shaped outlines")),
@@ -1149,14 +1160,16 @@ def _(ctx):
         ok("Proposed (J)" in r[2], "%s must be marked Proposed (J)" % prefix)
         ok("UNVERIFIED" in r[4], "%s must say UNVERIFIED in its proof cell until the PC run" % prefix)
     lang = [ln for ln in t.split("\n") if "Caption and font test ran in:" in ln]
-    ok(len(lang) == 1 and "devanagari (neutral test strings) on <date>" in lang[0] and "gujarati NOT TESTED" in lang[0]
+    # gate review r1: the line began as "devanagari (neutral test strings) on <date>" and the orchestrator filled it from PHONE-ROW.md's "Scripts tested:" line
+    # (the script list and a real ISO date); both the placeholder form and the filled form pass, anything else does not
+    ok(len(lang) == 1 and re.search(r"ran in: (?:latin, )?devanagari \(neutral test strings\) on (?:<date>|\d{4}-\d{2}-\d{2});", lang[0]) is not None and "gujarati NOT TESTED" in lang[0]
        and "D-31" in lang[0] and "32-string fixture of W-16/W-75" in lang[0], "the language line must say gujarati is NOT TESTED (D-31)")
     ok("until the maker's script is named" not in t, "D-31 names Gujarati: the card must not say the script is unnamed")
     status = [ln for ln in t.split("\n") if ln.startswith("*Status when drafted")]
     ok(status and "Gujarati" in status[0] and "D-31" in status[0] and "pending_O-10" in status[0]
        and "must pass before this card is signed" in status[0],
        "the status paragraph must say the Gujarati test is the one that counts (D-31, pending_O-10)")
-    ok("<date>" in t and "Scripts tested:" in t, "the <date> and 'Scripts tested:' paste-over convention must stay")
+    ok(("<date>" in t or re.search(r"ran in: [^;`]*\bon \d{4}-\d{2}-\d{2};", t) is not None) and "Scripts tested:" in t, "the language line has a date (placeholder or filled) and the 'Scripts tested:' paste-over convention is named")
     ok(not re.search(r"25 ?fps|-1\.5 ?dBTP|fps=25", t), "stale value in the card")
     ctx.say("card cites %d register IDs, all present: %s" % (len(cited), ", ".join(sorted(cited))))
 

@@ -1,0 +1,35 @@
+{
+  "schema": "lj-mo8gate/1",
+  "tool_version": 1,
+  "date_utc": "2026-10-20",
+  "limits": {
+    "mo8a_d4_px": 0.05,
+    "mo8b_d4_px": 0.04,
+    "max_frames": 96
+  },
+  "applies_to": "the master before the delivery encode (W-41)",
+  "results": [
+    {
+      "input": "e2e_mo8_transform",
+      "input_kind": "png-folder",
+      "frames": 48,
+      "master_before_encode": true,
+      "mo8a_d4_px": 0.0023,
+      "mo8a_limit": 0.05,
+      "mo8a_pass": true,
+      "mo8b_d4_px": 0.0039,
+      "mo8b_limit": 0.04,
+      "mo8b_pass": true,
+      "informational": {
+        "mo8c_rough": 0.0598,
+        "mo8a_centre_jit_px_9frame": 0.0023,
+        "mo8b_edge_jit_px_9frame": 0.0511,
+        "zoom_total_pct": 4.185,
+        "ease_class": "ease in-out"
+      },
+      "note": "a folder of PNG frames is the best input: it is the master itself",
+      "verdict": "PASS"
+    }
+  ],
+  "verdict": "PASS"
+}

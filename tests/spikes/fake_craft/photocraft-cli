@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+# A STAND-IN for photocraft-cli (tests only; it is not PhotoCraft and proves nothing about it). It answers the commands the SP1b driver sends:
+# --version, --help, commands --json, info FILE --compact, convert IN OUT. A .psd here is "8BPS" + a JSON payload of the layers. FAKE_BUG words: dropnames, nopng, nopsd, badsize, slow (commands sleeps 8 s).
+import io, json, os, sys, zipfile
+import xml.etree.ElementTree as ET
+BUG = os.environ.get("FAKE_BUG", "")
+args = sys.argv[1:]
+def layers_of(path):
+    if path.endswith(".ora"):
+        with zipfile.ZipFile(path) as z:
+            r = ET.fromstring(z.read("stack.xml"))
+        names = [e.get("name") for e in r.iter("layer")]
+        if "dropnames" in BUG:
+            names = ["layer %d" % i for i, _ in enumerate(names)]
+        return int(r.get("w")), int(r.get("h")), names
+    data = open(path, "rb").read()
+    if data[:4] == b"8BPS":
+        j = json.loads(data[4:].decode())
+        return j["w"], j["h"], j["names"]
+    sys.stderr.write("error: unreadable file\n"); sys.exit(1)
+if not args or args[0] in ("-h", "--help", "help"):
+    print("photocraft-cli: headless PhotoCraft (stand-in)\nUSAGE:\n  photocraft-cli convert <in> <out>\n  photocraft-cli info <file> [--compact]\n  photocraft-cli commands [--json]\n  photocraft-cli run ...\nmore text"); sys.exit(0)
+if args[0] == "--version":
+    print("photocraft-cli " + (os.environ.get("FAKE_VERSION") or "0.10.0") + " (stand-in)"); sys.exit(0)
+if args[0] == "commands":
+    if "slow" in BUG:
+        import time; time.sleep(8)
+    print(json.dumps([{"id": "layer.cmd%d" % i, "label": "x"} for i in range(80)])); sys.exit(0)
+if args[0] == "info":
+    w, h, names = layers_of(args[1])
+    print(json.dumps({"file": args[1], "width": w, "height": h, "layers": [{"name": n, "kind": "pixel"} for n in names], "warnings": []})); sys.exit(0)
+if args[0] == "convert":
+    src, dst = args[1], args[2]
+    w, h, names = layers_of(src)
+    if dst.endswith(".png"):
+        if "nopng" in BUG:
+            sys.stderr.write("error: cannot write png\n"); sys.exit(1)
+        from PIL import Image
+        if src.endswith(".ora"):
+            with zipfile.ZipFile(src) as z:
+                im = Image.open(io.BytesIO(z.read("mergedimage.png"))).convert("RGBA")
+        else:
+            im = Image.new("RGBA", (w, h), (80, 80, 80, 255))
+        if "badsize" in BUG:
+            im = im.resize((w // 2, h // 2))
+        im.save(dst); sys.exit(0)
+    if dst.endswith(".psd"):
+        if "nopsd" in BUG:
+            sys.stderr.write("error: cannot write psd\n"); sys.exit(1)
+        open(dst, "wb").write(b"8BPS" + json.dumps({"w": w, "h": h, "names": names}).encode()); sys.exit(0)
+    if dst.endswith(".ora"):
+        from PIL import Image
+        buf = io.BytesIO(); Image.new("RGBA", (w, h), (90, 90, 90, 255)).save(buf, "PNG")
+        with zipfile.ZipFile(dst, "w") as z:
+            z.writestr("mimetype", "image/openraster")
+            z.writestr("stack.xml", '<?xml version="1.0"?><image version="0.0.3" w="%d" h="%d"><stack>%s</stack></image>' % (w, h, "".join('<layer name="%s" src="data/l%d.png" x="0" y="0" opacity="1.0" visibility="visible" composite-op="svg:src-over"/>' % (n, i) for i, n in enumerate(names))))
+            for i, _ in enumerate(names):
+                z.writestr("data/l%d.png" % i, buf.getvalue())
+            z.writestr("mergedimage.png", buf.getvalue())
+        sys.exit(0)
+sys.stderr.write("error: unknown command\n"); sys.exit(2)

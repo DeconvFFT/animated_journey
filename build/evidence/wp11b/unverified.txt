@@ -1,0 +1,11 @@
+WP-11b (integration and evidence) - everything that is UNVERIFIED. None of it is counted as a pass anywhere.
+Nothing in this package ran on Windows or on Windows PowerShell 5.1. What exists as evidence: PowerShell 7.5.4 on Linux, ffmpeg 6.1.1 and Chromium 141 in the container.
+
+1. Windows PowerShell 5.1 reading scripts/redaction_patterns.json in win/step0_pc_tests.ps1 and win/kit2/run_checks_pc.ps1 (envelope redaction.consumers_on_windows_powershell_5_1).
+   The self-test compares them on 111 samples under PowerShell 7 only.
+2. win/lj.ps1 on Windows: the three refusals (-Apply, -Commit, -IncludeWindowsRecent) and help were run on PowerShell 7.5.4 on Linux (envelope parity.lj_close_v0_refusals_and_help carries the reason).
+3. ffmpeg 9.0.2 (the PC build): no colour-patch or spec result exists for it; the end-to-end runs are on 6.1.1.
+4. Real phones and players: every phone number (caption size, margin, the 88% line, the arcminute limits) is a proposal measured on synthetic material; the fill behaviour of a given player is arithmetic, not a measurement.
+5. scripts/cleanup_scratch.sh --yes on the real tree was not run (deviation 2 of build/reports/WP-11b.md); it was run on a faithful fake tree only.
+6. The P-LOCK readiness map is as of Mon 19 Oct 2026. Every maker-owed row (14 of 27) is a date in the future; the orchestrator re-reads them on Fri 30 Oct.
+7. Everything the map marks "Needs Windows: yes" (the PC inventory, Ken Burns by script, the archive, the round trips on Windows, the encrypted drive, the colour-patch test on the PC, the five-minute tests, the Gujarati shaping burn, the phone tests).

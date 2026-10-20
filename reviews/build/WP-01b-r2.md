@@ -1,0 +1,71 @@
+# Fable review: WP-01b, `lj.ps1` doctor and close v0 (round 2 of 3)
+
+Reviewed Mon 19 Oct 2026, branch `build/process-lock`. Package report: `build/reports/WP-01b.md` (section "Changes after review r1"). Previous review: `reviews/build/WP-01b-r1.md`. Decisions checked against: W-26, W-06, W-29, D-12, D-15, D-25, D-26 and assumption A-04.
+
+**Verdict: APPROVE.** Scores: correctness 4, safety and privacy 4, maker usability 4, fidelity to plan 5, maintainability 4. No critical issue. The round-1 defect (a wildcard per-app entry resolving to a protected folder) is fixed at three layers and proven by planted canaries that fail the suite when the fix is removed. All six round-1 nudges were applied. The four nudges below are advisory: none blocks v0, each is a small guard or wording that v1 (week 4) should carry before any `-Apply` exists.
+
+**What this means for the calendar.** v0 may be run by the maker now (`doctor` and `close` cannot change anything). The readiness map should read `v0 done, v1 not started`; W-26 / W-06 "written and run once" is still not satisfied, as the report says. When the Sat 24 Oct "where did it write" paste arrives, the per-app lists go into `win/lj.config.example.json` and the suite is re-run; nothing in the code path needs to change first.
+
+## 1. Round-1 nudges: were they applied?
+
+| # | Nudge (r1) | Applied? | Where I checked |
+|---|---|---|---|
+| 1 | Never-touch guards on resolved wildcard matches and as the first lines of `Measure-Candidate` | **Yes.** New `Get-ProtectedReason` (`win/lj.ps1` lines 380 to 390) checks protected leaf name, `never_touch_paths`, git repository and inside-the-repo. It runs on every resolved match (line 568), on every folder a wildcard matches on the way (line 547), and first thing in `Measure-Candidate` (line 445). | Read the diff; ran `close` on the planted tree: `media` and `vault` are `REFUSED` under HELD BACK with their own paths and appear under NEVER TOUCHED; neither canary file name appears anywhere in the output |
+| 2 | Canaries in `make_trees.py` / `planted.config.json`, `expected.json` unchanged, `held_back_with_reasons` extended | **Yes.** `tools/photocraft-0.10.0/media/CANARY-app-media.dat` and `.../vault/CANARY-vault.dat` planted; config has `never_touch_paths ["tools/photocraft-0.10.0/vault", ...]` and photocraft `cache ["photocraft-*/*"]`; manifest still 12 rows; the two REFUSED regexes are in `run_tests.sh` line 341. The report shows the suite failed (2 FAIL) before the fix with these plants. | `check_close.py`: `rows: 12 expected: 12 listed-and-expected: 12`, `problems: 0` |
+| 3 | README line 66 wording; `.gitignore` for the orchestrator | **README yes** ("The copy is for your PC only: never add it to git, and never paste it in chat."). **`.gitignore` not yet**: `git check-ignore win/lj.config.local.json` still says not ignored. Outside this package's owner paths; the report asks the orchestrator for it. | `win/README-LJ.md` line 66; `git check-ignore -v` |
+| 4 | Echoed raw tokens through `Show-Path` or name only | **Yes.** New `Show-Token` (lines 940 to 953) is used at all five echo sites (976, 980, 994, 1004, 1008); four suite tests prove a profile path comes back as `%USERPROFILE%/x` and an option as its name only. | Diff; suite `usage.*` tests PASS |
+| 5 | Skip wildcard-only `extra_tools_folder_names` with a NOTE | **Yes**, slightly wider than asked (any entry with no letter or digit), lines 690 to 698. | Suite `close.wildcard_only_extra_tools_folder_name_*` PASS; `*`, `?*`, `*.*` all ignored with a NOTE; a normal name still works |
+| 6 | README UNVERIFIED: the `-Apply:` trailing-colon form | **Yes**, `win/README-LJ.md` line 148. | Read; also confirmed the behaviour on pwsh 7.5.4 (below) |
+
+Beyond the six, the package added one more guard I agree with: a `never_touch_paths` folder nested inside a removal candidate now holds the whole candidate back (`Measure-Tree` line 426; suite test `close.nested_never_touch_path_*`). That is the mirror of the r1 case and it was indeed missing.
+
+## 2. What I ran (repo root; pwsh 7.5.4 from the scratch folder; disk 761 MB available at start, 726 MB after the full suite, 99% used)
+
+| # | Test | Result |
+|---|---|---|
+| 1 | `python3 -I win/tools/ps_lint.py win/lj.ps1 && bash win/tools/ps_parse.sh` | **PASS**: `0 error(s), 0 warning(s)`; `PARSED 58 item(s), 0 parse error(s)` (README-LJ fences included) |
+| 2 | Rebuilt the trees with `make_trees.py`, hashed them, ran `close -Config tests/win_lj/planted.config.json -SkipChecks`, hashed again | **PASS**, exit 0: 12 items, 16 files, 10.9 KB; HELD BACK shows the two wildcard REFUSED rows and the nested-`keep` HELD row; hash `e1bfab77...` identical before and after (123 entries); `check_close.py` `problems: 0` |
+| 3 | `close -Apply`, `-Commit`, `-IncludeWindowsRecent`, `-apply:true`, `--commit=1`, `-Incl` | **PASS**: each `not in v0: planned for v1 in week 4; nothing was done`, `files written: none`, exit 2 |
+| 4 | `close` with root `/`, the repo root, `%HOME%` | **PASS**: the three REFUSED sentences, exit 2 each |
+| 5 | `doctor -FromReport tests/win/fixtures/report_gpu12_pro_16gb.json`, repo sets hashed before and after | **PASS**, exit 0, tier table, `files written: none`, hash `aba88d57...` identical (73 entries) |
+| 6 | same with `-SaveTier renders/wp01b/tier.json` into an empty folder | **PASS**: exactly one file (911 B), `lj-pc-tier/1`; a walk of every fixture string of 6+ characters finds only `windows`, the six app names and the ffmpeg build SHA-256 in the file, which the WP-01a schema carries on purpose; no CPU, GPU, vendor or driver string |
+| 7 | `unshare -rn` (no network): `close` with both repo checks and `doctor` | **PASS**: same 12 items, `check results: public_lint=1, stale_check=1`, exit 0; `doctor` exit 0 |
+| 8 | `public_lint.py --paths` over the owner paths, the evidence folder and the report; grep of `tests.jsonl` for `/home/`, e-mail and IPv4 shapes | 14 files, 0 identifying-data findings, 0 hygiene findings; 0 grep hits; 153 envelopes, 10 UNVERIFIED each with a reason |
+| 9 | `bash tests/win_lj/run_tests.sh --all` | **143 PASS, 0 FAIL, 10 UNVERIFIED, 0 SKIPPED, 0 BLOCKED**, exit 0, 3 MB of disk used and released |
+
+## 3. Tests of my own, designed to break it (synthetic trees only; the one link I added was removed again)
+
+**A. `never_touch_paths` naming a FILE, and a `*` in a `never_touch_paths` entry.** Config: `never_touch_paths: ["work/ch01/scan-0001.xmp", "tools/photocraft-0.10.0/Recovery/autosave-0001.dat", "tools/photo*"]`. Result: `scan-0001.xmp` is still row 7 of WOULD REMOVE; `Recovery` is still listed with both files counted; none of the three appears under NEVER TOUCHED and no NOTE is printed. Cause: `Test-NeverPath` is only consulted for folders (walk line 717, `Measure-Tree` line 426); the `.xmp` branch (line 731) and the file branch of `Measure-Tree` (line 431) never ask. The `*` entry is stored literally and matches nothing; on Windows PowerShell 5.1 `GetFullPath` on `*` throws (UNVERIFIED) and line 683 swallows it silently. The README speaks of folders ("add its folder to `never_touch_paths`"), so this is a documented-folder guard behaving as documented, and v0 removes nothing; but a maker who lists a file believes it is protected and gets no signal. **Advisory nudge 1 and 2.**
+
+**B. A per-app entry whose non-last segment is a file** (`lightcraft-*/LightCraftData/recent.json/x`). Result: the entry is `NOT PRESENT` (correct), but `recent.json` is listed under `COULD NOT READ` as if it were an unreadable folder and `close` exits 1 ("list may be incomplete"). Cause: `Resolve-AppEntry` calls `Get-Kids` on a file. Also, the `NOT PRESENT` / `SKIPPED (link)` on-the-way rows (lines 559, 561) print the expanded text through `Show-Path`, not `Show-Item`, so the row shows the full root path while every other row shows `<root>/...`. A profile root would still print as `%USERPROFILE%`, so nothing identifying leaks; it is an inconsistency. **Advisory nudge 3.**
+
+**C. A wildcard resolving to a link that points at a protected folder** (`photocraft-*/link*` with `linkmedia -> ../media`): `SKIPPED (link)`, the target never opened. **PASS.** `never_touch_names: ["VAULT"]` against a folder `vault` matched by `photocraft-*/v*`: `REFUSED ... 'vault' is a protected folder name`. **PASS.** `never_touch_names: ["bad*name"]` is silently dropped (no NOTE): folded into nudge 2.
+
+**D. `-SkipChecks:$false`.** Under pwsh 7.5.4 `-File`, the token arrives as two tokens, `-SkipChecks` and `False`, and the script answers `Unexpected argument 'False'`, exit 2, nothing done. Harmless and arguably right; worth one line next to the `-Apply:` note. **Advisory nudge 4.** `-Apply:` with a trailing colon runs as a plain dry run (exit 0), exactly as the README and evidence item `windows.argument_binding_5_1` say.
+
+**E. Repo checks under no network and on the planted tree:** `stale_check.py --new-only` and `public_lint.py` both exit 1 on files other packages own (the same 4 tracked `.pyc` files and about 18 stale lines the report names); `close` still exits 0 as the plan requires, and prints the check results as advice.
+
+## 4. Findings by criterion
+
+**Correctness (4).** The r1 defect is closed properly: the guard lives in one function, is applied at every entry point (resolved match, on the way, and inside `Measure-Candidate`), and the planted canaries make the suite fail if any layer is removed. Dedup, numbering, sizes, exit codes and the twelve-row manifest are right. What keeps it from 5 is section 3A and 3B: `never_touch_paths` protects folders only and says nothing when an entry is a file or cannot be used; a file on the way in a per-app entry turns into a false "could not read" and exit 1. None can cause harm in v0.
+
+**Safety and privacy (4).** Read-only by construction and by test: no write, delete, move, network or process-start code (36 banned patterns, grep-tested in the suite), identical tree hashes after every run I made, clean under `unshare -rn` and on read-only mounts. Paths under a profile print as `%USERPROFILE%`, typed tokens are echoed by name only, the derived tier file holds buckets only, and no identifying string is in any owned file, the evidence or the report. Nothing here could tip off the mother and no family media exists or is simulated. Still open and still outside this package: `win/lj.config.local.json` is not git-ignored; the orchestrator must add it before the maker creates that file.
+
+**Maker usability (4).** `README-LJ.md` is plain, ordered and honest: what it never does, how to read each section, what REFUSED means, what is UNVERIFIED and why. The new paragraphs on wildcard entries, nested `never_touch_paths` and wildcard-only names are in the maker's words. The step-by-step output (`[n/8] ... ok`) and the two `files written` lines make a dry run readable at a glance.
+
+**Fidelity to plan (5).** Every item in the WP-01b definition is present and tested: targets, root refusals with exit 2, reparse points skipped and never followed, `-Apply`/`-Commit`/`-IncludeWindowsRecent` answered with exit 2 (A-04), `BACKUP: not implemented in v0 (week 4)`, reminders, UNVERIFIED per-app lists with empty shipped entries, `stale_check.py --new-only` and `public_lint.py` read-only (W-29), evidence envelopes with disk figures and UNVERIFIED Windows claims, nothing committed, nothing under `.claude/` or the orchestrator's files touched. The documented deviation (plain `doctor` lets `step0_pc_tests.ps1` write its own `%TEMP%` report) is inherent in the plan's wording and is said in the script, the help and the README. The W-26 / W-06 reading is correct.
+
+**Maintainability (4).** One sectioned file with a comment wherever a choice is non-obvious; the fix added one function and reused it three times rather than copying the checks. Fixtures, `windows_check.py`, `ps_lint.py`, `ps_parse.sh`, `public_lint.py` and `stale_check.py` are reused, not duplicated. `check_close.py` compares against a generated manifest. `run_tests.sh` is dense (over 400 lines) and hard-codes a container scratch path as a default; acceptable for a container-only runner, but v1 will want the test list split by command.
+
+## 5. Advisory nudges (none blocks approval; land them with v1 or on the next touch of these files)
+
+1. **`win/lj.ps1`, walk line 731 and `Measure-Tree` line 431.** Honour `never_touch_paths` for files too: in the `.xmp` branch, `if (Test-NeverPath $k.FullName) { Add-Never $k.FullName 'listed in never_touch_paths'; continue }` before the record is made; in `Measure-Tree`'s file branch, `if (Test-NeverPath $k.FullName) { if (-not $r.protectedHit) { $r.protectedHit = $k.Name }; continue }`. Plant one file canary under `never_touch_paths` in `make_trees.py` with `expected.json` unchanged.
+2. **`win/lj.ps1` lines 678 and 680 to 684.** Print a `NOTE:` (same style as line 694) for every `never_touch_names` entry dropped for holding `\ / * ?` and for every `never_touch_paths` entry that is unset, cannot be resolved, or holds `*` or `?`; and under NEVER TOUCHED add one line `from your config, not found under this root: ...` listing the `never_touch_paths` entries that matched nothing, so the maker can see the guard is live.
+3. **`win/lj.ps1`, `Resolve-AppEntry` lines 536 to 540 and 559 to 561.** Before `Get-Kids $c`, skip a `$c` that is not a directory (`if (-not [System.IO.Directory]::Exists($c)) { continue }`) so a file on the way is `NOT PRESENT` without a false `COULD NOT READ` and exit 1; and show the two on-the-way rows through `Show-Item` instead of `Show-Path` so they read `<root>/...` like every other row.
+4. **`win/README-LJ.md` line 148.** Add one sentence: "Typing `-SkipChecks:$false` arrives as two words (`-SkipChecks` and `False`) and is refused as an unexpected argument (exit 2, nothing done); type `-SkipChecks` on its own or leave it out."
+
+## 6. For the orchestrator (outside the owner paths, not changed here)
+
+- `.gitignore`: add `win/lj.config.local.json` (carried over from r1; still not ignored).
+- The four tracked `.pyc` files and the stale lines in orchestrator-owned files that `close` reports are unchanged from r1 and are not this package's.
+- Disk: 726 MB available after the full suite (99% used); `cleanup_scratch.sh` is due before any package that downloads.

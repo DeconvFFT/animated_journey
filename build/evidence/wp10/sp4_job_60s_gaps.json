@@ -1,0 +1,16 @@
+{
+  "df_avail_mb_end": "754",
+  "df_avail_mb_start": "754",
+  "end_reason": "done",
+  "ended_with_end_line": true,
+  "expected_ticks": 30,
+  "gap_limit_s": 30,
+  "gaps_over_limit": [],
+  "interval_s": 2,
+  "max_gap_s": 2,
+  "schema": "lj-sp4-gaps/1",
+  "seconds_planned": 60,
+  "span_s": 60,
+  "ticks": 30,
+  "verdict": "kept awake"
+}

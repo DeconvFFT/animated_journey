@@ -1,89 +1,89 @@
 {
- "actual": "fps by pages: {'1': 11.76, '2': 17.93, '4': 22.64}; best 4 pages; frame digests identical across levels: True",
+ "actual": "fps by pages: {'1': 11.81, '2': 18.86, '4': 23.83}; best 4 pages; frame digests identical across levels: True",
  "data": {
   "best_pages": 4,
   "by_pages": {
    "1": {
     "bench": {
      "contaminated": "no",
-     "loadavg_start": "0.99 1.84 2.12",
+     "loadavg_start": "0.96 1.37 1.29",
      "nproc": 4
     },
     "digest": "e2ed186efd4f915e44969f08467896c57a99338a6b713d013a7066ede45ac0fb",
     "exit": 0,
     "frames": 96,
     "peak_rss": {
-     "browser_tree_mb": 691,
+     "browser_tree_mb": 690,
      "ffmpeg_mb": 0,
-     "node_mb": 93,
+     "node_mb": 94,
      "note": "RSS counts shared pages in every process, so the sum over-counts",
-     "sum_mb": 784
+     "sum_mb": 783
     },
-    "seconds_render": 8.162,
+    "seconds_render": 8.13,
     "settle": {
-     "load1": 0.99,
+     "load1": 0.96,
      "settled": true,
-     "waited_s": 5
+     "waited_s": 0
     },
-    "throughput_fps": 11.76
+    "throughput_fps": 11.81
    },
    "2": {
     "bench": {
      "contaminated": "no",
-     "loadavg_start": "0.99 1.80 2.10",
+     "loadavg_start": "0.96 1.36 1.29",
      "nproc": 4
     },
     "digest": "e2ed186efd4f915e44969f08467896c57a99338a6b713d013a7066ede45ac0fb",
     "exit": 0,
     "frames": 96,
     "peak_rss": {
-     "browser_tree_mb": 838,
+     "browser_tree_mb": 839,
      "ffmpeg_mb": 0,
      "node_mb": 93,
      "note": "RSS counts shared pages in every process, so the sum over-counts",
-     "sum_mb": 931
+     "sum_mb": 932
     },
-    "seconds_render": 5.354,
+    "seconds_render": 5.089,
     "settle": {
-     "load1": 0.99,
+     "load1": 0.96,
      "settled": true,
-     "waited_s": 5
+     "waited_s": 0
     },
-    "throughput_fps": 17.93
+    "throughput_fps": 18.86
    },
    "4": {
     "bench": {
      "contaminated": "no",
-     "loadavg_start": "0.98 1.77 2.09",
+     "loadavg_start": "0.98 1.35 1.29",
      "nproc": 4
     },
     "digest": "e2ed186efd4f915e44969f08467896c57a99338a6b713d013a7066ede45ac0fb",
     "exit": 0,
     "frames": 96,
     "peak_rss": {
-     "browser_tree_mb": 1109,
+     "browser_tree_mb": 1089,
      "ffmpeg_mb": 0,
-     "node_mb": 94,
+     "node_mb": 95,
      "note": "RSS counts shared pages in every process, so the sum over-counts",
-     "sum_mb": 1202
+     "sum_mb": 1183
     },
-    "seconds_render": 4.241,
+    "seconds_render": 4.028,
     "settle": {
      "load1": 0.98,
      "settled": true,
-     "waited_s": 5
+     "waited_s": 15
     },
-    "throughput_fps": 22.64
+    "throughput_fps": 23.83
    }
   },
   "digests_identical": true,
-  "seconds": 35.8
+  "seconds": 35.1
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 403,
-  "avail_mb_min": 403,
-  "avail_mb_start": 405,
+  "avail_mb_end": 754,
+  "avail_mb_min": 754,
+  "avail_mb_start": 754,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

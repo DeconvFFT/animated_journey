@@ -1,6 +1,6 @@
-# area=win entry=WP-01a mode=quick result=PASS exit=0 seconds=11 masked_values=0
+# area=win entry=WP-01a mode=quick result=PASS exit=0 seconds=9 masked_values=0
 WP-01a tests (--quick). tree: repo  patterns file: present  pwsh: present
-PASS       parse.scripts_and_readme_fences              exit 0; OK   win/lj.ps1|OK   win/step0_pc_tests.ps1|OK   win/README-LJ.md (fence starting at line 29)|
+PASS       parse.scripts_and_readme_fences              exit 0; OK   win/kit2/archive_init.ps1|OK   win/kit2/archive_verify.ps1|OK   win/kit2/kenburns_24.ps1|
 PASS       lint.step0_script                            exit 0; TOTAL: 0 error(s), 0 warning(s) in 1 file(s)|
 PASS       lint.maker_readme_fences                     exit 0; TOTAL: 0 error(s), 0 warning(s) in 1 file(s)|
 PASS       lint.planted_machine_scope_ps1               exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
@@ -45,4 +45,4 @@ PASS       check.outputs_exist                          present
 PASS       check.refusal_writes_nothing                 exit 2; category=email field=tools.git.notes hit=ta********|category=ipv4 field=notes[0] hit=10********|category=mac field=notes[3] hit=02********|
 PASS       check.refusal_files_absent                   none created
 ---
-WP-01a quick: PASS=44 FAIL=0 UNVERIFIED=0 SKIPPED=0 BLOCKED=0  (df Avail 1134 -> 1131 MB)
+WP-01a quick: PASS=44 FAIL=0 UNVERIFIED=0 SKIPPED=0 BLOCKED=0  (df Avail 747 -> 747 MB)

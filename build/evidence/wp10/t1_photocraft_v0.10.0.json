@@ -1,0 +1,125 @@
+{
+  "actual": "5 checks, 0 failed",
+  "date_utc": "2026-10-19",
+  "detail": {
+    "app": "photocraft",
+    "calls": [
+      {
+        "call": "--version",
+        "killed": null,
+        "max_rss_mb": 20.0,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "--help",
+        "killed": null,
+        "max_rss_mb": 20.1,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "commands --json",
+        "killed": null,
+        "max_rss_mb": 20.1,
+        "rc": 0,
+        "wall_s": 0.25
+      }
+    ],
+    "checks": [
+      {
+        "id": "T1.version_exit0",
+        "measured": "exit 0",
+        "note": "",
+        "pass": true
+      },
+      {
+        "id": "T1.version_names_tag",
+        "measured": "photocraft-cli 0.10.0 (8407d9ccb, 2026-10-18)",
+        "note": "",
+        "pass": true
+      },
+      {
+        "id": "T1.usage_text",
+        "measured": "exit 0, 40 lines",
+        "note": "the CLI prints its usage",
+        "pass": true
+      },
+      {
+        "id": "T1.command_listing",
+        "measured": "`commands --json`: 918 JSON entries with an id or name (mark: at least 50); tried ['commands --json -> exit 0']",
+        "note": "the command surface can be listed and is not trivial",
+        "pass": true
+      },
+      {
+        "id": "T1.stderr_clean",
+        "measured": "patterns matched: none; GPU or CPU-renderer notices recorded, not failed: none",
+        "note": "no missing library, no GPU or adapter failure with VK_ICD_FILENAMES unset",
+        "pass": true
+      }
+    ],
+    "cli_bytes": 67583000,
+    "cli_sha256": "a6c66d4667d6b8c85bc346b97afa27ec4f3ff568e7b990f66ce6d27d98794dbe",
+    "command_listing": {
+      "args": [
+        "commands",
+        "--json"
+      ],
+      "counted": "JSON entries with an id or name",
+      "entries": 918,
+      "first_lines": [
+        "[",
+        "  {",
+        "    \"disabledReason\": null,",
+        "    \"enabled\": true,",
+        "    \"id\": \"file.new\",",
+        "    \"label\": \"New\u2026\","
+      ]
+    },
+    "gpu_notices": [],
+    "help_excerpt": "photocraft-cli: headless PhotoCraft\n\nUSAGE:\n  photocraft-cli convert <in> <out> [--format <ext>] [--quality <1-100>] [--tiff-layers] [--tga-bits <24|32>] [--dpx-bits <8|10|12|16>]\n      Convert between formats (.pcraft, .psd, .png, .jpg, .tif, .webp, .exr, \u2026).\n      TIFF output is flat unless --tiff-layers keeps the layers (Photoshop layer data).\n      --quality sets the JPEG or WebP quality; a WebP written with a quality is lossy, without one lossless.\n      --tga-bits sets a TGA's bits per pixel: 32 writes the alpha channel (or else the transparency) as\n      its alpha, 24 none. Without it: 32 with an alpha channel or transparency, else 24.\n      --dpx-bits sets a DPX's bits per sample. Without it: 8 for an 8-bit document, else 16.\n  photocraft-cli info <file> [--compact]\n      Print the document as JSON (size, mode, depth, layer tree).\n  photocraft-cli run (<file> | --new <json>) --cmd <id> [--params <json>] [--cmd \u2026] [--out <file>] [--format <ext>] [--quality <1-100>] [--tiff-layers] [--tga-bits <24|32>] [--dpx-bits <8|10|12|16>]\n      Open a file, run engine commands in order, save the result. Each --params\n      applies to the preceding --cmd. Prints each command's JSON result.\n  photocraft-cli batch --actions <actions.json|set.atn> [--action <name>] --in <dir> --out <dir> [--format <ext>] [--quality <1-100>] [--in-place] [--tiff-layers] [--tga-bits <24|32>] [--dpx-bits <8|10|12|16>]\n      Apply an action list to every image in a directory. A Photoshop Actions file (.at",
+    "label": "linux-cli",
+    "label_text": "Linux CLI result; not evidence for Windows",
+    "needed_libraries": [
+      "ld-linux-x86-64.so.2",
+      "libc.so.6",
+      "libgcc_s.so.1",
+      "libm.so.6"
+    ],
+    "profile": "cli-member-only",
+    "sandbox": {
+      "env": "env -i with HOME, TMPDIR, XDG_*, PATH only (LIGHTCRAFT_GPU=0 for LightCraft)",
+      "network_isolation": "unshare -rn",
+      "rss_kill_mb": 10240,
+      "timeout_s": 300,
+      "vk_icd_filenames": "unset"
+    },
+    "tag": "v0.10.0",
+    "version_line": "photocraft-cli 0.10.0 (8407d9ccb, 2026-10-18)"
+  },
+  "disk": {
+    "avail_mb_end": 743,
+    "avail_mb_min": 664,
+    "avail_mb_start": 743,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 202
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "exit 0 where it has to work, the version names 0.10.0, the command listing is not trivial, no missing library or GPU error",
+  "notes": "Linux CLI result; not evidence for Windows.",
+  "package": "WP-10",
+  "schema": "lj-evidence/1",
+  "stage": "sp1b-photocraft-v0.10.0",
+  "status": "PASS",
+  "test": "t1_photocraft_v0.10.0",
+  "unverified_reasons": [
+    "Windows behaviour is not tested by a Linux CLI run (the maker's Windows five-minute test is the real evidence)"
+  ]
+}

@@ -140,4 +140,4 @@ Approval rule (charter): the advisor gate approves only when every rubric score 
 ## Changelog
 
 - 2026-10-18: Reconciled with DECISIONS.md (2026-10-18). Original voxel assets only and the IP rule per D-23; hard chapters per one-key-three-guards (D-04); testers are strangers to her with no family material (D-03, W-43); found-voice wording per D-05 and W-45; the Minecraft chapter waits on O-05 and W-30.
-- 2026-10-19: Reconciled with DECISIONS.md after the her-world merge (2026-10-19). The Minecraft and voxel clauses are retired under D-29 (S-45, S-50): the look comes from D-28 and W-72; the IP step became the rights and deity rule (W-46, W-61); the locked-chapter pattern follows W-37; the terms, tool and add-on sources removed; the companion is PH1 by cable (W-73).
+- 2026-10-19: Reconciled with DECISIONS.md after the her-world merge (2026-10-19). The game-world clauses are retired under D-29 (S-45, S-50): the look comes from D-28 and W-72; the IP step became the rights and deity rule (W-46, W-61); the locked-chapter pattern follows W-37; the terms, tool and add-on sources removed; the companion is PH1 by cable (W-73).

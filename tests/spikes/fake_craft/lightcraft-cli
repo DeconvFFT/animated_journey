@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+# A STAND-IN for lightcraft-cli (tests only; not LightCraft). render IN -o OUT [--set k=v]... [--size N] [--quality Q]; run --library DIR --script FILE | COMMAND [k=v].
+# FAKE_BUG words: idclash (renames the preset id), noresize, nobright, dupall (treats every file after the first as a content duplicate).
+import json, os, sys
+BUG = os.environ.get("FAKE_BUG", "")
+args = sys.argv[1:]
+if not args or args[0] in ("-h", "--help"):
+    print("lightcraft-cli (stand-in)\nUSAGE:\n  lightcraft-cli render <in> -o <out> [--set control=value]... [--size N] [--quality Q]\n  lightcraft-cli run [--library DIR] --script FILE\n  lightcraft-cli snapshot\nmore"); sys.exit(0)
+if args[0] == "--version":
+    print("lightcraft-cli " + (os.environ.get("FAKE_VERSION") or "0.9.1") + " (stand-in)"); sys.exit(0)
+if args[0] == "commands":
+    print("\n".join("library.cmd%d  Label" % i for i in range(14))); sys.exit(0)
+if os.environ.get("LIGHTCRAFT_GPU") != "0":
+    sys.stderr.write("error: no GPU adapter found (set LIGHTCRAFT_GPU=0)\n"); sys.exit(1)
+from PIL import Image, ImageEnhance
+if args[0] == "render":
+    src = args[1]; dst = args[args.index("-o") + 1]
+    size = int(args[args.index("--size") + 1]) if "--size" in args else 0
+    im = Image.open(src).convert("RGB")
+    if size and "noresize" not in BUG:
+        s = size / float(max(im.size)); im = im.resize((int(im.size[0] * s), int(im.size[1] * s)))
+    if "nobright" not in BUG: im = ImageEnhance.Brightness(im).enhance(1.12)
+    im.save(dst, quality=92); sys.exit(0)
+if args[0] == "run":
+    lib = args[args.index("--library") + 1] if "--library" in args else None
+    steps = []
+    if "--script" in args:
+        steps = [json.loads(l) for l in open(args[args.index("--script") + 1]) if l.strip()]
+    else:
+        rest = args[1:]
+        if "--library" in rest: i = rest.index("--library"); del rest[i:i + 2]
+        c = rest[0]; p = {}
+        for kv in rest[1:]:
+            k, v = kv.split("=", 1); p[k] = json.loads(v)
+        steps = [{"command": c, "params": p}]
+    os.makedirs(lib, exist_ok=True) if lib else None
+    prints = []
+    for st in steps:
+        c, p = st["command"], st.get("params", {})
+        res = {"ok": True, "command": c}
+        if c == "library.import":
+            import hashlib
+            seen, prints, dups = set(), [], []
+            for f in sorted(os.listdir(p["paths"][0])):
+                if not f.endswith(".jpg"): continue
+                fp = os.path.join(p["paths"][0], f); h = hashlib.sha256(open(fp, "rb").read()).hexdigest()
+                if h in seen or ("dupall" in BUG and prints): dups.append({"path": fp, "reason": "content", "existing": 1}); continue   # the real import skips content duplicates (found by the first real run)
+                seen.add(h); prints.append(fp)
+            res["result"] = {"imported": list(range(1, len(prints) + 1)), "duplicates": dups, "failed": [], "scanned": len(prints) + len(dups), "sidecars": 0}
+        elif c == "preset.import":
+            ids = [x["id"] for x in json.load(open(p["paths"][0]))["presets"]]
+            res["result"] = {"imported": [{"id": ("fresh-" + i) if "idclash" in BUG else i} for i in ids], "skipped": 0, "failed": []}
+        elif c == "app.export":
+            os.makedirs(p["dir"], exist_ok=True)
+            for n, f in enumerate(prints, 1):
+                ext = "jpg" if p["format"] == "jpg" else "tif"
+                out = os.path.join(p["dir"], "%s-%02d.%s" % (os.path.splitext(os.path.basename(f))[0], n, ext))
+                if os.path.exists(out): continue
+                Image.open(f).convert("RGB").save(out, "JPEG" if ext == "jpg" else "TIFF")
+            res["exported"] = len(prints)
+        print(json.dumps(res))
+    sys.exit(0)
+sys.stderr.write("error: unknown command\n"); sys.exit(2)

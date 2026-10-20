@@ -1,0 +1,157 @@
+# area=win_lj entry=WP-01b mode=all result=PASS exit=0 seconds=86 masked_values=47
+WP-01b tests (--all). pwsh: present  patterns file: present  public_lint: present
+PASS       lint.lj_script                                       exit 0; TOTAL: 0 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.readme_fences                                   exit 0; TOTAL: 0 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.planted_RO-delete_is_caught_remove-item         exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.planted_RO-write_is_caught_set-content          exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.planted_RO-write_is_caught_out-file             exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.planted_RO-network_is_caught_invoke-webrequest  exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       lint.planted_R13_is_caught_set-executionpolicy       exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       static.no_write_delete_network_code                  no match for 36 patterns in win/lj.ps1
+PASS       static.only_read_calls_into_dotnet_io                [System.IO.Directory]::Exists [System.IO.File]::Exists [System.IO.File]::ReadAllText [System.IO.Path]::Combine [System.IO.Path]::DirectorySeparatorCha
+PASS       parse.ps_parse_sh_all_files                          exit 0; PARSED 58 item(s), 0 parse error(s)|ps_parse: 0 parse errors|
+PASS       parse.own_files_and_readme_fences                    exit 0; PARSED 8 item(s) of lj.ps1 and README-LJ.md (7 fence(s)), 0 parse error(s)|
+PASS       data.example_config_test_configs_and_readme          exit 0; example apps: 6; test configs checked; README headings found: 7/7; powershell fences: 7; json fences: 1; problems: 0|
+PASS       lint.public_lint_on_owned_paths                      exit 0; 
+PASS       trees.build                                          exit 0; 
+PASS       help.prints_summary                                  exit 0; Not in v0 (planned for v1 in week 4): -Apply, -Commit, -IncludeWindowsRecent. They print a message and exit 2.|
+PASS       help.no_arguments_is_help                            exit 0; Not in v0 (planned for v1 in week 4): -Apply, -Commit, -IncludeWindowsRecent. They print a message and exit 2.|
+PASS       not_in_v0.close-Apply                                exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.close-Apply.tree_hash_identical            HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       not_in_v0.close-Commit                               exit 2; -Commit: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.close-Commit.tree_hash_identical           HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       not_in_v0.close-IncludeWindowsRecent                 exit 2; -IncludeWindowsRecent: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.close-IncludeWindowsRecent.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       not_in_v0.doctor-Apply                               exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.doctor-Apply.tree_hash_identical           HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       not_in_v0.doctor-Commit                              exit 2; -Commit: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.doctor-Commit.tree_hash_identical          HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       not_in_v0.doctor-IncludeWindowsRecent                exit 2; -IncludeWindowsRecent: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.doctor-IncludeWindowsRecent.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       not_in_v0.close_apply_with_config                    exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.close_apply_with_config.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       not_in_v0.lowercase_and_abbreviations                exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.lowercase_and_abbreviations.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       not_in_v0.double_dash_and_equals                     exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
+PASS       not_in_v0.double_dash_and_equals.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       doctor.fixture_prints_tier_table                     exit 0; [3/4] Running scripts\windows_check.py (read-only; masks anything that looks like identifying data) ... exit 0|  RESULT: exit 0 (valid; nothin
+PASS       doctor.fixture_prints_tier_table.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.planted_lists_the_planted_items                exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 12 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
+PASS       close.planted_lists_the_planted_items.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.planted_list_is_exactly_the_manifest           exit 0; problems: 0|
+PASS       close.root_is_slash_refused                          exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is a drive root (/). Nothing was done.|files written: non
+PASS       close.root_is_slash_refused.tree_hash_identical      HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.root_is_repo_refused                           exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is the project repository folder. Nothing was done.|files
+PASS       close.root_is_repo_refused.tree_hash_identical       HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.root_is_home_refused                           exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is the user profile folder. Nothing was done.|files writt
+PASS       close.root_is_home_refused.tree_hash_identical       HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       doctor.vram_unreadable_is_exit_1                     exit 1; [3/4] Running scripts\windows_check.py (read-only; masks anything that looks like identifying data) ... exit 1|  RESULT: exit 1 (valid; 1 find
+PASS       doctor.vram_unreadable_is_exit_1.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       doctor.low_tier_is_information                       exit 0; [3/4] Running scripts\windows_check.py (read-only; masks anything that looks like identifying data) ... exit 0|  RESULT: exit 0 (valid; nothin
+PASS       doctor.low_tier_is_information.tree_hash_identical   HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       doctor.identifying_report_exit_2                     exit 2; [3/4] Running scripts\windows_check.py (read-only; masks anything that looks like identifying data) ... exit 2|files written: none|
+PASS       doctor.identifying_report_exit_2.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       doctor.missing_report_exit_2                         exit 2; REFUSED: that report file was not found. Nothing was done.|files written: none|
+PASS       doctor.missing_report_exit_2.tree_hash_identical     HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       doctor.unknown_option_exit_2                         exit 2; Unknown option '-Config' for doctor. Nothing was done. Try: lj.ps1 help|
+PASS       doctor.unknown_option_exit_2.tree_hash_identical     HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       doctor.savetier_writes_the_derived_file              exit 0; [3/4] Running scripts\windows_check.py (read-only; masks anything that looks like identifying data) ... exit 0|  RESULT: exit 0 (valid; nothin
+PASS       doctor.savetier_only_the_derived_file_appears        > renders/wp01b/tier.json 
+PASS       doctor.savetier_file_has_no_hardware_strings         exit 0; 
+PASS       doctor.savetier_identifying_report_writes_nothing    exit 2; [3/4] Running scripts\windows_check.py (read-only; masks anything that looks like identifying data) ... exit 2|files written: none|
+PASS       doctor.savetier_refusal_created_no_file              absent
+PASS       doctor.savetier_refuses_to_overwrite_a_non_tier_file exit 2; REFUSED: that file exists and is not a tier file; it will not be overwritten. Nothing was done.|files written: none|
+PASS       doctor.savetier_decoy_untouched                      4ddb5ffcd2774a35
+PASS       doctor.savetier_refuses_reserved_name                exit 2; REFUSED: that file name is reserved for raw PC reports, which must never be filed. Nothing was done.|files written: none|
+PASS       doctor.savetier_refuses_non_json_name                exit 2; REFUSED: -SaveTier file name must end in .json. Nothing was done.|files written: none|
+PASS       doctor.savetier_refuses_a_folder                     exit 2; REFUSED: -SaveTier names a folder. Nothing was done.|files written: none|
+PASS       doctor.savetier_refusals_created_nothing             absent
+PASS       doctor.runs_the_sibling_inventory_on_linux           exit 1; files written: /home/user/build-scratch/wp01b-test.hmIRo4/tmpdir/lj_pc_report.json|[3/4] Running scripts\windows_check.py (read-only; masks an
+PASS       doctor.step0_wrote_only_its_own_temp_report          lj_pc_report.json 
+PASS       doctor.no_python_is_exit_3_and_says_so               exit 3; files written: none|
+PASS       close.root_inside_repo_refused                       exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is inside the project repository folder; the repository i
+PASS       close.root_inside_repo_refused.tree_hash_identical   HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.root_is_a_link_refused                         exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is a link; point "root" at the real folder. Nothing was d
+PASS       close.root_is_a_link_refused.tree_hash_identical     HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.root_is_a_git_repo_refused                     exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is itself a git repository. Nothing was done.|files writt
+PASS       close.root_is_a_git_repo_refused.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.root_containing_the_profile_refused            exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root contains the user profile folder. Nothing was done.|files
+PASS       close.root_containing_the_profile_refused.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.root_equal_to_the_profile_refused              exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is the user profile folder. Nothing was done.|files writt
+PASS       close.root_equal_to_the_profile_refused.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.tools_root_outside_the_root_refused            exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: tools_root must be a folder inside the root. Nothing was done.|fil
+PASS       close.tools_root_outside_the_root_refused.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.tools_root_equal_to_the_root_refused           exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: tools_root must be a folder inside the root. Nothing was done.|fil
+PASS       close.tools_root_equal_to_the_root_refused.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.missing_root_refused                           exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root folder does not exist (/home/user/build-scratch/wp01b-tre
+PASS       close.missing_root_refused.tree_hash_identical       HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.no_root_refused                                exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the config has no "root". Nothing was done.|files written: none|
+PASS       close.no_root_refused.tree_hash_identical            HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.bare_drive_letter_refused                      exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is a bare drive letter. Nothing was done.|files written: 
+PASS       close.bare_drive_letter_refused.tree_hash_identical  HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.unset_variable_in_root_refused                 exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root uses the variable %LJ_NO_SUCH_VARIABLE%, which is not set
+PASS       close.unset_variable_in_root_refused.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.bad_json_refused                               exit 2; REFUSED: the config could not be read as JSON (Conversion from JSON failed with error: Invalid character after parsing property name. Expected
+PASS       close.bad_json_refused.tree_hash_identical           HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.wrong_schema_refused                           exit 2; REFUSED: the config must have "schema": "lj-config/1". Nothing was done.|files written: none|
+PASS       close.wrong_schema_refused.tree_hash_identical       HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.no_config_file_refused                         exit 2; REFUSED: no config file. Copy win\lj.config.example.json to win\lj.config.local.json, set "root", and run again (or pass -Config PATH). Nothin
+PASS       close.no_config_file_refused.tree_hash_identical     HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.option_needs_a_value                           exit 2; 
+PASS       close.option_needs_a_value.tree_hash_identical       HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.unknown_command                                exit 2; Unknown command 'bogus'. Nothing was done. Try: lj.ps1 help|
+PASS       close.unknown_command.tree_hash_identical            HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.repo_inside_the_root_is_never_touched          exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 5 item(s), 5 file(s), 2.1 KB|BACKUP: not implemented in v0 (week 4)|files wr
+PASS       close.repo_inside_the_root_is_never_touched.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.repo_inside_the_root_not_in_the_would_remove_list absent
+PASS       close.canaries_and_links_never_listed_as_removable   exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 12 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
+PASS       close.not_in_the_would_remove_list.stray_xmp         absent: stray.xmp
+PASS       close.not_in_the_would_remove_list.link_out_         absent: link-out/
+PASS       close.not_in_the_would_remove_list.tools_soundcraft_0_8_0_stray_xmp absent: tools/soundcraft-0.8.0/stray.xmp
+PASS       close.not_in_the_would_remove_list._root__cache__    absent: <root>/cache  
+PASS       close.held_back_with_reasons                         exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 12 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
+PASS       close.wildcard_in_the_middle_of_a_path_does_not_open_protected_folders exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 12 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
+PASS       close.wildcard_in_the_middle_of_a_path_does_not_open_protected_folders.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.nested_never_touch_path_holds_the_candidate_back exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 12 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
+PASS       close.nested_never_touch_path_candidate_not_in_would_remove absent
+PASS       close.wildcard_only_extra_tools_folder_name_is_ignored exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 12 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
+PASS       close.wildcard_only_extra_tools_folder_name_is_ignored.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.wildcard_only_extra_tools_folder_name_adds_no_row exit 0; problems: 0|
+PASS       close.named_extra_tools_folder_name_still_works      exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 11 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
+PASS       usage.unknown_command_echo_hides_the_profile_path    exit 2; Unknown command '%USERPROFILE%/x'. Nothing was done. Try: lj.ps1 help|
+PASS       usage.unknown_command_echo_hides_the_profile_path.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       usage.unexpected_argument_echo_hides_the_profile_path exit 2; 
+PASS       usage.unexpected_argument_echo_hides_the_profile_path.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       usage.unknown_option_echo_shows_the_name_only        exit 2; Unknown option '-Bogus' for close. Nothing was done. Try: lj.ps1 help|
+PASS       usage.unknown_option_echo_shows_the_name_only.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       usage.unknown_first_option_echo_shows_the_name_only  exit 2; Unknown option '-Bogus'. Nothing was done. Try: lj.ps1 help|
+PASS       usage.unknown_first_option_echo_shows_the_name_only.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.per_app_lists_are_marked_unverified            exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 12 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
+PASS       close.empty_root_lists_nothing                       exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|BACKUP: not implemented in v0 (week 4)|files written: none|
+PASS       close.empty_root_lists_nothing.tree_hash_identical   HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.appdata_entries_resolve_when_the_variables_are_set exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 13 item(s), 17 file(s), 10.9 KB|  - [REFUSED] photocraft/cache: %APPDATA%/Mi
+PASS       close.appdata_entries_resolve_when_the_variables_are_set.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.appdata_entries_skipped_when_the_variables_are_unset exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 11 item(s), 15 file(s), 10.7 KB|BACKUP: not implemented in v0 (week 4)|files
+PASS       close.appdata_entries_skipped_when_the_variables_are_unset.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.no_python_skips_the_checks_and_says_so         exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 12 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
+PASS       close.no_python_skips_the_checks_and_says_so.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+PASS       close.skip_checks_says_so                            exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 12 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
+PASS       close.no_network_same_output_in_a_network_less_namespace 88 lines, identical
+PASS       doctor.no_network_in_a_network_less_namespace        exit 0; [3/4] Running scripts\windows_check.py (read-only; masks anything that looks like identifying data) ... exit 0|  RESULT: exit 0 (valid; nothin
+PASS       close.full_run_with_checks_on_read_only_mounts_and_no_network exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 12 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
+PASS       close.read_only_mounts_really_block_writes           exit 0; 
+PASS       doctor.fixture_on_a_read_only_repo_writes_nothing    exit 0; [3/4] Running scripts\windows_check.py (read-only; masks anything that looks like identifying data) ... exit 0|  RESULT: exit 0 (valid; nothin
+PASS       close.full_run_exits_0_whatever_the_checkers_say     exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 12 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
+PASS       close.full_run_exits_0_whatever_the_checkers_say.tree_hash_identical HASH dd4b637e4516c633f0e88c77d09ee78f5eb0a45b1e60d48cbddacdee791c1465 entries=123 / HASH 94********
+UNVERIFIED windows.path_rules_on_ntfs                           tested only with Linux paths; Test-SamePath, Test-Inside, GetPathRoot and GetFullPath on Windows are unproven
+UNVERIFIED windows.reparse_points_on_ntfs                       tested with Linux symlinks only
+UNVERIFIED windows.py_launcher_and_python                       no Windows Python here
+UNVERIFIED windows.powershell_5_1_runtime                       parse-tested on 7.5.4 and checked by ps_lint.py against the 5.1 rules only
+UNVERIFIED windows.doctor_runs_step0_in_process                 ran on Linux only (non-Windows report)
+UNVERIFIED windows.environment_variables                        stand-in variables only
+UNVERIFIED windows.per_app_lists_not_from_a_paste               no where-did-it-write paste has arrived; every shipped list is empty and marked UNVERIFIED
+UNVERIFIED windows.mounted_container_detection                  v0 cannot detect a mounted container; the config's never_touch_paths is the only guard
+UNVERIFIED windows.argument_binding_5_1                         checked on pwsh 7.5.4 only; PowerShell drops a trailing colon argument such as -Apply: with no value before the script sees it, which then runs as a p
+UNVERIFIED windows.console_encoding                             Linux terminal only
+---
+WP-01b --all: PASS=143 FAIL=0 UNVERIFIED=10 SKIPPED=0 BLOCKED=0  (df Avail 754 -> 754 MB)

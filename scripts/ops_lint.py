@@ -289,7 +289,7 @@ def check_decisions(csv_path, register_path, d2c, findings):
     if len(reg_ids_plain) != len(reg_set):
         findings.add_fail("DECISIONS.md", 0, "register", "the register lists an ID twice")
     # every line that starts like a register row, including an ID wrapped in emphasis or code marks
-    # (`| **O-95** |`): the generator must have produced exactly one row for each of them
+    # (`| **O-06** |`): the generator must have produced exactly one row for each of them
     looks_like_row = sum(1 for ln in reg_text.splitlines() if d2c.NEAR_MISS_RE.match(ln))
     try:
         rows = d2c.build_rows(d2c.parse_register(reg_text))
@@ -350,7 +350,8 @@ CARD_ROWS = [
     ("**TD-4", ["W-17"], ["1080p24", "2K Flat"]),
     ("**Colour", ["W-16"], ["BT.709"]),
     ("**Sound", ["W-19"], ["-1 dBTP", "48 kHz"]),
-    ("**Phone", ["D-27", "W-63"], ["(J)", "PHONE-ROW.md", "WP-08", "FontSize=28"]),
+    # the draft row also named PHONE-ROW.md and WP-08 (the paste instruction); the row pasted from PHONE-ROW.md (gate review r1) does not, so only the stable needles are required
+    ("**Phone", ["D-27", "W-63"], ["(J)", "FontSize=28"]),
     # rows the register says the maker signs on Sun 1 Nov (W-16 "Added 2026-10-19", O-14)
     ("**Script stack", ["W-75"], ["Gujarati"]),
     ("**Fonts", ["W-75"], ["OFL.txt"]),

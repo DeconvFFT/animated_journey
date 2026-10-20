@@ -1,0 +1,37 @@
+{
+ "counts": {
+  "BLOCKED": 0,
+  "FAIL": 2,
+  "PASS": 43,
+  "SKIPPED": 0,
+  "UNVERIFIED": 1
+ },
+ "date_utc": "2026-10-20",
+ "lowest_avail_mb": 614,
+ "mode": "all",
+ "package": "WP-11b",
+ "schema": "lj-evidence-summary/1",
+ "seconds": 128.8,
+ "slowest": [
+  {
+   "seconds": 55.2,
+   "test": "e2e.phone_encode_from_harness_master_incl_fill_20x9"
+  },
+  {
+   "seconds": 29.2,
+   "test": "e2e.a11_mo8_pair"
+  },
+  {
+   "seconds": 10.2,
+   "test": "e2e.testcard_through_chain_checked_by_spec_check"
+  },
+  {
+   "seconds": 9.9,
+   "test": "hygiene.stale_check_new_only"
+  },
+  {
+   "seconds": 9.5,
+   "test": "hygiene.public_lint_whole_tree_audit"
+  }
+ ]
+}

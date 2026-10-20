@@ -22,7 +22,9 @@
     "verdict": 35,
     "margin_50plus": 40,
     "source": "research/mobile-delivery.md Q3: smartphone text is held at a mean of 36.2 cm for messages and 32.2 cm for web pages (Bababekova et al. 2011, abstract via a search digest); 35 cm is the design distance and 40 cm the 50+ margin (J). The verdict is taken at the 'verdict' distance and the 40 cm figure is written next to it.",
-    "status": "(J)"
+    "status": "(J)",
+    "proxy_cm": 50,
+    "proxy_note": "playbooks/mobile-delivery.md Exercise 4 reads the captions at 35 cm and then at 50 cm as a proxy for a 50+ viewer. 50 cm is reported (INFO) and never gates; the maker's phone test question 3 is the measurement."
   },
   "x_height": {
     "floor_arcmin": 18,

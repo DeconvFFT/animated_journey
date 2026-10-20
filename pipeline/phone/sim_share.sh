@@ -7,7 +7,8 @@
 #
 #   bash pipeline/phone/sim_share.sh renders/wp08/phone.mp4 renders/wp08/shared.mp4 && python3 -I pipeline/phone/phone_check.py renders/wp08/shared.mp4
 #
-# NEVER OVERWRITES ITS INPUT: it refuses when OUT is IN (same path, same file, or a link to it), refuses an existing OUT without --overwrite, writes OUT through a temporary
+# NEVER OVERWRITES ITS INPUT: it refuses when OUT is IN (same path, same file, or a link to it), refuses an existing OUT unless it is a copy this tool made earlier (its sidecar says
+# so) or --overwrite is given, writes OUT through a temporary
 # name, and compares the SHA-256 of IN before and after (a change is an error, exit 3). Beside OUT it writes OUT.ass and OUT.phone.json (copies of IN's caption file and sidecar,
 # the sidecar marked as a shared copy) so that phone_check.py can read them. It uses no network, prints base file names only, and needs ffmpeg, python3 and sha256sum.
 # Exit codes: 0 done; 2 bad usage; 3 environment problem (a tool is missing, ffmpeg failed, the input changed).
@@ -23,7 +24,9 @@ for t in ffmpeg python3 sha256sum; do command -v "$t" >/dev/null 2>&1 || { echo 
 [ -f "$IN" ] || { echo "USAGE: the input $(basename "$IN") does not exist" >&2; exit 2; }
 if [ -e "$OUT" ]; then
   if [ "$IN" -ef "$OUT" ]; then echo "USAGE: refusing: the output is the input ($(basename "$IN")); sim_share.sh never overwrites its input" >&2; exit 2; fi
-  [ "$OVER" = 1 ] || { echo "USAGE: $(basename "$OUT") already exists (use --overwrite)" >&2; exit 2; }
+  OWN=0
+  if [ -f "$OUT.phone.json" ] && grep -q '"shared_copy_of"' "$OUT.phone.json" 2>/dev/null; then OWN=1; fi
+  [ "$OVER" = 1 ] || [ "$OWN" = 1 ] || { echo "USAGE: $(basename "$OUT") already exists and is not a copy this tool made earlier (use --overwrite to replace it)" >&2; exit 2; }
 fi
 if [ "$(readlink -f "$IN")" = "$(readlink -f "$OUT")" ]; then echo "USAGE: refusing: the output is the input" >&2; exit 2; fi
 case "$OUT" in *.mp4) ;; *) echo "USAGE: the output name must end in .mp4" >&2; exit 2;; esac
@@ -59,20 +62,18 @@ echo "input SHA-256 after:  ${H1:0:16}... (unchanged)"
 
 WROTE="$(basename "$OUT")"
 if [ -f "$IN.ass" ]; then cp -f "$IN.ass" "$OUT.ass"; WROTE="$WROTE, $(basename "$OUT").ass"; fi
-if [ -f "$IN.phone.json" ]; then
-  python3 -I - "$IN.phone.json" "$OUT.phone.json" "$OUT" "$(basename "$IN")" <<'PY'
-import hashlib, json, os, subprocess, sys
+python3 -I - "$IN.phone.json" "$OUT.phone.json" "$OUT" "$(basename "$IN")" <<'PY'
+import hashlib, json, os, sys
 src, dst, out, base_in = sys.argv[1:5]
-d = json.load(open(src, encoding="utf-8"))
+d = json.load(open(src, encoding="utf-8")) if os.path.isfile(src) else {"schema": "lj-phone-sidecar/1"}
 h = hashlib.sha256(open(out, "rb").read()).hexdigest()
 d["shared_copy_of"] = base_in
-d["tool"] = "sim_share.sh (sidecar copied from the input and marked)"
+d["tool"] = "sim_share.sh (sidecar copied from the input, if it had one, and marked)"
 d["output"] = {"name": os.path.basename(out), "bytes": os.path.getsize(out), "sha256": h, "note": "a messenger-class copy (480p, about 1 Mbps); width and height are those of the copy"}
 json.dump(d, open(dst, "w", encoding="utf-8", newline="\n"), indent=2, ensure_ascii=False)
 open(dst, "a").write("\n")
 PY
-  WROTE="$WROTE, $(basename "$OUT").phone.json"
-fi
+WROTE="$WROTE, $(basename "$OUT").phone.json"
 SZ=$(stat -c %s "$OUT")
 echo "files written: $WROTE ($SZ bytes)"
 exit 0

@@ -29,7 +29,7 @@ COLUMNS
   * An ID cell may carry an annotation (`| O-06 (absorbs O-40) |`): the row is read as O-06
     and the words inside the parentheses (`absorbs O-40`) go first in `note`. A line that
     starts like a register row (`| O-`, `| W-`, `| D-`, `| S-` and a digit, with or without
-    emphasis marks around the ID: `| **O-95** |`) but does not parse is a malformed register
+    emphasis marks around the ID: `| **O-06** |`) but does not parse is a malformed register
     (exit 2), so a row can never vanish from the mirror in silence.
   * `maker_answer` and `last_changed` belong to the orchestrator: they are empty when a
     row is first created, are never overwritten, and are carried over by --write when the
@@ -73,7 +73,7 @@ KNOWN_SUPERSEDED = {"D-14": "D-26"}
 REGISTER_ROW_PATTERN = r"^\|\s*([DWOS])-([0-9]{2,3})\b([^|]*)\|"
 ROW_RE = re.compile(REGISTER_ROW_PATTERN)
 # A line that LOOKS like a register row (starts `| O-6`, `| W-1x`, or an ID cell wrapped in
-# emphasis or code marks: `| **O-95** |`, `` | `O-96` | ``). If it does not match ROW_RE the register
+# emphasis or code marks: `| **O-06** |`, `` | `O-07` | ``). If it does not match ROW_RE the register
 # is malformed: the row must never vanish from the mirror in silence.
 NEAR_MISS_RE = re.compile(r"^\|\s*[*_`~]*\s*[DWOS]-[0-9]")
 SUPERSEDED_BY_RE = re.compile(r"superseded by (D-[0-9]{2,3})", re.I)

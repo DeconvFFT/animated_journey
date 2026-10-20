@@ -1,0 +1,275 @@
+{
+  "actual": "9 criteria, 3 failed: RB.vectorcraft.wp06.check_ids_exit0: reused check_ids.py exit 1: ids authored: 17 | lost: none | element kind changed: ['arm-upper', 'bar', 'bg', 'disc-a', 'disc-b', 'dot-1', 'dot-2', 'dot-3', 'hand'] | data-* changed: ['labe || root viewBox: 0 0 640 360 -> 0 0 640 360; RB.vectorcraft.wp06.wp06_gate_exit0: svg_rig.py gate exit 1: GATE wp06: raw_exit=1 gate_exit=1 authored=17 lost=none kind_changed=arm-upper,bar,bg,disc-a,disc-b,dot-1,dot-2,dot-3,hand data_changed=label reasons=data_attr_changed,element_kind_changed; RB.vectorcraft.at.wp06_gate_exit0: svg_rig.py gate exit 1: GATE at: raw_exit=0 gate_exit=1 authored=11 lost=none kind_changed=bg,faded,sun,sun-halo,trunk data_changed=none reasons=element_kind_changed; 6 findings",
+  "date_utc": "2026-10-19",
+  "detail": {
+    "app": "vectorcraft",
+    "calls": [
+      {
+        "call": "--version",
+        "killed": null,
+        "max_rss_mb": 20.0,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "--help",
+        "killed": null,
+        "max_rss_mb": 20.1,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "commands",
+        "killed": null,
+        "max_rss_mb": 20.1,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "convert wp06.svg out.svg",
+        "killed": null,
+        "max_rss_mb": 22.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "info wp06.svg",
+        "killed": null,
+        "max_rss_mb": 21.9,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "convert at.svg out.svg",
+        "killed": null,
+        "max_rss_mb": 24.2,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "info at.svg",
+        "killed": null,
+        "max_rss_mb": 22.0,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "run --in at-rig.svg --export png --export pdf --scale 2",
+        "killed": null,
+        "max_rss_mb": 103.5,
+        "rc": 0,
+        "wall_s": 0.51
+      }
+    ],
+    "checks": [
+      {
+        "id": "RB.vectorcraft.wp06.convert",
+        "measured": "exit 0, output an SVG",
+        "note": "`convert in.svg out.svg` writes an SVG",
+        "pass": true
+      },
+      {
+        "id": "RB.vectorcraft.wp06.check_ids_exit0",
+        "measured": "reused check_ids.py exit 1: ids authored: 17 | lost: none | element kind changed: ['arm-upper', 'bar', 'bg', 'disc-a', 'disc-b', 'dot-1', 'dot-2', 'dot-3', 'hand'] | data-* changed: ['labe || root viewBox: 0 0 640 360 -> 0 0 640 360",
+        "note": "no authored id and no data-* attribute is lost (check_ids.py exits 0)",
+        "pass": false
+      },
+      {
+        "id": "RB.vectorcraft.wp06.wp06_gate_exit0",
+        "measured": "svg_rig.py gate exit 1: GATE wp06: raw_exit=1 gate_exit=1 authored=17 lost=none kind_changed=arm-upper,bar,bg,disc-a,disc-b,dot-1,dot-2,dot-3,hand data_changed=label reasons=data_attr_changed,element_kind_changed",
+        "note": "the WP-06 gate (check_ids.py plus the element-kind rule) passes",
+        "pass": false
+      },
+      {
+        "id": "RB.vectorcraft.wp06.info_json",
+        "measured": "exit 0, JSON",
+        "note": "`info <svg>` prints a JSON summary",
+        "pass": true
+      },
+      {
+        "id": "RB.vectorcraft.at.convert",
+        "measured": "exit 0, output an SVG",
+        "note": "`convert in.svg out.svg` writes an SVG",
+        "pass": true
+      },
+      {
+        "id": "RB.vectorcraft.at.check_ids_exit0",
+        "measured": "reused check_ids.py exit 0: ids authored: 11 | lost: none | element kind changed: ['bg', 'faded', 'sun', 'sun-halo', 'trunk'] | data-* changed: none || root viewBox: 100 50 400 300 -> 0 0 400 300",
+        "note": "no authored id and no data-* attribute is lost (check_ids.py exits 0)",
+        "pass": true
+      },
+      {
+        "id": "RB.vectorcraft.at.wp06_gate_exit0",
+        "measured": "svg_rig.py gate exit 1: GATE at: raw_exit=0 gate_exit=1 authored=11 lost=none kind_changed=bg,faded,sun,sun-halo,trunk data_changed=none reasons=element_kind_changed",
+        "note": "the WP-06 gate (check_ids.py plus the element-kind rule) passes",
+        "pass": false
+      },
+      {
+        "id": "RB.vectorcraft.at.info_json",
+        "measured": "exit 0, JSON",
+        "note": "`info <svg>` prints a JSON summary",
+        "pass": true
+      },
+      {
+        "id": "RB.vectorcraft.at.export_png_pdf",
+        "measured": "exit 0, PNG size (800, 600), PDF valid header",
+        "note": "both files are written; the PNG keeps the 4:3 shape (the playbook's step 4)",
+        "pass": true
+      }
+    ],
+    "findings": [
+      {
+        "finding": "what reading the input left out (importWarnings) and the export's own warnings",
+        "id": "RB.vectorcraft.wp06.import_warnings",
+        "implication": "the playbook expects the feColorMatrix filter of at-rig.svg to be named as ignored",
+        "measured": {
+          "importWarnings": null,
+          "warnings": []
+        }
+      },
+      {
+        "finding": "the reused check_ids.py output lines (viewBox, classes, style)",
+        "id": "RB.vectorcraft.wp06.check_ids_output",
+        "implication": "the viewBox change from 100 50 400 300 to 0 0 400 300 is expected for at-rig.svg (research/craft-visual.md)",
+        "measured": [
+          "ids authored: 17 | lost: none | element kind changed: ['arm-upper', 'bar', 'bg', 'disc-a', 'disc-b', 'dot-1', 'dot-2', 'dot-3', 'hand'] | data-* changed: ['label']",
+          "root viewBox: 0 0 640 360 -> 0 0 640 360",
+          "classes in output: []",
+          "<style> kept verbatim: False"
+        ]
+      },
+      {
+        "finding": "the key structure of `info`",
+        "id": "RB.vectorcraft.wp06.info_shape",
+        "implication": "",
+        "measured": {
+          "artboards": [
+            "..."
+          ],
+          "file": "str",
+          "fonts": [
+            "..."
+          ],
+          "info": {
+            "artboards": "...",
+            "author": "...",
+            "authorTitle": "...",
+            "colorMode": "...",
+            "copyrightNotice": "...",
+            "copyrightStatus": "...",
+            "copyrightUrl": "...",
+            "created": "...",
+            "description": "...",
+            "keywords": "...",
+            "modified": "...",
+            "objects": "..."
+          },
+          "kinds": {
+            "Group": "...",
+            "Layer": "...",
+            "Path": "...",
+            "Symbol": "...",
+            "Type": "..."
+          },
+          "warnings": []
+        }
+      },
+      {
+        "finding": "what reading the input left out (importWarnings) and the export's own warnings",
+        "id": "RB.vectorcraft.at.import_warnings",
+        "implication": "the playbook expects the feColorMatrix filter of at-rig.svg to be named as ignored",
+        "measured": {
+          "importWarnings": [
+            "filter 'tint' (feColorMatrix) on 'faded' isn't supported; drawn without it"
+          ],
+          "warnings": []
+        }
+      },
+      {
+        "finding": "the reused check_ids.py output lines (viewBox, classes, style)",
+        "id": "RB.vectorcraft.at.check_ids_output",
+        "implication": "the viewBox change from 100 50 400 300 to 0 0 400 300 is expected for at-rig.svg (research/craft-visual.md)",
+        "measured": [
+          "ids authored: 11 | lost: none | element kind changed: ['bg', 'faded', 'sun', 'sun-halo', 'trunk'] | data-* changed: none",
+          "root viewBox: 100 50 400 300 -> 0 0 400 300",
+          "classes in output: []",
+          "<style> kept verbatim: False"
+        ]
+      },
+      {
+        "finding": "the key structure of `info`",
+        "id": "RB.vectorcraft.at.info_shape",
+        "implication": "",
+        "measured": {
+          "artboards": [
+            "..."
+          ],
+          "file": "str",
+          "fonts": [
+            "..."
+          ],
+          "info": {
+            "artboards": "...",
+            "author": "...",
+            "authorTitle": "...",
+            "colorMode": "...",
+            "copyrightNotice": "...",
+            "copyrightStatus": "...",
+            "copyrightUrl": "...",
+            "created": "...",
+            "description": "...",
+            "keywords": "...",
+            "modified": "...",
+            "objects": "..."
+          },
+          "kinds": {
+            "Group": "...",
+            "Layer": "...",
+            "Path": "...",
+            "Symbol": "...",
+            "Type": "..."
+          },
+          "warnings": [
+            "..."
+          ]
+        }
+      }
+    ],
+    "inputs": "synthetic: WP-06 emitters and the reused fixtures of research/craft-visual-fixtures",
+    "label": "linux-cli",
+    "label_text": "Linux CLI result; not evidence for Windows",
+    "sandbox": {
+      "env": "env -i with HOME, TMPDIR, XDG_*, PATH only (LIGHTCRAFT_GPU=0 for LightCraft)",
+      "network_isolation": "unshare -rn",
+      "rss_kill_mb": 10240,
+      "timeout_s": 300,
+      "vk_icd_filenames": "unset"
+    },
+    "tag": "v0.13.1"
+  },
+  "disk": {
+    "avail_mb_end": 740,
+    "avail_mb_min": 624,
+    "avail_mb_start": 743,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 286
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "the playbook's read-back passes: the file is read, converted and written, the layer names or ids survive",
+  "notes": "Linux CLI result; not evidence for Windows.",
+  "package": "WP-10",
+  "schema": "lj-evidence/1",
+  "stage": "sp1b-vectorcraft-v0.13.1",
+  "status": "FAIL",
+  "test": "readback_vectorcraft_v0.13.1",
+  "unverified_reasons": [
+    "Windows behaviour is not tested by a Linux CLI run (the maker's Windows five-minute test is the real evidence)"
+  ]
+}

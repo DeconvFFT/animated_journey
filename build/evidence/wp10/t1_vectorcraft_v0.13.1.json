@@ -1,0 +1,123 @@
+{
+  "actual": "5 checks, 0 failed",
+  "date_utc": "2026-10-19",
+  "detail": {
+    "app": "vectorcraft",
+    "calls": [
+      {
+        "call": "--version",
+        "killed": null,
+        "max_rss_mb": 20.0,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "--help",
+        "killed": null,
+        "max_rss_mb": 20.1,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "commands",
+        "killed": null,
+        "max_rss_mb": 20.1,
+        "rc": 0,
+        "wall_s": 0.25
+      }
+    ],
+    "checks": [
+      {
+        "id": "T1.version_exit0",
+        "measured": "exit 0",
+        "note": "",
+        "pass": true
+      },
+      {
+        "id": "T1.version_names_tag",
+        "measured": "vectorcraft-cli 0.13.1",
+        "note": "",
+        "pass": true
+      },
+      {
+        "id": "T1.usage_text",
+        "measured": "exit 0, 54 lines",
+        "note": "the CLI prints its usage",
+        "pass": true
+      },
+      {
+        "id": "T1.command_listing",
+        "measured": "`commands`: 785 JSON entries with an id or name (mark: at least 20); tried ['commands -> exit 0']",
+        "note": "the command surface can be listed and is not trivial",
+        "pass": true
+      },
+      {
+        "id": "T1.stderr_clean",
+        "measured": "patterns matched: none; GPU or CPU-renderer notices recorded, not failed: none",
+        "note": "no missing library, no GPU or adapter failure with VK_ICD_FILENAMES unset",
+        "pass": true
+      }
+    ],
+    "cli_bytes": 99163336,
+    "cli_sha256": "5ee8f50726fe274c39e96178a60746b8336a509e4d35dded2cbe51f48dfa9ac7",
+    "command_listing": {
+      "args": [
+        "commands"
+      ],
+      "counted": "JSON entries with an id or name",
+      "entries": 785,
+      "first_lines": [
+        "[",
+        "  {",
+        "    \"enabled\": true,",
+        "    \"id\": \"file.new\",",
+        "    \"label\": \"New\u2026\",",
+        "    \"menu\": ["
+      ]
+    },
+    "gpu_notices": [],
+    "help_excerpt": "vectorcraft-cli \u2014 VectorCraft automation\n\nUSAGE:\n  vectorcraft-cli mcp [--connect ADDR | --headless] [--automation-read-root DIR] [--automation-write-root DIR]\n      Run the MCP server on stdio. Default: connect to a running app at 127.0.0.1:7979\n      (vectorcraft --control 7979), falling back to a headless in-process session.\n      --automation-read-root / --automation-write-root confine the files the agent's commands read\n      (open, place, relink, library loads\u2026) and write (save, export, package, library saves\u2026) to\n      DIR, links followed; a root left out grants none of its access. They imply --headless: a\n      running app enforces its own (vectorcraft --control PORT --automation-read-root DIR \u2026).\n\n  vectorcraft-cli run [--in FILE] [--cmd ID [--params JSON]]... [--export FILE]... [--scale N]\n      Headless batch: open FILE (any readable format) or start a new document, run commands in\n      order, export each FILE in the format its extension picks (see Writable formats). Prints one\n      JSON result per step.\n\n  vectorcraft-cli commands\n      Print the command catalogue as JSON.\n\n  vectorcraft-cli convert IN OUT [--scale N] [--artboard I | --range R] [--outline-text] [--decimals N] [--replace-lossy] [--editing-data] [--ai-version 7|pdf] [--hidden-objects layer|omit|visible] [--transparent-images flatten|omit]\n      Open IN (any readable format) and export OUT in the format its extension picks (see Writable\n      formats). --artboard is 0-based, --range 1-based (\"1-3,5",
+    "label": "linux-cli",
+    "label_text": "Linux CLI result; not evidence for Windows",
+    "needed_libraries": [
+      "libc.so.6",
+      "libgcc_s.so.1",
+      "libm.so.6"
+    ],
+    "profile": "cli-member-only",
+    "sandbox": {
+      "env": "env -i with HOME, TMPDIR, XDG_*, PATH only (LIGHTCRAFT_GPU=0 for LightCraft)",
+      "network_isolation": "unshare -rn",
+      "rss_kill_mb": 10240,
+      "timeout_s": 300,
+      "vk_icd_filenames": "unset"
+    },
+    "tag": "v0.13.1",
+    "version_line": "vectorcraft-cli 0.13.1"
+  },
+  "disk": {
+    "avail_mb_end": 740,
+    "avail_mb_min": 624,
+    "avail_mb_start": 743,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 286
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "exit 0 where it has to work, the version names 0.13.1, the command listing is not trivial, no missing library or GPU error",
+  "notes": "Linux CLI result; not evidence for Windows.",
+  "package": "WP-10",
+  "schema": "lj-evidence/1",
+  "stage": "sp1b-vectorcraft-v0.13.1",
+  "status": "PASS",
+  "test": "t1_vectorcraft_v0.13.1",
+  "unverified_reasons": [
+    "Windows behaviour is not tested by a Linux CLI run (the maker's Windows five-minute test is the real evidence)"
+  ]
+}

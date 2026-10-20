@@ -9,8 +9,9 @@ Trees (all under DEST):
   planted/    the root the tests point lj.ps1 close at. Holds the planted targets (xmp sidecars under work/,
               Recovery / Auto-Save / cache folders under tools/), canaries that must never be listed
               (media/, archive/, masters/, originals/, work/media/, another git repository, an encrypted
-              container file) and links (a link to a folder outside, a link to a file outside, a broken link,
-              a link named Recovery that points outside).
+              container file, a media/ and a vault/ folder inside an app folder that a wildcard per-app entry
+              matches, a never_touch_paths folder nested inside an Auto-Save folder) and links (a link to a
+              folder outside, a link to a file outside, a broken link, a link named Recovery that points outside).
   outside/    sits next to planted/; the links point here. Nothing in it may ever be listed.
   appdata/    stand-ins for %APPDATA% (Roaming) and %LOCALAPPDATA% (Local).
   fakehome/   stand-in profile folder (fakehome/user1) used by the "root is the profile root" tests.
@@ -84,7 +85,7 @@ def main(argv):
     b = w(os.path.join(R, "work", "ch03", "unicode-é-0004.xmp"), "u" * 33)
     want("work/ch03/unicode-é-0004.xmp", "xmp", 1, b)
     w(os.path.join(R, "stray.xmp"))                                           # xmp outside any work folder: not a target
-    w(os.path.join(R, "tools", "photocraft-0.10.0", "stray.xmp"))             # xmp under tools: not a target in v0
+    w(os.path.join(R, "tools", "soundcraft-0.8.0", "stray.xmp"))              # xmp under tools: not a target in v0 (no wildcard entry matches this folder)
 
     # --- canaries inside the work area that must be protected
     w(os.path.join(R, "work", "media", "CANARY-nested-media.xmp"))
@@ -111,6 +112,12 @@ def main(argv):
     t1 = w(os.path.join(base, "lightcraft-0.9.1", "LightCraftData", "thumbcache", "t1.dat"), "m" * 111)
     t2 = w(os.path.join(base, "lightcraft-0.9.1", "LightCraftData", "thumbcache", "t2.dat"), "m" * 222)
     want("tools/lightcraft-0.9.1/LightCraftData/thumbcache", "lightcraft/cache", 2, t1 + t2)
+    # a wildcard per-app entry (photocraft-*/*) matches these two folders; neither may be opened or listed
+    w(os.path.join(base, "photocraft-0.10.0", "media", "CANARY-app-media.dat"))              # protected folder name, resolved by a wildcard
+    w(os.path.join(base, "photocraft-0.10.0", "vault", "CANARY-vault.dat"))                  # listed in never_touch_paths, resolved by a wildcard
+    # a folder from never_touch_paths NESTED inside a removal candidate: the candidate is HELD, the nested folder is not counted
+    w(os.path.join(base, "effectcraft-0.11.1", "Auto-Save", "keep", "CANARY-nested-never.dat"))
+    w(os.path.join(base, "effectcraft-0.11.1", "Auto-Save", "autosave-9.dat"))
     link("../../../outside/Recovery", os.path.join(base, "vectorcraft-0.13.1", "Recovery"))   # a link named Recovery pointing outside
     d(os.path.join(base, "effectcraft-0.11.1", "cache"))                                      # empty cache folder
     want("tools/effectcraft-0.11.1/cache", "cache", 0, 0)

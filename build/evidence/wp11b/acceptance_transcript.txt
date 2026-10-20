@@ -1,0 +1,366 @@
+================================================================================
+$ bash tests/integration/run_tests.sh --quick
+(started 20:48:29Z, Avail 760M)
+tests/integration/run_checks.py --mode quick   (Avail now 759 MB, ffmpeg 6.1.1-3ubuntu5)
+PASS       parity.settings_card_vs_settings_json        11 card rows read; all equal
+PASS       parity.phone_row_md_vs_profile_json          all equal (19 facts)
+FAIL       parity.phone_profile_vs_register             pipeline/phone/profile.json disagrees with DECISIONS.md, which wins: PH2 cap: profile.json 3.5 Mb/s, register 4 Mb/s; phone caption characters a line: profile.json 32, register 36. The settings card f
+FAIL       parity.card_phone_row_vs_phone_row_md        pipeline/phone/profile.json is the file that disagrees with DECISIONS.md (PH2 cap 3.5 Mb/s, register 4 Mb/s; phone caption characters a line 32, register 36; see parity.phone_profile_vs_register); the
+FAIL       parity.card_language_note_vs_scripts_tested  script 'latin' (tested 2026-10-19) is not in the card line; the card line has no 2026-10-19 (it reads ['<date>']); the card line still has a placeholder. FIX (orchestrator): replace the line with the 
+PASS       parity.render_builtin_chain_vs_chains_json   equal in 6 fields; the built-in carries 0 audio arguments
+PASS       parity.profiles_vs_chains                    5 settings profiles and 2 phone profiles agree with their chains; chains not yet approved: phone_720_share
+PASS       parity.pins_vs_release_assets_vs_w22         equal: photocraft 0.10.0, vectorcraft 0.13.1, lightcraft 0.9.1, filmcraft 0.9.0, effectcraft 0.11.1
+FAIL       parity.decisions_csv_vs_register             exit 1: D-32 is in DECISIONS.md but missing from the CSV; FAIL: decisions.csv does not match the register (1 problem(s)); regenerate with --write. FIX: python3 -I scripts/decisions_to_csv.py --write o
+PASS       parity.pc_report_fields_in_schema            19 fixtures traced, 66 distinct fields read by windows_check.py, none outside the schema; 12 fields named by scripts/redaction_patterns.json, NOTE (harmless, WP-03's file): vulkan.devices[].driver_ver
+PASS       parity.lj_close_v0_names_and_switches        working options ['config', 'fromreport', 'savetier', 'skipchecks']; the three v1 switches are refused; no mutating cmdlet, alias, redirection or git verb visible to the static scan (string-invoked com
+PASS       parity.lj_close_v0_refusals_and_help         PowerShell 7.5.4 on Linux: 3 refusals exit 2, help says dry run only
+PASS       parity.noto_family_per_script_with_strings   latin=Noto Sans, devanagari=Noto Sans Devanagari; 6 scripts without strings are pending (tamil,telugu,kannada,malayalam,bengali,gujarati)
+PASS       parity.phone_row_scripts_tested_vs_json      tested latin,devanagari on 2026-10-19; NOT TESTED tamil,telugu,kannada,malayalam,bengali,gujarati
+PASS       redaction.self_test_zero_skipped_consumers   exit 0; consumers ok: ['scripts/public_lint.py', 'scripts/windows_check.py', 'win/step0_pc_tests.ps1', 'win/kit2/run_checks_pc.ps1']; skipped: none
+UNVERIFIED redaction.consumers_on_windows_powershell_5_1 the self-test ran those two consumers on PowerShell 7.5.4 on Linux (111 samples); Windows PowerShell 5.1 can not run here
+PASS       redaction.path_denylist                      none found (**/pc_report*.json, **/colour_patch_pc*.json, **/maker-pc*.json scanned)
+PASS       redaction.pc_evidence_folder                 1 file(s) in the folder (README.md); no derived file has been filed yet: the orchestrator files into it after the maker's first paste; 17 fixture strings checked; no problem
+PASS       redaction.derivation_tools_leak_nothing      17 tier files derived and checked against 17 fixture strings; chains derivation clean
+PASS       redaction.no_raw_report_shapes_in_evidence   none found
+FAIL       redaction.gitignore_backstop_for_raw_reports not ignored: pc_report.json, pc_report_local.json, colour_patch_pc.json, maker-pc.json, scripts/public_lint.deny.local.txt. FIX (orchestrator, Q-3): add `pc_report*.json`, `colour_patch_pc*.json`, `ma
+PASS       disk.stage_budget_rule_from_envelopes        1721 envelopes read; 17 stages with planned_write_mb above 100, all within the rule
+PASS       disk.every_envelope_carries_df_figures       1721 envelopes from 13 packages (WP-01a,WP-01b,WP-02,WP-03,WP-04,WP-05,WP-06,WP-07,WP-08,WP-09,WP-10,WP-11a,WP-11b) all carry the four figures
+PASS       disk.hard_floor_crossings_are_explained      1 crossing(s), all listed with a reason: WP-10 mech.disk_floor_abort_cleans_up
+PASS       disk.each_tarball_downloaded_once            check_ledger exit 0: ledger: 5 fetches in the two ledgers, 5 of the 5 pinned tarballs fetched, 429.5 MB of the 2048 MB allowance; each fetched once or with a recorded exception: OK; recount: 5 tarball
+PASS       disk.downloads_under_2gb_allowance           450 MB Craft + 75.4 MB PowerShell (75396784 bytes, from the fetch evidence) + 11 MB npm packs + about 1 MB wheel = 538 MB of 2048 MB
+PASS       disk.cleanup_scratch_dry_run_and_df          exit 0; df now Avail 759 MB; --yes would free 208.8 MB in 10 item(s), so Avail would be about 967 MB; the trees were unchanged: True. The real --yes is NOT run here: it would delete the PowerShell use
+PASS       disk.cleanup_scratch_yes_reports_df_after    exit 0; 4 of 4 listed items removed, 3 of 3 kept items intact; df before 724 MB, after 755 MB; no absolute path in the output: True
+FAIL       hygiene.stale_check_new_only                 exit 1: new-only: 15 new FAIL hit(s), 2 new WARN hit(s); 180 baseline hit(s) no longer present. By area: .claude/skills 11, playbooks 2, scripts 4. In the build's own folders (WP owners): scripts/deci
+FAIL       hygiene.public_lint_over_the_diff            exit 1: public_lint: mode diff, 300 file(s) scanned, 0 identifying-data finding(s), 8 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list; 8 finding(s) in .claude/skills/free-
+PASS       hygiene.public_lint_over_the_build_folders   exit 0: public_lint: mode paths, 566 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 1 fixture note(s), 4 suppressed by the config allow list
+PASS       hygiene.theme_guard                          default scope exit 0: theme guard: 4 file(s) scanned (new or changed theme-bearing files), 0 finding(s), 0 exclusion statement(s) shown as NOTE; explicit exit 0: theme guard: 11 file(s) scanned (expli
+PASS       hygiene.no_file_over_1mb                     924 files checked; the largest is research/cinematic-quality.md at 265388 bytes
+FAIL       hygiene.no_binary_file                       binary files: .claude/skills/free-creative-toolchain/recipes/__pycache__/r2_param.cpython-313.pyc; research/sources/__pycache__/check_mojang_quotes.cpython-313.pyc; research/toolchain-fixtures/__pycac
+FAIL       hygiene.new_text_under_5mb                   6.97 MB in 566 files; largest: build/evidence 2.74 MB, pipeline 0.64 MB, scripts 0.44 MB, spikes 0.43 MB, build/reports 0.41 MB. FIX (orchestrator decision): either accept 5 MB as too tight for the ev
+FAIL       hygiene.no_ignored_file_tracked_or_staged    tracked or staged although ignored: .claude/skills/free-creative-toolchain/recipes/__pycache__/r2_param.cpython-313.pyc; research/sources/__pycache__/check_mojang_quotes.cpython-313.pyc; research/tool
+PASS       docs.pipeline_readme                         63 lines; sections ok: True; tools not named: none; paths that do not exist: none
+PASS       docs.staged_skill_update                     front matter ok: True; installed headings missing: none; terms missing: none; paths that do not exist: none; CHANGES.md 6517 characters
+PASS       readiness.map_statuses_and_evidence          27 rows (PASS 3, UNVERIFIED 1, maker-owed 14, not started 9)
+PASS       index.thirteen_rows_with_existing_links      13 rows, 61 links, generated 2026-10-19T20:23:44Z.
+PASS       index.runner_lists_thirteen_areas_landed     exit 0; Landed: 13 of 13; areas: hygiene,win,ops,validators,render,roundtrip,sp1,win_lj,win_kit2,phone,spikes,runner,integration; missing run_tests.sh: none
+PASS       ctrl.checkers_fail_on_planted_defects        63 planted defects were each caught and 20 known-good states passed
+SUMMARY quick: 31 PASS, 10 FAIL, 0 BLOCKED, 1 UNVERIFIED, 0 SKIPPED in 26 s; lowest Avail seen 754 MB
+slowest: hygiene.stale_check_new_only 10.4 s; hygiene.public_lint_over_the_build_folders 3.9 s; hygiene.theme_guard 3.1 s; redaction.derivation_tools_leak_nothing 2.0 s; parity.lj_close_v0_refusals_and_help 1.8 s
+[exit 1 after 26 s]
+================================================================================
+$ bash tests/integration/run_tests.sh --all
+(started 20:48:55Z, Avail 760M)
+tests/integration/run_checks.py --mode all   (Avail now 759 MB, ffmpeg 6.1.1-3ubuntu5)
+PASS       parity.settings_card_vs_settings_json        11 card rows read; all equal
+PASS       parity.phone_row_md_vs_profile_json          all equal (19 facts)
+FAIL       parity.phone_profile_vs_register             pipeline/phone/profile.json disagrees with DECISIONS.md, which wins: PH2 cap: profile.json 3.5 Mb/s, register 4 Mb/s; phone caption characters a line: profile.json 32, register 36. The settings card f
+FAIL       parity.card_phone_row_vs_phone_row_md        pipeline/phone/profile.json is the file that disagrees with DECISIONS.md (PH2 cap 3.5 Mb/s, register 4 Mb/s; phone caption characters a line 32, register 36; see parity.phone_profile_vs_register); the
+FAIL       parity.card_language_note_vs_scripts_tested  script 'latin' (tested 2026-10-19) is not in the card line; the card line has no 2026-10-19 (it reads ['<date>']); the card line still has a placeholder. FIX (orchestrator): replace the line with the 
+PASS       parity.render_builtin_chain_vs_chains_json   equal in 6 fields; the built-in carries 0 audio arguments
+PASS       parity.profiles_vs_chains                    5 settings profiles and 2 phone profiles agree with their chains; chains not yet approved: phone_720_share
+PASS       parity.pins_vs_release_assets_vs_w22         equal: photocraft 0.10.0, vectorcraft 0.13.1, lightcraft 0.9.1, filmcraft 0.9.0, effectcraft 0.11.1
+FAIL       parity.decisions_csv_vs_register             exit 1: D-32 is in DECISIONS.md but missing from the CSV; FAIL: decisions.csv does not match the register (1 problem(s)); regenerate with --write. FIX: python3 -I scripts/decisions_to_csv.py --write o
+PASS       parity.pc_report_fields_in_schema            19 fixtures traced, 66 distinct fields read by windows_check.py, none outside the schema; 12 fields named by scripts/redaction_patterns.json, NOTE (harmless, WP-03's file): vulkan.devices[].driver_ver
+PASS       parity.lj_close_v0_names_and_switches        working options ['config', 'fromreport', 'savetier', 'skipchecks']; the three v1 switches are refused; no mutating cmdlet, alias, redirection or git verb visible to the static scan (string-invoked com
+PASS       parity.lj_close_v0_refusals_and_help         PowerShell 7.5.4 on Linux: 3 refusals exit 2, help says dry run only
+PASS       parity.noto_family_per_script_with_strings   latin=Noto Sans, devanagari=Noto Sans Devanagari; 6 scripts without strings are pending (tamil,telugu,kannada,malayalam,bengali,gujarati)
+PASS       parity.phone_row_scripts_tested_vs_json      tested latin,devanagari on 2026-10-19; NOT TESTED tamil,telugu,kannada,malayalam,bengali,gujarati
+PASS       redaction.self_test_zero_skipped_consumers   exit 0; consumers ok: ['scripts/public_lint.py', 'scripts/windows_check.py', 'win/step0_pc_tests.ps1', 'win/kit2/run_checks_pc.ps1']; skipped: none
+UNVERIFIED redaction.consumers_on_windows_powershell_5_1 the self-test ran those two consumers on PowerShell 7.5.4 on Linux (111 samples); Windows PowerShell 5.1 can not run here
+PASS       redaction.path_denylist                      none found (**/pc_report*.json, **/colour_patch_pc*.json, **/maker-pc*.json scanned)
+PASS       redaction.pc_evidence_folder                 1 file(s) in the folder (README.md); no derived file has been filed yet: the orchestrator files into it after the maker's first paste; 17 fixture strings checked; no problem
+PASS       redaction.derivation_tools_leak_nothing      17 tier files derived and checked against 17 fixture strings; chains derivation clean
+PASS       redaction.no_raw_report_shapes_in_evidence   none found
+FAIL       redaction.gitignore_backstop_for_raw_reports not ignored: pc_report.json, pc_report_local.json, colour_patch_pc.json, maker-pc.json, scripts/public_lint.deny.local.txt. FIX (orchestrator, Q-3): add `pc_report*.json`, `colour_patch_pc*.json`, `ma
+PASS       disk.stage_budget_rule_from_envelopes        1717 envelopes read; 17 stages with planned_write_mb above 100, all within the rule
+PASS       disk.every_envelope_carries_df_figures       1717 envelopes from 13 packages (WP-01a,WP-01b,WP-02,WP-03,WP-04,WP-05,WP-06,WP-07,WP-08,WP-09,WP-10,WP-11a,WP-11b) all carry the four figures
+PASS       disk.hard_floor_crossings_are_explained      1 crossing(s), all listed with a reason: WP-10 mech.disk_floor_abort_cleans_up
+PASS       disk.each_tarball_downloaded_once            check_ledger exit 0: ledger: 5 fetches in the two ledgers, 5 of the 5 pinned tarballs fetched, 429.5 MB of the 2048 MB allowance; each fetched once or with a recorded exception: OK; recount: 5 tarball
+PASS       disk.downloads_under_2gb_allowance           450 MB Craft + 75.4 MB PowerShell (75396784 bytes, from the fetch evidence) + 11 MB npm packs + about 1 MB wheel = 538 MB of 2048 MB
+PASS       disk.cleanup_scratch_dry_run_and_df          exit 0; df now Avail 759 MB; --yes would free 208.8 MB in 10 item(s), so Avail would be about 967 MB; the trees were unchanged: True. The real --yes is NOT run here: it would delete the PowerShell use
+PASS       disk.cleanup_scratch_yes_reports_df_after    exit 0; 4 of 4 listed items removed, 3 of 3 kept items intact; df before 724 MB, after 755 MB; no absolute path in the output: True
+FAIL       hygiene.stale_check_new_only                 exit 1: new-only: 15 new FAIL hit(s), 2 new WARN hit(s); 180 baseline hit(s) no longer present. By area: .claude/skills 11, playbooks 2, scripts 4. In the build's own folders (WP owners): scripts/deci
+FAIL       hygiene.public_lint_over_the_diff            exit 1: public_lint: mode diff, 300 file(s) scanned, 0 identifying-data finding(s), 8 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list; 8 finding(s) in .claude/skills/free-
+PASS       hygiene.public_lint_over_the_build_folders   exit 0: public_lint: mode paths, 566 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 1 fixture note(s), 4 suppressed by the config allow list
+PASS       hygiene.public_lint_whole_tree_audit         public_lint: mode all, 924 file(s) scanned, 32 identifying-data finding(s), 4 hygiene finding(s), 1 fixture note(s), 122 suppressed by the config allow list. In the build's folders: none. Elsewhere (L
+PASS       hygiene.theme_guard                          default scope exit 0: theme guard: 4 file(s) scanned (new or changed theme-bearing files), 0 finding(s), 0 exclusion statement(s) shown as NOTE; explicit exit 0: theme guard: 11 file(s) scanned (expli
+PASS       hygiene.no_file_over_1mb                     924 files checked; the largest is research/cinematic-quality.md at 265388 bytes
+FAIL       hygiene.no_binary_file                       binary files: .claude/skills/free-creative-toolchain/recipes/__pycache__/r2_param.cpython-313.pyc; research/sources/__pycache__/check_mojang_quotes.cpython-313.pyc; research/toolchain-fixtures/__pycac
+FAIL       hygiene.new_text_under_5mb                   6.97 MB in 566 files; largest: build/evidence 2.75 MB, pipeline 0.64 MB, scripts 0.44 MB, spikes 0.43 MB, build/reports 0.41 MB. FIX (orchestrator decision): either accept 5 MB as too tight for the ev
+FAIL       hygiene.no_ignored_file_tracked_or_staged    tracked or staged although ignored: .claude/skills/free-creative-toolchain/recipes/__pycache__/r2_param.cpython-313.pyc; research/sources/__pycache__/check_mojang_quotes.cpython-313.pyc; research/tool
+PASS       docs.pipeline_readme                         63 lines; sections ok: True; tools not named: none; paths that do not exist: none
+PASS       docs.staged_skill_update                     front matter ok: True; installed headings missing: none; terms missing: none; paths that do not exist: none; CHANGES.md 6517 characters
+PASS       readiness.map_statuses_and_evidence          27 rows (PASS 3, UNVERIFIED 1, maker-owed 14, not started 9)
+PASS       index.thirteen_rows_with_existing_links      13 rows, 61 links, generated 2026-10-19T20:23:44Z.
+PASS       index.runner_lists_thirteen_areas_landed     exit 0; Landed: 13 of 13; areas: hygiene,win,ops,validators,render,roundtrip,sp1,win_lj,win_kit2,phone,spikes,runner,integration; missing run_tests.sh: none
+PASS       ctrl.checkers_fail_on_planted_defects        63 planted defects were each caught and 20 known-good states passed
+PASS       e2e.testcard_through_chain_checked_by_spec_check render ok (48 frames, 7.1 fps, chain h264_venue from chains.json); video-only view: exit 0 RESULT: PASS (21 checks); full venue_h264 with a -18 LUFS tone: exit 0 RESULT: PASS (28 checks); control (25 
+PASS       e2e.a11_mo8_pair                             transform: render 0, gate exit 0 ['RESULT: PASS'] ['MO8a centre jitter   0.0023 px   limit 0.05   PASS', 'MO8b edge jitter     0.0039 px   limit 0.04   PASS']; layout: render 0, gate exit 1 ['RESULT: 
+PASS       e2e.phone_encode_from_harness_master_incl_fill_20x9 master: spec_check exit 0 (HQ 1920x1080 24/1 fps 144 frames); PH1 encode exit 0, spec_check phone_1080 exit 0, colour_patch exit 0, 0.84 Mbps against a cap of 8 + 10%, moov before mdat True; fill_20x9
+SUMMARY all: 35 PASS, 10 FAIL, 0 BLOCKED, 1 UNVERIFIED, 0 SKIPPED in 136 s; lowest Avail seen 658 MB
+slowest: e2e.phone_encode_from_harness_master_incl_fill_20x9 59.1 s; e2e.a11_mo8_pair 31.1 s; e2e.testcard_through_chain_checked_by_spec_check 10.8 s; hygiene.stale_check_new_only 10.4 s; hygiene.public_lint_whole_tree_audit 9.6 s
+[exit 1 after 137 s]
+================================================================================
+$ python3 -I scripts/stale_check.py --new-only
+(started 20:51:12Z, Avail 760M)
+NEW FAIL .claude/skills/free-creative-toolchain/SKILL.md:12 [S-01.atsc-25] ...1_kenburns.sh', 'r2_parallax.py', 'r5_story.mlt' with 'atsc_1080p_25'), so treat every 24 fps value in this skill as UNVERI...
+NEW FAIL .claude/skills/hindu-life-story-frameworks/SKILL.md:134 [S-61.chhath-constraint] ...nd the Uttarayan last send is Tue 12 Jan (W-48, W-10); Chhath is no longer a schedule constraint (W-77, S-61); the kanthi opens a chapter and is not th...
+NEW FAIL .claude/skills/journey-format-architecture/SKILL.md:45 [S-20.hours] ...t 10 h/week, about 320 h at 20 h/week). The notes' old 100 to 150 h for the linear film is retired: the 'production-scale'...
+NEW FAIL .claude/skills/journey-format-architecture/SKILL.md:178 [D-29.minecraft] ...a laptop and archive companion (W-30, W-73; S-44); the Minecraft question, the game-render row, the usage-terms guardra...
+NEW FAIL .claude/skills/life-story-interviewing/SKILL.md:8 [S-08.closest-insider] ... is briefed, nobody is read the consent card, and the "closest insider" does not exist. The gate for real gathering is P-LOCK...
+NEW FAIL .claude/skills/life-story-interviewing/SKILL.md:182 [S-38.l1-lock] ... DECISIONS.md after the her-world merge (2026-10-19). "L1 process lock" becomes P-LOCK (S-38); the her-turn conversation is S...
+NEW FAIL .claude/skills/meaningful-game-mechanics/SKILL.md:143 [D-29.minecraft] ...CISIONS.md after the her-world merge (2026-10-19). The Minecraft and voxel clauses are retired under D-29 (S-45, S-50):...
+NEW FAIL .claude/skills/meaningful-game-mechanics/SKILL.md:143 [D-29.voxel] ...er the her-world merge (2026-10-19). The Minecraft and voxel clauses are retired under D-29 (S-45, S-50): the look ...
+NEW FAIL .claude/skills/surprise-tribute-operations/SKILL.md:193 [S-38.l1-lock] ... DECISIONS.md after the her-world merge (2026-10-19). "L1 process lock" becomes P-LOCK (S-38); the placeholder observances of...
+NEW FAIL playbooks/production-scale.md:61 [S-19.eight-to-twelve] ...its old runtime table as a historical record). (b) The 8-minute tier is replaced by 9 minutes (wrapper plus two modules), t...
+NEW FAIL playbooks/production-scale.md:671 [S-17.four-chapters] ...-04; the 12-minute shape). Film-story's earlier row of four chapters of 2:15 [7] is retired (S-17). The model's seven 100-second un...
+NEW FAIL scripts/decisions_to_csv.py:32 [W-29.o-row-above-last] emphasis marks around the ID: '| **O-95** |') but does not parse is a malformed register
+NEW FAIL scripts/decisions_to_csv.py:76 [W-29.o-row-above-last] # emphasis or code marks: '| **O-95** |', '' | 'O-96' | ''). If it does not match ROW_RE t...
+NEW FAIL scripts/decisions_to_csv.py:76 [W-29.o-row-above-last] # emphasis or code marks: '| **O-95** |', '' | 'O-96' | ''). If it does not match ROW_RE the register
+NEW FAIL scripts/ops_lint.py:292 [W-29.o-row-above-last] # ('| **O-95** |'): the generator must have produced exactly one ro...
+NEW WARN .claude/skills/life-film-story-structure/SKILL.md:12 [S-08.insider] ...8). Do not assume a second keeper, a co-reviewer or an insider (D-03; the one re-open point is TD-L2c, Sun 3 Jan 2027...
+NEW WARN .claude/skills/life-story-interviewing/SKILL.md:8 [S-08.insider] ...fed, nobody is read the consent card, and the "closest insider" does not exist. The gate for real gathering is P-LOCK...
+new-only: 15 new FAIL hit(s), 2 new WARN hit(s); 180 baseline hit(s) no longer present
+[exit 1 after 10 s]
+================================================================================
+$ python3 -I scripts/public_lint.py
+(started 20:51:22Z, Avail 760M)
+FINDING ignored-staged gitignore_media      .claude/skills/free-creative-toolchain/recipes/__pycache__/r2_param.cpython-313.pyc  (matches .gitignore but is tracked or staged (git add -f); only a reviewed, small, non-personal image may be force-added)
+FINDING ignored-staged gitignore_media      research/sources/__pycache__/check_mojang_quotes.cpython-313.pyc  (matches .gitignore but is tracked or staged (git add -f); only a reviewed, small, non-personal image may be force-added)
+FINDING ignored-staged gitignore_media      research/toolchain-fixtures/__pycache__/derive_album_look.cpython-313.pyc  (matches .gitignore but is tracked or staged (git add -f); only a reviewed, small, non-personal image may be force-added)
+FINDING ignored-staged gitignore_media      research/toolchain-fixtures/__pycache__/make_venue_test_kit.cpython-313.pyc  (matches .gitignore but is tracked or staged (git add -f); only a reviewed, small, non-personal image may be force-added)
+FINDING binary      nul_byte             .claude/skills/free-creative-toolchain/recipes/__pycache__/r2_param.cpython-313.pyc  (binary file (NUL byte); personal media never goes in git)
+FINDING binary      nul_byte             research/sources/__pycache__/check_mojang_quotes.cpython-313.pyc  (binary file (NUL byte); personal media never goes in git)
+FINDING binary      nul_byte             research/toolchain-fixtures/__pycache__/derive_album_look.cpython-313.pyc  (binary file (NUL byte); personal media never goes in git)
+FINDING binary      nul_byte             research/toolchain-fixtures/__pycache__/make_venue_test_kit.cpython-313.pyc  (binary file (NUL byte); personal media never goes in git)
+public_lint: mode diff, 301 file(s) scanned, 0 identifying-data finding(s), 8 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+[exit 1 after 2 s]
+================================================================================
+$ python3 -I scripts/public_lint.py --diff
+(started 20:51:24Z, Avail 760M)
+usage: public_lint.py [-h] [--paths PATH [PATH ...]] [--all] [--staged]
+                      [--theme] [--self-test] [--fail-on-skip]
+                      [--pattern-self-test SAMPLES.json] [--root ROOT]
+                      [--patterns PATTERNS] [--config CONFIG]
+                      [--json OUT.json] [--no-allow]
+public_lint.py: error: unrecognized arguments: --diff
+[exit 2 after 0 s]
+================================================================================
+$ python3 -I scripts/public_lint.py --paths win scripts pipeline ops spikes tests build skills-staging reviews/build
+(started 20:51:24Z, Avail 760M)
+NOTE    fixture-note guid_serial          tests/win/fixtures/report_hex65_leak.json:141 hit=3f********  (synthetic fixture folder: planted values are expected here)
+public_lint: mode paths, 567 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 1 fixture note(s), 4 suppressed by the config allow list
+[exit 0 after 4 s]
+================================================================================
+$ python3 -I scripts/public_lint.py --theme
+(started 20:51:28Z, Avail 760M)
+theme guard: 4 file(s) scanned (new or changed theme-bearing files), 0 finding(s), 0 exclusion statement(s) shown as NOTE
+LIMIT: this is a keyword scan of text only. It can NOT judge iconography: a person (and the Fable review) must look at every picture against D-28.
+INFO only (existing playbooks, skills and research are never failed): .claude/skills: 65 keyword hit(s), playbooks: 183 keyword hit(s), research: 271 keyword hit(s)
+[exit 0 after 3 s]
+================================================================================
+$ python3 -I scripts/public_lint.py --self-test --fail-on-skip
+(started 20:51:31Z, Avail 760M)
+self-test: 111 samples (built from fragments into <scratch>); patterns version 1
+consumer scripts/public_lint.py: ok (own regex set read from scripts/redaction_patterns.json; 111 samples)
+consumer scripts/windows_check.py: ok (111 samples compared on the report-scope categories)
+consumer win/step0_pc_tests.ps1: ok (111 samples compared on the report-scope categories via PowerShell 7.5.4)
+consumer win/kit2/run_checks_pc.ps1: ok (111 samples compared on the report-scope categories via PowerShell 7.5.4)
+self-test: no disagreement between consumers
+note: Windows PowerShell 5.1 was not available in this run; win/step0_pc_tests.ps1 was exercised on PowerShell 7 only (5.1 behaviour UNVERIFIED until the maker's PC runs this self-test).
+[exit 0 after 2 s]
+================================================================================
+$ python3 -I scripts/decisions_to_csv.py --check ops/decisions.csv
+(started 20:51:33Z, Avail 760M)
+  D-32 is in DECISIONS.md but missing from the CSV
+FAIL: decisions.csv does not match the register (1 problem(s)); regenerate with --write
+[exit 1 after 0 s]
+================================================================================
+$ bash scripts/cleanup_scratch.sh
+(started 20:51:33Z, Avail 760M)
+cleanup_scratch: DRY RUN (nothing will be deleted; add --yes to delete)
+scope: <scratch>/pwsh, <scratch>/venv*, vendor/craft*, renders/wp*; everything else is kept
+df before: Avail 760 MB of 258020 MB (99% used)
+would delete      184.9 MB  <scratch>/pwsh
+would delete       15.6 MB  <scratch>/venv-otio
+would delete        0.0 MB  vendor/craft
+would delete        0.0 MB  vendor/craft-sp1b
+would delete        0.0 MB  renders/wp01a
+would delete        0.0 MB  renders/wp01b
+would delete        0.0 MB  renders/wp04
+would delete        3.7 MB  renders/wp08
+would delete        4.7 MB  renders/wp09
+total that --yes would free: 208.8 MB in 9 item(s). Dry run: nothing was deleted.
+[exit 0 after 0 s]
+================================================================================
+$ bash scripts/run_week2_checks.sh --quick
+(started 20:51:33Z, Avail 760M)
+Life Journey week 1-2 checks: mode quick, 13 areas in fixed order, per-area limit 60 s, budget 300 s
+Avail at start: 759 MB (hard floor 250 MB). Output is masked with scripts/redaction_patterns.json.
+[ 1/13] hygiene      WP-03    PASS          24 s  exit 0      
+        last line: hygiene tests (quick): 0 failed; Avail 759 MB at start, 759 MB minimum seen
+[ 2/13] win          WP-01a   PASS          10 s  exit 0      
+        last line: WP-01a quick: PASS=44 FAIL=0 UNVERIFIED=0 SKIPPED=0 BLOCKED=0  (df Avail 760 -> 759 MB)
+[ 3/13] ops          WP-02    FAIL          14 s  exit 1      
+        | PASS       lint_fail_closed             fail closed: missing, invalid or incomplete pattern file exits 2 and checks nothing
+        | PASS       lint_data_driven             patterns come from the file: a tiny synthetic pattern file changes what is flagged (no regex inside ops_lint)
+        | PASS       lint_mask_parity             ops_lint and public_lint print the same mask for the same hit (keep, fill and cap from the pattern file)
+        | PASS       lint_readonly                ops_lint, hours_report and decisions_to_csv --check modify nothing in the repository
+        | PASS       card_content                 SETTINGS-CARD: TD-1..TD-4, Phone, D-27, Language and script line, signed: no, every cited ID exists
+        | PASS       howto_gather_content         HOURS-HOWTO has the 'no names in note' sentence; GATHER has Part A/Part B, the gate, five stand-in scans, IDs only
+        | PASS       ops_hygiene                  ops files: no stale values, no D-28 exclusions, no Minecraft, no names/emails/IPs by a plain look (patterns checked by ops_lint)
+        | PASS       scripts_compile              the three scripts compile and print --help (usage exits 0)
+        | PASS       public_lint_own_files        scripts/public_lint.py (WP-03), when present, finds nothing in WP-02's own files
+        | UNVERIFIED windows_unverified           Windows behaviour of the WP-02 files (Excel handling of hours.csv, py -3 -I on PowerShell 5.1/7) is UNVERIFIED
+        | ------------------------------------------------------------
+        | WP-02 ops tests (quick): 5 FAIL, 39 PASS, 1 UNVERIFIED
+[ 4/13] validators   WP-05    PASS          30 s  exit 0      
+        last line: TOTAL: PASS 21, FAIL 0, UNVERIFIED 0, SKIPPED 0, BLOCKED 0   (30 s, Avail min 757 MB)
+[ 5/13] render       WP-04    PASS          26 s  exit 0      
+        last line: summary: {"PASS": 10} in 26 s
+[ 6/13] roundtrip    WP-06    PASS          11 s  exit 0      
+        last line: TOTAL: PASS 108, FAIL 0, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (10 s)
+[ 7/13] sp1          WP-07    FAIL          12 s  exit 1      
+        | PASS       assets.table  6 pins, 6 independent comparisons (all match), sizes all match; problems: none
+        | FAIL       list.live  Avail 759 MB: exit 3 (expected 0: lean needs Avail of at least 750 MB); Chosen profile: none REFUSED: Avail 759 MB minus planned 600 MB leaves 159 M
+        | PASS       list.fake_900  exit 0;   full: filmcraft-v0.9.0 plans 600 MB, Avail 900 MB, leaves 300 MB: REFUSED (needs Avail of at least 1000 MB) Chosen profile: lean (the 
+        | PASS       list.fake_900_profile_full  exit 3; the full profile is refused at this Avail; lean would fit: rerun with --profile lean (or auto). The first stage needs Avail
+        | PASS       list.fake_600_profile_full  exit 3; Neither profile fits: the first stage needs Avail of at least 1000 MB for full or 750 MB for lean, and Avail is 600 MB. 
+        | PASS       list.fake_600  exit 3; REFUSED: Avail 600 MB minus planned 600 MB leaves 0 MB, below the 400 MB floor (filmcraft-v0.9.0, full profile). REFUSED: Avail 600 MB m
+        | PASS       ledger.check  ledger: 2 fetches, 2 distinct assets, 127.6 MB in total (allowance 2048 MB)
+        | PASS       guide.in_sync_with_assets  build_guide.py regenerates MAKER-CRAFT-ZIPS.md byte for byte from release_assets.json
+        | PASS       guide.check_guide  check_guide: 8 PASS, 0 FAIL, 0 UNVERIFIED
+        | UNVERIFIED guide.windows_behaviour  no Windows PC here: PowerShell 5.1 parsing is covered by ps_lint.py rules and pwsh 7 on Linux only; where the zips unpack, portable.tx
+        | PASS       lint.public  public_lint: mode paths, 55 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config al
+        | SUMMARY quick: 13 PASS, 1 FAIL, 0 BLOCKED, 1 UNVERIFIED
+[ 8/13] win_lj       WP-01b   PASS          17 s  exit 0      
+        masked 14 identifying-looking value(s) in this area's output
+        last line: WP-01b --quick: PASS=45 FAIL=0 UNVERIFIED=10 SKIPPED=0 BLOCKED=0  (df Avail 760 -> 759 MB)
+[ 9/13] win_kit2     WP-09    PASS          35 s  exit 0      
+        last line: WP-09 quick: PASS=119 FAIL=0 UNVERIFIED=7 SKIPPED=0 BLOCKED=0 (35 s)  disk: start 760 MB, min 759 MB, end 759 MB
+[10/13] phone        WP-08    PASS          26 s  exit 0      
+        last line: Counts: PASS 14, FAIL 0, UNVERIFIED 0, SKIPPED 0, BLOCKED 0
+[11/13] spikes       WP-10    PASS          15 s  exit 0      
+        last line: SUMMARY quick: 31 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED
+[12/13] runner       WP-11a   PASS          33 s  exit 0      
+        last line: envelopes written: 123 {'PASS': 123, 'FAIL': 0, 'UNVERIFIED': 0, 'SKIPPED': 0}
+[13/13] integration  WP-11b   FAIL          26 s  exit 1      
+        | PASS       hygiene.no_file_over_1mb                     925 files checked; the largest is research/cinematic-quality.md at 265388 bytes
+        | FAIL       hygiene.no_binary_file                       binary files: .claude/skills/free-creative-toolchain/recipes/__pycache__/r2_param.cpython-313.pyc; research/source
+        | FAIL       hygiene.new_text_under_5mb                   6.89 MB in 567 files; largest: build/evidence 2.67 MB, pipeline 0.64 MB, scripts 0.44 MB, spikes 0.43 MB, build/re
+        | FAIL       hygiene.no_ignored_file_tracked_or_staged    tracked or staged although ignored: .claude/skills/free-creative-toolchain/recipes/__pycache__/r2_param.cpython-31
+        | PASS       docs.pipeline_readme                         63 lines; sections ok: True; tools not named: none; paths that do not exist: none
+        | PASS       docs.staged_skill_update                     front matter ok: True; installed headings missing: none; terms missing: none; paths that do not exist: none; CHANG
+        | PASS       readiness.map_statuses_and_evidence          27 rows (PASS 3, UNVERIFIED 1, maker-owed 14, not started 9)
+        | PASS       index.thirteen_rows_with_existing_links      13 rows, 61 links, generated 2026-10-19T20:23:44Z.
+        | PASS       index.runner_lists_thirteen_areas_landed     exit 0; Landed: 13 of 13; areas: hygiene,win,ops,validators,render,roundtrip,sp1,win_lj,win_kit2,phone,spikes,runn
+        | PASS       ctrl.checkers_fail_on_planted_defects        63 planted defects were each caught and 20 known-good states passed
+        | SUMMARY quick: 31 PASS, 10 FAIL, 0 BLOCKED, 1 UNVERIFIED, 0 SKIPPED in 26 s; lowest Avail seen 753 MB
+        | slowest: hygiene.stale_check_new_only 10.5 s; hygiene.public_lint_over_the_build_folders 3.8 s; hygiene.theme_guard 3.0 s; redaction.derivation_tools_leak_nothing 1.9 s; 
+----
+Areas: 13 | landed 13 | PASS 10 | FAIL 3 | TIMEOUT 0 | NOT LANDED 0
+Elapsed 279 s against the 300 s quick budget (within)
+Disk: Avail 759 MB at start, 759 MB lowest between areas, 759 MB at end (hard floor 250 MB)
+Envelopes: 1072 counted (PASS 1020, FAIL 21, UNVERIFIED 28, SKIPPED 1, BLOCKED 2)
+Lowest avail_mb_min in any envelope: 100 MB (WP-10); below the 250 MB hard floor: WP-10
+Check: spikes (WP-10) exited 0 but 4 FAIL envelope(s) are on file (refreshed this run: yes); read the evidence, not just the exit code
+public_lint --text: not available yet (the built-in masker above, driven by scripts/redaction_patterns.json, was applied)
+Writing: build/evidence/INDEX.md, build/evidence/week2_summary.json, build/evidence/wave1_quick.txt, and build/evidence/wp11a/area_<area>_quick.txt
+RESULT: FAIL (runner exit 1)
+[exit 1 after 279 s]
+================================================================================
+$ bash scripts/run_week2_checks.sh --list
+(started 20:56:12Z, Avail 759M)
+Week 1-2 check areas, in the fixed run order (each is tests/<area>/run_tests.sh):
+  #  area         entry    wave  landed      covers
+  1  hygiene      WP-03    1     yes         redaction patterns, disk and bench guard, stale_check, public_lint
+  2  win          WP-01a   1     yes         Windows kit A: PC inventory script, report checker, tools
+  3  ops          WP-02    1     yes         ops files, hours log, settings card text
+  4  validators   WP-05    1     yes         ffprobe spec checker, colour patch, MO8 gate, chains
+  5  render       WP-04    1     yes         render.mjs harness, test scene, test strings, fonts
+  6  roundtrip    WP-06    1     yes         ORA, SVG ids, OTIO round trips
+  7  sp1          WP-07    1     yes         SP1a release sums and headless Craft tests
+  8  win_lj       WP-01b   2     yes         lj.ps1 doctor and close v0 (dry-run only)
+  9  win_kit2     WP-09    1+2   yes         Windows kit B: Ken Burns, archive, PC colour runner
+ 10  phone        WP-08    2     yes         phone encode profile and legibility check
+ 11  spikes       WP-10    2     yes         SP1b read-backs, SP3, SP4, spike verdict table
+ 12  runner       WP-11a   1     yes         this runner, the INDEX writer, cleanup_scratch.sh
+ 13  integration  WP-11b   3     yes         parity, redaction, disk and end-to-end checks
+Landed: 13 of 13. A missing area is listed as NOT LANDED and does not fail a run. This listing wrote nothing.
+[exit 0 after 0 s]
+================================================================================
+$ bash scripts/run_week2_checks.sh --all
+(started 20:56:12Z, Avail 759M)
+Life Journey week 1-2 checks: mode all, 13 areas in fixed order, per-area limit 900 s
+Avail at start: 759 MB (hard floor 250 MB). Output is masked with scripts/redaction_patterns.json.
+[ 1/13] hygiene      WP-03    PASS         107 s  exit 0      
+        last line: evidence: 214 envelopes, {"PASS": 213, "FAIL": 0, "UNVERIFIED": 1, "SKIPPED": 0}
+[ 2/13] win          WP-01a   PASS          57 s  exit 0      
+        last line: WP-01a all: PASS=94 FAIL=0 UNVERIFIED=1 SKIPPED=0 BLOCKED=0  (df Avail 759 -> 758 MB)
+[ 3/13] ops          WP-02    FAIL          16 s  exit 1      
+        | PASS       lint_data_driven             patterns come from the file: a tiny synthetic pattern file changes what is flagged (no regex inside ops_lint)
+        | PASS       lint_mask_parity             ops_lint and public_lint print the same mask for the same hit (keep, fill and cap from the pattern file)
+        | PASS       lint_readonly                ops_lint, hours_report and decisions_to_csv --check modify nothing in the repository
+        | PASS       card_content                 SETTINGS-CARD: TD-1..TD-4, Phone, D-27, Language and script line, signed: no, every cited ID exists
+        | PASS       howto_gather_content         HOURS-HOWTO has the 'no names in note' sentence; GATHER has Part A/Part B, the gate, five stand-in scans, IDs only
+        | PASS       ops_hygiene                  ops files: no stale values, no D-28 exclusions, no Minecraft, no names/emails/IPs by a plain look (patterns checked by ops_lint)
+        | PASS       scripts_compile              the three scripts compile and print --help (usage exits 0)
+        | PASS       public_lint_own_files        scripts/public_lint.py (WP-03), when present, finds nothing in WP-02's own files
+        | PASS       card_commands_linux          the settings-card ffprobe/ffmpeg commands give the printed answers on tiny test files (Linux)
+        | UNVERIFIED windows_unverified           Windows behaviour of the WP-02 files (Excel handling of hours.csv, py -3 -I on PowerShell 5.1/7) is UNVERIFIED
+        | ------------------------------------------------------------
+        | WP-02 ops tests (all): 6 FAIL, 40 PASS, 1 UNVERIFIED
+[ 4/13] validators   WP-05    PASS         154 s  exit 0      
+        last line: lj_guard: wp05-validators: finished with exit 0; Avail start 759 MB, min 744 MB, end 759 MB
+[ 5/13] render       WP-04    PASS         596 s  exit 0      
+        last line: summary: {"PASS": 27, "SKIPPED": 1} in 596 s
+[ 6/13] roundtrip    WP-06    PASS          21 s  exit 0      
+        last line: TOTAL: PASS 109, FAIL 0, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (20 s)
+[ 7/13] sp1          WP-07    FAIL         459 s  exit 1      
+        | PASS       fake.defect_filmcraft_leak  driver exit 1; failing criteria: T2.rss_slope (expected T2.rss_slope)
+        | PASS       fake.defect_filmcraft_offset  driver exit 1; failing criteria: T2.kenburns_positions (expected T2.kenburns_positions)
+        | PASS       fake.defect_filmcraft_dropframe  driver exit 1; failing criteria: T2.h264_frame_count,T2.prores_frame_count (expected T2.h264_frame_count,T2.prores_frame_count
+        | PASS       fake.defect_filmcraft_dissolve  driver exit 1; failing criteria: T2.mid_dissolve (expected T2.mid_dissolve)
+        | PASS       fake.defect_filmcraft_offline  driver exit 1; failing criteria: T2.no_crash_n8_large,T2.no_crash_n12_conformed,T2.h264_completes,T2.h264_speed,T2.h264_frame_co
+        | PASS       fake.defect_filmcraft_crash  driver exit 1; failing criteria: T2.no_crash_n12_conformed,T2.rss_n12 (expected T2.no_crash_n12_conformed,T2.rss_n12)
+        | PASS       fake.defect_effectcraft_noalpha  driver exit 1; failing criteria: T4.title_png_has_alpha,T4.line_png_has_alpha (expected T4.title_png_has_alpha,T4.line_png_has
+        | PASS       fake.defect_effectcraft_nondeterministic  driver exit 1; failing criteria: T4.determinism (expected T4.determinism)
+        | PASS       fake.defect_effectcraft_nodecode  driver exit 1; failing criteria: T4.prores4444_decodes (expected T4.prores4444_decodes)
+        | PASS       fake.defect_effectcraft_slow  driver exit 1; failing criteria: T4.parallax_speed (expected T4.parallax_speed)
+        | PASS       fake.verify_flipped_byte  intact -> exit 0; one byte flipped -> exit 1: REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 3a812ad80ff5... differs from the
+        | SUMMARY all: 43 PASS, 1 FAIL, 1 BLOCKED, 1 UNVERIFIED, 0 SKIPPED
+[ 8/13] win_lj       WP-01b   PASS          90 s  exit 0      
+        masked 47 identifying-looking value(s) in this area's output
+        last line: WP-01b --all: PASS=143 FAIL=0 UNVERIFIED=10 SKIPPED=0 BLOCKED=0  (df Avail 759 -> 759 MB)
+[ 9/13] win_kit2     WP-09    PASS         231 s  exit 0      
+        last line: WP-09 all: PASS=162 FAIL=0 UNVERIFIED=7 SKIPPED=0 BLOCKED=0 (231 s)  disk: start 759 MB, min 689 MB, end 758 MB
+[10/13] phone        WP-08    PASS         204 s  exit 0      
+        last line: Counts: PASS 32, FAIL 0, UNVERIFIED 1, SKIPPED 0, BLOCKED 0
+[11/13] spikes       WP-10    PASS         168 s  exit 0      
+        last line: SUMMARY all: 59 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED
+[12/13] runner       WP-11a   PASS          41 s  exit 0      
+        last line: envelopes written: 127 {'PASS': 127, 'FAIL': 0, 'UNVERIFIED': 0, 'SKIPPED': 0}
+[13/13] integration  WP-11b   FAIL         136 s  exit 1      
+        | FAIL       hygiene.no_ignored_file_tracked_or_staged    tracked or staged although ignored: .claude/skills/free-creative-toolchain/recipes/__pycache__/r2_param.cpython-31
+        | PASS       docs.pipeline_readme                         63 lines; sections ok: True; tools not named: none; paths that do not exist: none
+        | PASS       docs.staged_skill_update                     front matter ok: True; installed headings missing: none; terms missing: none; paths that do not exist: none; CHANG
+        | PASS       readiness.map_statuses_and_evidence          27 rows (PASS 3, UNVERIFIED 1, maker-owed 14, not started 9)
+        | PASS       index.thirteen_rows_with_existing_links      13 rows, 61 links, generated 2026-10-19T20:56:12Z.
+        | PASS       index.runner_lists_thirteen_areas_landed     exit 0; Landed: 13 of 13; areas: hygiene,win,ops,validators,render,roundtrip,sp1,win_lj,win_kit2,phone,spikes,runn
+        | PASS       ctrl.checkers_fail_on_planted_defects        63 planted defects were each caught and 20 known-good states passed
+        | PASS       e2e.testcard_through_chain_checked_by_spec_check render ok (48 frames, 7.2 fps, chain h264_venue from chains.json); video-only view: exit 0 RESULT: PASS (21 ch
+        | PASS       e2e.a11_mo8_pair                             transform: render 0, gate exit 0 ['RESULT: PASS'] ['MO8a centre jitter   0.0023 px   limit 0.05   PASS', 'MO8b edg
+        | PASS       e2e.phone_encode_from_harness_master_incl_fill_20x9 master: spec_check exit 0 (HQ 1920x1080 24/1 fps 144 frames); PH1 encode exit 0, spec_check phone_1080 exit
+        | SUMMARY all: 35 PASS, 10 FAIL, 0 BLOCKED, 1 UNVERIFIED, 0 SKIPPED in 136 s; lowest Avail seen 626 MB
+        | slowest: e2e.phone_encode_from_harness_master_incl_fill_20x9 58.5 s; e2e.a11_mo8_pair 31.2 s; hygiene.stale_check_new_only 10.8 s; e2e.testcard_through_chain_checked_by_s
+----
+Areas: 13 | landed 13 | PASS 10 | FAIL 3 | TIMEOUT 0 | NOT LANDED 0
+Elapsed 2280 s
+Disk: Avail 759 MB at start, 759 MB lowest between areas, 759 MB at end (hard floor 250 MB)
+Envelopes: 1221 counted (PASS 1168, FAIL 21, UNVERIFIED 29, SKIPPED 1, BLOCKED 2)
+Lowest avail_mb_min in any envelope: 100 MB (WP-10); below the 250 MB hard floor: WP-10
+Check: spikes (WP-10) exited 0 but 4 FAIL envelope(s) are on file (refreshed this run: yes); read the evidence, not just the exit code
+public_lint --text: not available yet (the built-in masker above, driven by scripts/redaction_patterns.json, was applied)
+Writing: build/evidence/INDEX.md, build/evidence/week2_summary.json, build/evidence/wp11a/console_all.txt, and build/evidence/wp11a/area_<area>_all.txt
+RESULT: FAIL (runner exit 1)
+[exit 1 after 2281 s]

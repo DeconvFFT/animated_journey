@@ -1,0 +1,396 @@
+{
+  "actual": "12 criteria, 0 failed; 8 findings",
+  "date_utc": "2026-10-19",
+  "detail": {
+    "app": "photocraft",
+    "calls": [
+      {
+        "call": "--version",
+        "killed": null,
+        "max_rss_mb": 20.0,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "--help",
+        "killed": null,
+        "max_rss_mb": 20.1,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "commands --json",
+        "killed": null,
+        "max_rss_mb": 20.1,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "info wp06.ora --compact",
+        "killed": null,
+        "max_rss_mb": 21.9,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "convert wp06.ora out.png",
+        "killed": null,
+        "max_rss_mb": 25.0,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "convert wp06.ora out.ora",
+        "killed": null,
+        "max_rss_mb": 31.5,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "info out.ora",
+        "killed": null,
+        "max_rss_mb": 25.8,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "convert wp06.ora out.psd",
+        "killed": null,
+        "max_rss_mb": 32.6,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "info out.psd",
+        "killed": null,
+        "max_rss_mb": 25.8,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "convert out.psd out.ora",
+        "killed": null,
+        "max_rss_mb": 30.8,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "info from_psd.ora",
+        "killed": null,
+        "max_rss_mb": 25.8,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "info at.ora --compact",
+        "killed": null,
+        "max_rss_mb": 25.8,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "convert at.ora out.png",
+        "killed": null,
+        "max_rss_mb": 25.8,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "convert at.ora out.ora",
+        "killed": null,
+        "max_rss_mb": 25.8,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "info out.ora",
+        "killed": null,
+        "max_rss_mb": 25.8,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "convert at.ora out.psd",
+        "killed": null,
+        "max_rss_mb": 25.8,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "info out.psd",
+        "killed": null,
+        "max_rss_mb": 25.8,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "convert out.psd out.ora",
+        "killed": null,
+        "max_rss_mb": 25.8,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "info from_psd.ora",
+        "killed": null,
+        "max_rss_mb": 25.8,
+        "rc": 0,
+        "wall_s": 0.26
+      }
+    ],
+    "checks": [
+      {
+        "id": "RB.photocraft.wp06.info_json",
+        "measured": "exit 0, JSON",
+        "note": "`info <ora> --compact` prints the layer tree as JSON",
+        "pass": true
+      },
+      {
+        "id": "RB.photocraft.wp06.layer_names",
+        "measured": "stack.xml ['L30_label', 'L20_figure', 'L10_restored', 'L00_asfound']; info ['L30_label', 'L20_figure', 'L10_restored', 'L00_asfound']; missing none; extra none",
+        "note": "every layer name in stack.xml appears in the info layer tree, with the same spelling",
+        "pass": true
+      },
+      {
+        "id": "RB.photocraft.wp06.convert_png",
+        "measured": "exit 0, PNG size (640, 360) (canvas 640x360)",
+        "note": "`convert <ora> out.png` writes a PNG of the canvas size",
+        "pass": true
+      },
+      {
+        "id": "RB.photocraft.wp06.flatten_matches_mergedimage",
+        "measured": "mean absolute difference 0.01 levels against the ORA's mergedimage.png (mark: at most 8, a planner's proposal)",
+        "note": "PhotoCraft's own flatten of the layers is close to the merged image the emitter wrote",
+        "pass": true
+      },
+      {
+        "id": "RB.photocraft.wp06.ora_roundtrip_names",
+        "measured": "convert exit 0; names after ORA to ORA: ['L30_label', 'L20_figure', 'L10_restored', 'L00_asfound'] (expected ['L30_label', 'L20_figure', 'L10_restored', 'L00_asfound'])",
+        "note": "layer names survive a PhotoCraft ORA save (the playbook's read-back)",
+        "pass": true
+      },
+      {
+        "id": "RB.photocraft.wp06.psd_names",
+        "measured": "convert exit 0, PSD signature b'8BPS'; names in the PSD: ['L30_label', 'L20_figure', 'L10_restored', 'L00_asfound'] (expected ['L30_label', 'L20_figure', 'L10_restored', 'L00_asfound'])",
+        "note": "layer names survive ORA to PSD (the playbook: PhotoCraft offers a PSD when the work has adjustment layers, so the PSD must read back)",
+        "pass": true
+      },
+      {
+        "id": "RB.photocraft.at.info_json",
+        "measured": "exit 0, JSON",
+        "note": "`info <ora> --compact` prints the layer tree as JSON",
+        "pass": true
+      },
+      {
+        "id": "RB.photocraft.at.layer_names",
+        "measured": "stack.xml ['Title tint', 'Photo']; info ['Title tint', 'Photo']; missing none; extra none",
+        "note": "every layer name in stack.xml appears in the info layer tree, with the same spelling",
+        "pass": true
+      },
+      {
+        "id": "RB.photocraft.at.convert_png",
+        "measured": "exit 0, PNG size (320, 200) (canvas 320x200)",
+        "note": "`convert <ora> out.png` writes a PNG of the canvas size",
+        "pass": true
+      },
+      {
+        "id": "RB.photocraft.at.flatten_matches_mergedimage",
+        "measured": "mean absolute difference 3.68 levels against the ORA's mergedimage.png (mark: at most 8, a planner's proposal)",
+        "note": "PhotoCraft's own flatten of the layers is close to the merged image the emitter wrote",
+        "pass": true
+      },
+      {
+        "id": "RB.photocraft.at.ora_roundtrip_names",
+        "measured": "convert exit 0; names after ORA to ORA: ['Title tint', 'Photo'] (expected ['Title tint', 'Photo'])",
+        "note": "layer names survive a PhotoCraft ORA save (the playbook's read-back)",
+        "pass": true
+      },
+      {
+        "id": "RB.photocraft.at.psd_names",
+        "measured": "convert exit 0, PSD signature b'8BPS'; names in the PSD: ['Title tint', 'Photo'] (expected ['Title tint', 'Photo'])",
+        "note": "layer names survive ORA to PSD (the playbook: PhotoCraft offers a PSD when the work has adjustment layers, so the PSD must read back)",
+        "pass": true
+      }
+    ],
+    "findings": [
+      {
+        "finding": "the order in which info lists the layers",
+        "id": "RB.photocraft.wp06.layer_order",
+        "implication": "a reader of the manifest must know which end is the top",
+        "measured": "top-first"
+      },
+      {
+        "finding": "document size in the info JSON",
+        "id": "RB.photocraft.wp06.canvas",
+        "implication": "",
+        "measured": "640x360 (stack.xml says 640x360)"
+      },
+      {
+        "finding": "the WP-06 ORA validator on the ORA PhotoCraft wrote",
+        "id": "RB.photocraft.wp06.wp06_validator_on_photocraft_ora",
+        "implication": "an ORA PhotoCraft writes may differ from the emitter's (for example in layer paths or attributes); the reader must not assume the emitter's exact layout",
+        "measured": "exit 0: PASS mergedimage_size_ok                mergedimage.png matches the canvas | RESULT validate_ora: 22 checks, 0 FAIL, 0 WARN (profile=pipeline)"
+      },
+      {
+        "finding": "names after ORA to PSD to ORA",
+        "id": "RB.photocraft.wp06.psd_back_to_ora",
+        "implication": "whether a PhotoCraft PSD can be taken back to an ORA by the pipeline",
+        "measured": "convert exit 0; ['L30_label', 'L20_figure', 'L10_restored', 'L00_asfound'] (expected ['L30_label', 'L20_figure', 'L10_restored', 'L00_asfound'])"
+      },
+      {
+        "finding": "the order in which info lists the layers",
+        "id": "RB.photocraft.at.layer_order",
+        "implication": "a reader of the manifest must know which end is the top",
+        "measured": "top-first"
+      },
+      {
+        "finding": "document size in the info JSON",
+        "id": "RB.photocraft.at.canvas",
+        "implication": "",
+        "measured": "320x200 (stack.xml says 320x200)"
+      },
+      {
+        "finding": "the WP-06 ORA validator on the ORA PhotoCraft wrote",
+        "id": "RB.photocraft.at.wp06_validator_on_photocraft_ora",
+        "implication": "an ORA PhotoCraft writes may differ from the emitter's (for example in layer paths or attributes); the reader must not assume the emitter's exact layout",
+        "measured": "exit 0: PASS mergedimage_size_ok                mergedimage.png matches the canvas | RESULT validate_ora: 21 checks, 0 FAIL, 1 WARN (profile=reference)"
+      },
+      {
+        "finding": "names after ORA to PSD to ORA",
+        "id": "RB.photocraft.at.psd_back_to_ora",
+        "implication": "whether a PhotoCraft PSD can be taken back to an ORA by the pipeline",
+        "measured": "convert exit 0; ['Title tint', 'Photo'] (expected ['Title tint', 'Photo'])"
+      }
+    ],
+    "info_shapes": {
+      "at": {
+        "activeLayer": "int",
+        "channels": {
+          "alpha": [],
+          "colors": [
+            "..."
+          ],
+          "composite": "str",
+          "compositeVisible": "bool",
+          "layerMaskView": "NoneType",
+          "quickMask": "NoneType",
+          "target": {
+            "kind": "..."
+          }
+        },
+        "depth": "int",
+        "file": "str",
+        "hasSelection": "bool",
+        "height": "int",
+        "isolatedLayers": [],
+        "lastAppliedComp": "NoneType",
+        "layerComps": [],
+        "layerMaskView": "NoneType",
+        "layers": [
+          {
+            "blend": "...",
+            "bounds": "...",
+            "clipped": "...",
+            "fill": "...",
+            "hasMask": "...",
+            "hasVectorMask": "...",
+            "id": "...",
+            "kind": "...",
+            "labelColor": "...",
+            "linkGroup": "...",
+            "name": "...",
+            "opacity": "..."
+          }
+        ],
+        "measurement": {
+          "count": "int",
+          "countGroups": "int",
+          "ruler": "NoneType",
+          "scale": "str"
+        }
+      },
+      "wp06": {
+        "activeLayer": "int",
+        "channels": {
+          "alpha": [],
+          "colors": [
+            "..."
+          ],
+          "composite": "str",
+          "compositeVisible": "bool",
+          "layerMaskView": "NoneType",
+          "quickMask": "NoneType",
+          "target": {
+            "kind": "..."
+          }
+        },
+        "depth": "int",
+        "file": "str",
+        "hasSelection": "bool",
+        "height": "int",
+        "isolatedLayers": [],
+        "lastAppliedComp": "NoneType",
+        "layerComps": [],
+        "layerMaskView": "NoneType",
+        "layers": [
+          {
+            "blend": "...",
+            "bounds": "...",
+            "clipped": "...",
+            "fill": "...",
+            "hasMask": "...",
+            "hasVectorMask": "...",
+            "id": "...",
+            "kind": "...",
+            "labelColor": "...",
+            "linkGroup": "...",
+            "name": "...",
+            "opacity": "..."
+          }
+        ],
+        "measurement": {
+          "count": "int",
+          "countGroups": "int",
+          "ruler": "NoneType",
+          "scale": "str"
+        }
+      }
+    },
+    "inputs": "synthetic: WP-06 emitters and the reused fixtures of research/craft-visual-fixtures",
+    "label": "linux-cli",
+    "label_text": "Linux CLI result; not evidence for Windows",
+    "sandbox": {
+      "env": "env -i with HOME, TMPDIR, XDG_*, PATH only (LIGHTCRAFT_GPU=0 for LightCraft)",
+      "network_isolation": "unshare -rn",
+      "rss_kill_mb": 10240,
+      "timeout_s": 300,
+      "vk_icd_filenames": "unset"
+    },
+    "tag": "v0.10.0"
+  },
+  "disk": {
+    "avail_mb_end": 743,
+    "avail_mb_min": 664,
+    "avail_mb_start": 743,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 202
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "the playbook's read-back passes: the file is read, converted and written, the layer names or ids survive",
+  "notes": "Linux CLI result; not evidence for Windows.",
+  "package": "WP-10",
+  "schema": "lj-evidence/1",
+  "stage": "sp1b-photocraft-v0.10.0",
+  "status": "PASS",
+  "test": "readback_photocraft_v0.10.0",
+  "unverified_reasons": [
+    "Windows behaviour is not tested by a Linux CLI run (the maker's Windows five-minute test is the real evidence)"
+  ]
+}

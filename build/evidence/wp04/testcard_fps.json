@@ -1,61 +1,61 @@
 {
- "actual": "fps by pages: {'1': 7.67, '4': 11.36}; average PNG 314 KB",
+ "actual": "fps by pages: {'1': 8.02, '4': 11.12}; average PNG 314 KB",
  "data": {
   "by_pages": {
    "1": {
     "avg_png_kb": 314,
     "bench": {
      "contaminated": "no",
-     "loadavg_start": "0.81 1.25 1.79",
+     "loadavg_start": "0.98 1.33 1.29",
      "nproc": 4
     },
     "exit": 0,
     "frames": 96,
     "peak_rss": {
-     "browser_tree_mb": 777,
+     "browser_tree_mb": 773,
      "ffmpeg_mb": 0,
-     "node_mb": 110,
+     "node_mb": 109,
      "note": "RSS counts shared pages in every process, so the sum over-counts",
-     "sum_mb": 887
+     "sum_mb": 878
     },
     "settle": {
-     "load1": 0.81,
+     "load1": 0.98,
      "settled": true,
-     "waited_s": 0
+     "waited_s": 5
     },
-    "throughput_fps": 7.67
+    "throughput_fps": 8.02
    },
    "4": {
     "avg_png_kb": 314,
     "bench": {
      "contaminated": "no",
-     "loadavg_start": "0.97 1.26 1.78",
+     "loadavg_start": "0.98 1.32 1.28",
      "nproc": 4
     },
     "exit": 0,
     "frames": 96,
     "peak_rss": {
-     "browser_tree_mb": 1422,
+     "browser_tree_mb": 1407,
      "ffmpeg_mb": 0,
-     "node_mb": 149,
+     "node_mb": 148,
      "note": "RSS counts shared pages in every process, so the sum over-counts",
-     "sum_mb": 1531
+     "sum_mb": 1523
     },
     "settle": {
-     "load1": 0.97,
+     "load1": 0.98,
      "settled": true,
-     "waited_s": 10
+     "waited_s": 0
     },
-    "throughput_fps": 11.36
+    "throughput_fps": 11.12
    }
   },
-  "seconds": 34.0
+  "seconds": 28.7
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 407,
-  "avail_mb_min": 407,
-  "avail_mb_start": 408,
+  "avail_mb_end": 754,
+  "avail_mb_min": 754,
+  "avail_mb_start": 754,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

@@ -1,0 +1,172 @@
+WP-09 tests (--all). pwsh: present  ffmpeg: 6.1.1-3ubuntu5  patterns file: present  disk avail: 764 MB
+PASS       lint.kit2_ps1_scripts                                exit 0; TOTAL: 0 error(s), 0 warning(s) in 4 file(s)|
+PASS       lint.readme_fences                                   exit 0; TOTAL: 0 error(s), 0 warning(s) in 1 file(s)|
+PASS       parse.scripts_and_readme_fences                      exit 0; PARSED 58 item(s), 0 parse error(s)|
+PASS       parse.every_readme_fence_and_every_kit2_script_was_parsed 20 powershell fences in README-KIT2.md, 20 parsed OK; 4 of 4 kit2 scripts parsed OK
+PASS       lint.read_only_mode_catches_a_planted_write_cmdlet   exit 1; TOTAL: 1 error(s), 0 warning(s) in 1 file(s)|
+PASS       archive_verify.contains_no_write_or_delete_call      archive_verify.ps1 has no file-writing or deleting call (checked by grep, because .NET writes are not seen by ps_lint)
+PASS       py.all_python_files_parse                            kenburns_24.py, pc_helpers.py, kb_checks.py, fixtures.py, dissolve_check.py and drift_guard.py parse with the Python 3.9 grammar (no match statement, no X | Y types)
+PASS       drift.shared_ps1_helpers_are_byte_identical_in_every_copy exit 0; OK    Show-Path      4 copies in archive_init.ps1, archive_verify.ps1, kenburns_24.ps1, run_checks_pc.ps1|OK    Clean-Message  4 copies in archive_init.ps1, archi
+PASS       drift.guard_catches_a_one_character_change_in_one_copy exit 1; RESULT: DRIFT: Clean-Message differs between archive_init.ps1 + kenburns_24.ps1 + run_checks_pc.ps1 and archive_verify.ps1|
+PASS       drift.guard_catches_a_missing_sibling_note           exit 1; RESULT: DRIFT: archive_init.ps1: the '# Shared helpers' note is missing, repeated or does not name every sibling|
+PASS       hygiene.no_stale_25fps_value_in_any_new_file         none of the retired 25-frame values (the old zoompan frame count, the old frame-rate options, the old atsc profile) or the retired loudness ceiling in win/kit2 or tests/w
+PASS       hygiene.stale_check_has_no_hit_in_the_new_files      scripts/stale_check.py finds no stale-copy hit under win/kit2 or tests/win_kit2 (hits: 0)
+PASS       hygiene.public_lint_clean_on_owned_paths             exit 0; 
+PASS       archive.init_builds_skeleton_and_5_standins          exit 0;   NOTE this folder is inside the project folder. That is fine for the practice stand-ins (renders\ is ignored by git). Real scans go in the encrypted container, n
+PASS       archive.tree_is_the_four_folders_two_csvs_checksums_and_5_tifs the exact tree; ids LJ-ST-0001-F to 0005-F (box code ST)
+PASS       archive.folders_and_columns_equal_step0_of_the_playbook_and_csvs_are_header_only folder names and the 17 + 13 columns read from playbooks/ai-imagery.md Step 0 equal the scripts' and the files'; header-only, one LF line, no BOM
+PASS       archive.checksums_are_sha256sum_format_lf_no_bom_and_gnu_agrees five lines 'hash *name', lowercase, LF, no BOM; GNU sha256sum -c accepts the file
+PASS       archive.standins_are_valid_16_bit_600ppi_tiffs       ImageMagick reads 16-bit TIFF 300x200; Pillow reads (300, 200) RGB at 600 dpi
+PASS       archive.standins_differ_from_each_other_and_are_not_empty 5 distinct checksums; each file is about 360 KB
+PASS       archive.verify_clean_reports_checked_5_files_0_problems exit 0;   checked 5 files, 0 problems|RESULT: OK, no problems|files written: none|
+PASS       archive.verify_changes_nothing                       the archive tree hashes the same before and after archive_verify.ps1 (read-only)
+PASS       archive.verify_after_one_byte_flip_names_the_file    exit 1;   MISMATCH LJ-ST-0003-F.tif|  checked 5 files, 1 problems|RESULT: 1 problem(s) found, see the PROBLEM, MISSING and MISMATCH lines above|
+PASS       archive.flipping_the_same_bit_again_restores_the_file the README's undo works: the second flip gives back the original bytes
+PASS       archive.verify_names_a_missing_file                  exit 1;   MISSING  LJ-ST-0002-F.tif|  checked 5 files, 1 problems|RESULT: 1 problem(s) found, see the PROBLEM, MISSING and MISMATCH lines above|
+PASS       archive.verify_reports_an_unlisted_file_as_information exit 0;   checked 5 files, 0 problems|RESULT: OK, no problems|files written: none|
+PASS       archive.verify_flags_a_wrong_manifest_header         exit 1;   checked 5 files, 0 problems|RESULT: 1 problem(s) found, see the PROBLEM, MISSING and MISMATCH lines above|files written: none|
+PASS       archive.verify_accepts_a_manifest_with_rows_added_by_hand exit 0;   checked 5 files, 0 problems|RESULT: OK, no problems|files written: none|
+PASS       archive.verify_flags_a_missing_checksums_file        exit 1;   PROBLEM MISSING checksums.txt|RESULT: 1 problem(s) found, see the PROBLEM, MISSING and MISMATCH lines above|files written: none|
+PASS       archive.init_count_0_makes_an_empty_skeleton_and_verifies exit 0;   NOTE this folder is inside the project folder. That is fine for the practice stand-ins (renders\ is ignored by git). Real scans go in the encrypted container, n
+PASS       archive.verify_of_the_empty_skeleton_is_clean        exit 0;   checked 0 files, 0 problems|RESULT: OK, no problems|files written: none|
+PASS       archive.init_on_an_existing_archive_changes_nothing  exit 0;   NOTE this folder is inside the project folder. That is fine for the practice stand-ins (renders\ is ignored by git). Real scans go in the encrypted container, n
+PASS       archive.init_on_an_existing_archive_left_the_tree_unchanged tree hash identical after the second run
+PASS       archive.init_refuses_a_folder_that_holds_other_things exit 2;   NOTE this folder is inside the project folder. That is fine for the practice stand-ins (renders\ is ignored by git). Real scans go in the encrypted container, n
+PASS       archive.refusal_left_the_other_folder_untouched      tree hash identical after the refusal
+PASS       archive.init_refuses_a_drive_root                    exit 2; [1/8] Checking the options and the folder you chose ... REFUSED|files written: none|
+PASS       archive.init_refuses_the_project_folder_itself       exit 2; [1/8] Checking the options and the folder you chose ... REFUSED|files written: none|
+PASS       archive.init_refuses_count_51                        exit 2; [1/8] Checking the options and the folder you chose ... REFUSED|files written: none|
+PASS       archive.refusals_created_no_folder                   no folder was made by the refused runs
+PASS       archive.init_with_backs_makes_front_and_back         exit 0;   NOTE this folder is inside the project folder. That is fine for the practice stand-ins (renders\ is ignored by git). Real scans go in the encrypted container, n
+PASS       archive.backs_are_named_LJ_ST_nnnn_B                 LJ-ST-0001-F, -0001-B, -0002-F and -0002-B exist
+PASS       archive.init_works_in_a_folder_name_with_a_space     exit 0;   NOTE this folder is inside the project folder. That is fine for the practice stand-ins (renders\ is ignored by git). Real scans go in the encrypted container, n
+PASS       archive.verify_works_in_a_folder_name_with_a_space   exit 0;   checked 3 files, 0 problems|RESULT: OK, no problems|files written: none|
+PASS       archive.reused_scripts_are_called_in_place_and_unmodified archive_init.ps1 calls research/sources/format-round1/mk_manifest.ps1 and verify_manifest.ps1 where they sit; git shows them unmodified; no copy in win/kit2
+PASS       archive.output_prints_no_profile_path_or_user_name   no profile path in the last output (paths are printed as <project>, %TEMP% or %USERPROFILE%)
+PASS       runner.planted_flag_with_profile_path_and_user_name_is_refused exit 2; REDACTION CHECK FAILED, nothing was written|category=profile_path_windows field=ffmpeg.configure[10] hit=C:********|category=user_name field=ffmpeg.configure[10] 
+PASS       runner.refusal_wrote_nothing                         no output file after the refusal; the fake user name never appears in the output (checked by -n above)
+PASS       runner.user_name_alone_is_refused_with_a_masked_hit  exit 2; REDACTION CHECK FAILED, nothing was written|category=user_name field=ffmpeg.configure[10] hit=zo******|files written: none|
+PASS       runner.a_65_hex_run_is_refused_as_guid_serial        exit 2; REDACTION CHECK FAILED, nothing was written|category=guid_serial field=ffmpeg.version_line hit=cc********|files written: none|
+PASS       runner.a_public_ipv4_is_refused                      exit 2; REDACTION CHECK FAILED, nothing was written|category=ipv4 field=ffmpeg.configure[10] hit=10******|files written: none|
+PASS       runner.an_email_is_refused                           exit 2; REDACTION CHECK FAILED, nothing was written|category=email field=ffmpeg.configure[10] hit=so********|files written: none|
+PASS       runner.a_documentation_ipv4_is_not_refused           exit 0; NOTE this file is inside the project folder. The raw record is for the chat only: do not commit it and do not move it into the project. (renders\ is ignored by gi
+PASS       runner.a_user_name_shorter_than_3_is_skipped_with_a_note exit 0; NOTE name check skipped for a user_name of 2 character(s): shorter than the minimum, so it would match ordinary words (the pattern checks still ran)|NOTE this fil
+PASS       runner.clean_fixture_writes_the_raw_file_and_says_test_mode exit 0; NOTE this file is inside the project folder. The raw record is for the chat only: do not commit it and do not move it into the project. (renders\ is ignored by gi
+PASS       runner.written_file_is_byte_identical_to_the_fixture_and_has_no_bom the raw record is written as read (no re-serialisation), BOM-less UTF-8
+PASS       runner.test_mode_changed_nothing_else_in_the_tree    win/kit2, tests/win_kit2, win/tools, the pattern file, pipeline/validators, pipeline/lib and research/sources/format-round1 hash the same before and after the test-mode r
+PASS       runner.derive_from_gives_a_filed_form_without_build_flags exit 0; 
+PASS       runner.derived_file_has_no_configure_flags_and_a_known_schema lj-pc-chains/1: ffmpeg version 9.0.2 and sha256 only; no configure text, no version line
+PASS       runner.derived_file_passes_public_lint               exit 0; 
+PASS       runner.pattern_self_test_prints_one_json_object      exit 0; 
+PASS       runner.agrees_with_step0_windows_check_and_public_lint_on_every_sample three-way comparison on the shared samples file
+PASS       runner.pattern_self_test_banner_goes_to_stderr_and_nothing_is_written stdout is the one JSON line; 'TEST MODE: nothing was collected' is on stderr
+PASS       runner.without_the_pattern_file_it_fails_closed      exit 2; [1/11] Loading the identifying-data patterns (scripts\redaction_patterns.json) ... FAILED|files written: none|
+PASS       runner.fail_closed_wrote_nothing                     no output file when the pattern file is missing
+PASS       runner.a_corrupt_pattern_file_fails_closed           exit 2; [1/11] Loading the identifying-data patterns (scripts\redaction_patterns.json) ... FAILED|files written: none|
+PASS       runner.a_pattern_file_lacking_required_categories_fails_closed exit 2; [1/11] Loading the identifying-data patterns (scripts\redaction_patterns.json) ... FAILED|files written: none|
+PASS       runner.contains_no_private_identifying_data_regex    no e-mail, IPv4, MAC or GUID expression in win/kit2: the one pattern file is the only definition
+PASS       quoting.arguments_with_spaces_quotes_and_backslashes_round_trip exit 0; cases 8 lines 8 bad 0 exit 0|
+PASS       quoting.a_run_over_its_time_limit_is_killed_and_a_missing_program_is_reported exit 0; 
+PASS       wrapper.kenburns_without_stills_is_exit_2            exit 2; [1/5] Checking the options ... REFUSED|files written: none|
+PASS       wrapper.kenburns_with_a_missing_still_is_exit_2      exit 2; [1/5] Checking the options ... REFUSED|files written: none|
+PASS       wrapper.kenburns_selftest_with_stills_is_exit_2      exit 2; [1/5] Checking the options ... REFUSED|files written: none|
+PASS       wrapper.kenburns_without_python_is_exit_3_with_the_install_hint exit 3; files written: none|
+PASS       wrapper.kenburns_without_pillow_is_exit_3_with_the_pip_line exit 3; [3/5] Checking that Pillow and numpy are installed ... MISSING|files written: none|
+PASS       wrapper.kenburns_without_ffmpeg_is_exit_3            exit 3; files written: none|
+PASS       wrapper.runner_without_python_is_exit_3_and_writes_nothing exit 3; files written: none|
+PASS       wrapper.runner_without_ffmpeg_is_exit_3_and_writes_nothing exit 3; files written: none|
+PASS       wrapper.unexpected_error_in_archive_init.ps1_is_scrubbed_and_exit_3 exit 3; FAILED: RuntimeException - boom <path>|files written: none|
+PASS       wrapper.unexpected_error_in_archive_verify.ps1_is_scrubbed_and_exit_3 exit 3; FAILED: RuntimeException - boom <path>|files written: none|
+PASS       wrapper.unexpected_error_in_kenburns_24.ps1_is_scrubbed_and_exit_3 exit 3; FAILED: RuntimeException - boom <path>|files written: none|
+PASS       wrapper.unexpected_error_in_run_checks_pc.ps1_is_scrubbed_and_exit_3 exit 3; FAILED: RuntimeException - boom <path>|files written: none|
+PASS       wrapper.refused_runs_wrote_no_file                   no output file from the refused runner runs
+PASS       kb.base_window_is_exactly_16x9_and_inside            30 cases (6 sizes x 4 focus points); bad: []
+PASS       kb.every_window_is_16x9                              1728 windows over 4 moves x 3 still sizes; worst aspect error 8.88e-16
+PASS       kb.builtin_moves_never_need_the_clamp                1728 windows asked, 0 outside their 16:9 window
+PASS       kb.ease_is_flat_at_both_ends                         ease(0)=0, ease(0.5)=0.5, ease(1)=1
+PASS       kb.push_goes_from_whole_window_to_1_15x              start width = base width, end zoom 1.15
+PASS       kb.three_moves_of_6s_with_1s_dissolves_are_384_frames 3 x 144 - 2 x 24 = 384 frames = 16.0 s
+PASS       kb.xfade_offsets_are_5s_and_10s                      offsets [5.0, 10.0]
+PASS       kb.graph_shape                                       2 xfade, 3 trim, planar RGB before the chain vf, the chain vf last
+PASS       kb.dissolve_is_one_second                            durations ['1.000000']
+PASS       kb.graph_has_no_25                                   no 25 anywhere in the filter graph
+PASS       kb.zoompan_d_is_seconds_times_24                     5 s -> d=120, 6 s -> d=144, fps=24
+PASS       kb.resize_is_pixel_identical_to_reference_pil_resize_box 8 frames of a 4 percent push: worst pixel difference 0 (reference: zoompan_vs_subpixel_prints.py, pil_resize_box, ported, not imported)
+PASS       kb.video_only_profile_has_the_same_video_block_as_online_h264 video, container, faststart, chain, metadata and decision are identical to pipeline/settings.json online_h264
+PASS       kb.exif_orientation_makes_the_still_upright          a 400x300 file with orientation 6 loads as 300x400; notes ['turned upright from its EXIF orientation']
+PASS       kb.loads_grey_alpha_palette_and_16bit                [('L', 'RGB', (64, 36), (200, 200, 200)), ('RGBA', 'RGB', (64, 36), (1, 2, 3)), ('P', 'RGB', (64, 36), (0, 0, 0)), ('I;16', 'RGB', (64, 36), (255, 255, 255))]
+PASS       kb.unreadable_colour_profile_is_noted_not_fatal      notes ['has a colour profile that could not be read: colours are used as they are']
+PASS       kb.a_text_file_is_refused                            cannot open a still as an image (is it a photo file? JPEG, PNG and TIFF work)
+PASS       kb.disc_measure_flags_a_squashed_picture             stretching the whole 3:2 still to 16:9 reads 1.185 (spread) - the reading is not blind
+PASS       kb.disc_measure_reads_1_00_on_the_cropped_picture    16:9 window cut first: 1.0000 (spread) 1.0000 (box)
+PASS       kb.cli_refuses_bad_input_with_exit_2                 12 cases; all refused with their message
+PASS       kb.missing_ffmpeg_is_exit_3_with_a_remedy            exit 3: kenburns_24: environment problem: ffmpeg not found (no-such-ffmpeg). Put ffmpeg on PATH, or pass --ffmpeg with its full 
+PASS       kb.nothing_written_on_refusal                        no output file after the refusals
+PASS       kb.ffmpeg_that_dies_gives_exit_3_and_no_partial_file exit 3; files left in the output folder: []
+PASS       kb.temp_folder_is_deleted_after_a_failure            temp folder entries after failure: []
+PASS       kb.failure_text_has_no_absolute_path_of_the_work_folder the scratch path is replaced by <work> or absent
+PASS       redact.scrub_masks_work_out_project_and_home_longest_first got: open <out>/x.mp4.part.mp4 | log <work>/ffmpeg_main.log | tool <project>/win/kit2/kenburns_24.py | note <home>/Documents/a.jpg
+PASS       redact.scrub_matches_either_slash_style_and_any_letter_case got: Error opening output <out>/x.mp4.part.mp4
+PASS       redact.scrub_skips_a_root_so_it_cannot_mangle_the_text got: a / b and C:\x | C:\x
+PASS       redact.pc_helpers_scrub_paths_masks_home_and_project_without_extra_folders got: see <home>/x and <project>/y
+PASS       redact.kenburns_24_catch_all_prints_one_line_exit_3_and_no_message_text exit 3; stderr 'kenburns_24: unexpected error (RuntimeError). Nothing of yours was changed; paste this one line in chat.\n'
+PASS       redact.pc_helpers_catch_all_prints_one_line_exit_3_and_no_message_text exit 3; stderr 'pc_helpers: unexpected error (ValueError). Nothing of yours was changed; paste this one line in chat.\n'
+PASS       redact.ctrl_c_prints_one_line_and_no_traceback       exit 3; stderr 'kenburns_24: stopped by you (Ctrl+C). Nothing of yours was changed.\n'
+PASS       redact.out_below_an_existing_file_is_exit_3_with_no_traceback_and_no_path exit 3: kenburns_24: environment problem: cannot create the output folder for x.mp4
+PASS       redact.ffmpeg_output_open_failure_is_exit_3_and_the_folder_is_masked exit 3; the error line says <out>, not the folder; folder after: ['x.mp4.part.mp4']
+PASS       redact.unplanned_exception_on_the_command_line_has_no_traceback exit 3: kenburns_24: unexpected error (OverflowError). Nothing of yours was changed; paste this one line in chat.
+PASS       redact.pc_helpers_clip_output_failure_masks_the_folder exit 3: pc_helpers: environment problem: ffmpeg could not make the clip: [out#0/mp4 @ 0x555b7295d700] Error opening output <out>/c.mp4: Not a direct
+PASS       redact.pc_helpers_merge_chains_into_a_missing_folder_is_exit_3_with_no_traceback exit 3: pc_helpers: environment problem: cannot write m.json (is its folder there, and writable?)
+PASS       redact.zoompan_proof_open_failure_is_exit_3_and_the_folder_is_masked exit 3: kenburns_24: environment problem: ffmpeg failed while making the zoompan proof: [out#0/mp4 @ 0x562e8598e640] Error opening output <out>/x_zo
+PASS       helpers.clip_passes_online_h264_with_the_tone_at_16_lufs pc_helpers clip exit 0, spec_check exit 0: ['PASS audio.integrated       want within +-1.0 LU of -16 LUFS; got -16.0 LUFS']
+PASS       helpers.clip_without_ffmpeg_is_exit_3                pc_helpers: environment problem: ffmpeg not found (no-ffmpeg)
+PASS       helpers.merge_chains_joins_project_and_phone_chains  chains: ['ffv1_lossless', 'h264_backup_main40', 'h264_online', 'h264_venue', 'phone_1080', 'phone_720_share', 'prores422hq_master', 'prores4444_alpha']
+PASS       helpers.merge_chains_skips_a_missing_phone_file_with_a_note merge-chains: missing.json was not found, so its chains are skipped (the project's own chains are still tested)
+PASS       helpers.merge_chains_refuses_a_clash                 pc_helpers: the chain h264_venue is defined in both chain files
+PASS       kb.the_fake_user_site_is_inside_the_fake_home        the user-site folder resolves under the fake HOME
+PASS       kb.without_a_user_site_install_check_libs_says_how_to_install exit 3: kenburns_24: environment problem: Pillow and numpy are needed (numpy is missing). Install them for your user with:  py -3 -m pip install --u
+PASS       kb.packages_installed_with_pip_user_are_found_under_dash_I exit 0: ok: Pillow 12.3.0, numpy 2.5.3 (python -I hides the user folder; the tool adds it back at the end of the search path)
+PASS       kb.control_python_dash_I_alone_cannot_see_them       a plain import of PIL under -I -S fails (exit 1): the hiding is real, so the line above proves the fallback
+PASS       kb.small_render_passes_its_own_readback              exit 0; frames 36; 1920x1080; 24/1; 2 moves of 1 s, 0.5 s dissolve = 2x24-12 = 36
+PASS       kb.output_names_stills_by_number_not_by_file_name    neither the file names nor the folder name appear in the output
+PASS       kb.temp_folder_is_deleted_after_success              temp folder entries after success: []
+PASS       kb.only_the_output_file_is_left                      folder: ['small.mp4']
+PASS       kb.circle_in_the_output_is_round_1_00                spread ratio 1.0002, bounding-box ratio 0.9978 (limit 1.00 +- 0.01)
+PASS       kb.flat_colours_come_out_within_3_of_255             red, grey and skin patches read back within 1.0/255 of the source (W-16 limit 3)
+PASS       kb.second_run_replaces_the_output_and_leaves_no_part_file folder after the second run: ['small.mp4']
+PASS       kb.gate_window_has_the_requested_12_frames           exit 0; window frames 12
+PASS       kb.gate_accepts_the_12_frame_window                  mo8_gate exit 0: ['mo8_gate: the gate applies to the MASTER before the delivery encode (W-41). Limits: MO8a 0.05 px, MO8b 0.04 px; at most 96 frames.', 'MO8a centre jitte
+PASS       kb.silent_file_fails_online_h264_on_audio_only       exit 1, failed checks ['audio.present']
+PASS       kb.silent_file_passes_the_video_only_profile         exit 0; RESULT: PASS (20 checks)
+PASS       kb.test_tone_file_passes_the_full_online_profile     exit 0: RESULT: PASS (27 checks)
+PASS       kb_checks.exit_code                                  tests/win_kit2/kb_checks.py --all exited 0
+UNVERIFIED windows.ps1_scripts_on_windows_powershell_5_1        parsed on PowerShell 7.5.4 and linted for 5.1 syntax; nothing ran on Windows
+UNVERIFIED windows.py_launcher_and_python_store_stub            the stub check is a text match on 'Python 3.x'; tested here with python3 and a fake python only
+UNVERIFIED windows.temp_folder_and_unexpanded_paths             Show-Path logic exercised on Linux; the %TEMP% default on a managed PC is unknown
+UNVERIFIED windows.argument_quoting_for_processes               round trip proven on .NET on Linux, which parses Arguments by the same rules
+UNVERIFIED windows.winget_ids_and_pip_wheels                    ids read from winget manifests on 2026-10-18; never run
+UNVERIFIED windows.ffmpeg_9_0_2_pixels_and_spec                 measured on 6.1.1 only; the maker's run of run_checks_pc.ps1 is the test
+UNVERIFIED windows.tiff_standins_open_in_windows_photos         valid per ImageMagick and Pillow; no Windows viewer here
+PASS       kb.selftest_exit_0_and_prints_the_readback           exit 0;   ok: 384 frames, 16.0 s of video in 34 s|  PASS disc_aspect       want 1.00 +- 0.01   got 1.000 (spread) and 1.000 (bounding box); 166647 px|RESULT: PASS|
+PASS       kb.selftest_wrote_the_four_files_and_no_temp_leftover ex02.mp4, ex02_push_only.mkv, ex02_zoompan_proof.mp4, ex02_push_only_zoompan.mkv exist; no .part file
+PASS       kb.ffprobe_self_check_of_exercise_2                  exit 0; 
+PASS       kb.spec_check_online_h264_exit_0                     exit 0;   PASS container.readable     want ffprobe opens the file; got ok|  PASS container.moov         want moov atom present; got present|  PASS container.atoms        
+PASS       kb.mo8_gate_passes_the_sub_pixel_push                exit 0; mo8_gate: the gate applies to the MASTER before the delivery encode (W-41). Limits: MO8a 0.05 px, MO8b 0.04 px; at most 96 frames.|  MO8a centre jitter   0.0067 p
+PASS       kb.mo8_gate_fails_the_zoompan_proof_as_documented    exit 1; mo8_gate: the gate applies to the MASTER before the delivery encode (W-41). Limits: MO8a 0.05 px, MO8b 0.04 px; at most 96 frames.|  MO8a centre jitter   0.2026 p
+PASS       kb.zoompan_proof_is_5_seconds_120_frames_not_125     ffprobe: duration,frames = 5.000000,120  (d=120 for 5 s at 24 fps)
+PASS       kb.circle_in_ex02_measures_1_00_pm_0_01_on_two_frames independent measurement on the decoded ex02.mp4 (limit 1.00 +- 0.01)
+PASS       kb.the_two_joins_are_one_second_dissolves_at_frames_120_and_240 the fitted dissolve weight of the decoded frames rises 0 to 1 in steps of 1/24 over output frames 120-143 and 240-263, and is 0 before and 1 after (residual about 1 grey 
+PASS       wrapper.kenburns_ps1_selftest_runs_the_python_tool_live exit 0; RESULT: PASS|files written: <project>/renders/wp09/ex02_ps.mp4; <project>/renders/wp09/ex02_ps_push_only.mkv; <project>/renders/wp09/ex02_ps_zoompan_proof.mp4; <p
+PASS       runner.real_run_passes_and_writes_the_raw_file       exit 0; [3/11] Looking for ffmpeg (the one this PC will use) ... ok (ffmpeg 6.1.1)|[6/11] Checking the clip against the online delivery profile (spec_check.py --profile o
+PASS       runner.real_run_deleted_its_temporary_folder         the lj_kit2_* folder under TEMP is gone; entries left: 0
+PASS       runner.raw_record_holds_flags_hash_and_the_8_chains_with_the_phone_ones the raw file has the configure flags, the binary SHA-256, 8 chains (6 project, 2 phone) and 6 controls
+PASS       runner.real_run_derives_and_the_derived_file_passes_public_lint exit 0; 
+PASS       runner.derived_real_file_has_no_configure_flags_and_8_chains 8 chain rows, version and sha256 only, no flags
+PASS       runner.real_run_changed_no_project_file              win/kit2, tests/win_kit2, win/tools, the pattern file, pipeline/validators, pipeline/lib and research/sources/format-round1 hash the same before and after the real run (i
+PASS       runner.real_flow_refuses_a_build_with_a_profile_path_and_the_users_name exit 2; [9/11] Scanning the record and the text below for identifying data (patterns file plus your own names) ... REFUSED|NOTE name check skipped for a computer_name of 
+PASS       runner.real_flow_refusal_wrote_nothing_and_deleted_the_temp_folder no output file; temp entries left: 0; neither the tool output nor the paste block was printed (checked by -n above)
+PASS       runner.real_run_with_ffmpeg_and_out_in_folders_with_spaces exit 0; NOTE name check skipped for a computer_name of 2 character(s): shorter than the minimum, so it would match ordinary words (the pattern checks still ran)|    PASS 
+PASS       runner.the_file_in_the_folder_with_spaces_exists     the raw file was written into a folder created from -Out
+PASS       hygiene.public_lint_self_test_includes_this_consumer_and_finds_no_disagreement exit 0; self-test: 111 samples (built from fragments into <scratch>); patterns version 1|consumer scripts/public_lint.py: ok (own regex set read from scripts/redaction_pa
+
+WP-09 all: PASS=162 FAIL=0 UNVERIFIED=7 SKIPPED=0 BLOCKED=0 (237 s)  disk: start 764 MB, min 693 MB, end 729 MB

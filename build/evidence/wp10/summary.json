@@ -1,0 +1,19 @@
+{
+  "all_run": {
+    "PASS": 59,
+    "UNVERIFIED": 1
+  },
+  "label": "Linux CLI result; not evidence for Windows",
+  "package": "WP-10",
+  "quick_run": {
+    "PASS": 31,
+    "UNVERIFIED": 1
+  },
+  "schema": "lj-evidence-summary/1",
+  "stages": {
+    "filmcraft-v0.9.0": "PASS",
+    "lightcraft-v0.9.1": "FAIL",
+    "photocraft-v0.10.0": "PASS",
+    "vectorcraft-v0.13.1": "FAIL"
+  }
+}

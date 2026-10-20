@@ -1,10 +1,10 @@
 {
  "actual": "19 card mutations (4 of them inside one row), each exit 1 naming the problem",
- "date_utc": "2026-10-19",
+ "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 1111,
-  "avail_mb_min": 1111,
-  "avail_mb_start": 1117,
+  "avail_mb_end": 740,
+  "avail_mb_min": 740,
+  "avail_mb_start": 746,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

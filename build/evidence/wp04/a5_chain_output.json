@@ -43,13 +43,13 @@
   },
   "file_bytes": 527394,
   "profile": "High",
-  "seconds": 28.9
+  "seconds": 28.1
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 406,
-  "avail_mb_min": 406,
-  "avail_mb_start": 406,
+  "avail_mb_end": 754,
+  "avail_mb_min": 754,
+  "avail_mb_start": 754,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

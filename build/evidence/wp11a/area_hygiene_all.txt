@@ -1,0 +1,226 @@
+# area=hygiene entry=WP-03 mode=all result=PASS exit=0 seconds=103 masked_values=0
+WP-03 hygiene tests, mode all (Avail at start: 754 MB)
+GROUP patterns
+RESULT PASS pattern_file_internal_test :: 40 checks passed, 0 failed, exit 0
+GROUP guard
+RESULT PASS avail_parses_fake_df_P_format :: (fake df -P style output)
+RESULT PASS avail_accepts_a_bare_integer :: 
+RESULT PASS avail_matches_real_df :: guard 754 MB, df 754 MB (the volume is shared, so a small drift is normal)
+RESULT PASS usage_missing_dashdash_exits_2 :: lj_guard: usage: lj_with_disk PLANNED_MB LABEL -- COMMAND [ARGS...]
+RESULT PASS usage_planned_not_a_number_exits_2 :: 
+RESULT PASS command_exit_code_passes_through :: 
+RESULT PASS command_success_exits_0 :: 
+RESULT PASS df700_planned_300_runs_boundary_exactly_400_left :: Avail 700 - 300 = 400 is allowed (floor is >= 400)
+RESULT PASS df700_planned_350_refused_350_left :: REFUSED: Avail 700 MB minus planned 350 MB leaves 350 MB, below the 400 MB floor (p350). Lean-profile hint: pl
+RESULT PASS refusal_message_has_exact_figures_350 :: 
+RESULT PASS df700_planned_320_refused :: 
+RESULT PASS refusal_message_has_exact_figures_320 :: 
+RESULT PASS refusal_message_carries_the_lean_profile_hint :: 
+RESULT PASS df700_planned_301_refused_one_over :: 
+RESULT PASS refused_command_never_started :: 
+RESULT PASS planned_08_df405_is_refused_exit_3 :: REFUSED: Avail 405 MB minus planned 8 MB leaves 397 MB, below the 400 MB floor (zero08). Lean-profil
+RESULT PASS planned_08_prints_no_arithmetic_error :: stderr: lj_guard: REFUSED: Avail 405 MB minus planned 8 MB leaves 39
+RESULT PASS planned_08_is_read_as_decimal_8 :: 
+RESULT PASS planned_08_refused_command_never_started :: 
+RESULT PASS planned_010_df405_is_refused_as_decimal_10 :: planned 10 MB leaves 395 MB
+RESULT PASS planned_010_df5000_runs_and_exits_0 :: 
+RESULT PASS planned_010_ledger_lines_are_json_with_planned_mb_10 :: refused and ok lines both parse and say 10
+RESULT PASS planned_010_is_written_as_planned_mb_10_not_010 :: 
+RESULT PASS planned_2_pow_64_is_a_usage_error_exit_2 :: lj_guard: usage: PLANNED_MB must be a whole number of MB (at most 12 digits)
+RESULT PASS planned_2_pow_64_message_says_at_most_12_digits :: 
+RESULT PASS planned_2_pow_64_never_starts_the_command :: 
+RESULT PASS planned_13_digits_is_a_usage_error_exit_2 :: lj_guard: usage: PLANNED_MB must be a whole number of MB (at most 12 digits)
+RESULT PASS planned_12_digits_is_still_a_number_and_is_refused_by_the_floor_rule_exit_3 :: REFUSED: Avail 700 MB minus planned 999999999999 MB leaves -999999999299 MB, below the 400 MB floor 
+RESULT PASS planned_2_pow_64_writes_no_ledger_line :: 
+RESULT PASS two_jobs_both_succeed :: 
+RESULT PASS two_jobs_serialise_start_end_start_end :: (order of start/end markers written by the jobs)
+RESULT PASS second_job_started_after_first_ended :: 
+RESULT PASS ledger_has_one_line_per_job :: 
+RESULT PASS ledger_shows_them_one_after_the_other :: A ended 2026-10-19T23:40:20Z, B started 2026-10-19T23:40:20Z
+RESULT PASS ledger_records_that_the_second_job_waited :: 
+RESULT PASS waiter_with_LJ_LOCK_WAIT_S_2_exits_3 :: 
+RESULT PASS busy_message_names_the_holder :: BUSY: held by HOLDER-JOB 
+RESULT PASS waiter_gave_up_after_about_2_seconds :: 
+RESULT PASS holder_itself_finished_normally_despite_the_waiter :: 
+RESULT PASS lock_is_free_again_after_the_holder_finished :: 
+RESULT PASS floor_trip_exits_3 :: 
+RESULT PASS floor_trip_prints_DISK-FLOOR :: DISK-FLOOR: Avail fell to 200 MB, below the 250 MB hard floor, while FLOOR-JOB was running; its process group was stopped 
+RESULT PASS childs_cleanup_trap_ran :: 
+RESULT PASS child_process_group_is_gone :: 
+RESULT PASS floor_trip_did_not_wait_for_the_30s_sleep :: took 2.8s
+RESULT PASS lock_was_held_through_the_cleanup :: waiter started after the cleanup finished
+RESULT PASS ledger_records_status_floor :: 
+RESULT PASS ledger_min_is_below_the_hard_floor :: min 200 MB
+RESULT PASS LJ_ON_ABORT_cleanup_line_ran_after_the_floor_trip :: 
+RESULT PASS outer_timeout_exits_124_as_usual :: 
+RESULT PASS outer_TERM_is_forwarded_and_the_childs_cleanup_trap_ran :: 
+RESULT PASS lock_is_released_after_an_outer_timeout :: 
+RESULT PASS ledger_line_written_even_after_an_outer_timeout :: 
+RESULT PASS lj_bench_inside_lj_with_disk_works :: bench: nproc=4 loadavg_start=0.44 1.00 1.34 contaminated=no 
+RESULT PASS reverse_order_lj_with_disk_inside_lj_bench_refused :: exit 3 with the lock-order message
+RESULT PASS nested_lj_with_disk_refused_not_deadlocked :: 
+RESULT PASS nested_lj_bench_refused_not_deadlocked :: 
+RESULT PASS bench_lock_is_exclusive_and_names_the_holder :: 
+RESULT PASS bench_exports_nproc_load_and_flags_a_busy_machine_contaminated :: 
+RESULT PASS bench_idle_machine_is_not_contaminated :: 
+RESULT PASS bench_passes_the_command_exit_code :: 
+RESULT PASS guard_works_in_a_caller_with_set_euo_pipefail_and_with_a_shell_function_as_command :: 
+RESULT PASS ledger_lines_carry_no_path_host_or_user :: 2 disk + 1 bench lines checked
+RESULT PASS label_is_sanitised_slashes_and_at_signs_become_underscores :: 
+RESULT PASS ledger_lines_are_valid_json_with_the_envelope_fields :: 
+RESULT PASS guard_writes_only_its_lock_and_ledger_files :: (new entries in the scratch folder; the state folder is removed)
+GROUP self_tests
+RESULT PASS stale_check_self_test :: python3 -I scripts/stale_check.py --self-test: exit 0; self-test: 1004 checks, 0 problems
+RESULT PASS public_lint_self_test :: python3 -I scripts/public_lint.py --self-test: exit 0; note: Windows PowerShell 5.1 was not available in this run; win/step0_pc_tests.ps1 was exercised on PowerShell 7 only (5.1 behaviour UNVERIFIED until 
+GROUP stale
+RESULT PASS report_mode_on_the_planted_tree_exits_1 :: exit 1
+RESULT PASS every_FAIL_pattern_is_found_in_a_playbook_like_file :: not found: []
+RESULT PASS same_strings_in_research_md_reviews_register_build_and_own_files_are_ignored :: scanned by mistake: []
+RESULT PASS hits_are_also_found_in_skills_fixtures_and_win_scripts :: 
+RESULT PASS same_strings_in_the_allowlisted_contexts_are_not_live_hits :: live hits in allowlisted files: []
+RESULT PASS allowlisted_hits_are_counted_per_entry :: entries seen: ['AL-1-music-sound-dx-gated', 'AL-2a-no-co-keeper', 'AL-2b-rings-empty', 'AL-2c-no-insider', 'AL-2d-chhath-not-hers', 'AL-2e-minecraft-dropped', 'AL-2f-minecraft-only-an-example', 'AL-3a-tested-at-25-unverified-at-24', 'AL-3b-access-copy-50hz', 'AL-5-pushtimarg-p-class']; not seen: ['AL-4-gathering-14']
+RESULT PASS every_structural_entry_gives_its_reason_and_the_count_comes_from_the_file :: 11 entries, 4 structural
+RESULT PASS report_lists_every_table_4_row_of_the_register_and_W29 :: 66 rows in the report, 65 Table 4 ids in the register, missing from the report: []
+RESULT PASS markdown_report_has_the_required_sections :: 
+RESULT PASS outstanding_rows_become_work_orders_and_applied_rows_regressions :: 27 outstanding rows
+RESULT PASS no_info_candidates_remain_and_the_report_says_so :: info entries: 0
+RESULT PASS INFO_candidates_are_counted_and_do_not_fail_the_run :: exit 0 {'INFO.synthetic': 1}
+RESULT PASS D29_terms_and_placeholder_observances_are_FAIL_not_INFO :: exit 1, patterns ['D-29.blockbench', 'D-29.magicavoxel', 'D-29.mapartcraft', 'D-29.minecraft', 'D-29.mojang', 'D-29.voxel', 'S-61.placeholder-observances']
+RESULT PASS strict_mode_exits_1_and_prints_only_FAIL_lines :: strict: 104 FAIL hit(s) (3 WARN not counted)
+RESULT PASS strict_mode_exits_0_on_a_clean_tree :: strict: 0 FAIL hit(s) (0 WARN not counted)
+RESULT PASS report_mode_exits_0_on_a_clean_tree :: stale_check: scanned 1 files, 2 lines
+RESULT PASS cp1252_pipe_strict_prints_the_FAIL_line_and_exits_1_with_no_traceback :: exit 1: FAIL S-28 playbooks/arrow.md:1 [S-28.minus-1.5-dbtp] Step 4 ? Peaks at or below -1.5 dBTP
+RESULT PASS cp1252_pipe_new_only_prints_the_NEW_FAIL_line_and_exits_1_with_no_traceback :: exit 1: NEW FAIL playbooks/arrow.md:1 [S-28.minus-1.5-dbtp] Step 4 ? Peaks at or below -1.5 dBTP
+RESULT PASS cp1252_pipe_report_mode_exits_1_with_no_traceback :: exit 1
+RESULT PASS baseline_writes_counts_and_locations :: baseline written: 104 FAIL and 3 WARN hits recorded (file: the --baseline-file path)
+RESULT PASS new_only_exits_0_straight_after_the_baseline :: new-only: 0 new FAIL hit(s), 0 new WARN hit(s); 0 baseline hit(s) no longer present
+RESULT PASS new_only_ignores_old_hits_when_line_numbers_shift :: new-only: 0 new FAIL hit(s), 0 new WARN hit(s); 0 baseline hit(s) no longer present
+RESULT PASS one_new_stale_line_makes_new_only_exit_1_and_names_only_that_line :: new-only: 1 new FAIL hit(s), 0 new WARN hit(s); 0 baseline hit(s) no longer present
+RESULT PASS a_new_file_with_a_stale_line_is_new_too :: new-only: 2 new FAIL hit(s), 0 new WARN hit(s); 0 baseline hit(s) no longer present
+RESULT PASS new_only_exits_0_again_once_the_new_line_is_gone :: new-only: 0 new FAIL hit(s), 0 new WARN hit(s); 0 baseline hit(s) no longer present
+RESULT PASS new_only_without_a_baseline_is_a_usage_error_exit_2 :: INVALID INPUT: the baseline file is missing or unreadable (run --baseline first)
+RESULT PASS read_only_git_status_and_tree_hash_unchanged_by_every_mode :: hash 37e55999a179, status ''
+RESULT PASS invalid_pattern_file_exits_2 :: INVALID INPUT: the pattern file does not parse as JSON
+RESULT PASS missing_tree_exits_3 :: ENVIRONMENT: the tree to scan does not exist
+RESULT PASS audit_allowlist_fails_on_a_dead_entry_and_names_it :: audit: 1 dead entry(ies): AL-dead
+RESULT PASS audit_allowlist_prints_unused_structural_entries_as_unused_by_design_and_exits_0 :: audit: no dead entries (11 entries, 4 unused by design)
+RESULT PASS structural_entry_without_a_reason_is_invalid_input_exit_2 :: INVALID INPUT: allowlist entry AL-2d-chhath-not-hers is marked structural but gives no structural_re
+RESULT PASS without_the_structural_mark_every_unused_entry_would_be_dead :: audit: 4 dead entry(ies): AL-2d-chhath-not-hers, AL-2f-minecraft-only-an-example, AL-4-gathering-14, AL-5-pushtimarg-p-class
+RESULT PASS self_test_reads_the_register_and_passes_on_the_real_pair :: self-test: 1004 checks, 0 problems
+RESULT PASS self_test_fails_when_a_table_4_id_has_no_row :: removed S-65:   FAIL pattern S-65.two-shaping-gates names an unknown row S-65
+RESULT PASS self_test_fails_when_the_register_grows_a_row_the_pattern_file_lacks ::   FAIL Table 4 row S-66 is missing from the pattern file's rows[] (add the row and its patterns; the baseline is re-cut the same day)
+RESULT PASS self_test_fails_when_a_row_status_disagrees_with_the_register ::   FAIL row S-42 has status 'outstanding' but Table 4 says 'applied' (update the row's status here when Table 4 changes)
+RESULT PASS self_test_fails_when_the_register_grows_an_O_row_past_the_O_row_pattern ::   FAIL pattern W-29.o-row-above-last must match O-86 and must not match O-85
+RESULT PASS self_test_says_so_when_there_is_no_register_to_read :: register check: SKIPPED (no Table 4 rows found in ROOT/DECISIONS.md); rows are checked against the pattern file only
+RESULT PASS every_spelling_W29_names_fails_in_a_playbook_like_file :: silent lines: []
+RESULT PASS the_allowed_negations_and_the_patched_wordings_do_not_fail :: exit 0, live hits [], allowlisted 3
+RESULT PASS the_P_class_allowlist_entry_is_scoped_to_pushtimarg_world_md :: live hits in ['playbooks/other.md']
+RESULT PASS hits_are_filed_under_the_table_4_row_that_owns_the_file :: got []
+RESULT PASS S05_ring_1_does_not_fire_on_during_13th_spring_11_6_or_gathering_14 :: exit 0, 0 hit(s)
+RESULT PASS S05_ring_1_still_fires_on_the_capitalised_label :: 
+GROUP lint
+RESULT PASS clean_tree_passes_default_mode :: public_lint: mode diff, 0 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+RESULT PASS clean_tree_and_synthetic_fixtures_pass_whole_tree_audit :: public_lint: mode all, 25 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 1 fixture note(s), 0 suppressed by the config allow list
+RESULT PASS fixture_65_hex_is_a_note_not_a_failure :: 1 fixture note(s)
+RESULT PASS planted_tree_exits_2_identifying_data :: exit 2
+RESULT PASS flags_email_in_docs_p_email.md :: FINDING identifying email                docs/p_email.md:1 hit=ja********
+RESULT PASS flags_ipv4_in_docs_p_ip.md :: FINDING identifying ipv4                 docs/p_ip.md:1 hit=84********
+RESULT PASS flags_mac_in_docs_p_mac.md :: FINDING identifying mac                  docs/p_mac.md:1 hit=3C********
+RESULT PASS flags_profile_path_windows_in_docs_p_winpath.md :: FINDING identifying profile_path_windows docs/p_winpath.md:1 hit=C:********
+RESULT PASS flags_profile_path_windows_in_docs_p_winpath_json.md :: FINDING identifying profile_path_windows docs/p_winpath_json.md:1 hit=C:********
+RESULT PASS flags_profile_path_linux_in_docs_p_linpath.md :: FINDING identifying profile_path_linux   docs/p_linpath.md:1 hit=/h********
+RESULT PASS flags_token_shape_in_docs_p_token.md :: FINDING identifying token_shape          docs/p_token.md:1 hit=gh********
+RESULT PASS flags_guid_serial_in_docs_p_guid.md :: FINDING identifying guid_serial          docs/p_guid.md:1 hit=3f********
+RESULT PASS flags_guid_serial_in_docs_p_hex65.md :: FINDING identifying guid_serial          docs/p_hex65.md:1 hit=ca********
+RESULT PASS flags_handle_in_docs_p_handle.md :: FINDING identifying handle               docs/p_handle.md:1 hit=@i********
+RESULT PASS flags_raw_pc_report_in_data_pc_report.json :: FINDING denylist    raw_pc_report        data/pc_report.json  (a raw PC report is a hardware fingerprint; it is read in chat and never filed (4.4))
+RESULT PASS flags_raw_pc_report_in_data_colour_patch_pc_1.json :: FINDING denylist    raw_pc_report        data/colour_patch_pc_1.json  (a raw PC report is a hardware fingerprint; it is read in chat and never filed (4.4))
+RESULT PASS flags_raw_pc_report_in_deep_er_maker-pc.json :: FINDING denylist    raw_pc_report        deep/er/maker-pc.json  (a raw PC report is a hardware fingerprint; it is read in chat and never filed (4.4))
+RESULT PASS flags_NUL_byte :: FINDING binary      nul_byte             docs/p_nul.txt  (binary file (NUL byte); personal media never goes in git)
+RESULT PASS flags_staged_mov_that_gitignore_blocks :: FINDING ignored-staged gitignore_media      media_clip.mov  (matches .gitignore but is tracked or staged (git add -f); only a reviewed, small, non-personal image may be force-added)
+RESULT PASS flags_2MB_blob :: FINDING size        over_1mb             docs/p_big.txt  (2.0 MB; not scanned further)
+RESULT PASS local_deny_file_itself_is_never_scanned_or_printed :: 
+RESULT PASS flags_local_deny_word_masked :: FINDING local_deny  local_deny           docs/p_deny.md:1 hit=zo******
+RESULT PASS home_path_under_another_name_is_flagged :: FINDING identifying profile_path_linux   docs/p_otherhome.md:1 hit=/h********
+RESULT PASS passes_docs_p_ok_sha256.md :: no finding
+RESULT PASS passes_docs_p_ok_docips.md :: no finding
+RESULT PASS passes_docs_p_ok_placeholders.md :: no finding
+RESULT PASS passes_docs_p_ok_email_reserved.md :: no finding
+RESULT PASS passes_docs_p_ok_splat.md :: no finding
+RESULT PASS passes_tool_splat.ps1 :: no finding
+RESULT PASS passes_docs_p_scratch_ok.md :: no finding
+RESULT PASS passes_tests_win_fixtures_pc_report_synthetic.json :: no finding
+RESULT PASS passes_docs_clean.md :: no finding
+RESULT PASS output_is_masked_no_planted_value_printed_in_full :: leaked: []
+RESULT PASS tree_hash_and_git_status_unchanged_by_the_lint :: read-only
+RESULT PASS paths_mode_flags_a_file_and_passes_another :: public_lint: mode paths, 2 file(s) scanned, 1 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+RESULT PASS staged_mode_looks_only_at_the_index :: public_lint: mode staged, 1 file(s) scanned, 0 identifying-data finding(s), 1 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+RESULT PASS staged_mode_sees_a_file_once_it_is_staged :: public_lint: mode staged, 2 file(s) scanned, 1 identifying-data finding(s), 1 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+RESULT PASS diff_mode_reports_the_added_line_with_its_line_number :: FINDING identifying email                docs/clean.md:4 hit=ad********
+RESULT PASS tracked_or_staged_local_deny_file_is_refused :: FINDING local_deny  local_deny_file      scripts/public_lint.deny.local.txt  (the local deny list holds real names and must stay git-ignored
+RESULT PASS theme_guard_flags_Mughal_garden :: FINDING theme       taj-mahal            pipeline/phone/test_strings.json:1 hit=Taj Mahal  (D-28 exclusion keyword: Mughal monument); FINDING theme       church               pipeline/phone/test_strings.json:1 hit=church  (D-28 exclusion keyword: Christian building); FINDING theme       mughal               pipeline/scenes/notes.md:1 hit=Mughal  (D-28 exclusion keyword: Mughal motif)
+RESULT PASS theme_guard_flags_Christmas_card :: 
+RESULT PASS theme_guard_flags_Taj_Mahal :: 
+RESULT PASS theme_guard_does_not_flag_crossfade_across_or_Churchill :: 
+RESULT PASS theme_guard_ignores_files_outside_the_theme_paths :: 
+RESULT PASS theme_guard_shows_rule_statements_as_NOTE_not_findings :: FINDING theme       mughal               skills-staging/rules/scene_rules.md:4 hit=Mughal  (D-28 exclusion keyword: Mughal motif); FINDING theme       taj-mahal            skills-staging/rules/scene_r
+RESULT PASS theme_guard_still_flags_a_use_with_only_a_plain_not :: 
+RESULT PASS theme_guard_flags_animation_word_line_1_in_scene_code :: FINDING theme       taj-mahal            pipeline/scenes/scene_anim.js:1 hit=Taj Mahal  (D-28 exclusion keyword: Mughal monument)
+RESULT PASS theme_guard_flags_animation_word_line_2_in_scene_code :: FINDING theme       mughal               pipeline/scenes/scene_anim.js:2 hit=Mughal  (D-28 exclusion keyword: Mughal motif)
+RESULT PASS theme_guard_flags_animation_word_line_3_in_scene_code :: FINDING theme       church               pipeline/scenes/scene_anim.js:3 hit=church  (D-28 exclusion keyword: Christian building); FINDING theme       steeple  
+RESULT PASS theme_guard_flags_animation_word_line_4_in_scene_code :: FINDING theme       christmas            pipeline/scenes/scene_anim.js:4 hit=Christmas  (D-28 exclusion keyword: Christian holiday)
+RESULT PASS theme_guard_flags_fade_out_and_without_in_markdown :: 
+RESULT PASS theme_guard_does_not_demote_a_cue_after_the_keyword_or_far_before_it :: 
+RESULT PASS theme_guard_judges_every_occurrence_on_a_line :: 
+RESULT PASS theme_guard_never_demotes_under_pipeline_scenes_or_phone_test_strings :: 
+RESULT PASS theme_guard_exits_1_and_states_its_limit :: exit 1
+RESULT PASS theme_guard_passes_crossfade_alone :: theme guard: 1 file(s) scanned (explicit paths), 0 finding(s), 0 exclusion statement(s) shown as NOTE
+RESULT PASS theme_guard_exits_1_on_a_scene_file_of_only_animation_word_lines :: exit 1
+RESULT PASS theme_guard_with_explicit_paths_scans_what_it_is_given :: 
+RESULT PASS theme_guard_sees_the_added_line_of_a_changed_theme_file :: FINDING theme       mosque               ops/GATHER.md:3 hit=mosque  (D-28 exclusion keyword: Islamic building)
+RESULT PASS theme_guard_reports_old_playbooks_as_INFO_only_and_never_fails_them :: INFO only (existing playbooks, skills and research are never failed): playbooks: 1 keyword hit(s)
+RESULT PASS theme_guard_scans_a_new_playbook_and_flags_a_Mughal_garden :: FINDING theme       mughal               playbooks/x.md:1 hit=Mughal  (D-28 exclusion keyword: Mughal motif); FINDING theme       easter               playbooks/x.md:3 hit=Easter  (D-28 exclusion keyword: Christian holiday)
+RESULT PASS theme_guard_shows_No_Mughal_motifs_in_a_playbook_as_a_NOTE :: NOTE    theme-excl  mughal               playbooks/x.md:2 hit=Mughal  (the line says the motif is excluded: a statement of the rule, not a use)
+RESULT PASS theme_guard_flags_Easter_in_a_playbook :: 
+RESULT PASS theme_guard_flags_Eid_arabesque_muezzin_jali_and_steeple :: FINDING theme       eid                  playbooks/x.md:4 hit=Eid  (D-28 exclusion keyword: Islamic festival); FINDING theme       arabesque            playbooks/x.md:4 hit=arabesque  (D-28 exclusion 
+RESULT PASS theme_guard_does_not_flag_Eastern_or_Eidetic :: 
+RESULT PASS theme_guard_still_leaves_an_unchanged_old_playbook_as_INFO :: 
+RESULT PASS theme_guard_judges_only_the_added_lines_of_a_changed_playbook :: FINDING theme       mughal               playbooks/old.md:2 hit=Mughal  (D-28 exclusion keyword: Mughal motif)
+RESULT PASS theme_guard_is_quiet_again_with_the_playbooks_back_at_HEAD :: theme guard: 0 file(s) scanned (new or changed theme-bearing files), 0 finding(s), 0 exclusion statement(s) shown as NOTE
+RESULT PASS invalid_pattern_file_fails_closed_exit_2 :: PATTERNS UNAVAILABLE: the pattern file does not parse as JSON; nothing was checked
+RESULT PASS missing_pattern_file_fails_closed_exit_2 :: PATTERNS UNAVAILABLE: the pattern file scripts/redaction_patterns.json is missing; nothing was check
+RESULT PASS missing_path_is_a_usage_error_exit_2 :: USAGE: a path given to --paths does not exist
+RESULT PASS missing_root_is_an_environment_error_exit_3 :: ENVIRONMENT: the root folder does not exist
+RESULT PASS default_mode_outside_git_exits_3_and_says_to_use_paths :: ENVIRONMENT: not a git repository: use --paths or --all
+RESULT PASS paths_mode_works_without_git :: public_lint: mode paths, 1 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+RESULT PASS paths_outside_the_root_exit_2_with_a_USAGE_line_lint_folder :: exit 2: USAGE: a path given to --paths is outside the repository root (--root); run the lint from the clone, or pass -
+RESULT PASS paths_outside_the_root_exit_2_with_a_USAGE_line_lint_file :: exit 2: USAGE: a path given to --paths is outside the repository root (--root); run the lint from the clone, or pass -
+RESULT PASS paths_outside_the_root_exit_2_with_a_USAGE_line_lint_one_inside_one_outside :: exit 2: USAGE: a path given to --paths is outside the repository root (--root); run the lint from the clone, or pass -
+RESULT PASS paths_outside_the_root_exit_2_with_a_USAGE_line_theme_folder :: exit 2: USAGE: a path given to --paths is outside the repository root (--root); run the lint from the clone, or pass -
+RESULT PASS paths_outside_the_root_exit_2_with_a_USAGE_line_theme_file :: exit 2: USAGE: a path given to --paths is outside the repository root (--root); run the lint from the clone, or pass -
+RESULT PASS a_relative_path_that_climbs_out_of_the_root_is_also_exit_2 :: exit 2: USAGE: a path given to --paths is outside the repository root (--root); run the lint from the clone, or pass -
+RESULT PASS an_absolute_path_inside_the_root_is_still_scanned :: exit 2: public_lint: mode paths, 1 file(s) scanned, 1 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+RESULT PASS a_church_steeple_scene_under_root_is_still_a_theme_finding :: exit 1, 5 finding(s)
+RESULT PASS the_same_scene_by_absolute_path_inside_the_root_is_also_a_finding :: exit 1
+RESULT PASS unignored_local_deny_list_is_a_finding_exit_2_default_mode :: exit 2: FINDING local_deny  local_deny_file      scripts/public_lint.deny.local.txt  (exists but is not git-ignored; add scripts/public_lint.deny.local.txt (o
+RESULT PASS unignored_local_deny_list_is_a_finding_exit_2_all_mode :: exit 2: FINDING local_deny  local_deny_file      scripts/public_lint.deny.local.txt  (exists but is not git-ignored; add scripts/public_lint.deny.local.txt (o
+RESULT PASS staged_mode_does_not_flag_an_unstaged_unignored_deny_list :: exit 0
+RESULT PASS paths_mode_does_not_look_at_the_deny_list_file :: exit 0
+RESULT PASS ignored_local_deny_list_exact_is_not_a_finding :: exit 0: public_lint: mode diff, 1 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+RESULT PASS ignored_local_deny_list_star_local_star_is_not_a_finding :: exit 0: public_lint: mode diff, 1 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+RESULT PASS a_staged_local_deny_list_is_still_refused_even_when_ignored :: exit 2
+RESULT PASS pattern_self_test_prints_one_json_object_in_the_consumer_contract :: {"consumer":"scripts/public_lint.py","patterns_version":1,"results":{"a":[],"b":[],"c":["ipv4"]}}
+RESULT PASS self_test_no_disagreement_between_consumers :: consumer scripts/public_lint.py: ok (own regex set read from scripts/redaction_patterns.json; 111 samples); consumer scripts/windows_check.py: ok (111 samples compared on the report-scope categories); consumer win/step0_pc_tests.ps1: ok (111 samples compared on the report-scope categories via PowerS
+RESULT PASS self_test_reports_a_consumer_that_has_not_landed_as_SKIPPED_not_landed :: 
+RESULT PASS self_test_exits_1_and_names_the_consumer_the_sample_and_both_answers :: DISAGREEMENT scripts/windows_check.py, sample guid_serial.neg.0: scripts/windows_check.py says ['guid_serial'], scripts/public_lint.py says [] (report-scope categories)
+GROUP acceptance_on_the_real_tree
+RESULT PASS stale_audit_allowlist_no_dead_entries :: --audit-allowlist: exit 0; audit: no dead entries (11 entries, 4 unused by design)
+RESULT PASS stale_report_exits_1_as_expected :: report run: exit 1;   report written to the --json / --md paths
+66 rows: every S-nn id of the register's Table 4 (S-01 to S-65) plus W-29
+RESULT PASS stale_report_lists_every_table_4_row :: rows read from DECISIONS.md Table 4 plus W-29; work orders and the INFO section present
+RESULT PASS stale_baseline_then_new_only_exits_0 :: --baseline (scratch file) then --new-only: exit 0; new-only: 0 new FAIL hit(s), 0 new WARN hit(s); 0 baseline hit(s) no longer present
+RESULT PASS public_lint_own_files_clean :: public_lint on WP-03's own files: exit 0; public_lint: mode paths, 25 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow 
+RESULT UNVERIFIED windows_powershell_5_1_reads_the_pattern_file :: win/step0_pc_tests.ps1 was exercised on PowerShell 7 only; Windows PowerShell 5.1 can not be run here
+
+hygiene tests (all): 0 failed; Avail 754 MB at start, 753 MB minimum seen
+evidence: 214 envelopes, {"PASS": 213, "FAIL": 0, "UNVERIFIED": 1, "SKIPPED": 0}

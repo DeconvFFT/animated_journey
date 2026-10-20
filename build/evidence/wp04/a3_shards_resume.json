@@ -8,7 +8,7 @@
     "complete": true,
     "frames": 0,
     "remaining": 0,
-    "seconds": 1.037,
+    "seconds": 1.023,
     "shard": "0/2",
     "skipped": 24,
     "throughput_fps": 0
@@ -17,19 +17,19 @@
     "complete": true,
     "frames": 0,
     "remaining": 0,
-    "seconds": 1.081,
+    "seconds": 1,
     "shard": "0/1",
     "skipped": 48,
     "throughput_fps": 0
    }
   ],
-  "seconds": 15.8
+  "seconds": 15.6
  },
  "date_utc": "2026-10-19",
  "disk": {
-  "avail_mb_end": 410,
-  "avail_mb_min": 410,
-  "avail_mb_start": 410,
+  "avail_mb_end": 753,
+  "avail_mb_min": 753,
+  "avail_mb_start": 753,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

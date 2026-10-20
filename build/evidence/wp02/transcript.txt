@@ -3,31 +3,19 @@ WP-02 test transcript (commands run from the repository root; outputs are the re
 PASS  decisions_check_real
 decisions_to_csv --check ops/decisions.csv exits 0; independent count equals the CSV
 $ python3 -I scripts/decisions_to_csv.py --check ops/decisions.csv
-  OK: decisions.csv matches the register: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
+  OK: decisions.csv matches the register: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
   [exit 0]
 ==============================================================================
 PASS  decisions_write_twice
 --write twice is byte-identical, and equals the committed file when no orchestrator cell is set
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/decisions.csv
-  wrote decisions.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote decisions.csv: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/decisions.csv
-  wrote decisions.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote decisions.csv: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check <tmp>/decisions.csv
-  OK: decisions.csv matches the register: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
-  [exit 0]
-==============================================================================
-PASS  decisions_write_in_place
-literal acceptance: --write ops/decisions.csv twice leaves the tracked file unchanged
-$ python3 -I scripts/decisions_to_csv.py --write ops/decisions.csv
-  wrote decisions.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
-  [exit 0]
-$ python3 -I scripts/decisions_to_csv.py --write ops/decisions.csv
-  wrote decisions.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
-  [exit 0]
-$ python3 -I scripts/decisions_to_csv.py --check ops/decisions.csv
-  OK: decisions.csv matches the register: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
+  OK: decisions.csv matches the register: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
   [exit 0]
 ==============================================================================
 PASS  decisions_content
@@ -36,13 +24,13 @@ status vocabulary, D-14/D-23 notes, O-05/O-13 answered, S rows carry Table 4 sta
 PASS  decisions_carry_over
 orchestrator-owned cells (maker_answer, last_changed) survive --write and are ignored by --check
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/d.csv
-  wrote d.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote d.csv: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check <tmp>/d.csv
-  OK: d.csv matches the register: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
+  OK: d.csv matches the register: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/d.csv
-  wrote d.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 1 row(s)
+  wrote d.csv: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 1 row(s)
   [exit 0]
 ==============================================================================
 PASS  decisions_neg_delete_row
@@ -92,7 +80,7 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
 PASS  decisions_neg_values
 negative: a changed status/value and an invalid status word are named by ID and column
 $ python3 -I scripts/decisions_to_csv.py --check <tmp>/repo1/ops/decisions.csv
-    line 37: W-05 has status 'maybe', not one of decided|default|open|pending|answered|superseded|applied|outstanding
+    line 38: W-05 has status 'maybe', not one of decided|default|open|pending|answered|superseded|applied|outstanding
     W-05: column 'status' differs from the register (csv: 'maybe' / register: 'default')
     W-06: column 'value_or_default' differs from the register (csv: 'tampered value' / register: 'P-LOCK Sat 14 Nov 2026 (Fable review of spikes SP1–SP5, five')
   FAIL: decisions.csv does not match the register (3 problem(s)); regenerate with --write
@@ -101,7 +89,7 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
-    FAIL ops/decisions.csv [decisions_mismatch] line 37: W-05 has status 'maybe', not one of decided|default|open|pending|answered|superseded|applied|outstanding
+    FAIL ops/decisions.csv [decisions_mismatch] line 38: W-05 has status 'maybe', not one of decided|default|open|pending|answered|superseded|applied|outstanding
     FAIL ops/decisions.csv [decisions_mismatch] W-05: column 'status' differs from the register (csv: 'maybe' / register: 'default')
     FAIL ops/decisions.csv [decisions_mismatch] W-06: column 'value_or_default' differs from the register (csv: 'tampered value' / register: 'P-LOCK Sat 14 Nov 2026 (Fable review of spikes SP1–SP5, five')
   ops_lint: FAIL (3 failure(s), 0 warning(s))
@@ -110,7 +98,7 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
 PASS  decisions_register_growth
 an added register row (for example a new O-36) is picked up with no code change
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/g.csv --register <tmp>/DECISIONS.md
-  wrote g.csv: 250 rows (D 31, W 79, O 75, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 75, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote g.csv: 251 rows (D 32, W 79, O 75, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 75, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/DECISIONS.md
     O-85 is in DECISIONS.md but missing from the CSV
@@ -120,10 +108,10 @@ $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register 
 PASS  decisions_three_digit_id
 negative: a W-100 row in a register copy reaches the CSV (it was silently dropped when IDs had to be two digits)
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/w100.csv --register <tmp>/DECISIONS.md
-  wrote w100.csv: 250 rows (D 31, W 80, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 51, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote w100.csv: 251 rows (D 32, W 80, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 51, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check <tmp>/w100.csv --register <tmp>/DECISIONS.md
-  OK: w100.csv matches the register: 250 rows (D 31, W 80, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 51, T3 74, T4 65)
+  OK: w100.csv matches the register: 251 rows (D 32, W 80, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 51, T3 74, T4 65)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/DECISIONS.md
     W-100 is in DECISIONS.md but missing from the CSV
@@ -154,10 +142,10 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
 PASS  decisions_annotated_id
 negative: an annotated ID cell (| O-NN (absorbs O-MM) |) reaches the CSV with the annotation in note; a row that cannot be parsed is exit 2, never dropped in silence
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/annotated.csv --register <tmp>/annotated.md
-  wrote annotated.csv: 251 rows (D 31, W 80, O 75, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 51, T3 75, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote annotated.csv: 252 rows (D 32, W 80, O 75, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 51, T3 75, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check <tmp>/annotated.csv --register <tmp>/annotated.md
-  OK: annotated.csv matches the register: 251 rows (D 31, W 80, O 75, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 51, T3 75, T4 65)
+  OK: annotated.csv matches the register: 252 rows (D 32, W 80, O 75, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 51, T3 75, T4 65)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/annotated.md
     W-80 is in DECISIONS.md but missing from the CSV
@@ -193,59 +181,59 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
   ops_lint: FAIL (1 failure(s), 0 warning(s))
   [exit 1]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/broken_pipe.csv --register <tmp>/broken_pipe.md
-  decisions_to_csv: the register is malformed: line 266: O-85 has 2 cells, expected 4
+  decisions_to_csv: the register is malformed: line 267: O-85 has 2 cells, expected 4
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/broken_pipe.md
-  decisions_to_csv: the register is malformed: line 266: O-85 has 2 cells, expected 4
+  decisions_to_csv: the register is malformed: line 267: O-85 has 2 cells, expected 4
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/broken_suffix.csv --register <tmp>/broken_suffix.md
-  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 267: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/broken_suffix.md
-  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 267: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/broken_digits.csv --register <tmp>/broken_digits.md
-  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 267: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/broken_digits.md
-  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 267: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/broken_space.csv --register <tmp>/broken_space.md
-  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 267: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/broken_space.md
-  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 267: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/broken_emphasis.csv --register <tmp>/broken_emphasis.md
-  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 267: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/broken_emphasis.md
-  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 267: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/broken_code.csv --register <tmp>/broken_code.md
-  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 267: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/broken_code.md
-  decisions_to_csv: the register is malformed: line 266: looks like a register row but does not parse
+  decisions_to_csv: the register is malformed: line 267: looks like a register row but does not parse
   [exit 2]
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo1
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
-    FAIL DECISIONS.md [register] the register is malformed: line 266: looks like a register row but does not parse
+    FAIL DECISIONS.md [register] the register is malformed: line 267: looks like a register row but does not parse
     FAIL ops/GATHER.md:3 [cited_id] O-85 is cited but is not in DECISIONS.md
     FAIL ops/GATHER.md:3 [cited_id] W-80 is cited but is not in DECISIONS.md
     FAIL ops/GATHER.md:3 [cited_id] O-86 is cited but is not in DECISIONS.md
   ops_lint: FAIL (4 failure(s), 0 warning(s))
   [exit 1]
 $ python3 -I <tmp>/scripts_noguard/decisions_to_csv.py --write <tmp>/silent.csv --register <tmp>/emphasis_only.md
-  wrote silent.csv: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote silent.csv: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I <tmp>/scripts_noguard/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo1
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
-    FAIL ops/decisions.csv [parser] 250 line(s) start like a register row but the generator made 249 row(s): a row is being dropped
+    FAIL ops/decisions.csv [parser] 251 line(s) start like a register row but the generator made 250 row(s): a row is being dropped
     FAIL ops/GATHER.md:3 [cited_id] O-85 is cited but is not in DECISIONS.md
     FAIL ops/GATHER.md:3 [cited_id] W-80 is cited but is not in DECISIONS.md
     FAIL ops/GATHER.md:3 [cited_id] O-86 is cited but is not in DECISIONS.md
@@ -255,7 +243,7 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
-    FAIL DECISIONS.md [register] the register is malformed: line 266: looks like a register row but does not parse
+    FAIL DECISIONS.md [register] the register is malformed: line 267: looks like a register row but does not parse
     FAIL ops/GATHER.md:3 [cited_id] O-85 is cited but is not in DECISIONS.md
     FAIL ops/GATHER.md:3 [cited_id] W-80 is cited but is not in DECISIONS.md
     FAIL ops/GATHER.md:3 [cited_id] O-86 is cited but is not in DECISIONS.md
@@ -265,13 +253,13 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
 PASS  decisions_bad_register
 a malformed register (wrong cell count, duplicate ID, ID in the wrong table) exits 2
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/cells.md
-  decisions_to_csv: the register is malformed: line 266: O-85 has 2 cells, expected 4
+  decisions_to_csv: the register is malformed: line 267: O-85 has 2 cells, expected 4
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/dup.md
-  decisions_to_csv: the register is malformed: line 266: O-35 appears twice (first on line 265)
+  decisions_to_csv: the register is malformed: line 267: O-35 appears twice (first on line 266)
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/table.md
-  decisions_to_csv: the register is malformed: line 266: W-80 is in table T3 but belongs to T2.1/T2.2/T2.3
+  decisions_to_csv: the register is malformed: line 267: W-80 is in table T3 but belongs to T2.1/T2.2/T2.3
   [exit 2]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/none.md
   decisions_to_csv: cannot read the register none.md (No such file or directory)
@@ -859,9 +847,8 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
-    FAIL ops/SETTINGS-CARD.md [card_signature] signed: yes but the language line still has the <date> placeholder
     FAIL ops/SETTINGS-CARD.md [card_signature] signed: yes but 'date signed:' has no date
-  ops_lint: FAIL (2 failure(s), 0 warning(s))
+  ops_lint: FAIL (1 failure(s), 0 warning(s))
   [exit 1]
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo13
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
@@ -1189,7 +1176,7 @@ $ python3 -I scripts/hours_report.py ops/hours.csv
     no rows yet: log your real hours (see HOURS-HOWTO.md); the first logged week is read on Sun 1 Nov
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check ops/decisions.csv
-  OK: decisions.csv matches the register: 249 rows (D 31, W 79, O 74, S 65; by table T1 31, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
+  OK: decisions.csv matches the register: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
   [exit 0]
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
@@ -1256,69 +1243,6 @@ PASS  public_lint_own_files
 scripts/public_lint.py (WP-03), when present, finds nothing in WP-02's own files
 $ python3 -I scripts/public_lint.py --paths ops scripts/ops_lint.py scripts/hours_report.py scripts/decisions_to_csv.py tests/ops build/evidence/wp02
   public_lint: mode paths, 67 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
-  [exit 0]
-==============================================================================
-PASS  card_commands_linux
-the settings-card ffprobe/ffmpeg commands give the printed answers on tiny test files (Linux)
-$ ffmpeg -v error -y -f lavfi -i color=c=0x336699:size=1920x1080:rate=24,format=yuv422p10le -f lavfi -i sine=frequency=440:sample_rate=48000 -t 0.25 -c:v prores_ks -profile:v 3 -c:a pcm_s24le -color_range tv -colorspace bt709 -color_primaries bt709 -color_trc bt709 master.mov
-  (no output)
-  [exit 0]
-$ ffmpeg -v error -y -f lavfi -i color=c=0x336699:size=1920x1080:rate=24,format=yuv420p -f lavfi -i sine=frequency=440:sample_rate=48000 -t 1 -c:v libx264 -profile:v high -level 4.1 -crf 18 -c:a aac -b:a 256k -ac 2 -color_range tv -colorspace bt709 -color_primaries bt709 -color_trc bt709 -movflags +faststart venue.mp4
-  (no output)
-  [exit 0]
-$ ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,pix_fmt -of csv=p=0 master.mov
-  prores,1920,1080,yuv422p10le
-  [exit 0]
-$ ffprobe -v error -select_streams v:0 -show_entries stream=r_frame_rate,avg_frame_rate -of csv=p=0 venue.mp4
-  24/1,24/1
-  [exit 0]
-$ ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,profile,level,pix_fmt -of default=nw=1 venue.mp4
-  codec_name=h264
-  profile=High
-  pix_fmt=yuv420p
-  level=41
-  [exit 0]
-$ ffprobe -v error -select_streams v:0 -show_entries stream=color_range,color_space,color_primaries,color_transfer -of default=nw=1 venue.mp4
-  color_range=tv
-  color_space=bt709
-  color_transfer=bt709
-  color_primaries=bt709
-  [exit 0]
-$ ffmpeg -nostats -i venue.mp4 -af ebur128=peak=true -f null -
-  ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers
-    built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)
-    configuration: --prefix=/usr --extra-version=3ubuntu5 --toolchain=hardened --libdir=/usr/lib/x86_64-linux-gnu --incdir=/usr/include/x86_64-linux-gnu --arch=amd64 --enable-gpl --disable-stripping --disable-omx --enable-gnutls --enable-libaom --enable-libass --enable-libbs2b --enable-libcaca --enable-libcdio --enable-libcodec2 --enable-libdav1d --enable-libflite --enable-libfontconfig --enable-libfreetype --enable-libfribidi --enable-libglslang --enable-libgme --enable-libgsm --enable-libharfbuzz --enable-libmp3lame --enable-libmysofa --enable-libopenjpeg --enable-libopenmpt --enable-libopus --enable-librubberband --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libspeex --enable-libtheora --enable-libtwolame --enable-libvidstab --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx265 --enable-libxml2 --enable-libxvid --enable-libzimg --enable-openal --enable-opencl --enable-opengl --disable-sndio --enable-libvpl --disable-libmfx --enable-libdc1394 --enable-libdrm --enable-libiec61883 --enable-chromaprint --enable-frei0r --enable-ladspa --enable-libbluray --enable-libjack --enable-libpulse --enable-librabbitmq --enable-librist --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libx264 --enable-libzmq --enable-libzvbi --enable-lv2 --enable-sdl2 --enable-libplacebo --enable-librav1e --enable-pocketsphinx --enable-librsvg --enable-libjxl --enable-shared
-    libavutil      58. 29.100 / 58. 29.100
-    libavcodec     60. 31.102 / 60. 31.102
-    libavformat    60. 16.100 / 60. 16.100
-    libavdevice    60.  3.100 / 60.  3.100
-    libavfilter     9. 12.100 /  9. 12.100
-    libswscale      7.  5.100 /  7.  5.100
-    libswresample   4. 12.100 /  4. 12.100
-    libpostproc    57.  3.100 / 57.  3.100
-  Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'venue.mp4':
-    Metadata:
-      major_brand     : isom
-      minor_version   : 512
-      compatible_brands: isomiso2avc1mp41
-      encoder         : Lavf60.16.100
-    Duration: 00:00:01.00, start: 0.000000, bitrate: 284 kb/s
-    Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1920x1080 [SAR 1:1 DAR 16:9], 22 kb/s, 24 fps, 24 tbr, 12288 tbn (default)
-      Metadata:
-        handler_name    : VideoHandler
-        vendor_id       : [0][0][0][0]
-        encoder         : Lavc60.31.102 libx264
-    Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 240 kb/s (default)
-      Metadata:
-        handler_name    : SoundHandler
-        vendor_id       : [0][0][0][0]
-  Stream mapping:
-    Stream #0:0 -> #0:0 (h264 (native) -> wrapped_avframe (native))
-    Stream #0:1 -> #0:1 (aac (native) -> pcm_s16le (native))
-  ... (43 more lines)
-  [exit 0]
-$ ffmpeg -v error -y -ss 0.2 -i venue.mp4 -frames:v 1 check.png
-  (no output)
   [exit 0]
 ==============================================================================
 UNVERIFIED  windows_unverified
