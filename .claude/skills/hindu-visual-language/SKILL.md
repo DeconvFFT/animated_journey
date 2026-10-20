@@ -5,7 +5,7 @@ description: Briefs, sources and checks the Hindu visual idiom for the Life Jour
 
 # Hindu visual language
 
-Staged for review at `skills-staging/hindu-visual-language/`. It is not yet in `.claude/skills/`. Moving it needs the orchestrator's decision and the Fable advisor's review (CLAUDE.md). Reconciled with [DECISIONS.md](../../DECISIONS.md) after the her-world merge (2026-10-19). Where this skill disagrees with a row in it, the register wins. D-rows are decided by the maker. W-rows and O-rows are working defaults or open questions. Style-bible decision 11 is `11_hindu_idiom` and decision 12 is moving footage (W-38, W-59).
+Installed in `.claude/skills/`; the Fable advisor approved the track in `reviews/hindu-visual-round4.md`. Reconciled with [DECISIONS.md](../../DECISIONS.md) after the her-world merge (2026-10-19). Where this skill disagrees with a row in it, the register wins. D-rows are decided by the maker. W-rows and O-rows are working defaults or open questions. Style-bible decision 11 is `11_hindu_idiom` and decision 12 is moving footage (W-38, W-59).
 
 ## Purpose
 
@@ -141,3 +141,4 @@ Score the output on the register's six rubric items. Approve only at 4 or higher
 ## Changelog
 
 - 2026-10-19: Reconciled with DECISIONS.md after the her-world merge (2026-10-19): the register's IDs for the deity policy, hands, phone and household keys (O-64, O-06, O-54, O-47); W-42 brief fields; the shrine moment, the Pushtimarg and Yamunaji rules, photographs by sight and untouched, the phone-safe frame, and no testing on her phone before the reveal (W-61, W-63, W-70, W-26, W-73); the sibling notes are committed; style-bible decision 12 is moving footage and `11_hindu_idiom` keeps its number.
+- 2026-10-20: Stale-wording sweep (2026-10-20): the opening status line says the skill is installed and approved (it still called itself staged and not yet in `.claude/skills/`); no rule or value changed.

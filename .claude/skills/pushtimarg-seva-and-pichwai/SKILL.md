@@ -5,7 +5,7 @@ description: Applies the Pushtimarg (Vallabh Vaishnav) rules to Life Journey sho
 
 # Pushtimarg seva and pichwai
 
-Staged for review at `skills-staging/pushtimarg-seva-and-pichwai/`. It is not yet in `.claude/skills/`. Moving it needs the orchestrator's decision and the Fable advisor's review (CLAUDE.md). It is built from [playbooks/pushtimarg-world.md](../../playbooks/pushtimarg-world.md), which is a draft under review (round 1 applied; reconciled with the register on 2026-10-19; not yet approved). Where this skill disagrees with a row in [DECISIONS.md](../../DECISIONS.md), the register wins.
+Installed in `.claude/skills/`; the Fable advisor approved the track in `reviews/pushtimarg-world-round2.md`. It is built from [playbooks/pushtimarg-world.md](../../playbooks/pushtimarg-world.md) (round 1 applied; approved in round 2; reconciled with the register on 2026-10-19). Where this skill disagrees with a row in [DECISIONS.md](../../DECISIONS.md), the register wins.
 
 ## Purpose
 
@@ -127,3 +127,4 @@ Give agents one set of checks for anything in her film that touches Pushtimarg s
 ## Changelog
 
 - 2026-10-19: Reconciled with DECISIONS.md after the her-world merge (2026-10-19): deity policy P1 for all eight deities with the register's P0 to P4 classes and no deity drawn, generated or photographed (W-61); the Vasant card palette (W-72); the shrine moment and the closed doors (W-61, W-37); the seva-article capture rule (W-70); Yamunaji as the jhari (PR20); the card motion limits (W-72); the cold open and the Mangla reading (W-36, W-76); no sung recording and no raga name in the premiere cut (W-44, W-79); Gujarati text through the single shaping gate and the native reader (W-75, O-62); the tilak only from the maker's sighting (O-76).
+- 2026-10-20: Stale-wording sweep (2026-10-20): the opening status line says the skill is installed and the track approved in round 2 (it still called itself staged, not yet in `.claude/skills/`, with a playbook not yet approved); no rule or value changed.

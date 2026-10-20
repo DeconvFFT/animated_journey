@@ -28,7 +28,7 @@ Items marked TODO(research) are open. Do not treat them as settled.
 **Do not use** for:
 - Story gathering, interviews, or deciding what a chapter says. Those belong to other tracks and skills.
 - Anything that would make a real person speak, sing or appear in a new event: voice cloning, lip-sync, talking photos, or a generated scene of a real person. Stop and tell the maker.
-- Photoreal generation of people, scenes or voices. Under the proposed house rule, reconstructions use the stylised house look only.
+- Photoreal generation of people, scenes or voices. Under the honesty rules the register settled (D-16, W-40), reconstructions use the stylised house look only.
 - Any restoration, edit, stylisation, motion or generation of a deity image. No AI route is run on a deity in any class (W-61); use the `hindu-visual-language` skill for the sources a deity image may come from.
 - Code or app work on the ArtCraft apps. Those are other tracks.
 - Any cloud or third-party step the maker has not approved. Stop and ask.
@@ -187,3 +187,4 @@ Items marked TODO(research) are open. Do not treat them as settled.
 
 - 2026-10-18: Reconciled with DECISIONS.md (2026-10-18): the maker judges likeness alone (no insiders, no GATHER.md; D-03, W-40); cloud policy restated as decided (`cloud: none`, no family photo to any hosted service or rented GPU; D-15, W-23, W-24); master settled at 1080p with stills at 3840 px (W-15); backup is a second encrypted SSD with no cloud copy (W-25); no face or expression motion for the dead in the premiere cut (W-40); no model trained on her face (D-16); L5 testimony under only-me (W-49, D-06).
 - 2026-10-19: Reconciled with DECISIONS.md after the her-world merge (2026-10-19): no generative route for a deity and the deity-image label rule (W-61); `deity_form` and `deity_source` in `steps.csv`; Route A follows W-38 and the game-style block look is retired (D-29); P-LOCK replaces the old process-lock spelling; on-screen tags follow the phone-safe frame (W-63).
+- 2026-10-20: Stale-wording sweep (2026-10-20): the photoreal exclusion cites the settled rules (D-16, W-40) instead of a proposed house rule, matching `playbooks/ai-imagery.md` principle 1; no step or value changed.
