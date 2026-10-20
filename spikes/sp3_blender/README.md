@@ -30,11 +30,13 @@ Still all within 2x, but the container landed on a different CPU model (class Xe
 The pass mark in the build plan is **one real hero frame within 2x the table** (`research/production-scale-fixtures/followup2-s3-container-results.txt`). That cannot be judged
 before the real kitchen exists (gate G1), so what can be done now is to time a NEUTRAL stand-in scene and get the tooling ready.
 
+**The G1 rule (set Tue 20 Oct 2026 on the orchestrator's instruction; the same text is the SP3 rule line in `spikes/verdicts/SP3.md`).** The two runs of 20 Oct put the same stand-in at 0.81 to 0.86x and then 1.65 to 1.72x of the table, so the table's seconds are not a fixed ruler. At G1 the real hero frame is judged against the stand-in timed on the same host, in the same session: time the stand-in with the same samples, denoise and adaptive settings as the real frame (the `64 1 0` line at least) and the real frame right after it, record the CPU model, and apply the 2x limit with the stand-in's time as the reference (real frame at most 2 x the stand-in's time). The table stays as the planning figure and as a second reading: report both.
+
 ## Entry conditions and numbers (`bash spikes/sp3_blender/run_sp3.sh --check` prints them live)
 
 | Item | Figure | Source |
 |---|---|---|
-| Free disk needed | **3,500 MB** = planned 3,100 MB + the 400 MB floor of `scripts/lj_guard.sh` | build plan 4.9, WP-10 item 2 ("at least 3.5 GB is free") |
+| Free disk needed | **1,900 MB** = planned 1,500 MB + the 400 MB floor of `scripts/lj_guard.sh`. **Lowered Tue 20 Oct 2026** (package k3, on the orchestrator's instruction) from 3,500 MB = planned 3,100 MB + 400: both real runs peaked at 1,408 MB (the wheel while pip unpacks it, plus the venv), steady 1,021 MB, so 1,500 is the peak plus 92 MB. The margin is the stand-in's: if the real G1 scene's textures or outputs come near 90 MB, raise `PLANNED_MB` and the entry default in `run_sp3.sh` with a dated note before the run | measured, `build/reports/w2-sp3.md` section 4; the 3,500 came from build plan 4.9, WP-10 item 2 ("at least 3.5 GB is free"), and the tests in `tests/spikes/run_tests.sh` now assert 1,900 and 1,500 |
 | `bpy` 5.2.2 wheel | **401,697,653 bytes** (402 MB; 383 MiB), `cp313-cp313-manylinux_2_28_x86_64`, Python 3.13 only | PyPI JSON, read 19 Oct 2026 |
 | Venv it makes | about **1 GB** on disk | R9/M14 (`research/toolchain.md`) |
 | Download ledger | each fetch of the `bpy` wheel set (12 wheels, 428,225,665 bytes) is a row of kind `pip-wheel-set` in `build/evidence/wp10/download_ledger.jsonl` (written by `ledger_row.py`, read by `spikes/sp1b_readback/check_ledger.py` and the integration allowance test): two so far (Tue 20 Oct), 1,506.9 of 2,560 MB on the ledger (the allowance was raised from 2,048 MB on Tue 20 Oct 2026 so that G1's third fetch on Sun 15 Nov, about 428 MB, brings it to about 1,915 MB and is not stopped by the guard); a third needs `SP3_FETCH_REASON='why'` before anything is downloaded | gate w2 nudge 6; `ledger_row.py` |
@@ -44,16 +46,16 @@ before the real kitchen exists (gate G1), so what can be done now is to time a N
 | Scene | `research/production-scale-fixtures/followup2-s3-kitchen-standin.py`: primitives only, **no photograph, no family imagery** | reused, `py_compile`d by `--check` |
 | Earlier numbers (stand-in, 1080p, Cycles CPU, 4 vCPU) | 64 samples + denoise 110-115 s; 128 samples 192-232 s; 24 samples + denoise 51-59 s; peak RSS 0.6 GB (2.2 GB with denoise) | `followup2-s3-container-results.txt` |
 
-On 19 Oct `run_sp3.sh --check` printed **"NOT RUN: needs >= 3.5 GB free"**, exit 3 (Avail was far below 3,500 MB); on 20 Oct it printed READY (Avail 14,390 MB). The script reuses the research scripts by path and does not copy them.
+On 19 Oct `run_sp3.sh --check` printed **"NOT RUN: needs >= 3.5 GB free"**, exit 3 (Avail was far below 3,500 MB; quoted as printed then: the script has said 1.9 GB since the lowering above); on 20 Oct it printed READY (Avail 14,390 MB). The script reuses the research scripts by path and does not copy them.
 `followup2-s3-run-sweep.sh` is referenced as the record of the sweep, but not executed: its first lines hold a path of an earlier session. `run_sp3.sh --run` runs the same four
-configurations itself (`8 0 0`, `64 0 0`, `64 1 0`, `128 1 0` as SAMPLES DENOISE ADAPTIVE), each in a fresh process under `lj_bench`, inside one `lj_with_disk 3100` stage, and deletes the venv afterwards.
+configurations itself (`8 0 0`, `64 0 0`, `64 1 0`, `128 1 0` as SAMPLES DENOISE ADAPTIVE), each in a fresh process under `lj_bench`, inside one `lj_with_disk 1500` stage (3100 until 2026-10-20), and deletes the venv afterwards.
 `SP3_DRYRUN=1 bash spikes/sp3_blender/run_sp3.sh --run` (with a df that reports enough room) prints the plan and does none of it; the tests use that to check the logic without the disk.
 
 ## Justified deferral (history: this was true on 19 Oct; the disk was freed on 20 Oct and the run happened)
 
 * The disk is the blocker, not the method: the 402 MB wheel plus the 1 GB venv is more than the container has free, and the guard (rightly) refuses a stage that would leave under 400 MB.
 * The pass mark needs the real kitchen, which does not exist before G1 (Sun 15 Nov). A stand-in timing is useful for planning, not for the verdict.
-* Where it runs (chosen Tue 20 Oct 2026, gate review r1; the reasons and dates are in `spikes/VERDICTS-W2.md`, "Disk decision"): (1) **this container after at least 3.5 GB is free**, by Fri 30 Oct:
+* Where it runs (chosen Tue 20 Oct 2026, gate review r1; the reasons and dates are in `spikes/VERDICTS-W2.md`, "Disk decision"): (1) **this container after at least 3.5 GB is free** (1.9 GB since the lowering of Tue 20 Oct, see the table), by Fri 30 Oct:
   `bash spikes/sp3_blender/run_sp3.sh --check`, then `--run`, because the question is the container route; (2) **only if `df` on Fri 23 Oct shows less than 4,000 MB free**: the maker's PC in Mon 2 to Thu 5 Nov,
   Blender parallax timed with the Claude app closed (`playbooks/toolchain.md` Exercise 5), where the 4090-class numbers of `playbooks/production-scale.md` apply. Neither needs a photograph; the scene is the stand-in.
 * The decision on the evidence of the run is the orchestrator's, with Fable: "A route that fails its spike is dropped, or moved to the PC."

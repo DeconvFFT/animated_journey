@@ -2,20 +2,30 @@
  "counts": {
   "BLOCKED": 0,
   "FAIL": 0,
-  "PASS": 1,
+  "PASS": 3,
   "SKIPPED": 0,
   "UNVERIFIED": 0
  },
  "date_utc": "2026-10-20",
- "lowest_avail_mb": 14526,
+ "lowest_avail_mb": 14453,
  "mode": "quick",
  "package": "WP-11b",
  "partial_run_only": [
+  "hygiene.new_text_under_8mb",
+  "ctrl.checkers_fail_on_planted_defects",
   "readiness.map_statuses_and_evidence"
  ],
  "schema": "lj-evidence-summary/1",
- "seconds": 0.0,
+ "seconds": 0.9,
  "slowest": [
+  {
+   "seconds": 0.8,
+   "test": "ctrl.checkers_fail_on_planted_defects"
+  },
+  {
+   "seconds": 0.1,
+   "test": "hygiene.new_text_under_8mb"
+  },
   {
    "seconds": 0.0,
    "test": "readiness.map_statuses_and_evidence"

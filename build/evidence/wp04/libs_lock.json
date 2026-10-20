@@ -27,9 +27,9 @@
  },
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 14479,
-  "avail_mb_min": 14479,
-  "avail_mb_start": 14479,
+  "avail_mb_end": 14451,
+  "avail_mb_min": 14451,
+  "avail_mb_start": 14451,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

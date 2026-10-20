@@ -251,6 +251,23 @@ def run_all(T):
            next((l for l in out.splitlines() if l.startswith("INFO")), "no INFO line")[:160])
     (root / "ops" / "GATHER.md").write_text("# Gather\nPlain list.\n", encoding="utf-8")
 
+    # a staged copy of an installed skill (untracked, so every line of it is new to git) is judged on the lines its installed counterpart lacks (2026-10-20, package k2-pr4-skill-parity);
+    # explicit --paths still scan the whole file
+    inst_text = "# Pair\nNo Mughal motifs in this skill.\nA cited title: The Mughal Garden, a book.\nPlain line.\n"
+    write(root, ".claude/skills/pairskill/SKILL.md", inst_text)
+    write(root, "skills-staging/pairskill/SKILL.md", inst_text + "A new line with a Mughal arch.\n")
+    write(root, "skills-staging/solo/SKILL.md", "# Solo\nA cited title: The Mughal Garden, a book.\n")
+    rc, out = run(root, "--theme")
+    ls = [l for l in out.splitlines() if l.startswith("FINDING")]
+    result("theme_guard_judges_a_staged_skill_copy_on_the_lines_its_installed_copy_lacks",
+           any("skills-staging/pairskill/SKILL.md:5" in l and "mughal" in l for l in ls) and not any("skills-staging/pairskill/SKILL.md:2" in l or "skills-staging/pairskill/SKILL.md:3" in l for l in ls)
+           and not any(l.startswith("NOTE") and "skills-staging/pairskill/SKILL.md:2" in l for l in out.splitlines()), "; ".join(l for l in ls if "pairskill" in l)[:200])
+    result("theme_guard_still_scans_a_staged_file_that_has_no_installed_counterpart_whole", any("skills-staging/solo/SKILL.md:2" in l and "mughal" in l for l in ls), "")
+    rc, out = run(root, "--theme", "--paths", "skills-staging/pairskill/SKILL.md")
+    result("theme_guard_with_explicit_paths_still_scans_a_staged_copy_whole", "pairskill/SKILL.md:3" in out and "pairskill/SKILL.md:5" in out, "")
+    for rel_ in (".claude/skills/pairskill/SKILL.md", "skills-staging/pairskill/SKILL.md", "skills-staging/solo/SKILL.md"):
+        (root / rel_).unlink()
+
     # review r4, nudge 4: playbooks/ is a theme path (new or changed lines only) and the unambiguous D-28 words Easter, Eid, steeple, jali, arabesque, muezzin are keywords
     write(root, "playbooks/x.md", "A Mughal garden opens the chapter.\nNo Mughal motifs.\nEaster egg hunt.\nEid lanterns, an arabesque border, and the muezzin calls.\nA jali screen and a church steeple.\nThe Eastern shore and Eidetic memory.\n")
     rc, out = run(root, "--theme")

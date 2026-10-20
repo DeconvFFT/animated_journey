@@ -5,17 +5,17 @@
     {
       "id": "G1.fences_marked_and_ascii",
       "status": "PASS",
-      "text": "14 PowerShell fences; without a mode marker: none; non-ASCII characters: 0"
+      "text": "15 PowerShell fences; without a mode marker: none; non-ASCII characters: 0"
     },
     {
       "id": "G2.pwsh_parses_every_fence",
       "status": "PASS",
-      "text": "pwsh 7 Parser::ParseFile on 14 fences: parse errors: 0"
+      "text": "pwsh 7 Parser::ParseFile on 15 fences: parse errors: 0"
     },
     {
       "id": "G3.ps51_lint_every_fence",
       "status": "PASS",
-      "text": "14 fences linted (readonly fences in read-only mode); problems: none"
+      "text": "15 fences linted (readonly fences in read-only mode); problems: none"
     },
     {
       "id": "G4.names_sizes_hashes_match_assets",
@@ -35,12 +35,17 @@
     {
       "id": "G7.flipped_tarball_rejected_before_extraction",
       "status": "PASS",
-      "text": "intact tarball -> exit 0 (OK: filmcraft-0.9.0-); one byte flipped -> exit 1 (REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 b572c); verify call at run_sp1.sh line 230 precedes the first tar -xzf at line 278: True"
+      "text": "intact tarball -> exit 0 (OK: filmcraft-0.9.0-); one byte flipped -> exit 1 (REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 0b0a1); verify call at run_sp1.sh line 230 precedes the first tar -xzf at line 278: True"
     },
     {
       "id": "G8.step2_move_prints_only_file_names",
       "status": "PASS",
       "text": "good destination: 5 of 5 moved, lines ok; failing destination: 5 'could not move' lines (names only: True), files stayed in Downloads: True, path leaks on stdout or stderr: none, stderr: '' (pwsh on Linux, made-up files; Windows UNVERIFIED)"
+    },
+    {
+      "id": "G9.step6_test_chapter_copy_and_guide_agree_with_ch01_otio",
+      "status": "PASS",
+      "text": "the fence names ['ch01.otio', 'media\\\\ch01_s01.png', 'media\\\\ch01_s02.png'] (the .otio and its 2 media references); copy run: 3 'copied' lines, files in place and equal; empty-project run: 3 NOT FOUND lines, path leaks: none; the guide states 240 frames, a 12-frame dissolve and 'from 4 seconds 18 frames to 5 seconds 6 frames', as the file holds (pwsh on Linux, made-up folders; Windows UNVERIFIED)"
     }
   ],
   "schema": "lj-guide-check/1"

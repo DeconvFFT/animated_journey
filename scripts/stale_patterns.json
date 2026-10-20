@@ -656,7 +656,7 @@
    "status_table4": "outstanding: Haiku before hindu-visual-language moves; Fable round 4 re-reads",
    "coverage": "partial",
    "stale": "The permission to photograph a murti on her shelf (research/hindu-visual.md T4 R17 \"the maker's own photograph of a three-dimensional murti on her shelf\"); the \"shown without him it changes meaning\" pichwai line; the \"dark line of the river\" for Yamunaji; the old A6 origin note",
-   "canonical": "W-61: no deity is drawn, generated or photographed; nothing in seva is photographed without her knowing (PR4); Yamunaji is the jhari (PR20). The eight in-place fixes are listed in reviews/hindu-visual-round3.md (C1); until they land the skill cites playbook H4 and Decision 2, not the research tables",
+   "canonical": "W-61: no deity is drawn, generated or photographed; PR4 the seva-article rule as the Codes state it; Yamunaji is the jhari (PR20). The eight in-place fixes are listed in reviews/hindu-visual-round3.md (C1); until they land the skill cites playbook H4 and Decision 2, not the research tables",
    "owner": "Haiku before hindu-visual-language moves; Fable round 4 re-reads",
    "coverage_note": "The two spellings W-29 names and the pichwai and river lines are searched. research/hindu-visual.md (the one patched research note) is outside the scan because research/*.md is a historical record (W-29), and the old A6 origin note has no fixed wording."
   },
@@ -2157,7 +2157,7 @@
     "a hand-traced plate of a murti"
    ],
    "note": "The one legitimate occurrence, the P-class definition in playbooks/pushtimarg-world.md T1, is allowlisted by W-29.",
-   "canonical": "W-61: no deity is drawn, generated or photographed; nothing in seva is photographed without her knowing (PR4)"
+   "canonical": "W-61: no deity is drawn, generated or photographed; PR4 the seva-article rule as the Codes state it"
   },
   {
    "id": "S-60.pichwai-without-him",

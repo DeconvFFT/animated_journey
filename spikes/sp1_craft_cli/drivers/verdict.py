@@ -12,6 +12,7 @@ import argparse
 import glob
 import json
 import os
+import re
 import sys
 
 sys.dont_write_bytecode = True
@@ -39,10 +40,35 @@ def load(pattern):
 
 def mark_text(mark):
     """The mark column exactly as the envelope records it; only a pipe is changed, so that it cannot split a table cell. The 20 Oct 0.8.0 envelope (not re-run) records the h264_speed mark
-    as "scaled from 3,000 frames" at the plan's old frame rate; the driver now words the same fact as "scaled to 2,400 frames at this film's 24 fps from R8's 3,000-frame figure".
+    as "scaled from 3,000 frames" at the plan's old frame rate; the driver (drivers/t2_filmcraft.py) now words the same fact as "scaled to 2,400 frames at this film's 24 fps from R8's 3,000-frame figure".
     The older wording is history and is shown as recorded (w2t-t2-wording, d): the stale check allows it in this file by the entry AL-7 in scripts/stale_allowlist.json, which is scoped to
     VERDICT-SP1A.md and to that one phrase. Before that entry this function reworded the phrase at display time, so the verdict differed from its evidence by one phrase."""
     return str(mark).replace("|", "/")
+
+
+def first_mark_envelope(env):
+    """The envelope of the FIRST run of the same app and tag, kept in build/evidence/wp07/first-mark/<test>.json (for example first-mark/t2_filmcraft_v0.9.0.json) when a test's mark was
+    amended after that run (gate c1, nudge 3: the amended-mark paragraph is keyed on this file, not on the presence of a criterion, so a T2 run on another pin does not inherit it).
+    Returns the parsed envelope, or None when there is no such file for this envelope's test name or it cannot be read."""
+    name = str(env.get("test") or "")
+    if not name or os.sep in name or name.startswith("."):
+        return None
+    p = os.path.join(L.EVID, "first-mark", name + ".json")
+    if not os.path.isfile(p):
+        return None
+    try:
+        d = L.read_json(p)
+    except (OSError, ValueError):
+        return None
+    return d if isinstance(d, dict) else None
+
+
+def first_mark_miss(fm, crit_id):
+    """(date, measured_text) of the criterion crit_id that failed in the first-mark envelope fm, or (date, None) if it did not fail there. measured_text is the envelope's own words."""
+    for c in (fm.get("detail") or {}).get("criteria", []):
+        if c.get("id") == crit_id and not c.get("pass"):
+            return fm.get("date_utc"), str(c.get("measured") or "")
+    return fm.get("date_utc"), None
 
 
 def cell(env, what):
@@ -150,11 +176,21 @@ def build():
         A("**Outcome: agents may render drafts and chapters with the Craft CLIs in the container (in this plan: drafts; `ROADMAP.md` row 136 keeps the FilmCraft chapter pass on the PC).** T2 and T4 passed on Linux CPU. Every chapter still keeps its OTIO and ffmpeg fallback (D-11, D-12), and nothing here says the apps run on the maker's PC.")
         if t2 and any(c["id"] == "T2.dissolve_steps" for c in (t2[-1].get("detail") or {}).get("criteria", [])):
             A("")
-            A("**This T2 pass rests on the mark as amended on Tue 20 Oct 2026** (week-2 gate, nudge 1): the first run of the same pin (01:20 UTC) failed `T2.mid_dissolve` by 28.50 levels, because the "
-              "first wording compared the frame with the average of the ENCODED values, which no gamma-correct compositor can pass; the mark became the 50/50 mix in linear light (same 2-level tolerance), "
-              "`T2.dissolve_steps` was added, and the one 0.9.0 stage was re-run. The first run's envelopes are kept in `build/evidence/wp07/first-mark/`. The fallback 0.8.0 was not re-run (it is fetched "
-              "only when the pin fails). **Practical rule: one chapter, one dissolve route.** FilmCraft blends in linear light; ffmpeg `xfade` and headless Chromium blend the encoded values, so the same "
-              "dissolve has a different mid-tone on each (`build/evidence/wp07/dissolve_routes.json`, from `drivers/dissolve_routes.py`).")
+            routes = ("**Practical rule: one chapter, one dissolve route.** FilmCraft blends in linear light; ffmpeg `xfade` and headless Chromium blend the encoded values, so the same "
+                      "dissolve has a different mid-tone on each (`build/evidence/wp07/dissolve_routes.json`, from `drivers/dissolve_routes.py`).")
+            # The amended-mark paragraph is keyed on the evidence (gate c1, nudge 3): it is written only when build/evidence/wp07/first-mark/<test>.json exists for the newest T2's own app and tag
+            # and records a failed T2.mid_dissolve; the date and the deviation are read from that file. A T2 run on another pin has no such file and gets the practical rule alone.
+            fm = first_mark_envelope(t2[-1])
+            fdate, fmeasured = first_mark_miss(fm, "T2.mid_dissolve") if fm else (None, None)
+            if fmeasured is not None:
+                tag = str(t2[-1].get("test") or "").split("_", 2)[-1].lstrip("v")
+                m = re.match(r"\s*([0-9]+(?:\.[0-9]+)?) levels", fmeasured)
+                A("**This T2 pass rests on the mark as amended on Tue 20 Oct 2026** (week-2 gate, nudge 1): the first run of the same pin (%s) failed `T2.mid_dissolve`%s, because the "
+                  "first wording compared the frame with the average of the ENCODED values, which no gamma-correct compositor can pass; the mark became the 50/50 mix in linear light (same 2-level tolerance), "
+                  "`T2.dissolve_steps` was added, and the one %s stage was re-run. The first run's envelopes are kept in `build/evidence/wp07/first-mark/`. The fallback 0.8.0 was not re-run (it is fetched "
+                  "only when the pin fails). %s" % (fdate or "date not recorded", (" by %s levels" % m.group(1)) if m else "", tag, routes))
+            else:
+                A(routes)
     elif fc is None and ec is None:
         A("**Outcome: UNDECIDED. T2 and T4 have not been run.** Until they are, the plan's default stands: the container renders with ffmpeg, Pillow and Chromium (Route A), and FilmCraft and EffectCraft are maker-side refinement tools. ROADMAP 5.2 says \"Craft CLIs: only if SP1 T2/T4 pass\", so nothing is planned on them.")
         if reasons:

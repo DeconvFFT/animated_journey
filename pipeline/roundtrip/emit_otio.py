@@ -21,6 +21,8 @@ Media  "synthetic_media": true marks a TEST spec: media files that are missing a
         --timeline169 PATH also writes the input file format of the reused research/sources/format-round1/make_otio.py (adapter_probe.sh needs it).
 UNVERIFIED: that FilmCraft reads this file as intended (WP-10 T3 and the maker's Windows test); the unit of Position (sequence pixels, picture centre);
         which side of a keyframe its interp applies to; that an available_range on a still does not confuse FilmCraft (the template has null).
+Test cards: a shot may carry "card_base": [r, g, b], the background of its generated test card (default: the dark tint make_media.py gives that card's number). It is read only when
+        the card is generated for a synthetic spec; it never reaches the .otio.
 
 EXIT CODES (build plan 4.3)  0 written   2 bad usage or an invalid spec (the message says which field)   3 environment (Pillow missing for synthetic media)
 It reads SPEC, may read media headers, and writes OUT.otio, the optional --timeline169 file and, for a synthetic spec only, the missing test media.
@@ -154,6 +156,9 @@ def load_spec(path):
         ids.add(s["id"])
         need(is_rel(s.get("source")), where + ".source must be a relative path with forward slashes (no drive letter, scheme, backslash or '..')")
         need(isinstance(s.get("duration_frames"), int) and s["duration_frames"] > 0, where + ".duration_frames must be a positive whole number")
+        cb = s.get("card_base")
+        need(cb is None or (isinstance(cb, list) and len(cb) == 3 and all(isinstance(c, int) and not isinstance(c, bool) and 0 <= c <= 255 for c in cb)),
+             where + ".card_base must be [r, g, b], three whole numbers from 0 to 255 (the background of a synthetic test card)")
         mo = s.get("motion")
         if mo is not None:
             need(isinstance(mo, dict), where + ".motion must be an object")
@@ -301,7 +306,7 @@ def _make_media(out_dir, spec):
         if os.path.exists(p):
             res.append((p, "kept"))
             continue
-        make_media.still_png(p, size[0], size[1], i, s["id"].upper().replace("_", " "))
+        make_media.still_png(p, size[0], size[1], i, s["id"].upper().replace("_", " "), base=s.get("card_base"))
         res.append((p, "created"))
     for a in spec.get("audio", []):
         p = os.path.join(out_dir, *a["source"].split("/"))

@@ -2,9 +2,9 @@
  "actual": "81 chars warns, 80 chars does not",
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 14478,
-  "avail_mb_min": 14478,
-  "avail_mb_start": 14478,
+  "avail_mb_end": 14450,
+  "avail_mb_min": 14450,
+  "avail_mb_start": 14451,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

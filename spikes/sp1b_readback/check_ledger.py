@@ -7,7 +7,7 @@ SOURCES  build/evidence/wp07/download_ledger.jsonl (EffectCraft and FilmCraft, w
          FilmCraft exception if WP-07 could not keep its tarball, written by WP-10), the stage envelopes build/evidence/wp10/stage_*.json (did the stage fetch?), and the disk guard's own
          ledger in the scratch folder (a guard line per stage, with its status). A BLOCKED stage fetched nothing and is listed as such.
 RULES  each of the five pinned tarballs (PhotoCraft 0.10.0, VectorCraft 0.13.1, LightCraft 0.9.1, FilmCraft 0.9.0, EffectCraft 0.11.1) has at most one fetch, or a later fetch that carries a recorded
-       exception (printed with its reason); the FilmCraft 0.8.0 fallback and SoundCraft have none unless the ledger says why; the total stays under the download allowance (ALLOWANCE_MB, 2,560 MB since 2026-10-20); a stage envelope that says
+       exception (printed with its reason); the FilmCraft 0.8.0 fallback and SoundCraft have none unless the ledger says why; the total stays under the download allowance (ALLOWANCE_MB, 2,560 MiB since 2026-10-20; the ledger line and the problem text say MiB, as the figure is counted in units of 1,048,576 bytes); a stage envelope that says
        it fetched must have its ledger line. A pip fetch (a row with "kind": "pip-wheel-set", written by spikes/sp3_blender/ledger_row.py: the bpy wheel and its dependency wheels for SP3)
        counts toward the total like a tarball, and a later fetch of the same set needs a recorded exception too (added Tue 20 Oct 2026, gate w2 nudge 6: pip fetches were outside the ledger).
 EXIT CODES (build plan 4.3)  0 the rules hold (a tarball not fetched yet is listed, not a failure)   1 a rule is broken, or --require-all and a tarball was not fetched   2 bad usage / unreadable file
@@ -118,9 +118,9 @@ def main(argv):
             table.append({"asset": r.get("asset"), "bytes": r.get("bytes"), "fetches": 1, "state": "listed: %s (%s, stage %s)" % (note, r.get("ledger"), r.get("stage")), "exceptions": [], "guard_stage_lines": []})
     total = sum(int(r.get("bytes") or 0) for r in rows)
     if total > ALLOWANCE_MB * 1048576:
-        problems.append("total fetched %d bytes is over the %d MB allowance" % (total, ALLOWANCE_MB))
+        problems.append("total fetched %d bytes is over the %d MiB allowance" % (total, ALLOWANCE_MB))
     n_done = sum(1 for t in table[:5] if t["fetches"] >= 1)
-    head = "ledger: %d fetches in the two ledgers, %d of the 5 pinned tarballs fetched, %.1f MB of the %d MB allowance; %s" % (
+    head = "ledger: %d fetches in the two ledgers, %d of the 5 pinned tarballs fetched, %.1f MiB of the %d MiB allowance; %s" % (
         len(rows), n_done, total / 1048576.0, ALLOWANCE_MB, "each fetched once or with a recorded exception: OK" if not problems else "PROBLEMS: " + "; ".join(problems))
     print(head)
     for t in table:

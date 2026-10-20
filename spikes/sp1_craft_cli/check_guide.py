@@ -14,6 +14,10 @@ CHECKS (one line each: PASS, FAIL or UNVERIFIED with the reason)
   G7  a tarball with one byte flipped is rejected by asset_tool.py before any extraction, and run_sp1.sh calls the check before its first tar -x
   G8  the Step 2 move fence, run on Linux against a made-up Downloads folder: a good move prints "moved <name>" and moves the file; a move that cannot happen (the
       destination is not a folder) prints "could not move: <name>" and nothing else, no path of the made-up profile, on any output stream
+  G9  the Step 6 test-chapter fence, run on Linux against a made-up project folder (with the real three files of research/craft-motion-fixtures/ in it, then with none): three
+      "copied" lines and the three files in place, byte for byte; then three NOT FOUND lines and no path of the made-up folders; and the guide agrees with the real ch01.otio (the
+      three names in the fence are the .otio and its own media references, all present in the fixture folder; the 10 seconds, the 12-frame dissolve and the "4 seconds 18 frames to
+      5 seconds 6 frames" the guide gives are what the file holds)
 EXIT CODES  0 no FAIL (UNVERIFIED lines allowed); 1 a FAIL; 2 bad usage.
 NEVER TOUCHES  anything but a temporary folder under the scratch area, removed again. Windows behaviour stays UNVERIFIED: pwsh on Linux is a proxy.
 """
@@ -213,6 +217,13 @@ def main(argv):
             rec("G8.step2_move_prints_only_file_names", "PASS" if ok8 else "FAIL", msg8)
         else:
             rec("G8.step2_move_prints_only_file_names", "UNVERIFIED", "pwsh not found or the Step 2 move fence is missing")
+        # G9 (pwsh): the Step 6 test-chapter copy fence, and the guide against the real ch01.otio
+        ch = next((f for f in fs if "craft-motion-fixtures" in f["body"] and "Copy-Item" in f["body"]), None)
+        if pw and ch:
+            ok9, msg9 = chapter_copy_check(pw, ch["body"], text, tmp)
+            rec("G9.step6_test_chapter_copy_and_guide_agree_with_ch01_otio", "PASS" if ok9 else "FAIL", msg9)
+        else:
+            rec("G9.step6_test_chapter_copy_and_guide_agree_with_ch01_otio", "UNVERIFIED", "pwsh not found or the Step 6 test-chapter fence is missing")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
     if a.json:
@@ -259,6 +270,72 @@ def step2_move_check(pw, body, tmp):
     msg = "good destination: %d of %d moved, lines %s; failing destination: %d 'could not move' lines (names only: %s), files stayed in Downloads: %s, path leaks on stdout or stderr: %s, stderr: %r (pwsh on Linux, made-up files; Windows UNVERIFIED)" % (
         len(moved), len(names), "ok" if ok_good else "WRONG", len(lines2), only_names, stayed, leaks[:2] or "none", err2[:80])
     return bool(ok_good and ok_bad), msg
+
+
+def chapter_copy_check(pw, body, guide_text, tmp):
+    """The Step 6 test-chapter fence on Linux. The fence's paths are rewritten to made-up folders and its backslashes to slashes (pwsh on Linux does not treat a backslash as a
+    separator; Windows accepts both, so this tests the logic and not the separators). Run 1: the made-up project holds the real fixture files, so three 'copied' lines appear and the
+    files land in <at>/ch01 and <at>/ch01/media with the same bytes. Run 2: an empty project, so three NOT FOUND lines, none with a path of the made-up folders. Then the guide against
+    the real ch01.otio: the fence names the .otio and exactly the media its clips reference, all in the real fixture folder, and the numbers the guide states are the file's."""
+    fix = os.path.join(REPO, "research", "craft-motion-fixtures")
+    names = re.findall(r"\$chapter = ([^\n]+)", body)
+    chapter = re.findall(r"'([^']+)'", names[0]) if names else []
+    otio_path = os.path.join(fix, "ch01.otio")
+    problems = []
+    try:
+        doc = json.load(open(otio_path, encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        return False, "cannot read research/craft-motion-fixtures/ch01.otio: %s" % e
+    refs = sorted({d["target_url"] for d in L.walk(doc) if isinstance(d.get("target_url"), str)})
+    want = sorted(["ch01.otio"] + [r.replace("/", "\\") for r in refs])
+    if sorted(chapter) != want:
+        problems.append("the fence copies %s, the .otio and its media references are %s" % (sorted(chapter), want))
+    for n in chapter:
+        if not os.path.isfile(os.path.join(fix, *n.split("\\"))):
+            problems.append("%s is not in research/craft-motion-fixtures" % n)
+    if "research\\craft-motion-fixtures" not in body:
+        problems.append("the fence does not read from research\\craft-motion-fixtures")
+    # the numbers the guide states, from the file
+    frames = [d for d in L.walk(doc) if str(d.get("OTIO_SCHEMA", "")).startswith("Clip") and "source_range" in d]
+    total = sum(int(d["source_range"]["duration"]["value"]) for d in frames)
+    tr = [d for d in L.walk(doc) if str(d.get("OTIO_SCHEMA", "")).startswith("Transition")]
+    dis = int(tr[0]["in_offset"]["value"] + tr[0]["out_offset"]["value"]) if len(tr) == 1 else None
+    cut = int(frames[0]["source_range"]["duration"]["value"]) if frames else 0
+    a_, b_ = cut - (dis or 0) // 2, cut + (dis or 0) - (dis or 0) // 2
+    span = "from %d seconds %d frames to %d seconds %d frames" % (a_ // 24, a_ % 24, b_ // 24, b_ % 24)
+    for phrase in ("It is 10 seconds long" if total == 240 else "(chapter is %d frames, not 240)" % total, "a 12-frame cross dissolve" if dis == 12 else "(dissolve is %s frames, not 12)" % dis, span,
+                   "the dissolve is about 5 seconds in" if cut == 120 else "(cut is at frame %d, not 120)" % cut):
+        if phrase not in guide_text:
+            problems.append("the guide does not say %r" % phrase)
+    if problems:   # a name that is not in the fixture folder (or a figure that disagrees) is the finding; the two runs below would only crash on the missing file
+        return False, "; ".join(problems)
+    # the two runs
+    user = "Zq7MadeUpUser"
+    base = os.path.join(tmp, "step6", "Users", user)
+    proj, at = os.path.join(base, "project"), os.path.join(base, "at")
+    os.makedirs(os.path.join(proj, "research", "craft-motion-fixtures", "media"))
+    for n in chapter:
+        shutil.copyfile(os.path.join(fix, *n.split("\\")), os.path.join(proj, "research", "craft-motion-fixtures", *n.split("\\")))
+
+    def adapt(b, project):
+        b = b.replace("C:\\lj\\project", project).replace("C:\\lj\\at\\ch01\\media", at + "/ch01/media").replace("C:\\lj\\at\\ch01", at + "/ch01")
+        return b.replace("\\", "/")
+    rc1, out1, err1 = run_pwsh(pw, adapt(body, proj))
+    lines1 = [x.split() for x in out1.splitlines() if x.strip()]
+    same = all(os.path.isfile(os.path.join(at, "ch01", *n.split("\\"))) and open(os.path.join(at, "ch01", *n.split("\\")), "rb").read() == open(os.path.join(fix, *n.split("\\")), "rb").read() for n in chapter)
+    ok_copy = rc1 == 0 and len(lines1) == len(chapter) and all(x[0] == "copied" for x in lines1) and same and not err1.strip()
+    shutil.rmtree(at)
+    rc2, out2, err2 = run_pwsh(pw, adapt(body, os.path.join(base, "empty_project")))
+    lines2 = [x for x in out2.splitlines() if x.strip()]
+    leaks = [x for x in (out2 + "\n" + err2).splitlines() if user in x or tmp in x or "Zq7" in x]
+    ok_missing = rc2 == 0 and len(lines2) == len(chapter) and all(x.startswith("NOT FOUND") for x in lines2) and not leaks and not err2.strip()
+    if not ok_copy:
+        problems.append("copy run: exit %s, lines %s, bytes equal %s, stderr %r" % (rc1, [x[0] for x in lines1], same, err1[:80]))
+    if not ok_missing:
+        problems.append("missing run: exit %s, lines %d, leaks %s, stderr %r" % (rc2, len(lines2), leaks[:2] or "none", err2[:80]))
+    msg = "the fence names %s (the .otio and its %d media references); copy run: %d 'copied' lines, files in place and equal; empty-project run: %d NOT FOUND lines, path leaks: none; the guide states %d frames, a %s-frame dissolve and %r, as the file holds (pwsh on Linux, made-up folders; Windows UNVERIFIED)" % (
+        chapter, len(refs), len(lines1), len(lines2), total, dis, span)
+    return not problems, (msg if not problems else "; ".join(problems))
 
 
 def linux_flip_check(tmp):

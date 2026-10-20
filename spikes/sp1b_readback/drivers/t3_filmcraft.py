@@ -3,6 +3,9 @@
 
 USAGE  python3 -I t3_filmcraft.py --cli ABSOLUTE_PATH --home DIR --work DIR [--tag v0.9.0]
        python3 -I t3_filmcraft.py --selftest            (the pure comparison functions, against planted differences; no CLI)
+       python3 -I t3_filmcraft.py --emit-chapter SPEC.json OUT.otio   (only the builder: neutral-timeline spec -> OTIO with metadata.filmcraft, plus the missing synthetic test
+                                                         cards beside it; no CLI, no evidence. This is the step inputs() runs, and the one the Saturday test chapter in
+                                                         research/craft-motion-fixtures/ is built with, so there is one builder and not two)
 
 INPUTS (SYNTHETIC, generated here by the WP-06 emitter pipeline/roundtrip/emit_otio.py from its example spec: four numbered 2880x1620 test cards, a sine WAV,
 three 24-frame dissolves, two sequence markers, one clip marker, Ken Burns in metadata.filmcraft). The PLAIN variant is the same file with metadata.filmcraft removed.
@@ -215,6 +218,12 @@ def strip_filmcraft(doc):
     return d
 
 
+def emit_chapter(spec_path, out_otio):
+    """The builder: the WP-06 emitter (pipeline/roundtrip/emit_otio.py) run on a neutral-timeline spec. Returns (rc, stdout, stderr); rc 0 written, 2 invalid spec, 3 Pillow missing.
+    T3.inputs() calls it for the four-card example spec; `--emit-chapter` calls it for the Saturday test chapter. A synthetic spec makes the missing test cards beside OUT, never overwriting one."""
+    return B.run_py([os.path.join(B.RT, "emit_otio.py"), spec_path, out_otio])
+
+
 # ----------------------------------------------------------------------------- the driver
 class T3:
     def __init__(self, a):
@@ -282,7 +291,7 @@ class T3:
         spec = os.path.join(self.hand, "spec.json")
         shutil.copyfile(SPEC, spec)
         self.otio_meta = os.path.join(self.hand, "ch01.otio")
-        rc, out, err = B.run_py([os.path.join(B.RT, "emit_otio.py"), spec, self.otio_meta])
+        rc, out, err = emit_chapter(spec, self.otio_meta)
         if rc != 0:
             raise HarnessError("emit_otio.py failed: " + (out + err)[-200:])
         self.otio_plain = os.path.join(self.hand, "ch01_plain.otio")
@@ -581,9 +590,15 @@ def main(argv):
     ap.add_argument("--work")
     ap.add_argument("--tag", default="v0.9.0")
     ap.add_argument("--selftest", action="store_true")
+    ap.add_argument("--emit-chapter", nargs=2, metavar=("SPEC", "OUT_OTIO"), help="only build: spec -> OTIO (and the missing synthetic test cards beside it); needs no CLI")
     a = ap.parse_args(argv)
     if a.selftest:
         return selftest()
+    if a.emit_chapter:
+        rc, out, err = emit_chapter(os.path.abspath(a.emit_chapter[0]), os.path.abspath(a.emit_chapter[1]))
+        sys.stdout.write(out)
+        sys.stderr.write(err)
+        return rc
     if not (a.cli and a.home and a.work) or not os.path.isabs(a.cli) or not os.path.isfile(a.cli):
         print("ERROR: --cli (an existing absolute path), --home and --work are required", file=sys.stderr)
         return 2

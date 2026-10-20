@@ -6,7 +6,8 @@
 What it proves (build plan WP-11b): that the pieces of weeks 1 and 2 FIT TOGETHER.
   parity.*     two packages' files say the same thing: settings card = settings.json = chains.json; phone row = PHONE-ROW.md = profile.json, and profile.json = the
                register's W-63/W-18 figures (DECISIONS.md wins; the card is judged against the register on those figures); the harness
-               built-in chain = chains.json; win/pins.json = release_assets.json = W-22; decisions.csv = the register; the pc_report fields windows_check.py reads
+               built-in chain = chains.json; win/pins.json = release_assets.json = W-22; decisions.csv = the register; the register's PR4 sentence = each of its
+               verbatim copies (scripts/pr4_parity.py); the pc_report fields windows_check.py reads
                exist in the schema; lj.ps1 close v0 calls current script names and has no deleting or committing switch; every script with test strings has a
                Noto family; the 'Scripts tested' line = scripts_tested.json
   redaction.*  public_lint.py --self-test with zero skipped consumers; no raw-PC-report file name anywhere outside tests/win/fixtures; build/evidence/pc/ holds
@@ -58,6 +59,18 @@ NEW_TEXT_LIMIT_BYTES = 9_000_000      # gate review r1 (Mon 19 Oct 2026): the pl
                                       # 2026-10-20 (week-2 close-out gate): raised 8 -> 9 MB. Measured 7.59 MB in 627 files; the review rounds of weeks 3 and 4 will add more.
                                       # If it reaches 8.5 MB, prune duplicate evidence first (build/evidence: per-run copies) before any further raise, and raise only with a dated note.
                                       # The test id keeps its old name (hygiene.new_text_under_8mb) because the evidence, INDEX.md and the reviews cite it; the figure is NEW_TEXT_LIMIT_BYTES.
+NEW_TEXT_PRUNE_BYTES = 8_500_000      # 2026-10-20 (week-2 tail gate, nudge 6; t3 nudge 2): the prune trigger the note above describes. Past it hygiene.new_text_under_8mb still PASSES but its actual text starts with a soft
+                                      # "near the 8.5 MB prune trigger" line (new_text_soft_line), so the runner reads the trigger and not only whoever reads the comment. It never changes the status; the limit above does.
+
+
+def new_text_soft_line(total_bytes, limit=None, prune=None):
+    """"" while the total is at or under the prune trigger or at or over the limit (over the limit the check FAILs with its own FIX text); in between, the soft line that names the trigger, the figure and the first remedy."""
+    limit = NEW_TEXT_LIMIT_BYTES if limit is None else limit
+    prune = NEW_TEXT_PRUNE_BYTES if prune is None else prune
+    if total_bytes <= prune or total_bytes >= limit:
+        return ""
+    return ("SOFT: near the %.1f MB prune trigger (%.2f MB of the %.0f MB limit): prune duplicate evidence in build/evidence (per-run copies) first, and raise the limit only with a dated note. "
+            % (prune / 1e6, total_bytes / 1e6, limit / 1e6))
 DOWNLOAD_ALLOWANCE_MB = 2560          # 2026-10-20 (week-2 close-out gate): raised 2,048 -> 2,560 MB (2.5 GiB) so that G1's third bpy wheel-set fetch (about 428 MB, Sun 15 Nov) is not stopped by its own guard.
                                       # The ledgers read 1,506.9 MiB with two fetches; a third brings them to about 1,915 MiB, and PowerShell, npm packs and the OTIO wheel add about 84 MiB: about 1,998 MiB in all.
                                       # Against the old 2,048 MiB that left about 50 MiB to spare (133 MiB in check_ledger.py), so any other fetch would have stopped the G1 run; against 2,560 it leaves about 562 MiB.
@@ -652,6 +665,21 @@ def t_decisions_csv():
     if rc == 0:
         return check("parity.decisions_csv_vs_register", True, exp, last[-1] if last else "exit 0")
     check("parity.decisions_csv_vs_register", False, exp, "exit %d: %s. FIX: python3 -I scripts/decisions_to_csv.py --write ops/decisions.csv (the mirror is generated, never hand-typed)" % (rc, listing(last[:-1][-3:] + last[-1:], 4)))
+
+
+@test("parity.pr4_sentence")
+def t_pr4_sentence():
+    # build status issue 28 item 1 (2026-10-20): PR4, the seva-article rule, is one sentence that the register, the Sunday sheet, four playbooks and four skills copy word for word
+    exp = ("scripts/pr4_parity.py exits 0: the register's PR4 sentence (the Codes line of DECISIONS.md) is byte-identical in each file of the table in that script (the register, the Sunday sheet, ROADMAP.md, PLAN-ON-A-PAGE.md, "
+           "four playbooks, four skills), the clause-aligned family of playbooks/hindu-visual.md has the expected lines, no copy has drifted and no other file carries one; and its --self-test catches every planted defect")
+    rc, out, err = sh(PY + ["scripts/pr4_parity.py"], timeout=60)
+    rc2, out2, err2 = sh(PY + ["scripts/pr4_parity.py", "--self-test"], timeout=120)
+    lines = [l.strip() for l in out.splitlines() if l.strip()]
+    fails = [l[len("FAIL:"):].strip() for l in lines if l.startswith("FAIL:")]
+    st = [l for l in out2.splitlines() if l.startswith("self-test:")]
+    last = lines[-1] if lines else "no output (%s)" % (err.strip()[-120:] or "exit %d" % rc)
+    check("parity.pr4_sentence", rc == 0 and rc2 == 0 and bool(st), exp,
+          "%s; %s%s" % (last, (st or ["self-test: no result"])[-1], ("; " + listing(fails, 3) + ". FIX: bring the copy to the Codes sentence, or, if the register's sentence changed, move every copy in the table of scripts/pr4_parity.py together") if fails else ""))
 
 
 # ----------------------------------------------------------------------------------------------- parity: pc_report fields
@@ -1563,8 +1591,9 @@ def t_new_text():
     top = sorted(by.items(), key=lambda kv: -kv[1])[:5]
     S["new_text_bytes"] = tot
     check("hygiene.new_text_under_8mb", tot < NEW_TEXT_LIMIT_BYTES, "the text the build added or changed in its own folders (%s) since the commit before the build is under %d MB (the plan said 5; raised to 8 at gate review round 1 because the 13 packages' tests, evidence envelopes and fixtures came to about 7 MB, and to 9 on 2026-10-20 at 7.59 MB in 627 files because the review rounds of weeks 3 and 4 add more; at 8.5 MB prune duplicate evidence first; raise it again only with a dated note, do not let it drift)" % (", ".join(BUILD_ROOTS), NEW_TEXT_LIMIT_BYTES // 1_000_000),
-          "%.2f MB in %d files; largest: %s%s" % (tot / 1e6, len(files), ", ".join("%s %.2f MB" % (k, v / 1e6) for k, v in top),
-                                                   "" if tot < NEW_TEXT_LIMIT_BYTES else ". FIX (orchestrator decision): accept a higher limit or prune the duplicate per-run text files (build/evidence is the largest part: envelopes, transcripts and per-test logs)"))
+          "%s%.2f MB in %d files; largest: %s%s" % (new_text_soft_line(tot), tot / 1e6, len(files), ", ".join("%s %.2f MB" % (k, v / 1e6) for k, v in top),
+                                                   "" if tot < NEW_TEXT_LIMIT_BYTES else ". FIX (orchestrator decision): accept a higher limit or prune the duplicate per-run text files (build/evidence is the largest part: envelopes, transcripts and per-test logs)"),
+          note=new_text_soft_line(tot).strip())
 
 
 @test("hygiene.no_ignored_file_tracked_or_staged")
@@ -1944,7 +1973,7 @@ def t_controls():
             noticed("PASS on a Windows row of the readiness map", len(readiness_problems(mutated, check_links=False)[0]) > n0)
         noticed("a changed lj.ps1 close wording", len(readiness_problems(t0.replace(CLOSE_PHRASE, "v0 done"), check_links=False)[0]) > n0)
         noticed("a status outside the vocabulary", len(readiness_problems(t0.replace("not started (week 4)", "somewhere later", 1), check_links=False)[0]) > n0)
-        noticed("a deleted status cell", len(readiness_problems(re.sub(r"(?m)^(\| C2 \|[^|]*\|[^|]*\|) not started \(week 3\) \|", r"\1  |", t0), check_links=False)[0]) > n0)
+        noticed("a deleted status cell", len(readiness_problems(re.sub(r"(?m)^(\| C5 \|[^|]*\|[^|]*\|)[^|]*\|", r"\1  |", t0), check_links=False)[0]) > n0)   # C5, whatever its status says (the row C2 stopped reading "not started (week 3)" on 2026-10-20)
         # a row whose id the old pattern did not accept hid its PASS: an added M9 (Needs Windows yes, PASS (container)), a typo'd id, a lower-case id, a merged cell
         m8 = re.search(r"(?m)^\| M8 \|.*$", t0)
         if m8:
@@ -1975,6 +2004,12 @@ def t_controls():
     noticed("a profile naming a chain that does not exist", bool(profile_chain_problems(sprof, chs2, "x")[0]))
     # 12. stale parse
     passes("the stale-hit parser on its sample", parse_stale("NEW FAIL a/b.md:3 [S-01.x] text\nNEW WARN c.md:9 [S-02.y] t") == [("FAIL", "a/b.md", 3, "S-01.x"), ("WARN", "c.md", 9, "S-02.y")])
+    # 12b. the soft line at the 8.5 MB prune trigger (week-2 tail gate, nudge 6): silent up to and including the trigger, present between it and the limit, absent again at the limit (the check FAILs there with its FIX text)
+    passes("no soft line at 7.64 MB, the figure of the tail gate", new_text_soft_line(7_640_000) == "")
+    passes("no soft line at exactly 8.5 MB", new_text_soft_line(8_500_000) == "")
+    noticed("8.5 MB plus one byte with no soft line near the prune trigger", "near the 8.5 MB prune trigger" in new_text_soft_line(8_500_001))
+    noticed("8.9 MB with no soft line, or one that lost the remedy", "prune duplicate evidence" in new_text_soft_line(8_900_000) and "8.90 MB of the 9 MB limit" in new_text_soft_line(8_900_000))
+    passes("no soft line at the limit itself (the check fails there with its own FIX text)", new_text_soft_line(NEW_TEXT_LIMIT_BYTES) == "")
     # 13. a partial (--only) run must not replace the mode's evidence: seed a scratch evidence folder, run one cheap test with --only, and see the seeds untouched
     td = tempfile.mkdtemp(prefix="wp11b-ctrl.", dir=SCRATCH if os.path.isdir(SCRATCH) else None)
     try:

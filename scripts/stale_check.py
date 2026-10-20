@@ -3,7 +3,7 @@
 
 WHAT IT DOES
   Greps the playbooks, skills, fixtures and scripts for every stale value in Table 4 of DECISIONS.md
-  (S-01 to S-65 in register v3) and for the retired spellings W-29 names ("L1 process lock", "spikes
+  (S-01 to S-66 in register v3) and for the retired spellings W-29 names ("L1 process lock", "spikes
   S1-S5", Minecraft, voxel, the placeholder observances, "the T2 rule", "not applied here", ...), using
   scripts/stale_patterns.json. The W-29 allowlist (scripts/stale_allowlist.json) suppresses the
   legitimate contexts. It FIXES NOTHING: the report is a work order for the scribes.

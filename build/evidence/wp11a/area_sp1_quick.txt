@@ -1,19 +1,20 @@
-# area=sp1 entry=WP-07 mode=quick result=PASS exit=0 seconds=13 masked_values=0
-tests/sp1/run_tests.sh --quick   (df now: Avail 14479M)
+# area=sp1 entry=WP-07 mode=quick result=PASS exit=0 seconds=15 masked_values=0
+tests/sp1/run_tests.sh --quick   (df now: Avail 14451M)
 PASS       syntax.bash  bash -n on run_sp1.sh, run_tests.sh and the fake df scripts; failing: none
 PASS       syntax.python  ast.parse on every .py file and both stand-in CLIs; failing: none
 PASS       lib.selftest  sp1_lib --selftest: 8 PASS, 0 FAIL
 PASS       watchdog.rss_and_wall  PASS  watchdog.kills_above_limit  killed by rss-watchdog after 2.5 s, polled peak 158 MB, kernel max 158 MB;PASS  watchdog.leaves_a_quiet_process  exit 0, kernel max 28 MB, polled 28 MB;PASS  watchdog.wall_clock_kill  killed by wall-clock after 2.3 s;
 PASS       defects_only.idempotent_and_refuses  exits 0 0 2 2 (expected 0 0 2 2); defect lines left after the first prepare: 0; second prepare changed the file: no
 PASS       assets.table  6 pins, 6 independent comparisons (all match), sizes all match; problems: none
-PASS       list.live  Avail 14479 MB: exit 0 (expected 0: lean needs Avail of at least 767 MB); Chosen profile: full 
+PASS       list.live  Avail 14451 MB: exit 0 (expected 0: lean needs Avail of at least 767 MB); Chosen profile: full 
 PASS       list.fake_900  exit 0;   full: filmcraft-v0.9.0 plans 600 MB, Avail 900 MB, leaves 300 MB: REFUSED (needs Avail of at least 1000 MB) Chosen profile: lean (the full profile is refused at this Avail) 
 PASS       list.fake_900_profile_full  exit 3; the full profile is refused at this Avail; lean would fit: rerun with --profile lean (or auto). The first stage needs Avail of at least 1000 MB for fu 
 PASS       list.fake_600_profile_full  exit 3; Neither profile fits: the first stage needs Avail of at least 1000 MB for full or 750 MB for lean, and Avail is 600 MB. 
 PASS       list.fake_600  exit 3; REFUSED: Avail 600 MB minus planned 600 MB leaves 0 MB, below the 400 MB floor (filmcraft-v0.9.0, full profile). REFUSED: Avail 600 MB minus planned 350 MB leaves 250 MB, below the 400 MB floor (filmcraft-v0.9.0, lean profile). 
 PASS       ledger.check  ledger: 6 fetches, 3 distinct assets, 388.2 MB in total (allowance 2560 MB)
+PASS       verdict.amended_mark_keyed_on_first_mark  exit 0/0/0; with first-mark/t2_filmcraft_v0.9.0.json the paragraph reads its date and its deviation from that file (1 line); a T2 run on another pin (v0.9.1, no first-mark file) and an unreadable first-mark file get the practical rule and no amended-mark paragraph
 PASS       guide.in_sync_with_assets  build_guide.py regenerates MAKER-CRAFT-ZIPS.md byte for byte from release_assets.json
-PASS       guide.check_guide  check_guide: 8 PASS, 0 FAIL, 0 UNVERIFIED
+PASS       guide.check_guide  check_guide: 9 PASS, 0 FAIL, 0 UNVERIFIED
 UNVERIFIED guide.windows_behaviour  no Windows PC here: PowerShell 5.1 parsing is covered by ps_lint.py rules and pwsh 7 on Linux only; where the zips unpack, portable.txt handling and each app's writes wait for the maker's Sat 24 Oct paste
 PASS       lint.public  public_lint: mode paths, 67 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
-SUMMARY quick: 15 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED
+SUMMARY quick: 16 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED

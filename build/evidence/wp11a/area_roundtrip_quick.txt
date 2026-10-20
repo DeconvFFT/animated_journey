@@ -1,4 +1,4 @@
-# area=roundtrip entry=WP-06 mode=quick result=PASS exit=0 seconds=12 masked_values=0
+# area=roundtrip entry=WP-06 mode=quick result=PASS exit=0 seconds=14 masked_values=0
 PASS       hygiene.py_compile                             11 files compile
 PASS       hygiene.python38_grammar                       all pipeline/roundtrip tools parse
 PASS       hygiene.bash_syntax                            4 scripts parse
@@ -65,6 +65,8 @@ PASS       otio.validate_json_level                       exit 0; RESULT validat
 PASS       otio.validate_with_otio                        exit 0; RESULT validate_otio: 30 checks, 0 FAIL, 0 WARN
 PASS       otio.determinism                               sha256 17a39012bf79078a
 PASS       otio.content                                   clips 4; dissolves 3; urls media/ch01_s01.png; shot 1 scale [66.67, 80.0] position [(960.0, 540.0), (930.0, 520.0)]; shot 3 scale 80.0 -> 66.67
+PASS       otio.card_base_applied                         exit 0; a background pixel of each card [(24, 32, 48), (40, 150, 170)]; card_base in the .otio: False
+PASS       otio.card_base_refused                         refused as expected: [True, True, True, True, True]
 PASS       otio.template_parity                           template rates [25.0]; 0 difference(s)
 PASS       otio.plant.clip_outside_available_range        exit 1; FAILED ['clip_outside_available_range']
 PASS       otio.plant.rate_not_24_one_time                exit 1; FAILED ['rate_not_24']
@@ -109,4 +111,4 @@ PASS       otio.adapter_probe_exit_codes                  exits 2 3
 PASS       otio.adapter_probe_no_paths                    clean
 UNVERIFIED windows.validators                             standard library only, os.path joins, UTF-8 and BOM reading, ASCII output, no shell=True; not run on Windows
 UNVERIFIED craft_apps.accept_files                        not run: no Craft app was started in this package
-TOTAL: PASS 108, FAIL 0, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (11 s)
+TOTAL: PASS 110, FAIL 0, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (13 s)

@@ -22,10 +22,12 @@ sys.dont_write_bytecode = True
 HUES = [(24, 32, 48), (40, 28, 52), (22, 48, 44), (52, 38, 24), (30, 30, 30), (48, 24, 32)]
 
 
-def still_png(path, width, height, index, label):
-    """One test card. Deterministic: the same arguments give the same bytes on the same Pillow."""
+def still_png(path, width, height, index, label, base=None):
+    """One test card. Deterministic: the same arguments give the same bytes on the same Pillow. `base` is an optional (r, g, b) background; left out, the card takes
+    the dark tint HUES[index - 1], so every card made before this argument existed is unchanged. A test chapter whose dissolve must be visible one frame at a time asks
+    for a base that differs strongly from its neighbour (the dark tints differ by at most about 30 levels, which a step-through cannot see)."""
     from PIL import Image, ImageDraw, ImageFont
-    base = HUES[(index - 1) % len(HUES)]
+    base = tuple(base) if base is not None else HUES[(index - 1) % len(HUES)]
     im = Image.new("RGB", (width, height), base)
     d = ImageDraw.Draw(im)
     step = max(width // 24, 8)

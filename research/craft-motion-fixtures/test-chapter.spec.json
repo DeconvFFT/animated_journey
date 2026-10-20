@@ -1,0 +1,19 @@
+{
+  "schema": "lj-neutral-timeline/1",
+  "name": "Saturday FilmCraft test chapter (synthetic)",
+  "synthetic_media": true,
+  "fps": 24,
+  "sequence": {"width": 1920, "height": 1080},
+  "still_available_frames": 240,
+  "markers": [
+    {"name": "Chapter 01", "at_frame": 0, "color": "GREEN", "comment": "synthetic test chapter, two test cards, 10 seconds"},
+    {"name": "Dissolve starts", "at_frame": 114, "color": "YELLOW", "comment": "the 12-frame cross dissolve runs from frame 114 to frame 126, centred on the cut at frame 120"}
+  ],
+  "shots": [
+    {"id": "ch01_s01", "source": "media/ch01_s01.png", "source_size": [2880, 1620], "duration_frames": 120,
+     "motion": {"scale": {"from": "cover", "zoom": 1.2}, "position": [[960, 540], [930, 520]], "ease": "EaseOut"},
+     "transition_out": {"type": "dissolve", "frames": 12}},
+    {"id": "ch01_s02", "source": "media/ch01_s02.png", "source_size": [2880, 1620], "duration_frames": 120, "card_base": [40, 150, 170],
+     "motion": {"scale": {"from": "cover", "zoom": 1.0}, "position": [[960, 540], [960, 540]], "ease": "Linear"}}
+  ]
+}

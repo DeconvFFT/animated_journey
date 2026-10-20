@@ -154,6 +154,17 @@ check list.fake_600 "$([ $rc = 3 ] && grep -q 'REFUSED: Avail 600 MB minus plann
 out="$(bash "$SP1/run_sp1.sh" --ledger-check 2>&1)"; rc=$?
 check ledger.check "$([ $rc = 0 ] && echo 1 || echo 0)" "$out" "each tarball fetched once (a second fetch needs a recorded exception), under the download allowance (2,560 MB since 2026-10-20)"
 
+# the amended-mark paragraph of VERDICT-SP1A.md is keyed on first-mark/<test>.json (gate c1, nudge 3; k3): three small evidence sets in a scratch folder, nothing of the real evidence touched
+vm="$(mktemp -d "$SCRATCH_ROOT/verdictmark.XXXXXX")"; mkdir -p "$vm/a/first-mark"
+cp "$EVID/t1_filmcraft_v0.9.0.json" "$EVID/t2_filmcraft_v0.9.0.json" "$EVID/t4_effectcraft_v0.11.1.json" "$vm/a/" 2>/dev/null; cp "$EVID/first-mark/t2_filmcraft_v0.9.0.json" "$vm/a/first-mark/" 2>/dev/null
+va="$(LJ_SP1_EVIDENCE="$vm/a" python3 -I "$DRV/verdict.py" --print 2>&1)"; ra=$?
+mkdir -p "$vm/b"; cp "$vm/a/t1_filmcraft_v0.9.0.json" "$vm/a/t4_effectcraft_v0.11.1.json" "$vm/b/"; jq -c '.test="t2_filmcraft_v0.9.1"' "$vm/a/t2_filmcraft_v0.9.0.json" > "$vm/b/t2_filmcraft_v0.9.1.json" 2>/dev/null
+vb="$(LJ_SP1_EVIDENCE="$vm/b" python3 -I "$DRV/verdict.py" --print 2>&1)"; rb=$?
+mkdir -p "$vm/c/first-mark"; cp "$vm/a/t1_filmcraft_v0.9.0.json" "$vm/a/t2_filmcraft_v0.9.0.json" "$vm/a/t4_effectcraft_v0.11.1.json" "$vm/c/"; echo '{not json' > "$vm/c/first-mark/t2_filmcraft_v0.9.0.json"
+vc="$(LJ_SP1_EVIDENCE="$vm/c" python3 -I "$DRV/verdict.py" --print 2>&1)"; rc=$?
+check verdict.amended_mark_keyed_on_first_mark "$([ $ra = 0 ] && [ $rb = 0 ] && [ $rc = 0 ] && grep -q 'rests on the mark as amended on Tue 20 Oct 2026.* (2026-10-20) failed `T2.mid_dissolve` by 28.50 levels' <<<"$va" && grep -q 'Practical rule: one chapter, one dissolve route' <<<"$va" && ! grep -q 'rests on the mark as amended' <<<"$vb" && grep -q 'Practical rule: one chapter, one dissolve route' <<<"$vb" && ! grep -q 'rests on the mark as amended' <<<"$vc" && grep -q 'Practical rule: one chapter, one dissolve route' <<<"$vc" && echo 1 || echo 0)" "exit $ra/$rb/$rc; with first-mark/t2_filmcraft_v0.9.0.json the paragraph reads its date and its deviation from that file ($(grep -c 'by 28.50 levels' <<<"$va") line); a T2 run on another pin (v0.9.1, no first-mark file) and an unreadable first-mark file get the practical rule and no amended-mark paragraph" "the amended-mark paragraph appears only when first-mark/<test>.json exists for the newest T2's own app and tag and records the failed T2.mid_dissolve"
+rm -rf "$vm"
+
 # the guide
 tmpg="$(mktemp "$SCRATCH_ROOT/guide.XXXXXX")"
 python3 -I "$SP1/build_guide.py" --out "$tmpg" >/dev/null 2>&1

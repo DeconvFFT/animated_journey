@@ -748,7 +748,7 @@ python3 -I pipeline/validators/mo8_gate.py renders/wp09/ex02_push_only.mkv      
 bash spikes/sp1b_readback/run_sp1b.sh --list          # sizes from release_assets.json, df, the stage plan per app, and a refusal (exit 3) for any stage whose Avail minus planned is below 400 MB
 bash spikes/sp1b_readback/run_sp1b.sh --all           # staged; each result JSON is labelled linux-cli; a refused stage is BLOCKED, not failed
 python3 -I spikes/sp1b_readback/check_ledger.py       # each of the five tarballs was fetched once (from the disk ledger and the run logs); any exception is listed with its reason
-bash spikes/sp3_blender/run_sp3.sh --check            # prints df, wheel size, tarball size by HEAD, "NOT RUN: needs >= 3.5 GB free", exit 3 on this container
+bash spikes/sp3_blender/run_sp3.sh --check            # prints df, wheel size, tarball size by HEAD, "NOT RUN: needs >= 3.5 GB free", exit 3 on this container   [2026-10-20: the entry is now 1,900 MB after the measured peak of 1,408 MB, so the message reads "needs >= 1.9 GB free"]
 python3 -m py_compile research/production-scale-fixtures/followup2-s3-kitchen-standin.py
 bash spikes/sp4_idle/job.sh --seconds 60 --interval 2 && python3 -I spikes/sp4_idle/gaps.py <log>      # no gap > 5 s -> exit 0
 python3 -I spikes/sp4_idle/gaps.py tests/spikes/fixtures/log_with_5min_gap.txt                        # planted gap detected -> exit 1

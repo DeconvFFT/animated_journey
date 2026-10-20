@@ -1,6 +1,6 @@
 {
   "schema": "lj-sp1-config/1",
-  "note": "The numbers of build plan 4.9 (budgets) and WP-07 (pins, profiles, keep rule). run_sp1.sh and the drivers read this file; nothing else holds these figures.",
+  "note": "The numbers of build plan 4.9 (budgets) and WP-07 (pins, profiles, keep rule). run_sp1.sh and the drivers read this file. The download allowance is also held in two other places (see download_allowance_note under disk), so a change to it is made in all three.",
   "pins": [
     {"app": "photocraft",  "tag": "v0.10.0", "role": "pin",      "tarball_fetched_by": "WP-10"},
     {"app": "vectorcraft", "tag": "v0.13.1", "role": "pin",      "tarball_fetched_by": "WP-10"},

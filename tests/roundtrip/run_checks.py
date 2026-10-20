@@ -689,6 +689,42 @@ def t_otio_content():
               len(clips), len(trans), urls[0], sc, ps, s3[0]["value"]["Float"], s3[1]["value"]["Float"]))
 
 
+@test("otio.card_base")
+def t_otio_card_base():
+    """shots[].card_base: the background of a generated test card (the Saturday test chapter needs a second card that differs strongly from the first, so a dissolve between them is visible a
+    frame at a time). The default card is unchanged, the value never reaches the .otio, and a bad value is refused with exit 2 and nothing written."""
+    try:
+        from PIL import Image
+    except ImportError:
+        raise Skip("Pillow is not installed")
+    spec = {"schema": "lj-neutral-timeline/1", "synthetic_media": True, "fps": 24, "sequence": {"width": 1920, "height": 1080},
+            "markers": [{"name": "m", "at_frame": 0, "color": "GREEN"}],
+            "shots": [{"id": "cb_s01", "source": "media/cb_s01.png", "source_size": [480, 270], "duration_frames": 24, "transition_out": {"type": "dissolve", "frames": 12}},
+                      {"id": "cb_s02", "source": "media/cb_s02.png", "source_size": [480, 270], "duration_frames": 24, "card_base": [40, 150, 170]}]}
+    d = work("card_base")
+    shutil.rmtree(d, ignore_errors=True)
+    os.makedirs(d)
+    sp = os.path.join(d, "spec.json")
+    json.dump(spec, open(sp, "w"))
+    rc, o, e = sh(PY + [tool("emit_otio.py"), sp, os.path.join(d, "ok", "ch.otio")])
+    px = None
+    if rc == 0:
+        px = [Image.open(os.path.join(d, "ok", "media", n)).convert("RGB").getpixel((3, 105)) for n in ("cb_s01.png", "cb_s02.png")]
+    in_otio = rc == 0 and "card_base" in open(os.path.join(d, "ok", "ch.otio")).read()
+    check("otio.card_base_applied", rc == 0 and px == [(24, 32, 48), (40, 150, 170)] and not in_otio,
+          "a card with card_base takes that background, a card without it keeps its numbered dark tint, and the key never reaches the .otio",
+          "exit %d; a background pixel of each card %s; card_base in the .otio: %s" % (rc, px, in_otio))
+    bad_ok = []
+    for i, bad in enumerate(([300, 0, 0], [1, 2], "teal", [1, 2, True], [1, 2, 3.5])):
+        spec["shots"][1]["card_base"] = bad
+        json.dump(spec, open(sp, "w"))
+        out = os.path.join(d, "bad%d" % i, "ch.otio")
+        rc, o, e = sh(PY + [tool("emit_otio.py"), sp, out])
+        bad_ok.append(rc == 2 and "card_base" in e and not os.path.exists(out) and not os.path.exists(os.path.join(d, "bad%d" % i, "media")))
+    check("otio.card_base_refused", all(bad_ok), "five bad values (out of range, two numbers, text, a boolean, a fraction) each exit 2 naming card_base, with no .otio and no media written",
+          "refused as expected: %s" % bad_ok)
+
+
 def _diff(a, b, path, ignore, out):
     if ignore(path):
         return

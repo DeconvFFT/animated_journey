@@ -1,0 +1,308 @@
+{
+  "OTIO_SCHEMA": "Timeline.1",
+  "name": "Saturday FilmCraft test chapter (synthetic)",
+  "global_start_time": {
+    "OTIO_SCHEMA": "RationalTime.1",
+    "rate": 24.0,
+    "value": 0.0
+  },
+  "metadata": {
+    "life_journey": {
+      "emitter": "emit_otio/1",
+      "spec_schema": "lj-neutral-timeline/1",
+      "fps": 24,
+      "synthetic": true
+    }
+  },
+  "tracks": {
+    "OTIO_SCHEMA": "Stack.1",
+    "name": "tracks",
+    "metadata": {},
+    "markers": [
+      {
+        "OTIO_SCHEMA": "Marker.2",
+        "name": "Chapter 01",
+        "comment": "synthetic test chapter, two test cards, 10 seconds",
+        "color": "GREEN",
+        "metadata": {},
+        "marked_range": {
+          "OTIO_SCHEMA": "TimeRange.1",
+          "start_time": {
+            "OTIO_SCHEMA": "RationalTime.1",
+            "rate": 24.0,
+            "value": 0.0
+          },
+          "duration": {
+            "OTIO_SCHEMA": "RationalTime.1",
+            "rate": 24.0,
+            "value": 0.0
+          }
+        }
+      },
+      {
+        "OTIO_SCHEMA": "Marker.2",
+        "name": "Dissolve starts",
+        "comment": "the 12-frame cross dissolve runs from frame 114 to frame 126, centred on the cut at frame 120",
+        "color": "YELLOW",
+        "metadata": {},
+        "marked_range": {
+          "OTIO_SCHEMA": "TimeRange.1",
+          "start_time": {
+            "OTIO_SCHEMA": "RationalTime.1",
+            "rate": 24.0,
+            "value": 114.0
+          },
+          "duration": {
+            "OTIO_SCHEMA": "RationalTime.1",
+            "rate": 24.0,
+            "value": 0.0
+          }
+        }
+      }
+    ],
+    "children": [
+      {
+        "OTIO_SCHEMA": "Track.1",
+        "name": "V1",
+        "kind": "Video",
+        "metadata": {},
+        "children": [
+          {
+            "OTIO_SCHEMA": "Clip.2",
+            "name": "ch01_s01",
+            "enabled": true,
+            "markers": [],
+            "effects": [],
+            "source_range": {
+              "OTIO_SCHEMA": "TimeRange.1",
+              "start_time": {
+                "OTIO_SCHEMA": "RationalTime.1",
+                "rate": 24.0,
+                "value": 0.0
+              },
+              "duration": {
+                "OTIO_SCHEMA": "RationalTime.1",
+                "rate": 24.0,
+                "value": 120.0
+              }
+            },
+            "media_references": {
+              "DEFAULT_MEDIA": {
+                "OTIO_SCHEMA": "ExternalReference.1",
+                "name": "ch01_s01.png",
+                "target_url": "media/ch01_s01.png",
+                "available_range": {
+                  "OTIO_SCHEMA": "TimeRange.1",
+                  "start_time": {
+                    "OTIO_SCHEMA": "RationalTime.1",
+                    "rate": 24.0,
+                    "value": 0.0
+                  },
+                  "duration": {
+                    "OTIO_SCHEMA": "RationalTime.1",
+                    "rate": 24.0,
+                    "value": 240.0
+                  }
+                },
+                "metadata": {}
+              }
+            },
+            "active_media_reference_key": "DEFAULT_MEDIA",
+            "metadata": {
+              "filmcraft": {
+                "scale_to_frame": false,
+                "gain_db": 0.0,
+                "source_in_ticks": 0,
+                "duration_ticks": 1270080000000,
+                "effects": [
+                  {
+                    "effect": "motion",
+                    "enabled": true,
+                    "params": {
+                      "scale": {
+                        "value": {
+                          "Float": 66.67
+                        },
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": {
+                              "Float": 66.67
+                            },
+                            "interp": "Linear"
+                          },
+                          {
+                            "time": 1270080000000,
+                            "value": {
+                              "Float": 80.0
+                            },
+                            "interp": "EaseOut"
+                          }
+                        ]
+                      },
+                      "position": {
+                        "value": {
+                          "Vec2": {
+                            "x": 960.0,
+                            "y": 540.0
+                          }
+                        },
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": {
+                              "Vec2": {
+                                "x": 960.0,
+                                "y": 540.0
+                              }
+                            },
+                            "interp": "Linear"
+                          },
+                          {
+                            "time": 1270080000000,
+                            "value": {
+                              "Vec2": {
+                                "x": 930.0,
+                                "y": 520.0
+                              }
+                            },
+                            "interp": "EaseOut"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "OTIO_SCHEMA": "Transition.1",
+            "name": "Cross Dissolve",
+            "transition_type": "SMPTE_Dissolve",
+            "metadata": {},
+            "in_offset": {
+              "OTIO_SCHEMA": "RationalTime.1",
+              "rate": 24.0,
+              "value": 6.0
+            },
+            "out_offset": {
+              "OTIO_SCHEMA": "RationalTime.1",
+              "rate": 24.0,
+              "value": 6.0
+            }
+          },
+          {
+            "OTIO_SCHEMA": "Clip.2",
+            "name": "ch01_s02",
+            "enabled": true,
+            "markers": [],
+            "effects": [],
+            "source_range": {
+              "OTIO_SCHEMA": "TimeRange.1",
+              "start_time": {
+                "OTIO_SCHEMA": "RationalTime.1",
+                "rate": 24.0,
+                "value": 0.0
+              },
+              "duration": {
+                "OTIO_SCHEMA": "RationalTime.1",
+                "rate": 24.0,
+                "value": 120.0
+              }
+            },
+            "media_references": {
+              "DEFAULT_MEDIA": {
+                "OTIO_SCHEMA": "ExternalReference.1",
+                "name": "ch01_s02.png",
+                "target_url": "media/ch01_s02.png",
+                "available_range": {
+                  "OTIO_SCHEMA": "TimeRange.1",
+                  "start_time": {
+                    "OTIO_SCHEMA": "RationalTime.1",
+                    "rate": 24.0,
+                    "value": 0.0
+                  },
+                  "duration": {
+                    "OTIO_SCHEMA": "RationalTime.1",
+                    "rate": 24.0,
+                    "value": 240.0
+                  }
+                },
+                "metadata": {}
+              }
+            },
+            "active_media_reference_key": "DEFAULT_MEDIA",
+            "metadata": {
+              "filmcraft": {
+                "scale_to_frame": false,
+                "gain_db": 0.0,
+                "source_in_ticks": 0,
+                "duration_ticks": 1270080000000,
+                "effects": [
+                  {
+                    "effect": "motion",
+                    "enabled": true,
+                    "params": {
+                      "scale": {
+                        "value": {
+                          "Float": 66.67
+                        },
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": {
+                              "Float": 66.67
+                            },
+                            "interp": "Linear"
+                          },
+                          {
+                            "time": 1270080000000,
+                            "value": {
+                              "Float": 66.67
+                            },
+                            "interp": "Linear"
+                          }
+                        ]
+                      },
+                      "position": {
+                        "value": {
+                          "Vec2": {
+                            "x": 960.0,
+                            "y": 540.0
+                          }
+                        },
+                        "keyframes": [
+                          {
+                            "time": 0,
+                            "value": {
+                              "Vec2": {
+                                "x": 960.0,
+                                "y": 540.0
+                              }
+                            },
+                            "interp": "Linear"
+                          },
+                          {
+                            "time": 1270080000000,
+                            "value": {
+                              "Vec2": {
+                                "x": 960.0,
+                                "y": 540.0
+                              }
+                            },
+                            "interp": "Linear"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

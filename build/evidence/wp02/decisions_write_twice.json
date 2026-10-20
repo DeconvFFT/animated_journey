@@ -2,9 +2,9 @@
  "actual": "fresh generation equals the committed file byte for byte | wrote decisions.csv: 251 rows (D 32, W 79, O 74, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 66); orchestrator-owned cells carried over: 0 row(s)",
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 14478,
-  "avail_mb_min": 14478,
-  "avail_mb_start": 14478,
+  "avail_mb_end": 14450,
+  "avail_mb_min": 14450,
+  "avail_mb_start": 14451,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

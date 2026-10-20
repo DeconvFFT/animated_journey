@@ -3,17 +3,20 @@
 #   all four timings within 2x the table (0.81x to 0.86x), see build/reports/w2-sp3.md. That run found the cleanup defect fixed in run_inner (test: spikes/sp3_blender/test_cleanup.sh).
 #
 #   bash spikes/sp3_blender/run_sp3.sh --check     the entry conditions and the numbers: df, the bpy wheel size (PyPI), the Blender tarball size (HEAD request), Python, the reused
-#                                                   research scripts (py_compile). Prints "NOT RUN: needs >= 3.5 GB free" and exits 3 on a volume with less than 3,500 MB free;
+#                                                   research scripts (py_compile). Prints "NOT RUN: needs >= 1.9 GB free" and exits 3 on a volume with less than 1,900 MB free;
 #                                                   prints READY and exits 0 when the entry condition holds. Downloads nothing; writes nothing.
-#   bash spikes/sp3_blender/run_sp3.sh --run       only when --check says READY: ONE disk stage (lj_with_disk 3100) that makes a venv, installs bpy 5.2.2 from spikes/sp3_blender/requirements-bpy.txt
+#   bash spikes/sp3_blender/run_sp3.sh --run       only when --check says READY: ONE disk stage (lj_with_disk 1500) that makes a venv, installs bpy 5.2.2 from spikes/sp3_blender/requirements-bpy.txt
 #                                                   with pip --require-hashes (12 wheels, 428 MB, each pinned by sha256; the 402 MB bpy wheel is one of them; a digest mismatch stops the install),
 #                                                   records the fetch on the download ledger (build/evidence/wp10/download_ledger.jsonl; a second or later fetch needs SP3_FETCH_REASON='why', as for a Craft tarball),
 #                                                   times the stand-in kitchen scene at a few sample counts under lj_bench, writes the RESULT lines to build/evidence/wp10/sp3_results.txt
 #                                                   and deletes the venv. SP3_DRYRUN=1 prints what it would do and does none of it.
 #   bash spikes/sp3_blender/run_sp3.sh --help
 # WHY IT WAS NOT RUN ON 19 OCT (historical; disk was freed on 20 Oct and the real peak was 1,408 MB, not 3,100). The container had about 700 MB free (it is shared and shrinking); the wheel is 402 MB, the venv about 1 GB, and the plan wants Avail minus planned at least 400 MB.
-# The entry figure is 3,500 MB = planned 3,100 MB (wheel, pip's temporary copy of it, the venv, a margin for the first Cycles kernel build and the outputs) + the 400 MB floor.
-# SP3 runs in week 3 either on the maker's PC (playbooks/toolchain.md Exercise 5, Blender parallax timed with the Claude app closed) or here after at least 3.5 GB is free, and only on a
+# The entry figure is 1,900 MB = planned 1,500 MB + the 400 MB floor. LOWERED Tue 20 Oct 2026 (package k3, on the orchestrator's instruction) from 3,500 MB = planned 3,100 MB + 400 MB. The 3,100 was an estimate made before anything was
+# measured (wheel, pip's temporary copy of it, the venv, a margin for the first Cycles kernel build and the outputs). Both real runs of 20 Oct peaked at 1,408 MB (the 402 MB wheel while pip unpacks it, plus the 1,008 MB venv; steady
+# 1,021 MB; renders 14 MB), so 1,500 MB is the measured peak plus 92 MB. That margin is a stand-in's: a real hero frame (G1, Sun 15 Nov) may write more than 14 MB of renders, so if the real scene's textures or outputs come near 90 MB,
+# raise PLANNED_MB (and the ENTRY_MB default with it) with a dated note BEFORE the run; the guard's hard floor is 250 MB.
+# SP3 runs in week 3 either on the maker's PC (playbooks/toolchain.md Exercise 5, Blender parallax timed with the Claude app closed) or here after at least 1.9 GB is free, and only on a
 # NEUTRAL stand-in scene with no photograph (S3's own rule). The pass mark, one real hero frame within 2x the table, cannot be judged before the real kitchen exists (G1).
 # REUSED, NOT COPIED: research/production-scale-fixtures/followup2-s3-kitchen-standin.py (the scene: primitives only, no photographs, no family imagery) and, as the record of the sweep, followup2-s3-run-sweep.sh,
 # whose first lines hold a path of an earlier session and which is therefore NOT executed; this script runs the same configurations itself. Its earlier numbers are in followup2-s3-container-results.txt.
@@ -27,7 +30,7 @@ SCENE="$ROOT/research/production-scale-fixtures/followup2-s3-kitchen-standin.py"
 SWEEP="$ROOT/research/production-scale-fixtures/followup2-s3-run-sweep.sh"
 RESULTS="$ROOT/research/production-scale-fixtures/followup2-s3-container-results.txt"
 EVID="${LJ_SP3_EVIDENCE:-$ROOT/build/evidence/wp10}"
-ENTRY_MB="${SP3_ENTRY_MB:-3500}"; PLANNED_MB=3100
+ENTRY_MB="${SP3_ENTRY_MB:-1900}"; PLANNED_MB=1500   # entry = planned + the 400 MB floor of scripts/lj_guard.sh; lowered from 3500 and 3100 on 2026-10-20 (measured peak 1,408 MB, two runs); see the header
 REQ="${LJ_SP3_REQ:-$SP/requirements-bpy.txt}"; LROW="$SP/ledger_row.py"; LEDGER="${LJ_SP3_LEDGER:-$ROOT/build/evidence/wp10/download_ledger.jsonl}"   # LJ_SP3_REQ and LJ_SP3_LEDGER are for the tests (tests/spikes/run_tests.sh)
 WHEEL_RECORDED=401697653; BLENDER_RECORDED=383295504   # PyPI bpy 5.2.2 cp313 manylinux_2_28 x86_64 and blender-5.2.2-linux-x64.tar.xz (playbooks/toolchain.md [102][103]), 18 Oct 2026
 # shellcheck disable=SC1091
@@ -89,7 +92,7 @@ do_check() {
     return 0
   fi
   if (( avail < ENTRY_MB )); then
-    say "NOT RUN: needs >= 3.5 GB free (Avail ${avail} MB; short by $((ENTRY_MB - avail)) MB). Justified deferral: SP3 runs in week 3 on the maker's PC (toolchain Exercise 5) or here once 3.5 GB is free."
+    say "NOT RUN: needs >= $(awk -v m="$ENTRY_MB" 'BEGIN { printf "%.1f", m / 1000 }') GB free (Avail ${avail} MB; short by $((ENTRY_MB - avail)) MB). Justified deferral: SP3 runs in week 3 on the maker's PC (toolchain Exercise 5) or here once $(awk -v m="$ENTRY_MB" 'BEGIN { printf "%.1f", m / 1000 }') GB is free."
   else
     say "NOT RUN: an entry condition other than disk fails (python 3.13 or the reused scene); see the lines above."
   fi

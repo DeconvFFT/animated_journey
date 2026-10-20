@@ -16,6 +16,7 @@ WHAT IT CHECKS (a finding is printed MASKED: category, file:line, the first two 
   5. --theme: D-28 exclusions (Mughal, Islamic, mosque, minaret, Taj Mahal, Red Fort, church, cathedral,
      crucifix, nativity, Christmas, ...) in NEW theme-bearing files. A keyword scan cannot judge iconography;
      a person (and the Fable review) must look at the pictures. Existing playbooks and research are INFO only.
+     A staged copy under skills-staging/ of an installed skill is judged on the lines its installed counterpart lacks.
      A line in a .md file with an exclusion cue (no, never, not, excluded, avoid, out of scope, left out ...) within
      40 characters BEFORE the keyword is a rule statement and prints as a NOTE; everything else is a finding,
      always so under pipeline/scenes/ and in pipeline/phone/test_strings.json (scripts/public_lint.config.json).
@@ -559,6 +560,17 @@ def theme_scan(root, cfg, pat, args):
             continue
         lines = decode_bytes(raw).replace("\r\n", "\n").replace("\r", "\n").split("\n")
         items = [(i + 1, t) for i, t in enumerate(lines)] if added is None else added
+        # A staged copy of an installed skill (skills-staging/<skill>/<file>, not yet in git) repeats every rule statement and source title of the installed copy,
+        # which this guard already counts as INFO under .claude/skills/. Only the lines the installed counterpart lacks are new text, as for a changed tracked file
+        # (added lines only). Default scope only: explicit --paths still scan the whole file. (2026-10-20, package k2-pr4-skill-parity)
+        if not args.paths and rel.startswith("skills-staging/"):
+            inst = Path(root) / ".claude" / "skills" / rel[len("skills-staging/"):]
+            try:
+                if inst.is_file() and inst.stat().st_size <= int(cfg.get("max_file_bytes", 1000000)):
+                    have = set(decode_bytes(inst.read_bytes()).replace("\r\n", "\n").replace("\r", "\n").split("\n"))
+                    items = [(ln, t) for ln, t in items if t not in have]
+            except OSError:
+                pass
         demotable = can_demote(rel)
         for ln, t in items:
             for kw in th.get("keywords", []):
