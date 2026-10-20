@@ -7,7 +7,7 @@ SOURCES  build/evidence/wp07/download_ledger.jsonl (EffectCraft and FilmCraft, w
          FilmCraft exception if WP-07 could not keep its tarball, written by WP-10), the stage envelopes build/evidence/wp10/stage_*.json (did the stage fetch?), and the disk guard's own
          ledger in the scratch folder (a guard line per stage, with its status). A BLOCKED stage fetched nothing and is listed as such.
 RULES  each of the five pinned tarballs (PhotoCraft 0.10.0, VectorCraft 0.13.1, LightCraft 0.9.1, FilmCraft 0.9.0, EffectCraft 0.11.1) has at most one fetch, or a later fetch that carries a recorded
-       exception (printed with its reason); the FilmCraft 0.8.0 fallback and SoundCraft have none unless the ledger says why; the total stays under the 2 GB allowance; a stage envelope that says
+       exception (printed with its reason); the FilmCraft 0.8.0 fallback and SoundCraft have none unless the ledger says why; the total stays under the download allowance (ALLOWANCE_MB, 2,560 MB since 2026-10-20); a stage envelope that says
        it fetched must have its ledger line. A pip fetch (a row with "kind": "pip-wheel-set", written by spikes/sp3_blender/ledger_row.py: the bpy wheel and its dependency wheels for SP3)
        counts toward the total like a tarball, and a later fetch of the same set needs a recorded exception too (added Tue 20 Oct 2026, gate w2 nudge 6: pip fetches were outside the ledger).
 EXIT CODES (build plan 4.3)  0 the rules hold (a tarball not fetched yet is listed, not a failure)   1 a rule is broken, or --require-all and a tarball was not fetched   2 bad usage / unreadable file
@@ -23,7 +23,8 @@ sys.dont_write_bytecode = True
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.realpath(os.path.join(HERE, "..", ".."))
 FIVE = [("photocraft", "v0.10.0"), ("vectorcraft", "v0.13.1"), ("lightcraft", "v0.9.1"), ("filmcraft", "v0.9.0"), ("effectcraft", "v0.11.1")]
-ALLOWANCE_MB = 2048
+ALLOWANCE_MB = 2560        # MiB. 2026-10-20 (week-2 close-out gate): raised from 2048 so that G1's third bpy wheel-set fetch (about 428 MB, Sun 15 Nov) is not stopped by its own guard.
+                           # Keep equal to download_allowance_mb in spikes/sp1_craft_cli/config.json and DOWNLOAD_ALLOWANCE_MB in tests/integration/run_checks.py.
 
 
 def read_jsonl(path):

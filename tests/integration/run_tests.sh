@@ -4,7 +4,7 @@
 #   --quick  (at most 60 s, no render, no download, no timed run): the parity tests (settings card, phone row, harness chain, pins, decisions mirror, pc_report
 #            fields, lj.ps1 close v0, Noto families, scripts tested), the redaction checks (public_lint --self-test with zero skipped consumers, the path denylist,
 #            build/evidence/pc/, the derivation tools), the disk checks from every evidence envelope, the hygiene checks (stale_check --new-only, public_lint over the
-#            diff and the build, the theme guard, file size, binary, 8 MB, ignored files), the docs and the readiness map, INDEX.md, and the negative controls
+#            diff and the build, the theme guard, file size, binary, 9 MB of new text, ignored files), the docs and the readiness map, INDEX.md, and the negative controls
 #   --all    everything in --quick plus the end-to-end tests: the WP-04 test card through --chain h264_venue and spec_check.py; the A11 MO8 pair; a harness-rendered
 #            ProRes master through encode_phone.sh, spec_check.py, colour_patch.py and phone_check.py --scenario fill_20x9 (about 3 minutes, under 100 MB, the master under
 #            lj_with_disk 100; the encode takes its own guard)

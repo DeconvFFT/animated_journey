@@ -6,7 +6,7 @@
 #   bash spikes/sp1_craft_cli/run_sp1.sh --only APP TAG [--t1-only]     one stage (filmcraft v0.9.0 | effectcraft v0.11.1 | filmcraft v0.8.0)
 #   bash spikes/sp1_craft_cli/run_sp1.sh --all                          FilmCraft then EffectCraft (0.8.0 only if 0.9.0 fails T1 or T2); hours; run it in the background
 #   bash spikes/sp1_craft_cli/run_sp1.sh --verify-tarball FILE APP TAG  SHA-256 check only (what every stage does BEFORE it extracts)
-#   bash spikes/sp1_craft_cli/run_sp1.sh --ledger-check                 each tarball fetched once, under 2 GB
+#   bash spikes/sp1_craft_cli/run_sp1.sh --ledger-check                 each tarball fetched once, under the download allowance (2,560 MB since 2026-10-20; config.json)
 # Options: --profile full|lean|auto (default auto)   --wait SECONDS (poll for free disk before a stage; default 0)
 #
 # EACH STAGE (build plan 4.9, WP-07 item 3) is ONE lj_with_disk call that contains:

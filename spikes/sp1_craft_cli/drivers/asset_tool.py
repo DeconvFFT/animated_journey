@@ -7,7 +7,7 @@ USAGE  python3 -I spikes/sp1_craft_cli/drivers/asset_tool.py SUBCOMMAND ...
   verify  FILE APP TAG                 SHA-256 of FILE against release_assets.json (and the independent value of r8_hashes.json when there
                                        is one); prints OK or REJECTED; exit 0 / 1. Run BEFORE any extraction.
   plan    LISTING APP PROFILE          read a `tar -tvzf` listing; print JSON with the members to extract and their sizes
-  ledger  --check                      check the download ledger: each tarball once (a second fetch needs an `exception`), under 2 GB
+  ledger  --check                      check the download ledger: each tarball once (a second fetch needs an `exception`), under the download allowance (config.json: 2,560 MB since 2026-10-20)
   ledger  --add APP TAG --stage S [--exception TEXT] [--t1only]   append a ledger line for the tarball just fetched
   ledger  --count APP TAG              print how many ledger lines this tarball already has (a number, nothing else)
   ledger  --refetch-exception APP TAG  if this tarball already has a ledger line, print the exception text a second fetch must carry

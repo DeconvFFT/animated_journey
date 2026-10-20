@@ -263,7 +263,7 @@ def t_json():
 @test("lint_allowlist_clean")
 def t_lint():
     rc, out, err = sh(PY + [os.path.join("tests", "phone", "lint_strings.py")])
-    check("lint_allowlist_clean", rc == 0, "no Latin or Indic test string outside pipeline/phone/test_strings.json in pipeline/phone, tests/phone, skills-staging/phone-delivery", out.strip().splitlines()[-1] if out.strip() else err[:200])
+    check("lint_allowlist_clean", rc == 0, "no Latin or Indic test string outside pipeline/phone/test_strings.json in pipeline/phone, tests/phone, .claude/skills/mobile-phone-delivery", out.strip().splitlines()[-1] if out.strip() else err[:200])
 
 
 @test("lint_allowlist_negative_controls")
@@ -743,7 +743,7 @@ def t_row():
 
 @test("public_lint", modes=("all",))
 def t_public():
-    paths = [os.path.join(PH), os.path.join("tests", "phone"), os.path.join("skills-staging", "phone-delivery"), ARGS.evidence.replace(ROOT + os.sep, ""), os.path.join("build", "reports", "WP-08.md")]
+    paths = [os.path.join(PH), os.path.join("tests", "phone"), os.path.join(".claude", "skills", "mobile-phone-delivery"), ARGS.evidence.replace(ROOT + os.sep, ""), os.path.join("build", "reports", "WP-08.md")]
     paths = [p for p in paths if os.path.exists(os.path.join(ROOT, p))]
     rc, out, err = sh(PY + [os.path.join("scripts", "public_lint.py"), "--paths"] + paths)
     check("public_lint", rc == 0, "scripts/public_lint.py finds no name, user name, host name, address or path in the WP-08 files and evidence", "exit %d; %s" % (rc, (out.strip().splitlines() or [err.strip()[:150]])[-1]))

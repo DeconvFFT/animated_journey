@@ -2,9 +2,9 @@
  "actual": "ops_lint.mask equals public_lint.mask for six values under two mask settings; a 40-character hit shows keep + cap characters",
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 14522,
-  "avail_mb_min": 14522,
-  "avail_mb_start": 14522,
+  "avail_mb_end": 14478,
+  "avail_mb_min": 14478,
+  "avail_mb_start": 14478,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

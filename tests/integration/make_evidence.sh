@@ -41,7 +41,7 @@ run all         bash tests/integration/run_tests.sh --all
 run stale       python3 -I scripts/stale_check.py --new-only
 run lint_diff   python3 -I scripts/public_lint.py
 run lint_diff_flag python3 -I scripts/public_lint.py --diff
-run lint_paths  python3 -I scripts/public_lint.py --paths win scripts pipeline ops spikes tests build skills-staging reviews/build
+run lint_paths  python3 -I scripts/public_lint.py --paths win scripts pipeline ops spikes tests build $(test -d skills-staging && echo skills-staging) reviews/build
 run lint_theme  python3 -I scripts/public_lint.py --theme
 run selftest    python3 -I scripts/public_lint.py --self-test --fail-on-skip
 run decisions   python3 -I scripts/decisions_to_csv.py --check ops/decisions.csv

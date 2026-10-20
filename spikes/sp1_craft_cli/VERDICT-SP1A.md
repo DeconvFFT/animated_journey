@@ -20,7 +20,7 @@
 
 R8 decision rule (research/craft-motion.md): if T2 and T4 pass, agents may render drafts and chapters with the Craft CLIs in the container (still producing OTIO and ffmpeg fallbacks); if T2 fails, FilmCraft stays maker-side and the container renders with ffmpeg and code; if T4 fails on memory or speed, EffectCraft is limited to titles and line-draw on the maker's PC.
 
-**Outcome: agents may render drafts and chapters with the Craft CLIs in the container.** T2 and T4 passed on Linux CPU. Every chapter still keeps its OTIO and ffmpeg fallback (D-11, D-12), and nothing here says the apps run on the maker's PC.
+**Outcome: agents may render drafts and chapters with the Craft CLIs in the container (in this plan: drafts; `ROADMAP.md` row 136 keeps the FilmCraft chapter pass on the PC).** T2 and T4 passed on Linux CPU. Every chapter still keeps its OTIO and ffmpeg fallback (D-11, D-12), and nothing here says the apps run on the maker's PC.
 
 **This T2 pass rests on the mark as amended on Tue 20 Oct 2026** (week-2 gate, nudge 1): the first run of the same pin (01:20 UTC) failed `T2.mid_dissolve` by 28.50 levels, because the first wording compared the frame with the average of the ENCODED values, which no gamma-correct compositor can pass; the mark became the 50/50 mix in linear light (same 2-level tolerance), `T2.dissolve_steps` was added, and the one 0.9.0 stage was re-run. The first run's envelopes are kept in `build/evidence/wp07/first-mark/`. The fallback 0.8.0 was not re-run (it is fetched only when the pin fails). **Practical rule: one chapter, one dissolve route.** FilmCraft blends in linear light; ffmpeg `xfade` and headless Chromium blend the encoded values, so the same dissolve has a different mid-tone on each (`build/evidence/wp07/dissolve_routes.json`, from `drivers/dissolve_routes.py`).
 
@@ -35,7 +35,7 @@ R8 decision rule (research/craft-motion.md): if T2 and T4 pass, agents may rende
 | `T2.rss_slope` | 26.31 MB per still (RSS(100) 3342 - RSS(20) 1237 over 80 stills) | under 40 MB per still | PASS |
 | `T2.rss_n300` | 5426 MB | under 12288 MB (watchdog kills at 10240 MB) | PASS |
 | `T2.h264_completes` | exit 0 after 204 s | export finishes without crash, hang or the 10 GB kill | PASS |
-| `T2.h264_speed` | 11.76 fps (2400 frames in 204 s) | at least 5 fps, i.e. under 480 s for 2400 frames (R8 pass mark scaled to 2,400 frames at this film's 24 fps from R8's 3,000-frame figure) | PASS |
+| `T2.h264_speed` | 11.76 fps (2400 frames in 204 s) | at least 5 fps, i.e. under 480 s for 2400 frames (R8 pass mark scaled from 3,000 frames at 25 fps) | PASS |
 | `T2.h264_frame_count` | 2400 counted, 2400 expected, rate 24/1 | ffprobe frame count equals expected | PASS |
 | `T2.h264_decode_silent` | '' | ffmpeg -v error -i out -f null - prints nothing | PASS |
 | `T2.offline_media_empty` | [] | offlineMedia: [] in the export result | PASS |

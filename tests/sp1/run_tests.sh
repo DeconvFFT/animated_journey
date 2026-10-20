@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # tests/sp1/run_tests.sh [--quick|--all] [--real-all] [--skip-network]    WP-07: SP1a, the Craft CLIs in the container
 #
-#   --quick  (at most 60 s, no downloads, no timed runs): syntax, the library self-test, the asset table, `--list` (live, and with the fake 900 MB and
+#   --quick  (at most 60 s, no downloads, no timed runs): syntax, the library self-test, the --defects-only prepare step (made-up lines), the asset table, `--list` (live, and with the fake 900 MB and
 #            600 MB df lines), the ledger check, the guide (regenerated, then check_guide.py), the memory watchdog, the public-repo lint.
 #   --all    everything in --quick, plus
 #            the real network lines: `--sums-only` (six small text files), the deliberately wrong asset (blocked_proof.json, exit 3), and
@@ -19,6 +19,8 @@
 #          --skip-defects / --defects-only  split a full --all in two for a host where it passes 10 minutes (about 13 on the 20 Oct 2026 container): `--all --skip-defects` runs everything
 #          except the planted-defect lines (the 12 `fake.defect_*` lines) and writes tests.jsonl; `--defects-only` (it implies --all) runs just those lines and APPENDS them to tests.jsonl, so
 #          the two runs together leave the lines of one full --all (the flipped-byte line now runs before the defect lines, in part 1). Run them one after the other, never at the same time.
+#          `--defects-only` is idempotent (w2t-t2-wording, 2026-10-20; tests/sp1/prepare_defects.py): before it appends, it drops every `fake.defect_*` line already in tests.jsonl, so a second run
+#          leaves 12 such lines, not 24; and it refuses (exit 2, nothing written) when tests.jsonl is missing or holds no part-1 line.
 #
 # One line per test:  PASS|FAIL|UNVERIFIED|SKIPPED|BLOCKED  name  detail.  Exit 0 only if no line is FAIL or BLOCKED; exit 1 if a line FAILs; exit 3 if a line is
 # BLOCKED (the disk guard refused a real stage: that is an environment fact, not a defect). Every line also writes an evidence envelope (build plan 4.2) to
@@ -45,7 +47,12 @@ mkdir -p "$EVID" "$SCRATCH_ROOT"
 # Another runner (WP-11a's run_week2_checks.sh) may call this script's --quick while a --all is running: each mode has its own evidence file and its own lock.
 JSONL="$EVID/tests.jsonl"; [ "$MODE" = "--quick" ] && JSONL="$EVID/tests_quick.jsonl"
 exec 9>"$SCRATCH_ROOT/wp07-tests-${MODE#--}.lock"; flock -w 1200 9 || { echo "BUSY: another run_tests.sh $MODE holds the lock"; exit 3; }
-[ "$DEFECTS_ONLY" = 1 ] || : > "$JSONL"   # --defects-only appends to the file the first part wrote
+if [ "$DEFECTS_ONLY" = 1 ]; then
+  # --defects-only appends to the file the first part wrote: refuse (exit 2, nothing written) without part 1, and drop the planted-defect lines of an earlier part 2 first, so that it is idempotent
+  python3 -I "$T/prepare_defects.py" "$JSONL" || exit 2
+else
+  : > "$JSONL"
+fi
 FAILS=0; BLOCKED=0; UNV=0; NPASS=0
 rec() {  # STATUS NAME DETAIL [EXPECTED]
   local st="$1" name="$2" detail="$3" exp="${4:-the check passes}"
@@ -79,6 +86,17 @@ out="$(python3 -I "$DRV/sp1_lib.py" --selftest 2>&1)"; rc=$?
 check lib.selftest "$([ $rc = 0 ] && echo 1 || echo 0)" "sp1_lib --selftest: $(grep -c '^PASS' <<<"$out") PASS, $(grep -c '^FAIL' <<<"$out") FAIL" "scrubber and df parser behave"
 out="$(python3 -I "$T/watchdog_test.py" 2>&1)"; rc=$?
 check watchdog.rss_and_wall "$([ $rc = 0 ] && echo 1 || echo 0)" "$(tr '\n' ';' <<<"$out" | cut -c1-400)" "the 10 GB watchdog mechanism kills above its limit, spares a quiet process, and the wall clock stops a sleeper"
+
+# --defects-only is idempotent and refuses without part 1 (prepare_defects.py, on made-up lines; nothing real is touched)
+dd="$(mktemp -d "$SCRATCH_ROOT/defects.XXXXXX")"
+printf '%s\n' '{"test": "syntax.bash", "status": "PASS"}' '{"test": "fake.verify_flipped_byte", "status": "PASS"}' '{"test": "fake.defect_filmcraft_leak", "status": "PASS"}' '{"test": "fake.defect_effectcraft_slow", "status": "PASS"}' > "$dd/t.jsonl"
+python3 -I "$T/prepare_defects.py" "$dd/t.jsonl" >/dev/null; r1=$?; n1="$(grep -c 'fake.defect' "$dd/t.jsonl")"; cp "$dd/t.jsonl" "$dd/t1.jsonl"
+python3 -I "$T/prepare_defects.py" "$dd/t.jsonl" >/dev/null; r2=$?
+printf '%s\n' '{"test": "syntax.bash", "status": "PASS"}' '{"test": "fake.defect_filmcraft_leak", "status": "PASS"}' > "$dd/n.jsonl"; cp "$dd/n.jsonl" "$dd/n0.jsonl"
+python3 -I "$T/prepare_defects.py" "$dd/n.jsonl" >/dev/null; r3=$?
+python3 -I "$T/prepare_defects.py" "$dd/none.jsonl" >/dev/null; r4=$?
+check defects_only.idempotent_and_refuses "$([ $r1 = 0 ] && [ "$n1" = 0 ] && [ $r2 = 0 ] && cmp -s "$dd/t.jsonl" "$dd/t1.jsonl" && [ $r3 = 2 ] && cmp -s "$dd/n.jsonl" "$dd/n0.jsonl" && [ $r4 = 2 ] && [ ! -e "$dd/none.jsonl" ] && echo 1 || echo 0)" "exits $r1 $r2 $r3 $r4 (expected 0 0 2 2); defect lines left after the first prepare: $n1; second prepare changed the file: $(cmp -s "$dd/t.jsonl" "$dd/t1.jsonl" && echo no || echo YES)" "prepare_defects.py drops the fake.defect_* lines once and again changes nothing, and refuses (exit 2, file untouched, none created) without a part-1 line or without the file"
+rm -rf -- "${dd:?}"
 
 # the asset table
 out="$(python3 -I - "$SP1/release_assets.json" "$EVID/sums" <<'PY'
@@ -134,7 +152,7 @@ check list.fake_600_profile_full "$([ $rc = 3 ] && grep -q 'Neither profile fits
 out="$(LJ_DF_CMD="$SP1/tests/fake_df_600.sh" bash "$SP1/run_sp1.sh" --list 2>&1)"; rc=$?
 check list.fake_600 "$([ $rc = 3 ] && grep -q 'REFUSED: Avail 600 MB minus planned 600 MB leaves 0 MB, below the 400 MB floor (filmcraft-v0.9.0, full profile)' <<<"$out" && grep -q 'REFUSED: Avail 600 MB minus planned 350 MB leaves 250 MB, below the 400 MB floor (filmcraft-v0.9.0, lean profile)' <<<"$out" && echo 1 || echo 0)" "exit $rc; $(grep -E '^REFUSED' <<<"$out" | tr '\n' ' ' | cut -c1-360)" "at a fake 600 MB both profiles are refused with the exact message, exit 3"
 out="$(bash "$SP1/run_sp1.sh" --ledger-check 2>&1)"; rc=$?
-check ledger.check "$([ $rc = 0 ] && echo 1 || echo 0)" "$out" "each tarball fetched once (a second fetch needs a recorded exception), under the 2 GB allowance"
+check ledger.check "$([ $rc = 0 ] && echo 1 || echo 0)" "$out" "each tarball fetched once (a second fetch needs a recorded exception), under the download allowance (2,560 MB since 2026-10-20)"
 
 # the guide
 tmpg="$(mktemp "$SCRATCH_ROOT/guide.XXXXXX")"

@@ -3,7 +3,7 @@
  "version": 3,
  "owner": "WP-03",
  "date_utc": "2026-10-20",
- "source": "DECISIONS.md Table 4 (S-01 to S-65, register v3 of 2026-10-19) and W-29. Statuses are a copy: update a row's status here when Table 4 changes (for example when the Haiku pass applies S-01); status_table4 holds the register's own Status cell for the record. When Table 4 grows, add the rows and their patterns here in the same pass and re-cut scripts/stale_baseline.json the same day; --self-test fails when a Table 4 id has no row, when a status disagrees with the register, and when the O-row bound is behind the register. Amended 2026-10-20 (week-2 close-out, on the orchestrator's instruction): S-65 status copy set to applied (Table 4); two W-29 patterns for the retired phone figures '4 Mb/s' (PH2 cap) and '36 characters' (phone caption line) after the register's W-63 and W-18 amendment, with the allowlist entries AL-6a to AL-6e for their history.",
+ "source": "DECISIONS.md Table 4 (S-01 to S-66, register v3 of 2026-10-19 and its 2026-10-20 row S-66) and W-29. Statuses are a copy: update a row's status here when Table 4 changes (for example when the Haiku pass applies S-01); status_table4 holds the register's own Status cell for the record. When Table 4 grows, add the rows and their patterns here in the same pass and re-cut scripts/stale_baseline.json the same day; --self-test fails when a Table 4 id has no row, when a status disagrees with the register, and when the O-row bound is behind the register. Amended 2026-10-20 (week-2 close-out, on the orchestrator's instruction): S-65 status copy set to applied (Table 4); two W-29 patterns for the retired phone figures '4 Mb/s' (PH2 cap) and '36 characters' (phone caption line) after the register's W-63 and W-18 amendment, with the allowlist entries AL-6a to AL-6e for their history. Amended again 2026-10-20 (package w2t-t2-wording, g, on the orchestrator's instruction): the two W-29 phone patterns now sit under the register's new row S-66 (applied), which has its own row here; the W-29 row no longer carries the phone figures. The allowlist entries AL-6a to AL-6e name S-66 for the same reason.",
  "dialect": "Python re. Matched per line. flags is '' or 'i'. FAIL = unambiguous stale value; WARN = needs a human. Optional per pattern: 'attribute' (a name in 'attributions', or a list) picks the Table 4 row by file, first match wins, else row_id; 'only_files' limits the pattern to files matching any of the globs; 'register_prefix' + 'register_last' tie a pattern to the register's last row (checked by --self-test).",
  "scan": {
   "include": [
@@ -708,13 +708,22 @@
    "coverage_note": "Two wordings are searched: the 'only research/pushtimarg-world.md exists' line and 'Reconcile the two before either is run'. A skill or playbook that treats Template K and Exercise 7 as two separate gates in other words needs a person."
   },
   {
+   "row_id": "S-66",
+   "status": "applied",
+   "status_table4": "applied 2026-10-20 in playbooks and skills; the stale patterns move under this ID",
+   "coverage": "partial",
+   "stale": "the phone figures before the 2026-10-20 amendment: a PH2 cap of '4 Mb/s' and phone captions of '36 characters' a line",
+   "canonical": "PH2 cap 3.5 Mb/s (W-63 as amended 2026-10-20; -maxrate 3500k); phone captions at most 32 characters a line (W-18 as amended 2026-10-20; the register wins)",
+   "owner": "orchestrator (register row); applied 2026-10-20 in playbooks and skills by the phone-wording package",
+   "coverage_note": "The two retired phone figures are searched in the shapes the project used: '4 Mb/s' (also Mbps, Mbit/s), '-maxrate 4M' or 4000k, the profile key bitrate_cap_mbps 4; '36 characters' on a line that also says line, caption, subtitle, FontSize or W-18, and the profile key max_chars_per_line 36. They sat under W-29 until Table 4 gained this row (2026-10-20); history is allowlisted by AL-6a to AL-6e (scripts/stale_allowlist.json). Other wordings (four megabits a second, 36 chars) need a person."
+  },
+  {
    "row_id": "W-29",
    "status": "check",
    "coverage": "full",
-   "stale": "Scribe-to-do phrases: 'not applied here', 'for the scribe', 'pending scribe'; an O-row above the register's last (O-84); the retired phone figures of W-63 and W-18 (amended 2026-10-20): '4 Mb/s' as PH2's cap and '36 characters' as the phone caption line",
-   "canonical": "Resolve or remove the phrase (W-29); PH2 cap 3.5 Mb/s and at most 32 characters a phone caption line (W-63 and W-18 as amended 2026-10-20; the register wins)",
-   "owner": "Haiku",
-   "coverage_note": "The two retired phone figures are searched in the shapes the project used: '4 Mb/s' (also Mbps, Mbit/s), '-maxrate 4M' or 4000k, the profile key bitrate_cap_mbps 4; '36 characters' on a line that also says line, caption, subtitle, FontSize or W-18, and the profile key max_chars_per_line 36. They sit under W-29 because Table 4 has no row for them (the register is the orchestrator's); a Table 4 row S-66 would take them over."
+   "stale": "Scribe-to-do phrases: 'not applied here', 'for the scribe', 'pending scribe'; an O-row above the register's last (O-84)",
+   "canonical": "Resolve or remove the phrase (W-29)",
+   "owner": "Haiku"
   }
  ],
  "patterns": [
@@ -2282,7 +2291,7 @@
   },
   {
    "id": "W-29.phone-ph2-cap-4mbps",
-   "row_id": "W-29",
+   "row_id": "S-66",
    "severity": "FAIL",
    "flags": "",
    "regex": "(?<![\\d.,])4(?:\\.0+)?[ \\u00a0]?(?:Mb/sec|Mb/s|Mbps|Mbit/sec|Mbit/s|Mbits/s|MBit/s)(?![\\w/])|\\bmaxrate[\"'\\s=:,]+4(?:M|000k|000K|\\.0M)(?![\\w.])|\\bbitrate_cap_mbps[\"']?\\s*[:=]\\s*4(?:\\.0+)?(?![\\d.])",
@@ -2305,12 +2314,12 @@
     "\"bitrate_cap_mbps\": 3.5",
     "4.5 Mb/s"
    ],
-   "note": "PH2's cap was 4 Mb/s until the register's amendment of 2026-10-20 (W-63: 3.5 Mb/s, WP-08's measured value). The unit forms are case-sensitive on purpose (4 MB/s is megabytes). History keeps the figure (scripts/stale_allowlist.json AL-6a to AL-6e); a new unrelated 4 Mb/s (a download speed, say) is an orchestrator allowlist decision.",
+   "note": "PH2's cap was 4 Mb/s until the register's amendment of 2026-10-20 (W-63: 3.5 Mb/s, WP-08's measured value). The unit forms are case-sensitive on purpose (4 MB/s is megabytes). History keeps the figure (scripts/stale_allowlist.json AL-6a to AL-6e); a new unrelated 4 Mb/s (a download speed, say) is an orchestrator allowlist decision. Sits under Table 4 row S-66 since 2026-10-20 (the id keeps its W-29 prefix, so that earlier reports and notes still find it).",
    "canonical": "PH2 cap 3.5 Mb/s (W-63 as amended 2026-10-20; -maxrate 3500k)"
   },
   {
    "id": "W-29.phone-caption-36-chars",
-   "row_id": "W-29",
+   "row_id": "S-66",
    "severity": "FAIL",
    "flags": "i",
    "regex": "(?<![\\d.,])36[ \\u00a0-]?(?:characters?|chars?)\\b(?=[^\\n]*\\b(?:lines?|captions?|subtitles?|FontSize|W-18)\\b)|\\b(?:captions?|subtitles?|lines?|W-18)\\b[^\\n]{0,80}?(?<![\\d.,])36[ \\u00a0-]?(?:characters?|chars?)\\b|\\bmax_chars(?:_per_line)?[\"']?\\s*[:=]\\s*36(?![\\d.])",
@@ -2334,7 +2343,7 @@
     "36 lines of text",
     "36.5 characters a line"
    ],
-   "note": "The phone caption line was at most 36 characters until the register's amendment of 2026-10-20 (W-18: at most 32, measured to fit the 90% by 90% box in both scripts at FontSize=28; the venue file keeps its guide of 42). A bare '36 characters' with no line or caption word on the same line is not matched (an id of that length is not a caption).",
+   "note": "The phone caption line was at most 36 characters until the register's amendment of 2026-10-20 (W-18: at most 32, measured to fit the 90% by 90% box in both scripts at FontSize=28; the venue file keeps its guide of 42). A bare '36 characters' with no line or caption word on the same line is not matched (an id of that length is not a caption). Sits under Table 4 row S-66 since 2026-10-20 (the id keeps its W-29 prefix, so that earlier reports and notes still find it).",
    "canonical": "At most 32 characters a phone caption line (W-18 as amended 2026-10-20)"
   }
  ],

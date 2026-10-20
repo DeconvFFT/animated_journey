@@ -42,7 +42,7 @@
     ]
    }
   ],
-  "seconds": 1.8,
+  "seconds": 1.9,
   "size": [
    1920,
    1080
@@ -50,9 +50,9 @@
  },
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 14523,
-  "avail_mb_min": 14523,
-  "avail_mb_start": 14523,
+  "avail_mb_end": 14479,
+  "avail_mb_min": 14479,
+  "avail_mb_start": 14479,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

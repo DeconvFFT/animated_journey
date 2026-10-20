@@ -10,7 +10,7 @@ pipeline/phone/test_strings.json is the ONLY place a test string may be written.
      Indic words);
   3. a caption fixture (.srt, .vtt, .ass) holds a cue line that is not allowlisted strings joined by single spaces;
   4. a Latin test phrase of the allowlist's own family ("Test" followed by digits) appears with different text.
-The strings file itself is skipped. Default roots: pipeline/phone, tests/phone, skills-staging/phone-delivery. Exit 0 clean; 1 findings; 2 bad usage.
+The strings file itself is skipped. Default roots: pipeline/phone, tests/phone, .claude/skills/mobile-phone-delivery. Exit 0 clean; 1 findings; 2 bad usage.
 """
 import argparse
 import json
@@ -135,7 +135,7 @@ def main(argv=None):
     ap.add_argument("--strings", default=STRINGS)
     ap.add_argument("--quiet", action="store_true")
     a = ap.parse_args(argv)
-    roots = [os.path.abspath(r) for r in a.root] or [os.path.join(ROOT, "pipeline", "phone"), os.path.join(ROOT, "tests", "phone"), os.path.join(ROOT, "skills-staging", "phone-delivery")]
+    roots = [os.path.abspath(r) for r in a.root] or [os.path.join(ROOT, "pipeline", "phone"), os.path.join(ROOT, "tests", "phone"), os.path.join(ROOT, ".claude", "skills", "mobile-phone-delivery")]
     roots = [r for r in roots if os.path.isdir(r)]
     if not os.path.isfile(a.strings):
         print("USAGE: the strings file does not exist")

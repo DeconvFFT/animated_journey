@@ -2,9 +2,9 @@
  "actual": "7 GATHER mutations, each exit 1 naming the problem",
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 14520,
-  "avail_mb_min": 14520,
-  "avail_mb_start": 14522,
+  "avail_mb_end": 14475,
+  "avail_mb_min": 14475,
+  "avail_mb_start": 14478,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

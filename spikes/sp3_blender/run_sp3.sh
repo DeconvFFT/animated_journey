@@ -72,7 +72,7 @@ do_check() {
   say "  free disk          Avail ${avail} MB now; needed at least ${ENTRY_MB} MB (planned ${PLANNED_MB} MB + the 400 MB floor of scripts/lj_guard.sh)"
   say "  bpy wheel          $(commas "$wb") bytes ($((wb / 1048576)) MiB), cp313 manylinux_2_28 x86_64, ${w#*|}; the venv it makes is about 1 GB on disk (R9/M14)"
   say "  wheel set          $(python3 -I "$LROW" check 2>&1 | head -1)"
-  say "  pip fetches        $(python3 -I "$LROW" count --ledger "$LEDGER" 2>/dev/null || echo '?') of the bpy wheel set are on the download ledger already (about 428 MB each); a further fetch needs SP3_FETCH_REASON and a look at the 2 GB allowance (python3 -I spikes/sp1b_readback/check_ledger.py)"
+  say "  pip fetches        $(python3 -I "$LROW" count --ledger "$LEDGER" 2>/dev/null || echo '?') of the bpy wheel set are on the download ledger already (about 428 MB each); a further fetch needs SP3_FETCH_REASON and a look at the 2,560 MB allowance, raised from 2,048 on 2026-10-20 (python3 -I spikes/sp1b_readback/check_ledger.py)"
   say "  Blender tarball    $(commas "$bb") bytes ($((bb / 1048576)) MiB), blender-5.2.2-linux-x64.tar.xz, ${b#*|}; NOT used by this script (bpy is the route); listed for the PC route"
   say "  python             ${pyv:-none} at ${py:-none} (the wheel is cp313 only, so 3.13 is required)"
   say "  reused scene       research/production-scale-fixtures/followup2-s3-kitchen-standin.py: ${ok_scene}; primitives only, no photograph, no family imagery"
@@ -135,7 +135,7 @@ do_run() {
     if [[ "${SP3_DRYRUN:-}" == 1 ]]; then
       say "SP3_DRYRUN=1: the ledger holds $nf fetch(es) of the bpy wheel set, so a real --run would stop here unless SP3_FETCH_REASON='why another fetch' is set."
     else
-      say "NOT RUN: the download ledger already holds $nf fetch(es) of the bpy wheel set (about 428 MB each); a further fetch needs SP3_FETCH_REASON='why another fetch' (it is recorded as the exception), as for a Craft tarball, and a look at the 2 GB allowance: python3 -I spikes/sp1b_readback/check_ledger.py"
+      say "NOT RUN: the download ledger already holds $nf fetch(es) of the bpy wheel set (about 428 MB each); a further fetch needs SP3_FETCH_REASON='why another fetch' (it is recorded as the exception), as for a Craft tarball, and a look at the 2,560 MB allowance (raised from 2,048 on 2026-10-20): python3 -I spikes/sp1b_readback/check_ledger.py"
       say "Nothing was started and nothing was forced."
       return 3
     fi

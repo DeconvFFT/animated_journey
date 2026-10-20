@@ -90,7 +90,7 @@ avail_mb() { LC_ALL=C ${LJ_DF_CMD:-df -BM -P /} 2>/dev/null | awk 'NR==2{gsub(/M
 GLOBAL_CHECKS=(
   "lint.self_test|python3 -I scripts/public_lint.py --self-test --fail-on-skip"
   "lint.diff_mode|python3 -I scripts/public_lint.py"
-  "lint.build_folders|python3 -I scripts/public_lint.py --paths win scripts pipeline ops spikes tests build skills-staging reviews/build"
+  "lint.build_folders|python3 -I scripts/public_lint.py --paths win scripts pipeline ops spikes tests build \$(test -d skills-staging && echo skills-staging) reviews/build"  # skills-staging/ is linted only while it exists (2026-10-20: the install removed it)
   "lint.theme_guard|python3 -I scripts/public_lint.py --theme"
   "stale.self_test|python3 -I scripts/stale_check.py --self-test"
   "stale.new_only|python3 -I scripts/stale_check.py --new-only"   # dropped below when the areas run: the integration area runs the same command

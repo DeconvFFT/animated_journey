@@ -1,4 +1,4 @@
-tests/integration/run_checks.py --mode quick   (Avail now 14522 MB, ffmpeg 6.1.1-3ubuntu5)
+tests/integration/run_checks.py --mode quick   (Avail now 14478 MB, ffmpeg 6.1.1-3ubuntu5)
 PASS       parity.settings_card_vs_settings_json        11 card rows read; all equal
 PASS       parity.phone_row_md_vs_profile_json          all equal (19 facts)
 PASS       parity.phone_profile_vs_register             profile.json equals the register in all 8 figures (PH2 cap 3.5 Mb/s, 32 characters a line)
@@ -7,7 +7,7 @@ PASS       parity.card_language_note_vs_scripts_tested  tested latin,devanagari 
 PASS       parity.render_builtin_chain_vs_chains_json   equal in 6 fields; the built-in carries 0 audio arguments
 PASS       parity.profiles_vs_chains                    5 settings profiles and 2 phone profiles agree with their chains; chains not yet approved: phone_720_share
 PASS       parity.pins_vs_release_assets_vs_w22         equal: photocraft 0.10.0, vectorcraft 0.13.1, lightcraft 0.9.1, filmcraft 0.9.0, effectcraft 0.11.1
-PASS       parity.decisions_csv_vs_register             OK: decisions.csv matches the register: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
+PASS       parity.decisions_csv_vs_register             OK: decisions.csv matches the register: 251 rows (D 32, W 79, O 74, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 66)
 PASS       parity.pc_report_fields_in_schema            19 fixtures traced, 66 distinct fields read by windows_check.py, none outside the schema; 12 fields named by scripts/redaction_patterns.json, NOTE (harmless, WP-03's file): vulkan.devices[].driver_ver
 PASS       parity.lj_close_v0_names_and_switches        working options ['config', 'fromreport', 'savetier', 'skipchecks']; the three v1 switches are refused; no mutating cmdlet, alias, redirection or git verb visible to the static scan (string-invoked com
 PASS       parity.lj_close_v0_refusals_and_help         PowerShell 7.5.4 on Linux: 3 refusals exit 2, help says dry run only
@@ -20,26 +20,26 @@ PASS       redaction.pc_evidence_folder                 1 file(s) in the folder 
 PASS       redaction.derivation_tools_leak_nothing      17 tier files derived and checked against 17 fixture strings; chains derivation clean
 PASS       redaction.no_raw_report_shapes_in_evidence   none found
 PASS       redaction.gitignore_backstop_for_raw_reports all 5 sample names ignored
-PASS       disk.stage_budget_rule_from_envelopes        1601 envelopes read; 25 stages with planned_write_mb above 100, all within the rule
-PASS       disk.every_envelope_carries_df_figures       1601 envelopes from 13 packages (WP-01a,WP-01b,WP-02,WP-03,WP-04,WP-05,WP-06,WP-07,WP-08,WP-09,WP-10,WP-11a,WP-11b) all carry the four figures
+PASS       disk.stage_budget_rule_from_envelopes        1602 envelopes read; 25 stages with planned_write_mb above 100, all within the rule
+PASS       disk.every_envelope_carries_df_figures       1602 envelopes from 13 packages (WP-01a,WP-01b,WP-02,WP-03,WP-04,WP-05,WP-06,WP-07,WP-08,WP-09,WP-10,WP-11a,WP-11b) all carry the four figures
 PASS       disk.hard_floor_crossings_are_explained      1 crossing(s), all listed with a reason: WP-10 mech.disk_floor_abort_cleans_up
-PASS       disk.each_tarball_downloaded_once            check_ledger exit 0: ledger: 11 fetches in the two ledgers, 5 of the 5 pinned tarballs fetched, 1506.9 MB of the 2048 MB allowance; each fetched once or with a recorded exception: OK; recount: 5 pinne
-PASS       disk.downloads_under_2gb_allowance           1580 MB on the ledgers (Craft tarballs and the SP3 pip wheel sets) + 75.4 MB PowerShell (75396784 bytes, from the fetch evidence) + 11 MB npm packs + about 1 MB wheel = 1667 MB of 2048 MB
-PASS       disk.cleanup_scratch_dry_run_and_df          exit 0; df now Avail 14522 MB; --yes would free 209.1 MB in 10 item(s), so Avail would be about 14731 MB; the trees were unchanged: True. The real --yes is NOT run here: it would delete the PowerShell
-PASS       disk.cleanup_scratch_yes_reports_df_after    exit 0; 4 of 4 listed items removed, 3 of 3 kept items intact; df before 14487 MB, after 14518 MB; no absolute path in the output: True
+PASS       disk.each_tarball_downloaded_once            check_ledger exit 0: ledger: 11 fetches in the two ledgers, 5 of the 5 pinned tarballs fetched, 1506.9 MB of the 2560 MB allowance; each fetched once or with a recorded exception: OK; recount: 5 pinne
+PASS       disk.downloads_under_2gb_allowance           1580 MB on the ledgers (Craft tarballs and the SP3 pip wheel sets) + 75.4 MB PowerShell (75396784 bytes, from the fetch evidence) + 11 MB npm packs + about 1 MB wheel = 1667 MB (decimal), against the 
+PASS       disk.cleanup_scratch_dry_run_and_df          exit 0; df now Avail 14478 MB; --yes would free 209.1 MB in 10 item(s), so Avail would be about 14687 MB; the trees were unchanged: True. The real --yes is NOT run here: it would delete the PowerShell
+PASS       disk.cleanup_scratch_yes_reports_df_after    exit 0; 4 of 4 listed items removed, 3 of 3 kept items intact; df before 14443 MB, after 14474 MB; no absolute path in the output: True
 PASS       hygiene.stale_check_new_only                 new-only: 0 new FAIL hit(s), 0 new WARN hit(s); 0 baseline hit(s) no longer present
-PASS       hygiene.public_lint_over_the_diff            exit 0: public_lint: mode diff, 154 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 1 suppressed by the config allow list
-PASS       hygiene.public_lint_over_the_build_folders   exit 0: public_lint: mode paths, 627 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 1 fixture note(s), 5 suppressed by the config allow list
-PASS       hygiene.theme_guard                          default scope exit 0: theme guard: 5 file(s) scanned (new or changed theme-bearing files), 0 finding(s), 0 exclusion statement(s) shown as NOTE; explicit exit 0: theme guard: 7 file(s) scanned (explic
-PASS       hygiene.no_file_over_1mb                     981 files checked; the largest is research/cinematic-quality.md at 265388 bytes
-PASS       hygiene.no_binary_file                       981 files scanned, none binary (2 reviewed fixtures allowed by the lint config)
-PASS       hygiene.new_text_under_8mb                   7.59 MB in 627 files; largest: build/evidence 2.82 MB, pipeline 0.64 MB, reviews 0.63 MB, spikes 0.55 MB, build/reports 0.50 MB
+PASS       hygiene.public_lint_over_the_diff            exit 0: public_lint: mode diff, 139 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+PASS       hygiene.public_lint_over_the_build_folders   exit 0: public_lint: mode paths, 632 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 1 fixture note(s), 4 suppressed by the config allow list
+PASS       hygiene.theme_guard                          default scope exit 0: theme guard: 4 file(s) scanned (new or changed theme-bearing files), 0 finding(s), 0 exclusion statement(s) shown as NOTE; explicit exit 0: theme guard: 7 file(s) scanned (explic
+PASS       hygiene.no_file_over_1mb                     987 files checked; the largest is research/cinematic-quality.md at 265388 bytes
+PASS       hygiene.no_binary_file                       987 files scanned, none binary (2 reviewed fixtures allowed by the lint config)
+PASS       hygiene.new_text_under_8mb                   7.63 MB in 632 files; largest: build/evidence 2.81 MB, reviews 0.69 MB, pipeline 0.64 MB, spikes 0.57 MB, build/reports 0.56 MB
 PASS       hygiene.no_ignored_file_tracked_or_staged    0 staged file(s), none ignored; nothing tracked is ignored
 PASS       docs.pipeline_readme                         63 lines; sections ok: True; tools not named: none; paths that do not exist: none
 PASS       docs.staged_skill_update                     front matter ok: True; installed headings missing: none; terms missing: none; paths that do not exist: none; CHANGES.md 3561 characters
 PASS       readiness.map_statuses_and_evidence          27 rows (PASS 3, UNVERIFIED 1, maker-owed 14, not started 9)
-PASS       index.thirteen_rows_with_existing_links      13 rows, 61 links, generated 2026-10-20T04:43:04Z.
+PASS       index.thirteen_rows_with_existing_links      13 rows, 61 links, generated 2026-10-20T06:42:24Z.
 PASS       index.runner_lists_thirteen_areas_landed     exit 0; Landed: 13 of 13; areas: hygiene,win,ops,validators,render,roundtrip,sp1,win_lj,win_kit2,phone,spikes,runner,integration; missing run_tests.sh: none
 PASS       ctrl.checkers_fail_on_planted_defects        63 planted defects were each caught and 20 known-good states passed
-SUMMARY quick: 41 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED, 0 SKIPPED in 30 s; lowest Avail seen 14517 MB
-slowest: hygiene.stale_check_new_only 13.6 s; hygiene.public_lint_over_the_build_folders 4.5 s; hygiene.theme_guard 3.5 s; redaction.derivation_tools_leak_nothing 1.9 s; parity.lj_close_v0_refusals_and_help 1.9 s
+SUMMARY quick: 41 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED, 0 SKIPPED in 31 s; lowest Avail seen 14473 MB
+slowest: hygiene.stale_check_new_only 13.1 s; hygiene.public_lint_over_the_build_folders 5.4 s; hygiene.theme_guard 3.5 s; redaction.self_test_zero_skipped_consumers 2.2 s; redaction.derivation_tools_leak_nothing 2.1 s

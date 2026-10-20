@@ -4,18 +4,15 @@
  "patterns_version": 3,
  "note": "Today's hits: counts and locations. --new-only compares the fingerprint (file, pattern, normalised line text), not the line number, so inserting lines does not make old hits look new.",
  "provenance": [
-  "2026-10-20, re-cut once (week-2 close-out implementor, on the orchestrator's instruction; Fable gate nudge 4 of reviews/build/w2-gate-r1.md): after the close-out packages c1 (FilmCraft dissolve ruling), c2 (phone wording, folded mobile-phone-delivery skill) and c3 (evidence and verdicts) landed, with the 16 reconciled skills installed (f474039) and patterns v3 in force. Why: the previous baseline (85 hits, 83 FAIL and 2 WARN, patterns v2) still listed 22 hits that were gone (19 in .claude/skills, fixed by the install; 3 in spikes/sp1_craft_cli, reworded by c1), so --new-only no longer guarded those spots, and patterns v3 added W-29.phone-ph2-cap-4mbps and W-29.phone-caption-36-chars. Hit count before: 85 (83 FAIL, 2 WARN). After: 63 (62 FAIL, 1 WARN); 22 removed, 0 added. The two new patterns found 2 hits, both in research/mobile-delivery-fixtures and both allowlisted by AL-6a, so they are not in the baseline. What is left is the record of research fixtures and sources (34 in research/sources, 25 in research/*-fixtures), 3 in spikes/sp2_route_a and 1 in pipeline/scenes/testcard, rows S-01, S-29, S-39, S-50 and S-61; none is a stale copy in a playbook, a skill or an ops file. A later re-cut adds its own dated line here and is tied to a register or pattern change."
+  "2026-10-20, re-cut once (week-2 close-out implementor, on the orchestrator's instruction; Fable gate nudge 4 of reviews/build/w2-gate-r1.md): after the close-out packages c1 (FilmCraft dissolve ruling), c2 (phone wording, folded mobile-phone-delivery skill) and c3 (evidence and verdicts) landed, with the 16 reconciled skills installed (f474039) and patterns v3 in force. Why: the previous baseline (85 hits, 83 FAIL and 2 WARN, patterns v2) still listed 22 hits that were gone (19 in .claude/skills, fixed by the install; 3 in spikes/sp1_craft_cli, reworded by c1), so --new-only no longer guarded those spots, and patterns v3 added W-29.phone-ph2-cap-4mbps and W-29.phone-caption-36-chars. Hit count before: 85 (83 FAIL, 2 WARN). After: 63 (62 FAIL, 1 WARN); 22 removed, 0 added. The two new patterns found 2 hits, both in research/mobile-delivery-fixtures and both allowlisted by AL-6a, so they are not in the baseline. What is left is the record of research fixtures and sources (34 in research/sources, 25 in research/*-fixtures), 3 in spikes/sp2_route_a and 1 in pipeline/scenes/testcard, rows S-01, S-29, S-39, S-50 and S-61; none is a stale copy in a playbook, a skill or an ops file. A later re-cut adds its own dated line here and is tied to a register or pattern change.",
+  "2026-10-20, re-cut once more (package w2t-t2-wording, on the orchestrator's instruction; Fable gate w2c r1, nudges 5 and 6): (f) the S-29 regression in research/cinematic-quality-fixtures/README.txt line 7 was re-pointed to W-41 and mo8_audit.py, and (g) the two W-29 phone patterns moved under the register's new row S-66 (patterns v3 amended; allowlist entries AL-6a to AL-6e now name S-66). Hit count before: 63 (62 FAIL, 1 WARN). After: 62 (61 FAIL, 1 WARN); 1 removed (S-29), 0 added. The move under S-66 changes no fingerprint (file, pattern id and line text are the same), and the 2 research-fixture lines the phone patterns find stay allowlisted by AL-6a, so they are not in the baseline."
  ],
  "counts": {
-  "FAIL": 62,
+  "FAIL": 61,
   "WARN": 1,
   "by_row": {
    "S-01": {
     "FAIL": 7,
-    "WARN": 0
-   },
-   "S-29": {
-    "FAIL": 1,
     "WARN": 0
    },
    "S-39": {
@@ -47,14 +44,6 @@
    "line": 43,
    "row_id": "S-01",
    "pattern": "S-01.at-25-fps",
-   "severity": "FAIL"
-  },
-  {
-   "fp": "86dbb1ee08383299",
-   "file": "research/cinematic-quality-fixtures/README.txt",
-   "line": 7,
-   "row_id": "S-29",
-   "pattern": "S-29.mo8-ratio",
    "severity": "FAIL"
   },
   {

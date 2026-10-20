@@ -3,19 +3,19 @@ WP-02 test transcript (commands run from the repository root; outputs are the re
 PASS  decisions_check_real
 decisions_to_csv --check ops/decisions.csv exits 0; independent count equals the CSV
 $ python3 -I scripts/decisions_to_csv.py --check ops/decisions.csv
-  OK: decisions.csv matches the register: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
+  OK: decisions.csv matches the register: 251 rows (D 32, W 79, O 74, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 66)
   [exit 0]
 ==============================================================================
 PASS  decisions_write_twice
 --write twice is byte-identical, and equals the committed file when no orchestrator cell is set
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/decisions.csv
-  wrote decisions.csv: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote decisions.csv: 251 rows (D 32, W 79, O 74, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 66); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/decisions.csv
-  wrote decisions.csv: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote decisions.csv: 251 rows (D 32, W 79, O 74, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 66); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check <tmp>/decisions.csv
-  OK: decisions.csv matches the register: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
+  OK: decisions.csv matches the register: 251 rows (D 32, W 79, O 74, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 66)
   [exit 0]
 ==============================================================================
 PASS  decisions_content
@@ -24,13 +24,13 @@ status vocabulary, D-14/D-23 notes, O-05/O-13 answered, S rows carry Table 4 sta
 PASS  decisions_carry_over
 orchestrator-owned cells (maker_answer, last_changed) survive --write and are ignored by --check
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/d.csv
-  wrote d.csv: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote d.csv: 251 rows (D 32, W 79, O 74, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 66); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check <tmp>/d.csv
-  OK: d.csv matches the register: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
+  OK: d.csv matches the register: 251 rows (D 32, W 79, O 74, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 66)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/d.csv
-  wrote d.csv: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 1 row(s)
+  wrote d.csv: 251 rows (D 32, W 79, O 74, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 66); orchestrator-owned cells carried over: 1 row(s)
   [exit 0]
 ==============================================================================
 PASS  decisions_neg_delete_row
@@ -98,7 +98,7 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
 PASS  decisions_register_growth
 an added register row (for example a new O-36) is picked up with no code change
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/g.csv --register <tmp>/DECISIONS.md
-  wrote g.csv: 251 rows (D 32, W 79, O 75, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 75, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote g.csv: 252 rows (D 32, W 79, O 75, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 75, T4 66); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/DECISIONS.md
     O-85 is in DECISIONS.md but missing from the CSV
@@ -108,10 +108,10 @@ $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register 
 PASS  decisions_three_digit_id
 negative: a W-100 row in a register copy reaches the CSV (it was silently dropped when IDs had to be two digits)
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/w100.csv --register <tmp>/DECISIONS.md
-  wrote w100.csv: 251 rows (D 32, W 80, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 51, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote w100.csv: 252 rows (D 32, W 80, O 74, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 51, T3 74, T4 66); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check <tmp>/w100.csv --register <tmp>/DECISIONS.md
-  OK: w100.csv matches the register: 251 rows (D 32, W 80, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 51, T3 74, T4 65)
+  OK: w100.csv matches the register: 252 rows (D 32, W 80, O 74, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 51, T3 74, T4 66)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/DECISIONS.md
     W-100 is in DECISIONS.md but missing from the CSV
@@ -142,10 +142,10 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
 PASS  decisions_annotated_id
 negative: an annotated ID cell (| O-NN (absorbs O-MM) |) reaches the CSV with the annotation in note; a row that cannot be parsed is exit 2, never dropped in silence
 $ python3 -I scripts/decisions_to_csv.py --write <tmp>/annotated.csv --register <tmp>/annotated.md
-  wrote annotated.csv: 252 rows (D 32, W 80, O 75, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 51, T3 75, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote annotated.csv: 253 rows (D 32, W 80, O 75, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 51, T3 75, T4 66); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check <tmp>/annotated.csv --register <tmp>/annotated.md
-  OK: annotated.csv matches the register: 252 rows (D 32, W 80, O 75, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 51, T3 75, T4 65)
+  OK: annotated.csv matches the register: 253 rows (D 32, W 80, O 75, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 51, T3 75, T4 66)
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check ./ops/decisions.csv --register <tmp>/annotated.md
     W-80 is in DECISIONS.md but missing from the CSV
@@ -227,13 +227,13 @@ $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json --
   ops_lint: FAIL (4 failure(s), 0 warning(s))
   [exit 1]
 $ python3 -I <tmp>/scripts_noguard/decisions_to_csv.py --write <tmp>/silent.csv --register <tmp>/emphasis_only.md
-  wrote silent.csv: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65); orchestrator-owned cells carried over: 0 row(s)
+  wrote silent.csv: 251 rows (D 32, W 79, O 74, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 66); orchestrator-owned cells carried over: 0 row(s)
   [exit 0]
 $ python3 -I <tmp>/scripts_noguard/ops_lint.py --patterns ./scripts/redaction_patterns.json --root <tmp>/repo1
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv
     note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded
     note: pipeline/phone/test_strings.json is not present: the card's tested-script claim was not cross-checked
-    FAIL ops/decisions.csv [parser] 251 line(s) start like a register row but the generator made 250 row(s): a row is being dropped
+    FAIL ops/decisions.csv [parser] 252 line(s) start like a register row but the generator made 251 row(s): a row is being dropped
     FAIL ops/GATHER.md:3 [cited_id] O-85 is cited but is not in DECISIONS.md
     FAIL ops/GATHER.md:3 [cited_id] W-80 is cited but is not in DECISIONS.md
     FAIL ops/GATHER.md:3 [cited_id] O-86 is cited but is not in DECISIONS.md
@@ -1176,7 +1176,7 @@ $ python3 -I scripts/hours_report.py ops/hours.csv
     no rows yet: log your real hours (see HOURS-HOWTO.md); the first logged week is read on Sun 1 Nov
   [exit 0]
 $ python3 -I scripts/decisions_to_csv.py --check ops/decisions.csv
-  OK: decisions.csv matches the register: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
+  OK: decisions.csv matches the register: 251 rows (D 32, W 79, O 74, S 66; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 66)
   [exit 0]
 $ python3 -I scripts/ops_lint.py --patterns ./scripts/redaction_patterns.json
   ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv

@@ -20,7 +20,7 @@ TITLES = {"photocraft": "PhotoCraft", "vectorcraft": "VectorCraft", "lightcraft"
 
 TEMPLATE = r"""# Craft apps on your PC: download, check, unzip and test (Saturday 24 October)
 
-*For the maker. Written Mon 19 Oct 2026 by the build team; the table below is filled in by a script from the release lists on GitHub, so no name or number in it was typed by hand. Not yet run on a real Windows PC: every line that asks Windows a question is UNVERIFIED until you run it.*
+*For the maker. Written Mon 19 Oct 2026 by the build team (one FilmCraft step was added to Step 7 on Tue 20 Oct); the table below is filled in by a script from the release lists on GitHub, so no name or number in it was typed by hand. Not yet run on a real Windows PC: every line that asks Windows a question is UNVERIFIED until you run it.*
 
 This takes about 90 minutes, and most of that is waiting for downloads. You will download five small programs (the Craft apps), check that each file is exactly the one GitHub published, unzip them into one folder, and run a five-minute test of each. Nothing is installed. Nothing leaves your PC.
 
@@ -176,7 +176,7 @@ The LightCraft test also needs one ordinary JPEG that is **yours and not a famil
 
 ## Step 7. The five-minute tests
 
-Do **one app at a time**, then do the "where did it write" step below for that app. The exact steps already exist; they are not repeated here, so they cannot drift apart:
+Do **one app at a time**, then do the "where did it write" step below for that app. The exact steps already exist; they are not repeated here, so they cannot drift apart (the one exception is one extra FilmCraft step, just under the table):
 
 | App | Where the steps are |
 |---|---|
@@ -187,6 +187,14 @@ Do **one app at a time**, then do the "where did it write" step below for that a
 | EffectCraft | `playbooks/craft-motion.md`, Exercise 8, steps 1 to 4 (the title, font and alpha check) |
 
 Those playbooks were written before this guide and name other folders (`C:\Program Files\...` or `C:\LifeJourney\tools\...`). **Use the folder from Step 4 in their place**, for example `C:\lj\tools\filmcraft-@@V_filmcraft@@` instead of `C:\LifeJourney\tools\filmcraft-v0.9.0`.
+
+**One extra FilmCraft step: look at the dissolve one frame at a time.** The playbook's checklist only says to play the dissolve. Do this right after its "Play 10 seconds" line, on the same test chapter:
+
+1. Stop the preview if it is playing (Space starts and stops it). Move the playhead (the thin line on the timeline) to a few frames before the dissolve, which is where one picture overlaps the next.
+2. Press the **Right arrow** key once and look at the picture. Press it again and look again. Keep going until the dissolve is over. (Right moves one frame, Left goes back one frame. Do not hold Shift: Shift moves five.)
+3. **Every frame should differ from the one before it.** Two frames in a row that look exactly the same, while the timecode (the time number beside the picture) moves on, are a **finding**: write down the timecode of both frames and **paste it in chat**.
+4. The first and last frames of a dissolve change very little, so you may not be able to tell them apart. If you cannot tell, write "could not tell" and the timecode. That is an answer too.
+5. If the arrow keys do nothing, use the step-forward button next to the Play button instead (hovering over it should say "Step Forward 1 Frame"), and write down that the keys did not work.
 
 Open each program from its own folder in File Explorer by double-clicking the program file (not from the Start menu, and never from the Launcher). Watch Task Manager (Ctrl+Shift+Esc) for the memory it uses. The first time you open each one, Windows may show a blue box, "Windows protected your PC". That is expected for these five programs; what you may do about it is in the last section, "If something goes wrong".
 
@@ -219,7 +227,7 @@ One line per app, in chat or in your own notes. Never in the project folder.
 
 1. The version printed by the command-line program (the lines below print it), and that you used the **portable zip**.
 2. **Signed or not.** The lines below print `Valid`, `NotSigned` or another word for each program.
-3. Each step of the five-minute test: **pass or fail**, and any warning **word for word**.
+3. Each step of the five-minute test: **pass or fail**, and any warning **word for word**. For FilmCraft this includes the frame-by-frame look at the dissolve (for any identical pair, both timecodes).
 4. The most memory you saw in Task Manager (MB or GB).
 5. Which graphics setting worked, if you needed one.
 6. The two "where did it write" outputs below.
@@ -276,7 +284,7 @@ An empty answer is an answer: it means the app wrote nothing there. Read the lin
 
 Paste in chat, in this order: the Step 3 lines (five `OK`), the version lines, the signature lines, your pass or fail notes for each app, and the "where did it write" outputs. Then the plan can freeze the versions on Sunday 25 October. Delete nothing yet; `C:\lj\dl` can stay.
 
-*What is verified and what is not: the table and every file name come from GitHub's own lists and match them (checked by `check_guide.py`). The PowerShell lines were parsed with PowerShell 7 and checked against the Windows PowerShell 5.1 rules by a script; the hash check and the "where did it write" lines were also run on Linux against made-up files. None has run on Windows yet. Where the zips put their files, whether each app honours `portable.txt`, and what each app writes are all UNVERIFIED until your first run; your pasted output is the evidence.*
+*What is verified and what is not: the table and every file name come from GitHub's own lists and match them (checked by `check_guide.py`). The PowerShell lines were parsed with PowerShell 7 and checked against the Windows PowerShell 5.1 rules by a script; the hash check and the "where did it write" lines were also run on Linux against made-up files. None has run on Windows yet. Where the zips put their files, whether each app honours `portable.txt`, and what each app writes are all UNVERIFIED until your first run; your pasted output is the evidence. The extra FilmCraft step in Step 7 takes its keys from FilmCraft v0.9.0's own source (Right and Left step one frame, Shift moves five, Space plays and stops); nobody has pressed them on Windows and v0.8.0 was not checked, so that step is UNVERIFIED too.*
 """
 
 

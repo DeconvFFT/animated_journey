@@ -10,7 +10,8 @@
     {"app": "effectcraft", "tag": "v0.11.1", "role": "pin",      "tarball_fetched_by": "WP-07"}
   ],
   "soundcraft": {"status": "not pinned, not fetched", "reason": "D-12: SoundCraft is learning-only and unpinned; W-06 lists five pins; SP1 T5 is cut (nudge 7)."},
-  "disk": {"floor_mb": 400, "hard_floor_mb": 250, "keep_threshold_mb": 700, "download_allowance_mb": 2048},
+  "disk": {"floor_mb": 400, "hard_floor_mb": 250, "keep_threshold_mb": 700, "download_allowance_mb": 2560,
+           "download_allowance_note": "2026-10-20 (week-2 close-out gate): raised from 2048 to 2560 MB (MiB, 2.5 GiB) so that G1's third bpy wheel-set fetch (about 428 MB, Sun 15 Nov) is not stopped by its own guard; the ledgers read 1506.9 MB before it. Keep equal to ALLOWANCE_MB in spikes/sp1b_readback/check_ledger.py and DOWNLOAD_ALLOWANCE_MB in tests/integration/run_checks.py."},
   "stages": [
     {"id": "filmcraft-v0.9.0",  "app": "filmcraft",   "tag": "v0.9.0",  "order": 1, "planned_mb": {"full": 600, "lean": 350}, "tests": ["t1", "t2"], "keep_tarball": true},
     {"id": "effectcraft-v0.11.1", "app": "effectcraft", "tag": "v0.11.1", "order": 2, "planned_mb": {"full": 400, "lean": 300}, "tests": ["t1", "t4"], "keep_tarball": false},

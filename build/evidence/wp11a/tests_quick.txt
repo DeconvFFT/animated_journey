@@ -1,4 +1,4 @@
-WP-11a runner tests, mode quick (Avail at start: 14523 MB)
+WP-11a runner tests, mode quick (Avail at start: 14479 MB)
 GROUP full_fake_set_quick
 RESULT PASS failing_or_hung_area_makes_exit_1 :: exit 1 (fk_fail fails, fk_hang times out)
 RESULT PASS console_pass_row :: fk_pass PASS
@@ -87,7 +87,7 @@ RESULT PASS runner_syntax_bash_n :: bash -n scripts/run_week2_checks.sh
 RESULT PASS runner_header_lists_the_13_areas :: header names all 13 in order
 RESULT PASS runner_writes_no_bytecode :: no lj_public_lint bytecode in scripts/__pycache__
 GROUP edge_cases
-RESULT PASS stray_background_process_is_killed :: exit 0; pid 28601 gone
+RESULT PASS stray_background_process_is_killed :: exit 0; pid 6897 gone
 RESULT PASS stray_process_is_reported :: console names it
 RESULT PASS exit_3_is_a_fail_with_environment_note :: exit 1
 RESULT PASS long_log_is_capped_at_400_lines :: 402 lines kept (header, omitted-note, 400), last line kept

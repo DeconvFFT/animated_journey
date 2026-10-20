@@ -12,9 +12,9 @@ What it proves (build plan WP-11b): that the pieces of weeks 1 and 2 FIT TOGETHE
   redaction.*  public_lint.py --self-test with zero skipped consumers; no raw-PC-report file name anywhere outside tests/win/fixtures; build/evidence/pc/ holds
                only schema-valid derived files and none of the fixtures' GPU, CPU or driver strings; the derivation tools leak none either
   disk.*       from every evidence envelope's df figures: the 400 MB rule for stages over 100 MB, the 250 MB hard floor (with a reviewed exceptions list), the
-               tarball ledger, the 2 GB download allowance, and df after cleanup_scratch.sh
+               tarball ledger, the 2,560 MB download allowance (raised from 2,048 MB on 2026-10-20), and df after cleanup_scratch.sh
   e2e.*  (all) the WP-04 test card through --chain and spec_check.py; the A11 MO8 pair; a harness master through the phone encode, spec_check, phone_check and fill_20x9
-  hygiene.*    stale_check --new-only, public_lint over the build and over the diff, the theme guard, no file over 1 MB, no binary, new text under 8 MB, no ignored
+  hygiene.*    stale_check --new-only, public_lint over the build and over the diff, the theme guard, no file over 1 MB, no binary, new text under 9 MB, no ignored
                file tracked or staged, the .gitignore backstop for raw PC reports
   docs.* / readiness.* / index.*   pipeline/README.md and the staged skill are real; P-LOCK-readiness-W2.md has a status on every row and no PASS for anything that
                needs Windows; INDEX.md has the thirteen rows with evidence links that exist
@@ -52,8 +52,17 @@ STATE = {"min_avail": None, "start": None}
 ARGS = None
 REG = []
 S = {}                                   # shared between tests of one run
-BUILD_ROOTS = ["win", "scripts", "pipeline", "ops", "spikes", "tests", "build", "skills-staging", "reviews/build"]
-NEW_TEXT_LIMIT_BYTES = 8_000_000      # gate review r1 (Mon 19 Oct 2026): the plan's 5 MB was too tight for 13 packages of tests and evidence; measured 7.06 MB at the gate
+BUILD_ROOTS = [r for r in ["win", "scripts", "pipeline", "ops", "spikes", "tests", "build", "skills-staging", "reviews/build"] if os.path.isdir(os.path.join(ROOT, r))]
+                                      # skills-staging/ counts only while it exists: the orchestrator removes it when the last staged skill is installed (2026-10-20, week-2 tail), and public_lint exits 2 on a missing path
+NEW_TEXT_LIMIT_BYTES = 9_000_000      # gate review r1 (Mon 19 Oct 2026): the plan's 5 MB was too tight for 13 packages of tests and evidence; measured 7.06 MB at the gate, so 8 MB.
+                                      # 2026-10-20 (week-2 close-out gate): raised 8 -> 9 MB. Measured 7.59 MB in 627 files; the review rounds of weeks 3 and 4 will add more.
+                                      # If it reaches 8.5 MB, prune duplicate evidence first (build/evidence: per-run copies) before any further raise, and raise only with a dated note.
+                                      # The test id keeps its old name (hygiene.new_text_under_8mb) because the evidence, INDEX.md and the reviews cite it; the figure is NEW_TEXT_LIMIT_BYTES.
+DOWNLOAD_ALLOWANCE_MB = 2560          # 2026-10-20 (week-2 close-out gate): raised 2,048 -> 2,560 MB (2.5 GiB) so that G1's third bpy wheel-set fetch (about 428 MB, Sun 15 Nov) is not stopped by its own guard.
+                                      # The ledgers read 1,506.9 MiB with two fetches; a third brings them to about 1,915 MiB, and PowerShell, npm packs and the OTIO wheel add about 84 MiB: about 1,998 MiB in all.
+                                      # Against the old 2,048 MiB that left about 50 MiB to spare (133 MiB in check_ledger.py), so any other fetch would have stopped the G1 run; against 2,560 it leaves about 562 MiB.
+                                      # Keep it equal to download_allowance_mb in spikes/sp1_craft_cli/config.json and ALLOWANCE_MB in spikes/sp1b_readback/check_ledger.py.
+                                      # The test id keeps its old name (disk.downloads_under_2gb_allowance) for the same reason as the new-text id above. Units: MiB (1,048,576 bytes), as the ledger check uses.
 PWSH = os.path.join(SCRATCH, "pwsh", "pwsh")
 TODAY = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
 
@@ -1302,12 +1311,13 @@ def t_allowance():
     libs = read_json(p("pipeline", "lib", "libs.lock.json"))
     npm = sum((x.get("tarball") or {}).get("bytes", 0) for x in libs["libs"] + libs["fonts"])
     wheel = 1_000_000                                               # the OTIO wheel (about 0.8 MB)
-    exp = "the Craft tarballs and the SP3 pip wheel sets (both on the ledgers) + PowerShell (its size read from the guarded fetch's evidence) + the npm packs of libs.lock.json + the OTIO wheel stay under the 2 GB allowance"
+    exp = "the Craft tarballs and the SP3 pip wheel sets (both on the ledgers) + PowerShell (its size read from the guarded fetch's evidence) + the npm packs of libs.lock.json + the OTIO wheel stay under the %d MiB download allowance (2.5 GiB; raised from 2,048 on 2026-10-20 for G1's third bpy fetch)" % DOWNLOAD_ALLOWANCE_MB
     if pwsh is None or pprobs:
         return check("disk.downloads_under_2gb_allowance", False, exp, "the PowerShell tarball size could not be taken from evidence: %s" % listing(pprobs, 3))
     grand = total + pwsh + npm + wheel
-    check("disk.downloads_under_2gb_allowance", grand < 2 * 1024 ** 3, exp,
-          "%.0f MB on the ledgers (Craft tarballs and the SP3 pip wheel sets) + %.1f MB PowerShell (%d bytes, from the fetch evidence) + %.0f MB npm packs + about 1 MB wheel = %.0f MB of 2048 MB" % (total / 1e6, pwsh / 1e6, pwsh, npm / 1e6, grand / 1e6))
+    limit = DOWNLOAD_ALLOWANCE_MB * 1024 ** 2
+    check("disk.downloads_under_2gb_allowance", grand < limit, exp,
+          "%.0f MB on the ledgers (Craft tarballs and the SP3 pip wheel sets) + %.1f MB PowerShell (%d bytes, from the fetch evidence) + %.0f MB npm packs + about 1 MB wheel = %.0f MB (decimal), against the %d MiB allowance (%d bytes; %.0f MB to spare)" % (total / 1e6, pwsh / 1e6, pwsh, npm / 1e6, grand / 1e6, DOWNLOAD_ALLOWANCE_MB, limit, (limit - grand) / 1e6))
 
 
 def parse_cleanup(out):
@@ -1484,19 +1494,25 @@ def staged_skill_changes(dest):
 def t_theme():
     rc, out, err = sh(PY + ["scripts/public_lint.py", "--theme"], timeout=120)
     rc2, out2, err2 = sh(PY + ["scripts/public_lint.py", "--theme", "--paths", "pipeline/scenes", "pipeline/phone/test_strings.json", "ops/GATHER.md"], timeout=120)
-    tmp = tempfile.mkdtemp(prefix="wp11b-theme.", dir=SCRATCH if os.path.isdir(SCRATCH) else None)
-    try:
-        n_files, n_kept = staged_skill_changes(tmp)
-        rc3, out3, err3 = sh(PY + ["scripts/public_lint.py", "--theme", "--root", tmp, "--config", p("scripts", "public_lint.config.json"), "--patterns", p("scripts", "redaction_patterns.json"),
-                                    "--paths", os.path.join(tmp, "skills-staging")], timeout=120)
-    finally:
-        shutil.rmtree(tmp, ignore_errors=True)
+    if os.path.isdir(p("skills-staging")):
+        tmp = tempfile.mkdtemp(prefix="wp11b-theme.", dir=SCRATCH if os.path.isdir(SCRATCH) else None)
+        try:
+            n_files, n_kept = staged_skill_changes(tmp)
+            rc3, out3, err3 = sh(PY + ["scripts/public_lint.py", "--theme", "--root", tmp, "--config", p("scripts", "public_lint.config.json"), "--patterns", p("scripts", "redaction_patterns.json"),
+                                        "--paths", os.path.join(tmp, "skills-staging")], timeout=120)
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+    else:
+        # No staged skill exists (the orchestrator removes skills-staging/ when the last one is installed; 2026-10-20, week-2 tail): there is nothing to scan in this third part,
+        # and the installed skills are held to the guard by the default scope in part 1. The part comes back by itself the day a staged skill is put into skills-staging/ again.
+        n_files = n_kept = 0
+        rc3, out3, err3 = 0, "theme guard: no skills-staging/ folder, so no staged skill to scan (every skill is installed)\n", ""
     s1 = [l for l in out.splitlines() if l.startswith("theme guard:")]
     s2 = [l for l in out2.splitlines() if l.startswith("theme guard:")]
     s3 = [l for l in out3.splitlines() if l.startswith("theme guard:")]
     f3 = [l for l in out3.splitlines() if l.startswith("FINDING")]
     check("hygiene.theme_guard", rc == 0 and rc2 == 0 and rc3 == 0 and bool(s3),
-          "the D-28 theme guard is clean on the new theme-bearing files (default scope), on pipeline/scenes, test_strings.json and ops/GATHER.md explicitly, and on the text that the staged skills in skills-staging/ add or change against their installed copies",
+          "the D-28 theme guard is clean on the new theme-bearing files (default scope), on pipeline/scenes, test_strings.json and ops/GATHER.md explicitly, and, while skills-staging/ exists, on the text that the staged skills in it add or change against their installed copies",
           "default scope exit %d: %s; explicit exit %d: %s; staged skills (%d files, %d added or changed lines) exit %d: %s%s. LIMIT: a keyword scan can not judge iconography; Fable reads the pictures" % (
               rc, (s1 or ["?"])[-1], rc2, (s2 or ["?"])[-1], n_files, n_kept, rc3, (s3 or ["?"])[-1], ("; " + listing([x[:120] for x in f3], 4)) if f3 else ""))
 
@@ -1546,7 +1562,7 @@ def t_new_text():
         by[k] = by.get(k, 0) + os.path.getsize(p(f))
     top = sorted(by.items(), key=lambda kv: -kv[1])[:5]
     S["new_text_bytes"] = tot
-    check("hygiene.new_text_under_8mb", tot < NEW_TEXT_LIMIT_BYTES, "the text the build added or changed in its own folders (%s) since the commit before the build is under %d MB (the plan said 5; raised to 8 at gate review round 1 because the 13 packages' tests, evidence envelopes and fixtures came to about 7 MB; raise it again only with a note, do not let it drift)" % (", ".join(BUILD_ROOTS), NEW_TEXT_LIMIT_BYTES // 1_000_000),
+    check("hygiene.new_text_under_8mb", tot < NEW_TEXT_LIMIT_BYTES, "the text the build added or changed in its own folders (%s) since the commit before the build is under %d MB (the plan said 5; raised to 8 at gate review round 1 because the 13 packages' tests, evidence envelopes and fixtures came to about 7 MB, and to 9 on 2026-10-20 at 7.59 MB in 627 files because the review rounds of weeks 3 and 4 add more; at 8.5 MB prune duplicate evidence first; raise it again only with a dated note, do not let it drift)" % (", ".join(BUILD_ROOTS), NEW_TEXT_LIMIT_BYTES // 1_000_000),
           "%.2f MB in %d files; largest: %s%s" % (tot / 1e6, len(files), ", ".join("%s %.2f MB" % (k, v / 1e6) for k, v in top),
                                                    "" if tot < NEW_TEXT_LIMIT_BYTES else ". FIX (orchestrator decision): accept a higher limit or prune the duplicate per-run text files (build/evidence is the largest part: envelopes, transcripts and per-test logs)"))
 
@@ -1569,7 +1585,10 @@ def t_ignored():
 
 # ----------------------------------------------------------------------------------------------- docs, readiness, index
 PATHISH = re.compile(r"^(?:[A-Za-z0-9_.-]+/)+[A-Za-z0-9_.-]*$")
-CODE_PREFIXES = ("pipeline/", "scripts/", "win/", "ops/", "tests/", "spikes/", "build/", "skills-staging/", "playbooks/", "research/")
+CODE_PREFIXES = tuple(x for x in ("pipeline/", "scripts/", "win/", "ops/", "tests/", "spikes/", "build/", "skills-staging/", "playbooks/", "research/")
+                      if x != "skills-staging/" or os.path.isdir(os.path.join(ROOT, "skills-staging")))
+# skills-staging/ is a code folder only while it exists. Once the orchestrator has installed the last staged skill and removed the folder (2026-10-20), a path under it in a text is a
+# history pointer (the installed agent-first-production-pipeline SKILL.md still ends its 2026-10-19 change-log entry with "See skills-staging/.../CHANGES.md"), not a missing file.
 
 
 def path_tokens(text):

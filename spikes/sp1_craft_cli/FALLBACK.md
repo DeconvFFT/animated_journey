@@ -22,7 +22,7 @@ Either of these is the trigger:
 
 ## What to do next, in order
 
-1. Read `blocked_proof.json`. Is it a 403 or 407 from the proxy (a policy denial: do not retry, report it), a 404 (the asset name or tag is wrong: check the tag with the maker's release page), or a timeout (retry once later, within the 2 GB download allowance)?
+1. Read `blocked_proof.json`. Is it a 403 or 407 from the proxy (a policy denial: do not retry, report it), a 404 (the asset name or tag is wrong: check the tag with the maker's release page), or a timeout (retry once later, within the download allowance of 2,560 MB, raised from 2,048 MB on 2026-10-20)?
 2. Do not look for another route to the same files (no mirror, no other host). A policy denial is an answer.
 3. Mark T1, T2 and T4 in `VERDICT-SP1A.md` as `NOT RUN: download blocked` with the proof file named, and say in the decision paragraph that the R8 rule was not applied.
 4. Tell the maker nothing changes for Saturday: the guide and the five-minute tests are unaffected.

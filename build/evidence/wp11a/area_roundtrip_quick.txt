@@ -109,4 +109,4 @@ PASS       otio.adapter_probe_exit_codes                  exits 2 3
 PASS       otio.adapter_probe_no_paths                    clean
 UNVERIFIED windows.validators                             standard library only, os.path joins, UTF-8 and BOM reading, ASCII output, no shell=True; not run on Windows
 UNVERIFIED craft_apps.accept_files                        not run: no Craft app was started in this package
-TOTAL: PASS 108, FAIL 0, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (12 s)
+TOTAL: PASS 108, FAIL 0, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (11 s)

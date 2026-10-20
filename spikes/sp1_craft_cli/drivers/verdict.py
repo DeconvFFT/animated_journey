@@ -12,7 +12,6 @@ import argparse
 import glob
 import json
 import os
-import re
 import sys
 
 sys.dont_write_bytecode = True
@@ -39,11 +38,11 @@ def load(pattern):
 
 
 def mark_text(mark):
-    """The mark column as recorded, with one provenance phrase reworded for display. The 20 Oct 0.8.0 envelope (not re-run) records the h264_speed mark as "scaled from 3,000 frames" at the
-    plan's old frame rate; the driver now words the same fact as "scaled to 2,400 frames at this film's 24 fps from R8's 3,000-frame figure". The envelope is not changed and the mark itself
-    (5 fps, 480 s) is not touched; only the stale-pattern-matching frame-rate wording is replaced."""
-    text = str(mark).replace("|", "/")
-    return re.sub(r"scaled from 3,000 frames at [0-9]+ fps", "scaled to 2,400 frames at this film's 24 fps from R8's 3,000-frame figure", text)
+    """The mark column exactly as the envelope records it; only a pipe is changed, so that it cannot split a table cell. The 20 Oct 0.8.0 envelope (not re-run) records the h264_speed mark
+    as "scaled from 3,000 frames" at the plan's old frame rate; the driver now words the same fact as "scaled to 2,400 frames at this film's 24 fps from R8's 3,000-frame figure".
+    The older wording is history and is shown as recorded (w2t-t2-wording, d): the stale check allows it in this file by the entry AL-7 in scripts/stale_allowlist.json, which is scoped to
+    VERDICT-SP1A.md and to that one phrase. Before that entry this function reworded the phrase at display time, so the verdict differed from its evidence by one phrase."""
+    return str(mark).replace("|", "/")
 
 
 def cell(env, what):
@@ -148,7 +147,7 @@ def build():
     ec = result_word(t4)
     fc_t1 = result_word(t1["filmcraft"])
     if fc == "PASS" and ec == "PASS" and fc_t1 == "PASS":
-        A("**Outcome: agents may render drafts and chapters with the Craft CLIs in the container.** T2 and T4 passed on Linux CPU. Every chapter still keeps its OTIO and ffmpeg fallback (D-11, D-12), and nothing here says the apps run on the maker's PC.")
+        A("**Outcome: agents may render drafts and chapters with the Craft CLIs in the container (in this plan: drafts; `ROADMAP.md` row 136 keeps the FilmCraft chapter pass on the PC).** T2 and T4 passed on Linux CPU. Every chapter still keeps its OTIO and ffmpeg fallback (D-11, D-12), and nothing here says the apps run on the maker's PC.")
         if t2 and any(c["id"] == "T2.dissolve_steps" for c in (t2[-1].get("detail") or {}).get("criteria", [])):
             A("")
             A("**This T2 pass rests on the mark as amended on Tue 20 Oct 2026** (week-2 gate, nudge 1): the first run of the same pin (01:20 UTC) failed `T2.mid_dissolve` by 28.50 levels, because the "

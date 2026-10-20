@@ -2,7 +2,7 @@
  "schema": "lj-stale-allowlist/1",
  "version": 3,
  "owner": "WP-03",
- "source": "DECISIONS.md W-29 allowlist, exactly (register v3 of 2026-10-19): (1) playbooks/music-sound.md DX-gated check ('not applied here' is body text about a broadcast anchor); (2) negations ('no co-keeper', 'Rings 1 and 2 are empty', 'there is no insider', 'Chhath is not hers', 'Minecraft is dropped', 'Minecraft was only an example'); (3) a 25 next to 'tested at 25, UNVERIFIED at 24' or 'access copy only if a 50 Hz venue judders'; (4) 'Ring 1' inside 'gathering 14'; (5) the P-class definition in playbooks/pushtimarg-world.md T1 (it defines P3, it does not permit it). Reviews and research notes are not entries: they are outside the scan (a historical record). Nothing else may be added by an implementor: a new entry is an orchestrator decision. Amended 2026-10-20 (week-2 close-out, on the orchestrator's instruction): entries AL-6a to AL-6e allow the history of the two retired phone figures '4 Mb/s' and '36 characters' (patterns W-29.phone-ph2-cap-4mbps and W-29.phone-caption-36-chars) in research fixtures, research notes, reviews, build/evidence and build/reports; only AL-6a suppresses a hit today (two research fixture lines), the other four are structural.",
+ "source": "DECISIONS.md W-29 allowlist, exactly (register v3 of 2026-10-19): (1) playbooks/music-sound.md DX-gated check ('not applied here' is body text about a broadcast anchor); (2) negations ('no co-keeper', 'Rings 1 and 2 are empty', 'there is no insider', 'Chhath is not hers', 'Minecraft is dropped', 'Minecraft was only an example'); (3) a 25 next to 'tested at 25, UNVERIFIED at 24' or 'access copy only if a 50 Hz venue judders'; (4) 'Ring 1' inside 'gathering 14'; (5) the P-class definition in playbooks/pushtimarg-world.md T1 (it defines P3, it does not permit it). Reviews and research notes are not entries: they are outside the scan (a historical record). Nothing else may be added by an implementor: a new entry is an orchestrator decision. Amended 2026-10-20 (week-2 close-out, on the orchestrator's instruction): entries AL-6a to AL-6e allow the history of the two retired phone figures '4 Mb/s' and '36 characters' (patterns W-29.phone-ph2-cap-4mbps and W-29.phone-caption-36-chars) in research fixtures, research notes, reviews, build/evidence and build/reports; only AL-6a suppresses a hit today (two research fixture lines), the other four are structural. Amended 2026-10-20 (week-2 close-out package w2t-t2-wording, d, on the orchestrator's instruction: Fable gate w2c r1, nudge 4): entry AL-7 allows the one phrase 'R8 pass mark scaled from 3,000 frames at 25 fps' in spikes/sp1_craft_cli/VERDICT-SP1A.md, where verdict.py now shows the 0.8.0 T2 envelope's mark text as recorded instead of rewording it at display time. The rows of AL-6a to AL-6e are S-66 since the same day, when the two phone patterns moved under the register's new row S-66 (scripts/stale_patterns.json).",
  "how_it_works": "A hit is allowed when its file matches 'file' (a glob under the repo root), its row is in 'rows', and context_regex matches somewhere in the hit's line and the 'window' lines before and after it. --audit-allowlist fails on any entry that suppresses nothing, except an entry marked \"structural\": true with a structural_reason, which is printed as 'unused by design' (it suppresses nothing on today's tree: its sample line no longer hits, or no scanned line carries the words yet; --self-test still proves the entry would suppress its own sample). An entry's 'file' is '*' (any file), a path, or a glob (* stops at a slash, ** crosses it); --self-test plants a glob entry's samples at a concrete path under the glob (reviews/** gets reviews/sample, research/*-fixtures/** gets research/x-fixtures/sample).",
  "entries": [
   {
@@ -261,7 +261,7 @@
    "file": "research/*-fixtures/**",
    "register_row": "W-29",
    "rows": [
-    "W-29"
+    "S-66"
    ],
    "context_regex": "\\b(?:PH[12]|P[12]|small copy|phone|caps?|captions?|subtitles?|lines?|FontSize|W-63|W-18|maxrate|bufsize|CRF|WhatsApp)\\b|bitrate_cap|max_chars",
    "window": {
@@ -282,7 +282,7 @@
    "file": "research/*.md",
    "register_row": "W-29",
    "rows": [
-    "W-29"
+    "S-66"
    ],
    "context_regex": "\\b(?:PH[12]|P[12]|small copy|phone|caps?|captions?|subtitles?|lines?|FontSize|W-63|W-18|maxrate|bufsize|CRF|WhatsApp)\\b|bitrate_cap|max_chars",
    "window": {
@@ -305,7 +305,7 @@
    "file": "reviews/**",
    "register_row": "W-29",
    "rows": [
-    "W-29"
+    "S-66"
    ],
    "context_regex": "\\b(?:PH[12]|P[12]|small copy|phone|caps?|captions?|subtitles?|lines?|FontSize|W-63|W-18|maxrate|bufsize|CRF|WhatsApp)\\b|bitrate_cap|max_chars",
    "window": {
@@ -328,7 +328,7 @@
    "file": "build/evidence/**",
    "register_row": "W-29",
    "rows": [
-    "W-29"
+    "S-66"
    ],
    "context_regex": "\\b(?:PH[12]|P[12]|small copy|phone|caps?|captions?|subtitles?|lines?|FontSize|W-63|W-18|maxrate|bufsize|CRF|WhatsApp)\\b|bitrate_cap|max_chars",
    "window": {
@@ -351,7 +351,7 @@
    "file": "build/reports/**",
    "register_row": "W-29",
    "rows": [
-    "W-29"
+    "S-66"
    ],
    "context_regex": "\\b(?:PH[12]|P[12]|small copy|phone|caps?|captions?|subtitles?|lines?|FontSize|W-63|W-18|maxrate|bufsize|CRF|WhatsApp)\\b|bitrate_cap|max_chars",
    "window": {
@@ -367,6 +367,26 @@
    ],
    "negative_samples": [
     "The hotel uplink ran at 4 Mb/s."
+   ]
+  },
+  {
+   "id": "AL-7-sp1-verdict-0.8.0-mark-as-recorded",
+   "register_row": "W-29",
+   "file": "spikes/sp1_craft_cli/VERDICT-SP1A.md",
+   "rows": [
+    "S-01"
+   ],
+   "context_regex": "R8 pass mark scaled from 3,000 frames at 25 fps",
+   "window": {
+    "before": 0,
+    "after": 0
+   },
+   "reason": "history: the 0.8.0 T2 envelope (build/evidence/wp07/t2_filmcraft_v0.8.0.json, not re-run) records its h264_speed mark with the plan's old frame rate, and the generated verdict shows the recorded text as it is; the 0.9.0 envelope and the driver word the same fact at this film's 24 fps (S-01)",
+   "positive_samples": [
+    "| `T2.h264_speed` | 11.76 fps (2400 frames in 204 s) | at least 5 fps, i.e. under 480 s for 2400 frames (R8 pass mark scaled from 3,000 frames at 25 fps) | PASS |"
+   ],
+   "negative_samples": [
+    "| `T2.h264_speed` | 11.76 fps (2400 frames in 204 s) | lean 1920x1080 at 25 fps | PASS |"
    ]
   }
  ]
