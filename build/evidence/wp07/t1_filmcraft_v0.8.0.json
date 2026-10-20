@@ -1,0 +1,183 @@
+{
+  "actual": "8 checks, 0 failed",
+  "date_utc": "2026-10-20",
+  "detail": {
+    "app": "filmcraft",
+    "calls": [
+      {
+        "call": "--version",
+        "killed": null,
+        "max_rss_mb": 18.0,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "commands",
+        "killed": null,
+        "max_rss_mb": 18.1,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "--demo inspect sequence --compact",
+        "killed": null,
+        "max_rss_mb": 18.4,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "describe file.newProject",
+        "killed": null,
+        "max_rss_mb": 18.4,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "describe file.import",
+        "killed": null,
+        "max_rss_mb": 18.4,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "describe file.newSequence",
+        "killed": null,
+        "max_rss_mb": 18.4,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "describe timeline.place",
+        "killed": null,
+        "max_rss_mb": 18.4,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "describe effects.setParam",
+        "killed": null,
+        "max_rss_mb": 18.4,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "describe effects.setInterpolation",
+        "killed": null,
+        "max_rss_mb": 18.4,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "describe sequence.applyVideoTransition",
+        "killed": null,
+        "max_rss_mb": 18.4,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "describe file.exportInterchange",
+        "killed": null,
+        "max_rss_mb": 18.4,
+        "rc": 0,
+        "wall_s": 0.25
+      }
+    ],
+    "checks": [
+      {
+        "id": "T1.version_exit0",
+        "measured": "exit 0",
+        "note": "",
+        "pass": true
+      },
+      {
+        "id": "T1.version_names_tag",
+        "measured": "filmcraft-cli 0.8.0",
+        "note": "",
+        "pass": true
+      },
+      {
+        "id": "T1.commands_exit0",
+        "measured": "exit 0, 701 lines",
+        "note": "",
+        "pass": true
+      },
+      {
+        "id": "T1.commands_list_not_trivial",
+        "measured": "701 lines (the first 5: file.newProject                  Project | file.openDemoProject             Demo Pr | file.newSequence                 Sequenc | file.newSequenceFromClip         Sequenc | file.newBin                      Bin    )",
+        "note": "",
+        "pass": true
+      },
+      {
+        "id": "T1.state_query_ok",
+        "measured": "--demo inspect sequence prints JSON: exit 0",
+        "note": "",
+        "pass": true
+      },
+      {
+        "id": "T1.describe_commands_known",
+        "measured": "missing: none",
+        "note": "the later tests send parameters named in these documents; a missing command is a command-surface change",
+        "pass": true
+      },
+      {
+        "id": "T1.stderr_clean",
+        "measured": "patterns matched: none; GPU or CPU-renderer notices recorded, not failed: none",
+        "note": "no missing library, no GPU or adapter failure with VK_ICD_FILENAMES unset",
+        "pass": true
+      },
+      {
+        "id": "T1.every_call_exit0_or_listed",
+        "measured": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "note": "",
+        "pass": true
+      }
+    ],
+    "mini": false,
+    "needed_libraries": [
+      "ld-linux-x86-64.so.2",
+      "libc.so.6",
+      "libgcc_s.so.1",
+      "libm.so.6"
+    ],
+    "profile": "lean",
+    "sandbox": {
+      "env": "env -i with HOME, TMPDIR, XDG_*, PATH only",
+      "network_isolation": "unshare -rn",
+      "timeout_s": 120,
+      "vk_icd_filenames": "unset"
+    },
+    "tag": "v0.8.0"
+  },
+  "disk": {
+    "avail_mb_end": 13459,
+    "avail_mb_min": 13294,
+    "avail_mb_start": 13459,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 350
+  },
+  "env": {
+    "contaminated": "not-timed",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "exit 0 everywhere, the version names 0.8.0, no missing library or GPU error, the command list and a state query work",
+  "notes": "Linux CLI only: a pass here proves nothing about Windows.",
+  "package": "WP-07",
+  "schema": "lj-evidence/1",
+  "stage": "sp1-filmcraft-v0.8.0-lean",
+  "status": "PASS",
+  "test": "t1_filmcraft_v0.8.0",
+  "unverified_reasons": [
+    "Windows behaviour is not tested by a Linux CLI run"
+  ]
+}

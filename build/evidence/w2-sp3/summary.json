@@ -1,0 +1,164 @@
+{
+ "spike": "SP3",
+ "what": "Blender (bpy) hero-shot route in the container, neutral stand-in scene (primitives only, no photograph, no family media)",
+ "date_utc": "2026-10-20",
+ "run_started_utc": "2026-10-20T01:19:59Z",
+ "timing_started_utc": "2026-10-20T01:22:12Z",
+ "run_ended_utc": "2026-10-20T01:28:19Z",
+ "label": "Linux container result; not evidence for Windows",
+ "command": "bash spikes/sp3_blender/run_sp3.sh --check ; bash spikes/sp3_blender/run_sp3.sh --run",
+ "machine_class": {
+  "vcpu": 4,
+  "cpu": "Intel Xeon 2.10 GHz (class only)",
+  "ram_mb": 16093,
+  "gpu": "none (no CUDA, OPTIX, HIP or ONEAPI device)"
+ },
+ "blender": {
+  "bpy": "5.2.2 LTS",
+  "build_hash": "d13f752e3b9c",
+  "build_date": "2026-09-15",
+  "python": "3.13.16",
+  "render": "Cycles CPU, OpenImageDenoise on CPU, 1920x1080 at 100 percent, 2,938 faces"
+ },
+ "wheel": {
+  "file": "bpy-5.2.2-cp313-cp313-manylinux_2_28_x86_64.whl",
+  "bytes": 401697653,
+  "pypi_sha256": "3dfd1a9e7a5aec0f0fe95a1b01d10cd66e212b16ea38b77d132159dc9a666d45",
+  "sha256_compared_with_download": false,
+  "note": "pip install without --require-hashes and with --no-cache-dir; the wheel is gone, so the digest was not compared"
+ },
+ "tests": [
+  {
+   "id": "T0",
+   "name": "entry check (run_sp3.sh --check)",
+   "result": "PASS",
+   "proof": "READY: Avail 14390 MB is at least 3500 MB; exit 0"
+  },
+  {
+   "id": "T1",
+   "name": "guarded stage (lj_with_disk 3100)",
+   "result": "PASS",
+   "proof": "ledger line status ok, exit 0, planned 3100, Avail start 14480, min 13077, end 13459, lock wait 281 s"
+  },
+  {
+   "id": "T2",
+   "name": "venv and pip install bpy==5.2.2",
+   "result": "PASS",
+   "proof": "130 s (01:20:02 to 01:22:12); pip check: No broken requirements found"
+  },
+  {
+   "id": "T3",
+   "name": "import bpy is Blender 5.2.x",
+   "result": "PASS",
+   "proof": "bpy 5.2.2 LTS, hash d13f752e3b9c, background True"
+  },
+  {
+   "id": "T4",
+   "name": "four timed 1080p Cycles CPU configurations, each within 2x the table",
+   "result": "PASS",
+   "rows": [
+    {
+     "config_samples_denoise_adaptive": "8/0/0",
+     "table_s": 13.3,
+     "limit_2x_s": 26.6,
+     "measured_s": 10.8,
+     "ratio_to_table": 0.812,
+     "within_2x": true,
+     "peak_rss_mb": 594,
+     "recorded_peak_rss_mb": 594,
+     "bench_load1_start": 0.58,
+     "bench_flag_contaminated": "no"
+    },
+    {
+     "config_samples_denoise_adaptive": "64/0/0",
+     "table_s": 95.2,
+     "limit_2x_s": 190.4,
+     "measured_s": 81.9,
+     "ratio_to_table": 0.86,
+     "within_2x": true,
+     "peak_rss_mb": 594,
+     "recorded_peak_rss_mb": 594,
+     "bench_load1_start": 1.21,
+     "bench_flag_contaminated": "yes"
+    },
+    {
+     "config_samples_denoise_adaptive": "64/1/0",
+     "table_s": 112.4,
+     "limit_2x_s": 224.9,
+     "measured_s": 93.8,
+     "ratio_to_table": 0.834,
+     "within_2x": true,
+     "peak_rss_mb": 2209,
+     "recorded_peak_rss_mb": 2209,
+     "bench_load1_start": 3.63,
+     "bench_flag_contaminated": "yes"
+    },
+    {
+     "config_samples_denoise_adaptive": "128/1/0",
+     "table_s": 204.3,
+     "limit_2x_s": 408.6,
+     "measured_s": 176.2,
+     "ratio_to_table": 0.862,
+     "within_2x": true,
+     "peak_rss_mb": 2209,
+     "recorded_peak_rss_mb": 2209,
+     "bench_load1_start": 4.01,
+     "bench_flag_contaminated": "yes"
+    }
+   ]
+  },
+  {
+   "id": "T5",
+   "name": "renders are real kitchen images",
+   "result": "PASS",
+   "proof": "four 1920x1080 sRGB PNGs, mean level 172 to 177 of 255, min 0 max 255; 8 samples vs 128 samples RMSE 0.087 (noise), 64 vs 128 with denoise RMSE 0.0046"
+  },
+  {
+   "id": "T6",
+   "name": "same settings give the same pixels",
+   "result": "PASS",
+   "proof": "repeat of 64 samples + denoise: 0 differing pixels, RMSE 0 (PNG bytes differ in metadata only)"
+  },
+  {
+   "id": "T7",
+   "name": "memory",
+   "result": "PASS",
+   "proof": "peak RSS 594 MB (no denoise) and 2,209 MB (denoise) of 16,093 MB; equals the 18 Oct figures exactly"
+  },
+  {
+   "id": "T8",
+   "name": "the script cleans up after itself",
+   "result": "FAIL",
+   "proof": "line 'run_sp3.sh: line 1: S: unbound variable' at the end of the run; the venv (1,008 MB) and renders (14 MB) were left; deleted by hand; fixed in run_inner; spikes/sp3_blender/test_cleanup.sh FAILS the old script and PASSES the fixed one (cleanup_regression.txt)"
+  }
+ ],
+ "supplementary": {
+  "workbench_draft_1080p": {
+   "wall_s": 4.1,
+   "peak_rss_mb": 801,
+   "flag_contaminated": "yes (load1 3.89 at start; indicative only)",
+   "note": "EGL_BAD_MATCH printed 3 times; the render completed, mean level 116"
+  },
+  "repeat_64_dn": {
+   "wall_s": 93.0,
+   "ratio_to_table": 0.827,
+   "flag_contaminated": "no (load1 0.59)"
+  }
+ },
+ "disk_mb": {
+  "avail_before_check": 14547,
+  "avail_at_run_start": 14390,
+  "guard_start": 14480,
+  "guard_min": 13077,
+  "sampler_min": 13072,
+  "peak_use_vs_guard_start": 1408,
+  "steady_footprint": 1021,
+  "venv": 1008,
+  "bpy_package": 881,
+  "renders": 14,
+  "avail_after_hand_delete": 14476,
+  "note": "the volume is shared; other jobs wrote and freed space during the run, so differences carry about plus or minus 100 MB of other jobs"
+ },
+ "pass_mark": "one real hero frame within 2x the table: NOT judged (the real kitchen does not exist before G1, Sun 15 Nov); this run is the stand-in only",
+ "verdict": "Partial: the container route works and reproduces the 18 Oct table at 0.81x to 0.86x on the stand-in; the pass mark on a real hero frame waits for G1"
+}

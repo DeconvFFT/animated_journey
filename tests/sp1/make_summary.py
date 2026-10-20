@@ -75,9 +75,20 @@ def main(argv):
     for r in rows:
         if r["status"] in ("UNVERIFIED", "BLOCKED"):
             lines.append("%s  %s: %s" % (r["status"], r["test"], r["actual"][:300]))
+    real_done = {}
+    for prefix in ("t2_filmcraft", "t4_effectcraft"):
+        envs = [L.read_json(p) for p in sorted(glob.glob(os.path.join(L.EVID, prefix + "_*.json"))) if not p.endswith("_mini.json")]
+        envs = [d for d in envs if not (d.get("detail") or {}).get("mini")]
+        real_done[prefix] = bool(envs) and all(not (d.get("detail") or {}).get("harness_error") and not (d.get("detail") or {}).get("partial") for d in envs)
+    if real_done["t2_filmcraft"] and real_done["t4_effectcraft"]:
+        shapes = ("T2 and T4 ran for real (Linux, CPU only) with no harness error, so the shapes of the timeline, inspect and export results and the FilmCraft keyframe "
+                  "convention that the drivers assume held on Linux; they are still unconfirmed for Windows;")
+    else:
+        shapes = ("T1 confirmed the describe documents the drivers rely on; the shapes of the timeline, inspect and export results and the FilmCraft keyframe convention "
+                  "for clips that do not start at 0 are assumptions until T2 and T4 run;")
     lines += ["", "Standing: nothing about Windows is verified (PowerShell 5.1 itself, where each zip unpacks, portable.txt handling, what each app writes);",
-              "T1 confirmed the describe documents the drivers rely on; the shapes of the timeline, inspect and export results and the FilmCraft keyframe convention for clips that do not start at 0 are assumptions until T2 runs;",
-              "the Parallax comp uses solids and shapes, not footage; timings are valid only when contaminated=no."]
+              shapes,
+              "the Parallax comp uses solids and shapes, not footage; timings are valid only when contaminated=no (see the contaminated field of each t2 and t4 envelope)."]
     open(os.path.join(L.EVID, "unverified.txt"), "w", encoding="utf-8").write("\n".join(L.scrub(x) for x in lines) + "\n")
     print("summary.json and unverified.txt written (%s)" % ", ".join("%s %d" % kv for kv in sorted(counts.items())))
     return 0

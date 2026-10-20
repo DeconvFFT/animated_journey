@@ -1,6 +1,6 @@
 {
   "actual": "not started: download blocked or asset missing: see blocked_proof.json",
-  "date_utc": "2026-10-19",
+  "date_utc": "2026-10-20",
   "detail": {
     "exit_code": null,
     "forced_bad_asset": true,
@@ -10,9 +10,9 @@
     "vendor_craft_other_than_keep": []
   },
   "disk": {
-    "avail_mb_end": 754,
-    "avail_mb_min": 754,
-    "avail_mb_start": 754,
+    "avail_mb_end": 14387,
+    "avail_mb_min": 14387,
+    "avail_mb_start": 14387,
     "floor_mb": 400,
     "hard_floor_mb": 250,
     "planned_write_mb": 0

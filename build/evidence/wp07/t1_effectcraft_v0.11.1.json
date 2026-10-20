@@ -1,15 +1,15 @@
 {
   "actual": "8 checks, 0 failed",
-  "date_utc": "2026-10-19",
+  "date_utc": "2026-10-20",
   "detail": {
     "app": "effectcraft",
     "calls": [
       {
         "call": "--version",
         "killed": null,
-        "max_rss_mb": 18.1,
+        "max_rss_mb": 18.0,
         "rc": 0,
-        "wall_s": 0.26
+        "wall_s": 0.25
       },
       {
         "call": "commands",
@@ -21,77 +21,77 @@
       {
         "call": "info --json",
         "killed": null,
-        "max_rss_mb": 18.6,
+        "max_rss_mb": 18.7,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "describe comp.new",
         "killed": null,
-        "max_rss_mb": 18.6,
+        "max_rss_mb": 18.7,
         "rc": 0,
-        "wall_s": 0.26
+        "wall_s": 0.25
       },
       {
         "call": "describe layer.newText",
         "killed": null,
-        "max_rss_mb": 18.6,
+        "max_rss_mb": 18.7,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "describe layer.newSolid",
         "killed": null,
-        "max_rss_mb": 18.6,
+        "max_rss_mb": 18.7,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "describe layer.newShape",
         "killed": null,
-        "max_rss_mb": 18.6,
+        "max_rss_mb": 18.7,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "describe layer.addShapeItem",
         "killed": null,
-        "max_rss_mb": 18.6,
+        "max_rss_mb": 18.7,
         "rc": 0,
-        "wall_s": 0.25
+        "wall_s": 0.26
       },
       {
         "call": "describe edit.pasteSvg",
         "killed": null,
-        "max_rss_mb": 18.6,
+        "max_rss_mb": 18.7,
         "rc": 0,
-        "wall_s": 0.25
+        "wall_s": 0.26
       },
       {
         "call": "describe layer.setSwitch",
         "killed": null,
-        "max_rss_mb": 18.6,
+        "max_rss_mb": 18.7,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "describe layer.newCamera",
         "killed": null,
-        "max_rss_mb": 18.6,
+        "max_rss_mb": 18.7,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "describe prop.addKey",
         "killed": null,
-        "max_rss_mb": 18.6,
+        "max_rss_mb": 18.7,
         "rc": 0,
         "wall_s": 0.25
       },
       {
         "call": "describe prop.set",
         "killed": null,
-        "max_rss_mb": 18.6,
+        "max_rss_mb": 18.7,
         "rc": 0,
         "wall_s": 0.25
       }
@@ -160,7 +160,7 @@
       "libgcc_s.so.1",
       "libm.so.6"
     ],
-    "profile": "full",
+    "profile": "lean",
     "sandbox": {
       "env": "env -i with HOME, TMPDIR, XDG_*, PATH only",
       "network_isolation": "unshare -rn",
@@ -170,12 +170,12 @@
     "tag": "v0.11.1"
   },
   "disk": {
-    "avail_mb_end": 1201,
-    "avail_mb_min": 989,
-    "avail_mb_start": 1201,
+    "avail_mb_end": 13457,
+    "avail_mb_min": 13322,
+    "avail_mb_start": 13459,
     "floor_mb": 400,
     "hard_floor_mb": 250,
-    "planned_write_mb": 400
+    "planned_write_mb": 300
   },
   "env": {
     "contaminated": "not-timed",
@@ -188,7 +188,7 @@
   "notes": "Linux CLI only: a pass here proves nothing about Windows.",
   "package": "WP-07",
   "schema": "lj-evidence/1",
-  "stage": "sp1-effectcraft-v0.11.1-full",
+  "stage": "sp1-effectcraft-v0.11.1-lean",
   "status": "PASS",
   "test": "t1_effectcraft_v0.11.1",
   "unverified_reasons": [

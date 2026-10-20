@@ -1,24 +1,23 @@
 {
   "counts": {
-    "BLOCKED": 1,
-    "FAIL": 1,
-    "PASS": 43,
+    "PASS": 44,
+    "SKIPPED": 1,
     "UNVERIFIED": 1
   },
-  "date_utc": "2026-10-19",
-  "lowest_avail_mb_seen_by_the_tests": 752,
+  "date_utc": "2026-10-20",
+  "lowest_avail_mb_seen_by_the_tests": 14147,
   "mode": "all",
   "package": "WP-07",
-  "real_run_state": "Real CLI results: T1 FilmCraft PASS; T2 FilmCraft NOT RUN; T1 EffectCraft PASS; T4 EffectCraft NOT RUN. The harness is also proven against stand-in CLIs, which say nothing about FilmCraft or EffectCraft.",
+  "real_run_state": "Real CLI results: T1 FilmCraft PASS/PASS; T2 FilmCraft FAIL/FAIL; T1 EffectCraft PASS; T4 EffectCraft PASS. The harness is also proven against stand-in CLIs, which say nothing about FilmCraft or EffectCraft.",
   "real_stages": [
     {
       "disk": {
-        "avail_mb_end": 1201,
-        "avail_mb_min": 989,
-        "avail_mb_start": 1201,
+        "avail_mb_end": 13457,
+        "avail_mb_min": 13322,
+        "avail_mb_start": 13459,
         "floor_mb": 400,
         "hard_floor_mb": 250,
-        "planned_write_mb": 400
+        "planned_write_mb": 300
       },
       "reason": "exit 0",
       "stage": "stage_effectcraft-v0.11.1",
@@ -26,16 +25,29 @@
     },
     {
       "disk": {
-        "avail_mb_end": 1134,
-        "avail_mb_min": 1062,
-        "avail_mb_start": 1201,
+        "avail_mb_end": 13459,
+        "avail_mb_min": 13294,
+        "avail_mb_start": 13459,
         "floor_mb": 400,
         "hard_floor_mb": 250,
-        "planned_write_mb": 600
+        "planned_write_mb": 350
       },
-      "reason": "exit 0",
+      "reason": "exit 1",
+      "stage": "stage_filmcraft-v0.8.0",
+      "status": "FAIL"
+    },
+    {
+      "disk": {
+        "avail_mb_end": 14480,
+        "avail_mb_min": 14382,
+        "avail_mb_start": 14547,
+        "floor_mb": 400,
+        "hard_floor_mb": 250,
+        "planned_write_mb": 350
+      },
+      "reason": "exit 1",
       "stage": "stage_filmcraft-v0.9.0",
-      "status": "PASS"
+      "status": "FAIL"
     }
   ],
   "schema": "lj-wp-summary/1",
@@ -62,7 +74,7 @@
     },
     {
       "name": "list.live",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "name": "list.fake_900",
@@ -118,7 +130,7 @@
     },
     {
       "name": "all.staged_run",
-      "status": "BLOCKED"
+      "status": "SKIPPED"
     },
     {
       "name": "fake.sums_only",

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# run_sp3.sh: SP3, Blender (the bpy module) for hero shots: timing a NEUTRAL stand-in scene. PREPARED, NOT RUN (build plan WP-10 item 2).
+# run_sp3.sh: SP3, Blender (the bpy module) for hero shots: timing a NEUTRAL stand-in scene (build plan WP-10 item 2). Prepared 19 Oct 2026; FIRST REAL RUN Tue 20 Oct 2026:
+#   all four timings within 2x the table (0.81x to 0.86x), see build/reports/w2-sp3.md. That run found the cleanup defect fixed in run_inner (test: spikes/sp3_blender/test_cleanup.sh).
 #
 #   bash spikes/sp3_blender/run_sp3.sh --check     the entry conditions and the numbers: df, the bpy wheel size (PyPI), the Blender tarball size (HEAD request), Python, the reused
 #                                                   research scripts (py_compile). Prints "NOT RUN: needs >= 3.5 GB free" and exits 3 on a volume with less than 3,500 MB free;
@@ -8,7 +9,7 @@
 #                                                   times the stand-in kitchen scene at a few sample counts under lj_bench, writes the RESULT lines to build/evidence/wp10/sp3_results.txt
 #                                                   and deletes the venv. SP3_DRYRUN=1 prints what it would do and does none of it.
 #   bash spikes/sp3_blender/run_sp3.sh --help
-# WHY NOT RUN NOW. The container has about 700 MB free (it is shared and shrinking); the wheel is 402 MB, the venv about 1 GB, and the plan wants Avail minus planned at least 400 MB.
+# WHY IT WAS NOT RUN ON 19 OCT (historical; disk was freed on 20 Oct and the real peak was 1,408 MB, not 3,100). The container had about 700 MB free (it is shared and shrinking); the wheel is 402 MB, the venv about 1 GB, and the plan wants Avail minus planned at least 400 MB.
 # The entry figure is 3,500 MB = planned 3,100 MB (wheel, pip's temporary copy of it, the venv, a margin for the first Cycles kernel build and the outputs) + the 400 MB floor.
 # SP3 runs in week 3 either on the maker's PC (playbooks/toolchain.md Exercise 5, Blender parallax timed with the Claude app closed) or here after at least 3.5 GB is free, and only on a
 # NEUTRAL stand-in scene with no photograph (S3's own rule). The pass mark, one real hero frame within 2x the table, cannot be judged before the real kitchen exists (G1).
@@ -87,8 +88,11 @@ do_check() {
 }
 
 run_inner() {
-  local S="${LJ_SCRATCH:-$(dirname "$ROOT")/build-scratch}/sp3" PYV="" cfg out="$ROOT/build/evidence/wp10/sp3_results.txt"
-  trap 'rm -rf -- "$S"' EXIT
+  local PYV="" cfg out="$ROOT/build/evidence/wp10/sp3_results.txt"
+  # S is deliberately NOT local: an EXIT trap runs after this function has returned, when a local S is gone and, under set -u,
+  # "S: unbound variable" stopped the first real run (20 Oct 2026) from deleting the venv. The trap text also carries the value itself.
+  S="${LJ_SCRATCH:-$(dirname "$ROOT")/build-scratch}/sp3"
+  trap 'rm -rf -- "${S:-/nonexistent-sp3-scratch}"' EXIT
   rm -rf -- "$S"; mkdir -p "$S" "$EVID" || die "cannot create the scratch folder" 3
   say "[1/5] python3 -m venv <scratch>/sp3/venv"
   python3 -m venv "$S/venv" || die "venv failed" 3

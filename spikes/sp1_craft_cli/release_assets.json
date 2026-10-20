@@ -1,7 +1,7 @@
 {
   "disk_note": "No tarball is downloaded by this tool. FilmCraft 0.9.0 and EffectCraft 0.11.1 are fetched once each by run_sp1.sh; the other three by WP-10.",
   "fetched_by": "WP-07 spikes/sp1_craft_cli/drivers/fetch_sums.py",
-  "fetched_date_utc": "2026-10-19",
+  "fetched_date_utc": "2026-10-20",
   "integrity_note": "These hashes prove integrity only, not origin. Every hash in this file comes from the SHA256SUMS.txt that GitHub serves next to the asset, so a file that matches is complete and unaltered since publication, but the listing and the file share one host and a match does not show who published it. Only the values marked r8_compared were also read independently on 2026-10-18.",
   "pins": [
     {

@@ -1,5 +1,7 @@
 # Proposed skill: `phone-delivery` (WP-08, staged for the orchestrator)
 
+**Status (2026-10-20, stale-wording sweep): NOT installed, and NOT folded.** The phone decisions and figures live in `mobile-phone-delivery` (staged copy `skills-staging/mobile-phone-delivery/SKILL.md`, already at 32 characters a line and a 3.5 Mb/s cap on PH2); install that one for them. This folder is only the tools companion (the `encode_phone`, `phone_check` and `sim_share` commands, thresholds and failure answers, which exist nowhere else), waiting for the orchestrator to either install it beside `mobile-phone-delivery` or fold its Procedure, Thresholds and failure sections into it. Do not install it in place of `mobile-phone-delivery`. The row below that records "36" is closed: the register's W-18 was amended on 2026-10-20 to at most 32 characters (W-63 to a 3.5 Mb/s cap), which is the figure this skill already uses.
+
 Nothing under `.claude/` was edited. This folder proposes a new skill and says where it overlaps an installed one.
 
 ## What it is

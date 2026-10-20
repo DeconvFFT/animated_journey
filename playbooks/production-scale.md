@@ -28,14 +28,14 @@ The one shot class that does drive the schedule is the hero shot (class C). In t
 
 The closest relative to our subject is the StoryCorps animated short work, which took 13 weeks for 3 minutes 15 seconds with 6 to 8 people [31]. Our plan replaces drawn characters with real photographs. That is why the numbers can be lower. It is not proven yet.
 
-The older estimate in the format playbook was 100 to 150 maker-hours for 8 to 12 minutes, a judgement and not a measurement [5]; the format playbook now defers to this model (`DECISIONS.md` W-02). Our model's 12-minute film needs 141 hours in the Prior case, 284 in Base, 201 with the levers and 116 in the best case. The older estimate fits only the optimistic cases.
+The earlier estimate in the format playbook was a whole-film maker-hours figure, a judgement and not a measurement [5]; the format playbook now defers to this model (`DECISIONS.md` W-02). Our model's 12-minute film needs 141 hours in the Prior case, 284 in Base, 201 with the levers and 116 in the best case. The earlier estimate fits only the optimistic cases.
 
 ### Working answer (current lean, to be confirmed)
 
 - Commit to a **12-minute public cut**, built as a wrapper (cold open about 1:15 and ending about 1:45) and three modules of about 3:00, if you can give **16 hours a week or more** in writing and we adopt the four levers in Step 3 that need no purchase (`DECISIONS.md` W-01, W-02, W-04). Between 14 and 16 hours, plan 12 only if you add hours or buy captions; otherwise 9.
 - If H is **under 14 hours a week**, plan **9 minutes (wrapper plus two modules)** from Sunday 15 November, not from 20 December. At 10 hours, 9 minutes fits only with all five levers and a slice of about 13 hours or less, about half the Base prediction; lever 3 (bought finishing) is off under only-me (W-50), so the rule is: **9 minutes if the slice comes in near Prior speed (about 10 hours); otherwise add hours.**
 - Treat **15 to 18 minutes** as a stretch. It opens only at G-SLICE on 20 December, only if H is 20 or more and the slice fits T2, and it is not recommended for the premiere cut under only-me (W-03). The fallback F-0 is 6 minutes: the wrapper plus one 3:00 module (W-05).
-- There is **no 25-minute plan.** The former private cut is re-purposed as the April version, the same locked picture with voices on (D-06). Do not plan **45 or 90 minutes** (D-24).
+- There is **no extended private cut.** The April version is the same locked picture with voices on (D-06). Do not plan **45 or 90 minutes** (D-24).
 
 The story track's old floor of 12 minutes is retired: 12 is the target when H allows and 9 when it does not (W-02). The conflict is resolved.
 
@@ -107,7 +107,7 @@ Use the tables in the Templates section. The rules from the research note are th
 - **H 14 to under 16**: plan 12 minutes only if you add hours or buy captions; otherwise 9.
 - **H 16 or more, with the four levers in Step 3 adopted**: plan 12 minutes (wrapper plus three modules).
 - **H about 20 or more**: 15 to 18 minutes becomes a stretch that can open only at G-SLICE on 20 December, if the slice meets the T2 thresholds (W-03); it is not recommended for the premiere cut under only-me.
-- There is no 25-minute plan and no 25-minute private cut: the April version is the same locked picture with voices on (D-06).
+- There is no extended private cut: the April version is the same locked picture with voices on (D-06).
 
 Do not plan above 12 minutes before the slice speaks (D-24).
 
@@ -239,7 +239,7 @@ The rules from the gates file are these.
 - **Green**: the slice fits your H at the planned runtime. Continue.
 - **Amber**: continue only with the levers adopted.
 - **Red**: drop to the next shorter scenario.
-- **15 to 18 minutes (stretch)**: continue only if H is 20 or more and the table fits your H at G-SLICE; it is not recommended for the premiere cut under only-me (`DECISIONS.md` W-03). There is no 25-minute plan (D-06).
+- **15 to 18 minutes (stretch)**: continue only if H is 20 or more and the table fits your H at G-SLICE; it is not recommended for the premiere cut under only-me (`DECISIONS.md` W-03). There is no extended private cut (D-06).
 - **12 minutes**: if the table says it does not fit your H, cut to 9 minutes (wrapper plus two modules).
 
 ### Step 11. The holidays (20 December to 2 January)
@@ -447,7 +447,7 @@ Hours in the Base case are small at 10 hours a week because fixed work uses 58 p
 
 ### T2. Slice-to-runtime table
 
-Measure h_slice for the slice as Step 9 defines it (production side). The model predicted 9.9 hours (Prior), 26.5 (Base) and 54 (Stress). This table holds finishing at Base (mu_fin = 1), and its weekly needs include the post-holiday check, so it is the stricter, operative table. Its all-levers column includes lever 3 (bought finishing at 0.8 maker-hours per minute), so while lever 3 is off under only-me (`DECISIONS.md` W-50), read the no-levers column as the conservative bound. The 8-minute tier is replaced by 9 (W-01); the 25-minute row is comparison only. Read across to find your runtime. A recalculation of the model gives 23.9 at h_slice 26 and 19.5 at 20 for 12 minutes (the table shows 24.1 and 19.6); the gap is under 1 percent and is the same small offset the other cells show, so the table is unchanged.
+Measure h_slice for the slice as Step 9 defines it (production side). The model predicted 9.9 hours (Prior), 26.5 (Base) and 54 (Stress). This table holds finishing at Base (mu_fin = 1), and its weekly needs include the post-holiday check, so it is the stricter, operative table. Its all-levers column includes lever 3 (bought finishing at 0.8 maker-hours per minute), so while lever 3 is off under only-me (`DECISIONS.md` W-50), read the no-levers column as the conservative bound. The shortest tier is now 9 minutes (W-01); the 25-minute row is comparison only. Read across to find your runtime. A recalculation of the model gives 23.9 at h_slice 26 and 19.5 at 20 for 12 minutes (the table shows 24.1 and 19.6); the gap is under 1 percent and is the same small offset the other cells show, so the table is unchanged.
 
 | Runtime | Needed hours a week at h_slice = 10 / 15 / 20 / 26 / 35 / 45 | Largest h_slice that fits, no levers: H = 10 / 20 / 30 | Largest h_slice that fits, all five levers (lever 3 bought): H = 10 / 20 / 30 |
 |---|---|---|---|
@@ -610,8 +610,8 @@ Each decision lists the options and the current lean. The lean is not final. You
 ### 2. Runtime (defaulted in `DECISIONS.md` W-01 to W-05)
 
 - **Options**: 9 minutes, 12 minutes (wrapper plus three 3:00 modules), or 15 to 18 minutes as a stretch; 6 minutes is the fallback F-0. 25, 45 and 90 minutes are not production targets.
-- **Lean**: 12 minutes if H is 16 or more in writing; 9 minutes if H is under 14, from Sunday 15 November; 12 at 14 to 16 only if hours are added or captions bought. 15 to 18 only if H is 20 or more and the slice fits T2 at G-SLICE, and not recommended under only-me. No 25-minute private cut: the April version is the same locked picture with voices (D-06). Not 45 or 90.
-- **Resolved conflict**: the story track's 12-minute floor is retired. 12 is the target when H allows and 9 when it does not (W-02), and the orchestrator has reconciled this with the story track.
+- **Lean**: 12 minutes if H is 16 or more in writing; 9 minutes if H is under 14, from Sunday 15 November; 12 at 14 to 16 only if hours are added or captions bought. 15 to 18 only if H is 20 or more and the slice fits T2 at G-SLICE, and not recommended under only-me. No extended private cut: the April version is the same locked picture with voices (D-06). Not 45 or 90.
+- **Resolved conflict**: the story track's earlier fixed runtime floor is retired. 12 is the target when H allows and 9 when it does not (W-02), and the orchestrator has reconciled this with the story track.
 
 ### 3. Which levers to adopt (Step 3)
 
@@ -659,7 +659,7 @@ For hard chapters the process is one-key-three-guards: a decision sheet per cand
 
 ### 11. Picture-lock date
 
-- **Options**: Saturday 6 February 2027 (G-LOCK). Saturday 13 February (G-MIX) is the latest acceptable lock, not an option to pick; there is no 25-minute plan and so no earlier 30 January lock (`DECISIONS.md` W-08, D-06).
+- **Options**: Saturday 6 February 2027 (G-LOCK). Saturday 13 February (G-MIX) is the latest acceptable lock, not an option to pick; there is no extended private cut and so no earlier 30 January lock (`DECISIONS.md` W-08, D-06).
 - **Lean**: 6 February, as fixed (Friday 5 February only if she keeps Maha vad Amas and the PC work needs the house, O-45).
 
 ### 12. Frame rate
@@ -712,7 +712,7 @@ Two consequences:
 |---|---|---|---|
 | 90 min | Kill now. | Sun 18 Oct 2026 | Needs 42.5 hours a week at Prior speed, 31.3 even in the best case, and 90 in Base. Killed (`DECISIONS.md` D-24). |
 | 45 min | Kill now. | Sun 18 Oct 2026 | Killed by D-24. Treat 45 as a post-premiere project, if at all. |
-| 25 min | Kill now. | Sun 18 Oct 2026 | No 25-minute plan: the former private cut is the April version, the same locked picture with voices on (`DECISIONS.md` D-06, W-03). |
+| 25 min | Kill now. | Sun 18 Oct 2026 | No plan at this length: the April version is the same locked picture with voices on, not an extended private cut (`DECISIONS.md` D-06, W-03). |
 | 12 min | Decide at the slice. | 20 Dec 2026; 17 Jan 2027; 31 Jan 2027 | At 20 December, if T2 says it does not fit your H, cut to 9 minutes (wrapper plus two modules). At 17 January, below 5.4 minutes approved: cut the lowest-priority module (to 9 minutes); a second module is cut only at 31 January, if it is not at draft. At 31 January, any unfinished module becomes a fallback chapter. |
 
 All of these dates fall on Sundays or Saturdays.
@@ -760,7 +760,7 @@ Project files
 - [2] Agent-First Production Pipeline playbook — `playbooks/agent-pipeline.md` — 2026-10-18 — shot classes, minutes per shot [J], gates, validators, naming, rhythm.
 - [3] Agent-first production pipeline research notes — `research/agent-pipeline.md` — 2026-10-18 — measurements M1 to M21, Q-F2 job limits.
 - [4] Animated, documentary and web life-journey research — `research/animated.md` — 2026-10-18 — DepthFlow 12.3 fps at 640 x 480 (around line 614).
-- [5] Delivery format playbook — `playbooks/format.md` — 2026-10-18 — 100 to 150 maker-hours for 8 to 12 minutes [J]; 6 to 10 hours per finished minute [J] (both figures superseded by this model, `DECISIONS.md` W-02); pacing guidance.
+- [5] Delivery format playbook — `playbooks/format.md` — 2026-10-18 — the format notes' earlier whole-film maker-hours estimate [J] and their earlier build-only hours-per-finished-minute figure [J] (both figures superseded by this model, `DECISIONS.md` W-02); pacing guidance.
 - [6] Film briefs review — `reviews/02-film-briefs-review.md` — 2026-10-18 — schedule prior, refined brief, week numbering.
 - [7] Writing a biographical animated film research notes — `research/film-story.md` — 2026-10-18 — runtime recommendation, scene-grade memory counts, 72-hour double-decision rule.
 - [8] AI imagery and motion research notes — `research/ai-imagery.md` — 2026-10-18 — Veo and Kling prices, children's photos, label ladder, RunPod.
@@ -828,8 +828,9 @@ Added in round 2 (cited above)
 
 ## Changelog
 
-- **2026-10-18, Reconciled with DECISIONS.md (2026-10-18).** Sonnet implementor pass against the decisions register: 9-or-12 rule by H and the 15 Nov deadline (W-01, W-02); 15 to 18 stretch only at G-SLICE (W-03); no 25-minute plan, the April version replaces the private cut (D-06); 25-, 45- and 90-minute tiers killed or comparison-only (D-24); the 8-minute T2 row removed (W-01); lever 3 off, finishing done by the maker (W-50, D-07); frame rate settled at 24 on the Sunday 1 Nov settings card (W-14, W-16); venue and DCP decided by the venue's written answer (W-17); stranger screenings S1 and S2 decided (W-43); only-me and one-key-three-guards replace the deferred "who else is in on it" decision (D-03, D-04); no voice-over, no composer (D-05, D-07); picture lock Sat 6 Feb with no 30 January option (W-08). Superseded values S-02, S-19, S-34, S-35, S-36 and S-37 patched.
+- **2026-10-18, Reconciled with DECISIONS.md (2026-10-18).** Sonnet implementor pass against the decisions register: 9-or-12 rule by H and the 15 Nov deadline (W-01, W-02); 15 to 18 stretch only at G-SLICE (W-03); the April version replaces any extended private cut (D-06); 25-, 45- and 90-minute tiers killed or comparison-only (D-24); the 8-minute T2 row removed (W-01); lever 3 off, finishing done by the maker (W-50, D-07); frame rate settled at 24 on the Sunday 1 Nov settings card (W-14, W-16); venue and DCP decided by the venue's written answer (W-17); stranger screenings S1 and S2 decided (W-43); only-me and one-key-three-guards replace the deferred "who else is in on it" decision (D-03, D-04); no voice-over, no composer (D-05, D-07); picture lock Sat 6 Feb with no 30 January option (W-08). Superseded values S-02, S-19, S-34, S-35, S-36 and S-37 patched.
 - **v3, 2026-10-18 (round 2 review applied by the Haiku scribe).** F3 and G2 render numbers, hero finals as GPU work by default and the family-imagery rule; lever 3 conditional on two quotes, with four-lever figures; the F5 calendar and its two consequences; the 9-minute tier and the G-MID rule; the 100-second slice of M1; the decided module shape and wrapper shot IDs; CC0 and 4K citations. TODO(research) closed in Words, Step 9, T2 and Decisions 13 to 16.
 - **v2, 2026-10-18 (round 1 review applied by the Haiku scribe).** Slice calibration now defines h_slice on the production side and h_slice_fin separately, and the model has a mu_fin row wired into the finishing rows. The stranger read is conditional on Decision 8, with the cold self-read as the named substitute. Module shape is now a wrapper plus 3:00 modules, with the 12-minute and 8-minute shape issues left as TODO(research). The 20-hour claim now states its post-holiday failure. Spike list and settings card are copied from the agent-pipeline playbook. The 1080p Veo prices are added. The 72-hour rule is cited to [6][7], with the default-OUT guard. Still open: the TODO(research) items in Words, T2 and Decisions 8 to 13.
 - **v1, 2026-10-18.** First draft by the Haiku scribe, from `research/production-scale.md` (Sonnet, 2026-10-18) and `CHARTER.md`. Covers Q1 to Q10 and the recommended runtime. Open items: TODO(research) for the spike list (Step 7), the settings card (G-READY), cash for the mix and grade, the DCP lean, the chapter count, the frame rate, the observances, and the outside stranger read. Decisions 2, 8, 9 and 10 need the orchestrator or the maker. Not yet reviewed against the rubric.
-- **2026-10-19, Reconciled with DECISIONS.md after the her-world merge (2026-10-19).** Sonnet implementor pass against the merged register (S-39, S-57 to S-64, S-61): Decision 16 re-keyed from the placeholder observances (Lunar New Year, Hanukkah, US Thanksgiving, Christmas, Ramadan, Ash Wednesday) to her festival year, with the logistics rows left to the premiere country (O-02); picture lock stays Sat 6 Feb and moves to Fri 5 Feb only for Maha vad Amas (W-08, O-45); the her-turn conversation is Sun 7 Mar after about 14:00, else Mon 8 Mar (W-48); the Sonnet spikes are SP1 to SP5 and the process lock is P-LOCK (W-06), with a P-LOCK row added to the gates calendar; S1 is one or two strangers (W-43); the premiere spine's music cue is the maker's hum in two takes (W-44, W-65); the holiday capture list carries the W-70 seva-article rule. Sources [93] to [96] retired. Citations kept; no research note or review touched.
+- **2026-10-19, Reconciled with DECISIONS.md after the her-world merge (2026-10-19).** Sonnet implementor pass against the merged register (S-39, S-57 to S-64, S-61): Decision 16 re-keyed from the earlier placeholder observances to her festival year, with the logistics rows left to the premiere country (O-02); picture lock stays Sat 6 Feb and moves to Fri 5 Feb only for Maha vad Amas (W-08, O-45); the her-turn conversation is Sun 7 Mar after about 14:00, else Mon 8 Mar (W-48); the Sonnet spikes are SP1 to SP5 and the process lock is P-LOCK (W-06), with a P-LOCK row added to the gates calendar; S1 is one or two strangers (W-43); the premiere spine's music cue is the maker's hum in two takes (W-44, W-65); the holiday capture list carries the W-70 seva-article rule. Sources [93] to [96] retired. Citations kept; no research note or review touched.
+- **2026-10-20, Stale-wording sweep (2026-10-20).** Retired runtime-tier, long-cut, runtime-floor and placeholder-observance wording in "Why this matters for our film", Step 2, Step 10, T2, Decisions 2 and 11, the kill-or-cut table, source [5] and the changelog rewritten to name each change without repeating the retired value (S-16, S-18, S-19, S-20, S-61). Live values unchanged: 9 or 12 minutes by H (W-01, W-02), the April version as the same locked picture with voices on (D-06). Citations kept; no research note or review touched.

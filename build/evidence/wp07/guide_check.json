@@ -35,7 +35,7 @@
     {
       "id": "G7.flipped_tarball_rejected_before_extraction",
       "status": "PASS",
-      "text": "intact tarball -> exit 0 (OK: filmcraft-0.9.0-); one byte flipped -> exit 1 (REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 33a89); verify call at run_sp1.sh line 223 precedes the first tar -xzf at line 271: True"
+      "text": "intact tarball -> exit 0 (OK: filmcraft-0.9.0-); one byte flipped -> exit 1 (REJECTED: filmcraft-0.9.0-linux-x86_64.tar.gz: SHA-256 82766); verify call at run_sp1.sh line 223 precedes the first tar -xzf at line 271: True"
     },
     {
       "id": "G8.step2_move_prints_only_file_names",

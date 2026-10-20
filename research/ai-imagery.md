@@ -872,7 +872,7 @@ The five-photo bake-off needs a faded colour print, a small black-and-white prin
   - A user (in Spanish), whose father died when the user was seven months old: all their life they dreamed of seeing their father alive for at least a moment.
   - A user, aunt who survived the Holocaust: "I sort of feel more like I'm meeting her thanks to this animation."
   - A user: "I shed a few tears of joy last night. I saw my late grandpa once more, like in a dream."
-  - Jason Glisson, grandfather's WWII photo: "seeing it move really shocked me."
+  - A user, grandfather's WWII photo: "seeing it move really shocked me."
   - Mixed or critical, same post: Ferris Jabr called it "an eerie yet captivating technology, raising many complex issues"; another user, after animating a bought antique portrait of a stranger, was "now... slightly afraid of it".
 - **Secondhand press** [140]. SingularityHub (2021-04-08) repeats MyHeritage's line that users "were moved to tears" and says many posted animations on Twitter; it quotes no individual and links only a hashtag page.
 - **No criticism on Wikipedia.** The MyHeritage article records the February 2021 launch and nearly 100 million animations but no reaction or ethics discussion [139]. It cites a 2025 paper, Kopelman and Frosh, "The 'algorithmic as if': Computational resurrection and the animation of the dead in Deep Nostalgia", *New Media & Society* 27(4): 2393 to 2413, DOI 10.1177/14614448231210268 [139]. That paper is the best lead for independent evidence; I could not read it.

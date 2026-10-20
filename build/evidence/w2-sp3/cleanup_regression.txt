@@ -1,0 +1,11 @@
+# test_cleanup.sh, run Tue 20 Oct 2026 (stand-in python, no Blender, no download)
+
+$ bash spikes/sp3_blender/test_cleanup.sh --script <run_sp3.sh as committed before the fix>
+run_inner exit code: 0; work folder left behind: yes; 'unbound variable' in the output: yes
+FAIL: the work folder is not removed (or run_inner failed)
+exit=1
+
+$ bash spikes/sp3_blender/test_cleanup.sh
+run_inner exit code: 0; work folder left behind: no; 'unbound variable' in the output: no
+PASS: the work folder is removed when run_inner runs to the end
+exit=0

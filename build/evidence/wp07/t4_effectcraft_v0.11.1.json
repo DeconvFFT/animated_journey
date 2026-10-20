@@ -1,0 +1,413 @@
+{
+  "actual": "9 criteria, 0 failed",
+  "date_utc": "2026-10-20",
+  "detail": {
+    "calls": [
+      {
+        "call": "exec comp.new",
+        "killed": null,
+        "max_rss_mb": 18.4,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec layer.newText",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "set T transform/opacity",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "set T transform/opacity",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "set T transform/position",
+        "killed": null,
+        "max_rss_mb": 24.8,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "exec comp.new",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec edit.pasteSvg",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec layer.addShapeItem",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "set Draw contents/trim/end",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "set Draw contents/trim/end",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "exec comp.new",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "exec layer.newSolid",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "exec layer.newShape",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec layer.newShape",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec layer.newShape",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec layer.newShape",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec layer.setSwitch",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "set P0 transform/position",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "set P1 transform/position",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "set P2 transform/position",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "set P3 transform/position",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "set P4 transform/position",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "exec layer.newCamera",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.26
+      },
+      {
+        "call": "set Cam transform/position",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "set Cam transform/position",
+        "killed": null,
+        "max_rss_mb": 18.7,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "render Title 1 s PNG",
+        "killed": null,
+        "max_rss_mb": 201.9,
+        "rc": 0,
+        "wall_s": 0.76
+      },
+      {
+        "call": "render Line 1 s PNG",
+        "killed": null,
+        "max_rss_mb": 238.3,
+        "rc": 0,
+        "wall_s": 0.76
+      },
+      {
+        "call": "render Parallax 0.041666666666666664 s PNG",
+        "killed": null,
+        "max_rss_mb": 97.3,
+        "rc": 0,
+        "wall_s": 0.51
+      },
+      {
+        "call": "render Parallax 0.5 s PNG",
+        "killed": null,
+        "max_rss_mb": 100.4,
+        "rc": 0,
+        "wall_s": 2.27
+      },
+      {
+        "call": "render Parallax 0.25 s PNG",
+        "killed": null,
+        "max_rss_mb": 255.0,
+        "rc": 0,
+        "wall_s": 1.01
+      },
+      {
+        "call": "render Title ProRes 4444 1 s",
+        "killed": null,
+        "max_rss_mb": 220.1,
+        "rc": 0,
+        "wall_s": 1.51
+      },
+      {
+        "call": "render Title H.264 1 s",
+        "killed": null,
+        "max_rss_mb": 259.4,
+        "rc": 0,
+        "wall_s": 1.26
+      },
+      {
+        "call": "render-frame determinism #1",
+        "killed": null,
+        "max_rss_mb": 39.6,
+        "rc": 0,
+        "wall_s": 0.25
+      },
+      {
+        "call": "render-frame determinism #2",
+        "killed": null,
+        "max_rss_mb": 40.0,
+        "rc": 0,
+        "wall_s": 0.26
+      }
+    ],
+    "calls_total": 34,
+    "contaminated": "yes",
+    "criteria": [
+      {
+        "id": "T4.title_no_oom_default_threads",
+        "mark": "no crash or OOM at 1080p with default threads",
+        "measured": "exit 0, 24 PNGs, peak RSS 202 MB",
+        "pass": true
+      },
+      {
+        "id": "T4.title_png_has_alpha",
+        "mark": "PNGs have alpha",
+        "measured": "RGBA with a transparent corner pixel: True",
+        "pass": true
+      },
+      {
+        "id": "T4.line_no_oom_default_threads",
+        "mark": "no crash or OOM at 1080p with default threads",
+        "measured": "exit 0, 24 PNGs, peak RSS 238 MB",
+        "pass": true
+      },
+      {
+        "id": "T4.line_png_has_alpha",
+        "mark": "PNGs have alpha",
+        "measured": "RGBA with a transparent corner pixel: True",
+        "pass": true
+      },
+      {
+        "id": "T4.parallax_speed",
+        "mark": "under 3 s/frame at RAYON_NUM_THREADS=1",
+        "measured": "0.16 s/frame over 12 frames, one thread (startup 0.5 s subtracted)",
+        "pass": true
+      },
+      {
+        "id": "T4.parallax_rss",
+        "mark": "under 6144 MB",
+        "measured": "100 MB peak",
+        "pass": true
+      },
+      {
+        "id": "T4.prores4444_decodes",
+        "mark": "4444 file decodes in ffmpeg with no errors and the right frame count",
+        "measured": "frames 24 of 24, decode ''",
+        "pass": true
+      },
+      {
+        "id": "T4.h264_decodes",
+        "mark": "H.264 decodes with no errors and the right frame count",
+        "measured": "frames 24 of 24, decode ''",
+        "pass": true
+      },
+      {
+        "id": "T4.determinism",
+        "mark": "expression comps produce identical frames on two runs",
+        "measured": "run 1 d16f483c839a, run 2 d16f483c839a",
+        "pass": true
+      }
+    ],
+    "harness_error": null,
+    "mini": false,
+    "profile": "lean",
+    "results": {
+      "determinism": {
+        "sha256_first_12": [
+          "d16f483c839a",
+          "d16f483c839a"
+        ]
+      },
+      "h264": {
+        "color_primaries": "bt709",
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_transfer": "bt709",
+        "decode_errors": "",
+        "frames_counted": 24,
+        "pix_fmt": "yuv420p",
+        "rc": 0,
+        "rss_mb": 259.4,
+        "wall_s": 1.26
+      },
+      "killed_h264_observation": {
+        "file_exists": true,
+        "has_moov": false,
+        "killed_by": "wall-clock",
+        "note": "observation only (issue #1615): a render stopped mid-way leaves a file; whether it plays is the finding"
+      },
+      "line_trim_path": "contents/trim",
+      "parallax_1thread": {
+        "baseline_wall_s": 0.51,
+        "frames": 12,
+        "rc": 0,
+        "rss_mb": 100.4,
+        "s_per_frame": 0.16,
+        "wall_s": 2.27
+      },
+      "parallax_default_threads_sample": {
+        "frames": 6,
+        "note": "recorded, not a criterion",
+        "rc": 0,
+        "rss_mb": 255.0,
+        "wall_s": 1.01
+      },
+      "png_line": {
+        "alpha_transparent_corner": true,
+        "files": 24,
+        "ms_per_frame": 31.7,
+        "rc": 0,
+        "rss_mb": 238.3,
+        "wall_s": 0.76
+      },
+      "png_title": {
+        "alpha_transparent_corner": true,
+        "files": 24,
+        "ms_per_frame": 31.7,
+        "rc": 0,
+        "rss_mb": 201.9,
+        "wall_s": 0.76
+      },
+      "prores4444": {
+        "codec": "prores",
+        "color_primaries": null,
+        "color_range": null,
+        "color_space": null,
+        "color_transfer": null,
+        "decode_errors": "",
+        "frames_counted": 24,
+        "pix_fmt": "yuva444p12le",
+        "profile": "4444",
+        "rc": 0,
+        "rss_mb": 220.1,
+        "seconds": 1,
+        "size_mb": 2.1,
+        "wall_s": 1.51
+      },
+      "prores4444_pix_fmt_expected": "yuva444p12le",
+      "prores4444_pix_fmt_matches_expectation": true
+    },
+    "sandbox": {
+      "network_isolation": "unshare -rn",
+      "rayon_threads_parallax": 1
+    },
+    "wall_s": 19.5
+  },
+  "disk": {
+    "avail_mb_end": 13457,
+    "avail_mb_min": 13322,
+    "avail_mb_start": 13459,
+    "floor_mb": 400,
+    "hard_floor_mb": 250,
+    "planned_write_mb": 300
+  },
+  "env": {
+    "contaminated": "yes",
+    "ffmpeg": "6.1.1-3ubuntu5",
+    "nproc": 4,
+    "platform": "linux",
+    "python": "3.13"
+  },
+  "expected": "no OOM at 1080p default threads (Title, Line); PNGs have alpha; parallax under 3 s/frame and 6 GB at one thread; ProRes 4444 and H.264 decode silent with the right frame count; two runs identical",
+  "notes": "Parallax layers are solids and shapes, not footage. A Linux CLI pass proves nothing about Windows.",
+  "package": "WP-07",
+  "schema": "lj-evidence/1",
+  "stage": "sp1-effectcraft-v0.11.1-lean",
+  "status": "PASS",
+  "test": "t4_effectcraft_v0.11.1",
+  "unverified_reasons": [
+    "Windows behaviour is not tested by a Linux CLI run"
+  ]
+}
