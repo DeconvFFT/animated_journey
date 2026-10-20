@@ -1,0 +1,8 @@
+# SP3 run 2: the guard's own ledger lines (non-identifying by design), Tue 20 Oct 2026 UTC
+## disk ledger
+{"label":"sp3-blender","planned_mb":3100,"avail_mb_start":14546,"avail_mb_min":13140,"avail_mb_end":14545,"floor_mb":400,"hard_floor_mb":250,"date_utc":"2026-10-20","started_utc":"2026-10-20T02:05:36Z","ended_utc":"2026-10-20T02:18:42Z","lock_wait_s":0,"status":"ok","exit":0}
+## bench ledger (the four timed lines, in order)
+{"label":"python","nproc":4,"load1_start":0.56,"contaminated":"no","date_utc":"2026-10-20","started_utc":"2026-10-20T02:06:35Z","ended_utc":"2026-10-20T02:06:59Z","exit":0}
+{"label":"python","nproc":4,"load1_start":1.96,"contaminated":"yes","date_utc":"2026-10-20","started_utc":"2026-10-20T02:06:59Z","ended_utc":"2026-10-20T02:09:40Z","exit":0}
+{"label":"python","nproc":4,"load1_start":4.75,"contaminated":"yes","date_utc":"2026-10-20","started_utc":"2026-10-20T02:09:40Z","ended_utc":"2026-10-20T02:12:47Z","exit":0}
+{"label":"python","nproc":4,"load1_start":4.89,"contaminated":"yes","date_utc":"2026-10-20","started_utc":"2026-10-20T02:12:47Z","ended_utc":"2026-10-20T02:18:40Z","exit":0}

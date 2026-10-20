@@ -1,6 +1,6 @@
 # SP3: Blender for hero shots (run once on the stand-in scene; the real-kitchen pass mark waits for G1)
 
-*Prepared in WP-10, Mon 19 Oct 2026 (then **Deferred** for disk). **First real run Tue 20 Oct 2026** (`build/reports/w2-sp3.md`): status **Partial**. Every timing is a Linux container result on a neutral stand-in scene; it is not evidence for Windows.*
+*Prepared in WP-10, Mon 19 Oct 2026 (then **Deferred** for disk). **First real run Tue 20 Oct 2026, second run the same night** (`build/reports/w2-sp3.md`): status **Partial**. Every timing is a Linux container result on a neutral stand-in scene; it is not evidence for Windows.*
 
 ## First run, Tue 20 Oct 2026 (stand-in scene, Cycles CPU, 4 vCPU, no GPU, 1920x1080)
 
@@ -12,6 +12,17 @@
 | 128, 1, 0 | 204.3 s | 408.6 s | **176.2 s** | 0.86 | 2,209 MB |
 
 All four are within 2x of the table, so the **container route works** (`bpy` 5.2.2 LTS installs, imports and renders; two renders with the same settings differ in 0 pixels). The real pass mark, **one real hero frame within 2x the table**, is still not judged: the real kitchen does not exist before G1 (Sun 15 Nov). The real disk need was a **peak of 1,408 MB** (the 402 MB wheel while pip unpacks it, plus the 1,008 MB venv), a steady 1,021 MB, not the 3,100 MB planned. **A defect in this script's cleanup** was found by the run (the venv was left behind) and fixed; `bash spikes/sp3_blender/test_cleanup.sh` is its regression test. Evidence: `build/evidence/wp10/sp3_results.txt`, `build/evidence/w2-sp3/`.
+
+## Second run, Tue 20 Oct 2026, 02:05 UTC (after a container restart; same script, no edit)
+
+| Samples, denoise, adaptive | Table | Limit (2x) | Run 1 | Run 2 | Run 2 ratio to table | Run 2 / run 1 | Peak memory |
+|---|---|---|---|---|---|---|---|
+| 8, 0, 0 | 13.3 s | 26.6 s | 10.8 s | **22.2 s** | 1.67 | 2.06 | 594 MB |
+| 64, 0, 0 | 95.2 s | 190.4 s | 81.9 s | **160.3 s** | 1.68 | 1.96 | 594 MB |
+| 64, 1, 0 | 112.4 s | 224.9 s | 93.8 s | **185.3 s** | 1.65 | 1.98 | 2,209 MB |
+| 128, 1, 0 | 204.3 s | 408.6 s | 176.2 s | **351.7 s** | 1.72 | 2.00 | 2,209 MB |
+
+Still all within 2x, but the container landed on a different CPU model (class Xeon 2.80 GHz; run 1 recorded 2.10 GHz) that ran every line about twice as slowly (CPU steal 1.1 percent, so not a noisy neighbour in the measurable sense), leaving only 16 to 21 percent headroom under the limit. **The 2x mark depends on the host.** At G1, record the CPU model and re-time the stand-in's `64 1 0` line in the same session as the real frame. Run 2 also confirmed the cleanup fix on a real install (the folder was gone at the end, no error; same 1,408 MB peak and 1,021 MB steady) and the `bpy` wheel's sha256 in pip's report equals PyPI's. Evidence: `build/evidence/w2-sp3/summary_run2.json` and the `run2_*` files beside it.
 
 ## What SP3 decides
 
@@ -50,6 +61,8 @@ configurations itself (`8 0 0`, `64 0 0`, `64 1 0`, `128 1 0` as SAMPLES DENOISE
 
 * **Everything on Windows**: `pip install bpy` there needs Python 3.13 exactly; the PC's own timings (Exercise 5, Claude app closed), its GPU (CUDA, OptiX or HIP), `blender.exe` against `bpy`, and where the files land. The container has no GPU device of any type (`bpy` lists none), so no GPU timing exists here either. The maker's PC is the evidence.
 * **The real kitchen**: the pass mark (one real hero frame within 2x the table) is judged at G1 on the real set; the stand-in has 2,938 faces and no photographic texture, so a real frame can cost more per sample.
-* **The wheel's SHA-256** was not compared with the download (`pip install` without `--require-hashes`, no cache, the wheel is gone). PyPI's published digest is in `build/evidence/w2-sp3/summary.json`; a later run can pass `--require-hashes`.
-* **The cleanup fix on the real `bpy` run**: proved with a stand-in python (`test_cleanup.sh`: the old script FAILS it, the fixed one PASSES); not re-proved against a second real install, which would be another 402 MB fetch.
+* **The wheel's SHA-256** was not hashed independently (`pip install` without `--require-hashes`, no cache, the wheel is gone). pip's own report in run 2 gives the same sha256 as PyPI's published digest (`build/evidence/w2-sp3/run2_pip_summary.json`, `summary.json`), and pip checks a download against its index digest, so this is indirect evidence only.
+* **The cleanup fix** is now proved on a real install too (run 2: the folder was gone, no error) as well as by the stand-in test (`test_cleanup.sh`: the old script FAILS it, the fixed one PASSES).
+* **Why the second host was about twice as slow** (CPU generation, memory bandwidth, a vCPU quota?) and whether the next restart lands on the fast or the slow one.
+* **Run 2's render content and cross-host pixel identity**: the script deletes the renders; only run 1's images were inspected.
 * **The Workbench draft time (4.1 s) is indicative**: its start was flagged contaminated by the 1-minute load average, and it printed three `EGL_BAD_MATCH` messages (it completed and the image is real).

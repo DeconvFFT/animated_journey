@@ -1,0 +1,50 @@
+# SP3 run 2, Tue 20 Oct 2026 UTC. Console output of the entry check and the guarded stage (paths replaced by <path>).
+
+# 02:05:22 UTC df -BM -P / (before)
+Filesystem     1048576-blocks   Used Available Capacity Mounted on
+/dev/vda              258020M 25341M    14546M      64% /
+
+$ bash spikes/sp3_blender/run_sp3.sh --check
+run_sp3.sh --check    (SP3: Blender hero-shot timing on a neutral stand-in scene; prepared, NOT run; nothing is downloaded or written)
+
+Entry conditions
+  free disk          Avail 14546 MB now; needed at least 3500 MB (planned 3100 MB + the 400 MB floor of scripts/lj_guard.sh)
+  bpy wheel          401,697,653 bytes (383 MiB), cp313 manylinux_2_28 x86_64, read from PyPI just now; the venv it makes is about 1 GB on disk (R9/M14)
+  Blender tarball    383,295,504 bytes (365 MiB), blender-5.2.2-linux-x64.tar.xz, read by HEAD request just now; NOT used by this script (bpy is the route); listed for the PC route
+  python             3.13.16 at /usr/bin/python3 (the wheel is cp313 only, so 3.13 is required)
+  reused scene       research/production-scale-fixtures/followup2-s3-kitchen-standin.py: py_compile ok; primitives only, no photograph, no family imagery
+  reused sweep       research/production-scale-fixtures/followup2-s3-run-sweep.sh: bash -n ok (referenced, not executed: it holds a path of an earlier session)
+  earlier numbers    followup2-s3-container-results.txt (stand-in, 1080p, Cycles CPU, 4 vCPU): 64 samples with denoise 110-115 s, 128 without 192-232 s, 24 with denoise 51-59 s
+  pass mark          one real hero frame within 2x the table: cannot be judged before the real kitchen exists (G1); this run times the stand-in only
+
+READY: Avail 14546 MB is at least 3500 MB. Start it with: bash spikes/sp3_blender/run_sp3.sh --run
+exit=0
+
+$ PIP_REPORT=<scratch>/pip_report.json bash spikes/sp3_blender/run_sp3.sh --run   (with a 2 s df sampler beside it)
+# 02:05:36 UTC run start
+run_sp3.sh --check    (SP3: Blender hero-shot timing on a neutral stand-in scene; prepared, NOT run; nothing is downloaded or written)
+
+Entry conditions
+  free disk          Avail 14546 MB now; needed at least 3500 MB (planned 3100 MB + the 400 MB floor of scripts/lj_guard.sh)
+  bpy wheel          401,697,653 bytes (383 MiB), cp313 manylinux_2_28 x86_64, read from PyPI just now; the venv it makes is about 1 GB on disk (R9/M14)
+  Blender tarball    383,295,504 bytes (365 MiB), blender-5.2.2-linux-x64.tar.xz, read by HEAD request just now; NOT used by this script (bpy is the route); listed for the PC route
+  python             3.13.16 at /usr/bin/python3 (the wheel is cp313 only, so 3.13 is required)
+  reused scene       research/production-scale-fixtures/followup2-s3-kitchen-standin.py: py_compile ok; primitives only, no photograph, no family imagery
+  reused sweep       research/production-scale-fixtures/followup2-s3-run-sweep.sh: bash -n ok (referenced, not executed: it holds a path of an earlier session)
+  earlier numbers    followup2-s3-container-results.txt (stand-in, 1080p, Cycles CPU, 4 vCPU): 64 samples with denoise 110-115 s, 128 without 192-232 s, 24 with denoise 51-59 s
+  pass mark          one real hero frame within 2x the table: cannot be judged before the real kitchen exists (G1); this run times the stand-in only
+
+READY: Avail 14546 MB is at least 3500 MB. Start it with: bash spikes/sp3_blender/run_sp3.sh --run
+lj_guard: sp3-blender: planned 3100 MB, Avail 14546 MB, floor 400 MB, hard floor 250 MB
+[1/5] python3 -m venv <scratch>/sp3/venv
+[2/5] pip install --no-cache-dir bpy==5.2.2   (a 402 MB wheel; no pip cache is written)
+[3/5] bpy imports: Blender 5.2.2 LTS
+[4/5] the stand-in kitchen at 1920x1080 (fresh process per line, each under lj_bench; samples denoise adaptive)
+RESULT 1920x1080 samples=8 denoise=0 adaptive=0 wall_s=22.2 peak_rss_mb=594 faces=2938
+RESULT 1920x1080 samples=64 denoise=0 adaptive=0 wall_s=160.3 peak_rss_mb=594 faces=2938
+RESULT 1920x1080 samples=64 denoise=1 adaptive=0 wall_s=185.3 peak_rss_mb=2209 faces=2938
+RESULT 1920x1080 samples=128 denoise=1 adaptive=0 wall_s=351.7 peak_rss_mb=2209 faces=2938
+[5/5] cleanup: the venv and the renders are deleted; results are in build/evidence/wp10/sp3_results.txt
+lj_guard: sp3-blender: finished with exit 0; Avail start 14546 MB, min 13140 MB, end 14545 MB
+# 02:18:42 UTC run end, exit=0
+# 02:18:45 sp3 scratch folder after: gone

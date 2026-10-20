@@ -1,37 +1,37 @@
 {
  "counts": {
   "BLOCKED": 0,
-  "FAIL": 2,
-  "PASS": 39,
+  "FAIL": 0,
+  "PASS": 41,
   "SKIPPED": 0,
   "UNVERIFIED": 1
  },
  "date_utc": "2026-10-20",
- "lowest_avail_mb": 741,
+ "lowest_avail_mb": 14533,
  "mode": "quick",
  "package": "WP-11b",
  "schema": "lj-evidence-summary/1",
- "seconds": 24.5,
+ "seconds": 35.9,
  "slowest": [
   {
-   "seconds": 10.0,
+   "seconds": 15.9,
    "test": "hygiene.stale_check_new_only"
   },
   {
-   "seconds": 3.7,
+   "seconds": 6.3,
    "test": "hygiene.public_lint_over_the_build_folders"
   },
   {
-   "seconds": 2.9,
+   "seconds": 4.6,
    "test": "hygiene.theme_guard"
   },
   {
-   "seconds": 1.7,
+   "seconds": 2.2,
    "test": "redaction.derivation_tools_leak_nothing"
   },
   {
-   "seconds": 1.6,
-   "test": "hygiene.public_lint_over_the_diff"
+   "seconds": 2.1,
+   "test": "redaction.self_test_zero_skipped_consumers"
   }
  ]
 }

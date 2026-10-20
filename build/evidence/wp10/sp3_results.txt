@@ -1,5 +1,13 @@
+# RUN 1, 20 Oct 2026, guard start 01:19:59 UTC; CPU class Intel Xeon 2.10 GHz (build/evidence/w2-sp3/summary.json)
 SP3 run, neutral stand-in scene (primitives only), Blender 5.2.2 LTS, Cycles CPU, 4 vCPU, no GPU; 2026-10-20
 RESULT 1920x1080 samples=8 denoise=0 adaptive=0 wall_s=10.8 peak_rss_mb=594 faces=2938
 RESULT 1920x1080 samples=64 denoise=0 adaptive=0 wall_s=81.9 peak_rss_mb=594 faces=2938
 RESULT 1920x1080 samples=64 denoise=1 adaptive=0 wall_s=93.8 peak_rss_mb=2209 faces=2938
 RESULT 1920x1080 samples=128 denoise=1 adaptive=0 wall_s=176.2 peak_rss_mb=2209 faces=2938
+
+# RUN 2, 20 Oct 2026, guard start 02:05:36 UTC, after a container restart; CPU class Intel Xeon Processor 2.80 GHz (build/evidence/w2-sp3/summary_run2.json)
+SP3 run, neutral stand-in scene (primitives only), Blender 5.2.2 LTS, Cycles CPU, 4 vCPU, no GPU; 2026-10-20
+RESULT 1920x1080 samples=8 denoise=0 adaptive=0 wall_s=22.2 peak_rss_mb=594 faces=2938
+RESULT 1920x1080 samples=64 denoise=0 adaptive=0 wall_s=160.3 peak_rss_mb=594 faces=2938
+RESULT 1920x1080 samples=64 denoise=1 adaptive=0 wall_s=185.3 peak_rss_mb=2209 faces=2938
+RESULT 1920x1080 samples=128 denoise=1 adaptive=0 wall_s=351.7 peak_rss_mb=2209 faces=2938

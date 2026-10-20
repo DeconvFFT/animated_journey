@@ -1,4 +1,4 @@
-# area=roundtrip entry=WP-06 mode=quick result=PASS exit=0 seconds=10 masked_values=0
+# area=roundtrip entry=WP-06 mode=quick result=PASS exit=0 seconds=15 masked_values=0
 PASS       hygiene.py_compile                             11 files compile
 PASS       hygiene.python38_grammar                       all pipeline/roundtrip tools parse
 PASS       hygiene.bash_syntax                            4 scripts parse
@@ -109,4 +109,4 @@ PASS       otio.adapter_probe_exit_codes                  exits 2 3
 PASS       otio.adapter_probe_no_paths                    clean
 UNVERIFIED windows.validators                             standard library only, os.path joins, UTF-8 and BOM reading, ASCII output, no shell=True; not run on Windows
 UNVERIFIED craft_apps.accept_files                        not run: no Craft app was started in this package
-TOTAL: PASS 108, FAIL 0, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (10 s)
+TOTAL: PASS 108, FAIL 0, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (14 s)

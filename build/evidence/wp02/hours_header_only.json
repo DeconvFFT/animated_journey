@@ -2,9 +2,9 @@
  "actual": "hours_report: hours.csv, 0 row(s)\n  no rows yet: log your real hours (see HOURS-HOWTO.md); the first logged week is read on Sun 1 Nov",
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 746,
-  "avail_mb_min": 746,
-  "avail_mb_start": 746,
+  "avail_mb_end": 14539,
+  "avail_mb_min": 14539,
+  "avail_mb_start": 14539,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

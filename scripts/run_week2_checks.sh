@@ -57,7 +57,7 @@
 #   LJ_RUNNER_AREAS_FILE    replaces the 13 areas by lines  area|entry|evidence-subfolder|wave|title  (needs the next one)
 #   LJ_RUNNER_EVIDENCE_DIR  where the evidence folders and the three outputs live (default build/evidence)
 #   LJ_RUNNER_TESTS_DIR     where tests/<area>/run_tests.sh are looked for (default tests)
-#   LJ_RUNNER_TIMEOUT_S     per-area limit (the --timeout option wins)   LJ_RUNNER_BUDGET_S  quick budget (300)
+#   LJ_RUNNER_TIMEOUT_S     per-area limit (the --timeout option wins)   LJ_RUNNER_BUDGET_S  quick budget (450; see below)
 #   LJ_RUNNER_KILL_GRACE_S  seconds between TERM and KILL for a timed-out area (3)
 #   LJ_RUNNER_PATTERNS, LJ_RUNNER_LINT   alternative pattern file and public_lint.py
 #   LJ_RUNNER_LINT_TEXT=skip   do not call public_lint --text even if it exists (printed in the output)
@@ -496,7 +496,11 @@ elif [[ -n "${LJ_RUNNER_TIMEOUT_S:-}" ]]; then LIMIT="$LJ_RUNNER_TIMEOUT_S"
 elif [[ "$MODE" == "quick" ]]; then LIMIT=60
 else LIMIT=900; fi
 [[ "$LIMIT" =~ ^[0-9]+$ ]] && (( LIMIT >= 1 )) || die 2 "the time limit must be a whole number of seconds, 1 or more"
-if [[ "$MODE" == "quick" ]]; then BUDGET="${LJ_RUNNER_BUDGET_S:-300}"; else BUDGET=0; fi
+# Quick budget, in seconds, for the whole of Part B (the 13 areas). It was 300 (the plan's "under 5 minutes"). Raised to 450 on Tue 20 Oct 2026 (follow-through round 1 of
+# build week 2) because the same suite took 270 s on one container host and 374 s on the next one the session landed on (a 1.4x spread; SP3 saw 2x between two hosts the same night),
+# and the 300 s mark sat on the faster host's figure. 450 is about 20 percent over the slower figure. The mark flags a slow run (OVER BUDGET in INDEX.md and the console), it
+# never fails the exit code. Raise it again only with a dated note, and read a run of the quick pass against the host it ran on (lscpu, the per-area seconds).
+if [[ "$MODE" == "quick" ]]; then BUDGET="${LJ_RUNNER_BUDGET_S:-450}"; else BUDGET=0; fi
 [[ "$BUDGET" =~ ^[0-9]+$ ]] || die 2 "LJ_RUNNER_BUDGET_S must be a whole number"
 GRACE="${LJ_RUNNER_KILL_GRACE_S:-3}"
 [[ "$GRACE" =~ ^[0-9]+$ ]] || die 2 "LJ_RUNNER_KILL_GRACE_S must be a whole number"

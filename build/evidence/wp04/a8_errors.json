@@ -53,13 +53,13 @@
     "ok": true
    }
   ],
-  "seconds": 11.1
+  "seconds": 15.4
  },
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 747,
-  "avail_mb_min": 747,
-  "avail_mb_start": 747,
+  "avail_mb_end": 14540,
+  "avail_mb_min": 14540,
+  "avail_mb_start": 14540,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

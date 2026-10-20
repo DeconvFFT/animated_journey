@@ -2,9 +2,9 @@
  "actual": "three malformed registers and a missing one: exit 2 each",
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 746,
-  "avail_mb_min": 746,
-  "avail_mb_start": 746,
+  "avail_mb_end": 14538,
+  "avail_mb_min": 14538,
+  "avail_mb_start": 14539,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

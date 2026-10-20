@@ -1,4 +1,4 @@
-# area=phone entry=WP-08 mode=quick result=PASS exit=0 seconds=25 masked_values=0
+# area=phone entry=WP-08 mode=quick result=PASS exit=0 seconds=38 masked_values=0
 PASS       static_compile                           all compile and parse
 PASS       json_shape                               profile and thresholds are well formed: phone_1080 CRF 20 maxrate 8M faststart no metadata; caption FontSize 28 vs venue 23, 32 characters, 2 lines, bottom <= 88%
 PASS       lint_allowlist_clean                     lint_strings: 15 file(s) scanned, 0 finding(s)

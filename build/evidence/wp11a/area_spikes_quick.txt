@@ -1,24 +1,24 @@
-# area=spikes entry=WP-10 mode=quick result=PASS exit=0 seconds=13 masked_values=0
-tests/spikes/run_tests.sh --quick   (df now: Avail 747M)
+# area=spikes entry=WP-10 mode=quick result=PASS exit=0 seconds=17 masked_values=0
+tests/spikes/run_tests.sh --quick   (df now: Avail 14539M)
 PASS       syntax.bash  bash -n on run_sp1b.sh, run_sp3.sh, job.sh and run_tests.sh; failing: none
 PASS       syntax.python  ast.parse on every .py file and the four stand-in CLIs; failing: none
 PASS       lib.selftest  sp1b_lib --selftest: 8 PASS, 0 FAIL (synthetic inputs build, layer-name reading)
 PASS       lib.reused_sp1_lib_selftest  the reused WP-07 library: 8 PASS, 0 FAIL
 PASS       t3.selftest  t3_filmcraft --selftest: 13 PASS, 0 FAIL (planted differences in clips, frames, dissolves and keyframes are found)
-PASS       list.live  exit 0 (expected 0: exit 3 exactly when a stage's Avail minus planned is under 400 MB); Disk: df says Avail 747 MB now. Floor 400 MB (Avail minus planned must stay at or above it), hard floor 250 MB. Each stage re-reads df live; the guard is the au
+PASS       list.live  exit 0 (expected 0: exit 3 exactly when a stage's Avail minus planned is under 400 MB); Disk: df says Avail 14539 MB now. Floor 400 MB (Avail minus planned must stay at or above it), hard floor 250 MB. Each stage re-reads df live; the guard is the 
 PASS       list.fake_650  exit 3; REFUSED: Avail 650 MB minus planned 286 MB leaves 364 MB, below the 400 MB floor (vectorcraft-v0.13.1). REFUSED: Avail 650 MB minus planned 254 MB leaves 396 MB, below the 400 MB floor (lightcraft-v0.9.1). 
 PASS       list.fake_2000  exit 0; OK: every stage that has not run yet fits at today's Avail. Start them with: bash spikes/sp1b_readback/run_sp1b.sh --all
 PASS       list.fake_450  exit 3; 4 REFUSED lines; remedy: Remedy: answer Q-1 (the orchestrator may clear the regenerable pip cache, about 418 MB), or free space, or move this read-back to the maker's PC (the Sat 24 Oct
 PASS       list.ran_stages_not_counted  4 stage(s) shown as already run and not counted against the disk (a fake 450 MB would refuse them if they were); exit 0
 PASS       budget.numbers  planned MB: PhotoCraft 202 (80 tarball + 92 CLI + 30), VectorCraft 286 (119 + 137 + 30), LightCraft 254 (104 + 120 + 30); the plan table's estimates were 300, 450, 350
 PASS       budget.after_download  plan picks only the CLI member (90.6 MB); the exact need (121 MB) fits at 700 MB and does not at 500 MB
-PASS       ledger.real  ledger: 5 fetches in the two ledgers, 5 of the 5 pinned tarballs fetched, 429.5 MB of the 2048 MB allowance; each fetched once or with a recorded exception: OK
+PASS       ledger.real  ledger: 8 fetches in the two ledgers, 5 of the 5 pinned tarballs fetched, 623.6 MB of the 2048 MB allowance; each fetched once or with a recorded exception: OK
 PASS       ledger.planted_double_fetch  exit 1; ledger: 2 fetches in the two ledgers, 1 of the 5 pinned tarballs fetched, 158.4 MB of the 2048 MB allowance; PROBLEMS: photocraft-0.10.0-linux-x86_64.tar.gz was fetched 2 times and a later fetch has n
 PASS       ledger.planted_exception_listed  exit 0; exceptions: photocraft-0.10.0-linux-x86_64.tar.gz -> wp10 (stage s2): re-fetch: test reason
 PASS       ledger.require_all  exit 1
 PASS       ledger.planted_soundcraft  exit 1
 PASS       ledger.planted_fetch_not_recorded  exit 1
-PASS       sp3.check_live  Avail 747 MB: exit 3 (expected 3); NOT RUN: needs >= 3.5 GB free (Avail 747 MB; short by 2753 MB). Justified deferral: SP3 runs in week 3 on the maker's PC
+PASS       sp3.check_live  Avail 14539 MB: exit 0 (expected 0); READY: Avail 14539 MB is at least 3500 MB. Start it with: bash spikes/sp3_blender/run_sp3.sh --run
 PASS       sp3.dry_run_ready  exit 0; READY: Avail 5000 MB is at least 3500 MB. Start it with: bash spikes/sp3_blender/run_sp3.sh --run SP3_DRYRUN=1: would run  lj_with_disk 3100 sp3-blender -- bash spikes/sp3_blender/run_sp3.sh --run-inner 
 PASS       sp3.run_refused_under_3500  exit 3; NOT RUN: needs >= 3.5 GB free (Avail 3499 MB; short by 1 MB). Justified deferral: SP3 runs in week 3 on the maker's PC (
 PASS       sp3.py_compile  py_compile of research/production-scale-fixtures/followup2-s3-kitchen-standin.py (reused, not copied; the acceptance line python3 -m py_compile gives the same answer)
@@ -29,7 +29,7 @@ PASS       sp4.planted_gap_exit1  exit 1; maximum gap: 310 s (limit for listing:
 PASS       verdicts.complete  check_verdicts: 5 main rows, 6 SP1 test rows; complete
 PASS       evidence.labelled_and_disk  4 stage envelopes; problems: none
 PASS       hygiene.after_sp1b  vendor/craft-sp1b holds: nothing; vendor/craft/_keep: gone
-PASS       lint.public  public_lint: mode paths, 53 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
-PASS       lint.theme  exit 0; theme guard: 33 file(s) scanned (explicit paths), 0 finding(s), 0 exclusion statement(s) shown as NOTE
+PASS       lint.public  public_lint: mode paths, 55 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+PASS       lint.theme  exit 0; theme guard: 34 file(s) scanned (explicit paths), 0 finding(s), 0 exclusion statement(s) shown as NOTE
 UNVERIFIED windows.craft_behaviour  no Windows PC here: every Craft result of this package is a Linux CLI result. Whether PhotoCraft, VectorCraft, LightCraft and FilmCraft on Windows keep the same layer names, ids, keyframes and exports, what the apps write to the profile folders, and every PowerShell step are for the maker's Sat 24 Oct five-minute tests (spikes/sp1_craft_cli/MAKER-CRAFT-ZIPS.md)
 SUMMARY quick: 31 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED

@@ -1244,11 +1244,15 @@ def t_ledger():
     sound = [a for a in fetches if a.startswith("soundcraft")]
     total = sum(r["bytes"] for v in fetches.values() for r in v)
     S["ledger_total_bytes"] = total
-    S["ledger_assets"] = len(fetches)
+    S["ledger_assets"] = len(fetches)   # pinned tarballs plus the 0.8.0 fallback when it was fetched
     first = (out.strip().splitlines() or [""])[0]
-    check("disk.each_tarball_downloaded_once", rc == 0 and ok_line and not unexplained and not sound and len(fetches) == 5,
-          "check_ledger.py exits 0 and an independent recount of the WP-07 and WP-10 download ledgers shows each of the five pinned Craft tarballs fetched once (any second fetch carries a recorded exception) and no SoundCraft file",
-          "check_ledger exit %d: %s; recount: %d tarballs, %d with a second fetch (all explained: %s), %.1f MB in total" % (rc, first[:170], len(fetches), len(twice), not unexplained, total / 1e6))
+    # The FilmCraft 0.8.0 fallback is not a pin (W-22). SP1 T2 fetches it, once, when T2 fails on the pinned 0.9.0 (R8; it did on Tue 20 Oct 2026), so it may be the sixth file
+    # in the ledgers: at most once here (a second fetch of it must carry an exception like any other, and `unexplained` already counts that), never counted among the five pins.
+    fallback = [a for a in fetches if a.startswith("filmcraft-0.8.0")]
+    pins = [a for a in fetches if a not in fallback]
+    check("disk.each_tarball_downloaded_once", rc == 0 and ok_line and not unexplained and not sound and len(pins) == 5 and len(fallback) <= 1,
+          "check_ledger.py exits 0 and an independent recount of the WP-07 and WP-10 download ledgers shows each of the five pinned Craft tarballs fetched once (any second fetch carries a recorded exception), the FilmCraft 0.8.0 fallback (not a pin) at most once, and no SoundCraft file",
+          "check_ledger exit %d: %s; recount: %d pinned tarballs and %d fallback, %d with a second fetch (all explained: %s), %.1f MB in total" % (rc, first[:170], len(pins), len(fallback), len(twice), not unexplained, total / 1e6))
 
 
 def pwsh_tarball_bytes():
@@ -1443,14 +1447,57 @@ def t_lint_all():
           note="the findings outside the build are e-mail-shaped and handle-shaped strings in quoted research and playbook text; they are listed for the orchestrator, not counted as a failure of the build")
 
 
+def staged_skill_changes(dest):
+    """Copy skills-staging/ to <dest>/skills-staging/ keeping line numbers, with every line that the INSTALLED counterpart (.claude/skills/<same path>) also has blanked out.
+    What is left is exactly the text a staged copy adds or changes (and the whole of a file that has no installed counterpart, such as a new skill or a CHANGES.md).
+    Why: a staged copy of an installed skill repeats that skill's source citations and rule statements, which the guard already counts as INFO in .claude/skills/ (a Wikipedia
+    title that says 'Mughal', an author called Christian); only new or changed text is held to the strict D-28 scan, as a changed playbook is (added lines only). Returns (files, kept lines)."""
+    n_files = n_kept = 0
+    base = p("skills-staging")
+    for dp, dn, fn in os.walk(base):
+        dn[:] = sorted(d for d in dn if d != "__pycache__")
+        for f in sorted(fn):
+            src = os.path.join(dp, f)
+            rel = os.path.relpath(src, base)
+            inst = p(".claude", "skills", rel)
+            try:
+                with open(src, encoding="utf-8", errors="replace") as fh:
+                    lines = fh.read().replace("\r\n", "\n").split("\n")
+            except OSError:
+                continue
+            have = set()
+            if os.path.isfile(inst):
+                with open(inst, encoding="utf-8", errors="replace") as fh:
+                    have = set(fh.read().replace("\r\n", "\n").split("\n"))
+            kept = [l if l not in have else "" for l in lines]
+            n_files += 1
+            n_kept += sum(1 for l in kept if l.strip())
+            out = os.path.join(dest, "skills-staging", rel)
+            os.makedirs(os.path.dirname(out), exist_ok=True)
+            with open(out, "w", encoding="utf-8") as fh:
+                fh.write("\n".join(kept))
+    return n_files, n_kept
+
+
 @test("hygiene.theme_guard")
 def t_theme():
     rc, out, err = sh(PY + ["scripts/public_lint.py", "--theme"], timeout=120)
-    rc2, out2, err2 = sh(PY + ["scripts/public_lint.py", "--theme", "--paths", "pipeline/scenes", "pipeline/phone/test_strings.json", "ops/GATHER.md", "skills-staging"], timeout=120)
+    rc2, out2, err2 = sh(PY + ["scripts/public_lint.py", "--theme", "--paths", "pipeline/scenes", "pipeline/phone/test_strings.json", "ops/GATHER.md"], timeout=120)
+    tmp = tempfile.mkdtemp(prefix="wp11b-theme.", dir=SCRATCH if os.path.isdir(SCRATCH) else None)
+    try:
+        n_files, n_kept = staged_skill_changes(tmp)
+        rc3, out3, err3 = sh(PY + ["scripts/public_lint.py", "--theme", "--root", tmp, "--config", p("scripts", "public_lint.config.json"), "--patterns", p("scripts", "redaction_patterns.json"),
+                                    "--paths", os.path.join(tmp, "skills-staging")], timeout=120)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
     s1 = [l for l in out.splitlines() if l.startswith("theme guard:")]
     s2 = [l for l in out2.splitlines() if l.startswith("theme guard:")]
-    check("hygiene.theme_guard", rc == 0 and rc2 == 0, "the D-28 theme guard is clean on the new theme-bearing files (default scope) and on pipeline/scenes, test_strings.json, ops/GATHER.md and skills-staging/ explicitly",
-          "default scope exit %d: %s; explicit exit %d: %s. LIMIT: a keyword scan can not judge iconography; Fable reads the pictures" % (rc, (s1 or ["?"])[-1], rc2, (s2 or ["?"])[-1]))
+    s3 = [l for l in out3.splitlines() if l.startswith("theme guard:")]
+    f3 = [l for l in out3.splitlines() if l.startswith("FINDING")]
+    check("hygiene.theme_guard", rc == 0 and rc2 == 0 and rc3 == 0 and bool(s3),
+          "the D-28 theme guard is clean on the new theme-bearing files (default scope), on pipeline/scenes, test_strings.json and ops/GATHER.md explicitly, and on the text that the staged skills in skills-staging/ add or change against their installed copies",
+          "default scope exit %d: %s; explicit exit %d: %s; staged skills (%d files, %d added or changed lines) exit %d: %s%s. LIMIT: a keyword scan can not judge iconography; Fable reads the pictures" % (
+              rc, (s1 or ["?"])[-1], rc2, (s2 or ["?"])[-1], n_files, n_kept, rc3, (s3 or ["?"])[-1], ("; " + listing([x[:120] for x in f3], 4)) if f3 else ""))
 
 
 @test("hygiene.no_file_over_1mb")

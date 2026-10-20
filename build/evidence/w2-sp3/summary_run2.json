@@ -1,0 +1,168 @@
+{
+ "spike": "SP3",
+ "run": 2,
+ "what": "Second run of run_sp3.sh --run, same stand-in scene (primitives only, no photograph, no family media), after a container restart",
+ "date_utc": "2026-10-20",
+ "guard_started_utc": "2026-10-20T02:05:36Z",
+ "timing_started_utc": "2026-10-20T02:06:35Z",
+ "run_ended_utc": "2026-10-20T02:18:42Z",
+ "label": "Linux container result; not evidence for Windows",
+ "commands": [
+  "df -BM -P /",
+  "bash spikes/sp3_blender/run_sp3.sh --check",
+  "PIP_REPORT=<scratch>/pip_report.json bash spikes/sp3_blender/run_sp3.sh --run",
+  "bash spikes/sp3_blender/test_cleanup.sh"
+ ],
+ "machine_class": {
+  "vcpu": 4,
+  "cpu": "Intel Xeon Processor 2.80 GHz (class only; run 1 recorded 2.10 GHz)",
+  "ram_mb": 16093,
+  "gpu": "none",
+  "cpu_steal_percent_sampled_10s_during_line2": 1.1,
+  "cpu_busy_percent_same_sample": 98.5
+ },
+ "blender": {
+  "bpy": "5.2.2 LTS",
+  "python": "3.13.16"
+ },
+ "wheel": {
+  "bytes": 401697653,
+  "sha256_in_pip_report": "3dfd1a9e7a5aec0f0fe95a1b01d10cd66e212b16ea38b77d132159dc9a666d45",
+  "equals_pypi_digest_from_run1_summary": true,
+  "independent_hash_of_bytes": false
+ },
+ "tests": [
+  {
+   "id": "T0",
+   "name": "entry check",
+   "result": "PASS",
+   "proof": "READY: Avail 14546 MB is at least 3500 MB; exit 0"
+  },
+  {
+   "id": "T1",
+   "name": "guarded stage",
+   "result": "PASS",
+   "proof": "lj_guard: sp3-blender: finished with exit 0; Avail start 14546 MB, min 13140 MB, end 14545 MB; ledger status ok, lock wait 0 s"
+  },
+  {
+   "id": "T2",
+   "name": "venv and pip install bpy==5.2.2",
+   "result": "PASS",
+   "proof": "59 s from guard start (02:05:36) to the first timed line (02:06:35); 12 files installed, bpy wheel sha256 in the pip report equals PyPI's"
+  },
+  {
+   "id": "T3",
+   "name": "import bpy is Blender 5.2.x",
+   "result": "PASS",
+   "proof": "[3/5] bpy imports: Blender 5.2.2 LTS"
+  },
+  {
+   "id": "T4",
+   "name": "four timed configurations within 2x the table",
+   "result": "PASS",
+   "rows": [
+    {
+     "config_samples_denoise_adaptive": "8/0/0",
+     "table_s": 13.3,
+     "limit_2x_s": 26.6,
+     "run1_s": 10.8,
+     "run2_s": 22.2,
+     "run2_ratio_to_table": 1.669,
+     "within_2x": true,
+     "headroom_limit_over_run2": 1.2,
+     "run2_over_run1": 2.06,
+     "peak_rss_mb": 594,
+     "bench_load1_start": 0.56,
+     "bench_flag_contaminated": "no"
+    },
+    {
+     "config_samples_denoise_adaptive": "64/0/0",
+     "table_s": 95.2,
+     "limit_2x_s": 190.4,
+     "run1_s": 81.9,
+     "run2_s": 160.3,
+     "run2_ratio_to_table": 1.684,
+     "within_2x": true,
+     "headroom_limit_over_run2": 1.19,
+     "run2_over_run1": 1.96,
+     "peak_rss_mb": 594,
+     "bench_load1_start": 1.96,
+     "bench_flag_contaminated": "yes"
+    },
+    {
+     "config_samples_denoise_adaptive": "64/1/0",
+     "table_s": 112.4,
+     "limit_2x_s": 224.8,
+     "run1_s": 93.8,
+     "run2_s": 185.3,
+     "run2_ratio_to_table": 1.649,
+     "within_2x": true,
+     "headroom_limit_over_run2": 1.21,
+     "run2_over_run1": 1.98,
+     "peak_rss_mb": 2209,
+     "bench_load1_start": 4.75,
+     "bench_flag_contaminated": "yes"
+    },
+    {
+     "config_samples_denoise_adaptive": "128/1/0",
+     "table_s": 204.3,
+     "limit_2x_s": 408.6,
+     "run1_s": 176.2,
+     "run2_s": 351.7,
+     "run2_ratio_to_table": 1.721,
+     "within_2x": true,
+     "headroom_limit_over_run2": 1.16,
+     "run2_over_run1": 2.0,
+     "peak_rss_mb": 2209,
+     "bench_load1_start": 4.89,
+     "bench_flag_contaminated": "yes"
+    }
+   ]
+  },
+  {
+   "id": "T5",
+   "name": "renders are real images",
+   "result": "NOT RE-CHECKED",
+   "proof": "the script deletes the renders at the end; run 1 PASS stands"
+  },
+  {
+   "id": "T6",
+   "name": "same settings give the same pixels",
+   "result": "NOT RE-RUN",
+   "proof": "no repeat line in run 2; run 1 PASS stands"
+  },
+  {
+   "id": "T7",
+   "name": "memory",
+   "result": "PASS",
+   "proof": "peak RSS 594 and 2209 MB of 16093 MB, identical to run 1 on different hardware"
+  },
+  {
+   "id": "T8",
+   "name": "the script cleans up after itself",
+   "result": "PASS",
+   "proof": "driver line: sp3 scratch folder after: gone; no 'unbound variable' in the transcript; test_cleanup.sh PASS (run2_cleanup_regression.txt)"
+  },
+  {
+   "id": "T9",
+   "name": "wheel digest",
+   "result": "PASS (indirect)",
+   "proof": "run2_pip_summary.json: bpy sha256 equals the PyPI digest; pip verifies a download against the index digest; not an independent hash"
+  }
+ ],
+ "disk_mb": {
+  "avail_before_check": 14546,
+  "guard_start": 14546,
+  "guard_min": 13140,
+  "sampler_min": 13136,
+  "peak_use_vs_start": 1408,
+  "steady_footprint_max_folder": 1021,
+  "avail_run_end": 14545,
+  "avail_after_folder_gone": 14545,
+  "df_taken_at_utc_after": "02:20:40 14545 MB",
+  "note": "shared volume; other jobs also write"
+ },
+ "finding": "run 2 is 1.96 to 2.06 times slower than run 1 on every line (uniform), after the container restarted onto a different CPU model; steal was 1.1 percent; so the stand-in is 1.65 to 1.72 times the table, 16 to 21 percent under the 2x limit",
+ "pass_mark": "one real hero frame within 2x the table: NOT judged (real kitchen does not exist before G1, Sun 15 Nov)",
+ "verdict": "Partial: route works on two hosts; pass mark waits for G1; the 2x mark depends on the host the container lands on"
+}

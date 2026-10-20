@@ -82,7 +82,7 @@ Timing validity: contaminated = yes (a run with another job's load visible is ma
 
 ## 4. Sums, hashes and the download ledger
 
-- `release_assets.json` (fetched 2026-10-19): usable = True; independent (R8) hash comparison: **all match** over 6 values; sizes against the plan's HEAD figures: **all match**.
+- `release_assets.json` (fetched 2026-10-20): usable = True; independent (R8) hash comparison: **all match** over 6 values; sizes against the plan's HEAD figures: **all match**.
 - PhotoCraft, VectorCraft and LightCraft have no independent value; their hashes prove integrity only. SoundCraft: not pinned, not fetched.
 - Download ledger: 5 tarball fetches recorded; effectcraft-0.11.1-linux-x86_64.tar.gz (effectcraft-v0.11.1, 61.1 MB); filmcraft-0.9.0-linux-x86_64.tar.gz (filmcraft-v0.9.0, 66.5 MB); filmcraft-0.9.0-linux-x86_64.tar.gz (filmcraft-v0.9.0, 66.5 MB); filmcraft-0.8.0-linux-x86_64.tar.gz (filmcraft-v0.8.0, 66.5 MB); effectcraft-0.11.1-linux-x86_64.tar.gz (effectcraft-v0.11.1, 61.1 MB).
 

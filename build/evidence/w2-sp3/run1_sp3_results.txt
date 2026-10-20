@@ -1,0 +1,5 @@
+SP3 run, neutral stand-in scene (primitives only), Blender 5.2.2 LTS, Cycles CPU, 4 vCPU, no GPU; 2026-10-20
+RESULT 1920x1080 samples=8 denoise=0 adaptive=0 wall_s=10.8 peak_rss_mb=594 faces=2938
+RESULT 1920x1080 samples=64 denoise=0 adaptive=0 wall_s=81.9 peak_rss_mb=594 faces=2938
+RESULT 1920x1080 samples=64 denoise=1 adaptive=0 wall_s=93.8 peak_rss_mb=2209 faces=2938
+RESULT 1920x1080 samples=128 denoise=1 adaptive=0 wall_s=176.2 peak_rss_mb=2209 faces=2938

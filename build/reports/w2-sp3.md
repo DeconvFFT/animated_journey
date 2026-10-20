@@ -1,86 +1,111 @@
-# W2 SP3 report: Blender (bpy) hero-shot route, first real run in the container
+# W2 SP3 report: Blender (bpy) hero-shot route, two real runs in the container
 
-Run Tue 20 Oct 2026 (due Fri 30 Oct; early) by a Sonnet implementor on branch `build/process-lock`. Nothing was committed or pushed. **Every figure is a Linux container result on a neutral stand-in scene (primitives only, no photograph, no family media). None of it is evidence for Windows.** Nothing counts as done until `fable-advisor` approves it.
+Run 1 Tue 20 Oct 2026 01:14 to 01:41 UTC, run 2 the same day 02:05 to 02:21 UTC (after the container restarted), both by a Sonnet implementor on branch `build/process-lock` (due Fri 30 Oct; early). Nothing was committed or pushed. **Every figure is a Linux container result on a neutral stand-in scene (primitives only, no photograph, no family media). None of it is evidence for Windows.** Nothing counts as done until `fable-advisor` approves it.
 
-**Verdict: SP3 is Partial, and the container route works.** All four timed configurations came in within 2x the table (0.81x to 0.86x of it); `bpy` 5.2.2 LTS installs, imports and renders here. The pass mark proper, **one real hero frame within 2x the table**, cannot be judged before the real kitchen exists (G1, Sun 15 Nov), so it is re-run then. One test FAILED, and it is the script and not the route: the cleanup trap never deleted the venv (found, fixed, regression-tested).
+**Verdict: SP3 is Partial, and the container route works.** All four timed configurations passed "within 2x the table" in both runs. Run 1: 0.81x to 0.86x of the table. Run 2, on a different and slower host: 1.65x to 1.72x. The pass mark proper, **one real hero frame within 2x the table**, cannot be judged before the real kitchen exists (G1, Sun 15 Nov), so it is re-run then.
+Two things are new in run 2. (1) **The same script, scene and settings ran 1.96 to 2.06 times slower on every line** after the restart, because the container landed on a different CPU model (class: Xeon 2.80 GHz; run 1 recorded 2.10 GHz). The 2x mark therefore has only 16 to 21 percent headroom on a slow host. (2) The run-1 cleanup defect is confirmed fixed on a real install.
 
 ## 1. What ran (exact commands, from the repository root)
 
 ```bash
-df -BM -P /                                              # 01:14:24 UTC, before
+# run 1 (01:14 UTC; the earlier container)
+df -BM -P /
 bash spikes/sp3_blender/run_sp3.sh --check               # exit 0, READY
-bash spikes/sp3_blender/run_sp3.sh --run                 # 01:15:15 start; waited 281 s for the disk lock (another spike's stage held it); guarded stage ran 01:19:59 to 01:28:19; exit 0
+bash spikes/sp3_blender/run_sp3.sh --run                 # waited 281 s for the disk lock (another spike held it); guarded stage 01:19:59 to 01:28:19; exit 0
+bash spikes/sp3_blender/test_cleanup.sh                  # new regression test, after the fix
+
+# run 2 (02:05 UTC; after the restart; the machine idle, no lock wait)
+df -BM -P /                                              # 02:05:22
+bash spikes/sp3_blender/run_sp3.sh --check               # exit 0, READY
+PIP_REPORT=<scratch>/pip_report.json bash spikes/sp3_blender/run_sp3.sh --run     # 02:05:36 to 02:18:42, exit 0, a 2 s df sampler beside it
+bash spikes/sp3_blender/test_cleanup.sh                  # PASS again
+df -BM -P /                                              # 02:20:40
 ```
 `--run` is `lj_with_disk 3100 sp3-blender` around: `python3 -m venv <scratch>/sp3/venv`; `pip install --no-cache-dir bpy==5.2.2`; then four fresh processes, each under `lj_bench`:
-`<venv>/bin/python research/production-scale-fixtures/followup2-s3-kitchen-standin.py -- <scratch>/sp3/out 1920 1080 SAMPLES DENOISE ADAPTIVE` for `8 0 0`, `64 0 0`, `64 1 0`, `128 1 0`.
-Side checks, same venv (all read-only or in the scratch folder): a device probe (`python -I`, `import bpy`, list devices for NONE, CUDA, OPTIX, HIP, ONEAPI); `identify -format` and `compare -metric RMSE|AE` on the PNGs; a df and folder-size sampler every 2 s.
-Supplementary, each under `lj_bench`: a Workbench draft (`sed 's/scene.render.engine = "CYCLES"/scene.render.engine = "BLENDER_WORKBENCH"/'` on a scratch copy of the scene, 1920x1080) and a repeat of `64 1 0` after the load had settled.
-After: `bash spikes/sp3_blender/test_cleanup.sh` (new, section 4), `rm -rf <scratch>/sp3` by hand, `python3 -I tests/spikes/check_verdicts.py`, `python3 -I scripts/public_lint.py --paths ...` (and `--theme`).
+`<venv>/bin/python research/production-scale-fixtures/followup2-s3-kitchen-standin.py -- <scratch>/sp3/out 1920 1080 SAMPLES DENOISE ADAPTIVE` for `8 0 0`, `64 0 0`, `64 1 0`, `128 1 0`; the script then deletes its folder.
+`PIP_REPORT` is a pip option that writes a JSON list of what pip fetched; it changes nothing about the install. Run 1 also did side checks in the venv it left behind (a device probe, `identify`/`compare` on the PNGs, a Workbench draft, a clean repeat); run 2 did not, because the fixed script now deletes the venv and the renders at the end.
 
-## 2. Results, PASS or FAIL (evidence: `build/evidence/wp10/sp3_results.txt`, `build/evidence/w2-sp3/{run_transcript.txt,summary.json,supp_results.txt,df_samples.txt,cleanup_regression.txt}`)
+## 2. Results, PASS or FAIL
 
-| # | Test | Result | Output that proves it |
+Evidence: `build/evidence/wp10/sp3_results.txt` (both runs' RESULT lines), run 1 `build/evidence/w2-sp3/{summary.json,run_transcript.txt,supp_results.txt,df_samples.txt,cleanup_regression.txt,run1_sp3_results.txt}`, run 2 `build/evidence/w2-sp3/{summary_run2.json,run2_transcript.txt,run2_sp3_results.txt,run2_ledgers.txt,run2_df_samples.txt,run2_pip_summary.json,run2_cleanup_regression.txt}`.
+
+| # | Test | Run 1 | Run 2 | Output that proves it |
+|---|---|---|---|---|
+| T0 | Entry check `--check` | PASS | **PASS** | `READY: Avail 14546 MB is at least 3500 MB` (run 1: 14390 MB), exit 0; wheel 401,697,653 bytes read from PyPI; scene `py_compile ok`; Python 3.13.16 |
+| T1 | Guarded stage | PASS | **PASS** | `lj_guard: sp3-blender: finished with exit 0; Avail start 14546 MB, min 13140 MB, end 14545 MB`; ledger status `ok`, lock wait 0 s (run 1: 281 s) |
+| T2 | venv and `pip install bpy==5.2.2` | PASS, 130 s | **PASS**, 59 s | guard start 02:05:36 to the first timed line 02:06:35; 12 files installed (`run2_pip_summary.json`); run 1 also ran `pip check`: "No broken requirements found" |
+| T3 | `import bpy` is Blender 5.2.x | PASS | **PASS** | `[3/5] bpy imports: Blender 5.2.2 LTS` |
+| T4a | 8 samples, no denoise | PASS 10.8 s | **PASS 22.2 s** | table 13.3 s, limit 26.6 s: run 1 0.81x, run 2 1.67x; 594 MB |
+| T4b | 64 samples, no denoise | PASS 81.9 s | **PASS 160.3 s** | table 95.2 s, limit 190.4 s: 0.86x, 1.68x; 594 MB |
+| T4c | 64 samples + denoise | PASS 93.8 s (repeat 93.0 s) | **PASS 185.3 s** | table 112.4 s, limit 224.9 s: 0.83x, 1.65x; 2,209 MB |
+| T4d | 128 samples + denoise | PASS 176.2 s | **PASS 351.7 s** | table 204.3 s, limit 408.6 s: 0.86x, 1.72x; 2,209 MB |
+| T5 | Renders are real images | PASS | not re-checked | run 1: four 1920x1080 sRGB PNGs, mean level 172 to 177 of 255, min 0, max 255, looked at the 128-sample frame. Run 2: the script deletes the renders, and no image was inspected; the `RESULT` lines show each render finished |
+| T6 | Same settings, same pixels | PASS | not run | run 1: repeat of `64 1 0`, `compare -metric AE` = 0 differing pixels. Run 2 had no repeat line. Cross-host pixel identity is untested |
+| T7 | Memory | PASS | **PASS** | 594 and 2,209 MB peak of 16,093 MB in both runs, identical on different hardware; no out-of-memory |
+| T8 | The script cleans up after itself | **FAIL** | **PASS** | run 1: last line `run_sp3.sh: line 1: S: unbound variable`, venv (1,008 MB) and renders (14 MB) left behind, deleted by hand. Run 2: `[5/5] cleanup: ...`, driver line `sp3 scratch folder after: gone`, no "unbound" anywhere in the transcript, `df` back to 14,545 MB; `test_cleanup.sh`: `PASS: the work folder is removed when run_inner runs to the end` |
+| T9 | The wheel is the published one | not checked | **PASS (indirect)** | the pip report's sha256 for the bpy wheel is `3dfd1a9e7a5aec0f0fe95a1b01d10cd66e212b16ea38b77d132159dc9a666d45`, equal to the digest PyPI published (recorded in run 1's `summary.json`). pip checks a download against the digest its index advertises; I did not hash the bytes myself and the wheel is deleted |
+
+"Table" is `research/production-scale-fixtures/followup2-s3-container-results.txt` (18 Oct, same stand-in, 1080p, Cycles CPU, 4 vCPU): the mean of the recorded runs per configuration (13.3; 95.2; 115.1 and 109.8; 208.1 and 200.5). Both runs: 4 vCPU, 16 GB, **no GPU device** (run 1's probe listed none for CUDA, OPTIX, HIP or ONEAPI).
+Run 1 supplementary, no pass mark: a Workbench draft took 4.1 s per 1080p frame and 801 MB (indicative only: its start was flagged for load; three `EGL_BAD_MATCH` lines printed; it completed).
+
+## 3. Finding from run 2: the same job took twice as long on another host
+
+| Config | Table | 2x limit | Run 1 | Run 2 | Run 2 / run 1 | Limit / run 2 (headroom) |
+|---|---|---|---|---|---|---|
+| 8, 0, 0 | 13.3 s | 26.6 s | 10.8 s | 22.2 s | 2.06 | 1.20 |
+| 64, 0, 0 | 95.2 s | 190.4 s | 81.9 s | 160.3 s | 1.96 | 1.19 |
+| 64, 1, 0 | 112.4 s | 224.9 s | 93.8 s | 185.3 s | 1.98 | 1.21 |
+| 128, 1, 0 | 204.3 s | 408.6 s | 176.2 s | 351.7 s | 2.00 | 1.16 |
+
+* The factor is the same on every line (1.96 to 2.06), which says a whole-machine speed difference, not something in one configuration. After the restart `lscpu` reports a different CPU model (class "Xeon Processor 2.80 GHz", with AVX-512 flags; run 1 recorded "Xeon 2.10 GHz"), same 4 vCPU and 16 GB.
+* It is not load from my own work and not a noisy neighbour that shows up as steal: a 10 s `/proc/stat` sample during line 2 gave user 92.8 percent, system 5.7, **steal 1.1**, idle 0.3. The first line started at load 0.56 (clean) and was already 2.06x run 1's clean first line. The `lj_bench` "contaminated=yes" flag on lines 2 to 4 (load1 1.96, 4.75, 4.89) is the previous render's own load average, the same self-flagging as in run 1 (`run2_ledgers.txt`).
+* **Why the new host is slower is UNVERIFIED** (I did not isolate CPU generation, memory bandwidth or a vCPU quota; I did not run a separate benchmark, and there is no baseline for one).
+* **What it means for the pass mark.** A real kitchen frame costing more than about 1.16 to 1.21 times the stand-in per sample would fail "within 2x the table" on a run-2-class host, while on a run-1-class host it could cost about 2.3 to 2.5 times as much and pass. The table and the mark do not name a host. **Suggestion for Fable and the orchestrator (not applied):** at G1 re-time the stand-in's `64 1 0` line (93.8 s on the fast host, 185.3 s on the slow one) in the same container session as the real frame, record the CPU model in the evidence, and judge the real frame against the stand-in measured beside it on that host, as well as against the table.
+
+## 4. Disk, before and after (`df -BM -P /`, Avail; the volume is shared and other jobs write to it)
+
+| When (UTC) | Run 1 Avail | Run 2 Avail | Note |
 |---|---|---|---|
-| T0 | Entry check `--check` | **PASS** | `READY: Avail 14390 MB is at least 3500 MB`, exit 0; wheel 401,697,653 bytes read from PyPI, scene `py_compile ok`, Python 3.13.16 |
-| T1 | Guarded stage | **PASS** | `lj_guard: sp3-blender: finished with exit 0; Avail start 14480 MB, min 13077 MB, end 13459 MB`; ledger status `ok`, lock wait 281 s |
-| T2 | venv and `pip install bpy==5.2.2` | **PASS** | 130 s (01:20:02 to 01:22:12); `pip check`: "No broken requirements found" |
-| T3 | `import bpy` is Blender 5.2.x | **PASS** | `bpy 5.2.2 LTS`, build hash `d13f752e3b9c`, build date 2026-09-15, Python 3.13.16, background mode |
-| T4a | 8 samples, no denoise | **PASS** | `wall_s=10.8` against table 13.3 (limit 26.6): 0.81x; `peak_rss_mb=594` |
-| T4b | 64 samples, no denoise | **PASS** | `wall_s=81.9` against 95.2 (limit 190.4): 0.86x; 594 MB |
-| T4c | 64 samples + denoise | **PASS** | `wall_s=93.8` against 112.4 (limit 224.9): 0.83x; 2,209 MB; repeat 93.0 s (0.83x) |
-| T4d | 128 samples + denoise | **PASS** | `wall_s=176.2` against 204.3 (limit 408.6): 0.86x; 2,209 MB |
-| T5 | Renders are real images | **PASS** | four 1920x1080 sRGB PNGs, mean level 172 to 177 of 255, min 0, max 255; looked at the 128-sample frame: the kitchen, lit, no artefacts; 8 against 128 samples RMSE 0.087 (noise), 64 against 128 with denoise 0.0046 |
-| T6 | Same settings, same pixels | **PASS** | repeat of `64 1 0`: `compare -metric AE` = 0 differing pixels, RMSE 0 (the PNG bytes differ in metadata only) |
-| T7 | Memory | **PASS** | 594 and 2,209 MB peak of 16,093 MB, equal to the 18 Oct figures; no out-of-memory |
-| T8 | The script cleans up after itself | **FAIL** | the last line of the run was `run_sp3.sh: line 1: S: unbound variable`; the venv (1,008 MB) and the renders (14 MB) were still on disk afterwards; deleted by hand, 01:38 |
+| before the check | 14,547 MB (01:14:24) | **14,546 MB** (02:05:22) | |
+| guard start | 14,480 MB (01:19:59) | 14,546 MB (02:05:36) | run 1 lost 157 MB to other jobs before it |
+| lowest | 13,072 MB | **13,136 MB** (sampler, 02:06:32; the guard saw 13,140) | **peak use 1,408 MB in both runs**: the 402 MB wheel while pip unpacks it, plus the venv |
+| run end | 13,459 MB, venv still there (T8) | 14,545 MB (02:18:42) | in run 2 the script had already deleted its folder |
+| after | 14,476 MB (01:38, after the hand delete) | **14,545 MB** (02:20:40) | run 2 ends 1 MB under its start |
 
-"Table" is `research/production-scale-fixtures/followup2-s3-container-results.txt` (18 Oct, same stand-in, 1080p, Cycles CPU, 4 vCPU): the mean of the recorded runs per configuration (13.3; 95.2; 115.1 and 109.8; 208.1 and 200.5). Machine: 4 vCPU Intel Xeon at 2.10 GHz, 16 GB, **no GPU device of any type** (the probe lists none for CUDA, OPTIX, HIP or ONEAPI; the CUDA and HIP libraries fail to load, harmlessly).
-Supplementary, no pass mark: **Workbench draft 4.1 s per 1080p frame**, 801 MB (indicative only: its start was flagged contaminated, load 3.89 from the previous job's tail; three `EGL_BAD_MATCH` lines printed; it completed, mean level 116).
-**The `lj_bench` flag "contaminated=yes" on T4b to T4d is the run's own load**: load1 at start was 1.21, 3.63 and 4.01 because the line before had just used all four cores; the first line started at 0.58 (clean), the clean repeat at 0.59, and all agree to 1 to 2 percent. A `ps` snapshot at about 01:27 showed only the render running, and the bench ledger has no other entry between 01:22:12 and 01:28:19 (this stage's four lines are back to back). No timing here rests on a number I think was disturbed, except the Workbench one, which is labelled.
+Steady footprint 1,021 MB in both runs (venv 1,008, of which the `bpy` package is 881; renders 14). **The real need was 1,408 MB at peak, not the 3,100 planned**; an entry of about 1,900 MB would do. The 3,100 and 3,500 figures (build plan 4.9, asserted by the WP-10 tests) were not changed; that is the orchestrator's call. Run 2 took 13 min 6 s start to finish.
 
-## 3. Disk, before and after (`df -BM -P /`, Avail; the volume is shared and other jobs write to it)
+## 5. The cleanup defect (T8): found in run 1, fixed, confirmed in run 2
 
-| When (UTC) | Avail | Note |
-|---|---|---|
-| 01:14:24 before the check | **14,547 MB** | |
-| 01:15:15 run start | 14,390 MB | other jobs wrote 157 MB in 51 s |
-| 01:19:59 guard start | 14,480 MB | after the 281 s lock wait |
-| 01:22:10 lowest | 13,072 MB (guard saw 13,077) | **peak use 1,408 MB**: the 402 MB wheel while pip unpacks it, plus the venv |
-| 01:28:19 run end | 13,459 MB | venv still there (T8) |
-| 01:38:16 after `rm -rf <scratch>/sp3` | **14,476 MB** | 71 MB under the start: other jobs, not this run; the SP3 folder is gone |
+`run_inner` kept its folder in a local `S` and cleaned up with `trap 'rm -rf -- "$S"' EXIT`. The trap runs when the script exits, after the function has returned, so under `set -u` it died with "S: unbound variable" and `rm` never ran. A failing step hides it, so only a successful run shows it. Fix in `spikes/sp3_blender/run_sp3.sh`: `S` is no longer local and the trap reads `${S:-...}`. `spikes/sp3_blender/test_cleanup.sh` (stand-in python, no download) FAILS the old script and PASSES the fixed one (`cleanup_regression.txt`, `run2_cleanup_regression.txt`). **Run 2 is the first real-install confirmation.** The script was not edited in run 2.
 
-Steady footprint 1,021 MB (venv 1,008, of which the `bpy` package is 881; renders 14). **The real need was 1,408 MB at peak, not the 3,100 planned**; an entry of about 1,900 MB (peak plus the 400 MB floor) would have been enough. I did not change the 3,100 and 3,500 figures (build plan 4.9, and the WP-10 tests assert them); that is the orchestrator's call.
+## 6. UNVERIFIED
 
-## 4. Defect found and fixed: cleanup (T8)
-
-`run_inner` kept its folder in a local `S` and cleaned up with `trap 'rm -rf -- "$S"' EXIT`. The trap runs when the script exits, after the function has returned, so under `set -u` it died with "S: unbound variable" and `rm` never ran. A failing step hides it (the trap then runs inside the function), so only a successful run shows it, and the 19 Oct dry run and tests could not. Fix in `spikes/sp3_blender/run_sp3.sh`: `S` is no longer local and the trap reads `${S:-...}`. New `spikes/sp3_blender/test_cleanup.sh` runs `run_inner` to the end with a stand-in python (no Blender, no download, a few seconds) and checks exit 0, folder gone, no "unbound variable":
-`--script <the script as committed before the fix>`: `FAIL` (folder left behind: yes; "unbound variable": yes). The fixed script: `PASS` (`cleanup_regression.txt`).
-Also touched in `run_sp3.sh`: two stale header comments ("PREPARED, NOT RUN"; the 19 Oct disk paragraph, now marked historical). The dry run (fake 5,000 MB) and the refusal (fake 3,499 MB, exit 3) still behave as the WP-10 tests expect (re-checked by hand; the full `tests/spikes/run_tests.sh` was not re-run, to keep CPU off the timed Craft stages that were running).
-
-## 5. UNVERIFIED
-
-* **Everything on Windows**: `pip install bpy` there needs Python 3.13 exactly; the PC's own timings (Exercise 5, Claude app closed), its GPU (CUDA, OptiX or HIP) and every number in section 2 on the PC; `blender.exe` against `bpy`; where files land. No Windows script was written or run.
+* **Everything on Windows**: `pip install bpy` there needs Python 3.13 exactly; the PC's own timings (`playbooks/toolchain.md` Exercise 5, Claude app closed), its GPU (CUDA, OptiX or HIP) and every number above on the PC; `blender.exe` against `bpy`; where files land. No Windows script was written or run.
 * **The real kitchen**: the stand-in has 2,938 faces and no photographic texture; a real frame may cost more per sample. The pass mark is judged on it at G1.
-* **GPU time**: none here. The plan's hero finals on a rented or owned GPU are untested by this run.
-* **The wheel's SHA-256 was not compared** with the download (no `--require-hashes`, no cache, the wheel is gone). PyPI's published digest is in `summary.json`.
-* **The cleanup fix on a second real install**: proved with the stand-in python only (another real run is a 402 MB fetch).
-* The Workbench time (above) and the 801 MB for it.
+* **GPU time**: none here. The plan's hero finals on a rented or owned GPU are untested.
+* **Why the second host is about twice as slow**, and whether the next restart lands on the fast or the slow one.
+* **Run 2's render content and cross-host pixel identity** (T5, T6): not re-checked.
+* **The wheel's bytes** were not hashed independently (T9 is pip's own check against the index digest).
+* The Workbench time (4.1 s) is indicative only.
 
-## 6. What the numbers mean for planning (arithmetic on the stand-in, not a promise)
+## 7. Planning numbers (arithmetic on the stand-in, not a promise)
 
-At about 94 s a frame (64 samples with denoise) a 5 s hero move of 120 frames is about 3.1 CPU-hours here; as Workbench drafts at about 4 s it is about 8 minutes. That agrees with W-23: **drafts in the container, finals on the PC's GPU**. The same frame rendered twice is pixel-identical, which is what splitting finals by frame needs (one frame twice is the only repeat tested). The two runs of the same line differ by 0.9 percent (the 18 Oct note allowed 10 to 20 percent; the quieter machine and the exclusive bench lock are the likely reason, UNVERIFIED).
+At 94 s (fast host) to 185 s (slow host) a frame, a 5 s hero move of 120 frames at 64 samples with denoise is about 3.1 to 6.2 CPU-hours here; as Workbench drafts at about 4 s it is about 8 minutes (fast host; the slow host is untimed). That agrees with W-23: **drafts in the container, finals on the PC's GPU**, and the container's finals are a stretch on a slow host.
 
-## 7. Downloads and clean-up
+## 8. Downloads and clean-up
 
-Fetched: the `bpy` wheel, 401,697,653 bytes, plus small dependency wheels (numpy and others, inside the 1,008 MB venv); about 402 MB plus a little against the 2 GB allowance, once. **Deleted: everything** (the venv and renders in `<scratch>/sp3`; pip's temporary copy of the wheel, which pip removed itself, no pip cache written; my scratch renders). **Kept for later spikes: nothing**: no later spike needs `bpy` (SP1 is the Craft apps, SP4 part (d) needs no Blender), and the venv rebuilds in about 130 s with `bash spikes/sp3_blender/run_sp3.sh --run` or `pip install bpy==5.2.2`. If the G1 kitchen build wants it at once, one re-fetch is 402 MB. Kept in the repository (text only): the evidence files above (about 24 KB; `df_samples.txt` is the largest) and `build/evidence/wp10/sp3_results.txt`. No image was added to git.
+* Fetched in run 2: the `bpy` wheel, 401,697,653 bytes, plus 11 small dependency wheels (numpy, Cython, zstandard, requests and others; their sizes were not measured, roughly 30 MB). Run 1 fetched the same. **SP3 has therefore used two fetches, about 860 MB.** pip fetches are not in the Craft download ledger (`check_ledger.py` reads 623.6 MB of 2,048 MB); counted together that is about 1.5 GB of the 2 GB allowance, so **a third fetch at G1 would sit at the allowance**: the orchestrator should decide whether to raise it or to keep a venv until then (1,008 MB on a volume with 14.5 GB free).
+* **Deleted: everything.** The script removed the venv and renders itself; pip's temporary copy of the wheel went with it; no pip cache was written (`--no-cache-dir`); `<scratch>/sp3` does not exist; `build-scratch` is 202 MB, as before. The pip report (143 KB, with environment details) stayed in the session scratchpad, not the repository, and is reduced to `run2_pip_summary.json` (file names, versions, sha256).
+* **Kept for later spikes: nothing.** No later spike needs `bpy` (SP1 is the Craft apps; SP4 part (d) needs no Blender). The venv rebuilds in 1 to 2 minutes with `bash spikes/sp3_blender/run_sp3.sh --run` or `pip install bpy==5.2.2`. Kept in the repository (text only): the evidence files above (about 60 KB; `df_samples` files are the largest). No image was added to git.
 
-## 8. Files changed
+## 9. Files changed (run 2)
 
-`spikes/sp3_blender/run_sp3.sh` (the fix and two comments), `spikes/sp3_blender/test_cleanup.sh` (new), `spikes/sp3_blender/README.md` (first-run table, UNVERIFIED), `spikes/VERDICTS-W2.md` (SP3 row now **Partial**, the quoted rule, the disk-decision step 3, the closing bullets), `build/reports/w2-sp3.md` (this), `build/evidence/w2-sp3/*` (new), `build/evidence/wp10/sp3_results.txt` (written by the script). `python3 -I tests/spikes/check_verdicts.py`: "5 main rows, 6 SP1 test rows; complete". `public_lint` (with `--theme`): 0 findings.
-No CHARTER, DECISIONS, ROADMAP, PLAN-ON-A-PAGE, CLAUDE.md or `.claude/` file was touched; no commit.
+New: `build/evidence/w2-sp3/{summary_run2.json,run2_transcript.txt,run2_sp3_results.txt,run2_ledgers.txt,run2_df_samples.txt,run2_pip_summary.json,run2_cleanup_regression.txt,run1_sp3_results.txt}`. Changed: `build/evidence/wp10/sp3_results.txt` (the script overwrites it on every run; it now holds run 1 then run 2 under two headings), `build/reports/w2-sp3.md` (this), `spikes/VERDICTS-W2.md` (SP3 row, disk-decision step 3, closing bullet), `spikes/sp3_blender/README.md` (second-run table, UNVERIFIED). `run_sp3.sh` was not touched in run 2. No CHARTER, DECISIONS, ROADMAP, PLAN-ON-A-PAGE, CLAUDE.md or `.claude/` file was touched; no commit.
 
-## 9. For the orchestrator
+## 10. For the orchestrator
 
 1. Fable review of this report and the SP3 row (D-32). Nothing here is approved yet.
-2. Decide whether to lower SP3's planned and entry disk figures (peak 1,408 MB); and whether the `lj_bench` contamination heuristic should ignore the stage's own previous process (back-to-back sweeps flag themselves). Neither was changed.
-3. At G1 (Sun 15 Nov) re-run the four configurations on the real kitchen frame, then apply "dropped, or moved to the PC" to that result. The maker's Exercise 5 timings remain the Windows and GPU evidence.
+2. Decide how the G1 pass mark treats the host spread (section 3): add the same-session stand-in line and the CPU model to the G1 evidence, or keep the plain table comparison and accept that the result depends on the host.
+3. Decide the download allowance for the G1 re-run (section 8), and whether to lower SP3's planned and entry disk figures (peak 1,408 MB). Neither was changed.
+4. Whether the `lj_bench` contamination heuristic should ignore the stage's own previous process (back-to-back sweeps flag themselves, in both runs). Not changed.
+5. At G1 (Sun 15 Nov) re-run the four configurations on the real kitchen frame, then apply "dropped, or moved to the PC" to that result. The maker's Exercise 5 timings remain the Windows and GPU evidence.

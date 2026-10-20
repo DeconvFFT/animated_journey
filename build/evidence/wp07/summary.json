@@ -5,7 +5,7 @@
     "UNVERIFIED": 1
   },
   "date_utc": "2026-10-20",
-  "lowest_avail_mb_seen_by_the_tests": 14147,
+  "lowest_avail_mb_seen_by_the_tests": 14541,
   "mode": "all",
   "package": "WP-07",
   "real_run_state": "Real CLI results: T1 FilmCraft PASS/PASS; T2 FilmCraft FAIL/FAIL; T1 EffectCraft PASS; T4 EffectCraft PASS. The harness is also proven against stand-in CLIs, which say nothing about FilmCraft or EffectCraft.",

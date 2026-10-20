@@ -1,80 +1,70 @@
-run_all_checks: mode quick, started 2026-10-20T00:26:52Z
+run_all_checks: mode quick, started 2026-10-20T03:13:13Z
 tools: Python 3.13.16, node v22.22.0, ffmpeg version 6.1.1-3ubuntu5, pwsh 7.5.4
-branch: build/process-lock, head 22ed793, 228 changed or untracked path(s)
-disk: Avail 747 MB (plan floors: 400 soft, 250 hard)
+branch: build/process-lock, head 2fdbdb4, 129 changed or untracked path(s)
+disk: Avail 14540 MB (plan floors: 400 soft, 250 hard)
 
-== Part A: global checks (15) ==
-[PASS   ] lint.self_test             exit 0      1s  note: Windows PowerShell 5.1 was not available in this run; win/step0_pc_tests.ps1 was exercised on PowerShell 7 only (5.1 behaviour UNVERIFIED until the maker's PC runs 
-[PASS   ] lint.diff_mode             exit 0      2s  public_lint: mode diff, 330 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 3 suppressed by the config allow list
-[PASS   ] lint.build_folders         exit 0      4s  public_lint: mode paths, 576 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 1 fixture note(s), 4 suppressed by the config allow list
-[PASS   ] lint.theme_guard           exit 0      2s  INFO only (existing playbooks, skills and research are never failed): .claude/skills: 65 keyword hit(s), playbooks: 183 keyword hit(s), research: 271 keyword hit(s)
-[PASS   ] stale.self_test            exit 0      1s  self-test: 1004 checks, 0 problems
-[PASS   ] stale.new_only             exit 0     10s  new-only: 0 new FAIL hit(s), 0 new WARN hit(s); 0 baseline hit(s) no longer present
+== Part A: global checks (14) ==
+note: stale.new_only is not repeated here: Part B's integration area runs the same command (hygiene.stale_check_new_only); --global-only runs it here.
+[PASS   ] lint.self_test             exit 0      3s  note: Windows PowerShell 5.1 was not available in this run; win/step0_pc_tests.ps1 was exercised on PowerShell 7 only (5.1 behaviour UNVERIFIED until the maker's PC runs 
+[PASS   ] lint.diff_mode             exit 0      0s  public_lint: mode diff, 127 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 0 fixture note(s), 0 suppressed by the config allow list
+[PASS   ] lint.build_folders         exit 0      6s  public_lint: mode paths, 624 file(s) scanned, 0 identifying-data finding(s), 0 hygiene finding(s), 1 fixture note(s), 5 suppressed by the config allow list
+[PASS   ] lint.theme_guard           exit 0      5s  INFO only (existing playbooks, skills and research are never failed): .claude/skills: 65 keyword hit(s), playbooks: 181 keyword hit(s), research: 271 keyword hit(s)
+[PASS   ] stale.self_test            exit 0      0s  self-test: 1004 checks, 0 problems
 [PASS   ] ops.lint                   exit 0      0s  ops_lint: PASS (0 warning(s))
 [PASS   ] ops.decisions_mirror       exit 0      0s  OK: decisions.csv matches the register: 250 rows (D 32, W 79, O 74, S 65; by table T1 32, T2.1 13, T2.2 16, T2.3 50, T3 74, T4 65)
 [PASS   ] ops.hours_report           exit 0      0s    no rows yet: log your real hours (see HOURS-HOWTO.md); the first logged week is read on Sun 1 Nov
 [PASS   ] win.ps_parse               exit 0      1s  ps_parse: 0 parse errors
 [PASS   ] win.ps_lint_read_only      exit 0      0s  TOTAL: 0 error(s), 0 warning(s) in 8 file(s)
-[PASS   ] win.ps_lint_writers        exit 0      0s  TOTAL: 0 error(s), 0 warning(s) in 2 file(s)
+[PASS   ] win.ps_lint_writers        exit 0      1s  TOTAL: 0 error(s), 0 warning(s) in 2 file(s)
 [PASS   ] scratch.cleanup_dry_run    exit 0      0s  total that --yes would free: 209.1 MB in 9 item(s). Dry run: nothing was deleted.
 [PASS   ] repo.size_and_binary       exit 0      0s  size_and_binary: ok (0 over 1 MB, 0 binary, 2 allowed fixture(s))
 [PASS   ] repo.gitignore_coverage    exit 0      0s  gitignore_coverage: ok (0 not ignored, 0 hidden, 0 tracked-but-ignored)
 
 == Part B: the 13 package areas, scripts/run_week2_checks.sh --quick ==
-Life Journey week 1-2 checks: mode quick, 13 areas in fixed order, per-area limit 60 s, budget 300 s
-Avail at start: 747 MB (hard floor 250 MB). Output is masked with scripts/redaction_patterns.json.
-[ 1/13] hygiene      WP-03    PASS          25 s  exit 0      
-        last line: hygiene tests (quick): 0 failed; Avail 747 MB at start, 747 MB minimum seen
-[ 2/13] win          WP-01a   PASS           9 s  exit 0      
-        last line: WP-01a quick: PASS=44 FAIL=0 UNVERIFIED=0 SKIPPED=0 BLOCKED=0  (df Avail 747 -> 747 MB)
-[ 3/13] ops          WP-02    PASS          14 s  exit 0      
+Life Journey week 1-2 checks: mode quick, 13 areas in fixed order, per-area limit 60 s, budget 450 s
+Avail at start: 14540 MB (hard floor 250 MB). Output is masked with scripts/redaction_patterns.json.
+[ 1/13] hygiene      WP-03    PASS          24 s  exit 0      
+        last line: hygiene tests (quick): 0 failed; Avail 14540 MB at start, 14540 MB minimum seen
+[ 2/13] win          WP-01a   PASS          13 s  exit 0      
+        last line: WP-01a quick: PASS=44 FAIL=0 UNVERIFIED=0 SKIPPED=0 BLOCKED=0  (df Avail 14540 -> 14540 MB)
+[ 3/13] ops          WP-02    PASS          20 s  exit 0      
         last line: WP-02 ops tests (quick): 44 PASS, 1 UNVERIFIED
-[ 4/13] validators   WP-05    PASS          28 s  exit 0      
-        last line: TOTAL: PASS 21, FAIL 0, UNVERIFIED 0, SKIPPED 0, BLOCKED 0   (28 s, Avail min 744 MB)
-[ 5/13] render       WP-04    PASS          24 s  exit 0      
-        last line: summary: {"PASS": 10} in 24 s
-[ 6/13] roundtrip    WP-06    PASS          10 s  exit 0      
-        last line: TOTAL: PASS 108, FAIL 0, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (10 s)
-[ 7/13] sp1          WP-07    PASS          11 s  exit 0      
+[ 4/13] validators   WP-05    PASS          45 s  exit 0      
+        last line: TOTAL: PASS 21, FAIL 0, UNVERIFIED 0, SKIPPED 0, BLOCKED 0   (45 s, Avail min 14537 MB)
+[ 5/13] render       WP-04    PASS          34 s  exit 0      
+        last line: summary: {"PASS": 10} in 34 s
+[ 6/13] roundtrip    WP-06    PASS          15 s  exit 0      
+        last line: TOTAL: PASS 108, FAIL 0, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (14 s)
+[ 7/13] sp1          WP-07    PASS          15 s  exit 0      
         last line: SUMMARY quick: 14 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED
-[ 8/13] win_lj       WP-01b   PASS          16 s  exit 0      
+[ 8/13] win_lj       WP-01b   PASS          22 s  exit 0      
         masked 14 identifying-looking value(s) in this area's output
-        last line: WP-01b --quick: PASS=45 FAIL=0 UNVERIFIED=10 SKIPPED=0 BLOCKED=0  (df Avail 747 -> 747 MB)
-[ 9/13] win_kit2     WP-09    PASS          34 s  exit 0      
-        last line: WP-09 quick: PASS=119 FAIL=0 UNVERIFIED=7 SKIPPED=0 BLOCKED=0 (34 s)  disk: start 747 MB, min 746 MB, end 746 MB
-[10/13] phone        WP-08    PASS          25 s  exit 0      
+        last line: WP-01b --quick: PASS=45 FAIL=0 UNVERIFIED=10 SKIPPED=0 BLOCKED=0  (df Avail 14540 -> 14539 MB)
+[ 9/13] win_kit2     WP-09    PASS          47 s  exit 0      
+        last line: WP-09 quick: PASS=119 FAIL=0 UNVERIFIED=7 SKIPPED=0 BLOCKED=0 (47 s)  disk: start 14540 MB, min 14539 MB, end 14539 MB
+[10/13] phone        WP-08    PASS          38 s  exit 0      
         last line: Counts: PASS 14, FAIL 0, UNVERIFIED 0, SKIPPED 0, BLOCKED 0
-[11/13] spikes       WP-10    PASS          13 s  exit 0      
+[11/13] spikes       WP-10    PASS          17 s  exit 0      
         last line: SUMMARY quick: 31 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED
-[12/13] runner       WP-11a   PASS          31 s  exit 0      
+[12/13] runner       WP-11a   PASS          37 s  exit 0      
         last line: envelopes written: 123 {'PASS': 123, 'FAIL': 0, 'UNVERIFIED': 0, 'SKIPPED': 0}
-[13/13] integration  WP-11b   FAIL          25 s  exit 1      
-        | PASS       hygiene.no_file_over_1mb                     929 files checked; the largest is research/cinematic-quality.md at 265388 bytes
-        | PASS       hygiene.no_binary_file                       929 files scanned, none binary (2 reviewed fixtures allowed by the lint config)
-        | PASS       hygiene.new_text_under_8mb                   7.01 MB in 576 files; largest: build/evidence 2.71 MB, pipeline 0.64 MB, spikes 0.44 MB, reviews 0.43 MB, build/re
-        | PASS       hygiene.no_ignored_file_tracked_or_staged    0 staged file(s), none ignored; nothing tracked is ignored
-        | PASS       docs.pipeline_readme                         63 lines; sections ok: True; tools not named: none; paths that do not exist: none
-        | PASS       docs.staged_skill_update                     front matter ok: True; installed headings missing: none; terms missing: none; paths that do not exist: none; CHANG
-        | PASS       readiness.map_statuses_and_evidence          27 rows (PASS 3, UNVERIFIED 1, maker-owed 14, not started 9)
-        | PASS       index.thirteen_rows_with_existing_links      13 rows, 61 links, generated 2026-10-20T00:23:54Z.
-        | PASS       index.runner_lists_thirteen_areas_landed     exit 0; Landed: 13 of 13; areas: hygiene,win,ops,validators,render,roundtrip,sp1,win_lj,win_kit2,phone,spikes,runn
-        | PASS       ctrl.checkers_fail_on_planted_defects        63 planted defects were each caught and 20 known-good states passed
-        | SUMMARY quick: 39 PASS, 2 FAIL, 0 BLOCKED, 1 UNVERIFIED, 0 SKIPPED in 25 s; lowest Avail seen 741 MB
-        | slowest: hygiene.stale_check_new_only 10.0 s; hygiene.public_lint_over_the_build_folders 3.7 s; hygiene.theme_guard 2.9 s; redaction.derivation_tools_leak_nothing 1.7 s; 
+[13/13] integration  WP-11b   PASS          36 s  exit 0      
+        last line: slowest: hygiene.stale_check_new_only 15.9 s; hygiene.public_lint_over_the_build_folders 6.3 s; hygiene.theme_guard 4.6 s; redaction.derivation_tools_leak_nothing 2.2 s; 
 ----
-Areas: 13 | landed 13 | PASS 12 | FAIL 1 | TIMEOUT 0 | NOT LANDED 0
-Elapsed 270 s against the 300 s quick budget (within)
-Disk: Avail 747 MB at start, 747 MB lowest between areas, 747 MB at end (hard floor 250 MB)
-Envelopes: 1072 counted (PASS 1035, FAIL 6, UNVERIFIED 28, SKIPPED 1, BLOCKED 2)
+Areas: 13 | landed 13 | PASS 13 | FAIL 0 | TIMEOUT 0 | NOT LANDED 0
+Elapsed 364 s against the 450 s quick budget (within)
+Disk: Avail 14540 MB at start, 14539 MB lowest between areas, 14539 MB at end (hard floor 250 MB)
+Envelopes: 1077 counted (PASS 1038, FAIL 8, UNVERIFIED 28, SKIPPED 2, BLOCKED 1)
 Lowest avail_mb_min in any envelope: 100 MB (WP-10); below the 250 MB hard floor: WP-10
+Check: sp1 (WP-07) exited 0 but 4 FAIL envelope(s) are on file (refreshed this run: yes); read the evidence, not just the exit code
 Check: spikes (WP-10) exited 0 but 4 FAIL envelope(s) are on file (refreshed this run: yes); read the evidence, not just the exit code
 public_lint --text: not available yet (the built-in masker above, driven by scripts/redaction_patterns.json, was applied)
 Writing: build/evidence/INDEX.md, build/evidence/week2_summary.json, build/evidence/wave1_quick.txt, and build/evidence/wp11a/area_<area>_quick.txt
-RESULT: FAIL (runner exit 1)
+RESULT: PASS (runner exit 0)
 
 == Summary ==
-Part A global checks: 15 PASS, 0 FAIL, 0 BLOCKED of 15
-Part B package areas (generated 2026-10-20T00:31:44Z, runner result FAIL, 270s):
+Part A global checks: 14 PASS, 0 FAIL, 0 BLOCKED of 14
+Part B package areas (generated 2026-10-20T03:19:33Z, runner result PASS, 364s):
   #   area         entry    result    PASS  FAIL UNVER BLOCK
   1   hygiene      WP-03    PASS       213     0     1     0
   2   win          WP-01a   PASS        45     0     0     0
@@ -82,15 +72,15 @@ Part B package areas (generated 2026-10-20T00:31:44Z, runner result FAIL, 270s):
   4   validators   WP-05    PASS        72     0     3     0
   5   render       WP-04    PASS        27     0     0     0
   6   roundtrip    WP-06    PASS       109     0     2     0
-  7   sp1          WP-07    PASS        48     0     1     2
+  7   sp1          WP-07    PASS        49     4     1     1
   8   win_lj       WP-01b   PASS        45     0    10     0
   9   win_kit2     WP-09    PASS       162     0     7     0
   10  phone        WP-08    PASS        32     0     1     0
   11  spikes       WP-10    PASS        66     4     1     0
   12  runner       WP-11a   PASS       127     0     0     0
-  13  integration  WP-11b   FAIL        43     2     1     0
-  envelope totals: PASS 1035, FAIL 6, UNVERIFIED 28, SKIPPED 1, BLOCKED 2 (UNVERIFIED needs the maker's Windows PC; never counted as PASS)
-  runner disk: {"avail_mb_end": 747, "avail_mb_min": 747, "avail_mb_start": 747, "entries_below_hard_floor": ["WP-10"], "hard_floor_mb": 250, "lowest_envelope_avail_mb_min": 100, "lowest_envelope_entry": "WP-10"}
-disk: Avail 747 MB at start, lowest seen between stages 747 MB, 747 MB at end
-elapsed: 292 s
-RESULT: FAIL (1 failing item(s), 0 blocked). Exit 1.
+  13  integration  WP-11b   PASS        45     0     1     0
+  envelope totals: PASS 1038, FAIL 8, UNVERIFIED 28, SKIPPED 2, BLOCKED 1 (UNVERIFIED needs the maker's Windows PC; never counted as PASS)
+  runner disk: {"avail_mb_end": 14539, "avail_mb_min": 14539, "avail_mb_start": 14540, "entries_below_hard_floor": ["WP-10"], "hard_floor_mb": 250, "lowest_envelope_avail_mb_min": 100, "lowest_envelope_entry": "WP-1
+disk: Avail 14540 MB at start, lowest seen between stages 14539 MB, 14539 MB at end
+elapsed: 380 s
+RESULT: PASS (every global check and every landed area passed). Exit 0.

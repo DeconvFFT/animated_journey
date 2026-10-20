@@ -2,7 +2,7 @@
  "actual": "exit 3; stderr (first lines): fetch_libs: npm failed (exit 1): npm view gsap version --json | npm error code ECONNREFUSED | npm error syscall connect | npm error errno ECONNREFUSED | npm error FetchError: request to http://127.0.0.1:9/gsap failed, reason: connect ECONNREFUSED 127.0.0.1:9 | npm error     at ClientRequest.<anonymous> (/opt/node22/lib/node_modules/npm/node_modules/minipass-fetch/lib/index.js:130:14)",
  "data": {
   "exit": 3,
-  "seconds": 0.3,
+  "seconds": 0.4,
   "stderr_head": [
    "fetch_libs: npm failed (exit 1): npm view gsap version --json",
    "npm error code ECONNREFUSED",
@@ -14,9 +14,9 @@
  },
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 747,
-  "avail_mb_min": 747,
-  "avail_mb_start": 747,
+  "avail_mb_end": 14540,
+  "avail_mb_min": 14540,
+  "avail_mb_start": 14540,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

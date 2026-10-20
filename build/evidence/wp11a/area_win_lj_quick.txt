@@ -1,4 +1,4 @@
-# area=win_lj entry=WP-01b mode=quick result=PASS exit=0 seconds=16 masked_values=14
+# area=win_lj entry=WP-01b mode=quick result=PASS exit=0 seconds=22 masked_values=14
 WP-01b tests (--quick). pwsh: present  patterns file: present  public_lint: present
 PASS       lint.lj_script                                       exit 0; TOTAL: 0 error(s), 0 warning(s) in 1 file(s)|
 PASS       lint.readme_fences                                   exit 0; TOTAL: 0 error(s), 0 warning(s) in 1 file(s)|
@@ -17,34 +17,34 @@ PASS       trees.build                                          exit 0;
 PASS       help.prints_summary                                  exit 0; Not in v0 (planned for v1 in week 4): -Apply, -Commit, -IncludeWindowsRecent. They print a message and exit 2.|
 PASS       help.no_arguments_is_help                            exit 0; Not in v0 (planned for v1 in week 4): -Apply, -Commit, -IncludeWindowsRecent. They print a message and exit 2.|
 PASS       not_in_v0.close-Apply                                exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
-PASS       not_in_v0.close-Apply.tree_hash_identical            HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       not_in_v0.close-Apply.tree_hash_identical            HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 PASS       not_in_v0.close-Commit                               exit 2; -Commit: not in v0: planned for v1 in week 4; nothing was done|files written: none|
-PASS       not_in_v0.close-Commit.tree_hash_identical           HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       not_in_v0.close-Commit.tree_hash_identical           HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 PASS       not_in_v0.close-IncludeWindowsRecent                 exit 2; -IncludeWindowsRecent: not in v0: planned for v1 in week 4; nothing was done|files written: none|
-PASS       not_in_v0.close-IncludeWindowsRecent.tree_hash_identical HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       not_in_v0.close-IncludeWindowsRecent.tree_hash_identical HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 PASS       not_in_v0.doctor-Apply                               exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
-PASS       not_in_v0.doctor-Apply.tree_hash_identical           HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       not_in_v0.doctor-Apply.tree_hash_identical           HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 PASS       not_in_v0.doctor-Commit                              exit 2; -Commit: not in v0: planned for v1 in week 4; nothing was done|files written: none|
-PASS       not_in_v0.doctor-Commit.tree_hash_identical          HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       not_in_v0.doctor-Commit.tree_hash_identical          HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 PASS       not_in_v0.doctor-IncludeWindowsRecent                exit 2; -IncludeWindowsRecent: not in v0: planned for v1 in week 4; nothing was done|files written: none|
-PASS       not_in_v0.doctor-IncludeWindowsRecent.tree_hash_identical HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       not_in_v0.doctor-IncludeWindowsRecent.tree_hash_identical HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 PASS       not_in_v0.close_apply_with_config                    exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
-PASS       not_in_v0.close_apply_with_config.tree_hash_identical HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       not_in_v0.close_apply_with_config.tree_hash_identical HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 PASS       not_in_v0.lowercase_and_abbreviations                exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
-PASS       not_in_v0.lowercase_and_abbreviations.tree_hash_identical HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       not_in_v0.lowercase_and_abbreviations.tree_hash_identical HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 PASS       not_in_v0.double_dash_and_equals                     exit 2; -Apply: not in v0: planned for v1 in week 4; nothing was done|files written: none|
-PASS       not_in_v0.double_dash_and_equals.tree_hash_identical HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       not_in_v0.double_dash_and_equals.tree_hash_identical HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 PASS       doctor.fixture_prints_tier_table                     exit 0; [3/4] Running scripts\windows_check.py (read-only; masks anything that looks like identifying data) ... exit 0|  RESULT: exit 0 (valid; nothin
-PASS       doctor.fixture_prints_tier_table.tree_hash_identical HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       doctor.fixture_prints_tier_table.tree_hash_identical HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 PASS       close.planted_lists_the_planted_items                exit 0; WOULD REMOVE (v0 removes nothing; this is only the list)|  TOTAL: 12 item(s), 16 file(s), 10.9 KB|  - [REFUSED] filmcraft/cache: /etc/hostname
-PASS       close.planted_lists_the_planted_items.tree_hash_identical HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       close.planted_lists_the_planted_items.tree_hash_identical HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 PASS       close.planted_list_is_exactly_the_manifest           exit 0; problems: 0|
 PASS       close.root_is_slash_refused                          exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is a drive root (/). Nothing was done.|files written: non
-PASS       close.root_is_slash_refused.tree_hash_identical      HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       close.root_is_slash_refused.tree_hash_identical      HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 PASS       close.root_is_repo_refused                           exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is the project repository folder. Nothing was done.|files
-PASS       close.root_is_repo_refused.tree_hash_identical       HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       close.root_is_repo_refused.tree_hash_identical       HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 PASS       close.root_is_home_refused                           exit 2; [2/8] Checking the root folder is a safe place to look ... REFUSED|REFUSED: the root is the user profile folder. Nothing was done.|files writt
-PASS       close.root_is_home_refused.tree_hash_identical       HASH ef0af2acb03fa35f53746707176cd13f17accc7a52120c8b86df77ccc4b7fb4c entries=123 / HASH 68********
+PASS       close.root_is_home_refused.tree_hash_identical       HASH 85d43abeedfb546aaf0dd78c922c3b042f83bf0c39c99d646b811d8f3cf43f85 entries=123 / HASH cd********
 UNVERIFIED windows.path_rules_on_ntfs                           tested only with Linux paths; Test-SamePath, Test-Inside, GetPathRoot and GetFullPath on Windows are unproven
 UNVERIFIED windows.reparse_points_on_ntfs                       tested with Linux symlinks only
 UNVERIFIED windows.py_launcher_and_python                       no Windows Python here
@@ -56,4 +56,4 @@ UNVERIFIED windows.mounted_container_detection                  v0 cannot detect
 UNVERIFIED windows.argument_binding_5_1                         checked on pwsh 7.5.4 only; PowerShell drops a trailing colon argument such as -Apply: with no value before the script sees it, which then runs as a p
 UNVERIFIED windows.console_encoding                             Linux terminal only
 ---
-WP-01b --quick: PASS=45 FAIL=0 UNVERIFIED=10 SKIPPED=0 BLOCKED=0  (df Avail 747 -> 747 MB)
+WP-01b --quick: PASS=45 FAIL=0 UNVERIFIED=10 SKIPPED=0 BLOCKED=0  (df Avail 14540 -> 14539 MB)

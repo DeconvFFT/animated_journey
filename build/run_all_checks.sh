@@ -14,7 +14,9 @@
 #     public_lint (diff mode)                  nothing identifying, no binary, no tracked-but-ignored file in the change set
 #     public_lint --paths <build folders>      the same over every folder the build wrote
 #     public_lint --theme                      the Hindu-only theme guard (D-28)
-#     stale_check --self-test, --new-only      the W-29 stale-copy check, new hits only
+#     stale_check --self-test, --new-only      the W-29 stale-copy check, new hits only. --new-only runs ONCE per invocation: here only with
+#                                              --global-only; with the package areas it is the integration area's hygiene.stale_check_new_only
+#                                              (the same command, build plan WP-11b item 5), so Part A skips its copy (gate review r2, nudge 5)
 #     ops_lint, decisions_to_csv --check,      the ops files, the CSV mirror of the register, the hours report
 #       hours_report
 #     ps_parse, ps_lint (two runs)             every Windows script and README fence parses on PowerShell 7 and obeys the 5.1 and read-only rules
@@ -91,7 +93,7 @@ GLOBAL_CHECKS=(
   "lint.build_folders|python3 -I scripts/public_lint.py --paths win scripts pipeline ops spikes tests build skills-staging reviews/build"
   "lint.theme_guard|python3 -I scripts/public_lint.py --theme"
   "stale.self_test|python3 -I scripts/stale_check.py --self-test"
-  "stale.new_only|python3 -I scripts/stale_check.py --new-only"
+  "stale.new_only|python3 -I scripts/stale_check.py --new-only"   # dropped below when the areas run: the integration area runs the same command
   "ops.lint|python3 -I scripts/ops_lint.py"
   "ops.decisions_mirror|python3 -I scripts/decisions_to_csv.py --check ops/decisions.csv"
   "ops.hours_report|python3 -I scripts/hours_report.py ops/hours.csv --week-start 2026-10-19"
@@ -103,9 +105,23 @@ GLOBAL_CHECKS=(
   "repo.gitignore_coverage|REPO_PY gitignore"
 )
 
+# stale_check --new-only is the one check that Part A and the integration area (hygiene.stale_check_new_only) both ran, 10 to 16 s each time. With the
+# package areas it stays in the integration area (the build plan's WP-11b hygiene acceptance) and leaves Part A; --global-only has no integration area, so it keeps it.
+PART_A_NOTE=""
+if [[ "$AREAS" == 1 ]]; then
+  _kept=()
+  for c in "${GLOBAL_CHECKS[@]}"; do
+    [[ "${c%%|*}" == "stale.new_only" ]] && continue
+    _kept+=("$c")
+  done
+  GLOBAL_CHECKS=("${_kept[@]}")
+  PART_A_NOTE="stale.new_only is not repeated here: Part B's integration area runs the same command (hygiene.stale_check_new_only); --global-only runs it here."
+fi
+
 if [[ "$LIST" == 1 ]]; then
   echo "Part A, global checks (exit 0 expected from each):"
   for c in "${GLOBAL_CHECKS[@]}"; do printf '  %-26s %s\n' "${c%%|*}" "${c#*|}"; done
+  [[ -n "$PART_A_NOTE" ]] && echo "  ($PART_A_NOTE)"
   if [[ "$AREAS" == 1 ]]; then
     echo "Part B, package areas through scripts/run_week2_checks.sh --$MODE:"
     bash scripts/run_week2_checks.sh --list | sed -n '2,$p'
@@ -271,6 +287,7 @@ main() {
 
   echo
   echo "== Part A: global checks (${#GLOBAL_CHECKS[@]}) =="
+  [[ -n "$PART_A_NOTE" ]] && echo "note: $PART_A_NOTE"
   local c
   for c in "${GLOBAL_CHECKS[@]}"; do
     run_check "${c%%|*}" "${c#*|}"
