@@ -37,11 +37,13 @@ import json
 import os
 import re
 import shutil
+import struct
 import subprocess
 import sys
 import tempfile
 import threading
 import time
+import zlib
 
 sys.dont_write_bytecode = True
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -1596,20 +1598,45 @@ def t_new_text():
           note=new_text_soft_line(tot).strip())
 
 
-@test("hygiene.no_ignored_file_tracked_or_staged")
-def t_ignored():
-    rc, out, err = git("ls-files", "-ci", "--exclude-standard")
+def ignored_file_problems(root, lint, cfg):
+    """For the repository at ROOT: (bad, allowed, rule_problems, n_staged). BAD lists every file that git tracks or has staged although .gitignore ignores it, each with the reason when
+    it is on the force_added_ok list but fails; ALLOWED lists the exact paths of that list which are a PNG under 200 KB (judged by force_added_check in scripts/public_lint.py, the one owner of
+    the rule, which build/run_all_checks.sh and the lint itself use too); RULE_PROBLEMS are problems with the list itself (a glob, a missing reason or review), which fail the check even
+    when nothing is force-added. LINT is the loaded scripts/public_lint.py module and CFG the parsed scripts/public_lint.config.json."""
+    def g(*a):
+        return sh(["git", "-C", root] + list(a), timeout=120)
+    rc, out, err = g("ls-files", "-ci", "--exclude-standard")
     tracked_ignored = [x for x in out.splitlines() if x]
     # a staged DELETION of an ignored file (git rm --cached) is the fix, not the fault, so deletions are left out (gate review r1)
-    rc2, out2, err2 = git("diff", "--cached", "--name-only", "--diff-filter=d")
+    rc2, out2, err2 = g("diff", "--cached", "--name-only", "--diff-filter=d")
     staged = [x for x in out2.splitlines() if x]
     staged_ignored = []
     if staged:
-        rc3, out3, err3 = git("check-ignore", "--no-index", *staged)
+        rc3, out3, err3 = g("check-ignore", "--no-index", *staged)
         staged_ignored = [x for x in out3.splitlines() if x]
-    bad = sorted(set(tracked_ignored) | set(staged_ignored))
-    check("hygiene.no_ignored_file_tracked_or_staged", not bad, "no file that .gitignore ignores is tracked or staged (no git add -f of media or caches)",
-          "%d staged file(s), none ignored; nothing tracked is ignored" % len(staged) if not bad else "tracked or staged although ignored: %s. FIX (orchestrator): git rm --cached on them" % listing(bad))
+    rule_problems = lint.force_added_config_problems(cfg, root)
+    bad, allowed = [], []
+    for x in sorted(set(tracked_ignored) | set(staged_ignored)):
+        ok, why = (False, "") if rule_problems else lint.force_added_check(root, cfg, x)
+        if ok:
+            allowed.append(x)
+        else:
+            bad.append(x + (" [%s]" % why if why else ""))
+    return bad, allowed, rule_problems, len(staged)
+
+
+@test("hygiene.no_ignored_file_tracked_or_staged")
+def t_ignored():
+    lint = load_module(p("scripts", "public_lint.py"), "lj_public_lint_under_test")
+    bad, allowed, rule_problems, n_staged = ignored_file_problems(ROOT, lint, read_json(p("scripts", "public_lint.config.json")))
+    check("hygiene.no_ignored_file_tracked_or_staged", not bad and not rule_problems,
+          "no file that .gitignore ignores is tracked or staged (no git add -f of media or caches), except an exact path of the force_added_ok list in scripts/public_lint.config.json that is a PNG under 200 KB (a reviewed test card)",
+          (("%d staged file(s); the only ignored file(s) tracked or staged: %d reviewed force-add(s) on force_added_ok (%s)" % (n_staged, len(allowed), listing(allowed, 3)))
+           if allowed else "%d staged file(s), none ignored; nothing tracked is ignored" % n_staged)
+          if not bad and not rule_problems else
+          "%s%s. FIX (orchestrator): git rm --cached on them, or fix the force_added_ok entry" % (
+              ("tracked or staged although ignored: %s" % listing(bad)) if bad else "",
+              ("%sthe force_added_ok list is not valid: %s" % ("; " if bad else "", listing(rule_problems, 3))) if rule_problems else ""))
 
 
 # ----------------------------------------------------------------------------------------------- docs, readiness, index
@@ -2010,6 +2037,107 @@ def t_controls():
     noticed("8.5 MB plus one byte with no soft line near the prune trigger", "near the 8.5 MB prune trigger" in new_text_soft_line(8_500_001))
     noticed("8.9 MB with no soft line, or one that lost the remedy", "prune duplicate evidence" in new_text_soft_line(8_900_000) and "8.90 MB of the 9 MB limit" in new_text_soft_line(8_900_000))
     passes("no soft line at the limit itself (the check fails there with its own FIX text)", new_text_soft_line(NEW_TEXT_LIMIT_BYTES) == "")
+    # 12c. force_added_ok (package s1-force-added-ok): the exact-path list of reviewed PNGs that may be tracked although .gitignore ignores them. A scratch repository gets a listed card force-added
+    #      (passes), an unlisted ignored file force-added (caught), a listed card grown to 200,000 bytes or more (caught; 199,999 passes), a listed path that is not a PNG, and lists that are not valid.
+    #      scripts/public_lint.py's own diff mode and build/run_all_checks.sh repo.gitignore_coverage are driven the same way by tests/hygiene/test_lint.py.
+    td = tempfile.mkdtemp(prefix="wp11b-ctrl.", dir=SCRATCH if os.path.isdir(SCRATCH) else None)
+    try:
+        lint = load_module(p("scripts", "public_lint.py"), "lj_public_lint_ctrl")
+        cfg0 = read_json(p("scripts", "public_lint.config.json"))
+        card1, card2 = [e["path"] for e in cfg0.get("force_added_ok", [])][:2]
+
+        def png_bytes(total=None):
+            """A valid PNG (one pixel); with TOTAL, padded with a private ancillary chunk to exactly that many bytes."""
+            def chunk(kind, data):
+                return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data) & 0xffffffff)
+            body = (b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", 1, 1, 8, 2, 0, 0, 0))
+                    + chunk(b"IDAT", zlib.compress(b"\x00\x10\x20\x30")))
+            end = chunk(b"IEND", b"")
+            pad = b"" if total is None else chunk(b"zzZz", b"\x00" * (total - len(body) - len(end) - 12))
+            return body + pad + end
+
+        n_repo = [0]
+
+        def scratch_repo():
+            n_repo[0] += 1
+            r = os.path.join(td, "r%d" % n_repo[0])
+            os.makedirs(r)
+            sh(["git", "-C", r, "init", "-q"])
+            shutil.copy(p(".gitignore"), os.path.join(r, ".gitignore"))
+            for e in cfg0.get("force_added_ok", []):                       # the reviews the list cites exist in a copy of the repository
+                os.makedirs(os.path.dirname(os.path.join(r, e["review"])), exist_ok=True)
+                open(os.path.join(r, e["review"]), "w").write("placeholder for the cited review\n")
+            return r
+
+        def put(r, rel, data):
+            os.makedirs(os.path.dirname(os.path.join(r, rel)), exist_ok=True)
+            open(os.path.join(r, rel), "wb").write(data)
+
+        def force_add(r, *rels):
+            sh(["git", "-C", r, "add", "-f", "--"] + list(rels))
+
+        def verdict(r, cfg=None):
+            return ignored_file_problems(r, lint, cfg0 if cfg is None else cfg)
+
+        small = png_bytes()
+        passes("the real force_added_ok list is valid, cites reviews that exist, and holds exactly the two reviewed cards of the Saturday test chapter",
+               not lint.force_added_config_problems(cfg0, ROOT) and [card1, card2] == ["research/craft-motion-fixtures/media/ch01_s01.png", "research/craft-motion-fixtures/media/ch01_s02.png"]
+               and len(cfg0["force_added_ok"]) == 2)
+        r = scratch_repo()
+        put(r, card1, small)
+        put(r, card2, small)
+        passes("a listed card that is only on disk (ignored, not added) is not a finding", verdict(r)[:3] == ([], [], []))
+        force_add(r, card1, card2)
+        bad, allowed, rp, _n = verdict(r)
+        passes("both listed cards force-added: nothing is bad and both are allowed", not bad and not rp and allowed == sorted([card1, card2]))
+        put(r, "research/craft-motion-fixtures/media/ch01_s03.png", small)
+        force_add(r, "research/craft-motion-fixtures/media/ch01_s03.png")
+        bad, allowed, rp, _n = verdict(r)
+        noticed("an unlisted PNG force-added in the same folder as the listed cards", len(bad) == 1 and bad[0].startswith("research/craft-motion-fixtures/media/ch01_s03.png") and allowed == sorted([card1, card2]))
+        r = scratch_repo()
+        put(r, "media/photo_like.jpg", b"\xff\xd8\xff\xe0" + b"x" * 64)
+        put(r, "clip.mov", b"mov")
+        force_add(r, "media/photo_like.jpg", "clip.mov")
+        noticed("an unlisted jpg under media/ and an unlisted mov force-added", sorted(x.split(" [")[0] for x in verdict(r)[0]) == ["clip.mov", "media/photo_like.jpg"])
+        r = scratch_repo()
+        put(r, card1, small)
+        force_add(r, card1)
+        put(r, card1, png_bytes(200_000))                               # grown on disk only: the index copy is still small, the next `git commit -a` would take the big one
+        bad, _a, _rp, _n = verdict(r)
+        noticed("a listed card grown to 200,000 bytes in the working tree only", len(bad) == 1 and "working-tree copy" in bad[0] and "200,000" in bad[0])
+        force_add(r, card1)                                              # ... and re-added: now the index copy is the big one
+        bad, _a, _rp, _n = verdict(r)
+        noticed("a listed card grown to 200,000 bytes and re-added", len(bad) == 1 and "index copy" in bad[0])
+        put(r, card1, png_bytes(199_999))
+        force_add(r, card1)
+        passes("a listed card of 199,999 bytes (one byte under the limit)", verdict(r)[:3] == ([], [card1], []))
+        put(r, card1, b"just some text, not an image\n")
+        noticed("a listed path whose working-tree file is text, not a PNG", len(verdict(r)[0]) == 1 and "not a PNG" in verdict(r)[0][0])
+        force_add(r, card1)
+        noticed("a listed path whose index copy is text, not a PNG", len(verdict(r)[0]) == 1 and "index copy is not a PNG" in verdict(r)[0][0])
+        r = scratch_repo()
+        put(r, card1, small)
+        force_add(r, card1)
+        glob_cfg = json.loads(json.dumps(cfg0))
+        glob_cfg["force_added_ok"][0]["path"] = "research/craft-motion-fixtures/media/*.png"
+        bad, allowed, rp, _n = verdict(r, glob_cfg)
+        noticed("a glob in the force_added_ok list (the whole list is refused, nothing is allowed)", bool(rp) and not allowed and len(bad) == 1)
+        folder_cfg = json.loads(json.dumps(cfg0))
+        folder_cfg["force_added_ok"][0]["path"] = "research/craft-motion-fixtures/media/"
+        noticed("a folder in the force_added_ok list", bool(verdict(r, folder_cfg)[2]))
+        for key in ("reason", "review"):
+            no_key = json.loads(json.dumps(cfg0))
+            del no_key["force_added_ok"][0][key]
+            noticed("a force_added_ok entry without its %s" % key, bool(verdict(r, no_key)[2]))
+        missing_rev = json.loads(json.dumps(cfg0))
+        missing_rev["force_added_ok"][0]["review"] = "reviews/build/no-such-review.md"
+        noticed("a force_added_ok entry that cites a review which is not in the repository", bool(verdict(r, missing_rev)[2]))
+        jpg_cfg = json.loads(json.dumps(cfg0))
+        jpg_cfg["force_added_ok"][0]["path"] = "research/craft-motion-fixtures/media/ch01_s01.jpg"
+        noticed("a force_added_ok entry that is not a .png path", bool(verdict(r, jpg_cfg)[2]))
+        passes("the real list against the same scratch repository, with the card force-added, is clean", verdict(r)[:3] == ([], [card1], []))
+    finally:
+        shutil.rmtree(td, ignore_errors=True)
     # 13. a partial (--only) run must not replace the mode's evidence: seed a scratch evidence folder, run one cheap test with --only, and see the seeds untouched
     td = tempfile.mkdtemp(prefix="wp11b-ctrl.", dir=SCRATCH if os.path.isdir(SCRATCH) else None)
     try:
@@ -2022,7 +2150,7 @@ def t_controls():
         noticed("a --only run that replaces tests_quick.jsonl or summary_quick.json (it must write the _only files)", kept and wrote and rc == 0)
     finally:
         shutil.rmtree(td, ignore_errors=True)
-    check("ctrl.checkers_fail_on_planted_defects", not probs and tried[0] >= 25, "each checker above fails on a planted defect in a copy of its input (card, phone row and the profile against the register, language note, pins, lj.ps1 static scan, Noto font, denylist, pc folder, disk rule and lowered floors, readiness map ids, index, profile and chain, the --only outputs) and passes the known-good states, among them the card row pasted from a PHONE-ROW.md regenerated to the register (W-63, W-18)",
+    check("ctrl.checkers_fail_on_planted_defects", not probs and tried[0] >= 25, "each checker above fails on a planted defect in a copy of its input (card, phone row and the profile against the register, language note, pins, lj.ps1 static scan, Noto font, denylist, pc folder, disk rule and lowered floors, readiness map ids, index, profile and chain, the force_added_ok list and the files git is told to force-add, the --only outputs) and passes the known-good states, among them the card row pasted from a PHONE-ROW.md regenerated to the register (W-63, W-18)",
           ("%d planted defects were each caught and %d known-good states passed" % (tried[0], tried[1])) if not probs else listing(probs))
 
 

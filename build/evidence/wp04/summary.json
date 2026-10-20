@@ -7,7 +7,7 @@
  "mode": "quick",
  "package": "WP-04",
  "schema": "lj-evidence-summary/1",
- "seconds": 31.1,
+ "seconds": 29.5,
  "tests": {
   "a10_alpha": "PASS",
   "a1_determinism_lite": "PASS",

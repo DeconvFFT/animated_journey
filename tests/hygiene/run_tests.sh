@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # run_tests.sh: the WP-03 test runner (redaction patterns 4.13, disk/bench guard 4.9, stale_check, public_lint).
 #
-#   bash tests/hygiene/run_tests.sh --quick   pattern test, guard tests and the two self-tests (about 30 s, no downloads, no timed runs)
+#   bash tests/hygiene/run_tests.sh --quick   pattern test, guard tests, the two self-tests and the force_added_ok cases (about 45 s, no downloads, no timed runs)
 #   bash tests/hygiene/run_tests.sh --all     everything: quick + stale tests + lint tests + the acceptance commands on the real tree
 #
 # Prints RESULT lines (PASS/FAIL), writes the log to build/evidence/wp03/tests_<mode>.txt and, for --all, the
@@ -64,6 +64,9 @@ run_group guard bash tests/hygiene/test_guard.sh
 say "GROUP self_tests"
 cmd_result stale_check_self_test 0 "python3 -I scripts/stale_check.py --self-test:" -- python3 -I scripts/stale_check.py --self-test
 cmd_result public_lint_self_test 0 "python3 -I scripts/public_lint.py --self-test:" -- python3 -I scripts/public_lint.py --self-test
+
+# the exact-path force_added_ok cases (scratch repositories; the three checks that go red on a force-added ignored file): --quick runs just these, --all runs them inside test_lint.py
+[[ "$MODE" == quick ]] && run_group force_added python3 -I tests/hygiene/test_lint.py --force-added-only
 
 if [[ "$MODE" == all ]]; then
   run_group stale python3 -I tests/hygiene/test_stale.py

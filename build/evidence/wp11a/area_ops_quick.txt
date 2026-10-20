@@ -1,4 +1,4 @@
-# area=ops entry=WP-02 mode=quick result=PASS exit=0 seconds=17 masked_values=0
+# area=ops entry=WP-02 mode=quick result=PASS exit=0 seconds=18 masked_values=0
 PASS       decisions_check_real         decisions_to_csv --check ops/decisions.csv exits 0; independent count equals the CSV
 PASS       decisions_write_twice        --write twice is byte-identical, and equals the committed file when no orchestrator cell is set
 PASS       decisions_content            status vocabulary, D-14/D-23 notes, O-05/O-13 answered, S rows carry Table 4 status, 300-char cut

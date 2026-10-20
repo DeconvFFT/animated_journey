@@ -31,7 +31,7 @@ The emitter never overwrites a file that exists, so to rebuild, delete `ch01.oti
 
 ## Git
 
-`.gitignore` ignores `*.png` and any `media/` folder, so the two cards are added by hand after review, as `CLAUDE.md` allows for a generated, non-personal image: `git add -f research/craft-motion-fixtures/media/ch01_s01.png research/craft-motion-fixtures/media/ch01_s02.png`. `ch01.otio`, the spec and this file are ordinary text.
+`.gitignore` ignores `*.png` and any `media/` folder, so the two cards are added by hand after review, as `CLAUDE.md` allows for a generated, non-personal image: `git add -f research/craft-motion-fixtures/media/ch01_s01.png research/craft-motion-fixtures/media/ch01_s02.png`. `ch01.otio`, the spec and this file are ordinary text. The two paths are the whole of the `force_added_ok` list in `scripts/public_lint.config.json`: the three checks that otherwise flag a tracked file that `.gitignore` ignores (`public_lint.py`, `build/run_all_checks.sh` `repo.gitignore_coverage`, `hygiene.no_ignored_file_tracked_or_staged`) let exactly these through, and only while each is a PNG under 200 KB; a third card, a rename or a bigger card fails them again.
 
 ## What is checked and what is not
 

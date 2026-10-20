@@ -1,36 +1,36 @@
 Life Journey week 1-2 checks: mode quick, 13 areas in fixed order, per-area limit 60 s (own limit: win_kit2 90 s), budget 450 s
-Avail at start: 14452 MB (hard floor 250 MB). Output is masked with scripts/redaction_patterns.json.
-[ 1/13] hygiene      WP-03    PASS          25 s  exit 0      
-        last line: hygiene tests (quick): 0 failed; Avail 14452 MB at start, 14452 MB minimum seen
+Avail at start: 21508 MB (hard floor 250 MB). Output is masked with scripts/redaction_patterns.json.
+[ 1/13] hygiene      WP-03    PASS          40 s  exit 0      
+        last line: hygiene tests (quick): 0 failed; Avail 21508 MB at start, 21508 MB minimum seen
 [ 2/13] win          WP-01a   PASS          11 s  exit 0      
-        last line: WP-01a quick: PASS=44 FAIL=0 UNVERIFIED=0 SKIPPED=0 BLOCKED=0  (df Avail 14452 -> 14451 MB)
-[ 3/13] ops          WP-02    PASS          17 s  exit 0      
+        last line: WP-01a quick: PASS=44 FAIL=0 UNVERIFIED=0 SKIPPED=0 BLOCKED=0  (df Avail 21508 -> 21508 MB)
+[ 3/13] ops          WP-02    PASS          18 s  exit 0      
         last line: WP-02 ops tests (quick): 44 PASS, 1 UNVERIFIED
-[ 4/13] validators   WP-05    PASS          40 s  exit 0      
-        last line: TOTAL: PASS 21, FAIL 0, UNVERIFIED 0, SKIPPED 0, BLOCKED 0   (39 s, Avail min 14449 MB)
-[ 5/13] render       WP-04    PASS          31 s  exit 0      
-        last line: summary: {"PASS": 10} in 31 s
-[ 6/13] roundtrip    WP-06    PASS          14 s  exit 0      
+[ 4/13] validators   WP-05    PASS          37 s  exit 0      
+        last line: TOTAL: PASS 21, FAIL 0, UNVERIFIED 0, SKIPPED 0, BLOCKED 0   (36 s, Avail min 21505 MB)
+[ 5/13] render       WP-04    PASS          29 s  exit 0      
+        last line: summary: {"PASS": 10} in 29 s
+[ 6/13] roundtrip    WP-06    PASS          13 s  exit 0      
         last line: TOTAL: PASS 110, FAIL 0, UNVERIFIED 2, SKIPPED 0, BLOCKED 0 (13 s)
 [ 7/13] sp1          WP-07    PASS          15 s  exit 0      
         last line: SUMMARY quick: 16 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED
-[ 8/13] win_lj       WP-01b   PASS          21 s  exit 0      
+[ 8/13] win_lj       WP-01b   PASS          20 s  exit 0      
         masked 14 identifying-looking value(s) in this area's output
-        last line: WP-01b --quick: PASS=45 FAIL=0 UNVERIFIED=10 SKIPPED=0 BLOCKED=0  (df Avail 14451 -> 14451 MB)
+        last line: WP-01b --quick: PASS=45 FAIL=0 UNVERIFIED=10 SKIPPED=0 BLOCKED=0  (df Avail 21508 -> 21508 MB)
 [ 9/13] win_kit2     WP-09    PASS          42 s  exit 0      
-        last line: WP-09 quick: PASS=119 FAIL=0 UNVERIFIED=7 SKIPPED=0 BLOCKED=0 (42 s)  disk: start 14452 MB, min 14451 MB, end 14451 MB
+        last line: WP-09 quick: PASS=119 FAIL=0 UNVERIFIED=7 SKIPPED=0 BLOCKED=0 (42 s)  disk: start 21508 MB, min 21507 MB, end 21507 MB
 [10/13] phone        WP-08    PASS          31 s  exit 0      
         last line: Counts: PASS 14, FAIL 0, UNVERIFIED 0, SKIPPED 0, BLOCKED 0
-[11/13] spikes       WP-10    PASS          32 s  exit 0      
+[11/13] spikes       WP-10    PASS          31 s  exit 0      
         last line: SUMMARY quick: 43 PASS, 0 FAIL, 0 BLOCKED, 1 UNVERIFIED
 [12/13] runner       WP-11a   PASS          39 s  exit 0      
         last line: envelopes written: 129 {'PASS': 129, 'FAIL': 0, 'UNVERIFIED': 0, 'SKIPPED': 0}
-[13/13] integration  WP-11b   PASS          33 s  exit 0      
-        last line: slowest: hygiene.stale_check_new_only 14.1 s; hygiene.public_lint_over_the_build_folders 5.1 s; hygiene.theme_guard 3.8 s; redaction.derivation_tools_leak_nothing 2.3 s; 
+[13/13] integration  WP-11b   PASS          34 s  exit 0      
+        last line: slowest: hygiene.stale_check_new_only 14.5 s; hygiene.public_lint_over_the_build_folders 5.9 s; hygiene.theme_guard 3.8 s; redaction.derivation_tools_leak_nothing 2.2 s; 
 ----
 Areas: 13 | landed 13 | PASS 13 | FAIL 0 | TIMEOUT 0 | NOT LANDED 0
-Elapsed 353 s against the 450 s quick budget (within)
-Disk: Avail 14452 MB at start, 14451 MB lowest between areas, 14451 MB at end (hard floor 250 MB)
+Elapsed 363 s against the 450 s quick budget (within)
+Disk: Avail 21508 MB at start, 21508 MB lowest between areas, 21508 MB at end (hard floor 250 MB)
 Envelopes: 1105 counted (PASS 1068, FAIL 6, UNVERIFIED 28, SKIPPED 2, BLOCKED 1)
 Lowest avail_mb_min in any envelope: 100 MB (WP-10); below the 250 MB hard floor: WP-10
 Check: sp1 (WP-07) exited 0 but 2 FAIL envelope(s) are on file (refreshed this run: yes); read the evidence, not just the exit code

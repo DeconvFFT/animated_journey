@@ -6,20 +6,29 @@ is assembled from fragments HERE, so this file itself stays clean (python3 -I sc
 tests/hygiene must pass). Each test prints   RESULT PASS|FAIL <name> :: <detail>   and the run exits 0 only
 when all pass.
   python3 -I tests/hygiene/test_lint.py [--quick]     (--quick skips the 2 MB blob and the mutation test)
+  python3 -I tests/hygiene/test_lint.py --force-added-only     (just the force_added_ok cases; about 15 s)
+It also drives the three checks that go red on a force-added ignored file (public_lint.py, build/run_all_checks.sh repo.gitignore_coverage and
+tests/integration/run_checks.py hygiene.no_ignored_file_tracked_or_staged) in scratch copies of the repository, against the exact-path force_added_ok list
+of scripts/public_lint.config.json (force_added_cases below; package s1-force-added-ok).
 """
 import hashlib
+import importlib.util
 import json
 import os
+import re
 import shutil
+import struct
 import subprocess
 import sys
 import tempfile
+import zlib
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 LINT = REPO / "scripts" / "public_lint.py"
 BASE = REPO.parent / "build-scratch"
 QUICK = "--quick" in sys.argv
+FORCE_ONLY = "--force-added-only" in sys.argv       # only the force_added_ok cases below (run_tests.sh --quick runs just these; --all runs them inside the whole file)
 FAILS = []
 
 
@@ -60,11 +69,218 @@ def write(root, rel, text, mode="w"):
     return p
 
 
+def png_bytes(total=None):
+    """A valid one-pixel PNG; with TOTAL, padded with a private ancillary chunk to exactly that many bytes."""
+    def chunk(kind, data):
+        return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data) & 0xffffffff)
+    body = b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", 1, 1, 8, 2, 0, 0, 0)) + chunk(b"IDAT", zlib.compress(b"\x00\x10\x20\x30"))
+    end = chunk(b"IEND", b"")
+    pad = b"" if total is None else chunk(b"zzZz", b"\x00" * (total - len(body) - len(end) - 12))
+    return body + pad + end
+
+
+def force_added_cases(T):
+    """The exact-path force_added_ok list (package s1-force-added-ok). Three checks go red on a file that .gitignore ignores but git tracks or has staged (git add -f):
+    scripts/public_lint.py in diff mode (ignored-staged), build/run_all_checks.sh repo.gitignore_coverage (the python heredoc is cut out of the script and run as it is) and
+    tests/integration/run_checks.py hygiene.no_ignored_file_tracked_or_staged (the real driver, copied into the scratch repository and run with --only). Each runs in a
+    throw-away repository under the scratch folder (never in this repo's index). The same three claims for each: a listed PNG force-added passes; an unlisted ignored file
+    force-added fails; a listed path that grows to 200,000 bytes (or stops being a PNG) fails."""
+    real_cfg_path = REPO / "scripts" / "public_lint.config.json"
+    real_cfg = json.loads(real_cfg_path.read_text(encoding="utf-8"))
+    entries = real_cfg.get("force_added_ok", [])
+    card1, card2 = entries[0]["path"], entries[1]["path"]
+    other = "research/craft-motion-fixtures/media/ch01_s03.png"             # same folder, same extension, NOT on the list
+    sh_text = (REPO / "build" / "run_all_checks.sh").read_text(encoding="utf-8")
+    m = re.search(r"cat > \"\$REPO_PY_SRC\" <<'PYEOF'\n(.*?)\nPYEOF\n", sh_text, re.S)
+    result("force_added_the_repo_checks_python_can_be_cut_out_of_run_all_checks_sh", bool(m) and "def gitignore()" in m.group(1), "heredoc found" if m else "no heredoc")
+    if not m:
+        return
+    repo_py = T / "repo_checks_cut_from_run_all_checks.py"
+    repo_py.write_text(m.group(1) + "\n", encoding="utf-8")
+    n = [0]
+
+    def make_repo(cfg_text=None):
+        n[0] += 1
+        r = T / ("fa%d" % n[0])
+        r.mkdir()
+        git(r, "init", "-q")
+        shutil.copy(REPO / ".gitignore", r / ".gitignore")
+        (r / "scripts").mkdir()
+        shutil.copy(LINT, r / "scripts" / "public_lint.py")
+        (r / "scripts" / "public_lint.config.json").write_text(cfg_text if cfg_text is not None else real_cfg_path.read_text(encoding="utf-8"), encoding="utf-8")
+        (r / "tests" / "integration").mkdir(parents=True)
+        shutil.copy(REPO / "tests" / "integration" / "run_checks.py", r / "tests" / "integration" / "run_checks.py")
+        for e in entries:                                                  # the reviews the list cites are files of the repository
+            write(r, e["review"], "placeholder for the cited review\n")
+        write(r, "docs/readme.md", "# A clean page\n")
+        git(r, "add", "-A")
+        git(r, "commit", "-q", "-m", "baseline")
+        return r
+
+    def add_force(r, rel, data):
+        write(r, rel, data)
+        git(r, "add", "-f", "--", rel)
+
+    def lint_rc(r, *extra):
+        return run(r, *extra)
+
+    def gi_rc(r):
+        p_ = subprocess.run([sys.executable, "-I", str(repo_py), "gitignore"], cwd=str(r), capture_output=True, text=True, errors="replace", timeout=120)
+        return p_.returncode, p_.stdout + p_.stderr
+
+    def hy_line(r):
+        ev = T / ("ev%d" % n[0])
+        p_ = subprocess.run([sys.executable, "-I", "-B", str(r / "tests" / "integration" / "run_checks.py"), "--mode", "quick", "--only", "hygiene.no_ignored_file_tracked_or_staged",
+                             "--evidence", str(ev), "--work", str(ev / "work")], cwd=str(r), capture_output=True, text=True, errors="replace", timeout=180)
+        line = next((l for l in (p_.stdout + p_.stderr).splitlines() if "hygiene.no_ignored_file_tracked_or_staged" in l and l.split()[0] in ("PASS", "FAIL")), (p_.stdout + p_.stderr)[-300:])
+        return p_.returncode, line
+
+    def all_three(r, cfg=None):
+        """(public_lint default mode, public_lint --staged, gitignore_coverage, hygiene.no_ignored_file_tracked_or_staged), each as (exit code, output). CFG: a config file for the lint run
+        (the other two read the scripts/public_lint.config.json of the scratch repository)."""
+        extra = ["--config", str(cfg)] if cfg else []
+        a = lint_rc(r, *extra)
+        b = lint_rc(r, "--staged", *extra)
+        c = gi_rc(r)
+        d = hy_line(r)
+        return a, b, c, d
+
+    # --- 0. nothing force-added: all three clean on the baseline
+    r = make_repo()
+    (a, b, c, d) = all_three(r)
+    result("force_added_baseline_scratch_repository_is_clean_in_all_three_checks", a[0] == 0 and b[0] == 0 and c[0] == 0 and d[0] == 0, "lint %d, staged %d, gitignore_coverage %d, hygiene %d" % (a[0], b[0], c[0], d[0]))
+
+    # --- 1. a listed PNG force-added passes all three
+    r = make_repo()
+    add_force(r, card1, png_bytes())
+    (a, b, c, d) = all_three(r)
+    ls = [l for l in a[1].splitlines() if "force-added-ok" in l and card1 in l]
+    result("force_added_listed_png_passes_public_lint_diff_mode_and_is_shown_as_a_NOTE", a[0] == 0 and len(ls) == 1 and "1 suppressed by the config allow list" in a[1] and "ignored-staged" not in a[1], "exit %d; %s" % (a[0], (ls[0] if ls else a[1].strip().splitlines()[-1])[:140]))
+    result("force_added_listed_png_passes_public_lint_staged_mode", b[0] == 0 and "ignored-staged" not in b[1], "exit %d" % b[0])
+    result("force_added_listed_png_passes_gitignore_coverage_of_run_all_checks_sh", c[0] == 0 and "gitignore_coverage: ok" in c[1] and "1 force-added and reviewed" in c[1], "exit %d: %s" % (c[0], c[1].strip().splitlines()[-1]))
+    result("force_added_listed_png_passes_hygiene_no_ignored_file_tracked_or_staged", d[0] == 0 and d[1].startswith("PASS") and "1 reviewed force-add(s) on force_added_ok" in d[1], "exit %d: %s" % (d[0], d[1][:150]))
+    git(r, "commit", "-q", "-m", "the card goes in")
+    (a, b, c, d) = all_three(r)
+    result("force_added_listed_png_still_passes_all_three_once_committed", a[0] == 0 and c[0] == 0 and d[0] == 0, "lint %d, gitignore_coverage %d, hygiene %d" % (a[0], c[0], d[0]))
+    ra = lint_rc(r, "--no-allow")
+    result("force_added_no_allow_ignores_the_list_and_flags_the_card_again", ra[0] == 1 and "ignored-staged" in ra[1] and card1 in ra[1], "exit %d" % ra[0])
+
+    # --- 2. both listed cards, then an unlisted PNG in the same folder: exactly that one fails, in all three
+    r = make_repo()
+    add_force(r, card1, png_bytes())
+    add_force(r, card2, png_bytes())
+    (a, b, c, d) = all_three(r)
+    result("force_added_both_listed_cards_pass_all_three", a[0] == 0 and b[0] == 0 and c[0] == 0 and d[0] == 0 and "2 suppressed by the config allow list" in a[1], "lint %d, staged %d, gitignore_coverage %d, hygiene %d" % (a[0], b[0], c[0], d[0]))
+    add_force(r, other, png_bytes())
+    (a, b, c, d) = all_three(r)
+    ls = [l for l in a[1].splitlines() if l.startswith("FINDING") and "ignored-staged" in l]
+    result("force_added_unlisted_ignored_png_fails_public_lint_diff_mode_alone", a[0] == 1 and len(ls) == 1 and other in ls[0] and "does not list it" in ls[0], "exit %d; %s" % (a[0], ls[0][:150] if ls else a[1].strip().splitlines()[-1]))
+    result("force_added_unlisted_ignored_png_fails_public_lint_staged_mode", b[0] == 1 and other in b[1], "exit %d" % b[0])
+    tb = [l for l in c[1].splitlines() if "TRACKED BUT IGNORED" in l]
+    result("force_added_unlisted_ignored_png_fails_gitignore_coverage_alone", c[0] == 1 and len(tb) == 1 and other in tb[0] and "gitignore_coverage: FAIL" in c[1] and "2 force-added and reviewed" in c[1], "exit %d; %s" % (c[0], tb[0][:120] if tb else c[1].strip().splitlines()[-1]))
+    result("force_added_unlisted_ignored_png_fails_hygiene_no_ignored_file_tracked_or_staged_alone", d[0] == 1 and d[1].startswith("FAIL") and other in d[1] and card1 not in d[1] and card2 not in d[1], "exit %d: %s" % (d[0], d[1][:150]))
+
+    # --- 3. other ignored files (a mov, a jpg under media/) force-added: not listed, so fail in all three
+    r = make_repo()
+    add_force(r, "clip.mov", b"mov")
+    add_force(r, "media/not_a_card.jpg", b"\xff\xd8\xff\xe0" + b"x" * 64)
+    (a, b, c, d) = all_three(r)
+    result("force_added_unlisted_mov_and_jpg_fail_all_three", a[0] == 1 and b[0] == 1 and c[0] == 1 and d[0] == 1 and "clip.mov" in c[1] and "media/not_a_card.jpg" in d[1], "lint %d, staged %d, gitignore_coverage %d, hygiene %d" % (a[0], b[0], c[0], d[0]))
+
+    # --- 4. a listed path that grows: 199,999 bytes passes, 200,000 fails (index copy), and a working-tree-only growth fails too
+    r = make_repo()
+    add_force(r, card1, png_bytes(199_999))
+    (a, b, c, d) = all_three(r)
+    result("force_added_listed_png_of_199999_bytes_passes_all_three", a[0] == 0 and b[0] == 0 and c[0] == 0 and d[0] == 0, "lint %d, staged %d, gitignore_coverage %d, hygiene %d" % (a[0], b[0], c[0], d[0]))
+    add_force(r, card1, png_bytes(200_000))
+    (a, b, c, d) = all_three(r)
+    ls = [l for l in a[1].splitlines() if l.startswith("FINDING") and "ignored-staged" in l]
+    result("force_added_listed_png_grown_to_200000_bytes_fails_public_lint_with_the_reason", a[0] == 1 and b[0] == 1 and len(ls) == 1 and "200,000 bytes" in ls[0] and "200 KB" in ls[0], "exit %d; %s" % (a[0], ls[0][:170] if ls else ""))
+    result("force_added_listed_png_grown_to_200000_bytes_fails_gitignore_coverage", c[0] == 1 and "TRACKED BUT IGNORED" in c[1] and "200 KB" in c[1], "exit %d" % c[0])
+    result("force_added_listed_png_grown_to_200000_bytes_fails_hygiene_no_ignored_file_tracked_or_staged", d[0] == 1 and d[1].startswith("FAIL") and "200 KB" in d[1], "exit %d: %s" % (d[0], d[1][:150]))
+    r = make_repo()
+    add_force(r, card1, png_bytes())
+    write(r, card1, png_bytes(400_000))                                   # grown on disk, not re-added: a later `git commit -a` would carry it
+    (a, b, c, d) = all_three(r)
+    result("force_added_listed_png_grown_in_the_working_tree_only_fails_all_three", a[0] == 1 and c[0] == 1 and d[0] == 1 and "working-tree copy" in a[1], "lint %d, gitignore_coverage %d, hygiene %d" % (a[0], c[0], d[0]))
+
+    r = make_repo()
+    add_force(r, card1, png_bytes(300_000))
+    write(r, card1, png_bytes())                                          # the working-tree copy is small again, but the index copy (what `git commit` takes) is not
+    (a, b, c, d) = all_three(r)
+    result("force_added_listed_png_whose_index_copy_is_over_200_kb_fails_all_three_even_if_the_file_on_disk_is_small", a[0] == 1 and b[0] == 1 and c[0] == 1 and d[0] == 1 and "index copy" in a[1], "lint %d, staged %d, gitignore_coverage %d, hygiene %d" % (a[0], b[0], c[0], d[0]))
+
+    # --- 5. a listed path that is not a PNG (text or a JPEG renamed), or a symbolic link, fails all three
+    r = make_repo()
+    add_force(r, card1, b"\xff\xd8\xff\xe0" + b"j" * 100)
+    (a, b, c, d) = all_three(r)
+    result("force_added_listed_path_holding_a_jpeg_fails_all_three", a[0] == 1 and c[0] == 1 and d[0] == 1 and "not a PNG image" in a[1], "lint %d, gitignore_coverage %d, hygiene %d" % (a[0], c[0], d[0]))
+    r = make_repo()
+    add_force(r, card1, b"\x89PNG\r\n\x1a\n" + b"\x00" * 40)             # the signature alone, with no IHDR chunk, is not a PNG
+    (a, b, c, d) = all_three(r)
+    result("force_added_listed_path_with_only_the_png_signature_fails_all_three", a[0] == 1 and c[0] == 1 and d[0] == 1, "lint %d, gitignore_coverage %d, hygiene %d" % (a[0], c[0], d[0]))
+
+    # --- 6. the list itself: a glob, a folder, a path with no review, a review that is not in the repository. Never allowed; the lint exits 2 on any run
+    def cfg_with(mut):
+        c_ = json.loads(real_cfg_path.read_text(encoding="utf-8"))
+        mut(c_["force_added_ok"])
+        return json.dumps(c_, indent=1)
+    bad_lists = (
+        ("a_glob", lambda e: e[0].__setitem__("path", "research/craft-motion-fixtures/media/*.png"), "glob"),
+        ("a_folder", lambda e: e[0].__setitem__("path", "research/craft-motion-fixtures/media/"), "plain repo-relative file path"),
+        ("a_path_that_climbs_out", lambda e: e[0].__setitem__("path", "research/../media/ch01_s01.png"), "plain repo-relative file path"),
+        ("a_non_png_path", lambda e: e[0].__setitem__("path", "research/craft-motion-fixtures/media/ch01_s01.jpg"), ".png"),
+        ("an_entry_without_a_reason", lambda e: e[0].pop("reason"), "reason"),
+        ("an_entry_without_a_review", lambda e: e[0].pop("review"), "review"),
+        ("the_same_path_twice", lambda e: e.append(dict(e[0])), "listed twice"),
+    )
+    for label, mut, word in bad_lists:
+        cfg_text = cfg_with(mut)
+        r = make_repo(cfg_text)
+        add_force(r, card1, png_bytes())
+        add_force(r, card2, png_bytes())
+        planted = T / ("cfg_%s.json" % label)
+        planted.write_text(cfg_text, encoding="utf-8")
+        rl = lint_rc(r, "--config", str(planted))
+        c = gi_rc(r)
+        d = hy_line(r)
+        result("force_added_list_with_%s_is_refused_by_all_three" % label, rl[0] == 2 and rl[1].startswith("USAGE: the lint config's force_added_ok list is not valid") and word in rl[1] and c[0] == 1 and "FORCE_ADDED_OK INVALID" in c[1] and d[0] == 1 and d[1].startswith("FAIL"),
+               "lint %d: %s; gitignore_coverage %d; hygiene %d" % (rl[0], rl[1].strip()[:110], c[0], d[0]))
+    r = make_repo(cfg_with(lambda e: e[0].__setitem__("review", "reviews/build/no-such-review.md")))
+    add_force(r, card1, png_bytes())
+    c = gi_rc(r)
+    d = hy_line(r)
+    result("force_added_list_citing_a_review_that_is_not_in_the_repository_fails_gitignore_coverage_and_hygiene", c[0] == 1 and "the review it cites is not a file" in c[1] and d[0] == 1, "gitignore_coverage %d; hygiene %d" % (c[0], d[0]))
+    empty_text = cfg_with(lambda e: e.clear())
+    r = make_repo(empty_text)
+    (T / "cfg_empty_list.json").write_text(empty_text, encoding="utf-8")
+    add_force(r, card1, png_bytes())
+    (a, b, c, d) = all_three(r, T / "cfg_empty_list.json")
+    result("force_added_empty_list_allows_nothing_in_any_of_the_three", a[0] == 1 and b[0] == 1 and c[0] == 1 and d[0] == 1, "lint %d, staged %d, gitignore_coverage %d, hygiene %d" % (a[0], b[0], c[0], d[0]))
+
+    # --- 7. the real list and the real cards (when they are on disk) meet the rule today
+    spec = importlib.util.spec_from_file_location("lj_public_lint_for_tests", str(LINT))
+    lint = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(lint)
+    probs = lint.force_added_config_problems(real_cfg, REPO)
+    result("force_added_real_list_is_valid_cites_reviews_that_exist_and_holds_exactly_the_two_cards",
+           not probs and [e["path"] for e in entries] == ["research/craft-motion-fixtures/media/ch01_s01.png", "research/craft-motion-fixtures/media/ch01_s02.png"], "; ".join(probs) or "2 entries")
+    present = [e["path"] for e in entries if (REPO / e["path"]).is_file()]
+    if present:
+        verdicts = [lint.force_added_check(REPO, real_cfg, rel_) for rel_ in present]
+        result("force_added_real_cards_on_disk_are_pngs_under_200_kb", all(ok_ for ok_, _ in verdicts), "; ".join("%s %d bytes -> %s" % (rel_.rsplit("/", 1)[-1], (REPO / rel_).stat().st_size, "ok" if v[0] else v[1]) for rel_, v in zip(present, verdicts)))
+    else:
+        print("SKIPPED force_added_real_cards_on_disk_are_pngs_under_200_kb :: the two cards are not on disk in this clone")
+
+
 def main():
     BASE.mkdir(parents=True, exist_ok=True)
     T = Path(tempfile.mkdtemp(prefix="hyg-lint.", dir=str(BASE)))
     try:
-        run_all(T)
+        if FORCE_ONLY:
+            force_added_cases(T)
+        else:
+            run_all(T)
     finally:
         shutil.rmtree(T, ignore_errors=True)
     print("\nlint tests: %d failed" % len(FAILS))
@@ -358,6 +574,8 @@ def run_all(T):
     git(dr, "add", "-f", "scripts/public_lint.deny.local.txt")
     rc, out = run(dr)
     result("a_staged_local_deny_list_is_still_refused_even_when_ignored", rc == 2 and any("local_deny_file" in l and "unstage it" in l for l in out.splitlines()), "exit %d" % rc)
+
+    force_added_cases(T)
 
     # ---------------------------------------------------------------- the consumer contract and the disagreement test
     samples = T / "samples.json"

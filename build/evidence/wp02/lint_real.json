@@ -2,9 +2,9 @@
  "actual": "ops_lint: checked 7 file(s): ops/decisions.csv, ops/hours.csv, ops/SETTINGS-CARD.md, ops/GATHER.md, ops/HOURS-HOWTO.md, ops/README.md, ops/gate_log.csv\n  note: pattern file version 1, 9 text categories, 0 deny-list name(s) loaded\nops_lint: PASS (0 warning(s))",
  "date_utc": "2026-10-20",
  "disk": {
-  "avail_mb_end": 14451,
-  "avail_mb_min": 14451,
-  "avail_mb_start": 14451,
+  "avail_mb_end": 21507,
+  "avail_mb_min": 21507,
+  "avail_mb_start": 21507,
   "floor_mb": 400,
   "hard_floor_mb": 250,
   "planned_write_mb": 0

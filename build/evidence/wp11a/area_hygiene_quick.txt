@@ -1,11 +1,11 @@
-# area=hygiene entry=WP-03 mode=quick result=PASS exit=0 seconds=25 masked_values=0
-WP-03 hygiene tests, mode quick (Avail at start: 14452 MB)
+# area=hygiene entry=WP-03 mode=quick result=PASS exit=0 seconds=40 masked_values=0
+WP-03 hygiene tests, mode quick (Avail at start: 21508 MB)
 GROUP patterns
 RESULT PASS pattern_file_internal_test :: 40 checks passed, 0 failed, exit 0
 GROUP guard
 RESULT PASS avail_parses_fake_df_P_format :: (fake df -P style output)
 RESULT PASS avail_accepts_a_bare_integer :: 
-RESULT PASS avail_matches_real_df :: guard 14452 MB, df 14452 MB (the volume is shared, so a small drift is normal)
+RESULT PASS avail_matches_real_df :: guard 21508 MB, df 21508 MB (the volume is shared, so a small drift is normal)
 RESULT PASS usage_missing_dashdash_exits_2 :: lj_guard: usage: lj_with_disk PLANNED_MB LABEL -- COMMAND [ARGS...]
 RESULT PASS usage_planned_not_a_number_exits_2 :: 
 RESULT PASS command_exit_code_passes_through :: 
@@ -36,7 +36,7 @@ RESULT PASS two_jobs_both_succeed ::
 RESULT PASS two_jobs_serialise_start_end_start_end :: (order of start/end markers written by the jobs)
 RESULT PASS second_job_started_after_first_ended :: 
 RESULT PASS ledger_has_one_line_per_job :: 
-RESULT PASS ledger_shows_them_one_after_the_other :: A ended 2026-10-20T08:29:53Z, B started 2026-10-20T08:29:53Z
+RESULT PASS ledger_shows_them_one_after_the_other :: A ended 2026-10-20T09:51:47Z, B started 2026-10-20T09:51:47Z
 RESULT PASS ledger_records_that_the_second_job_waited :: 
 RESULT PASS waiter_with_LJ_LOCK_WAIT_S_2_exits_3 :: 
 RESULT PASS busy_message_names_the_holder :: BUSY: held by HOLDER-JOB 
@@ -56,7 +56,7 @@ RESULT PASS outer_timeout_exits_124_as_usual ::
 RESULT PASS outer_TERM_is_forwarded_and_the_childs_cleanup_trap_ran :: 
 RESULT PASS lock_is_released_after_an_outer_timeout :: 
 RESULT PASS ledger_line_written_even_after_an_outer_timeout :: 
-RESULT PASS lj_bench_inside_lj_with_disk_works :: bench: nproc=4 loadavg_start=0.43 0.41 0.57 contaminated=no 
+RESULT PASS lj_bench_inside_lj_with_disk_works :: bench: nproc=4 loadavg_start=0.26 0.39 0.69 contaminated=no 
 RESULT PASS reverse_order_lj_with_disk_inside_lj_bench_refused :: exit 3 with the lock-order message
 RESULT PASS nested_lj_with_disk_refused_not_deadlocked :: 
 RESULT PASS nested_lj_bench_refused_not_deadlocked :: 
@@ -72,5 +72,39 @@ RESULT PASS guard_writes_only_its_lock_and_ledger_files :: (new entries in the s
 GROUP self_tests
 RESULT PASS stale_check_self_test :: python3 -I scripts/stale_check.py --self-test: exit 0; self-test: 1076 checks, 0 problems
 RESULT PASS public_lint_self_test :: python3 -I scripts/public_lint.py --self-test: exit 0; note: Windows PowerShell 5.1 was not available in this run; win/step0_pc_tests.ps1 was exercised on PowerShell 7 only (5.1 behaviour UNVERIFIED until 
+GROUP force_added
+RESULT PASS force_added_the_repo_checks_python_can_be_cut_out_of_run_all_checks_sh :: heredoc found
+RESULT PASS force_added_baseline_scratch_repository_is_clean_in_all_three_checks :: lint 0, staged 0, gitignore_coverage 0, hygiene 0
+RESULT PASS force_added_listed_png_passes_public_lint_diff_mode_and_is_shown_as_a_NOTE :: exit 0; NOTE    force-added-ok gitignore_media      research/craft-motion-fixtures/media/ch01_s01.png  (force-added on purpose: listed in force_adde
+RESULT PASS force_added_listed_png_passes_public_lint_staged_mode :: exit 0
+RESULT PASS force_added_listed_png_passes_gitignore_coverage_of_run_all_checks_sh :: exit 0: gitignore_coverage: ok (0 not ignored, 0 hidden, 0 tracked-but-ignored, 1 force-added and reviewed)
+RESULT PASS force_added_listed_png_passes_hygiene_no_ignored_file_tracked_or_staged :: exit 0: PASS       hygiene.no_ignored_file_tracked_or_staged    1 staged file(s); the only ignored file(s) tracked or staged: 1 reviewed force-add(s) on force
+RESULT PASS force_added_listed_png_still_passes_all_three_once_committed :: lint 0, gitignore_coverage 0, hygiene 0
+RESULT PASS force_added_no_allow_ignores_the_list_and_flags_the_card_again :: exit 1
+RESULT PASS force_added_both_listed_cards_pass_all_three :: lint 0, staged 0, gitignore_coverage 0, hygiene 0
+RESULT PASS force_added_unlisted_ignored_png_fails_public_lint_diff_mode_alone :: exit 1; FINDING ignored-staged gitignore_media      research/craft-motion-fixtures/media/ch01_s03.png  (matches .gitignore but is tracked or staged (git add -
+RESULT PASS force_added_unlisted_ignored_png_fails_public_lint_staged_mode :: exit 1
+RESULT PASS force_added_unlisted_ignored_png_fails_gitignore_coverage_alone :: exit 1;   TRACKED BUT IGNORED  research/craft-motion-fixtures/media/ch01_s03.png   (git rm --cached; the orchestrator commits)
+RESULT PASS force_added_unlisted_ignored_png_fails_hygiene_no_ignored_file_tracked_or_staged_alone :: exit 1: FAIL       hygiene.no_ignored_file_tracked_or_staged    tracked or staged although ignored: research/craft-motion-fixtures/media/ch01_s03.png. FIX (or
+RESULT PASS force_added_unlisted_mov_and_jpg_fail_all_three :: lint 1, staged 1, gitignore_coverage 1, hygiene 1
+RESULT PASS force_added_listed_png_of_199999_bytes_passes_all_three :: lint 0, staged 0, gitignore_coverage 0, hygiene 0
+RESULT PASS force_added_listed_png_grown_to_200000_bytes_fails_public_lint_with_the_reason :: exit 1; FINDING ignored-staged gitignore_media      research/craft-motion-fixtures/media/ch01_s01.png  (matches .gitignore but is tracked or staged (git add -f); only a reviewed,
+RESULT PASS force_added_listed_png_grown_to_200000_bytes_fails_gitignore_coverage :: exit 1
+RESULT PASS force_added_listed_png_grown_to_200000_bytes_fails_hygiene_no_ignored_file_tracked_or_staged :: exit 1: FAIL       hygiene.no_ignored_file_tracked_or_staged    tracked or staged although ignored: research/craft-motion-fixtures/media/ch01_s01.png [listed 
+RESULT PASS force_added_listed_png_grown_in_the_working_tree_only_fails_all_three :: lint 1, gitignore_coverage 1, hygiene 1
+RESULT PASS force_added_listed_png_whose_index_copy_is_over_200_kb_fails_all_three_even_if_the_file_on_disk_is_small :: lint 1, staged 1, gitignore_coverage 1, hygiene 1
+RESULT PASS force_added_listed_path_holding_a_jpeg_fails_all_three :: lint 1, gitignore_coverage 1, hygiene 1
+RESULT PASS force_added_listed_path_with_only_the_png_signature_fails_all_three :: lint 1, gitignore_coverage 1, hygiene 1
+RESULT PASS force_added_list_with_a_glob_is_refused_by_all_three :: lint 2: USAGE: the lint config's force_added_ok list is not valid (entry 1 (research/craft-motion-fixtures/media/*.png; gitignore_coverage 1; hygiene 1
+RESULT PASS force_added_list_with_a_folder_is_refused_by_all_three :: lint 2: USAGE: the lint config's force_added_ok list is not valid (entry 1 (research/craft-motion-fixtures/media/): no; gitignore_coverage 1; hygiene 1
+RESULT PASS force_added_list_with_a_path_that_climbs_out_is_refused_by_all_three :: lint 2: USAGE: the lint config's force_added_ok list is not valid (entry 1 (research/../media/ch01_s01.png): not a pla; gitignore_coverage 1; hygiene 1
+RESULT PASS force_added_list_with_a_non_png_path_is_refused_by_all_three :: lint 2: USAGE: the lint config's force_added_ok list is not valid (entry 1 (research/craft-motion-fixtures/media/ch01_; gitignore_coverage 1; hygiene 1
+RESULT PASS force_added_list_with_an_entry_without_a_reason_is_refused_by_all_three :: lint 2: USAGE: the lint config's force_added_ok list is not valid (entry 1 (research/craft-motion-fixtures/media/ch01_; gitignore_coverage 1; hygiene 1
+RESULT PASS force_added_list_with_an_entry_without_a_review_is_refused_by_all_three :: lint 2: USAGE: the lint config's force_added_ok list is not valid (entry 1 (research/craft-motion-fixtures/media/ch01_; gitignore_coverage 1; hygiene 1
+RESULT PASS force_added_list_with_the_same_path_twice_is_refused_by_all_three :: lint 2: USAGE: the lint config's force_added_ok list is not valid (entry 3 (research/craft-motion-fixtures/media/ch01_; gitignore_coverage 1; hygiene 1
+RESULT PASS force_added_list_citing_a_review_that_is_not_in_the_repository_fails_gitignore_coverage_and_hygiene :: gitignore_coverage 1; hygiene 1
+RESULT PASS force_added_empty_list_allows_nothing_in_any_of_the_three :: lint 1, staged 1, gitignore_coverage 1, hygiene 1
+RESULT PASS force_added_real_list_is_valid_cites_reviews_that_exist_and_holds_exactly_the_two_cards :: 2 entries
+RESULT PASS force_added_real_cards_on_disk_are_pngs_under_200_kb :: ch01_s01.png 80413 bytes -> ok; ch01_s02.png 82831 bytes -> ok
 
-hygiene tests (quick): 0 failed; Avail 14452 MB at start, 14452 MB minimum seen
+hygiene tests (quick): 0 failed; Avail 21508 MB at start, 21508 MB minimum seen

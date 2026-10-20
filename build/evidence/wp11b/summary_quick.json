@@ -7,18 +7,18 @@
   "UNVERIFIED": 1
  },
  "date_utc": "2026-10-20",
- "lowest_avail_mb": 14445,
+ "lowest_avail_mb": 21501,
  "mode": "quick",
  "package": "WP-11b",
  "schema": "lj-evidence-summary/1",
- "seconds": 32.4,
+ "seconds": 33.4,
  "slowest": [
   {
-   "seconds": 14.1,
+   "seconds": 14.5,
    "test": "hygiene.stale_check_new_only"
   },
   {
-   "seconds": 5.1,
+   "seconds": 5.9,
    "test": "hygiene.public_lint_over_the_build_folders"
   },
   {
@@ -26,7 +26,7 @@
    "test": "hygiene.theme_guard"
   },
   {
-   "seconds": 2.3,
+   "seconds": 2.2,
    "test": "redaction.derivation_tools_leak_nothing"
   },
   {

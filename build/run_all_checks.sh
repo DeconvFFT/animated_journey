@@ -24,7 +24,10 @@
 #     repo.size_and_binary                     no file in the tree (tracked or not ignored) over 1 MB or with a NUL byte,
 #                                              other than the reviewed fixtures named in scripts/public_lint.config.json
 #     repo.gitignore_coverage                  every scratch, vendor, render and raw-report name the packages use is ignored,
-#                                              and nothing that .gitignore ignores is tracked
+#                                              and nothing that .gitignore ignores is tracked, except an exact path of the
+#                                              force_added_ok list in scripts/public_lint.config.json (a reviewed PNG under
+#                                              200 KB; judged by force_added_check in scripts/public_lint.py, which the lint
+#                                              and tests/integration/run_checks.py call too)
 #   Part B, the 13 package areas, through  scripts/run_week2_checks.sh  (hygiene, win, ops, validators, render, roundtrip,
 #     sp1, win_lj, win_kit2, phone, spikes, runner, integration). That runner masks identifying data, enforces the per-area
 #     timeout and the disk floor, and writes build/evidence/INDEX.md and week2_summary.json.
@@ -216,10 +219,34 @@ MUST_TRACK = [
 def check_ignored(path):
     return subprocess.run(["git", "check-ignore", "-q", "--no-index", path], capture_output=True).returncode == 0
 
+def force_added_rule():
+    """(public_lint module, config dict, [problems]). The one exception to 'nothing ignored is tracked' lives in scripts/public_lint.py (force_added_check) and the
+    force_added_ok list of scripts/public_lint.config.json; this check does not carry a copy of the rule. Unreadable or invalid means no exception (fail closed)."""
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("lj_public_lint", "scripts/public_lint.py")
+        lint = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(lint)
+        with open("scripts/public_lint.config.json", encoding="utf-8-sig") as fh:
+            cfg = json.load(fh)
+        return lint, cfg, lint.force_added_config_problems(cfg, ".")
+    except Exception as e:
+        return None, {}, ["the force_added_ok rule could not be loaded (%s): no force-added file is allowed" % type(e).__name__]
+
 def gitignore():
     missing = [p for p in MUST_IGNORE if not check_ignored(p)]
     hidden = [p for p in MUST_TRACK if check_ignored(p)]
     tracked_ignored = [p.decode() for p in git("ls-files", "-ci", "--exclude-standard", "-z").split(b"\0") if p]
+    lint, cfg, rule_problems = force_added_rule()
+    force_ok, force_why = [], {}
+    if lint is not None and not rule_problems:
+        for p in list(tracked_ignored):
+            ok, why = lint.force_added_check(".", cfg, p)
+            if ok:
+                force_ok.append(p)
+                tracked_ignored.remove(p)
+            elif why:
+                force_why[p] = why
     stray = []
     for p in tree_files():
         low = p.lower()
@@ -230,13 +257,17 @@ def gitignore():
         print("  NOT IGNORED   %s   (append a line to .gitignore)" % p)
     for p in hidden:
         print("  WRONGLY HIDDEN %s   (a .gitignore pattern is too broad)" % p)
+    for p in force_ok:
+        print("  force-added, reviewed  %s   (exact path on force_added_ok in scripts/public_lint.config.json; a PNG under 200 KB)" % p)
+    for x in rule_problems:
+        print("  FORCE_ADDED_OK INVALID  %s" % x)
     for p in tracked_ignored:
-        print("  TRACKED BUT IGNORED  %s   (git rm --cached; the orchestrator commits)" % p)
+        print("  TRACKED BUT IGNORED  %s   (git rm --cached; the orchestrator commits)%s" % (p, ("  [" + force_why[p] + "]") if p in force_why else ""))
     for p in stray:
         if p not in tracked_ignored:
             print("  SCRATCH-LIKE FILE in the tree  %s" % p)
-    bad = len(missing) + len(hidden) + len(tracked_ignored) + len([p for p in stray if p not in tracked_ignored])
-    print("gitignore_coverage: %s (%d not ignored, %d hidden, %d tracked-but-ignored)" % ("FAIL" if bad else "ok", len(missing), len(hidden), len(tracked_ignored)))
+    bad = len(missing) + len(hidden) + len(tracked_ignored) + len([p for p in stray if p not in tracked_ignored]) + len(rule_problems)
+    print("gitignore_coverage: %s (%d not ignored, %d hidden, %d tracked-but-ignored, %d force-added and reviewed)" % ("FAIL" if bad else "ok", len(missing), len(hidden), len(tracked_ignored), len(force_ok)))
     return 1 if bad else 0
 
 if __name__ == "__main__":

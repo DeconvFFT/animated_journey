@@ -189,7 +189,9 @@ foreach ($n in $chapter) {
 }
 ```
 
-It should print `copied` three times. If it says NOT FOUND for these three, the project folder you downloaded for the PC inventory is older than these files: download it again the same way (green Code button, then Download ZIP), unzip it into a new folder such as `C:\lj\project2`, change `C:\lj\project` on the first line to that folder, and paste the box again. The pictures are made-up test cards (a grid, colour bars and the words TEST CARD); nothing in them is a photograph or a person.
+It should print `copied` three times. If it says NOT FOUND for any of the three, the project folder you downloaded for the PC inventory is older than these files: download it again the same way (green Code button, then Download ZIP), unzip it into a new folder such as `C:\lj\project2`, change `C:\lj\project` on the first line to that folder, and paste the box again. A project ZIP that you downloaded on Tuesday 20 October may lack some or all of the test chapter (an early copy has none of the three files; a later one has `ch01.otio` but not its two pictures): on such a copy one or more NOT FOUND lines are expected, and downloading the ZIP again is the fix. The pictures are made-up test cards (a grid, colour bars and the words TEST CARD); nothing in them is a photograph or a person.
+
+Leave the `ch01` folder as the box made it: keep the `media` folder beside `ch01.otio`, with the two pictures inside it. The file finds its pictures by that position, so if you move or rename `media` or a picture, FilmCraft shows a red MEDIA NOT FOUND slate. If you ever copy the chapter somewhere else, copy the whole `ch01` folder, never the `.otio` file alone.
 
 ## Step 7. The five-minute tests
 
@@ -205,11 +207,11 @@ Do **one app at a time**, then do the "where did it write" step below for that a
 
 Those playbooks were written before this guide and name other folders (`C:\Program Files\...` or `C:\LifeJourney\tools\...`). **Use the folder from Step 4 in their place**, for example `C:\lj\tools\filmcraft-@@V_filmcraft@@` instead of `C:\LifeJourney\tools\filmcraft-v0.9.0`.
 
-**The FilmCraft test chapter.** Where the playbook says "the agent's `ch01.otio`", use the file from Step 6: `C:\lj\at\ch01\ch01.otio`. It is 10 seconds long: the first test card (dark navy) slowly grows for 5 seconds (that is the Ken Burns move), then a 12-frame cross dissolve changes it to the second card (teal), which then holds still for 5 seconds. It has no sound. The playbook's export line says 20 seconds; this chapter is only 10, so export all of it and write down how long the export took.
+**The FilmCraft test chapter.** Where the playbook's checklist B says "the test-card OTIO" (and its Step 8 says "open `ch01.otio`"), use the file from Step 6: `C:\lj\at\ch01\ch01.otio`. It is 10 seconds long: the first test card (dark navy) slowly grows for 5 seconds (that is the Ken Burns move), then a 12-frame cross dissolve changes it to the second card (teal), which then holds still for 5 seconds. It has no sound. The playbook's export line is for this whole chapter, so export all 10 seconds and write down how long the export took.
 
 **One extra FilmCraft step: look at the dissolve one frame at a time.** The playbook's checklist only says to play the dissolve. Do this right after its "Play 10 seconds" line, on the same test chapter:
 
-1. Stop the preview if it is playing (Space starts and stops it). Move the playhead (the thin line on the timeline) to a few frames before the dissolve, which is where one picture overlaps the next: press Left until the timecode is a few frames before the dissolve, or click in the time ruler above the clips. In the test chapter the dissolve is about 5 seconds in (it runs from 4 seconds 18 frames to 5 seconds 6 frames, 12 frames long).
+1. Stop the preview if it is playing (Space starts and stops it). Move the playhead (the thin line on the timeline) to a few frames before the dissolve, which is where one picture overlaps the next: press Left until the timecode is a few frames before the dissolve, or click in the time ruler above the clips. In the test chapter the dissolve is about 5 seconds in (it runs from 4 seconds 18 frames to 5 seconds 6 frames, 12 frames long). An editor usually writes a time as hours:minutes:seconds:frames, so the start would most likely read `00:00:04:18` and the end `00:00:05:06`; that form is the usual one and is UNVERIFIED for FilmCraft, so paste the numbers exactly as you see them, even if they look different.
 2. Press the **Right arrow** key once and look at the picture. Press it again and look again. Keep going until the dissolve is over. (Right moves one frame, Left goes back one frame. Do not hold Shift: Shift moves five.)
 3. **Every frame should differ from the one before it.** Two frames in a row that look exactly the same, while the timecode (the time number under the picture) moves on, are a **finding**: write down the timecode of both frames and **paste it in chat**.
 4. The first and last frames of a dissolve change very little, so you may not be able to tell them apart. If you cannot tell, write "could not tell" and the timecode. That is an answer too.
@@ -246,7 +248,7 @@ One line per app, in chat or in your own notes. Never in the project folder.
 
 1. The version printed by the command-line program (the lines below print it), and that you used the **portable zip**.
 2. **Signed or not.** The lines below print `Valid`, `NotSigned` or another word for each program.
-3. Each step of the five-minute test: **pass or fail**, and any warning **word for word**. For FilmCraft this includes the frame-by-frame look at the dissolve (for any identical pair, both timecodes).
+3. Each step of the five-minute test: **pass or fail**, and any warning **word for word**. For FilmCraft this includes the frame-by-frame look at the dissolve (for any identical pair, both timecodes, or "could not tell" with the timecode) and how long the export of the test chapter took.
 4. The most memory you saw in Task Manager (MB or GB).
 5. Which graphics setting worked, if you needed one.
 6. The two "where did it write" outputs below.
@@ -301,7 +303,7 @@ An empty answer is an answer: it means the app wrote nothing there. Read the lin
 
 ## When you are done
 
-Paste in chat, in this order: the Step 3 lines (five `OK`), the version lines, the signature lines, your pass or fail notes for each app, and the "where did it write" outputs. Then the plan can freeze the versions on Sunday 25 October. Delete nothing yet; `C:\lj\dl` can stay.
+Paste in chat, in this order: the Step 3 lines (five `OK`), the version lines, the signature lines, your pass or fail notes for each app (for FilmCraft, with the step-through result, that is both timecodes of any identical pair or "could not tell", and the time the export took), the most memory you saw for each app, and the "where did it write" outputs. Then the plan can freeze the versions on Sunday 25 October. Delete nothing yet; `C:\lj\dl` can stay.
 
 *What is verified and what is not: the table and every file name come from GitHub's own lists and match them (checked by `check_guide.py`). The PowerShell lines were parsed with PowerShell 7 and checked against the Windows PowerShell 5.1 rules by a script; the hash check and the "where did it write" lines were also run on Linux against made-up files. None has run on Windows yet. Where the zips put their files, whether each app honours `portable.txt`, and what each app writes are all UNVERIFIED until your first run; your pasted output is the evidence. The extra FilmCraft step in Step 7 takes its keys from FilmCraft v0.9.0's own source (Right and Left step one frame, Shift moves five, Space plays and stops); nobody has pressed them on Windows and v0.8.0 was not checked, so that step is UNVERIFIED too. The test chapter in Step 6 is made by the same script and has the same kind of contents as the file FilmCraft v0.9.0 imported with no error on Linux in an earlier test, but this exact file has not been opened in FilmCraft yet, on Linux or on Windows; where FilmCraft shows its two markers and how its timecode counts are UNVERIFIED as well.*
 """

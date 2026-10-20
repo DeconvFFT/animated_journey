@@ -45,4 +45,4 @@ PASS       check.outputs_exist                          present
 PASS       check.refusal_writes_nothing                 exit 2; category=email field=tools.git.notes hit=ta********|category=ipv4 field=notes[0] hit=10********|category=mac field=notes[3] hit=02********|
 PASS       check.refusal_files_absent                   none created
 ---
-WP-01a quick: PASS=44 FAIL=0 UNVERIFIED=0 SKIPPED=0 BLOCKED=0  (df Avail 14452 -> 14451 MB)
+WP-01a quick: PASS=44 FAIL=0 UNVERIFIED=0 SKIPPED=0 BLOCKED=0  (df Avail 21508 -> 21508 MB)

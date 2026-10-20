@@ -1,5 +1,5 @@
-# area=validators entry=WP-05 mode=quick result=PASS exit=0 seconds=40 masked_values=0
-WP-05 validator tests (quick). ffmpeg 6.1.1, python 3.13, Avail 14451 MB at start.
+# area=validators entry=WP-05 mode=quick result=PASS exit=0 seconds=37 masked_values=0
+WP-05 validator tests (quick). ffmpeg 6.1.1, python 3.13, Avail 21508 MB at start.
 PASS       hygiene.python_compiles                        6 files
 PASS       hygiene.validators_stdlib_only                 stdlib only
 PASS       hygiene.windows_portable_python                none found
@@ -12,13 +12,13 @@ PASS       colour_patch.usage_and_environment_errors      got (2, 2, 3, 2, 2)
 PASS       colour_patch.derive_drops_planted_flags        validated with the jsonschema module against pc_chains.schema.json; public_lint clean on derived (exit 0), flags the planted raw (exit 2)
 PASS       colour_patch.derive_rejects_bad_raw            {'wrong_schema': 2, 'no_worst': 2, 'bad_sha': 2, 'path_as_name': 2}
 PASS       spec_check.good.g_master_hq.mov                exit 0; failed: none (0.4s)
-PASS       spec_check.good.g_venue_m18.mp4                exit 0; failed: none (0.4s)
+PASS       spec_check.good.g_venue_m18.mp4                exit 0; failed: none (0.5s)
 PASS       spec_check.good.g_ffv1_lossless.mkv            exit 0; failed: none (1.3s)
 PASS       spec_check.defect.d_25fps.mp4                  exit 1; failed: video.fps, video.frame_count (0.5s)
-PASS       spec_check.defect.d_44k1_audio.mp4             exit 1; failed: audio.sample_rate (0.6s)
+PASS       spec_check.defect.d_44k1_audio.mp4             exit 1; failed: audio.sample_rate (0.5s)
 PASS       spec_check.defect.d_title_tag.mp4              exit 1; failed: metadata.neutral (0.5s)
 PASS       spec_check.defect.d_truncated.mp4              exit 1; failed: container.readable, container.moov, container.atoms, container.faststart (0.2s)
 PASS       colour_patch.unmeasurable_chain_has_its_own_result_line exit 1; above-tolerance lines: 1, could-not-be-measured lines: 1
 PASS       driver.refuses_work_folder_outside_repo        outside -> exit 2; root -> exit 2; tracked -> exit 2; untouched: True
 PASS       stage.disk_guard                               measured peak of the generated files: 2.8 MB
-TOTAL: PASS 21, FAIL 0, UNVERIFIED 0, SKIPPED 0, BLOCKED 0   (39 s, Avail min 14449 MB)
+TOTAL: PASS 21, FAIL 0, UNVERIFIED 0, SKIPPED 0, BLOCKED 0   (36 s, Avail min 21505 MB)

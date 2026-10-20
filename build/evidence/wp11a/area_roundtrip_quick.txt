@@ -1,4 +1,4 @@
-# area=roundtrip entry=WP-06 mode=quick result=PASS exit=0 seconds=14 masked_values=0
+# area=roundtrip entry=WP-06 mode=quick result=PASS exit=0 seconds=13 masked_values=0
 PASS       hygiene.py_compile                             11 files compile
 PASS       hygiene.python38_grammar                       all pipeline/roundtrip tools parse
 PASS       hygiene.bash_syntax                            4 scripts parse

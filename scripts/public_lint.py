@@ -7,7 +7,11 @@ WHAT IT CHECKS (a finding is printed MASKED: category, file:line, the first two 
      carries no regex of its own for any of them. /home/user and <scratch> are the generic placeholders and pass;
      /home/<any other name> does not.
   2. NUL bytes (a binary file), files over 1 MB (not scanned further), and media/image files that .gitignore
-     already blocks but that are tracked or staged anyway (git add -f).
+     already blocks but that are tracked or staged anyway (git add -f). The one exception is the exact-path
+     force_added_ok list of scripts/public_lint.config.json: a PNG on it, under 200 KB (200,000 bytes) in the index
+     and in the working tree, is a reviewed force-add and prints as a NOTE; anything else still fails (see
+     force_added_check, which build/run_all_checks.sh and tests/integration/run_checks.py call too, so the three
+     checks that otherwise go red on a force-added ignored file have one owner).
   3. the path denylist: a file named like a raw PC report (pc_report*.json, colour_patch_pc*.json,
      maker-pc*.json) anywhere except under tests/win/fixtures/.
   4. the optional local deny list scripts/public_lint.deny.local.txt (git-ignored; the maker's real names and PC
@@ -221,7 +225,115 @@ def load_config(path):
         t["_rx"] = re.compile(t["regex"], re.I)
     if d.get("theme", {}).get("exclusion_cue_regex"):
         d["theme"]["_cue"] = re.compile(d["theme"]["exclusion_cue_regex"], re.I)
+    bad = force_added_config_problems(d)
+    if bad:
+        raise Usage("the lint config's force_added_ok list is not valid (%s)" % bad[0])
     return d
+
+
+# ----------------------------------------------------------------------------- force_added_ok: reviewed images that may be tracked although .gitignore ignores them
+# .gitignore blocks *.png and every media/ folder, so a reviewed, synthetic, non-personal image goes in with `git add -f` (CLAUDE.md, Git). Three checks go red on
+# any such file by design: this lint (ignored-staged), build/run_all_checks.sh (repo.gitignore_coverage) and tests/integration/run_checks.py
+# (hygiene.no_ignored_file_tracked_or_staged). The config's force_added_ok list is their one exception, and these functions are its one owner: the other two load this
+# file and call force_added_check, so the rule is written once. An entry is an EXACT repo-relative path (no glob, no folder) with a reason and the review that
+# approved it. Listing is not enough: the file must also be a PNG and under FORCE_ADDED_MAX_BYTES, in the index and in the working tree, or the check still fails.
+FORCE_ADDED_MAX_BYTES = 200_000   # "under 200 KB" (this project counts KB as 1,000 bytes): 199,999 passes, 200,000 fails. A constant here, not a config key, so a config edit cannot loosen it.
+PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
+_FORCE_GLOB_CHARS = set("*?[]{}!\\")
+
+
+def force_added_config_problems(cfg, root=None):
+    """Problems with the force_added_ok list of a config dict (an empty list when it is valid or absent). With a root, the `review` of each entry must also be a file there."""
+    entries = cfg.get("force_added_ok", [])
+    if not isinstance(entries, list):
+        return ["force_added_ok must be a list of entries"]
+    problems, seen = [], set()
+    for i, e in enumerate(entries):
+        if not isinstance(e, dict):
+            problems.append("entry %d is not an object with path, reason and review" % (i + 1))
+            continue
+        path = e.get("path")
+        if not isinstance(path, str) or not path.strip():
+            problems.append("entry %d has no path" % (i + 1))
+            continue
+        label = "entry %d (%s)" % (i + 1, path[:80])
+        parts = path.split("/")
+        if any(c in _FORCE_GLOB_CHARS for c in path):
+            problems.append("%s: a glob or pattern character; only an exact path may be listed" % label)
+        elif path.startswith("/") or path.endswith("/") or "" in parts or "." in parts or ".." in parts or ":" in path:
+            problems.append("%s: not a plain repo-relative file path" % label)
+        elif not path.endswith(".png"):
+            problems.append("%s: not a .png path; only reviewed PNG images may be listed" % label)
+        if path in seen:
+            problems.append("%s: listed twice" % label)
+        seen.add(path)
+        for key in ("reason", "review"):
+            if not isinstance(e.get(key), str) or not e[key].strip():
+                problems.append("%s: no %s (a reason and the review that approved the file are required)" % (label, key))
+        rv = e.get("review")
+        if root is not None and isinstance(rv, str) and rv.strip() and not (Path(root) / rv).is_file():
+            problems.append("%s: the review it cites is not a file in the repository" % label)
+    return problems
+
+
+def _git_bytes(root, *args):
+    try:
+        r = subprocess.run(["git", "-C", str(root)] + list(args), capture_output=True, timeout=120)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return r.stdout if r.returncode == 0 else None
+
+
+def _png_problem(what, size, head):
+    if size >= FORCE_ADDED_MAX_BYTES:
+        return "%s is %s bytes, not under the %s-byte (200 KB) limit" % (what, format(size, ","), format(FORCE_ADDED_MAX_BYTES, ","))
+    if head[:8] != PNG_SIGNATURE or head[12:16] != b"IHDR":
+        return "%s is not a PNG image" % what
+    return ""
+
+
+def force_added_check(root, cfg, rel):
+    """Judge one repo-relative path that git tracks or has staged although .gitignore ignores it. Returns (allowed, why).
+    (True, "")  the path is an exact entry of cfg["force_added_ok"] and both its index copy and its working-tree copy (whichever exist) are a PNG under 200,000 bytes
+    (False, "") the path is not listed: the caller reports the plain "tracked or staged although ignored" finding
+    (False, why) it is listed but fails (the list itself is invalid, or the file is too big, not a PNG, a symlink or missing): the caller reports it with this text
+    Exact string equality with the path git printed; nothing is matched as a glob."""
+    problems = force_added_config_problems(cfg)
+    if problems:
+        return False, "force_added_ok in the lint config is not valid (%s)" % problems[0]
+    if not any(e["path"] == rel for e in cfg.get("force_added_ok", [])):
+        return False, ""
+    seen = False
+    size_raw = _git_bytes(root, "cat-file", "-s", ":" + rel)
+    if size_raw is not None:                                    # the copy in the index: what a commit would carry
+        seen = True
+        try:
+            isize = int(size_raw.strip())
+        except ValueError:
+            return False, "listed in force_added_ok, but the size of its index copy could not be read"
+        blob = _git_bytes(root, "cat-file", "blob", ":" + rel) if isize < FORCE_ADDED_MAX_BYTES else b""
+        if blob is None:
+            return False, "listed in force_added_ok, but its index copy could not be read"
+        why = _png_problem("the index copy", isize, blob[:16])
+        if why:
+            return False, "listed in force_added_ok, but " + why
+    full = Path(root) / rel
+    try:
+        if full.is_symlink():
+            return False, "listed in force_added_ok, but the working-tree path is a symbolic link"
+        if full.is_file():
+            seen = True
+            wsize = full.stat().st_size
+            with open(full, "rb") as fh:
+                head = fh.read(16)
+            why = _png_problem("the working-tree copy", wsize, head)
+            if why:
+                return False, "listed in force_added_ok, but " + why
+    except OSError:
+        return False, "listed in force_added_ok, but the working-tree file could not be read"
+    if not seen:
+        return False, "listed in force_added_ok, but neither the index nor the working tree holds the file"
+    return True, ""
 
 
 # ----------------------------------------------------------------------------- git
@@ -458,8 +570,9 @@ def local_deny_findings(root, pat, tracked, staged, check_ignore=True):
     return []
 
 
-def gather(root, args, pat):
-    """Return (mode_label, [(rel, added_lines_or_None)], extra_findings)"""
+def gather(root, args, pat, cfg=None):
+    """Return (mode_label, [(rel, added_lines_or_None)], extra_findings). A reviewed force-add (an exact path of cfg["force_added_ok"], a PNG under 200 KB)
+    comes back as a Finding of kind "force-added-ok" for the caller to print as a NOTE instead of failing; cfg=None (--no-allow) lists nothing as allowed."""
     extra = []
     if args.paths:
         return "paths", [(r, None) for r in walk_paths(root, args.paths)], extra
@@ -501,7 +614,13 @@ def gather(root, args, pat):
     # media that .gitignore blocks but that is tracked or staged anyway
     for f in (git(root, "ls-files", "-c", "-i", "--exclude-standard", "-z") or "").split("\0"):
         if f:
-            extra.append(Finding("ignored-staged", "gitignore_media", f, note="matches .gitignore but is tracked or staged (git add -f); only a reviewed, small, non-personal image may be force-added"))
+            ok, why = force_added_check(root, cfg, f) if cfg is not None else (False, "")
+            if ok:
+                review = next((e["review"] for e in cfg["force_added_ok"] if e["path"] == f), "")
+                extra.append(Finding("force-added-ok", "gitignore_media", f, note="force-added on purpose: listed in force_added_ok, a PNG under 200 KB, reviewed in %s" % review))
+            else:
+                extra.append(Finding("ignored-staged", "gitignore_media", f, note="matches .gitignore but is tracked or staged (git add -f); only a reviewed, small, non-personal image may be force-added%s"
+                                     % (": " + why if why else "; the force_added_ok list is ignored (--no-allow)" if cfg is None else "; the exact-path force_added_ok list of scripts/public_lint.config.json does not list it")))
             out.setdefault(f, [])
     return ("staged" if args.staged else "diff"), sorted(out.items()), extra
 
@@ -824,7 +943,7 @@ def main(argv=None):
             if args.json:
                 Path(args.json).write_text(json.dumps({"findings": [f.as_dict() for f in findings], "exclusion_statements": [f.as_dict() for f in statements], "info": info}, indent=1), encoding="utf-8")
             return 1 if findings else 0
-        mode, files, extra = gather(root, args, pat)
+        mode, files, extra = gather(root, args, pat, None if args.no_allow else cfg)
     except Usage as e:
         print("USAGE: %s" % e)
         return 2
@@ -833,7 +952,10 @@ def main(argv=None):
         return 3
 
     lint = Linter(root, pat, cfg, use_allow=not args.no_allow)
-    lint.findings.extend(extra)
+    lint.findings.extend(f for f in extra if f.kind != "force-added-ok")
+    force_ok = [f for f in extra if f.kind == "force-added-ok"]
+    if force_ok:
+        lint.suppressed["force_added_ok"] = len(force_ok)
     for rel, added in files:
         lint.check_file(rel, added)
     ident = [f for f in lint.findings if f.kind in ("identifying", "denylist", "local_deny")]
@@ -844,6 +966,8 @@ def main(argv=None):
         print("NOTE    " + f.text()[8:])
     if len(lint.notes) > 10:
         print("NOTE    ... %d more fixture notes" % (len(lint.notes) - 10))
+    for f in force_ok:
+        print("NOTE    " + f.text()[8:])
     print("public_lint: mode %s, %d file(s) scanned, %d identifying-data finding(s), %d hygiene finding(s), %d fixture note(s), %d suppressed by the config allow list"
           % (mode, lint.scanned, len(ident), len(other), len(lint.notes), sum(lint.suppressed.values())))
     if args.json:

@@ -1,11 +1,11 @@
-# area=spikes entry=WP-10 mode=quick result=PASS exit=0 seconds=32 masked_values=0
-tests/spikes/run_tests.sh --quick   (df now: Avail 14451M)
+# area=spikes entry=WP-10 mode=quick result=PASS exit=0 seconds=31 masked_values=0
+tests/spikes/run_tests.sh --quick   (df now: Avail 21508M)
 PASS       syntax.bash  bash -n on run_sp1b.sh, run_sp3.sh, job.sh and run_tests.sh; failing: none
 PASS       syntax.python  ast.parse on every .py file and the four stand-in CLIs; failing: none
 PASS       lib.selftest  sp1b_lib --selftest: 8 PASS, 0 FAIL (synthetic inputs build, layer-name reading)
 PASS       lib.reused_sp1_lib_selftest  the reused WP-07 library: 8 PASS, 0 FAIL
 PASS       t3.selftest  t3_filmcraft --selftest: 13 PASS, 0 FAIL (planted differences in clips, frames, dissolves and keyframes are found)
-PASS       list.live  exit 0 (expected 0: exit 3 exactly when a stage's Avail minus planned is under 400 MB); Disk: df says Avail 14451 MB now. Floor 400 MB (Avail minus planned must stay at or above it), hard floor 250 MB. Each stage re-reads df live; the guard is the 
+PASS       list.live  exit 0 (expected 0: exit 3 exactly when a stage's Avail minus planned is under 400 MB); Disk: df says Avail 21508 MB now. Floor 400 MB (Avail minus planned must stay at or above it), hard floor 250 MB. Each stage re-reads df live; the guard is the 
 PASS       list.fake_650  exit 3; REFUSED: Avail 650 MB minus planned 286 MB leaves 364 MB, below the 400 MB floor (vectorcraft-v0.13.1). REFUSED: Avail 650 MB minus planned 254 MB leaves 396 MB, below the 400 MB floor (lightcraft-v0.9.1). 
 PASS       list.fake_2000  exit 0; OK: every stage that has not run yet fits at today's Avail. Start them with: bash spikes/sp1b_readback/run_sp1b.sh --all
 PASS       list.fake_450  exit 3; 4 REFUSED lines; remedy: Remedy: answer Q-1 (the orchestrator may clear the regenerable pip cache, about 418 MB), or free space, or move this read-back to the maker's PC (the Sat 24 Oct
@@ -18,7 +18,7 @@ PASS       ledger.planted_exception_listed  exit 0; exceptions: photocraft-0.10.
 PASS       ledger.require_all  exit 1
 PASS       ledger.planted_soundcraft  exit 1
 PASS       ledger.planted_fetch_not_recorded  exit 1
-PASS       sp3.check_live  Avail 14451 MB: exit 0 (expected 0); READY: Avail 14451 MB is at least 1900 MB. Start it with: bash spikes/sp3_blender/run_sp3.sh --run
+PASS       sp3.check_live  Avail 21508 MB: exit 0 (expected 0); READY: Avail 21508 MB is at least 1900 MB. Start it with: bash spikes/sp3_blender/run_sp3.sh --run
 PASS       sp3.dry_run_ready  exit 0; READY: Avail 5000 MB is at least 1900 MB. Start it with: bash spikes/sp3_blender/run_sp3.sh --run SP3_DRYRUN=1: would run  lj_with_disk 1500 sp3-blender -- bash spikes/sp3_blender/run_sp3.sh --run-inner 
 PASS       sp3.run_refused_under_entry  exit 3; NOT RUN: needs >= 1.9 GB free (Avail 1899 MB; short by 1 MB). Justified deferral: SP3 runs in week 3 on the maker's PC (
 PASS       sp3.dry_run_ready_at_entry  exit 0; READY: Avail 1900 MB is at least 1900 MB. Start it with: bash spikes/sp3_blender/run_sp3.sh --run SP3_DRYRUN=1: would run  lj_with_disk 1500 sp3-blender -- bash spikes/sp3_blender/run_sp3.sh --run-inn
